@@ -1,7 +1,8 @@
 ﻿Public Class frmSplash
     Sub New
         InitializeComponent()
-        Me.labelCopyright.Text = "Copyright © 1998-" & DateTime.Now.Year.ToString()
+        Me.labelCopyright.Text = "Copyright © 2020-" & DateTime.Now.Year.ToString()
+
     End Sub
 
     Public Overrides Sub ProcessCommand(ByVal cmd As System.Enum, ByVal arg As Object)
