@@ -2,17 +2,18 @@
 Imports DevExpress.XtraTabbedMdi
 Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        XtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders
     End Sub
 
     Private Sub MdiManager_PageAdded(sender As Object, e As MdiTabPageEventArgs)
-        Dim page As XtraMdiTabPage = e.Page
-        page.Tooltip = "Tooltip for the page " + page.Text
     End Sub
     Private Sub bbUsers_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbUsers.ItemClick
-        Dim f As frmLogin = New frmLogin()
-
-        f.Text = "Child Form "
-        f.MdiParent = Me
-        f.Show()
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Χρήστες"
+        form.DataTable = "vw_USR"
+        form.MdiParent = Me
+        form.Show()
     End Sub
+
+
 End Class
