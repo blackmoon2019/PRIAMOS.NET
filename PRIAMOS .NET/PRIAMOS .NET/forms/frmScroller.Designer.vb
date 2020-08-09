@@ -20,28 +20,27 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SelectQuery5 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns5 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table5 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery6 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns6 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table6 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.BarRecords = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
+        Me.RepositoryBarRecords = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.BarViewsManage = New DevExpress.XtraBars.BarButtonItem()
         Me.PopMenuViews = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.popSaveView = New DevExpress.XtraBars.BarButtonItem()
         Me.popSaveAsView = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryPopSaveAsView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.RepositoryPopRenameView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.popDeleteView = New DevExpress.XtraBars.BarButtonItem()
         Me.popRestoreView = New DevExpress.XtraBars.BarButtonItem()
         Me.BarViews = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
+        Me.RepositoryBarViews = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -50,19 +49,20 @@ Partial Class frmScroller
         Me.RepositoryItemButtonEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryItemBreadCrumbEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.RepositoryItemButtonEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.RepositoryPopRenameView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.SQLMain = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.SSM = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), False, False)
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopMenuViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -77,8 +77,8 @@ Partial Class frmScroller
         Me.BarManager1.Form = Me
         Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 21
-        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.RepositoryItemComboBox2, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
+        Me.BarManager1.MaxItemId = 22
+        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'Bar1
@@ -95,16 +95,16 @@ Partial Class frmScroller
         'BarRecords
         '
         Me.BarRecords.Caption = "Records"
-        Me.BarRecords.Edit = Me.RepositoryItemComboBox1
+        Me.BarRecords.Edit = Me.RepositoryBarRecords
         Me.BarRecords.EditWidth = 80
         Me.BarRecords.Id = 3
         Me.BarRecords.Name = "BarRecords"
         '
-        'RepositoryItemComboBox1
+        'RepositoryBarRecords
         '
-        Me.RepositoryItemComboBox1.AutoHeight = False
-        Me.RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemComboBox1.Name = "RepositoryItemComboBox1"
+        Me.RepositoryBarRecords.AutoHeight = False
+        Me.RepositoryBarRecords.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryBarRecords.Name = "RepositoryBarRecords"
         '
         'BarViewsManage
         '
@@ -125,6 +125,7 @@ Partial Class frmScroller
         '
         Me.popSaveView.Caption = "Αποθήκευση"
         Me.popSaveView.Id = 18
+        Me.popSaveView.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_to_grid_16
         Me.popSaveView.Name = "popSaveView"
         '
         'popSaveAsView
@@ -133,6 +134,7 @@ Partial Class frmScroller
         Me.popSaveAsView.Edit = Me.RepositoryPopSaveAsView
         Me.popSaveAsView.EditWidth = 100
         Me.popSaveAsView.Id = 17
+        Me.popSaveAsView.ImageOptions.LargeImage = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_as_16
         Me.popSaveAsView.Name = "popSaveAsView"
         '
         'RepositoryPopSaveAsView
@@ -140,38 +142,35 @@ Partial Class frmScroller
         Me.RepositoryPopSaveAsView.AutoHeight = False
         Me.RepositoryPopSaveAsView.Name = "RepositoryPopSaveAsView"
         '
-        'RepositoryPopRenameView
-        '
-        Me.RepositoryPopRenameView.AutoHeight = False
-        Me.RepositoryPopRenameView.Name = "RepositoryPopRenameView"
-        '
         'popDeleteView
         '
         Me.popDeleteView.Caption = "Διαγραφή"
         Me.popDeleteView.Id = 13
+        Me.popDeleteView.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_delete_document_16
         Me.popDeleteView.Name = "popDeleteView"
         '
         'popRestoreView
         '
         Me.popRestoreView.Caption = "Επαναφορά στην Αρχική"
         Me.popRestoreView.Id = 14
+        Me.popRestoreView.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_advertisement_page_16
         Me.popRestoreView.Name = "popRestoreView"
         '
         'BarViews
         '
         Me.BarViews.AutoFillWidth = True
         Me.BarViews.Caption = "Όψεις"
-        Me.BarViews.Edit = Me.RepositoryItemComboBox2
+        Me.BarViews.Edit = Me.RepositoryBarViews
         Me.BarViews.EditWidth = 150
         Me.BarViews.Id = 5
         Me.BarViews.Name = "BarViews"
         '
-        'RepositoryItemComboBox2
+        'RepositoryBarViews
         '
-        Me.RepositoryItemComboBox2.AutoHeight = False
-        Me.RepositoryItemComboBox2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemComboBox2.Name = "RepositoryItemComboBox2"
-        Me.RepositoryItemComboBox2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.RepositoryBarViews.AutoHeight = False
+        Me.RepositoryBarViews.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryBarViews.Name = "RepositoryBarViews"
+        Me.RepositoryBarViews.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'Bar3
         '
@@ -235,6 +234,11 @@ Partial Class frmScroller
         Me.RepositoryItemButtonEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.RepositoryItemButtonEdit2.Name = "RepositoryItemButtonEdit2"
         '
+        'RepositoryPopRenameView
+        '
+        Me.RepositoryPopRenameView.AutoHeight = False
+        Me.RepositoryPopRenameView.Name = "RepositoryPopRenameView"
+        '
         'grdMain
         '
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
@@ -256,21 +260,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table5.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table5.Name = "USR"
-        AllColumns5.Table = Table5
-        SelectQuery5.Columns.Add(AllColumns5)
-        SelectQuery5.Name = "USR"
-        SelectQuery5.Tables.Add(Table5)
-        Table6.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table6.Name = "IAT"
-        AllColumns6.Table = Table6
-        SelectQuery6.Columns.Add(AllColumns6)
-        SelectQuery6.Name = "IAT"
-        SelectQuery6.Tables.Add(Table6)
-        CustomSqlQuery3.Name = "INH"
-        CustomSqlQuery3.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery5, SelectQuery6, CustomSqlQuery3})
+        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table1.Name = "USR"
+        AllColumns1.Table = Table1
+        SelectQuery1.Columns.Add(AllColumns1)
+        SelectQuery1.Name = "USR"
+        SelectQuery1.Tables.Add(Table1)
+        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table2.Name = "IAT"
+        AllColumns2.Table = Table2
+        SelectQuery2.Columns.Add(AllColumns2)
+        SelectQuery2.Name = "IAT"
+        SelectQuery2.Tables.Add(Table2)
+        CustomSqlQuery1.Name = "INH"
+        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM
@@ -290,14 +294,14 @@ Partial Class frmScroller
         Me.Name = "frmScroller"
         Me.Text = "frmScroller"
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopMenuViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -317,9 +321,9 @@ Partial Class frmScroller
     Friend WithEvents SQLMain As DevExpress.DataAccess.Sql.SqlDataSource
     Friend WithEvents SSM As DevExpress.XtraSplashScreen.SplashScreenManager
     Friend WithEvents BarRecords As DevExpress.XtraBars.BarEditItem
-    Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
+    Friend WithEvents RepositoryBarRecords As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents BarViews As DevExpress.XtraBars.BarEditItem
-    Friend WithEvents RepositoryItemComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
+    Friend WithEvents RepositoryBarViews As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents RepositoryItemBreadCrumbEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit
     Friend WithEvents RepositoryItemButtonEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents PopMenuViews As DevExpress.XtraBars.PopupMenu

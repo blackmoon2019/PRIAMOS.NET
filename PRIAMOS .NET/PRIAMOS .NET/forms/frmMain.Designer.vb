@@ -48,7 +48,9 @@ Partial Class frmMain
         '
         Me.bbUsers.Caption = "Χρήστες"
         Me.bbUsers.Id = 1
+        Me.bbUsers.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_user_account_40
         Me.bbUsers.Name = "bbUsers"
+        Me.bbUsers.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'RibbonPage1
         '

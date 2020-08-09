@@ -224,6 +224,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Pictures\icons8-advertisement-page-16.png" />
+    <None Include="Pictures\icons8-delete-document-16.png" />
+    <None Include="Pictures\icons8-save-as-16.png" />
+    <None Include="Pictures\icons8-save-to-grid-16.png" />
+    <None Include="Pictures\icons8-save-to-grid-30.png" />
+    <None Include="Pictures\icons8-user-account-40.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
