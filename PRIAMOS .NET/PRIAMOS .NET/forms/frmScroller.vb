@@ -274,4 +274,22 @@ Public Class frmScroller
         End Try
 
     End Sub
+
+    Private Sub frmScroller_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
+
+    End Sub
+
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        Dim form As frmUsers = New frmUsers()
+
+        'Dim Col As GridColumn
+        'Col = GridView1.Columns.ColumnByFieldName("id")
+        '        MsgBox(GridView1.GetRowCellValue(sender.FocusedRowHandle, "id").ToString)
+        Select Case sDataTable
+            Case "vw_USR" : form.Text = "Διαχείριση Χρηστών"
+        End Select
+        form.ID = GridView1.GetRowCellValue(sender.FocusedRowHandle, "id").ToString
+        form.MdiParent = frmMain
+        form.Show()
+    End Sub
 End Class
