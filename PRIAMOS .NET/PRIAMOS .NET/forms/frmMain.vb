@@ -23,4 +23,10 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub XtraTabbedMdiManager1_EndFloating(sender As Object, e As FloatingEventArgs) Handles XtraTabbedMdiManager1.EndFloating
+        Select Case XtraTabbedMdiManager1.ActiveFloatForm.Name
+            Case "frmUsers" : XtraTabbedMdiManager1.ActiveFloatForm.Width = 300 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 138
+        End Select
+    End Sub
 End Class

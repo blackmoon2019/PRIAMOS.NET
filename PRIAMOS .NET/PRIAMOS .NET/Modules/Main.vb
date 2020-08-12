@@ -2,6 +2,12 @@
 
 Module Main
     Public CNDB As New SqlConnection()
+    Enum FormMode
+        NewRecord = 1
+        EditRecord = 2
+        DeleteRecord = 3
+        ViewRecord = 4
+    End Enum
     Public Structure USER_PROPS
         Public ID As Guid
         Public Code As String

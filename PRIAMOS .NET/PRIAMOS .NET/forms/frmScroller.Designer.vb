@@ -345,9 +345,13 @@ Partial Class frmScroller
         '
         'GridView1
         '
+        Me.GridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
         Me.GridView1.GridControl = Me.grdMain
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.Editable = False
         Me.GridView1.OptionsPrint.PrintPreview = True
+        Me.GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
         '
         'SQLMain
         '

@@ -142,6 +142,12 @@
     <Compile Include="forms\frmScroller.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmUsers.Designer.vb">
+      <DependentUpon>frmUsers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmUsers.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -166,10 +172,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
-    <Compile Include="WaitForm.Designer.vb">
+    <Compile Include="forms\WaitForm.Designer.vb">
       <DependentUpon>WaitForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="WaitForm.vb">
+    <Compile Include="forms\WaitForm.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -183,6 +189,9 @@
     <EmbeddedResource Include="forms\frmScroller.resx">
       <DependentUpon>frmScroller.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmUsers.resx">
+      <DependentUpon>frmUsers.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -193,7 +202,7 @@
     <EmbeddedResource Include="forms\frmSplash.resx">
       <DependentUpon>frmSplash.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaitForm.resx">
+    <EmbeddedResource Include="forms\WaitForm.resx">
       <DependentUpon>WaitForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -230,6 +239,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Pictures\icons8-save-close-24.png" />
+    <None Include="Pictures\icons8-exit-24.png" />
+    <None Include="Pictures\icons8-exit-16.png" />
+    <None Include="Pictures\icons8-exit-30.png" />
     <None Include="Pictures\icons8-mail-configuration-40.png" />
     <None Include="Pictures\Export_32x32.png" />
     <None Include="Pictures\icons8-microsoft-word-2019-32.png" />
