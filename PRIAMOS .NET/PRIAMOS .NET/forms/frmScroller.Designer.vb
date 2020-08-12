@@ -41,6 +41,17 @@ Partial Class frmScroller
         Me.popRestoreView = New DevExpress.XtraBars.BarButtonItem()
         Me.BarViews = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryBarViews = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
+        Me.BarPrintPreview = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
+        Me.PopupMenuExport = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarPDFExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportHTML = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportMHT = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportXLSX = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportXLS = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportDOCX = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportRTF = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarExportTEXT = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -54,11 +65,13 @@ Partial Class frmScroller
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.SQLMain = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.SSM = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), False, False)
+        Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopMenuViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,9 +88,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 22
+        Me.BarManager1.MaxItemId = 32
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -87,7 +100,7 @@ Partial Class frmScroller
         Me.Bar1.DockCol = 0
         Me.Bar1.DockRow = 0
         Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarRecords, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(Me.BarViewsManage, True), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViews, DevExpress.XtraBars.BarItemPaintStyle.Caption)})
+        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarRecords, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViewsManage, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViews, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarPrintPreview, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)})
         Me.Bar1.OptionsBar.MultiLine = True
         Me.Bar1.OptionsBar.UseWholeRow = True
         Me.Bar1.Text = "MainMenu"
@@ -172,6 +185,85 @@ Partial Class frmScroller
         Me.RepositoryBarViews.Name = "RepositoryBarViews"
         Me.RepositoryBarViews.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
+        'BarPrintPreview
+        '
+        Me.BarPrintPreview.Caption = "Print Preview"
+        Me.BarPrintPreview.Id = 22
+        Me.BarPrintPreview.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_analyze_32
+        Me.BarPrintPreview.Name = "BarPrintPreview"
+        '
+        'BarButtonItem1
+        '
+        Me.BarButtonItem1.ActAsDropDown = True
+        Me.BarButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.BarButtonItem1.Caption = "Export"
+        Me.BarButtonItem1.DropDownControl = Me.PopupMenuExport
+        Me.BarButtonItem1.Id = 23
+        Me.BarButtonItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Export_32x32
+        Me.BarButtonItem1.Name = "BarButtonItem1"
+        '
+        'PopupMenuExport
+        '
+        Me.PopupMenuExport.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarPDFExport), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportHTML), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportMHT), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportXLSX), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportXLS), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportDOCX), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportRTF), New DevExpress.XtraBars.LinkPersistInfo(Me.BarExportTEXT)})
+        Me.PopupMenuExport.Manager = Me.BarManager1
+        Me.PopupMenuExport.Name = "PopupMenuExport"
+        '
+        'BarPDFExport
+        '
+        Me.BarPDFExport.Caption = "Export To PDF"
+        Me.BarPDFExport.Id = 24
+        Me.BarPDFExport.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportPdfLarge
+        Me.BarPDFExport.Name = "BarPDFExport"
+        '
+        'BarExportHTML
+        '
+        Me.BarExportHTML.Caption = "Export To HTML"
+        Me.BarExportHTML.Id = 25
+        Me.BarExportHTML.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportHtmLarge
+        Me.BarExportHTML.Name = "BarExportHTML"
+        '
+        'BarExportMHT
+        '
+        Me.BarExportMHT.Caption = "Export To MHT"
+        Me.BarExportMHT.Id = 26
+        Me.BarExportMHT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportMhtLarge
+        Me.BarExportMHT.Name = "BarExportMHT"
+        '
+        'BarExportXLSX
+        '
+        Me.BarExportXLSX.Caption = "Export To XLSX"
+        Me.BarExportXLSX.Id = 27
+        Me.BarExportXLSX.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportXlsxLarge
+        Me.BarExportXLSX.Name = "BarExportXLSX"
+        '
+        'BarExportXLS
+        '
+        Me.BarExportXLS.Caption = "Export To XLS"
+        Me.BarExportXLS.Id = 28
+        Me.BarExportXLS.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportXlsLarge
+        Me.BarExportXLS.Name = "BarExportXLS"
+        '
+        'BarExportDOCX
+        '
+        Me.BarExportDOCX.Caption = "Export To DOCX"
+        Me.BarExportDOCX.Id = 29
+        Me.BarExportDOCX.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_microsoft_word_2019_32
+        Me.BarExportDOCX.Name = "BarExportDOCX"
+        '
+        'BarExportRTF
+        '
+        Me.BarExportRTF.Caption = "Export To RTF"
+        Me.BarExportRTF.Id = 30
+        Me.BarExportRTF.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportRtfLarge
+        Me.BarExportRTF.Name = "BarExportRTF"
+        '
+        'BarExportTEXT
+        '
+        Me.BarExportTEXT.Caption = "Export To TEXT"
+        Me.BarExportTEXT.Id = 31
+        Me.BarExportTEXT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportTxtLarge
+        Me.BarExportTEXT.Name = "BarExportTEXT"
+        '
         'Bar3
         '
         Me.Bar3.BarName = "StatusBar"
@@ -190,7 +282,7 @@ Partial Class frmScroller
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1035, 23)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1035, 43)
         '
         'barDockControlBottom
         '
@@ -204,17 +296,17 @@ Partial Class frmScroller
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 23)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 43)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 615)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 595)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1035, 23)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1035, 43)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 615)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 595)
         '
         'RepositoryItemButtonEdit1
         '
@@ -243,10 +335,10 @@ Partial Class frmScroller
         '
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdMain.Location = New System.Drawing.Point(0, 23)
+        Me.grdMain.Location = New System.Drawing.Point(0, 43)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(1035, 615)
+        Me.grdMain.Size = New System.Drawing.Size(1035, 595)
         Me.grdMain.TabIndex = 5
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -255,6 +347,7 @@ Partial Class frmScroller
         '
         Me.GridView1.GridControl = Me.grdMain
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsPrint.PrintPreview = True
         '
         'SQLMain
         '
@@ -281,6 +374,10 @@ Partial Class frmScroller
         '
         Me.SSM.ClosingDelay = 500
         '
+        'XtraSaveFileDialog1
+        '
+        Me.XtraSaveFileDialog1.FileName = "XtraSaveFileDialog1"
+        '
         'frmScroller
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -298,6 +395,7 @@ Partial Class frmScroller
         CType(Me.PopMenuViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -335,4 +433,16 @@ Partial Class frmScroller
     Friend WithEvents RepositoryPopSaveAsView As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents popSaveView As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarViewsManage As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarPrintPreview As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents PopupMenuExport As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents BarPDFExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportHTML As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportMHT As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportXLSX As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportXLS As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportDOCX As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportRTF As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarExportTEXT As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents XtraSaveFileDialog1 As DevExpress.XtraEditors.XtraSaveFileDialog
 End Class

@@ -22,6 +22,7 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.bbUsers = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbMailSettings = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -35,9 +36,9 @@ Partial Class frmMain
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 2
+        Me.RibbonControl1.MaxItemId = 3
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2})
         Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019
@@ -51,6 +52,14 @@ Partial Class frmMain
         Me.bbUsers.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_user_account_40
         Me.bbUsers.Name = "bbUsers"
         Me.bbUsers.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbMailSettings
+        '
+        Me.bbMailSettings.Caption = "Ρυθμίσεις Email"
+        Me.bbMailSettings.Id = 2
+        Me.bbMailSettings.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_mail_configuration_40
+        Me.bbMailSettings.Name = "bbMailSettings"
+        Me.bbMailSettings.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'RibbonPage1
         '
@@ -72,6 +81,7 @@ Partial Class frmMain
         '
         'RibbonPageGroup2
         '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbMailSettings)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
         '
@@ -115,4 +125,5 @@ Partial Class frmMain
     Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents XtraTabbedMdiManager1 As DevExpress.XtraTabbedMdi.XtraTabbedMdiManager
+    Friend WithEvents bbMailSettings As DevExpress.XtraBars.BarButtonItem
 End Class
