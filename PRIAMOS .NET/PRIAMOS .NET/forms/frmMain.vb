@@ -1,4 +1,5 @@
-﻿Imports DevExpress.XtraEditors
+﻿Imports DevExpress.XtraBars
+Imports DevExpress.XtraEditors
 Imports DevExpress.XtraTabbedMdi
 Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -15,5 +16,11 @@ Public Class frmMain
         form.Show()
     End Sub
 
-
+    Private Sub bbMailSettings_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbMailSettings.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Email Settings"
+        form.DataTable = "vw_MAILS"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
