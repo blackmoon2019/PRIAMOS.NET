@@ -142,15 +142,15 @@ Public Class frmScroller
     Private Sub RepositoryBarRecords_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RepositoryBarRecords.SelectedIndexChanged
         My.Settings.Records = BarRecords.EditValue
         My.Settings.Save()
-
+        LoadRecords()
     End Sub
     'Φορτώνω τις εγγραφές στο GRID
-    Private Sub LoadRecords()
+    Public Sub LoadRecords(Optional ByVal sDataTable2 As String = "")
         myCmd = CNDB.CreateCommand
-        If BarRecords.EditValue <> "ALL" Then
-            myCmd.CommandText = "SELECT top " & BarRecords.EditValue & " * FROM " & sDataTable
+        If BarRecords.EditValue <> "ALL" And BarRecords.EditValue <> "" Then
+            myCmd.CommandText = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
         Else
-            myCmd.CommandText = "SELECT  * FROM " & sDataTable
+            myCmd.CommandText = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
         End If
         If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close()
         myReader = myCmd.ExecuteReader()
@@ -274,11 +274,6 @@ Public Class frmScroller
         End Try
 
     End Sub
-
-    Private Sub frmScroller_DoubleClick(sender As Object, e As EventArgs) Handles Me.DoubleClick
-
-    End Sub
-
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         Dim form As frmUsers = New frmUsers()
 
@@ -290,6 +285,61 @@ Public Class frmScroller
         End Select
         form.ID = GridView1.GetRowCellValue(sender.FocusedRowHandle, "id").ToString
         form.MdiParent = frmMain
+        form.Mode = FormMode.EditRecord
+        form.Scroller = GridView1
+        form.FormScroller = Me
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
         form.Show()
+
+    End Sub
+
+    Private Sub BarNewRec_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarNewRec.ItemClick
+        Dim form As frmUsers = New frmUsers()
+        Select Case sDataTable
+            Case "vw_USR" : form.Text = "Διαχείριση Χρηστών"
+        End Select
+        form.MdiParent = frmMain
+        form.Mode = FormMode.NewRecord
+        form.Scroller = GridView1
+        Form.FormScroller = Me
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+        form.Show()
+    End Sub
+
+    Private Sub BarEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEdit.ItemClick
+        Dim form As frmUsers = New frmUsers()
+        Select Case sDataTable
+            Case "vw_USR" : Form.Text = "Διαχείριση Χρηστών"
+        End Select
+        form.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "id").ToString
+        form.MdiParent = frmMain
+        Form.Mode = FormMode.EditRecord
+        Form.Scroller = GridView1
+        Form.FormScroller = Me
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(Form), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+        Form.Show()
+    End Sub
+
+    Private Sub BarDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarDelete.ItemClick
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Select Case sDataTable
+                    Case "vw_USR" : sSQL = "DELETE FROM USR WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "id").ToString & "'"
+                End Select
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                    LoadRecords()
+                    XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub BarRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRefresh.ItemClick
+        LoadRecords()
     End Sub
 End Class

@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="classes\CN.vb" />
+    <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
     <Compile Include="forms\frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
@@ -239,6 +240,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Pictures\icons8-refresh-16.png" />
+    <None Include="Pictures\Refresh.png" />
+    <None Include="Pictures\Edit_16x16.png" />
+    <None Include="Pictures\Remove_16x16.png" />
+    <None Include="Pictures\AddFile_16x16.png" />
+    <None Include="Pictures\icons8-exclamation-mark-16.png" />
     <None Include="Pictures\icons8-save-close-24.png" />
     <None Include="Pictures\icons8-exit-24.png" />
     <None Include="Pictures\icons8-exit-16.png" />

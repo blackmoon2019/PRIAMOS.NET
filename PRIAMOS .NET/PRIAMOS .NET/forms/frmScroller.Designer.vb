@@ -20,13 +20,13 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim SelectQuery3 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns3 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table3 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery4 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns4 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table4 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar1 = New DevExpress.XtraBars.Bar()
@@ -53,6 +53,11 @@ Partial Class frmScroller
         Me.BarExportRTF = New DevExpress.XtraBars.BarButtonItem()
         Me.BarExportTEXT = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
+        Me.Bar2 = New DevExpress.XtraBars.Bar()
+        Me.BarNewRec = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEdit = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarRefresh = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
@@ -82,15 +87,15 @@ Partial Class frmScroller
         '
         'BarManager1
         '
-        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3})
+        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3, Me.Bar2})
         Me.BarManager1.DockControls.Add(Me.barDockControlTop)
         Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 32
+        Me.BarManager1.MaxItemId = 36
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -276,6 +281,45 @@ Partial Class frmScroller
         Me.Bar3.OptionsBar.UseWholeRow = True
         Me.Bar3.Text = "StatusBar"
         '
+        'Bar2
+        '
+        Me.Bar2.BarName = "Custom 4"
+        Me.Bar2.DockCol = 0
+        Me.Bar2.DockRow = 0
+        Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Left
+        Me.Bar2.FloatLocation = New System.Drawing.Point(49, 225)
+        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh)})
+        Me.Bar2.Offset = 1
+        Me.Bar2.Text = "Custom 4"
+        '
+        'BarNewRec
+        '
+        Me.BarNewRec.Caption = "Νέα Εγγραφή"
+        Me.BarNewRec.Id = 32
+        Me.BarNewRec.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.BarNewRec.Name = "BarNewRec"
+        '
+        'BarDelete
+        '
+        Me.BarDelete.Caption = "Διαγραφή Εγγραφής"
+        Me.BarDelete.Id = 33
+        Me.BarDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.BarDelete.Name = "BarDelete"
+        '
+        'BarEdit
+        '
+        Me.BarEdit.Caption = "Διόρθωση Εγγραφής"
+        Me.BarEdit.Id = 34
+        Me.BarEdit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
+        Me.BarEdit.Name = "BarEdit"
+        '
+        'BarRefresh
+        '
+        Me.BarRefresh.Caption = "Ανανέωση Εγγραφών"
+        Me.BarRefresh.Id = 35
+        Me.BarRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
+        Me.BarRefresh.Name = "BarRefresh"
+        '
         'barDockControlTop
         '
         Me.barDockControlTop.CausesValidation = False
@@ -298,7 +342,7 @@ Partial Class frmScroller
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 43)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 595)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(27, 595)
         '
         'barDockControlRight
         '
@@ -335,10 +379,10 @@ Partial Class frmScroller
         '
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdMain.Location = New System.Drawing.Point(0, 43)
+        Me.grdMain.Location = New System.Drawing.Point(27, 43)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(1035, 595)
+        Me.grdMain.Size = New System.Drawing.Size(1008, 595)
         Me.grdMain.TabIndex = 5
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -357,21 +401,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table1.Name = "USR"
-        AllColumns1.Table = Table1
-        SelectQuery1.Columns.Add(AllColumns1)
-        SelectQuery1.Name = "USR"
-        SelectQuery1.Tables.Add(Table1)
-        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table2.Name = "IAT"
-        AllColumns2.Table = Table2
-        SelectQuery2.Columns.Add(AllColumns2)
-        SelectQuery2.Name = "IAT"
-        SelectQuery2.Tables.Add(Table2)
-        CustomSqlQuery1.Name = "INH"
-        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
+        Table3.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table3.Name = "USR"
+        AllColumns3.Table = Table3
+        SelectQuery3.Columns.Add(AllColumns3)
+        SelectQuery3.Name = "USR"
+        SelectQuery3.Tables.Add(Table3)
+        Table4.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table4.Name = "IAT"
+        AllColumns4.Table = Table4
+        SelectQuery4.Columns.Add(AllColumns4)
+        SelectQuery4.Name = "IAT"
+        SelectQuery4.Tables.Add(Table4)
+        CustomSqlQuery2.Name = "INH"
+        CustomSqlQuery2.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery3, SelectQuery4, CustomSqlQuery2})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM
@@ -449,4 +493,9 @@ Partial Class frmScroller
     Friend WithEvents BarExportRTF As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarExportTEXT As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents XtraSaveFileDialog1 As DevExpress.XtraEditors.XtraSaveFileDialog
+    Friend WithEvents Bar2 As DevExpress.XtraBars.Bar
+    Friend WithEvents BarNewRec As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarDelete As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarEdit As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarRefresh As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -18,5 +18,11 @@ Module Main
         Public CurrentView As String
     End Structure
     Public UserProps As USER_PROPS
-
+    Public Function toSQLValue(t As DevExpress.XtraEditors.TextEdit, Optional ByVal isnum As Boolean = False) As String
+        If t.Text.Length = 0 Then
+            Return "NULL" 'this will pass through any SQL statement without notice  
+        Else 'Lets suppose our textbox is checked to contain only numbers, so we count on it  
+            If Not isnum Then Return "'" + t.Text + "'" Else Return t.Text
+        End If
+    End Function
 End Module
