@@ -77,6 +77,18 @@ Namespace My
                 Me("CurrentView") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmUsers() As Global.System.Drawing.Point
+            Get
+                Return CType(Me("frmUsers"),Global.System.Drawing.Point)
+            End Get
+            Set
+                Me("frmUsers") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -22,11 +22,18 @@ Public Class frmMain
         form.DataTable = "vw_MAILS"
         form.MdiParent = Me
         form.Show()
+
     End Sub
 
     Private Sub XtraTabbedMdiManager1_EndFloating(sender As Object, e As FloatingEventArgs) Handles XtraTabbedMdiManager1.EndFloating
         Select Case XtraTabbedMdiManager1.ActiveFloatForm.Name
-            Case "frmUsers" : XtraTabbedMdiManager1.ActiveFloatForm.Width = 300 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 138
+            Case "frmUsers"
+                XtraTabbedMdiManager1.ActiveFloatForm.Width = 300 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 138
+                XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
         End Select
+    End Sub
+
+    Private Sub BarClose_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarClose.ItemClick
+        Application.Exit()
     End Sub
 End Class

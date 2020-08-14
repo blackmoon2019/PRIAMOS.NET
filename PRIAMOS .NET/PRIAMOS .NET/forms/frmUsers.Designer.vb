@@ -19,12 +19,12 @@ Partial Class frmUsers
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtUN = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
         Me.txtRealName = New DevExpress.XtraEditors.TextEdit()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtUN = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
@@ -32,11 +32,11 @@ Partial Class frmUsers
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtRealName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,22 +46,13 @@ Partial Class frmUsers
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'txtUN
-        '
-        Me.txtUN.EditValue = ""
-        Me.txtUN.Location = New System.Drawing.Point(95, 12)
-        Me.txtUN.Name = "txtUN"
-        Me.txtUN.Size = New System.Drawing.Size(207, 20)
-        Me.txtUN.StyleController = Me.LayoutControl1
-        Me.txtUN.TabIndex = 0
-        '
         'LayoutControl1
         '
         Me.LayoutControl1.Controls.Add(Me.txtPWD)
-        Me.LayoutControl1.Controls.Add(Me.txtUN)
         Me.LayoutControl1.Controls.Add(Me.txtRealName)
         Me.LayoutControl1.Controls.Add(Me.cmdExit)
         Me.LayoutControl1.Controls.Add(Me.cmdSave)
+        Me.LayoutControl1.Controls.Add(Me.txtUN)
         Me.LayoutControl1.Location = New System.Drawing.Point(-9, -10)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(416, 136, 650, 400)
@@ -78,6 +69,7 @@ Partial Class frmUsers
         Me.txtPWD.Size = New System.Drawing.Size(207, 20)
         Me.txtPWD.StyleController = Me.LayoutControl1
         Me.txtPWD.TabIndex = 4
+        Me.txtPWD.Tag = ""
         '
         'txtRealName
         '
@@ -108,6 +100,15 @@ Partial Class frmUsers
         Me.cmdSave.TabIndex = 7
         Me.cmdSave.Text = "Αποθήκευση"
         '
+        'txtUN
+        '
+        Me.txtUN.EditValue = ""
+        Me.txtUN.Location = New System.Drawing.Point(95, 12)
+        Me.txtUN.Name = "txtUN"
+        Me.txtUN.Size = New System.Drawing.Size(207, 20)
+        Me.txtUN.StyleController = Me.LayoutControl1
+        Me.txtUN.TabIndex = 0
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -119,12 +120,17 @@ Partial Class frmUsers
         '
         'LayoutControlItem1
         '
+        Me.LayoutControlItem1.AppearanceItemCaption.Options.UseImage = True
         Me.LayoutControlItem1.Control = Me.txtUN
+        Me.LayoutControlItem1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[False]
+        Me.LayoutControlItem1.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleRight
+        Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exclamation_mark_16
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Size = New System.Drawing.Size(294, 24)
+        Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "User Name"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(80, 13)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(80, 16)
         '
         'EmptySpaceItem1
         '
@@ -137,11 +143,14 @@ Partial Class frmUsers
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.txtPWD
+        Me.LayoutControlItem2.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleRight
+        Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exclamation_mark_16
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(294, 24)
+        Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Password"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(80, 13)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(80, 16)
         '
         'LayoutControlItem3
         '
@@ -178,12 +187,13 @@ Partial Class frmUsers
         Me.ClientSize = New System.Drawing.Size(298, 106)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmUsers"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmUsers"
-        CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtRealName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -194,8 +204,6 @@ Partial Class frmUsers
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents txtUN As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtPWD As DevExpress.XtraEditors.TextEdit
     Friend WithEvents Root As DevExpress.XtraLayout.LayoutControlGroup
@@ -208,4 +216,5 @@ Partial Class frmUsers
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtUN As DevExpress.XtraEditors.TextEdit
 End Class
