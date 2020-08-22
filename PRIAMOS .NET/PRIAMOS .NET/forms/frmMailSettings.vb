@@ -167,4 +167,8 @@ Public Class frmMailSettings
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+    Private Sub frmMailSettings_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+
+    End Sub
 End Class

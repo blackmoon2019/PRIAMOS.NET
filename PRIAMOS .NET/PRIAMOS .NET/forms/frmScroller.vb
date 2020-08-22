@@ -9,6 +9,7 @@ Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
+Imports DevExpress.XtraGrid.Views.Base
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -29,7 +30,7 @@ Public Class frmScroller
         'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
         LoadViews()
         'Κρύψιμο Στηλών
-        HideColumns(GridView1, "ID")
+        'HideColumns(GridView1, "ID")
 
     End Sub
 
@@ -66,6 +67,25 @@ Public Class frmScroller
                 grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
             Else
                 grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub DeleteRecord()
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Select Case sDataTable
+                    Case "vw_USR" : sSQL = "DELETE FROM USR WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_MAILS" : sSQL = "DELETE FROM MAILS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                End Select
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                    LoadRecords()
+                    XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -135,23 +155,7 @@ Public Class frmScroller
         My.Settings.Save()
         LoadRecords()
     End Sub
-    'Φορτώνω τις εγγραφές στο GRID
-    Public Sub LoadRecords(Optional ByVal sDataTable2 As String = "")
 
-        myCmd = CNDB.CreateCommand
-        If BarRecords.EditValue <> "ALL" And BarRecords.EditValue <> "" Then
-            myCmd.CommandText = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
-        Else
-            myCmd.CommandText = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
-        End If
-        If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close()
-
-        myReader = myCmd.ExecuteReader()
-        grdMain.DataSource = myReader
-        grdMain.ForceInitialize()
-        grdMain.DefaultView.PopulateColumns()
-        myReader.Close()
-    End Sub
     'Προσθήκη επιλογών στο Standar Header Menu
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
@@ -272,12 +276,31 @@ Public Class frmScroller
 
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+        EditRecord()
+    End Sub
+
+    Private Sub BarNewRec_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarNewRec.ItemClick
+        NewRecord()
+    End Sub
+
+    Private Sub BarEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEdit.ItemClick
+        EditRecord()
+    End Sub
+
+    Private Sub BarDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarDelete.ItemClick
+        DeleteRecord()
+    End Sub
+
+    Private Sub BarRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRefresh.ItemClick
+        LoadRecords()
+    End Sub
+    Private Sub EditRecord()
         Dim form As frmUsers = New frmUsers()
         Dim form2 As frmMailSettings = New frmMailSettings()
         Select Case sDataTable
             Case "vw_USR"
                 form.Text = "Διαχείριση Χρηστών"
-                form.ID = GridView1.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString
+                form.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 form.MdiParent = frmMain
                 form.Mode = FormMode.EditRecord
                 form.Scroller = GridView1
@@ -286,7 +309,7 @@ Public Class frmScroller
                 form.Show()
             Case "vw_MAILS"
                 form2.Text = "Email Settings"
-                form2.ID = GridView1.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString
+                form2.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 form2.MdiParent = frmMain
                 form2.Mode = FormMode.EditRecord
                 form2.Scroller = GridView1
@@ -294,10 +317,8 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form2.Show()
         End Select
-
     End Sub
-
-    Private Sub BarNewRec_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarNewRec.ItemClick
+    Private Sub NewRecord()
         Dim form As frmUsers = New frmUsers()
         Dim form2 As frmMailSettings = New frmMailSettings()
         Select Case sDataTable
@@ -318,55 +339,43 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form2.Show()
         End Select
-
     End Sub
+    'Φορτώνω τις εγγραφές στο GRID
+    Public Sub LoadRecords(Optional ByVal sDataTable2 As String = "")
 
-    Private Sub BarEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEdit.ItemClick
-        Dim form As frmUsers = New frmUsers()
-        Dim form2 As frmMailSettings = New frmMailSettings()
-        Select Case sDataTable
-            Case "vw_USR"
-                form.Text = "Διαχείριση Χρηστών"
-                form.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "id").ToString
-                form.MdiParent = frmMain
-                form.Mode = FormMode.EditRecord
-                form.Scroller = GridView1
-                form.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form.Show()
-            Case "vw_MAILS"
-                form2.Text = "Email Settings"
-                form2.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "id").ToString
-                form2.MdiParent = frmMain
-                form2.Mode = FormMode.EditRecord
-                form2.Scroller = GridView1
-                form2.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form2.Show()
+        myCmd = CNDB.CreateCommand
+        If BarRecords.EditValue <> "ALL" And BarRecords.EditValue <> "" Then
+            myCmd.CommandText = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
+        Else
+            myCmd.CommandText = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
+        End If
+
+
+        myReader = myCmd.ExecuteReader()
+        grdMain.DataSource = myReader
+        grdMain.ForceInitialize()
+        grdMain.DefaultView.PopulateColumns()
+
+
+
+
+        'If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close() 'myReader.Close()
+    End Sub
+    Private Sub grdMain_KeyDown(sender As Object, e As KeyEventArgs) Handles grdMain.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F2 : NewRecord()
+            Case Keys.F3 : EditRecord()
+            Case Keys.F5 : LoadRecords()
+            Case Keys.Delete : DeleteRecord()
         End Select
     End Sub
 
-    Private Sub BarDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarDelete.ItemClick
-        Dim sSQL As String
-        Try
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Select Case sDataTable
-                    Case "vw_USR" : sSQL = "DELETE FROM USR WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "id").ToString & "'"
-                    Case "vw_MAILS" : sSQL = "DELETE FROM MAILS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "id").ToString & "'"
-                End Select
-
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                    LoadRecords()
-                    XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End Using
-            End If
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+    Private Sub frmScroller_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
 
-    Private Sub BarRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRefresh.ItemClick
-        LoadRecords()
+    Private Sub GridView1_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles GridView1.CustomColumnDisplayText
+        If e.Column.FieldName = "pwd" Then e.DisplayText = StrDup(e.DisplayText.Length, "*")
+
     End Sub
 End Class

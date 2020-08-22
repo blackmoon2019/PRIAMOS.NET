@@ -43,7 +43,6 @@ Module Main
         End If
     End Function
 
-
 End Module
 'Private Sub SetUserSettings()
 '    Dim cf As New XML_Serialization.User_Settings

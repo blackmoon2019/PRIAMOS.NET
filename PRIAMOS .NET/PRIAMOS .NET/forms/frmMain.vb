@@ -28,12 +28,27 @@ Public Class frmMain
     Private Sub XtraTabbedMdiManager1_EndFloating(sender As Object, e As FloatingEventArgs) Handles XtraTabbedMdiManager1.EndFloating
         Select Case XtraTabbedMdiManager1.ActiveFloatForm.Name
             Case "frmUsers"
-                XtraTabbedMdiManager1.ActiveFloatForm.Width = 300 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 138
+                XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
+                XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
+            Case "frmMailSettings"
+                XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
                 XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
         End Select
     End Sub
 
     Private Sub BarClose_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarClose.ItemClick
         Application.Exit()
+    End Sub
+
+    Private Sub XtraTabbedMdiManager1_BeginFloating(sender As Object, e As FloatingCancelEventArgs) Handles XtraTabbedMdiManager1.BeginFloating
+        'Select Case XtraTabbedMdiManager1.SelectedPage.MdiChild.Name
+        '    Case "frmUsers"
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
+        '    Case "frmMailSettings"
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
+        '    Case "frmScroller"
+        '        frmScroller.Width = 1037 : frmScroller.Height = 689
+
+        'End Select
     End Sub
 End Class

@@ -251,6 +251,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Pictures\icons8-f5-key-20.png" />
+    <None Include="Pictures\icons8-f3-key-20.png" />
+    <None Include="Pictures\icons8-f2-key-20.png" />
+    <None Include="Pictures\icons8-delete-key-20.png" />
+    <None Include="Pictures\icons8-delete-key-24.png" />
+    <None Include="Pictures\icons8-f5-key-24.png" />
+    <None Include="Pictures\icons8-f3-key-24.png" />
+    <None Include="Pictures\icons8-f2-key-24.png" />
+    <None Include="Pictures\icons8-f2-key-16.png" />
     <None Include="Pictures\icons8-refresh-16.png" />
     <None Include="Pictures\Refresh.png" />
     <None Include="Pictures\Edit_16x16.png" />

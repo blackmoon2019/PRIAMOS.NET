@@ -27,15 +27,17 @@ Public Class frmUsers
         Try
             Select Case Mode
                 Case FormMode.NewRecord
-                    sSQL = "INSERT INTO USR ([UN],[PWD],[REALNAME]) " &
+                    sSQL = "INSERT INTO USR ([UN],[PWD],[REALNAME],[MAILID]) " &
                             "values (" & toSQLValue(txtUN) & "," &
                                          toSQLValue(txtPWD) & "," &
-                                         toSQLValue(txtRealName) & ")"
+                                         toSQLValue(txtRealName) & "," &
+                                         toSQLValueS(cboMail.EditValue.ToString) & ")"
                 Case FormMode.EditRecord
                     If Valid.ValidateForm(LayoutControl1) Then
                         sSQL = "UPDATE USR set UN =  " & toSQLValue(txtUN) & "," &
                                "PWD = " & toSQLValue(txtPWD) & "," &
-                               "RealName = " & toSQLValue(txtRealName) &
+                               "RealName = " & toSQLValue(txtRealName) & "," &
+                               "MailID = " & toSQLValueS(cboMail.EditValue.ToString) &
                                " where id = '" & sID & "'"
                     End If
             End Select
@@ -50,19 +52,55 @@ Public Class frmUsers
         End Try
 
     End Sub
+    'Private Sub FillList()
+    '    Dim ds As DataSet = New DataSet
+    '    Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
+    '    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+    '    'chkMail.DataSource = sdr
+    '    'chkMail.DisplayMember = "Server"
+    '    'chkMail.ValueMember = "id"
+    '    While sdr.Read()
+    '        chkMail.Items.Add(sdr.Item(1).ToString)
+    '        chkMail.Items(chkMail.Items.Count - 1).Tag = sdr.Item(0).ToString
+    '    End While
+    '    sdr.Close()
 
+
+
+    'End Sub
+    Private Sub FillCombo()
+        Dim ds As DataSet = New DataSet
+        Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
+        Dim sdr As SqlDataReader = cmd.ExecuteReader()
+        Try
+            cboMail.Properties.DataSource = sdr
+            cboMail.Properties.DisplayMember = "Server"
+            cboMail.Properties.ValueMember = "id"
+            cboMail.Properties.PopulateColumns()
+            cboMail.Properties.Columns(0).Visible = False
+            cboMail.Properties.Columns(1).Caption = "Email Account"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
     Private Sub frmUsers_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
+            FillCombo()
             If Mode = FormMode.EditRecord Then
                 Dim cmd As SqlCommand = New SqlCommand("Select * from vw_USR where id ='" + sID + "'", CNDB)
                 Dim sdr As SqlDataReader = cmd.ExecuteReader()
                 If (sdr.Read() = True) Then
-                    txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
-                    txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
-                    txtRealName.Text = sdr.GetString(sdr.GetOrdinal("realname"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("realname")) = False Then txtRealName.Text = sdr.GetString(sdr.GetOrdinal("realname"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("MailID")) = False Then cboMail.EditValue = sdr.GetGuid(sdr.GetOrdinal("MailID"))
                     sdr.Close()
                 End If
             End If
+
+
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
