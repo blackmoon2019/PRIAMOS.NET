@@ -251,6 +251,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\rsz_user-arrow-right-icon.png" />
+    <None Include="Resources\Icojam-Blue-Bits-Users-0.png" />
     <None Include="Pictures\icons8-f5-key-20.png" />
     <None Include="Pictures\icons8-f3-key-20.png" />
     <None Include="Pictures\icons8-f2-key-20.png" />
