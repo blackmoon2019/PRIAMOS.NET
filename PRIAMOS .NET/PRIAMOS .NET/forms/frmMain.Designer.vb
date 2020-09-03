@@ -25,13 +25,14 @@ Partial Class frmMain
         Me.bbMailSettings = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarClose = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarMdiChildrenListItem = New DevExpress.XtraBars.BarMdiChildrenListItem()
+        Me.bbRights = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.XtraTabbedMdiManager1 = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
-        Me.BarMdiChildrenListItem = New DevExpress.XtraBars.BarMdiChildrenListItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabbedMdiManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -39,9 +40,9 @@ Partial Class frmMain
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.BarMdiChildrenListItem})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.BarMdiChildrenListItem, Me.bbRights})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 8
+        Me.RibbonControl1.MaxItemId = 9
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.PageHeaderItemLinks.Add(Me.BarMdiChildrenListItem)
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2})
@@ -80,6 +81,20 @@ Partial Class frmMain
         Me.BarClose.Name = "BarClose"
         Me.BarClose.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
+        'BarMdiChildrenListItem
+        '
+        Me.BarMdiChildrenListItem.Caption = "Παράθυρα"
+        Me.BarMdiChildrenListItem.Id = 7
+        Me.BarMdiChildrenListItem.Name = "BarMdiChildrenListItem"
+        '
+        'bbRights
+        '
+        Me.bbRights.Caption = "Δικαιώματα"
+        Me.bbRights.Id = 8
+        Me.bbRights.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_user_arrow_right_icon
+        Me.bbRights.Name = "bbRights"
+        Me.bbRights.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
@@ -101,6 +116,7 @@ Partial Class frmMain
         'RibbonPageGroup2
         '
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbMailSettings)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbRights)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
         '
@@ -120,12 +136,6 @@ Partial Class frmMain
         Me.XtraTabbedMdiManager1.MdiParent = Me
         Me.XtraTabbedMdiManager1.ShowFloatingDropHint = DevExpress.Utils.DefaultBoolean.[True]
         Me.XtraTabbedMdiManager1.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.[True]
-        '
-        'BarMdiChildrenListItem
-        '
-        Me.BarMdiChildrenListItem.Caption = "Παράθυρα"
-        Me.BarMdiChildrenListItem.Id = 7
-        Me.BarMdiChildrenListItem.Name = "BarMdiChildrenListItem"
         '
         'frmMain
         '
@@ -159,4 +169,5 @@ Partial Class frmMain
     Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarClose As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarMdiChildrenListItem As DevExpress.XtraBars.BarMdiChildrenListItem
+    Friend WithEvents bbRights As DevExpress.XtraBars.BarButtonItem
 End Class

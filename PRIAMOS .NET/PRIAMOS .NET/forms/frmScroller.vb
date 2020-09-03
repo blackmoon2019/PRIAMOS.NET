@@ -355,7 +355,16 @@ Public Class frmScroller
         grdMain.DataSource = myReader
         grdMain.ForceInitialize()
         grdMain.DefaultView.PopulateColumns()
-
+        'Εαν δεν έχει data το Dataset αναγκαστικά προσθέτω μόνος μου τις στήλες
+        If myReader.HasRows = False Then
+            GridView1.Columns.Clear()
+            For i As Integer = 0 To myReader.FieldCount - 1
+                Dim C As New GridColumn
+                C.Caption = myReader.GetName(i).ToString
+                C.Visible = True
+                GridView1.Columns.Add(C)
+            Next i
+        End If
 
 
 
