@@ -31,24 +31,28 @@ Public Class frmPermissions
             ' Γεμίζω τους χρήστες στον Combo
             FillCombo()
             FillCheckedList()
-            If Mode = FormMode.EditRecord Then
-                Dim cmd As SqlCommand = New SqlCommand("Select * from vw_RIGHTS where id ='" + sID + "'", CNDB)
-                Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                If (sdr.Read() = True) Then
-                    If sdr.IsDBNull(sdr.GetOrdinal("insert")) = False Then chkInsert.Checked = sdr.GetBoolean(sdr.GetOrdinal("insert"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("edit")) = False Then chkEdit.Checked = sdr.GetBoolean(sdr.GetOrdinal("edit"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("delete")) = False Then chkDelete.Checked = sdr.GetBoolean(sdr.GetOrdinal("delete"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("Uid")) = False Then cboUsers.EditValue = sdr.GetGuid(sdr.GetOrdinal("Uid"))
-                    cboUsers.ReadOnly = True
-                    'If sdr.IsDBNull(sdr.GetOrdinal("Fid")) = False Then chkLstUsers.get.EditValue = sdr.GetGuid(sdr.GetOrdinal("Uid"))
-                    sdr.Close()
-                End If
-            End If
-
+            Select Case Mode
+                Case FormMode.EditRecord
+                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_RIGHTS where id ='" + sID + "'", CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If (sdr.Read() = True) Then
+                        If sdr.IsDBNull(sdr.GetOrdinal("insert")) = False Then chkInsert.Checked = sdr.GetBoolean(sdr.GetOrdinal("insert"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("edit")) = False Then chkEdit.Checked = sdr.GetBoolean(sdr.GetOrdinal("edit"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("delete")) = False Then chkDelete.Checked = sdr.GetBoolean(sdr.GetOrdinal("delete"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("Uid")) = False Then cboUsers.EditValue = sdr.GetGuid(sdr.GetOrdinal("Uid"))
+                        cboUsers.ReadOnly = True
+                        'If sdr.IsDBNull(sdr.GetOrdinal("Fid")) = False Then chkLstUsers.get.EditValue = sdr.GetGuid(sdr.GetOrdinal("Uid"))
+                        sdr.Close()
+                    End If
+                    cmdSave.Enabled = UserProps.AllowEdit
+                Case FormMode.NewRecord
+                    cmdSave.Enabled = UserProps.AllowInsert
+            End Select
 
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

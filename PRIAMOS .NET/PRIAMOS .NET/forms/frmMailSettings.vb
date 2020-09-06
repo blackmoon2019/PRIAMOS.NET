@@ -28,23 +28,23 @@ Public Class frmMailSettings
     Private Sub frmMailSettings_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             'FillComboMulti(cboUsers)
+            Select Case Mode
+                Case FormMode.EditRecord
+                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_MAILS where id ='" + sID + "'", CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If (sdr.Read() = True) Then
+                        If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("server")) = False Then txtServer.Text = sdr.GetString(sdr.GetOrdinal("server"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("port")) = False Then txtPort.Text = sdr.GetInt32(sdr.GetOrdinal("port"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("ssl")) = False Then chkSSL.Checked = sdr.GetBoolean(sdr.GetOrdinal("ssl"))
+                        sdr.Close()
+                    End If
+                    cmdSave.Enabled = UserProps.AllowEdit
+                Case FormMode.NewRecord
+                    cmdSave.Enabled = UserProps.AllowInsert
+            End Select
 
-            If Mode = FormMode.EditRecord Then
-                Dim cmd As SqlCommand = New SqlCommand("Select * from vw_MAILS where id ='" + sID + "'", CNDB)
-                Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                If (sdr.Read() = True) Then
-
-                    If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("server")) = False Then txtServer.Text = sdr.GetString(sdr.GetOrdinal("server"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("port")) = False Then txtPort.Text = sdr.GetInt32(sdr.GetOrdinal("port"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("ssl")) = False Then chkSSL.Checked = sdr.GetBoolean(sdr.GetOrdinal("ssl"))
-
-                    sdr.Close()
-                End If
-            Else
-
-            End If
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()

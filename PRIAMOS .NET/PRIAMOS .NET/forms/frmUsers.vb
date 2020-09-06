@@ -52,22 +52,7 @@ Public Class frmUsers
         End Try
 
     End Sub
-    'Private Sub FillList()
-    '    Dim ds As DataSet = New DataSet
-    '    Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
-    '    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-    '    'chkMail.DataSource = sdr
-    '    'chkMail.DisplayMember = "Server"
-    '    'chkMail.ValueMember = "id"
-    '    While sdr.Read()
-    '        chkMail.Items.Add(sdr.Item(1).ToString)
-    '        chkMail.Items(chkMail.Items.Count - 1).Tag = sdr.Item(0).ToString
-    '    End While
-    '    sdr.Close()
 
-
-
-    'End Sub
     Private Sub FillCombo()
         Try
             Dim ds As DataSet = New DataSet
@@ -89,19 +74,21 @@ Public Class frmUsers
     Private Sub frmUsers_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             FillCombo()
-            If Mode = FormMode.EditRecord Then
-                Dim cmd As SqlCommand = New SqlCommand("Select * from vw_USR where id ='" + sID + "'", CNDB)
-                Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                If (sdr.Read() = True) Then
-                    If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("realname")) = False Then txtRealName.Text = sdr.GetString(sdr.GetOrdinal("realname"))
-                    If sdr.IsDBNull(sdr.GetOrdinal("MailID")) = False Then cboMail.EditValue = sdr.GetGuid(sdr.GetOrdinal("MailID"))
-                    sdr.Close()
-                End If
-            End If
-
-
+            Select Case Mode
+                Case FormMode.EditRecord
+                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_USR where id ='" + sID + "'", CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If (sdr.Read() = True) Then
+                        If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("realname")) = False Then txtRealName.Text = sdr.GetString(sdr.GetOrdinal("realname"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("MailID")) = False Then cboMail.EditValue = sdr.GetGuid(sdr.GetOrdinal("MailID"))
+                        sdr.Close()
+                    End If
+                    cmdSave.Enabled = UserProps.AllowEdit
+                Case FormMode.NewRecord
+                    cmdSave.Enabled = UserProps.AllowInsert
+            End Select
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
@@ -117,4 +104,20 @@ Public Class frmUsers
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
+    'Private Sub FillList()
+    '    Dim ds As DataSet = New DataSet
+    '    Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
+    '    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+    '    'chkMail.DataSource = sdr
+    '    'chkMail.DisplayMember = "Server"
+    '    'chkMail.ValueMember = "id"
+    '    While sdr.Read()
+    '        chkMail.Items.Add(sdr.Item(1).ToString)
+    '        chkMail.Items(chkMail.Items.Count - 1).Tag = sdr.Item(0).ToString
+    '    End While
+    '    sdr.Close()
+
+
+
+    'End Sub
 End Class

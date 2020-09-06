@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="classes\CheckPermissions.vb" />
     <Compile Include="classes\CN.vb" />
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
@@ -260,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-copy-16.png" />
     <None Include="Resources\rsz_user-arrow-right-icon.png" />
     <None Include="Resources\Icojam-Blue-Bits-Users-0.png" />
     <None Include="Pictures\icons8-f5-key-20.png" />
