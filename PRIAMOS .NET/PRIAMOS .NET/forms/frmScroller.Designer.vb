@@ -20,6 +20,7 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
         Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
         Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
@@ -28,6 +29,9 @@ Partial Class frmScroller
         Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
         Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
+        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdMain = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.BarRecords = New DevExpress.XtraBars.BarEditItem()
@@ -66,16 +70,17 @@ Partial Class frmScroller
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.BarStaticItem5 = New DevExpress.XtraBars.BarStaticItem()
         Me.RepositoryItemButtonEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryItemBreadCrumbEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.RepositoryItemButtonEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryPopRenameView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.grdMain = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.SQLMain = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.SSM = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), False, False)
         Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
-        Me.BarStaticItem5 = New DevExpress.XtraBars.BarStaticItem()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopMenuViews, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,9 +91,53 @@ Partial Class frmScroller
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'GridView2
+        '
+        Me.GridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
+        Me.GridView2.GridControl = Me.grdMain
+        Me.GridView2.Name = "GridView2"
+        Me.GridView2.OptionsBehavior.Editable = False
+        Me.GridView2.OptionsBehavior.ReadOnly = True
+        Me.GridView2.OptionsLayout.Columns.StoreAllOptions = True
+        Me.GridView2.OptionsLayout.Columns.StoreAppearance = True
+        Me.GridView2.OptionsLayout.StoreAllOptions = True
+        Me.GridView2.OptionsLayout.StoreAppearance = True
+        Me.GridView2.OptionsLayout.StoreFormatRules = True
+        Me.GridView2.OptionsPrint.PrintPreview = True
+        Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView2.OptionsView.EnableAppearanceEvenRow = True
+        '
+        'grdMain
+        '
+        Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
+        Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
+        GridLevelNode1.LevelTemplate = Me.GridView2
+        GridLevelNode1.RelationName = "Level1"
+        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        Me.grdMain.Location = New System.Drawing.Point(27, 43)
+        Me.grdMain.MainView = Me.GridView1
+        Me.grdMain.Name = "grdMain"
+        Me.grdMain.Size = New System.Drawing.Size(1008, 585)
+        Me.grdMain.TabIndex = 5
+        Me.grdMain.UseEmbeddedNavigator = True
+        Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView2})
+        '
+        'GridView1
+        '
+        Me.GridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
+        Me.GridView1.GridControl = Me.grdMain
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsBehavior.ReadOnly = True
+        Me.GridView1.OptionsLayout.Columns.StoreAppearance = True
+        Me.GridView1.OptionsLayout.StoreAllOptions = True
+        Me.GridView1.OptionsLayout.StoreAppearance = True
+        Me.GridView1.OptionsLayout.StoreFormatRules = True
+        Me.GridView1.OptionsPrint.PrintPreview = True
+        Me.GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
         '
         'BarManager1
         '
@@ -394,6 +443,12 @@ Partial Class frmScroller
         Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 585)
         '
+        'BarStaticItem5
+        '
+        Me.BarStaticItem5.Caption = "BarStaticItem5"
+        Me.BarStaticItem5.Id = 40
+        Me.BarStaticItem5.Name = "BarStaticItem5"
+        '
         'RepositoryItemButtonEdit1
         '
         Me.RepositoryItemButtonEdit1.AutoHeight = False
@@ -416,28 +471,6 @@ Partial Class frmScroller
         '
         Me.RepositoryPopRenameView.AutoHeight = False
         Me.RepositoryPopRenameView.Name = "RepositoryPopRenameView"
-        '
-        'grdMain
-        '
-        Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
-        Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdMain.Location = New System.Drawing.Point(27, 43)
-        Me.grdMain.MainView = Me.GridView1
-        Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(1008, 585)
-        Me.grdMain.TabIndex = 5
-        Me.grdMain.UseEmbeddedNavigator = True
-        Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
-        Me.GridView1.GridControl = Me.grdMain
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.Editable = False
-        Me.GridView1.OptionsPrint.PrintPreview = True
-        Me.GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
         '
         'SQLMain
         '
@@ -468,12 +501,6 @@ Partial Class frmScroller
         '
         Me.XtraSaveFileDialog1.FileName = "XtraSaveFileDialog1"
         '
-        'BarStaticItem5
-        '
-        Me.BarStaticItem5.Caption = "BarStaticItem5"
-        Me.BarStaticItem5.Id = 40
-        Me.BarStaticItem5.Name = "BarStaticItem5"
-        '
         'frmScroller
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -486,6 +513,9 @@ Partial Class frmScroller
         Me.Controls.Add(Me.barDockControlTop)
         Me.Name = "frmScroller"
         Me.Text = "frmScroller"
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdMain, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopMenuViews, System.ComponentModel.ISupportInitialize).EndInit()
@@ -496,8 +526,6 @@ Partial Class frmScroller
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdMain, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -551,4 +579,5 @@ Partial Class frmScroller
     Friend WithEvents BarStaticItem3 As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents BarStaticItem4 As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents BarStaticItem5 As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
 End Class

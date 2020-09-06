@@ -23,31 +23,31 @@ Partial Class frmUsers
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
         Me.txtRealName = New DevExpress.XtraEditors.TextEdit()
         Me.txtUN = New DevExpress.XtraEditors.TextEdit()
+        Me.cboMail = New DevExpress.XtraEditors.LookUpEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.cboMail = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtRealName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboMail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboMail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -93,6 +93,17 @@ Partial Class frmUsers
         Me.txtUN.StyleController = Me.LayoutControl1
         Me.txtUN.TabIndex = 0
         '
+        'cboMail
+        '
+        Me.cboMail.Location = New System.Drawing.Point(95, 84)
+        Me.cboMail.Name = "cboMail"
+        Me.cboMail.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboMail.Properties.NullText = ""
+        Me.cboMail.Properties.PopupSizeable = False
+        Me.cboMail.Size = New System.Drawing.Size(396, 20)
+        Me.cboMail.StyleController = Me.LayoutControl1
+        Me.cboMail.TabIndex = 8
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -110,6 +121,23 @@ Partial Class frmUsers
         Me.LayoutControlItem3.Size = New System.Drawing.Size(483, 24)
         Me.LayoutControlItem3.Text = "Ονοματεπώνυμο"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(80, 13)
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.cboMail
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(483, 24)
+        Me.LayoutControlItem6.Text = "Email"
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(80, 13)
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 96)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(243, 32)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'cmdExit
         '
@@ -176,34 +204,6 @@ Partial Class frmUsers
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.cboMail
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 72)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(483, 24)
-        Me.LayoutControlItem6.Text = "Email"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(80, 13)
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 96)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(243, 32)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'cboMail
-        '
-        Me.cboMail.Location = New System.Drawing.Point(95, 84)
-        Me.cboMail.Name = "cboMail"
-        Me.cboMail.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboMail.Properties.NullText = ""
-        Me.cboMail.Properties.PopupSizeable = False
-        Me.cboMail.Size = New System.Drawing.Size(396, 20)
-        Me.cboMail.StyleController = Me.LayoutControl1
-        Me.cboMail.TabIndex = 8
-        '
         'frmUsers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -219,15 +219,15 @@ Partial Class frmUsers
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtRealName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboMail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboMail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
