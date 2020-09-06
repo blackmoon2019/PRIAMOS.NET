@@ -25,31 +25,52 @@ Partial Class frmMain
         Me.bbMailSettings = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarClose = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarMdiChildrenListItem = New DevExpress.XtraBars.BarMdiChildrenListItem()
         Me.bbRights = New DevExpress.XtraBars.BarButtonItem()
+        Me.SkinDropDownButtonItem1 = New DevExpress.XtraBars.SkinDropDownButtonItem()
+        Me.BarMdiChildrenListItem1 = New DevExpress.XtraBars.BarMdiChildrenListItem()
+        Me.bbDate = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarEditItem1 = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemCalcEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit()
+        Me.BarEditItem2 = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.bbUser = New DevExpress.XtraBars.BarStaticItem()
+        Me.bbServer = New DevExpress.XtraBars.BarStaticItem()
+        Me.bbDB = New DevExpress.XtraBars.BarStaticItem()
+        Me.bbLink = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.RepositoryItemHypertextLabel1 = New DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel()
+        Me.RepositoryItemHypertextLabel2 = New DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel()
+        Me.RepositoryItemHyperLinkEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
+        Me.MainstatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.XtraTabbedMdiManager1 = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemCalcEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemHyperLinkEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemHypertextLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemHypertextLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemHyperLinkEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabbedMdiManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.BarMdiChildrenListItem, Me.bbRights})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 9
+        Me.RibbonControl1.MaxItemId = 21
         Me.RibbonControl1.Name = "RibbonControl1"
-        Me.RibbonControl1.PageHeaderItemLinks.Add(Me.BarMdiChildrenListItem)
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.BarClose)
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCalcEdit1, Me.RepositoryItemDateEdit1, Me.RepositoryItemHyperLinkEdit1, Me.RepositoryItemHypertextLabel1, Me.RepositoryItemHypertextLabel2, Me.RepositoryItemHyperLinkEdit2})
         Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019
         Me.RibbonControl1.Size = New System.Drawing.Size(1177, 146)
-        Me.RibbonControl1.StatusBar = Me.RibbonStatusBar1
+        Me.RibbonControl1.StatusBar = Me.MainstatusBar
         '
         'bbUsers
         '
@@ -81,12 +102,6 @@ Partial Class frmMain
         Me.BarClose.Name = "BarClose"
         Me.BarClose.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText
         '
-        'BarMdiChildrenListItem
-        '
-        Me.BarMdiChildrenListItem.Caption = "Παράθυρα"
-        Me.BarMdiChildrenListItem.Id = 7
-        Me.BarMdiChildrenListItem.Name = "BarMdiChildrenListItem"
-        '
         'bbRights
         '
         Me.bbRights.Caption = "Δικαιώματα"
@@ -94,6 +109,106 @@ Partial Class frmMain
         Me.bbRights.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_user_arrow_right_icon
         Me.bbRights.Name = "bbRights"
         Me.bbRights.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'SkinDropDownButtonItem1
+        '
+        Me.SkinDropDownButtonItem1.Id = 9
+        Me.SkinDropDownButtonItem1.Name = "SkinDropDownButtonItem1"
+        '
+        'BarMdiChildrenListItem1
+        '
+        Me.BarMdiChildrenListItem1.Caption = "Παράθυρα"
+        Me.BarMdiChildrenListItem1.Id = 10
+        Me.BarMdiChildrenListItem1.Name = "BarMdiChildrenListItem1"
+        '
+        'bbDate
+        '
+        Me.bbDate.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.bbDate.Caption = "Ημερομηνία"
+        Me.bbDate.Id = 11
+        Me.bbDate.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.bbDate.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbDate.Name = "bbDate"
+        '
+        'BarEditItem1
+        '
+        Me.BarEditItem1.Caption = "Αριθμομηχανή"
+        Me.BarEditItem1.Edit = Me.RepositoryItemCalcEdit1
+        Me.BarEditItem1.EditWidth = 75
+        Me.BarEditItem1.Id = 12
+        Me.BarEditItem1.Name = "BarEditItem1"
+        '
+        'RepositoryItemCalcEdit1
+        '
+        Me.RepositoryItemCalcEdit1.AutoHeight = False
+        Me.RepositoryItemCalcEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemCalcEdit1.Name = "RepositoryItemCalcEdit1"
+        '
+        'BarEditItem2
+        '
+        Me.BarEditItem2.Caption = "Ημερολόγιο"
+        Me.BarEditItem2.Edit = Me.RepositoryItemDateEdit1
+        Me.BarEditItem2.EditWidth = 90
+        Me.BarEditItem2.Id = 13
+        Me.BarEditItem2.Name = "BarEditItem2"
+        '
+        'RepositoryItemDateEdit1
+        '
+        Me.RepositoryItemDateEdit1.AutoHeight = False
+        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        Me.RepositoryItemDateEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'bbUser
+        '
+        Me.bbUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.bbUser.Caption = "Χρήστης"
+        Me.bbUser.Id = 14
+        Me.bbUser.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.bbUser.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbUser.Name = "bbUser"
+        '
+        'bbServer
+        '
+        Me.bbServer.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.bbServer.Caption = "SQL SERVER"
+        Me.bbServer.Id = 15
+        Me.bbServer.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.bbServer.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
+        Me.bbServer.ItemAppearance.Normal.Options.UseBackColor = True
+        Me.bbServer.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbServer.Name = "bbServer"
+        '
+        'bbDB
+        '
+        Me.bbDB.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.bbDB.Caption = "Database"
+        Me.bbDB.Id = 16
+        Me.bbDB.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.bbDB.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.bbDB.ItemAppearance.Normal.Options.UseBackColor = True
+        Me.bbDB.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbDB.Name = "bbDB"
+        '
+        'bbLink
+        '
+        Me.bbLink.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right
+        Me.bbLink.Edit = Me.RepositoryItemHyperLinkEdit1
+        Me.bbLink.EditValue = "http://www.priamoservice.gr/"
+        Me.bbLink.EditWidth = 170
+        Me.bbLink.Id = 20
+        Me.bbLink.Name = "bbLink"
+        '
+        'RepositoryItemHyperLinkEdit1
+        '
+        Me.RepositoryItemHyperLinkEdit1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer))
+        Me.RepositoryItemHyperLinkEdit1.Appearance.Options.UseBackColor = True
+        Me.RepositoryItemHyperLinkEdit1.AutoHeight = False
+        Me.RepositoryItemHyperLinkEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.RepositoryItemHyperLinkEdit1.Name = "RepositoryItemHyperLinkEdit1"
+        Me.RepositoryItemHyperLinkEdit1.SingleClick = True
+        Me.RepositoryItemHyperLinkEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'RibbonPage1
         '
@@ -120,12 +235,34 @@ Partial Class frmMain
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
         '
-        'RibbonStatusBar1
+        'RepositoryItemHypertextLabel1
         '
-        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 752)
-        Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
-        Me.RibbonStatusBar1.Ribbon = Me.RibbonControl1
-        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1177, 22)
+        Me.RepositoryItemHypertextLabel1.Name = "RepositoryItemHypertextLabel1"
+        '
+        'RepositoryItemHypertextLabel2
+        '
+        Me.RepositoryItemHypertextLabel2.Name = "RepositoryItemHypertextLabel2"
+        '
+        'RepositoryItemHyperLinkEdit2
+        '
+        Me.RepositoryItemHyperLinkEdit2.AutoHeight = False
+        Me.RepositoryItemHyperLinkEdit2.Name = "RepositoryItemHyperLinkEdit2"
+        '
+        'MainstatusBar
+        '
+        Me.MainstatusBar.ItemLinks.Add(Me.SkinDropDownButtonItem1)
+        Me.MainstatusBar.ItemLinks.Add(Me.BarMdiChildrenListItem1)
+        Me.MainstatusBar.ItemLinks.Add(Me.BarEditItem1)
+        Me.MainstatusBar.ItemLinks.Add(Me.BarEditItem2)
+        Me.MainstatusBar.ItemLinks.Add(Me.bbUser)
+        Me.MainstatusBar.ItemLinks.Add(Me.bbDate)
+        Me.MainstatusBar.ItemLinks.Add(Me.bbServer)
+        Me.MainstatusBar.ItemLinks.Add(Me.bbDB)
+        Me.MainstatusBar.ItemLinks.Add(Me.bbLink)
+        Me.MainstatusBar.Location = New System.Drawing.Point(0, 752)
+        Me.MainstatusBar.Name = "MainstatusBar"
+        Me.MainstatusBar.Ribbon = Me.RibbonControl1
+        Me.MainstatusBar.Size = New System.Drawing.Size(1177, 22)
         '
         'XtraTabbedMdiManager1
         '
@@ -142,15 +279,22 @@ Partial Class frmMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1177, 774)
-        Me.Controls.Add(Me.RibbonStatusBar1)
+        Me.Controls.Add(Me.MainstatusBar)
         Me.Controls.Add(Me.RibbonControl1)
         Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow
         Me.IsMdiContainer = True
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmMain"
+        Me.Text = "PRIAMOS .NET"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemCalcEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemHyperLinkEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemHypertextLabel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemHypertextLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemHyperLinkEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XtraTabbedMdiManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -160,7 +304,7 @@ Partial Class frmMain
     Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
     Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
-    Friend WithEvents RibbonStatusBar1 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents MainstatusBar As DevExpress.XtraBars.Ribbon.RibbonStatusBar
     Friend WithEvents bbUsers As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
@@ -168,6 +312,20 @@ Partial Class frmMain
     Friend WithEvents bbMailSettings As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarClose As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents BarMdiChildrenListItem As DevExpress.XtraBars.BarMdiChildrenListItem
     Friend WithEvents bbRights As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents SkinDropDownButtonItem1 As DevExpress.XtraBars.SkinDropDownButtonItem
+    Friend WithEvents BarMdiChildrenListItem1 As DevExpress.XtraBars.BarMdiChildrenListItem
+    Friend WithEvents bbDate As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents BarEditItem1 As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemCalcEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit
+    Friend WithEvents BarEditItem2 As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemDateEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents bbUser As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents bbServer As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents bbDB As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents RepositoryItemHypertextLabel2 As DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel
+    Friend WithEvents RepositoryItemHyperLinkEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit
+    Friend WithEvents RepositoryItemHypertextLabel1 As DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel
+    Friend WithEvents bbLink As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemHyperLinkEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit
 End Class

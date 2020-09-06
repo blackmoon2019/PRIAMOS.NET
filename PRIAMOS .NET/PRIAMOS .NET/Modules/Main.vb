@@ -10,6 +10,7 @@ Module Main
         DeleteRecord = 3
         ViewRecord = 4
     End Enum
+
     Public Structure USER_PROPS
         Public ID As Guid
         Public Code As String
@@ -18,6 +19,9 @@ Module Main
         Public PWD As String
         Public DataTable As String
         Public CurrentView As String
+        Public AllowInsert As Boolean
+        Public AllowEdit As Boolean
+        Public AllowDelete As Boolean
     End Structure
     Public UserProps As USER_PROPS
     Public Function toSQLValue(t As DevExpress.XtraEditors.TextEdit, Optional ByVal isnum As Boolean = False) As String

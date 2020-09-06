@@ -1,9 +1,15 @@
-﻿Imports DevExpress.XtraBars
+﻿Imports DevExpress.Utils
+Imports DevExpress.XtraBars
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraTabbedMdi
 Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         XtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders
+        bbDate.Caption = DateTime.Today
+        bbUser.Caption = "Χρήστης: " & UserProps.RealName
+        bbServer.Caption = "SQL Server: " & CNDB.DataSource.ToString
+        bbDB.Caption = "Database: " & CNDB.Database.ToString
     End Sub
 
     Private Sub MdiManager_PageAdded(sender As Object, e As MdiTabPageEventArgs)
@@ -59,4 +65,10 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+
+    Private Sub bbLink_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles bbLink.HyperlinkClick
+        Process.Start(bbLink.EditValue)
+    End Sub
+
 End Class
