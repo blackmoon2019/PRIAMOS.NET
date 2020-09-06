@@ -69,10 +69,11 @@ Public Class frmUsers
 
     'End Sub
     Private Sub FillCombo()
-        Dim ds As DataSet = New DataSet
-        Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
-        Dim sdr As SqlDataReader = cmd.ExecuteReader()
         Try
+            Dim ds As DataSet = New DataSet
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+
             cboMail.Properties.DataSource = sdr
             cboMail.Properties.DisplayMember = "Server"
             cboMail.Properties.ValueMember = "id"

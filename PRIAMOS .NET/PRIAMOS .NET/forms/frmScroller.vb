@@ -10,12 +10,15 @@ Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.Utils
+Imports DevExpress.XtraGrid.Views.Card
 
 Public Class frmScroller
     Private myConn As SqlConnection
     Private myCmd As SqlCommand
     Private myReader As SqlDataReader
     Private sDataTable As String
+    Private sDataDetail As String
     Private CurrentView As String
     'Private settings = System.Configuration.ConfigurationManager.AppSettings
     Private Sub frmScroller_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -49,13 +52,20 @@ Public Class frmScroller
         Try
             BarViews.EditValue = ""
             'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml") = False Then
-                grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml") = False Or
+                My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sDataDetail & "_def.xml") = False Then
+                GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+                If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataDetail & "_def.xml")
             End If
             'Εαν δεν υπάρχει Folder Σχεδίου για το συγκεκριμένο πίνακα δημιουργεί
-            If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\DSGNS\" & sDataTable) = False Then
+            If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\DSGNS\" & sDataTable) = False Then _
                 My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\DSGNS\" & sDataTable)
-            End If
+
+            'Εαν δεν υπάρχει Folder Σχεδίου για το Detail πίνακα δημιουργεί
+            If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\DSGNS\" & sDataDetail) = False Then _
+                My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\DSGNS\" & sDataDetail)
+
+
 
             'Ψάχνει όλα τα σχέδια  του συκεκριμένου χρήστη για τον συγκεκριμένο πίνακα
             Dim files() As String = IO.Directory.GetFiles(Application.StartupPath & "\DSGNS\" & sDataTable, "*_" & UserProps.Code & "*")
@@ -64,9 +74,13 @@ Public Class frmScroller
             Next
             BarViews.EditValue = CurrentView
             If CurrentView = "" Then
-                grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+                'grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+                If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataDetail & "_def.xml")
             Else
-                grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                'grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue)
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -79,6 +93,7 @@ Public Class frmScroller
                 Select Case sDataTable
                     Case "vw_USR" : sSQL = "DELETE FROM USR WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_MAILS" : sSQL = "DELETE FROM MAILS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_RIGHTS" : sSQL = "DELETE FROM RIGHTS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                 End Select
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -96,12 +111,19 @@ Public Class frmScroller
             sDataTable = value
         End Set
     End Property
+    Public WriteOnly Property DataDetail As String
+        Set(value As String)
+            sDataDetail = value
+        End Set
+    End Property
     'Επιλογή όψης
     Private Sub BarViews_EditValueChanged(sender As Object, e As EventArgs) Handles BarViews.EditValueChanged
         Try
             popSaveAsView.EditValue = BarViews.EditValue
             If BarViews.EditValue <> "" Then
-                grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                'grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue)
                 CurrentView = BarViews.EditValue
                 popSaveView.Enabled = True
                 popDeleteView.Enabled = True
@@ -113,33 +135,51 @@ Public Class frmScroller
     Private Sub frmScroller_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         'Παίρνω το όνομα της όψης για τον συγκεκριμένο χρήστη και για τον συγκεκριμένο πίνακα και το αποθηκεύω στην βάση
         GetCurrentView(False)
-        myReader.Close()
+        If sDataDetail = "" Then myReader.Close()
     End Sub
     'Διαγραφή όψης
     Private Sub popDeleteView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popDeleteView.ItemClick
         If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα όψη?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-            My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
-            CType(BarViews.Edit, RepositoryItemComboBox).Items.Remove(BarViews.EditValue)
-            BarViews.EditValue = "" : CurrentView = ""
+            If BarViews.EditValue <> "" Then
+                My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+                If sDataDetail <> "" Then My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue)
+                CType(BarViews.Edit, RepositoryItemComboBox).Items.Remove(BarViews.EditValue)
+                BarViews.EditValue = "" : CurrentView = "" : popSaveView.Enabled = False
+            End If
         End If
 
     End Sub
-
+    'Αποθήκευση ως όψης
     Private Sub RepositoryPopSaveAsView_KeyDown(sender As Object, e As KeyEventArgs) Handles RepositoryPopSaveAsView.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml")
-            CType(BarViews.Edit, RepositoryItemComboBox).Items.Add(sender.EditValue & "_" & UserProps.Code & ".xml")
-            BarViews.EditValue = sender.EditValue & "_" & UserProps.Code & ".xml"
-            CurrentView = BarViews.EditValue
+        Try
+            If e.KeyCode = Keys.Enter Then
+                GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
+                If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
+                'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml")
+                CType(BarViews.Edit, RepositoryItemComboBox).Items.Add(sender.EditValue & "_" & UserProps.Code & ".xml")
+
+                BarViews.EditValue = sender.EditValue & "_" & UserProps.Code & ".xml"
+                CurrentView = BarViews.EditValue
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    'Αποθήκευση όψης
+    Private Sub popSaveView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popSaveView.ItemClick
+        If BarViews.EditValue <> "" Then
+            'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+            My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+            GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+            If sDataDetail <> "" Then
+                My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue)
+                GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
+            End If
+            'GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+            XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
-
-    Private Sub popSaveView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popSaveView.ItemClick
-        My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
-        grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
-        XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
+    'Επαναφορά Default όψης
     Private Sub popRestoreView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popRestoreView.ItemClick
         grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
         BarViews.EditValue = "" : popSaveAsView.EditValue = "" : popSaveView.Enabled = False : popDeleteView.Enabled = False
@@ -253,13 +293,15 @@ Public Class frmScroller
                 sdr = Cmd.ExecuteReader()
                 If (sdr.Read() = True) Then
                     If sdr.IsDBNull(sdr.GetOrdinal("currentview")) = False Then CurrentView = sdr.GetString(sdr.GetOrdinal("currentview"))
+                    'Έλεγχος αν το τελευταίο σχέδιο που έχει αποθηκευτεί στην βάση υπάρχει στον δίσκο
+                    If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & CurrentView) = False Then CurrentView = ""
                 Else
                     CurrentView = ""
                 End If
                 sdr.Close()
 
             Else
-                If UserProps.CurrentView <> "" Then
+                If CurrentView <> "" Then
                     Cmd = CNDB.CreateCommand
                     Cmd.CommandType = CommandType.StoredProcedure
                     Cmd.Parameters.Add(New SqlParameter("@sDataTable", sDataTable))
@@ -297,6 +339,7 @@ Public Class frmScroller
     Private Sub EditRecord()
         Dim form As frmUsers = New frmUsers()
         Dim form2 As frmMailSettings = New frmMailSettings()
+        Dim form3 As frmPermissions = New frmPermissions()
         Select Case sDataTable
             Case "vw_USR"
                 form.Text = "Διαχείριση Χρηστών"
@@ -316,11 +359,21 @@ Public Class frmScroller
                 form2.FormScroller = Me
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form2.Show()
+            Case "vw_RIGHTS"
+                form3.Text = "Δικαιώματα"
+                form3.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                form3.MdiParent = frmMain
+                form3.Mode = FormMode.EditRecord
+                form3.Scroller = GridView1
+                form3.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form3), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                form3.Show()
         End Select
     End Sub
     Private Sub NewRecord()
         Dim form As frmUsers = New frmUsers()
         Dim form2 As frmMailSettings = New frmMailSettings()
+        Dim form3 As frmPermissions = New frmPermissions()
         Select Case sDataTable
             Case "vw_USR"
                 form.Text = "Διαχείριση Χρηστών"
@@ -338,34 +391,66 @@ Public Class frmScroller
                 form2.FormScroller = Me
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form2.Show()
+            Case "vw_RIGHTS"
+                form3.Text = "Δικαιώματα"
+                form3.MdiParent = frmMain
+                form3.Mode = FormMode.NewRecord
+                form3.Scroller = GridView1
+                form3.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form3), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                form3.Show()
         End Select
     End Sub
     'Φορτώνω τις εγγραφές στο GRID
     Public Sub LoadRecords(Optional ByVal sDataTable2 As String = "")
+        Dim sSQL As String
+        Dim sSQL2 As String
 
-        myCmd = CNDB.CreateCommand
         If BarRecords.EditValue <> "ALL" And BarRecords.EditValue <> "" Then
-            myCmd.CommandText = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
+            sSQL = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
+            If sDataDetail <> "" Then sSQL2 = "SELECT top " & BarRecords.EditValue & " * FROM " & sDataDetail
         Else
-            myCmd.CommandText = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
+            sSQL = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable)
+            If sDataDetail <> "" Then sSQL2 = "SELECT  * FROM " & sDataDetail
         End If
 
-
-        myReader = myCmd.ExecuteReader()
-        grdMain.DataSource = myReader
-        grdMain.ForceInitialize()
-        grdMain.DefaultView.PopulateColumns()
-        'Εαν δεν έχει data το Dataset αναγκαστικά προσθέτω μόνος μου τις στήλες
-        If myReader.HasRows = False Then
+        If sDataDetail = "" Then
+            myCmd = CNDB.CreateCommand
+            myCmd.CommandText = sSQL
             GridView1.Columns.Clear()
-            For i As Integer = 0 To myReader.FieldCount - 1
-                Dim C As New GridColumn
-                C.Caption = myReader.GetName(i).ToString
-                C.Visible = True
-                GridView1.Columns.Add(C)
-            Next i
+            myReader = myCmd.ExecuteReader()
+            grdMain.DataSource = myReader
+        Else
+            Select Case sDataDetail
+                Case "vw_FORM_RIGHTS"
+                    Dim AdapterMaster As New SqlDataAdapter(sSQL, CNDB)
+                    Dim AdapterDetail As New SqlDataAdapter(sSQL2, CNDB)
+                    Dim sdataSet As New DataSet()
+                    AdapterMaster.Fill(sdataSet, IIf(sDataTable = "", sDataTable2, sDataTable))
+                    AdapterDetail.Fill(sdataSet, sDataDetail)
+                    Dim keyColumn As DataColumn = sdataSet.Tables(IIf(sDataTable = "", sDataTable2, sDataTable)).Columns("ID")
+                    Dim foreignKeyColumn As DataColumn = sdataSet.Tables(sDataDetail).Columns("RID")
+                    sdataSet.Relations.Add("Φόρμες", keyColumn, foreignKeyColumn)
+                    GridView1.Columns.Clear()
+                    GridView2.Columns.Clear()
+                    grdMain.DataSource = sdataSet.Tables(IIf(sDataTable = "", sDataTable2, sDataTable))
+                    grdMain.ForceInitialize()
+            End Select
         End If
+        grdMain.DefaultView.PopulateColumns()
 
+        'Εαν δεν έχει data το Dataset αναγκαστικά προσθέτω μόνος μου τις στήλες
+        If sDataDetail = "" Then
+            If myReader.HasRows = False Then
+                For i As Integer = 0 To myReader.FieldCount - 1
+                    Dim C As New GridColumn
+                    C.Name = myReader.GetName(i).ToString
+                    C.Caption = myReader.GetName(i).ToString
+                    C.Visible = True
+                    GridView1.Columns.Add(C)
+                Next i
+            End If
+        End If
 
 
         'If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close() 'myReader.Close()
@@ -384,7 +469,39 @@ Public Class frmScroller
     End Sub
 
     Private Sub GridView1_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles GridView1.CustomColumnDisplayText
-        If e.Column.FieldName = "pwd" Then e.DisplayText = StrDup(e.DisplayText.Length, "*")
+        If e.Column.FieldName.Contains("pwd") Then e.DisplayText = StrDup(e.DisplayText.Length, "*")
 
+    End Sub
+
+    Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
+        Dim view As GridView = CType(sender, GridView)
+        If e.Control AndAlso e.KeyCode = Keys.C Then
+            If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+                Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
+            Else
+                'MessageBox.Show("The value in the selected cell is null or empty!")
+            End If
+            e.Handled = True
+        End If
+    End Sub
+    'Ορίζουμε το Detail View στο GridView2 που προσθέσαμε στο Design.  
+    Private Sub grdMain_ViewRegistered(sender As Object, e As DevExpress.XtraGrid.ViewOperationEventArgs) Handles grdMain.ViewRegistered
+        GridView2 = TryCast(e.View, GridView)
+        GridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus
+        GridView2.OptionsBehavior.Editable = False
+        GridView2.OptionsBehavior.ReadOnly = True
+        GridView2.OptionsLayout.Columns.StoreAllOptions = True
+        GridView2.OptionsLayout.Columns.StoreAppearance = True
+        GridView2.OptionsLayout.StoreAllOptions = True
+        GridView2.OptionsLayout.StoreAppearance = True
+        GridView2.OptionsLayout.StoreFormatRules = True
+        GridView2.OptionsPrint.PrintPreview = True
+        GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
+        GridView2.OptionsView.EnableAppearanceEvenRow = True
+        If CurrentView = "" Then
+            If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataDetail & "_def.xml")
+        Else
+            If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue)
+        End If
     End Sub
 End Class

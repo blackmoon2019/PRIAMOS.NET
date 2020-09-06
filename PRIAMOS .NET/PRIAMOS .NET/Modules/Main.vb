@@ -42,6 +42,11 @@ Module Main
             If Not isnum Then Return "'" + t + "'" Else Return t
         End If
     End Function
+    'Public Function FindItemByValChkListBox(ByVal sValue As String, ByVal chkList As DevExpress.XtraEditors.CheckedListBoxControl) As DevExpress.XtraEditors.Controls.CheckedListBoxItem
+    '    For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkList
+
+    '    Next
+    'End Function
 
 End Module
 'Private Sub SetUserSettings()

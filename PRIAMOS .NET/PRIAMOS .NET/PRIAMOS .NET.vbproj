@@ -145,6 +145,12 @@
     <Compile Include="forms\frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmPermissions.Designer.vb">
+      <DependentUpon>frmPermissions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmPermissions.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmScroller.Designer.vb">
       <DependentUpon>frmScroller.vb</DependentUpon>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmPermissions.resx">
+      <DependentUpon>frmPermissions.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmScroller.resx">
       <DependentUpon>frmScroller.vb</DependentUpon>

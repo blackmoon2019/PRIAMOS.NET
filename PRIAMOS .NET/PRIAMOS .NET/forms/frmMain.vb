@@ -55,6 +55,7 @@ Public Class frmMain
         Dim form As frmScroller = New frmScroller()
         form.Text = "Δικαιώματα"
         form.DataTable = "vw_RIGHTS"
+        form.DataDetail = "vw_FORM_RIGHTS"
         form.MdiParent = Me
         form.Show()
     End Sub
