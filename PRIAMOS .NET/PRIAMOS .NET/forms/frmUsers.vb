@@ -27,16 +27,18 @@ Public Class frmUsers
         Try
             Select Case Mode
                 Case FormMode.NewRecord
-                    sSQL = "INSERT INTO USR ([UN],[PWD],[REALNAME],[MAILID]) " &
+                    sSQL = "INSERT INTO USR ([UN],[PWD],[REALNAME],[MAILID],[modifiedBy],[createdOn] )" &
                             "values (" & toSQLValue(txtUN) & "," &
                                          toSQLValue(txtPWD) & "," &
                                          toSQLValue(txtRealName) & "," &
-                                         toSQLValueS(cboMail.EditValue.ToString) & ")"
+                                         toSQLValueS(cboMail.EditValue.ToString) & "," &
+                                         toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                 Case FormMode.EditRecord
                     If Valid.ValidateForm(LayoutControl1) Then
                         sSQL = "UPDATE USR set UN =  " & toSQLValue(txtUN) & "," &
                                "PWD = " & toSQLValue(txtPWD) & "," &
                                "RealName = " & toSQLValue(txtRealName) & "," &
+                               "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
                                "MailID = " & toSQLValueS(cboMail.EditValue.ToString) &
                                " where id = '" & sID & "'"
                     End If

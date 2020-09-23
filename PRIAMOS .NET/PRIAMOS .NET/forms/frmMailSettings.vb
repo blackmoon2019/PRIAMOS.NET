@@ -111,18 +111,20 @@ Public Class frmMailSettings
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sSQL = "INSERT INTO MAILS ([server],[un],[pwd],[port],[ssl]) " &
+                        sSQL = "INSERT INTO MAILS ([server],[un],[pwd],[port],[ssl],[modifiedBy],[createdOn]) " &
                                 "values (" & toSQLValue(txtServer) & "," &
                                              toSQLValue(txtUN) & "," &
                                              toSQLValue(txtPWD) & "," &
                                              toSQLValue(txtPort, True) & "," &
-                                             chkSSL.EditValue & ")"
+                                             chkSSL.EditValue & "," &
+                                             toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                     Case FormMode.EditRecord
 
                         sSQL = "UPDATE MAILS set UN =  " & toSQLValue(txtUN) & "," &
-                                   "PWD = " & toSQLValue(txtPWD) & "," &
+                               "PWD = " & toSQLValue(txtPWD) & "," &
                                "server = " & toSQLValue(txtServer) & "," &
                                "port = " & toSQLValue(txtPort, True) & "," &
+                               "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
                                "ssl = " & chkSSL.EditValue &
                                " where id = '" & sID & "'"
 

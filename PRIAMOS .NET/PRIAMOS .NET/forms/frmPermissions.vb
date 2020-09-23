@@ -7,6 +7,7 @@ Public Class frmPermissions
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
+    Private Log As New Transactions
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -119,18 +120,22 @@ Public Class frmPermissions
                     Case FormMode.NewRecord
                         ' Καταχώρηση General Permissions
                         sGuid = System.Guid.NewGuid.ToString
-                        sSQL = "INSERT INTO RIGHTS ([ID],[UID],[INSERT],[EDIT],[DELETE]) " &
+                        sSQL = "INSERT INTO RIGHTS ([ID],[UID],[INSERT],[EDIT],[DELETE],[modifiedBy],[createdOn]) " &
                                     "values (" & toSQLValueS(sGuid) & "," &
                                                  toSQLValueS(cboUsers.EditValue.ToString) & "," &
                                                  chkInsert.EditValue & "," &
                                                  chkEdit.EditValue & "," &
-                                                 chkDelete.EditValue & ")"
+                                                 chkDelete.EditValue & "," &
+                                                 toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()
                         End Using
+
                         ' Καταχώρηση Permissions Per Form
                         For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
-                            sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID]) values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & ")"
+                            sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID],[modifiedBy],[createdOn])  
+                                    values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & "," &
+                                                toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                             Using oCmd As New SqlCommand(sSQL, CNDB)
                                 oCmd.ExecuteNonQuery()
                             End Using
@@ -140,7 +145,8 @@ Public Class frmPermissions
 
                         sSQL = "UPDATE RIGHTS set [INSERT] =  " & chkInsert.EditValue & "," &
                                    "[DELETE] = " & chkDelete.EditValue & "," &
-                                   "[EDIT] = " & chkEdit.EditValue &
+                                   "[EDIT] = " & chkEdit.EditValue & "," &
+                                   "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
                                    " where id = '" & sID & "'"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()
@@ -151,7 +157,9 @@ Public Class frmPermissions
                         End Using
                         ' Καταχώρηση Permissions Per Form
                         For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
-                            sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID]) values (" & toSQLValueS(sID) & "," & toSQLValueS(item.Tag.ToString()) & ")"
+                            sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID],[modifiedBy],[createdOn])  
+                                    values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & "," &
+                                                toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                             Using oCmd As New SqlCommand(sSQL, CNDB)
                                 oCmd.ExecuteNonQuery()
                             End Using

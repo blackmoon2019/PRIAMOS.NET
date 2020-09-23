@@ -38,6 +38,7 @@ Partial Class frmMain
         Me.bbDB = New DevExpress.XtraBars.BarStaticItem()
         Me.bbLink = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
+        Me.bbBDG = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -61,9 +62,9 @@ Partial Class frmMain
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 21
+        Me.RibbonControl1.MaxItemId = 22
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.BarClose)
@@ -208,7 +209,14 @@ Partial Class frmMain
         Me.RepositoryItemHyperLinkEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.RepositoryItemHyperLinkEdit1.Name = "RepositoryItemHyperLinkEdit1"
         Me.RepositoryItemHyperLinkEdit1.SingleClick = True
-        Me.RepositoryItemHyperLinkEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'bbBDG
+        '
+        Me.bbBDG.Caption = "Πολυκατοικίες"
+        Me.bbBDG.Id = 21
+        Me.bbBDG.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_building_40
+        Me.bbBDG.Name = "bbBDG"
+        Me.bbBDG.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'RibbonPage1
         '
@@ -219,6 +227,7 @@ Partial Class frmMain
         'RibbonPageGroup1
         '
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbUsers)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbBDG)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
         '
@@ -328,4 +337,5 @@ Partial Class frmMain
     Friend WithEvents RepositoryItemHypertextLabel1 As DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel
     Friend WithEvents bbLink As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemHyperLinkEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit
+    Friend WithEvents bbBDG As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -71,4 +71,11 @@ Public Class frmMain
         Process.Start(bbLink.EditValue)
     End Sub
 
+    Private Sub bbBDG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbBDG.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Πολυκατοικίες"
+        form.DataTable = "vw_BDG"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class
