@@ -113,6 +113,42 @@ Namespace My
                 Me("frmPermissions") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property UNSave() As Boolean
+            Get
+                Return CType(Me("UNSave"),Boolean)
+            End Get
+            Set
+                Me("UNSave") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property UN() As String
+            Get
+                Return CType(Me("UN"),String)
+            End Get
+            Set
+                Me("UN") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmBDG() As Global.System.Drawing.Size
+            Get
+                Return CType(Me("frmBDG"),Global.System.Drawing.Size)
+            End Get
+            Set
+                Me("frmBDG") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

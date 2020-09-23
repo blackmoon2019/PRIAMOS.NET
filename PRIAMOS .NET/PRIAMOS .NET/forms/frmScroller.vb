@@ -458,6 +458,7 @@ Public Class frmScroller
         Dim form As frmUsers = New frmUsers()
         Dim form2 As frmMailSettings = New frmMailSettings()
         Dim form3 As frmPermissions = New frmPermissions()
+        Dim form4 As frmBDG = New frmBDG()
         Select Case sDataTable
             Case "vw_USR"
                 form.Text = "Διαχείριση Χρηστών"
@@ -483,6 +484,14 @@ Public Class frmScroller
                 form3.FormScroller = Me
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form3), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form3.Show()
+            Case "vw_BDG"
+                form4.Text = "Πολυκατοικίες"
+                form4.MdiParent = frmMain
+                form4.Mode = FormMode.NewRecord
+                form4.Scroller = GridView1
+                form4.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form4), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                form4.Show()
         End Select
     End Sub
     'Φορτώνω τις εγγραφές στο GRID

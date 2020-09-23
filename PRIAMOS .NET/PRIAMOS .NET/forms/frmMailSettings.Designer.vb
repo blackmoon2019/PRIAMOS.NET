@@ -25,13 +25,13 @@ Partial Class frmMailSettings
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
         Me.txtPort = New DevExpress.XtraEditors.TextEdit()
         Me.chkSSL = New DevExpress.XtraEditors.CheckEdit()
+        Me.cmdCheckMail = New DevExpress.XtraEditors.SimpleButton()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.cmdCheckMail = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
@@ -46,11 +46,11 @@ Partial Class frmMailSettings
         CType(Me.txtPort.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSSL.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,38 +77,38 @@ Partial Class frmMailSettings
         '
         'txtServer
         '
-        Me.txtServer.Location = New System.Drawing.Point(68, 36)
+        Me.txtServer.Location = New System.Drawing.Point(64, 36)
         Me.txtServer.Name = "txtServer"
-        Me.txtServer.Size = New System.Drawing.Size(169, 20)
+        Me.txtServer.Size = New System.Drawing.Size(173, 20)
         Me.txtServer.StyleController = Me.LayoutControl1
         Me.txtServer.TabIndex = 10
         '
         'txtUN
         '
-        Me.txtUN.Location = New System.Drawing.Point(68, 12)
+        Me.txtUN.Location = New System.Drawing.Point(64, 12)
         Me.txtUN.Name = "txtUN"
-        Me.txtUN.Size = New System.Drawing.Size(169, 20)
+        Me.txtUN.Size = New System.Drawing.Size(173, 20)
         Me.txtUN.StyleController = Me.LayoutControl1
         Me.txtUN.TabIndex = 12
         '
         'txtPWD
         '
-        Me.txtPWD.Location = New System.Drawing.Point(297, 12)
+        Me.txtPWD.Location = New System.Drawing.Point(293, 12)
         Me.txtPWD.Name = "txtPWD"
         Me.txtPWD.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPWD.Size = New System.Drawing.Size(211, 20)
+        Me.txtPWD.Size = New System.Drawing.Size(215, 20)
         Me.txtPWD.StyleController = Me.LayoutControl1
         Me.txtPWD.TabIndex = 13
         '
         'txtPort
         '
-        Me.txtPort.Location = New System.Drawing.Point(297, 36)
+        Me.txtPort.Location = New System.Drawing.Point(293, 36)
         Me.txtPort.Name = "txtPort"
         Me.txtPort.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtPort.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtPort.Properties.Mask.EditMask = "n0"
         Me.txtPort.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.txtPort.Size = New System.Drawing.Size(75, 20)
+        Me.txtPort.Size = New System.Drawing.Size(79, 20)
         Me.txtPort.StyleController = Me.LayoutControl1
         Me.txtPort.TabIndex = 14
         '
@@ -124,6 +124,15 @@ Partial Class frmMailSettings
         Me.chkSSL.StyleController = Me.LayoutControl1
         Me.chkSSL.TabIndex = 15
         '
+        'cmdCheckMail
+        '
+        Me.cmdCheckMail.Location = New System.Drawing.Point(12, 70)
+        Me.cmdCheckMail.Name = "cmdCheckMail"
+        Me.cmdCheckMail.Size = New System.Drawing.Size(225, 22)
+        Me.cmdCheckMail.StyleController = Me.LayoutControl1
+        Me.cmdCheckMail.TabIndex = 16
+        Me.cmdCheckMail.Text = "Check Mail Settings"
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -133,23 +142,13 @@ Partial Class frmMailSettings
         Me.Root.Size = New System.Drawing.Size(520, 104)
         Me.Root.TextVisible = False
         '
-        'LayoutControlItem5
+        'EmptySpaceItem1
         '
-        Me.LayoutControlItem5.Control = Me.txtUN
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(229, 24)
-        Me.LayoutControlItem5.Text = "UserName"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(53, 13)
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.txtPWD
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(229, 0)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(271, 24)
-        Me.LayoutControlItem6.Text = "Password"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(53, 13)
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 48)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(229, 10)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem7
         '
@@ -158,7 +157,25 @@ Partial Class frmMailSettings
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
         Me.LayoutControlItem7.Size = New System.Drawing.Size(135, 24)
         Me.LayoutControlItem7.Text = "Port"
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(53, 13)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(49, 13)
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.txtUN
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(229, 24)
+        Me.LayoutControlItem5.Text = "UserName"
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(49, 13)
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.txtPWD
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(229, 0)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(271, 24)
+        Me.LayoutControlItem6.Text = "Password"
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(49, 13)
         '
         'LayoutControlItem8
         '
@@ -168,23 +185,6 @@ Partial Class frmMailSettings
         Me.LayoutControlItem8.Size = New System.Drawing.Size(136, 24)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 48)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(229, 10)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'cmdCheckMail
-        '
-        Me.cmdCheckMail.Location = New System.Drawing.Point(12, 70)
-        Me.cmdCheckMail.Name = "cmdCheckMail"
-        Me.cmdCheckMail.Size = New System.Drawing.Size(225, 22)
-        Me.cmdCheckMail.StyleController = Me.LayoutControl1
-        Me.cmdCheckMail.TabIndex = 16
-        Me.cmdCheckMail.Text = "Check Mail Settings"
         '
         'LayoutControlItem4
         '
@@ -219,14 +219,14 @@ Partial Class frmMailSettings
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtServer
-        Me.LayoutControlItem3.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleRight
-        Me.LayoutControlItem3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exclamation_mark_16
+        Me.LayoutControlItem3.ImageOptions.Alignment = System.Drawing.ContentAlignment.TopRight
+        Me.LayoutControlItem3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(229, 24)
         Me.LayoutControlItem3.Tag = "1"
         Me.LayoutControlItem3.Text = "Server"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(53, 16)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(49, 19)
         '
         'LayoutControlItem2
         '
@@ -263,11 +263,11 @@ Partial Class frmMailSettings
         CType(Me.txtPort.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSSL.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()

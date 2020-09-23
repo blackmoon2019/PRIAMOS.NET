@@ -126,8 +126,15 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="classes\CheckPermissions.vb" />
     <Compile Include="classes\CN.vb" />
+    <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
+    <Compile Include="forms\frmBDG.Designer.vb">
+      <DependentUpon>frmBDG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmBDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmMailSettings.Designer.vb">
       <DependentUpon>frmMailSettings.vb</DependentUpon>
     </Compile>
@@ -196,6 +203,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\frmBDG.resx">
+      <DependentUpon>frmBDG.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmMailSettings.resx">
       <DependentUpon>frmMailSettings.vb</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +271,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\rsz_11rsz_asterisk.png" />
+    <None Include="Resources\rsz_1rsz_asterisk.png" />
+    <None Include="Resources\rsz_asterisk.png" />
+    <None Include="Resources\icons8-building-40.png" />
     <None Include="Resources\icons8-copy-16.png" />
     <None Include="Resources\rsz_user-arrow-right-icon.png" />
     <None Include="Resources\Icojam-Blue-Bits-Users-0.png" />
