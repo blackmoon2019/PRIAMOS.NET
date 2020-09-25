@@ -4,10 +4,12 @@ Imports DevExpress.XtraEditors
 Public Class frmPermissions
     Private sID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
+
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private Log As New Transactions
+    Private FillCbo As New FillCombos
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -23,6 +25,7 @@ Public Class frmPermissions
             Frm = value
         End Set
     End Property
+
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
@@ -30,7 +33,7 @@ Public Class frmPermissions
     Private Sub frmPermissions_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             ' Γεμίζω τους χρήστες στον Combo
-            FillCombo()
+            FillCbo.USERS(cboUsers)
             FillCheckedList()
             Select Case Mode
                 Case FormMode.EditRecord
@@ -58,24 +61,7 @@ Public Class frmPermissions
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub FillCombo()
-        Try
-            Dim ds As DataSet = New DataSet
-            Dim cmd As SqlCommand = New SqlCommand("Select id,RealName from vw_USR", CNDB)
-            Dim sdr As SqlDataReader = cmd.ExecuteReader()
 
-            cboUsers.Properties.DataSource = sdr
-            cboUsers.Properties.DisplayMember = "RealName"
-            cboUsers.Properties.ValueMember = "id"
-            cboUsers.Properties.PopulateColumns()
-            cboUsers.Properties.Columns(0).Visible = False
-            cboUsers.Properties.Columns(1).Caption = "Χρήστης"
-            sdr.Close()
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
     Private Sub FillCheckedList()
         Try
             Dim ds As DataSet = New DataSet

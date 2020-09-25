@@ -7,9 +7,11 @@ Public Class ValidateControls
             If TypeOf item Is LayoutControlItem Then
                 Dim LItem As LayoutControlItem = CType(item, LayoutControlItem)
                 If LItem.Tag = "1" Then
-                    If LItem.Control.Text = "" Then
-                        XtraMessageBox.Show("Υπάρχουν υποχρεωτικά πεδία που δεν έχετε συμπληρώσει.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Return False
+                    If LItem.Control.Visible = True Then
+                        If LItem.Control.Text = "" Then
+                            XtraMessageBox.Show("Υπάρχουν υποχρεωτικά πεδία που δεν έχετε συμπληρώσει.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Return False
+                        End If
                     End If
                 End If
                 End If

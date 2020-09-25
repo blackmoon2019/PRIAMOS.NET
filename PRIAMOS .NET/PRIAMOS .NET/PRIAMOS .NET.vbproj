@@ -69,6 +69,7 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="DevExpress.BonusSkins.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -79,6 +80,7 @@
     <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -98,10 +100,14 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -126,6 +132,8 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="classes\CheckPermissions.vb" />
     <Compile Include="classes\CN.vb" />
+    <Compile Include="classes\DBQueries.vb" />
+    <Compile Include="classes\FillCombos.vb" />
     <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
@@ -133,6 +141,12 @@
       <DependentUpon>frmBDG.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\frmBDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmGen.Designer.vb">
+      <DependentUpon>frmGen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmGen.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmMailSettings.Designer.vb">
@@ -206,6 +220,9 @@
     <EmbeddedResource Include="forms\frmBDG.resx">
       <DependentUpon>frmBDG.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmGen.resx">
+      <DependentUpon>frmGen.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmMailSettings.resx">
       <DependentUpon>frmMailSettings.vb</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-form-16.png" />
     <None Include="Resources\rsz_11rsz_asterisk.png" />
     <None Include="Resources\rsz_1rsz_asterisk.png" />
     <None Include="Resources\rsz_asterisk.png" />
