@@ -7,6 +7,7 @@ Public Class frmUsers
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
+    Private FillCbo As New FillCombos
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -55,27 +56,10 @@ Public Class frmUsers
 
     End Sub
 
-    Private Sub FillCombo()
-        Try
-            Dim ds As DataSet = New DataSet
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
-            Dim sdr As SqlDataReader = cmd.ExecuteReader()
 
-            cboMail.Properties.DataSource = sdr
-            cboMail.Properties.DisplayMember = "Server"
-            cboMail.Properties.ValueMember = "id"
-            cboMail.Properties.PopulateColumns()
-            cboMail.Properties.Columns(0).Visible = False
-            cboMail.Properties.Columns(1).Caption = "Email Account"
-            sdr.Close()
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
     Private Sub frmUsers_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-            FillCombo()
+            FillCbo.MAIL(cboMail)
             Select Case Mode
                 Case FormMode.EditRecord
                     Dim cmd As SqlCommand = New SqlCommand("Select * from vw_USR where id ='" + sID + "'", CNDB)
