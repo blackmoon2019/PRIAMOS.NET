@@ -4,6 +4,7 @@ Imports DevExpress.XtraEditors
 
 Public Class frmLogin
     Private UserPermissions As New CheckPermissions
+    Private Prog_Prop As New ProgProp
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim CN As New CN
 
@@ -40,6 +41,8 @@ Public Class frmLogin
                     UserPermissions.GetUserPermissions()
                     sSQL = "UPDATE USR SET dtLogin = getdate() where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+                    'Δεκαδικά Προγράμματος
+                    Prog_Prop.GetProgDecimals()
                     XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     If My.Settings.UNSave = True Then My.Settings.UN = txtUN.Text : My.Settings.Save()
                 End If

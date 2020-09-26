@@ -24,6 +24,10 @@ Module Main
         Public AllowDelete As Boolean
     End Structure
     Public UserProps As USER_PROPS
+    Public Structure PROG_PROPS
+        Public Decimals As Integer
+    End Structure
+    Public ProgProps As PROG_PROPS
     Public Function toSQLValue(t As DevExpress.XtraEditors.TextEdit, Optional ByVal isnum As Boolean = False) As String
         If t.Text.Length = 0 Then
             Return "NULL" 'this will pass through any SQL statement without notice  
@@ -43,7 +47,7 @@ Module Main
         If t.Length = 0 Then
             Return "NULL" 'this will pass through any SQL statement without notice  
         Else 'Lets suppose our textbox is checked to contain only numbers, so we count on it  
-            If Not isnum Then Return "'" + t + "'" Else Return t
+            If Not isnum Then Return "'" + t + "'" Else Return t.Replace(",", ".")
         End If
     End Function
     'Public Function FindItemByValChkListBox(ByVal sValue As String, ByVal chkList As DevExpress.XtraEditors.CheckedListBoxControl) As DevExpress.XtraEditors.Controls.CheckedListBoxItem
