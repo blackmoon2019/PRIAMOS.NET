@@ -10,6 +10,7 @@ Public Class frmMailSettings
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
+    Private DBQ As New DBQueries
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -87,8 +88,6 @@ Public Class frmMailSettings
     '    Next rowHandle
     '    ToolTipController1.ToolTipStyle = DevExpress.Utils.ToolTipStyle.Windows7
     '    ToolTipController1.SetToolTip(cboUsers, sVal)
-
-
     'End Sub
 
     Private Sub cboUsers_CustomDisplayText(sender As Object, e As CustomDisplayTextEventArgs)
@@ -105,40 +104,21 @@ Public Class frmMailSettings
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
-        Dim sSQL As String
+        Dim sResult As Boolean
         Try
             'For Each rowHandle As Integer In GridLookUpEdit1View.GetSelectedRows()
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sSQL = "INSERT INTO MAILS ([server],[un],[pwd],[port],[ssl],[modifiedBy],[createdOn]) " &
-                                "values (" & toSQLValue(txtServer) & "," &
-                                             toSQLValue(txtUN) & "," &
-                                             toSQLValue(txtPWD) & "," &
-                                             toSQLValue(txtPort, True) & "," &
-                                             chkSSL.EditValue & "," &
-                                             toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                        sResult = DBQ.InsertData(LayoutControl1, "MAILS")
                     Case FormMode.EditRecord
-
-                        sSQL = "UPDATE MAILS set UN =  " & toSQLValue(txtUN) & "," &
-                               "PWD = " & toSQLValue(txtPWD) & "," &
-                               "server = " & toSQLValue(txtServer) & "," &
-                               "port = " & toSQLValue(txtPort, True) & "," &
-                               "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
-                               "ssl = " & chkSSL.EditValue &
-                               " where id = '" & sID & "'"
-
+                        sResult = DBQ.UpdateData(LayoutControl1, "MAILS", sID)
                 End Select
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                    Dim form As frmScroller = Frm
-                    form.LoadRecords("vw_MAILS")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End Using
+                Dim form As frmScroller = Frm
+                form.LoadRecords("vw_MAILS")
+                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             '    values.Add(GridLookUpEdit1View.GetRowCellValue(rowHandle, "Realname"))
-
-
             'Next rowHandle
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

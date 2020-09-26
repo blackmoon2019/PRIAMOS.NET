@@ -8,6 +8,7 @@ Public Class frmUsers
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private FillCbo As New FillCombos
+    Private DBQ As New DBQueries
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -24,39 +25,22 @@ Public Class frmUsers
         End Set
     End Property
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
-        Dim sSQL As String
+        Dim sResult As Boolean
         Try
-            Select Case Mode
-                Case FormMode.NewRecord
-                    sSQL = "INSERT INTO USR ([UN],[PWD],[REALNAME],[MAILID],[modifiedBy],[createdOn] )" &
-                            "values (" & toSQLValue(txtUN) & "," &
-                                         toSQLValue(txtPWD) & "," &
-                                         toSQLValue(txtRealName) & "," &
-                                         toSQLValueS(cboMail.EditValue.ToString) & "," &
-                                         toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
-                Case FormMode.EditRecord
-                    If Valid.ValidateForm(LayoutControl1) Then
-                        sSQL = "UPDATE USR set UN =  " & toSQLValue(txtUN) & "," &
-                               "PWD = " & toSQLValue(txtPWD) & "," &
-                               "RealName = " & toSQLValue(txtRealName) & "," &
-                               "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
-                               "MailID = " & toSQLValueS(cboMail.EditValue.ToString) &
-                               " where id = '" & sID & "'"
-                    End If
-            End Select
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-                Dim form As frmScroller = Frm
-                form.LoadRecords("vw_USR")
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Using
+            If Valid.ValidateForm(LayoutControl1) Then
+                Select Case Mode
+                    Case FormMode.NewRecord : sResult = DBQ.InsertData(LayoutControl1, "USR")
+                    Case FormMode.EditRecord : sResult = DBQ.UpdateData(LayoutControl1, "USR", sID)
+                End Select
+            Dim form As frmScroller = Frm
+            form.LoadRecords("vw_USR")
+                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
-
-
     Private Sub frmUsers_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             FillCbo.MAIL(cboMail)

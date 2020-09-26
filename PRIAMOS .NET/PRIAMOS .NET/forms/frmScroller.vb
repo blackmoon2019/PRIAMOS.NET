@@ -92,7 +92,7 @@ Public Class frmScroller
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    'Διαγραφλη Εγγραφής
+    'Διαγραφη Εγγραφής
     Private Sub DeleteRecord()
         Dim sSQL As String
         Dim sSQL2 As String
