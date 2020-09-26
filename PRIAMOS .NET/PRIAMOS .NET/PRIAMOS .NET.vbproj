@@ -136,6 +136,7 @@
     <Compile Include="classes\CN.vb" />
     <Compile Include="classes\DBQueries.vb" />
     <Compile Include="classes\FillCombos.vb" />
+    <Compile Include="classes\ProgProp.vb" />
     <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
@@ -290,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-activity-history-16.png" />
     <None Include="Resources\icons8-form-16.png" />
     <None Include="Resources\rsz_11rsz_asterisk.png" />
     <None Include="Resources\rsz_1rsz_asterisk.png" />

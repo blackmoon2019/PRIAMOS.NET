@@ -12,6 +12,7 @@ Public Class frmBDG
     Private Valid As New ValidateControls
     Private Log As New Transactions
     Private FillCbo As New FillCombos
+    Private DBQ As New DBQueries
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -32,13 +33,25 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
-        FillCbo.COU(cboCOU)
         Dim sSQL As New System.Text.StringBuilder
-        If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
-        FillCbo.AREAS(cboAREAS, sSQL)
+        txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        txtAam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
+        txtIam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
+        'Νομοί
+        FillCbo.COU(cboCOU)
+        Select Case Mode
+            Case FormMode.NewRecord
+                dtDTS.EditValue = DateTime.Now
+                txtCode.Text = DBQ.GetNextId("BDG")
+            Case FormMode.EditRecord
+                If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
+                FillCbo.AREAS(cboAREAS, sSQL)
+        End Select
         Me.CenterToScreen()
-        My.Settings.frmUsers = Me.Location
+        My.Settings.frmBDG = Me.Location
         My.Settings.Save()
+        cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
 
     Private Sub frmBDG_Resize(sender As Object, e As EventArgs) Handles Me.Resize
@@ -54,7 +67,6 @@ Public Class frmBDG
         FillCbo.AREAS(cboAREAS, sSQL)
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
-
     Private Sub cboAREAS_EditValueChanged(sender As Object, e As EventArgs) Handles cboAREAS.EditValueChanged
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
@@ -134,5 +146,33 @@ Public Class frmBDG
 
     Private Sub NavGeneral_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavGeneral.ElementClick
         tabBDG.SelectedTabPage = XtraTabPage1
+    End Sub
+
+    Private Sub txtAR_Validated(sender As Object, e As EventArgs) Handles txtAR.Validated
+        txtNam.Text = cboADR.Text + " " + txtAR.Text
+    End Sub
+
+    Private Sub cboADR_EditValueChanged(sender As Object, e As EventArgs) Handles cboADR.EditValueChanged
+        txtNam.Text = cboADR.Text + " " + txtAR.Text
+    End Sub
+
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        Dim sResult As Boolean
+        Try
+            If Valid.ValidateForm(LayoutControl1) Then
+                Select Case Mode
+                    Case FormMode.NewRecord
+                        sResult = DBQ.InsertData(LayoutControl1, "BDG")
+                        Dim form As frmScroller = Frm
+                        form.LoadRecords("vw_BDG")
+                    Case FormMode.EditRecord
+                        sResult = DBQ.UpdateData(LayoutControl1, "BDG", sID)
+                End Select
+                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

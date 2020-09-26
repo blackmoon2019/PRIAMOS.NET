@@ -3,10 +3,12 @@ Imports DevExpress.XtraLayout
 Imports DevExpress.XtraEditors
 Imports Microsoft.SqlServer.Server
 
+
 Public Class DBQueries
     Public Function GetNextId(ByVal sTable As String) As Integer
-        Dim cmd As SqlCommand = New SqlCommand("SELECT IDENT_CURRENT('" & sTable & "') + 1 AS ID", CNDB)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT IDENT_CURRENT('" & sTable & "')  AS ID", CNDB)
         Dim ID As Integer = cmd.ExecuteScalar()
+        If ID > 1 Then ID = ID + 1
         Return ID
     End Function
     Public Function InsertData(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sTable As String, Optional ByVal sGuid As String = "") As Boolean
@@ -40,11 +42,21 @@ Public Class DBQueries
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
+                                    ElseIf txt.Properties.Mask.EditMask = "d" Then ' Αφορά το DateEditControl
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CDate(txt.Text).ToString("yyyyMMdd")))
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                                     Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
                                     sSQLV.Append(IIf(IsFirstField = True, "", ",") & chk.EditValue)
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
+                                    Dim dt As DevExpress.XtraEditors.DateEdit
+                                    dt = Ctrl
+                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & dt.EditValue.ToString("yyyyMMdd"))
                                 End If
                                 IsFirstField = False
                             End If
@@ -92,11 +104,21 @@ Public Class DBQueries
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    sSQL.Append(toSQLValueS(txt.Text))
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Then
+                                        sSQL.Append(toSQLValueS(txt.EditValue))
+                                    ElseIf txt.Properties.Mask.EditMask = "d" Then ' Αφορά το DateEditControl
+                                        sSQL.Append(toSQLValueS(CDate(txt.Text).ToString("yyyyMMdd")))
+                                    Else
+                                        sSQL.Append(toSQLValueS(txt.Text))
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                                     Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
                                     sSQL.Append(chk.EditValue)
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
+                                    Dim dt As DevExpress.XtraEditors.DateEdit
+                                    dt = Ctrl
+                                    sSQL.Append(dt.EditValue)
                                 End If
                                 IsFirstField = False
                             End If

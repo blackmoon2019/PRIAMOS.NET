@@ -49,6 +49,9 @@ Public Class frmGen
 
     Private Sub frmGen_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadGen()
+        Me.CenterToScreen()
+        My.Settings.frmGen = Me.Location
+        My.Settings.Save()
     End Sub
 
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
@@ -60,7 +63,6 @@ Public Class frmGen
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
-        Dim sSQL As String
         Dim sGuid As String
         Dim sResult As Boolean
         Try
