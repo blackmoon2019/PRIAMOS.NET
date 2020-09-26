@@ -4,12 +4,12 @@ Imports DevExpress.XtraEditors
 Public Class frmPermissions
     Private sID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
-
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private Log As New Transactions
     Private FillCbo As New FillCombos
+    Private DBQ As New DBQueries
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -100,61 +100,46 @@ Public Class frmPermissions
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sSQL As String
         Dim sGuid As String
+        Dim sResult As Boolean
         Try
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
                         ' Καταχώρηση General Permissions
                         sGuid = System.Guid.NewGuid.ToString
-                        sSQL = "INSERT INTO RIGHTS ([ID],[UID],[INSERT],[EDIT],[DELETE],[modifiedBy],[createdOn]) " &
-                                    "values (" & toSQLValueS(sGuid) & "," &
-                                                 toSQLValueS(cboUsers.EditValue.ToString) & "," &
-                                                 chkInsert.EditValue & "," &
-                                                 chkEdit.EditValue & "," &
-                                                 chkDelete.EditValue & "," &
-                                                 toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
-                        Using oCmd As New SqlCommand(sSQL, CNDB)
-                            oCmd.ExecuteNonQuery()
-                        End Using
-
-                        ' Καταχώρηση Permissions Per Form
-                        For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
-                            sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID],[modifiedBy],[createdOn])  
-                                    values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & "," &
-                                                toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
-                            Using oCmd As New SqlCommand(sSQL, CNDB)
-                                oCmd.ExecuteNonQuery()
-                            End Using
-                        Next
-
+                        sResult = DBQ.InsertData(LayoutControl1, "RIGHTS", sGuid)
+                        If sResult Then
+                            ' Καταχώρηση Permissions Per Form
+                            For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
+                                sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID],[modifiedBy],[createdOn])  
+                                        values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & "," &
+                                                    toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                            Next
+                        End If
                     Case FormMode.EditRecord
-
-                        sSQL = "UPDATE RIGHTS set [INSERT] =  " & chkInsert.EditValue & "," &
-                                   "[DELETE] = " & chkDelete.EditValue & "," &
-                                   "[EDIT] = " & chkEdit.EditValue & "," &
-                                   "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
-                                   " where id = '" & sID & "'"
-                        Using oCmd As New SqlCommand(sSQL, CNDB)
-                            oCmd.ExecuteNonQuery()
-                        End Using
-                        sSQL = "DELETE FROM FORM_RIGHTS where RID = '" & sID & "'"
-                        Using oCmd As New SqlCommand(sSQL, CNDB)
-                            oCmd.ExecuteNonQuery()
-                        End Using
-                        ' Καταχώρηση Permissions Per Form
-                        For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
-                            sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID],[modifiedBy],[createdOn])  
-                                    values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & "," &
-                                                toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                        sResult = DBQ.UpdateData(LayoutControl1, "RIGHTS", sID)
+                        If sResult Then
+                            sSQL = "DELETE FROM FORM_RIGHTS where RID = '" & sID & "'"
                             Using oCmd As New SqlCommand(sSQL, CNDB)
                                 oCmd.ExecuteNonQuery()
                             End Using
-                        Next
-
+                            ' Καταχώρηση Permissions Per Form
+                            For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
+                                sSQL = "INSERT INTO FORM_RIGHTS ([RID],[FID],[modifiedBy],[createdOn])  
+                                    values (" & toSQLValueS(sID) & "," & toSQLValueS(item.Tag.ToString) & "," &
+                                                    toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                            Next
+                        End If
                 End Select
                 Dim form As frmScroller = Frm
                 form.LoadRecords("vw_RIGHTS")
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

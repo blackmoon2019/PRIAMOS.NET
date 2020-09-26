@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Threading
 Imports DevExpress.CodeParser
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraExport.Xls
@@ -14,6 +15,7 @@ Public Class frmGen
     Private DBQ As New DBQueries
     Private FillCbo As New FillCombos
     Private sDataTable As String
+    Private S As New System.Text.StringBuilder
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -46,74 +48,21 @@ Public Class frmGen
     End Sub
 
     Private Sub frmGen_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-        Select Case sDataTable
-            Case "COU"
-                If Mode = FormMode.NewRecord Then
-                    txtID.Text = DBQ.GetNextId("COU")
-                    cmdSave.Enabled = UserProps.AllowInsert
-                Else
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_COU where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtID.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
-                        sdr.Close()
-                    End If
-                    cmdSave.Enabled = UserProps.AllowEdit
-                End If
-
-            Case "AREAS"
-                If Mode = FormMode.NewRecord Then
-                    txtID.Text = DBQ.GetNextId("AREAS")
-                    FillCbo.COU(cbo1)
-                    cmdSave.Enabled = UserProps.AllowInsert
-                Else
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_AREAS where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtID.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("COUID")) = False Then cbo1.EditValue = sdr.GetGuid(sdr.GetOrdinal("COUID"))
-                        sdr.Close()
-                    End If
-                    cmdSave.Enabled = UserProps.AllowEdit
-                End If
-            Case "ADR"
-                If Mode = FormMode.NewRecord Then
-                    txtID.Text = DBQ.GetNextId("ADR")
-                    FillCbo.COU(cbo1)
-                    FillCbo.AREAS(cbo2)
-                    cmdSave.Enabled = UserProps.AllowInsert
-                Else
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_ADR where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtID.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("COUID")) = False Then cbo1.EditValue = sdr.GetGuid(sdr.GetOrdinal("COUID"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("AREAID")) = False Then cbo2.EditValue = sdr.GetGuid(sdr.GetOrdinal("AREAID"))
-                        sdr.Close()
-                    End If
-                    cmdSave.Enabled = UserProps.AllowEdit
-                End If
-        End Select
-
+        LoadGen()
     End Sub
 
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
         Mode = FormMode.NewRecord
-        Select Case sDataTable
-            Case "COU" : txtID.Text = DBQ.GetNextId("COU")
-            Case "AREAS" : txtID.Text = DBQ.GetNextId("AREAS")
-            Case "ADR" : txtID.Text = DBQ.GetNextId("ADR")
-        End Select
+        LoadGen()
         txtName.Text = ""
+        cbo1.EditValue = Nothing
+        cbo2.EditValue = Nothing
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sSQL As String
         Dim sGuid As String
+        Dim sResult As Boolean
         Try
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
@@ -121,93 +70,129 @@ Public Class frmGen
                         Select Case sDataTable
                             Case "COU"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sSQL = "INSERT INTO COU ([ID],[NAME],[modifiedBy],[createdOn]) " &
-                                        "values (" & toSQLValueS(sGuid) & "," &
-                                                 toSQLValue(txtName) & "," &
-                                                 toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
+                                sResult = DBQ.InsertData(LayoutControl1, "COU", sGuid)
                                 FillCbo.COU(CtrlCombo)
                                 CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 txtName.Text = ""
-                                txtID.Text = DBQ.GetNextId("COU")
+                                txtCode.Text = DBQ.GetNextId("COU")
                             Case "AREAS"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sSQL = "INSERT INTO AREAS ([ID],[NAME],[COUID], [modifiedBy],[createdOn]) " &
-                                        "values (" & toSQLValueS(sGuid) & "," &
-                                                 toSQLValue(txtName) & "," &
-                                                 toSQLValueS(cbo1.EditValue.ToString) & "," &
-                                                 toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
-                                FillCbo.AREAS(CtrlCombo)
+                                sResult = DBQ.InsertData(LayoutControl1, "AREAS", sGuid)
+                                FillCbo.AREAS(CtrlCombo, S)
                                 CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 txtName.Text = ""
                                 cbo1.EditValue = Nothing
-                                txtID.Text = DBQ.GetNextId("AREAS")
+                                txtCode.Text = DBQ.GetNextId("AREAS")
                             Case "ADR"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sSQL = "INSERT INTO ADR ([ID],[NAME],[COUID],[AREAID], [modifiedBy],[createdOn]) " &
-                                        "values (" & toSQLValueS(sGuid) & "," &
-                                                 toSQLValue(txtName) & "," &
-                                                 toSQLValueS(cbo1.EditValue.ToString) & "," &
-                                                 toSQLValueS(cbo2.EditValue.ToString) & "," &
-                                                 toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
-                                Dim S As New System.Text.StringBuilder
+                                sResult = DBQ.InsertData(LayoutControl1, "ADR", sGuid)
                                 FillCbo.ADR(CtrlCombo, S)
                                 CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 txtName.Text = ""
                                 cbo1.EditValue = Nothing
                                 cbo2.EditValue = Nothing
-                                txtID.Text = DBQ.GetNextId("ADR")
-
+                                txtCode.Text = DBQ.GetNextId("ADR")
                         End Select
-
-
                     Case FormMode.EditRecord
                         Select Case sDataTable
                             Case "COU"
-                                sSQL = "UPDATE COU set [NAME] =  " & toSQLValue(txtName) & "," &
-                                       "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) &
-                                       " where id = '" & sID & "'"
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
+                                sResult = DBQ.UpdateData(LayoutControl1, "COU", sID)
                                 FillCbo.COU(CtrlCombo)
                                 CtrlCombo.EditValue = System.Guid.Parse(sID)
                             Case "AREAS"
-                                sSQL = "UPDATE AREAS set [NAME] =  " & toSQLValue(txtName) & "," &
-                                       "COUID = " & toSQLValueS(cbo1.EditValue.ToString) & "," &
-                                       "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
-                                       " where id = '" & sID & "'"
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
-                                FillCbo.AREAS(CtrlCombo)
+                                sResult = DBQ.UpdateData(LayoutControl1, "AREAS", sID)
+                                FillCbo.AREAS(CtrlCombo, S)
                                 CtrlCombo.EditValue = System.Guid.Parse(sID)
-
                             Case "ADR"
-                                sSQL = "UPDATE ADR set [NAME] =  " & toSQLValue(txtName) & "," &
-                                       "COUID = " & toSQLValueS(cbo1.EditValue.ToString) & "," &
-                                       "AREAID = " & toSQLValueS(cbo2.EditValue.ToString) & "," &
-                                       "modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & "," &
-                                       " where id = '" & sID & "'"
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
-                                Dim S As New System.Text.StringBuilder
+                                sResult = DBQ.UpdateData(LayoutControl1, "ADR", sID)
                                 FillCbo.ADR(CtrlCombo, S)
                                 CtrlCombo.EditValue = System.Guid.Parse(sID)
                         End Select
-
                 End Select
+                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub LoadGen()
+        Select Case sDataTable
+            Case "COU"
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("COU")
+                Else
+                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_COU where id ='" + sID + "'", CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If (sdr.Read() = True) Then
+                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtCode.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
+                        sdr.Close()
+                    End If
+                End If
 
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Case "AREAS"
+                FillCbo.COU(cbo1)
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("AREAS")
+                Else
+                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_AREAS where id ='" + sID + "'", CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If (sdr.Read() = True) Then
+                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtCode.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("COUID")) = False Then cbo1.EditValue = sdr.GetGuid(sdr.GetOrdinal("COUID"))
+                        sdr.Close()
+                    End If
+                End If
+            Case "ADR"
+                FillCbo.COU(cbo1)
+                Dim sSQL As New System.Text.StringBuilder
+                FillCbo.AREAS(cbo2, sSQL)
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("ADR")
+                Else
+                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_ADR where id ='" + sID + "'", CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If (sdr.Read() = True) Then
+                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtCode.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("COUID")) = False Then cbo1.EditValue = sdr.GetGuid(sdr.GetOrdinal("COUID"))
+                        If sdr.IsDBNull(sdr.GetOrdinal("AREAID")) = False Then cbo2.EditValue = sdr.GetGuid(sdr.GetOrdinal("AREAID"))
+                        sdr.Close()
+                    End If
+                End If
+        End Select
+        cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
+        cmdDelete.Enabled = IIf(Mode = FormMode.NewRecord, False, UserProps.AllowDelete)
+
+    End Sub
+
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+        DeleteRecord()
+    End Sub
+    'Διαγραφη Εγγραφής
+    Private Sub DeleteRecord()
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM " & sDataTable & " WHERE ID = " & toSQLValueS(sID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Select Case sDataTable
+                    Case "COU" : FillCbo.COU(CtrlCombo)
+                        txtCode.Text = DBQ.GetNextId("COU")
+                    Case "AREAS" : FillCbo.AREAS(CtrlCombo, S)
+                        txtCode.Text = DBQ.GetNextId("AREAS")
+                    Case "ADR" : FillCbo.ADR(CtrlCombo, S)
+                        txtCode.Text = DBQ.GetNextId("ADR")
+                End Select
+                txtName.Text = ""
+                cbo1.EditValue = Nothing
+                cbo2.EditValue = Nothing
+                CtrlCombo.EditValue = Nothing
+
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

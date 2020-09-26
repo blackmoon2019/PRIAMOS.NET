@@ -1,11 +1,10 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 Public Class FillCombos
-    Public Sub AREAS(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+    Public Sub AREAS(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
         Try
-            Dim CouID As String = ""
-            If CtrlCombo.EditValue <> Nothing Then CouID = CtrlCombo.EditValue.ToString
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_AREAS  " & IIf(CouID.Length > 0, " where couid = " & toSQLValueS(CouID), "") & " order by name", CNDB)
+
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_AREAS  " & sSQL.ToString & " order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = ""
             CtrlCombo.Properties.Columns.Clear()

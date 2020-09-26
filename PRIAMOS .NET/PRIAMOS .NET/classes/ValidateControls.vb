@@ -14,7 +14,7 @@ Public Class ValidateControls
                         End If
                     End If
                 End If
-                End If
+            End If
         Next
         Return True
     End Function

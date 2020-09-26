@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraExport.Xls
 
@@ -32,7 +33,9 @@ Public Class frmBDG
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
         FillCbo.COU(cboCOU)
-        FillCbo.AREAS(cboAREAS)
+        Dim sSQL As New System.Text.StringBuilder
+        If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
+        FillCbo.AREAS(cboAREAS, sSQL)
         Me.CenterToScreen()
         My.Settings.frmUsers = Me.Location
         My.Settings.Save()
@@ -46,7 +49,9 @@ Public Class frmBDG
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
     Private Sub cboCOU_EditValueChanged(sender As Object, e As EventArgs) Handles cboCOU.EditValueChanged
-        FillCbo.AREAS(cboAREAS)
+        Dim sSQL As New System.Text.StringBuilder
+        If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
+        FillCbo.AREAS(cboAREAS, sSQL)
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
 
@@ -61,7 +66,7 @@ Public Class frmBDG
         form1.L2.Text = "Νομός"
         form1.DataTable = "COU"
         form1.CallerControl = cboCOU
-        form1.ID = cboCOU.EditValue.ToString
+        If cboCOU.EditValue <> Nothing Then form1.ID = cboCOU.EditValue.ToString
         form1.MdiParent = frmMain
         form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -78,7 +83,7 @@ Public Class frmBDG
         form1.L3.Text = "Νομοί"
         form1.DataTable = "AREAS"
         form1.CallerControl = cboAREAS
-        form1.ID = cboAREAS.EditValue
+        If cboAREAS.EditValue <> Nothing Then form1.ID = cboAREAS.EditValue.ToString
         form1.MdiParent = frmMain
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboAREAS.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
@@ -115,11 +120,19 @@ Public Class frmBDG
         form1.L4.Text = "Περιοχές"
         form1.DataTable = "ADR"
         form1.CallerControl = cboADR
-        form1.ID = cboADR.EditValue
+        If cboADR.EditValue <> Nothing Then form1.ID = cboADR.EditValue.ToString
         form1.MdiParent = frmMain
 
         If cboADR.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+    End Sub
+
+    Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
+        tabBDG.SelectedTabPage = XtraTabPage2
+    End Sub
+
+    Private Sub NavGeneral_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavGeneral.ElementClick
+        tabBDG.SelectedTabPage = XtraTabPage1
     End Sub
 End Class

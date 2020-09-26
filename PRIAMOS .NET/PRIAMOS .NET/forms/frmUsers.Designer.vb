@@ -22,18 +22,18 @@ Partial Class frmUsers
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
         Me.txtRealName = New DevExpress.XtraEditors.TextEdit()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.txtUN = New DevExpress.XtraEditors.TextEdit()
         Me.cboMail = New DevExpress.XtraEditors.LookUpEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -41,13 +41,13 @@ Partial Class frmUsers
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboMail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -74,7 +74,7 @@ Partial Class frmUsers
         Me.txtPWD.Size = New System.Drawing.Size(396, 20)
         Me.txtPWD.StyleController = Me.LayoutControl1
         Me.txtPWD.TabIndex = 4
-        Me.txtPWD.Tag = ""
+        Me.txtPWD.Tag = "pwd"
         '
         'txtRealName
         '
@@ -83,61 +83,7 @@ Partial Class frmUsers
         Me.txtRealName.Size = New System.Drawing.Size(396, 20)
         Me.txtRealName.StyleController = Me.LayoutControl1
         Me.txtRealName.TabIndex = 5
-        '
-        'txtUN
-        '
-        Me.txtUN.EditValue = ""
-        Me.txtUN.Location = New System.Drawing.Point(95, 12)
-        Me.txtUN.Name = "txtUN"
-        Me.txtUN.Size = New System.Drawing.Size(396, 20)
-        Me.txtUN.StyleController = Me.LayoutControl1
-        Me.txtUN.TabIndex = 0
-        '
-        'cboMail
-        '
-        Me.cboMail.Location = New System.Drawing.Point(95, 84)
-        Me.cboMail.Name = "cboMail"
-        Me.cboMail.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboMail.Properties.NullText = ""
-        Me.cboMail.Properties.PopupSizeable = False
-        Me.cboMail.Size = New System.Drawing.Size(396, 20)
-        Me.cboMail.StyleController = Me.LayoutControl1
-        Me.cboMail.TabIndex = 8
-        '
-        'Root
-        '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(503, 148)
-        Me.Root.TextVisible = False
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.txtRealName
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 48)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(483, 24)
-        Me.LayoutControlItem3.Text = "Ονοματεπώνυμο"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(80, 13)
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.cboMail
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 72)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(483, 24)
-        Me.LayoutControlItem6.Text = "Email"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(80, 13)
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 96)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(243, 32)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.txtRealName.Tag = "Realname"
         '
         'cmdExit
         '
@@ -160,31 +106,70 @@ Partial Class frmUsers
         Me.cmdSave.TabIndex = 7
         Me.cmdSave.Text = "Αποθήκευση"
         '
+        'txtUN
+        '
+        Me.txtUN.EditValue = ""
+        Me.txtUN.Location = New System.Drawing.Point(95, 12)
+        Me.txtUN.Name = "txtUN"
+        Me.txtUN.Size = New System.Drawing.Size(396, 20)
+        Me.txtUN.StyleController = Me.LayoutControl1
+        Me.txtUN.TabIndex = 0
+        Me.txtUN.Tag = "un"
+        '
+        'cboMail
+        '
+        Me.cboMail.Location = New System.Drawing.Point(95, 84)
+        Me.cboMail.Name = "cboMail"
+        Me.cboMail.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboMail.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboMail.Properties.NullText = ""
+        Me.cboMail.Properties.PopupSizeable = False
+        Me.cboMail.Size = New System.Drawing.Size(396, 20)
+        Me.cboMail.StyleController = Me.LayoutControl1
+        Me.cboMail.TabIndex = 8
+        Me.cboMail.Tag = "mailid"
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(503, 148)
+        Me.Root.TextVisible = False
+        '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.AppearanceItemCaption.Options.UseImage = True
         Me.LayoutControlItem1.Control = Me.txtUN
         Me.LayoutControlItem1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[False]
-        Me.LayoutControlItem1.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleRight
-        Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exclamation_mark_16
+        Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Size = New System.Drawing.Size(483, 24)
         Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "User Name"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(80, 16)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(80, 13)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.txtPWD
-        Me.LayoutControlItem2.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleRight
-        Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exclamation_mark_16
+        Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(483, 24)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Password"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(80, 16)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(80, 13)
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.txtRealName
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(483, 24)
+        Me.LayoutControlItem3.Text = "Ονοματεπώνυμο"
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(80, 13)
         '
         'LayoutControlItem4
         '
@@ -204,6 +189,23 @@ Partial Class frmUsers
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.cboMail
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(483, 24)
+        Me.LayoutControlItem6.Text = "Email"
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(80, 13)
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 96)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(243, 32)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
         'frmUsers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -221,13 +223,13 @@ Partial Class frmUsers
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboMail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
