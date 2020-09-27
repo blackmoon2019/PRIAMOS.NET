@@ -10,12 +10,15 @@ Public Class frmGen
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
+    Private CalledFromCtrl As Boolean
     Private Valid As New ValidateControls
     Private Log As New Transactions
     Private DBQ As New DBQueries
     Private FillCbo As New FillCombos
     Private sDataTable As String
     Private S As New System.Text.StringBuilder
+    Private Cls As New ClearControls
+    Private LoadForms As New FormLoader
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -37,6 +40,12 @@ Public Class frmGen
             CtrlCombo = value
         End Set
     End Property
+    Public WriteOnly Property CalledFromControl As Boolean
+        Set(value As Boolean)
+            CalledFromCtrl = value
+        End Set
+    End Property
+
     Public WriteOnly Property DataTable As String
         Set(value As String)
             sDataTable = value
@@ -73,42 +82,116 @@ Public Class frmGen
                             Case "COU"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertData(LayoutControl1, "COU", sGuid)
-                                FillCbo.COU(CtrlCombo)
-                                CtrlCombo.EditValue = System.Guid.Parse(sGuid)
-                                txtName.Text = ""
+                                If CalledFromCtrl Then
+                                    FillCbo.COU(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_COU")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("COU")
                             Case "AREAS"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertData(LayoutControl1, "AREAS", sGuid)
-                                FillCbo.AREAS(CtrlCombo, S)
-                                CtrlCombo.EditValue = System.Guid.Parse(sGuid)
-                                txtName.Text = ""
-                                cbo1.EditValue = Nothing
+                                If CalledFromCtrl Then
+                                    FillCbo.AREAS(CtrlCombo, S)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_AREAS")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("AREAS")
                             Case "ADR"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertData(LayoutControl1, "ADR", sGuid)
-                                FillCbo.ADR(CtrlCombo, S)
-                                CtrlCombo.EditValue = System.Guid.Parse(sGuid)
-                                txtName.Text = ""
-                                cbo1.EditValue = Nothing
-                                cbo2.EditValue = Nothing
+                                If CalledFromCtrl Then
+                                    FillCbo.ADR(CtrlCombo, S)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_ADR")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("ADR")
+                            Case "DOY"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertData(LayoutControl1, "DOY", sGuid)
+                                If CalledFromCtrl Then
+                                    FillCbo.DOY(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_DOY")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("DOY")
+                            Case "PRF"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertData(LayoutControl1, "PRF", sGuid)
+                                If CalledFromCtrl Then
+                                    FillCbo.PRF(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_PRF")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("PRF")
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
                             Case "COU"
                                 sResult = DBQ.UpdateData(LayoutControl1, "COU", sID)
-                                FillCbo.COU(CtrlCombo)
-                                CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.COU(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_COU")
+                                End If
                             Case "AREAS"
                                 sResult = DBQ.UpdateData(LayoutControl1, "AREAS", sID)
-                                FillCbo.AREAS(CtrlCombo, S)
-                                CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.AREAS(CtrlCombo, S)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_AREAS")
+                                End If
                             Case "ADR"
                                 sResult = DBQ.UpdateData(LayoutControl1, "ADR", sID)
-                                FillCbo.ADR(CtrlCombo, S)
-                                CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.ADR(CtrlCombo, S)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_ADR")
+                                End If
+                            Case "DOY"
+                                sResult = DBQ.UpdateData(LayoutControl1, "DOY", sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.DOY(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_DOY")
+                                End If
+                            Case "PRF"
+                                sResult = DBQ.UpdateData(LayoutControl1, "PRF", sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.PRF(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_PRF")
+                                End If
                         End Select
                 End Select
                 If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -123,28 +206,14 @@ Public Class frmGen
                 If Mode = FormMode.NewRecord Then
                     txtCode.Text = DBQ.GetNextId("COU")
                 Else
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_COU where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtCode.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
-                        sdr.Close()
-                    End If
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_COU where id ='" + sID + "'")
                 End If
-
             Case "AREAS"
                 FillCbo.COU(cbo1)
                 If Mode = FormMode.NewRecord Then
                     txtCode.Text = DBQ.GetNextId("AREAS")
                 Else
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_AREAS where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtCode.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("COUID")) = False Then cbo1.EditValue = sdr.GetGuid(sdr.GetOrdinal("COUID"))
-                        sdr.Close()
-                    End If
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_AREAS where id ='" + sID + "'")
                 End If
             Case "ADR"
                 FillCbo.COU(cbo1)
@@ -153,15 +222,19 @@ Public Class frmGen
                 If Mode = FormMode.NewRecord Then
                     txtCode.Text = DBQ.GetNextId("ADR")
                 Else
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_ADR where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then txtCode.Text = sdr.GetInt32(sdr.GetOrdinal("code"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then txtName.Text = sdr.GetString(sdr.GetOrdinal("name"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("COUID")) = False Then cbo1.EditValue = sdr.GetGuid(sdr.GetOrdinal("COUID"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("AREAID")) = False Then cbo2.EditValue = sdr.GetGuid(sdr.GetOrdinal("AREAID"))
-                        sdr.Close()
-                    End If
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_ADR where id ='" + sID + "'")
+                End If
+            Case "DOY"
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("DOY")
+                Else
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_DOY where id ='" + sID + "'")
+                End If
+            Case "PRF"
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("PRF")
+                Else
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_PRF where id ='" + sID + "'")
                 End If
         End Select
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -182,17 +255,45 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
-                    Case "COU" : FillCbo.COU(CtrlCombo)
-                        txtCode.Text = DBQ.GetNextId("COU")
-                    Case "AREAS" : FillCbo.AREAS(CtrlCombo, S)
-                        txtCode.Text = DBQ.GetNextId("AREAS")
-                    Case "ADR" : FillCbo.ADR(CtrlCombo, S)
-                        txtCode.Text = DBQ.GetNextId("ADR")
+                    Case "COU"
+                        If CalledFromCtrl Then
+                            FillCbo.COU(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_COU")
+                        End If
+                    Case "AREAS"
+                        If CalledFromCtrl Then
+                            FillCbo.AREAS(CtrlCombo, S)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_AREAS")
+                        End If
+                    Case "ADR"
+                        If CalledFromCtrl Then
+                            FillCbo.ADR(CtrlCombo, S)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_ADR")
+                        End If
+                    Case "DOY"
+                        If CalledFromCtrl Then
+                            FillCbo.DOY(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_DOY")
+                        End If
+                    Case "PRF"
+                        If CalledFromCtrl Then
+                            FillCbo.PRF(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_PRF")
+                        End If
                 End Select
-                txtName.Text = ""
-                cbo1.EditValue = Nothing
-                cbo2.EditValue = Nothing
-                CtrlCombo.EditValue = Nothing
+                Cls.ClearCtrls(LayoutControl1)
+                txtCode.Text = DBQ.GetNextId(sDataTable)
+                If CalledFromCtrl Then CtrlCombo.EditValue = Nothing
 
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If

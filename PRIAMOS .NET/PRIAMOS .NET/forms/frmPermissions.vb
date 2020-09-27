@@ -10,6 +10,8 @@ Public Class frmPermissions
     Private Log As New Transactions
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
+    Private LoadForms As New FormLoader
+    Private Cls As New ClearControls
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -34,25 +36,19 @@ Public Class frmPermissions
         Try
             ' Γεμίζω τους χρήστες στον Combo
             FillCbo.USERS(cboUsers)
-            FillCheckedList()
+
             Select Case Mode
                 Case FormMode.EditRecord
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_RIGHTS where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("insert")) = False Then chkInsert.Checked = sdr.GetBoolean(sdr.GetOrdinal("insert"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("edit")) = False Then chkEdit.Checked = sdr.GetBoolean(sdr.GetOrdinal("edit"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("delete")) = False Then chkDelete.Checked = sdr.GetBoolean(sdr.GetOrdinal("delete"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("Uid")) = False Then cboUsers.EditValue = sdr.GetGuid(sdr.GetOrdinal("Uid"))
-                        cboUsers.ReadOnly = True
-                        'If sdr.IsDBNull(sdr.GetOrdinal("Fid")) = False Then chkLstUsers.get.EditValue = sdr.GetGuid(sdr.GetOrdinal("Uid"))
-                        sdr.Close()
-                    End If
+                    'Γεμίζω την CheckList με τις φορμες
+                    FillCbo.FillCheckedListForms(chkLstUsers, FormMode.EditRecord, sID)
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_RIGHTS where id ='" + sID + "'")
+                    cboUsers.ReadOnly = True
                     cmdSave.Enabled = UserProps.AllowEdit
                 Case FormMode.NewRecord
+                    'Γεμίζω την CheckList με τις φορμες
+                    FillCbo.FillCheckedListForms(chkLstUsers, FormMode.NewRecord)
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
-
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
@@ -62,41 +58,7 @@ Public Class frmPermissions
         End Try
     End Sub
 
-    Private Sub FillCheckedList()
-        Try
-            Dim ds As DataSet = New DataSet
-            Dim sSQL As String
-            If Mode = FormMode.NewRecord Then
-                sSQL = "Select id,name from vw_FORMS"
-            Else
-                sSQL = "SELECT F.id,F.name,isnull(( 
-					    select case when VF.id is not null then 1 else 0 end as checked
-					    from vw_FORMs VF
-					    inner join vw_FORM_RIGHTS FR on FR.F_ID  = VF.ID 
-					    inner join vw_RIGHTS R on R.ID  = FR.rID 
-					    where R.ID = '" + sID + "'  and VF.ID=F.ID),0) as checked
-                        from vw_FORMs F "
-            End If
-            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
-            Dim sdr As SqlDataReader = cmd.ExecuteReader()
 
-            'chkLstUsers.DataSource = sdr
-            chkLstUsers.DisplayMember = "name"
-            chkLstUsers.ValueMember = "id"
-            While sdr.Read()
-                Dim chkLstItem As New DevExpress.XtraEditors.Controls.CheckedListBoxItem
-                chkLstItem.Value = sdr.Item(1).ToString
-                chkLstItem.Tag = sdr.Item(0).ToString
-                If Mode = FormMode.EditRecord Then chkLstItem.CheckState = sdr.Item(2).ToString
-
-                chkLstUsers.Items.Add(chkLstItem)
-            End While
-            sdr.Close()
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sSQL As String
         Dim sGuid As String
@@ -139,7 +101,11 @@ Public Class frmPermissions
                 End Select
                 Dim form As frmScroller = Frm
                 form.LoadRecords("vw_RIGHTS")
-                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If sResult Then
+                    'Καθαρισμός Controls
+                    Cls.ClearCtrls(LayoutControl1)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

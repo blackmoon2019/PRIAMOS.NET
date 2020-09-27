@@ -103,7 +103,7 @@ Partial Class frmMailSettings
         Me.txtServer.Size = New System.Drawing.Size(173, 20)
         Me.txtServer.StyleController = Me.LayoutControl1
         Me.txtServer.TabIndex = 10
-        Me.txtServer.Tag = "server"
+        Me.txtServer.Tag = "server,0,1,2"
         '
         'txtUN
         '
@@ -112,7 +112,7 @@ Partial Class frmMailSettings
         Me.txtUN.Size = New System.Drawing.Size(173, 20)
         Me.txtUN.StyleController = Me.LayoutControl1
         Me.txtUN.TabIndex = 12
-        Me.txtUN.Tag = "un"
+        Me.txtUN.Tag = "un,0,1,2"
         '
         'txtPWD
         '
@@ -122,7 +122,7 @@ Partial Class frmMailSettings
         Me.txtPWD.Size = New System.Drawing.Size(215, 20)
         Me.txtPWD.StyleController = Me.LayoutControl1
         Me.txtPWD.TabIndex = 13
-        Me.txtPWD.Tag = "pwd"
+        Me.txtPWD.Tag = "pwd,0,1,2"
         '
         'txtPort
         '
@@ -135,7 +135,7 @@ Partial Class frmMailSettings
         Me.txtPort.Size = New System.Drawing.Size(79, 20)
         Me.txtPort.StyleController = Me.LayoutControl1
         Me.txtPort.TabIndex = 14
-        Me.txtPort.Tag = "port"
+        Me.txtPort.Tag = "port,0,1,2"
         '
         'chkSSL
         '
@@ -148,7 +148,7 @@ Partial Class frmMailSettings
         Me.chkSSL.Size = New System.Drawing.Size(132, 18)
         Me.chkSSL.StyleController = Me.LayoutControl1
         Me.chkSSL.TabIndex = 15
-        Me.chkSSL.Tag = "ssl"
+        Me.chkSSL.Tag = "ssl,0,1,2"
         '
         'cmdCheckMail
         '

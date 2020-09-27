@@ -34,6 +34,7 @@ Partial Class frmBDG
         Me.tabBDG = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtRmg = New DevExpress.XtraEditors.MemoEdit()
         Me.grdAPT = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.cmdCboManageADR = New DevExpress.XtraEditors.SimpleButton()
@@ -79,8 +80,8 @@ Partial Class frmBDG
         Me.EmptySpaceItem6 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem7 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem8 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
@@ -91,6 +92,7 @@ Partial Class frmBDG
         Me.XtraTabPage1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.txtRmg.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,8 +134,8 @@ Partial Class frmBDG
         CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -242,6 +244,7 @@ Partial Class frmBDG
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.txtRmg)
         Me.LayoutControl1.Controls.Add(Me.grdAPT)
         Me.LayoutControl1.Controls.Add(Me.cmdCboManageADR)
         Me.LayoutControl1.Controls.Add(Me.cmdCboManageAREAS)
@@ -267,6 +270,15 @@ Partial Class frmBDG
         Me.LayoutControl1.Size = New System.Drawing.Size(1192, 458)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'txtRmg
+        '
+        Me.txtRmg.Location = New System.Drawing.Point(110, 372)
+        Me.txtRmg.Name = "txtRmg"
+        Me.txtRmg.Size = New System.Drawing.Size(233, 74)
+        Me.txtRmg.StyleController = Me.LayoutControl1
+        Me.txtRmg.TabIndex = 22
+        Me.txtRmg.Tag = "rmg,0,1,2"
         '
         'grdAPT
         '
@@ -312,6 +324,7 @@ Partial Class frmBDG
         Me.txtCode.Size = New System.Drawing.Size(69, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 4
+        Me.txtCode.Tag = "code,0"
         '
         'txtTK
         '
@@ -320,7 +333,7 @@ Partial Class frmBDG
         Me.txtTK.Size = New System.Drawing.Size(74, 20)
         Me.txtTK.StyleController = Me.LayoutControl1
         Me.txtTK.TabIndex = 8
-        Me.txtTK.Tag = ""
+        Me.txtTK.Tag = "tk,0"
         '
         'txtNam
         '
@@ -329,7 +342,7 @@ Partial Class frmBDG
         Me.txtNam.Size = New System.Drawing.Size(233, 20)
         Me.txtNam.StyleController = Me.LayoutControl1
         Me.txtNam.TabIndex = 9
-        Me.txtNam.Tag = "nam"
+        Me.txtNam.Tag = "nam,0,1,2"
         '
         'cboAREAS
         '
@@ -342,7 +355,7 @@ Partial Class frmBDG
         Me.cboAREAS.Size = New System.Drawing.Size(207, 20)
         Me.cboAREAS.StyleController = Me.LayoutControl1
         Me.cboAREAS.TabIndex = 6
-        Me.cboAREAS.Tag = ""
+        Me.cboAREAS.Tag = "AreaId,0"
         '
         'cboADR
         '
@@ -355,7 +368,7 @@ Partial Class frmBDG
         Me.cboADR.Size = New System.Drawing.Size(207, 20)
         Me.cboADR.StyleController = Me.LayoutControl1
         Me.cboADR.TabIndex = 7
-        Me.cboADR.Tag = "adrid"
+        Me.cboADR.Tag = "adrid,0,1,2"
         '
         'txtAR
         '
@@ -364,7 +377,7 @@ Partial Class frmBDG
         Me.txtAR.Size = New System.Drawing.Size(74, 20)
         Me.txtAR.StyleController = Me.LayoutControl1
         Me.txtAR.TabIndex = 10
-        Me.txtAR.Tag = "ar"
+        Me.txtAR.Tag = "ar,0,1,2"
         '
         'cmdCboManageCOU
         '
@@ -386,7 +399,7 @@ Partial Class frmBDG
         Me.cboCOU.Size = New System.Drawing.Size(207, 20)
         Me.cboCOU.StyleController = Me.LayoutControl1
         Me.cboCOU.TabIndex = 5
-        Me.cboCOU.Tag = ""
+        Me.cboCOU.Tag = "couid,0"
         '
         'txtAam
         '
@@ -399,7 +412,7 @@ Partial Class frmBDG
         Me.txtAam.Size = New System.Drawing.Size(69, 20)
         Me.txtAam.StyleController = Me.LayoutControl1
         Me.txtAam.TabIndex = 15
-        Me.txtAam.Tag = "aam"
+        Me.txtAam.Tag = "aam,0,1,2"
         '
         'txtIam
         '
@@ -412,16 +425,16 @@ Partial Class frmBDG
         Me.txtIam.Size = New System.Drawing.Size(69, 20)
         Me.txtIam.StyleController = Me.LayoutControl1
         Me.txtIam.TabIndex = 16
-        Me.txtIam.Tag = "iam"
+        Me.txtIam.Tag = "iam,0,1,2"
         '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(108, 284)
+        Me.txtComments.Location = New System.Drawing.Point(117, 284)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(235, 79)
+        Me.txtComments.Size = New System.Drawing.Size(226, 84)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 17
-        Me.txtComments.Tag = "cmt"
+        Me.txtComments.Tag = "cmt,0,1,2"
         '
         'chkPRD
         '
@@ -434,7 +447,7 @@ Partial Class frmBDG
         Me.chkPRD.Size = New System.Drawing.Size(331, 18)
         Me.chkPRD.StyleController = Me.LayoutControl1
         Me.chkPRD.TabIndex = 18
-        Me.chkPRD.Tag = "prd"
+        Me.chkPRD.Tag = "prd,0,1,2"
         '
         'cmdAam
         '
@@ -468,13 +481,13 @@ Partial Class frmBDG
         Me.dtDTS.Size = New System.Drawing.Size(95, 20)
         Me.dtDTS.StyleController = Me.LayoutControl1
         Me.dtDTS.TabIndex = 14
-        Me.dtDTS.Tag = "dts"
+        Me.dtDTS.Tag = "dts,0,1,2"
         '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem3, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.EmptySpaceItem2, Me.LayoutControlItem4, Me.LayoutControlItem7, Me.EmptySpaceItem4, Me.LayoutControlItem10, Me.EmptySpaceItem5, Me.LayoutControlItem18, Me.SimpleLabelItem1, Me.EmptySpaceItem3, Me.LayoutControlItem2, Me.LayoutControlItem9, Me.LayoutControlItem8, Me.LayoutControlItem15, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem16, Me.LayoutControlItem13, Me.LayoutControlItem17, Me.EmptySpaceItem6, Me.EmptySpaceItem7, Me.LayoutControlItem14, Me.EmptySpaceItem1, Me.EmptySpaceItem8})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem3, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.EmptySpaceItem2, Me.LayoutControlItem4, Me.LayoutControlItem7, Me.EmptySpaceItem4, Me.LayoutControlItem10, Me.EmptySpaceItem5, Me.LayoutControlItem18, Me.SimpleLabelItem1, Me.EmptySpaceItem3, Me.LayoutControlItem2, Me.LayoutControlItem9, Me.LayoutControlItem8, Me.LayoutControlItem15, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem16, Me.LayoutControlItem13, Me.LayoutControlItem17, Me.EmptySpaceItem6, Me.EmptySpaceItem7, Me.LayoutControlItem14, Me.EmptySpaceItem8, Me.LayoutControlItem19})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(1192, 458)
         Me.Root.TextVisible = False
@@ -705,19 +718,11 @@ Partial Class frmBDG
         Me.LayoutControlItem14.Control = Me.txtComments
         Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 272)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(335, 83)
-        Me.LayoutControlItem14.Text = "Σχόλια"
-        Me.LayoutControlItem14.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(95, 13)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(335, 88)
+        Me.LayoutControlItem14.Text = "Σχόλια Πολυκατοικίας"
+        Me.LayoutControlItem14.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(104, 13)
         Me.LayoutControlItem14.TextToControlDistance = 1
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 355)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(335, 83)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem8
         '
@@ -726,6 +731,15 @@ Partial Class frmBDG
         Me.EmptySpaceItem8.Name = "EmptySpaceItem8"
         Me.EmptySpaceItem8.Size = New System.Drawing.Size(138, 24)
         Me.EmptySpaceItem8.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem19
+        '
+        Me.LayoutControlItem19.Control = Me.txtRmg
+        Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 360)
+        Me.LayoutControlItem19.Name = "LayoutControlItem19"
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(335, 78)
+        Me.LayoutControlItem19.Text = "Σχόλια Έκδοσης"
+        Me.LayoutControlItem19.TextSize = New System.Drawing.Size(95, 13)
         '
         'XtraTabPage2
         '
@@ -770,6 +784,7 @@ Partial Class frmBDG
         Me.XtraTabPage1.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.txtRmg.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -811,8 +826,8 @@ Partial Class frmBDG
         CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -880,7 +895,8 @@ Partial Class frmBDG
     Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem6 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem7 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem8 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents dtDTS As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents txtRmg As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents LayoutControlItem19 As DevExpress.XtraLayout.LayoutControlItem
 End Class
