@@ -39,6 +39,11 @@ Partial Class frmMain
         Me.bbLink = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryItemHyperLinkEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.bbBDG = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbCOU = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbAreas = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbADR = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbDOY = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbPRF = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -62,9 +67,9 @@ Partial Class frmMain
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 22
+        Me.RibbonControl1.MaxItemId = 27
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.BarClose)
@@ -218,6 +223,46 @@ Partial Class frmMain
         Me.bbBDG.Name = "bbBDG"
         Me.bbBDG.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'bbCOU
+        '
+        Me.bbCOU.Caption = "Νομοί"
+        Me.bbCOU.Id = 22
+        Me.bbCOU.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_greece_40
+        Me.bbCOU.Name = "bbCOU"
+        Me.bbCOU.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbAreas
+        '
+        Me.bbAreas.Caption = "Περιοχές"
+        Me.bbAreas.Id = 23
+        Me.bbAreas.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_area_chart_40
+        Me.bbAreas.Name = "bbAreas"
+        Me.bbAreas.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbADR
+        '
+        Me.bbADR.Caption = "Διευθύνσεις"
+        Me.bbADR.Id = 24
+        Me.bbADR.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_address_40
+        Me.bbADR.Name = "bbADR"
+        Me.bbADR.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbDOY
+        '
+        Me.bbDOY.Caption = "ΔΟΥ"
+        Me.bbDOY.Id = 25
+        Me.bbDOY.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_organization_40
+        Me.bbDOY.Name = "bbDOY"
+        Me.bbDOY.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbPRF
+        '
+        Me.bbPRF.Caption = "Επαγγέλματα"
+        Me.bbPRF.Id = 26
+        Me.bbPRF.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_workers_40
+        Me.bbPRF.Name = "bbPRF"
+        Me.bbPRF.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
@@ -241,6 +286,11 @@ Partial Class frmMain
         '
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbMailSettings)
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbRights)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbCOU)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbAreas)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbADR)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbDOY)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbPRF)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
         '
@@ -338,4 +388,9 @@ Partial Class frmMain
     Friend WithEvents bbLink As DevExpress.XtraBars.BarEditItem
     Friend WithEvents RepositoryItemHyperLinkEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit
     Friend WithEvents bbBDG As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbCOU As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbAreas As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbADR As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbDOY As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbPRF As DevExpress.XtraBars.BarButtonItem
 End Class

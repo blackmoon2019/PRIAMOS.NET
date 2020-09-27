@@ -11,6 +11,8 @@ Public Class frmMailSettings
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private DBQ As New DBQueries
+    Private LoadForms As New FormLoader
+    Private Cls As New ClearControls
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -31,16 +33,7 @@ Public Class frmMailSettings
             'FillComboMulti(cboUsers)
             Select Case Mode
                 Case FormMode.EditRecord
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_MAILS where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("server")) = False Then txtServer.Text = sdr.GetString(sdr.GetOrdinal("server"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("port")) = False Then txtPort.Text = sdr.GetInt32(sdr.GetOrdinal("port"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("ssl")) = False Then chkSSL.Checked = sdr.GetBoolean(sdr.GetOrdinal("ssl"))
-                        sdr.Close()
-                    End If
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_MAILS where id ='" + sID + "'")
                     cmdSave.Enabled = UserProps.AllowEdit
                 Case FormMode.NewRecord
                     cmdSave.Enabled = UserProps.AllowInsert
@@ -116,7 +109,11 @@ Public Class frmMailSettings
                 End Select
                 Dim form As frmScroller = Frm
                 form.LoadRecords("vw_MAILS")
-                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If sResult Then
+                    'Καθαρισμός Controls
+                    Cls.ClearCtrls(LayoutControl1)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
             '    values.Add(GridLookUpEdit1View.GetRowCellValue(rowHandle, "Realname"))
             'Next rowHandle

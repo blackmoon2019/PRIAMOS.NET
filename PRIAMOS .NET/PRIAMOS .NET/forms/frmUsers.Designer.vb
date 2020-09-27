@@ -74,7 +74,7 @@ Partial Class frmUsers
         Me.txtPWD.Size = New System.Drawing.Size(396, 20)
         Me.txtPWD.StyleController = Me.LayoutControl1
         Me.txtPWD.TabIndex = 4
-        Me.txtPWD.Tag = "pwd"
+        Me.txtPWD.Tag = "pwd,0,1,2"
         '
         'txtRealName
         '
@@ -83,7 +83,7 @@ Partial Class frmUsers
         Me.txtRealName.Size = New System.Drawing.Size(396, 20)
         Me.txtRealName.StyleController = Me.LayoutControl1
         Me.txtRealName.TabIndex = 5
-        Me.txtRealName.Tag = "Realname"
+        Me.txtRealName.Tag = "Realname,0,1,2"
         '
         'cmdExit
         '
@@ -114,7 +114,7 @@ Partial Class frmUsers
         Me.txtUN.Size = New System.Drawing.Size(396, 20)
         Me.txtUN.StyleController = Me.LayoutControl1
         Me.txtUN.TabIndex = 0
-        Me.txtUN.Tag = "un"
+        Me.txtUN.Tag = "un,0,1,2"
         '
         'cboMail
         '
@@ -127,7 +127,7 @@ Partial Class frmUsers
         Me.cboMail.Size = New System.Drawing.Size(396, 20)
         Me.cboMail.StyleController = Me.LayoutControl1
         Me.cboMail.TabIndex = 8
-        Me.cboMail.Tag = "mailid"
+        Me.cboMail.Tag = "mailid,0,1,2"
         '
         'Root
         '

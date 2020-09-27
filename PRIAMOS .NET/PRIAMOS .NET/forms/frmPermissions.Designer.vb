@@ -82,7 +82,7 @@ Partial Class frmPermissions
         Me.chkDelete.Size = New System.Drawing.Size(266, 18)
         Me.chkDelete.StyleController = Me.LayoutControl1
         Me.chkDelete.TabIndex = 11
-        Me.chkDelete.Tag = "[delete]"
+        Me.chkDelete.Tag = "[delete],0,1,2"
         '
         'chkLstUsers
         '
@@ -94,6 +94,7 @@ Partial Class frmPermissions
         Me.chkLstUsers.SortOrder = System.Windows.Forms.SortOrder.Ascending
         Me.chkLstUsers.StyleController = Me.LayoutControl1
         Me.chkLstUsers.TabIndex = 9
+        Me.chkLstUsers.Tag = ""
         '
         'chkEdit
         '
@@ -106,7 +107,7 @@ Partial Class frmPermissions
         Me.chkEdit.Size = New System.Drawing.Size(266, 18)
         Me.chkEdit.StyleController = Me.LayoutControl1
         Me.chkEdit.TabIndex = 10
-        Me.chkEdit.Tag = "[edit]"
+        Me.chkEdit.Tag = "[edit],0,1,2"
         '
         'chkInsert
         '
@@ -119,7 +120,7 @@ Partial Class frmPermissions
         Me.chkInsert.Size = New System.Drawing.Size(266, 18)
         Me.chkInsert.StyleController = Me.LayoutControl1
         Me.chkInsert.TabIndex = 9
-        Me.chkInsert.Tag = "[insert]"
+        Me.chkInsert.Tag = "[insert],0,1,2"
         '
         'cmdExit
         '
@@ -153,7 +154,7 @@ Partial Class frmPermissions
         Me.cboUsers.Size = New System.Drawing.Size(212, 20)
         Me.cboUsers.StyleController = Me.LayoutControl1
         Me.cboUsers.TabIndex = 8
-        Me.cboUsers.Tag = "uid"
+        Me.cboUsers.Tag = "uid,0,1,2"
         '
         'Root
         '

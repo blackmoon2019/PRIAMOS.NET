@@ -78,4 +78,44 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub bbCOU_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCOU.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Νομοί"
+        form.DataTable = "vw_COU"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbAreas_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbAreas.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Περιοχές"
+        form.DataTable = "vw_AREAS"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbADR_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbADR.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Διευθύνσεις"
+        form.DataTable = "vw_ADR"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbDOY_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbDOY.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "ΔΟΥ"
+        form.DataTable = "vw_DOY"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbPRF_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbPRF.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Επαγγέλματα"
+        form.DataTable = "vw_PRF"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

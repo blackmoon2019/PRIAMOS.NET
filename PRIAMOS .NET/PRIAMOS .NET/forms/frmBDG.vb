@@ -13,6 +13,8 @@ Public Class frmBDG
     Private Log As New Transactions
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
+    Private LoadForms As New FormLoader
+    Private Cls As New ClearControls
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -47,6 +49,7 @@ Public Class frmBDG
             Case FormMode.EditRecord
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
+                LoadForms.LoadForm(LayoutControl1, "Select * from vw_BDG where id ='" + sID + "'")
         End Select
         Me.CenterToScreen()
         My.Settings.frmBDG = Me.Location
@@ -92,7 +95,7 @@ Public Class frmBDG
         form1.Text = "Περιοχές"
         form1.L1.Text = "Κωδικός"
         form1.L2.Text = "Περιοχή"
-        form1.L3.Text = "Νομοί"
+        form1.L3.Text = "Νομός"
         form1.DataTable = "AREAS"
         form1.CallerControl = cboAREAS
         If cboAREAS.EditValue <> Nothing Then form1.ID = cboAREAS.EditValue.ToString
@@ -128,7 +131,7 @@ Public Class frmBDG
         form1.Text = "Διευθύνσεις"
         form1.L1.Text = "Κωδικός"
         form1.L2.Text = "Διεύθυνση"
-        form1.L3.Text = "Νομοί"
+        form1.L3.Text = "Νομός"
         form1.L4.Text = "Περιοχές"
         form1.DataTable = "ADR"
         form1.CallerControl = cboADR
@@ -153,7 +156,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboADR_EditValueChanged(sender As Object, e As EventArgs) Handles cboADR.EditValueChanged
-        txtNam.Text = cboADR.Text + " " + txtAR.Text
+        If sender.editvalue <> Nothing Then txtNam.Text = cboADR.Text + " " + txtAR.Text Else txtNam.Text = ""
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
@@ -163,12 +166,18 @@ Public Class frmBDG
                 Select Case Mode
                     Case FormMode.NewRecord
                         sResult = DBQ.InsertData(LayoutControl1, "BDG")
-                        Dim form As frmScroller = Frm
-                        form.LoadRecords("vw_BDG")
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateData(LayoutControl1, "BDG", sID)
                 End Select
-                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If sResult Then
+                    'Καθαρισμός Controls
+                    Cls.ClearCtrls(LayoutControl1)
+                    dtDTS.EditValue = DateTime.Now
+                    txtCode.Text = DBQ.GetNextId("BDG")
+                    Dim form As frmScroller = Frm
+                    form.LoadRecords("vw_BDG")
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
 
         Catch ex As Exception

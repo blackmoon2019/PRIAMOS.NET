@@ -9,6 +9,8 @@ Public Class frmUsers
     Private Valid As New ValidateControls
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
+    Private LoadForms As New FormLoader
+    Private Cls As New ClearControls
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -32,9 +34,13 @@ Public Class frmUsers
                     Case FormMode.NewRecord : sResult = DBQ.InsertData(LayoutControl1, "USR")
                     Case FormMode.EditRecord : sResult = DBQ.UpdateData(LayoutControl1, "USR", sID)
                 End Select
-            Dim form As frmScroller = Frm
-            form.LoadRecords("vw_USR")
-                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Dim form As frmScroller = Frm
+                form.LoadRecords("vw_USR")
+                If sResult Then
+                    'Καθαρισμός Controls
+                    Cls.ClearCtrls(LayoutControl1)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -46,15 +52,7 @@ Public Class frmUsers
             FillCbo.MAIL(cboMail)
             Select Case Mode
                 Case FormMode.EditRecord
-                    Dim cmd As SqlCommand = New SqlCommand("Select * from vw_USR where id ='" + sID + "'", CNDB)
-                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
-                    If (sdr.Read() = True) Then
-                        If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then txtUN.Text = sdr.GetString(sdr.GetOrdinal("un"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then txtPWD.Text = sdr.GetString(sdr.GetOrdinal("pwd"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("realname")) = False Then txtRealName.Text = sdr.GetString(sdr.GetOrdinal("realname"))
-                        If sdr.IsDBNull(sdr.GetOrdinal("MailID")) = False Then cboMail.EditValue = sdr.GetGuid(sdr.GetOrdinal("MailID"))
-                        sdr.Close()
-                    End If
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_USR where id ='" + sID + "'")
                     cmdSave.Enabled = UserProps.AllowEdit
                 Case FormMode.NewRecord
                     cmdSave.Enabled = UserProps.AllowInsert

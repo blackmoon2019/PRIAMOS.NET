@@ -27,6 +27,7 @@ Partial Class frmGen
         Me.txtName = New DevExpress.XtraEditors.TextEdit()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cbo1 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmdDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -37,7 +38,6 @@ Partial Class frmGen
         Me.L4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.cmdDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -111,7 +111,7 @@ Partial Class frmGen
         Me.cbo2.Size = New System.Drawing.Size(351, 20)
         Me.cbo2.StyleController = Me.LayoutControl1
         Me.cbo2.TabIndex = 16
-        Me.cbo2.Tag = "areaid"
+        Me.cbo2.Tag = "areaid,0,1,2"
         Me.cbo2.Visible = False
         '
         'cmdSave
@@ -131,7 +131,7 @@ Partial Class frmGen
         Me.txtName.Size = New System.Drawing.Size(272, 20)
         Me.txtName.StyleController = Me.LayoutControl1
         Me.txtName.TabIndex = 14
-        Me.txtName.Tag = "name"
+        Me.txtName.Tag = "name,0,1,2"
         '
         'txtCode
         '
@@ -141,7 +141,7 @@ Partial Class frmGen
         Me.txtCode.Size = New System.Drawing.Size(50, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 14
-        Me.txtCode.Tag = ""
+        Me.txtCode.Tag = "code,0"
         '
         'cbo1
         '
@@ -154,7 +154,20 @@ Partial Class frmGen
         Me.cbo1.Size = New System.Drawing.Size(351, 20)
         Me.cbo1.StyleController = Me.LayoutControl1
         Me.cbo1.TabIndex = 15
-        Me.cbo1.Tag = "couid"
+        Me.cbo1.Tag = "couid,0,1,2"
+        '
+        'cmdDelete
+        '
+        Me.cmdDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.cmdDelete.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdDelete.Location = New System.Drawing.Point(38, 258)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(22, 22)
+        Me.cmdDelete.StyleController = Me.LayoutControl1
+        Me.cmdDelete.TabIndex = 17
+        Me.cmdDelete.ToolTip = "Διαγραφή Εγγραφής"
+        Me.cmdDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
         '
         'Root
         '
@@ -249,19 +262,6 @@ Partial Class frmGen
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
         Me.EmptySpaceItem2.Size = New System.Drawing.Size(121, 32)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'cmdDelete
-        '
-        Me.cmdDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdDelete.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
-        Me.cmdDelete.Location = New System.Drawing.Point(38, 258)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(22, 22)
-        Me.cmdDelete.StyleController = Me.LayoutControl1
-        Me.cmdDelete.TabIndex = 17
-        Me.cmdDelete.ToolTip = "Διαγραφή Εγγραφής"
-        Me.cmdDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
         '
         'LayoutControlItem5
         '
