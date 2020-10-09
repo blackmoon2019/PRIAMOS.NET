@@ -15,6 +15,8 @@ Public Class frmBDG
     Private DBQ As New DBQueries
     Private LoadForms As New FormLoader
     Private Cls As New ClearControls
+    Private Iam As String
+    Private Aam As String
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -50,6 +52,8 @@ Public Class frmBDG
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_BDG where id ='" + sID + "'")
+                Iam = txtIam.EditValue
+                Aam = txtAam.EditValue
         End Select
         Me.CenterToScreen()
         My.Settings.frmBDG = Me.Location
@@ -170,8 +174,30 @@ Public Class frmBDG
                         sResult = DBQ.UpdateData(LayoutControl1, "BDG", sID)
                 End Select
                 If sResult Then
+                    ' Εαν έχει γίνει αλλαγή στην αμοιβή διαχείρισης
+                    If Aam <> txtAam.EditValue Then
+                        Dim sSQL As String
+                        sSQL = "INSERT INTO AAM_H(aam,bdgid,modifiedBy,createdOn) values (" &
+                               toSQLValue(txtIam, True) & "," & toSQLValueS(sID) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                        Aam = txtAam.EditValue
+                    End If
+
+                    ' Εαν έχει γίνει αλλαγή στην αμοιβή έκδοσης
+                    If Iam <> txtIam.EditValue Then
+                        Dim sSQL As String
+                        sSQL = "INSERT INTO IAM_H(iam,bdgid,modifiedBy,createdOn) values (" &
+                               toSQLValue(txtIam, True) & "," & toSQLValueS(sID) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                        Iam = txtIam.EditValue
+                    End If
+
                     'Καθαρισμός Controls
-                    Cls.ClearCtrls(LayoutControl1)
+                    If Mode = FormMode.EditRecord Then Cls.ClearCtrls(LayoutControl1)
                     dtDTS.EditValue = DateTime.Now
                     txtCode.Text = DBQ.GetNextId("BDG")
                     Dim form As frmScroller = Frm
@@ -183,5 +209,64 @@ Public Class frmBDG
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub txtCode_GotFocus(sender As Object, e As EventArgs) Handles txtCode.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.code"
+    End Sub
+
+    Private Sub txtAam_GotFocus(sender As Object, e As EventArgs) Handles txtAam.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.aam"
+    End Sub
+
+    Private Sub txtAR_GotFocus(sender As Object, e As EventArgs) Handles txtAR.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.ar"
+    End Sub
+
+    Private Sub txtComments_GotFocus(sender As Object, e As EventArgs) Handles txtComments.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.cmt"
+    End Sub
+
+    Private Sub txtIam_GotFocus(sender As Object, e As EventArgs) Handles txtIam.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.iam"
+    End Sub
+
+    Private Sub txtNam_GotFocus(sender As Object, e As EventArgs) Handles txtNam.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.nam"
+    End Sub
+
+    Private Sub txtRmg_GotFocus(sender As Object, e As EventArgs) Handles txtRmg.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.rmg"
+    End Sub
+
+    Private Sub txtTK_GotFocus(sender As Object, e As EventArgs) Handles txtTK.GotFocus
+        frmMain.bbFields.Caption = "DB Field: ADR.tk"
+    End Sub
+
+    Private Sub cboADR_GotFocus(sender As Object, e As EventArgs) Handles cboADR.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.adrid"
+    End Sub
+
+    Private Sub cboAREAS_GotFocus(sender As Object, e As EventArgs) Handles cboAREAS.GotFocus
+        frmMain.bbFields.Caption = "DB Field: ADR.areaid"
+    End Sub
+
+    Private Sub cboCOU_GotFocus(sender As Object, e As EventArgs) Handles cboCOU.GotFocus
+        frmMain.bbFields.Caption = "DB Field: ADR.couid"
+    End Sub
+
+    Private Sub chkPRD_GotFocus(sender As Object, e As EventArgs) Handles chkPRD.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.prd"
+    End Sub
+
+    Private Sub dtDTS_GotFocus(sender As Object, e As EventArgs) Handles dtDTS.GotFocus
+        frmMain.bbFields.Caption = "DB Field: BDG.dts"
+    End Sub
+
+    Private Sub cmdAam_Click(sender As Object, e As EventArgs) Handles cmdAam.Click
+        FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Slide
+        FlyoutPanel1.Options.CloseOnOuterClick = True
+        FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
+        FlyoutPanel1.ShowPopup()
     End Sub
 End Class

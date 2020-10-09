@@ -147,7 +147,23 @@ Public Class frmMailSettings
         End Try
     End Sub
 
-    Private Sub frmMailSettings_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+    Private Sub chkSSL_GotFocus(sender As Object, e As EventArgs) Handles chkSSL.GotFocus
+        frmMain.bbFields.Caption = "DB Field: MAILS.ssl"
+    End Sub
 
+    Private Sub txtPort_GotFocus(sender As Object, e As EventArgs) Handles txtPort.GotFocus
+        frmMain.bbFields.Caption = "DB Field: MAILS.port"
+    End Sub
+
+    Private Sub txtPWD_GotFocus(sender As Object, e As EventArgs) Handles txtPWD.GotFocus
+        frmMain.bbFields.Caption = "DB Field: MAILS.pwd"
+    End Sub
+
+    Private Sub txtServer_GotFocus(sender As Object, e As EventArgs) Handles txtServer.GotFocus
+        frmMain.bbFields.Caption = "DB Field: MAILS.server"
+    End Sub
+
+    Private Sub txtUN_GotFocus(sender As Object, e As EventArgs) Handles txtUN.GotFocus
+        frmMain.bbFields.Caption = "DB Field: MAILS.un"
     End Sub
 End Class

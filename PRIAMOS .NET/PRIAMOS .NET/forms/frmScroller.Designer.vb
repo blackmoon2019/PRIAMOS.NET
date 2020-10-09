@@ -118,6 +118,7 @@ Partial Class frmScroller
         Me.GridView2.OptionsLayout.StoreFormatRules = True
         Me.GridView2.OptionsPrint.PrintPreview = True
         Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView2.OptionsView.ColumnAutoWidth = False
         Me.GridView2.OptionsView.EnableAppearanceEvenRow = True
         '
         'grdMain
@@ -148,6 +149,7 @@ Partial Class frmScroller
         Me.GridView1.OptionsLayout.StoreFormatRules = True
         Me.GridView1.OptionsPrint.PrintPreview = True
         Me.GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView1.OptionsView.ColumnAutoWidth = False
         Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
         '
         'BarManager1

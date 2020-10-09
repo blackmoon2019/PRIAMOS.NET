@@ -116,4 +116,20 @@ Public Class frmPermissions
     Private Sub frmPermissions_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
+
+    Private Sub cboUsers_GotFocus(sender As Object, e As EventArgs) Handles cboUsers.GotFocus
+        frmMain.bbFields.Caption = "DB Field: RIGHTS.uid"
+    End Sub
+
+    Private Sub chkDelete_GotFocus(sender As Object, e As EventArgs) Handles chkDelete.GotFocus
+        frmMain.bbFields.Caption = "DB Field: RIGHTS.delete"
+    End Sub
+
+    Private Sub chkEdit_GotFocus(sender As Object, e As EventArgs) Handles chkEdit.GotFocus
+        frmMain.bbFields.Caption = "DB Field: RIGHTS.edit"
+    End Sub
+
+    Private Sub chkInsert_GotFocus(sender As Object, e As EventArgs) Handles chkInsert.GotFocus
+        frmMain.bbFields.Caption = "DB Field: RIGHTS.insert"
+    End Sub
 End Class
