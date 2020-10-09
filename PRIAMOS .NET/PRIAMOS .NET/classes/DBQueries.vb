@@ -45,11 +45,19 @@ Public Class DBQueries
                                     If TypeOf Ctrl Is DevExpress.XtraEditors.LookUpEdit Then
                                         Dim cbo As DevExpress.XtraEditors.LookUpEdit
                                         cbo = Ctrl
-                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                        If cbo.EditValue <> Nothing Then
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                         Dim dt As DevExpress.XtraEditors.DateEdit
                                         dt = Ctrl
-                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                        If dt.Text <> "" Then
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
@@ -116,11 +124,19 @@ Public Class DBQueries
                                     If TypeOf Ctrl Is DevExpress.XtraEditors.LookUpEdit Then
                                         Dim cbo As DevExpress.XtraEditors.LookUpEdit
                                         cbo = Ctrl
-                                        sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                        If cbo.EditValue <> Nothing Then
+                                            sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                        Else
+                                            sSQL.Append("NULL")
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                         Dim dt As DevExpress.XtraEditors.DateEdit
                                         dt = Ctrl
-                                        sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                        If dt.Text <> "" Then
+                                            sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                        Else
+                                            sSQL.Append("NULL")
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl

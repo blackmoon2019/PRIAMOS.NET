@@ -72,6 +72,22 @@ Public Class frmUsers
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
+
+    Private Sub txtPWD_GotFocus(sender As Object, e As EventArgs) Handles txtPWD.GotFocus
+        frmMain.bbFields.Caption = "DB Field: USERS.pwd"
+    End Sub
+
+    Private Sub txtRealName_GotFocus(sender As Object, e As EventArgs) Handles txtRealName.GotFocus
+        frmMain.bbFields.Caption = "DB Field: USERS.realname"
+    End Sub
+
+    Private Sub txtUN_GotFocus(sender As Object, e As EventArgs) Handles txtUN.GotFocus
+        frmMain.bbFields.Caption = "DB Field: USERS.un"
+    End Sub
+
+    Private Sub cboMail_GotFocus(sender As Object, e As EventArgs) Handles cboMail.GotFocus
+        frmMain.bbFields.Caption = "DB Field: USERS.mailid"
+    End Sub
     'Private Sub FillList()
     '    Dim ds As DataSet = New DataSet
     '    Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)

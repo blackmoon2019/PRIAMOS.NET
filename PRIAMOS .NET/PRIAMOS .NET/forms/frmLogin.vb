@@ -71,4 +71,5 @@ Public Class frmLogin
             My.Settings.Save()
         End If
     End Sub
+
 End Class

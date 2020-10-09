@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PRIAMOS .NET", "PRIAMOS .NET\PRIAMOS .NET.vbproj", "{1E106414-A9A1-4756-8276-6E32BD471417}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9DE4C16-C662-4E39-9367-D77D318CC42F}"
-	ProjectSection(SolutionItems) = preProject
-		PRIAMOS .NET\bin\Debug\PRIAMOS.NET.exe.config = PRIAMOS .NET\bin\Debug\PRIAMOS.NET.exe.config
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -301,4 +301,20 @@ Public Class frmGen
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub cbo1_GotFocus(sender As Object, e As EventArgs) Handles cbo1.GotFocus
+        frmMain.bbFields.Caption = "DB Field: " & sDataTable & ".couid"
+    End Sub
+
+    Private Sub cbo2_GotFocus(sender As Object, e As EventArgs) Handles cbo2.GotFocus
+        frmMain.bbFields.Caption = "DB Field: " & sDataTable & ".areaid"
+    End Sub
+
+    Private Sub txtCode_GotFocus(sender As Object, e As EventArgs) Handles txtCode.GotFocus
+        frmMain.bbFields.Caption = "DB Field: " & sDataTable & ".code"
+    End Sub
+
+    Private Sub txtName_GotFocus(sender As Object, e As EventArgs) Handles txtName.GotFocus
+        frmMain.bbFields.Caption = "DB Field: " & sDataTable & ".name"
+    End Sub
 End Class
