@@ -118,4 +118,12 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub bbCCT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCCT.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Πελάτες"
+        form.DataTable = "vw_CCT"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

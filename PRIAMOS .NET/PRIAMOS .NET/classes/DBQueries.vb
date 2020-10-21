@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraLayout
 Imports DevExpress.XtraEditors
+Imports System.IO
 Public Class DBQueries
     Public Function GetNextId(ByVal sTable As String) As Integer
         Dim cmd As SqlCommand = New SqlCommand("SELECT IDENT_CURRENT('" & sTable & "')  AS ID", CNDB)
@@ -168,5 +169,34 @@ Public Class DBQueries
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
+    End Function
+    Public Function InsertDataFiles(ByVal control As DevExpress.XtraEditors.XtraOpenFileDialog, ByVal cctID As String) As Boolean
+        Dim sSQL As New System.Text.StringBuilder
+        Dim i As Integer
+        Try
+            sSQL.Clear()
+            sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
+            For i = 0 To control.FileNames.Count - 1
+                Dim extension As String = Path.GetExtension(control.FileNames(i))
+                Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
+                sSQL.AppendLine("Select " & toSQLValueS(cctID) & ",")
+                sSQL.AppendLine(toSQLValueS(control.SafeFileNames(i).ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(FilePath) & ",")
+                sSQL.AppendLine(toSQLValueS(extension) & ",")
+                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
+                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(control.FileNames(i).ToString()) & ", SINGLE_BLOB) files")
+
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next
+            'ReadBlobFile()
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
     End Function
 End Class

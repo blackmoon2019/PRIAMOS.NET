@@ -35,7 +35,7 @@ Partial Class frmBDG
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
         Me.FlyoutPanel1 = New DevExpress.Utils.FlyoutPanel()
         Me.FlyoutPanelControl1 = New DevExpress.Utils.FlyoutPanelControl()
-        Me.ListBoxControl1 = New DevExpress.XtraEditors.ListBoxControl()
+        Me.lstData = New DevExpress.XtraEditors.ListBoxControl()
         Me.cmdAam = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtRmg = New DevExpress.XtraEditors.MemoEdit()
@@ -97,7 +97,7 @@ Partial Class frmBDG
         Me.FlyoutPanel1.SuspendLayout()
         CType(Me.FlyoutPanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlyoutPanelControl1.SuspendLayout()
-        CType(Me.ListBoxControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lstData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtRmg.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -257,26 +257,28 @@ Partial Class frmBDG
         Me.FlyoutPanel1.Location = New System.Drawing.Point(1040, 0)
         Me.FlyoutPanel1.Name = "FlyoutPanel1"
         Me.FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
-        Me.FlyoutPanel1.OwnerControl = Me.cmdAam
+        Me.FlyoutPanel1.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
         Me.FlyoutPanel1.Size = New System.Drawing.Size(145, 135)
         Me.FlyoutPanel1.TabIndex = 24
         '
         'FlyoutPanelControl1
         '
         Me.FlyoutPanelControl1.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.FlyoutPanelControl1.Controls.Add(Me.ListBoxControl1)
+        Me.FlyoutPanelControl1.Controls.Add(Me.lstData)
         Me.FlyoutPanelControl1.FlyoutPanel = Me.FlyoutPanel1
         Me.FlyoutPanelControl1.Location = New System.Drawing.Point(0, 0)
         Me.FlyoutPanelControl1.Name = "FlyoutPanelControl1"
         Me.FlyoutPanelControl1.Size = New System.Drawing.Size(145, 135)
         Me.FlyoutPanelControl1.TabIndex = 0
         '
-        'ListBoxControl1
+        'lstData
         '
-        Me.ListBoxControl1.Location = New System.Drawing.Point(3, 0)
-        Me.ListBoxControl1.Name = "ListBoxControl1"
-        Me.ListBoxControl1.Size = New System.Drawing.Size(140, 133)
-        Me.ListBoxControl1.TabIndex = 0
+        Me.lstData.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lstData.Appearance.Options.UseBackColor = True
+        Me.lstData.Location = New System.Drawing.Point(2, 2)
+        Me.lstData.Name = "lstData"
+        Me.lstData.Size = New System.Drawing.Size(141, 131)
+        Me.lstData.TabIndex = 0
         '
         'cmdAam
         '
@@ -822,7 +824,7 @@ Partial Class frmBDG
         Me.FlyoutPanel1.ResumeLayout(False)
         CType(Me.FlyoutPanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FlyoutPanelControl1.ResumeLayout(False)
-        CType(Me.ListBoxControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lstData, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtRmg.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -942,5 +944,5 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem19 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents FlyoutPanel1 As DevExpress.Utils.FlyoutPanel
     Friend WithEvents FlyoutPanelControl1 As DevExpress.Utils.FlyoutPanelControl
-    Friend WithEvents ListBoxControl1 As DevExpress.XtraEditors.ListBoxControl
+    Friend WithEvents lstData As DevExpress.XtraEditors.ListBoxControl
 End Class

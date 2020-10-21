@@ -90,5 +90,15 @@ Public Class FormLoader
 
         End If
     End Sub
+    Public Sub LoadDataToGrid(ByVal GRDControl As DevExpress.XtraGrid.GridControl, ByVal GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
+        Dim myCmd As SqlCommand
+        Dim myReader As SqlDataReader
+        myCmd = CNDB.CreateCommand
+        myCmd.CommandText = sSQL
+        myReader = myCmd.ExecuteReader()
+        GRDControl.DataSource = myReader
+        GRDControl.ForceInitialize()
+        GRDControl.DefaultView.PopulateColumns()
+    End Sub
 End Class
 

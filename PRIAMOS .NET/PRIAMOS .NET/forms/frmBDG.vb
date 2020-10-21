@@ -264,7 +264,56 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdAam_Click(sender As Object, e As EventArgs) Handles cmdAam.Click
-        FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Slide
+        FillAAM_H()
+        FlyoutPanel1.OwnerControl = cmdAam
+        FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
+        FlyoutPanel1.Options.CloseOnOuterClick = True
+        FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
+        FlyoutPanel1.ShowPopup()
+    End Sub
+    Private Sub FillIAM_H()
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("SELECT convert(varchar,createdon ,105)+ '  ' + '(' + cast(iam as nvarchar(10)) + ')'  as name
+                                                     FROM VW_IAM_H WHERE BDGId = '" & sID & "' order by 1 ", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            If sdr.HasRows Then
+                lstData.Items.Clear()
+                lstData.DisplayMember = "name"
+                lstData.ValueMember = "name"
+                While sdr.Read()
+                    lstData.Items.Add(sdr.Item(0).ToString)
+                End While
+            End If
+            sdr.Close()
+            sdr = Nothing
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub FillAAM_H()
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("SELECT convert(varchar,createdon ,105)+ '  ' + '(' + cast(aam as nvarchar(10)) + ')'  as name
+                                                     FROM VW_AAM_H WHERE BDGId = '" & sID & "' order by 1 ", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            If sdr.HasRows Then
+                lstData.Items.Clear()
+                lstData.DisplayMember = "name"
+                lstData.ValueMember = "name"
+                While sdr.Read()
+                    lstData.Items.Add(sdr.Item(0).ToString)
+                End While
+            End If
+            sdr.Close()
+            sdr = Nothing
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmdIam_Click(sender As Object, e As EventArgs) Handles cmdIam.Click
+        FillIAM_H()
+        FlyoutPanel1.OwnerControl = cmdIam
+        FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
         FlyoutPanel1.Options.CloseOnOuterClick = True
         FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
         FlyoutPanel1.ShowPopup()
