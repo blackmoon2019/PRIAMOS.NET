@@ -65,10 +65,8 @@ Public Class frmGen
 
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click
         Mode = FormMode.NewRecord
+        Cls.ClearCtrls(LayoutControl1)
         LoadGen()
-        txtName.Text = ""
-        cbo1.EditValue = Nothing
-        cbo2.EditValue = Nothing
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click

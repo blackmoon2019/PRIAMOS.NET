@@ -161,6 +161,18 @@ Namespace My
                 Me("frmGen") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmCustomers() As Global.System.Drawing.Size
+            Get
+                Return CType(Me("frmCustomers"),Global.System.Drawing.Size)
+            End Get
+            Set
+                Me("frmCustomers") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
