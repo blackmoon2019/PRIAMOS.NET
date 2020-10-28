@@ -1,8 +1,16 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraExport.Xls
+Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraScheduler.Internal
+Imports DevExpress.XtraBars
+Imports DevExpress.XtraGrid.Menu
+Imports DevExpress.Utils
 
 Public Class frmBDG
     Private sID As String
@@ -17,6 +25,12 @@ Public Class frmBDG
     Private Cls As New ClearControls
     Private Iam As String
     Private Aam As String
+    Friend Class MenuColumnInfo
+        Public Sub New(ByVal column As GridColumn)
+            Me.Column = column
+        End Sub
+        Public Column As GridColumn
+    End Class
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -48,16 +62,22 @@ Public Class frmBDG
             Case FormMode.NewRecord
                 dtDTS.EditValue = DateTime.Now
                 txtCode.Text = DBQ.GetNextId("BDG")
+                cmdAPTAdd.Enabled = False
+                cmdAptDel.Enabled = False
+                cmdAPTEdit.Enabled = False
+                cmdAptRefresh.Enabled = False
             Case FormMode.EditRecord
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_BDG where id ='" + sID + "'")
                 Iam = txtIam.EditValue
                 Aam = txtAam.EditValue
+                LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
         End Select
         Me.CenterToScreen()
         My.Settings.frmBDG = Me.Location
         My.Settings.Save()
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APT_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
 
@@ -196,13 +216,12 @@ Public Class frmBDG
                         Iam = txtIam.EditValue
                     End If
 
-                    'Καθαρισμός Controls
-                    If Mode = FormMode.EditRecord Then Cls.ClearCtrls(LayoutControl1)
                     dtDTS.EditValue = DateTime.Now
                     txtCode.Text = DBQ.GetNextId("BDG")
                     Dim form As frmScroller = Frm
                     form.LoadRecords("vw_BDG")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    If Mode = FormMode.NewRecord Then Mode = FormMode.EditRecord
                 End If
             End If
 
@@ -317,5 +336,171 @@ Public Class frmBDG
         FlyoutPanel1.Options.CloseOnOuterClick = True
         FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
         FlyoutPanel1.ShowPopup()
+    End Sub
+
+    Private Sub cmdAPTAdd_Click(sender As Object, e As EventArgs) Handles cmdAPTAdd.Click
+        NewApt()
+    End Sub
+
+    Private Sub cmdAptRefresh_Click(sender As Object, e As EventArgs) Handles cmdAptRefresh.Click
+        AptRefresh()
+    End Sub
+    Public Sub AptRefresh()
+        LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APT_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
+    End Sub
+    Private Sub DeleteApt()
+        Dim sSQL As String
+        Try
+            If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM APT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                AptRefresh()
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub NewApt()
+        Dim form1 As frmAPT = New frmAPT()
+        form1.Text = "Διαμερίσματα"
+        form1.MdiParent = frmMain
+        form1.Mode = FormMode.NewRecord
+        form1.FormScroller = Me
+        form1.BDGID = sID
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+    Private Sub EditApt()
+        Dim form1 As frmAPT = New frmAPT()
+        form1.Text = "Διαμερίσματα"
+        form1.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+        form1.MdiParent = frmMain
+        form1.Mode = FormMode.EditRecord
+        form1.FormScroller = Me
+        form1.BDGID = sID
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+    Private Sub grdAPT_KeyDown(sender As Object, e As KeyEventArgs) Handles grdAPT.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F2 : If UserProps.AllowInsert = True Then NewApt()
+            Case Keys.F3 : If UserProps.AllowEdit = True Then EditApt()
+            Case Keys.F5 : AptRefresh()
+            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteApt()
+        End Select
+    End Sub
+
+    Private Sub cmdAptDel_Click(sender As Object, e As EventArgs) Handles cmdAptDel.Click
+        DeleteApt()
+    End Sub
+
+    Private Sub cmdAPTEdit_Click(sender As Object, e As EventArgs) Handles cmdAPTEdit.Click
+        EditApt()
+    End Sub
+
+    Private Sub grdAPT_DoubleClick(sender As Object, e As EventArgs) Handles grdAPT.DoubleClick
+        EditApt()
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            PopupMenuRows.ShowPopup(Control.MousePosition)
+        End If
+    End Sub
+    'Αλλαγή Χρώματος Στήλης Master
+    Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView1.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
+    'Αποθήκευση όψης Διαμερισμάτων
+    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView1.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+    Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
+        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
+        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
+        If info Is Nothing Then
+            Return
+        End If
+        info.Column.OptionsColumn.AllowMove = Not item.Checked
+    End Sub
+    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
+        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
+        item.Tag = New MenuColumnInfo(column)
+        Return item
+    End Function
+
+    ' Copy Cell
+    Private Sub BarCopyCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyCell.ItemClick
+        Dim view As GridView = CType(GridView1, GridView)
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+            Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
+        End If
+    End Sub
+    'Copy All
+    Private Sub BarCopyAll_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyAll.ItemClick
+        GridView1.OptionsSelection.MultiSelect = True
+        GridView1.SelectAll()
+        GridView1.CopyToClipboard()
+        GridView1.OptionsSelection.MultiSelect = False
+    End Sub
+    'Copy Row
+    Private Sub BarCopyRow_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyRow.ItemClick
+        Dim view As GridView = CType(GridView1, GridView)
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+            GridView1.OptionsSelection.MultiSelect = True
+            GridView1.SelectRow(view.FocusedRowHandle)
+            GridView1.CopyToClipboard()
+            GridView1.OptionsSelection.MultiSelect = False
+        End If
     End Sub
 End Class

@@ -38,20 +38,51 @@ Public Class FillCombos
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Public Sub CUS(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+    Public Sub CCT(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Fullname,SalerID from vw_CCT order by Fullname", CNDB)
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Fullname from vw_CCT order by Fullname", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Fullname"
             CtrlCombo.Properties.ValueMember = "id"
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
-            CtrlCombo.Properties.Columns(1).Caption = "Πελάτες"
-            CtrlCombo.Properties.Columns(2).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Επαφές"
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub FLR(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("Select id,name from vw_FLR order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Ορόφοι"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub BDG(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("Select id,nam from vw_BDG  " & sSQL.ToString, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "nam"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Πολυκατοικίες"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub

@@ -59,10 +59,14 @@ Public Class DBQueries
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                         End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
+                                        Dim spn As DevExpress.XtraEditors.SpinEdit
+                                        spn = Ctrl
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(spn.Text))
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Then
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -138,10 +142,14 @@ Public Class DBQueries
                                         Else
                                             sSQL.Append("NULL")
                                         End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
+                                        Dim spn As DevExpress.XtraEditors.SpinEdit
+                                        spn = Ctrl
+                                        sSQL.Append(toSQLValueS(spn.Text))
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Then
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
                                             sSQL.Append(toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQL.Append(toSQLValueS(txt.Text))

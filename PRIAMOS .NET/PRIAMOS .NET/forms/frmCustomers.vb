@@ -202,7 +202,7 @@ Public Class frmCustomers
                 End If
                 If Mode = FormMode.NewRecord Then txtCode.Text = DBQ.GetNextId("CCT")
                 If CalledFromCtrl Then
-                    FillCbo.CUS(CtrlCombo)
+                    FillCbo.CCT(CtrlCombo)
                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                 Else
                     Dim form As frmScroller = Frm
