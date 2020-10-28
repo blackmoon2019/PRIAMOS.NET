@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraLayout
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraGrid.Columns
 
 Public Class FormLoader
     Public Function LoadForm(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sSQL As String) As Boolean
@@ -90,15 +91,25 @@ Public Class FormLoader
 
         End If
     End Sub
-    Public Sub LoadDataToGrid(ByVal GRDControl As DevExpress.XtraGrid.GridControl, ByVal GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
+    Public Sub LoadDataToGrid(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
         Dim myCmd As SqlCommand
         Dim myReader As SqlDataReader
         myCmd = CNDB.CreateCommand
         myCmd.CommandText = sSQL
+        GRDView.Columns.Clear()
         myReader = myCmd.ExecuteReader()
         GRDControl.DataSource = myReader
         GRDControl.ForceInitialize()
         GRDControl.DefaultView.PopulateColumns()
+        If myReader.HasRows = False Then
+            For i As Integer = 0 To myReader.FieldCount - 1
+                Dim C As New GridColumn
+                C.Name = myReader.GetName(i).ToString
+                C.Caption = myReader.GetName(i).ToString
+                C.Visible = True
+                GRDView.Columns.Add(C)
+            Next i
+        End If
     End Sub
 End Class
 

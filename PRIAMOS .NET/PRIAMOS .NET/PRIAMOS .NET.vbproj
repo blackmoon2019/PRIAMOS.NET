@@ -170,6 +170,12 @@
     <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
+    <Compile Include="forms\frmAPT.Designer.vb">
+      <DependentUpon>frmAPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmAPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmBDG.Designer.vb">
       <DependentUpon>frmBDG.vb</DependentUpon>
     </Compile>
@@ -262,6 +268,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\frmAPT.resx">
+      <DependentUpon>frmAPT.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmBDG.resx">
       <DependentUpon>frmBDG.vb</DependentUpon>
     </EmbeddedResource>
