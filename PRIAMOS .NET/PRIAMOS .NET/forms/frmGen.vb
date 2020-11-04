@@ -142,6 +142,45 @@ Public Class frmGen
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("PRF")
+                            Case "HTYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertData(LayoutControl1, "HTYPES", sGuid)
+                                If CalledFromCtrl Then
+                                    FillCbo.HTYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_HTYPES")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("HTYPES")
+                            Case "BTYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertData(LayoutControl1, "BTYPES", sGuid)
+                                If CalledFromCtrl Then
+                                    FillCbo.HTYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_BTYPES")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("BTYPES")
+                            Case "FTYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertData(LayoutControl1, "FTYPES", sGuid)
+                                If CalledFromCtrl Then
+                                    FillCbo.FTYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_FTYPES")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("FTYPES")
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
@@ -190,6 +229,33 @@ Public Class frmGen
                                     Dim form As frmScroller = Frm
                                     form.LoadRecords("vw_PRF")
                                 End If
+                            Case "HTYPES"
+                                sResult = DBQ.UpdateData(LayoutControl1, "HTYPES", sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.HTYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_HTYPES")
+                                End If
+                            Case "BTYPES"
+                                sResult = DBQ.UpdateData(LayoutControl1, "BTYPES", sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.HTYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_BTYPES")
+                                End If
+                            Case "FTYPES"
+                                sResult = DBQ.UpdateData(LayoutControl1, "FTYPES", sID)
+                                If CalledFromCtrl Then
+                                    FillCbo.FTYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_FTYPES")
+                                End If
                         End Select
                 End Select
                 If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -233,6 +299,24 @@ Public Class frmGen
                     txtCode.Text = DBQ.GetNextId("PRF")
                 Else
                     LoadForms.LoadForm(LayoutControl1, "Select * from vw_PRF where id ='" + sID + "'")
+                End If
+            Case "HTYPES"
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("HTYPES")
+                Else
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_HTYPES where id ='" + sID + "'")
+                End If
+            Case "BTYPES"
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("BTYPES")
+                Else
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_BTYPES where id ='" + sID + "'")
+                End If
+            Case "FTYPES"
+                If Mode = FormMode.NewRecord Then
+                    txtCode.Text = DBQ.GetNextId("FTYPES")
+                Else
+                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_FTYPES where id ='" + sID + "'")
                 End If
         End Select
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -287,6 +371,27 @@ Public Class frmGen
                         Else
                             Dim form As frmScroller = Frm
                             form.LoadRecords("vw_PRF")
+                        End If
+                    Case "HTYPES"
+                        If CalledFromCtrl Then
+                            FillCbo.HTYPES(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_HTYPES")
+                        End If
+                    Case "BTYPES"
+                        If CalledFromCtrl Then
+                            FillCbo.BTYPES(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_BTYPES")
+                        End If
+                    Case "FTYPES"
+                        If CalledFromCtrl Then
+                            FillCbo.FTYPES(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_FTYPES")
                         End If
                 End Select
                 Cls.ClearCtrls(LayoutControl1)

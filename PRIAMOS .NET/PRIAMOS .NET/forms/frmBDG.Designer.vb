@@ -23,7 +23,7 @@ Partial Class frmBDG
         Me.TileNavPane1 = New DevExpress.XtraBars.Navigation.TileNavPane()
         Me.NavGeneral = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavManage = New DevExpress.XtraBars.Navigation.NavButton()
-        Me.NavButton2 = New DevExpress.XtraBars.Navigation.NavButton()
+        Me.NavHeating = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavButton3 = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavButton4 = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavButton5 = New DevExpress.XtraBars.Navigation.NavButton()
@@ -95,37 +95,41 @@ Partial Class frmBDG
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
-        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
+        Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
+        Me.XtraTabPage4 = New DevExpress.XtraTab.XtraTabPage()
+        Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCboManageBtypes = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboBtypes = New DevExpress.XtraEditors.LookUpEdit()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
+        Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
+        Me.cmdCboManageHtypes = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboHtypes = New DevExpress.XtraEditors.LookUpEdit()
+        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton9 = New DevExpress.XtraEditors.SimpleButton()
+        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.Bar1 = New DevExpress.XtraBars.Bar()
-        Me.BarRecords = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryBarRecords = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
-        Me.BarViewsManage = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarViews = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryBarViews = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
-        Me.BarPrintPreview = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
-        Me.Bar3 = New DevExpress.XtraBars.Bar()
-        Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarStaticItem2 = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarStaticItem3 = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarStaticItem4 = New DevExpress.XtraBars.BarStaticItem()
-        Me.Bar2 = New DevExpress.XtraBars.Bar()
-        Me.BarNewRec = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarDelete = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarEdit = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarRefresh = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.BarRecords = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryBarRecords = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
+        Me.BarViews = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryBarViews = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.popDeleteView = New DevExpress.XtraBars.BarButtonItem()
         Me.popRestoreView = New DevExpress.XtraBars.BarButtonItem()
         Me.popSaveAsView = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryPopSaveAsView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.popSaveView = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarViewsManage = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarPrintPreview = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarPDFExport = New DevExpress.XtraBars.BarButtonItem()
         Me.BarExportHTML = New DevExpress.XtraBars.BarButtonItem()
         Me.BarExportMHT = New DevExpress.XtraBars.BarButtonItem()
@@ -134,6 +138,14 @@ Partial Class frmBDG
         Me.BarExportDOCX = New DevExpress.XtraBars.BarButtonItem()
         Me.BarExportRTF = New DevExpress.XtraBars.BarButtonItem()
         Me.BarExportTEXT = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarNewRec = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEdit = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarRefresh = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarStaticItem2 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarStaticItem3 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarStaticItem4 = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItem5 = New DevExpress.XtraBars.BarStaticItem()
         Me.popSaveAsDefault = New DevExpress.XtraBars.BarButtonItem()
         Me.BarCopyCell = New DevExpress.XtraBars.BarButtonItem()
@@ -146,7 +158,59 @@ Partial Class frmBDG
         Me.RepositoryItemBreadCrumbEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.RepositoryItemButtonEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryPopRenameView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.cboFtypes = New DevExpress.XtraEditors.LookUpEdit()
+        Me.TextEdit21 = New DevExpress.XtraEditors.TextEdit()
+        Me.TextEdit211 = New DevExpress.XtraEditors.TextEdit()
+        Me.TextEdit212 = New DevExpress.XtraEditors.TextEdit()
+        Me.TextEdit2121 = New DevExpress.XtraEditors.TextEdit()
+        Me.TextEdit22 = New DevExpress.XtraEditors.TextEdit()
+        Me.TextEdit221 = New DevExpress.XtraEditors.TextEdit()
+        Me.RadioGroup1 = New DevExpress.XtraEditors.RadioGroup()
+        Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem31 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.SimpleLabelItem2 = New DevExpress.XtraLayout.SimpleLabelItem()
+        Me.LayoutControlItem42 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem43 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem45 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem46 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem15 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem16 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem24 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem13 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem28 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem29 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem35 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem37 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem38 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem32 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem41 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem27 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem34 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem36 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem25 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem30 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem39 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem11 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem40 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
+        Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.Bar1 = New DevExpress.XtraBars.Bar()
+        Me.Bar3 = New DevExpress.XtraBars.Bar()
+        Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.EmptySpaceItem12 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem9 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.SimpleButton11 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCheckTank = New DevExpress.XtraEditors.SimpleButton()
+        Me.LCheckTank = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.SimpleLabelItem3 = New DevExpress.XtraLayout.SimpleLabelItem()
+        Me.SimpleLabelItem4 = New DevExpress.XtraLayout.SimpleLabelItem()
         CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tabBDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBDG.SuspendLayout()
@@ -207,7 +271,20 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XtraTabPage3.SuspendLayout()
+        CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XtraTabControl1.SuspendLayout()
+        Me.XtraTabPage4.SuspendLayout()
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LayoutControl2.SuspendLayout()
+        CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -216,14 +293,57 @@ Partial Class frmBDG
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit21.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit211.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit212.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit2121.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit22.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit221.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RadioGroup1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem38, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem36, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TileNavPane1
         '
         Me.TileNavPane1.Buttons.Add(Me.NavGeneral)
         Me.TileNavPane1.Buttons.Add(Me.NavManage)
-        Me.TileNavPane1.Buttons.Add(Me.NavButton2)
+        Me.TileNavPane1.Buttons.Add(Me.NavHeating)
         Me.TileNavPane1.Buttons.Add(Me.NavButton3)
         Me.TileNavPane1.Buttons.Add(Me.NavButton4)
         Me.TileNavPane1.Buttons.Add(Me.NavButton5)
@@ -258,11 +378,11 @@ Partial Class frmBDG
         Me.NavManage.Caption = "Διαχείριση"
         Me.NavManage.Name = "NavManage"
         '
-        'NavButton2
+        'NavHeating
         '
-        Me.NavButton2.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
-        Me.NavButton2.Caption = "Θέρμανση"
-        Me.NavButton2.Name = "NavButton2"
+        Me.NavHeating.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
+        Me.NavHeating.Caption = "Θέρμανση"
+        Me.NavHeating.Name = "NavHeating"
         '
         'NavButton3
         '
@@ -308,13 +428,13 @@ Partial Class frmBDG
         '
         'tabBDG
         '
-        Me.tabBDG.Location = New System.Drawing.Point(0, 37)
+        Me.tabBDG.Location = New System.Drawing.Point(0, 39)
         Me.tabBDG.Name = "tabBDG"
         Me.tabBDG.SelectedTabPage = Me.XtraTabPage1
         Me.tabBDG.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[False]
         Me.tabBDG.Size = New System.Drawing.Size(1198, 485)
         Me.tabBDG.TabIndex = 1
-        Me.tabBDG.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2})
+        Me.tabBDG.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2, Me.XtraTabPage3})
         '
         'XtraTabPage1
         '
@@ -967,26 +1087,218 @@ Partial Class frmBDG
         '
         Me.XtraTabPage2.Name = "XtraTabPage2"
         Me.XtraTabPage2.Size = New System.Drawing.Size(1196, 483)
-        Me.XtraTabPage2.Text = "XtraTabPage2"
+        Me.XtraTabPage2.Text = "Διαχείριση"
         '
-        'cmdExit
+        'XtraTabPage3
         '
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(1086, 528)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(110, 28)
-        Me.cmdExit.TabIndex = 10
-        Me.cmdExit.Text = "Έξοδος"
+        Me.XtraTabPage3.Controls.Add(Me.XtraTabControl1)
+        Me.XtraTabPage3.Name = "XtraTabPage3"
+        Me.XtraTabPage3.Size = New System.Drawing.Size(1196, 483)
+        Me.XtraTabPage3.Text = "Θέρμανση"
         '
-        'cmdSave
+        'XtraTabControl1
         '
-        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(969, 528)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(111, 28)
-        Me.cmdSave.TabIndex = 11
-        Me.cmdSave.Text = "Αποθήκευση"
+        Me.XtraTabControl1.Location = New System.Drawing.Point(-1, -1)
+        Me.XtraTabControl1.Name = "XtraTabControl1"
+        Me.XtraTabControl1.SelectedTabPage = Me.XtraTabPage4
+        Me.XtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[False]
+        Me.XtraTabControl1.Size = New System.Drawing.Size(1198, 485)
+        Me.XtraTabControl1.TabIndex = 2
+        Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage4, Me.XtraTabPage5, Me.XtraTabPage6})
+        '
+        'XtraTabPage4
+        '
+        Me.XtraTabPage4.Controls.Add(Me.LayoutControl2)
+        Me.XtraTabPage4.Name = "XtraTabPage4"
+        Me.XtraTabPage4.Size = New System.Drawing.Size(1196, 483)
+        Me.XtraTabPage4.Text = "Στοιχεία"
+        '
+        'LayoutControl2
+        '
+        Me.LayoutControl2.Controls.Add(Me.SimpleButton2)
+        Me.LayoutControl2.Controls.Add(Me.cmdCboManageBtypes)
+        Me.LayoutControl2.Controls.Add(Me.cboBtypes)
+        Me.LayoutControl2.Controls.Add(Me.GridControl1)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit2)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit4)
+        Me.LayoutControl2.Controls.Add(Me.cmdCboManageHtypes)
+        Me.LayoutControl2.Controls.Add(Me.cboHtypes)
+        Me.LayoutControl2.Controls.Add(Me.SimpleButton6)
+        Me.LayoutControl2.Controls.Add(Me.SimpleButton7)
+        Me.LayoutControl2.Controls.Add(Me.SimpleButton8)
+        Me.LayoutControl2.Controls.Add(Me.SimpleButton9)
+        Me.LayoutControl2.Controls.Add(Me.DateEdit1)
+        Me.LayoutControl2.Controls.Add(Me.cboFtypes)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit21)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit211)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit212)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit2121)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit22)
+        Me.LayoutControl2.Controls.Add(Me.TextEdit221)
+        Me.LayoutControl2.Controls.Add(Me.RadioGroup1)
+        Me.LayoutControl2.Controls.Add(Me.cmdCheckTank)
+        Me.LayoutControl2.Location = New System.Drawing.Point(3, 3)
+        Me.LayoutControl2.Name = "LayoutControl2"
+        Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1244, 259, 650, 400)
+        Me.LayoutControl2.Root = Me.LayoutControlGroup1
+        Me.LayoutControl2.Size = New System.Drawing.Size(1201, 490)
+        Me.LayoutControl2.TabIndex = 0
+        Me.LayoutControl2.Text = "LayoutControl2"
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_form_16
+        Me.SimpleButton2.Location = New System.Drawing.Point(299, 71)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton2.StyleController = Me.LayoutControl2
+        Me.SimpleButton2.TabIndex = 32
+        '
+        'cmdCboManageBtypes
+        '
+        Me.cmdCboManageBtypes.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_form_16
+        Me.cmdCboManageBtypes.Location = New System.Drawing.Point(299, 276)
+        Me.cmdCboManageBtypes.Name = "cmdCboManageBtypes"
+        Me.cmdCboManageBtypes.Size = New System.Drawing.Size(22, 22)
+        Me.cmdCboManageBtypes.StyleController = Me.LayoutControl2
+        Me.cmdCboManageBtypes.TabIndex = 31
+        '
+        'cboBtypes
+        '
+        Me.cboBtypes.Location = New System.Drawing.Point(55, 276)
+        Me.cboBtypes.Name = "cboBtypes"
+        Me.cboBtypes.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboBtypes.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboBtypes.Properties.NullText = ""
+        Me.cboBtypes.Properties.PopupSizeable = False
+        Me.cboBtypes.Size = New System.Drawing.Size(240, 20)
+        Me.cboBtypes.StyleController = Me.LayoutControl2
+        Me.cboBtypes.TabIndex = 30
+        Me.cboBtypes.Tag = "couid,0"
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GridControl1.Location = New System.Drawing.Point(373, 54)
+        Me.GridControl1.MainView = Me.GridView2
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(816, 424)
+        Me.GridControl1.TabIndex = 21
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
+        '
+        'GridView2
+        '
+        Me.GridView2.GridControl = Me.GridControl1
+        Me.GridView2.Name = "GridView2"
+        Me.GridView2.OptionsBehavior.Editable = False
+        Me.GridView2.OptionsBehavior.ReadOnly = True
+        Me.GridView2.OptionsLayout.StoreAllOptions = True
+        Me.GridView2.OptionsLayout.StoreAppearance = True
+        Me.GridView2.OptionsLayout.StoreFormatRules = True
+        Me.GridView2.OptionsPrint.PrintPreview = True
+        Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView2.OptionsView.ColumnAutoWidth = False
+        Me.GridView2.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView2.OptionsView.ShowGroupPanel = False
+        '
+        'TextEdit2
+        '
+        Me.TextEdit2.EditValue = "0%"
+        Me.TextEdit2.Location = New System.Drawing.Point(260, 97)
+        Me.TextEdit2.Name = "TextEdit2"
+        Me.TextEdit2.Properties.Mask.EditMask = "P0"
+        Me.TextEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.TextEdit2.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit2.StyleController = Me.LayoutControl2
+        Me.TextEdit2.TabIndex = 8
+        Me.TextEdit2.Tag = ""
+        '
+        'TextEdit4
+        '
+        Me.TextEdit4.EditValue = "0%"
+        Me.TextEdit4.Location = New System.Drawing.Point(260, 302)
+        Me.TextEdit4.Name = "TextEdit4"
+        Me.TextEdit4.Properties.Mask.EditMask = "P0"
+        Me.TextEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.TextEdit4.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit4.StyleController = Me.LayoutControl2
+        Me.TextEdit4.TabIndex = 10
+        Me.TextEdit4.Tag = ""
+        '
+        'cmdCboManageHtypes
+        '
+        Me.cmdCboManageHtypes.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_form_16
+        Me.cmdCboManageHtypes.Location = New System.Drawing.Point(299, 45)
+        Me.cmdCboManageHtypes.Name = "cmdCboManageHtypes"
+        Me.cmdCboManageHtypes.Size = New System.Drawing.Size(22, 22)
+        Me.cmdCboManageHtypes.StyleController = Me.LayoutControl2
+        Me.cmdCboManageHtypes.TabIndex = 11
+        '
+        'cboHtypes
+        '
+        Me.cboHtypes.Location = New System.Drawing.Point(104, 45)
+        Me.cboHtypes.Name = "cboHtypes"
+        Me.cboHtypes.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboHtypes.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboHtypes.Properties.NullText = ""
+        Me.cboHtypes.Properties.PopupSizeable = False
+        Me.cboHtypes.Size = New System.Drawing.Size(191, 20)
+        Me.cboHtypes.StyleController = Me.LayoutControl2
+        Me.cboHtypes.TabIndex = 5
+        Me.cboHtypes.Tag = "HTypeID,0,1,2"
+        '
+        'SimpleButton6
+        '
+        Me.SimpleButton6.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.SimpleButton6.Location = New System.Drawing.Point(347, 12)
+        Me.SimpleButton6.Name = "SimpleButton6"
+        Me.SimpleButton6.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.SimpleButton6.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton6.StyleController = Me.LayoutControl2
+        Me.SimpleButton6.TabIndex = 23
+        '
+        'SimpleButton7
+        '
+        Me.SimpleButton7.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.SimpleButton7.Location = New System.Drawing.Point(347, 38)
+        Me.SimpleButton7.Name = "SimpleButton7"
+        Me.SimpleButton7.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.SimpleButton7.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton7.StyleController = Me.LayoutControl2
+        Me.SimpleButton7.TabIndex = 24
+        '
+        'SimpleButton8
+        '
+        Me.SimpleButton8.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
+        Me.SimpleButton8.Location = New System.Drawing.Point(347, 64)
+        Me.SimpleButton8.Name = "SimpleButton8"
+        Me.SimpleButton8.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.SimpleButton8.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton8.StyleController = Me.LayoutControl2
+        Me.SimpleButton8.TabIndex = 25
+        '
+        'SimpleButton9
+        '
+        Me.SimpleButton9.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
+        Me.SimpleButton9.Location = New System.Drawing.Point(347, 90)
+        Me.SimpleButton9.Name = "SimpleButton9"
+        Me.SimpleButton9.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.SimpleButton9.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton9.StyleController = Me.LayoutControl2
+        Me.SimpleButton9.TabIndex = 26
+        '
+        'DateEdit1
+        '
+        Me.DateEdit1.EditValue = Nothing
+        Me.DateEdit1.Location = New System.Drawing.Point(434, 30)
+        Me.DateEdit1.MenuManager = Me.BarManager1
+        Me.DateEdit1.Name = "DateEdit1"
+        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Size = New System.Drawing.Size(137, 20)
+        Me.DateEdit1.StyleController = Me.LayoutControl2
+        Me.DateEdit1.TabIndex = 27
         '
         'BarManager1
         '
@@ -999,16 +1311,37 @@ Partial Class frmBDG
         Me.BarManager1.MaxItemId = 48
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         '
-        'Bar1
+        'barDockControlTop
         '
-        Me.Bar1.BarName = "MainMenu"
-        Me.Bar1.DockCol = 0
-        Me.Bar1.DockRow = 0
-        Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarRecords, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViewsManage, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViews, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarPrintPreview, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)})
-        Me.Bar1.OptionsBar.MultiLine = True
-        Me.Bar1.OptionsBar.UseWholeRow = True
-        Me.Bar1.Text = "MainMenu"
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1198, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 563)
+        Me.barDockControlBottom.Manager = Me.BarManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1198, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 563)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1198, 0)
+        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 563)
         '
         'BarRecords
         '
@@ -1023,14 +1356,6 @@ Partial Class frmBDG
         Me.RepositoryBarRecords.AutoHeight = False
         Me.RepositoryBarRecords.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryBarRecords.Name = "RepositoryBarRecords"
-        '
-        'BarViewsManage
-        '
-        Me.BarViewsManage.ActAsDropDown = True
-        Me.BarViewsManage.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.BarViewsManage.Caption = "Διαχείριση Όψεων"
-        Me.BarViewsManage.Id = 19
-        Me.BarViewsManage.Name = "BarViewsManage"
         '
         'BarViews
         '
@@ -1047,141 +1372,6 @@ Partial Class frmBDG
         Me.RepositoryBarViews.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryBarViews.Name = "RepositoryBarViews"
         Me.RepositoryBarViews.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'BarPrintPreview
-        '
-        Me.BarPrintPreview.Caption = "Print Preview"
-        Me.BarPrintPreview.Id = 22
-        Me.BarPrintPreview.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_analyze_32
-        Me.BarPrintPreview.Name = "BarPrintPreview"
-        '
-        'BarButtonItem1
-        '
-        Me.BarButtonItem1.ActAsDropDown = True
-        Me.BarButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.BarButtonItem1.Caption = "Export"
-        Me.BarButtonItem1.Id = 23
-        Me.BarButtonItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Export_32x32
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        '
-        'Bar3
-        '
-        Me.Bar3.BarName = "StatusBar"
-        Me.Bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
-        Me.Bar3.DockCol = 0
-        Me.Bar3.DockRow = 0
-        Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem4)})
-        Me.Bar3.OptionsBar.AllowQuickCustomization = False
-        Me.Bar3.OptionsBar.DrawDragBorder = False
-        Me.Bar3.OptionsBar.UseWholeRow = True
-        Me.Bar3.Text = "StatusBar"
-        '
-        'BarStaticItem1
-        '
-        Me.BarStaticItem1.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.BarStaticItem1.Caption = "[Νέα Εγγραφή]"
-        Me.BarStaticItem1.Id = 36
-        Me.BarStaticItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_f2_key_20
-        Me.BarStaticItem1.Name = "BarStaticItem1"
-        Me.BarStaticItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'BarStaticItem2
-        '
-        Me.BarStaticItem2.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.BarStaticItem2.Caption = "[Επεξεργασία]"
-        Me.BarStaticItem2.Id = 37
-        Me.BarStaticItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_f3_key_20
-        Me.BarStaticItem2.Name = "BarStaticItem2"
-        Me.BarStaticItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'BarStaticItem3
-        '
-        Me.BarStaticItem3.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.BarStaticItem3.Caption = "[Ανανέωση]"
-        Me.BarStaticItem3.Id = 38
-        Me.BarStaticItem3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_f5_key_20
-        Me.BarStaticItem3.Name = "BarStaticItem3"
-        Me.BarStaticItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'BarStaticItem4
-        '
-        Me.BarStaticItem4.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.BarStaticItem4.Caption = "[Διαγραφή]"
-        Me.BarStaticItem4.Id = 39
-        Me.BarStaticItem4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_delete_key_20
-        Me.BarStaticItem4.Name = "BarStaticItem4"
-        Me.BarStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'Bar2
-        '
-        Me.Bar2.BarName = "Custom 4"
-        Me.Bar2.DockCol = 0
-        Me.Bar2.DockRow = 0
-        Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Left
-        Me.Bar2.FloatLocation = New System.Drawing.Point(49, 225)
-        Me.Bar2.Offset = 1
-        Me.Bar2.Text = "Custom 4"
-        '
-        'BarNewRec
-        '
-        Me.BarNewRec.Caption = "Νέα Εγγραφή"
-        Me.BarNewRec.Id = 32
-        Me.BarNewRec.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.BarNewRec.Name = "BarNewRec"
-        '
-        'BarDelete
-        '
-        Me.BarDelete.Caption = "Διαγραφή Εγγραφής"
-        Me.BarDelete.Id = 33
-        Me.BarDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.BarDelete.Name = "BarDelete"
-        '
-        'BarEdit
-        '
-        Me.BarEdit.Caption = "Διόρθωση Εγγραφής"
-        Me.BarEdit.Id = 34
-        Me.BarEdit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
-        Me.BarEdit.Name = "BarEdit"
-        '
-        'BarRefresh
-        '
-        Me.BarRefresh.Caption = "Ανανέωση Εγγραφών"
-        Me.BarRefresh.Id = 35
-        Me.BarRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.BarRefresh.Name = "BarRefresh"
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 40)
-        Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1198, 0)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 563)
-        Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1198, 0)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 40)
-        Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 523)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1198, 40)
-        Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 523)
         '
         'popDeleteView
         '
@@ -1217,6 +1407,30 @@ Partial Class frmBDG
         Me.popSaveView.Id = 18
         Me.popSaveView.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_to_grid_16
         Me.popSaveView.Name = "popSaveView"
+        '
+        'BarViewsManage
+        '
+        Me.BarViewsManage.ActAsDropDown = True
+        Me.BarViewsManage.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.BarViewsManage.Caption = "Διαχείριση Όψεων"
+        Me.BarViewsManage.Id = 19
+        Me.BarViewsManage.Name = "BarViewsManage"
+        '
+        'BarPrintPreview
+        '
+        Me.BarPrintPreview.Caption = "Print Preview"
+        Me.BarPrintPreview.Id = 22
+        Me.BarPrintPreview.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_analyze_32
+        Me.BarPrintPreview.Name = "BarPrintPreview"
+        '
+        'BarButtonItem1
+        '
+        Me.BarButtonItem1.ActAsDropDown = True
+        Me.BarButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.BarButtonItem1.Caption = "Export"
+        Me.BarButtonItem1.Id = 23
+        Me.BarButtonItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Export_32x32
+        Me.BarButtonItem1.Name = "BarButtonItem1"
         '
         'BarPDFExport
         '
@@ -1273,6 +1487,70 @@ Partial Class frmBDG
         Me.BarExportTEXT.Id = 31
         Me.BarExportTEXT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.ExportTxtLarge
         Me.BarExportTEXT.Name = "BarExportTEXT"
+        '
+        'BarNewRec
+        '
+        Me.BarNewRec.Caption = "Νέα Εγγραφή"
+        Me.BarNewRec.Id = 32
+        Me.BarNewRec.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.BarNewRec.Name = "BarNewRec"
+        '
+        'BarDelete
+        '
+        Me.BarDelete.Caption = "Διαγραφή Εγγραφής"
+        Me.BarDelete.Id = 33
+        Me.BarDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.BarDelete.Name = "BarDelete"
+        '
+        'BarEdit
+        '
+        Me.BarEdit.Caption = "Διόρθωση Εγγραφής"
+        Me.BarEdit.Id = 34
+        Me.BarEdit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
+        Me.BarEdit.Name = "BarEdit"
+        '
+        'BarRefresh
+        '
+        Me.BarRefresh.Caption = "Ανανέωση Εγγραφών"
+        Me.BarRefresh.Id = 35
+        Me.BarRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
+        Me.BarRefresh.Name = "BarRefresh"
+        '
+        'BarStaticItem1
+        '
+        Me.BarStaticItem1.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.BarStaticItem1.Caption = "[Νέα Εγγραφή]"
+        Me.BarStaticItem1.Id = 36
+        Me.BarStaticItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_f2_key_20
+        Me.BarStaticItem1.Name = "BarStaticItem1"
+        Me.BarStaticItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'BarStaticItem2
+        '
+        Me.BarStaticItem2.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.BarStaticItem2.Caption = "[Επεξεργασία]"
+        Me.BarStaticItem2.Id = 37
+        Me.BarStaticItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_f3_key_20
+        Me.BarStaticItem2.Name = "BarStaticItem2"
+        Me.BarStaticItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'BarStaticItem3
+        '
+        Me.BarStaticItem3.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.BarStaticItem3.Caption = "[Ανανέωση]"
+        Me.BarStaticItem3.Id = 38
+        Me.BarStaticItem3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_f5_key_20
+        Me.BarStaticItem3.Name = "BarStaticItem3"
+        Me.BarStaticItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'BarStaticItem4
+        '
+        Me.BarStaticItem4.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.BarStaticItem4.Caption = "[Διαγραφή]"
+        Me.BarStaticItem4.Id = 39
+        Me.BarStaticItem4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_delete_key_20
+        Me.BarStaticItem4.Name = "BarStaticItem4"
+        Me.BarStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
         'BarStaticItem5
         '
@@ -1352,25 +1630,524 @@ Partial Class frmBDG
         Me.RepositoryPopRenameView.AutoHeight = False
         Me.RepositoryPopRenameView.Name = "RepositoryPopRenameView"
         '
+        'cboFtypes
+        '
+        Me.cboFtypes.Location = New System.Drawing.Point(105, 71)
+        Me.cboFtypes.Name = "cboFtypes"
+        Me.cboFtypes.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboFtypes.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboFtypes.Properties.NullText = ""
+        Me.cboFtypes.Properties.PopupSizeable = False
+        Me.cboFtypes.Size = New System.Drawing.Size(190, 20)
+        Me.cboFtypes.StyleController = Me.LayoutControl2
+        Me.cboFtypes.TabIndex = 30
+        Me.cboFtypes.Tag = "FTypeID,0,1,2"
+        '
+        'TextEdit21
+        '
+        Me.TextEdit21.Location = New System.Drawing.Point(260, 145)
+        Me.TextEdit21.Name = "TextEdit21"
+        Me.TextEdit21.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit21.StyleController = Me.LayoutControl2
+        Me.TextEdit21.TabIndex = 8
+        Me.TextEdit21.Tag = ""
+        '
+        'TextEdit211
+        '
+        Me.TextEdit211.Location = New System.Drawing.Point(260, 350)
+        Me.TextEdit211.Name = "TextEdit211"
+        Me.TextEdit211.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit211.StyleController = Me.LayoutControl2
+        Me.TextEdit211.TabIndex = 8
+        Me.TextEdit211.Tag = ""
+        '
+        'TextEdit212
+        '
+        Me.TextEdit212.Location = New System.Drawing.Point(260, 169)
+        Me.TextEdit212.Name = "TextEdit212"
+        Me.TextEdit212.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit212.StyleController = Me.LayoutControl2
+        Me.TextEdit212.TabIndex = 8
+        Me.TextEdit212.Tag = ""
+        '
+        'TextEdit2121
+        '
+        Me.TextEdit2121.Location = New System.Drawing.Point(260, 374)
+        Me.TextEdit2121.Name = "TextEdit2121"
+        Me.TextEdit2121.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit2121.StyleController = Me.LayoutControl2
+        Me.TextEdit2121.TabIndex = 8
+        Me.TextEdit2121.Tag = ""
+        '
+        'TextEdit22
+        '
+        Me.TextEdit22.Location = New System.Drawing.Point(260, 121)
+        Me.TextEdit22.Name = "TextEdit22"
+        Me.TextEdit22.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit22.StyleController = Me.LayoutControl2
+        Me.TextEdit22.TabIndex = 8
+        Me.TextEdit22.Tag = ""
+        '
+        'TextEdit221
+        '
+        Me.TextEdit221.Location = New System.Drawing.Point(260, 326)
+        Me.TextEdit221.Name = "TextEdit221"
+        Me.TextEdit221.Size = New System.Drawing.Size(61, 20)
+        Me.TextEdit221.StyleController = Me.LayoutControl2
+        Me.TextEdit221.TabIndex = 8
+        Me.TextEdit221.Tag = ""
+        '
+        'RadioGroup1
+        '
+        Me.RadioGroup1.Location = New System.Drawing.Point(57, 205)
+        Me.RadioGroup1.MenuManager = Me.BarManager1
+        Me.RadioGroup1.Name = "RadioGroup1"
+        Me.RadioGroup1.Properties.Columns = 2
+        Me.RadioGroup1.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(True, "Κοινός"), New DevExpress.XtraEditors.Controls.RadioGroupItem(False, "Ξεχωριστός")})
+        Me.RadioGroup1.Size = New System.Drawing.Size(276, 34)
+        Me.RadioGroup1.StyleController = Me.LayoutControl2
+        Me.RadioGroup1.TabIndex = 33
+        '
+        'LayoutControlGroup1
+        '
+        Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup1.GroupBordersVisible = False
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem31, Me.SimpleLabelItem2, Me.LayoutControlItem42, Me.LayoutControlItem43, Me.LayoutControlItem45, Me.LayoutControlItem46, Me.EmptySpaceItem15, Me.EmptySpaceItem16, Me.LayoutControlItem24, Me.EmptySpaceItem13, Me.LayoutControlGroup3, Me.LayoutControlGroup2, Me.LayoutControlItem40, Me.LCheckTank, Me.SimpleLabelItem3, Me.SimpleLabelItem4, Me.EmptySpaceItem11})
+        Me.LayoutControlGroup1.Name = "Root"
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1201, 490)
+        Me.LayoutControlGroup1.TextVisible = False
+        '
+        'LayoutControlItem31
+        '
+        Me.LayoutControlItem31.Control = Me.GridControl1
+        Me.LayoutControlItem31.Location = New System.Drawing.Point(361, 42)
+        Me.LayoutControlItem31.Name = "LayoutControlItem18"
+        Me.LayoutControlItem31.Size = New System.Drawing.Size(820, 428)
+        Me.LayoutControlItem31.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem31.TextVisible = False
+        '
+        'SimpleLabelItem2
+        '
+        Me.SimpleLabelItem2.AllowHotTrack = False
+        Me.SimpleLabelItem2.AppearanceItemCaption.BackColor = System.Drawing.Color.PaleGreen
+        Me.SimpleLabelItem2.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.SimpleLabelItem2.AppearanceItemCaption.Options.UseBackColor = True
+        Me.SimpleLabelItem2.AppearanceItemCaption.Options.UseFont = True
+        Me.SimpleLabelItem2.CustomizationFormText = "Διαμερίσματα"
+        Me.SimpleLabelItem2.Location = New System.Drawing.Point(361, 0)
+        Me.SimpleLabelItem2.Name = "SimpleLabelItem1"
+        Me.SimpleLabelItem2.Size = New System.Drawing.Size(820, 18)
+        Me.SimpleLabelItem2.Text = "Μετρήσεις Ωρών"
+        Me.SimpleLabelItem2.TextSize = New System.Drawing.Size(233, 14)
+        '
+        'LayoutControlItem42
+        '
+        Me.LayoutControlItem42.Control = Me.SimpleButton6
+        Me.LayoutControlItem42.Location = New System.Drawing.Point(335, 0)
+        Me.LayoutControlItem42.Name = "LayoutControlItem20"
+        Me.LayoutControlItem42.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem42.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem42.TextVisible = False
+        '
+        'LayoutControlItem43
+        '
+        Me.LayoutControlItem43.Control = Me.SimpleButton7
+        Me.LayoutControlItem43.Location = New System.Drawing.Point(335, 26)
+        Me.LayoutControlItem43.Name = "LayoutControlItem21"
+        Me.LayoutControlItem43.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem43.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem43.TextVisible = False
+        '
+        'LayoutControlItem45
+        '
+        Me.LayoutControlItem45.Control = Me.SimpleButton8
+        Me.LayoutControlItem45.Location = New System.Drawing.Point(335, 52)
+        Me.LayoutControlItem45.Name = "LayoutControlItem22"
+        Me.LayoutControlItem45.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem45.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem45.TextVisible = False
+        '
+        'LayoutControlItem46
+        '
+        Me.LayoutControlItem46.Control = Me.SimpleButton9
+        Me.LayoutControlItem46.Location = New System.Drawing.Point(335, 78)
+        Me.LayoutControlItem46.Name = "LayoutControlItem23"
+        Me.LayoutControlItem46.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem46.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem46.TextVisible = False
+        '
+        'EmptySpaceItem15
+        '
+        Me.EmptySpaceItem15.AllowHotTrack = False
+        Me.EmptySpaceItem15.Location = New System.Drawing.Point(325, 0)
+        Me.EmptySpaceItem15.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem15.Size = New System.Drawing.Size(10, 470)
+        Me.EmptySpaceItem15.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem16
+        '
+        Me.EmptySpaceItem16.AllowHotTrack = False
+        Me.EmptySpaceItem16.Location = New System.Drawing.Point(335, 104)
+        Me.EmptySpaceItem16.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem16.Size = New System.Drawing.Size(26, 366)
+        Me.EmptySpaceItem16.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem24
+        '
+        Me.LayoutControlItem24.Control = Me.DateEdit1
+        Me.LayoutControlItem24.Location = New System.Drawing.Point(361, 18)
+        Me.LayoutControlItem24.Name = "LayoutControlItem24"
+        Me.LayoutControlItem24.Size = New System.Drawing.Size(202, 24)
+        Me.LayoutControlItem24.Text = "Ημερομηνία"
+        Me.LayoutControlItem24.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem24.TextSize = New System.Drawing.Size(56, 13)
+        Me.LayoutControlItem24.TextToControlDistance = 5
+        '
+        'EmptySpaceItem13
+        '
+        Me.EmptySpaceItem13.AllowHotTrack = False
+        Me.EmptySpaceItem13.Location = New System.Drawing.Point(563, 18)
+        Me.EmptySpaceItem13.Name = "EmptySpaceItem13"
+        Me.EmptySpaceItem13.Size = New System.Drawing.Size(618, 24)
+        Me.EmptySpaceItem13.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlGroup3
+        '
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem26, Me.LayoutControlItem28, Me.LayoutControlItem29, Me.LayoutControlItem35, Me.LayoutControlItem37, Me.LayoutControlItem38})
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 231)
+        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(325, 167)
+        Me.LayoutControlGroup3.Text = "Boiler"
+        '
+        'LayoutControlItem26
+        '
+        Me.LayoutControlItem26.Control = Me.cboBtypes
+        Me.LayoutControlItem26.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem26.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem26.Name = "LayoutControlItem26"
+        Me.LayoutControlItem26.Size = New System.Drawing.Size(275, 26)
+        Me.LayoutControlItem26.Text = "Boiler"
+        Me.LayoutControlItem26.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem26.TextSize = New System.Drawing.Size(26, 13)
+        Me.LayoutControlItem26.TextToControlDistance = 5
+        '
+        'LayoutControlItem28
+        '
+        Me.LayoutControlItem28.Control = Me.cmdCboManageBtypes
+        Me.LayoutControlItem28.Location = New System.Drawing.Point(275, 0)
+        Me.LayoutControlItem28.Name = "LayoutControlItem28"
+        Me.LayoutControlItem28.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem28.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem28.TextVisible = False
+        '
+        'LayoutControlItem29
+        '
+        Me.LayoutControlItem29.Control = Me.TextEdit4
+        Me.LayoutControlItem29.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem29.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem29.Name = "LayoutControlItem7"
+        Me.LayoutControlItem29.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem29.Text = "Πάγιο Boiler"
+        Me.LayoutControlItem29.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem35
+        '
+        Me.LayoutControlItem35.Control = Me.TextEdit211
+        Me.LayoutControlItem35.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem35.CustomizationFormText = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
+        Me.LayoutControlItem35.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem35.Location = New System.Drawing.Point(0, 74)
+        Me.LayoutControlItem35.Name = "LayoutControlItem35"
+        Me.LayoutControlItem35.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem35.Text = "Χωριτικότητα Δεξαμενής Boiler"
+        Me.LayoutControlItem35.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem37
+        '
+        Me.LayoutControlItem37.Control = Me.TextEdit2121
+        Me.LayoutControlItem37.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem37.CustomizationFormText = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
+        Me.LayoutControlItem37.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem37.Location = New System.Drawing.Point(0, 98)
+        Me.LayoutControlItem37.Name = "LayoutControlItem37"
+        Me.LayoutControlItem37.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem37.Text = "Λίτρα ανα πόντο Δεξαμενής Boiler"
+        Me.LayoutControlItem37.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem38
+        '
+        Me.LayoutControlItem38.Control = Me.TextEdit221
+        Me.LayoutControlItem38.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem38.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem38.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem38.Location = New System.Drawing.Point(0, 50)
+        Me.LayoutControlItem38.Name = "LayoutControlItem38"
+        Me.LayoutControlItem38.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem38.Text = "Θερμίδες Boiler"
+        Me.LayoutControlItem38.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlGroup2
+        '
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem32, Me.LayoutControlItem41, Me.LayoutControlItem27, Me.LayoutControlItem34, Me.LayoutControlItem36, Me.LayoutControlItem25, Me.LayoutControlItem30, Me.LayoutControlItem39})
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(325, 193)
+        Me.LayoutControlGroup2.Text = "Θέρμανση"
+        '
+        'LayoutControlItem32
+        '
+        Me.LayoutControlItem32.Control = Me.cboHtypes
+        Me.LayoutControlItem32.CustomizationFormText = "Θέρμανση"
+        Me.LayoutControlItem32.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem32.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem32.Name = "LayoutControlItem2"
+        Me.LayoutControlItem32.Size = New System.Drawing.Size(275, 26)
+        Me.LayoutControlItem32.Text = "Θέρμανση"
+        Me.LayoutControlItem32.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize
+        Me.LayoutControlItem32.TextSize = New System.Drawing.Size(75, 13)
+        Me.LayoutControlItem32.TextToControlDistance = 5
+        '
+        'LayoutControlItem41
+        '
+        Me.LayoutControlItem41.Control = Me.cmdCboManageHtypes
+        Me.LayoutControlItem41.Location = New System.Drawing.Point(275, 0)
+        Me.LayoutControlItem41.Name = "LayoutControlItem8"
+        Me.LayoutControlItem41.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem41.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem41.TextVisible = False
+        '
+        'LayoutControlItem27
+        '
+        Me.LayoutControlItem27.Control = Me.TextEdit2
+        Me.LayoutControlItem27.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 52)
+        Me.LayoutControlItem27.Name = "LayoutControlItem5"
+        Me.LayoutControlItem27.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem27.Text = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem27.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem34
+        '
+        Me.LayoutControlItem34.Control = Me.TextEdit21
+        Me.LayoutControlItem34.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem34.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem34.Location = New System.Drawing.Point(0, 100)
+        Me.LayoutControlItem34.Name = "LayoutControlItem34"
+        Me.LayoutControlItem34.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem34.Text = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
+        Me.LayoutControlItem34.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem36
+        '
+        Me.LayoutControlItem36.Control = Me.TextEdit212
+        Me.LayoutControlItem36.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem36.CustomizationFormText = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
+        Me.LayoutControlItem36.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem36.Location = New System.Drawing.Point(0, 124)
+        Me.LayoutControlItem36.Name = "LayoutControlItem36"
+        Me.LayoutControlItem36.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem36.Text = "Λίτρα ανα πόντο Δεξαμενής Κοινής ή Θέρμανσης"
+        Me.LayoutControlItem36.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem25
+        '
+        Me.LayoutControlItem25.Control = Me.TextEdit22
+        Me.LayoutControlItem25.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem25.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem25.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 76)
+        Me.LayoutControlItem25.Name = "LayoutControlItem25"
+        Me.LayoutControlItem25.Size = New System.Drawing.Size(301, 24)
+        Me.LayoutControlItem25.Text = "Θερμίδες Θέρμανσης"
+        Me.LayoutControlItem25.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'LayoutControlItem30
+        '
+        Me.LayoutControlItem30.Control = Me.cboFtypes
+        Me.LayoutControlItem30.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem30.CustomizationFormText = "Boiler"
+        Me.LayoutControlItem30.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem30.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem30.Name = "LayoutControlItem30"
+        Me.LayoutControlItem30.Size = New System.Drawing.Size(275, 26)
+        Me.LayoutControlItem30.Text = "Τύπος Καυσίμου"
+        Me.LayoutControlItem30.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem30.TextSize = New System.Drawing.Size(76, 13)
+        Me.LayoutControlItem30.TextToControlDistance = 5
+        '
+        'LayoutControlItem39
+        '
+        Me.LayoutControlItem39.Control = Me.SimpleButton2
+        Me.LayoutControlItem39.Location = New System.Drawing.Point(275, 26)
+        Me.LayoutControlItem39.Name = "LayoutControlItem39"
+        Me.LayoutControlItem39.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem39.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem39.TextVisible = False
+        '
+        'EmptySpaceItem11
+        '
+        Me.EmptySpaceItem11.AllowHotTrack = False
+        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 458)
+        Me.EmptySpaceItem11.Name = "EmptySpaceItem5"
+        Me.EmptySpaceItem11.Size = New System.Drawing.Size(325, 12)
+        Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem40
+        '
+        Me.LayoutControlItem40.Control = Me.RadioGroup1
+        Me.LayoutControlItem40.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 193)
+        Me.LayoutControlItem40.Name = "LayoutControlItem40"
+        Me.LayoutControlItem40.Size = New System.Drawing.Size(325, 38)
+        Me.LayoutControlItem40.Text = "Λέβητας"
+        Me.LayoutControlItem40.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem40.TextSize = New System.Drawing.Size(40, 13)
+        Me.LayoutControlItem40.TextToControlDistance = 5
+        '
+        'XtraTabPage5
+        '
+        Me.XtraTabPage5.Name = "XtraTabPage5"
+        Me.XtraTabPage5.Size = New System.Drawing.Size(1196, 483)
+        Me.XtraTabPage5.Text = "Διαχείριση"
+        '
+        'XtraTabPage6
+        '
+        Me.XtraTabPage6.Name = "XtraTabPage6"
+        Me.XtraTabPage6.Size = New System.Drawing.Size(1196, 483)
+        Me.XtraTabPage6.Text = "Θέρμανση"
+        '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(1086, 528)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(110, 28)
+        Me.cmdExit.TabIndex = 10
+        Me.cmdExit.Text = "Έξοδος"
+        '
+        'cmdSave
+        '
+        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSave.Location = New System.Drawing.Point(969, 528)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(111, 28)
+        Me.cmdSave.TabIndex = 11
+        Me.cmdSave.Text = "Αποθήκευση"
+        '
+        'Bar1
+        '
+        Me.Bar1.BarName = "MainMenu"
+        Me.Bar1.DockCol = 0
+        Me.Bar1.DockRow = 0
+        Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.Bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarRecords, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViewsManage, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarViews, DevExpress.XtraBars.BarItemPaintStyle.Caption), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarPrintPreview, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)})
+        Me.Bar1.OptionsBar.MultiLine = True
+        Me.Bar1.OptionsBar.UseWholeRow = True
+        Me.Bar1.Text = "MainMenu"
+        '
+        'Bar3
+        '
+        Me.Bar3.BarName = "StatusBar"
+        Me.Bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
+        Me.Bar3.DockCol = 0
+        Me.Bar3.DockRow = 0
+        Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
+        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem4)})
+        Me.Bar3.OptionsBar.AllowQuickCustomization = False
+        Me.Bar3.OptionsBar.DrawDragBorder = False
+        Me.Bar3.OptionsBar.UseWholeRow = True
+        Me.Bar3.Text = "StatusBar"
+        '
+        'Bar2
+        '
+        Me.Bar2.BarName = "Custom 4"
+        Me.Bar2.DockCol = 0
+        Me.Bar2.DockRow = 0
+        Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Left
+        Me.Bar2.FloatLocation = New System.Drawing.Point(49, 225)
+        Me.Bar2.Offset = 1
+        Me.Bar2.Text = "Custom 4"
+        '
         'PopupMenuRows
         '
         Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyCell, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyRow), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyAll)})
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
         '
+        'EmptySpaceItem12
+        '
+        Me.EmptySpaceItem12.AllowHotTrack = False
+        Me.EmptySpaceItem12.Location = New System.Drawing.Point(664, 18)
+        Me.EmptySpaceItem12.Name = "EmptySpaceItem12"
+        Me.EmptySpaceItem12.Size = New System.Drawing.Size(517, 34)
+        Me.EmptySpaceItem12.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem9
+        '
+        Me.EmptySpaceItem9.AllowHotTrack = False
+        Me.EmptySpaceItem9.Location = New System.Drawing.Point(314, 0)
+        Me.EmptySpaceItem9.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem9.Size = New System.Drawing.Size(19, 26)
+        Me.EmptySpaceItem9.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'SimpleButton11
+        '
+        Me.SimpleButton11.Location = New System.Drawing.Point(318, 38)
+        Me.SimpleButton11.Name = "SimpleButton11"
+        Me.SimpleButton11.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton11.TabIndex = 31
+        '
+        'cmdCheckTank
+        '
+        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 444)
+        Me.cmdCheckTank.Name = "cmdCheckTank"
+        Me.cmdCheckTank.Size = New System.Drawing.Size(321, 22)
+        Me.cmdCheckTank.StyleController = Me.LayoutControl2
+        Me.cmdCheckTank.TabIndex = 34
+        Me.cmdCheckTank.Text = "Διαχείριση Ελέγχων Δεξαμενής"
+        '
+        'LCheckTank
+        '
+        Me.LCheckTank.Control = Me.cmdCheckTank
+        Me.LCheckTank.Location = New System.Drawing.Point(0, 432)
+        Me.LCheckTank.Name = "LCheckTank"
+        Me.LCheckTank.Size = New System.Drawing.Size(325, 26)
+        Me.LCheckTank.TextSize = New System.Drawing.Size(0, 0)
+        Me.LCheckTank.TextVisible = False
+        '
+        'SimpleLabelItem3
+        '
+        Me.SimpleLabelItem3.AllowHotTrack = False
+        Me.SimpleLabelItem3.CustomizationFormText = "Τελευταίος Έλεγχος Δεξαμενής στις: "
+        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 398)
+        Me.SimpleLabelItem3.Name = "SimpleLabelItem3"
+        Me.SimpleLabelItem3.Size = New System.Drawing.Size(325, 17)
+        Me.SimpleLabelItem3.Text = "Τελευταίος Έλεγχος Δεξαμενής στις: "
+        Me.SimpleLabelItem3.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'SimpleLabelItem4
+        '
+        Me.SimpleLabelItem4.AllowHotTrack = False
+        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 415)
+        Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
+        Me.SimpleLabelItem4.Size = New System.Drawing.Size(325, 17)
+        Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
+        Me.SimpleLabelItem4.TextSize = New System.Drawing.Size(233, 13)
+        '
         'frmBDG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1198, 563)
-        Me.Controls.Add(Me.barDockControlLeft)
-        Me.Controls.Add(Me.barDockControlRight)
-        Me.Controls.Add(Me.barDockControlBottom)
-        Me.Controls.Add(Me.barDockControlTop)
         Me.Controls.Add(Me.cmdExit)
         Me.Controls.Add(Me.cmdSave)
         Me.Controls.Add(Me.tabBDG)
         Me.Controls.Add(Me.TileNavPane1)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.Name = "frmBDG"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmBDG"
@@ -1434,7 +2211,20 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.XtraTabPage3.ResumeLayout(False)
+        CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.XtraTabControl1.ResumeLayout(False)
+        Me.XtraTabPage4.ResumeLayout(False)
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.LayoutControl2.ResumeLayout(False)
+        CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1443,7 +2233,50 @@ Partial Class frmBDG
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit21.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit211.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit212.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit2121.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit22.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit221.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RadioGroup1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem38, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem36, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1492,7 +2325,7 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents chkPRD As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents NavButton2 As DevExpress.XtraBars.Navigation.NavButton
+    Friend WithEvents NavHeating As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavButton3 As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavButton4 As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavButton5 As DevExpress.XtraBars.Navigation.NavButton
@@ -1576,4 +2409,68 @@ Partial Class frmBDG
     Friend WithEvents Bar3 As DevExpress.XtraBars.Bar
     Friend WithEvents Bar2 As DevExpress.XtraBars.Bar
     Friend WithEvents PopupMenuRows As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents XtraTabPage3 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
+    Friend WithEvents XtraTabPage4 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents TextEdit2 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents TextEdit4 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cmdCboManageHtypes As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cboHtypes As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton7 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton8 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton9 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem27 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem29 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem11 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LayoutControlItem31 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SimpleLabelItem2 As DevExpress.XtraLayout.SimpleLabelItem
+    Friend WithEvents LayoutControlItem32 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem41 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem42 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem43 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem45 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem46 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem15 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem16 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents XtraTabPage5 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents XtraTabPage6 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents DateEdit1 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents LayoutControlItem24 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem13 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem12 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem9 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents cmdCboManageBtypes As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cboBtypes As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem26 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem28 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cboFtypes As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem30 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SimpleButton11 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents TextEdit21 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem34 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextEdit211 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem35 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextEdit212 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem36 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextEdit2121 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem37 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextEdit22 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem25 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextEdit221 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem38 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem39 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RadioGroup1 As DevExpress.XtraEditors.RadioGroup
+    Friend WithEvents LayoutControlItem40 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdCheckTank As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LCheckTank As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SimpleLabelItem3 As DevExpress.XtraLayout.SimpleLabelItem
+    Friend WithEvents SimpleLabelItem4 As DevExpress.XtraLayout.SimpleLabelItem
 End Class

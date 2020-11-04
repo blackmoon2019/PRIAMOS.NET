@@ -58,6 +58,7 @@ Public Class frmBDG
         txtIam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
         'Νομοί
         FillCbo.COU(cboCOU)
+
         Select Case Mode
             Case FormMode.NewRecord
                 dtDTS.EditValue = DateTime.Now
@@ -109,6 +110,7 @@ Public Class frmBDG
         form1.MdiParent = frmMain
         form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboCOU.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
@@ -125,6 +127,7 @@ Public Class frmBDG
         If cboAREAS.EditValue <> Nothing Then form1.ID = cboAREAS.EditValue.ToString
         form1.MdiParent = frmMain
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboAREAS.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
@@ -502,5 +505,53 @@ Public Class frmBDG
             GridView1.CopyToClipboard()
             GridView1.OptionsSelection.MultiSelect = False
         End If
+    End Sub
+
+    Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
+        tabBDG.SelectedTabPage = XtraTabPage3
+        'Τύποι Θέρμανσης
+        FillCbo.HTYPES(cboHtypes)
+        'Τύποι Boiler
+        FillCbo.BTYPES(cboBtypes)
+        'Τύποι Καυσίμων
+        FillCbo.FTYPES(cboftypes)
+    End Sub
+
+    Private Sub cmdCboManageHtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageHtypes.Click
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Τύποι Θέρμανσης"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τύπος"
+        form1.DataTable = "HTYPES"
+        form1.CallerControl = cboHtypes
+        If cboHtypes.EditValue <> Nothing Then form1.ID = cboHtypes.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboHtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+    Private Sub cmdCboManageBtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageBtypes.Click
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Τύποι Boiler"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τύπος"
+        form1.DataTable = "BTYPES"
+        form1.CallerControl = cboHtypes
+        If cboHtypes.EditValue <> Nothing Then form1.ID = cboHtypes.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboHtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
     End Sub
 End Class
