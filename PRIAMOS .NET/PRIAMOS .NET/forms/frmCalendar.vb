@@ -24,5 +24,5 @@ Public Class MySchedulerLocalizer
 	'		Return "My text"
 	'	End If
 	'	Return MyBase.GetLocalizedString(id)
-	'End Function
+	'End Function 
 End Class

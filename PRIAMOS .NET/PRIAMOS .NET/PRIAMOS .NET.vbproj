@@ -348,6 +348,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-eco-fuel-40.png" />
+    <None Include="Resources\icons8-water-heater-40.png" />
+    <None Include="Resources\icons8-heating-automation-40.png" />
     <None Include="Resources\icons8-customer-insight-40.png" />
     <None Include="PRIAMOS .NET_TemporaryKey.pfx" />
     <None Include="Resources\icons8-workers-40.png" />

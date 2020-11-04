@@ -24,14 +24,16 @@ Partial Class frmGen
         Me.txtName = New DevExpress.XtraEditors.TextEdit()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cbo1 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.chk1 = New DevExpress.XtraEditors.CheckEdit()
+        Me.ColorPickEdit11 = New DevExpress.XtraEditors.ColorPickEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.L1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.ColorPickEdit11 = New DevExpress.XtraEditors.ColorPickEdit()
-        Me.chk1 = New DevExpress.XtraEditors.CheckEdit()
         Me.L5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.L7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdNew = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
@@ -49,14 +51,16 @@ Partial Class frmGen
         CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbo1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chk1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chk1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.L7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +82,7 @@ Partial Class frmGen
         Me.LayoutControl1.Controls.Add(Me.cmdDelete)
         Me.LayoutControl1.Controls.Add(Me.chk1)
         Me.LayoutControl1.Controls.Add(Me.ColorPickEdit11)
+        Me.LayoutControl1.Controls.Add(Me.TextEdit1)
         Me.LayoutControl1.Location = New System.Drawing.Point(-8, -10)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(342, 0, 650, 400)
@@ -88,7 +93,7 @@ Partial Class frmGen
         '
         'cbo2
         '
-        Me.cbo2.Location = New System.Drawing.Point(37, 60)
+        Me.cbo2.Location = New System.Drawing.Point(37, 84)
         Me.cbo2.Name = "cbo2"
         Me.cbo2.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cbo2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -102,9 +107,9 @@ Partial Class frmGen
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(116, 12)
+        Me.txtName.Location = New System.Drawing.Point(119, 12)
         Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(272, 20)
+        Me.txtName.Size = New System.Drawing.Size(269, 20)
         Me.txtName.StyleController = Me.LayoutControl1
         Me.txtName.TabIndex = 14
         Me.txtName.Tag = "name,0,1,2"
@@ -114,14 +119,14 @@ Partial Class frmGen
         Me.txtCode.Location = New System.Drawing.Point(37, 12)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(50, 20)
+        Me.txtCode.Size = New System.Drawing.Size(53, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 14
         Me.txtCode.Tag = "code,0"
         '
         'cbo1
         '
-        Me.cbo1.Location = New System.Drawing.Point(37, 36)
+        Me.cbo1.Location = New System.Drawing.Point(37, 60)
         Me.cbo1.Name = "cbo1"
         Me.cbo1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cbo1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -132,11 +137,38 @@ Partial Class frmGen
         Me.cbo1.TabIndex = 15
         Me.cbo1.Tag = "couid,0,1,2"
         '
+        'chk1
+        '
+        Me.chk1.EditValue = CType(0, Byte)
+        Me.chk1.Location = New System.Drawing.Point(12, 108)
+        Me.chk1.Name = "chk1"
+        Me.chk1.Properties.Caption = "CheckEdit1"
+        Me.chk1.Properties.ValueChecked = CType(1, Byte)
+        Me.chk1.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chk1.Size = New System.Drawing.Size(376, 18)
+        Me.chk1.StyleController = Me.LayoutControl1
+        Me.chk1.TabIndex = 19
+        Me.chk1.Tag = "allowschedule,0,1,2"
+        '
+        'ColorPickEdit11
+        '
+        Me.ColorPickEdit11.EditValue = System.Drawing.Color.Empty
+        Me.ColorPickEdit11.Location = New System.Drawing.Point(37, 130)
+        Me.ColorPickEdit11.Name = "ColorPickEdit11"
+        Me.ColorPickEdit11.Properties.AutomaticColor = System.Drawing.Color.Black
+        Me.ColorPickEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ColorPickEdit11.Properties.ColorText = DevExpress.XtraEditors.Controls.ColorText.[Integer]
+        Me.ColorPickEdit11.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ColorPickEdit11.Size = New System.Drawing.Size(351, 20)
+        Me.ColorPickEdit11.StyleController = Me.LayoutControl1
+        Me.ColorPickEdit11.TabIndex = 20
+        Me.ColorPickEdit11.Tag = "color,0,1,2"
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.LayoutControlItem1, Me.L2, Me.L3, Me.L1, Me.L4, Me.LayoutControlItem3, Me.EmptySpaceItem2, Me.LayoutControlItem5, Me.L5, Me.L6})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.LayoutControlItem1, Me.L2, Me.L3, Me.L1, Me.L4, Me.LayoutControlItem3, Me.EmptySpaceItem2, Me.LayoutControlItem5, Me.L5, Me.L6, Me.L7})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(400, 295)
         Me.Root.TextVisible = False
@@ -144,9 +176,9 @@ Partial Class frmGen
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 118)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 142)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(380, 125)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(380, 101)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'L1
@@ -156,7 +188,7 @@ Partial Class frmGen
         Me.L1.CustomizationFormText = "LayoutControlItem3"
         Me.L1.Location = New System.Drawing.Point(0, 0)
         Me.L1.Name = "L1"
-        Me.L1.Size = New System.Drawing.Size(79, 24)
+        Me.L1.Size = New System.Drawing.Size(82, 24)
         Me.L1.Tag = "1"
         Me.L1.TextSize = New System.Drawing.Size(22, 13)
         '
@@ -168,42 +200,14 @@ Partial Class frmGen
         Me.EmptySpaceItem2.Size = New System.Drawing.Size(121, 32)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
-        'ColorPickEdit11
-        '
-        Me.ColorPickEdit11.EditValue = System.Drawing.Color.Empty
-        Me.ColorPickEdit11.Location = New System.Drawing.Point(37, 106)
-        Me.ColorPickEdit11.Name = "ColorPickEdit11"
-        Me.ColorPickEdit11.Properties.AutomaticColor = System.Drawing.Color.Black
-        Me.ColorPickEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ColorPickEdit11.Properties.ColorText = DevExpress.XtraEditors.Controls.ColorText.[Integer]
-        Me.ColorPickEdit11.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ColorPickEdit11.Size = New System.Drawing.Size(351, 20)
-        Me.ColorPickEdit11.StyleController = Me.LayoutControl1
-        Me.ColorPickEdit11.TabIndex = 20
-        Me.ColorPickEdit11.Tag = "color,0,1,2"
-        '
-        'chk1
-        '
-        Me.chk1.EditValue = CType(0, Byte)
-        Me.chk1.Location = New System.Drawing.Point(12, 84)
-        Me.chk1.Name = "chk1"
-        Me.chk1.Properties.Caption = "CheckEdit1"
-        Me.chk1.Properties.ValueChecked = CType(1, Byte)
-        Me.chk1.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chk1.Size = New System.Drawing.Size(376, 18)
-        Me.chk1.StyleController = Me.LayoutControl1
-        Me.chk1.TabIndex = 19
-        Me.chk1.Tag = "allowschedule,0,1,2"
-        '
         'L5
         '
         Me.L5.Control = Me.chk1
         Me.L5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.L5.CustomizationFormText = "L5"
-        Me.L5.Location = New System.Drawing.Point(0, 72)
+        Me.L5.Location = New System.Drawing.Point(0, 96)
         Me.L5.Name = "L5"
         Me.L5.Size = New System.Drawing.Size(380, 22)
-        Me.L5.Text = "L5"
         Me.L5.TextSize = New System.Drawing.Size(0, 0)
         Me.L5.TextVisible = False
         '
@@ -212,11 +216,27 @@ Partial Class frmGen
         Me.L6.Control = Me.ColorPickEdit11
         Me.L6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.L6.CustomizationFormText = "L6"
-        Me.L6.Location = New System.Drawing.Point(0, 94)
+        Me.L6.Location = New System.Drawing.Point(0, 118)
         Me.L6.Name = "L6"
         Me.L6.Size = New System.Drawing.Size(380, 24)
-        Me.L6.Text = "L6"
         Me.L6.TextSize = New System.Drawing.Size(22, 13)
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(37, 36)
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Size = New System.Drawing.Size(351, 20)
+        Me.TextEdit1.StyleController = Me.LayoutControl1
+        Me.TextEdit1.TabIndex = 21
+        Me.TextEdit1.Tag = "ar,0,1,2"
+        '
+        'L7
+        '
+        Me.L7.Control = Me.TextEdit1
+        Me.L7.Location = New System.Drawing.Point(0, 24)
+        Me.L7.Name = "L7"
+        Me.L7.Size = New System.Drawing.Size(380, 24)
+        Me.L7.TextSize = New System.Drawing.Size(22, 13)
         '
         'cmdNew
         '
@@ -287,9 +307,9 @@ Partial Class frmGen
         '
         Me.L2.Control = Me.txtName
         Me.L2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.L2.Location = New System.Drawing.Point(79, 0)
+        Me.L2.Location = New System.Drawing.Point(82, 0)
         Me.L2.Name = "L2"
-        Me.L2.Size = New System.Drawing.Size(301, 24)
+        Me.L2.Size = New System.Drawing.Size(298, 24)
         Me.L2.Tag = "1"
         Me.L2.TextSize = New System.Drawing.Size(22, 13)
         '
@@ -297,7 +317,7 @@ Partial Class frmGen
         '
         Me.L3.Control = Me.cbo1
         Me.L3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.L3.Location = New System.Drawing.Point(0, 24)
+        Me.L3.Location = New System.Drawing.Point(0, 48)
         Me.L3.Name = "L3"
         Me.L3.Size = New System.Drawing.Size(380, 24)
         Me.L3.Tag = "1"
@@ -307,7 +327,7 @@ Partial Class frmGen
         '
         Me.L4.Control = Me.cbo2
         Me.L4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.L4.Location = New System.Drawing.Point(0, 48)
+        Me.L4.Location = New System.Drawing.Point(0, 72)
         Me.L4.Name = "L4"
         Me.L4.Size = New System.Drawing.Size(380, 24)
         Me.L4.Tag = "1"
@@ -350,14 +370,16 @@ Partial Class frmGen
         CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbo1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chk1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chk1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.L7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -393,4 +415,6 @@ Partial Class frmGen
     Friend WithEvents ColorPickEdit11 As DevExpress.XtraEditors.ColorPickEdit
     Friend WithEvents L5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents L6 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents L7 As DevExpress.XtraLayout.LayoutControlItem
 End Class
