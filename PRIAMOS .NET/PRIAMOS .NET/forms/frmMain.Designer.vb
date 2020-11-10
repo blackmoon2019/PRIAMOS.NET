@@ -370,7 +370,7 @@ Partial Class frmMain
         Me.MainstatusBar.ItemLinks.Add(Me.bbServer)
         Me.MainstatusBar.ItemLinks.Add(Me.bbDB)
         Me.MainstatusBar.ItemLinks.Add(Me.bbLink)
-        Me.MainstatusBar.Location = New System.Drawing.Point(0, 752)
+        Me.MainstatusBar.Location = New System.Drawing.Point(0, 734)
         Me.MainstatusBar.Name = "MainstatusBar"
         Me.MainstatusBar.Ribbon = Me.RibbonControl1
         Me.MainstatusBar.Size = New System.Drawing.Size(1177, 22)
@@ -389,7 +389,7 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1177, 774)
+        Me.ClientSize = New System.Drawing.Size(1177, 756)
         Me.Controls.Add(Me.MainstatusBar)
         Me.Controls.Add(Me.RibbonControl1)
         Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow

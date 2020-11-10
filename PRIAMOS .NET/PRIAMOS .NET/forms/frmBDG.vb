@@ -70,7 +70,9 @@ Public Class frmBDG
             Case FormMode.EditRecord
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
-                LoadForms.LoadForm(LayoutControl1, "Select * from vw_BDG where id ='" + sID + "'")
+                Dim myLayoutControls As New List(Of Control)
+                myLayoutControls.Add(LayoutControl1) : myLayoutControls.Add(LayoutControl2)
+                LoadForms.LoadFormNew(myLayoutControls, "Select * from vw_BDG where id ='" + sID + "'", True)
                 Iam = txtIam.EditValue
                 Aam = txtAam.EditValue
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
@@ -188,20 +190,24 @@ Public Class frmBDG
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sResult As Boolean
+        Dim sGuid As String
         Try
             If Valid.ValidateForm(LayoutControl1) Then
+                Dim myLayoutControls As New List(Of Control)
+                myLayoutControls.Add(LayoutControl1) : myLayoutControls.Add(LayoutControl2)
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertData(LayoutControl1, "BDG")
+                        sGuid = System.Guid.NewGuid.ToString
+                        sResult = DBQ.InsertDataNew(myLayoutControls, "BDG", sGuid, True)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateData(LayoutControl1, "BDG", sID)
+                        sResult = DBQ.UpdateDataNew(myLayoutControls, "BDG", sID, True)
                 End Select
                 If sResult Then
                     ' Εαν έχει γίνει αλλαγή στην αμοιβή διαχείρισης
                     If Aam <> txtAam.EditValue Then
                         Dim sSQL As String
                         sSQL = "INSERT INTO AAM_H(aam,bdgid,modifiedBy,createdOn) values (" &
-                               toSQLValue(txtIam, True) & "," & toSQLValueS(sID) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                               toSQLValue(txtIam, True) & "," & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID)) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()
                         End Using
@@ -212,7 +218,7 @@ Public Class frmBDG
                     If Iam <> txtIam.EditValue Then
                         Dim sSQL As String
                         sSQL = "INSERT INTO IAM_H(iam,bdgid,modifiedBy,createdOn) values (" &
-                               toSQLValue(txtIam, True) & "," & toSQLValueS(sID) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                               toSQLValue(txtIam, True) & "," & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID)) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()
                         End Using
@@ -224,7 +230,7 @@ Public Class frmBDG
                     Dim form As frmScroller = Frm
                     form.LoadRecords("vw_BDG")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    If Mode = FormMode.NewRecord Then Mode = FormMode.EditRecord
+                    If Mode = FormMode.NewRecord Then Mode = FormMode.EditRecord : sID = sGuid
                 End If
             End If
 
@@ -514,7 +520,28 @@ Public Class frmBDG
         'Τύποι Boiler
         FillCbo.BTYPES(cboBtypes)
         'Τύποι Καυσίμων
-        FillCbo.FTYPES(cboftypes)
+        FillCbo.FTYPES(cboFtypes)
+        If Mode = FormMode.NewRecord Then
+            cboHtypes.EditValue = System.Guid.Parse("C331F98B-8504-44CE-9C75-2546B76BAD4E") 'Χωρίς Θέρμανση
+
+        End If
+        'cboFtypes.Enabled = False
+        'cmdCboManageFtypes.Enabled = False
+        'cmdCboManageBtypes.Enabled = False
+        'cboBtypes.Enabled = False
+        'txtHpc.Enabled = False
+        'txtHpb.Enabled = False
+        'txtCalH.Enabled = False
+        'txtTacH.Enabled = False
+        'txtTacB.Enabled = False
+        'txtLpcH.Enabled = False
+        'txtLpcB.Enabled = False
+        'RGBolier.Enabled = False
+        'txtCalB.Enabled = False
+        'End If
+
+
+
     End Sub
 
     Private Sub cmdCboManageHtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageHtypes.Click
@@ -542,16 +569,129 @@ Public Class frmBDG
         form1.L1.Text = "Κωδικός"
         form1.L2.Text = "Τύπος"
         form1.DataTable = "BTYPES"
-        form1.CallerControl = cboHtypes
-        If cboHtypes.EditValue <> Nothing Then form1.ID = cboHtypes.EditValue.ToString
+        form1.CallerControl = cboBtypes
+        If cboBtypes.EditValue <> Nothing Then form1.ID = cboBtypes.EditValue.ToString
         form1.MdiParent = frmMain
         form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        If cboHtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        If cboBtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
+
+    Private Sub cmdCboManageFtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageFtypes.Click
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Τύποι Καυσίμων"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τύπος"
+        form1.DataTable = "FTYPES"
+        form1.CallerControl = cboFtypes
+        If cboFtypes.EditValue <> Nothing Then form1.ID = cboFtypes.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboFtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+    'ΘΕΡΜΑΝΣΗ
+    '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
+
+    '        Select Case cboHtypes.EditValue
+    '            'Αυτονομία με σταθερό πάγιο
+    '            Case System.Guid.Parse("1879D79E-6071-4C1B-A9A4-0AEC70EB8025")
+    '                cboBtypes.Enabled = True
+    '                cmdCboManageBtypes.Enabled = True
+    '                cboFtypes.Enabled = True
+    '                txtHpc.Enabled = True
+    '                RGBolier.Enabled = True
+    '            'Αυτονομία με χρήση Fi
+    '            Case System.Guid.Parse("64FE370B-9499-4263-861E-E1820E0ED9CD")
+    '                cboBtypes.Enabled = True
+    '                cmdCboManageBtypes.Enabled = True
+    '                cboFtypes.Enabled = True
+    '                txtHpc.Enabled = False
+    '                RGBolier.Enabled = False
+    '            'Κεντρική Θέρμανση
+    '            Case System.Guid.Parse("D29BAB0F-F94C-428F-A699-102EE9EF0BC2")
+    '                cboFtypes.Enabled = True
+    '                txtHpc.Enabled = False
+    '                RGBolier.Enabled = False
+    '            Case Else
+    '                cboBtypes.Enabled = False
+    '                cboBtypes.EditValue = Nothing
+    '                cboBtypes.EditValue = ""
+    '                cboBtypes.Text = ""
+    '                cmdCboManageBtypes.Enabled = False
+    '                cboFtypes.Enabled = False
+    '                txtHpc.Enabled = False
+    '                RGBolier.Enabled = False
+    '        End Select
+    '    End Sub
+    '    'BOILER
+    '    Private Sub cboBtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBtypes.EditValueChanged
+    '        Select Case cboBtypes.EditValue
+    '            'Με Σταθερό Πάγιο
+    '            Case System.Guid.Parse("9E155093-4E5E-42AB-AFEB-57239B8E25F0")
+    '                txtHpb.Enabled = True
+    '                RGBolier.Enabled = True
+    '            'Με Χρήση Fi
+    '            Case System.Guid.Parse("19E83D91-E350-47DA-9BE0-80AEF55AC70A")
+    '                RGBolier.Enabled = True
+    '            Case Else
+    '                txtHpb.Enabled = False
+    '                RGBolier.Enabled = False
+    '        End Select
+    '    End Sub
+    '    'ΤΥΠΟΣ ΚΑΥΣΙΜΟΥ
+    '    Private Sub cboFtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboFtypes.EditValueChanged
+    '        Select Case cboFtypes.EditValue
+    '            'Πετρέλαιο
+    '            Case System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB")
+    '                If cboHtypes.EditValue = System.Guid.Parse("D29BAB0F-F94C-428F-A699-102EE9EF0BC2") Or
+    '                   cboHtypes.EditValue = System.Guid.Parse("1879D79E-6071-4C1B-A9A4-0AEC70EB8025") Or
+    '                   cboHtypes.EditValue = System.Guid.Parse("64FE370B-9499-4263-861E-E1820E0ED9CD") Then
+    '                    txtTacH.Enabled = True
+    '                    txtLpcH.Enabled = True
+    '                Else
+    '                    txtTacH.Enabled = False
+    '                    txtLpcH.Enabled = False
+    '                End If
+    '            Case Else
+    '                txtTacH.Enabled = False
+    '        End Select
+    '    End Sub
+
+    '    Private Sub RGBolier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RGBolier.SelectedIndexChanged
+    '        'Ξεχωριστός
+    '        If RGBolier.SelectedIndex = 1 Then
+    '            If cboFtypes.EditValue = System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB") Then
+    '                If cboBtypes.EditValue = System.Guid.Parse("9E155093-4E5E-42AB-AFEB-57239B8E25F0") Or cboBtypes.EditValue = System.Guid.Parse("19E83D91-E350-47DA-9BE0-80AEF55AC70A") Then
+    '                    txtLpcH.Enabled = True
+    '                Else
+    '                    txtLpcH.Enabled = False
+    '                End If
+    '            End If
+    '            'Boiler
+    '            Select Case cboBtypes.EditValue
+    '            'Με Σταθερό Πάγιο - 'Με Χρήση Fi
+    '                    Case System.Guid.Parse("9E155093-4E5E-42AB-AFEB-57239B8E25F0"), System.Guid.Parse("19E83D91-E350-47DA-9BE0-80AEF55AC70A")
+    '                        If cboFtypes.EditValue = System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB") Then
+    '                            txtTacB.Enabled = True
+    '                        End If
+    '                    Case Else
+    '                        txtHpb.Enabled = False
+    '                        RGBolier.Enabled = False
+    '                        txtTacB.Enabled = False
+    '                End Select
+    '            Else
+    '                txtTacB.Enabled = False
+    '        End If
+    '    End Sub
 End Class

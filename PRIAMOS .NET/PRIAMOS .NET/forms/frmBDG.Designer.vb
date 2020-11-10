@@ -99,13 +99,13 @@ Partial Class frmBDG
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage4 = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCboManageFtypes = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdCboManageBtypes = New DevExpress.XtraEditors.SimpleButton()
         Me.cboBtypes = New DevExpress.XtraEditors.LookUpEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
-        Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
+        Me.txtHpc = New DevExpress.XtraEditors.TextEdit()
+        Me.txtHpb = New DevExpress.XtraEditors.TextEdit()
         Me.cmdCboManageHtypes = New DevExpress.XtraEditors.SimpleButton()
         Me.cboHtypes = New DevExpress.XtraEditors.LookUpEdit()
         Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
@@ -159,13 +159,14 @@ Partial Class frmBDG
         Me.RepositoryItemButtonEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryPopRenameView = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.cboFtypes = New DevExpress.XtraEditors.LookUpEdit()
-        Me.TextEdit21 = New DevExpress.XtraEditors.TextEdit()
-        Me.TextEdit211 = New DevExpress.XtraEditors.TextEdit()
-        Me.TextEdit212 = New DevExpress.XtraEditors.TextEdit()
-        Me.TextEdit2121 = New DevExpress.XtraEditors.TextEdit()
-        Me.TextEdit22 = New DevExpress.XtraEditors.TextEdit()
-        Me.TextEdit221 = New DevExpress.XtraEditors.TextEdit()
-        Me.RadioGroup1 = New DevExpress.XtraEditors.RadioGroup()
+        Me.txtTacH = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTacB = New DevExpress.XtraEditors.TextEdit()
+        Me.txtLpcH = New DevExpress.XtraEditors.TextEdit()
+        Me.txtLpcB = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCalH = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCalB = New DevExpress.XtraEditors.TextEdit()
+        Me.RGBolier = New DevExpress.XtraEditors.RadioGroup()
+        Me.cmdCheckTank = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem31 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleLabelItem2 = New DevExpress.XtraLayout.SimpleLabelItem()
@@ -193,8 +194,11 @@ Partial Class frmBDG
         Me.LayoutControlItem25 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem30 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem39 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem11 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem40 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LCheckTank = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.SimpleLabelItem3 = New DevExpress.XtraLayout.SimpleLabelItem()
+        Me.SimpleLabelItem4 = New DevExpress.XtraLayout.SimpleLabelItem()
+        Me.EmptySpaceItem11 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
@@ -207,10 +211,6 @@ Partial Class frmBDG
         Me.EmptySpaceItem12 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem9 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.SimpleButton11 = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdCheckTank = New DevExpress.XtraEditors.SimpleButton()
-        Me.LCheckTank = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleLabelItem3 = New DevExpress.XtraLayout.SimpleLabelItem()
-        Me.SimpleLabelItem4 = New DevExpress.XtraLayout.SimpleLabelItem()
         CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tabBDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBDG.SuspendLayout()
@@ -280,8 +280,8 @@ Partial Class frmBDG
         CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -294,13 +294,13 @@ Partial Class frmBDG
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit21.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit211.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit212.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit2121.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit22.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit221.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RadioGroup1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtLpcH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtLpcB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCalH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtCalB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RGBolier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -328,15 +328,15 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TileNavPane1
@@ -1115,12 +1115,12 @@ Partial Class frmBDG
         '
         'LayoutControl2
         '
-        Me.LayoutControl2.Controls.Add(Me.SimpleButton2)
+        Me.LayoutControl2.Controls.Add(Me.cmdCboManageFtypes)
         Me.LayoutControl2.Controls.Add(Me.cmdCboManageBtypes)
         Me.LayoutControl2.Controls.Add(Me.cboBtypes)
         Me.LayoutControl2.Controls.Add(Me.GridControl1)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit2)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit4)
+        Me.LayoutControl2.Controls.Add(Me.txtHpc)
+        Me.LayoutControl2.Controls.Add(Me.txtHpb)
         Me.LayoutControl2.Controls.Add(Me.cmdCboManageHtypes)
         Me.LayoutControl2.Controls.Add(Me.cboHtypes)
         Me.LayoutControl2.Controls.Add(Me.SimpleButton6)
@@ -1129,13 +1129,13 @@ Partial Class frmBDG
         Me.LayoutControl2.Controls.Add(Me.SimpleButton9)
         Me.LayoutControl2.Controls.Add(Me.DateEdit1)
         Me.LayoutControl2.Controls.Add(Me.cboFtypes)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit21)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit211)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit212)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit2121)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit22)
-        Me.LayoutControl2.Controls.Add(Me.TextEdit221)
-        Me.LayoutControl2.Controls.Add(Me.RadioGroup1)
+        Me.LayoutControl2.Controls.Add(Me.txtTacH)
+        Me.LayoutControl2.Controls.Add(Me.txtTacB)
+        Me.LayoutControl2.Controls.Add(Me.txtLpcH)
+        Me.LayoutControl2.Controls.Add(Me.txtLpcB)
+        Me.LayoutControl2.Controls.Add(Me.txtCalH)
+        Me.LayoutControl2.Controls.Add(Me.txtCalB)
+        Me.LayoutControl2.Controls.Add(Me.RGBolier)
         Me.LayoutControl2.Controls.Add(Me.cmdCheckTank)
         Me.LayoutControl2.Location = New System.Drawing.Point(3, 3)
         Me.LayoutControl2.Name = "LayoutControl2"
@@ -1145,14 +1145,14 @@ Partial Class frmBDG
         Me.LayoutControl2.TabIndex = 0
         Me.LayoutControl2.Text = "LayoutControl2"
         '
-        'SimpleButton2
+        'cmdCboManageFtypes
         '
-        Me.SimpleButton2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_form_16
-        Me.SimpleButton2.Location = New System.Drawing.Point(299, 71)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(22, 22)
-        Me.SimpleButton2.StyleController = Me.LayoutControl2
-        Me.SimpleButton2.TabIndex = 32
+        Me.cmdCboManageFtypes.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_form_16
+        Me.cmdCboManageFtypes.Location = New System.Drawing.Point(299, 71)
+        Me.cmdCboManageFtypes.Name = "cmdCboManageFtypes"
+        Me.cmdCboManageFtypes.Size = New System.Drawing.Size(22, 22)
+        Me.cmdCboManageFtypes.StyleController = Me.LayoutControl2
+        Me.cmdCboManageFtypes.TabIndex = 32
         '
         'cmdCboManageBtypes
         '
@@ -1174,7 +1174,7 @@ Partial Class frmBDG
         Me.cboBtypes.Size = New System.Drawing.Size(240, 20)
         Me.cboBtypes.StyleController = Me.LayoutControl2
         Me.cboBtypes.TabIndex = 30
-        Me.cboBtypes.Tag = "couid,0"
+        Me.cboBtypes.Tag = "BTypeID,0,1,2"
         '
         'GridControl1
         '
@@ -1202,29 +1202,37 @@ Partial Class frmBDG
         Me.GridView2.OptionsView.EnableAppearanceEvenRow = True
         Me.GridView2.OptionsView.ShowGroupPanel = False
         '
-        'TextEdit2
+        'txtHpc
         '
-        Me.TextEdit2.EditValue = "0%"
-        Me.TextEdit2.Location = New System.Drawing.Point(260, 97)
-        Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Properties.Mask.EditMask = "P0"
-        Me.TextEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.TextEdit2.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit2.StyleController = Me.LayoutControl2
-        Me.TextEdit2.TabIndex = 8
-        Me.TextEdit2.Tag = ""
+        Me.txtHpc.EditValue = "0"
+        Me.txtHpc.Location = New System.Drawing.Point(260, 97)
+        Me.txtHpc.Name = "txtHpc"
+        Me.txtHpc.Properties.DisplayFormat.FormatString = "p0"
+        Me.txtHpc.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtHpc.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtHpc.Properties.Mask.EditMask = "P0"
+        Me.txtHpc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtHpc.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtHpc.Size = New System.Drawing.Size(61, 20)
+        Me.txtHpc.StyleController = Me.LayoutControl2
+        Me.txtHpc.TabIndex = 8
+        Me.txtHpc.Tag = "hpc,0,1,2"
         '
-        'TextEdit4
+        'txtHpb
         '
-        Me.TextEdit4.EditValue = "0%"
-        Me.TextEdit4.Location = New System.Drawing.Point(260, 302)
-        Me.TextEdit4.Name = "TextEdit4"
-        Me.TextEdit4.Properties.Mask.EditMask = "P0"
-        Me.TextEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.TextEdit4.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit4.StyleController = Me.LayoutControl2
-        Me.TextEdit4.TabIndex = 10
-        Me.TextEdit4.Tag = ""
+        Me.txtHpb.EditValue = "0"
+        Me.txtHpb.Location = New System.Drawing.Point(260, 302)
+        Me.txtHpb.Name = "txtHpb"
+        Me.txtHpb.Properties.DisplayFormat.FormatString = "p0"
+        Me.txtHpb.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtHpb.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtHpb.Properties.Mask.EditMask = "p0"
+        Me.txtHpb.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtHpb.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtHpb.Size = New System.Drawing.Size(61, 20)
+        Me.txtHpb.StyleController = Me.LayoutControl2
+        Me.txtHpb.TabIndex = 10
+        Me.txtHpb.Tag = "hpb,0,1,2"
         '
         'cmdCboManageHtypes
         '
@@ -1643,70 +1651,111 @@ Partial Class frmBDG
         Me.cboFtypes.TabIndex = 30
         Me.cboFtypes.Tag = "FTypeID,0,1,2"
         '
-        'TextEdit21
+        'txtTacH
         '
-        Me.TextEdit21.Location = New System.Drawing.Point(260, 145)
-        Me.TextEdit21.Name = "TextEdit21"
-        Me.TextEdit21.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit21.StyleController = Me.LayoutControl2
-        Me.TextEdit21.TabIndex = 8
-        Me.TextEdit21.Tag = ""
+        Me.txtTacH.EditValue = "0"
+        Me.txtTacH.Location = New System.Drawing.Point(260, 145)
+        Me.txtTacH.Name = "txtTacH"
+        Me.txtTacH.Properties.Mask.EditMask = "n0"
+        Me.txtTacH.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtTacH.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTacH.Size = New System.Drawing.Size(61, 20)
+        Me.txtTacH.StyleController = Me.LayoutControl2
+        Me.txtTacH.TabIndex = 8
+        Me.txtTacH.Tag = "tacH,0,1,2"
         '
-        'TextEdit211
+        'txtTacB
         '
-        Me.TextEdit211.Location = New System.Drawing.Point(260, 350)
-        Me.TextEdit211.Name = "TextEdit211"
-        Me.TextEdit211.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit211.StyleController = Me.LayoutControl2
-        Me.TextEdit211.TabIndex = 8
-        Me.TextEdit211.Tag = ""
+        Me.txtTacB.EditValue = "0"
+        Me.txtTacB.Location = New System.Drawing.Point(260, 350)
+        Me.txtTacB.Name = "txtTacB"
+        Me.txtTacB.Properties.Mask.EditMask = "n0"
+        Me.txtTacB.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtTacB.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTacB.Size = New System.Drawing.Size(61, 20)
+        Me.txtTacB.StyleController = Me.LayoutControl2
+        Me.txtTacB.TabIndex = 8
+        Me.txtTacB.Tag = "tacB,0,1,2"
         '
-        'TextEdit212
+        'txtLpcH
         '
-        Me.TextEdit212.Location = New System.Drawing.Point(260, 169)
-        Me.TextEdit212.Name = "TextEdit212"
-        Me.TextEdit212.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit212.StyleController = Me.LayoutControl2
-        Me.TextEdit212.TabIndex = 8
-        Me.TextEdit212.Tag = ""
+        Me.txtLpcH.EditValue = "0,00"
+        Me.txtLpcH.Location = New System.Drawing.Point(260, 169)
+        Me.txtLpcH.Name = "txtLpcH"
+        Me.txtLpcH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLpcH.Properties.EditFormat.FormatString = "n2"
+        Me.txtLpcH.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLpcH.Properties.Mask.EditMask = "n2"
+        Me.txtLpcH.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtLpcH.Size = New System.Drawing.Size(61, 20)
+        Me.txtLpcH.StyleController = Me.LayoutControl2
+        Me.txtLpcH.TabIndex = 8
+        Me.txtLpcH.Tag = "lpcH,0,1,2"
         '
-        'TextEdit2121
+        'txtLpcB
         '
-        Me.TextEdit2121.Location = New System.Drawing.Point(260, 374)
-        Me.TextEdit2121.Name = "TextEdit2121"
-        Me.TextEdit2121.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit2121.StyleController = Me.LayoutControl2
-        Me.TextEdit2121.TabIndex = 8
-        Me.TextEdit2121.Tag = ""
+        Me.txtLpcB.EditValue = "0,00"
+        Me.txtLpcB.Location = New System.Drawing.Point(260, 374)
+        Me.txtLpcB.Name = "txtLpcB"
+        Me.txtLpcB.Properties.DisplayFormat.FormatString = "n2"
+        Me.txtLpcB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLpcB.Properties.EditFormat.FormatString = "n2"
+        Me.txtLpcB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLpcB.Properties.Mask.EditMask = "n2"
+        Me.txtLpcB.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtLpcB.Size = New System.Drawing.Size(61, 20)
+        Me.txtLpcB.StyleController = Me.LayoutControl2
+        Me.txtLpcB.TabIndex = 8
+        Me.txtLpcB.Tag = "lpcB,0,1,2"
         '
-        'TextEdit22
+        'txtCalH
         '
-        Me.TextEdit22.Location = New System.Drawing.Point(260, 121)
-        Me.TextEdit22.Name = "TextEdit22"
-        Me.TextEdit22.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit22.StyleController = Me.LayoutControl2
-        Me.TextEdit22.TabIndex = 8
-        Me.TextEdit22.Tag = ""
+        Me.txtCalH.EditValue = "0"
+        Me.txtCalH.Location = New System.Drawing.Point(260, 121)
+        Me.txtCalH.Name = "txtCalH"
+        Me.txtCalH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalH.Properties.EditFormat.FormatString = "n0"
+        Me.txtCalH.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalH.Properties.Mask.EditMask = "n0"
+        Me.txtCalH.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtCalH.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtCalH.Size = New System.Drawing.Size(61, 20)
+        Me.txtCalH.StyleController = Me.LayoutControl2
+        Me.txtCalH.TabIndex = 8
+        Me.txtCalH.Tag = "calh,0,1,2"
         '
-        'TextEdit221
+        'txtCalB
         '
-        Me.TextEdit221.Location = New System.Drawing.Point(260, 326)
-        Me.TextEdit221.Name = "TextEdit221"
-        Me.TextEdit221.Size = New System.Drawing.Size(61, 20)
-        Me.TextEdit221.StyleController = Me.LayoutControl2
-        Me.TextEdit221.TabIndex = 8
-        Me.TextEdit221.Tag = ""
+        Me.txtCalB.EditValue = "0"
+        Me.txtCalB.Location = New System.Drawing.Point(260, 326)
+        Me.txtCalB.Name = "txtCalB"
+        Me.txtCalB.Properties.Mask.EditMask = "n0"
+        Me.txtCalB.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtCalB.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtCalB.Size = New System.Drawing.Size(61, 20)
+        Me.txtCalB.StyleController = Me.LayoutControl2
+        Me.txtCalB.TabIndex = 8
+        Me.txtCalB.Tag = "calb,0,1,2"
         '
-        'RadioGroup1
+        'RGBolier
         '
-        Me.RadioGroup1.Location = New System.Drawing.Point(57, 205)
-        Me.RadioGroup1.MenuManager = Me.BarManager1
-        Me.RadioGroup1.Name = "RadioGroup1"
-        Me.RadioGroup1.Properties.Columns = 2
-        Me.RadioGroup1.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(True, "Κοινός"), New DevExpress.XtraEditors.Controls.RadioGroupItem(False, "Ξεχωριστός")})
-        Me.RadioGroup1.Size = New System.Drawing.Size(276, 34)
-        Me.RadioGroup1.StyleController = Me.LayoutControl2
-        Me.RadioGroup1.TabIndex = 33
+        Me.RGBolier.Location = New System.Drawing.Point(57, 205)
+        Me.RGBolier.MenuManager = Me.BarManager1
+        Me.RGBolier.Name = "RGBolier"
+        Me.RGBolier.Properties.Columns = 2
+        Me.RGBolier.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Κοινός", True, "bCommon,0,1,2"), New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Ξεχωριστός", True, "bSeperate,0,1,2")})
+        Me.RGBolier.Size = New System.Drawing.Size(276, 34)
+        Me.RGBolier.StyleController = Me.LayoutControl2
+        Me.RGBolier.TabIndex = 33
+        '
+        'cmdCheckTank
+        '
+        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 444)
+        Me.cmdCheckTank.Name = "cmdCheckTank"
+        Me.cmdCheckTank.Size = New System.Drawing.Size(321, 22)
+        Me.cmdCheckTank.StyleController = Me.LayoutControl2
+        Me.cmdCheckTank.TabIndex = 34
+        Me.cmdCheckTank.Text = "Διαχείριση Ελέγχων Δεξαμενής"
         '
         'LayoutControlGroup1
         '
@@ -1842,7 +1891,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem29
         '
-        Me.LayoutControlItem29.Control = Me.TextEdit4
+        Me.LayoutControlItem29.Control = Me.txtHpb
         Me.LayoutControlItem29.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem29.Location = New System.Drawing.Point(0, 26)
         Me.LayoutControlItem29.Name = "LayoutControlItem7"
@@ -1852,7 +1901,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem35
         '
-        Me.LayoutControlItem35.Control = Me.TextEdit211
+        Me.LayoutControlItem35.Control = Me.txtTacB
         Me.LayoutControlItem35.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem35.CustomizationFormText = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
         Me.LayoutControlItem35.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
@@ -1864,7 +1913,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem37
         '
-        Me.LayoutControlItem37.Control = Me.TextEdit2121
+        Me.LayoutControlItem37.Control = Me.txtLpcB
         Me.LayoutControlItem37.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem37.CustomizationFormText = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
         Me.LayoutControlItem37.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
@@ -1876,7 +1925,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem38
         '
-        Me.LayoutControlItem38.Control = Me.TextEdit221
+        Me.LayoutControlItem38.Control = Me.txtCalB
         Me.LayoutControlItem38.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem38.CustomizationFormText = "Πάγιο Θέρμανσης"
         Me.LayoutControlItem38.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
@@ -1918,7 +1967,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem27
         '
-        Me.LayoutControlItem27.Control = Me.TextEdit2
+        Me.LayoutControlItem27.Control = Me.txtHpc
         Me.LayoutControlItem27.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 52)
         Me.LayoutControlItem27.Name = "LayoutControlItem5"
@@ -1928,7 +1977,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem34
         '
-        Me.LayoutControlItem34.Control = Me.TextEdit21
+        Me.LayoutControlItem34.Control = Me.txtTacH
         Me.LayoutControlItem34.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem34.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem34.Location = New System.Drawing.Point(0, 100)
@@ -1939,7 +1988,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem36
         '
-        Me.LayoutControlItem36.Control = Me.TextEdit212
+        Me.LayoutControlItem36.Control = Me.txtLpcH
         Me.LayoutControlItem36.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem36.CustomizationFormText = "Χωριτικότητα Δεξαμενής Κοινής ή Θέρμανσης"
         Me.LayoutControlItem36.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
@@ -1951,7 +2000,7 @@ Partial Class frmBDG
         '
         'LayoutControlItem25
         '
-        Me.LayoutControlItem25.Control = Me.TextEdit22
+        Me.LayoutControlItem25.Control = Me.txtCalH
         Me.LayoutControlItem25.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem25.CustomizationFormText = "Πάγιο Θέρμανσης"
         Me.LayoutControlItem25.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
@@ -1977,24 +2026,16 @@ Partial Class frmBDG
         '
         'LayoutControlItem39
         '
-        Me.LayoutControlItem39.Control = Me.SimpleButton2
+        Me.LayoutControlItem39.Control = Me.cmdCboManageFtypes
         Me.LayoutControlItem39.Location = New System.Drawing.Point(275, 26)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
         Me.LayoutControlItem39.Size = New System.Drawing.Size(26, 26)
         Me.LayoutControlItem39.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem39.TextVisible = False
         '
-        'EmptySpaceItem11
-        '
-        Me.EmptySpaceItem11.AllowHotTrack = False
-        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 458)
-        Me.EmptySpaceItem11.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem11.Size = New System.Drawing.Size(325, 12)
-        Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
-        '
         'LayoutControlItem40
         '
-        Me.LayoutControlItem40.Control = Me.RadioGroup1
+        Me.LayoutControlItem40.Control = Me.RGBolier
         Me.LayoutControlItem40.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 193)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
@@ -2003,6 +2044,42 @@ Partial Class frmBDG
         Me.LayoutControlItem40.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(40, 13)
         Me.LayoutControlItem40.TextToControlDistance = 5
+        '
+        'LCheckTank
+        '
+        Me.LCheckTank.Control = Me.cmdCheckTank
+        Me.LCheckTank.Location = New System.Drawing.Point(0, 432)
+        Me.LCheckTank.Name = "LCheckTank"
+        Me.LCheckTank.Size = New System.Drawing.Size(325, 26)
+        Me.LCheckTank.TextSize = New System.Drawing.Size(0, 0)
+        Me.LCheckTank.TextVisible = False
+        '
+        'SimpleLabelItem3
+        '
+        Me.SimpleLabelItem3.AllowHotTrack = False
+        Me.SimpleLabelItem3.CustomizationFormText = "Τελευταίος Έλεγχος Δεξαμενής στις: "
+        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 398)
+        Me.SimpleLabelItem3.Name = "SimpleLabelItem3"
+        Me.SimpleLabelItem3.Size = New System.Drawing.Size(325, 17)
+        Me.SimpleLabelItem3.Text = "Τελευταίος Έλεγχος Δεξαμενής στις: "
+        Me.SimpleLabelItem3.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'SimpleLabelItem4
+        '
+        Me.SimpleLabelItem4.AllowHotTrack = False
+        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 415)
+        Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
+        Me.SimpleLabelItem4.Size = New System.Drawing.Size(325, 17)
+        Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
+        Me.SimpleLabelItem4.TextSize = New System.Drawing.Size(233, 13)
+        '
+        'EmptySpaceItem11
+        '
+        Me.EmptySpaceItem11.AllowHotTrack = False
+        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 458)
+        Me.EmptySpaceItem11.Name = "EmptySpaceItem5"
+        Me.EmptySpaceItem11.Size = New System.Drawing.Size(325, 12)
+        Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
         '
         'XtraTabPage5
         '
@@ -2098,43 +2175,6 @@ Partial Class frmBDG
         Me.SimpleButton11.Size = New System.Drawing.Size(22, 22)
         Me.SimpleButton11.TabIndex = 31
         '
-        'cmdCheckTank
-        '
-        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 444)
-        Me.cmdCheckTank.Name = "cmdCheckTank"
-        Me.cmdCheckTank.Size = New System.Drawing.Size(321, 22)
-        Me.cmdCheckTank.StyleController = Me.LayoutControl2
-        Me.cmdCheckTank.TabIndex = 34
-        Me.cmdCheckTank.Text = "Διαχείριση Ελέγχων Δεξαμενής"
-        '
-        'LCheckTank
-        '
-        Me.LCheckTank.Control = Me.cmdCheckTank
-        Me.LCheckTank.Location = New System.Drawing.Point(0, 432)
-        Me.LCheckTank.Name = "LCheckTank"
-        Me.LCheckTank.Size = New System.Drawing.Size(325, 26)
-        Me.LCheckTank.TextSize = New System.Drawing.Size(0, 0)
-        Me.LCheckTank.TextVisible = False
-        '
-        'SimpleLabelItem3
-        '
-        Me.SimpleLabelItem3.AllowHotTrack = False
-        Me.SimpleLabelItem3.CustomizationFormText = "Τελευταίος Έλεγχος Δεξαμενής στις: "
-        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 398)
-        Me.SimpleLabelItem3.Name = "SimpleLabelItem3"
-        Me.SimpleLabelItem3.Size = New System.Drawing.Size(325, 17)
-        Me.SimpleLabelItem3.Text = "Τελευταίος Έλεγχος Δεξαμενής στις: "
-        Me.SimpleLabelItem3.TextSize = New System.Drawing.Size(233, 13)
-        '
-        'SimpleLabelItem4
-        '
-        Me.SimpleLabelItem4.AllowHotTrack = False
-        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 415)
-        Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
-        Me.SimpleLabelItem4.Size = New System.Drawing.Size(325, 17)
-        Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
-        Me.SimpleLabelItem4.TextSize = New System.Drawing.Size(233, 13)
-        '
         'frmBDG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2220,8 +2260,8 @@ Partial Class frmBDG
         CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2234,13 +2274,13 @@ Partial Class frmBDG
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit21.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit211.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit212.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit2121.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit22.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit221.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RadioGroup1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtLpcH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtLpcB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCalH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtCalB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RGBolier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2268,15 +2308,15 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2415,8 +2455,8 @@ Partial Class frmBDG
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents TextEdit2 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents TextEdit4 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtHpc As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtHpb As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cmdCboManageHtypes As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cboHtypes As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
@@ -2453,21 +2493,21 @@ Partial Class frmBDG
     Friend WithEvents SimpleButton11 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents TextEdit21 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtTacH As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem34 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents TextEdit211 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtTacB As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem35 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents TextEdit212 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtLpcH As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem36 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents TextEdit2121 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtLpcB As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem37 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents TextEdit22 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtCalH As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem25 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents TextEdit221 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtCalB As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem38 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCboManageFtypes As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem39 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents RadioGroup1 As DevExpress.XtraEditors.RadioGroup
+    Friend WithEvents RGBolier As DevExpress.XtraEditors.RadioGroup
     Friend WithEvents LayoutControlItem40 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents cmdCheckTank As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LCheckTank As DevExpress.XtraLayout.LayoutControlItem
