@@ -124,6 +124,7 @@
     <Reference Include="Janus.Windows.ButtonBar.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
     <Reference Include="Janus.Windows.Common.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
+    <Reference Include="Janus.Windows.UI.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
