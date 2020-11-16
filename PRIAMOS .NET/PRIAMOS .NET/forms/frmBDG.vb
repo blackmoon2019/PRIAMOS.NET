@@ -11,9 +11,12 @@ Imports DevExpress.XtraScheduler.Internal
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.Utils
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraEditors.Calendar
 
 Public Class frmBDG
     Private sID As String
+    Private sAHPBID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
@@ -110,8 +113,10 @@ Public Class frmBDG
         form1.CallerControl = cboCOU
         If cboCOU.EditValue <> Nothing Then form1.ID = cboCOU.EditValue.ToString
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        'form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboCOU.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
@@ -460,18 +465,37 @@ Public Class frmBDG
         If item.Tag Is Nothing Then Exit Sub
         GridView1.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
     End Sub
+    'Αλλαγή Χρώματος Στήλης Master
+    Private Sub OnColumnsColorChangedAHPB(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView2.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
     'Αποθήκευση όψης Διαμερισμάτων
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
-
+    'Αποθήκευση όψης Μετρήσεων ωρών
+    Private Sub OnSaveViewAHPB(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
     Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As New DXEditMenuItem()
         item = sender
         If item.Tag Is Nothing Then Exit Sub
         GridView1.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+    Private Sub OnEditValueChangedAHPB(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView2.Columns(item.Tag).Caption = item.EditValue
         'MessageBox.Show(item.EditValue.ToString())
     End Sub
     Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
@@ -514,6 +538,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
+        Dim sSQL As New System.Text.StringBuilder
         tabBDG.SelectedTabPage = XtraTabPage3
         'Τύποι Θέρμανσης
         FillCbo.HTYPES(cboHtypes)
@@ -521,10 +546,15 @@ Public Class frmBDG
         FillCbo.BTYPES(cboBtypes)
         'Τύποι Καυσίμων
         FillCbo.FTYPES(cboFtypes)
+        sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
+        'Προηγούμενες μετρήσεις
+        FillCbo.BEF_MES(cboBefMes, sSQL)
         If Mode = FormMode.NewRecord Then
             cboHtypes.EditValue = System.Guid.Parse("C331F98B-8504-44CE-9C75-2546B76BAD4E") 'Χωρίς Θέρμανση
-
         End If
+
+
+
         'cboFtypes.Enabled = False
         'cmdCboManageFtypes.Enabled = False
         'cmdCboManageBtypes.Enabled = False
@@ -599,6 +629,91 @@ Public Class frmBDG
         If cboFtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+    End Sub
+
+    Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView2.RowUpdated
+
+    End Sub
+
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAHPB, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAHPB, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            PopupMenuRows.ShowPopup(Control.MousePosition)
+        End If
+    End Sub
+
+    Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs) Handles dtMes.DrawItem
+        ''If (dtMes.EditValue = Nothing) Then
+        ''    If (e.Selected = True) Then
+        ''If (e.Date = DateTime.Today) Then
+        'e.Graphics.DrawRectangle(Pens.Red, e.Bounds)
+
+        ''End If
+        'e.Graphics.DrawString(e.Date.Day.ToString(), e.Style.Font, Brushes.Black, e.Bounds, e.Style.GetStringFormat())
+        '        e.Handled = True
+        ''    End If
+        ''End If
+    End Sub
+
+    Private Sub cmdAddAHPB_Click(sender As Object, e As EventArgs) Handles cmdAddAHPB.Click
+        Try
+            If dtMes.EditValue = Nothing Then
+            XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Else
+            Using oCmd As New SqlCommand("CreateAHPB", CNDB)
+                    oCmd.CommandType = CommandType.StoredProcedure
+                    oCmd.Parameters.AddWithValue("@bdgid", sID)
+                    oCmd.Parameters.AddWithValue("@ahpbDT", dtMes.EditValue)
+                    oCmd.Parameters.AddWithValue("@bolier", RGTypeHeating.SelectedIndex)
+                oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString)
+                oCmd.ExecuteNonQuery()
+            End Using
+            LoadForms.LoadDataToGridForEdit(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' ORDER BY ORD")
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+
+        End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub RGTypeHeating_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RGTypeHeating.SelectedIndexChanged
+        Dim sSQL As New System.Text.StringBuilder
+        sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
+        'Προηγούμενες μετρήσεις
+        FillCbo.BEF_MES(cboBefMes, sSQL)
+
     End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
