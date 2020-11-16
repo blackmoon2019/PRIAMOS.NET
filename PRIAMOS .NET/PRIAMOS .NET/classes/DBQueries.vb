@@ -156,17 +156,19 @@ NextItem:
                                 Dim RDG As DevExpress.XtraEditors.RadioGroup
                                 RDG = LItem.Control
                                 For i As Integer = 0 To RDG.Properties.Items.Count - 1
-                                    'Βάζω τις τιμές του TAG σε array
-                                    TagValue = RDG.Properties.Items(i).Tag.Split(",")
-                                    'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
-                                    Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
-                                    If value <> Nothing Then
-                                        ' Παίρνω το Tag του  Control και το προσθέτω για το INSERT-UPDATE
-                                        sSQLF.Append(IIf(IsFirstField = True, "", ",") & TagValue(0))
-                                        If RDG.SelectedIndex = i Then
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS("True"))
-                                        Else
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS("False"))
+                                    If RDG.Properties.Items(i).Tag <> Nothing Then
+                                        'Βάζω τις τιμές του TAG σε array
+                                        TagValue = RDG.Properties.Items(i).Tag.Split(",")
+                                        'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
+                                        Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
+                                        If value <> Nothing Then
+                                            ' Παίρνω το Tag του  Control και το προσθέτω για το INSERT-UPDATE
+                                            sSQLF.Append(IIf(IsFirstField = True, "", ",") & TagValue(0))
+                                            If RDG.SelectedIndex = i Then
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS("True"))
+                                            Else
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS("False"))
+                                            End If
                                         End If
                                     End If
                                 Next i
@@ -388,17 +390,19 @@ NextItem:
                                 Dim RDG As DevExpress.XtraEditors.RadioGroup
                                 RDG = LItem.Control
                                 For i As Integer = 0 To RDG.Properties.Items.Count - 1
-                                    'Βάζω τις τιμές του TAG σε array
-                                    TagValue = RDG.Properties.Items(i).Tag.Split(",")
-                                    'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
-                                    Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
-                                    If value <> Nothing Then
-                                        ' Παίρνω το Tag του  Control και το προσθέτω για το INSERT-UPDATE
-                                        sSQL.Append(IIf(IsFirstField = True, "", ",") & TagValue(0) & " = ")
-                                        If RDG.SelectedIndex = i Then
-                                            sSQL.Append(toSQLValueS("True"))
-                                        Else
-                                            sSQL.Append(toSQLValueS("False"))
+                                    If RDG.Properties.Items(i).Tag <> Nothing Then
+                                        'Βάζω τις τιμές του TAG σε array
+                                        TagValue = RDG.Properties.Items(i).Tag.Split(",")
+                                        'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
+                                        Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
+                                        If value <> Nothing Then
+                                            ' Παίρνω το Tag του  Control και το προσθέτω για το INSERT-UPDATE
+                                            sSQL.Append(IIf(IsFirstField = True, "", ",") & TagValue(0) & " = ")
+                                            If RDG.SelectedIndex = i Then
+                                                sSQL.Append(toSQLValueS("True"))
+                                            Else
+                                                sSQL.Append(toSQLValueS("False"))
+                                            End If
                                         End If
                                     End If
                                 Next i

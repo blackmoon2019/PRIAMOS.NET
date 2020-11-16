@@ -86,6 +86,22 @@ Public Class FillCombos
         End Try
 
     End Sub
+    Public Sub BEF_MES(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("SELECT DISTINCT mdt FROM VW_AHPB   " & sSQL.ToString, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "mdt"
+            CtrlCombo.Properties.ValueMember = "mdt"
+            CtrlCombo.Properties.PopulateColumns()
+            'CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(0).Caption = "Προηγούμενες Μετρήσεις"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
     Public Sub COU(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_COU order by name", CNDB)

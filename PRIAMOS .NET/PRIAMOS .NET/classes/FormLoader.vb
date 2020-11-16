@@ -32,17 +32,19 @@ Public Class FormLoader
                                     RDG = LItem.Control
                                     For i As Integer = 0 To RDG.Properties.Items.Count - 1
                                         'Βάζω τις τιμές του TAG σε array
-                                        TagValue = RDG.Properties.Items(i).Tag.Split(",")
-                                        'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
-                                        Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
-                                        If value <> Nothing Then
-                                            TagV = TagValue(0).Replace("[", "").Replace("]", "")
-                                            Console.WriteLine(TagV)
-                                            sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
-                                            Dim index = sdr.GetOrdinal(TagV)
-                                            Console.WriteLine(sdr.GetDataTypeName(index))
-                                            If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
-                                                If sdr.GetBoolean(sdr.GetOrdinal(TagV)) = True Then RDG.SelectedIndex = i
+                                        If RDG.Properties.Items(i).Tag <> Nothing Then
+                                            TagValue = RDG.Properties.Items(i).Tag.Split(",")
+                                            'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
+                                            Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
+                                            If value <> Nothing Then
+                                                TagV = TagValue(0).Replace("[", "").Replace("]", "")
+                                                Console.WriteLine(TagV)
+                                                sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
+                                                Dim index = sdr.GetOrdinal(TagV)
+                                                Console.WriteLine(sdr.GetDataTypeName(index))
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
+                                                    If sdr.GetBoolean(sdr.GetOrdinal(TagV)) = True Then RDG.SelectedIndex = i
+                                                End If
                                             End If
                                         End If
                                     Next i
@@ -201,6 +203,7 @@ NextItem:
     Public Sub LoadDataToGrid(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
         Dim myCmd As SqlCommand
         Dim myReader As SqlDataReader
+
         myCmd = CNDB.CreateCommand
         myCmd.CommandText = sSQL
         GRDView.Columns.Clear()
@@ -216,7 +219,32 @@ NextItem:
                 C.Visible = True
                 GRDView.Columns.Add(C)
             Next i
+
         End If
+    End Sub
+    Public Sub LoadDataToGridForEdit(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
+        Dim myCmd As SqlCommand
+        Dim myReader As SqlDataReader
+        Dim dt As New DataTable("sTable")
+
+        myCmd = CNDB.CreateCommand
+        myCmd.CommandText = sSQL
+        GRDView.Columns.Clear()
+        myReader = myCmd.ExecuteReader()
+        dt.Load(myReader)
+        GRDControl.DataSource = dt
+        GRDControl.ForceInitialize()
+        GRDControl.DefaultView.PopulateColumns()
+        If dt.Rows.Count = 0 Then
+            For i As Integer = 0 To myReader.FieldCount - 1
+                Dim C As New GridColumn
+                C.Name = myReader.GetName(i).ToString
+                C.Caption = myReader.GetName(i).ToString
+                C.Visible = True
+                GRDView.Columns.Add(C)
+            Next i
+        End If
+
     End Sub
 End Class
 
