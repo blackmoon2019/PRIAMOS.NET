@@ -88,13 +88,14 @@ Public Class FillCombos
     End Sub
     Public Sub BEF_MES(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
         Try
-            Dim cmd As SqlCommand = New SqlCommand("SELECT DISTINCT mdt FROM VW_AHPB   " & sSQL.ToString, CNDB)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT DISTINCT CONVERT(VARCHAR(10), mdt, 103) AS mdt  FROM VW_AHPB   " & sSQL.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "mdt"
             CtrlCombo.Properties.ValueMember = "mdt"
             CtrlCombo.Properties.PopulateColumns()
-            'CtrlCombo.Properties.Columns(0).Visible = False
+
+            'CtrlCombo.Properties.Columns(1).Visible = False
             CtrlCombo.Properties.Columns(0).Caption = "Προηγούμενες Μετρήσεις"
             sdr.Close()
         Catch ex As Exception

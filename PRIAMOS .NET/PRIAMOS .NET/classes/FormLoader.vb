@@ -226,25 +226,27 @@ NextItem:
         Dim myCmd As SqlCommand
         Dim myReader As SqlDataReader
         Dim dt As New DataTable("sTable")
-
-        myCmd = CNDB.CreateCommand
-        myCmd.CommandText = sSQL
-        GRDView.Columns.Clear()
-        myReader = myCmd.ExecuteReader()
-        dt.Load(myReader)
-        GRDControl.DataSource = dt
-        GRDControl.ForceInitialize()
-        GRDControl.DefaultView.PopulateColumns()
-        If dt.Rows.Count = 0 Then
-            For i As Integer = 0 To myReader.FieldCount - 1
-                Dim C As New GridColumn
-                C.Name = myReader.GetName(i).ToString
-                C.Caption = myReader.GetName(i).ToString
-                C.Visible = True
-                GRDView.Columns.Add(C)
-            Next i
-        End If
-
+        Try
+            myCmd = CNDB.CreateCommand
+            myCmd.CommandText = sSQL
+            GRDView.Columns.Clear()
+            myReader = myCmd.ExecuteReader()
+            dt.Load(myReader)
+            GRDControl.DataSource = dt
+            GRDControl.ForceInitialize()
+            GRDControl.DefaultView.PopulateColumns()
+            If dt.Rows.Count = 0 Then
+                For i As Integer = 0 To myReader.FieldCount - 1
+                    Dim C As New GridColumn
+                    C.Name = myReader.GetName(i).ToString
+                    C.Caption = myReader.GetName(i).ToString
+                    C.Visible = True
+                    GRDView.Columns.Add(C)
+                Next i
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class
 
