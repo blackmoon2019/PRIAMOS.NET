@@ -34,4 +34,12 @@ Public Class ClearControls
             End If
         Next
     End Sub
+    Public Sub ClearGrid(ByVal GRD As DevExpress.XtraGrid.GridControl)
+        GRD.BeginUpdate()
+        Try
+            GRD.DataSource = Nothing
+        Finally
+            GRD.EndUpdate()
+        End Try
+    End Sub
 End Class

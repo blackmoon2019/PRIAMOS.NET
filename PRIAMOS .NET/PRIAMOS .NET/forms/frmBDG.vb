@@ -13,6 +13,7 @@ Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.Utils
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraEditors.Calendar
+Imports DevExpress.XtraEditors.Controls
 
 Public Class frmBDG
     Private sID As String
@@ -552,9 +553,6 @@ Public Class frmBDG
         If Mode = FormMode.NewRecord Then
             cboHtypes.EditValue = System.Guid.Parse("C331F98B-8504-44CE-9C75-2546B76BAD4E") 'Χωρίς Θέρμανση
         End If
-
-
-
         'cboFtypes.Enabled = False
         'cmdCboManageFtypes.Enabled = False
         'cmdCboManageBtypes.Enabled = False
@@ -569,9 +567,6 @@ Public Class frmBDG
         'RGBolier.Enabled = False
         'txtCalB.Enabled = False
         'End If
-
-
-
     End Sub
 
     Private Sub cmdCboManageHtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageHtypes.Click
@@ -632,7 +627,29 @@ Public Class frmBDG
     End Sub
 
     Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView2.RowUpdated
+        Dim sSQL As String
+        Dim mes As Decimal
+        Dim mesB As Decimal
+        Dim Dif As Decimal
+        Try
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
+            mes = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes")
+            mesB = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB")
+            Dif = mes - mesB
+            GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mesDif", Dif)
+            sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
+                    ",MESB = " & toSQLValueS(mesB, True) &
+                    ",MESDIF = " & toSQLValueS(Dif, True) &
+                    " WHERE ID = '" & GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString & "'"
 
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
@@ -688,20 +705,28 @@ Public Class frmBDG
     Private Sub cmdAddAHPB_Click(sender As Object, e As EventArgs) Handles cmdAddAHPB.Click
         Try
             If dtMes.EditValue = Nothing Then
-            XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        Else
-            Using oCmd As New SqlCommand("CreateAHPB", CNDB)
+                XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Else
+                Cls.ClearGrid(grdAPTAHPB)
+                Using oCmd As New SqlCommand("CreateAHPB", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@bdgid", sID)
                     oCmd.Parameters.AddWithValue("@ahpbDT", dtMes.EditValue)
                     oCmd.Parameters.AddWithValue("@bolier", RGTypeHeating.SelectedIndex)
-                oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString)
-                oCmd.ExecuteNonQuery()
-            End Using
-            LoadForms.LoadDataToGridForEdit(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' ORDER BY ORD")
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                LoadForms.LoadDataToGridForEdit(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+                If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+                Dim sSQL As New System.Text.StringBuilder
+                sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
+                'Προηγούμενες μετρήσεις
+                FillCbo.BEF_MES(cboBefMes, sSQL)
+                cboBefMes.EditValue = Nothing
+                GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
+                GridView2.Columns("nam").OptionsColumn.AllowEdit = False
 
-        End If
+            End If
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -713,7 +738,48 @@ Public Class frmBDG
         sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
         'Προηγούμενες μετρήσεις
         FillCbo.BEF_MES(cboBefMes, sSQL)
+        cboBefMes.EditValue = Nothing
+        Cls.ClearGrid(grdAPTAHPB)
+    End Sub
 
+    Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
+        Dim sSQL As String
+        If cboBefMes.EditValue <> Nothing Then
+            sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
+            LoadForms.LoadDataToGridForEdit(grdAPTAHPB, GridView2, sSQL)
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+            GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
+            GridView2.Columns("nam").OptionsColumn.AllowEdit = False
+            cmdDelAHPB.Enabled = True
+        Else
+            cmdDelAHPB.Enabled = False
+        End If
+    End Sub
+
+    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
+        If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
+
+    End Sub
+
+    Private Sub cmdDelAHPB_Click(sender As Object, e As EventArgs) Handles cmdDelAHPB.Click
+        Dim sSQL As String
+        Dim sBoiler As String
+        Try
+            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
+                        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
+                        " and boiler = " & RGTypeHeating.SelectedIndex
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Cls.ClearGrid(grdAPTAHPB)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
