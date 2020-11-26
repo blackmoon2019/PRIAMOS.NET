@@ -355,6 +355,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-invoice-24.png" />
+    <None Include="Resources\icons8-unchecked-checkbox-16.png" />
+    <None Include="Resources\icons8-tick-box-16.png" />
     <None Include="Resources\icons8-eco-fuel-40.png" />
     <None Include="Resources\icons8-water-heater-40.png" />
     <None Include="Resources\icons8-heating-automation-40.png" />

@@ -105,6 +105,15 @@ Public Class DBQueries
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                     End If
+                                    '*******DevExpress.XtraEditors.ButtonEdit******
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
+                                    Dim txt As DevExpress.XtraEditors.ButtonEdit
+                                    txt = Ctrl
+                                    If txt.Properties.Tag = True Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                                     Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
@@ -299,7 +308,7 @@ NextItem:
                             Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
                             ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                             If IgnoreVisibility = False Then
-                                If LItem.Control.Visible = True Then GoTo NextItem
+                                If LItem.Control.Visible = False Then GoTo NextItem
                             End If
                             'If LItem.Control.Visible = True 
                             If value <> Nothing Then

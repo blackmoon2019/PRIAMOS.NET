@@ -568,6 +568,68 @@ Public Class frmBDG
         'txtCalB.Enabled = False
         'End If
     End Sub
+    Private Sub NavHeatingInvoices_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeatingInvoices.ElementClick
+        tabBDG.SelectedTabPage = XtraTabPage7
+        'Προμηθευτές για πετρέλαιο
+        FillCbo.SUP(cboOSup)
+
+        'Προμηθευτές για φυσικό αέριο
+        FillCbo.SUP(cboFSup)
+    End Sub
+
+
+    Private Sub cmdCboManageBtypes_Click(sender As Object, e As EventArgs)
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Τύποι Boiler"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τύπος"
+        form1.DataTable = "BTYPES"
+        form1.CallerControl = cboBtypes
+        If cboBtypes.EditValue <> Nothing Then form1.ID = cboBtypes.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboBtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+    Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs)
+        ''If (dtMes.EditValue = Nothing) Then
+        ''    If (e.Selected = True) Then
+        ''If (e.Date = DateTime.Today) Then
+        'e.Graphics.DrawRectangle(Pens.Red, e.Bounds)
+
+        ''End If
+        'e.Graphics.DrawString(e.Date.Day.ToString(), e.Style.Font, Brushes.Black, e.Bounds, e.Style.GetStringFormat())
+        '        e.Handled = True
+        ''    End If
+        ''End If
+    End Sub
+
+
+
+
+    Private Sub cboBefMes_EditValueChanged_1(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
+        Dim sSQL As String
+        If cboBefMes.EditValue <> Nothing Then
+            sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
+            LoadForms.LoadDataToGridForEdit(grdAPTAHPB, GridView2, sSQL)
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+            GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
+            GridView2.Columns("nam").OptionsColumn.AllowEdit = False
+            cmdDelAHPB.Enabled = True
+        Else
+            cmdDelAHPB.Enabled = False
+        End If
+    End Sub
+
+    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
+        If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
+    End Sub
 
     Private Sub cmdCboManageHtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageHtypes.Click
         Dim form1 As frmGen = New frmGen()
@@ -588,118 +650,25 @@ Public Class frmBDG
         form1.Show()
     End Sub
 
-    Private Sub cmdCboManageBtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageBtypes.Click
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τύποι Boiler"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τύπος"
-        form1.DataTable = "BTYPES"
-        form1.CallerControl = cboBtypes
-        If cboBtypes.EditValue <> Nothing Then form1.ID = cboBtypes.EditValue.ToString
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        If cboBtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
-    Private Sub cmdCboManageFtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageFtypes.Click
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τύποι Καυσίμων"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τύπος"
-        form1.DataTable = "FTYPES"
-        form1.CallerControl = cboFtypes
-        If cboFtypes.EditValue <> Nothing Then form1.ID = cboFtypes.EditValue.ToString
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        If cboFtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
-    Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView2.RowUpdated
+    Private Sub cmdDelAHPB_Click(sender As Object, e As EventArgs) Handles cmdDelAHPB.Click
         Dim sSQL As String
-        Dim mes As Decimal
-        Dim mesB As Decimal
-        Dim Dif As Decimal
+        Dim sBoiler As String
         Try
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
-            mes = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes")
-            mesB = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB")
-            Dif = mes - mesB
-            GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mesDif", Dif)
-            sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
-                    ",MESB = " & toSQLValueS(mesB, True) &
-                    ",MESDIF = " & toSQLValueS(Dif, True) &
-                    " WHERE ID = '" & GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString & "'"
+            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
+                        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
+                        " and boiler = " & RGTypeHeating.SelectedIndex
 
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Cls.ClearGrid(grdAPTAHPB)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAHPB, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAHPB, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
-            End If
-        Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
-        End If
-    End Sub
-
-    Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs) Handles dtMes.DrawItem
-        ''If (dtMes.EditValue = Nothing) Then
-        ''    If (e.Selected = True) Then
-        ''If (e.Date = DateTime.Today) Then
-        'e.Graphics.DrawRectangle(Pens.Red, e.Bounds)
-
-        ''End If
-        'e.Graphics.DrawString(e.Date.Day.ToString(), e.Style.Font, Brushes.Black, e.Bounds, e.Style.GetStringFormat())
-        '        e.Handled = True
-        ''    End If
-        ''End If
     End Sub
 
     Private Sub cmdAddAHPB_Click(sender As Object, e As EventArgs) Handles cmdAddAHPB.Click
@@ -742,45 +711,89 @@ Public Class frmBDG
         Cls.ClearGrid(grdAPTAHPB)
     End Sub
 
-    Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
-        Dim sSQL As String
-        If cboBefMes.EditValue <> Nothing Then
-            sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
-            LoadForms.LoadDataToGridForEdit(grdAPTAHPB, GridView2, sSQL)
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
-            GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
-            GridView2.Columns("nam").OptionsColumn.AllowEdit = False
-            cmdDelAHPB.Enabled = True
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAHPB, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAHPB, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
+            End If
         Else
-            cmdDelAHPB.Enabled = False
+            PopupMenuRows.ShowPopup(Control.MousePosition)
         End If
     End Sub
 
-    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
-        If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
-
-    End Sub
-
-    Private Sub cmdDelAHPB_Click(sender As Object, e As EventArgs) Handles cmdDelAHPB.Click
+    Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView2.RowUpdated
         Dim sSQL As String
-        Dim sBoiler As String
+        Dim mes As Decimal
+        Dim mesB As Decimal
+        Dim Dif As Decimal
         Try
-            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
-                        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
-                        " and boiler = " & RGTypeHeating.SelectedIndex
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
+            mes = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes")
+            mesB = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB")
+            Dif = mes - mesB
+            GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mesDif", Dif)
+            sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
+                    ",MESB = " & toSQLValueS(mesB, True) &
+                    ",MESDIF = " & toSQLValueS(Dif, True) &
+                    " WHERE ID = '" & GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString & "'"
 
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                Cls.ClearGrid(grdAPTAHPB)
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub cmdCboManageFtypes_Click(sender As Object, e As EventArgs) Handles cmdCboManageFtypes.Click
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Τύποι Καυσίμων"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τύπος"
+        form1.DataTable = "FTYPES"
+        form1.CallerControl = cboFtypes
+        If cboFtypes.EditValue <> Nothing Then form1.ID = cboFtypes.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboFtypes.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
 
