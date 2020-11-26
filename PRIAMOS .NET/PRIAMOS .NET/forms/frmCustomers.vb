@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraExport.Xls
 Imports DevExpress.XtraGrid.Columns
@@ -122,7 +123,7 @@ Public Class frmCustomers
     Private Sub cboAREAS_EditValueChanged(sender As Object, e As EventArgs) Handles cboAREAS.EditValueChanged
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
-    Private Sub cmdCboManageAREAS_Click(sender As Object, e As EventArgs) Handles cmdCboManageAREAS.Click
+    Private Sub ManageAREAS()
         Dim form1 As frmGen = New frmGen()
         form1.Text = "Περιοχές"
         form1.L1.Text = "Κωδικός"
@@ -162,7 +163,7 @@ Public Class frmCustomers
         Return sSQL
     End Function
 
-    Private Sub cmdCboManageADR_Click(sender As Object, e As EventArgs) Handles cmdCboManageADR.Click
+    Private Sub ManageADR()
         Dim form1 As frmGen = New frmGen()
         form1.Text = "Διευθύνσεις"
         form1.L1.Text = "Κωδικός"
@@ -224,7 +225,7 @@ Public Class frmCustomers
         End Try
     End Sub
 
-    Private Sub cmdCboManageCOU_Click(sender As Object, e As EventArgs) Handles cmdCboManageCOU.Click
+    Private Sub ManageCOU()
         Dim form1 As frmGen = New frmGen()
         form1.Text = "Νομοί"
         form1.L1.Text = "Κωδικός"
@@ -243,49 +244,7 @@ Public Class frmCustomers
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
-
-    Private Sub cmdCboManageDOY_Click(sender As Object, e As EventArgs) Handles cmdCboManageDOY.Click
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "ΔΟΥ"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "ΔΟΥ"
-        form1.DataTable = "DOY"
-        form1.CallerControl = cboDOY
-        form1.CalledFromControl = True
-        If cboDOY.EditValue <> Nothing Then form1.ID = cboDOY.EditValue.ToString
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        If cboDOY.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
-    Private Sub cmdCboManagePRF_Click(sender As Object, e As EventArgs) Handles cmdCboManagePRF.Click
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Επαγγέλματα"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Επάγγελμα"
-        form1.DataTable = "PRF"
-        form1.CallerControl = cboPRF
-        form1.CalledFromControl = True
-        If cboPRF.EditValue <> Nothing Then form1.ID = cboPRF.EditValue.ToString
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        If cboPRF.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
-
-    Private Sub cmdFilesSelection_Click(sender As Object, e As EventArgs) Handles cmdFilesSelection.Click
+    Private Sub FilesSelection()
 
         'XtraOpenFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
         XtraOpenFileDialog1.FilterIndex = 1
@@ -314,17 +273,14 @@ Public Class frmCustomers
 
     End Sub
 
-    Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
-
-    End Sub
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
-        Dim fs As IO.FileStream = New IO.FileStream("I:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"), IO.FileMode.Create)
         Dim b() As Byte = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "files")
         Try
             fs.Write(b, 0, b.Length)
             fs.Close()
-            ShellExecute("I:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"))
+            ShellExecute("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -337,6 +293,91 @@ Public Class frmCustomers
         myProcess.Start()
         myProcess.Dispose()
     End Sub
+
+
+    Private Sub cboDOY_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDOY.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageDOY()
+            Case 2 : cboDOY.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManageDOY()
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "ΔΟΥ"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "ΔΟΥ"
+        form1.DataTable = "DOY"
+        form1.CallerControl = cboDOY
+        form1.CalledFromControl = True
+        If cboDOY.EditValue <> Nothing Then form1.ID = cboDOY.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboDOY.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+    Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPRF.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManagePRF()
+            Case 2 : cboPRF.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManagePRF()
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Επαγγέλματα"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Επάγγελμα"
+        form1.DataTable = "PRF"
+        form1.CallerControl = cboPRF
+        form1.CalledFromControl = True
+        If cboPRF.EditValue <> Nothing Then form1.ID = cboPRF.EditValue.ToString
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboPRF.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+    Private Sub cboCOU_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCOU()
+            Case 2 : cboCOU.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboAREAS_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAREAS.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageAREAS()
+            Case 2 : cboAREAS.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboADR_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboADR.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageADR()
+            Case 2 : cboADR.EditValue = Nothing
+        End Select
+    End Sub
+
+
+    Private Sub txtFileNames_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtFileNames.ButtonClick
+        If e.Button.Index = 0 Then
+            FilesSelection()
+        Else
+            txtFileNames.EditValue = Nothing
+        End If
+    End Sub
+
+
 
     'Private Sub SqlBlob2File(ByVal DocName As String)
 

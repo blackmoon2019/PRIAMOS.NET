@@ -125,7 +125,7 @@ NextItem:
                                 Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("0")))
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                                 If IgnoreVisibility = False Then
-                                    If LItem.Control.Visible = True Then GoTo NextItem
+                                    If LItem.Control.Visible = False Then GoTo NextItem
                                 End If
 
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
@@ -136,7 +136,7 @@ NextItem:
                                     sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
                                     Dim index = sdr.GetOrdinal(TagV)
                                     Console.WriteLine(sdr.GetDataTypeName(index))
-                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetBoolean(sdr.GetOrdinal(TagV)))
+                                    'If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetBoolean(sdr.GetOrdinal(TagV)))
                                     Select Case sdr.GetDataTypeName(index)
                                         Case "nvarchar"
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetString(sdr.GetOrdinal(TagV)))
