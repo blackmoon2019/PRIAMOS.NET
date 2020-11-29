@@ -79,7 +79,7 @@ Public Class frmGen
                         Select Case sDataTable
                             Case "COU"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "COU", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.COU(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -92,7 +92,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("COU")
                             Case "AREAS"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "AREAS", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.AREAS(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -105,7 +105,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("AREAS")
                             Case "ADR"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "ADR", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.ADR(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -118,7 +118,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("ADR")
                             Case "DOY"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "DOY", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.DOY(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -131,7 +131,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("DOY")
                             Case "PRF"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "PRF", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -144,7 +144,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("PRF")
                             Case "HTYPES"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "HTYPES", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -157,7 +157,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("HTYPES")
                             Case "BTYPES"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "BTYPES", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -170,7 +170,7 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("BTYPES")
                             Case "FTYPES"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertData(LayoutControl1, "FTYPES", sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sGuid)
                                 If CalledFromCtrl Then
                                     FillCbo.FTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
@@ -185,7 +185,7 @@ Public Class frmGen
                     Case FormMode.EditRecord
                         Select Case sDataTable
                             Case "COU"
-                                sResult = DBQ.UpdateData(LayoutControl1, "COU", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.COU(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -194,7 +194,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_COU")
                                 End If
                             Case "AREAS"
-                                sResult = DBQ.UpdateData(LayoutControl1, "AREAS", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.AREAS(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -203,7 +203,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_AREAS")
                                 End If
                             Case "ADR"
-                                sResult = DBQ.UpdateData(LayoutControl1, "ADR", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.ADR(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -212,7 +212,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_ADR")
                                 End If
                             Case "DOY"
-                                sResult = DBQ.UpdateData(LayoutControl1, "DOY", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.DOY(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -221,7 +221,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_DOY")
                                 End If
                             Case "PRF"
-                                sResult = DBQ.UpdateData(LayoutControl1, "PRF", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -230,7 +230,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_PRF")
                                 End If
                             Case "HTYPES"
-                                sResult = DBQ.UpdateData(LayoutControl1, "HTYPES", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -239,7 +239,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_HTYPES")
                                 End If
                             Case "BTYPES"
-                                sResult = DBQ.UpdateData(LayoutControl1, "BTYPES", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
@@ -248,7 +248,7 @@ Public Class frmGen
                                     form.LoadRecords("vw_BTYPES")
                                 End If
                             Case "FTYPES"
-                                sResult = DBQ.UpdateData(LayoutControl1, "FTYPES", sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sID)
                                 If CalledFromCtrl Then
                                     FillCbo.FTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)

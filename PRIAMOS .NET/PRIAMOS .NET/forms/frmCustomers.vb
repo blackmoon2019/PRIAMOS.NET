@@ -192,9 +192,9 @@ Public Class frmCustomers
                 Select Case Mode
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
-                        sResult = DBQ.InsertData(LayoutControl1, "CCT", sGuid)
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "CCT", LayoutControl1,,, sGuid)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateData(LayoutControl1, "CCT", sID)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "CCT", LayoutControl1,,, sID)
                         sGuid = sID
                 End Select
                 'Καθαρισμός Controls

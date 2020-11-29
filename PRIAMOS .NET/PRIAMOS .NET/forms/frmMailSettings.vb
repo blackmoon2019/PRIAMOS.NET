@@ -103,9 +103,9 @@ Public Class frmMailSettings
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertData(LayoutControl1, "MAILS")
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "MAILS", LayoutControl1)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateData(LayoutControl1, "MAILS", sID)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "MAILS", LayoutControl1,,, sID)
                 End Select
                 Dim form As frmScroller = Frm
                 form.LoadRecords("vw_MAILS")

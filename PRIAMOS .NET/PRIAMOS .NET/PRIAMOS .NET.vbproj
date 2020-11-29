@@ -171,8 +171,10 @@
     <Compile Include="classes\ClearControls.vb" />
     <Compile Include="classes\CN.vb" />
     <Compile Include="classes\DBQueries.vb" />
+    <Compile Include="classes\EnableControls.vb" />
     <Compile Include="classes\FillCombos.vb" />
     <Compile Include="classes\FormLoader.vb" />
+    <Compile Include="classes\InvOilGas.vb" />
     <Compile Include="classes\ProgProp.vb" />
     <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
