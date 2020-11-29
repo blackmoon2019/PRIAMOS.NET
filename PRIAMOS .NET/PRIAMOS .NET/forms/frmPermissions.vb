@@ -69,7 +69,7 @@ Public Class frmPermissions
                     Case FormMode.NewRecord
                         ' Καταχώρηση General Permissions
                         sGuid = System.Guid.NewGuid.ToString
-                        sResult = DBQ.InsertData(LayoutControl1, "RIGHTS", sGuid)
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "RIGHTS", LayoutControl1,,, sGuid)
                         If sResult Then
                             ' Καταχώρηση Permissions Per Form
                             For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkLstUsers.CheckedItems
@@ -82,7 +82,7 @@ Public Class frmPermissions
                             Next
                         End If
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateData(LayoutControl1, "RIGHTS", sID)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "RIGHTS", LayoutControl1,,, sID)
                         If sResult Then
                             sSQL = "DELETE FROM FORM_RIGHTS where RID = '" & sID & "'"
                             Using oCmd As New SqlCommand(sSQL, CNDB)

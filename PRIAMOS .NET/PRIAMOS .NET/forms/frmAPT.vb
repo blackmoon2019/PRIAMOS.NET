@@ -75,9 +75,9 @@ Public Class frmAPT
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertData(LayoutControl1, "APT")
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateData(LayoutControl1, "APT", sID)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1)
                 End Select
                 If sResult Then
                     'Καθαρισμός Controls

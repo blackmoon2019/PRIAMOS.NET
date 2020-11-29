@@ -31,8 +31,10 @@ Public Class frmUsers
         Try
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
-                    Case FormMode.NewRecord : sResult = DBQ.InsertData(LayoutControl1, "USR")
-                    Case FormMode.EditRecord : sResult = DBQ.UpdateData(LayoutControl1, "USR", sID)
+                    Case FormMode.NewRecord
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "USR", LayoutControl1)
+                    Case FormMode.EditRecord
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "USR", LayoutControl1,,, sID)
                 End Select
                 Dim form As frmScroller = Frm
                 form.LoadRecords("vw_USR")
