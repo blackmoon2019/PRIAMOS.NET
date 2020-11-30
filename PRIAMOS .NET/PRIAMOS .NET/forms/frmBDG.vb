@@ -265,7 +265,7 @@ Public Class frmBDG
             End If
 
         Catch ex As Exception
-                    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -617,8 +617,9 @@ Public Class frmBDG
         'Προμηθευτές για πετρέλαιο
         FillCbo.SUP(cboOInvSup)
         'Προμηθευτές για φυσικό αέριο
-        FillCbo.SUP(cboFSup)
+        FillCbo.SUP(cboGInvSup)
         InvOils.LoadRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
+        GridView3.OptionsBehavior.Editable = False
         'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
         Dim ExcludeControls As New List(Of String)
         ExcludeControls.Add(cmdOInvAdd.Name)
@@ -660,10 +661,6 @@ Public Class frmBDG
         ''    End If
         ''End If
     End Sub
-
-
-
-
     Private Sub cboBefMes_EditValueChanged_1(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
@@ -845,6 +842,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdOInvAdd_Click(sender As Object, e As EventArgs) Handles cmdOInvAdd.Click
+        GridView3.OptionsBehavior.Editable = False
         InvOils.AddNewOilInv(LayoutControlGroup5)
         EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup5)
         txtOInvCode.Text = DBQ.GetNextId("INV_OIL")
@@ -926,35 +924,47 @@ Public Class frmBDG
     End Sub
 
     Private Sub GridView3_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView3.RowUpdated
-        Dim sSQL As String
-        Dim mes As Decimal
-        Dim mesB As Decimal
-        Dim Dif As Decimal
+        'Dim sSQL As String
+        'Dim mes As Decimal
+        'Dim mesB As Decimal
+        'Dim Dif As Decimal
         Try
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invNumber") Is DBNull.Value Then Exit Sub
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invDate") Is DBNull.Value Then Exit Sub
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "cctID") Is DBNull.Value Then Exit Sub
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "liters") Is DBNull.Value Then Exit Sub
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "price") Is DBNull.Value Then Exit Sub
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "totalPrice") Is DBNull.Value Then Exit Sub
-            mes = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mes")
-            mesB = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mesB")
-            Dif = mes - mesB
-            GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "mesDif", Dif)
-            sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
-                    ",MESB = " & toSQLValueS(mesB, True) &
-                    ",MESDIF = " & toSQLValueS(Dif, True) &
-                    " WHERE ID = '" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString & "'"
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invNumber") Is DBNull.Value Then Exit Sub
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invDate") Is DBNull.Value Then Exit Sub
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "cctID") Is DBNull.Value Then Exit Sub
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "liters") Is DBNull.Value Then Exit Sub
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "price") Is DBNull.Value Then Exit Sub
+            '    If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "totalPrice") Is DBNull.Value Then Exit Sub
+            '    mes = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mes")
+            '    mesB = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mesB")
+            '    Dif = mes - mesB
+            '    GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "mesDif", Dif)
+            '    sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
+            '            ",MESB = " & toSQLValueS(mesB, True) &
+            '            ",MESDIF = " & toSQLValueS(Dif, True) &
+            '            " WHERE ID = '" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString & "'"
 
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
+            '    Using oCmd As New SqlCommand(sSQL, CNDB)
+            '        oCmd.ExecuteNonQuery()
+            '    End Using
+            Dim FieldsToBeUpdate As New List(Of String)
+            FieldsToBeUpdate.Add("invNumber")
+            FieldsToBeUpdate.Add("invDate")
+            FieldsToBeUpdate.Add("liters")
+            FieldsToBeUpdate.Add("price")
+            FieldsToBeUpdate.Add("totalPrice")
+            If InvOils.UpdateData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
+    Private Sub cmdOInvEdit_Click(sender As Object, e As EventArgs) Handles cmdOInvEdit.Click
+        GridView3.OptionsBehavior.Editable = True
+    End Sub
 
 
 

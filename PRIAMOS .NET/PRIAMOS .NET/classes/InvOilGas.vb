@@ -11,7 +11,10 @@ Public Class InvOilGas
         Cls.ClearGroupCtrls(GRP)
     End Sub
     Public Function InsertData(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, ByVal sGuid As String) As Boolean
-        Return DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INV_OIL",,, GRP, ,, "bdgid", toSQLValueS(sGuid))
+        Return DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INV_OIL",,, GRP,,, "bdgid", toSQLValueS(sGuid))
+    End Function
+    Public Function UpdateData(ByVal GRD As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sGuid As String, ByVal FieldsToBeUpdate As List(Of String))
+        Return DBQ.UpdateNewData(DBQueries.InsertMode.GridControl, "INV_OIL",,,, sGuid,, GRD, FieldsToBeUpdate)
     End Function
     Public Sub LoadRecords(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
         LoadForms.LoadDataToGridForEdit(GRDControl, GRDView, sSQL)
