@@ -9,6 +9,7 @@ Public Class DBQueries
         OneLayoutControl = 1
         MultipleLayoutControls = 2
         GroupLayoutControl = 3
+        GridControl = 4
     End Enum
 
     Public Function GetNextId(ByVal sTable As String) As Integer
@@ -28,11 +29,13 @@ Public Class DBQueries
                 Return InsertDataNew(controls, sTable, sGuid, IgnoreVisibility, ExtraFields, ExtraValues)
             Case 3
                 Return InsertDataGRP(GRP, sTable, sGuid, IgnoreVisibility, ExtraFields, ExtraValues)
+
         End Select
     End Function
     Public Function UpdateNewData(ByVal Mode As InsertMode, ByVal sTable As String, Optional ByVal control As DevExpress.XtraLayout.LayoutControl = Nothing,
                                   Optional ByVal controls As List(Of Control) = Nothing, Optional ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup = Nothing,
-                                  Optional ByVal sGuid As String = "", Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
+                                  Optional ByVal sGuid As String = "", Optional ByVal IgnoreVisibility As Boolean = False,
+                                  Optional GRD As DevExpress.XtraGrid.Views.Grid.GridView = Nothing, Optional ByVal FieldsToBeUpdate As List(Of String) = Nothing) As Boolean
         Select Case Mode
             Case 1
                 Return UpdateData(control, sTable, sGuid, IgnoreVisibility)
@@ -40,6 +43,8 @@ Public Class DBQueries
                 Return UpdateDataNew(controls, sTable, sGuid, IgnoreVisibility)
             Case 3
                 Return UpdateDataGRP(GRP, sTable, sGuid, IgnoreVisibility)
+            Case 4
+                Return UpdateDataGRD(GRD, sTable, sGuid, FieldsToBeUpdate, IgnoreVisibility)
         End Select
     End Function
 
@@ -790,6 +795,46 @@ NextItem:
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
+    End Function
+    'Διαβάζει τις στήλες ενός GRID δυναμικά και τα πεδία ενός LayoutControlGroup δυναμικά και κάνει Update
+    Public Function UpdateDataGRD(ByVal GRD As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sTable As String, ByVal sID As String, ByVal FieldsToBeUpdate As List(Of String), Optional ByVal IgnoreVisibility As Boolean = False)
+        Dim sSQL As New System.Text.StringBuilder
+        Dim sDate As DateTime
+        Try
+            sSQL.AppendLine("UPDATE " & sTable & " SET ")
+            For Each column As DevExpress.XtraGrid.Columns.GridColumn In GRD.Columns
+                If column.Visible = True Then
+                    If FieldsToBeUpdate.Contains(column.FieldName) Then
+                        If GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName) IsNot DBNull.Value Then
+                            Select Case column.ColumnType.Name
+                                Case "Guid" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
+                                Case "Int32" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
+                                Case "DateTime"
+                                    sDate = GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName)
+
+                                    sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(sDate.ToString("yyyyMMdd")))
+
+                                Case "Decimal" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
+                                Case "String" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
+                            End Select
+                            sSQL.AppendLine(",")
+                        End If
+                    End If
+                End If
+            Next
+            sSQL.Append(" [modifiedBy] = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append("WHERE ID = " & toSQLValueS(sID))
+            'Εκτέλεση QUERY
+            Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
     End Function
     Public Function InsertDataFiles(ByVal control As DevExpress.XtraEditors.XtraOpenFileDialog, ByVal cctID As String) As Boolean
         Dim sSQL As New System.Text.StringBuilder
