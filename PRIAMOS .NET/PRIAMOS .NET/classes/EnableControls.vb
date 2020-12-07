@@ -76,6 +76,10 @@ NextItem:
                             Dim btn As DevExpress.XtraEditors.SimpleButton
                             btn = Ctrl
                             btn.Enabled = Mode
+                        ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckButton Then
+                            Dim btn As DevExpress.XtraEditors.CheckButton
+                            btn = Ctrl
+                            btn.Enabled = Mode
                         End If
                     End If
                 End If

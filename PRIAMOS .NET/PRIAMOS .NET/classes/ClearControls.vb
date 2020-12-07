@@ -53,7 +53,13 @@ Public Class ClearControls
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                 Dim txt As DevExpress.XtraEditors.TextEdit
                                 txt = Ctrl
-                                txt.Text = ""
+                                If txt.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric Then
+                                    Select Case txt.Properties.Mask.EditMask
+                                        Case "n2", "c" : txt.Text = "0,00"
+                                        Case "n0" : txt.Text = "0"
+                                    End Select
+                                End If
+
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                                 Dim chk As DevExpress.XtraEditors.CheckEdit
                                 chk = Ctrl

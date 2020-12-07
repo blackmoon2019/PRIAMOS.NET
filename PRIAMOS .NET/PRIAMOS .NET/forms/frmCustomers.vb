@@ -201,7 +201,7 @@ Public Class frmCustomers
                 'If Mode = FormMode.EditRecord Then Cls.ClearCtrls(LayoutControl1)
                 'dtDTS.EditValue = DateTime.Now
                 If txtFileNames.Text <> "" Then
-                    sResult = DBQ.InsertDataFiles(XtraOpenFileDialog1, sGuid)
+                    sResult = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "CCT_F", sGuid)
                     LoadForms.LoadDataToGrid(GridControl1, GridView1, "select ID,cctID,files,filename,comefrom,createdon,realname From vw_CCT_F where cctID = '" & sGuid & "'")
                 End If
                 If Mode = FormMode.NewRecord Then txtCode.Text = DBQ.GetNextId("CCT")
@@ -275,6 +275,7 @@ Public Class frmCustomers
 
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
+        If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
         Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"), IO.FileMode.Create)
         Dim b() As Byte = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "files")
         Try
@@ -375,6 +376,10 @@ Public Class frmCustomers
         Else
             txtFileNames.EditValue = Nothing
         End If
+    End Sub
+
+    Private Sub txtFileNames_EditValueChanged(sender As Object, e As EventArgs) Handles txtFileNames.EditValueChanged
+
     End Sub
 
 

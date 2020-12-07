@@ -475,6 +475,7 @@ Public Class frmScroller
             Case "vw_BDG"
                 form4.Text = "Πολυκατοικίες"
                 form4.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                form4.bManageID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bManageID").ToString
                 form4.MdiParent = frmMain
                 form4.Mode = FormMode.EditRecord
                 form4.Scroller = GridView1
