@@ -357,6 +357,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-upload-link-document-16.png" />
     <None Include="Resources\icons8-invoice-24.png" />
     <None Include="Resources\icons8-unchecked-checkbox-16.png" />
     <None Include="Resources\icons8-tick-box-16.png" />

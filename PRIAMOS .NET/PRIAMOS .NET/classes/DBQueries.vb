@@ -13,9 +13,10 @@ Public Class DBQueries
     End Enum
 
     Public Function GetNextId(ByVal sTable As String) As Integer
-        Dim cmd As SqlCommand = New SqlCommand("SELECT IDENT_CURRENT('" & sTable & "')  AS ID", CNDB)
+        'Dim cmd As SqlCommand = New SqlCommand("SELECT IDENT_CURRENT('" & sTable & "')  AS ID", CNDB)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT Case when (select top 1 ID from " & sTable & ") Is Not null then  IDENT_CURRENT('" & sTable & "') else 1 end   AS ID", CNDB)
         Dim ID As Integer = cmd.ExecuteScalar()
-        If ID > 1 Then ID = ID + 1
+        'If ID > 1 Then ID = ID + 1
         Return ID
     End Function
     Public Function InsertNewData(ByVal Mode As InsertMode, ByVal sTable As String, Optional ByVal control As DevExpress.XtraLayout.LayoutControl = Nothing,
@@ -47,6 +48,41 @@ Public Class DBQueries
                 Return UpdateDataGRD(GRD, sTable, sGuid, FieldsToBeUpdate, IgnoreVisibility)
         End Select
     End Function
+    Public Function InsertNewDataFiles(ByVal control As DevExpress.XtraEditors.XtraOpenFileDialog, ByVal sTable As String, ByVal ID As String) As Boolean
+        Dim sSQL As New System.Text.StringBuilder
+        Dim i As Integer
+        Try
+            sSQL.Clear()
+            Select Case sTable
+                Case "CCT_F" : sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
+                Case "INV_GASF" : sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
+                Case "INV_OILF" : sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
+            End Select
+            For i = 0 To control.FileNames.Count - 1
+                Dim extension As String = Path.GetExtension(control.FileNames(i))
+                Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
+                sSQL.AppendLine("Select " & toSQLValueS(ID) & ",")
+                sSQL.AppendLine(toSQLValueS(control.SafeFileNames(i).ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(FilePath) & ",")
+                sSQL.AppendLine(toSQLValueS(extension) & ",")
+                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
+                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(control.FileNames(i).ToString()) & ", SINGLE_BLOB) files")
+
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next
+            control.FileName = ""
+            'ReadBlobFile()
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
+    End Function
+
 
     'Η InsertData χρησιμοποιείται για να αποθηκεύσει Data για ένα LayoutContol
     Private Function InsertData(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sTable As String, Optional ByVal sGuid As String = "",
@@ -103,7 +139,7 @@ Public Class DBQueries
                             Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("1")))
                             ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                             If IgnoreVisibility = True Then
-                                If LItem.Control.Visible = True Then GoTo NextItem
+                                If LItem.Control.Visible = False Then GoTo NextItem
                             End If
 
                             ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
@@ -244,7 +280,7 @@ NextItem:
                                 Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("1")))
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                                 If IgnoreVisibility = True Then
-                                    If LItem.Control.Visible = True Then GoTo NextItem
+                                    If LItem.Control.Visible = False Then GoTo NextItem
                                 End If
 
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
@@ -375,7 +411,7 @@ NextItem:
                             Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("1")))
                             ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                             If IgnoreVisibility = True Then
-                                If LItem.Control.Visible = True Then GoTo NextItem
+                                If LItem.Control.Visible = False Then GoTo NextItem
                             End If
 
                             ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
@@ -616,7 +652,7 @@ NextItem:
                                 Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                                 If IgnoreVisibility = True Then
-                                    If LItem.Control.Visible = True Then GoTo NextItem
+                                    If LItem.Control.Visible = False Then GoTo NextItem
                                 End If
                                 'If LItem.Control.Visible = True 
                                 If value <> Nothing Then
@@ -832,35 +868,6 @@ NextItem:
             Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return False
-        End Try
-
-    End Function
-    Public Function InsertDataFiles(ByVal control As DevExpress.XtraEditors.XtraOpenFileDialog, ByVal cctID As String) As Boolean
-        Dim sSQL As New System.Text.StringBuilder
-        Dim i As Integer
-        Try
-            sSQL.Clear()
-            sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
-            For i = 0 To control.FileNames.Count - 1
-                Dim extension As String = Path.GetExtension(control.FileNames(i))
-                Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
-                sSQL.AppendLine("Select " & toSQLValueS(cctID) & ",")
-                sSQL.AppendLine(toSQLValueS(control.SafeFileNames(i).ToString) & ",")
-                sSQL.AppendLine(toSQLValueS(FilePath) & ",")
-                sSQL.AppendLine(toSQLValueS(extension) & ",")
-                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
-                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(control.FileNames(i).ToString()) & ", SINGLE_BLOB) files")
-
-                'Εκτέλεση QUERY
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-            Next
-            'ReadBlobFile()
-            Return True
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
 

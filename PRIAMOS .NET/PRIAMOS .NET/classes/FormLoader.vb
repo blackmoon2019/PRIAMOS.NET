@@ -2,6 +2,7 @@
 Imports DevExpress.XtraLayout
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraEditors.Repository
 
 Public Class FormLoader
     Public Function LoadFormNew(ByVal controls As List(Of Control), ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
@@ -200,32 +201,12 @@ NextItem:
 
         End If
     End Sub
-    Public Sub LoadDataToGrid(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
-        Dim myCmd As SqlCommand
-        Dim myReader As SqlDataReader
-
-        myCmd = CNDB.CreateCommand
-        myCmd.CommandText = sSQL
-        GRDView.Columns.Clear()
-        myReader = myCmd.ExecuteReader()
-        GRDControl.DataSource = myReader
-        GRDControl.ForceInitialize()
-        GRDControl.DefaultView.PopulateColumns()
-        If myReader.HasRows = False Then
-            For i As Integer = 0 To myReader.FieldCount - 1
-                Dim C As New GridColumn
-                C.Name = myReader.GetName(i).ToString
-                C.Caption = myReader.GetName(i).ToString
-                C.Visible = True
-                GRDView.Columns.Add(C)
-            Next i
-
-        End If
-    End Sub
-    Public Sub LoadDataToGridForEdit(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
+    Public Sub LoadDataToGrid(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView,
+                              ByVal sSQL As String, Optional ByVal AddColumnButton As Boolean = False)
         Dim myCmd As SqlCommand
         Dim myReader As SqlDataReader
         Dim dt As New DataTable("sTable")
+        Dim sTable As DataTable
         Try
             myCmd = CNDB.CreateCommand
             myCmd.CommandText = sSQL
@@ -235,14 +216,25 @@ NextItem:
             GRDControl.DataSource = dt
             GRDControl.ForceInitialize()
             GRDControl.DefaultView.PopulateColumns()
-            If dt.Rows.Count = 0 Then
-                For i As Integer = 0 To myReader.FieldCount - 1
+            'Προσθήκη Στήλης BUTTON(Θα πρέπει στον Designer να έχω προσθέσει ενα repositoryitem τύπου Button)
+            If AddColumnButton Then
+                Dim C2 As New GridColumn
+                Dim Btn As New RepositoryItemButtonEdit()
+                Btn = GRDControl.RepositoryItems.Item(0)
+                Btn.ContextImageOptions.Image = My.Resources.icons8_upload_link_document_16
+                C2.ColumnEdit = Btn
+                C2.VisibleIndex = 0
+                GRDView.Columns.Add(C2)
+            End If
+            If dt.Rows.Count = 0 And GRDView.Columns.Count = 0 Then
+                For Each myField As DataColumn In dt.Columns
+                    Dim columnNameValue As String = myField.ColumnName
                     Dim C As New GridColumn
-                    C.Name = myReader.GetName(i).ToString
-                    C.Caption = myReader.GetName(i).ToString
+                    C.Name = columnNameValue
+                    C.Caption = columnNameValue
                     C.Visible = True
                     GRDView.Columns.Add(C)
-                Next i
+                Next
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

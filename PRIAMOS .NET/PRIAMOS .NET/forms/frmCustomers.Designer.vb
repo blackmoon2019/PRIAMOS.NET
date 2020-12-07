@@ -22,6 +22,9 @@ Partial Class frmCustomers
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomers))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkSupplier = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkWorkshop = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkPrivate = New DevExpress.XtraEditors.CheckEdit()
         Me.TextEdit8 = New DevExpress.XtraEditors.TextEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -69,18 +72,18 @@ Partial Class frmCustomers
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
-        Me.chkPrivate = New DevExpress.XtraEditors.CheckEdit()
-        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.chkWorkshop = New DevExpress.XtraEditors.CheckEdit()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.chkSupplier = New DevExpress.XtraEditors.CheckEdit()
-        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkWorkshop.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPrivate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit8.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,11 +131,8 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkPrivate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkWorkshop.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -169,6 +169,45 @@ Partial Class frmCustomers
         Me.LayoutControl1.Size = New System.Drawing.Size(777, 543)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'chkSupplier
+        '
+        Me.chkSupplier.EditValue = CType(0, Byte)
+        Me.chkSupplier.Location = New System.Drawing.Point(569, 12)
+        Me.chkSupplier.Name = "chkSupplier"
+        Me.chkSupplier.Properties.Caption = "Προμηθευτής"
+        Me.chkSupplier.Properties.ValueChecked = CType(1, Byte)
+        Me.chkSupplier.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkSupplier.Size = New System.Drawing.Size(196, 18)
+        Me.chkSupplier.StyleController = Me.LayoutControl1
+        Me.chkSupplier.TabIndex = 38
+        Me.chkSupplier.Tag = "IsSupplier,0,1,2"
+        '
+        'chkWorkshop
+        '
+        Me.chkWorkshop.EditValue = CType(0, Byte)
+        Me.chkWorkshop.Location = New System.Drawing.Point(449, 12)
+        Me.chkWorkshop.Name = "chkWorkshop"
+        Me.chkWorkshop.Properties.Caption = "Συνεργείο"
+        Me.chkWorkshop.Properties.ValueChecked = CType(1, Byte)
+        Me.chkWorkshop.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkWorkshop.Size = New System.Drawing.Size(116, 18)
+        Me.chkWorkshop.StyleController = Me.LayoutControl1
+        Me.chkWorkshop.TabIndex = 37
+        Me.chkWorkshop.Tag = "IsWorkshop,0,1,2"
+        '
+        'chkPrivate
+        '
+        Me.chkPrivate.EditValue = CType(1, Byte)
+        Me.chkPrivate.Location = New System.Drawing.Point(328, 12)
+        Me.chkPrivate.Name = "chkPrivate"
+        Me.chkPrivate.Properties.Caption = "Ιδιώτης"
+        Me.chkPrivate.Properties.ValueChecked = CType(1, Byte)
+        Me.chkPrivate.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkPrivate.Size = New System.Drawing.Size(117, 18)
+        Me.chkPrivate.StyleController = Me.LayoutControl1
+        Me.chkPrivate.TabIndex = 36
+        Me.chkPrivate.Tag = "Isprivate,0,1,2"
         '
         'TextEdit8
         '
@@ -665,6 +704,42 @@ Partial Class frmCustomers
         Me.LayoutControlItem14.Text = "Σχόλια"
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(57, 13)
         '
+        'LayoutControlItem2
+        '
+        Me.LayoutControlItem2.Control = Me.chkPrivate
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(316, 0)
+        Me.LayoutControlItem2.Name = "LayoutControlItem2"
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(121, 24)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem2.TextVisible = False
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.chkWorkshop
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(437, 0)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(120, 24)
+        Me.LayoutControlItem3.Text = "Συνεργείο"
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem3.TextVisible = False
+        '
+        'LayoutControlItem10
+        '
+        Me.LayoutControlItem10.Control = Me.chkSupplier
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(557, 0)
+        Me.LayoutControlItem10.Name = "LayoutControlItem10"
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(200, 24)
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem10.TextVisible = False
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(142, 0)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(174, 24)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -689,81 +764,6 @@ Partial Class frmCustomers
         Me.XtraOpenFileDialog1.Multiselect = True
         Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
         '
-        'chkPrivate
-        '
-        Me.chkPrivate.EditValue = CType(1, Byte)
-        Me.chkPrivate.Location = New System.Drawing.Point(328, 12)
-        Me.chkPrivate.Name = "chkPrivate"
-        Me.chkPrivate.Properties.Caption = "Ιδιώτης"
-        Me.chkPrivate.Properties.ValueChecked = CType(1, Byte)
-        Me.chkPrivate.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkPrivate.Size = New System.Drawing.Size(117, 18)
-        Me.chkPrivate.StyleController = Me.LayoutControl1
-        Me.chkPrivate.TabIndex = 36
-        Me.chkPrivate.Tag = "Isprivate,0,1,2"
-        '
-        'LayoutControlItem2
-        '
-        Me.LayoutControlItem2.Control = Me.chkPrivate
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(316, 0)
-        Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(121, 24)
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem2.TextVisible = False
-        '
-        'chkWorkshop
-        '
-        Me.chkWorkshop.EditValue = CType(0, Byte)
-        Me.chkWorkshop.Location = New System.Drawing.Point(449, 12)
-        Me.chkWorkshop.Name = "chkWorkshop"
-        Me.chkWorkshop.Properties.Caption = "Συνεργείο"
-        Me.chkWorkshop.Properties.ValueChecked = CType(1, Byte)
-        Me.chkWorkshop.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkWorkshop.Size = New System.Drawing.Size(116, 18)
-        Me.chkWorkshop.StyleController = Me.LayoutControl1
-        Me.chkWorkshop.TabIndex = 37
-        Me.chkWorkshop.Tag = "IsWorkshop,0,1,2"
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.chkWorkshop
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(437, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(120, 24)
-        Me.LayoutControlItem3.Text = "Συνεργείο"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
-        'chkSupplier
-        '
-        Me.chkSupplier.EditValue = CType(0, Byte)
-        Me.chkSupplier.Location = New System.Drawing.Point(569, 12)
-        Me.chkSupplier.Name = "chkSupplier"
-        Me.chkSupplier.Properties.Caption = "Προμηθευτής"
-        Me.chkSupplier.Properties.ValueChecked = CType(1, Byte)
-        Me.chkSupplier.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkSupplier.Size = New System.Drawing.Size(196, 18)
-        Me.chkSupplier.StyleController = Me.LayoutControl1
-        Me.chkSupplier.TabIndex = 38
-        Me.chkSupplier.Tag = "IsSupplier,0,1,2"
-        '
-        'LayoutControlItem10
-        '
-        Me.LayoutControlItem10.Control = Me.chkSupplier
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(557, 0)
-        Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(200, 24)
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem10.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(142, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(174, 24)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
         'frmCustomers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -776,6 +776,9 @@ Partial Class frmCustomers
         Me.Text = "frmCustomers"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkWorkshop.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPrivate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit8.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -823,11 +826,8 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkPrivate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkWorkshop.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
