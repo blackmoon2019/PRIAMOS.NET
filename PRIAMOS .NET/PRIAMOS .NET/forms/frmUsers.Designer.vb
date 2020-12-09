@@ -142,7 +142,7 @@ Partial Class frmUsers
         '
         Me.LayoutControlItem1.AppearanceItemCaption.Options.UseImage = True
         Me.LayoutControlItem1.Control = Me.txtUN
-        Me.LayoutControlItem1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[False]
+        Me.LayoutControlItem1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
@@ -154,6 +154,7 @@ Partial Class frmUsers
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.txtPWD
+        Me.LayoutControlItem2.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
@@ -165,6 +166,7 @@ Partial Class frmUsers
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtRealName
+        Me.LayoutControlItem3.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(483, 24)
@@ -192,6 +194,7 @@ Partial Class frmUsers
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.cboMail
+        Me.LayoutControlItem6.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
         Me.LayoutControlItem6.Size = New System.Drawing.Size(483, 24)

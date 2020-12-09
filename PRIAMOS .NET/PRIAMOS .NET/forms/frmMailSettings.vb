@@ -107,7 +107,7 @@ Public Class frmMailSettings
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "MAILS", LayoutControl1,,, sID)
                 End Select
-                Dim form As frmScroller = Frm
+                Dim form As New frmScroller
                 form.LoadRecords("vw_MAILS")
                 If sResult Then
                     'Καθαρισμός Controls

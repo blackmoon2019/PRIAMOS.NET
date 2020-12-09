@@ -79,12 +79,12 @@ Public Class frmGen
                         Select Case sDataTable
                             Case "COU"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.COU(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_COU")
                                 End If
                                 'Καθαρισμός Controls
@@ -92,12 +92,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("COU")
                             Case "AREAS"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.AREAS(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_AREAS")
                                 End If
                                 'Καθαρισμός Controls
@@ -105,12 +105,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("AREAS")
                             Case "ADR"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.ADR(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_ADR")
                                 End If
                                 'Καθαρισμός Controls
@@ -118,12 +118,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("ADR")
                             Case "DOY"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.DOY(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_DOY")
                                 End If
                                 'Καθαρισμός Controls
@@ -131,12 +131,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("DOY")
                             Case "PRF"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_PRF")
                                 End If
                                 'Καθαρισμός Controls
@@ -144,12 +144,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("PRF")
                             Case "HTYPES"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_HTYPES")
                                 End If
                                 'Καθαρισμός Controls
@@ -157,12 +157,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("HTYPES")
                             Case "BTYPES"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_BTYPES")
                                 End If
                                 'Καθαρισμός Controls
@@ -170,12 +170,12 @@ Public Class frmGen
                                 txtCode.Text = DBQ.GetNextId("BTYPES")
                             Case "FTYPES"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sGuid)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
                                     FillCbo.FTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_FTYPES")
                                 End If
                                 'Καθαρισμός Controls
@@ -185,75 +185,75 @@ Public Class frmGen
                     Case FormMode.EditRecord
                         Select Case sDataTable
                             Case "COU"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.COU(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_COU")
                                 End If
                             Case "AREAS"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.AREAS(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_AREAS")
                                 End If
                             Case "ADR"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.ADR(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_ADR")
                                 End If
                             Case "DOY"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.DOY(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_DOY")
                                 End If
                             Case "PRF"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_PRF")
                                 End If
                             Case "HTYPES"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_HTYPES")
                                 End If
                             Case "BTYPES"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_BTYPES")
                                 End If
                             Case "FTYPES"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sID)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.FTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
+                                    Dim form As New frmScroller
                                     form.LoadRecords("vw_FTYPES")
                                 End If
                         End Select
@@ -265,63 +265,66 @@ Public Class frmGen
         End Try
     End Sub
     Private Sub LoadGen()
-        Select Case sDataTable
-            Case "COU"
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("COU")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_COU where id ='" + sID + "'")
-                End If
-            Case "AREAS"
-                FillCbo.COU(cbo1)
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("AREAS")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_AREAS where id ='" + sID + "'")
-                End If
-            Case "ADR"
-                FillCbo.COU(cbo1)
-                Dim sSQL As New System.Text.StringBuilder
-                FillCbo.AREAS(cbo2, sSQL)
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("ADR")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_ADR where id ='" + sID + "'")
-                End If
-            Case "DOY"
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("DOY")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_DOY where id ='" + sID + "'")
-                End If
-            Case "PRF"
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("PRF")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_PRF where id ='" + sID + "'")
-                End If
-            Case "HTYPES"
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("HTYPES")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_HTYPES where id ='" + sID + "'")
-                End If
-            Case "BTYPES"
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("BTYPES")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_BTYPES where id ='" + sID + "'")
-                End If
-            Case "FTYPES"
-                If Mode = FormMode.NewRecord Then
-                    txtCode.Text = DBQ.GetNextId("FTYPES")
-                Else
-                    LoadForms.LoadForm(LayoutControl1, "Select * from vw_FTYPES where id ='" + sID + "'")
-                End If
-        End Select
-        cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
-        cmdDelete.Enabled = IIf(Mode = FormMode.NewRecord, False, UserProps.AllowDelete)
-
+        Try
+            Select Case sDataTable
+                Case "COU"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("COU")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_COU where id ='" + sID + "'", True)
+                    End If
+                Case "AREAS"
+                    FillCbo.COU(cbo1)
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("AREAS")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_AREAS where id ='" + sID + "'", True)
+                    End If
+                Case "ADR"
+                    FillCbo.COU(cbo1)
+                    Dim sSQL As New System.Text.StringBuilder
+                    FillCbo.AREAS(cbo2, sSQL)
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("ADR")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_ADR where id ='" + sID + "'", True)
+                    End If
+                Case "DOY"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("DOY")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_DOY where id ='" + sID + "'", True)
+                    End If
+                Case "PRF"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("PRF")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_PRF where id ='" + sID + "'", True)
+                    End If
+                Case "HTYPES"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("HTYPES")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_HTYPES where id ='" + sID + "'", True)
+                    End If
+                Case "BTYPES"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("BTYPES")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_BTYPES where id ='" + sID + "'", True)
+                    End If
+                Case "FTYPES"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("FTYPES")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_FTYPES where id ='" + sID + "'", True)
+                    End If
+            End Select
+            cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
+            cmdDelete.Enabled = IIf(Mode = FormMode.NewRecord, False, UserProps.AllowDelete)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
@@ -341,56 +344,56 @@ Public Class frmGen
                         If CalledFromCtrl Then
                             FillCbo.COU(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_COU")
                         End If
                     Case "AREAS"
                         If CalledFromCtrl Then
                             FillCbo.AREAS(CtrlCombo, S)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_AREAS")
                         End If
                     Case "ADR"
                         If CalledFromCtrl Then
                             FillCbo.ADR(CtrlCombo, S)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_ADR")
                         End If
                     Case "DOY"
                         If CalledFromCtrl Then
                             FillCbo.DOY(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_DOY")
                         End If
                     Case "PRF"
                         If CalledFromCtrl Then
                             FillCbo.PRF(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_PRF")
                         End If
                     Case "HTYPES"
                         If CalledFromCtrl Then
                             FillCbo.HTYPES(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_HTYPES")
                         End If
                     Case "BTYPES"
                         If CalledFromCtrl Then
                             FillCbo.BTYPES(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_BTYPES")
                         End If
                     Case "FTYPES"
                         If CalledFromCtrl Then
                             FillCbo.FTYPES(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
+                            Dim form As New frmScroller
                             form.LoadRecords("vw_FTYPES")
                         End If
                 End Select

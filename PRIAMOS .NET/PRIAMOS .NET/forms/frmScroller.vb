@@ -496,6 +496,8 @@ Public Class frmScroller
                 form5.CalledFromControl = False
                 form5.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form5.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form5.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form5.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form5.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form5), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form5.Show()
@@ -512,6 +514,8 @@ Public Class frmScroller
                 form6.FormScroller = Me
                 form6.CalledFromControl = False
                 form6.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form6.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form6.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form6.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form6), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form6.Show()
@@ -526,6 +530,9 @@ Public Class frmScroller
                 form7.L2.Text = "Διεύθυνση"
                 form7.L3.Text = "Νομός"
                 form7.L4.Text = "Περιοχές"
+                form7.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form7.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form7.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form7.FormScroller = Me
                 form7.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form7), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -543,6 +550,8 @@ Public Class frmScroller
                 form8.CalledFromControl = False
                 form8.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form8.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form8.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form8.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form8.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form8), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form8.Show()
@@ -559,6 +568,8 @@ Public Class frmScroller
                 form9.CalledFromControl = False
                 form9.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form9.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form9.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                form9.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 form9.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form9), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 form9.Show()

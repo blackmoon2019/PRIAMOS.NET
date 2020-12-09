@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraLayout
 
 Public Class frmAPT
@@ -94,7 +95,7 @@ Public Class frmAPT
         End Try
     End Sub
 
-    Private Sub cmdCboManageTenant_Click(sender As Object, e As EventArgs) Handles cmdCboManageTenant.Click
+    Private Sub ManageTenant()
         Dim form1 As frmCustomers = New frmCustomers()
         form1.Text = "Επαφές"
         form1.CallerControl = cboTenant
@@ -110,7 +111,7 @@ Public Class frmAPT
         form1.Show()
     End Sub
 
-    Private Sub cmdCboManageOwner_Click(sender As Object, e As EventArgs) Handles cmdCboManageOwner.Click
+    Private Sub ManageOwner()
         Dim form1 As frmCustomers = New frmCustomers()
         form1.Text = "Επαφές"
         form1.CallerControl = cboOwner
@@ -124,6 +125,20 @@ Public Class frmAPT
         End If
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+    End Sub
+
+    Private Sub cboTenant_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboTenant.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageTenant()
+            Case 2 : cboTenant.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboOwner_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboOwner.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageOwner()
+            Case 2 : cboOwner.EditValue = Nothing
+        End Select
     End Sub
     'Private Sub LoadAPT()
     '    Dim sSQL As String

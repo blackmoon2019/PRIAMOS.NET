@@ -58,8 +58,8 @@ Public Class FormLoader
                                     'Ψάχνω αν το πεδίο έχει δικάιωμα Προβολής
                                     Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("0")))
                                     ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
-                                    If IgnoreVisibility = False Then
-                                        If LItem.Control.Visible = True Then GoTo NextItem
+                                    If IgnoreVisibility = True Then
+                                        If LItem.Control.Visible = False Then GoTo NextItem
                                     End If
 
                                     ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
@@ -125,7 +125,7 @@ NextItem:
                                 'Ψάχνω αν το πεδίο έχει δικάιωμα Προβολής
                                 Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("0")))
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
-                                If IgnoreVisibility = False Then
+                                If IgnoreVisibility = True Then
                                     If LItem.Control.Visible = False Then GoTo NextItem
                                 End If
 
