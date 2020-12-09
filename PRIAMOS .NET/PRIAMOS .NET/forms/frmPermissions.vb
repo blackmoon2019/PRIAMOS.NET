@@ -99,7 +99,7 @@ Public Class frmPermissions
                             Next
                         End If
                 End Select
-                Dim form As frmScroller = Frm
+                Dim form As New frmScroller
                 form.LoadRecords("vw_RIGHTS")
                 If sResult Then
                     'Καθαρισμός Controls

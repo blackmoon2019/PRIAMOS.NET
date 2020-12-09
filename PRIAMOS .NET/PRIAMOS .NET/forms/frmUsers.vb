@@ -36,7 +36,7 @@ Public Class frmUsers
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "USR", LayoutControl1,,, sID)
                 End Select
-                Dim form As frmScroller = Frm
+                Dim form As New frmScroller
                 form.LoadRecords("vw_USR")
                 If sResult Then
                     'Καθαρισμός Controls

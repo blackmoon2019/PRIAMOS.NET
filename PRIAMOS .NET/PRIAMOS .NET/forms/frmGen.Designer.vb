@@ -20,31 +20,31 @@ Partial Class frmGen
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdNew = New DevExpress.XtraEditors.SimpleButton()
         Me.cbo2 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.txtName = New DevExpress.XtraEditors.TextEdit()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cbo1 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmdDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.chk1 = New DevExpress.XtraEditors.CheckEdit()
         Me.ColorPickEdit11 = New DevExpress.XtraEditors.ColorPickEdit()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.L1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.L5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.L6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.L7 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.cmdNew = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.L1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.L5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.L6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.L7 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.cbo2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,18 +56,18 @@ Partial Class frmGen
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.L1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.L5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.L6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.L7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.L1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.L5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.L6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.L7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -91,6 +91,19 @@ Partial Class frmGen
         Me.LayoutControl1.TabIndex = 14
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'cmdNew
+        '
+        Me.cmdNew.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdNew.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.cmdNew.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdNew.Location = New System.Drawing.Point(12, 258)
+        Me.cmdNew.Name = "cmdNew"
+        Me.cmdNew.Size = New System.Drawing.Size(22, 22)
+        Me.cmdNew.StyleController = Me.LayoutControl1
+        Me.cmdNew.TabIndex = 17
+        Me.cmdNew.ToolTip = "Προσθήκη Νέας Εγγραφής"
+        Me.cmdNew.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
+        '
         'cbo2
         '
         Me.cbo2.Location = New System.Drawing.Point(37, 84)
@@ -104,6 +117,27 @@ Partial Class frmGen
         Me.cbo2.TabIndex = 16
         Me.cbo2.Tag = "areaid,0,1,2"
         Me.cbo2.Visible = False
+        '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(185, 255)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(101, 28)
+        Me.cmdExit.StyleController = Me.LayoutControl1
+        Me.cmdExit.TabIndex = 12
+        Me.cmdExit.Text = "Έξοδος"
+        '
+        'cmdSave
+        '
+        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSave.Location = New System.Drawing.Point(290, 255)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(98, 28)
+        Me.cmdSave.StyleController = Me.LayoutControl1
+        Me.cmdSave.TabIndex = 13
+        Me.cmdSave.Text = "Αποθήκευση"
         '
         'txtName
         '
@@ -136,6 +170,19 @@ Partial Class frmGen
         Me.cbo1.StyleController = Me.LayoutControl1
         Me.cbo1.TabIndex = 15
         Me.cbo1.Tag = "couid,0,1,2"
+        '
+        'cmdDelete
+        '
+        Me.cmdDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.cmdDelete.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
+        Me.cmdDelete.Location = New System.Drawing.Point(38, 258)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(22, 22)
+        Me.cmdDelete.StyleController = Me.LayoutControl1
+        Me.cmdDelete.TabIndex = 17
+        Me.cmdDelete.ToolTip = "Διαγραφή Εγγραφής"
+        Me.cmdDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
         '
         'chk1
         '
@@ -190,101 +237,6 @@ Partial Class frmGen
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(380, 101)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
-        'L1
-        '
-        Me.L1.Control = Me.txtCode
-        Me.L1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.L1.CustomizationFormText = "LayoutControlItem3"
-        Me.L1.Location = New System.Drawing.Point(0, 0)
-        Me.L1.Name = "L1"
-        Me.L1.Size = New System.Drawing.Size(82, 24)
-        Me.L1.Tag = "1"
-        Me.L1.TextSize = New System.Drawing.Size(22, 13)
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(52, 243)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(121, 32)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'L5
-        '
-        Me.L5.Control = Me.chk1
-        Me.L5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.L5.CustomizationFormText = "L5"
-        Me.L5.Location = New System.Drawing.Point(0, 96)
-        Me.L5.Name = "L5"
-        Me.L5.Size = New System.Drawing.Size(380, 22)
-        Me.L5.TextSize = New System.Drawing.Size(0, 0)
-        Me.L5.TextVisible = False
-        '
-        'L6
-        '
-        Me.L6.Control = Me.ColorPickEdit11
-        Me.L6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.L6.CustomizationFormText = "L6"
-        Me.L6.Location = New System.Drawing.Point(0, 118)
-        Me.L6.Name = "L6"
-        Me.L6.Size = New System.Drawing.Size(380, 24)
-        Me.L6.TextSize = New System.Drawing.Size(22, 13)
-        '
-        'L7
-        '
-        Me.L7.Control = Me.TextEdit1
-        Me.L7.Location = New System.Drawing.Point(0, 24)
-        Me.L7.Name = "L7"
-        Me.L7.Size = New System.Drawing.Size(380, 24)
-        Me.L7.TextSize = New System.Drawing.Size(22, 13)
-        '
-        'cmdNew
-        '
-        Me.cmdNew.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdNew.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdNew.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
-        Me.cmdNew.Location = New System.Drawing.Point(12, 258)
-        Me.cmdNew.Name = "cmdNew"
-        Me.cmdNew.Size = New System.Drawing.Size(22, 22)
-        Me.cmdNew.StyleController = Me.LayoutControl1
-        Me.cmdNew.TabIndex = 17
-        Me.cmdNew.ToolTip = "Προσθήκη Νέας Εγγραφής"
-        Me.cmdNew.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
-        '
-        'cmdExit
-        '
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(185, 255)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(101, 28)
-        Me.cmdExit.StyleController = Me.LayoutControl1
-        Me.cmdExit.TabIndex = 12
-        Me.cmdExit.Text = "Έξοδος"
-        '
-        'cmdSave
-        '
-        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(290, 255)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(98, 28)
-        Me.cmdSave.StyleController = Me.LayoutControl1
-        Me.cmdSave.TabIndex = 13
-        Me.cmdSave.Text = "Αποθήκευση"
-        '
-        'cmdDelete
-        '
-        Me.cmdDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdDelete.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter
-        Me.cmdDelete.Location = New System.Drawing.Point(38, 258)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(22, 22)
-        Me.cmdDelete.StyleController = Me.LayoutControl1
-        Me.cmdDelete.TabIndex = 17
-        Me.cmdDelete.ToolTip = "Διαγραφή Εγγραφής"
-        Me.cmdDelete.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cmdExit
@@ -306,6 +258,7 @@ Partial Class frmGen
         'L2
         '
         Me.L2.Control = Me.txtName
+        Me.L2.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.L2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.L2.Location = New System.Drawing.Point(82, 0)
         Me.L2.Name = "L2"
@@ -316,6 +269,7 @@ Partial Class frmGen
         'L3
         '
         Me.L3.Control = Me.cbo1
+        Me.L3.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.L3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.L3.Location = New System.Drawing.Point(0, 48)
         Me.L3.Name = "L3"
@@ -323,9 +277,22 @@ Partial Class frmGen
         Me.L3.Tag = "1"
         Me.L3.TextSize = New System.Drawing.Size(22, 13)
         '
+        'L1
+        '
+        Me.L1.Control = Me.txtCode
+        Me.L1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.L1.CustomizationFormText = "LayoutControlItem3"
+        Me.L1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.L1.Location = New System.Drawing.Point(0, 0)
+        Me.L1.Name = "L1"
+        Me.L1.Size = New System.Drawing.Size(82, 24)
+        Me.L1.Tag = "1"
+        Me.L1.TextSize = New System.Drawing.Size(22, 13)
+        '
         'L4
         '
         Me.L4.Control = Me.cbo2
+        Me.L4.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.L4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.L4.Location = New System.Drawing.Point(0, 72)
         Me.L4.Name = "L4"
@@ -343,6 +310,14 @@ Partial Class frmGen
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(52, 243)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(121, 32)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.cmdDelete
@@ -356,10 +331,42 @@ Partial Class frmGen
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
+        'L5
+        '
+        Me.L5.Control = Me.chk1
+        Me.L5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.L5.CustomizationFormText = "L5"
+        Me.L5.Location = New System.Drawing.Point(0, 96)
+        Me.L5.Name = "L5"
+        Me.L5.Size = New System.Drawing.Size(380, 22)
+        Me.L5.TextSize = New System.Drawing.Size(0, 0)
+        Me.L5.TextVisible = False
+        '
+        'L6
+        '
+        Me.L6.Control = Me.ColorPickEdit11
+        Me.L6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.L6.CustomizationFormText = "L6"
+        Me.L6.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.L6.Location = New System.Drawing.Point(0, 118)
+        Me.L6.Name = "L6"
+        Me.L6.Size = New System.Drawing.Size(380, 24)
+        Me.L6.TextSize = New System.Drawing.Size(22, 13)
+        '
+        'L7
+        '
+        Me.L7.Control = Me.TextEdit1
+        Me.L7.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.L7.Location = New System.Drawing.Point(0, 24)
+        Me.L7.Name = "L7"
+        Me.L7.Size = New System.Drawing.Size(380, 24)
+        Me.L7.TextSize = New System.Drawing.Size(22, 13)
+        '
         'frmGen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.cmdExit
         Me.ClientSize = New System.Drawing.Size(386, 276)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmGen"
@@ -375,18 +382,18 @@ Partial Class frmGen
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.L1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.L5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.L6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.L7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.L1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.L5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.L6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.L7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

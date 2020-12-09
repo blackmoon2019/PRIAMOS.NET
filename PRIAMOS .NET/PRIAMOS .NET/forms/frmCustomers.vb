@@ -209,7 +209,7 @@ Public Class frmCustomers
                     FillCbo.CCT(CtrlCombo)
                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                 Else
-                    Dim form As frmScroller = Frm
+                    Dim form As New frmScroller
                     form.LoadRecords("vw_CCT")
                 End If
                 'Cls.ClearCtrls(LayoutControl1)

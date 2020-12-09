@@ -179,6 +179,7 @@ Partial Class frmMailSettings
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.txtPort
+        Me.LayoutControlItem7.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem7.Location = New System.Drawing.Point(229, 24)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
         Me.LayoutControlItem7.Size = New System.Drawing.Size(135, 24)
@@ -188,6 +189,7 @@ Partial Class frmMailSettings
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.txtUN
+        Me.LayoutControlItem5.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
         Me.LayoutControlItem5.Size = New System.Drawing.Size(229, 24)
@@ -197,6 +199,7 @@ Partial Class frmMailSettings
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.txtPWD
+        Me.LayoutControlItem6.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem6.Location = New System.Drawing.Point(229, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
         Me.LayoutControlItem6.Size = New System.Drawing.Size(271, 24)
@@ -206,6 +209,7 @@ Partial Class frmMailSettings
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtServer
+        Me.LayoutControlItem3.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem3.ImageOptions.Alignment = System.Drawing.ContentAlignment.TopRight
         Me.LayoutControlItem3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 24)
