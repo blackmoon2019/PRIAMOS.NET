@@ -35,5 +35,11 @@
     <Setting Name="frmAPT" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
+    <Setting Name="ExeVer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.0.5</Value>
+    </Setting>
+    <Setting Name="DbVer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.0.5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

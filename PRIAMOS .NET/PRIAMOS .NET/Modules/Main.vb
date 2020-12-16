@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraGrid.Columns
 
 Module Main
