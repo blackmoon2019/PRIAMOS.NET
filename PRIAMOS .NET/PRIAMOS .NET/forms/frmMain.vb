@@ -32,14 +32,18 @@ Public Class frmMain
     End Sub
 
     Private Sub XtraTabbedMdiManager1_EndFloating(sender As Object, e As FloatingEventArgs) Handles XtraTabbedMdiManager1.EndFloating
-        Select Case XtraTabbedMdiManager1.ActiveFloatForm.Name
-            Case "frmUsers"
-                XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
-                XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
-            Case "frmMailSettings"
-                XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
-                XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
-        End Select
+        'Select Case XtraTabbedMdiManager1.ActiveFloatForm.Name
+        '    Case "frmUsers"
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
+        '    Case "frmMailSettings"
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
+        '    Case "frmParameters"
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
+        '        XtraTabbedMdiManager1.ActiveFloatForm.Location = My.Settings.frmUsers
+
+        'End Select
     End Sub
 
     Private Sub BarClose_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarClose.ItemClick
@@ -47,15 +51,18 @@ Public Class frmMain
     End Sub
 
     Private Sub XtraTabbedMdiManager1_BeginFloating(sender As Object, e As FloatingCancelEventArgs) Handles XtraTabbedMdiManager1.BeginFloating
-        'Select Case XtraTabbedMdiManager1.SelectedPage.MdiChild.Name
-        '    Case "frmUsers"
-        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
-        '    Case "frmMailSettings"
-        '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
-        '    Case "frmScroller"
-        '        frmScroller.Width = 1037 : frmScroller.Height = 689
+        Select Case e.ChildForm.Name
+            '    Case "frmUsers"
+            '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
+            '    Case "frmMailSettings"
+            '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 520 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 136
+            '    Case "frmScroller"
+            '        frmScroller.Width = 1037 : frmScroller.Height = 689
+            Case "frmParameters"
 
-        'End Select
+                'e.ChildForm.Width = 520 : e.ChildForm.Height = 136
+                'e.ChildForm.Location = My.Settings.frmParameters
+        End Select
     End Sub
     Private Sub bbRights_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbRights.ItemClick
         Dim form As frmScroller = New frmScroller()
@@ -147,6 +154,31 @@ Public Class frmMain
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τύποι Καυσίμων"
         form.DataTable = "vw_FTYPES"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbParamaters_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbParamaters.ItemClick
+        Dim form As frmParameters = New frmParameters()
+        form.Text = "Παράμετροι"
+        form.MdiParent = Me
+        form.Mode = FormMode.NewRecord
+        Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
+        form.Show()
+    End Sub
+
+    Private Sub bbCalcTypes_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCalcTypes.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Τύποι Υπολογισμού"
+        form.DataTable = "vw_CALC_TYPES"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Χιλιοσστών"
+        form.DataTable = "vw_MLC"
         form.MdiParent = Me
         form.Show()
     End Sub

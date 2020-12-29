@@ -113,6 +113,9 @@ Public Class frmScroller
                     Case "vw_HTYPES" : sSQL = "DELETE FROM HTYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_BTYPES" : sSQL = "DELETE FROM BTYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_FTYPES" : sSQL = "DELETE FROM FTYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_PRM" : sSQL = "DELETE FROM PRM WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_CALC_TYPES" : sSQL = "DELETE FROM CALC_TYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_MLC" : sSQL = "DELETE FROM MLC WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
 
                 End Select
 
@@ -431,394 +434,324 @@ Public Class frmScroller
     End Sub
     'Επεξεργασία Εγγραφής
     Private Sub EditRecord()
-        Dim form As frmUsers = New frmUsers()
-        Dim form2 As frmMailSettings = New frmMailSettings()
-        Dim form3 As frmPermissions = New frmPermissions()
-        Dim form4 As frmBDG = New frmBDG()
-        Dim form5 As frmGen = New frmGen()
-        Dim form6 As frmGen = New frmGen()
-        Dim form7 As frmGen = New frmGen()
-        Dim form8 As frmGen = New frmGen()
-        Dim form9 As frmGen = New frmGen()
-        Dim form10 As frmCustomers = New frmCustomers()
-        Dim form11 As frmGen = New frmGen()
-        Dim form12 As frmGen = New frmGen()
-        Dim form13 As frmGen = New frmGen()
+        Dim fUsers As frmUsers = New frmUsers()
+        Dim fMailSettings As frmMailSettings = New frmMailSettings()
+        Dim fPermissions As frmPermissions = New frmPermissions()
+        Dim fBDG As frmBDG = New frmBDG()
+        Dim fCustomers As frmCustomers = New frmCustomers()
+        Dim fParameters As frmParameters = New frmParameters()
+        Dim fGen As frmGen = New frmGen()
+
         Select Case sDataTable
             Case "vw_USR"
-                form.Text = "Διαχείριση Χρηστών"
-                form.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form.MdiParent = frmMain
-                form.Mode = FormMode.EditRecord
-                form.Scroller = GridView1
-                form.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form.Show()
+                fUsers.Text = "Διαχείριση Χρηστών"
+                fUsers.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fUsers.MdiParent = frmMain
+                fUsers.Mode = FormMode.EditRecord
+                fUsers.Scroller = GridView1
+                fUsers.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fUsers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fUsers.Show()
             Case "vw_MAILS"
-                form2.Text = "Email Settings"
-                form2.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form2.MdiParent = frmMain
-                form2.Mode = FormMode.EditRecord
-                form2.Scroller = GridView1
-                form2.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form2.Show()
+                fMailSettings.Text = "Email Settings"
+                fMailSettings.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fMailSettings.MdiParent = frmMain
+                fMailSettings.Mode = FormMode.EditRecord
+                fMailSettings.Scroller = GridView1
+                fMailSettings.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fMailSettings), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fMailSettings.Show()
             Case "vw_RIGHTS"
-                form3.Text = "Δικαιώματα"
-                form3.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form3.MdiParent = frmMain
-                form3.Mode = FormMode.EditRecord
-                form3.Scroller = GridView1
-                form3.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form3), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form3.Show()
+                fPermissions.Text = "Δικαιώματα"
+                fPermissions.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fPermissions.MdiParent = frmMain
+                fPermissions.Mode = FormMode.EditRecord
+                fPermissions.Scroller = GridView1
+                fPermissions.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fPermissions), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fPermissions.Show()
             Case "vw_BDG"
-                form4.Text = "Πολυκατοικίες"
-                form4.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form4.bManageID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bManageID").ToString
-                form4.MdiParent = frmMain
-                form4.Mode = FormMode.EditRecord
-                form4.Scroller = GridView1
-                form4.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form4), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form4.Show()
-            Case "vw_COU"
-                form5.Text = "Νομοί"
-                form5.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form5.MdiParent = frmMain
-                form5.Mode = FormMode.EditRecord
-                form5.Scroller = GridView1
-                form5.FormScroller = Me
-                form5.DataTable = "COU"
-                form5.L1.Text = "Κωδικός"
-                form5.L2.Text = "Νομός"
-                form5.FormScroller = Me
-                form5.CalledFromControl = False
-                form5.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form5.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form5.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form5.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form5.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form5), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form5.Show()
-            Case "vw_AREAS"
-                form6.Text = "Περιοχές"
-                form6.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form6.MdiParent = frmMain
-                form6.Mode = FormMode.EditRecord
-                form6.Scroller = GridView1
-                form6.DataTable = "AREAS"
-                form6.L1.Text = "Κωδικός"
-                form6.L2.Text = "Περιοχή"
-                form6.L3.Text = "Νομός"
-                form6.FormScroller = Me
-                form6.CalledFromControl = False
-                form6.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form6.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form6.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form6.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form6), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form6.Show()
-            Case "vw_ADR"
-                form7.Text = "Διευθύνσεις"
-                form7.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form7.MdiParent = frmMain
-                form7.Mode = FormMode.EditRecord
-                form7.Scroller = GridView1
-                form7.DataTable = "ADR"
-                form7.L1.Text = "Κωδικός"
-                form7.L2.Text = "Διεύθυνση"
-                form7.L3.Text = "Νομός"
-                form7.L4.Text = "Περιοχές"
-                form7.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form7.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form7.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form7.FormScroller = Me
-                form7.CalledFromControl = False
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form7), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form7.Show()
-            Case "vw_DOY"
-                form8.Text = "ΔΟΥ"
-                form8.MdiParent = frmMain
-                form8.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form8.Mode = FormMode.EditRecord
-                form8.Scroller = GridView1
-                form8.DataTable = "DOY"
-                form8.L1.Text = "Κωδικός"
-                form8.L2.Text = "ΔΟΥ"
-                form8.FormScroller = Me
-                form8.CalledFromControl = False
-                form8.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form8.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form8.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form8.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form8.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form8), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form8.Show()
-            Case "vw_PRF"
-                form9.Text = "Επαγγέματα"
-                form9.MdiParent = frmMain
-                form9.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form9.Mode = FormMode.EditRecord
-                form9.Scroller = GridView1
-                form9.DataTable = "PRF"
-                form9.L1.Text = "Κωδικός"
-                form9.L2.Text = "Επάγγελμα"
-                form9.FormScroller = Me
-                form9.CalledFromControl = False
-                form9.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form9.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form9.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form9.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form9.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form9), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form9.Show()
+                fBDG.Text = "Πολυκατοικίες"
+                fBDG.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fBDG.bManageID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bManageID").ToString
+                fBDG.MdiParent = frmMain
+                fBDG.Mode = FormMode.EditRecord
+                fBDG.Scroller = GridView1
+                fBDG.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fBDG.Show()
             Case "vw_CCT"
-                form10.Text = "Πελάτες"
-                form10.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form10.MdiParent = frmMain
-                form10.Mode = FormMode.EditRecord
-                form10.Scroller = GridView1
-                form10.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form10), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form10.Show()
-            Case "vw_HTYPES"
-                form11.Text = "Τύποι Θέρμανσης"
-                form11.MdiParent = frmMain
-                form11.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form11.Mode = FormMode.EditRecord
-                form11.Scroller = GridView1
-                form11.DataTable = "HTYPES"
-                form11.L1.Text = "Κωδικός"
-                form11.L2.Text = "Τύπος"
-                form11.FormScroller = Me
-                form11.CalledFromControl = False
-                form11.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form11), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form11.Show()
-            Case "vw_BTYPES"
-                form12.Text = "Τύποι Boiler"
-                form12.MdiParent = frmMain
-                form12.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form12.Mode = FormMode.EditRecord
-                form12.Scroller = GridView1
-                form12.DataTable = "BTYPES"
-                form12.L1.Text = "Κωδικός"
-                form12.L2.Text = "Τύπος"
-                form12.FormScroller = Me
-                form12.CalledFromControl = False
-                form12.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form12), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form12.Show()
-            Case "vw_FTYPES"
-                form13.Text = "Τύποι Καυσίμων"
-                form13.MdiParent = frmMain
-                form13.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-                form13.Mode = FormMode.EditRecord
-                form13.Scroller = GridView1
-                form13.DataTable = "FTYPES"
-                form13.L1.Text = "Κωδικός"
-                form13.L2.Text = "Τύπος"
-                form13.FormScroller = Me
-                form13.CalledFromControl = False
-                form13.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form13), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form13.Show()
+                fCustomers.Text = "Πελάτες"
+                fCustomers.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fCustomers.MdiParent = frmMain
+                fCustomers.Mode = FormMode.EditRecord
+                fCustomers.Scroller = GridView1
+                fCustomers.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fCustomers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fCustomers.Show()
+            Case "vw_PRM"
+                fParameters.Text = "Παράμετροι"
+                fParameters.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fParameters.MdiParent = frmMain
+                fParameters.Mode = FormMode.EditRecord
+                fParameters.Scroller = GridView1
+                fParameters.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fParameters), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fParameters.Show()
+            Case "vw_AREAS"
+                fGen.Text = "Περιοχές"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "AREAS"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Περιοχή"
+                fGen.L3.Text = "Νομός"
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_ADR"
+                fGen.Text = "Διευθύνσεις"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "ADR"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Διεύθυνση"
+                fGen.L3.Text = "Νομός"
+                fGen.L4.Text = "Περιοχές"
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_CALC_TYPES"
+                fGen.Text = "Τύποι Υπολογισμού"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "CALC_TYPES"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Όνομα"
+                fGen.chk1.Text = "Ενεργό"
+                fGen.L7.Text = "Τύπος"
+                fGen.txtL7.Tag = "type,0,1,2"
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_MLC"
+                fGen.Text = "Κατηγορίες Χιλιοστών"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "MLC"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Κατηγορία"
+                fGen.L3.Text = "Τύπος Υπολογισμού"
+                fGen.cbo1.Tag = "calcID,0,1,2"
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES"
+                Select Case sDataTable
+                    Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
+                    Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
+                    Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
+                    Case "vw_HTYPES" : fGen.Text = "Τύποι Θέρμανσης" : fGen.DataTable = "HTYPES" : fGen.L2.Text = "Τύπος"
+                    Case "vw_BTYPES" : fGen.Text = "Τύποι Boiler" : fGen.DataTable = "BTYPES" : fGen.L2.Text = "Τύπος"
+                    Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
+                End Select
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.FormScroller = Me
+                fGen.L1.Text = "Κωδικός"
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
         End Select
     End Sub
     'Νέα Εγγραφή
     Private Sub NewRecord()
-        Dim form As frmUsers = New frmUsers()
-        Dim form2 As frmMailSettings = New frmMailSettings()
-        Dim form3 As frmPermissions = New frmPermissions()
-        Dim form4 As frmBDG = New frmBDG()
-        Dim form5 As frmGen = New frmGen()
-        Dim form6 As frmGen = New frmGen()
-        Dim form7 As frmGen = New frmGen()
-        Dim form8 As frmGen = New frmGen()
-        Dim form9 As frmGen = New frmGen()
-        Dim form10 As frmCustomers = New frmCustomers()
-        Dim form11 As frmGen = New frmGen()
-        Dim form12 As frmGen = New frmGen()
-        Dim form13 As frmGen = New frmGen()
+        Dim fUsers As frmUsers = New frmUsers()
+        Dim fMailSettings As frmMailSettings = New frmMailSettings()
+        Dim fPermissions As frmPermissions = New frmPermissions()
+        Dim fBDG As frmBDG = New frmBDG()
+        Dim fCustomers As frmCustomers = New frmCustomers()
+        Dim fParameters As frmParameters = New frmParameters()
+        Dim fGen As frmGen = New frmGen()
+
         Select Case sDataTable
             Case "vw_USR"
-                form.Text = "Διαχείριση Χρηστών"
-                form.MdiParent = frmMain
-                form.Mode = FormMode.NewRecord
-                form.Scroller = GridView1
-                form.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form.Show()
+                fUsers.Text = "Διαχείριση Χρηστών"
+                fUsers.MdiParent = frmMain
+                fUsers.Mode = FormMode.NewRecord
+                fUsers.Scroller = GridView1
+                fUsers.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fUsers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fUsers.Show()
             Case "vw_MAILS"
-                form2.Text = "Email Settings"
-                form2.MdiParent = frmMain
-                form2.Mode = FormMode.NewRecord
-                form2.Scroller = GridView1
-                form2.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form2), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form2.Show()
+                fMailSettings.Text = "Email Settings"
+                fMailSettings.MdiParent = frmMain
+                fMailSettings.Mode = FormMode.NewRecord
+                fMailSettings.Scroller = GridView1
+                fMailSettings.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fMailSettings), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fMailSettings.Show()
             Case "vw_RIGHTS"
-                form3.Text = "Δικαιώματα"
-                form3.MdiParent = frmMain
-                form3.Mode = FormMode.NewRecord
-                form3.Scroller = GridView1
-                form3.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form3), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form3.Show()
+                fPermissions.Text = "Δικαιώματα"
+                fPermissions.MdiParent = frmMain
+                fPermissions.Mode = FormMode.NewRecord
+                fPermissions.Scroller = GridView1
+                fPermissions.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fPermissions), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fPermissions.Show()
             Case "vw_BDG"
-                form4.Text = "Πολυκατοικίες"
-                form4.MdiParent = frmMain
-                form4.Mode = FormMode.NewRecord
-                form4.Scroller = GridView1
-                form4.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form4), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form4.Show()
-            Case "vw_COU"
-                form5.Text = "Νομοί"
-                form5.MdiParent = frmMain
-                form5.Mode = FormMode.NewRecord
-                form5.Scroller = GridView1
-                form5.DataTable = "COU"
-                form5.L1.Text = "Κωδικός"
-                form5.L2.Text = "Νομός"
-                form5.FormScroller = Me
-                form5.CalledFromControl = False
-                form5.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form5.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form5.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form5), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form5.Show()
-            Case "vw_AREAS"
-                form6.Text = "Περιοχές"
-                form6.MdiParent = frmMain
-                form6.Mode = FormMode.NewRecord
-                form6.Scroller = GridView1
-                form6.DataTable = "AREAS"
-                form6.L1.Text = "Κωδικός"
-                form6.L2.Text = "Περιοχή"
-                form6.L3.Text = "Νομός"
-                form6.FormScroller = Me
-                form6.CalledFromControl = False
-                form6.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form6.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form6), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form6.Show()
-            Case "vw_ADR"
-                form7.Text = "Διευθύνσεις"
-                form7.MdiParent = frmMain
-                form7.Mode = FormMode.NewRecord
-                form7.Scroller = GridView1
-                form7.DataTable = "ADR"
-                form7.L1.Text = "Κωδικός"
-                form7.L2.Text = "Διεύθυνση"
-                form7.L3.Text = "Νομός"
-                form7.L4.Text = "Περιοχές"
-                form7.FormScroller = Me
-                form7.CalledFromControl = False
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form7), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form7.Show()
-            Case "vw_DOY"
-                form8.Text = "ΔΟΥ"
-                form8.MdiParent = frmMain
-                form8.Mode = FormMode.NewRecord
-                form8.Scroller = GridView1
-                form8.DataTable = "DOY"
-                form8.L1.Text = "Κωδικός"
-                form8.L2.Text = "ΔΟΥ"
-                form8.FormScroller = Me
-                form8.CalledFromControl = False
-                form8.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form8.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form8.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form8), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form8.Show()
-            Case "vw_PRF"
-                form9.Text = "Επαγγέματα"
-                form9.MdiParent = frmMain
-                form9.Mode = FormMode.NewRecord
-                form9.Scroller = GridView1
-                form9.DataTable = "PRF"
-                form9.L1.Text = "Κωδικός"
-                form9.L2.Text = "Επάγγελμα"
-                form9.FormScroller = Me
-                form9.CalledFromControl = False
-                form9.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form9.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form9.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form9), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form9.Show()
+                fBDG.Text = "Πολυκατοικίες"
+                fBDG.bManageID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bManageID").ToString
+                fBDG.MdiParent = frmMain
+                fBDG.Mode = FormMode.NewRecord
+                fBDG.Scroller = GridView1
+                fBDG.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fBDG.Show()
             Case "vw_CCT"
-                form10.Text = "Πελάτες"
-                form10.MdiParent = frmMain
-                form10.Mode = FormMode.NewRecord
-                form10.Scroller = GridView1
-                form10.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form10), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form10.Show()
-            Case "vw_HTYPES"
-                form11.Text = "Τύποι Θέρμανσης"
-                form11.MdiParent = frmMain
-                form11.Mode = FormMode.NewRecord
-                form11.Scroller = GridView1
-                form11.DataTable = "HTYPES"
-                form11.L1.Text = "Κωδικός"
-                form11.L2.Text = "Τύπος"
-                form11.FormScroller = Me
-                form11.CalledFromControl = False
-                form11.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form11.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form11), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form11.Show()
-            Case "vw_BTYPES"
-                form12.Text = "Τύποι Boiler"
-                form12.MdiParent = frmMain
-                form12.Mode = FormMode.NewRecord
-                form12.Scroller = GridView1
-                form12.DataTable = "BTYPES"
-                form12.L1.Text = "Κωδικός"
-                form12.L2.Text = "Τύπος"
-                form12.FormScroller = Me
-                form12.CalledFromControl = False
-                form12.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form12.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form12), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form12.Show()
-            Case "vw_FTYPES"
-                form13.Text = "Τύποι Καυσίμων"
-                form13.MdiParent = frmMain
-                form13.Mode = FormMode.NewRecord
-                form13.Scroller = GridView1
-                form13.DataTable = "FTYPES"
-                form13.L1.Text = "Κωδικός"
-                form13.L2.Text = "Τύπος"
-                form13.FormScroller = Me
-                form13.CalledFromControl = False
-                form13.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                form13.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form13), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-                form13.Show()
+                fCustomers.Text = "Πελάτες"
+                fCustomers.MdiParent = frmMain
+                fCustomers.Mode = FormMode.NewRecord
+                fCustomers.Scroller = GridView1
+                fCustomers.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fCustomers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fCustomers.Show()
+            Case "vw_PRM"
+                fParameters.Text = "Παράμετροι"
+                fParameters.MdiParent = frmMain
+                fParameters.Mode = FormMode.NewRecord
+                fParameters.Scroller = GridView1
+                fParameters.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fParameters), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fParameters.Show()
+            Case "vw_AREAS"
+                fGen.Text = "Περιοχές"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "AREAS"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Περιοχή"
+                fGen.L3.Text = "Νομός"
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_ADR"
+                fGen.Text = "Διευθύνσεις"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "ADR"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Διεύθυνση"
+                fGen.L3.Text = "Νομός"
+                fGen.L4.Text = "Περιοχές"
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_CALC_TYPES"
+                fGen.Text = "Τύποι Υπολογισμού"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "CALC_TYPES"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Όνομα"
+                fGen.chk1.Text = "Ενεργό"
+                fGen.L7.Text = "Τύπος"
+                fGen.txtL7.Tag = "type,0,1,2"
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_MLC"
+                fGen.Text = "Κατηγορίες Χιλιοστών"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "MLC"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Κατηγορία"
+                fGen.L3.Text = "Τύπος Υπολογισμού"
+                fGen.cbo1.Tag = "calcID,0,1,2"
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES"
+                Select Case sDataTable
+                    Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
+                    Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
+                    Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
+                    Case "vw_HTYPES" : fGen.Text = "Τύποι Θέρμανσης" : fGen.DataTable = "HTYPES" : fGen.L2.Text = "Τύπος"
+                    Case "vw_BTYPES" : fGen.Text = "Τύποι Boiler" : fGen.DataTable = "BTYPES" : fGen.L2.Text = "Τύπος"
+                    Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
+                End Select
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.FormScroller = Me
+                fGen.L1.Text = "Κωδικός"
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
         End Select
     End Sub
     'Φορτώνω τις εγγραφές στο GRID

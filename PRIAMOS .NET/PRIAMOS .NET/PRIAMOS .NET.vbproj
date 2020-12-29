@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="classes\BManage.vb" />
     <Compile Include="classes\CheckForUpdates.vb" />
     <Compile Include="classes\CheckPermissions.vb" />
     <Compile Include="classes\ClearControls.vb" />
@@ -221,6 +222,12 @@
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmParameters.Designer.vb">
+      <DependentUpon>frmParameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmParameters.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmPermissions.Designer.vb">
@@ -297,6 +304,9 @@
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmParameters.resx">
+      <DependentUpon>frmParameters.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmPermissions.resx">
       <DependentUpon>frmPermissions.vb</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +363,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-gears-40.png" />
     <None Include="Resources\icons8-upload-link-document-16.png" />
     <None Include="Resources\icons8-invoice-24.png" />
     <None Include="Resources\icons8-unchecked-checkbox-16.png" />

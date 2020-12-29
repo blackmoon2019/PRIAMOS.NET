@@ -23,13 +23,13 @@
     <Setting Name="UN" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="frmBDG" Type="System.Drawing.Size" Scope="User">
+    <Setting Name="frmBDG" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="frmGen" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="frmCustomers" Type="System.Drawing.Size" Scope="User">
+    <Setting Name="frmCustomers" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="frmAPT" Type="System.Drawing.Point" Scope="User">
@@ -40,6 +40,9 @@
     </Setting>
     <Setting Name="DbVer" Type="System.String" Scope="User">
       <Value Profile="(Default)">1.0.0.5</Value>
+    </Setting>
+    <Setting Name="frmParameters" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

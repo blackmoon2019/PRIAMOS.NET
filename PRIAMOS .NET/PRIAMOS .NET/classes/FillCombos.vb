@@ -169,6 +169,39 @@ Public Class FillCombos
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Public Sub CALC_TYPES(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_CALC_TYPES order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "Name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Τύποι Υπολογισμού"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Public Sub MLC(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_MLC order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "Name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Χιλιοστών"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Public Sub SUP(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Fullname,company from vw_SUP order by Fullname", CNDB)

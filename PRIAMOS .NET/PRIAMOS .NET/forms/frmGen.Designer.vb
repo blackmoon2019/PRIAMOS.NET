@@ -30,7 +30,7 @@ Partial Class frmGen
         Me.cmdDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.chk1 = New DevExpress.XtraEditors.CheckEdit()
         Me.ColorPickEdit11 = New DevExpress.XtraEditors.ColorPickEdit()
-        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.txtL7 = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -53,7 +53,7 @@ Partial Class frmGen
         CType(Me.cbo1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chk1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtL7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,7 +82,7 @@ Partial Class frmGen
         Me.LayoutControl1.Controls.Add(Me.cmdDelete)
         Me.LayoutControl1.Controls.Add(Me.chk1)
         Me.LayoutControl1.Controls.Add(Me.ColorPickEdit11)
-        Me.LayoutControl1.Controls.Add(Me.TextEdit1)
+        Me.LayoutControl1.Controls.Add(Me.txtL7)
         Me.LayoutControl1.Location = New System.Drawing.Point(-8, -10)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(342, 0, 650, 400)
@@ -195,7 +195,7 @@ Partial Class frmGen
         Me.chk1.Size = New System.Drawing.Size(376, 18)
         Me.chk1.StyleController = Me.LayoutControl1
         Me.chk1.TabIndex = 19
-        Me.chk1.Tag = "allowschedule,0,1,2"
+        Me.chk1.Tag = "active,0,1,2"
         '
         'ColorPickEdit11
         '
@@ -211,14 +211,14 @@ Partial Class frmGen
         Me.ColorPickEdit11.TabIndex = 20
         Me.ColorPickEdit11.Tag = "color,0,1,2"
         '
-        'TextEdit1
+        'txtL7
         '
-        Me.TextEdit1.Location = New System.Drawing.Point(37, 36)
-        Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(351, 20)
-        Me.TextEdit1.StyleController = Me.LayoutControl1
-        Me.TextEdit1.TabIndex = 21
-        Me.TextEdit1.Tag = "ar,0,1,2"
+        Me.txtL7.Location = New System.Drawing.Point(37, 36)
+        Me.txtL7.Name = "txtL7"
+        Me.txtL7.Size = New System.Drawing.Size(351, 20)
+        Me.txtL7.StyleController = Me.LayoutControl1
+        Me.txtL7.TabIndex = 21
+        Me.txtL7.Tag = "ar,0,1,2"
         '
         'Root
         '
@@ -355,7 +355,7 @@ Partial Class frmGen
         '
         'L7
         '
-        Me.L7.Control = Me.TextEdit1
+        Me.L7.Control = Me.txtL7
         Me.L7.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.L7.Location = New System.Drawing.Point(0, 24)
         Me.L7.Name = "L7"
@@ -379,7 +379,7 @@ Partial Class frmGen
         CType(Me.cbo1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chk1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtL7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -422,6 +422,6 @@ Partial Class frmGen
     Friend WithEvents ColorPickEdit11 As DevExpress.XtraEditors.ColorPickEdit
     Friend WithEvents L5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents L6 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtL7 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents L7 As DevExpress.XtraLayout.LayoutControlItem
 End Class
