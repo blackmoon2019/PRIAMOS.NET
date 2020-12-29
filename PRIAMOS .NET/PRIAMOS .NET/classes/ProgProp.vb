@@ -10,9 +10,21 @@ Public Class ProgProp
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then ProgProps.Decimals = sdr.GetString(sdr.GetOrdinal("VAL"))
+            Return ProgProps.Decimals
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Function
+    Public Sub SetProgDecimals(ByVal sValue As Integer)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
 End Class

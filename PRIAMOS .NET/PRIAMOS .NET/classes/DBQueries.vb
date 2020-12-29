@@ -14,7 +14,7 @@ Public Class DBQueries
 
     Public Function GetNextId(ByVal sTable As String) As Integer
         'Dim cmd As SqlCommand = New SqlCommand("SELECT IDENT_CURRENT('" & sTable & "')  AS ID", CNDB)
-        Dim cmd As SqlCommand = New SqlCommand("SELECT Case when (select top 1 ID from " & sTable & ") Is Not null then  IDENT_CURRENT('" & sTable & "') else 1 end   AS ID", CNDB)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT Case when (select top 1 ID from " & sTable & ") Is Not null then  IDENT_CURRENT('" & sTable & "') + 1 else 1 end   AS ID", CNDB)
         Dim ID As Integer = cmd.ExecuteScalar()
         'If ID > 1 Then ID = ID + 1
         Return ID

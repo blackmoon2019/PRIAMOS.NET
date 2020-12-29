@@ -141,9 +141,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
-        Public Property frmBDG() As Global.System.Drawing.Size
+        Public Property frmBDG() As Global.System.Drawing.Point
             Get
-                Return CType(Me("frmBDG"),Global.System.Drawing.Size)
+                Return CType(Me("frmBDG"),Global.System.Drawing.Point)
             End Get
             Set
                 Me("frmBDG") = value
@@ -165,9 +165,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
-        Public Property frmCustomers() As Global.System.Drawing.Size
+        Public Property frmCustomers() As Global.System.Drawing.Point
             Get
-                Return CType(Me("frmCustomers"),Global.System.Drawing.Size)
+                Return CType(Me("frmCustomers"),Global.System.Drawing.Point)
             End Get
             Set
                 Me("frmCustomers") = value
@@ -207,6 +207,18 @@ Namespace My
             End Get
             Set
                 Me("DbVer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmParameters() As Global.System.Drawing.Point
+            Get
+                Return CType(Me("frmParameters"),Global.System.Drawing.Point)
+            End Get
+            Set
+                Me("frmParameters") = value
             End Set
         End Property
     End Class
