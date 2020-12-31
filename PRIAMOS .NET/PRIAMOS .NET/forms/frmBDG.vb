@@ -74,6 +74,7 @@ Public Class frmBDG
 
         Select Case Mode
             Case FormMode.NewRecord
+                FillCbo.FillCheckedListMLC(chkMLC, FormMode.NewRecord)
                 dtDTS.EditValue = DateTime.Now
                 txtCode.Text = DBQ.GetNextId("BDG")
                 cmdAPTAdd.Enabled = False
@@ -90,11 +91,13 @@ Public Class frmBDG
                 NavConsumption.Enabled = False
                 NavBoiler.Enabled = False
             Case FormMode.EditRecord
+                FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
-                Dim myLayoutControls As New List(Of Control)
-                myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl2BManage)
-                LoadForms.LoadFormNew(myLayoutControls, "Select * from vw_BDG where id ='" + sID + "'", True)
+                'Dim myLayoutControls As New List(Of Control)
+                'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl2BManage)
+                'LoadForms.LoadFormNew(myLayoutControls, "Select * from vw_BDG where id ='" + sID + "'", True)
+                LoadForms.LoadForm(LayoutControl1BDG, "Select * from vw_BDG where id ='" + sID + "'", True)
                 Iam = txtIam.EditValue
                 Aam = txtAam.EditValue
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
@@ -228,15 +231,14 @@ Public Class frmBDG
         Dim sGuid As String
         Try
             If Valid.ValidateForm(LayoutControl1BDG) Then
-                Dim myLayoutControls As New List(Of Control)
-                myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl2BManage)
+                'Dim myLayoutControls As New List(Of Control)
+                'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
                 Select Case Mode
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.MultipleLayoutControls, "BDG",, myLayoutControls,, sGuid, True)
-
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl1BDG,,, sGuid, True)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.MultipleLayoutControls, "BDG",, myLayoutControls,, sID, True)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl1BDG,,, sID, True)
                 End Select
                 If sResult Then
                     'Ενεργοποίηση Μπάρας
@@ -282,6 +284,27 @@ Public Class frmBDG
                         End Using
                         Mode = FormMode.EditRecord : sID = sGuid
                     End If
+
+                    'Όταν είναι σε EditMode διαγ΄ραφουμε όλες τις κατηγορίες και τις ξανακαταχωρούμε
+                    Dim sSQL2 As String
+                    If Mode = FormMode.EditRecord Then
+                        sSQL2 = "DELETE FROM BMLC where BDGID = '" & sID & "'"
+                        Using oCmd As New SqlCommand(sSQL2, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                    End If
+
+                    ' Καταχώρηση Χιλιοστών πολυκατοικίας
+                    For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkMLC.CheckedItems
+                        sSQL2 = "INSERT INTO BMLC ([BDGID],[mlcID],[modifiedBy],[createdOn])  
+                                        values (" & toSQLValueS(sID) & "," & toSQLValueS(item.Tag.ToString()) & "," &
+                                                        toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                        Using oCmd As New SqlCommand(sSQL2, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                    Next
+
+
                     dtDTS.EditValue = DateTime.Now
                     txtCode.Text = DBQ.GetNextId("BDG")
                     Dim form As New frmScroller
@@ -536,6 +559,12 @@ Public Class frmBDG
         If item.Tag Is Nothing Then Exit Sub
         GridView4.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
     End Sub
+    Private Sub OnColumnsColorChangedAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView5.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
 
     'Αποθήκευση όψης Διαμερισμάτων
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
@@ -557,6 +586,11 @@ Public Class frmBDG
     Private Sub OnSaveViewINV_GAS(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView4.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INV_GAS_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+    Private Sub OnSaveViewAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
     Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
@@ -587,6 +621,14 @@ Public Class frmBDG
         GridView4.Columns(item.Tag).Caption = item.EditValue
         'MessageBox.Show(item.EditValue.ToString())
     End Sub
+    Private Sub OnEditValueChangedAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView5.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+
     Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
         Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
         Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
@@ -629,16 +671,21 @@ Public Class frmBDG
     Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
         Dim sSQL As New System.Text.StringBuilder
         tabBDG.SelectedTabPage = XtraTabPage3
-        'Τύποι Θέρμανσης
-        FillCbo.HTYPES(cboHtypes)
-        'Τύποι Boiler
-        FillCbo.BTYPES(cboBtypes)
+        'Τύποι Υπολογισμού
+        FillCbo.CALC_TYPES(cboHtypes)
+        'Τύποι Υπολογισμού
+        FillCbo.CALC_TYPES(cboBtypes)
         'Τύποι Καυσίμων
         FillCbo.FTYPES(cboFtypes)
         sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
         'Προηγούμενες μετρήσεις
         FillCbo.BEF_MES(cboBefMes, sSQL)
-        If Mode = FormMode.NewRecord Then cboHtypes.EditValue = System.Guid.Parse("C331F98B-8504-44CE-9C75-2546B76BAD4E") 'Χωρίς Θέρμανση
+        If Mode = FormMode.NewRecord Then
+            'cboHtypes.EditValue = System.Guid.Parse("C331F98B-8504-44CE-9C75-2546B76BAD4E") 'Χωρίς Θέρμανση
+        Else
+            LoadForms.LoadForm(LayoutControl3Heating, "Select * from vw_BDG where id ='" + sID + "'", True)
+        End If
+
         'cboFtypes.Enabled = False
         'cmdCboManageFtypes.Enabled = False
         'cmdCboManageBtypes.Enabled = False
@@ -717,6 +764,34 @@ Public Class frmBDG
         End If
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+    End Sub
+    Private Sub ManageCalcTypes(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
+        Dim fGen As frmGen = New frmGen()
+        fGen.Text = "Τύποι Υπολογισμού"
+        fGen.MdiParent = frmMain
+        fGen.Mode = FormMode.NewRecord
+        fGen.Scroller = GridView1
+        fGen.DataTable = "CALC_TYPES"
+        fGen.L1.Text = "Κωδικός"
+        fGen.L2.Text = "Όνομα"
+        fGen.chk1.Text = "Ενεργό"
+        fGen.L7.Text = "Τύπος"
+        fGen.txtL7.Tag = "type,0,1,2"
+        fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        fGen.CalledFromControl = True
+        fGen.CallerControl = cbo
+        If cbo.EditValue <> Nothing Then
+            fGen.Mode = FormMode.EditRecord
+            fGen.ID = cbo.EditValue.ToString
+        Else
+            fGen.Mode = FormMode.NewRecord
+        End If
+
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(fGen.Parent.ClientRectangle.Width / 2 - fGen.Width / 2), CInt(fGen.Parent.ClientRectangle.Height / 2 - fGen.Height / 2)))
+        fGen.Show()
+
     End Sub
 
     Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs)
@@ -815,14 +890,6 @@ Public Class frmBDG
         End Try
     End Sub
 
-    Private Sub RGTypeHeating_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim sSQL As New System.Text.StringBuilder
-        sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
-        'Προηγούμενες μετρήσεις
-        FillCbo.BEF_MES(cboBefMes, sSQL)
-        cboBefMes.EditValue = Nothing
-        Cls.ClearGrid(grdAPTAHPB)
-    End Sub
 
     Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
         If e.MenuType = GridMenuType.Column Then
@@ -1361,7 +1428,6 @@ Public Class frmBDG
         Try
             'Η Νέα εγγραφή γίνεται πάντα όταν καταχωρείται η πολυκατοικία
             If Mode = FormMode.EditRecord Then
-
                 sResult = BdgManage.UpdateBManageData(LayoutControl2BManage, sManageID)
                 DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BMANAGE", LayoutControl2BManage,,, sManageID, True)
             End If
@@ -1376,6 +1442,125 @@ Public Class frmBDG
         End Try
     End Sub
 
+    ' This event is generated by Data Source Configuration Wizard
+    Sub UnboundSource1_ValueNeeded(sender As Object, e As DevExpress.Data.UnboundSourceValueNeededEventArgs)
+        ' Handle this event to obtain data from your data source
+        ' e.Value = something /* TODO: Assign the real data here.*/
+    End Sub
+
+    ' This event is generated by Data Source Configuration Wizard
+    Sub UnboundSource1_ValuePushed(sender As Object, e As DevExpress.Data.UnboundSourceValuePushedEventArgs)
+        ' Handle this event to save modified data back to your data source
+        ' something = e.Value; /* TODO: Propagate the value into the storage.*/
+    End Sub
+
+    Private Sub NavAPM_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavAPM.ElementClick
+        tabBDG.SelectedTabPage = XtraTabPage11
+        LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by code")
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+    End Sub
+
+    ' This event is generated by Data Source Configuration Wizard
+    Sub UnboundSource1_ValueNeeded_1(sender As Object, e As DevExpress.Data.UnboundSourceValueNeededEventArgs)
+        ' Handle this event to obtain data from your data source
+        ' e.Value = something /* TODO: Assign the real data here.*/
+    End Sub
+
+    ' This event is generated by Data Source Configuration Wizard
+    Sub UnboundSource1_ValuePushed_1(sender As Object, e As DevExpress.Data.UnboundSourceValuePushedEventArgs)
+        ' Handle this event to save modified data back to your data source
+        ' something = e.Value; /* TODO: Propagate the value into the storage.*/
+    End Sub
+
+    Private Sub cboHtypes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboHtypes.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCalcTypes(cboHtypes)
+            Case 2 : cboHtypes.EditValue = Nothing
+        End Select
+
+    End Sub
+
+    Private Sub cboBtypes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBtypes.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCalcTypes(cboBtypes)
+            Case 2 : cboBtypes.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cmdSave_CausesValidationChanged(sender As Object, e As EventArgs) Handles cmdSave.CausesValidationChanged
+
+    End Sub
+
+    Private Sub cmdSaveHB_Click(sender As Object, e As EventArgs) Handles cmdSaveHB.Click
+        Dim sResult As Boolean
+        Try
+            'Η Νέα εγγραφή γίνεται πάντα όταν καταχωρείται η πολυκατοικία
+            If Mode = FormMode.EditRecord Then
+                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl3Heating,,, sID)
+
+            End If
+            If sResult Then
+                    Dim form As New frmScroller
+                    form.LoadRecords("vw_BDG")
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+
+            Catch ex As Exception
+                XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
+
+    End Sub
+
+    Private Sub TextEdit1_EditValueChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub RGTypeHeating_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RGTypeHeating.SelectedIndexChanged
+        Dim sSQL As New System.Text.StringBuilder
+        sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
+        'Προηγούμενες μετρήσεις
+        FillCbo.BEF_MES(cboBefMes, sSQL)
+        cboBefMes.EditValue = Nothing
+        Cls.ClearGrid(grdAPTAHPB)
+    End Sub
+
+    Private Sub GridView5_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAPMIL, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAPMIL, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAPMIL, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            PopupMenuRows.ShowPopup(Control.MousePosition)
+        End If
+    End Sub
 
 
     'ΘΕΡΜΑΝΣΗ

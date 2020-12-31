@@ -42,8 +42,6 @@ Public Class frmAPT
 
     Private Sub frmAPT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim sSQL As New System.Text.StringBuilder
-        txtFic.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        txtFib.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         'Ένοικοι
         FillCbo.CCT(cboTenant)
         'Ιδιοκτήτες
@@ -72,23 +70,34 @@ Public Class frmAPT
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sResult As Boolean
+        Dim sAptID As String
         Try
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1)
+                        sAptID = System.Guid.NewGuid.ToString
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1,,, sAptID)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1,,, sID)
                 End Select
                 If sResult Then
+                    If Mode = FormMode.NewRecord Then
+                        ' Καταχώρηση μιας γραμμής για τα χιλιοστά
+                        Dim sSQL As String = "INSERT INTO APMIL ([BDGID],[APTID],[modifiedBy],[createdOn])  
+                                        values (" & toSQLValueS(sBDGID) & "," & toSQLValueS(sAptID) & "," &
+                                                        toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                    End If
                     'Καθαρισμός Controls
                     If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
-                    txtCode.Text = DBQ.GetNextId("APT")
-                    Dim form As frmBDG = Frm
-                    form.AptRefresh()
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        txtCode.Text = DBQ.GetNextId("APT")
+                        Dim form As frmBDG = Frm
+                        form.AptRefresh()
+                        XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
                 End If
-            End If
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
