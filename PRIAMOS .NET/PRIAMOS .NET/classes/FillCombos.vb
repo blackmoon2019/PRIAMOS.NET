@@ -322,4 +322,36 @@ Public Class FillCombos
         End Try
 
     End Sub
+    Public Sub FillCheckedListMLC(CtrlList As DevExpress.XtraEditors.CheckedListBoxControl, ByVal mode As Byte, Optional ByVal sID As String = "")
+        Try
+            Dim sSQL As String
+            If mode = FormMode.NewRecord Then
+                sSQL = "Select id,name + ' (' +isnull(calcTypeName,'') + ')' from vw_MLC"
+            Else
+                sSQL = "Select id,name + ' (' +isnull(calcTypeName,'') + ')',
+                       isnull((select case when BM.id is not null then 1 else 0 end as checked
+		               from vw_BMLC BM where bdgid = '" & sID & "' and BM.mlcID = M.ID),0) as checked
+                       from vw_MLC M"
+            End If
+            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+
+            'chkLstUsers.DataSource = sdr
+            CtrlList.DisplayMember = "name"
+            CtrlList.ValueMember = "id"
+            While sdr.Read()
+                Dim chkLstItem As New DevExpress.XtraEditors.Controls.CheckedListBoxItem
+                chkLstItem.Value = sdr.Item(1).ToString
+                chkLstItem.Tag = sdr.Item(0).ToString
+                If mode = FormMode.EditRecord Then chkLstItem.CheckState = sdr.Item(2).ToString
+
+                CtrlList.Items.Add(chkLstItem)
+            End While
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
 End Class

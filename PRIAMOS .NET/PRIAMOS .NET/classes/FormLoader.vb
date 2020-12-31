@@ -118,6 +118,29 @@ NextItem:
                     If TypeOf item Is LayoutControlItem Then
                         Dim LItem As LayoutControlItem = CType(item, LayoutControlItem)
                         If LItem.ControlName <> Nothing Then
+                            'Γίνεται διαχείριση όταν υπάρχει RadioGroup με optionButtons
+                            If TypeOf LItem.Control Is DevExpress.XtraEditors.RadioGroup Then
+                                Dim RDG As DevExpress.XtraEditors.RadioGroup
+                                RDG = LItem.Control
+                                For i As Integer = 0 To RDG.Properties.Items.Count - 1
+                                    'Βάζω τις τιμές του TAG σε array
+                                    If RDG.Properties.Items(i).Tag <> Nothing Then
+                                        TagValue = RDG.Properties.Items(i).Tag.Split(",")
+                                        'Ψάχνω αν το πεδίο έχει δικάιωμα μεταβολής
+                                        Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("2")))
+                                        If value <> Nothing Then
+                                            TagV = TagValue(0).Replace("[", "").Replace("]", "")
+                                            Console.WriteLine(TagV)
+                                            sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
+                                            Dim index = sdr.GetOrdinal(TagV)
+                                            Console.WriteLine(sdr.GetDataTypeName(index))
+                                            If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
+                                                If sdr.GetBoolean(sdr.GetOrdinal(TagV)) = True Then RDG.SelectedIndex = i
+                                            End If
+                                        End If
+                                    End If
+                                Next i
+                            End If
                             ' Εαν δεν έχω ορίσει tag στο Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
                             If LItem.Control.Tag <> "" Then
                                 'Βάζω τις τιμές του TAG σε array
@@ -240,5 +263,62 @@ NextItem:
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    ' Φορτώνει ενα query σε στήλες στο Grid
+    Public Sub LoadColumnsandRowsToGridFromSQL(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView,
+                                       ByVal sSQLColumns As String, ByVal sSQLRows As String, ByVal FieldToColumn As String, Optional ByVal AddColumnButton As Boolean = False)
+        Dim myCmd As SqlCommand
+        Dim myReader As SqlDataReader
+        Dim dt As New DataTable("sTable")
+        Try
+            myCmd = CNDB.CreateCommand
+            myCmd.CommandText = sSQLColumns
+            GRDView.Columns.Clear()
+            myReader = myCmd.ExecuteReader()
+            dt.Load(myReader)
+
+            For Each row As DataRow In dt.Rows
+                Dim C As New GridColumn
+                dt.Columns.Add(row.Item(FieldToColumn).ToString, GetType(Double))
+                C.Caption = row.Item(FieldToColumn).ToString
+                C.FieldName = row.Item(FieldToColumn).ToString
+                C.UnboundType = DevExpress.Data.UnboundColumnType.Decimal
+                C.Visible = True
+                GRDView.Columns.Add(C)
+            Next row
+
+            myCmd = Nothing
+            myCmd = CNDB.CreateCommand
+            myCmd.CommandText = sSQLRows
+            myReader = myCmd.ExecuteReader()
+            dt = Nothing
+            dt = New DataTable("sTable")
+            dt.Load(myReader)
+            For Each row As DataRow In dt.Rows
+
+                GRDView.AddNewRow()
+                'set a new row cell value. The static GridControl.NewItemRowHandle field allows you to retrieve the added row
+                GRDView.SetRowCellValue(GRDControl.NewItemRowHandle, GRDView.Columns(0), "1.44")
+            Next row
+
+            'GRDControl.DataSource = dt
+            'GRDControl.ForceInitialize()
+            'GRDControl.DefaultView.PopulateColumns()
+
+            'Προσθήκη Στήλης BUTTON(Θα πρέπει στον Designer να έχω προσθέσει ενα repositoryitem τύπου Button)
+            If AddColumnButton Then
+                Dim C2 As New GridColumn
+                Dim Btn As New RepositoryItemButtonEdit()
+                Btn = GRDControl.RepositoryItems.Item(0)
+                Btn.ContextImageOptions.Image = My.Resources.icons8_upload_link_document_16
+                C2.ColumnEdit = Btn
+                C2.VisibleIndex = 0
+                GRDView.Columns.Add(C2)
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 End Class
 
