@@ -88,7 +88,7 @@ Public Class FillCombos
     End Sub
     Public Sub BEF_MES(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
         Try
-            Dim cmd As SqlCommand = New SqlCommand("SELECT DISTINCT CONVERT(VARCHAR(10), mdt, 103) AS mdt  FROM VW_AHPB   " & sSQL.ToString, CNDB)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT DISTINCT CONVERT(DATE, mdt, 103) AS mdt  FROM VW_AHPB   " & sSQL.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "mdt"
@@ -322,28 +322,35 @@ Public Class FillCombos
         End Try
 
     End Sub
-    Public Sub FillCheckedListMLC(CtrlList As DevExpress.XtraEditors.CheckedListBoxControl, ByVal mode As Byte, Optional ByVal sID As String = "")
+    Public Sub FillCheckedListMLC(CtrlList As DevExpress.XtraEditors.CheckedListBoxControl, ByVal mode As Byte, Optional ByVal sID As String = "", Optional ByRef CheckedFields As Dictionary(Of String, String) = Nothing)
         Try
             Dim sSQL As String
             If mode = FormMode.NewRecord Then
-                sSQL = "Select id,name + ' (' +isnull(calcTypeName,'') + ')' from vw_MLC"
+                sSQL = "Select id,name + ' (' +isnull(calcTypeName,'') + '), name' from vw_MLC"
             Else
-                sSQL = "Select id,name + ' (' +isnull(calcTypeName,'') + ')',
+                sSQL = "Select id,name + ' (' +isnull(calcTypeName,'') + ')',name,
                        isnull((select case when BM.id is not null then 1 else 0 end as checked
 		               from vw_BMLC BM where bdgid = '" & sID & "' and BM.mlcID = M.ID),0) as checked
                        from vw_MLC M"
             End If
             Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
-
             'chkLstUsers.DataSource = sdr
+            CtrlList.Items.Clear()
             CtrlList.DisplayMember = "name"
             CtrlList.ValueMember = "id"
             While sdr.Read()
                 Dim chkLstItem As New DevExpress.XtraEditors.Controls.CheckedListBoxItem
                 chkLstItem.Value = sdr.Item(1).ToString
                 chkLstItem.Tag = sdr.Item(0).ToString
-                If mode = FormMode.EditRecord Then chkLstItem.CheckState = sdr.Item(2).ToString
+                If mode = FormMode.EditRecord Then
+                    chkLstItem.CheckState = sdr.Item("checked").ToString
+
+                    If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then
+                        CheckedFields.Add(sdr.Item("name").ToString, sdr.Item("checked").ToString)
+                    End If
+
+                End If
 
                 CtrlList.Items.Add(chkLstItem)
             End While

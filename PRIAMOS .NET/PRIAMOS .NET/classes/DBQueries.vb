@@ -850,15 +850,15 @@ NextItem:
                     If FieldsToBeUpdate.Contains(column.FieldName) Then
                         If GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName) IsNot DBNull.Value Then
                             Select Case column.ColumnType.Name
-                                Case "Guid" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
-                                Case "Int32" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
+                                Case "Guid" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
+                                Case "Int32" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
                                 Case "DateTime"
                                     sDate = GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName)
 
-                                    sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(sDate.ToString("yyyyMMdd")))
+                                    sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(sDate.ToString("yyyyMMdd")))
 
-                                Case "Decimal" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
-                                Case "String" : sSQL.AppendLine(column.FieldName & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
+                                Case "Decimal" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
+                                Case "String" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
                             End Select
                             sSQL.AppendLine(",")
                         End If
