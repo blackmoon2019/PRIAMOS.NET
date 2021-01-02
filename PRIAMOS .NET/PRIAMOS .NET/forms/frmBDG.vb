@@ -20,12 +20,15 @@ Public Class frmBDG
     Private Iam As String
     Private Aam As String
     Public Mode As Byte
+    Private Bmlc As New Dictionary(Of String, String)
+    Private ApmilFieldsToBeUpdate As New List(Of String)
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
     '------C L A S S E S------
     Private Valid As New ValidateControls
     Private Log As New Transactions
     Private FillCbo As New FillCombos
+    Private Apmil As New Apmil
     Private InvOils As New InvOilGas
     Private InvGas As New InvOilGas
     Private BdgManage As New BManage
@@ -91,7 +94,7 @@ Public Class frmBDG
                 NavConsumption.Enabled = False
                 NavBoiler.Enabled = False
             Case FormMode.EditRecord
-                FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID)
+                FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
                 'Dim myLayoutControls As New List(Of Control)
@@ -285,7 +288,7 @@ Public Class frmBDG
                         Mode = FormMode.EditRecord : sID = sGuid
                     End If
 
-                    'Όταν είναι σε EditMode διαγ΄ραφουμε όλες τις κατηγορίες και τις ξανακαταχωρούμε
+                    'Όταν είναι σε EditMode διαγραφουμε όλες τις κατηγορίες και τις ξανακαταχωρούμε
                     Dim sSQL2 As String
                     If Mode = FormMode.EditRecord Then
                         sSQL2 = "DELETE FROM BMLC where BDGID = '" & sID & "'"
@@ -303,7 +306,8 @@ Public Class frmBDG
                             oCmd.ExecuteNonQuery()
                         End Using
                     Next
-
+                    Bmlc.Clear()
+                    FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
 
                     dtDTS.EditValue = DateTime.Now
                     txtCode.Text = DBQ.GetNextId("BDG")
@@ -320,54 +324,6 @@ Public Class frmBDG
 
     Private Sub txtCode_GotFocus(sender As Object, e As EventArgs) Handles txtCode.GotFocus
         frmMain.bbFields.Caption = "DB Field: BDG.code"
-    End Sub
-
-    Private Sub txtAam_GotFocus(sender As Object, e As EventArgs) Handles txtAam.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.aam"
-    End Sub
-
-    Private Sub txtAR_GotFocus(sender As Object, e As EventArgs) Handles txtAR.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.ar"
-    End Sub
-
-    Private Sub txtComments_GotFocus(sender As Object, e As EventArgs) Handles txtComments.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.cmt"
-    End Sub
-
-    Private Sub txtIam_GotFocus(sender As Object, e As EventArgs) Handles txtIam.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.iam"
-    End Sub
-
-    Private Sub txtNam_GotFocus(sender As Object, e As EventArgs) Handles txtNam.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.nam"
-    End Sub
-
-    Private Sub txtRmg_GotFocus(sender As Object, e As EventArgs)
-        frmMain.bbFields.Caption = "DB Field: BDG.rmg"
-    End Sub
-
-    Private Sub txtTK_GotFocus(sender As Object, e As EventArgs) Handles txtTK.GotFocus
-        frmMain.bbFields.Caption = "DB Field: ADR.tk"
-    End Sub
-
-    Private Sub cboADR_GotFocus(sender As Object, e As EventArgs) Handles cboADR.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.adrid"
-    End Sub
-
-    Private Sub cboAREAS_GotFocus(sender As Object, e As EventArgs) Handles cboAREAS.GotFocus
-        frmMain.bbFields.Caption = "DB Field: ADR.areaid"
-    End Sub
-
-    Private Sub cboCOU_GotFocus(sender As Object, e As EventArgs) Handles cboCOU.GotFocus
-        frmMain.bbFields.Caption = "DB Field: ADR.couid"
-    End Sub
-
-    Private Sub chkPRD_GotFocus(sender As Object, e As EventArgs) Handles chkPRD.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.prd"
-    End Sub
-
-    Private Sub dtDTS_GotFocus(sender As Object, e As EventArgs) Handles dtDTS.GotFocus
-        frmMain.bbFields.Caption = "DB Field: BDG.dts"
     End Sub
 
     Private Sub cmdAam_Click(sender As Object, e As EventArgs) Handles cmdAam.Click
@@ -806,13 +762,6 @@ Public Class frmBDG
         ''    End If
         ''End If
     End Sub
-    Private Sub cboBefMes_EditValueChanged_1(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
-        If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
-    End Sub
 
     Private Sub ManageHtypes()
         Dim form1 As frmGen = New frmGen()
@@ -836,122 +785,6 @@ Public Class frmBDG
         End If
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
-    End Sub
-
-    Private Sub cmdDelAHPB_Click(sender As Object, e As EventArgs)
-        Dim sSQL As String
-        Dim sBoiler As String
-        Try
-            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
-                        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
-                        " and boiler = " & RGTypeHeating.SelectedIndex
-
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                Cls.ClearGrid(grdAPTAHPB)
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub cmdAddAHPB_Click(sender As Object, e As EventArgs)
-        Try
-            If dtMes.EditValue = Nothing Then
-                XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            Else
-                Cls.ClearGrid(grdAPTAHPB)
-                Using oCmd As New SqlCommand("CreateAHPB", CNDB)
-                    oCmd.CommandType = CommandType.StoredProcedure
-                    oCmd.Parameters.AddWithValue("@bdgid", sID)
-                    oCmd.Parameters.AddWithValue("@ahpbDT", dtMes.EditValue)
-                    oCmd.Parameters.AddWithValue("@bolier", RGTypeHeating.SelectedIndex)
-                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-                If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
-                Dim sSQL As New System.Text.StringBuilder
-                sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
-                'Προηγούμενες μετρήσεις
-                FillCbo.BEF_MES(cboBefMes, sSQL)
-                cboBefMes.EditValue = Nothing
-                GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
-                GridView2.Columns("nam").OptionsColumn.AllowEdit = False
-
-            End If
-
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-
-    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAHPB, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAHPB, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
-            End If
-        Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
-        End If
-    End Sub
-
-    Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs)
-        Dim sSQL As String
-        Dim mes As Decimal
-        Dim mesB As Decimal
-        Dim Dif As Decimal
-        Try
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then Exit Sub
-            mes = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes")
-            mesB = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB")
-            Dif = mes - mesB
-            GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mesDif", Dif)
-            sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
-                    ",MESB = " & toSQLValueS(mesB, True) &
-                    ",MESDIF = " & toSQLValueS(Dif, True) &
-                    " WHERE ID = '" & GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString & "'"
-
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     Private Sub ManageFtypes()
@@ -978,204 +811,6 @@ Public Class frmBDG
         form1.Show()
     End Sub
 
-    Private Sub cmdOInvSave_Click(sender As Object, e As EventArgs)
-        If Valid.ValidateFormGRP(LayoutControlGroup5) Then
-            Dim sOID As String = System.Guid.NewGuid.ToString
-            If InvOils.InsertOilData(LayoutControlGroup5, sOID, "bdgid", sID) Then
-                InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
-                If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End If
-                Cls.ClearGroupCtrls(LayoutControlGroup5)
-                ''Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
-                'Dim ExcludeControls As New List(Of String)
-                'ExcludeControls.Add(cmdOInvAdd.Name)
-                'ExcludeControls.Add(cmdOInvDelete.Name)
-                'ExcludeControls.Add(cmdOInvEdit.Name)
-                'ExcludeControls.Add(cmdOInvRefresh.Name)
-                'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                'cmdOInvSave.Enabled = False
-            End If
-
-        End If
-    End Sub
-    Private Sub cmdGInvSave_Click(sender As Object, e As EventArgs)
-        If Valid.ValidateFormGRP(LayoutControlGroup6) Then
-            Dim sGID As String = System.Guid.NewGuid.ToString
-            If InvGas.InsertGasData(LayoutControlGroup6, sGID, "bdgid", sID) Then
-                InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
-                If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End If
-                Cls.ClearGroupCtrls(LayoutControlGroup6)
-                'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
-                'Dim ExcludeControls As New List(Of String)
-                'ExcludeControls.Add(cmdGInvAdd.Name)
-                'ExcludeControls.Add(cmdGInvDelete.Name)
-                'ExcludeControls.Add(cmdGInvEdit.Name)
-                'ExcludeControls.Add(cmdGInvRefresh.Name)
-                'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                'cmdOInvSave.Enabled = False
-            End If
-        End If
-    End Sub
-
-    Private Sub cmdOInvRefresh_Click(sender As Object, e As EventArgs)
-        InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
-    End Sub
-
-    Private Sub cmdOInvDelete_Click(sender As Object, e As EventArgs)
-        InvOils.DeleteRecord(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, "INV_OIL")
-        InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
-    End Sub
-
-    Private Sub grdOil_KeyDown(sender As Object, e As KeyEventArgs)
-        Select Case e.KeyCode
-            Case Keys.F2 : If UserProps.AllowInsert = True Then cmdOInvAdd.PerformClick()
-            Case Keys.F3 : If UserProps.AllowEdit = True Then cmdOInvEdit.PerformClick()
-            Case Keys.F5 : cmdOInvRefresh.PerformClick()
-            Case Keys.Delete : If UserProps.AllowDelete = True Then cmdOInvDelete.PerformClick()
-        End Select
-    End Sub
-
-    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINV_OIL, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINV_OIL, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_OIL, Nothing, Nothing, Nothing, Nothing))
-            End If
-        Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
-        End If
-    End Sub
-
-    Private Sub GridView3_RowUpdated(sender As Object, e As RowObjectEventArgs)
-        Try
-            Dim FieldsToBeUpdate As New List(Of String)
-            FieldsToBeUpdate.Add("invNumber")
-            FieldsToBeUpdate.Add("invDate")
-            FieldsToBeUpdate.Add("liters")
-            FieldsToBeUpdate.Add("price")
-            FieldsToBeUpdate.Add("totalPrice")
-            If InvOils.UpdateOilData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-
-
-    Private Sub cmdGInvDelete_Click(sender As Object, e As EventArgs)
-        InvGas.DeleteRecord(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, "INV_GAS")
-        InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
-    End Sub
-
-    Private Sub cmdGInvRefresh_Click(sender As Object, e As EventArgs)
-        InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
-    End Sub
-
-    Private Sub grdGas_KeyDown(sender As Object, e As KeyEventArgs)
-        Select Case e.KeyCode
-            Case Keys.F2 : If UserProps.AllowInsert = True Then cmdGInvAdd.PerformClick()
-            Case Keys.F3 : If UserProps.AllowEdit = True Then cmdGInvEdit.PerformClick()
-            Case Keys.F5 : cmdGInvRefresh.PerformClick()
-            Case Keys.Delete : If UserProps.AllowDelete = True Then cmdGInvDelete.PerformClick()
-        End Select
-    End Sub
-
-    Private Sub GridView4_RowUpdated(sender As Object, e As RowObjectEventArgs)
-        Dim FieldsToBeUpdate As New List(Of String)
-        Try
-            FieldsToBeUpdate.Add("invNumber")
-            FieldsToBeUpdate.Add("invDate")
-            FieldsToBeUpdate.Add("price")
-            FieldsToBeUpdate.Add("totalPrice")
-            If InvGas.UpdateGasData(GridView4, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINV_GAS, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINV_GAS, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_GAS, Nothing, Nothing, Nothing, Nothing))
-            End If
-        Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
-        End If
-    End Sub
-
-    Private Sub txtOInvFileNames_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
-        If e.Button.Index = 0 Then
-            OilFilesSelection()
-        Else
-            txtOInvFileNames.EditValue = Nothing
-        End If
-    End Sub
     Private Sub OilFilesSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
         XtraOpenFileDialog1.InitialDirectory = "C:\"
@@ -1209,27 +844,6 @@ Public Class frmBDG
         End If
     End Sub
 
-    Private Sub txtGInvFileNames_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
-        If e.Button.Index = 0 Then
-            GasFilesSelection()
-        Else
-            txtGInvFileNames.EditValue = Nothing
-        End If
-    End Sub
-
-    Private Sub grdGas_DoubleClick(sender As Object, e As EventArgs)
-        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), IO.FileMode.Create)
-        Dim b() As Byte = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "files")
-        Try
-            fs.Write(b, 0, b.Length)
-            fs.Close()
-            ShellExecute("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
     Private Sub ShellExecute(ByVal File As String)
         Dim myProcess As New Process
         myProcess.StartInfo.FileName = File
@@ -1239,85 +853,6 @@ Public Class frmBDG
         myProcess.Dispose()
     End Sub
 
-    Private Sub grdOil_DoubleClick(sender As Object, e As EventArgs)
-        If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), IO.FileMode.Create)
-        Dim b() As Byte = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "files")
-        Try
-            fs.Write(b, 0, b.Length)
-            fs.Close()
-            ShellExecute("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub RepositoryItemButtonOil_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
-        OilFilesSelection(True)
-        Dim sOID As String = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString
-        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
-            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
-
-    End Sub
-
-    Private Sub RepositoryItemButtonGas_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
-        GasFilesSelection(True)
-        Dim sGID As String = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString
-        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
-            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
-    End Sub
-
-    Private Sub cmdOInvAdd_CheckedChanged(sender As Object, e As EventArgs)
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            GridView3.OptionsBehavior.Editable = False
-            InvOils.AddNewOilInv(LayoutControlGroup5)
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup5)
-            txtOInvCode.Text = DBQ.GetNextId("INV_OIL")
-            cmdOInvSave.Enabled = True
-        Else
-            Cls.ClearGroupCtrls(LayoutControlGroup5)
-            Dim ExcludeControls As New List(Of String)
-            ExcludeControls.Add(cmdOInvAdd.Name)
-            ExcludeControls.Add(cmdOInvDelete.Name)
-            ExcludeControls.Add(cmdOInvEdit.Name)
-            ExcludeControls.Add(cmdOInvRefresh.Name)
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
-            cmdOInvSave.Enabled = False
-        End If
-    End Sub
-
-    Private Sub cmdOInvEdit_CheckedChanged(sender As Object, e As EventArgs)
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            GridView3.OptionsBehavior.Editable = True
-        Else
-            GridView3.OptionsBehavior.Editable = False
-        End If
-    End Sub
-
-    Private Sub cmdGInvAdd_CheckedChanged(sender As Object, e As EventArgs)
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            GridView4.OptionsBehavior.Editable = False
-            InvGas.AddNewGasInv(LayoutControlGroup6)
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup6)
-            txtGInvCode.Text = DBQ.GetNextId("INV_GAS")
-            cmdGInvSave.Enabled = True
-        Else
-            Cls.ClearGroupCtrls(LayoutControlGroup6)
-            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
-            Dim ExcludeControls As New List(Of String)
-            ExcludeControls.Add(cmdGInvAdd.Name)
-            ExcludeControls.Add(cmdGInvDelete.Name)
-            ExcludeControls.Add(cmdGInvEdit.Name)
-            ExcludeControls.Add(cmdGInvRefresh.Name)
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
-            cmdGInvSave.Enabled = False
-        End If
-    End Sub
 
     Private Sub CheckButton2_CheckedChanged(sender As Object, e As EventArgs)
         Dim btn As CheckButton = TryCast(sender, CheckButton)
@@ -1355,17 +890,6 @@ Public Class frmBDG
             Case 2 : cboGInvSup.EditValue = Nothing
         End Select
     End Sub
-    Private Sub HyperlinkLabelControl11_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs)
-        System.Diagnostics.Process.Start(e.Text)
-    End Sub
-    Private Sub HyperlinkLabelControl111_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs)
-        System.Diagnostics.Process.Start(e.Text)
-    End Sub
-
-    Private Sub HyperlinkLabelControl1_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs)
-        System.Diagnostics.Process.Start(e.Text)
-    End Sub
-
 
     Private Sub cboCOU_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonPressed
         Select Case e.Button.Index
@@ -1387,27 +911,6 @@ Public Class frmBDG
             Case 2 : cboADR.EditValue = Nothing
         End Select
     End Sub
-
-    Private Sub cboHtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
-        Select Case e.Button.Index
-            Case 1 : ManageHtypes()
-            Case 2 : cboHtypes.EditValue = Nothing
-        End Select
-    End Sub
-    Private Sub cboFtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
-        Select Case e.Button.Index
-            Case 1 : ManageFtypes()
-            Case 2 : cboFtypes.EditValue = Nothing
-        End Select
-    End Sub
-
-    Private Sub cboBtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
-        Select Case e.Button.Index
-            Case 1 : ManageBtypes()
-            Case 2 : cboBtypes.EditValue = Nothing
-        End Select
-    End Sub
-
 
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
         Dim sSQL As String
@@ -1442,53 +945,14 @@ Public Class frmBDG
         End Try
     End Sub
 
-    ' This event is generated by Data Source Configuration Wizard
-    Sub UnboundSource1_ValueNeeded(sender As Object, e As DevExpress.Data.UnboundSourceValueNeededEventArgs)
-        ' Handle this event to obtain data from your data source
-        ' e.Value = something /* TODO: Assign the real data here.*/
-    End Sub
-
-    ' This event is generated by Data Source Configuration Wizard
-    Sub UnboundSource1_ValuePushed(sender As Object, e As DevExpress.Data.UnboundSourceValuePushedEventArgs)
-        ' Handle this event to save modified data back to your data source
-        ' something = e.Value; /* TODO: Propagate the value into the storage.*/
-    End Sub
 
     Private Sub NavAPM_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavAPM.ElementClick
-        tabBDG.SelectedTabPage = XtraTabPage11
-        LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by code")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
-    End Sub
-
-    ' This event is generated by Data Source Configuration Wizard
-    Sub UnboundSource1_ValueNeeded_1(sender As Object, e As DevExpress.Data.UnboundSourceValueNeededEventArgs)
-        ' Handle this event to obtain data from your data source
-        ' e.Value = something /* TODO: Assign the real data here.*/
-    End Sub
-
-    ' This event is generated by Data Source Configuration Wizard
-    Sub UnboundSource1_ValuePushed_1(sender As Object, e As DevExpress.Data.UnboundSourceValuePushedEventArgs)
-        ' Handle this event to save modified data back to your data source
-        ' something = e.Value; /* TODO: Propagate the value into the storage.*/
-    End Sub
-
-    Private Sub cboHtypes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboHtypes.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : ManageCalcTypes(cboHtypes)
-            Case 2 : cboHtypes.EditValue = Nothing
-        End Select
-
-    End Sub
-
-    Private Sub cboBtypes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBtypes.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : ManageCalcTypes(cboBtypes)
-            Case 2 : cboBtypes.EditValue = Nothing
-        End Select
-    End Sub
-
-    Private Sub cmdSave_CausesValidationChanged(sender As Object, e As EventArgs) Handles cmdSave.CausesValidationChanged
-
+        Try
+            tabBDG.SelectedTabPage = XtraTabPage11
+            ApmLoad()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub cmdSaveHB_Click(sender As Object, e As EventArgs) Handles cmdSaveHB.Click
@@ -1511,11 +975,6 @@ Public Class frmBDG
 
 
     End Sub
-
-    Private Sub TextEdit1_EditValueChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub RGTypeHeating_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RGTypeHeating.SelectedIndexChanged
         Dim sSQL As New System.Text.StringBuilder
         sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
@@ -1561,6 +1020,541 @@ Public Class frmBDG
             PopupMenuRows.ShowPopup(Control.MousePosition)
         End If
     End Sub
+
+    Private Sub cmdAddAHPB_Click(sender As Object, e As EventArgs) Handles cmdAddAHPB.Click
+        Try
+            If dtMes.EditValue = Nothing Then
+                XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Else
+                Cls.ClearGrid(grdAPTAHPB)
+                Using oCmd As New SqlCommand("CreateAHPB", CNDB)
+                    oCmd.CommandType = CommandType.StoredProcedure
+                    oCmd.Parameters.AddWithValue("@bdgid", sID)
+                    oCmd.Parameters.AddWithValue("@ahpbDT", dtMes.EditValue)
+                    oCmd.Parameters.AddWithValue("@bolier", RGTypeHeating.SelectedIndex)
+                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+                If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+                Dim sSQL As New System.Text.StringBuilder
+                sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
+                'Προηγούμενες μετρήσεις
+                FillCbo.BEF_MES(cboBefMes, sSQL)
+                cboBefMes.EditValue = Nothing
+                GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
+                GridView2.Columns("nam").OptionsColumn.AllowEdit = False
+
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmdDelAHPB_Click(sender As Object, e As EventArgs) Handles cmdDelAHPB.Click
+        Dim sSQL As String
+        Dim sBoiler As String
+        Try
+            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
+                        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
+                        " and boiler = " & RGTypeHeating.SelectedIndex
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Cls.ClearGrid(grdAPTAHPB)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
+        If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
+    End Sub
+
+    Private Sub cboFtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboFtypes.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageFtypes()
+            Case 2 : cboFtypes.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboHtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboHtypes.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCalcTypes(cboHtypes)
+            Case 2 : cboHtypes.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboBtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBtypes.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCalcTypes(cboBtypes)
+            Case 2 : cboBtypes.EditValue = Nothing
+        End Select
+
+    End Sub
+
+    Private Sub HyperlinkLabelControl1_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl1.HyperlinkClick
+        System.Diagnostics.Process.Start(e.Text)
+    End Sub
+
+    Private Sub HyperlinkLabelControl111_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl111.HyperlinkClick
+        System.Diagnostics.Process.Start(e.Text)
+    End Sub
+
+    Private Sub HyperlinkLabelControl11_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl11.HyperlinkClick
+        System.Diagnostics.Process.Start(e.Text)
+    End Sub
+
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAHPB, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAHPB, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            PopupMenuRows.ShowPopup(Control.MousePosition)
+        End If
+    End Sub
+
+    Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView2.RowUpdated
+        Dim sSQL As String
+        Dim mes As Decimal
+        Dim mesB As Decimal
+        Dim Dif As Decimal
+        Try
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then
+                mes = 0
+            Else
+                mes = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes")
+            End If
+            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB") Is DBNull.Value Then
+                mesB = 0
+            Else
+                mesB = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB")
+            End If
+            Dif = mes - mesB
+            GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mesDif", Dif)
+            sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
+                    ",MESB = " & toSQLValueS(mesB, True) &
+                    ",MESDIF = " & toSQLValueS(Dif, True) &
+                    " WHERE ID = '" & GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString & "'"
+
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub cmdGInvAdd_CheckedChanged(sender As Object, e As EventArgs) Handles cmdGInvAdd.CheckedChanged
+        Dim btn As CheckButton = TryCast(sender, CheckButton)
+        If btn.Checked = True Then
+            GridView4.OptionsBehavior.Editable = False
+            InvGas.AddNewGasInv(LayoutControlGroup6)
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup6)
+            txtGInvCode.Text = DBQ.GetNextId("INV_GAS")
+            cmdGInvSave.Enabled = True
+        Else
+            Cls.ClearGroupCtrls(LayoutControlGroup6)
+            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+            Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cmdGInvAdd.Name)
+            ExcludeControls.Add(cmdGInvDelete.Name)
+            ExcludeControls.Add(cmdGInvEdit.Name)
+            ExcludeControls.Add(cmdGInvRefresh.Name)
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
+            cmdGInvSave.Enabled = False
+        End If
+    End Sub
+
+    Private Sub cmdOInvEdit_CheckedChanged(sender As Object, e As EventArgs) Handles cmdOInvEdit.CheckedChanged
+        Dim btn As CheckButton = TryCast(sender, CheckButton)
+        If btn.Checked = True Then
+            GridView3.OptionsBehavior.Editable = True
+        Else
+            GridView3.OptionsBehavior.Editable = False
+        End If
+    End Sub
+
+    Private Sub RepositoryItemButtonGas_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonGas.ButtonClick
+        GasFilesSelection(True)
+        Dim sGID As String = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString
+        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
+            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub RepositoryItemButtonOil_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonOil.ButtonClick
+        OilFilesSelection(True)
+        Dim sOID As String = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString
+        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
+            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+    End Sub
+
+    Private Sub cmdOInvAdd_CheckedChanged(sender As Object, e As EventArgs) Handles cmdOInvAdd.CheckedChanged
+        Dim btn As CheckButton = TryCast(sender, CheckButton)
+        If btn.Checked = True Then
+            GridView3.OptionsBehavior.Editable = False
+            InvOils.AddNewOilInv(LayoutControlGroup5)
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup5)
+            txtOInvCode.Text = DBQ.GetNextId("INV_OIL")
+            cmdOInvSave.Enabled = True
+        Else
+            Cls.ClearGroupCtrls(LayoutControlGroup5)
+            Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cmdOInvAdd.Name)
+            ExcludeControls.Add(cmdOInvDelete.Name)
+            ExcludeControls.Add(cmdOInvEdit.Name)
+            ExcludeControls.Add(cmdOInvRefresh.Name)
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
+            cmdOInvSave.Enabled = False
+        End If
+    End Sub
+
+    Private Sub grdOil_DoubleClick(sender As Object, e As EventArgs) Handles grdOil.DoubleClick
+        If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
+        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim b() As Byte = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "files")
+        Try
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+            ShellExecute("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub grdGas_DoubleClick(sender As Object, e As EventArgs) Handles grdGas.DoubleClick
+        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
+        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim b() As Byte = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "files")
+        Try
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+            ShellExecute("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub txtGInvFileNames_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtGInvFileNames.ButtonClick
+        If e.Button.Index = 0 Then
+            GasFilesSelection()
+        Else
+            txtGInvFileNames.EditValue = Nothing
+        End If
+    End Sub
+
+    Private Sub txtOInvFileNames_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtOInvFileNames.ButtonClick
+        If e.Button.Index = 0 Then
+            OilFilesSelection()
+        Else
+            txtOInvFileNames.EditValue = Nothing
+        End If
+    End Sub
+
+    Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView4.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINV_GAS, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINV_GAS, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_GAS, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            PopupMenuRows.ShowPopup(Control.MousePosition)
+        End If
+    End Sub
+
+    Private Sub GridView4_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView4.RowUpdated
+        Dim FieldsToBeUpdate As New List(Of String)
+        Try
+            FieldsToBeUpdate.Add("invNumber")
+            FieldsToBeUpdate.Add("invDate")
+            FieldsToBeUpdate.Add("price")
+            FieldsToBeUpdate.Add("totalPrice")
+            If InvGas.UpdateGasData(GridView4, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub grdGas_KeyDown(sender As Object, e As KeyEventArgs) Handles grdGas.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F2 : If UserProps.AllowInsert = True Then cmdGInvAdd.PerformClick()
+            Case Keys.F3 : If UserProps.AllowEdit = True Then cmdGInvEdit.PerformClick()
+            Case Keys.F5 : cmdGInvRefresh.PerformClick()
+            Case Keys.Delete : If UserProps.AllowDelete = True Then cmdGInvDelete.PerformClick()
+        End Select
+    End Sub
+
+    Private Sub cmdGInvRefresh_Click(sender As Object, e As EventArgs) Handles cmdGInvRefresh.Click
+        InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
+    End Sub
+
+    Private Sub cmdGInvDelete_Click(sender As Object, e As EventArgs) Handles cmdGInvDelete.Click
+        InvGas.DeleteRecord(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, "INV_GAS")
+        InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
+
+    End Sub
+
+    Private Sub GridView3_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView3.RowUpdated
+        Try
+            Dim FieldsToBeUpdate As New List(Of String)
+            FieldsToBeUpdate.Add("invNumber")
+            FieldsToBeUpdate.Add("invDate")
+            FieldsToBeUpdate.Add("liters")
+            FieldsToBeUpdate.Add("price")
+            FieldsToBeUpdate.Add("totalPrice")
+            If InvOils.UpdateOilData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINV_OIL, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINV_OIL, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_OIL, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            PopupMenuRows.ShowPopup(Control.MousePosition)
+        End If
+    End Sub
+
+    Private Sub grdOil_KeyDown(sender As Object, e As KeyEventArgs) Handles grdOil.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F2 : If UserProps.AllowInsert = True Then cmdOInvAdd.PerformClick()
+            Case Keys.F3 : If UserProps.AllowEdit = True Then cmdOInvEdit.PerformClick()
+            Case Keys.F5 : cmdOInvRefresh.PerformClick()
+            Case Keys.Delete : If UserProps.AllowDelete = True Then cmdOInvDelete.PerformClick()
+        End Select
+    End Sub
+
+    Private Sub cmdOInvDelete_Click(sender As Object, e As EventArgs) Handles cmdOInvDelete.Click
+        InvOils.DeleteRecord(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, "INV_OIL")
+        InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
+    End Sub
+
+    Private Sub cmdOInvRefresh_Click(sender As Object, e As EventArgs) Handles cmdOInvRefresh.Click
+        InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
+    End Sub
+
+    Private Sub cmdGInvSave_Click(sender As Object, e As EventArgs) Handles cmdGInvSave.Click
+        If Valid.ValidateFormGRP(LayoutControlGroup6) Then
+            Dim sGID As String = System.Guid.NewGuid.ToString
+            If InvGas.InsertGasData(LayoutControlGroup6, sGID, "bdgid", sID) Then
+                InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
+                If XtraOpenFileDialog1.SafeFileName <> "" Then
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End If
+                Cls.ClearGroupCtrls(LayoutControlGroup6)
+                'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+                'Dim ExcludeControls As New List(Of String)
+                'ExcludeControls.Add(cmdGInvAdd.Name)
+                'ExcludeControls.Add(cmdGInvDelete.Name)
+                'ExcludeControls.Add(cmdGInvEdit.Name)
+                'ExcludeControls.Add(cmdGInvRefresh.Name)
+                'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'cmdOInvSave.Enabled = False
+            End If
+        End If
+    End Sub
+
+    Private Sub cmdOInvSave_Click(sender As Object, e As EventArgs) Handles cmdOInvSave.Click
+        If Valid.ValidateFormGRP(LayoutControlGroup5) Then
+            Dim sOID As String = System.Guid.NewGuid.ToString
+            If InvOils.InsertOilData(LayoutControlGroup5, sOID, "bdgid", sID) Then
+                InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
+                If XtraOpenFileDialog1.SafeFileName <> "" Then
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End If
+                Cls.ClearGroupCtrls(LayoutControlGroup5)
+                ''Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+                'Dim ExcludeControls As New List(Of String)
+                'ExcludeControls.Add(cmdOInvAdd.Name)
+                'ExcludeControls.Add(cmdOInvDelete.Name)
+                'ExcludeControls.Add(cmdOInvEdit.Name)
+                'ExcludeControls.Add(cmdOInvRefresh.Name)
+                'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'cmdOInvSave.Enabled = False
+            End If
+
+        End If
+    End Sub
+
+    Private Sub GridView5_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView5.RowUpdated
+        Try
+            Apmil.UpdateApMilData(GridView5, GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString, ApmilFieldsToBeUpdate)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmdDelAPM_Click(sender As Object, e As EventArgs) Handles cmdDelAPM.Click
+        Dim sSQL As String
+        Try
+            If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM APMIL WHERE ID = '" & GridView5.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                GridView5.DeleteRow(GridView1.FocusedRowHandle)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub cmdApmRefresh_Click(sender As Object, e As EventArgs) Handles cmdApmRefresh.Click
+        Try
+            ApmLoad()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Private Sub ApmLoad()
+        LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by code")
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+        ApmilFieldsToBeUpdate.Clear()
+        For Each kvp As KeyValuePair(Of String, String) In Bmlc
+            If kvp.Value = 0 Then
+                GridView5.Columns(kvp.Key).Visible = False
+                GridView5.Columns(kvp.Key).OptionsColumn.ReadOnly = True
+                GridView5.Columns(kvp.Key).OptionsColumn.AllowEdit = False
+            Else
+                GridView5.Columns(kvp.Key).Visible = True
+                GridView5.Columns(kvp.Key).OptionsColumn.ReadOnly = False
+                GridView5.Columns(kvp.Key).OptionsColumn.AllowEdit = True
+                ApmilFieldsToBeUpdate.Add(kvp.Key)
+            End If
+        Next
+        GridView5.Columns("AptNam").OptionsColumn.ReadOnly = True
+        GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
+        ApmilFieldsToBeUpdate.Add("ΠΟΣΟΣΤΟ ΚΛΕΙΣΤΟΥ")
+    End Sub
+
+    Private Sub cmdAddApmil_Click(sender As Object, e As EventArgs) Handles cmdAddApmil.Click
+        Try
+            ' Καταχώρηση μιας γραμμής για τα χιλιοστά
+            Dim sSQL As String = "insert into APMIL ([aptID],[bdgID],[modifiedby],[createdon]) " &
+                             "SELECT id,bdgid," & toSQLValueS(UserProps.ID.ToString) & ", getdate() " &
+                             "FROM APT WHERE BDGID= " & toSQLValueS(sID) &
+                             "And ID Not In(Select APTID FROM APMIL WHERE BDGID= " & toSQLValueS(sID) & ")"
+
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            ApmLoad()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 
 
     'ΘΕΡΜΑΝΣΗ
