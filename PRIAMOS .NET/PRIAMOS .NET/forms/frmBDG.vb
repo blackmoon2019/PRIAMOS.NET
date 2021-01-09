@@ -11,6 +11,7 @@ Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraEditors.Calendar
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraGrid
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -950,6 +951,13 @@ Public Class frmBDG
         Try
             tabBDG.SelectedTabPage = XtraTabPage11
             ApmLoad()
+            'GridView5.OptionsMenu.EnableFooterMenu = True
+            'GridView5.Columns(6).AllowSummaryMenu = True
+            'Dim siTotal As New GridColumnSummaryItem()
+            'siTotal.SummaryType = DevExpress.Data.SummaryItemType.Sum
+            'siTotal.DisplayFormat = "{0} records"
+            'GridView5.Columns(6).Summary.Add(siTotal)
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -964,14 +972,14 @@ Public Class frmBDG
 
             End If
             If sResult Then
-                    Dim form As New frmScroller
-                    form.LoadRecords("vw_BDG")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End If
+                Dim form As New frmScroller
+                form.LoadRecords("vw_BDG")
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
 
-            Catch ex As Exception
-                XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
 
     End Sub
@@ -1553,6 +1561,19 @@ Public Class frmBDG
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub GridView5_CustomDrawFooterCell(sender As Object, e As FooterCellCustomDrawEventArgs) Handles GridView5.CustomDrawFooterCell
+        'Dim view As GridView = TryCast(sender, GridView)
+        'Dim column1 As GridColumn = view.Columns("AptName")
+
+        'Dim r As Rectangle = e.Bounds
+        '    r.Inflate(-1, -1)
+        '    e.Cache.FillRectangle(Brushes.Red, r)
+        '    r.Inflate(-2, 0)
+        '    e.Appearance.DrawString(e.Cache, e.Info.DisplayText, r)
+        '    e.Handled = True
+
     End Sub
 
 

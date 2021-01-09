@@ -188,6 +188,7 @@
     <Compile Include="classes\ProgProp.vb" />
     <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
+    <Compile Include="classes\XmlUpdateFromDB.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
     <Compile Include="forms\frmAPT.Designer.vb">
       <DependentUpon>frmAPT.vb</DependentUpon>
@@ -295,36 +296,46 @@
   <ItemGroup>
     <EmbeddedResource Include="forms\frmAPT.resx">
       <DependentUpon>frmAPT.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmBDG.resx">
       <DependentUpon>frmBDG.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCalendar.resx">
       <DependentUpon>frmCalendar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCustomers.resx">
       <DependentUpon>frmCustomers.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmGen.resx">
       <DependentUpon>frmGen.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmMailSettings.resx">
       <DependentUpon>frmMailSettings.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmParameters.resx">
       <DependentUpon>frmParameters.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmPermissions.resx">
       <DependentUpon>frmPermissions.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmScroller.resx">
       <DependentUpon>frmScroller.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmUsers.resx">
       <DependentUpon>frmUsers.vb</DependentUpon>
@@ -338,6 +349,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmSplash.resx">
       <DependentUpon>frmSplash.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\WaitForm.resx">
       <DependentUpon>WaitForm.vb</DependentUpon>
