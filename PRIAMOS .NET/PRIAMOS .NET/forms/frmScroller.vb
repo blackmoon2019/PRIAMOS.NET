@@ -21,6 +21,7 @@ Public Class frmScroller
     Private sDataTable As String
     Private sDataDetail As String
     Private CurrentView As String
+    Private ReadXml As New XmlUpdateFromDB
     'Private settings = System.Configuration.ConfigurationManager.AppSettings
     Private Sub frmScroller_Load(sender As Object, e As EventArgs) Handles Me.Load
         'Λίστα με τιμές για TOP RECORDS
@@ -57,6 +58,7 @@ Public Class frmScroller
             BarViews.EditValue = ""
             'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
             If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml") = False Then
+                GridView1.OptionsLayout.LayoutVersion = "v1"
                 GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
             End If
             If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sDataDetail & "_def.xml") = False Then
@@ -182,6 +184,12 @@ Public Class frmScroller
     Private Sub RepositoryPopSaveAsView_KeyDown(sender As Object, e As KeyEventArgs) Handles RepositoryPopSaveAsView.KeyDown
         Try
             If e.KeyCode = Keys.Enter Then
+                If GridView1.OptionsLayout.LayoutVersion <> "" Then
+                    Dim sVer As Integer = GridView1.OptionsLayout.LayoutVersion.Replace("v", "")
+                    GridView1.OptionsLayout.LayoutVersion = "v" & sVer + 1
+                Else
+                    GridView1.OptionsLayout.LayoutVersion = "v1"
+                End If
                 GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
                 If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
                 'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml")
@@ -199,6 +207,12 @@ Public Class frmScroller
         If BarViews.EditValue <> "" Then
             'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
             My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
+            If GridView1.OptionsLayout.LayoutVersion <> "" Then
+                Dim sVer As Integer = GridView1.OptionsLayout.LayoutVersion.Replace("v", "")
+                GridView1.OptionsLayout.LayoutVersion = "v" & sVer + 1
+            Else
+                GridView1.OptionsLayout.LayoutVersion = "v1"
+            End If
             GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
             If sDataDetail <> "" Then
                 My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataDetail & "\" & BarViews.EditValue)
@@ -805,6 +819,7 @@ Public Class frmScroller
                 End If
             End If
             LoadViews()
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -860,6 +875,12 @@ Public Class frmScroller
     End Sub
     'Αποθήκευση όψης ως Default
     Private Sub popSaveAsDefault_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popSaveAsDefault.ItemClick
+        If GridView1.OptionsLayout.LayoutVersion <> "" Then
+            Dim sVer As Integer = GridView1.OptionsLayout.LayoutVersion.Replace("v", "")
+            GridView1.OptionsLayout.LayoutVersion = "v" & sVer + 1
+        Else
+            GridView1.OptionsLayout.LayoutVersion = "v1"
+        End If
         GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
         If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataDetail & "_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -923,4 +944,51 @@ Public Class frmScroller
             e.Handled = True
         End If
     End Sub
+
+    Private Sub BBUpdateViewFromDB_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdateViewFromDB.ItemClick
+        'ReadXml.UpdateXMLFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+        'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+        Dim col1 As GridColumn
+        Dim grdColumns As List(Of GridColumn)
+        LoadRecords()
+        'Εαν υπάρχουν πεδία που πρέπει να προστεθούν από την βάση
+        If myReader.FieldCount > GridView1.Columns.Count Then
+            Dim schema As DataTable = myReader.GetSchemaTable()
+            grdColumns = GridView1.Columns.ToList()
+            For i As Integer = 0 To myReader.FieldCount - 1
+                Console.WriteLine(myReader.GetName(i))
+                Dim Col2 As GridColumn = GridView1.Columns(myReader.GetName(i))
+                If Col2 Is Nothing Then
+                    col1 = GridView1.Columns.AddField(myReader.GetName(i))
+                    col1.FieldName = myReader.GetName(i)
+                    col1.Visible = True
+                    col1.VisibleIndex = 0
+                    col1.AppearanceCell.BackColor = Color.Bisque
+                End If
+
+            Next
+            'Εαν έχουν σβηστεί πεδία από την βάση τα αφαιρεί και από το grid
+        ElseIf myReader.FieldCount < GridView1.Columns.Count Then
+            Dim schema As DataTable = myReader.GetSchemaTable()
+            grdColumns = GridView1.Columns.ToList()
+
+            For i As Integer = 0 To grdColumns.Count - 1
+                Try
+                    Dim Col2 As GridColumn = grdColumns(i)
+                    Dim sOrd As String = myReader.GetOrdinal(Col2.FieldName)
+                Catch ex As Exception
+                    Dim Col2 As GridColumn = grdColumns(i)
+                    GridView1.Columns.Remove(Col2)
+                    Console.WriteLine(ex.Message)
+
+                    Continue For
+                End Try
+
+            Next
+
+        End If
+
+
+    End Sub
+
 End Class
