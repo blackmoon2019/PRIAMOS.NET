@@ -12,6 +12,7 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraEditors.Calendar
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid
+Imports System.ComponentModel
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -106,6 +107,7 @@ Public Class frmBDG
                 Aam = txtAam.EditValue
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
         End Select
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         Me.CenterToScreen()
         My.Settings.frmBDG = Me.Location
         My.Settings.Save()
@@ -315,6 +317,7 @@ Public Class frmBDG
                     Dim form As New frmScroller
                     form.LoadRecords("vw_BDG")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                 End If
             End If
 
@@ -627,6 +630,13 @@ Public Class frmBDG
 
     Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
         Dim sSQL As New System.Text.StringBuilder
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                Exit Sub
+            End If
+        End If
         tabBDG.SelectedTabPage = XtraTabPage3
         'Τύποι Υπολογισμού
         FillCbo.CALC_TYPES(cboHtypes)
@@ -642,6 +652,10 @@ Public Class frmBDG
         Else
             LoadForms.LoadForm(LayoutControl3Heating, "Select * from vw_BDG where id ='" + sID + "'", True)
         End If
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
 
         'cboFtypes.Enabled = False
         'cmdCboManageFtypes.Enabled = False
@@ -659,6 +673,13 @@ Public Class frmBDG
         'End If
     End Sub
     Private Sub NavHeatingInvoices_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeatingInvoices.ElementClick
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                Exit Sub
+            End If
+        End If
         tabBDG.SelectedTabPage = XtraTabPage7
         'Προμηθευτές για πετρέλαιο
         FillCbo.SUP(cboOInvSup)
@@ -685,18 +706,45 @@ Public Class frmBDG
         ExcludeControls.Add(cmdGInvRefresh.Name)
         EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
         cmdGInvAdd.Checked = False : cmdGInvEdit.Checked = False
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
     End Sub
     Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
         Dim sSQL As String
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                Exit Sub
+            End If
+        End If
         tabBDG.SelectedTabPage = XtraTabPage2
         If sManageID.Length > 0 Then
             sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
             BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
         End If
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+
     End Sub
 
     Private Sub NavGeneral_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavGeneral.ElementClick
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                Exit Sub
+            End If
+        End If
         tabBDG.SelectedTabPage = XtraTabPage1
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
     End Sub
 
     Private Sub ManageBtypes()
@@ -939,6 +987,7 @@ Public Class frmBDG
                 Dim form As New frmScroller
                 form.LoadRecords("vw_BDG")
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Valid.SChanged = False
             End If
 
         Catch ex As Exception
@@ -975,6 +1024,7 @@ Public Class frmBDG
                 Dim form As New frmScroller
                 form.LoadRecords("vw_BDG")
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Valid.SChanged = False
             End If
 
         Catch ex As Exception
@@ -1045,6 +1095,7 @@ Public Class frmBDG
                 End Using
                 LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
                 If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+                If GridView2.RowCount = 0 Then XtraMessageBox.Show("Πρέπει πρώτα να καταχωρήσετε διαμερίσματα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
                 Dim sSQL As New System.Text.StringBuilder
                 sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
                 'Προηγούμενες μετρήσεις
@@ -1460,6 +1511,7 @@ Public Class frmBDG
                 'ExcludeControls.Add(cmdGInvRefresh.Name)
                 'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Valid.SChanged = False
                 'cmdOInvSave.Enabled = False
             End If
         End If
@@ -1484,6 +1536,7 @@ Public Class frmBDG
                 'ExcludeControls.Add(cmdOInvRefresh.Name)
                 'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Valid.SChanged = False
                 'cmdOInvSave.Enabled = False
             End If
 
@@ -1574,6 +1627,16 @@ Public Class frmBDG
         '    e.Appearance.DrawString(e.Cache, e.Info.DisplayText, r)
         '    e.Handled = True
 
+    End Sub
+
+    Private Sub frmBDG_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
     End Sub
 
 
@@ -1672,4 +1735,5 @@ Public Class frmBDG
     '                txtTacB.Enabled = False
     '        End If
     '    End Sub
+
 End Class

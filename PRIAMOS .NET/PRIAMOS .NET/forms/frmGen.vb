@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
 Imports DevExpress.CodeParser
@@ -58,6 +59,7 @@ Public Class frmGen
 
     Private Sub frmGen_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadGen()
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmGen = Me.Location
         My.Settings.Save()
@@ -323,7 +325,11 @@ Public Class frmGen
 
                         End Select
                 End Select
-                If sResult Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If sResult Then
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
+                End If
+
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -518,5 +524,15 @@ Public Class frmGen
 
     Private Sub frmGen_LocationChanged(sender As Object, e As EventArgs) Handles Me.LocationChanged
 
+    End Sub
+
+    Private Sub frmGen_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
     End Sub
 End Class

@@ -951,6 +951,7 @@ Public Class frmScroller
         Dim col1 As GridColumn
         Dim grdColumns As List(Of GridColumn)
         LoadRecords()
+        If myReader Is Nothing Then Exit Sub
         'Εαν υπάρχουν πεδία που πρέπει να προστεθούν από την βάση
         If myReader.FieldCount > GridView1.Columns.Count Then
             Dim schema As DataTable = myReader.GetSchemaTable()

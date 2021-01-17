@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraLayout
@@ -58,6 +59,7 @@ Public Class frmAPT
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APT where id ='" + sID + "'")
         End Select
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmAPT = Me.Location
         My.Settings.Save()
@@ -92,13 +94,13 @@ Public Class frmAPT
                     End If
                     'Καθαρισμός Controls
                     If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
-                        txtCode.Text = DBQ.GetNextId("APT")
-                        Dim form As frmBDG = Frm
-                        form.AptRefresh()
-                        XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End If
+                    txtCode.Text = DBQ.GetNextId("APT")
+                    Dim form As frmBDG = Frm
+                    form.AptRefresh()
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                 End If
-
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -148,6 +150,16 @@ Public Class frmAPT
             Case 1 : ManageOwner()
             Case 2 : cboOwner.EditValue = Nothing
         End Select
+    End Sub
+
+    Private Sub frmAPT_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
     End Sub
     'Private Sub LoadAPT()
     '    Dim sSQL As String

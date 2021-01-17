@@ -26,6 +26,7 @@ Module Main
         Public Decimals As Integer
     End Structure
     Public ProgProps As PROG_PROPS
+
     Public Function toSQLValue(t As DevExpress.XtraEditors.TextEdit, Optional ByVal isnum As Boolean = False) As String
         If t.Text.Length = 0 Then
             Return "NULL" 'this will pass through any SQL statement without notice  

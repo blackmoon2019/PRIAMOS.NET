@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 
 Public Class frmUsers
@@ -42,6 +43,7 @@ Public Class frmUsers
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                 End If
             End If
         Catch ex As Exception
@@ -59,6 +61,7 @@ Public Class frmUsers
                 Case FormMode.NewRecord
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
+            Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
@@ -89,6 +92,17 @@ Public Class frmUsers
 
     Private Sub cboMail_GotFocus(sender As Object, e As EventArgs) Handles cboMail.GotFocus
         frmMain.bbFields.Caption = "DB Field: USERS.mailid"
+    End Sub
+
+    Private Sub frmUsers_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
+
     End Sub
     'Private Sub FillList()
     '    Dim ds As DataSet = New DataSet
