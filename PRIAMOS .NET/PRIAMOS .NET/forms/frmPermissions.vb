@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 
 Public Class frmPermissions
@@ -49,6 +50,7 @@ Public Class frmPermissions
                     FillCbo.FillCheckedListForms(chkLstUsers, FormMode.NewRecord)
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
+            Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
@@ -105,6 +107,7 @@ Public Class frmPermissions
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                 End If
             End If
         Catch ex As Exception
@@ -131,5 +134,15 @@ Public Class frmPermissions
 
     Private Sub chkInsert_GotFocus(sender As Object, e As EventArgs) Handles chkInsert.GotFocus
         frmMain.bbFields.Caption = "DB Field: RIGHTS.insert"
+    End Sub
+
+    Private Sub frmPermissions_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
     End Sub
 End Class

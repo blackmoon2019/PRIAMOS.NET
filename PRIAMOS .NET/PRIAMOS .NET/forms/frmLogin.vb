@@ -78,4 +78,7 @@ Public Class frmLogin
         End If
     End Sub
 
+    Private Sub cmdConnect_Click(sender As Object, e As EventArgs) Handles cmdConnect.Click
+        frmDBConnection.Show()
+    End Sub
 End Class

@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports DevExpress.Data
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
+Imports System.ComponentModel
 
 Public Class frmMailSettings
     Private sID As String
@@ -38,7 +39,7 @@ Public Class frmMailSettings
                 Case FormMode.NewRecord
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
-
+            Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()
@@ -113,6 +114,7 @@ Public Class frmMailSettings
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                 End If
             End If
             '    values.Add(GridLookUpEdit1View.GetRowCellValue(rowHandle, "Realname"))
@@ -165,5 +167,15 @@ Public Class frmMailSettings
 
     Private Sub txtUN_GotFocus(sender As Object, e As EventArgs) Handles txtUN.GotFocus
         frmMain.bbFields.Caption = "DB Field: MAILS.un"
+    End Sub
+
+    Private Sub frmMailSettings_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
     End Sub
 End Class

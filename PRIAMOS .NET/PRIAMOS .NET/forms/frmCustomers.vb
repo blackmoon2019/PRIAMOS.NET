@@ -1,4 +1,5 @@
 ﻿Imports System.CodeDom.Compiler
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.IO
 Imports DevExpress.XtraBars.Navigation
@@ -83,6 +84,7 @@ Public Class frmCustomers
                 GridView1.Columns.Add(C)
 
         End Select
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmCustomers = Me.Location
         My.Settings.Save()
@@ -215,6 +217,7 @@ Public Class frmCustomers
                 'Cls.ClearCtrls(LayoutControl1)
                 If sResult = True Then
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                     Mode = FormMode.EditRecord
                     txtFileNames.Text = ""
                 End If
@@ -380,6 +383,16 @@ Public Class frmCustomers
 
     Private Sub txtFileNames_EditValueChanged(sender As Object, e As EventArgs) Handles txtFileNames.EditValueChanged
 
+    End Sub
+
+    Private Sub frmCustomers_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If Valid.SChanged Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                Valid.SChanged = False
+            Else
+                e.Cancel = True
+            End If
+        End If
     End Sub
 
 
