@@ -889,7 +889,7 @@ Public Class frmScroller
     ' Copy Cell
     Private Sub BarCopyCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyCell.ItemClick
         Dim view As GridView = CType(GridView1, GridView)
-        If View.GetRowCellValue(View.FocusedRowHandle, View.FocusedColumn) IsNot Nothing AndAlso View.GetRowCellValue(View.FocusedRowHandle, View.FocusedColumn).ToString() <> [String].Empty Then
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
             Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
         End If
     End Sub

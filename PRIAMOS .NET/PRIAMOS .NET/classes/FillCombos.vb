@@ -326,7 +326,7 @@ Public Class FillCombos
         Try
             Dim sSQL As String
             If mode = FormMode.NewRecord Then
-                sSQL = "Select id,name' from vw_MLC"
+                sSQL = "Select id,name from vw_MLC"
             Else
                 sSQL = "Select id,name ,
                        isnull((select case when BM.id is not null then 1 else 0 end as checked

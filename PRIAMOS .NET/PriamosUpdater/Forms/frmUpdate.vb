@@ -93,4 +93,28 @@ Partial Public Class frmUpdate
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         End
     End Sub
+
+    Private Sub ProgressBarControl1_EditValueChanged(sender As Object, e As EventArgs) Handles ProgressBarControl1.EditValueChanged
+
+    End Sub
+
+    Private Sub ProgressBarControl2_EditValueChanged(sender As Object, e As EventArgs) Handles ProgressBarControl2.EditValueChanged
+
+    End Sub
+
+    Private Sub peImage_EditValueChanged(sender As Object, e As EventArgs) Handles peImage.EditValueChanged
+
+    End Sub
+
+    Private Sub lblTotal_Click(sender As Object, e As EventArgs) Handles lblTotal.Click
+
+    End Sub
+
+    Private Sub lblFileCounter_Click(sender As Object, e As EventArgs) Handles lblFileCounter.Click
+
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+
+    End Sub
 End Class

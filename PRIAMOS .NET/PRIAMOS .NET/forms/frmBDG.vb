@@ -95,6 +95,7 @@ Public Class frmBDG
                 NavDecontamination.Enabled = False
                 NavConsumption.Enabled = False
                 NavBoiler.Enabled = False
+                NavAPM.Enabled = False
             Case FormMode.EditRecord
                 FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
@@ -257,6 +258,7 @@ Public Class frmBDG
                     NavDecontamination.Enabled = True
                     NavConsumption.Enabled = True
                     NavBoiler.Enabled = True
+                    NavAPM.Enabled = True
 
                     If Mode = FormMode.NewRecord Then sID = sGuid
                     ' Εαν έχει γίνει αλλαγή στην αμοιβή διαχείρισης
