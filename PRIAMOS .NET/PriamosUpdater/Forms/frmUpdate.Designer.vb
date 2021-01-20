@@ -39,41 +39,46 @@
         '
         'ProgressBarControl1
         '
-        Me.ProgressBarControl1.Location = New System.Drawing.Point(15, 563)
+        Me.ProgressBarControl1.Location = New System.Drawing.Point(8, 293)
+        Me.ProgressBarControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ProgressBarControl1.Name = "ProgressBarControl1"
         Me.ProgressBarControl1.Properties.ShowTitle = True
-        Me.ProgressBarControl1.Size = New System.Drawing.Size(1240, 36)
+        Me.ProgressBarControl1.Size = New System.Drawing.Size(620, 19)
         Me.ProgressBarControl1.TabIndex = 0
         '
         'ProgressBarControl2
         '
-        Me.ProgressBarControl2.Location = New System.Drawing.Point(15, 653)
+        Me.ProgressBarControl2.Location = New System.Drawing.Point(8, 340)
+        Me.ProgressBarControl2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ProgressBarControl2.Name = "ProgressBarControl2"
         Me.ProgressBarControl2.Properties.ShowTitle = True
-        Me.ProgressBarControl2.Size = New System.Drawing.Size(1240, 36)
+        Me.ProgressBarControl2.Size = New System.Drawing.Size(620, 19)
         Me.ProgressBarControl2.TabIndex = 1
         '
         'cmdUpdate
         '
-        Me.cmdUpdate.Location = New System.Drawing.Point(1102, 717)
+        Me.cmdUpdate.Location = New System.Drawing.Point(551, 373)
+        Me.cmdUpdate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmdUpdate.Name = "cmdUpdate"
-        Me.cmdUpdate.Size = New System.Drawing.Size(150, 46)
+        Me.cmdUpdate.Size = New System.Drawing.Size(75, 24)
         Me.cmdUpdate.TabIndex = 2
         Me.cmdUpdate.Text = "Ενημέρωση"
         '
         'cmdExit
         '
-        Me.cmdExit.Location = New System.Drawing.Point(941, 717)
+        Me.cmdExit.Location = New System.Drawing.Point(470, 373)
+        Me.cmdExit.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(150, 46)
+        Me.cmdExit.Size = New System.Drawing.Size(75, 24)
         Me.cmdExit.TabIndex = 3
         Me.cmdExit.Text = "Έξοδος"
         '
         'lblTotal
         '
-        Me.lblTotal.Location = New System.Drawing.Point(27, 619)
+        Me.lblTotal.Location = New System.Drawing.Point(14, 322)
+        Me.lblTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(0, 25)
+        Me.lblTotal.Size = New System.Drawing.Size(0, 13)
         Me.lblTotal.TabIndex = 4
         '
         'peImage
@@ -82,7 +87,6 @@
         Me.peImage.Dock = System.Windows.Forms.DockStyle.Top
         Me.peImage.EditValue = Global.PriamosUpdater.My.Resources.Resources.logo
         Me.peImage.Location = New System.Drawing.Point(0, 0)
-        Me.peImage.Margin = New System.Windows.Forms.Padding(6)
         Me.peImage.Name = "peImage"
         Me.peImage.Properties.AllowFocused = False
         Me.peImage.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
@@ -91,21 +95,25 @@
         Me.peImage.Properties.ShowMenu = False
         Me.peImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
         Me.peImage.Properties.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None
-        Me.peImage.Size = New System.Drawing.Size(1264, 509)
+        Me.peImage.Size = New System.Drawing.Size(632, 265)
         Me.peImage.TabIndex = 15
         '
         'lblFileCounter
         '
-        Me.lblFileCounter.Location = New System.Drawing.Point(27, 518)
+        Me.lblFileCounter.Location = New System.Drawing.Point(14, 269)
+        Me.lblFileCounter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.lblFileCounter.Name = "lblFileCounter"
-        Me.lblFileCounter.Size = New System.Drawing.Size(0, 25)
+        Me.lblFileCounter.Size = New System.Drawing.Size(0, 13)
         Me.lblFileCounter.TabIndex = 16
+        '
+        'BackgroundWorker1
+        '
         '
         'frmUpdate
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1264, 775)
+        Me.ClientSize = New System.Drawing.Size(632, 403)
         Me.ControlBox = False
         Me.Controls.Add(Me.lblFileCounter)
         Me.Controls.Add(Me.peImage)
@@ -115,7 +123,6 @@
         Me.Controls.Add(Me.ProgressBarControl2)
         Me.Controls.Add(Me.ProgressBarControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.MaximizeBox = False
         Me.Name = "frmUpdate"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
