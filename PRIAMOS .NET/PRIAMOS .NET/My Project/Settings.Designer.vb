@@ -128,10 +128,10 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property UN() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")>  _
+        Public Property UN() As Global.System.Guid
             Get
-                Return CType(Me("UN"),String)
+                Return CType(Me("UN"),Global.System.Guid)
             End Get
             Set
                 Me("UN") = value

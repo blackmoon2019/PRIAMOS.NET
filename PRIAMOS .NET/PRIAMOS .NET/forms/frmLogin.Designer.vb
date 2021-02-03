@@ -25,7 +25,7 @@ Partial Class frmLogin
         Me.cmdConnect = New DevExpress.XtraEditors.SimpleButton()
         Me.chkRememberUN = New DevExpress.XtraEditors.CheckEdit()
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
-        Me.txtUN = New DevExpress.XtraEditors.TextEdit()
+        Me.txtUN = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.chkRememberUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,7 +63,6 @@ Partial Class frmLogin
         Me.cmdConnect.Name = "cmdConnect"
         Me.cmdConnect.Size = New System.Drawing.Size(30, 27)
         Me.cmdConnect.TabIndex = 6
-        Me.cmdConnect.Visible = False
         '
         'chkRememberUN
         '
@@ -81,30 +80,32 @@ Partial Class frmLogin
         Me.txtPWD.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtPWD.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.txtPWD.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPWD.Size = New System.Drawing.Size(226, 20)
+        Me.txtPWD.Size = New System.Drawing.Size(210, 20)
         Me.txtPWD.TabIndex = 2
         '
         'txtUN
         '
-        Me.txtUN.Location = New System.Drawing.Point(12, 42)
+        Me.txtUN.Location = New System.Drawing.Point(12, 41)
         Me.txtUN.Name = "txtUN"
         Me.txtUN.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtUN.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.txtUN.Size = New System.Drawing.Size(227, 20)
-        Me.txtUN.TabIndex = 0
+        Me.txtUN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtUN.Properties.NullText = ""
+        Me.txtUN.Size = New System.Drawing.Size(211, 20)
+        Me.txtUN.TabIndex = 7
         '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(262, 211)
+        Me.Controls.Add(Me.txtUN)
         Me.Controls.Add(Me.cmdConnect)
         Me.Controls.Add(Me.chkRememberUN)
         Me.Controls.Add(Me.cmdLogin)
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.txtPWD)
         Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.txtUN)
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PRIAMOS .NET"
@@ -115,12 +116,11 @@ Partial Class frmLogin
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents txtUN As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtPWD As DevExpress.XtraEditors.TextEdit
     Friend WithEvents cmdLogin As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents chkRememberUN As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cmdConnect As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtUN As DevExpress.XtraEditors.LookUpEdit
 End Class
