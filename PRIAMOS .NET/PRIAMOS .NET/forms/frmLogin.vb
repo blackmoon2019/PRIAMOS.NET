@@ -7,19 +7,22 @@ Public Class frmLogin
     Private UserPermissions As New CheckPermissions
     Private Prog_Prop As New ProgProp
     Private CheckFUpdate As New CheckForUpdates
+    Private FillCbo As New FillCombos
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim CN As New CN
 
         'MultipleActiveResultSets=True
         chkRememberUN.EditValue = My.Settings.UNSave
-        If My.Settings.UNSave = True Then txtUN.Text = My.Settings.UN
         If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         'Έλεγχος νέας έκδοσης
         If CheckFUpdate.FindNewVersion Then
 
         Else
+            FillCbo.USR(txtUN)
+            If My.Settings.UNSave = True Then txtUN.EditValue = System.Guid.Parse(My.Settings.UN.ToString)
             If Debugger.IsAttached Then
-                txtUN.Text = "blackmoon"
+                'txtUN.Text = "blackmoon"
+                txtUN.EditValue = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B")
                 txtPWD.Text = "mavros1!"
                 cmdLogin.Select()
             Else
@@ -50,7 +53,7 @@ Public Class frmLogin
                     'Δεκαδικά Προγράμματος
                     Prog_Prop.GetProgDecimals()
                     XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    If My.Settings.UNSave = True Then My.Settings.UN = txtUN.Text : My.Settings.Save()
+                    If My.Settings.UNSave = True Then My.Settings.UN = txtUN.EditValue : My.Settings.Save()
                 End If
                 frmMain.Show()
                 Me.Close()
@@ -62,7 +65,7 @@ Public Class frmLogin
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub txtUN_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUN.KeyDown
+    Private Sub txtUN_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then txtPWD.Select()
     End Sub
 
@@ -73,7 +76,7 @@ Public Class frmLogin
     Private Sub chkRememberUN_CheckedChanged(sender As Object, e As EventArgs) Handles chkRememberUN.CheckedChanged
         My.Settings.UNSave = chkRememberUN.EditValue
         If My.Settings.UNSave = False Then
-            My.Settings.UN = ""
+            My.Settings.UN = System.Guid.Parse("00000000-0000-0000-0000-000000000000")
             My.Settings.Save()
         End If
     End Sub

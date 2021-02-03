@@ -51,21 +51,22 @@ Partial Class frmMain
         Me.bbFuelType = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.bbParamaters = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbCalcTypes = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBChangeUsr = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage3 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RepositoryItemHypertextLabel1 = New DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel()
         Me.RepositoryItemHypertextLabel2 = New DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel()
         Me.RepositoryItemHyperLinkEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.MainstatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.XtraTabbedMdiManager1 = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
-        Me.RibbonPage3 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
-        Me.bbCalcTypes = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCalcEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,9 +81,9 @@ Partial Class frmMain
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbHTypes, Me.bbBTypes, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.BarButtonItem3, Me.bbCalcTypes})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbHTypes, Me.bbBTypes, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.BarButtonItem3, Me.bbCalcTypes, Me.BBChangeUsr})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 36
+        Me.RibbonControl1.MaxItemId = 37
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2, Me.RibbonPage3})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.BarClose)
@@ -333,6 +334,28 @@ Partial Class frmMain
         Me.bbParamaters.Name = "bbParamaters"
         Me.bbParamaters.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'BarButtonItem3
+        '
+        Me.BarButtonItem3.Caption = "Κατηγορίες Χιλιοστών"
+        Me.BarButtonItem3.Id = 34
+        Me.BarButtonItem3.Name = "BarButtonItem3"
+        Me.BarButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbCalcTypes
+        '
+        Me.bbCalcTypes.Caption = "Τύποι Υπολογισμού"
+        Me.bbCalcTypes.Id = 35
+        Me.bbCalcTypes.Name = "bbCalcTypes"
+        Me.bbCalcTypes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BBChangeUsr
+        '
+        Me.BBChangeUsr.Caption = "Αλλαγή Χρήστη"
+        Me.BBChangeUsr.Id = 36
+        Me.BBChangeUsr.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_change_user_40
+        Me.BBChangeUsr.Name = "BBChangeUsr"
+        Me.BBChangeUsr.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1})
@@ -344,6 +367,7 @@ Partial Class frmMain
         Me.RPG1.ItemLinks.Add(Me.bbUsers)
         Me.RPG1.ItemLinks.Add(Me.bbBDG)
         Me.RPG1.ItemLinks.Add(Me.bbCCT)
+        Me.RPG1.ItemLinks.Add(Me.BBChangeUsr)
         Me.RPG1.Name = "RPG1"
         Me.RPG1.Text = "Λειτουργίες"
         '
@@ -363,6 +387,20 @@ Partial Class frmMain
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "Πίνακες"
         '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbHTypes)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbBTypes)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbFuelType)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "Θέρμανση"
+        '
+        'RibbonPage3
+        '
+        Me.RibbonPage3.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup4})
+        Me.RibbonPage3.Name = "RibbonPage3"
+        Me.RibbonPage3.Text = "Ρυθμίσεις"
+        '
         'RibbonPageGroup3
         '
         Me.RibbonPageGroup3.ItemLinks.Add(Me.bbParamaters)
@@ -371,13 +409,12 @@ Partial Class frmMain
         Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
         Me.RibbonPageGroup3.Text = "Παράμετροι"
         '
-        'RibbonPageGroup1
+        'RibbonPageGroup4
         '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbHTypes)
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbBTypes)
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbFuelType)
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "Θέρμανση"
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.bbCalcTypes)
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonItem3)
+        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
+        Me.RibbonPageGroup4.Text = "RibbonPageGroup4"
         '
         'RepositoryItemHypertextLabel1
         '
@@ -419,33 +456,6 @@ Partial Class frmMain
         Me.XtraTabbedMdiManager1.MdiParent = Me
         Me.XtraTabbedMdiManager1.ShowFloatingDropHint = DevExpress.Utils.DefaultBoolean.[True]
         Me.XtraTabbedMdiManager1.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.[True]
-        '
-        'RibbonPage3
-        '
-        Me.RibbonPage3.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup4})
-        Me.RibbonPage3.Name = "RibbonPage3"
-        Me.RibbonPage3.Text = "Ρυθμίσεις"
-        '
-        'RibbonPageGroup4
-        '
-        Me.RibbonPageGroup4.ItemLinks.Add(Me.bbCalcTypes)
-        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonItem3)
-        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
-        Me.RibbonPageGroup4.Text = "RibbonPageGroup4"
-        '
-        'BarButtonItem3
-        '
-        Me.BarButtonItem3.Caption = "Κατηγορίες Χιλιοστών"
-        Me.BarButtonItem3.Id = 34
-        Me.BarButtonItem3.Name = "BarButtonItem3"
-        Me.BarButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'bbCalcTypes
-        '
-        Me.bbCalcTypes.Caption = "Τύποι Υπολογισμού"
-        Me.bbCalcTypes.Id = 35
-        Me.bbCalcTypes.Name = "bbCalcTypes"
-        Me.bbCalcTypes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'frmMain
         '
@@ -520,4 +530,5 @@ Partial Class frmMain
     Friend WithEvents bbCalcTypes As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPage3 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup4 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents BBChangeUsr As DevExpress.XtraBars.BarButtonItem
 End Class

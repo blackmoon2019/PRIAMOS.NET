@@ -182,4 +182,9 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub BBChangeUsr_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBChangeUsr.ItemClick
+        frmLogin.Show()
+        Me.Close()
+    End Sub
 End Class
