@@ -29,19 +29,19 @@ Public Class CN
         Dim DBConnection As New SqlConnection()
         Dim cnSTR As New System.Text.StringBuilder
 
-        cnSTR.AppendLine("Password = " & Pwd & ";")
-        cnSTR.AppendLine("Persist Security Info=" & authentication & ";")
-        If authentication = "True" Then cnSTR.AppendLine("User ID= " & Login & ";")
-        If Database <> "" Then cnSTR.AppendLine("Initial Catalog=" & Database & ";")
-        cnSTR.AppendLine("Data Source=" & Servername & ";")
-        cnSTR.AppendLine("MultipleActiveResultSets = True")
+        If authentication = "True" Then cnSTR.Append("Password = " & Pwd & ";")
+        cnSTR.Append("Persist Security Info=" & authentication & ";")
+        If authentication = "True" Then cnSTR.Append("User ID= " & Login & ";")
+        If Database <> "" Then cnSTR.Append("Initial Catalog=" & Database & ";")
+        cnSTR.Append("Data Source=" & Servername & ";")
+        cnSTR.Append("MultipleActiveResultSets = True")
 
         Try
             DBConnection.ConnectionString = cnSTR.ToString
             DBConnection.Open()
 
             If DBConnection.State = ConnectionState.Open Then
-                CNDB = DBConnection
+                CNDB2 = DBConnection
                 Return True
             Else
                 DBConnection.Close()

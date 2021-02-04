@@ -73,29 +73,30 @@ Partial Class frmDBConnection
         '
         'cboDatabases
         '
-        Me.cboDatabases.Location = New System.Drawing.Point(94, 108)
+        Me.cboDatabases.Location = New System.Drawing.Point(105, 108)
         Me.cboDatabases.Name = "cboDatabases"
         Me.cboDatabases.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.cboDatabases.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.cboDatabases.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboDatabases.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)})
         Me.cboDatabases.Properties.NullText = ""
-        Me.cboDatabases.Size = New System.Drawing.Size(252, 20)
+        Me.cboDatabases.Size = New System.Drawing.Size(241, 20)
         Me.cboDatabases.StyleController = Me.LayoutControl1
         Me.cboDatabases.TabIndex = 11
         '
         'txtLogin
         '
-        Me.txtLogin.Location = New System.Drawing.Point(94, 60)
+        Me.txtLogin.Location = New System.Drawing.Point(105, 60)
         Me.txtLogin.Name = "txtLogin"
-        Me.txtLogin.Size = New System.Drawing.Size(252, 20)
+        Me.txtLogin.Size = New System.Drawing.Size(241, 20)
         Me.txtLogin.StyleController = Me.LayoutControl1
         Me.txtLogin.TabIndex = 6
         '
         'txtPWD
         '
-        Me.txtPWD.Location = New System.Drawing.Point(94, 84)
+        Me.txtPWD.Location = New System.Drawing.Point(105, 84)
         Me.txtPWD.Name = "txtPWD"
-        Me.txtPWD.Size = New System.Drawing.Size(252, 20)
+        Me.txtPWD.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPWD.Size = New System.Drawing.Size(241, 20)
         Me.txtPWD.StyleController = Me.LayoutControl1
         Me.txtPWD.TabIndex = 7
         '
@@ -119,20 +120,20 @@ Partial Class frmDBConnection
         '
         'txtServerName
         '
-        Me.txtServerName.Location = New System.Drawing.Point(94, 12)
+        Me.txtServerName.Location = New System.Drawing.Point(105, 12)
         Me.txtServerName.Name = "txtServerName"
-        Me.txtServerName.Size = New System.Drawing.Size(252, 20)
+        Me.txtServerName.Size = New System.Drawing.Size(241, 20)
         Me.txtServerName.StyleController = Me.LayoutControl1
         Me.txtServerName.TabIndex = 6
         '
         'cboAuthentication
         '
-        Me.cboAuthentication.Location = New System.Drawing.Point(94, 36)
+        Me.cboAuthentication.Location = New System.Drawing.Point(105, 36)
         Me.cboAuthentication.Name = "cboAuthentication"
         Me.cboAuthentication.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboAuthentication.Properties.DropDownRows = 3
         Me.cboAuthentication.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboAuthentication.Size = New System.Drawing.Size(252, 20)
+        Me.cboAuthentication.Size = New System.Drawing.Size(241, 20)
         Me.cboAuthentication.StyleController = Me.LayoutControl1
         Me.cboAuthentication.TabIndex = 10
         '
@@ -151,8 +152,9 @@ Partial Class frmDBConnection
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(338, 24)
+        Me.LayoutControlItem3.Tag = ""
         Me.LayoutControlItem3.Text = "Login"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(70, 13)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(81, 13)
         '
         'LayoutControlItem4
         '
@@ -160,8 +162,9 @@ Partial Class frmDBConnection
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Size = New System.Drawing.Size(338, 24)
+        Me.LayoutControlItem4.Tag = ""
         Me.LayoutControlItem4.Text = "Password"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(70, 13)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(81, 13)
         '
         'LayoutControlItem5
         '
@@ -186,19 +189,23 @@ Partial Class frmDBConnection
         Me.LayoutControlItem1.Control = Me.txtServerName
         Me.LayoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem1.CustomizationFormText = "Login"
+        Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Size = New System.Drawing.Size(338, 24)
+        Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "Server name"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(70, 13)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(81, 13)
         '
         'Authentication
         '
         Me.Authentication.Control = Me.cboAuthentication
+        Me.Authentication.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.Authentication.Location = New System.Drawing.Point(0, 24)
         Me.Authentication.Name = "Authentication"
         Me.Authentication.Size = New System.Drawing.Size(338, 24)
-        Me.Authentication.TextSize = New System.Drawing.Size(70, 13)
+        Me.Authentication.Tag = "1"
+        Me.Authentication.TextSize = New System.Drawing.Size(81, 13)
         '
         'EmptySpaceItem1
         '
@@ -214,7 +221,7 @@ Partial Class frmDBConnection
         Me.Databases.Location = New System.Drawing.Point(0, 96)
         Me.Databases.Name = "Databases"
         Me.Databases.Size = New System.Drawing.Size(338, 24)
-        Me.Databases.TextSize = New System.Drawing.Size(70, 13)
+        Me.Databases.TextSize = New System.Drawing.Size(81, 13)
         '
         'frmDBConnection
         '

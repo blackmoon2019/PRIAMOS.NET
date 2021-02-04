@@ -3,6 +3,7 @@ Imports DevExpress.XtraGrid.Columns
 
 Module Main
     Public CNDB As New SqlConnection()
+    Public CNDB2 As New SqlConnection()
     Enum FormMode
         NewRecord = 1
         EditRecord = 2
