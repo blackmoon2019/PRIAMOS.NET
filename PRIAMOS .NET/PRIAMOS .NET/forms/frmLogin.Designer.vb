@@ -59,7 +59,7 @@ Partial Class frmLogin
         '
         Me.cmdConnect.BackgroundImage = Global.PRIAMOS.NET.My.Resources.Resources.icons8_database_administrator_40
         Me.cmdConnect.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_database_administrator_24
-        Me.cmdConnect.Location = New System.Drawing.Point(231, 183)
+        Me.cmdConnect.Location = New System.Drawing.Point(229, 172)
         Me.cmdConnect.Name = "cmdConnect"
         Me.cmdConnect.Size = New System.Drawing.Size(30, 27)
         Me.cmdConnect.TabIndex = 6
@@ -80,7 +80,7 @@ Partial Class frmLogin
         Me.txtPWD.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtPWD.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.txtPWD.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPWD.Size = New System.Drawing.Size(210, 20)
+        Me.txtPWD.Size = New System.Drawing.Size(237, 20)
         Me.txtPWD.TabIndex = 2
         '
         'txtUN
@@ -91,14 +91,14 @@ Partial Class frmLogin
         Me.txtUN.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.txtUN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtUN.Properties.NullText = ""
-        Me.txtUN.Size = New System.Drawing.Size(211, 20)
+        Me.txtUN.Size = New System.Drawing.Size(238, 20)
         Me.txtUN.TabIndex = 7
         '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(262, 211)
+        Me.ClientSize = New System.Drawing.Size(262, 205)
         Me.Controls.Add(Me.txtUN)
         Me.Controls.Add(Me.cmdConnect)
         Me.Controls.Add(Me.chkRememberUN)
