@@ -843,6 +843,7 @@ Public Class frmScroller
                     Next i
                 End If
             End If
+            If sDataTable = "" And sDataTable2 <> "" Then sDataTable = sDataTable2
             LoadViews()
 
         Catch ex As Exception

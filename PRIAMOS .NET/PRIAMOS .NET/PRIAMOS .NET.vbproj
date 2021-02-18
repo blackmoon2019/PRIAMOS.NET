@@ -541,6 +541,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-technical-support-40.png" />
     <None Include="Resources\icons8-clear-filters-16.png" />
     <None Include="Resources\icons8-filter-16.png" />
     <None Include="Resources\icons8-change-user-40.png" />

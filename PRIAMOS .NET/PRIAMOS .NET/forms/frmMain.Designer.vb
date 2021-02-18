@@ -57,6 +57,7 @@ Partial Class frmMain
         Me.BBChangeUsr = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
         Me.bbTechnicalSupport = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbTechCateg = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -72,7 +73,6 @@ Partial Class frmMain
         Me.RepositoryItemHyperLinkEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit()
         Me.MainstatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.XtraTabbedMdiManager1 = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
-        Me.bbTechCateg = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCalcEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -379,7 +379,16 @@ Partial Class frmMain
         '
         Me.bbTechnicalSupport.Caption = "Τεχνική Υποστήριξη"
         Me.bbTechnicalSupport.Id = 38
+        Me.bbTechnicalSupport.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_technical_support_40
         Me.bbTechnicalSupport.Name = "bbTechnicalSupport"
+        Me.bbTechnicalSupport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'bbTechCateg
+        '
+        Me.bbTechCateg.Caption = "Κατηγορίες Τεχνικής Υποστήριξης"
+        Me.bbTechCateg.Id = 39
+        Me.bbTechCateg.Name = "bbTechCateg"
+        Me.bbTechCateg.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'RibbonPage1
         '
@@ -495,13 +504,6 @@ Partial Class frmMain
         Me.XtraTabbedMdiManager1.MdiParent = Me
         Me.XtraTabbedMdiManager1.ShowFloatingDropHint = DevExpress.Utils.DefaultBoolean.[True]
         Me.XtraTabbedMdiManager1.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.[True]
-        '
-        'bbTechCateg
-        '
-        Me.bbTechCateg.Caption = "Κατηγορίες Τεχνικής Υποστήριξης"
-        Me.bbTechCateg.Id = 39
-        Me.bbTechCateg.Name = "bbTechCateg"
-        Me.bbTechCateg.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'frmMain
         '

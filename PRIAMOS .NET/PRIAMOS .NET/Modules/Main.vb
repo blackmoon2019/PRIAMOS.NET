@@ -22,6 +22,10 @@ Module Main
         Public AllowEdit As Boolean
         Public AllowDelete As Boolean
         Public Email As String
+        Public EmailServer As String
+        Public EmailPassword As String
+        Public EmailPort As Integer
+        Public EmailSSL As Boolean
     End Structure
     Public UserProps As USER_PROPS
     Public Structure PROG_PROPS
