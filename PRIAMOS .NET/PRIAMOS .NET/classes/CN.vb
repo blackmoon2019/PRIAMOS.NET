@@ -8,6 +8,7 @@ Public Class CN
     Public Function OpenConnection() As Boolean
         Dim DBConnection As New SqlConnection()
         Try
+
             DBConnection.ConnectionString = connStr
             DBConnection.Open()
 

@@ -92,6 +92,7 @@ Public Class DBQueries
         Dim sSQLV As New System.Text.StringBuilder ' Το 2ο StringField αφορά τις τιμές
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
+        Dim FormHasPic As Boolean = False
         Dim pic As DevExpress.XtraEditors.PictureEdit
         'Tag Value = 0 For Load
         'Tag Value = 1 For Insert
@@ -161,7 +162,7 @@ Public Class DBQueries
                                     End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.PictureEdit Then
                                     pic = Ctrl
-
+                                    FormHasPic = True
                                     If pic.Text <> "" Then
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & "@Photo")
                                     Else
@@ -223,7 +224,7 @@ NextItem:
             'Εκτέλεση QUERY
 
             Using oCmd As New SqlCommand(sSQLF.ToString, CNDB)
-                oCmd.Parameters.AddWithValue("@Photo", pic.EditValue)
+                If FormHasPic Then oCmd.Parameters.AddWithValue("@Photo", pic.EditValue)
                 oCmd.ExecuteNonQuery()
             End Using
             Return True
@@ -508,6 +509,8 @@ NextItem:
         Dim sSQL As New System.Text.StringBuilder ' Το 1ο StringField αφορά τα πεδία
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
+        Dim FormHasPic As Boolean = False
+        Dim pic As DevExpress.XtraEditors.PictureEdit
         'Tag Value = 0 For Load
         'Tag Value = 1 For Insert
         'Tag Value = 2 For Update
@@ -566,6 +569,14 @@ NextItem:
                                     Else
                                         sSQL.Append("NULL")
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.PictureEdit Then
+                                    pic = Ctrl
+                                    FormHasPic = True
+                                    If pic.Text <> "" Then
+                                        sSQL.Append("@Photo")
+                                    Else
+                                        sSQL.Append("NULL")
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                     Dim dt As DevExpress.XtraEditors.DateEdit
                                     dt = Ctrl
@@ -611,6 +622,7 @@ NextItem:
             sSQL.Append("WHERE ID = " & toSQLValueS(sID))
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                If FormHasPic Then oCmd.Parameters.AddWithValue("@Photo", pic.EditValue)
                 oCmd.ExecuteNonQuery()
             End Using
             Return True

@@ -54,4 +54,9 @@ Public Class frmParameters
         'Δεκαδικά Προγράμματος
         Prog_Prop.SetProgDecimals(txtDecimals.EditValue)
     End Sub
+
+    Private Sub txtEmail_EditValueChanged(sender As Object, e As EventArgs) Handles txtEmail.EditValueChanged
+        'Email Support
+        Prog_Prop.SetProgTechSupportEmail(txtEmail.EditValue)
+    End Sub
 End Class

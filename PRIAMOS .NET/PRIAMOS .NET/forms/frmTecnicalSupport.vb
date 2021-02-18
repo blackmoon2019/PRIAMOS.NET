@@ -1,4 +1,6 @@
 ﻿Imports System.ComponentModel
+Imports System.IO
+Imports System.Net.Mail
 Imports DevExpress.XtraEditors
 
 Public Class frmTecnicalSupport
@@ -41,6 +43,7 @@ Public Class frmTecnicalSupport
                 txtCode.Text = DBQ.GetNextId("TECH_SUP")
                 txtFrom.Text = UserProps.Email
                 txtEmailTo.Text = ProgProps.SupportEmail
+                cmdEmail.Enabled = False
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_SUP where id ='" + sID + "'")
         End Select
@@ -67,9 +70,13 @@ Public Class frmTecnicalSupport
                 End Select
                 If sResult Then
                     'Καθαρισμός Controls
-                    If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
-                    lCode.Text = DBQ.GetNextId("TECH_SUP")
+                    'If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
+                    'txtCode.Text = DBQ.GetNextId("TECH_SUP")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    cmdEmail.Enabled = True
+                    Dim form As New frmScroller
+                    form.LoadRecords("vw_TECH_SUP")
+
                     Valid.SChanged = False
                 End If
             End If
@@ -87,4 +94,43 @@ Public Class frmTecnicalSupport
             End If
         End If
     End Sub
+
+    Private Sub cmdEmail_Click(sender As Object, e As EventArgs) Handles cmdEmail.Click
+        Try
+            Dim Smtp_Server As New SmtpClient
+            Dim e_mail As New MailMessage()
+            Smtp_Server.UseDefaultCredentials = False
+            Smtp_Server.Credentials = New System.Net.NetworkCredential(UserProps.Email, UserProps.EmailPassword)
+
+            Smtp_Server.Port = UserProps.EmailPort
+            Smtp_Server.EnableSsl = UserProps.EmailSSL
+            Smtp_Server.Host = UserProps.EmailServer
+
+            e_mail = New MailMessage()
+            e_mail.From = New MailAddress(txtFrom.Text)
+            If txtEmailTo.Text <> "" Then e_mail.To.Add(txtEmailTo.Text)
+            If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
+            e_mail.Subject = txtSubject.Text
+            e_mail.IsBodyHtml = True
+            e_mail.Body = txtBody.Text
+            Dim myMailHTMLBody = "<html><head></head><body>" & txtBody.Text & " <img src=cid:ThePictureID></body></html>"
+            Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
+            Dim myImageData() As Byte = PictureEdit1.EditValue
+            'CREATE LINKED RESOURCE FOR ALT VIEW
+            Dim myStream As New MemoryStream(myImageData)
+            Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
+            'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
+            myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+            'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
+            myAltView.LinkedResources.Add(myLinkedResouce)
+            e_mail.AlternateViews.Add(myAltView)
+            Smtp_Server.Send(e_mail)
+            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+
 End Class

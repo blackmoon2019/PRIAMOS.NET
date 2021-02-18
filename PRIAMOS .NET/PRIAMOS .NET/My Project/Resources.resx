@@ -136,8 +136,8 @@
   <data name="AddFile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\AddFile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-f5-key-20" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-f5-key-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-refresh-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-refresh-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-export-pdf-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-export-pdf-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,8 +184,8 @@
   <data name="icons8-delete-key-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-delete-key-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-activity-history-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-activity-history-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-exit-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-exit-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-exit-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-exit-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,9 +199,6 @@
   <data name="ExportRtfLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\ExportRtfLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-f2-key-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-f2-key-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-building-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-building-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -213,6 +210,9 @@
   </data>
   <data name="icons8-upload-link-document-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-upload-link-document-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-save-to-grid-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-save-to-grid-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rsz_11rsz_asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_11rsz_asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,6 +229,9 @@
   <data name="rsz_1rsz_asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_1rsz_asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-clear-filters-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-clear-filters-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-filter-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-filter-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -240,6 +243,9 @@
   </data>
   <data name="icons8-tick-box-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-tick-box-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blackmoon logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\blackmoon logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-html-filetype-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-html-filetype-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -268,14 +274,8 @@
   <data name="icons8-delete-document-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-delete-document-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-refresh-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-refresh-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-organization-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-organization-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-analyze-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-analyze-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,8 +286,11 @@
   <data name="icons8-form-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-form-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-save-to-grid-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-save-to-grid-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rsz_asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rsz_asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-f5-key-20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-f5-key-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-customer-insight-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-customer-insight-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,8 +301,8 @@
   <data name="icons8-advertisement-page-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-advertisement-page-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rsz_asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rsz_asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-activity-history-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-activity-history-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-workers-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-workers-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,8 +322,8 @@
   <data name="icons8-copy-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-copy-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icojam-Blue-Bits-Users-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icojam-Blue-Bits-Users-0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-organization-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-organization-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-mail-configuration-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-mail-configuration-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,16 +340,16 @@
   <data name="ExportHtmLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\ExportHtmLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-exit-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-exit-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-f2-key-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-f2-key-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blackmoon logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\blackmoon logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icojam-Blue-Bits-Users-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icojam-Blue-Bits-Users-0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-eco-fuel-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-eco-fuel-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-clear-filters-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-clear-filters-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-technical-support-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-technical-support-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmTecnicalSupport
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmTecnicalSupport
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
@@ -29,7 +29,7 @@ Partial Class frmTecnicalSupport
         Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtEmailTo = New DevExpress.XtraEditors.TextEdit()
-        Me.MemoEdit1 = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtBody = New DevExpress.XtraEditors.MemoEdit()
         Me.txtCC = New DevExpress.XtraEditors.TextEdit()
         Me.txtSubject = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -54,7 +54,7 @@ Partial Class frmTecnicalSupport
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtEmailTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBody.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCC.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSubject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +84,7 @@ Partial Class frmTecnicalSupport
         Me.LayoutControl1.Controls.Add(Me.PictureEdit1)
         Me.LayoutControl1.Controls.Add(Me.txtCode)
         Me.LayoutControl1.Controls.Add(Me.txtEmailTo)
-        Me.LayoutControl1.Controls.Add(Me.MemoEdit1)
+        Me.LayoutControl1.Controls.Add(Me.txtBody)
         Me.LayoutControl1.Controls.Add(Me.txtCC)
         Me.LayoutControl1.Controls.Add(Me.txtSubject)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -111,9 +111,9 @@ Partial Class frmTecnicalSupport
         'cmdEmail
         '
         Me.cmdEmail.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdEmail.Location = New System.Drawing.Point(805, 641)
+        Me.cmdEmail.Location = New System.Drawing.Point(957, 641)
         Me.cmdEmail.Name = "cmdEmail"
-        Me.cmdEmail.Size = New System.Drawing.Size(277, 28)
+        Me.cmdEmail.Size = New System.Drawing.Size(125, 28)
         Me.cmdEmail.StyleController = Me.LayoutControl1
         Me.cmdEmail.TabIndex = 20
         Me.cmdEmail.Text = "Αποστολή Email"
@@ -166,7 +166,7 @@ Partial Class frmTecnicalSupport
         '
         Me.txtCode.Location = New System.Drawing.Point(87, 12)
         Me.txtCode.Name = "txtCode"
-        Me.txtCode.Size = New System.Drawing.Size(79, 20)
+        Me.txtCode.Size = New System.Drawing.Size(83, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 5
         Me.txtCode.Tag = "code,0"
@@ -180,14 +180,14 @@ Partial Class frmTecnicalSupport
         Me.txtEmailTo.TabIndex = 6
         Me.txtEmailTo.Tag = "EmailTo,0,1,2"
         '
-        'MemoEdit1
+        'txtBody
         '
-        Me.MemoEdit1.Location = New System.Drawing.Point(87, 132)
-        Me.MemoEdit1.Name = "MemoEdit1"
-        Me.MemoEdit1.Size = New System.Drawing.Size(1167, 210)
-        Me.MemoEdit1.StyleController = Me.LayoutControl1
-        Me.MemoEdit1.TabIndex = 7
-        Me.MemoEdit1.Tag = "descr,0,1,2"
+        Me.txtBody.Location = New System.Drawing.Point(87, 132)
+        Me.txtBody.Name = "txtBody"
+        Me.txtBody.Size = New System.Drawing.Size(1167, 210)
+        Me.txtBody.StyleController = Me.LayoutControl1
+        Me.txtBody.TabIndex = 7
+        Me.txtBody.Tag = "descr,0,1,2"
         '
         'txtCC
         '
@@ -228,9 +228,9 @@ Partial Class frmTecnicalSupport
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(158, 0)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(162, 0)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1088, 24)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1084, 24)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'lCode
@@ -238,17 +238,18 @@ Partial Class frmTecnicalSupport
         Me.lCode.Control = Me.txtCode
         Me.lCode.Location = New System.Drawing.Point(0, 0)
         Me.lCode.Name = "lCode"
-        Me.lCode.Size = New System.Drawing.Size(158, 24)
+        Me.lCode.Size = New System.Drawing.Size(162, 24)
         Me.lCode.Text = "TechnicalID"
         Me.lCode.TextSize = New System.Drawing.Size(63, 13)
         '
         'LayoutControlItem2
         '
-        Me.LayoutControlItem2.Control = Me.MemoEdit1
+        Me.LayoutControlItem2.Control = Me.txtBody
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(1246, 214)
+        Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Περιγραφή"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(63, 13)
         '
@@ -293,7 +294,7 @@ Partial Class frmTecnicalSupport
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 629)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(793, 32)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(945, 32)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem7
@@ -312,15 +313,16 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.Size = New System.Drawing.Size(738, 24)
+        Me.LayoutControlItem8.Tag = "1"
         Me.LayoutControlItem8.Text = "Θέμα"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(63, 13)
         '
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.cmdEmail
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(793, 629)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(945, 629)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(281, 32)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(129, 32)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
         '
@@ -348,7 +350,7 @@ Partial Class frmTecnicalSupport
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtEmailTo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBody.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCC.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSubject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
@@ -377,7 +379,7 @@ Partial Class frmTecnicalSupport
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtCode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtEmailTo As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents MemoEdit1 As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents txtBody As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents lEmailTo As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents lCode As DevExpress.XtraLayout.LayoutControlItem

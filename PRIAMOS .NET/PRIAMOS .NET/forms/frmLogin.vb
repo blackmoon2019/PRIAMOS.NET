@@ -38,7 +38,7 @@ Public Class frmLogin
         Dim sdr As SqlDataReader
         Try
 
-            sSQL = "select Realname,code,ID,M_UN from vw_USR 
+            sSQL = "select Realname,code,ID,M_UN,M_pwd,server,port,ssl from vw_USR 
                 where UN= '" & txtUN.Text & "' and pwd = '" & txtPWD.Text & "'"
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
@@ -48,6 +48,10 @@ Public Class frmLogin
                     UserProps.RealName = sdr.GetString(sdr.GetOrdinal("Realname"))
                     UserProps.ID = sdr.GetGuid(sdr.GetOrdinal("ID"))
                     UserProps.Email = sdr.GetString(sdr.GetOrdinal("M_un"))
+                    UserProps.EmailServer = sdr.GetString(sdr.GetOrdinal("server"))
+                    UserProps.EmailPassword = sdr.GetString(sdr.GetOrdinal("M_pwd"))
+                    UserProps.EmailPort = sdr.GetInt32(sdr.GetOrdinal("port"))
+                    UserProps.EmailSSL = sdr.GetBoolean(sdr.GetOrdinal("ssl"))
                     'Δεκαδικά Προγράμματος
                     ProgProps.Decimals = Prog_Prop.GetProgDecimals
                     'Support Email
@@ -59,6 +63,7 @@ Public Class frmLogin
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
                     XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     If My.Settings.UNSave = True Then My.Settings.UN = txtUN.EditValue : My.Settings.Save()
+
                 End If
                 frmMain.Show()
                 Me.Close()

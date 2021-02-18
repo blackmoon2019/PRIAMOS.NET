@@ -20,7 +20,7 @@ Public Class ProgProp
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
-            sSQL = "Update PRM set val = '" & sValue & "'"
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'DECIMAL_PLACES'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -43,11 +43,11 @@ Public Class ProgProp
         End Try
 
     End Function
-    Public Sub SetProgTechSupportEmail(ByVal sValue As Integer)
+    Public Sub SetProgTechSupportEmail(ByVal sValue As String)
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
-            sSQL = "Update PRM set val = '" & sValue & "'"
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'SUPPORT_EMAIL'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
