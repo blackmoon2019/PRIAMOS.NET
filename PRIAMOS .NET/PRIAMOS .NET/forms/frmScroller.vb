@@ -12,7 +12,8 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.Utils
-Imports DevExpress.XtraGrid.Views.Card
+Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraGrid.Localization
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -34,6 +35,9 @@ Public Class frmScroller
         LoadRecords()
         'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
         LoadViews()
+        GridLocalizer.Active = New GreekGridLocalizer()
+        'Localizer.Active = New GermanEditorsLocalizer()
+
         'Κρύψιμο Στηλών
         'HideColumns(GridView1, "ID")
         'Δικαιώματα
@@ -118,7 +122,8 @@ Public Class frmScroller
                     Case "vw_PRM" : sSQL = "DELETE FROM PRM WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CALC_TYPES" : sSQL = "DELETE FROM CALC_TYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_MLC" : sSQL = "DELETE FROM MLC WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
-
+                    Case "vw_TECH_CAT" : sSQL = "DELETE FROM TECH_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_TECH_SUP" : sSQL = "DELETE FROM TECH_SUP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                 End Select
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -453,10 +458,20 @@ Public Class frmScroller
         Dim fPermissions As frmPermissions = New frmPermissions()
         Dim fBDG As frmBDG = New frmBDG()
         Dim fCustomers As frmCustomers = New frmCustomers()
+        Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
         Dim fParameters As frmParameters = New frmParameters()
         Dim fGen As frmGen = New frmGen()
 
         Select Case sDataTable
+            Case "vw_TECH_SUP"
+                fTechicalSupport.Text = "Διαχείριση Τεχνικής Υποστήριξης"
+                fTechicalSupport.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fTechicalSupport.MdiParent = frmMain
+                fTechicalSupport.Mode = FormMode.EditRecord
+                fTechicalSupport.Scroller = GridView1
+                fTechicalSupport.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fTechicalSupport), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fTechicalSupport.Show()
             Case "vw_USR"
                 fUsers.Text = "Διαχείριση Χρηστών"
                 fUsers.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
@@ -587,7 +602,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
 
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT"
                 Select Case sDataTable
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
@@ -595,6 +610,7 @@ Public Class frmScroller
                     Case "vw_HTYPES" : fGen.Text = "Τύποι Θέρμανσης" : fGen.DataTable = "HTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_BTYPES" : fGen.Text = "Τύποι Boiler" : fGen.DataTable = "BTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
+                    Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -622,8 +638,17 @@ Public Class frmScroller
         Dim fCustomers As frmCustomers = New frmCustomers()
         Dim fParameters As frmParameters = New frmParameters()
         Dim fGen As frmGen = New frmGen()
+        Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
 
         Select Case sDataTable
+            Case "vw_TECH_SUP"
+                fTechicalSupport.Text = "Διαχείριση Τεχνικής Υποστήριξης"
+                fTechicalSupport.MdiParent = frmMain
+                fTechicalSupport.Mode = FormMode.NewRecord
+                fTechicalSupport.Scroller = GridView1
+                fTechicalSupport.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fTechicalSupport), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fTechicalSupport.Show()
             Case "vw_USR"
                 fUsers.Text = "Διαχείριση Χρηστών"
                 fUsers.MdiParent = frmMain
@@ -743,7 +768,7 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT"
                 Select Case sDataTable
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
@@ -751,6 +776,7 @@ Public Class frmScroller
                     Case "vw_HTYPES" : fGen.Text = "Τύποι Θέρμανσης" : fGen.DataTable = "HTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_BTYPES" : fGen.Text = "Τύποι Boiler" : fGen.DataTable = "BTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
+                    Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -805,7 +831,6 @@ Public Class frmScroller
                 End Select
             End If
             grdMain.DefaultView.PopulateColumns()
-
             'Εαν δεν έχει data το Dataset αναγκαστικά προσθέτω μόνος μου τις στήλες
             If sDataDetail = "" Then
                 If myReader.HasRows = False Then
@@ -991,5 +1016,30 @@ Public Class frmScroller
 
 
     End Sub
+    ' Φίλτρο Με επιλογή
+    Private Sub BarFilterWithCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarFilterWithCell.ItemClick
+        Dim view As GridView = CType(GridView1, GridView)
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+            Dim filterString As String = "[" & GridView1.FocusedColumn.FieldName & "]" & "=" & toSQLValueS(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
+            GridView1.Columns(GridView1.FocusedColumn.FieldName).FilterInfo = New ColumnFilterInfo(filterString)
+        End If
 
+    End Sub
+    ' Αφαίρεση Φίλτρου
+    Private Sub BarRemoveFilterWithCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRemoveFilterWithCell.ItemClick
+        GridView1.Columns(GridView1.FocusedColumn.FieldName).ClearFilter()
+    End Sub
+    ' Φίλτρο Με εξαίρεση
+    Private Sub BarFilterWithoutCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarFilterWithoutCell.ItemClick
+        Dim view As GridView = CType(GridView1, GridView)
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+            Dim filterString As String = "[" & GridView1.FocusedColumn.FieldName & "]" & "<>" & toSQLValueS(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
+            GridView1.Columns(GridView1.FocusedColumn.FieldName).FilterInfo = New ColumnFilterInfo(filterString)
+        End If
+
+    End Sub
+    'Αφαίρεση όλων των φίλτρων
+    Private Sub BarRemoveAllFilters_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRemoveAllFilters.ItemClick
+        GridView1.ClearColumnsFilter()
+    End Sub
 End Class

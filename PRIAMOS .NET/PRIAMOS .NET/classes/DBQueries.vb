@@ -92,6 +92,7 @@ Public Class DBQueries
         Dim sSQLV As New System.Text.StringBuilder ' Το 2ο StringField αφορά τις τιμές
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
+        Dim pic As DevExpress.XtraEditors.PictureEdit
         'Tag Value = 0 For Load
         'Tag Value = 1 For Insert
         'Tag Value = 2 For Update
@@ -158,6 +159,14 @@ Public Class DBQueries
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.PictureEdit Then
+                                    pic = Ctrl
+
+                                    If pic.Text <> "" Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "@Photo")
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                     Dim dt As DevExpress.XtraEditors.DateEdit
                                     dt = Ctrl
@@ -212,7 +221,9 @@ NextItem:
             sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )")
             sSQLF.AppendLine(sSQLV.ToString)
             'Εκτέλεση QUERY
+
             Using oCmd As New SqlCommand(sSQLF.ToString, CNDB)
+                oCmd.Parameters.AddWithValue("@Photo", pic.EditValue)
                 oCmd.ExecuteNonQuery()
             End Using
             Return True

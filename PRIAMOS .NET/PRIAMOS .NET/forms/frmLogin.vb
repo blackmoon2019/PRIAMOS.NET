@@ -8,6 +8,7 @@ Public Class frmLogin
     Private Prog_Prop As New ProgProp
     Private CheckFUpdate As New CheckForUpdates
     Private FillCbo As New FillCombos
+
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim CN As New CN
 
@@ -37,7 +38,7 @@ Public Class frmLogin
         Dim sdr As SqlDataReader
         Try
 
-            sSQL = "select Realname,code,ID from USR 
+            sSQL = "select Realname,code,ID,M_UN from vw_USR 
                 where UN= '" & txtUN.Text & "' and pwd = '" & txtPWD.Text & "'"
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
@@ -46,12 +47,16 @@ Public Class frmLogin
                     UserProps.Code = sdr.GetInt32(sdr.GetOrdinal("code"))
                     UserProps.RealName = sdr.GetString(sdr.GetOrdinal("Realname"))
                     UserProps.ID = sdr.GetGuid(sdr.GetOrdinal("ID"))
+                    UserProps.Email = sdr.GetString(sdr.GetOrdinal("M_un"))
+                    'Δεκαδικά Προγράμματος
+                    ProgProps.Decimals = Prog_Prop.GetProgDecimals
+                    'Support Email
+                    ProgProps.SupportEmail = Prog_Prop.GetProgTechSupportEmail
+
                     'General Permissions
                     UserPermissions.GetUserPermissions()
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
-                    'Δεκαδικά Προγράμματος
-                    Prog_Prop.GetProgDecimals()
                     XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     If My.Settings.UNSave = True Then My.Settings.UN = txtUN.EditValue : My.Settings.Save()
                 End If
