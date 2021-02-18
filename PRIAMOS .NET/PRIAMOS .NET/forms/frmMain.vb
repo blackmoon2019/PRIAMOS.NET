@@ -187,4 +187,20 @@ Public Class frmMain
         frmLogin.Show()
         Me.Close()
     End Sub
+
+    Private Sub bbTechnicalSupport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTechnicalSupport.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Τεχνικής Υποστήριξης"
+        form.DataTable = "vw_TECH_SUP"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbTechCateg_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTechCateg.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Τεχνικής Υποστήριξης"
+        form.DataTable = "vw_TECH_CAT"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

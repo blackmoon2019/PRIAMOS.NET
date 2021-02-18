@@ -13,6 +13,10 @@ Partial Public Class frmUpdate
         '2 Server Update Path
         '3 Server Application Path
         '4 Version To be Updated
+        Dim proc = Process.GetProcessesByName("PRIAMOS.NET")
+        For i As Integer = 0 To proc.Count - 1
+            proc(i).CloseMainWindow()
+        Next i
 
         If Debugger.IsAttached Then
             strArg = {"1.0.0.6", "\\192.168.1.2\priamos.net\Updates\", "C:\Users\USER\source\repos\PRIAMOS .NET\PRIAMOS .NET\PRIAMOS .NET\bin\Debug\", "1.0.0.8"}

@@ -174,6 +174,14 @@ NextItem:
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDecimal(sdr.GetOrdinal(TagV)))
                                         Case "datetime"
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
+                                        Case "varbinary"
+                                            If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
+                                                Dim pic As DevExpress.XtraEditors.PictureEdit
+                                                Dim bytes As Byte()
+                                                pic = LItem.Control
+                                                bytes = DirectCast(sdr(TagV), Byte())
+                                                pic.EditValue = bytes
+                                            End If
                                     End Select
                                 End If
 NextItem:

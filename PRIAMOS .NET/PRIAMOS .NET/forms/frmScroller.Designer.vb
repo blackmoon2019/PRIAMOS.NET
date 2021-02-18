@@ -79,6 +79,10 @@ Partial Class frmScroller
         Me.BarCopyCell_D = New DevExpress.XtraBars.BarButtonItem()
         Me.BarCopyRow_D = New DevExpress.XtraBars.BarButtonItem()
         Me.BarCopyAll_D = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarFilterWithCell = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarFilterWithoutCell = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarRemoveFilterWithCell = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarRemoveAllFilters = New DevExpress.XtraBars.BarButtonItem()
         Me.RepositoryItemButtonEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryItemBreadCrumbEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.RepositoryItemButtonEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
@@ -144,6 +148,7 @@ Partial Class frmScroller
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
         Me.GridView1.OptionsBehavior.ReadOnly = True
+        Me.GridView1.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.GridView1.OptionsLayout.Columns.StoreAllOptions = True
         Me.GridView1.OptionsLayout.Columns.StoreAppearance = True
         Me.GridView1.OptionsLayout.StoreAllOptions = True
@@ -162,9 +167,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 49
+        Me.BarManager1.MaxItemId = 53
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -519,6 +524,34 @@ Partial Class frmScroller
         Me.BarCopyAll_D.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_copy_16
         Me.BarCopyAll_D.Name = "BarCopyAll_D"
         '
+        'BarFilterWithCell
+        '
+        Me.BarFilterWithCell.Caption = "Φίλτρο με επιλογή"
+        Me.BarFilterWithCell.Id = 49
+        Me.BarFilterWithCell.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_filter_16
+        Me.BarFilterWithCell.Name = "BarFilterWithCell"
+        '
+        'BarFilterWithoutCell
+        '
+        Me.BarFilterWithoutCell.Caption = "Φίλτρο με εξαίρεση"
+        Me.BarFilterWithoutCell.Id = 50
+        Me.BarFilterWithoutCell.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_filter_16
+        Me.BarFilterWithoutCell.Name = "BarFilterWithoutCell"
+        '
+        'BarRemoveFilterWithCell
+        '
+        Me.BarRemoveFilterWithCell.Caption = "Αφαίρεση Φίλτρου"
+        Me.BarRemoveFilterWithCell.Id = 51
+        Me.BarRemoveFilterWithCell.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_clear_filters_16
+        Me.BarRemoveFilterWithCell.Name = "BarRemoveFilterWithCell"
+        '
+        'BarRemoveAllFilters
+        '
+        Me.BarRemoveAllFilters.Caption = "Αφαίρεση όλων των φίλτρων"
+        Me.BarRemoveAllFilters.Id = 52
+        Me.BarRemoveAllFilters.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_clear_filters_16
+        Me.BarRemoveAllFilters.Name = "BarRemoveAllFilters"
+        '
         'RepositoryItemButtonEdit1
         '
         Me.RepositoryItemButtonEdit1.AutoHeight = False
@@ -573,7 +606,7 @@ Partial Class frmScroller
         '
         'PopupMenuRows
         '
-        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyCell, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyRow), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyAll)})
+        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarFilterWithCell, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarFilterWithoutCell), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRemoveFilterWithCell), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRemoveAllFilters), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyCell, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyRow), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyAll)})
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
         '
@@ -674,4 +707,8 @@ Partial Class frmScroller
     Friend WithEvents BarCopyAll_D As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents PopupMenuRowsDetail As DevExpress.XtraBars.PopupMenu
     Friend WithEvents BBUpdateViewFromDB As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarFilterWithCell As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarFilterWithoutCell As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarRemoveFilterWithCell As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarRemoveAllFilters As DevExpress.XtraBars.BarButtonItem
 End Class

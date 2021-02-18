@@ -219,6 +219,20 @@ Public Class frmGen
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("MLC")
+                            Case "TECH_CAT"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_CAT", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.TECH_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As New frmScroller
+                                    form = Frm
+                                    form.LoadRecords("vw_TECH_CAT")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("TECH_CAT")
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
@@ -322,7 +336,16 @@ Public Class frmGen
                                     form = Frm
                                     form.LoadRecords("vw_MLC")
                                 End If
-
+                            Case "TECH_CAT"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_CAT", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.TECH_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As New frmScroller
+                                    form = Frm
+                                    form.LoadRecords("vw_TECH_CAT")
+                                End If
                         End Select
                 End Select
                 If sResult Then
@@ -402,6 +425,12 @@ Public Class frmGen
                         txtCode.Text = DBQ.GetNextId("MLC")
                     Else
                         LoadForms.LoadForm(LayoutControl1, "Select * from vw_MLC where id ='" + sID + "'", True)
+                    End If
+                Case "TECH_CAT"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("TECH_CAT")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_CAT where id ='" + sID + "'", True)
                     End If
             End Select
             cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -493,6 +522,13 @@ Public Class frmGen
                         Else
                             Dim form As New frmScroller
                             form.LoadRecords("vw_MLC")
+                        End If
+                    Case "TECH_CAT"
+                        If CalledFromCtrl Then
+                            FillCbo.TECH_CAT(CtrlCombo)
+                        Else
+                            Dim form As New frmScroller
+                            form.LoadRecords("vw_TECH_CAT")
                         End If
                 End Select
                 Cls.ClearCtrls(LayoutControl1)

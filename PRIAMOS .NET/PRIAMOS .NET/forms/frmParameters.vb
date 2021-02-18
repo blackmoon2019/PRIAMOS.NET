@@ -41,6 +41,7 @@ Public Class frmParameters
         TablePanel1.Rows.Item(1).Visible = True
         'Δεκαδικά Προγράμματος
         txtDecimals.EditValue = Prog_Prop.GetProgDecimals()
+        txtEmail.EditValue = Prog_Prop.GetProgTechSupportEmail
 
     End Sub
 

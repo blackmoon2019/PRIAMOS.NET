@@ -21,10 +21,12 @@ Module Main
         Public AllowInsert As Boolean
         Public AllowEdit As Boolean
         Public AllowDelete As Boolean
+        Public Email As String
     End Structure
     Public UserProps As USER_PROPS
     Public Structure PROG_PROPS
         Public Decimals As Integer
+        Public SupportEmail As String
     End Structure
     Public ProgProps As PROG_PROPS
 
