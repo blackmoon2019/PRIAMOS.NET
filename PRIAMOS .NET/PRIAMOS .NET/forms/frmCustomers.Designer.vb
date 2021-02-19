@@ -20,8 +20,8 @@ Partial Class frmCustomers
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomers))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkPartner = New DevExpress.XtraEditors.CheckEdit()
         Me.chkSupplier = New DevExpress.XtraEditors.CheckEdit()
         Me.chkWorkshop = New DevExpress.XtraEditors.CheckEdit()
         Me.chkPrivate = New DevExpress.XtraEditors.CheckEdit()
@@ -76,13 +76,13 @@ Partial Class frmCustomers
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem22 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
-        Me.chkPartner = New DevExpress.XtraEditors.CheckEdit()
-        Me.LayoutControlItem22 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkWorkshop.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPrivate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,7 +137,6 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -175,15 +174,28 @@ Partial Class frmCustomers
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'chkPartner
+        '
+        Me.chkPartner.EditValue = CType(0, Byte)
+        Me.chkPartner.Location = New System.Drawing.Point(323, 12)
+        Me.chkPartner.Name = "chkPartner"
+        Me.chkPartner.Properties.Caption = "Συνεργάτης"
+        Me.chkPartner.Properties.ValueChecked = CType(1, Byte)
+        Me.chkPartner.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkPartner.Size = New System.Drawing.Size(122, 18)
+        Me.chkPartner.StyleController = Me.LayoutControl1
+        Me.chkPartner.TabIndex = 39
+        Me.chkPartner.Tag = "IsPartner,0,1,2"
+        '
         'chkSupplier
         '
         Me.chkSupplier.EditValue = CType(0, Byte)
-        Me.chkSupplier.Location = New System.Drawing.Point(570, 6)
+        Me.chkSupplier.Location = New System.Drawing.Point(568, 12)
         Me.chkSupplier.Name = "chkSupplier"
         Me.chkSupplier.Properties.Caption = "Προμηθευτής"
         Me.chkSupplier.Properties.ValueChecked = CType(1, Byte)
         Me.chkSupplier.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkSupplier.Size = New System.Drawing.Size(201, 18)
+        Me.chkSupplier.Size = New System.Drawing.Size(197, 18)
         Me.chkSupplier.StyleController = Me.LayoutControl1
         Me.chkSupplier.TabIndex = 38
         Me.chkSupplier.Tag = "IsSupplier,0,1,2"
@@ -191,12 +203,12 @@ Partial Class frmCustomers
         'chkWorkshop
         '
         Me.chkWorkshop.EditValue = CType(0, Byte)
-        Me.chkWorkshop.Location = New System.Drawing.Point(449, 6)
+        Me.chkWorkshop.Location = New System.Drawing.Point(449, 12)
         Me.chkWorkshop.Name = "chkWorkshop"
         Me.chkWorkshop.Properties.Caption = "Συνεργείο"
         Me.chkWorkshop.Properties.ValueChecked = CType(1, Byte)
         Me.chkWorkshop.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkWorkshop.Size = New System.Drawing.Size(119, 18)
+        Me.chkWorkshop.Size = New System.Drawing.Size(115, 18)
         Me.chkWorkshop.StyleController = Me.LayoutControl1
         Me.chkWorkshop.TabIndex = 37
         Me.chkWorkshop.Tag = "IsWorkshop,0,1,2"
@@ -204,31 +216,31 @@ Partial Class frmCustomers
         'chkPrivate
         '
         Me.chkPrivate.EditValue = CType(1, Byte)
-        Me.chkPrivate.Location = New System.Drawing.Point(195, 6)
+        Me.chkPrivate.Location = New System.Drawing.Point(198, 12)
         Me.chkPrivate.Name = "chkPrivate"
         Me.chkPrivate.Properties.Caption = "Ιδιώτης"
         Me.chkPrivate.Properties.ValueChecked = CType(1, Byte)
         Me.chkPrivate.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkPrivate.Size = New System.Drawing.Size(125, 18)
+        Me.chkPrivate.Size = New System.Drawing.Size(121, 18)
         Me.chkPrivate.StyleController = Me.LayoutControl1
         Me.chkPrivate.TabIndex = 36
         Me.chkPrivate.Tag = "Isprivate,0,1,2"
         '
         'TextEdit8
         '
-        Me.TextEdit8.Location = New System.Drawing.Point(71, 201)
+        Me.TextEdit8.Location = New System.Drawing.Point(93, 234)
         Me.TextEdit8.Name = "TextEdit8"
-        Me.TextEdit8.Size = New System.Drawing.Size(370, 20)
+        Me.TextEdit8.Size = New System.Drawing.Size(340, 20)
         Me.TextEdit8.StyleController = Me.LayoutControl1
         Me.TextEdit8.TabIndex = 35
         Me.TextEdit8.Tag = "company,0,1,2"
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(6, 318)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 366)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(765, 219)
+        Me.GridControl1.Size = New System.Drawing.Size(753, 165)
         Me.GridControl1.TabIndex = 14
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -244,197 +256,197 @@ Partial Class frmCustomers
         '
         'cboDOY
         '
-        Me.cboDOY.Location = New System.Drawing.Point(71, 267)
+        Me.cboDOY.Location = New System.Drawing.Point(93, 306)
         Me.cboDOY.Name = "cboDOY"
         Me.cboDOY.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboDOY.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboDOY.Properties.NullText = ""
         Me.cboDOY.Properties.PopupSizeable = False
-        Me.cboDOY.Size = New System.Drawing.Size(370, 20)
+        Me.cboDOY.Size = New System.Drawing.Size(340, 20)
         Me.cboDOY.StyleController = Me.LayoutControl1
         Me.cboDOY.TabIndex = 27
         Me.cboDOY.Tag = "doyid,0,1,2"
         '
         'txtCode
         '
-        Me.txtCode.Location = New System.Drawing.Point(65, 6)
+        Me.txtCode.Location = New System.Drawing.Point(81, 12)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Properties.Appearance.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.txtCode.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(83, 20)
+        Me.txtCode.Size = New System.Drawing.Size(69, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 4
         Me.txtCode.Tag = "code,0"
         '
         'cboAREAS
         '
-        Me.cboAREAS.Location = New System.Drawing.Point(71, 100)
+        Me.cboAREAS.Location = New System.Drawing.Point(93, 117)
         Me.cboAREAS.Name = "cboAREAS"
         Me.cboAREAS.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboAREAS.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboAREAS.Properties.NullText = ""
         Me.cboAREAS.Properties.PopupSizeable = False
-        Me.cboAREAS.Size = New System.Drawing.Size(370, 20)
+        Me.cboAREAS.Size = New System.Drawing.Size(340, 20)
         Me.cboAREAS.StyleController = Me.LayoutControl1
         Me.cboAREAS.TabIndex = 6
         Me.cboAREAS.Tag = "AreaId,0,1,2"
         '
         'txtTK
         '
-        Me.txtTK.Location = New System.Drawing.Point(71, 122)
+        Me.txtTK.Location = New System.Drawing.Point(93, 141)
         Me.txtTK.Name = "txtTK"
-        Me.txtTK.Size = New System.Drawing.Size(370, 20)
+        Me.txtTK.Size = New System.Drawing.Size(340, 20)
         Me.txtTK.StyleController = Me.LayoutControl1
         Me.txtTK.TabIndex = 8
         Me.txtTK.Tag = "tk,0"
         '
         'cboADR
         '
-        Me.cboADR.Location = New System.Drawing.Point(71, 144)
+        Me.cboADR.Location = New System.Drawing.Point(93, 165)
         Me.cboADR.Name = "cboADR"
         Me.cboADR.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboADR.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboADR.Properties.NullText = ""
         Me.cboADR.Properties.PopupSizeable = False
-        Me.cboADR.Size = New System.Drawing.Size(206, 20)
+        Me.cboADR.Size = New System.Drawing.Size(183, 20)
         Me.cboADR.StyleController = Me.LayoutControl1
         Me.cboADR.TabIndex = 7
         Me.cboADR.Tag = "adrid,0,1,2"
         '
         'txtAR
         '
-        Me.txtAR.Location = New System.Drawing.Point(338, 144)
+        Me.txtAR.Location = New System.Drawing.Point(349, 165)
         Me.txtAR.Name = "txtAR"
-        Me.txtAR.Size = New System.Drawing.Size(103, 20)
+        Me.txtAR.Size = New System.Drawing.Size(84, 20)
         Me.txtAR.StyleController = Me.LayoutControl1
         Me.txtAR.TabIndex = 10
         Me.txtAR.Tag = "ar,0"
         '
         'cboCOU
         '
-        Me.cboCOU.Location = New System.Drawing.Point(71, 78)
+        Me.cboCOU.Location = New System.Drawing.Point(93, 93)
         Me.cboCOU.Name = "cboCOU"
         Me.cboCOU.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboCOU.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboCOU.Properties.NullText = ""
         Me.cboCOU.Properties.PopupSizeable = False
-        Me.cboCOU.Size = New System.Drawing.Size(370, 20)
+        Me.cboCOU.Size = New System.Drawing.Size(340, 20)
         Me.cboCOU.StyleController = Me.LayoutControl1
         Me.cboCOU.TabIndex = 5
         Me.cboCOU.Tag = "couid,0,1,2"
         '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(508, 217)
+        Me.txtComments.Location = New System.Drawing.Point(518, 249)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(263, 77)
+        Me.txtComments.Size = New System.Drawing.Size(247, 89)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 17
         Me.txtComments.Tag = "cmt,0,1,2"
         '
         'txtNam
         '
-        Me.txtNam.Location = New System.Drawing.Point(71, 56)
+        Me.txtNam.Location = New System.Drawing.Point(93, 69)
         Me.txtNam.Name = "txtNam"
-        Me.txtNam.Size = New System.Drawing.Size(370, 20)
+        Me.txtNam.Size = New System.Drawing.Size(340, 20)
         Me.txtNam.StyleController = Me.LayoutControl1
         Me.txtNam.TabIndex = 9
         Me.txtNam.Tag = "Fullname,0,1,2"
         '
         'TextEdit1
         '
-        Me.TextEdit1.Location = New System.Drawing.Point(514, 122)
+        Me.TextEdit1.Location = New System.Drawing.Point(530, 141)
         Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit1.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit1.StyleController = Me.LayoutControl1
         Me.TextEdit1.TabIndex = 21
         Me.TextEdit1.Tag = "email,0,1,2"
         '
         'TextEdit2
         '
-        Me.TextEdit2.Location = New System.Drawing.Point(514, 56)
+        Me.TextEdit2.Location = New System.Drawing.Point(530, 69)
         Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit2.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit2.StyleController = Me.LayoutControl1
         Me.TextEdit2.TabIndex = 22
         Me.TextEdit2.Tag = "mob,0,1,2"
         '
         'TextEdit3
         '
-        Me.TextEdit3.Location = New System.Drawing.Point(514, 78)
+        Me.TextEdit3.Location = New System.Drawing.Point(530, 93)
         Me.TextEdit3.Name = "TextEdit3"
-        Me.TextEdit3.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit3.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit3.StyleController = Me.LayoutControl1
         Me.TextEdit3.TabIndex = 23
         Me.TextEdit3.Tag = "phn,0,1,2"
         '
         'TextEdit4
         '
-        Me.TextEdit4.Location = New System.Drawing.Point(514, 100)
+        Me.TextEdit4.Location = New System.Drawing.Point(530, 117)
         Me.TextEdit4.Name = "TextEdit4"
-        Me.TextEdit4.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit4.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit4.StyleController = Me.LayoutControl1
         Me.TextEdit4.TabIndex = 24
         Me.TextEdit4.Tag = "fax,0,1,2"
         '
         'txtNam1
         '
-        Me.txtNam1.Location = New System.Drawing.Point(71, 223)
+        Me.txtNam1.Location = New System.Drawing.Point(93, 258)
         Me.txtNam1.Name = "txtNam1"
-        Me.txtNam1.Size = New System.Drawing.Size(370, 20)
+        Me.txtNam1.Size = New System.Drawing.Size(340, 20)
         Me.txtNam1.StyleController = Me.LayoutControl1
         Me.txtNam1.TabIndex = 9
         Me.txtNam1.Tag = "afm,0,1,2"
         '
         'cboPRF
         '
-        Me.cboPRF.Location = New System.Drawing.Point(71, 245)
+        Me.cboPRF.Location = New System.Drawing.Point(93, 282)
         Me.cboPRF.Name = "cboPRF"
         Me.cboPRF.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboPRF.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboPRF.Properties.NullText = ""
         Me.cboPRF.Properties.PopupSizeable = False
-        Me.cboPRF.Size = New System.Drawing.Size(370, 20)
+        Me.cboPRF.Size = New System.Drawing.Size(340, 20)
         Me.cboPRF.StyleController = Me.LayoutControl1
         Me.cboPRF.TabIndex = 5
         Me.cboPRF.Tag = "prfid,0,1,2"
         '
         'TextEdit5
         '
-        Me.TextEdit5.Location = New System.Drawing.Point(514, 144)
+        Me.TextEdit5.Location = New System.Drawing.Point(530, 165)
         Me.TextEdit5.Name = "TextEdit5"
-        Me.TextEdit5.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit5.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit5.StyleController = Me.LayoutControl1
         Me.TextEdit5.TabIndex = 32
         Me.TextEdit5.Tag = "email2,0,1,2"
         '
         'TextEdit6
         '
-        Me.TextEdit6.Location = New System.Drawing.Point(514, 166)
+        Me.TextEdit6.Location = New System.Drawing.Point(530, 189)
         Me.TextEdit6.Name = "TextEdit6"
-        Me.TextEdit6.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit6.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit6.StyleController = Me.LayoutControl1
         Me.TextEdit6.TabIndex = 33
         Me.TextEdit6.Tag = "email3,0,1,2"
         '
         'TextEdit7
         '
-        Me.TextEdit7.Location = New System.Drawing.Point(514, 188)
+        Me.TextEdit7.Location = New System.Drawing.Point(530, 213)
         Me.TextEdit7.Name = "TextEdit7"
-        Me.TextEdit7.Size = New System.Drawing.Size(251, 20)
+        Me.TextEdit7.Size = New System.Drawing.Size(223, 20)
         Me.TextEdit7.StyleController = Me.LayoutControl1
         Me.TextEdit7.TabIndex = 34
         Me.TextEdit7.Tag = "website,0,1,2"
         '
         'txtFileNames
         '
-        Me.txtFileNames.Location = New System.Drawing.Point(65, 296)
+        Me.txtFileNames.Location = New System.Drawing.Point(81, 342)
         Me.txtFileNames.Name = "txtFileNames"
         Me.txtFileNames.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.txtFileNames.Size = New System.Drawing.Size(706, 20)
+        Me.txtFileNames.Size = New System.Drawing.Size(684, 20)
         Me.txtFileNames.StyleController = Me.LayoutControl1
         Me.txtFileNames.TabIndex = 30
         Me.txtFileNames.Tag = ""
@@ -456,16 +468,16 @@ Partial Class frmCustomers
         Me.LayoutControlItem4.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(144, 22)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(142, 24)
         Me.LayoutControlItem4.Text = "Κωδικός"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(57, 13)
         '
         'LayoutControlItem27
         '
         Me.LayoutControlItem27.Control = Me.GridControl1
-        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 312)
+        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 354)
         Me.LayoutControlItem27.Name = "LayoutControlItem27"
-        Me.LayoutControlItem27.Size = New System.Drawing.Size(767, 221)
+        Me.LayoutControlItem27.Size = New System.Drawing.Size(757, 169)
         Me.LayoutControlItem27.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem27.TextVisible = False
         '
@@ -473,18 +485,18 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem25.Control = Me.txtFileNames
         Me.LayoutControlItem25.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 290)
+        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 330)
         Me.LayoutControlItem25.Name = "LayoutControlItem25"
-        Me.LayoutControlItem25.Size = New System.Drawing.Size(767, 22)
+        Me.LayoutControlItem25.Size = New System.Drawing.Size(757, 24)
         Me.LayoutControlItem25.Text = "Αρχεία"
         Me.LayoutControlItem25.TextSize = New System.Drawing.Size(57, 13)
         '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem19, Me.LayoutControlItem20, Me.LayoutControlItem23, Me.LayoutControlItem21})
-        Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 167)
+        Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 189)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(443, 123)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(437, 141)
         Me.LayoutControlGroup1.Text = "Επαγγελματικά Στοιχεία"
         '
         'LayoutControlItem19
@@ -493,7 +505,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem19.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem19.Name = "LayoutControlItem19"
-        Me.LayoutControlItem19.Size = New System.Drawing.Size(431, 22)
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(413, 24)
         Me.LayoutControlItem19.Text = "Εταιρία"
         Me.LayoutControlItem19.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -503,9 +515,9 @@ Partial Class frmCustomers
         Me.LayoutControlItem20.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem20.CustomizationFormText = "ΑΦΜ"
         Me.LayoutControlItem20.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem20.Location = New System.Drawing.Point(0, 22)
+        Me.LayoutControlItem20.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem20.Name = "LayoutControlItem20"
-        Me.LayoutControlItem20.Size = New System.Drawing.Size(431, 22)
+        Me.LayoutControlItem20.Size = New System.Drawing.Size(413, 24)
         Me.LayoutControlItem20.Text = "ΑΦΜ"
         Me.LayoutControlItem20.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -515,9 +527,9 @@ Partial Class frmCustomers
         Me.LayoutControlItem23.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem23.CustomizationFormText = "Επάγγελμα"
         Me.LayoutControlItem23.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem23.Location = New System.Drawing.Point(0, 44)
+        Me.LayoutControlItem23.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem23.Name = "LayoutControlItem23"
-        Me.LayoutControlItem23.Size = New System.Drawing.Size(431, 22)
+        Me.LayoutControlItem23.Size = New System.Drawing.Size(413, 24)
         Me.LayoutControlItem23.Text = "Επάγγελμα"
         Me.LayoutControlItem23.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -525,18 +537,18 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem21.Control = Me.cboDOY
         Me.LayoutControlItem21.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem21.Location = New System.Drawing.Point(0, 66)
+        Me.LayoutControlItem21.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem21.Name = "LayoutControlItem21"
-        Me.LayoutControlItem21.Size = New System.Drawing.Size(431, 22)
+        Me.LayoutControlItem21.Size = New System.Drawing.Size(413, 24)
         Me.LayoutControlItem21.Text = "ΔΟΥ"
         Me.LayoutControlItem21.TextSize = New System.Drawing.Size(57, 13)
         '
         'LayoutControlGroup2
         '
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem12, Me.LayoutControlItem13, Me.LayoutControlItem15, Me.LayoutControlItem11, Me.LayoutControlItem17, Me.LayoutControlItem16, Me.LayoutControlItem18})
-        Me.LayoutControlGroup2.Location = New System.Drawing.Point(443, 22)
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(437, 24)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(324, 189)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(320, 213)
         Me.LayoutControlGroup2.Text = "Στοιχεία Επικοινωνίας"
         '
         'LayoutControlItem12
@@ -545,7 +557,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem12.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(312, 22)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(296, 24)
         Me.LayoutControlItem12.Text = "Τηλέφωνο"
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -553,11 +565,10 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem13.Control = Me.TextEdit3
         Me.LayoutControlItem13.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem13.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 22)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(312, 22)
-        Me.LayoutControlItem13.Tag = "1"
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(296, 24)
+        Me.LayoutControlItem13.Tag = ""
         Me.LayoutControlItem13.Text = "Κινητό"
         Me.LayoutControlItem13.TextLocation = DevExpress.Utils.Locations.Left
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(57, 13)
@@ -566,9 +577,9 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem15.Control = Me.TextEdit4
         Me.LayoutControlItem15.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 44)
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(312, 22)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(296, 24)
         Me.LayoutControlItem15.Text = "Φάξ"
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -576,9 +587,9 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem11.Control = Me.TextEdit1
         Me.LayoutControlItem11.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 66)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(312, 22)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(296, 24)
         Me.LayoutControlItem11.Text = "Email"
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -587,9 +598,9 @@ Partial Class frmCustomers
         Me.LayoutControlItem17.Control = Me.TextEdit6
         Me.LayoutControlItem17.CustomizationFormText = "Email3"
         Me.LayoutControlItem17.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 110)
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem17.Name = "LayoutControlItem17"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(312, 22)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(296, 24)
         Me.LayoutControlItem17.Text = "Email3"
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -597,9 +608,9 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem16.Control = Me.TextEdit5
         Me.LayoutControlItem16.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 88)
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(312, 22)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(296, 24)
         Me.LayoutControlItem16.Text = "Email2"
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -607,18 +618,18 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem18.Control = Me.TextEdit7
         Me.LayoutControlItem18.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 132)
+        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 144)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(312, 22)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(296, 24)
         Me.LayoutControlItem18.Text = "webSite"
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(57, 13)
         '
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem9, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem7, Me.LayoutControlItem8})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 22)
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(443, 145)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(437, 165)
         Me.LayoutControlGroup3.Text = "Προσωπικά Στοιχεία"
         '
         'LayoutControlItem1
@@ -630,7 +641,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(431, 22)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(413, 24)
         Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "Επωνυμία"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(57, 13)
@@ -641,11 +652,10 @@ Partial Class frmCustomers
         Me.LayoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem9.CustomizationFormText = "Νομός"
         Me.LayoutControlItem9.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem9.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem9.ImageOptions.Image"), System.Drawing.Image)
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 22)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(431, 22)
-        Me.LayoutControlItem9.Tag = "1"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(413, 24)
+        Me.LayoutControlItem9.Tag = ""
         Me.LayoutControlItem9.Text = "Νομός"
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -655,11 +665,10 @@ Partial Class frmCustomers
         Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem5.CustomizationFormText = "Περιοχή"
         Me.LayoutControlItem5.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem5.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem5.ImageOptions.Image"), System.Drawing.Image)
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 44)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(431, 22)
-        Me.LayoutControlItem5.Tag = "1"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(413, 24)
+        Me.LayoutControlItem5.Tag = ""
         Me.LayoutControlItem5.Text = "Περιοχή"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -669,9 +678,9 @@ Partial Class frmCustomers
         Me.LayoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem6.CustomizationFormText = "Τ.Κ"
         Me.LayoutControlItem6.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 66)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(431, 22)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(413, 24)
         Me.LayoutControlItem6.Text = "Τ.Κ"
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -681,9 +690,9 @@ Partial Class frmCustomers
         Me.LayoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem7.CustomizationFormText = "Διεύθυνση"
         Me.LayoutControlItem7.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 88)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(267, 22)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(256, 24)
         Me.LayoutControlItem7.Text = "Διεύθυνση"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -693,9 +702,9 @@ Partial Class frmCustomers
         Me.LayoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem8.CustomizationFormText = "Αριθμός"
         Me.LayoutControlItem8.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(267, 88)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(256, 96)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(164, 22)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(157, 24)
         Me.LayoutControlItem8.Text = "Αριθμός"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(57, 13)
         '
@@ -705,27 +714,27 @@ Partial Class frmCustomers
         Me.LayoutControlItem14.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem14.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem14.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(443, 211)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(437, 237)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(324, 79)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(320, 93)
         Me.LayoutControlItem14.Text = "Σχόλια"
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(57, 13)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.chkPrivate
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(189, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(186, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(127, 22)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(125, 24)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.chkWorkshop
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(443, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(437, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(121, 22)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(119, 24)
         Me.LayoutControlItem3.Text = "Συνεργείο"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
@@ -733,19 +742,28 @@ Partial Class frmCustomers
         'LayoutControlItem10
         '
         Me.LayoutControlItem10.Control = Me.chkSupplier
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(564, 0)
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(556, 0)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(203, 22)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(201, 24)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(144, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(142, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(45, 22)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(44, 24)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem22
+        '
+        Me.LayoutControlItem22.Control = Me.chkPartner
+        Me.LayoutControlItem22.Location = New System.Drawing.Point(311, 0)
+        Me.LayoutControlItem22.Name = "LayoutControlItem22"
+        Me.LayoutControlItem22.Size = New System.Drawing.Size(126, 24)
+        Me.LayoutControlItem22.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem22.TextVisible = False
         '
         'cmdExit
         '
@@ -771,28 +789,6 @@ Partial Class frmCustomers
         Me.XtraOpenFileDialog1.Multiselect = True
         Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
         '
-        'chkPartner
-        '
-        Me.chkPartner.EditValue = CType(0, Byte)
-        Me.chkPartner.Location = New System.Drawing.Point(322, 6)
-        Me.chkPartner.Name = "chkPartner"
-        Me.chkPartner.Properties.Caption = "Συνεργάτης"
-        Me.chkPartner.Properties.ValueChecked = CType(1, Byte)
-        Me.chkPartner.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkPartner.Size = New System.Drawing.Size(125, 18)
-        Me.chkPartner.StyleController = Me.LayoutControl1
-        Me.chkPartner.TabIndex = 39
-        Me.chkPartner.Tag = "IsPartner,0,1,2"
-        '
-        'LayoutControlItem22
-        '
-        Me.LayoutControlItem22.Control = Me.chkPartner
-        Me.LayoutControlItem22.Location = New System.Drawing.Point(316, 0)
-        Me.LayoutControlItem22.Name = "LayoutControlItem22"
-        Me.LayoutControlItem22.Size = New System.Drawing.Size(127, 22)
-        Me.LayoutControlItem22.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem22.TextVisible = False
-        '
         'frmCustomers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -806,6 +802,7 @@ Partial Class frmCustomers
         Me.Text = "frmCustomers"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkWorkshop.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPrivate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -860,7 +857,6 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

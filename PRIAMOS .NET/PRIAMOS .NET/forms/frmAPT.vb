@@ -93,8 +93,14 @@ Public Class frmAPT
                         End Using
                     End If
                     'Καθαρισμός Controls
-                    If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
+                    Dim OrdValue As Integer
+                    If Mode = FormMode.NewRecord Then
+                        OrdValue = txtOrd.Value
+                        Cls.ClearCtrls(LayoutControl1)
+                    End If
+                    cboBDG.EditValue = System.Guid.Parse(sBDGID)
                     txtCode.Text = DBQ.GetNextId("APT")
+                    txtOrd.Value = OrdValue + 1
                     Dim form As frmBDG = Frm
                     form.AptRefresh()
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
