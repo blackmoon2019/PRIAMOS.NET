@@ -1641,6 +1641,16 @@ Public Class frmBDG
         End If
     End Sub
 
+    Private Sub txtOInvPrice_EditValueChanged(sender As Object, e As EventArgs) Handles txtOInvPrice.EditValueChanged
+        If txtOInvLiters.Text = "" Then Exit Sub
+        txtOInvTotalPrice.EditValue = txtOInvLiters.Text.Replace("€", "") * txtOInvPrice.Text.Replace("€", "")
+    End Sub
+
+    Private Sub txtOInvLiters_EditValueChanged(sender As Object, e As EventArgs) Handles txtOInvLiters.EditValueChanged
+        If txtOInvLiters.Text = "" Then Exit Sub
+        txtOInvTotalPrice.EditValue = txtOInvLiters.Text.Replace("€", "") * txtOInvPrice.Text.Replace("€", "")
+    End Sub
+
 
 
     'ΘΕΡΜΑΝΣΗ
