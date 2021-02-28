@@ -47,8 +47,6 @@ Partial Class frmMain
         Me.bbPRF = New DevExpress.XtraBars.BarButtonItem()
         Me.bbFields = New DevExpress.XtraBars.BarStaticItem()
         Me.bbCCT = New DevExpress.XtraBars.BarButtonItem()
-        Me.bbHTypes = New DevExpress.XtraBars.BarButtonItem()
-        Me.bbBTypes = New DevExpress.XtraBars.BarButtonItem()
         Me.bbFuelType = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.bbParamaters = New DevExpress.XtraBars.BarButtonItem()
@@ -89,7 +87,7 @@ Partial Class frmMain
         '
         Me.RibbonControl1.ApplicationButtonDropDownControl = Me.ApplicationMenu1
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbHTypes, Me.bbBTypes, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.BarButtonItem3, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.BarButtonItem3, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.MaxItemId = 40
         Me.RibbonControl1.Name = "RibbonControl1"
@@ -308,22 +306,6 @@ Partial Class frmMain
         Me.bbCCT.Name = "bbCCT"
         Me.bbCCT.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
-        'bbHTypes
-        '
-        Me.bbHTypes.Caption = "Τύποι Θέρμανσης"
-        Me.bbHTypes.Id = 29
-        Me.bbHTypes.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_heating_automation_40
-        Me.bbHTypes.Name = "bbHTypes"
-        Me.bbHTypes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'bbBTypes
-        '
-        Me.bbBTypes.Caption = "Τύποι Boiler"
-        Me.bbBTypes.Id = 30
-        Me.bbBTypes.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_water_heater_40
-        Me.bbBTypes.Name = "bbBTypes"
-        Me.bbBTypes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
         'bbFuelType
         '
         Me.bbFuelType.Caption = "Τύποι Καυσίμων"
@@ -407,7 +389,7 @@ Partial Class frmMain
         '
         'RibbonPage2
         '
-        Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup2, Me.RibbonPageGroup1})
+        Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup2, Me.RibbonPageGroup1, Me.RibbonPageGroup4})
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "Βοηθητικές Πίνακες"
         '
@@ -423,15 +405,13 @@ Partial Class frmMain
         '
         'RibbonPageGroup1
         '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbHTypes)
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbBTypes)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbFuelType)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "Θέρμανση"
         '
         'RibbonPage3
         '
-        Me.RibbonPage3.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup4})
+        Me.RibbonPage3.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3})
         Me.RibbonPage3.Name = "RibbonPage3"
         Me.RibbonPage3.Text = "Ρυθμίσεις"
         '
@@ -568,8 +548,6 @@ Partial Class frmMain
     Friend WithEvents bbPRF As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbFields As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents bbCCT As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents bbHTypes As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents bbBTypes As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbFuelType As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbParamaters As DevExpress.XtraBars.BarButtonItem

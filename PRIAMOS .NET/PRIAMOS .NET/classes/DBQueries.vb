@@ -52,21 +52,24 @@ Public Class DBQueries
         Dim sSQL As New System.Text.StringBuilder
         Dim i As Integer
         Try
-            sSQL.Clear()
-            Select Case sTable
-                Case "CCT_F" : sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
-                Case "INV_GASF" : sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
-                Case "INV_OILF" : sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdOn],files)")
-            End Select
             For i = 0 To control.FileNames.Count - 1
+                sSQL.Clear()
+                Select Case sTable
+                    Case "CCT_F" : sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "INV_GASF" : sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "INV_OILF" : sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                End Select
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
+                Dim FileName As String = Path.GetFileName(control.FileNames(i))
+                My.Computer.FileSystem.CopyFile(control.FileNames(i), My.Settings.SERVER_PATH & FileName, True)
+
                 sSQL.AppendLine("Select " & toSQLValueS(ID) & ",")
                 sSQL.AppendLine(toSQLValueS(control.SafeFileNames(i).ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(FilePath) & ",")
                 sSQL.AppendLine(toSQLValueS(extension) & ",")
-                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
-                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(control.FileNames(i).ToString()) & ", SINGLE_BLOB) files")
+                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
+                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(My.Settings.SERVER_PATH & FileName) & ", SINGLE_BLOB) files")
 
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -77,7 +80,7 @@ Public Class DBQueries
             'ReadBlobFile()
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
 
@@ -465,11 +468,11 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
-                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
-                                    Else
-                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
-                                    End If
+                                    'If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
+                                    'Else
+                                    '    sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                    'End If
                                     '*******DevExpress.XtraEditors.ButtonEdit******
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
                                     Dim txt As DevExpress.XtraEditors.ButtonEdit

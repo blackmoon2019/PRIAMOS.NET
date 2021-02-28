@@ -145,13 +145,13 @@ Partial Class frmPermissions
         '
         'cboUsers
         '
-        Me.cboUsers.Location = New System.Drawing.Point(365, 12)
+        Me.cboUsers.Location = New System.Drawing.Point(374, 12)
         Me.cboUsers.Name = "cboUsers"
         Me.cboUsers.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboUsers.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.cboUsers.Properties.NullText = ""
         Me.cboUsers.Properties.PopupSizeable = False
-        Me.cboUsers.Size = New System.Drawing.Size(212, 20)
+        Me.cboUsers.Size = New System.Drawing.Size(203, 20)
         Me.cboUsers.StyleController = Me.LayoutControl1
         Me.cboUsers.TabIndex = 8
         Me.cboUsers.Tag = "uid,0,1,2"

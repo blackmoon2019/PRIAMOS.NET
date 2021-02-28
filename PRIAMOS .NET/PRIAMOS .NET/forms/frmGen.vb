@@ -420,7 +420,7 @@ Public Class frmGen
                         LoadForms.LoadForm(LayoutControl1, "Select * from vw_CALC_TYPES where id ='" + sID + "'", True)
                     End If
                 Case "MLC"
-                    FillCbo.CALC_TYPES(cbo1)
+                    ' FillCbo.CALC_TYPES(cbo1)
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("MLC")
                     Else

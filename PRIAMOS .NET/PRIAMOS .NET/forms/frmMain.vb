@@ -134,21 +134,6 @@ Public Class frmMain
         form.Show()
     End Sub
 
-    Private Sub bbHTypes_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbHTypes.ItemClick
-        Dim form As frmScroller = New frmScroller()
-        form.Text = "Τύποι Θέρμανσης"
-        form.DataTable = "vw_HTYPES"
-        form.MdiParent = Me
-        form.Show()
-    End Sub
-
-    Private Sub bbBTypes_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbBTypes.ItemClick
-        Dim form As frmScroller = New frmScroller()
-        form.Text = "Τύποι Boiler"
-        form.DataTable = "vw_BTYPES"
-        form.MdiParent = Me
-        form.Show()
-    End Sub
 
     Private Sub bbFuelType_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbFuelType.ItemClick
         Dim form As frmScroller = New frmScroller()

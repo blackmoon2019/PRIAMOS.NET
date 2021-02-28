@@ -28,7 +28,7 @@ Public Class CheckForUpdates
                     If sdr.IsDBNull(sdr.GetOrdinal("UpdatePath")) = False Then UpdatePath = sdr.GetString(sdr.GetOrdinal("UpdatePath"))
                     'If My.Settings.UNSave = True Then My.Settings.UN = txtUN.Text : My.Settings.Save()
 
-                    If My.Application.Info.Version.ToString <> sExeVer Then
+                    If My.Application.Info.Version.ToString < sExeVer Then
                         XtraMessageBox.Show("Βρέθηκε νέα έκδοση του προγράμματος " & sExeVer & "." & vbCrLf &
                                             "Θα πραγματοποιηθεί έξοδος του προγράμματος και έναρξη της αναβάθμισης", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         sdr.Close()
