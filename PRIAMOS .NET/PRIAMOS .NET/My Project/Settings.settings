@@ -47,5 +47,14 @@
     <Setting Name="frmTecnicalSupport" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
+    <Setting Name="ConString" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ConStringServers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SERVER_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\192.168.1.51\priamos.net\TempFiles\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

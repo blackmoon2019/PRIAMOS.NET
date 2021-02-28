@@ -100,11 +100,12 @@ Public Class frmAPT
                     End If
                     cboBDG.EditValue = System.Guid.Parse(sBDGID)
                     txtCode.Text = DBQ.GetNextId("APT")
-                    txtOrd.Value = OrdValue + 1
+                    'txtOrd.Value = OrdValue + 1
                     Dim form As frmBDG = Frm
                     form.AptRefresh()
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
+                    txtName.Select()
                 End If
             End If
         Catch ex As Exception
@@ -167,6 +168,8 @@ Public Class frmAPT
             End If
         End If
     End Sub
+
+
     'Private Sub LoadAPT()
     '    Dim sSQL As String
     '    Dim myConn As SqlConnection

@@ -13,7 +13,6 @@ Public Class ClearControls
                                 Dim cbo As DevExpress.XtraEditors.LookUpEdit
                                 cbo = Ctrl
                                 cbo.EditValue = Nothing : cbo.Text = "" : cbo.EditValue = ""
-
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                 Dim dt As DevExpress.XtraEditors.DateEdit
                                 dt = Ctrl
@@ -26,6 +25,10 @@ Public Class ClearControls
                                 Dim chk As DevExpress.XtraEditors.CheckEdit
                                 chk = Ctrl
                                 chk.Checked = False
+                            ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
+                                Dim spn As DevExpress.XtraEditors.SpinEdit
+                                spn = Ctrl
+                                spn.EditValue = 0
                             End If
                         End If
                     End If

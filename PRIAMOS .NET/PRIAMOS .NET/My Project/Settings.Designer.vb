@@ -233,6 +233,40 @@ Namespace My
                 Me("frmTecnicalSupport") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ConString() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("ConString"),Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("ConString") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property ConStringServers() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("ConStringServers"),Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("ConStringServers") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.51\priamos.net\TempFiles\")>  _
+        Public Property SERVER_PATH() As String
+            Get
+                Return CType(Me("SERVER_PATH"),String)
+            End Get
+            Set
+                Me("SERVER_PATH") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

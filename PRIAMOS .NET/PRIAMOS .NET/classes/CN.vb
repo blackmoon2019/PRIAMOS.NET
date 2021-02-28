@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 Public Class CN
 
     Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
-
+    'Server=tcp:blackmoon.database.windows.net,1433;Initial Catalog=DreamyKitchen;Persist Security Info=False;User ID=blmoon;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     Public Function OpenConnection() As Boolean
         Dim DBConnection As New SqlConnection()
         Try
@@ -30,8 +30,13 @@ Public Class CN
         Dim DBConnection As New SqlConnection()
         Dim cnSTR As New System.Text.StringBuilder
 
-        If authentication = "True" Then cnSTR.Append("Password = " & Pwd & ";")
+        If authentication = "True" Then
+            cnSTR.Append("Password = " & Pwd & ";")
+        Else
+            cnSTR.Append("Integrated Security=SSPI;")
+        End If
         cnSTR.Append("Persist Security Info=" & authentication & ";")
+
         If authentication = "True" Then cnSTR.Append("User ID= " & Login & ";")
         If Database <> "" Then cnSTR.Append("Initial Catalog=" & Database & ";")
         cnSTR.Append("Data Source=" & Servername & ";")

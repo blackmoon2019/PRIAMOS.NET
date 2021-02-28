@@ -1319,7 +1319,7 @@ Public Class frmBDG
             fs.Close()
             ShellExecute("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1332,7 +1332,7 @@ Public Class frmBDG
             fs.Close()
             ShellExecute("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1581,24 +1581,48 @@ Public Class frmBDG
 
     End Sub
     Private Sub ApmLoad()
-        LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by code")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
-        ApmilFieldsToBeUpdate.Clear()
-        For Each kvp As KeyValuePair(Of String, String) In Bmlc
-            If kvp.Value = 0 Then
-                GridView5.Columns(kvp.Key).Visible = False
-                GridView5.Columns(kvp.Key).OptionsColumn.ReadOnly = True
-                GridView5.Columns(kvp.Key).OptionsColumn.AllowEdit = False
-            Else
-                GridView5.Columns(kvp.Key).Visible = True
-                GridView5.Columns(kvp.Key).OptionsColumn.ReadOnly = False
-                GridView5.Columns(kvp.Key).OptionsColumn.AllowEdit = True
-                ApmilFieldsToBeUpdate.Add(kvp.Key)
-            End If
-        Next
-        GridView5.Columns("AptNam").OptionsColumn.ReadOnly = True
-        GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
-        ApmilFieldsToBeUpdate.Add("ΠΟΣΟΣΤΟ ΚΛΕΙΣΤΟΥ")
+        Try
+            LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by code")
+            'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
+            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView5, , "vw_APMIL")
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+            ApmilFieldsToBeUpdate.Clear()
+            For Each kvp As KeyValuePair(Of String, String) In Bmlc
+                If kvp.Value = 0 Then
+                    If GridView5.Columns(kvp.Key) IsNot Nothing Then
+                        GridView5.Columns(kvp.Key).Visible = False
+                        GridView5.Columns(kvp.Key).OptionsColumn.ReadOnly = True
+                        GridView5.Columns(kvp.Key).OptionsColumn.AllowEdit = False
+                        'Στήλη κλειστών
+                        If GridView5.Columns("c_" & kvp.Key) IsNot Nothing Then
+                            GridView5.Columns("c_" & kvp.Key).Visible = False
+                            GridView5.Columns("c_" & kvp.Key).OptionsColumn.ReadOnly = True
+                            GridView5.Columns("c_" & kvp.Key).OptionsColumn.AllowEdit = False
+                        End If
+
+                    End If
+                Else
+                    If GridView5.Columns(kvp.Key) IsNot Nothing Then
+                        GridView5.Columns(kvp.Key).Visible = True
+                        GridView5.Columns(kvp.Key).OptionsColumn.ReadOnly = False
+                        GridView5.Columns(kvp.Key).OptionsColumn.AllowEdit = True
+                        ApmilFieldsToBeUpdate.Add(kvp.Key)
+                        'Στήλη κλειστών
+                        If GridView5.Columns("c_" & kvp.Key) IsNot Nothing Then
+                            GridView5.Columns("c_" & kvp.Key).Visible = True
+                            GridView5.Columns("c_" & kvp.Key).OptionsColumn.ReadOnly = False
+                            GridView5.Columns("c_" & kvp.Key).OptionsColumn.AllowEdit = True
+                            ApmilFieldsToBeUpdate.Add("c_" & kvp.Key)
+                        End If
+                    End If
+                End If
+            Next
+            GridView5.Columns("AptNam").OptionsColumn.ReadOnly = True
+            GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
+            ApmilFieldsToBeUpdate.Add("ΠΟΣΟΣΤΟ ΚΛΕΙΣΤΟΥ")
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub cmdAddApmil_Click(sender As Object, e As EventArgs) Handles cmdAddApmil.Click

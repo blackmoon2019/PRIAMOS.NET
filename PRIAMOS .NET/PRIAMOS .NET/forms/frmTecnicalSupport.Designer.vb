@@ -90,6 +90,7 @@ Partial Class frmTecnicalSupport
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1314, 420, 650, 400)
         Me.LayoutControl1.Root = Me.Root
         Me.LayoutControl1.Size = New System.Drawing.Size(1266, 681)
         Me.LayoutControl1.TabIndex = 0
@@ -151,13 +152,13 @@ Partial Class frmTecnicalSupport
         'PictureEdit1
         '
         Me.BehaviorManager1.SetBehaviors(Me.PictureEdit1, New DevExpress.Utils.Behaviors.Behavior() {CType(DevExpress.Utils.Behaviors.Common.BannerBehavior.Create(GetType(DevExpress.XtraEditors.Behaviors.BannerBehaviorSourceForPictureEdit), 10000, True, New System.Drawing.Image(-1) {}), DevExpress.Utils.Behaviors.Behavior)})
-        Me.PictureEdit1.Location = New System.Drawing.Point(87, 346)
+        Me.PictureEdit1.Location = New System.Drawing.Point(87, 213)
         Me.PictureEdit1.Name = "PictureEdit1"
         Me.PictureEdit1.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.ByteArray
         Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Always
         Me.PictureEdit1.Properties.ShowScrollBars = True
         Me.PictureEdit1.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.[True]
-        Me.PictureEdit1.Size = New System.Drawing.Size(1167, 291)
+        Me.PictureEdit1.Size = New System.Drawing.Size(1167, 424)
         Me.PictureEdit1.StyleController = Me.LayoutControl1
         Me.PictureEdit1.TabIndex = 4
         Me.PictureEdit1.Tag = "image,0,1,2"
@@ -166,7 +167,7 @@ Partial Class frmTecnicalSupport
         '
         Me.txtCode.Location = New System.Drawing.Point(87, 12)
         Me.txtCode.Name = "txtCode"
-        Me.txtCode.Size = New System.Drawing.Size(83, 20)
+        Me.txtCode.Size = New System.Drawing.Size(89, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 5
         Me.txtCode.Tag = "code,0"
@@ -184,7 +185,7 @@ Partial Class frmTecnicalSupport
         '
         Me.txtBody.Location = New System.Drawing.Point(87, 132)
         Me.txtBody.Name = "txtBody"
-        Me.txtBody.Size = New System.Drawing.Size(1167, 210)
+        Me.txtBody.Size = New System.Drawing.Size(1167, 77)
         Me.txtBody.StyleController = Me.LayoutControl1
         Me.txtBody.TabIndex = 7
         Me.txtBody.Tag = "descr,0,1,2"
@@ -219,18 +220,18 @@ Partial Class frmTecnicalSupport
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.PictureEdit1
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 334)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 201)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1246, 295)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1246, 428)
         Me.LayoutControlItem1.Text = "Εικόνα"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(63, 13)
         '
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(162, 0)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(168, 0)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1084, 24)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1078, 24)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'lCode
@@ -238,7 +239,7 @@ Partial Class frmTecnicalSupport
         Me.lCode.Control = Me.txtCode
         Me.lCode.Location = New System.Drawing.Point(0, 0)
         Me.lCode.Name = "lCode"
-        Me.lCode.Size = New System.Drawing.Size(162, 24)
+        Me.lCode.Size = New System.Drawing.Size(168, 24)
         Me.lCode.Text = "TechnicalID"
         Me.lCode.TextSize = New System.Drawing.Size(63, 13)
         '
@@ -248,7 +249,7 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(1246, 214)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(1246, 81)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Περιγραφή"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(63, 13)

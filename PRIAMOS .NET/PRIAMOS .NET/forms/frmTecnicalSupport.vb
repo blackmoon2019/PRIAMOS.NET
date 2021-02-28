@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Net.Mail
 Imports DevExpress.XtraEditors
@@ -14,6 +15,7 @@ Public Class frmTecnicalSupport
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
+    Dim sGuid As String
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -64,7 +66,8 @@ Public Class frmTecnicalSupport
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1)
+                        sGuid = System.Guid.NewGuid.ToString
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sGuid)
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sID)
                 End Select
@@ -96,6 +99,8 @@ Public Class frmTecnicalSupport
     End Sub
 
     Private Sub cmdEmail_Click(sender As Object, e As EventArgs) Handles cmdEmail.Click
+        Dim sSQL As String
+        Dim cmd As SqlCommand
         Try
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
@@ -126,7 +131,8 @@ Public Class frmTecnicalSupport
             e_mail.AlternateViews.Add(myAltView)
             Smtp_Server.Send(e_mail)
             XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+            sSQL = "UPDATE TECH_SUP SET EmailSent = 1 where ID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID))
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

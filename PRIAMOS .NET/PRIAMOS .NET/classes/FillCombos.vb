@@ -345,9 +345,9 @@ Public Class FillCombos
         Try
             Dim sSQL As String
             If mode = FormMode.NewRecord Then
-                sSQL = "Select id,name from vw_MLC"
+                sSQL = "Select id,name,apmilNam,color from vw_MLC"
             Else
-                sSQL = "Select id,name ,
+                sSQL = "Select id,name ,apmilNam,color,
                        isnull((select case when BM.id is not null then 1 else 0 end as checked
 		               from vw_BMLC BM where bdgid = '" & sID & "' and BM.mlcID = M.ID),0) as checked
                        from vw_MLC M"
@@ -365,8 +365,8 @@ Public Class FillCombos
                 If mode = FormMode.EditRecord Then
                     chkLstItem.CheckState = sdr.Item("checked").ToString
 
-                    If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then
-                        CheckedFields.Add(sdr.Item("name").ToString, sdr.Item("checked").ToString)
+                    If sdr.IsDBNull(sdr.GetOrdinal("apmilNam")) = False Then
+                        CheckedFields.Add(sdr.Item("apmilNam").ToString, sdr.Item("checked").ToString)
                     End If
 
                 End If
@@ -393,7 +393,7 @@ Public Class FillCombos
             CtrlCombo.Properties.Columns(1).Caption = "Χρήστης"
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

@@ -20,16 +20,16 @@ Partial Class frmBDG
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions19 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject73 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject74 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject75 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject76 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions20 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject77 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject78 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject79 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject80 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.TileNavPane1 = New DevExpress.XtraBars.Navigation.TileNavPane()
         Me.NavGeneral = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavManage = New DevExpress.XtraBars.Navigation.NavButton()
@@ -729,10 +729,10 @@ Partial Class frmBDG
         '
         Me.tabBDG.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabBDG.Location = New System.Drawing.Point(0, 30)
+        Me.tabBDG.Location = New System.Drawing.Point(0, 27)
         Me.tabBDG.Name = "tabBDG"
         Me.tabBDG.SelectedTabPage = Me.XtraTabPage1
-        Me.tabBDG.Size = New System.Drawing.Size(1308, 635)
+        Me.tabBDG.Size = New System.Drawing.Size(1320, 700)
         Me.tabBDG.TabIndex = 1
         Me.tabBDG.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2, Me.XtraTabPage3, Me.XtraTabPage4, Me.XtraTabPage5, Me.XtraTabPage6, Me.XtraTabPage7, Me.XtraTabPage8, Me.XtraTabPage9, Me.XtraTabPage10, Me.XtraTabPage11})
         '
@@ -741,7 +741,7 @@ Partial Class frmBDG
         Me.XtraTabPage1.Controls.Add(Me.FlyoutPanel1)
         Me.XtraTabPage1.Controls.Add(Me.LayoutControl1BDG)
         Me.XtraTabPage1.Name = "XtraTabPage1"
-        Me.XtraTabPage1.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage1.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage1.Text = "Στοιχεία"
         '
         'FlyoutPanel1
@@ -775,6 +775,9 @@ Partial Class frmBDG
         '
         'LayoutControl1BDG
         '
+        Me.LayoutControl1BDG.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl1BDG.Controls.Add(Me.chkMLC)
         Me.LayoutControl1BDG.Controls.Add(Me.cmdSave)
         Me.LayoutControl1BDG.Controls.Add(Me.grdAPT)
@@ -798,7 +801,7 @@ Partial Class frmBDG
         Me.LayoutControl1BDG.Controls.Add(Me.cmdAptRefresh)
         Me.LayoutControl1BDG.Controls.Add(Me.chkManage)
         Me.LayoutControl1BDG.Controls.Add(Me.txtOldCode)
-        Me.LayoutControl1BDG.Location = New System.Drawing.Point(3, 3)
+        Me.LayoutControl1BDG.Location = New System.Drawing.Point(3, 2)
         Me.LayoutControl1BDG.Name = "LayoutControl1BDG"
         Me.LayoutControl1BDG.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1244, 259, 650, 624)
         Me.LayoutControl1BDG.Root = Me.Root
@@ -829,6 +832,8 @@ Partial Class frmBDG
         '
         'grdAPT
         '
+        Me.grdAPT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdAPT.Location = New System.Drawing.Point(464, 30)
         Me.grdAPT.MainView = Me.GridView1
         Me.grdAPT.Name = "grdAPT"
@@ -1410,7 +1415,7 @@ Partial Class frmBDG
         Me.txtOldCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtOldCode.Properties.BeepOnError = False
         Me.txtOldCode.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
-        Me.txtOldCode.Properties.MaskSettings.Set("mask", "d4")
+        Me.txtOldCode.Properties.MaskSettings.Set("mask", "######")
         Me.txtOldCode.Properties.Tag = "old_code,0,1,2"
         Me.txtOldCode.Size = New System.Drawing.Size(78, 20)
         Me.txtOldCode.StyleController = Me.LayoutControl1BDG
@@ -1759,11 +1764,14 @@ Partial Class frmBDG
         '
         Me.XtraTabPage2.Controls.Add(Me.LayoutControl2BManage)
         Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage2.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage2.Text = "Διαχείριση"
         '
         'LayoutControl2BManage
         '
+        Me.LayoutControl2BManage.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl2BManage.Controls.Add(Me.cmdSaveBills)
         Me.LayoutControl2BManage.Controls.Add(Me.HyperlinkLabelControl1)
         Me.LayoutControl2BManage.Controls.Add(Me.txtwRegisterNum)
@@ -2286,11 +2294,14 @@ Partial Class frmBDG
         '
         Me.XtraTabPage3.Controls.Add(Me.LayoutControl3Heating)
         Me.XtraTabPage3.Name = "XtraTabPage3"
-        Me.XtraTabPage3.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage3.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage3.Text = "Θέρμανση"
         '
         'LayoutControl3Heating
         '
+        Me.LayoutControl3Heating.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl3Heating.Controls.Add(Me.txtHpb)
         Me.LayoutControl3Heating.Controls.Add(Me.cmdSaveHB)
         Me.LayoutControl3Heating.Controls.Add(Me.RGTypeHeating)
@@ -2954,30 +2965,33 @@ Partial Class frmBDG
         'XtraTabPage4
         '
         Me.XtraTabPage4.Name = "XtraTabPage4"
-        Me.XtraTabPage4.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage4.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage4.Text = "XtraTabPage4"
         '
         'XtraTabPage5
         '
         Me.XtraTabPage5.Name = "XtraTabPage5"
-        Me.XtraTabPage5.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage5.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage5.Text = "XtraTabPage5"
         '
         'XtraTabPage6
         '
         Me.XtraTabPage6.Name = "XtraTabPage6"
-        Me.XtraTabPage6.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage6.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage6.Text = "XtraTabPage6"
         '
         'XtraTabPage7
         '
         Me.XtraTabPage7.Controls.Add(Me.LayoutControl4InvHeatGas)
         Me.XtraTabPage7.Name = "XtraTabPage7"
-        Me.XtraTabPage7.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage7.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage7.Text = "Τιμολόγια Καυσίμων"
         '
         'LayoutControl4InvHeatGas
         '
+        Me.LayoutControl4InvHeatGas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdGInvEdit)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdGInvAdd)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdOInvEdit)
@@ -3137,8 +3151,8 @@ Partial Class frmBDG
         'RepositoryItemButtonGas
         '
         Me.RepositoryItemButtonGas.AutoHeight = False
-        EditorButtonImageOptions3.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions19.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions19, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject73, SerializableAppearanceObject74, SerializableAppearanceObject75, SerializableAppearanceObject76, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonGas.Name = "RepositoryItemButtonGas"
         '
         'txtGInvTotalPrice
@@ -3246,7 +3260,7 @@ Partial Class frmBDG
         '
         'txtOInvTotalPrice
         '
-        Me.txtOInvTotalPrice.EditValue = "0,00000 €"
+        Me.txtOInvTotalPrice.EditValue = "0,00 €"
         Me.txtOInvTotalPrice.Location = New System.Drawing.Point(535, 117)
         Me.txtOInvTotalPrice.Name = "txtOInvTotalPrice"
         Me.txtOInvTotalPrice.Properties.DisplayFormat.FormatString = "c"
@@ -3255,7 +3269,7 @@ Partial Class frmBDG
         Me.txtOInvTotalPrice.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtOInvTotalPrice.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtOInvTotalPrice.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
-        Me.txtOInvTotalPrice.Properties.MaskSettings.Set("mask", "c5")
+        Me.txtOInvTotalPrice.Properties.MaskSettings.Set("mask", "c2")
         Me.txtOInvTotalPrice.Size = New System.Drawing.Size(115, 20)
         Me.txtOInvTotalPrice.StyleController = Me.LayoutControl4InvHeatGas
         Me.txtOInvTotalPrice.TabIndex = 42
@@ -3358,8 +3372,8 @@ Partial Class frmBDG
         'RepositoryItemButtonOil
         '
         Me.RepositoryItemButtonOil.AutoHeight = False
-        EditorButtonImageOptions4.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions20.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions20, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject77, SerializableAppearanceObject78, SerializableAppearanceObject79, SerializableAppearanceObject80, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonOil.Name = "RepositoryItemButtonOil"
         '
         'txtOInvCode
@@ -3829,30 +3843,33 @@ Partial Class frmBDG
         'XtraTabPage8
         '
         Me.XtraTabPage8.Name = "XtraTabPage8"
-        Me.XtraTabPage8.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage8.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage8.Text = "XtraTabPage8"
         '
         'XtraTabPage9
         '
         Me.XtraTabPage9.Name = "XtraTabPage9"
-        Me.XtraTabPage9.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage9.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage9.Text = "XtraTabPage9"
         '
         'XtraTabPage10
         '
         Me.XtraTabPage10.Name = "XtraTabPage10"
-        Me.XtraTabPage10.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage10.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage10.Text = "XtraTabPage10"
         '
         'XtraTabPage11
         '
         Me.XtraTabPage11.Controls.Add(Me.LayoutControl11APM)
         Me.XtraTabPage11.Name = "XtraTabPage11"
-        Me.XtraTabPage11.Size = New System.Drawing.Size(1306, 612)
+        Me.XtraTabPage11.Size = New System.Drawing.Size(1318, 677)
         Me.XtraTabPage11.Text = "Χιλιοστά"
         '
         'LayoutControl11APM
         '
+        Me.LayoutControl11APM.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl11APM.Controls.Add(Me.cmdApmRefresh)
         Me.LayoutControl11APM.Controls.Add(Me.SimpleButton3)
         Me.LayoutControl11APM.Controls.Add(Me.cmdDelAPM)
@@ -3989,6 +4006,7 @@ Partial Class frmBDG
         '
         'cmdExit
         '
+        Me.cmdExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
         Me.cmdExit.Location = New System.Drawing.Point(1201, 660)
