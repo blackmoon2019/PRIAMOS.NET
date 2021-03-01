@@ -258,7 +258,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.51\priamos.net\TempFiles\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.52\TempFiles\")>  _
         Public Property SERVER_PATH() As String
             Get
                 Return CType(Me("SERVER_PATH"),String)
