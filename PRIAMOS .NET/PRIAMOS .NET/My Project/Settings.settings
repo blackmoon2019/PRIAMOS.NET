@@ -54,7 +54,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SERVER_PATH" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\192.168.1.51\priamos.net\TempFiles\</Value>
+      <Value Profile="(Default)">\\192.168.1.52\TempFiles\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

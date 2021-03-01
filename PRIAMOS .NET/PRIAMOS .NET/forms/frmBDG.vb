@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.IO
+Imports System.Data.SqlClient
 Imports DevExpress.Utils.Menu
 Imports DevExpress.Utils
 Imports DevExpress.XtraBars.Navigation
@@ -872,6 +873,7 @@ Public Class frmBDG
         If result = DialogResult.OK Then
             If ValueToGrid Then
                 GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
+                GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "comefrom", Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
             Else
                 txtOInvFileNames.EditValue = ""
                 txtOInvFileNames.EditValue = XtraOpenFileDialog1.SafeFileName
@@ -888,6 +890,7 @@ Public Class frmBDG
         If result = DialogResult.OK Then
             If ValueToGrid Then
                 GridView4.SetRowCellValue(GridView4.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
+                GridView4.SetRowCellValue(GridView4.FocusedRowHandle, "comefrom", Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
             Else
                 txtGInvFileNames.EditValue = ""
                 txtGInvFileNames.EditValue = XtraOpenFileDialog1.SafeFileName
@@ -1312,12 +1315,12 @@ Public Class frmBDG
 
     Private Sub grdOil_DoubleClick(sender As Object, e As EventArgs) Handles grdOil.DoubleClick
         If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim fs As IO.FileStream = New IO.FileStream(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), IO.FileMode.Create)
         Dim b() As Byte = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "files")
         Try
             fs.Write(b, 0, b.Length)
             fs.Close()
-            ShellExecute("D:\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
+            ShellExecute(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1325,12 +1328,12 @@ Public Class frmBDG
 
     Private Sub grdGas_DoubleClick(sender As Object, e As EventArgs) Handles grdGas.DoubleClick
         If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim fs As IO.FileStream = New IO.FileStream(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), IO.FileMode.Create)
         Dim b() As Byte = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "files")
         Try
             fs.Write(b, 0, b.Length)
             fs.Close()
-            ShellExecute("D:\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
+            ShellExecute(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1397,6 +1400,12 @@ Public Class frmBDG
             FieldsToBeUpdate.Add("price")
             FieldsToBeUpdate.Add("totalPrice")
             If InvGas.UpdateGasData(GridView4, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
+                XtraOpenFileDialog1.FileName = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "comefrom").ToString & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename").ToString
+                If XtraOpenFileDialog1.SafeFileName <> "" Then
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString) = False Then
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End If
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
@@ -1432,6 +1441,12 @@ Public Class frmBDG
             FieldsToBeUpdate.Add("price")
             FieldsToBeUpdate.Add("totalPrice")
             If InvOils.UpdateOilData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
+                XtraOpenFileDialog1.FileName = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "comefrom").ToString & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename").ToString
+                If XtraOpenFileDialog1.SafeFileName <> "" Then
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End If
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
@@ -1674,6 +1689,7 @@ Public Class frmBDG
         If txtOInvLiters.Text = "" Then Exit Sub
         txtOInvTotalPrice.EditValue = txtOInvLiters.Text.Replace("€", "") * txtOInvPrice.Text.Replace("€", "")
     End Sub
+
 
 
 
