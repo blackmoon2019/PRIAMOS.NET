@@ -53,6 +53,11 @@ Public Class ClearControls
                                 Dim dt As DevExpress.XtraEditors.DateEdit
                                 dt = Ctrl
                                 dt.Text = "" : dt.EditValue = ""
+                            ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
+                                Dim bte As DevExpress.XtraEditors.ButtonEdit
+                                bte = Ctrl
+                                bte.Text = "" : bte.EditValue = ""
+
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                 Dim txt As DevExpress.XtraEditors.TextEdit
                                 txt = Ctrl
@@ -61,6 +66,8 @@ Public Class ClearControls
                                         Case "n2", "c" : txt.Text = "0,00"
                                         Case "n0" : txt.Text = "0"
                                     End Select
+                                ElseIf txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                    txt.EditValue = "0"
                                 End If
 
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then

@@ -39,6 +39,51 @@ Public Class FillCombos
         End Try
 
     End Sub
+    Public Sub EXC(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_EXC order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "Name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Εξόδων"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub EXP(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name,excName,mlcName,mlcID,excID from vw_EXP order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "Name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Έξοδα"
+            CtrlCombo.Properties.Columns(2).Caption = "Κατηγορίες Εξόδων"
+            CtrlCombo.Properties.Columns(3).Caption = "Κατηγορίες Χρέωσης(Χιλιοστά)"
+            CtrlCombo.Properties.Columns(4).Visible = False
+            CtrlCombo.Properties.Columns(5).Visible = False
+            Dim s As Size
+            s.Width = 400 : s.Height = 400
+            CtrlCombo.Properties.PopupFormMinSize = s
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
     Public Sub ADR(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
         Try
             If sSQL.Length = 0 Then sSQL.AppendLine("Select id,Name from vw_ADR ")

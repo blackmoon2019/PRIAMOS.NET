@@ -107,11 +107,10 @@ Public Class DBQueries
             sSQLF.AppendLine("INSERT INTO " & sTable & "(" & IIf(sGuid.Length > 0, "ID", ""))
             If ExtraFields.Length > 0 Then
                 sSQLF.AppendLine(IIf(IsFirstField = True, "", ",") & ExtraFields)
-                IsFirstField = False
             End If
             'VALUES
             sSQLV.AppendLine("VALUES(" & IIf(sGuid.Length > 0, toSQLValueS(sGuid), ""))
-            If ExtraValues.Length > 0 Then sSQLV.AppendLine(IIf(IsFirstField = True, "", ",") & ExtraValues)
+            If ExtraValues.Length > 0 Then sSQLV.AppendLine(IIf(IsFirstField = True, "", ",") & ExtraValues) : IsFirstField = False
             For Each item As BaseLayoutItem In control.Items
                 If TypeOf item Is LayoutControlItem Then
                     Dim LItem As LayoutControlItem = CType(item, LayoutControlItem)
@@ -186,7 +185,7 @@ Public Class DBQueries
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                     Dim txt As DevExpress.XtraEditors.MemoEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -194,7 +193,7 @@ Public Class DBQueries
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -329,7 +328,7 @@ NextItem:
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                         Dim txt As DevExpress.XtraEditors.MemoEdit
                                         txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -337,7 +336,7 @@ NextItem:
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -460,7 +459,7 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                     Dim txt As DevExpress.XtraEditors.MemoEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -468,22 +467,22 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    'If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
-                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
-                                    'Else
-                                    '    sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
-                                    'End If
-                                    '*******DevExpress.XtraEditors.ButtonEdit******
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
-                                    Dim txt As DevExpress.XtraEditors.ButtonEdit
-                                    txt = Ctrl
-                                    If txt.Properties.Tag = True Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                     End If
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
-                                    Dim chk As DevExpress.XtraEditors.CheckEdit
+                                    '*******DevExpress.XtraEditors.ButtonEdit******
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
+                                        Dim txt As DevExpress.XtraEditors.ButtonEdit
+                                        txt = Ctrl
+                                        If txt.Properties.Tag = True Then
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                        End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
+                                        Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
                                     sSQLV.Append(IIf(IsFirstField = True, "", ",") & chk.EditValue)
                                 End If
@@ -595,7 +594,7 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                     Dim txt As DevExpress.XtraEditors.MemoEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQL.Append(toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQL.Append(toSQLValueS(txt.Text))
@@ -603,7 +602,7 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQL.Append(toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQL.Append(toSQLValueS(txt.Text.Replace("%", "")))
@@ -712,7 +711,7 @@ NextItem:
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                         Dim txt As DevExpress.XtraEditors.MemoEdit
                                         txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                             sSQL.Append(toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQL.Append(toSQLValueS(txt.Text))
@@ -721,7 +720,7 @@ NextItem:
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                             sSQL.Append(toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQL.Append(toSQLValueS(txt.Text))
@@ -827,7 +826,7 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                     Dim txt As DevExpress.XtraEditors.MemoEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQL.Append(toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQL.Append(toSQLValueS(txt.Text))
@@ -835,7 +834,7 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                         sSQL.Append(toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQL.Append(toSQLValueS(txt.Text))

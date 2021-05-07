@@ -44,7 +44,7 @@ Public Class frmScroller
         'Φόρτωση Εγγραφών
         LoadRecords()
         'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
-        LoadViews()
+        'LoadViews()
         'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
         LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
 
@@ -135,6 +135,8 @@ Public Class frmScroller
                     Case "vw_MLC" : sSQL = "DELETE FROM MLC WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_TECH_CAT" : sSQL = "DELETE FROM TECH_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_TECH_SUP" : sSQL = "DELETE FROM TECH_SUP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_EXC" : sSQL = "DELETE FROM EXC WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_EXP" : sSQL = "DELETE FROM EXP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                 End Select
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -180,9 +182,14 @@ Public Class frmScroller
     End Sub
     'Κλείσιμο Φόρμας
     Private Sub frmScroller_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'Παίρνω το όνομα της όψης για τον συγκεκριμένο χρήστη και για τον συγκεκριμένο πίνακα και το αποθηκεύω στην βάση
-        GetCurrentView(False)
-        If sDataDetail = "" Then myReader.Close()
+        Try
+            'Παίρνω το όνομα της όψης για τον συγκεκριμένο χρήστη και για τον συγκεκριμένο πίνακα και το αποθηκεύω στην βάση
+            GetCurrentView(False)
+            If sDataDetail = "" Then myReader.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     'Διαγραφή όψης
     Private Sub popDeleteView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popDeleteView.ItemClick
@@ -470,10 +477,20 @@ Public Class frmScroller
         Dim fBDG As frmBDG = New frmBDG()
         Dim fCustomers As frmCustomers = New frmCustomers()
         Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
+        Dim fExp As frmEXP = New frmEXP()
         Dim fParameters As frmParameters = New frmParameters()
         Dim fGen As frmGen = New frmGen()
 
         Select Case sDataTable
+            Case "vw_EXP"
+                fExp.Text = "Έξοδα"
+                fExp.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fExp.MdiParent = frmMain
+                fExp.Mode = FormMode.EditRecord
+                fExp.Scroller = GridView1
+                fExp.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fExp), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fExp.Show()
             Case "vw_TECH_SUP"
                 fTechicalSupport.Text = "Διαχείριση Τεχνικής Υποστήριξης"
                 fTechicalSupport.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
@@ -614,13 +631,14 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
 
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_EXC"
                 Select Case sDataTable
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
+                    Case "vw_EXC" : fGen.Text = "Κατηγορίες Εξόδων" : fGen.DataTable = "EXC" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -650,7 +668,18 @@ Public Class frmScroller
         Dim fGen As frmGen = New frmGen()
         Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
 
+        Dim fExp As frmEXP = New frmEXP()
+
+
         Select Case sDataTable
+            Case "vw_EXP"
+                fExp.Text = "Έξοδα"
+                fExp.MdiParent = frmMain
+                fExp.Mode = FormMode.NewRecord
+                fExp.Scroller = GridView1
+                fExp.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fExp), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fExp.Show()
             Case "vw_TECH_SUP"
                 fTechicalSupport.Text = "Διαχείριση Τεχνικής Υποστήριξης"
                 fTechicalSupport.MdiParent = frmMain
@@ -779,13 +808,14 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_EXC"
                 Select Case sDataTable
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
+                    Case "vw_EXC" : fGen.Text = "Κατηγορίες Εξόδων" : fGen.DataTable = "EXC" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -845,15 +875,18 @@ Public Class frmScroller
                 If myReader.HasRows = False Then
                     For i As Integer = 0 To myReader.FieldCount - 1
                         Dim C As New GridColumn
-                        C.Name = myReader.GetName(i).ToString
+                        C.Name = "col" & myReader.GetName(i).ToString
                         C.Caption = myReader.GetName(i).ToString
                         C.Visible = True
+                        C.FieldName = myReader.GetName(i).ToString
                         GridView1.Columns.Add(C)
                     Next i
                 End If
             End If
             If sDataTable = "" And sDataTable2 <> "" Then sDataTable = sDataTable2
             LoadViews()
+            'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
+            LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

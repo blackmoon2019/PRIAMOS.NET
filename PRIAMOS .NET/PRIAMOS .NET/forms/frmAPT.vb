@@ -56,10 +56,17 @@ Public Class frmAPT
         Select Case Mode
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("APT")
+                ' Παίρνει το μεγαλύτερο Α/Α και το αυξάνει κατα 1
+                Dim cmd As SqlCommand = New SqlCommand("Select  MAX(ORD) + 1 As ORD FROM VW_APT WHERE bdgID= " & toSQLValueS(sBDGID), CNDB)
+                Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                If (sdr.Read() = True) Then
+                    If sdr.IsDBNull(sdr.GetOrdinal("ORD")) = False Then txtOrd.EditValue = sdr.GetInt32(sdr.GetOrdinal("ORD"))
+                End If
+
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APT where id ='" + sID + "'")
-        End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+                End Select
+                Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmAPT = Me.Location
         My.Settings.Save()
@@ -75,6 +82,17 @@ Public Class frmAPT
         Dim sAptID As String
         Try
             If Valid.ValidateForm(LayoutControl1) Then
+                ''Ελεγχος για ίδιο ORD
+                'Dim cmd As SqlCommand = New SqlCommand("select id  from apt where bdgid= " & toSQLValueS(sBDGID) & " and ord = " & toSQLValueS(txtOrd.EditValue.ToString), CNDB)
+                'Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                'If (sdr.Read() = True) Then
+                '    If sdr.IsDBNull(sdr.GetOrdinal("id")) = False Then
+                '        XtraMessageBox.Show("Βρέθηκαν διαμερίσματα με ίδιο Α/Α. Παρακαλώ διορθώστε το για να προχωρήσετε", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '        sdr.Close()
+                '        Exit Sub
+                '    End If
+                'End If
+
                 Select Case Mode
                     Case FormMode.NewRecord
                         sAptID = System.Guid.NewGuid.ToString
@@ -92,6 +110,7 @@ Public Class frmAPT
                             oCmd.ExecuteNonQuery()
                         End Using
                     End If
+
                     'Καθαρισμός Controls
                     Dim OrdValue As Integer
                     If Mode = FormMode.NewRecord Then
@@ -105,6 +124,7 @@ Public Class frmAPT
                     form.AptRefresh()
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
+                    If Mode = FormMode.NewRecord Then txtOrd.EditValue = txtOrd.OldEditValue + 1
                     txtName.Select()
                 End If
             End If

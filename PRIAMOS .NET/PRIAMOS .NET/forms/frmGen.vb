@@ -233,6 +233,20 @@ Public Class frmGen
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("TECH_CAT")
+                            Case "EXC"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "EXC", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.EXC(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As New frmScroller
+                                    form = Frm
+                                    form.LoadRecords("vw_EXC")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("EXC")
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
@@ -346,6 +360,16 @@ Public Class frmGen
                                     form = Frm
                                     form.LoadRecords("vw_TECH_CAT")
                                 End If
+                            Case "EXC"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "EXC", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.EXC(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As New frmScroller
+                                    form = Frm
+                                    form.LoadRecords("vw_EXC")
+                                End If
                         End Select
                 End Select
                 If sResult Then
@@ -432,9 +456,16 @@ Public Class frmGen
                     Else
                         LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_CAT where id ='" + sID + "'", True)
                     End If
+                Case "EXC"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("EXC")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_EXC where id ='" + sID + "'", True)
+                    End If
             End Select
             cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
             cmdDelete.Enabled = IIf(Mode = FormMode.NewRecord, False, UserProps.AllowDelete)
+            txtName.Select()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -529,6 +560,13 @@ Public Class frmGen
                         Else
                             Dim form As New frmScroller
                             form.LoadRecords("vw_TECH_CAT")
+                        End If
+                    Case "EXC"
+                        If CalledFromCtrl Then
+                            FillCbo.EXC(CtrlCombo)
+                        Else
+                            Dim form As New frmScroller
+                            form.LoadRecords("vw_EXC")
                         End If
                 End Select
                 Cls.ClearCtrls(LayoutControl1)

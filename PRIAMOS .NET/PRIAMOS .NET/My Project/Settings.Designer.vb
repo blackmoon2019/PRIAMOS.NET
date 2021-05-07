@@ -267,6 +267,30 @@ Namespace My
                 Me("SERVER_PATH") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmEXP() As Global.System.Drawing.Point
+            Get
+                Return CType(Me("frmEXP"),Global.System.Drawing.Point)
+            End Get
+            Set
+                Me("frmEXP") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmIEP() As Global.System.Drawing.Point
+            Get
+                Return CType(Me("frmIEP"),Global.System.Drawing.Point)
+            End Get
+            Set
+                Me("frmIEP") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

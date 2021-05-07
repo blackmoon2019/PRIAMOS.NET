@@ -21,6 +21,10 @@ Partial Class frmTecnicalSupport
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.cboCategory = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmdEmail = New DevExpress.XtraEditors.SimpleButton()
         Me.txtFrom = New DevExpress.XtraEditors.TextEdit()
@@ -32,23 +36,23 @@ Partial Class frmTecnicalSupport
         Me.txtBody = New DevExpress.XtraEditors.MemoEdit()
         Me.txtCC = New DevExpress.XtraEditors.TextEdit()
         Me.txtSubject = New DevExpress.XtraEditors.TextEdit()
-        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.lCode = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lEmailTo = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,21 +61,17 @@ Partial Class frmTecnicalSupport
         CType(Me.txtBody.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCC.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSubject.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lCode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lEmailTo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -95,6 +95,31 @@ Partial Class frmTecnicalSupport
         Me.LayoutControl1.Size = New System.Drawing.Size(1266, 681)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.EmptySpaceItem2, Me.lCode, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem5, Me.lEmailTo, Me.EmptySpaceItem3, Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem10})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(1266, 681)
+        Me.Root.TextVisible = False
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(168, 0)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1078, 24)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem3
+        '
+        Me.EmptySpaceItem3.AllowHotTrack = False
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 629)
+        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(945, 32)
+        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'cboCategory
         '
@@ -208,15 +233,6 @@ Partial Class frmTecnicalSupport
         Me.txtSubject.TabIndex = 19
         Me.txtSubject.Tag = "subject,0,1,2"
         '
-        'Root
-        '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.EmptySpaceItem2, Me.lCode, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem5, Me.lEmailTo, Me.EmptySpaceItem3, Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem10})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1266, 681)
-        Me.Root.TextVisible = False
-        '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.PictureEdit1
@@ -225,14 +241,6 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem1.Size = New System.Drawing.Size(1246, 428)
         Me.LayoutControlItem1.Text = "Εικόνα"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(63, 13)
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(168, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1078, 24)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'lCode
         '
@@ -290,14 +298,6 @@ Partial Class frmTecnicalSupport
         Me.lEmailTo.Text = "To"
         Me.lEmailTo.TextSize = New System.Drawing.Size(63, 13)
         '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 629)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(945, 32)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
-        '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.txtCC
@@ -346,6 +346,10 @@ Partial Class frmTecnicalSupport
         Me.Text = "frmTecnicalSupport"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -354,21 +358,17 @@ Partial Class frmTecnicalSupport
         CType(Me.txtBody.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCC.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSubject.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lCode, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lEmailTo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -160,7 +160,7 @@ Public Class frmMain
         form.Show()
     End Sub
 
-    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbMLC.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κατηγορίες Χιλιοσστών"
         form.DataTable = "vw_MLC"
@@ -175,7 +175,7 @@ Public Class frmMain
 
     Private Sub bbTechnicalSupport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTechnicalSupport.ItemClick
         Dim form As frmScroller = New frmScroller()
-        form.Text = "Κατηγορίες Τεχνικής Υποστήριξης"
+        form.Text = "Τεχνική Υποστήριξη"
         form.DataTable = "vw_TECH_SUP"
         form.MdiParent = Me
         form.Show()
@@ -185,6 +185,22 @@ Public Class frmMain
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κατηγορίες Τεχνικής Υποστήριξης"
         form.DataTable = "vw_TECH_CAT"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbExpCateg_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbExpCateg.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Εξόδων"
+        form.DataTable = "vw_EXC"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbEXP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbEXP.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Εξόδων"
+        form.DataTable = "vw_EXP"
         form.MdiParent = Me
         form.Show()
     End Sub

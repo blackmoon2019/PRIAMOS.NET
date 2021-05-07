@@ -226,7 +226,7 @@ Partial Class frmAPT
         Me.txtOrd.Name = "txtOrd"
         Me.txtOrd.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtOrd.Properties.IsFloatValue = False
-        Me.txtOrd.Properties.Mask.EditMask = "N00"
+        Me.txtOrd.Properties.MaskSettings.Set("mask", "N00")
         Me.txtOrd.Size = New System.Drawing.Size(210, 20)
         Me.txtOrd.StyleController = Me.LayoutControl1
         Me.txtOrd.TabIndex = 21
@@ -239,7 +239,7 @@ Partial Class frmAPT
         Me.txtBal.Name = "txtBal"
         Me.txtBal.Properties.DisplayFormat.FormatString = "c"
         Me.txtBal.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtBal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.txtBal.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtBal.Properties.ReadOnly = True
         Me.txtBal.Size = New System.Drawing.Size(86, 20)
         Me.txtBal.StyleController = Me.LayoutControl1

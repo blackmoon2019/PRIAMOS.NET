@@ -51,6 +51,7 @@ Public Class InvOilGas
         Dim sSQL As String
         Try
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+
                 sSQL = "DELETE FROM " & sTable & " WHERE ID = " & toSQLValueS(sID)
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -62,4 +63,19 @@ Public Class InvOilGas
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Public Sub DeleteRecordWithoutQuestion(ByVal sID As String, ByVal sTable As String)
+        Dim sSQL As String
+        Try
+
+            sSQL = "DELETE FROM " & sTable & " WHERE ID = " & toSQLValueS(sID)
+
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            'XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 End Class

@@ -263,6 +263,19 @@ Partial Class frmBDG
         Me.EmptySpaceItem35 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.XtraTabPage4 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
+        Me.LayoutControl5FixedCosts = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdAddIEP = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdEditIEP = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdIEPDelete = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdIEPRefresh = New DevExpress.XtraEditors.SimpleButton()
+        Me.grdIEP = New DevExpress.XtraGrid.GridControl()
+        Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.LayoutControlGroup12 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem98 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem102 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem101 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem103 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem104 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage7 = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl4InvHeatGas = New DevExpress.XtraLayout.LayoutControl()
@@ -543,6 +556,17 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XtraTabPage5.SuspendLayout()
+        CType(Me.LayoutControl5FixedCosts, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LayoutControl5FixedCosts.SuspendLayout()
+        CType(Me.grdIEP, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem98, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem102, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem101, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem103, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem104, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage7.SuspendLayout()
         CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl4InvHeatGas.SuspendLayout()
@@ -811,6 +835,7 @@ Partial Class frmBDG
         '
         'chkMLC
         '
+        Me.chkMLC.CheckOnClick = True
         Me.chkMLC.HorizontalScrollbar = True
         Me.chkMLC.Location = New System.Drawing.Point(12, 317)
         Me.chkMLC.Name = "chkMLC"
@@ -1420,6 +1445,7 @@ Partial Class frmBDG
         Me.txtOldCode.Size = New System.Drawing.Size(78, 20)
         Me.txtOldCode.StyleController = Me.LayoutControl1BDG
         Me.txtOldCode.TabIndex = 29
+        Me.txtOldCode.Tag = "old_code,0,1,2"
         '
         'Root
         '
@@ -2970,9 +2996,145 @@ Partial Class frmBDG
         '
         'XtraTabPage5
         '
+        Me.XtraTabPage5.Controls.Add(Me.LayoutControl5FixedCosts)
         Me.XtraTabPage5.Name = "XtraTabPage5"
         Me.XtraTabPage5.Size = New System.Drawing.Size(1318, 677)
-        Me.XtraTabPage5.Text = "XtraTabPage5"
+        Me.XtraTabPage5.Text = "Πάγια Έξοδα"
+        '
+        'LayoutControl5FixedCosts
+        '
+        Me.LayoutControl5FixedCosts.Controls.Add(Me.cmdAddIEP)
+        Me.LayoutControl5FixedCosts.Controls.Add(Me.cmdEditIEP)
+        Me.LayoutControl5FixedCosts.Controls.Add(Me.cmdIEPDelete)
+        Me.LayoutControl5FixedCosts.Controls.Add(Me.cmdIEPRefresh)
+        Me.LayoutControl5FixedCosts.Controls.Add(Me.grdIEP)
+        Me.LayoutControl5FixedCosts.Location = New System.Drawing.Point(0, 6)
+        Me.LayoutControl5FixedCosts.Name = "LayoutControl5FixedCosts"
+        Me.LayoutControl5FixedCosts.Root = Me.LayoutControlGroup12
+        Me.LayoutControl5FixedCosts.Size = New System.Drawing.Size(1318, 596)
+        Me.LayoutControl5FixedCosts.TabIndex = 0
+        Me.LayoutControl5FixedCosts.Text = "LayoutControl1"
+        '
+        'cmdAddIEP
+        '
+        Me.cmdAddIEP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.cmdAddIEP.Location = New System.Drawing.Point(12, 12)
+        Me.cmdAddIEP.Name = "cmdAddIEP"
+        Me.cmdAddIEP.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdAddIEP.Size = New System.Drawing.Size(22, 22)
+        Me.cmdAddIEP.StyleController = Me.LayoutControl5FixedCosts
+        Me.cmdAddIEP.TabIndex = 67
+        '
+        'cmdEditIEP
+        '
+        Me.cmdEditIEP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
+        Me.cmdEditIEP.Location = New System.Drawing.Point(12, 38)
+        Me.cmdEditIEP.Name = "cmdEditIEP"
+        Me.cmdEditIEP.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdEditIEP.Size = New System.Drawing.Size(22, 22)
+        Me.cmdEditIEP.StyleController = Me.LayoutControl5FixedCosts
+        Me.cmdEditIEP.TabIndex = 68
+        '
+        'cmdIEPDelete
+        '
+        Me.cmdIEPDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.cmdIEPDelete.Location = New System.Drawing.Point(12, 64)
+        Me.cmdIEPDelete.Name = "cmdIEPDelete"
+        Me.cmdIEPDelete.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdIEPDelete.Size = New System.Drawing.Size(22, 22)
+        Me.cmdIEPDelete.StyleController = Me.LayoutControl5FixedCosts
+        Me.cmdIEPDelete.TabIndex = 63
+        '
+        'cmdIEPRefresh
+        '
+        Me.cmdIEPRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
+        Me.cmdIEPRefresh.Location = New System.Drawing.Point(12, 90)
+        Me.cmdIEPRefresh.Name = "cmdIEPRefresh"
+        Me.cmdIEPRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdIEPRefresh.Size = New System.Drawing.Size(22, 22)
+        Me.cmdIEPRefresh.StyleController = Me.LayoutControl5FixedCosts
+        Me.cmdIEPRefresh.TabIndex = 64
+        '
+        'grdIEP
+        '
+        Me.grdIEP.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grdIEP.Location = New System.Drawing.Point(38, 12)
+        Me.grdIEP.MainView = Me.GridView6
+        Me.grdIEP.Name = "grdIEP"
+        Me.grdIEP.Size = New System.Drawing.Size(1268, 572)
+        Me.grdIEP.TabIndex = 22
+        Me.grdIEP.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView6})
+        '
+        'GridView6
+        '
+        Me.GridView6.GridControl = Me.grdIEP
+        Me.GridView6.LevelIndent = 0
+        Me.GridView6.Name = "GridView6"
+        Me.GridView6.OptionsBehavior.Editable = False
+        Me.GridView6.OptionsBehavior.ReadOnly = True
+        Me.GridView6.OptionsLayout.StoreAllOptions = True
+        Me.GridView6.OptionsLayout.StoreAppearance = True
+        Me.GridView6.OptionsLayout.StoreFormatRules = True
+        Me.GridView6.OptionsPrint.PrintPreview = True
+        Me.GridView6.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView6.OptionsView.ColumnAutoWidth = False
+        Me.GridView6.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView6.PreviewIndent = 0
+        '
+        'LayoutControlGroup12
+        '
+        Me.LayoutControlGroup12.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup12.GroupBordersVisible = False
+        Me.LayoutControlGroup12.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem98, Me.LayoutControlItem102, Me.LayoutControlItem101, Me.LayoutControlItem103, Me.LayoutControlItem104})
+        Me.LayoutControlGroup12.Name = "LayoutControlGroup12"
+        Me.LayoutControlGroup12.Size = New System.Drawing.Size(1318, 596)
+        Me.LayoutControlGroup12.TextVisible = False
+        '
+        'LayoutControlItem98
+        '
+        Me.LayoutControlItem98.Control = Me.grdIEP
+        Me.LayoutControlItem98.Location = New System.Drawing.Point(26, 0)
+        Me.LayoutControlItem98.Name = "LayoutControlItem98"
+        Me.LayoutControlItem98.Size = New System.Drawing.Size(1272, 576)
+        Me.LayoutControlItem98.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem98.TextVisible = False
+        '
+        'LayoutControlItem102
+        '
+        Me.LayoutControlItem102.Control = Me.cmdIEPRefresh
+        Me.LayoutControlItem102.Location = New System.Drawing.Point(0, 78)
+        Me.LayoutControlItem102.Name = "LayoutControlItem102"
+        Me.LayoutControlItem102.Size = New System.Drawing.Size(26, 498)
+        Me.LayoutControlItem102.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem102.TextVisible = False
+        '
+        'LayoutControlItem101
+        '
+        Me.LayoutControlItem101.Control = Me.cmdIEPDelete
+        Me.LayoutControlItem101.Location = New System.Drawing.Point(0, 52)
+        Me.LayoutControlItem101.Name = "LayoutControlItem101"
+        Me.LayoutControlItem101.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem101.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem101.TextVisible = False
+        '
+        'LayoutControlItem103
+        '
+        Me.LayoutControlItem103.Control = Me.cmdAddIEP
+        Me.LayoutControlItem103.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem103.Name = "LayoutControlItem103"
+        Me.LayoutControlItem103.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem103.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem103.TextVisible = False
+        '
+        'LayoutControlItem104
+        '
+        Me.LayoutControlItem104.Control = Me.cmdEditIEP
+        Me.LayoutControlItem104.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem104.Name = "LayoutControlItem104"
+        Me.LayoutControlItem104.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem104.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem104.TextVisible = False
         '
         'XtraTabPage6
         '
@@ -3940,6 +4102,7 @@ Partial Class frmBDG
         Me.GridView5.GridControl = Me.grdAPM
         Me.GridView5.LevelIndent = 0
         Me.GridView5.Name = "GridView5"
+        Me.GridView5.OptionsCustomization.AllowSort = False
         Me.GridView5.OptionsLayout.StoreAllOptions = True
         Me.GridView5.OptionsLayout.StoreAppearance = True
         Me.GridView5.OptionsLayout.StoreFormatRules = True
@@ -4276,6 +4439,17 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.XtraTabPage5.ResumeLayout(False)
+        CType(Me.LayoutControl5FixedCosts, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.LayoutControl5FixedCosts.ResumeLayout(False)
+        CType(Me.grdIEP, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem98, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem102, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem101, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem103, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem104, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage7.ResumeLayout(False)
         CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl4InvHeatGas.ResumeLayout(False)
@@ -4706,4 +4880,17 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem96 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtOldCode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem97 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControl5FixedCosts As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents grdIEP As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView6 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents LayoutControlGroup12 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem98 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdIEPDelete As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdIEPRefresh As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem102 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem101 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdAddIEP As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdEditIEP As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem103 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem104 As DevExpress.XtraLayout.LayoutControlItem
 End Class

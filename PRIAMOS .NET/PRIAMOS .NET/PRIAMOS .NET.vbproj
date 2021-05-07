@@ -306,6 +306,7 @@
     <Compile Include="classes\CheckForUpdates.vb" />
     <Compile Include="classes\CheckPermissions.vb" />
     <Compile Include="classes\ClearControls.vb" />
+    <Compile Include="classes\clsDeletions.vb" />
     <Compile Include="classes\CN.vb" />
     <Compile Include="classes\DBQueries.vb" />
     <Compile Include="classes\EnableControls.vb" />
@@ -348,10 +349,22 @@
     <Compile Include="forms\frmCustomers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmEXP.Designer.vb">
+      <DependentUpon>frmEXP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmEXP.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmGen.Designer.vb">
       <DependentUpon>frmGen.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\frmGen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmIEP.Designer.vb">
+      <DependentUpon>frmIEP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmIEP.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmMailSettings.Designer.vb">
@@ -455,9 +468,15 @@
       <DependentUpon>frmCustomers.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmEXP.resx">
+      <DependentUpon>frmEXP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmGen.resx">
       <DependentUpon>frmGen.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmIEP.resx">
+      <DependentUpon>frmIEP.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmMailSettings.resx">
       <DependentUpon>frmMailSettings.vb</DependentUpon>
