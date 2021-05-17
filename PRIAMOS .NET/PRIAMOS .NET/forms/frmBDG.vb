@@ -1,4 +1,7 @@
 ﻿Imports System.IO
+Imports iTextSharp.text 'Core PDF Text Functionalities
+Imports iTextSharp.text.pdf 'PDF Content
+Imports iTextSharp.text.pdf.parser
 Imports System.Data.SqlClient
 Imports DevExpress.Utils.Menu
 Imports DevExpress.Utils
@@ -209,13 +212,15 @@ Public Class frmBDG
         form1.L2.Text = "Διεύθυνση"
         form1.L3.Text = "Νομός"
         form1.L4.Text = "Περιοχές"
+        form1.L7.Text = "ΤΚ"
+        form1.L7.Control.Tag = "tk,0,1,2"
         form1.DataTable = "ADR"
         form1.CalledFromControl = True
         form1.CallerControl = cboADR
         form1.MdiParent = frmMain
         form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        'form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboADR.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboADR.EditValue.ToString
@@ -231,7 +236,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboADR_EditValueChanged(sender As Object, e As EventArgs) Handles cboADR.EditValueChanged
-        If sender.editvalue <> Nothing Then txtNam.Text = cboADR.Text + " " + txtAR.Text Else txtNam.Text = ""
+        If sender.editvalue <> Nothing And txtNam.Text.Length = 0 Then txtNam.Text = cboADR.Text + " " + txtAR.Text 'Else txtNam.Text = ""
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
@@ -315,14 +320,14 @@ Public Class frmBDG
                     Bmlc.Clear()
                     FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
 
-                    dtDTS.EditValue = DateTime.Now
+                    If Mode = FormMode.NewRecord Then dtDTS.EditValue = DateTime.Now
                     txtCode.Text = DBQ.GetNextId("BDG")
-                    Dim form As New frmScroller
-                    form.LoadRecords("vw_BDG")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Valid.SChanged = False
+                        Dim form As New frmScroller
+                        form.LoadRecords("vw_BDG")
+                        XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Valid.SChanged = False
+                    End If
                 End If
-            End If
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -420,23 +425,23 @@ Public Class frmBDG
     Private Sub NewApt()
         Dim form1 As frmAPT = New frmAPT()
         form1.Text = "Διαμερίσματα"
-        form1.MdiParent = frmMain
+        'form1.MdiParent = frmMain
         form1.Mode = FormMode.NewRecord
         form1.FormScroller = Me
         form1.BDGID = sID
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
     End Sub
     Private Sub EditApt()
         Dim form1 As frmAPT = New frmAPT()
         form1.Text = "Διαμερίσματα"
         form1.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-        form1.MdiParent = frmMain
+        'form1.MdiParent = frmMain
         form1.Mode = FormMode.EditRecord
         form1.FormScroller = Me
         form1.BDGID = sID
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
     End Sub
     Private Sub grdAPT_KeyDown(sender As Object, e As KeyEventArgs) Handles grdAPT.KeyDown
         Select Case e.KeyCode
@@ -624,7 +629,7 @@ Public Class frmBDG
         End If
         info.Column.OptionsColumn.AllowMove = Not item.Checked
     End Sub
-    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
+    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As System.Drawing.Image) As DXMenuCheckItem
         Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
         item.Tag = New MenuColumnInfo(column)
         Return item
@@ -635,7 +640,7 @@ Public Class frmBDG
         GridView1.OptionsBehavior.ReadOnly = Not item.Checked
     End Sub
 
-    Private Function CreateEditGRID(ByVal caption As String, ByVal GRD As DevExpress.XtraGrid.Views.Grid.GridView, ByVal image As Image) As DXMenuCheckItem
+    Private Function CreateEditGRID(ByVal caption As String, ByVal GRD As DevExpress.XtraGrid.Views.Grid.GridView, ByVal image As System.Drawing.Image) As DXMenuCheckItem
         Dim item As New DXMenuCheckItem(caption, (GRD.OptionsBehavior.Editable), image, New EventHandler(AddressOf OnCanGRIDEdit))
         Return item
     End Function
@@ -769,7 +774,6 @@ Public Class frmBDG
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
-
     End Sub
 
     Private Sub NavGeneral_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavGeneral.ElementClick
@@ -911,7 +915,7 @@ Public Class frmBDG
         If result = DialogResult.OK Then
             If ValueToGrid Then
                 GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
-                GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "comefrom", Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
+                GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "comefrom", System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
             Else
                 txtOInvFileNames.EditValue = ""
                 txtOInvFileNames.EditValue = XtraOpenFileDialog1.SafeFileName
@@ -928,7 +932,7 @@ Public Class frmBDG
         If result = DialogResult.OK Then
             If ValueToGrid Then
                 GridView4.SetRowCellValue(GridView4.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
-                GridView4.SetRowCellValue(GridView4.FocusedRowHandle, "comefrom", Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
+                GridView4.SetRowCellValue(GridView4.FocusedRowHandle, "comefrom", System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
             Else
                 txtGInvFileNames.EditValue = ""
                 txtGInvFileNames.EditValue = XtraOpenFileDialog1.SafeFileName
@@ -1007,13 +1011,13 @@ Public Class frmBDG
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
-            sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mdt, CUR.mes, BEF.mesB, 
+            sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mdt, CUR.mes, BEF.mes as mesB, 
 		            CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
 		            CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam  from ( " +
                     "Select * From vw_AHPB " +
                     "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " ) as CUR " +
                     "Left Join vw_AHPB BEF on bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And 
-                    BEF.mdt = (select max(mdt) from vw_AHPB where mdt <> " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " ) ORDER BY CUR.ORD   "
+                    BEF.mdt = (select max(mdt) from vw_AHPB where mdt < " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ORDER BY CUR.ORD   "
             'sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
             LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
             If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
@@ -1212,7 +1216,8 @@ Public Class frmBDG
     End Sub
 
     Private Sub HyperlinkLabelControl1_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl1.HyperlinkClick
-        System.Diagnostics.Process.Start(e.Text)
+        'System.Diagnostics.Process.Start(e.Text)
+        WebBrowser1.Navigate("https://ebill.dei.gr/Login.aspx")
     End Sub
 
     Private Sub HyperlinkLabelControl111_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl111.HyperlinkClick
@@ -1350,7 +1355,7 @@ Public Class frmBDG
 
     Private Sub grdOil_DoubleClick(sender As Object, e As EventArgs) Handles grdOil.DoubleClick
         If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
         Try
             Dim b() As Byte = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "files")
             fs.Write(b, 0, b.Length)
@@ -1363,7 +1368,7 @@ Public Class frmBDG
 
     Private Sub grdGas_DoubleClick(sender As Object, e As EventArgs) Handles grdGas.DoubleClick
         If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
         Try
             Dim b() As Byte = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "files")
             fs.Write(b, 0, b.Length)
@@ -1854,7 +1859,7 @@ Public Class frmBDG
     End Sub
     Public Sub LoadIEP()
         Dim sSQL As String
-        sSQL = "SELECT * FROM vw_IEP WHERE BDGID = '" & sID & "' ORDER BY PSN"
+        sSQL = "SELECT * FROM vw_IEP WHERE BDGID = '" & sID & "' ORDER BY code"
         LoadForms.LoadDataToGrid(grdIEP, GridView6, sSQL)
         'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
         LoadForms.LoadColumnDescriptionNames(grdIEP, GridView6,, "vw_IEP")
@@ -1913,13 +1918,14 @@ Public Class frmBDG
     Private Sub grdIEP_DoubleClick(sender As Object, e As EventArgs) Handles grdIEP.DoubleClick
         Dim form1 As frmIEP = New frmIEP()
         form1.Text = "Έξοδα"
-        form1.MdiParent = frmMain
+        'form1.MdiParent = frmMain
         form1.Mode = FormMode.EditRecord
         form1.FormScroller = Me
         form1.ID = GridView6.GetRowCellValue(GridView6.FocusedRowHandle, "ID").ToString
         form1.BDGID = sID
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        'form1.Show()
+        form1.ShowDialog()
     End Sub
 
 
@@ -1956,23 +1962,75 @@ Public Class frmBDG
     Private Sub NewIEP()
         Dim form1 As frmIEP = New frmIEP()
         form1.Text = "Έξοδα"
-        form1.MdiParent = frmMain
+        'form1.MdiParent = frmMain
         form1.Mode = FormMode.NewRecord
         form1.FormScroller = Me
         form1.BDGID = sID
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        'form1.Show()
+        form1.ShowDialog()
     End Sub
     Private Sub EditIEP()
         Dim form1 As frmIEP = New frmIEP()
         form1.Text = "Έξοδα"
-        form1.MdiParent = frmMain
+        'form1.MdiParent = frmMain
         form1.Mode = FormMode.EditRecord
         form1.FormScroller = Me
         form1.ID = GridView6.GetRowCellValue(GridView6.FocusedRowHandle, "ID").ToString
         form1.BDGID = sID
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
+        'form1.Show()
+        form1.ShowDialog()
+    End Sub
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        On Error Resume Next
+        WebBrowser1.Document.GetElementById("ctl00_ctl00_Site_Main_Main_ApartmentBuildingBills_txtCustomerCode").SetAttribute("value", eCounter.Text)
+        WebBrowser1.Document.GetElementById("ctl00$ctl00$Site_Main$Main$ApartmentBuildingBills$btnFindApartmentBuildingBills").InvokeMember("click")
+
+    End Sub
+
+    Private Sub WebBrowser1_NewWindow(sender As Object, e As CancelEventArgs) Handles WebBrowser1.NewWindow
+        e.Cancel = True
+
+        Dim url As String = WebBrowser1.StatusText
+
+        WebBrowser1.Navigate(url)
+
+    End Sub
+    Public Shared Function GetTextFromPDF(PdfFileName As String) As String
+        Dim oReader As New iTextSharp.text.pdf.PdfReader(PdfFileName)
+
+        Dim sOut = ""
+
+        For i = 1 To oReader.NumberOfPages - 1
+            Dim its As New iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy
+
+            sOut &= iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(oReader, i, its)
+        Next
+        Dim sAmount As String() = sOut.Split(vbLf)
+        Dim value As String = Array.Find(sAmount, Function(x) (x.StartsWith("*")))
+        value = value.Replace("*", "")
+        Return value
+    End Function
+
+    Private Sub cmdOpenPDF_Click(sender As Object, e As EventArgs) Handles cmdOpenPDF.Click
+        FilesSelection()
+    End Sub
+    Private Sub FilesSelection()
+
+        XtraOpenFileDialog1.Filter = "PDF files (*.pdf)|*.pdf"
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then txtPayDEI.EditValue = GetTextFromPDF(XtraOpenFileDialog1.SafeFileName)
+    End Sub
+
+    Private Sub cmdIEPRefresh_Click(sender As Object, e As EventArgs) Handles cmdIEPRefresh.Click
+        LoadIEP()
     End Sub
 
     'ΘΕΡΜΑΝΣΗ

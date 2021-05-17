@@ -189,19 +189,29 @@ Public Class frmMain
         form.Show()
     End Sub
 
-    Private Sub bbExpCateg_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbExpCateg.ItemClick
+
+    'Private Sub bbEXP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbEXP.ItemClick
+    '    Dim form As frmScroller = New frmScroller()
+    '    form.Text = "Κατηγορίες Εξόδων"
+    '    form.DataTable = "vw_EXP"
+    '    form.MdiParent = Me
+    '    form.Show()
+    'End Sub
+
+    Private Sub bbParasts_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbParasts.ItemClick
         Dim form As frmScroller = New frmScroller()
-        form.Text = "Κατηγορίες Εξόδων"
-        form.DataTable = "vw_EXC"
+        form.Text = "Κοινόχρηστα"
+        form.DataTable = "vw_INH"
         form.MdiParent = Me
         form.Show()
     End Sub
 
-    Private Sub bbEXP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbEXP.ItemClick
+    Private Sub bbCalcCateg_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCalcCateg.ItemClick
         Dim form As frmScroller = New frmScroller()
-        form.Text = "Κατηγορίες Εξόδων"
-        form.DataTable = "vw_EXP"
+        form.Text = "Κατηγορίες Υπολογισμών"
+        form.DataTable = "vw_CALC_CAT"
         form.MdiParent = Me
         form.Show()
+
     End Sub
 End Class

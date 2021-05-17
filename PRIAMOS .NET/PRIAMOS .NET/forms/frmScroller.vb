@@ -135,8 +135,9 @@ Public Class frmScroller
                     Case "vw_MLC" : sSQL = "DELETE FROM MLC WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_TECH_CAT" : sSQL = "DELETE FROM TECH_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_TECH_SUP" : sSQL = "DELETE FROM TECH_SUP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
-                    Case "vw_EXC" : sSQL = "DELETE FROM EXC WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_CALC_CAT" : sSQL = "DELETE FROM CALC_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_EXP" : sSQL = "DELETE FROM EXP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_INH" : sSQL = "DELETE FROM INH WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                 End Select
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -478,10 +479,20 @@ Public Class frmScroller
         Dim fCustomers As frmCustomers = New frmCustomers()
         Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
         Dim fExp As frmEXP = New frmEXP()
+        Dim fINH As frmINH = New frmINH()
         Dim fParameters As frmParameters = New frmParameters()
         Dim fGen As frmGen = New frmGen()
 
         Select Case sDataTable
+            Case "vw_INH"
+                fINH.Text = "Κοινόχρηστα"
+                fINH.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fINH.MdiParent = frmMain
+                fINH.Mode = FormMode.EditRecord
+                fINH.Scroller = GridView1
+                fINH.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fINH.Show()
             Case "vw_EXP"
                 fExp.Text = "Έξοδα"
                 fExp.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
@@ -584,9 +595,11 @@ Public Class frmScroller
                 fGen.L2.Text = "Διεύθυνση"
                 fGen.L3.Text = "Νομός"
                 fGen.L4.Text = "Περιοχές"
+                fGen.L7.Text = "ΤΚ"
+                fGen.L7.Control.Tag = "tk,0,1,2"
                 fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                'fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -606,6 +619,27 @@ Public Class frmScroller
                 fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_CALC_CAT"
+                fGen.Text = "Κατηγορίες Υπολογισμών"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "CALC_CAT"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Όνομα"
+                fGen.L3.Text = "Τύπος Υπολογισμού"
+                fGen.L3.Control.Tag = "calcTypeID,0,1,2"
+                fGen.L3.Tag = ""
+                fGen.L3.ImageOptions.Image = Nothing
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -631,14 +665,13 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
 
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_EXC"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT"
                 Select Case sDataTable
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
-                    Case "vw_EXC" : fGen.Text = "Κατηγορίες Εξόδων" : fGen.DataTable = "EXC" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -667,11 +700,21 @@ Public Class frmScroller
         Dim fParameters As frmParameters = New frmParameters()
         Dim fGen As frmGen = New frmGen()
         Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
+        Dim fINH As frmINH = New frmINH()
 
         Dim fExp As frmEXP = New frmEXP()
 
 
+
         Select Case sDataTable
+            Case "vw_INH"
+                fINH.Text = "Έξοδα"
+                fINH.MdiParent = frmMain
+                fINH.Mode = FormMode.NewRecord
+                fINH.Scroller = GridView1
+                fINH.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fINH.Show()
             Case "vw_EXP"
                 fExp.Text = "Έξοδα"
                 fExp.MdiParent = frmMain
@@ -764,9 +807,11 @@ Public Class frmScroller
                 fGen.L2.Text = "Διεύθυνση"
                 fGen.L3.Text = "Νομός"
                 fGen.L4.Text = "Περιοχές"
+                fGen.L7.Text = "ΤΚ"
+                fGen.L7.Control.Tag = "tk,0,1,2"
                 fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                'fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -785,6 +830,26 @@ Public Class frmScroller
                 fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_CALC_CAT"
+                fGen.Text = "Κατηγορίες Υπολογισμών"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "CALC_CAT"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Όνομα"
+                fGen.L3.Text = "Τύπος Υπολογισμού"
+                fGen.L3.Control.Tag = "calcTypeID,0,1,2"
+                fGen.L3.Tag = ""
+                fGen.L3.ImageOptions.Image = Nothing
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -808,14 +873,13 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_EXC"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT"
                 Select Case sDataTable
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
-                    Case "vw_EXC" : fGen.Text = "Κατηγορίες Εξόδων" : fGen.DataTable = "EXC" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -873,6 +937,7 @@ Public Class frmScroller
             'Εαν δεν έχει data το Dataset αναγκαστικά προσθέτω μόνος μου τις στήλες
             If sDataDetail = "" Then
                 If myReader.HasRows = False Then
+                    GridView1.Columns.Clear()
                     For i As Integer = 0 To myReader.FieldCount - 1
                         Dim C As New GridColumn
                         C.Name = "col" & myReader.GetName(i).ToString
@@ -882,9 +947,11 @@ Public Class frmScroller
                         GridView1.Columns.Add(C)
                     Next i
                 End If
+            Else
+                LoadViews()
             End If
             If sDataTable = "" And sDataTable2 <> "" Then sDataTable = sDataTable2
-            LoadViews()
+
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
             LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
 

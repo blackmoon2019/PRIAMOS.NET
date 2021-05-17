@@ -4,6 +4,7 @@ Imports System.IO
 Imports System.Threading
 Imports DevExpress.CodeParser
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraExport.Xls
 Public Class frmGen
     Private sID As String
@@ -233,20 +234,20 @@ Public Class frmGen
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("TECH_CAT")
-                            Case "EXC"
+                            Case "CALC_CAT"
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "EXC", LayoutControl1,,, sGuid, True)
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "CALC_CAT", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
-                                    FillCbo.EXC(CtrlCombo)
+                                    FillCbo.CALC_CAT(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
                                     Dim form As New frmScroller
                                     form = Frm
-                                    form.LoadRecords("vw_EXC")
+                                    form.LoadRecords("vw_CALC_CAT")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
-                                txtCode.Text = DBQ.GetNextId("EXC")
+                                txtCode.Text = DBQ.GetNextId("CALC_CAT")
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
@@ -360,15 +361,15 @@ Public Class frmGen
                                     form = Frm
                                     form.LoadRecords("vw_TECH_CAT")
                                 End If
-                            Case "EXC"
-                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "EXC", LayoutControl1,,, sID, True)
+                            Case "CALC_CAT"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "CALC_CAT", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
-                                    FillCbo.EXC(CtrlCombo)
+                                    FillCbo.CALC_CAT(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
                                     Dim form As New frmScroller
                                     form = Frm
-                                    form.LoadRecords("vw_EXC")
+                                    form.LoadRecords("vw_CALC_CAT")
                                 End If
                         End Select
                 End Select
@@ -456,11 +457,12 @@ Public Class frmGen
                     Else
                         LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_CAT where id ='" + sID + "'", True)
                     End If
-                Case "EXC"
+                Case "CALC_CAT"
+                    FillCbo.CALC_TYPES(cbo1)
                     If Mode = FormMode.NewRecord Then
-                        txtCode.Text = DBQ.GetNextId("EXC")
+                        txtCode.Text = DBQ.GetNextId("CALC_CAT")
                     Else
-                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_EXC where id ='" + sID + "'", True)
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_CALC_CAT where id ='" + sID + "'", True)
                     End If
             End Select
             cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -561,12 +563,12 @@ Public Class frmGen
                             Dim form As New frmScroller
                             form.LoadRecords("vw_TECH_CAT")
                         End If
-                    Case "EXC"
+                    Case "CALC_CAT"
                         If CalledFromCtrl Then
-                            FillCbo.EXC(CtrlCombo)
+                            FillCbo.CALC_CAT(CtrlCombo)
                         Else
                             Dim form As New frmScroller
-                            form.LoadRecords("vw_EXC")
+                            form.LoadRecords("vw_CALC_CAT")
                         End If
                 End Select
                 Cls.ClearCtrls(LayoutControl1)
@@ -608,5 +610,10 @@ Public Class frmGen
                 e.Cancel = True
             End If
         End If
+    End Sub
+
+
+    Private Sub cbo1_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cbo1.ButtonPressed
+        cbo1.EditValue = Nothing
     End Sub
 End Class

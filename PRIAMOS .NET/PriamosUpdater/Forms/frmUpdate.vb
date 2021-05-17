@@ -19,7 +19,7 @@ Partial Public Class frmUpdate
         Next i
 
         If Debugger.IsAttached Then
-            strArg = {"1.0.0.6", "\\192.168.1.2\priamos.net\Updates\", "C:\Users\USER\source\repos\PRIAMOS .NET\PRIAMOS .NET\PRIAMOS .NET\bin\Debug\", "1.0.0.8"}
+            strArg = {"1.0.0.20", "\\192.168.1.51\priamos.net\Updates\1.0.0.20", "C:\Users\USER\source\repos\PRIAMOS .NET\PRIAMOS .NET\PRIAMOS .NET\bin\Debug\", "1.0.0.20"}
         Else
             ' Assume we aren't running from the IDE
             strArg = Command().Split(",")

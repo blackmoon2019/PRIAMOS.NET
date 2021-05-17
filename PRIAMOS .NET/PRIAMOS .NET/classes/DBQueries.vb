@@ -190,6 +190,14 @@ Public Class DBQueries
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
@@ -464,6 +472,15 @@ NextItem:
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                    End If
+
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
@@ -598,6 +615,14 @@ NextItem:
                                         sSQL.Append(toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQL.Append(toSQLValueS(txt.Text))
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        sSQL.Append(cbo.SelectedIndex)
+                                    Else
+                                        sSQL.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                     End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
@@ -830,6 +855,14 @@ NextItem:
                                         sSQL.Append(toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQL.Append(toSQLValueS(txt.Text))
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        sSQL.Append(cbo.SelectedIndex)
+                                    Else
+                                        sSQL.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                     End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit

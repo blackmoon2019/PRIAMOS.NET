@@ -55,11 +55,25 @@ Module Main
     End Sub
 
     Public Function toSQLValueS(t As String, Optional ByVal isnum As Boolean = False) As String
-        If t.Length = 0 Then
-            Return "NULL" 'this will pass through any SQL statement without notice  
-        Else 'Lets suppose our textbox is checked to contain only numbers, so we count on it  
-            If Not isnum Then Return "'" + t + "'" Else Return t.Replace(",", ".")
-        End If
+        Try
+            If t <> Nothing Then
+                If t.Length = 0 Then
+                    Return "NULL" 'this will pass through any SQL statement without notice  
+                Else 'Lets suppose our textbox is checked to contain only numbers, so we count on it  
+                    If Not isnum Then
+                        Return "'" + t + "'"
+                    Else
+                        t = t.Replace(",", ".")
+                        t = t.Replace(" €", "")
+                        Return t
+                    End If
+                End If
+            Else
+                Return "NULL" 'this will pass through any SQL statement without notice  
+            End If
+        Catch ex As Exception
+            DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Function
     'Public Function FindItemByValChkListBox(ByVal sValue As String, ByVal chkList As DevExpress.XtraEditors.CheckedListBoxControl) As DevExpress.XtraEditors.Controls.CheckedListBoxItem
     '    For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkList

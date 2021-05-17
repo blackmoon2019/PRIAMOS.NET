@@ -68,6 +68,8 @@ Public Class ClearControls
                                     End Select
                                 ElseIf txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                     txt.EditValue = "0"
+                                Else
+                                    txt.EditValue = ""
                                 End If
 
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then

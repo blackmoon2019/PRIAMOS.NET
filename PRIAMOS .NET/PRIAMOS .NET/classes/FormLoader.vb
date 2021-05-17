@@ -287,6 +287,10 @@ NextItem:
             Else
                 txt.Text = sValue
             End If
+        ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+            Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+            cbo = Ctrl
+            If sValue = False Then cbo.SelectedIndex = 0 Else cbo.SelectedIndex = 1
         ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
             Dim txt As DevExpress.XtraEditors.TextEdit
             txt = Ctrl

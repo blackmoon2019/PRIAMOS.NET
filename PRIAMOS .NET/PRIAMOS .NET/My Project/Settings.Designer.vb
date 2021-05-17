@@ -291,6 +291,29 @@ Namespace My
                 Me("frmIEP") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=T"& _ 
+            "rue;User ID=sa;Password=12pri2020#$")>  _
+        Public ReadOnly Property Priamos_NETConnectionStringRemote() As String
+            Get
+                Return CType(Me("Priamos_NETConnectionStringRemote"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+        Public Property frmINH() As Global.System.Drawing.Point
+            Get
+                Return CType(Me("frmINH"),Global.System.Drawing.Point)
+            End Get
+            Set
+                Me("frmINH") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

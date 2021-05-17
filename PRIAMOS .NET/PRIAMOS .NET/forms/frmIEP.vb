@@ -39,10 +39,8 @@ Public Class frmIEP
 
     Private Sub frmIEP_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim sSQL As New System.Text.StringBuilder
-        'Έξοδα
-        FillCbo.EXP(cboEXP)
-        'Κατηγορίες Χιλιοστών
-        FillCbo.MLC(cboMLC)
+        'Τυύποι υπολογισμών
+        FillCbo.CALC_CAT(cboCaclCat)
         Select Case Mode
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("IEP")
@@ -62,14 +60,17 @@ Public Class frmIEP
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "IEP", LayoutControl1,,,,, "bdgid,excid", toSQLValueS(sBDGID) & "," & toSQLValueS(cboEXP.GetColumnValue("excID").ToString))
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "IEP", LayoutControl1,,,,, "bdgid", toSQLValueS(sBDGID))
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "IEP", LayoutControl1,,, sID)
                 End Select
                 If sResult Then
-                    If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
+                    If Mode = FormMode.NewRecord Then
+                        Cls.ClearCtrls(LayoutControl1)
+                        txtCode.Text = DBQ.GetNextId("IEP")
+                    End If
 
-                    txtCode.Text = DBQ.GetNextId("IEP")
+
                     Dim form As frmBDG = Frm
                     form.LoadIEP()
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -82,7 +83,4 @@ Public Class frmIEP
         End Try
     End Sub
 
-    Private Sub cboEXP_EditValueChanged(sender As Object, e As EventArgs) Handles cboEXP.EditValueChanged
-        cboMLC.EditValue = cboEXP.GetColumnValue("mlcID")
-    End Sub
 End Class
