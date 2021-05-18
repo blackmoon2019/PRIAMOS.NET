@@ -30,6 +30,9 @@ Public Class frmBDG
     Private ApmilFieldsToBeUpdate As New List(Of String)
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
+    Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
+    Private CalledFromCtrl As Boolean
+
     '------C L A S S E S------
     Private Valid As New ValidateControls
     Private Log As New Transactions
@@ -66,6 +69,16 @@ Public Class frmBDG
     Public WriteOnly Property FormScroller As DevExpress.XtraEditors.XtraForm
         Set(value As DevExpress.XtraEditors.XtraForm)
             Frm = value
+        End Set
+    End Property
+    Public WriteOnly Property CallerControl As DevExpress.XtraEditors.LookUpEdit
+        Set(value As DevExpress.XtraEditors.LookUpEdit)
+            CtrlCombo = value
+        End Set
+    End Property
+    Public WriteOnly Property CalledFromControl As Boolean
+        Set(value As Boolean)
+            CalledFromCtrl = value
         End Set
     End Property
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
@@ -190,7 +203,7 @@ Public Class frmBDG
         Dim AreaID As String = ""
         If cboCOU.EditValue <> Nothing Then CouID = cboCOU.EditValue.ToString
         If cboAREAS.EditValue <> Nothing Then AreaID = cboAREAS.EditValue.ToString
-        sSQL.AppendLine("Select id,Name from vw_ADR ")
+        sSQL.AppendLine("Select id,Name,tk from vw_ADR ")
         If CouID.Length > 0 Or AreaID.Length > 0 Or txtTK.Text.Length > 0 Then sSQL.AppendLine(" where ")
         If CouID.Length > 0 Then sSQL.AppendLine(" couid = " & toSQLValueS(CouID))
         If AreaID.Length > 0 Then
@@ -989,22 +1002,25 @@ Public Class frmBDG
 
     Private Sub cboCOU_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageCOU()
-            Case 2 : cboCOU.EditValue = Nothing
+            Case 1 : cboCOU.EditValue = Nothing : ManageCOU()
+            Case 2 : If cboCOU.EditValue <> Nothing Then ManageCOU()
+            Case 3 : cboCOU.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboAREAS_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAREAS.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageAREAS()
-            Case 2 : cboAREAS.EditValue = Nothing
+            Case 1 : cboAREAS.EditValue = Nothing : ManageAREAS()
+            Case 2 : If cboAREAS.EditValue <> Nothing Then ManageAREAS()
+            Case 3 : cboAREAS.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboADR_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboADR.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageADR()
-            Case 2 : cboADR.EditValue = Nothing
+            Case 1 : cboADR.EditValue = Nothing : ManageADR()
+            Case 2 : If cboADR.EditValue <> Nothing Then ManageADR()
+            Case 3 : cboADR.EditValue = Nothing
         End Select
     End Sub
 

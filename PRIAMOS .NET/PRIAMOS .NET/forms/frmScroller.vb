@@ -452,7 +452,7 @@ Public Class frmScroller
 
     End Sub
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
-        EditRecord()
+        If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub Else EditRecord()
     End Sub
     'Νέα Εγγραφή
     Private Sub BarNewRec_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarNewRec.ItemClick
@@ -946,6 +946,8 @@ Public Class frmScroller
                         C.FieldName = myReader.GetName(i).ToString
                         GridView1.Columns.Add(C)
                     Next i
+                Else
+                    LoadViews()
                 End If
             Else
                 LoadViews()

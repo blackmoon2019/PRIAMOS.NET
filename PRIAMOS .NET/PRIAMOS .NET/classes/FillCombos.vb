@@ -105,7 +105,7 @@ Public Class FillCombos
     End Sub
     Public Sub ADR(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
         Try
-            If sSQL.Length = 0 Then sSQL.AppendLine("Select id,Name from vw_ADR ")
+            If sSQL.Length = 0 Then sSQL.AppendLine("Select id,Name,tk from vw_ADR ")
             Dim cmd As SqlCommand = New SqlCommand(sSQL.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = ""
@@ -115,7 +115,9 @@ Public Class FillCombos
             CtrlCombo.Properties.ValueMember = "id"
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(2).Visible = True
             CtrlCombo.Properties.Columns(1).Caption = "Διευθύνσεις"
+            CtrlCombo.Properties.Columns(2).Caption = "ΤΚ"
             sdr.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

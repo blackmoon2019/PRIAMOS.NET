@@ -3,6 +3,7 @@ Imports DevExpress.Utils
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 
 Public Class frmINH
     Private sID As String
@@ -66,6 +67,7 @@ Public Class frmINH
     Private Sub cmdSaveINH_Click(sender As Object, e As EventArgs) Handles cmdSaveINH.Click
         Dim sResult As Boolean
         Dim sGuid As String
+        Dim sSQL As String
         Try
             If Valid.ValidateFormGRP(LayoutControlGroup1) Then
                 'Dim myLayoutControls As New List(Of Control)
@@ -74,6 +76,14 @@ Public Class frmINH
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sGuid, True)
+                        If sResult Then
+                            sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,amt,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
+                            Using oCmd As New SqlCommand(sSQL, CNDB)
+                                oCmd.ExecuteNonQuery()
+                            End Using
+                            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sGuid))
+                        End If
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True)
                 End Select
@@ -165,5 +175,41 @@ Public Class frmINH
 
     Private Sub cmdINDRefresh_Click(sender As Object, e As EventArgs) Handles cmdINDRefresh.Click
         Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+    End Sub
+
+    Private Sub GridView5_CustomDrawGroupRow(sender As Object, e As RowObjectCustomDrawEventArgs) Handles GridView5.CustomDrawGroupRow
+        Dim info As GridGroupRowInfo = TryCast(e.Info, GridGroupRowInfo)
+        If info.GroupValueText = "Checked" Then
+            info.GroupText = "Ένοικος"
+        Else
+            info.GroupText = "Ιδιοκτήτης"
+        End If
+    End Sub
+
+    Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
+
+    End Sub
+
+    Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboBDG.EditValue = Nothing : ManageBDG(cboBDG)
+            Case 2 : If cboBDG.EditValue <> Nothing Then ManageBDG(cboBDG)
+            Case 3 : cboBDG.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManageBDG(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
+        Dim form1 As frmBDG = New frmBDG()
+        form1.Text = "Πολυκατοικία"
+        form1.CallerControl = cbo
+        form1.CalledFromControl = True
+        form1.MdiParent = frmMain
+        If cbo.EditValue <> Nothing Then
+            form1.ID = cbo.EditValue.ToString
+            form1.Mode = FormMode.EditRecord
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
     End Sub
 End Class

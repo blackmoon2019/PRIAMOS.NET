@@ -48,8 +48,10 @@ Public Class frmTecnicalSupport
                 cmdEmail.Enabled = False
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_SUP where id ='" + sID + "'")
+                If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
+                    chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True
+                End If
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmTecnicalSupport = Me.Location
         My.Settings.Save()
@@ -75,28 +77,20 @@ Public Class frmTecnicalSupport
                     'Καθαρισμός Controls
                     'If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     'txtCode.Text = DBQ.GetNextId("TECH_SUP")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     cmdEmail.Enabled = True
                     Dim form As New frmScroller
                     form.LoadRecords("vw_TECH_SUP")
 
-                    Valid.SChanged = False
+
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Private Sub frmTecnicalSupport_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Valid.SChanged = False
-            Else
-                e.Cancel = True
-            End If
-        End If
-    End Sub
+
 
     Private Sub cmdEmail_Click(sender As Object, e As EventArgs) Handles cmdEmail.Click
         Dim sSQL As String
@@ -130,12 +124,13 @@ Public Class frmTecnicalSupport
             myAltView.LinkedResources.Add(myLinkedResouce)
             e_mail.AlternateViews.Add(myAltView)
             Smtp_Server.Send(e_mail)
-            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             sSQL = "UPDATE TECH_SUP SET EmailSent = 1 where ID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID))
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
 End Class
