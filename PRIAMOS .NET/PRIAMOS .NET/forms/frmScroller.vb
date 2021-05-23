@@ -295,7 +295,7 @@ Public Class frmScroller
 
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
     'Προσθήκη επιλογών στο Standar Detail Menu
@@ -328,7 +328,7 @@ Public Class frmScroller
                 itemColor.Tag = menu.Column.AbsoluteIndex
             End If
         Else
-            PopupMenuRowsDetail.ShowPopup(Control.MousePosition)
+            PopupMenuRowsDetail.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
     'Αλλαγή Χρώματος Στήλης Master
@@ -898,7 +898,7 @@ Public Class frmScroller
         End Select
     End Sub
     'Φορτώνω τις εγγραφές στο GRID
-    Public Sub LoadRecords(Optional ByVal sDataTable2 As String = "")
+    Public Sub LoadRecords(Optional ByVal sDataTable2 As String = "", Optional sGuid As String = "")
         Dim sSQL As String
         Dim sSQL2 As String
         Try
@@ -955,14 +955,25 @@ Public Class frmScroller
             If sDataTable = "" And sDataTable2 <> "" Then sDataTable = sDataTable2
 
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-            LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
-
+            'LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+            'If sGuid.Length > 0 Then
+            '    Dim colID As GridColumn = GridView1.Columns("ID")
+            '    Dim rowHandle As Integer = -1
+            '    rowHandle = GridView1.LocateByDisplayText(rowHandle + 1, colID, sGuid)
+            '    grdMain.RefreshDataSource()
+            '    GridView1.SelectRow(rowHandle)
+            '    GridView1.FocusedRowHandle = rowHandle
+            '    GridView1.SetFocusedRowCellValue(colID, sGuid)
+            '    GridView1.MakeRowVisible(rowHandle)
+            '    GridView1.TopRowIndex = GridView1.GetVisibleIndex(GridView1.FocusedRowHandle)
+            'End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         'If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close() 'myReader.Close()
     End Sub
+
     Private Sub grdMain_KeyDown(sender As Object, e As KeyEventArgs) Handles grdMain.KeyDown
         Select Case e.KeyCode
             Case Keys.F2 : If UserProps.AllowInsert = True Then NewRecord()

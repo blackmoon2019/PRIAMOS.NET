@@ -120,8 +120,8 @@ Public Class frmAPT
                     cboBDG.EditValue = System.Guid.Parse(sBDGID)
                     txtCode.Text = DBQ.GetNextId("APT")
                     'txtOrd.Value = OrdValue + 1
-                    Dim form As frmBDG = Frm
-                    form.AptRefresh()
+                    'Dim form As frmBDG = Frm
+                    'form.AptRefresh()
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     If Mode = FormMode.NewRecord Then txtOrd.EditValue = txtOrd.OldEditValue + 1
@@ -167,15 +167,19 @@ Public Class frmAPT
 
     Private Sub cboTenant_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboTenant.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageTenant()
-            Case 2 : cboTenant.EditValue = Nothing
+            Case 1 : cboTenant.EditValue = Nothing : ManageTenant()
+            Case 2 : If cboTenant.EditValue <> Nothing Then ManageTenant()
+            Case 3 : cboTenant.EditValue = Nothing
         End Select
     End Sub
 
+
+
     Private Sub cboOwner_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboOwner.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageOwner()
-            Case 2 : cboOwner.EditValue = Nothing
+            Case 1 : cboOwner.EditValue = Nothing : ManageOwner()
+            Case 2 : If cboOwner.EditValue <> Nothing Then ManageOwner()
+            Case 3 : cboOwner.EditValue = Nothing
         End Select
     End Sub
 
@@ -187,6 +191,10 @@ Public Class frmAPT
                 e.Cancel = True
             End If
         End If
+    End Sub
+
+    Private Sub cboTenant_EditValueChanged(sender As Object, e As EventArgs) Handles cboTenant.EditValueChanged
+
     End Sub
 
 

@@ -43,7 +43,8 @@ Public Class frmINH
             Case FormMode.NewRecord
 
                 txtCode.Text = DBQ.GetNextId("INH")
-
+                LayoutControlGroup2.Enabled = False
+                cmdSaveInd.Enabled = False
             Case FormMode.EditRecord
                 LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'")
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
@@ -52,6 +53,12 @@ Public Class frmINH
         Me.CenterToScreen()
         My.Settings.frmINH = Me.Location
         My.Settings.Save()
+        dtFDate.Properties.Mask.EditMask = "Y"
+        dtFDate.Properties.Mask.UseMaskAsDisplayFormat = True
+        dtFDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
+        dtTDate.Properties.Mask.EditMask = "Y"
+        dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
+        dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
@@ -94,6 +101,9 @@ Public Class frmINH
                     form.LoadRecords("vw_INH")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
+                    LayoutControlGroup2.Enabled = True
+                    cmdSaveInd.Enabled = True
+
                 End If
             End If
 
@@ -187,7 +197,17 @@ Public Class frmINH
     End Sub
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
-
+        If cboBDG.EditValue = Nothing Then Exit Sub
+        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+        Else
+            txtHeatingType.EditValue = Nothing
+        End If
+        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+        Else
+            txtBoilerType.EditValue = Nothing
+        End If
     End Sub
 
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed

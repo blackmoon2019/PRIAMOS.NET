@@ -84,7 +84,7 @@ Partial Class frmIEP
         Me.cboCaclCat.Location = New System.Drawing.Point(129, 84)
         Me.cboCaclCat.Name = "cboCaclCat"
         Me.cboCaclCat.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboCaclCat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboCaclCat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboCaclCat.Properties.NullText = ""
         Me.cboCaclCat.Properties.PopupSizeable = False
         Me.cboCaclCat.Size = New System.Drawing.Size(277, 20)

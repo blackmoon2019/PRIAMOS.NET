@@ -211,8 +211,8 @@ Public Class frmCustomers
                     FillCbo.CCT(CtrlCombo)
                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                 Else
-                    Dim form As New frmScroller
-                    form.LoadRecords("vw_CCT")
+                    'Dim form As New frmScroller
+                    'form.LoadRecords("vw_CCT")
                 End If
                 'Cls.ClearCtrls(LayoutControl1)
                 If sResult = True Then
@@ -301,8 +301,9 @@ Public Class frmCustomers
 
     Private Sub cboDOY_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDOY.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManageDOY()
-            Case 2 : cboDOY.EditValue = Nothing
+            Case 1 : cboDOY.EditValue = Nothing : ManageDOY()
+            Case 2 : If cboDOY.EditValue <> Nothing Then ManageDOY()
+            Case 3 : cboDOY.EditValue = Nothing
         End Select
     End Sub
     Private Sub ManageDOY()
@@ -327,8 +328,9 @@ Public Class frmCustomers
 
     Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPRF.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManagePRF()
-            Case 2 : cboPRF.EditValue = Nothing
+            Case 1 : cboPRF.EditValue = Nothing : ManagePRF()
+            Case 2 : If cboPRF.EditValue <> Nothing Then ManagePRF()
+            Case 3 : cboPRF.EditValue = Nothing
         End Select
     End Sub
     Private Sub ManagePRF()
@@ -353,22 +355,25 @@ Public Class frmCustomers
 
     Private Sub cboCOU_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManageCOU()
-            Case 2 : cboCOU.EditValue = Nothing
+            Case 1 : cboCOU.EditValue = Nothing : ManageCOU()
+            Case 2 : If cboCOU.EditValue <> Nothing Then ManageCOU()
+            Case 3 : cboCOU.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboAREAS_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAREAS.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManageAREAS()
-            Case 2 : cboAREAS.EditValue = Nothing
+            Case 1 : cboAREAS.EditValue = Nothing : ManageAREAS()
+            Case 2 : If cboAREAS.EditValue <> Nothing Then ManageAREAS()
+            Case 3 : cboAREAS.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboADR_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboADR.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManageADR()
-            Case 2 : cboADR.EditValue = Nothing
+            Case 1 : cboADR.EditValue = Nothing : ManageADR()
+            Case 2 : If cboADR.EditValue <> Nothing Then ManageADR()
+            Case 3 : cboADR.EditValue = Nothing
         End Select
     End Sub
 

@@ -87,9 +87,9 @@ Public Class frmGen
                                     FillCbo.COU(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_COU")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_COU")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -101,9 +101,9 @@ Public Class frmGen
                                     FillCbo.AREAS(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_AREAS")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_AREAS")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -115,9 +115,9 @@ Public Class frmGen
                                     FillCbo.ADR(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_ADR")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_ADR")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -129,9 +129,9 @@ Public Class frmGen
                                     FillCbo.DOY(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_DOY")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_DOY")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -143,9 +143,9 @@ Public Class frmGen
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_PRF")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_PRF")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -157,9 +157,9 @@ Public Class frmGen
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_HTYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_HTYPES")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -171,9 +171,9 @@ Public Class frmGen
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_BTYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_BTYPES")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -185,9 +185,9 @@ Public Class frmGen
                                     FillCbo.FTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_FTYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_FTYPES")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -199,9 +199,9 @@ Public Class frmGen
                                     FillCbo.CALC_TYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_CALC_TYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_CALC_TYPES")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -213,9 +213,9 @@ Public Class frmGen
                                     FillCbo.MLC(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_MLC")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_MLC")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -241,9 +241,9 @@ Public Class frmGen
                                     FillCbo.CALC_CAT(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_CALC_CAT")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_CALC_CAT")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -267,9 +267,9 @@ Public Class frmGen
                                     FillCbo.AREAS(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_AREAS")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_AREAS")
                                 End If
                             Case "ADR"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ADR", LayoutControl1,,, sID, True)
@@ -277,9 +277,9 @@ Public Class frmGen
                                     FillCbo.ADR(CtrlCombo, S)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_ADR")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_ADR")
                                 End If
                             Case "DOY"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "DOY", LayoutControl1,,, sID, True)
@@ -287,9 +287,9 @@ Public Class frmGen
                                     FillCbo.DOY(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_DOY")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_DOY")
                                 End If
                             Case "PRF"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sID, True)
@@ -297,9 +297,9 @@ Public Class frmGen
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_PRF")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_PRF")
                                 End If
                             Case "HTYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "HTYPES", LayoutControl1,,, sID, True)
@@ -307,9 +307,9 @@ Public Class frmGen
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_HTYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_HTYPES")
                                 End If
                             Case "BTYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BTYPES", LayoutControl1,,, sID, True)
@@ -317,9 +317,9 @@ Public Class frmGen
                                     FillCbo.HTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_BTYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_BTYPES")
                                 End If
                             Case "FTYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "FTYPES", LayoutControl1,,, sID, True)
@@ -327,9 +327,9 @@ Public Class frmGen
                                     FillCbo.FTYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_FTYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_FTYPES")
                                 End If
                             Case "CALC_TYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "CALC_TYPES", LayoutControl1,,, sID, True)
@@ -337,9 +337,9 @@ Public Class frmGen
                                     FillCbo.CALC_TYPES(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_CALC_TYPES")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_CALC_TYPES")
                                 End If
                             Case "MLC"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "MLC", LayoutControl1,,, sID, True)
@@ -347,9 +347,9 @@ Public Class frmGen
                                     FillCbo.MLC(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_MLC")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_MLC")
                                 End If
                             Case "TECH_CAT"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_CAT", LayoutControl1,,, sID, True)
@@ -357,9 +357,9 @@ Public Class frmGen
                                     FillCbo.TECH_CAT(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_TECH_CAT")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_TECH_CAT")
                                 End If
                             Case "CALC_CAT"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "CALC_CAT", LayoutControl1,,, sID, True)
@@ -367,9 +367,9 @@ Public Class frmGen
                                     FillCbo.CALC_CAT(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_CALC_CAT")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_CALC_CAT")
                                 End If
                         End Select
                 End Select
@@ -490,85 +490,85 @@ Public Class frmGen
                         If CalledFromCtrl Then
                             FillCbo.COU(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_COU")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_COU")
                         End If
                     Case "AREAS"
                         If CalledFromCtrl Then
                             FillCbo.AREAS(CtrlCombo, S)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_AREAS")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_AREAS")
                         End If
                     Case "ADR"
                         If CalledFromCtrl Then
                             FillCbo.ADR(CtrlCombo, S)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_ADR")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_ADR")
                         End If
                     Case "DOY"
                         If CalledFromCtrl Then
                             FillCbo.DOY(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_DOY")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_DOY")
                         End If
                     Case "PRF"
                         If CalledFromCtrl Then
                             FillCbo.PRF(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_PRF")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_PRF")
                         End If
                     Case "HTYPES"
                         If CalledFromCtrl Then
                             FillCbo.HTYPES(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_HTYPES")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_HTYPES")
                         End If
                     Case "BTYPES"
                         If CalledFromCtrl Then
                             FillCbo.BTYPES(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_BTYPES")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_BTYPES")
                         End If
                     Case "FTYPES"
                         If CalledFromCtrl Then
                             FillCbo.FTYPES(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_FTYPES")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_FTYPES")
                         End If
                     Case "CALC_TYPES"
                         If CalledFromCtrl Then
                             FillCbo.CALC_TYPES(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_CALC_TYPES")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_CALC_TYPES")
                         End If
                     Case "MLC"
                         If CalledFromCtrl Then
                             FillCbo.MLC(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_MLC")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_MLC")
                         End If
                     Case "TECH_CAT"
                         If CalledFromCtrl Then
                             FillCbo.TECH_CAT(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_TECH_CAT")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_TECH_CAT")
                         End If
                     Case "CALC_CAT"
                         If CalledFromCtrl Then
                             FillCbo.CALC_CAT(CtrlCombo)
                         Else
-                            Dim form As New frmScroller
-                            form.LoadRecords("vw_CALC_CAT")
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_CALC_CAT")
                         End If
                 End Select
                 Cls.ClearCtrls(LayoutControl1)

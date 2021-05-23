@@ -73,8 +73,8 @@ Public Class frmEXP
                     If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     txtCode.Text = DBQ.GetNextId("EXP")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Dim form As New frmScroller
-                    form.LoadRecords("vw_EXP")
+                    'Dim form As New frmScroller
+                    'form.LoadRecords("vw_EXP")
                     Valid.SChanged = False
                 End If
             End If
@@ -96,8 +96,9 @@ Public Class frmEXP
 
     Private Sub cboEXC_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboEXC.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManageEXC()
-            Case 2 : cboEXC.EditValue = Nothing
+            Case 1 : cboEXC.EditValue = Nothing : ManageEXC()
+            Case 2 : If cboEXC.EditValue <> Nothing Then ManageEXC()
+            Case 3 : cboEXC.EditValue = Nothing
         End Select
     End Sub
     Private Sub ManageEXC()
@@ -122,8 +123,9 @@ Public Class frmEXP
 
     Private Sub cboMLC_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMLC.ButtonClick
         Select Case e.Button.Index
-            Case 1 : ManageMLC()
-            Case 2 : cboMLC.EditValue = Nothing
+            Case 1 : cboMLC.EditValue = Nothing : ManageMLC()
+            Case 2 : If cboMLC.EditValue <> Nothing Then ManageMLC()
+            Case 3 : cboMLC.EditValue = Nothing
         End Select
     End Sub
     Private Sub ManageMLC()

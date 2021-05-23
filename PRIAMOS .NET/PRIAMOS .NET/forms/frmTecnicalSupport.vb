@@ -79,8 +79,8 @@ Public Class frmTecnicalSupport
                     'txtCode.Text = DBQ.GetNextId("TECH_SUP")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     cmdEmail.Enabled = True
-                    Dim form As New frmScroller
-                    form.LoadRecords("vw_TECH_SUP")
+                    'Dim form As New frmScroller
+                    'form.LoadRecords("vw_TECH_SUP")
 
 
                 End If

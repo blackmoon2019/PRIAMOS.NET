@@ -17,6 +17,8 @@ Imports DevExpress.XtraEditors.Calendar
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid
 Imports System.ComponentModel
+Imports DevExpress.XtraPrinting
+Imports DevExpress.Export
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -26,6 +28,7 @@ Public Class frmBDG
     Private Iam As String
     Private Aam As String
     Public Mode As Byte
+    Private bdgName As String
     Private Bmlc As New Dictionary(Of String, String)
     Private ApmilFieldsToBeUpdate As New List(Of String)
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
@@ -129,6 +132,7 @@ Public Class frmBDG
         Me.CenterToScreen()
         My.Settings.frmBDG = Me.Location
         My.Settings.Save()
+        bdgName = txtNam.Text
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APT_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
@@ -249,7 +253,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboADR_EditValueChanged(sender As Object, e As EventArgs) Handles cboADR.EditValueChanged
-        If sender.editvalue <> Nothing And txtNam.Text.Length = 0 Then txtNam.Text = cboADR.Text + " " + txtAR.Text 'Else txtNam.Text = ""
+        If sender.editvalue <> Nothing And txtNam.Text.Length = 0 Then txtNam.Text = cboADR.Text + " " + txtAR.Text : bdgName = txtNam.Text 'Else txtNam.Text = ""
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
@@ -335,12 +339,12 @@ Public Class frmBDG
 
                     If Mode = FormMode.NewRecord Then dtDTS.EditValue = DateTime.Now
                     txtCode.Text = DBQ.GetNextId("BDG")
-                        Dim form As New frmScroller
-                        form.LoadRecords("vw_BDG")
-                        XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Valid.SChanged = False
-                    End If
+                    'Dim form As New frmScroller
+                    'form.LoadRecords("vw_BDG", sID)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
                 End If
+            End If
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -513,7 +517,7 @@ Public Class frmBDG
                 menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
     'Αλλαγή Χρώματος Στήλης Master
@@ -988,15 +992,17 @@ Public Class frmBDG
     End Sub
     Private Sub cboOInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
         Select Case e.Button.Index
-            Case 1 : ManageCUS(cboOInvSup)
-            Case 2 : cboOInvSup.EditValue = Nothing
+            Case 1 : cboOInvSup.EditValue = Nothing : ManageCUS(cboOInvSup)
+            Case 2 : If cboOInvSup.EditValue <> Nothing Then ManageCUS(cboOInvSup)
+            Case 3 : cboOInvSup.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboGInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
         Select Case e.Button.Index
-            Case 1 : ManageCUS(cboGInvSup)
-            Case 2 : cboGInvSup.EditValue = Nothing
+            Case 1 : cboGInvSup.EditValue = Nothing : ManageCUS(cboGInvSup)
+            Case 2 : If cboGInvSup.EditValue <> Nothing Then ManageCUS(cboGInvSup)
+            Case 3 : cboGInvSup.EditValue = Nothing
         End Select
     End Sub
 
@@ -1025,6 +1031,9 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
+        LoadMefMes()
+    End Sub
+    Private Sub LoadMefMes()
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
             sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mdt, CUR.mes, BEF.mes as mesB, 
@@ -1045,8 +1054,8 @@ Public Class frmBDG
         Else
             cmdDelAHPB.Enabled = False
         End If
-    End Sub
 
+    End Sub
     Private Sub cmdSaveBills_Click(sender As Object, e As EventArgs) Handles cmdSaveBills.Click
         Dim sResult As Boolean
         Try
@@ -1056,8 +1065,8 @@ Public Class frmBDG
                 DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BMANAGE", LayoutControl2BManage,,, sManageID, True)
             End If
             If sResult Then
-                Dim form As New frmScroller
-                form.LoadRecords("vw_BDG")
+                'Dim form As New frmScroller
+                'form.LoadRecords("vw_BDG")
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
             End If
@@ -1093,8 +1102,8 @@ Public Class frmBDG
 
             End If
             If sResult Then
-                Dim form As New frmScroller
-                form.LoadRecords("vw_BDG")
+                'Dim form As New frmScroller
+                'form.LoadRecords("vw_BDG")
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
             End If
@@ -1147,7 +1156,7 @@ Public Class frmBDG
                 menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAPMIL, Nothing, Nothing, Nothing, Nothing))
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
 
@@ -1189,14 +1198,16 @@ Public Class frmBDG
         Try
             If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
             If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
-                        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
-                        " and boiler = " & RGTypeHeating.SelectedIndex
+                'sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
+                '        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
+                '        " and boiler = " & RGTypeHeating.SelectedIndex
+                DeleteSelectedRows()
+                LoadMefMes()
 
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                Cls.ClearGrid(grdAPTAHPB)
+                'Using oCmd As New SqlCommand(sSQL, CNDB)
+                '    oCmd.ExecuteNonQuery()
+                'End Using
+                'Cls.ClearGrid(grdAPTAHPB)
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
@@ -1204,29 +1215,41 @@ Public Class frmBDG
         End Try
 
     End Sub
-
+    Private Sub DeleteSelectedRows()
+        Dim sSQL As String
+        Dim I As Integer
+        For I = 0 To GridView2.SelectedRowsCount - 1
+            sSQL = "DELETE FROM AHPB WHERE ID = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.GetSelectedRows(I), "ID").ToString)
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Next
+    End Sub
     Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
         If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
     End Sub
 
     Private Sub cboFtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboFtypes.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageFtypes()
-            Case 2 : cboFtypes.EditValue = Nothing
+            Case 1 : cboFtypes.EditValue = Nothing : ManageFtypes()
+            Case 2 : If cboFtypes.EditValue <> Nothing Then ManageFtypes()
+            Case 3 : cboFtypes.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboHtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboHtypes.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageCalcTypes(cboHtypes)
-            Case 2 : cboHtypes.EditValue = Nothing
+            Case 1 : cboHtypes.EditValue = Nothing : ManageCalcTypes(cboHtypes)
+            Case 2 : If cboHtypes.EditValue <> Nothing Then ManageCalcTypes(cboHtypes)
+            Case 3 : cboHtypes.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboBtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBtypes.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageCalcTypes(cboBtypes)
-            Case 2 : cboBtypes.EditValue = Nothing
+            Case 1 : cboBtypes.EditValue = Nothing : ManageCalcTypes(cboBtypes)
+            Case 2 : If cboBtypes.EditValue <> Nothing Then ManageCalcTypes(cboBtypes)
+            Case 3 : cboBtypes.EditValue = Nothing
         End Select
 
     End Sub
@@ -1277,7 +1300,7 @@ Public Class frmBDG
                 menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
 
@@ -1444,7 +1467,7 @@ Public Class frmBDG
                 menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_GAS, Nothing, Nothing, Nothing, Nothing))
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
 
@@ -1553,7 +1576,7 @@ Public Class frmBDG
                 menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_OIL, Nothing, Nothing, Nothing, Nothing))
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
 
@@ -1919,7 +1942,7 @@ Public Class frmBDG
                 menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewIEP, Nothing, Nothing, Nothing, Nothing))
             End If
         Else
-            PopupMenuRows.ShowPopup(Control.MousePosition)
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
 
@@ -2047,6 +2070,19 @@ Public Class frmBDG
 
     Private Sub cmdIEPRefresh_Click(sender As Object, e As EventArgs) Handles cmdIEPRefresh.Click
         LoadIEP()
+    End Sub
+
+    Private Sub cmdApmExport_Click(sender As Object, e As EventArgs) Handles cmdApmExport.Click
+        Dim options = New XlsxExportOptionsEx()
+        options.UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula
+        options.ExportType = ExportType.WYSIWYG
+        XtraSaveFileDialog1.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
+        XtraSaveFileDialog1.FileName = "Χιλιοστά_" & bdgName
+        If XtraSaveFileDialog1.ShowDialog() = DialogResult.OK Then
+            GridView5.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+            Process.Start(XtraSaveFileDialog1.FileName)
+        End If
+
     End Sub
 
     'ΘΕΡΜΑΝΣΗ

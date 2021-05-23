@@ -12,6 +12,8 @@ Public Class frmLogin
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim CN As New CN
         'MultipleActiveResultSets=True
+        My.Settings.Upgrade()
+        My.Settings.Save()
         chkRememberUN.EditValue = My.Settings.UNSave
         If CNDB.ConnectionString.ToString = "" Then
             If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -101,8 +101,8 @@ Public Class frmPermissions
                             Next
                         End If
                 End Select
-                Dim form As New frmScroller
-                form.LoadRecords("vw_RIGHTS")
+                'Dim form As New frmScroller
+                'form.LoadRecords("vw_RIGHTS")
                 If sResult Then
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
