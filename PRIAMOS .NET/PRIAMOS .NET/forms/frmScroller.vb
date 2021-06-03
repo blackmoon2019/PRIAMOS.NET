@@ -862,6 +862,7 @@ Public Class frmScroller
                 fGen.DataTable = "MLC"
                 fGen.L1.Text = "Κωδικός"
                 fGen.L2.Text = "Κατηγορία"
+                fGen.L6.Text = "Χρώμα"
                 'fGen.L3.Text = "Τύπος Υπολογισμού"
                 'fGen.cbo1.Tag = "calcID,0,1,2"
                 fGen.FormScroller = Me

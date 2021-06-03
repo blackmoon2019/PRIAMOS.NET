@@ -588,6 +588,12 @@ Public Class frmBDG
         GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+    Private Sub OnSaveViewDetailAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView7.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
     Private Sub OnSaveViewIEP(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView6.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\IEP_def.xml", OptionsLayoutBase.FullLayout)
@@ -1693,11 +1699,35 @@ Public Class frmBDG
     End Sub
     Private Sub ApmLoad()
         Try
-            LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by ORD")
+            Dim sSQL As String
+            Dim sSQL2 As String
+
+
+
+            sSQL = "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by ORD"
+            sSQL2 = "SELECT * from vw_APMIL_D where bdgid = '" & sID & "' order by ORD"
+            Dim AdapterMaster As New SqlDataAdapter(sSQL, CNDB)
+            Dim AdapterDetail As New SqlDataAdapter(sSQL2, CNDB)
+            Dim sdataSet As New DataSet()
+            AdapterMaster.Fill(sdataSet, "vw_APMIL")
+            AdapterDetail.Fill(sdataSet, "vw_APMIL_D")
+            Dim keyColumn As DataColumn = sdataSet.Tables("vw_APMIL").Columns("ID")
+            Dim foreignKeyColumn As DataColumn = sdataSet.Tables("vw_APMIL_D").Columns("ID")
+            sdataSet.Relations.Add("ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ", keyColumn, foreignKeyColumn)
+            GridView5.Columns.Clear()
+            GridView7.Columns.Clear()
+            grdAPM.DataSource = sdataSet.Tables("vw_APMIL")
+            grdAPM.ForceInitialize()
+
+            'LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by ORD")
+            'LoadForms.LoadDataToGrid(grdAPM, GridView7, "SELECT * from vw_APMIL_D where bdgid = '" & sID & "' order by ORD")
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
             LoadForms.LoadColumnDescriptionNames(grdAPM, GridView5, , "vw_APMIL")
+            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView7, , "vw_APMIL_D")
             If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml") Then GridView7.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
             GridView5.OptionsCustomization.AllowSort = False
+
             ApmilFieldsToBeUpdate.Clear()
             For Each kvp As KeyValuePair(Of String, String) In Bmlc
                 If kvp.Value = 0 Then
@@ -1710,6 +1740,12 @@ Public Class frmBDG
                             GridView5.Columns("c_" & kvp.Key).Visible = False
                             GridView5.Columns("c_" & kvp.Key).OptionsColumn.ReadOnly = True
                             GridView5.Columns("c_" & kvp.Key).OptionsColumn.AllowEdit = False
+                        End If
+                        'Στήλη Χιλιοστών με μειώσεις
+                        If GridView7.Columns("d_" & kvp.Key) IsNot Nothing Then
+                            GridView7.Columns("d_" & kvp.Key).Visible = False
+                            GridView7.Columns("d_" & kvp.Key).OptionsColumn.ReadOnly = True
+                            GridView7.Columns("d_" & kvp.Key).OptionsColumn.AllowEdit = False
                         End If
 
                     End If
@@ -1726,6 +1762,13 @@ Public Class frmBDG
                             GridView5.Columns("c_" & kvp.Key).OptionsColumn.AllowEdit = True
                             ApmilFieldsToBeUpdate.Add("c_" & kvp.Key)
                         End If
+                        'Στήλη Χιλιοστών με μειώσεις
+                        If GridView7.Columns("d_" & kvp.Key) IsNot Nothing Then
+                            GridView7.Columns("d_" & kvp.Key).Visible = True
+                            GridView7.Columns("d_" & kvp.Key).OptionsColumn.ReadOnly = True
+                            GridView7.Columns("d_" & kvp.Key).OptionsColumn.AllowEdit = False
+                        End If
+
                     End If
                 End If
             Next
@@ -2085,6 +2128,74 @@ Public Class frmBDG
 
     End Sub
 
+    Private Sub GridView7_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView7.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnDetailEditValueChanged, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItemDetail("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnDetailColumnsColorChanged, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewDetailAPMIL, Nothing, Nothing, Nothing, Nothing))
+            End If
+        Else
+            'PopupMenuRowsDetail.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+    End Sub
+    Private Sub OnDetailEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView7.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+    'Αλλαγή Χρώματος Στήλης Detail
+    Private Sub OnDetailColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView7.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
+
+    Private Function CreateCheckItemDetail(ByVal caption As String, ByVal column As GridColumn, ByVal image As System.Drawing.Image) As DXMenuCheckItem
+        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClickDetail))
+        item.Tag = New MenuColumnInfo(column)
+        Return item
+    End Function
+    'Κλείδωμα Στήλης Detail
+    Private Sub OnCanMoveItemClickDetail(ByVal sender As Object, ByVal e As EventArgs)
+        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
+        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
+        If info Is Nothing Then
+            Return
+        End If
+        info.Column.OptionsColumn.AllowMove = Not item.Checked
+    End Sub
+
+    Private Sub GridView7_ShowingPopupEditForm(sender As Object, e As ShowingPopupEditFormEventArgs) Handles GridView7.ShowingPopupEditForm
+
+    End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
 

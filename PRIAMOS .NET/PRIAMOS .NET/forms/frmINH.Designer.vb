@@ -20,8 +20,46 @@ Partial Class frmINH
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataSourceColumnBinding1 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding2 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding3 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding4 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding5 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding6 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding7 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding8 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding9 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding10 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding11 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding12 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding13 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding14 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding15 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding16 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding17 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding18 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding19 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding20 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding21 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding22 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding23 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding24 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding25 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding26 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding27 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding28 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding29 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding30 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding31 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding32 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding33 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding34 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding35 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmINH))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.lbldate = New DevExpress.XtraEditors.LabelControl()
+        Me.TabPane1 = New DevExpress.XtraBars.Navigation.TabPane()
+        Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.VwINDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PriamosNETDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -43,6 +81,45 @@ Partial Class frmINH
         Me.coltDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colname = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colowner_tenant = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.TabNavigationPage2 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
+        Me.PivotGridControl1 = New DevExpress.XtraPivotGrid.PivotGridControl()
+        Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.fieldcmt = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldfDate = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldtDate = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldbdgNam = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldaptNam = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldttl = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldord = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcalcCatNam = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldrepName = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldamt = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldinhID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldindID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldbdgID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldaptID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldshared = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldelevator = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldheating = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldheatingconsumption = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldboilerconsumption = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldspecialcosts = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldowners = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldbilling = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldboiler = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldgarage = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmonomers1 = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmonomers2 = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmonomers3 = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldfi = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldfiBoiler = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmodifiedBy = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmodifiedOn = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcreatedOn = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcalcCatID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcompleteDate = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.cmdCalculate = New DevExpress.XtraEditors.SimpleButton()
         Me.cboOwnerTenant = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmdINDDel = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdINDRefresh = New DevExpress.XtraEditors.SimpleButton()
@@ -71,6 +148,7 @@ Partial Class frmINH
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -81,14 +159,19 @@ Partial Class frmINH
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.VwEXCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.Vw_EXCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_EXCTableAdapter()
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INDTableAdapter()
         Me.Vw_CALC_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter()
+        Me.Vw_INCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INCTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPane1.SuspendLayout()
+        Me.TabNavigationPage1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,6 +179,9 @@ Partial Class frmINH
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabNavigationPage2.SuspendLayout()
+        CType(Me.PivotGridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,6 +208,7 @@ Partial Class frmINH
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,13 +219,19 @@ Partial Class frmINH
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.GridControl1)
+        Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.lbldate)
+        Me.LayoutControl1.Controls.Add(Me.TabPane1)
+        Me.LayoutControl1.Controls.Add(Me.cmdCalculate)
         Me.LayoutControl1.Controls.Add(Me.cboOwnerTenant)
         Me.LayoutControl1.Controls.Add(Me.cmdINDDel)
         Me.LayoutControl1.Controls.Add(Me.cmdINDRefresh)
@@ -157,19 +250,54 @@ Partial Class frmINH
         Me.LayoutControl1.Location = New System.Drawing.Point(-3, -3)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(1376, 638)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1362, 638)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'lbldate
+        '
+        Me.lbldate.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.lbldate.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbldate.Appearance.Options.UseFont = True
+        Me.lbldate.Appearance.Options.UseForeColor = True
+        Me.lbldate.Location = New System.Drawing.Point(292, 45)
+        Me.lbldate.Name = "lbldate"
+        Me.lbldate.Size = New System.Drawing.Size(203, 13)
+        Me.lbldate.StyleController = Me.LayoutControl1
+        Me.lbldate.TabIndex = 55
+        '
+        'TabPane1
+        '
+        Me.TabPane1.Controls.Add(Me.TabNavigationPage1)
+        Me.TabPane1.Controls.Add(Me.TabNavigationPage2)
+        Me.TabPane1.Location = New System.Drawing.Point(537, 12)
+        Me.TabPane1.Name = "TabPane1"
+        Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2})
+        Me.TabPane1.RegularSize = New System.Drawing.Size(813, 614)
+        Me.TabPane1.SelectedPage = Me.TabNavigationPage1
+        Me.TabPane1.Size = New System.Drawing.Size(813, 614)
+        Me.TabPane1.TabIndex = 54
+        Me.TabPane1.Text = "TabPane1"
+        '
+        'TabNavigationPage1
+        '
+        Me.TabNavigationPage1.Caption = "Έξοδα"
+        Me.TabNavigationPage1.Controls.Add(Me.GridControl1)
+        Me.TabNavigationPage1.Name = "TabNavigationPage1"
+        Me.TabNavigationPage1.Size = New System.Drawing.Size(813, 577)
+        '
         'GridControl1
         '
+        Me.GridControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GridControl1.DataSource = Me.VwINDBindingSource
-        Me.GridControl1.Location = New System.Drawing.Point(539, 12)
+        Me.GridControl1.Location = New System.Drawing.Point(3, 3)
         Me.GridControl1.MainView = Me.GridView5
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
-        Me.GridControl1.Size = New System.Drawing.Size(825, 614)
-        Me.GridControl1.TabIndex = 52
+        Me.GridControl1.Size = New System.Drawing.Size(810, 574)
+        Me.GridControl1.TabIndex = 53
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
         '
         'VwINDBindingSource
@@ -310,14 +438,373 @@ Partial Class frmINH
         Me.colowner_tenant.Visible = True
         Me.colowner_tenant.VisibleIndex = 3
         '
+        'TabNavigationPage2
+        '
+        Me.TabNavigationPage2.Caption = "Υπολογισμένα"
+        Me.TabNavigationPage2.Controls.Add(Me.PivotGridControl1)
+        Me.TabNavigationPage2.Name = "TabNavigationPage2"
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(813, 577)
+        '
+        'PivotGridControl1
+        '
+        Me.PivotGridControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PivotGridControl1.DataSource = Me.VwINCBindingSource
+        Me.PivotGridControl1.Fields.AddRange(New DevExpress.XtraPivotGrid.PivotGridField() {Me.fieldcmt, Me.fieldfDate, Me.fieldtDate, Me.fieldbdgNam, Me.fieldaptNam, Me.fieldttl, Me.fieldord, Me.fieldcalcCatNam, Me.fieldrepName, Me.fieldamt, Me.fieldID, Me.fieldinhID, Me.fieldindID, Me.fieldbdgID, Me.fieldaptID, Me.fieldshared, Me.fieldelevator, Me.fieldheating, Me.fieldheatingconsumption, Me.fieldboilerconsumption, Me.fieldspecialcosts, Me.fieldowners, Me.fieldbilling, Me.fieldboiler, Me.fieldgarage, Me.fieldmonomers1, Me.fieldmonomers2, Me.fieldmonomers3, Me.fieldfi, Me.fieldfiBoiler, Me.fieldmodifiedBy, Me.fieldmodifiedOn, Me.fieldcreatedOn, Me.fieldcalcCatID, Me.fieldcompleteDate})
+        Me.PivotGridControl1.Location = New System.Drawing.Point(3, 3)
+        Me.PivotGridControl1.Name = "PivotGridControl1"
+        Me.PivotGridControl1.OptionsData.DataProcessingEngine = DevExpress.XtraPivotGrid.PivotDataProcessingEngine.Optimized
+        Me.PivotGridControl1.Size = New System.Drawing.Size(819, 571)
+        Me.PivotGridControl1.TabIndex = 0
+        '
+        'VwINCBindingSource
+        '
+        Me.VwINCBindingSource.DataMember = "vw_INC"
+        Me.VwINCBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        '
+        'fieldcmt
+        '
+        Me.fieldcmt.AreaIndex = 0
+        Me.fieldcmt.Caption = "ΣΧΟΛΙΑ"
+        DataSourceColumnBinding1.ColumnName = "cmt"
+        Me.fieldcmt.DataBinding = DataSourceColumnBinding1
+        Me.fieldcmt.Name = "fieldcmt"
+        '
+        'fieldfDate
+        '
+        Me.fieldfDate.AreaIndex = 1
+        Me.fieldfDate.Caption = "ΑΠΟ ΜΗΝΑ"
+        DataSourceColumnBinding2.ColumnName = "fDate"
+        Me.fieldfDate.DataBinding = DataSourceColumnBinding2
+        Me.fieldfDate.Name = "fieldfDate"
+        '
+        'fieldtDate
+        '
+        Me.fieldtDate.AreaIndex = 2
+        Me.fieldtDate.Caption = "ΕΩΣ ΜΗΝΑ"
+        DataSourceColumnBinding3.ColumnName = "tDate"
+        Me.fieldtDate.DataBinding = DataSourceColumnBinding3
+        Me.fieldtDate.Name = "fieldtDate"
+        '
+        'fieldbdgNam
+        '
+        Me.fieldbdgNam.AreaIndex = 3
+        Me.fieldbdgNam.Caption = "ΠΟΛΥΚΑΤΟΙΚΙΑ"
+        DataSourceColumnBinding4.ColumnName = "bdgNam"
+        Me.fieldbdgNam.DataBinding = DataSourceColumnBinding4
+        Me.fieldbdgNam.Name = "fieldbdgNam"
+        '
+        'fieldaptNam
+        '
+        Me.fieldaptNam.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea
+        Me.fieldaptNam.AreaIndex = 0
+        Me.fieldaptNam.Caption = "ΔΙΑΜΕΡΙΣΜΑ"
+        DataSourceColumnBinding5.ColumnName = "aptNam"
+        Me.fieldaptNam.DataBinding = DataSourceColumnBinding5
+        Me.fieldaptNam.Name = "fieldaptNam"
+        Me.fieldaptNam.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Descending
+        '
+        'fieldttl
+        '
+        Me.fieldttl.AreaIndex = 8
+        Me.fieldttl.Caption = "ΤΙΤΛΟΣ ΕΚΤΥΠΩΣΗΣ"
+        DataSourceColumnBinding6.ColumnName = "ttl"
+        Me.fieldttl.DataBinding = DataSourceColumnBinding6
+        Me.fieldttl.Name = "fieldttl"
+        '
+        'fieldord
+        '
+        Me.fieldord.AreaIndex = 7
+        Me.fieldord.Caption = "Α/Α"
+        DataSourceColumnBinding7.ColumnName = "ord"
+        Me.fieldord.DataBinding = DataSourceColumnBinding7
+        Me.fieldord.Name = "fieldord"
+        Me.fieldord.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Descending
+        '
+        'fieldcalcCatNam
+        '
+        Me.fieldcalcCatNam.AreaIndex = 4
+        Me.fieldcalcCatNam.Caption = "ΚΑΤΗΓΟΡΙΑ ΥΠΟΛΟΓΙΣΜΟΥ"
+        DataSourceColumnBinding8.ColumnName = "calcCatNam"
+        Me.fieldcalcCatNam.DataBinding = DataSourceColumnBinding8
+        Me.fieldcalcCatNam.Name = "fieldcalcCatNam"
+        '
+        'fieldrepName
+        '
+        Me.fieldrepName.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
+        Me.fieldrepName.AreaIndex = 0
+        Me.fieldrepName.Caption = "ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΟΥ"
+        DataSourceColumnBinding9.ColumnName = "repName"
+        Me.fieldrepName.DataBinding = DataSourceColumnBinding9
+        Me.fieldrepName.Name = "fieldrepName"
+        '
+        'fieldamt
+        '
+        Me.fieldamt.AreaIndex = 5
+        Me.fieldamt.Caption = "ΓΕΝΙΚΟ ΠΟΣΟ ΕΞΟΔΟΥ"
+        DataSourceColumnBinding10.ColumnName = "amt"
+        Me.fieldamt.DataBinding = DataSourceColumnBinding10
+        Me.fieldamt.Name = "fieldamt"
+        '
+        'fieldID
+        '
+        Me.fieldID.AreaIndex = 6
+        Me.fieldID.Caption = "ID"
+        DataSourceColumnBinding11.ColumnName = "ID"
+        Me.fieldID.DataBinding = DataSourceColumnBinding11
+        Me.fieldID.Name = "fieldID"
+        Me.fieldID.Visible = False
+        '
+        'fieldinhID
+        '
+        Me.fieldinhID.AreaIndex = 6
+        Me.fieldinhID.Caption = "inh ID"
+        DataSourceColumnBinding12.ColumnName = "inhID"
+        Me.fieldinhID.DataBinding = DataSourceColumnBinding12
+        Me.fieldinhID.Name = "fieldinhID"
+        Me.fieldinhID.Visible = False
+        '
+        'fieldindID
+        '
+        Me.fieldindID.AreaIndex = 6
+        Me.fieldindID.Caption = "ind ID"
+        DataSourceColumnBinding13.ColumnName = "indID"
+        Me.fieldindID.DataBinding = DataSourceColumnBinding13
+        Me.fieldindID.Name = "fieldindID"
+        Me.fieldindID.Visible = False
+        '
+        'fieldbdgID
+        '
+        Me.fieldbdgID.AreaIndex = 6
+        Me.fieldbdgID.Caption = "bdg ID"
+        DataSourceColumnBinding14.ColumnName = "bdgID"
+        Me.fieldbdgID.DataBinding = DataSourceColumnBinding14
+        Me.fieldbdgID.Name = "fieldbdgID"
+        Me.fieldbdgID.Visible = False
+        '
+        'fieldaptID
+        '
+        Me.fieldaptID.AreaIndex = 6
+        Me.fieldaptID.Caption = "apt ID"
+        DataSourceColumnBinding15.ColumnName = "aptID"
+        Me.fieldaptID.DataBinding = DataSourceColumnBinding15
+        Me.fieldaptID.Name = "fieldaptID"
+        Me.fieldaptID.Visible = False
+        '
+        'fieldshared
+        '
+        Me.fieldshared.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldshared.AreaIndex = 1
+        Me.fieldshared.Caption = "ΚΟΙΝΟΧΡΗΣΤΑ"
+        DataSourceColumnBinding16.ColumnName = "shared"
+        Me.fieldshared.DataBinding = DataSourceColumnBinding16
+        Me.fieldshared.Name = "fieldshared"
+        Me.fieldshared.Visible = False
+        '
+        'fieldelevator
+        '
+        Me.fieldelevator.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldelevator.AreaIndex = 3
+        Me.fieldelevator.Caption = "ΑΝΕΛΚΥΣΤΗΡΑ"
+        DataSourceColumnBinding17.ColumnName = "elevator"
+        Me.fieldelevator.DataBinding = DataSourceColumnBinding17
+        Me.fieldelevator.Name = "fieldelevator"
+        Me.fieldelevator.Visible = False
+        '
+        'fieldheating
+        '
+        Me.fieldheating.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldheating.AreaIndex = 3
+        Me.fieldheating.Caption = "ΘΕΡΜΑΝΣΗ"
+        DataSourceColumnBinding18.ColumnName = "heating"
+        Me.fieldheating.DataBinding = DataSourceColumnBinding18
+        Me.fieldheating.Name = "fieldheating"
+        Me.fieldheating.Visible = False
+        '
+        'fieldheatingconsumption
+        '
+        Me.fieldheatingconsumption.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldheatingconsumption.AreaIndex = 4
+        Me.fieldheatingconsumption.Caption = "ΚΑΤ/ΣΗ ΘΕΡΜΑΝΣΗΣ"
+        DataSourceColumnBinding19.ColumnName = "heating_consumption"
+        Me.fieldheatingconsumption.DataBinding = DataSourceColumnBinding19
+        Me.fieldheatingconsumption.Name = "fieldheatingconsumption"
+        Me.fieldheatingconsumption.Visible = False
+        '
+        'fieldboilerconsumption
+        '
+        Me.fieldboilerconsumption.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldboilerconsumption.AreaIndex = 5
+        Me.fieldboilerconsumption.Caption = "ΚΑΤ/ΣΗ BOILER"
+        DataSourceColumnBinding20.ColumnName = "boiler_consumption"
+        Me.fieldboilerconsumption.DataBinding = DataSourceColumnBinding20
+        Me.fieldboilerconsumption.Name = "fieldboilerconsumption"
+        Me.fieldboilerconsumption.Visible = False
+        '
+        'fieldspecialcosts
+        '
+        Me.fieldspecialcosts.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldspecialcosts.AreaIndex = 9
+        Me.fieldspecialcosts.Caption = "ΕΙΔΙΚΕΣ ΔΑΠΑΝΕΣ"
+        DataSourceColumnBinding21.ColumnName = "special_costs"
+        Me.fieldspecialcosts.DataBinding = DataSourceColumnBinding21
+        Me.fieldspecialcosts.Name = "fieldspecialcosts"
+        Me.fieldspecialcosts.Visible = False
+        '
+        'fieldowners
+        '
+        Me.fieldowners.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldowners.AreaIndex = 6
+        Me.fieldowners.Caption = "ΙΔΙΟΚΤΗΤΩΝ"
+        DataSourceColumnBinding22.ColumnName = "owners"
+        Me.fieldowners.DataBinding = DataSourceColumnBinding22
+        Me.fieldowners.Name = "fieldowners"
+        Me.fieldowners.Visible = False
+        '
+        'fieldbilling
+        '
+        Me.fieldbilling.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldbilling.AreaIndex = 7
+        Me.fieldbilling.Caption = "ΕΚΔΟΣΗ"
+        DataSourceColumnBinding23.ColumnName = "billing"
+        Me.fieldbilling.DataBinding = DataSourceColumnBinding23
+        Me.fieldbilling.Name = "fieldbilling"
+        Me.fieldbilling.Visible = False
+        '
+        'fieldboiler
+        '
+        Me.fieldboiler.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldboiler.AreaIndex = 6
+        Me.fieldboiler.Caption = "BOILER"
+        DataSourceColumnBinding24.ColumnName = "boiler"
+        Me.fieldboiler.DataBinding = DataSourceColumnBinding24
+        Me.fieldboiler.Name = "fieldboiler"
+        Me.fieldboiler.Visible = False
+        '
+        'fieldgarage
+        '
+        Me.fieldgarage.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldgarage.AreaIndex = 5
+        Me.fieldgarage.Caption = "ΓΚΑΡΑΖ"
+        DataSourceColumnBinding25.ColumnName = "garage"
+        Me.fieldgarage.DataBinding = DataSourceColumnBinding25
+        Me.fieldgarage.Name = "fieldgarage"
+        Me.fieldgarage.Visible = False
+        '
+        'fieldmonomers1
+        '
+        Me.fieldmonomers1.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldmonomers1.AreaIndex = 4
+        Me.fieldmonomers1.Caption = "ΜΟΝΟΜΕΡΗ 1"
+        DataSourceColumnBinding26.ColumnName = "monomers1"
+        Me.fieldmonomers1.DataBinding = DataSourceColumnBinding26
+        Me.fieldmonomers1.Name = "fieldmonomers1"
+        Me.fieldmonomers1.Visible = False
+        '
+        'fieldmonomers2
+        '
+        Me.fieldmonomers2.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldmonomers2.AreaIndex = 3
+        Me.fieldmonomers2.Caption = "ΜΟΝΟΜΕΡΗ 2"
+        DataSourceColumnBinding27.ColumnName = "monomers2"
+        Me.fieldmonomers2.DataBinding = DataSourceColumnBinding27
+        Me.fieldmonomers2.Name = "fieldmonomers2"
+        Me.fieldmonomers2.Visible = False
+        '
+        'fieldmonomers3
+        '
+        Me.fieldmonomers3.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldmonomers3.AreaIndex = 2
+        Me.fieldmonomers3.Caption = "ΜΟΝΟΜΕΡΗ 3"
+        DataSourceColumnBinding28.ColumnName = "monomers3"
+        Me.fieldmonomers3.DataBinding = DataSourceColumnBinding28
+        Me.fieldmonomers3.Name = "fieldmonomers3"
+        Me.fieldmonomers3.Visible = False
+        '
+        'fieldfi
+        '
+        Me.fieldfi.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldfi.AreaIndex = 1
+        Me.fieldfi.Caption = "FI"
+        DataSourceColumnBinding29.ColumnName = "fi"
+        Me.fieldfi.DataBinding = DataSourceColumnBinding29
+        Me.fieldfi.Name = "fieldfi"
+        Me.fieldfi.Visible = False
+        '
+        'fieldfiBoiler
+        '
+        Me.fieldfiBoiler.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldfiBoiler.AreaIndex = 0
+        Me.fieldfiBoiler.Caption = "FI BOILER"
+        DataSourceColumnBinding30.ColumnName = "fiBoiler"
+        Me.fieldfiBoiler.DataBinding = DataSourceColumnBinding30
+        Me.fieldfiBoiler.Name = "fieldfiBoiler"
+        Me.fieldfiBoiler.Visible = False
+        '
+        'fieldmodifiedBy
+        '
+        Me.fieldmodifiedBy.AreaIndex = 6
+        Me.fieldmodifiedBy.Caption = "modified By"
+        DataSourceColumnBinding31.ColumnName = "modifiedBy"
+        Me.fieldmodifiedBy.DataBinding = DataSourceColumnBinding31
+        Me.fieldmodifiedBy.Name = "fieldmodifiedBy"
+        Me.fieldmodifiedBy.Visible = False
+        '
+        'fieldmodifiedOn
+        '
+        Me.fieldmodifiedOn.AreaIndex = 6
+        Me.fieldmodifiedOn.Caption = "modifiedOn"
+        DataSourceColumnBinding32.ColumnName = "modifiedOn"
+        Me.fieldmodifiedOn.DataBinding = DataSourceColumnBinding32
+        Me.fieldmodifiedOn.Name = "fieldmodifiedOn"
+        Me.fieldmodifiedOn.Visible = False
+        '
+        'fieldcreatedOn
+        '
+        Me.fieldcreatedOn.AreaIndex = 6
+        Me.fieldcreatedOn.Caption = "createdOn"
+        DataSourceColumnBinding33.ColumnName = "createdOn"
+        Me.fieldcreatedOn.DataBinding = DataSourceColumnBinding33
+        Me.fieldcreatedOn.Name = "fieldcreatedOn"
+        Me.fieldcreatedOn.Visible = False
+        '
+        'fieldcalcCatID
+        '
+        Me.fieldcalcCatID.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
+        Me.fieldcalcCatID.AreaIndex = 0
+        Me.fieldcalcCatID.Caption = "calc Cat ID"
+        DataSourceColumnBinding34.ColumnName = "calcCatID"
+        Me.fieldcalcCatID.DataBinding = DataSourceColumnBinding34
+        Me.fieldcalcCatID.Name = "fieldcalcCatID"
+        Me.fieldcalcCatID.Visible = False
+        '
+        'fieldcompleteDate
+        '
+        Me.fieldcompleteDate.AreaIndex = 6
+        Me.fieldcompleteDate.Caption = "ΔΙΑΣΤΗΜΑ"
+        DataSourceColumnBinding35.ColumnName = "completeDate"
+        Me.fieldcompleteDate.DataBinding = DataSourceColumnBinding35
+        Me.fieldcompleteDate.Name = "fieldcompleteDate"
+        '
+        'cmdCalculate
+        '
+        Me.cmdCalculate.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_estimates_24
+        Me.cmdCalculate.Location = New System.Drawing.Point(260, 598)
+        Me.cmdCalculate.Name = "cmdCalculate"
+        Me.cmdCalculate.Size = New System.Drawing.Size(247, 28)
+        Me.cmdCalculate.StyleController = Me.LayoutControl1
+        Me.cmdCalculate.TabIndex = 53
+        Me.cmdCalculate.Text = "Υπολογισμός"
+        '
         'cboOwnerTenant
         '
-        Me.cboOwnerTenant.Location = New System.Drawing.Point(141, 299)
+        Me.cboOwnerTenant.Location = New System.Drawing.Point(141, 286)
         Me.cboOwnerTenant.Name = "cboOwnerTenant"
         Me.cboOwnerTenant.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboOwnerTenant.Properties.Items.AddRange(New Object() {"Ιδιοκτήτης", "Ένοικος"})
         Me.cboOwnerTenant.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboOwnerTenant.Size = New System.Drawing.Size(356, 20)
+        Me.cboOwnerTenant.Size = New System.Drawing.Size(354, 20)
         Me.cboOwnerTenant.StyleController = Me.LayoutControl1
         Me.cboOwnerTenant.TabIndex = 51
         Me.cboOwnerTenant.Tag = "owner_tenant,0,1,2"
@@ -325,7 +812,7 @@ Partial Class frmINH
         'cmdINDDel
         '
         Me.cmdINDDel.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdINDDel.Location = New System.Drawing.Point(513, 266)
+        Me.cmdINDDel.Location = New System.Drawing.Point(511, 253)
         Me.cmdINDDel.Name = "cmdINDDel"
         Me.cmdINDDel.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdINDDel.Size = New System.Drawing.Size(22, 22)
@@ -335,7 +822,7 @@ Partial Class frmINH
         'cmdINDRefresh
         '
         Me.cmdINDRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdINDRefresh.Location = New System.Drawing.Point(513, 292)
+        Me.cmdINDRefresh.Location = New System.Drawing.Point(511, 279)
         Me.cmdINDRefresh.Name = "cmdINDRefresh"
         Me.cmdINDRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdINDRefresh.Size = New System.Drawing.Size(22, 22)
@@ -347,7 +834,7 @@ Partial Class frmINH
         Me.cmdSaveInd.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
         Me.cmdSaveInd.Location = New System.Drawing.Point(12, 598)
         Me.cmdSaveInd.Name = "cmdSaveInd"
-        Me.cmdSaveInd.Size = New System.Drawing.Size(497, 28)
+        Me.cmdSaveInd.Size = New System.Drawing.Size(244, 28)
         Me.cmdSaveInd.StyleController = Me.LayoutControl1
         Me.cmdSaveInd.TabIndex = 48
         Me.cmdSaveInd.Text = "Καταχώρηση Εξόδου"
@@ -361,7 +848,7 @@ Partial Class frmINH
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(61, 20)
+        Me.txtCode.Size = New System.Drawing.Size(59, 20)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 47
         Me.txtCode.Tag = "code,0"
@@ -370,7 +857,7 @@ Partial Class frmINH
         '
         Me.txtComments.Location = New System.Drawing.Point(141, 165)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(356, 53)
+        Me.txtComments.Size = New System.Drawing.Size(354, 40)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 46
         Me.txtComments.Tag = "cmt,0,1,2"
@@ -378,9 +865,9 @@ Partial Class frmINH
         'cmdSaveINH
         '
         Me.cmdSaveINH.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveINH.Location = New System.Drawing.Point(328, 222)
+        Me.cmdSaveINH.Location = New System.Drawing.Point(308, 209)
         Me.cmdSaveINH.Name = "cmdSaveINH"
-        Me.cmdSaveINH.Size = New System.Drawing.Size(169, 28)
+        Me.cmdSaveINH.Size = New System.Drawing.Size(187, 28)
         Me.cmdSaveINH.StyleController = Me.LayoutControl1
         Me.cmdSaveINH.TabIndex = 45
         Me.cmdSaveINH.Text = "Καταχώρηση Παραστατικού"
@@ -399,7 +886,7 @@ Partial Class frmINH
         Me.cboBDG.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.cboBDG.Properties.PopupSizeable = False
         Me.cboBDG.Properties.ValueMember = "ID"
-        Me.cboBDG.Size = New System.Drawing.Size(356, 20)
+        Me.cboBDG.Size = New System.Drawing.Size(354, 20)
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 44
         Me.cboBDG.Tag = "bdgid,0,1,2"
@@ -412,7 +899,7 @@ Partial Class frmINH
         'txtAmt
         '
         Me.txtAmt.EditValue = "0,00 €"
-        Me.txtAmt.Location = New System.Drawing.Point(141, 347)
+        Me.txtAmt.Location = New System.Drawing.Point(141, 334)
         Me.txtAmt.Name = "txtAmt"
         Me.txtAmt.Properties.DisplayFormat.FormatString = "c"
         Me.txtAmt.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -422,16 +909,16 @@ Partial Class frmINH
         Me.txtAmt.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtAmt.Properties.MaskSettings.Set("mask", "c2")
         Me.txtAmt.Properties.Tag = "BenchExtraPrice"
-        Me.txtAmt.Size = New System.Drawing.Size(356, 20)
+        Me.txtAmt.Size = New System.Drawing.Size(354, 20)
         Me.txtAmt.StyleController = Me.LayoutControl1
         Me.txtAmt.TabIndex = 43
         Me.txtAmt.Tag = "amt,0,1,2"
         '
         'txtrepname
         '
-        Me.txtrepname.Location = New System.Drawing.Point(141, 323)
+        Me.txtrepname.Location = New System.Drawing.Point(141, 310)
         Me.txtrepname.Name = "txtrepname"
-        Me.txtrepname.Size = New System.Drawing.Size(356, 20)
+        Me.txtrepname.Size = New System.Drawing.Size(354, 20)
         Me.txtrepname.StyleController = Me.LayoutControl1
         Me.txtrepname.TabIndex = 29
         Me.txtrepname.Tag = "repname,0,1,2"
@@ -444,9 +931,9 @@ Partial Class frmINH
         Me.chkCALC_CAT.DataSource = Me.VwCALCCATBindingSource
         Me.chkCALC_CAT.DisplayMember = "name"
         Me.chkCALC_CAT.HorizontalScrollbar = True
-        Me.chkCALC_CAT.Location = New System.Drawing.Point(24, 371)
+        Me.chkCALC_CAT.Location = New System.Drawing.Point(24, 358)
         Me.chkCALC_CAT.Name = "chkCALC_CAT"
-        Me.chkCALC_CAT.Size = New System.Drawing.Size(473, 211)
+        Me.chkCALC_CAT.Size = New System.Drawing.Size(471, 224)
         Me.chkCALC_CAT.SortOrder = System.Windows.Forms.SortOrder.Ascending
         Me.chkCALC_CAT.StyleController = Me.LayoutControl1
         Me.chkCALC_CAT.TabIndex = 28
@@ -476,7 +963,7 @@ Partial Class frmINH
         Me.dtTDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtTDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.dtTDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.dtTDate.Size = New System.Drawing.Size(168, 20)
+        Me.dtTDate.Size = New System.Drawing.Size(166, 20)
         Me.dtTDate.StyleController = Me.LayoutControl1
         Me.dtTDate.TabIndex = 38
         Me.dtTDate.Tag = "tDate,0,1,2"
@@ -486,7 +973,7 @@ Partial Class frmINH
         Me.txtHeatingType.Location = New System.Drawing.Point(141, 117)
         Me.txtHeatingType.Name = "txtHeatingType"
         Me.txtHeatingType.Properties.ReadOnly = True
-        Me.txtHeatingType.Size = New System.Drawing.Size(356, 20)
+        Me.txtHeatingType.Size = New System.Drawing.Size(354, 20)
         Me.txtHeatingType.StyleController = Me.LayoutControl1
         Me.txtHeatingType.TabIndex = 46
         Me.txtHeatingType.Tag = ""
@@ -496,7 +983,7 @@ Partial Class frmINH
         Me.txtBoilerType.Location = New System.Drawing.Point(141, 141)
         Me.txtBoilerType.Name = "txtBoilerType"
         Me.txtBoilerType.Properties.ReadOnly = True
-        Me.txtBoilerType.Size = New System.Drawing.Size(356, 20)
+        Me.txtBoilerType.Size = New System.Drawing.Size(354, 20)
         Me.txtBoilerType.StyleController = Me.LayoutControl1
         Me.txtBoilerType.TabIndex = 46
         Me.txtBoilerType.Tag = ""
@@ -505,17 +992,17 @@ Partial Class frmINH
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlItem10, Me.LayoutControlGroup2, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.EmptySpaceItem3, Me.EmptySpaceItem4, Me.LayoutControlItem14})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlItem10, Me.LayoutControlGroup2, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.EmptySpaceItem3, Me.EmptySpaceItem4, Me.LayoutControlItem16, Me.LayoutControlItem17})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1376, 638)
+        Me.Root.Size = New System.Drawing.Size(1362, 638)
         Me.Root.TextVisible = False
         '
         'LayoutControlGroup1
         '
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.EmptySpaceItem1, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem2, Me.LayoutControlItem1, Me.LayoutControlItem15})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.EmptySpaceItem1, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem2, Me.LayoutControlItem1, Me.LayoutControlItem15, Me.LayoutControlItem14})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(501, 254)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(499, 241)
         Me.LayoutControlGroup1.Text = "Στοιχεία Παραστατικού"
         '
         'LayoutControlItem53
@@ -541,7 +1028,7 @@ Partial Class frmINH
         Me.LayoutControlItem6.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem6.ImageOptions.Image"), System.Drawing.Image)
         Me.LayoutControlItem6.Location = New System.Drawing.Point(268, 48)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(209, 24)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(207, 24)
         Me.LayoutControlItem6.Tag = "1"
         Me.LayoutControlItem6.Text = "Έως"
         Me.LayoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
@@ -554,7 +1041,7 @@ Partial Class frmINH
         Me.LayoutControlItem5.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(477, 24)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(475, 24)
         Me.LayoutControlItem5.Tag = "1"
         Me.LayoutControlItem5.Text = "Πολυκατοικία"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(105, 13)
@@ -562,18 +1049,18 @@ Partial Class frmINH
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.cmdSaveINH
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(304, 177)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(284, 164)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(173, 32)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(191, 32)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 177)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 164)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(304, 32)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(284, 32)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem8
@@ -581,7 +1068,7 @@ Partial Class frmINH
         Me.LayoutControlItem8.Control = Me.txtComments
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(477, 57)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(475, 44)
         Me.LayoutControlItem8.Text = "Σχόλια"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(105, 13)
         '
@@ -590,16 +1077,16 @@ Partial Class frmINH
         Me.LayoutControlItem9.Control = Me.txtCode
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(182, 24)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(180, 24)
         Me.LayoutControlItem9.Text = "Κωδικός"
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(105, 13)
         '
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(182, 0)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(180, 0)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(295, 24)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(88, 24)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem1
@@ -609,7 +1096,7 @@ Partial Class frmINH
         Me.LayoutControlItem1.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(477, 24)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(475, 24)
         Me.LayoutControlItem1.Text = "Τύπος Θέρμανσης"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(105, 13)
         '
@@ -620,25 +1107,34 @@ Partial Class frmINH
         Me.LayoutControlItem15.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(477, 24)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(475, 24)
         Me.LayoutControlItem15.Text = "Τύπος Boiler"
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(105, 13)
+        '
+        'LayoutControlItem14
+        '
+        Me.LayoutControlItem14.Control = Me.lbldate
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(268, 0)
+        Me.LayoutControlItem14.Name = "LayoutControlItem14"
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(207, 24)
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem14.TextVisible = False
         '
         'LayoutControlItem10
         '
         Me.LayoutControlItem10.Control = Me.cmdSaveInd
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 586)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(501, 32)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(248, 32)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
         'LayoutControlGroup2
         '
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem13})
-        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 254)
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 241)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(501, 332)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(499, 345)
         Me.LayoutControlGroup2.Text = "Στοιχεία Εξόδων"
         '
         'LayoutControlItem4
@@ -647,7 +1143,7 @@ Partial Class frmINH
         Me.LayoutControlItem4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(477, 24)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(475, 24)
         Me.LayoutControlItem4.Tag = "1"
         Me.LayoutControlItem4.Text = "Ποσό"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(105, 13)
@@ -657,7 +1153,7 @@ Partial Class frmINH
         Me.LayoutControlItem3.Control = Me.txtrepname
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(477, 24)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(475, 24)
         Me.LayoutControlItem3.Text = "Λεκτικό Εκτύπωσης"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(105, 13)
         '
@@ -667,7 +1163,7 @@ Partial Class frmINH
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(477, 215)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(475, 228)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
@@ -678,7 +1174,7 @@ Partial Class frmINH
         Me.LayoutControlItem13.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(477, 24)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(475, 24)
         Me.LayoutControlItem13.Tag = "1"
         Me.LayoutControlItem13.Text = "Ένοικος/Ιδιοκτήτης"
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(105, 13)
@@ -686,7 +1182,7 @@ Partial Class frmINH
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.cmdINDRefresh
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(501, 280)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(499, 267)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(26, 26)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
@@ -695,7 +1191,7 @@ Partial Class frmINH
         'LayoutControlItem12
         '
         Me.LayoutControlItem12.Control = Me.cmdINDDel
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(501, 254)
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(499, 241)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
         Me.LayoutControlItem12.Size = New System.Drawing.Size(26, 26)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
@@ -704,27 +1200,36 @@ Partial Class frmINH
         'EmptySpaceItem3
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(501, 306)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(499, 293)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(26, 312)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(26, 325)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem4
         '
         Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(501, 0)
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(499, 0)
         Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(26, 254)
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(26, 241)
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
-        'LayoutControlItem14
+        'LayoutControlItem16
         '
-        Me.LayoutControlItem14.Control = Me.GridControl1
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(527, 0)
-        Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(829, 618)
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem14.TextVisible = False
+        Me.LayoutControlItem16.Control = Me.cmdCalculate
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(248, 586)
+        Me.LayoutControlItem16.Name = "LayoutControlItem16"
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(251, 32)
+        Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem16.TextVisible = False
+        '
+        'LayoutControlItem17
+        '
+        Me.LayoutControlItem17.Control = Me.TabPane1
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(525, 0)
+        Me.LayoutControlItem17.Name = "LayoutControlItem17"
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(817, 618)
+        Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem17.TextVisible = False
         '
         'VwEXCBindingSource
         '
@@ -747,17 +1252,24 @@ Partial Class frmINH
         '
         Me.Vw_CALC_CATTableAdapter.ClearBeforeFill = True
         '
+        'Vw_INCTableAdapter
+        '
+        Me.Vw_INCTableAdapter.ClearBeforeFill = True
+        '
         'frmINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1376, 643)
+        Me.ClientSize = New System.Drawing.Size(1359, 643)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmINH"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmParast"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPane1.ResumeLayout(False)
+        Me.TabNavigationPage1.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -765,6 +1277,9 @@ Partial Class frmINH
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabNavigationPage2.ResumeLayout(False)
+        CType(Me.PivotGridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -791,6 +1306,7 @@ Partial Class frmINH
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -801,7 +1317,8 @@ Partial Class frmINH
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -849,11 +1366,23 @@ Partial Class frmINH
     Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents cboOwnerTenant As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LayoutControlItem13 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwCALCCATBindingSource As BindingSource
+    Friend WithEvents Vw_CALC_CATTableAdapter As Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter
+    Friend WithEvents txtHeatingType As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtBoilerType As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdCalculate As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TabPane1 As DevExpress.XtraBars.Navigation.TabPane
+    Friend WithEvents TabNavigationPage1 As DevExpress.XtraBars.Navigation.TabNavigationPage
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colcode As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colinhID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcalcCatID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepositoryItemLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
     Friend WithEvents colrepName As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colamt As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colmodifiedBy As DevExpress.XtraGrid.Columns.GridColumn
@@ -864,13 +1393,46 @@ Partial Class frmINH
     Friend WithEvents coltDate As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colname As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colowner_tenant As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents TabNavigationPage2 As DevExpress.XtraBars.Navigation.TabNavigationPage
+    Friend WithEvents LayoutControlItem17 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwINCBindingSource As BindingSource
+    Friend WithEvents Vw_INCTableAdapter As Priamos_NETDataSetTableAdapters.vw_INCTableAdapter
+    Friend WithEvents PivotGridControl1 As DevExpress.XtraPivotGrid.PivotGridControl
+    Friend WithEvents lbldate As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents RepositoryItemLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
-    Friend WithEvents VwCALCCATBindingSource As BindingSource
-    Friend WithEvents Vw_CALC_CATTableAdapter As Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter
-    Friend WithEvents colcalcCatID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents txtHeatingType As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents txtBoilerType As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents fieldcmt As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldfDate As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldtDate As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldbdgNam As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldaptNam As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldttl As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldord As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcalcCatNam As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldrepName As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldamt As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldinhID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldindID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldbdgID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldaptID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldshared As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldelevator As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldheating As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldheatingconsumption As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldboilerconsumption As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldspecialcosts As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldowners As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldbilling As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldboiler As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldgarage As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmonomers1 As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmonomers2 As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmonomers3 As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldfi As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldfiBoiler As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmodifiedBy As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmodifiedOn As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcreatedOn As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcalcCatID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcompleteDate As DevExpress.XtraPivotGrid.PivotGridField
 End Class

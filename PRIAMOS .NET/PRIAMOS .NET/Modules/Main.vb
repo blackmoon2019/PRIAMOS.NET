@@ -75,6 +75,11 @@ Module Main
             DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
+    Public Function TranslateDates(ByVal fDate As DevExpress.XtraEditors.DateEdit, ByVal tDate As DevExpress.XtraEditors.DateEdit) As String
+        TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & "-" & tDate.Text
+        Return TranslateDates
+    End Function
+
     'Public Function FindItemByValChkListBox(ByVal sValue As String, ByVal chkList As DevExpress.XtraEditors.CheckedListBoxControl) As DevExpress.XtraEditors.Controls.CheckedListBoxItem
     '    For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkList
 

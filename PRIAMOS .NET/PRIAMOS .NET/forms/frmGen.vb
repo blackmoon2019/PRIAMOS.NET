@@ -207,19 +207,36 @@ Public Class frmGen
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("CALC_TYPES")
                             Case "MLC"
+                                Dim ExtraFields As String, ExtraValues As String
                                 sGuid = System.Guid.NewGuid.ToString
-                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "MLC", LayoutControl1,,, sGuid, True)
-                                If CalledFromCtrl Then
-                                    FillCbo.MLC(CtrlCombo)
-                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
-                                Else
-                                    'Dim form As New frmScroller
-                                    'form = Frm
-                                    'form.LoadRecords("vw_MLC")
+                                ExtraFields = "apmilNam"
+                                Dim cmd As SqlCommand = New SqlCommand("select top 1 COLUMN_NAME  from information_schema.columns c " &
+                                                                       "Left Join MLC ON MLC.apmilNam = c.COLUMN_NAME  " &
+                                                                        "where table_name = 'APMIL' and COLUMN_NAME like 'custom_%' and apmilNam is null " &
+                                                                        "order by ORDINAL_POSITION ", CNDB)
+                                Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                                If (sdr.Read() = True) Then
+                                    If sdr.IsDBNull(sdr.GetOrdinal("COLUMN_NAME")) = False Then
+                                        ExtraValues = sdr.GetString(sdr.GetOrdinal("COLUMN_NAME"))
+                                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "MLC", LayoutControl1,,, sGuid, True, ExtraFields, toSQLValueS(ExtraValues))
+                                        If CalledFromCtrl Then
+                                            FillCbo.MLC(CtrlCombo)
+                                            CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                        Else
+                                            'Dim form As New frmScroller
+                                            'form = Frm
+                                            'form.LoadRecords("vw_MLC")
+                                        End If
+                                        'Καθαρισμός Controls
+                                        Cls.ClearCtrls(LayoutControl1)
+                                        txtCode.Text = DBQ.GetNextId("MLC")
+                                    Else
+                                        XtraMessageBox.Show("Έχετε φτάσει το μέγιστο πλήθος κατηγοριών χιλιοστών", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    End If
                                 End If
-                                'Καθαρισμός Controls
-                                Cls.ClearCtrls(LayoutControl1)
-                                txtCode.Text = DBQ.GetNextId("MLC")
+                                sdr.Close()
+                                sdr = Nothing
+
                             Case "TECH_CAT"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_CAT", LayoutControl1,,, sGuid, True)

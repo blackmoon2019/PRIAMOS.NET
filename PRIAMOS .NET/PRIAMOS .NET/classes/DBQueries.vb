@@ -36,14 +36,14 @@ Public Class DBQueries
     Public Function UpdateNewData(ByVal Mode As InsertMode, ByVal sTable As String, Optional ByVal control As DevExpress.XtraLayout.LayoutControl = Nothing,
                                   Optional ByVal controls As List(Of Control) = Nothing, Optional ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup = Nothing,
                                   Optional ByVal sGuid As String = "", Optional ByVal IgnoreVisibility As Boolean = False,
-                                  Optional GRD As DevExpress.XtraGrid.Views.Grid.GridView = Nothing, Optional ByVal FieldsToBeUpdate As List(Of String) = Nothing) As Boolean
+                                  Optional GRD As DevExpress.XtraGrid.Views.Grid.GridView = Nothing, Optional ByVal FieldsToBeUpdate As List(Of String) = Nothing, Optional ByVal ExtraFieldsAndValues As String = "") As Boolean
         Select Case Mode
             Case 1
                 Return UpdateData(control, sTable, sGuid, IgnoreVisibility)
             Case 2
-                Return UpdateDataNew(controls, sTable, sGuid, IgnoreVisibility)
+                Return UpdateDataNew(controls, sTable, sGuid, IgnoreVisibility, ExtraFieldsAndValues)
             Case 3
-                Return UpdateDataGRP(GRP, sTable, sGuid, IgnoreVisibility)
+                Return UpdateDataGRP(GRP, sTable, sGuid, IgnoreVisibility, ExtraFieldsAndValues)
             Case 4
                 Return UpdateDataGRD(GRD, sTable, sGuid, FieldsToBeUpdate, IgnoreVisibility)
         End Select
@@ -195,6 +195,10 @@ Public Class DBQueries
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
+                                    Dim cpk As DevExpress.XtraEditors.ColorPickEdit
+                                    cpk = Ctrl
+                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & cpk.Text)
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
                                     Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
                                     cbo = Ctrl
@@ -613,6 +617,10 @@ NextItem:
                                             Exit For
                                         End If
                                     Next
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
+                                    Dim cpk As DevExpress.XtraEditors.ColorPickEdit
+                                    cpk = Ctrl
+                                    sSQL.Append(cpk.Text)
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                     Dim dt As DevExpress.XtraEditors.DateEdit
                                     dt = Ctrl
@@ -683,7 +691,8 @@ NextItem:
             Return False
         End Try
     End Function
-    Private Function UpdateDataNew(ByVal controls As List(Of Control), ByVal sTable As String, ByVal sID As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
+    Private Function UpdateDataNew(ByVal controls As List(Of Control), ByVal sTable As String, ByVal sID As String,
+                                   Optional ByVal IgnoreVisibility As Boolean = False, Optional ByVal ExtraFieldsAndValues As String = "") As Boolean
         Dim sSQL As New System.Text.StringBuilder ' Το 1ο StringField αφορά τα πεδία
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
@@ -694,6 +703,7 @@ NextItem:
             'Εαν η function καλεστεί με sGuid σημαίνει ότι θα πρε΄πει να καταχωρίσουμε εμείς το ID
             'FIELDS
             sSQL.AppendLine("UPDATE " & sTable & " SET ")
+            If ExtraFieldsAndValues.Length > 0 Then sSQL.AppendLine(ExtraFieldsAndValues) : IsFirstField = False
             For Each control As DevExpress.XtraLayout.LayoutControl In controls
                 For Each item As BaseLayoutItem In control.Items
                     If TypeOf item Is LayoutControlItem Then
@@ -801,7 +811,8 @@ NextItem:
             Return False
         End Try
     End Function
-    Private Function UpdateDataGRP(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, ByVal sTable As String, ByVal sID As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
+    Private Function UpdateDataGRP(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, ByVal sTable As String, ByVal sID As String,
+                                   Optional ByVal IgnoreVisibility As Boolean = False, Optional ByVal ExtraFieldsAndValues As String = "") As Boolean
         Dim sSQL As New System.Text.StringBuilder ' Το 1ο StringField αφορά τα πεδία
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
@@ -812,6 +823,7 @@ NextItem:
             'Εαν η function καλεστεί με sGuid σημαίνει ότι θα πρε΄πει να καταχωρίσουμε εμείς το ID
             'FIELDS
             sSQL.AppendLine("UPDATE " & sTable & " SET ")
+            If ExtraFieldsAndValues.Length > 0 Then sSQL.AppendLine(ExtraFieldsAndValues) : IsFirstField = False
             For Each item As BaseLayoutItem In GRP.Items
                 If TypeOf item Is LayoutControlItem Then
                     Dim LItem As LayoutControlItem = CType(item, LayoutControlItem)
