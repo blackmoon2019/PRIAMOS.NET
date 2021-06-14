@@ -72,7 +72,7 @@ Module Main
                 Return "NULL" 'this will pass through any SQL statement without notice  
             End If
         Catch ex As Exception
-            DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
     Public Function TranslateDates(ByVal fDate As DevExpress.XtraEditors.DateEdit, ByVal tDate As DevExpress.XtraEditors.DateEdit) As String

@@ -35,6 +35,7 @@ Public Class frmBDG
     Private Frm As DevExpress.XtraEditors.XtraForm
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
+    Private ModeBCCT As Byte
 
     '------C L A S S E S------
     Private Valid As New ValidateControls
@@ -89,6 +90,8 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PRF' table. You can move, or remove it, as needed.
+        Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
         Dim sSQL As New System.Text.StringBuilder
         txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -2193,8 +2196,212 @@ Public Class frmBDG
         info.Column.OptionsColumn.AllowMove = Not item.Checked
     End Sub
 
-    Private Sub GridView7_ShowingPopupEditForm(sender As Object, e As ShowingPopupEditFormEventArgs) Handles GridView7.ShowingPopupEditForm
+    Private Sub NavMaintenance_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavMaintenance.ElementClick
+        Try
+            tabBDG.SelectedTabPage = XtraTabPage4
+            Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
+            Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+            LayoutControlGroup15.Enabled = False
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
+    Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
+        Me.Vw_CCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CCT, cboPrf.EditValue)
+    End Sub
+
+    Private Sub cmdSaveBCCT_Click(sender As Object, e As EventArgs) Handles cmdSaveBCCT.Click
+        Dim sResult As Boolean
+        Try
+            If Valid.ValidateFormGRP(LayoutControlGroup13) Then
+                'Dim myLayoutControls As New List(Of Control)
+                'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
+                Select Case ModeBCCT
+                    Case FormMode.NewRecord
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BCCT", LayoutControl4Maintenance,,, , True, "bdgID", toSQLValueS(sID))
+                    Case FormMode.EditRecord
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BCCT", LayoutControl4Maintenance,,, sID, True)
+                End Select
+                If sResult Then
+
+
+                    'If Mode = FormMode.NewRecord Then dtDTS.EditValue = DateTime.Now
+                    Cls.ClearGroupCtrls(LayoutControlGroup15)
+                    txtCode.Text = DBQ.GetNextId("BCCT")
+                    Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+                    LayoutControlGroup15.Enabled = False
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
+                End If
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmdNewBCCT_Click(sender As Object, e As EventArgs) Handles cmdNewBCCT.Click
+        LayoutControlGroup15.Enabled = True
+        Cls.ClearGroupCtrls(LayoutControlGroup15)
+        txtCodeBcct.Text = DBQ.GetNextId("BCCT")
+        ModeBCCT = FormMode.NewRecord
+    End Sub
+
+    Private Sub GridView8_CustomRowCellEdit(sender As Object, e As CustomRowCellEditEventArgs) Handles GridView8.CustomRowCellEdit
+        If e.Column.FieldName = "prfID" Then
+            Dim view As GridView = TryCast(sender, GridView)
+            Dim prfID As String = view.GetRowCellValue(e.RowHandle, "prfID").ToString
+            If prfID.Length > 0 Then Me.Vw_CCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CCT, System.Guid.Parse(prfID))
+        End If
+    End Sub
+    Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPrf.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboPrf.EditValue = Nothing : ManagePRF(False)
+            Case 2 : If cboPrf.EditValue <> Nothing Then ManagePRF(False)
+            Case 3 : cboPrf.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManagePRF(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "")
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Επαγγέλματα"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Επάγγελμα"
+        form1.DataTable = "PRF"
+        If isFromGrid = False Then
+            form1.CallerControl = cboPrf
+            form1.CalledFromControl = True
+            If cboPrf.EditValue <> Nothing Then
+                form1.ID = cboPrf.EditValue.ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+            End If
+        Else
+            If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString <> Nothing Then
+                form1.ID = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+            End If
+        End If
+
+        'form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
+        RecID = form1.RecID
+    End Sub
+
+    Private Sub ManageCCT(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "")
+        Dim form1 As frmCustomers = New frmCustomers()
+        form1.Text = "Πελάτες"
+        'form1.MdiParent = frmMain
+        If isFromGrid = False Then
+            form1.CallerControl = cboCCT
+            form1.CalledFromControl = True
+            If cboCCT.EditValue <> Nothing Then
+                form1.ID = cboCCT.EditValue.ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+                form1.chkWorkshop.Checked = True
+                form1.chkPrivate.Checked = False
+            End If
+        Else
+            If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString <> Nothing Then
+                form1.ID = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+                form1.chkWorkshop.Checked = True
+                form1.chkPrivate.Checked = False
+            End If
+        End If
+
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
+    End Sub
+
+    Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False)
+            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCCT(False)
+            Case 3 : cboCCT.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub RepositoryItemLookUpEditCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEditCCT.ButtonClick
+        Dim RecID As String
+        Select Case e.Button.Index
+            Case 1
+                GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "cctID", Nothing)
+                ManageCCT(True, RecID)
+                GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "cctID", RecID)
+            Case 2
+                If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString <> Nothing Then
+                    ManageCCT(True, RecID)
+                End If
+            Case 3 : GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "cctID", Nothing)
+        End Select
+    End Sub
+
+    Private Sub RepositoryItemLookUpEditPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEditPRF.ButtonClick
+        Dim RecID As String
+        Select Case e.Button.Index
+            Case 1
+                GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", Nothing) : ManagePRF(True, RecID)
+                Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
+                GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", RecID)
+            Case 2
+                If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString <> Nothing Then ManagePRF(True, RecID)
+            Case 3 : GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", Nothing)
+        End Select
+    End Sub
+    Private Sub DeleteRecordBCCT()
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM BCCT WHERE ID = '" & GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "ID").ToString & "'"
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmddelBCCT_Click(sender As Object, e As EventArgs) Handles cmddelBCCT.Click
+        DeleteRecordBCCT()
+    End Sub
+
+    Private Sub cmdBCCTRefresh_Click(sender As Object, e As EventArgs) Handles cmdBCCTRefresh.Click
+        Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+    End Sub
+
+
+    Private Sub GridView8_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView8.RowUpdated
+        Try
+            Dim sSQL As String
+
+            sSQL = "UPDATE [BCCT] SET cctID  = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString) &
+                ",prfID = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString) &
+                ",cmt = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cmt")) &
+        " WHERE ID = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "ID").ToString)
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged

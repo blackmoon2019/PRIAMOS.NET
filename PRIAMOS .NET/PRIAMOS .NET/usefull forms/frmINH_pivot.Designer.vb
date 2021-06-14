@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmINH
+Partial Class frmINH_pivot
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
@@ -20,7 +20,42 @@ Partial Class frmINH
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmINH))
+        Dim DataSourceColumnBinding1 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding2 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding3 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding4 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding5 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding6 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding7 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding8 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding9 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding10 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding11 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding12 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding13 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding14 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding15 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding16 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding17 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding18 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding19 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding20 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding21 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding22 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding23 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding24 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding25 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding26 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding27 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding28 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding29 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding30 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding31 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding32 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding33 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding34 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim DataSourceColumnBinding35 As DevExpress.XtraPivotGrid.DataSourceColumnBinding = New DevExpress.XtraPivotGrid.DataSourceColumnBinding()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmINH_pivot))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.lbldate = New DevExpress.XtraEditors.LabelControl()
         Me.TabPane1 = New DevExpress.XtraBars.Navigation.TabPane()
@@ -47,43 +82,43 @@ Partial Class frmINH
         Me.colname = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colowner_tenant = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.TabNavigationPage2 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
-        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
-        Me.GridINH = New DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView()
-        Me.colcmt = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colfDate1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.coltDate1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colbdgNam = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colaptNam = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colttl = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colord = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcalcCatNam = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colrepName1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colamt1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colID1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colinhID1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colindID = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colbdgID = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colaptID = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colshared = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colelevator = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colheating = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colheating_consumption = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colboiler_consumption = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colspecial_costs = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colowners = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colbilling = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colboiler = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colgarage = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmonomers1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmonomers2 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmonomers3 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colfi = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colfiBoiler = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmodifiedBy1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmodifiedOn1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcreatedOn1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcalcCatID1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcompleteDate = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.PivotGridControl1 = New DevExpress.XtraPivotGrid.PivotGridControl()
+        Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.fieldcmt = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldfDate = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldtDate = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldbdgNam = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldaptNam = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldttl = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldord = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcalcCatNam = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldrepName = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldamt = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldinhID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldindID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldbdgID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldaptID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldshared = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldelevator = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldheating = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldheatingconsumption = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldboilerconsumption = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldspecialcosts = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldowners = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldbilling = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldboiler = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldgarage = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmonomers1 = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmonomers2 = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmonomers3 = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldfi = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldfiBoiler = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmodifiedBy = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldmodifiedOn = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcreatedOn = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcalcCatID = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldcompleteDate = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.cmdCalculate = New DevExpress.XtraEditors.SimpleButton()
         Me.cboOwnerTenant = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmdINDDel = New DevExpress.XtraEditors.SimpleButton()
@@ -126,14 +161,12 @@ Partial Class frmINH
         Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwEXCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.Vw_EXCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_EXCTableAdapter()
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INDTableAdapter()
         Me.Vw_CALC_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter()
         Me.Vw_INCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INCTableAdapter()
-        Me.apt = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,8 +180,8 @@ Partial Class frmINH
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPage2.SuspendLayout()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridINH, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PivotGridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -188,7 +221,6 @@ Partial Class frmINH
         CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -236,8 +268,6 @@ Partial Class frmINH
         '
         'TabPane1
         '
-        Me.TabPane1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabPane1.Controls.Add(Me.TabNavigationPage1)
         Me.TabPane1.Controls.Add(Me.TabNavigationPage2)
         Me.TabPane1.Location = New System.Drawing.Point(537, 12)
@@ -262,12 +292,12 @@ Partial Class frmINH
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GridControl1.DataSource = Me.VwINDBindingSource
-        Me.GridControl1.Location = New System.Drawing.Point(1, 1)
+        Me.GridControl1.Location = New System.Drawing.Point(3, 3)
         Me.GridControl1.MainView = Me.GridView5
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1})
         Me.GridControl1.Size = New System.Drawing.Size(810, 574)
-        Me.GridControl1.TabIndex = 54
+        Me.GridControl1.TabIndex = 53
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
         '
         'VwINDBindingSource
@@ -287,7 +317,6 @@ Partial Class frmINH
         '
         'GridView5
         '
-        Me.GridView5.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colinhID, Me.colcalcCatID, Me.colrepName, Me.colamt, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colnam, Me.colfDate, Me.coltDate, Me.colname, Me.colowner_tenant})
         Me.GridView5.GridControl = Me.GridControl1
         Me.GridView5.GroupCount = 1
@@ -412,241 +441,351 @@ Partial Class frmINH
         'TabNavigationPage2
         '
         Me.TabNavigationPage2.Caption = "Υπολογισμένα"
-        Me.TabNavigationPage2.Controls.Add(Me.GridControl2)
+        Me.TabNavigationPage2.Controls.Add(Me.PivotGridControl1)
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
         Me.TabNavigationPage2.Size = New System.Drawing.Size(813, 577)
         '
-        'GridControl2
+        'PivotGridControl1
         '
-        Me.GridControl2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.PivotGridControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GridControl2.Location = New System.Drawing.Point(4, 4)
-        Me.GridControl2.MainView = Me.GridINH
-        Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(806, 570)
-        Me.GridControl2.TabIndex = 0
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridINH})
-        '
-        'GridINH
-        '
-        Me.GridINH.Bands.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.GridBand() {Me.apt})
-        Me.GridINH.Columns.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn() {Me.colcmt, Me.colfDate1, Me.coltDate1, Me.colbdgNam, Me.colaptNam, Me.colttl, Me.colord, Me.colcalcCatNam, Me.colrepName1, Me.colamt1, Me.colID1, Me.colinhID1, Me.colindID, Me.colbdgID, Me.colaptID, Me.colshared, Me.colelevator, Me.colheating, Me.colheating_consumption, Me.colboiler_consumption, Me.colspecial_costs, Me.colowners, Me.colbilling, Me.colboiler, Me.colgarage, Me.colmonomers1, Me.colmonomers2, Me.colmonomers3, Me.colfi, Me.colfiBoiler, Me.colmodifiedBy1, Me.colmodifiedOn1, Me.colcreatedOn1, Me.colcalcCatID1, Me.colcompleteDate})
-        Me.GridINH.GridControl = Me.GridControl2
-        Me.GridINH.Name = "GridINH"
-        Me.GridINH.OptionsBehavior.Editable = False
-        Me.GridINH.OptionsBehavior.ReadOnly = True
-        Me.GridINH.OptionsCustomization.AllowChangeColumnParent = True
-        '
-        'colcmt
-        '
-        Me.colcmt.FieldName = "cmt"
-        Me.colcmt.Name = "colcmt"
-        Me.colcmt.Visible = True
-        '
-        'colfDate1
-        '
-        Me.colfDate1.FieldName = "fDate"
-        Me.colfDate1.Name = "colfDate1"
-        Me.colfDate1.Visible = True
-        '
-        'coltDate1
-        '
-        Me.coltDate1.FieldName = "tDate"
-        Me.coltDate1.Name = "coltDate1"
-        Me.coltDate1.Visible = True
-        '
-        'colbdgNam
-        '
-        Me.colbdgNam.FieldName = "bdgNam"
-        Me.colbdgNam.Name = "colbdgNam"
-        Me.colbdgNam.Visible = True
-        '
-        'colaptNam
-        '
-        Me.colaptNam.FieldName = "aptNam"
-        Me.colaptNam.Name = "colaptNam"
-        Me.colaptNam.Visible = True
-        Me.colaptNam.Width = 158
-        '
-        'colttl
-        '
-        Me.colttl.FieldName = "ttl"
-        Me.colttl.Name = "colttl"
-        Me.colttl.Visible = True
-        '
-        'colord
-        '
-        Me.colord.FieldName = "ord"
-        Me.colord.Name = "colord"
-        Me.colord.Visible = True
-        '
-        'colcalcCatNam
-        '
-        Me.colcalcCatNam.FieldName = "calcCatNam"
-        Me.colcalcCatNam.Name = "colcalcCatNam"
-        '
-        'colrepName1
-        '
-        Me.colrepName1.FieldName = "repName"
-        Me.colrepName1.Name = "colrepName1"
-        Me.colrepName1.Visible = True
-        '
-        'colamt1
-        '
-        Me.colamt1.FieldName = "amt"
-        Me.colamt1.Name = "colamt1"
-        Me.colamt1.Visible = True
-        '
-        'colID1
-        '
-        Me.colID1.FieldName = "ID"
-        Me.colID1.Name = "colID1"
-        Me.colID1.Visible = True
-        '
-        'colinhID1
-        '
-        Me.colinhID1.FieldName = "inhID"
-        Me.colinhID1.Name = "colinhID1"
-        Me.colinhID1.Visible = True
-        '
-        'colindID
-        '
-        Me.colindID.FieldName = "indID"
-        Me.colindID.Name = "colindID"
-        Me.colindID.Visible = True
-        '
-        'colbdgID
-        '
-        Me.colbdgID.FieldName = "bdgID"
-        Me.colbdgID.Name = "colbdgID"
-        Me.colbdgID.Visible = True
-        '
-        'colaptID
-        '
-        Me.colaptID.FieldName = "aptID"
-        Me.colaptID.Name = "colaptID"
-        Me.colaptID.Visible = True
-        '
-        'colshared
-        '
-        Me.colshared.FieldName = "shared"
-        Me.colshared.Name = "colshared"
-        Me.colshared.Visible = True
-        '
-        'colelevator
-        '
-        Me.colelevator.FieldName = "elevator"
-        Me.colelevator.Name = "colelevator"
-        Me.colelevator.Visible = True
-        '
-        'colheating
-        '
-        Me.colheating.FieldName = "heating"
-        Me.colheating.Name = "colheating"
-        Me.colheating.Visible = True
-        '
-        'colheating_consumption
-        '
-        Me.colheating_consumption.FieldName = "heating_consumption"
-        Me.colheating_consumption.Name = "colheating_consumption"
-        Me.colheating_consumption.Visible = True
-        '
-        'colboiler_consumption
-        '
-        Me.colboiler_consumption.FieldName = "boiler_consumption"
-        Me.colboiler_consumption.Name = "colboiler_consumption"
-        Me.colboiler_consumption.Visible = True
-        '
-        'colspecial_costs
-        '
-        Me.colspecial_costs.FieldName = "special_costs"
-        Me.colspecial_costs.Name = "colspecial_costs"
-        Me.colspecial_costs.Visible = True
-        '
-        'colowners
-        '
-        Me.colowners.FieldName = "owners"
-        Me.colowners.Name = "colowners"
-        Me.colowners.Visible = True
-        '
-        'colbilling
-        '
-        Me.colbilling.FieldName = "billing"
-        Me.colbilling.Name = "colbilling"
-        Me.colbilling.Visible = True
-        '
-        'colboiler
-        '
-        Me.colboiler.FieldName = "boiler"
-        Me.colboiler.Name = "colboiler"
-        Me.colboiler.Visible = True
-        '
-        'colgarage
-        '
-        Me.colgarage.FieldName = "garage"
-        Me.colgarage.Name = "colgarage"
-        Me.colgarage.Visible = True
-        '
-        'colmonomers1
-        '
-        Me.colmonomers1.FieldName = "monomers1"
-        Me.colmonomers1.Name = "colmonomers1"
-        Me.colmonomers1.Visible = True
-        '
-        'colmonomers2
-        '
-        Me.colmonomers2.FieldName = "monomers2"
-        Me.colmonomers2.Name = "colmonomers2"
-        Me.colmonomers2.Visible = True
-        '
-        'colmonomers3
-        '
-        Me.colmonomers3.FieldName = "monomers3"
-        Me.colmonomers3.Name = "colmonomers3"
-        Me.colmonomers3.Visible = True
-        '
-        'colfi
-        '
-        Me.colfi.FieldName = "fi"
-        Me.colfi.Name = "colfi"
-        Me.colfi.Visible = True
-        '
-        'colfiBoiler
-        '
-        Me.colfiBoiler.FieldName = "fiBoiler"
-        Me.colfiBoiler.Name = "colfiBoiler"
-        Me.colfiBoiler.Visible = True
-        '
-        'colmodifiedBy1
-        '
-        Me.colmodifiedBy1.FieldName = "modifiedBy"
-        Me.colmodifiedBy1.Name = "colmodifiedBy1"
-        Me.colmodifiedBy1.Visible = True
-        '
-        'colmodifiedOn1
-        '
-        Me.colmodifiedOn1.FieldName = "modifiedOn"
-        Me.colmodifiedOn1.Name = "colmodifiedOn1"
-        Me.colmodifiedOn1.Visible = True
-        '
-        'colcreatedOn1
-        '
-        Me.colcreatedOn1.FieldName = "createdOn"
-        Me.colcreatedOn1.Name = "colcreatedOn1"
-        Me.colcreatedOn1.Visible = True
-        '
-        'colcalcCatID1
-        '
-        Me.colcalcCatID1.FieldName = "calcCatID"
-        Me.colcalcCatID1.Name = "colcalcCatID1"
-        Me.colcalcCatID1.Visible = True
-        '
-        'colcompleteDate
-        '
-        Me.colcompleteDate.FieldName = "completeDate"
-        Me.colcompleteDate.Name = "colcompleteDate"
-        Me.colcompleteDate.Visible = True
+        Me.PivotGridControl1.DataSource = Me.VwINCBindingSource
+        Me.PivotGridControl1.Fields.AddRange(New DevExpress.XtraPivotGrid.PivotGridField() {Me.fieldcmt, Me.fieldfDate, Me.fieldtDate, Me.fieldbdgNam, Me.fieldaptNam, Me.fieldttl, Me.fieldord, Me.fieldcalcCatNam, Me.fieldrepName, Me.fieldamt, Me.fieldID, Me.fieldinhID, Me.fieldindID, Me.fieldbdgID, Me.fieldaptID, Me.fieldshared, Me.fieldelevator, Me.fieldheating, Me.fieldheatingconsumption, Me.fieldboilerconsumption, Me.fieldspecialcosts, Me.fieldowners, Me.fieldbilling, Me.fieldboiler, Me.fieldgarage, Me.fieldmonomers1, Me.fieldmonomers2, Me.fieldmonomers3, Me.fieldfi, Me.fieldfiBoiler, Me.fieldmodifiedBy, Me.fieldmodifiedOn, Me.fieldcreatedOn, Me.fieldcalcCatID, Me.fieldcompleteDate})
+        Me.PivotGridControl1.Location = New System.Drawing.Point(3, 3)
+        Me.PivotGridControl1.Name = "PivotGridControl1"
+        Me.PivotGridControl1.OptionsData.DataProcessingEngine = DevExpress.XtraPivotGrid.PivotDataProcessingEngine.Optimized
+        Me.PivotGridControl1.Size = New System.Drawing.Size(819, 571)
+        Me.PivotGridControl1.TabIndex = 0
+        '
+        'VwINCBindingSource
+        '
+        Me.VwINCBindingSource.DataMember = "vw_INC"
+        Me.VwINCBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        '
+        'fieldcmt
+        '
+        Me.fieldcmt.AreaIndex = 0
+        Me.fieldcmt.Caption = "ΣΧΟΛΙΑ"
+        DataSourceColumnBinding1.ColumnName = "cmt"
+        Me.fieldcmt.DataBinding = DataSourceColumnBinding1
+        Me.fieldcmt.Name = "fieldcmt"
+        '
+        'fieldfDate
+        '
+        Me.fieldfDate.AreaIndex = 1
+        Me.fieldfDate.Caption = "ΑΠΟ ΜΗΝΑ"
+        DataSourceColumnBinding2.ColumnName = "fDate"
+        Me.fieldfDate.DataBinding = DataSourceColumnBinding2
+        Me.fieldfDate.Name = "fieldfDate"
+        '
+        'fieldtDate
+        '
+        Me.fieldtDate.AreaIndex = 2
+        Me.fieldtDate.Caption = "ΕΩΣ ΜΗΝΑ"
+        DataSourceColumnBinding3.ColumnName = "tDate"
+        Me.fieldtDate.DataBinding = DataSourceColumnBinding3
+        Me.fieldtDate.Name = "fieldtDate"
+        '
+        'fieldbdgNam
+        '
+        Me.fieldbdgNam.AreaIndex = 3
+        Me.fieldbdgNam.Caption = "ΠΟΛΥΚΑΤΟΙΚΙΑ"
+        DataSourceColumnBinding4.ColumnName = "bdgNam"
+        Me.fieldbdgNam.DataBinding = DataSourceColumnBinding4
+        Me.fieldbdgNam.Name = "fieldbdgNam"
+        '
+        'fieldaptNam
+        '
+        Me.fieldaptNam.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea
+        Me.fieldaptNam.AreaIndex = 0
+        Me.fieldaptNam.Caption = "ΔΙΑΜΕΡΙΣΜΑ"
+        DataSourceColumnBinding5.ColumnName = "aptNam"
+        Me.fieldaptNam.DataBinding = DataSourceColumnBinding5
+        Me.fieldaptNam.Name = "fieldaptNam"
+        Me.fieldaptNam.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Descending
+        '
+        'fieldttl
+        '
+        Me.fieldttl.AreaIndex = 8
+        Me.fieldttl.Caption = "ΤΙΤΛΟΣ ΕΚΤΥΠΩΣΗΣ"
+        DataSourceColumnBinding6.ColumnName = "ttl"
+        Me.fieldttl.DataBinding = DataSourceColumnBinding6
+        Me.fieldttl.Name = "fieldttl"
+        '
+        'fieldord
+        '
+        Me.fieldord.AreaIndex = 7
+        Me.fieldord.Caption = "Α/Α"
+        DataSourceColumnBinding7.ColumnName = "ord"
+        Me.fieldord.DataBinding = DataSourceColumnBinding7
+        Me.fieldord.Name = "fieldord"
+        Me.fieldord.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Descending
+        '
+        'fieldcalcCatNam
+        '
+        Me.fieldcalcCatNam.AreaIndex = 4
+        Me.fieldcalcCatNam.Caption = "ΚΑΤΗΓΟΡΙΑ ΥΠΟΛΟΓΙΣΜΟΥ"
+        DataSourceColumnBinding8.ColumnName = "calcCatNam"
+        Me.fieldcalcCatNam.DataBinding = DataSourceColumnBinding8
+        Me.fieldcalcCatNam.Name = "fieldcalcCatNam"
+        '
+        'fieldrepName
+        '
+        Me.fieldrepName.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
+        Me.fieldrepName.AreaIndex = 0
+        Me.fieldrepName.Caption = "ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΟΥ"
+        DataSourceColumnBinding9.ColumnName = "repName"
+        Me.fieldrepName.DataBinding = DataSourceColumnBinding9
+        Me.fieldrepName.Name = "fieldrepName"
+        '
+        'fieldamt
+        '
+        Me.fieldamt.AreaIndex = 5
+        Me.fieldamt.Caption = "ΓΕΝΙΚΟ ΠΟΣΟ ΕΞΟΔΟΥ"
+        DataSourceColumnBinding10.ColumnName = "amt"
+        Me.fieldamt.DataBinding = DataSourceColumnBinding10
+        Me.fieldamt.Name = "fieldamt"
+        '
+        'fieldID
+        '
+        Me.fieldID.AreaIndex = 6
+        Me.fieldID.Caption = "ID"
+        DataSourceColumnBinding11.ColumnName = "ID"
+        Me.fieldID.DataBinding = DataSourceColumnBinding11
+        Me.fieldID.Name = "fieldID"
+        Me.fieldID.Visible = False
+        '
+        'fieldinhID
+        '
+        Me.fieldinhID.AreaIndex = 6
+        Me.fieldinhID.Caption = "inh ID"
+        DataSourceColumnBinding12.ColumnName = "inhID"
+        Me.fieldinhID.DataBinding = DataSourceColumnBinding12
+        Me.fieldinhID.Name = "fieldinhID"
+        Me.fieldinhID.Visible = False
+        '
+        'fieldindID
+        '
+        Me.fieldindID.AreaIndex = 6
+        Me.fieldindID.Caption = "ind ID"
+        DataSourceColumnBinding13.ColumnName = "indID"
+        Me.fieldindID.DataBinding = DataSourceColumnBinding13
+        Me.fieldindID.Name = "fieldindID"
+        Me.fieldindID.Visible = False
+        '
+        'fieldbdgID
+        '
+        Me.fieldbdgID.AreaIndex = 6
+        Me.fieldbdgID.Caption = "bdg ID"
+        DataSourceColumnBinding14.ColumnName = "bdgID"
+        Me.fieldbdgID.DataBinding = DataSourceColumnBinding14
+        Me.fieldbdgID.Name = "fieldbdgID"
+        Me.fieldbdgID.Visible = False
+        '
+        'fieldaptID
+        '
+        Me.fieldaptID.AreaIndex = 6
+        Me.fieldaptID.Caption = "apt ID"
+        DataSourceColumnBinding15.ColumnName = "aptID"
+        Me.fieldaptID.DataBinding = DataSourceColumnBinding15
+        Me.fieldaptID.Name = "fieldaptID"
+        Me.fieldaptID.Visible = False
+        '
+        'fieldshared
+        '
+        Me.fieldshared.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldshared.AreaIndex = 1
+        Me.fieldshared.Caption = "ΚΟΙΝΟΧΡΗΣΤΑ"
+        DataSourceColumnBinding16.ColumnName = "shared"
+        Me.fieldshared.DataBinding = DataSourceColumnBinding16
+        Me.fieldshared.Name = "fieldshared"
+        Me.fieldshared.Visible = False
+        '
+        'fieldelevator
+        '
+        Me.fieldelevator.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldelevator.AreaIndex = 3
+        Me.fieldelevator.Caption = "ΑΝΕΛΚΥΣΤΗΡΑ"
+        DataSourceColumnBinding17.ColumnName = "elevator"
+        Me.fieldelevator.DataBinding = DataSourceColumnBinding17
+        Me.fieldelevator.Name = "fieldelevator"
+        Me.fieldelevator.Visible = False
+        '
+        'fieldheating
+        '
+        Me.fieldheating.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldheating.AreaIndex = 3
+        Me.fieldheating.Caption = "ΘΕΡΜΑΝΣΗ"
+        DataSourceColumnBinding18.ColumnName = "heating"
+        Me.fieldheating.DataBinding = DataSourceColumnBinding18
+        Me.fieldheating.Name = "fieldheating"
+        Me.fieldheating.Visible = False
+        '
+        'fieldheatingconsumption
+        '
+        Me.fieldheatingconsumption.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldheatingconsumption.AreaIndex = 4
+        Me.fieldheatingconsumption.Caption = "ΚΑΤ/ΣΗ ΘΕΡΜΑΝΣΗΣ"
+        DataSourceColumnBinding19.ColumnName = "heating_consumption"
+        Me.fieldheatingconsumption.DataBinding = DataSourceColumnBinding19
+        Me.fieldheatingconsumption.Name = "fieldheatingconsumption"
+        Me.fieldheatingconsumption.Visible = False
+        '
+        'fieldboilerconsumption
+        '
+        Me.fieldboilerconsumption.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldboilerconsumption.AreaIndex = 5
+        Me.fieldboilerconsumption.Caption = "ΚΑΤ/ΣΗ BOILER"
+        DataSourceColumnBinding20.ColumnName = "boiler_consumption"
+        Me.fieldboilerconsumption.DataBinding = DataSourceColumnBinding20
+        Me.fieldboilerconsumption.Name = "fieldboilerconsumption"
+        Me.fieldboilerconsumption.Visible = False
+        '
+        'fieldspecialcosts
+        '
+        Me.fieldspecialcosts.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldspecialcosts.AreaIndex = 9
+        Me.fieldspecialcosts.Caption = "ΕΙΔΙΚΕΣ ΔΑΠΑΝΕΣ"
+        DataSourceColumnBinding21.ColumnName = "special_costs"
+        Me.fieldspecialcosts.DataBinding = DataSourceColumnBinding21
+        Me.fieldspecialcosts.Name = "fieldspecialcosts"
+        Me.fieldspecialcosts.Visible = False
+        '
+        'fieldowners
+        '
+        Me.fieldowners.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldowners.AreaIndex = 6
+        Me.fieldowners.Caption = "ΙΔΙΟΚΤΗΤΩΝ"
+        DataSourceColumnBinding22.ColumnName = "owners"
+        Me.fieldowners.DataBinding = DataSourceColumnBinding22
+        Me.fieldowners.Name = "fieldowners"
+        Me.fieldowners.Visible = False
+        '
+        'fieldbilling
+        '
+        Me.fieldbilling.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldbilling.AreaIndex = 7
+        Me.fieldbilling.Caption = "ΕΚΔΟΣΗ"
+        DataSourceColumnBinding23.ColumnName = "billing"
+        Me.fieldbilling.DataBinding = DataSourceColumnBinding23
+        Me.fieldbilling.Name = "fieldbilling"
+        Me.fieldbilling.Visible = False
+        '
+        'fieldboiler
+        '
+        Me.fieldboiler.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldboiler.AreaIndex = 6
+        Me.fieldboiler.Caption = "BOILER"
+        DataSourceColumnBinding24.ColumnName = "boiler"
+        Me.fieldboiler.DataBinding = DataSourceColumnBinding24
+        Me.fieldboiler.Name = "fieldboiler"
+        Me.fieldboiler.Visible = False
+        '
+        'fieldgarage
+        '
+        Me.fieldgarage.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldgarage.AreaIndex = 5
+        Me.fieldgarage.Caption = "ΓΚΑΡΑΖ"
+        DataSourceColumnBinding25.ColumnName = "garage"
+        Me.fieldgarage.DataBinding = DataSourceColumnBinding25
+        Me.fieldgarage.Name = "fieldgarage"
+        Me.fieldgarage.Visible = False
+        '
+        'fieldmonomers1
+        '
+        Me.fieldmonomers1.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldmonomers1.AreaIndex = 4
+        Me.fieldmonomers1.Caption = "ΜΟΝΟΜΕΡΗ 1"
+        DataSourceColumnBinding26.ColumnName = "monomers1"
+        Me.fieldmonomers1.DataBinding = DataSourceColumnBinding26
+        Me.fieldmonomers1.Name = "fieldmonomers1"
+        Me.fieldmonomers1.Visible = False
+        '
+        'fieldmonomers2
+        '
+        Me.fieldmonomers2.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldmonomers2.AreaIndex = 3
+        Me.fieldmonomers2.Caption = "ΜΟΝΟΜΕΡΗ 2"
+        DataSourceColumnBinding27.ColumnName = "monomers2"
+        Me.fieldmonomers2.DataBinding = DataSourceColumnBinding27
+        Me.fieldmonomers2.Name = "fieldmonomers2"
+        Me.fieldmonomers2.Visible = False
+        '
+        'fieldmonomers3
+        '
+        Me.fieldmonomers3.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldmonomers3.AreaIndex = 2
+        Me.fieldmonomers3.Caption = "ΜΟΝΟΜΕΡΗ 3"
+        DataSourceColumnBinding28.ColumnName = "monomers3"
+        Me.fieldmonomers3.DataBinding = DataSourceColumnBinding28
+        Me.fieldmonomers3.Name = "fieldmonomers3"
+        Me.fieldmonomers3.Visible = False
+        '
+        'fieldfi
+        '
+        Me.fieldfi.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldfi.AreaIndex = 1
+        Me.fieldfi.Caption = "FI"
+        DataSourceColumnBinding29.ColumnName = "fi"
+        Me.fieldfi.DataBinding = DataSourceColumnBinding29
+        Me.fieldfi.Name = "fieldfi"
+        Me.fieldfi.Visible = False
+        '
+        'fieldfiBoiler
+        '
+        Me.fieldfiBoiler.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
+        Me.fieldfiBoiler.AreaIndex = 0
+        Me.fieldfiBoiler.Caption = "FI BOILER"
+        DataSourceColumnBinding30.ColumnName = "fiBoiler"
+        Me.fieldfiBoiler.DataBinding = DataSourceColumnBinding30
+        Me.fieldfiBoiler.Name = "fieldfiBoiler"
+        Me.fieldfiBoiler.Visible = False
+        '
+        'fieldmodifiedBy
+        '
+        Me.fieldmodifiedBy.AreaIndex = 6
+        Me.fieldmodifiedBy.Caption = "modified By"
+        DataSourceColumnBinding31.ColumnName = "modifiedBy"
+        Me.fieldmodifiedBy.DataBinding = DataSourceColumnBinding31
+        Me.fieldmodifiedBy.Name = "fieldmodifiedBy"
+        Me.fieldmodifiedBy.Visible = False
+        '
+        'fieldmodifiedOn
+        '
+        Me.fieldmodifiedOn.AreaIndex = 6
+        Me.fieldmodifiedOn.Caption = "modifiedOn"
+        DataSourceColumnBinding32.ColumnName = "modifiedOn"
+        Me.fieldmodifiedOn.DataBinding = DataSourceColumnBinding32
+        Me.fieldmodifiedOn.Name = "fieldmodifiedOn"
+        Me.fieldmodifiedOn.Visible = False
+        '
+        'fieldcreatedOn
+        '
+        Me.fieldcreatedOn.AreaIndex = 6
+        Me.fieldcreatedOn.Caption = "createdOn"
+        DataSourceColumnBinding33.ColumnName = "createdOn"
+        Me.fieldcreatedOn.DataBinding = DataSourceColumnBinding33
+        Me.fieldcreatedOn.Name = "fieldcreatedOn"
+        Me.fieldcreatedOn.Visible = False
+        '
+        'fieldcalcCatID
+        '
+        Me.fieldcalcCatID.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea
+        Me.fieldcalcCatID.AreaIndex = 0
+        Me.fieldcalcCatID.Caption = "calc Cat ID"
+        DataSourceColumnBinding34.ColumnName = "calcCatID"
+        Me.fieldcalcCatID.DataBinding = DataSourceColumnBinding34
+        Me.fieldcalcCatID.Name = "fieldcalcCatID"
+        Me.fieldcalcCatID.Visible = False
+        '
+        'fieldcompleteDate
+        '
+        Me.fieldcompleteDate.AreaIndex = 6
+        Me.fieldcompleteDate.Caption = "ΔΙΑΣΤΗΜΑ"
+        DataSourceColumnBinding35.ColumnName = "completeDate"
+        Me.fieldcompleteDate.DataBinding = DataSourceColumnBinding35
+        Me.fieldcompleteDate.Name = "fieldcompleteDate"
         '
         'cmdCalculate
         '
@@ -1092,11 +1231,6 @@ Partial Class frmINH
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem17.TextVisible = False
         '
-        'VwINCBindingSource
-        '
-        Me.VwINCBindingSource.DataMember = "vw_INC"
-        Me.VwINCBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
         'VwEXCBindingSource
         '
         Me.VwEXCBindingSource.DataMember = "vw_EXC"
@@ -1122,19 +1256,13 @@ Partial Class frmINH
         '
         Me.Vw_INCTableAdapter.ClearBeforeFill = True
         '
-        'apt
-        '
-        Me.apt.Name = "apt"
-        Me.apt.VisibleIndex = 0
-        Me.apt.Width = 158
-        '
-        'frmINH
+        'frmINH_pivot
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1359, 643)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Name = "frmINH"
+        Me.Name = "frmINH_pivot"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmParast"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1150,8 +1278,8 @@ Partial Class frmINH
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPage2.ResumeLayout(False)
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridINH, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PivotGridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1191,7 +1319,6 @@ Partial Class frmINH
         CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -1249,12 +1376,6 @@ Partial Class frmINH
     Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents TabPane1 As DevExpress.XtraBars.Navigation.TabPane
     Friend WithEvents TabNavigationPage1 As DevExpress.XtraBars.Navigation.TabNavigationPage
-    Friend WithEvents TabNavigationPage2 As DevExpress.XtraBars.Navigation.TabNavigationPage
-    Friend WithEvents LayoutControlItem17 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents VwINCBindingSource As BindingSource
-    Friend WithEvents Vw_INCTableAdapter As Priamos_NETDataSetTableAdapters.vw_INCTableAdapter
-    Friend WithEvents lbldate As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
@@ -1272,42 +1393,46 @@ Partial Class frmINH
     Friend WithEvents coltDate As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colname As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colowner_tenant As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridINH As DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView
-    Friend WithEvents colcmt As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colfDate1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents coltDate1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colbdgNam As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colaptNam As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colttl As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colord As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcalcCatNam As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colrepName1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colamt1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colID1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colinhID1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colindID As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colbdgID As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colaptID As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colshared As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colelevator As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colheating As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colheating_consumption As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colboiler_consumption As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colspecial_costs As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colowners As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colbilling As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colboiler As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colgarage As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmonomers1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmonomers2 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmonomers3 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colfi As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colfiBoiler As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmodifiedBy1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmodifiedOn1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcreatedOn1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcalcCatID1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcompleteDate As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents apt As DevExpress.XtraGrid.Views.BandedGrid.GridBand
+    Friend WithEvents TabNavigationPage2 As DevExpress.XtraBars.Navigation.TabNavigationPage
+    Friend WithEvents LayoutControlItem17 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwINCBindingSource As BindingSource
+    Friend WithEvents Vw_INCTableAdapter As Priamos_NETDataSetTableAdapters.vw_INCTableAdapter
+    Friend WithEvents PivotGridControl1 As DevExpress.XtraPivotGrid.PivotGridControl
+    Friend WithEvents lbldate As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents fieldcmt As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldfDate As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldtDate As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldbdgNam As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldaptNam As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldttl As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldord As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcalcCatNam As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldrepName As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldamt As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldinhID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldindID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldbdgID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldaptID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldshared As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldelevator As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldheating As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldheatingconsumption As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldboilerconsumption As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldspecialcosts As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldowners As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldbilling As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldboiler As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldgarage As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmonomers1 As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmonomers2 As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmonomers3 As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldfi As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldfiBoiler As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmodifiedBy As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldmodifiedOn As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcreatedOn As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcalcCatID As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents fieldcompleteDate As DevExpress.XtraPivotGrid.PivotGridField
 End Class

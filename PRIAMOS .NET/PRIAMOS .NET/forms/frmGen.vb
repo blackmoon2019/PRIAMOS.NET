@@ -13,6 +13,7 @@ Public Class frmGen
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private CalledFromCtrl As Boolean
+    Private CalledFromCtrlRep As Boolean
     Private Valid As New ValidateControls
     Private Log As New Transactions
     Private DBQ As New DBQueries
@@ -27,6 +28,12 @@ Public Class frmGen
             sID = value
         End Set
     End Property
+    Public ReadOnly Property RecID As String
+        Get
+            Return sID
+        End Get
+    End Property
+
     Public WriteOnly Property Scroller As DevExpress.XtraGrid.Views.Grid.GridView
         Set(value As DevExpress.XtraGrid.Views.Grid.GridView)
             Ctrl = value
@@ -42,12 +49,12 @@ Public Class frmGen
             CtrlCombo = value
         End Set
     End Property
+
     Public WriteOnly Property CalledFromControl As Boolean
         Set(value As Boolean)
             CalledFromCtrl = value
         End Set
     End Property
-
     Public WriteOnly Property DataTable As String
         Set(value As String)
             sDataTable = value
@@ -139,10 +146,14 @@ Public Class frmGen
                             Case "PRF"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PRF", LayoutControl1,,, sGuid, True)
+                                sID = sGuid
                                 If CalledFromCtrl Then
                                     FillCbo.PRF(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                ElseIf CalledFromCtrlRep Then
+
                                 Else
+
                                     'Dim form As New frmScroller
                                     'form = Frm
                                     'form.LoadRecords("vw_PRF")

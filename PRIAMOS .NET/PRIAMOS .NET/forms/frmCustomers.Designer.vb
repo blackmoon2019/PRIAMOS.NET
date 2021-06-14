@@ -308,7 +308,7 @@ Partial Class frmCustomers
         Me.cboADR.Location = New System.Drawing.Point(93, 165)
         Me.cboADR.Name = "cboADR"
         Me.cboADR.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboADR.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboADR.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboADR.Properties.NullText = ""
         Me.cboADR.Properties.PopupSizeable = False
         Me.cboADR.Size = New System.Drawing.Size(183, 20)
@@ -799,7 +799,7 @@ Partial Class frmCustomers
         Me.Controls.Add(Me.cmdSave)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmCustomers"
-        Me.Text = "frmCustomers"
+        Me.Text = "Επαφές"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).EndInit()

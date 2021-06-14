@@ -2,13 +2,11 @@
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraGrid.Columns
-Imports DevExpress.XtraGrid.Views.BandedGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPivotGrid
 
-Public Class frmINH
+Public Class frmINH_pivot
     Private sID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
@@ -52,11 +50,11 @@ Public Class frmINH
                 LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'")
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
-                EditRecord()
+                PivotColumns()
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
-        My.Settings.frmINH = Me.Location
+        ' My.Settings.frmINH_pivot = Me.Location
         My.Settings.Save()
         dtFDate.Properties.Mask.EditMask = "Y"
         dtFDate.Properties.Mask.UseMaskAsDisplayFormat = True
@@ -68,71 +66,90 @@ Public Class frmINH
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
-    Private Sub EditRecord()
-        'Δημιουργία BANDS
-        CreateBands()
-        Dim myCmd As New SqlCommand
-        myCmd.CommandText = "inv_Results"
-        myCmd.Parameters.AddWithValue("@inhid", sID)
-        myCmd.CommandType = CommandType.StoredProcedure
-        myCmd.Connection = CNDB
-        Dim myReader As SqlDataReader = myCmd.ExecuteReader()
-        Dim dt As New DataTable("sTable")
-        GridINH.Columns.Clear()
-        dt.Load(myReader)
-        GridControl2.DataSource = dt
-        GridControl2.ForceInitialize()
-        GridControl2.DefaultView.PopulateColumns()
-        myReader.Close()
-        TransposeColumns()
-    End Sub
-    Private Sub CreateBands()
-        'Dim sSQL As String
-        'Dim cmd As SqlCommand
-        'Dim sdr As SqlDataReader
+    Private Sub PivotColumns()
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
         Try
-            For i As Integer = 0 To GridView5.DataRowCount - 1
+            sSQL = "select distinct calcCatID from vw_INC where inhID = " & toSQLValueS(sID)
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            While sdr.Read()
+                If sdr.IsDBNull(sdr.GetOrdinal("calcCatID")) = False Then
+                    Select Case sdr.GetGuid(sdr.GetOrdinal("calcCatID")).ToString
+                        Case "c8adcd0b-d8bc-4f68-b6bb-d5cbcb88b4b9" : PivotGridControl1.Fields("shared").Visible = True
+                        Case "7fa0d7ba-2713-405c-8748-61dd8537a9cc" : PivotGridControl1.Fields("elevator").Visible = True
+                        Case "8d47e8ab-3692-48f1-8cba-1e3f41afc13d" : PivotGridControl1.Fields("heating").Visible = True
+                        Case "bbfda968-8c0c-431b-a804-ac8b8ca4b3d3" : PivotGridControl1.Fields("special_costs").Visible = True
+                        Case "8d417a79-9757-4b18-8695-ae1bdf9416dd" : PivotGridControl1.Fields("owners").Visible = True
+                        Case "9c3f4423-6fb6-44fd-a3c0-64e5d609c2cb" : PivotGridControl1.Fields("billing").Visible = True
+                        Case "8d417a79-9757-4b18-8695-ae1bdf9416dd" : PivotGridControl1.Fields("garage").Visible = True
+                        Case "3fe81416-ef7c-4d3b-b1ea-e4cc40350fde" : PivotGridControl1.Fields("monomers1").Visible = True
+                        Case "ebd46c24-fbb0-47ad-a325-143c953a4ab4" : PivotGridControl1.Fields("monomers2").Visible = True
+                        Case "2ae90ba0-dd3d-424d-9f6e-da7a9a518620" : PivotGridControl1.Fields("monomers3").Visible = True
+                    End Select
+                End If
+            End While
 
-                Dim B As New DevExpress.XtraGrid.Views.BandedGrid.GridBand
-                B.Caption = GridView5.GetRowCellDisplayText(i, "calcCatID")
-                B.Name = GridView5.GetRowCellDisplayText(i, "calcCatID")
-                B.AppearanceHeader.Options.UseTextOptions = True
-                B.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center
-                If CheckIfBandExists(B.Caption) = False Then GridINH.Bands.Add(B)
-            Next              'cmd = New SqlCommand(sSQL, CNDB)
-            ''sdr = cmd.ExecuteReader()
-            ''GridINH.Bands.AddBand("ΔΙΑΜΕΡΙΣΜΑΤΑ")
-            ''Dim Col As DevExpress.XtraGrid.Columns.GridColumn
-            ''Col = GridINH.Columns("colaptNam")
-            ''GridINH.Columns.Add(Col)
-
-            'While sdr.Read()
-            '    If sdr.IsDBNull(sdr.GetOrdinal("name")) = False Then GridINH.Bands.AddBand(sdr.GetString(sdr.GetOrdinal("name")))
-            'End While
-            'sdr.Close()
+            '    If PivotGridControl1.Cells.RowCount > 0 Then
+            '    For i As Integer = 0 To PivotGridControl1.Cells.ColumnCount - 1
+            '        Dim CellInfo As PivotCellEventArgs = PivotGridControl1.Cells.GetCellInfo(i, 0)
+            '        For Each field As PivotGridField In PivotGridControl1.GetFieldsByArea(PivotArea.ColumnArea)
+            '            Dim val As Object = CellInfo.GetFieldValue(field)
+            '            Dim scalcCatID As String = Convert.ToString(val)
+            '            Select Case scalcCatID
+            '                Case "c8adcd0b-d8bc-4f68-b6bb-d5cbcb88b4b9" : PivotGridControl1.Fields("shared").Visible = True
+            '                Case "7fa0d7ba-2713-405c-8748-61dd8537a9cc" : PivotGridControl1.Fields("elevator").Visible = True
+            '                Case "8d47e8ab-3692-48f1-8cba-1e3f41afc13d" : PivotGridControl1.Fields("heating").Visible = True
+            '                Case "bbfda968-8c0c-431b-a804-ac8b8ca4b3d3" : PivotGridControl1.Fields("special_costs").Visible = True
+            '                Case "8d417a79-9757-4b18-8695-ae1bdf9416dd" : PivotGridControl1.Fields("owners").Visible = True
+            '                Case "9c3f4423-6fb6-44fd-a3c0-64e5d609c2cb" : PivotGridControl1.Fields("billing").Visible = True
+            '                Case "8d417a79-9757-4b18-8695-ae1bdf9416dd" : PivotGridControl1.Fields("garage").Visible = True
+            '                Case "3fe81416-ef7c-4d3b-b1ea-e4cc40350fde" : PivotGridControl1.Fields("monomers1").Visible = True
+            '                Case "ebd46c24-fbb0-47ad-a325-143c953a4ab4" : PivotGridControl1.Fields("monomers2").Visible = True
+            '                Case "2ae90ba0-dd3d-424d-9f6e-da7a9a518620" : PivotGridControl1.Fields("monomers3").Visible = True
+            '            End Select
+            '        Next
+            '    Next
+            'End If
+            sdr.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+        'PivotGridControl1.Fields("repName").Visible = True
+        'PivotGridControl1.Fields("calcCatID").Visible = False
+        'If PivotGridControl1.Cells.RowCount > 0 Then
+        '    For i As Integer = 0 To PivotGridControl1.Cells.ColumnCount - 1
+        '        'Dim CellInfo As PivotCellEventArgs = PivotGridControl1.Cells.GetCellInfo(i, 0)
+        '        Dim DS As PivotDrillDownDataSource
+        '        DS = PivotGridControl1.CreateDrillDownDataSource(i, 0)
+        '        Dim DSR As PivotDrillDownDataRow = DS(0)
+        '        If Not DSR Is Nothing Then
+        '            Dim scalcCatID As String = DSR.Item("calcCatID").ToString
+        '            Select Case scalcCatID.ToUpper
+        '                Case "c8adcd0b-d8bc-4f68-b6bb-d5cbcb88b4b9" : PivotGridControl1.Fields("shared").Visible = True
+        '                Case "7fa0d7ba-2713-405c-8748-61dd8537a9cc" : PivotGridControl1.Fields("elevator").Visible = True
+        '                Case "8d47e8ab-3692-48f1-8cba-1e3f41afc13d" : PivotGridControl1.Fields("heating").Visible = True
+        '                Case "bbfda968-8c0c-431b-a804-ac8b8ca4b3d3" : PivotGridControl1.Fields("special_costs").Visible = True
+        '                Case "8d417a79-9757-4b18-8695-ae1bdf9416dd" : PivotGridControl1.Fields("owners").Visible = True
+        '                Case "9c3f4423-6fb6-44fd-a3c0-64e5d609c2cb" : PivotGridControl1.Fields("billing").Visible = True
+        '                Case "8d417a79-9757-4b18-8695-ae1bdf9416dd" : PivotGridControl1.Fields("garage").Visible = True
+        '                Case "3fe81416-ef7c-4d3b-b1ea-e4cc40350fde" : PivotGridControl1.Fields("monomers1").Visible = True
+        '                Case "ebd46c24-fbb0-47ad-a325-143c953a4ab4" : PivotGridControl1.Fields("monomers2").Visible = True
+        '                Case "2ae90ba0-dd3d-424d-9f6e-da7a9a518620" : PivotGridControl1.Fields("monomers3").Visible = True
+        '            End Select
+        '        End If
+        '    Next i
+        'End If
     End Sub
-    Private Function CheckIfBandExists(ByVal Band As String) As Boolean
-        For Each B As DevExpress.XtraGrid.Views.BandedGrid.GridBand In GridINH.Bands
-            If B.Caption = Band Then Return True
-        Next
-        Return False
-
-    End Function
-    Private Sub TransposeColumns()
-        Dim B As DevExpress.XtraGrid.Views.BandedGrid.GridBand = GridINH.Bands.Item("apt")
-        If B.Columns.Count = 0 Then Exit Sub
-        For i As Integer = 0 To GridView5.DataRowCount - 1
-            B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
-        Next
-    End Sub
-    Private Sub frmINH_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    Private Sub frmINH_pivot_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
 
+    Private Sub chkEXP_ItemChecking(sender As Object, e As ItemCheckingEventArgs) Handles chkCALC_CAT.ItemChecking
+
+    End Sub
 
     Private Sub cmdSaveINH_Click(sender As Object, e As EventArgs) Handles cmdSaveINH.Click
         Dim sResult As Boolean
@@ -194,6 +211,17 @@ Public Class frmINH
         End If
     End Sub
 
+    Private Sub GridView5_RowUpdated(sender As Object, e As RowObjectEventArgs)
+
+    End Sub
+
+    Private Sub GridView5_KeyDown(sender As Object, e As KeyEventArgs)
+        Select Case e.KeyCode
+            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteRecord()
+        End Select
+
+
+    End Sub
     Private Sub DeleteRecord()
         Dim sSQL As String
         Try
@@ -215,6 +243,15 @@ Public Class frmINH
 
     Private Sub cmdINDRefresh_Click(sender As Object, e As EventArgs) Handles cmdINDRefresh.Click
         Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+    End Sub
+
+    Private Sub GridView5_CustomDrawGroupRow(sender As Object, e As RowObjectCustomDrawEventArgs)
+        Dim info As GridGroupRowInfo = TryCast(e.Info, GridGroupRowInfo)
+        If info.GroupValueText = "Checked" Then
+            info.GroupText = "Ένοικος"
+        Else
+            info.GroupText = "Ιδιοκτήτης"
+        End If
     End Sub
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
@@ -263,27 +300,10 @@ Public Class frmINH
                 oCmd.ExecuteNonQuery()
             End Using
             XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-
-
-    Private Sub dtFDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtFDate.EditValueChanged
-        lbldate.Text = TranslateDates(dtFDate, dtTDate)
-    End Sub
-
-    Private Sub dtTDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtTDate.EditValueChanged
-        lbldate.Text = TranslateDates(dtFDate, dtTDate)
-    End Sub
-
-    Private Sub GridView5_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView5.KeyDown
-        Select Case e.KeyCode
-            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteRecord()
-        End Select
     End Sub
 
     Private Sub GridView5_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView5.CellValueChanged
@@ -303,12 +323,11 @@ Public Class frmINH
         End Try
     End Sub
 
-    Private Sub GridView5_CustomDrawGroupRow(sender As Object, e As RowObjectCustomDrawEventArgs) Handles GridView5.CustomDrawGroupRow
-        Dim info As GridGroupRowInfo = TryCast(e.Info, GridGroupRowInfo)
-        If info.GroupValueText = "Checked" Then
-            info.GroupText = "Ένοικος"
-        Else
-            info.GroupText = "Ιδιοκτήτης"
-        End If
+    Private Sub dtFDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtFDate.EditValueChanged
+        lbldate.Text = TranslateDates(dtFDate, dtTDate)
+    End Sub
+
+    Private Sub dtTDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtTDate.EditValueChanged
+        lbldate.Text = TranslateDates(dtFDate, dtTDate)
     End Sub
 End Class

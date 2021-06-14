@@ -150,7 +150,7 @@ Public Class frmCustomers
         Dim AreaID As String = ""
         If cboCOU.EditValue <> Nothing Then CouID = cboCOU.EditValue.ToString
         If cboAREAS.EditValue <> Nothing Then AreaID = cboAREAS.EditValue.ToString
-        sSQL.AppendLine("Select id,Name from vw_ADR ")
+        sSQL.AppendLine("Select id,Name,tk from vw_ADR ")
         If CouID.Length > 0 Or AreaID.Length > 0 Or txtTK.Text.Length > 0 Then sSQL.AppendLine(" where ")
         If CouID.Length > 0 Then sSQL.AppendLine(" couid = " & toSQLValueS(CouID))
         If AreaID.Length > 0 Then
@@ -398,6 +398,10 @@ Public Class frmCustomers
                 e.Cancel = True
             End If
         End If
+    End Sub
+
+    Private Sub cboPRF_EditValueChanged(sender As Object, e As EventArgs) Handles cboPRF.EditValueChanged
+
     End Sub
 
 
