@@ -172,7 +172,8 @@ Public Class frmCustomers
         form1.L2.Text = "Διεύθυνση"
         form1.L3.Text = "Νομός"
         form1.L4.Text = "Περιοχές"
-        form1.L7.Text = "Αριθμός"
+        form1.L7.Text = "TK"
+        form1.L7.Control.Tag = "tk,0,1,2"
         form1.DataTable = "ADR"
         form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -386,9 +387,7 @@ Public Class frmCustomers
         End If
     End Sub
 
-    Private Sub txtFileNames_EditValueChanged(sender As Object, e As EventArgs) Handles txtFileNames.EditValueChanged
 
-    End Sub
 
     Private Sub frmCustomers_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Valid.SChanged Then
@@ -400,9 +399,6 @@ Public Class frmCustomers
         End If
     End Sub
 
-    Private Sub cboPRF_EditValueChanged(sender As Object, e As EventArgs) Handles cboPRF.EditValueChanged
-
-    End Sub
 
 
 

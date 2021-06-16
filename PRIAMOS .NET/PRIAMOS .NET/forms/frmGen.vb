@@ -644,4 +644,20 @@ Public Class frmGen
     Private Sub cbo1_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cbo1.ButtonPressed
         cbo1.EditValue = Nothing
     End Sub
+
+    Private Sub cbo1_EditValueChanged(sender As Object, e As EventArgs) Handles cbo1.EditValueChanged
+        Dim sSQL As New System.Text.StringBuilder
+        If cbo1.Tag = "couid,0,1,2" Then
+            If cbo1.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cbo1.EditValue.ToString))
+            If cbo2.Tag = "areaid,0,1,2" Then FillCbo.AREAS(cbo2, sSQL)
+        End If
+    End Sub
+    Private Sub txtL7_LostFocus(sender As Object, e As EventArgs) Handles txtL7.LostFocus
+        Dim sSQL As String
+        sSQL = ""
+        If txtL7.Text.ToString.Length > 0 Then sSQL = "select distinct cou.id,cou.Name  from COU inner join ADR on ADR.CouID=COU.ID where tk= " & toSQLValueS(txtL7.Text.ToString)
+        If txtL7.Tag = "tk,0,1,2" Then
+            FillCbo.COU(cbo1, sSQL)
+        End If
+    End Sub
 End Class

@@ -49,41 +49,7 @@ Partial Class frmINH
         Me.TabNavigationPage2 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridINH = New DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView()
-        Me.colcmt = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colfDate1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.coltDate1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colbdgNam = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colaptNam = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colttl = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colord = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcalcCatNam = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colrepName1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colamt1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colID1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colinhID1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colindID = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colbdgID = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colaptID = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colshared = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colelevator = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colheating = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colheating_consumption = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colboiler_consumption = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colspecial_costs = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colowners = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colbilling = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colboiler = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colgarage = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmonomers1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmonomers2 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmonomers3 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colfi = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colfiBoiler = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmodifiedBy1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colmodifiedOn1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcreatedOn1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcalcCatID1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
-        Me.colcompleteDate = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.apt = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
         Me.cmdCalculate = New DevExpress.XtraEditors.SimpleButton()
         Me.cboOwnerTenant = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmdINDDel = New DevExpress.XtraEditors.SimpleButton()
@@ -133,7 +99,6 @@ Partial Class frmINH
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INDTableAdapter()
         Me.Vw_CALC_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter()
         Me.Vw_INCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INCTableAdapter()
-        Me.apt = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -297,7 +262,6 @@ Partial Class frmINH
         Me.GridView5.OptionsBehavior.AutoExpandAllGroups = True
         Me.GridView5.OptionsPrint.PrintPreview = True
         Me.GridView5.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.GridView5.OptionsView.ColumnAutoWidth = False
         Me.GridView5.OptionsView.EnableAppearanceEvenRow = True
         Me.GridView5.OptionsView.ShowFooter = True
         Me.GridView5.OptionsView.ShowGroupedColumns = True
@@ -431,222 +395,20 @@ Partial Class frmINH
         'GridINH
         '
         Me.GridINH.Bands.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.GridBand() {Me.apt})
-        Me.GridINH.Columns.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn() {Me.colcmt, Me.colfDate1, Me.coltDate1, Me.colbdgNam, Me.colaptNam, Me.colttl, Me.colord, Me.colcalcCatNam, Me.colrepName1, Me.colamt1, Me.colID1, Me.colinhID1, Me.colindID, Me.colbdgID, Me.colaptID, Me.colshared, Me.colelevator, Me.colheating, Me.colheating_consumption, Me.colboiler_consumption, Me.colspecial_costs, Me.colowners, Me.colbilling, Me.colboiler, Me.colgarage, Me.colmonomers1, Me.colmonomers2, Me.colmonomers3, Me.colfi, Me.colfiBoiler, Me.colmodifiedBy1, Me.colmodifiedOn1, Me.colcreatedOn1, Me.colcalcCatID1, Me.colcompleteDate})
         Me.GridINH.GridControl = Me.GridControl2
         Me.GridINH.Name = "GridINH"
         Me.GridINH.OptionsBehavior.Editable = False
         Me.GridINH.OptionsBehavior.ReadOnly = True
         Me.GridINH.OptionsCustomization.AllowChangeColumnParent = True
-        '
-        'colcmt
-        '
-        Me.colcmt.FieldName = "cmt"
-        Me.colcmt.Name = "colcmt"
-        Me.colcmt.Visible = True
-        '
-        'colfDate1
-        '
-        Me.colfDate1.FieldName = "fDate"
-        Me.colfDate1.Name = "colfDate1"
-        Me.colfDate1.Visible = True
-        '
-        'coltDate1
-        '
-        Me.coltDate1.FieldName = "tDate"
-        Me.coltDate1.Name = "coltDate1"
-        Me.coltDate1.Visible = True
-        '
-        'colbdgNam
-        '
-        Me.colbdgNam.FieldName = "bdgNam"
-        Me.colbdgNam.Name = "colbdgNam"
-        Me.colbdgNam.Visible = True
-        '
-        'colaptNam
-        '
-        Me.colaptNam.FieldName = "aptNam"
-        Me.colaptNam.Name = "colaptNam"
-        Me.colaptNam.Visible = True
-        Me.colaptNam.Width = 158
-        '
-        'colttl
-        '
-        Me.colttl.FieldName = "ttl"
-        Me.colttl.Name = "colttl"
-        Me.colttl.Visible = True
-        '
-        'colord
-        '
-        Me.colord.FieldName = "ord"
-        Me.colord.Name = "colord"
-        Me.colord.Visible = True
-        '
-        'colcalcCatNam
-        '
-        Me.colcalcCatNam.FieldName = "calcCatNam"
-        Me.colcalcCatNam.Name = "colcalcCatNam"
-        '
-        'colrepName1
-        '
-        Me.colrepName1.FieldName = "repName"
-        Me.colrepName1.Name = "colrepName1"
-        Me.colrepName1.Visible = True
-        '
-        'colamt1
-        '
-        Me.colamt1.FieldName = "amt"
-        Me.colamt1.Name = "colamt1"
-        Me.colamt1.Visible = True
-        '
-        'colID1
-        '
-        Me.colID1.FieldName = "ID"
-        Me.colID1.Name = "colID1"
-        Me.colID1.Visible = True
-        '
-        'colinhID1
-        '
-        Me.colinhID1.FieldName = "inhID"
-        Me.colinhID1.Name = "colinhID1"
-        Me.colinhID1.Visible = True
-        '
-        'colindID
-        '
-        Me.colindID.FieldName = "indID"
-        Me.colindID.Name = "colindID"
-        Me.colindID.Visible = True
-        '
-        'colbdgID
-        '
-        Me.colbdgID.FieldName = "bdgID"
-        Me.colbdgID.Name = "colbdgID"
-        Me.colbdgID.Visible = True
-        '
-        'colaptID
-        '
-        Me.colaptID.FieldName = "aptID"
-        Me.colaptID.Name = "colaptID"
-        Me.colaptID.Visible = True
-        '
-        'colshared
-        '
-        Me.colshared.FieldName = "shared"
-        Me.colshared.Name = "colshared"
-        Me.colshared.Visible = True
-        '
-        'colelevator
-        '
-        Me.colelevator.FieldName = "elevator"
-        Me.colelevator.Name = "colelevator"
-        Me.colelevator.Visible = True
-        '
-        'colheating
-        '
-        Me.colheating.FieldName = "heating"
-        Me.colheating.Name = "colheating"
-        Me.colheating.Visible = True
-        '
-        'colheating_consumption
-        '
-        Me.colheating_consumption.FieldName = "heating_consumption"
-        Me.colheating_consumption.Name = "colheating_consumption"
-        Me.colheating_consumption.Visible = True
-        '
-        'colboiler_consumption
-        '
-        Me.colboiler_consumption.FieldName = "boiler_consumption"
-        Me.colboiler_consumption.Name = "colboiler_consumption"
-        Me.colboiler_consumption.Visible = True
-        '
-        'colspecial_costs
-        '
-        Me.colspecial_costs.FieldName = "special_costs"
-        Me.colspecial_costs.Name = "colspecial_costs"
-        Me.colspecial_costs.Visible = True
-        '
-        'colowners
-        '
-        Me.colowners.FieldName = "owners"
-        Me.colowners.Name = "colowners"
-        Me.colowners.Visible = True
-        '
-        'colbilling
-        '
-        Me.colbilling.FieldName = "billing"
-        Me.colbilling.Name = "colbilling"
-        Me.colbilling.Visible = True
-        '
-        'colboiler
-        '
-        Me.colboiler.FieldName = "boiler"
-        Me.colboiler.Name = "colboiler"
-        Me.colboiler.Visible = True
-        '
-        'colgarage
-        '
-        Me.colgarage.FieldName = "garage"
-        Me.colgarage.Name = "colgarage"
-        Me.colgarage.Visible = True
-        '
-        'colmonomers1
-        '
-        Me.colmonomers1.FieldName = "monomers1"
-        Me.colmonomers1.Name = "colmonomers1"
-        Me.colmonomers1.Visible = True
-        '
-        'colmonomers2
-        '
-        Me.colmonomers2.FieldName = "monomers2"
-        Me.colmonomers2.Name = "colmonomers2"
-        Me.colmonomers2.Visible = True
-        '
-        'colmonomers3
-        '
-        Me.colmonomers3.FieldName = "monomers3"
-        Me.colmonomers3.Name = "colmonomers3"
-        Me.colmonomers3.Visible = True
-        '
-        'colfi
-        '
-        Me.colfi.FieldName = "fi"
-        Me.colfi.Name = "colfi"
-        Me.colfi.Visible = True
-        '
-        'colfiBoiler
-        '
-        Me.colfiBoiler.FieldName = "fiBoiler"
-        Me.colfiBoiler.Name = "colfiBoiler"
-        Me.colfiBoiler.Visible = True
-        '
-        'colmodifiedBy1
-        '
-        Me.colmodifiedBy1.FieldName = "modifiedBy"
-        Me.colmodifiedBy1.Name = "colmodifiedBy1"
-        Me.colmodifiedBy1.Visible = True
-        '
-        'colmodifiedOn1
-        '
-        Me.colmodifiedOn1.FieldName = "modifiedOn"
-        Me.colmodifiedOn1.Name = "colmodifiedOn1"
-        Me.colmodifiedOn1.Visible = True
-        '
-        'colcreatedOn1
-        '
-        Me.colcreatedOn1.FieldName = "createdOn"
-        Me.colcreatedOn1.Name = "colcreatedOn1"
-        Me.colcreatedOn1.Visible = True
-        '
-        'colcalcCatID1
-        '
-        Me.colcalcCatID1.FieldName = "calcCatID"
-        Me.colcalcCatID1.Name = "colcalcCatID1"
-        Me.colcalcCatID1.Visible = True
-        '
-        'colcompleteDate
-        '
-        Me.colcompleteDate.FieldName = "completeDate"
-        Me.colcompleteDate.Name = "colcompleteDate"
-        Me.colcompleteDate.Visible = True
+        Me.GridINH.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Fast
+        Me.GridINH.OptionsView.ShowFooter = True
+        Me.GridINH.OptionsView.ShowGroupPanel = False
+        '
+        'apt
+        '
+        Me.apt.Name = "apt"
+        Me.apt.VisibleIndex = 0
+        Me.apt.Width = 158
         '
         'cmdCalculate
         '
@@ -1122,12 +884,6 @@ Partial Class frmINH
         '
         Me.Vw_INCTableAdapter.ClearBeforeFill = True
         '
-        'apt
-        '
-        Me.apt.Name = "apt"
-        Me.apt.VisibleIndex = 0
-        Me.apt.Width = 158
-        '
         'frmINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1274,40 +1030,5 @@ Partial Class frmINH
     Friend WithEvents colowner_tenant As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridINH As DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView
-    Friend WithEvents colcmt As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colfDate1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents coltDate1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colbdgNam As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colaptNam As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colttl As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colord As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcalcCatNam As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colrepName1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colamt1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colID1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colinhID1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colindID As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colbdgID As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colaptID As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colshared As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colelevator As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colheating As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colheating_consumption As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colboiler_consumption As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colspecial_costs As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colowners As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colbilling As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colboiler As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colgarage As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmonomers1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmonomers2 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmonomers3 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colfi As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colfiBoiler As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmodifiedBy1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colmodifiedOn1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcreatedOn1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcalcCatID1 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
-    Friend WithEvents colcompleteDate As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
     Friend WithEvents apt As DevExpress.XtraGrid.Views.BandedGrid.GridBand
 End Class

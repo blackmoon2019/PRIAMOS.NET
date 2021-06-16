@@ -2403,6 +2403,10 @@ Public Class frmBDG
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub txtTK_EditValueChanged(sender As Object, e As EventArgs) Handles txtTK.EditValueChanged
+
+    End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
 

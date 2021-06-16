@@ -323,7 +323,7 @@ Partial Class frmCustomers
         Me.txtAR.Size = New System.Drawing.Size(84, 20)
         Me.txtAR.StyleController = Me.LayoutControl1
         Me.txtAR.TabIndex = 10
-        Me.txtAR.Tag = "ar,0"
+        Me.txtAR.Tag = "adrar,0,1,2"
         '
         'cboCOU
         '

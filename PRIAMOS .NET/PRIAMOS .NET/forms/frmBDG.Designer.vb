@@ -38,6 +38,7 @@ Partial Class frmBDG
         Me.TileNavPane1 = New DevExpress.XtraBars.Navigation.TileNavPane()
         Me.NavGeneral = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavManage = New DevExpress.XtraBars.Navigation.NavButton()
+        Me.NavMaintenance = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavHeating = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavFixedCosts = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavTasks = New DevExpress.XtraBars.Navigation.NavButton()
@@ -46,7 +47,7 @@ Partial Class frmBDG
         Me.NavBoiler = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavConsumption = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavAPM = New DevExpress.XtraBars.Navigation.NavButton()
-        Me.NavMaintenance = New DevExpress.XtraBars.Navigation.NavButton()
+        Me.NavINH = New DevExpress.XtraBars.Navigation.NavButton()
         Me.tabBDG = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
         Me.FlyoutPanel1 = New DevExpress.Utils.FlyoutPanel()
@@ -449,7 +450,6 @@ Partial Class frmBDG
         Me.cmdSave1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Vw_PRFTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PRFTableAdapter()
         Me.Vw_CCTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CCTTableAdapter()
-        Me.NavINH = New DevExpress.XtraBars.Navigation.NavButton()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -839,6 +839,12 @@ Partial Class frmBDG
         Me.NavManage.Caption = "Διαχείριση"
         Me.NavManage.Name = "NavManage"
         '
+        'NavMaintenance
+        '
+        Me.NavMaintenance.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
+        Me.NavMaintenance.Caption = "Συντήρηση"
+        Me.NavMaintenance.Name = "NavMaintenance"
+        '
         'NavHeating
         '
         Me.NavHeating.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
@@ -887,11 +893,11 @@ Partial Class frmBDG
         Me.NavAPM.Caption = "Χιλιοστά"
         Me.NavAPM.Name = "NavAPM"
         '
-        'NavMaintenance
+        'NavINH
         '
-        Me.NavMaintenance.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
-        Me.NavMaintenance.Caption = "Συντήρηση"
-        Me.NavMaintenance.Name = "NavMaintenance"
+        Me.NavINH.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
+        Me.NavINH.Caption = "Παραστατικά"
+        Me.NavINH.Name = "NavINH"
         '
         'tabBDG
         '
@@ -4957,12 +4963,6 @@ Partial Class frmBDG
         'Vw_CCTTableAdapter
         '
         Me.Vw_CCTTableAdapter.ClearBeforeFill = True
-        '
-        'NavINH
-        '
-        Me.NavINH.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
-        Me.NavINH.Caption = "Παραστατικά"
-        Me.NavINH.Name = "NavINH"
         '
         'frmBDG
         '

@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.Utils
+Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Columns
@@ -85,6 +86,7 @@ Public Class frmINH
         GridControl2.DefaultView.PopulateColumns()
         myReader.Close()
         TransposeColumns()
+        GridINH.BestFitColumns()
     End Sub
     Private Sub CreateBands()
         'Dim sSQL As String
@@ -124,10 +126,19 @@ Public Class frmINH
     End Function
     Private Sub TransposeColumns()
         Dim B As DevExpress.XtraGrid.Views.BandedGrid.GridBand = GridINH.Bands.Item("apt")
+
         If B.Columns.Count = 0 Then Exit Sub
+        For Each column As BandedGridColumn In B.Columns
+            If column.ColIndex > 0 Then
+                column.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum
+                column.SummaryItem.DisplayFormat = "Σύνολο {0:n2}€"
+            End If
+        Next column
         For i As Integer = 0 To GridView5.DataRowCount - 1
             B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
         Next
+
+
     End Sub
     Private Sub frmINH_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
@@ -310,5 +321,12 @@ Public Class frmINH
         Else
             info.GroupText = "Ιδιοκτήτης"
         End If
+    End Sub
+
+
+
+    Private Sub TabPane1_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles TabPane1.SelectedPageChanged
+        If TabPane1.SelectedPageIndex = 0 Then cmdINDDel.Enabled = True Else cmdINDDel.Enabled = False
+
     End Sub
 End Class

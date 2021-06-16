@@ -188,9 +188,16 @@ Public Class FillCombos
         End Try
 
     End Sub
-    Public Sub COU(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+    Public Sub COU(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, Optional sSQL As String = "")
         Try
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_COU order by name", CNDB)
+            Dim cmd As SqlCommand = New SqlCommand
+
+            If sSQL.Length = 0 Then
+                cmd.CommandText = "Select id,Name from vw_COU order by name"
+            Else
+                cmd.CommandText = sSQL
+            End If
+            cmd.Connection = CNDB
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
 
             CtrlCombo.Properties.DataSource = sdr
