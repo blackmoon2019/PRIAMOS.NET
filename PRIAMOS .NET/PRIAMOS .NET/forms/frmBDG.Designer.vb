@@ -775,10 +775,10 @@ Partial Class frmBDG
         GridLevelNode1.LevelTemplate = Me.GridView7
         GridLevelNode1.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
         Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.grdAPM.Location = New System.Drawing.Point(38, 12)
+        Me.grdAPM.Location = New System.Drawing.Point(39, 12)
         Me.grdAPM.MainView = Me.GridView5
         Me.grdAPM.Name = "grdAPM"
-        Me.grdAPM.Size = New System.Drawing.Size(1251, 580)
+        Me.grdAPM.Size = New System.Drawing.Size(1281, 648)
         Me.grdAPM.TabIndex = 22
         Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5, Me.GridView7})
         '
@@ -4740,7 +4740,7 @@ Partial Class frmBDG
         Me.LayoutControl11APM.Name = "LayoutControl11APM"
         Me.LayoutControl11APM.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(704, 399, 650, 400)
         Me.LayoutControl11APM.Root = Me.LayoutControlGroup11
-        Me.LayoutControl11APM.Size = New System.Drawing.Size(1301, 604)
+        Me.LayoutControl11APM.Size = New System.Drawing.Size(1332, 672)
         Me.LayoutControl11APM.TabIndex = 1
         Me.LayoutControl11APM.Text = "LayoutControl1"
         '
@@ -4750,7 +4750,7 @@ Partial Class frmBDG
         Me.cmdApmExport.Location = New System.Drawing.Point(12, 116)
         Me.cmdApmExport.Name = "cmdApmExport"
         Me.cmdApmExport.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdApmExport.Size = New System.Drawing.Size(22, 22)
+        Me.cmdApmExport.Size = New System.Drawing.Size(23, 22)
         Me.cmdApmExport.StyleController = Me.LayoutControl11APM
         Me.cmdApmExport.TabIndex = 59
         '
@@ -4760,7 +4760,7 @@ Partial Class frmBDG
         Me.cmdApmRefresh.Location = New System.Drawing.Point(12, 90)
         Me.cmdApmRefresh.Name = "cmdApmRefresh"
         Me.cmdApmRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdApmRefresh.Size = New System.Drawing.Size(22, 22)
+        Me.cmdApmRefresh.Size = New System.Drawing.Size(23, 22)
         Me.cmdApmRefresh.StyleController = Me.LayoutControl11APM
         Me.cmdApmRefresh.TabIndex = 27
         '
@@ -4771,7 +4771,7 @@ Partial Class frmBDG
         Me.SimpleButton3.Location = New System.Drawing.Point(12, 64)
         Me.SimpleButton3.Name = "SimpleButton3"
         Me.SimpleButton3.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.SimpleButton3.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton3.Size = New System.Drawing.Size(23, 22)
         Me.SimpleButton3.StyleController = Me.LayoutControl11APM
         Me.SimpleButton3.TabIndex = 26
         '
@@ -4781,7 +4781,7 @@ Partial Class frmBDG
         Me.cmdDelAPM.Location = New System.Drawing.Point(12, 38)
         Me.cmdDelAPM.Name = "cmdDelAPM"
         Me.cmdDelAPM.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdDelAPM.Size = New System.Drawing.Size(22, 22)
+        Me.cmdDelAPM.Size = New System.Drawing.Size(23, 22)
         Me.cmdDelAPM.StyleController = Me.LayoutControl11APM
         Me.cmdDelAPM.TabIndex = 25
         '
@@ -4791,7 +4791,7 @@ Partial Class frmBDG
         Me.cmdAddApmil.Location = New System.Drawing.Point(12, 12)
         Me.cmdAddApmil.Name = "cmdAddApmil"
         Me.cmdAddApmil.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdAddApmil.Size = New System.Drawing.Size(22, 22)
+        Me.cmdAddApmil.Size = New System.Drawing.Size(23, 22)
         Me.cmdAddApmil.StyleController = Me.LayoutControl11APM
         Me.cmdAddApmil.TabIndex = 24
         '
@@ -4801,15 +4801,15 @@ Partial Class frmBDG
         Me.LayoutControlGroup11.GroupBordersVisible = False
         Me.LayoutControlGroup11.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem39, Me.LayoutControlItem29, Me.LayoutControlItem93, Me.LayoutControlItem94, Me.LayoutControlItem107, Me.LayoutControlItem95})
         Me.LayoutControlGroup11.Name = "Root"
-        Me.LayoutControlGroup11.Size = New System.Drawing.Size(1301, 604)
+        Me.LayoutControlGroup11.Size = New System.Drawing.Size(1332, 672)
         Me.LayoutControlGroup11.TextVisible = False
         '
         'LayoutControlItem39
         '
         Me.LayoutControlItem39.Control = Me.grdAPM
-        Me.LayoutControlItem39.Location = New System.Drawing.Point(26, 0)
+        Me.LayoutControlItem39.Location = New System.Drawing.Point(27, 0)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
-        Me.LayoutControlItem39.Size = New System.Drawing.Size(1255, 584)
+        Me.LayoutControlItem39.Size = New System.Drawing.Size(1285, 652)
         Me.LayoutControlItem39.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem39.TextVisible = False
         '
@@ -4818,7 +4818,7 @@ Partial Class frmBDG
         Me.LayoutControlItem29.Control = Me.cmdAddApmil
         Me.LayoutControlItem29.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem29.Name = "LayoutControlItem29"
-        Me.LayoutControlItem29.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem29.Size = New System.Drawing.Size(27, 26)
         Me.LayoutControlItem29.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem29.TextVisible = False
         '
@@ -4827,7 +4827,7 @@ Partial Class frmBDG
         Me.LayoutControlItem93.Control = Me.cmdDelAPM
         Me.LayoutControlItem93.Location = New System.Drawing.Point(0, 26)
         Me.LayoutControlItem93.Name = "LayoutControlItem93"
-        Me.LayoutControlItem93.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem93.Size = New System.Drawing.Size(27, 26)
         Me.LayoutControlItem93.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem93.TextVisible = False
         '
@@ -4836,7 +4836,7 @@ Partial Class frmBDG
         Me.LayoutControlItem94.Control = Me.SimpleButton3
         Me.LayoutControlItem94.Location = New System.Drawing.Point(0, 52)
         Me.LayoutControlItem94.Name = "LayoutControlItem94"
-        Me.LayoutControlItem94.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem94.Size = New System.Drawing.Size(27, 26)
         Me.LayoutControlItem94.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem94.TextVisible = False
         '
@@ -4845,7 +4845,7 @@ Partial Class frmBDG
         Me.LayoutControlItem107.Control = Me.cmdApmExport
         Me.LayoutControlItem107.Location = New System.Drawing.Point(0, 104)
         Me.LayoutControlItem107.Name = "LayoutControlItem107"
-        Me.LayoutControlItem107.Size = New System.Drawing.Size(26, 480)
+        Me.LayoutControlItem107.Size = New System.Drawing.Size(27, 548)
         Me.LayoutControlItem107.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem107.TextVisible = False
         '
@@ -4854,7 +4854,7 @@ Partial Class frmBDG
         Me.LayoutControlItem95.Control = Me.cmdApmRefresh
         Me.LayoutControlItem95.Location = New System.Drawing.Point(0, 78)
         Me.LayoutControlItem95.Name = "LayoutControlItem95"
-        Me.LayoutControlItem95.Size = New System.Drawing.Size(26, 26)
+        Me.LayoutControlItem95.Size = New System.Drawing.Size(27, 26)
         Me.LayoutControlItem95.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem95.TextVisible = False
         '

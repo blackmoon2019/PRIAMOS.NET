@@ -57,6 +57,25 @@ Public Class frmScroller
         BarNewRec.Enabled = UserProps.AllowInsert
         BarDelete.Enabled = UserProps.AllowDelete
         BarEdit.Enabled = UserProps.AllowEdit
+        GridView1.OptionsBehavior.AutoExpandAllGroups = True
+        GridView1.OptionsMenu.ShowFooterItem = True
+        GridView1.OptionsMenu.EnableFooterMenu = True
+        GridView1.OptionsMenu.EnableGroupPanelMenu = True
+        GridView1.OptionsMenu.EnableGroupRowMenu = True
+        GridView1.OptionsView.ShowFooter = True
+        GridView1.OptionsMenu.ShowGroupSummaryEditorItem = True
+        GridView1.OptionsMenu.ShowGroupSortSummaryItems = True
+        GridView1.OptionsMenu.ShowConditionalFormattingItem = True
+
+        GridView2.OptionsBehavior.AutoExpandAllGroups = True
+        GridView2.OptionsMenu.ShowFooterItem = True
+        GridView2.OptionsMenu.EnableFooterMenu = True
+        GridView2.OptionsMenu.EnableGroupPanelMenu = True
+        GridView2.OptionsMenu.EnableGroupRowMenu = True
+        GridView2.OptionsView.ShowFooter = True
+        GridView2.OptionsMenu.ShowGroupSummaryEditorItem = True
+        GridView2.OptionsMenu.ShowGroupSortSummaryItems = True
+        GridView2.OptionsMenu.ShowConditionalFormattingItem = True
     End Sub
 
     'Λίστα με τιμές για TOP RECORDS
@@ -137,6 +156,7 @@ Public Class frmScroller
                     Case "vw_TECH_SUP" : sSQL = "DELETE FROM TECH_SUP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CALC_CAT" : sSQL = "DELETE FROM CALC_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_EXP" : sSQL = "DELETE FROM EXP WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_TTL" : sSQL = "DELETE FROM TTL WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
                         sSQL = "DELETE FROM IND WHERE INHID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -675,8 +695,9 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
 
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL"
                 Select Case sDataTable
+                    Case "vw_TTL" : fGen.Text = "Λεκτικά Εκτυπώσεων" : fGen.DataTable = "TTL" : fGen.L2.Text = "Λεκτικό"
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
@@ -884,8 +905,9 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT"
+            Case "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL"
                 Select Case sDataTable
+                    Case "vw_TTL" : fGen.Text = "Λεκτικά Εκτυπώσεων" : fGen.DataTable = "TTL" : fGen.L2.Text = "Λεκτικό"
                     Case "vw_COU" : fGen.Text = "Νομοί" : fGen.DataTable = "COU" : fGen.L2.Text = "Νομός"
                     Case "vw_DOY" : fGen.Text = "ΔΟΥ" : fGen.DataTable = "DOY" : fGen.L2.Text = "ΔΟΥ"
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"

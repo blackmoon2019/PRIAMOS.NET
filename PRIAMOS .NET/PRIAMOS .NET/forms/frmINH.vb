@@ -37,6 +37,8 @@ Public Class frmINH
         End Set
     End Property
     Private Sub frmParast_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TTL' table. You can move, or remove it, as needed.
+        Me.Vw_TTLTableAdapter.Fill(Me.Priamos_NETDataSet.vw_TTL)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_CALC_CAT' table. You can move, or remove it, as needed.
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_EXC' table. You can move, or remove it, as needed.
@@ -45,15 +47,17 @@ Public Class frmINH
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
         Select Case Mode
             Case FormMode.NewRecord
-
                 txtCode.Text = DBQ.GetNextId("INH")
                 LayoutControlGroup2.Enabled = False
                 cmdSaveInd.Enabled = False
+                cmdINDDel.Enabled = False
             Case FormMode.EditRecord
                 LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'")
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
                 EditRecord()
+                'Χιλιοστά Διαμερισμάτων
+                ApmLoad()
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -86,6 +90,7 @@ Public Class frmINH
         GridControl2.DefaultView.PopulateColumns()
         myReader.Close()
         TransposeColumns()
+
         GridINH.BestFitColumns()
     End Sub
     Private Sub CreateBands()
@@ -179,7 +184,7 @@ Public Class frmINH
                     Valid.SChanged = False
                     LayoutControlGroup2.Enabled = True
                     cmdSaveInd.Enabled = True
-
+                    cmdINDDel.Enabled = True
                 End If
             End If
 
@@ -230,6 +235,8 @@ Public Class frmINH
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
+        'Χιλιοστά Διαμερισμάτων
+        ApmLoad()
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
         Else
@@ -323,10 +330,81 @@ Public Class frmINH
         End If
     End Sub
 
-
-
     Private Sub TabPane1_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles TabPane1.SelectedPageChanged
-        If TabPane1.SelectedPageIndex = 0 Then cmdINDDel.Enabled = True Else cmdINDDel.Enabled = False
+        Select Case TabPane1.SelectedPageIndex
+            Case 0 : cmdINDDel.Enabled = True
+            Case 2  'ApmLoad()
+            Case Else : cmdINDDel.Enabled = False
+        End Select
+    End Sub
 
+    Private Sub ApmLoad()
+        Try
+            Dim sSQL As String
+            Dim sSQL2 As String
+
+
+
+            sSQL = "SELECT * from vw_APMIL where bdgid = " & toSQLValueS(cboBDG.EditValue.ToString) & " order by ORD"
+            sSQL2 = "SELECT * from vw_APMIL_D where bdgid = " & toSQLValueS(cboBDG.EditValue.ToString) & " order by ORD"
+            Dim AdapterMaster As New SqlDataAdapter(sSQL, CNDB)
+            Dim AdapterDetail As New SqlDataAdapter(sSQL2, CNDB)
+            Dim sdataSet As New DataSet()
+            AdapterMaster.Fill(sdataSet, "vw_APMIL")
+            AdapterDetail.Fill(sdataSet, "vw_APMIL_D")
+            Dim keyColumn As DataColumn = sdataSet.Tables("vw_APMIL").Columns("ID")
+            Dim foreignKeyColumn As DataColumn = sdataSet.Tables("vw_APMIL_D").Columns("ID")
+            sdataSet.Relations.Add("ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ", keyColumn, foreignKeyColumn)
+            GridView1.Columns.Clear()
+            GridView7.Columns.Clear()
+            grdAPM.DataSource = sdataSet.Tables("vw_APMIL")
+            grdAPM.ForceInitialize()
+
+            'LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by ORD")
+            'LoadForms.LoadDataToGrid(grdAPM, GridView7, "SELECT * from vw_APMIL_D where bdgid = '" & sID & "' order by ORD")
+            'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
+            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView1, , "vw_APMIL")
+            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView7, , "vw_APMIL_D")
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml") Then GridView7.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+            GridView1.OptionsCustomization.AllowSort = False
+
+            GridView1.Columns("AptNam").OptionsColumn.ReadOnly = True
+            GridView1.Columns("AptNam").OptionsColumn.AllowEdit = False
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cboRepname_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboRepname.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboRepname.EditValue = Nothing : ManageTTL()
+            Case 2 : If cboRepname.EditValue <> Nothing Then ManageTTL()
+            Case 3 : cboRepname.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManageTTL()
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Λεκτικά Εκτυπώσεων"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Λεκτικό"
+        form1.DataTable = "TTL"
+        form1.CalledFromControl = True
+        form1.CallerControl = cboRepname
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboRepname.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = cboRepname.GetColumnValue("ID").ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
     End Sub
 End Class

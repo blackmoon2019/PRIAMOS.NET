@@ -214,4 +214,12 @@ Public Class frmMain
         form.Show()
 
     End Sub
+
+    Private Sub bbTTL_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTTL.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Λεκτικά Εκτυπώσεων"
+        form.DataTable = "vw_TTL"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

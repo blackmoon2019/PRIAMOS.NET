@@ -87,6 +87,20 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "TTL"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TTL", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.TTL(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_COU")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("TTL")
                             Case "COU"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sGuid, True)
@@ -279,6 +293,16 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "TTL"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TTL", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.TTL(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_TTL")
+                                End If
                             Case "COU"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -414,6 +438,12 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+                Case "TTL"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("TTL")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_TTL where id ='" + sID + "'", True)
+                    End If
                 Case "COU"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("COU")
@@ -514,6 +544,13 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+                    Case "TTL"
+                        If CalledFromCtrl Then
+                            FillCbo.TTL(CtrlCombo)
+                        Else
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_COU")
+                        End If
                     Case "COU"
                         If CalledFromCtrl Then
                             FillCbo.COU(CtrlCombo)
@@ -655,7 +692,7 @@ Public Class frmGen
     Private Sub txtL7_LostFocus(sender As Object, e As EventArgs) Handles txtL7.LostFocus
         Dim sSQL As String
         sSQL = ""
-        If txtL7.Text.ToString.Length > 0 Then sSQL = "select distinct cou.id,cou.Name  from COU inner join ADR on ADR.CouID=COU.ID where tk= " & toSQLValueS(txtL7.Text.ToString)
+        'If txtL7.Text.ToString.Length > 0 Then sSQL = "select distinct cou.id,cou.Name  from COU inner join ADR on ADR.CouID=COU.ID where tk= " & toSQLValueS(txtL7.Text.ToString)
         If txtL7.Tag = "tk,0,1,2" Then
             FillCbo.COU(cbo1, sSQL)
         End If

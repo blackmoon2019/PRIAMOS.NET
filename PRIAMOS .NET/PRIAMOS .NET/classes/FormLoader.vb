@@ -389,8 +389,10 @@ NextItem:
                     'GRDView.Columns.Item(columnName).Caption = columnNameValue
                     Dim C As New GridColumn
                     C = GRDView.Columns.ColumnByName("col" & columnName)
-                    C.Caption = columnNameValue
-                    C = Nothing
+                    If C IsNot Nothing Then
+                        C.Caption = columnNameValue
+                        C = Nothing
+                    End If
                 End If
             Next
         Catch ex As Exception

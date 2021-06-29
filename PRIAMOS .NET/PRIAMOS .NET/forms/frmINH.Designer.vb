@@ -20,7 +20,11 @@ Partial Class frmINH
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmINH))
+        Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdAPM = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.lbldate = New DevExpress.XtraEditors.LabelControl()
         Me.TabPane1 = New DevExpress.XtraBars.Navigation.TabPane()
@@ -50,6 +54,7 @@ Partial Class frmINH
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridINH = New DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView()
         Me.apt = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
+        Me.TabNavigationPage3 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.cmdCalculate = New DevExpress.XtraEditors.SimpleButton()
         Me.cboOwnerTenant = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cmdINDDel = New DevExpress.XtraEditors.SimpleButton()
@@ -61,12 +66,13 @@ Partial Class frmINH
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtAmt = New DevExpress.XtraEditors.TextEdit()
-        Me.txtrepname = New DevExpress.XtraEditors.TextEdit()
         Me.chkCALC_CAT = New DevExpress.XtraEditors.CheckedListBoxControl()
         Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
         Me.dtTDate = New DevExpress.XtraEditors.DateEdit()
         Me.txtHeatingType = New DevExpress.XtraEditors.TextEdit()
         Me.txtBoilerType = New DevExpress.XtraEditors.TextEdit()
+        Me.cboRepname = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwTTLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -99,6 +105,10 @@ Partial Class frmINH
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INDTableAdapter()
         Me.Vw_CALC_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter()
         Me.Vw_INCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INCTableAdapter()
+        Me.Vw_TTLTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_TTLTableAdapter()
+        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,13 +124,13 @@ Partial Class frmINH
         Me.TabNavigationPage2.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridINH, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabNavigationPage3.SuspendLayout()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtrepname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkCALC_CAT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,6 +138,8 @@ Partial Class frmINH
         CType(Me.dtTDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHeatingType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBoilerType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,6 +169,44 @@ Partial Class frmINH
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'GridView7
+        '
+        Me.GridView7.GridControl = Me.grdAPM
+        Me.GridView7.Name = "GridView7"
+        Me.GridView7.OptionsBehavior.Editable = False
+        Me.GridView7.OptionsView.ShowGroupPanel = False
+        '
+        'grdAPM
+        '
+        Me.grdAPM.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        GridLevelNode2.LevelTemplate = Me.GridView7
+        GridLevelNode2.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
+        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        Me.grdAPM.Location = New System.Drawing.Point(3, 3)
+        Me.grdAPM.MainView = Me.GridView1
+        Me.grdAPM.Name = "grdAPM"
+        Me.grdAPM.Size = New System.Drawing.Size(807, 571)
+        Me.grdAPM.TabIndex = 23
+        Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView7})
+        '
+        'GridView1
+        '
+        Me.GridView1.GridControl = Me.grdAPM
+        Me.GridView1.LevelIndent = 0
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsCustomization.AllowSort = False
+        Me.GridView1.OptionsLayout.StoreAllOptions = True
+        Me.GridView1.OptionsLayout.StoreAppearance = True
+        Me.GridView1.OptionsLayout.StoreFormatRules = True
+        Me.GridView1.OptionsPrint.PrintPreview = True
+        Me.GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView1.OptionsView.ColumnAutoWidth = False
+        Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView1.OptionsView.ShowGroupPanel = False
+        Me.GridView1.PreviewIndent = 0
+        '
         'LayoutControl1
         '
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -174,12 +224,12 @@ Partial Class frmINH
         Me.LayoutControl1.Controls.Add(Me.cmdSaveINH)
         Me.LayoutControl1.Controls.Add(Me.cboBDG)
         Me.LayoutControl1.Controls.Add(Me.txtAmt)
-        Me.LayoutControl1.Controls.Add(Me.txtrepname)
         Me.LayoutControl1.Controls.Add(Me.chkCALC_CAT)
         Me.LayoutControl1.Controls.Add(Me.dtFDate)
         Me.LayoutControl1.Controls.Add(Me.dtTDate)
         Me.LayoutControl1.Controls.Add(Me.txtHeatingType)
         Me.LayoutControl1.Controls.Add(Me.txtBoilerType)
+        Me.LayoutControl1.Controls.Add(Me.cboRepname)
         Me.LayoutControl1.Location = New System.Drawing.Point(-3, -3)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
@@ -205,14 +255,15 @@ Partial Class frmINH
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabPane1.Controls.Add(Me.TabNavigationPage1)
         Me.TabPane1.Controls.Add(Me.TabNavigationPage2)
+        Me.TabPane1.Controls.Add(Me.TabNavigationPage3)
         Me.TabPane1.Location = New System.Drawing.Point(537, 12)
         Me.TabPane1.Name = "TabPane1"
-        Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2})
+        Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2, Me.TabNavigationPage3})
         Me.TabPane1.RegularSize = New System.Drawing.Size(813, 614)
         Me.TabPane1.SelectedPage = Me.TabNavigationPage1
         Me.TabPane1.Size = New System.Drawing.Size(813, 614)
         Me.TabPane1.TabIndex = 54
-        Me.TabPane1.Text = "TabPane1"
+        Me.TabPane1.Text = "Χιλιοστά Διαμερισμάτων"
         '
         'TabNavigationPage1
         '
@@ -302,6 +353,7 @@ Partial Class frmINH
         Me.RepositoryItemLookUpEdit1.DataSource = Me.VwCALCCATBindingSource
         Me.RepositoryItemLookUpEdit1.DisplayMember = "name"
         Me.RepositoryItemLookUpEdit1.Name = "RepositoryItemLookUpEdit1"
+        Me.RepositoryItemLookUpEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.RepositoryItemLookUpEdit1.ValueMember = "ID"
         '
         'VwCALCCATBindingSource
@@ -409,6 +461,13 @@ Partial Class frmINH
         Me.apt.Name = "apt"
         Me.apt.VisibleIndex = 0
         Me.apt.Width = 158
+        '
+        'TabNavigationPage3
+        '
+        Me.TabNavigationPage3.Caption = "Χιλιοστά Διαμερισμάτων"
+        Me.TabNavigationPage3.Controls.Add(Me.grdAPM)
+        Me.TabNavigationPage3.Name = "TabNavigationPage3"
+        Me.TabNavigationPage3.Size = New System.Drawing.Size(813, 577)
         '
         'cmdCalculate
         '
@@ -537,15 +596,6 @@ Partial Class frmINH
         Me.txtAmt.TabIndex = 43
         Me.txtAmt.Tag = "amt,0,1,2"
         '
-        'txtrepname
-        '
-        Me.txtrepname.Location = New System.Drawing.Point(141, 310)
-        Me.txtrepname.Name = "txtrepname"
-        Me.txtrepname.Size = New System.Drawing.Size(354, 20)
-        Me.txtrepname.StyleController = Me.LayoutControl1
-        Me.txtrepname.TabIndex = 29
-        Me.txtrepname.Tag = "repname,0,1,2"
-        '
         'chkCALC_CAT
         '
         Me.chkCALC_CAT.CheckMode = DevExpress.XtraEditors.CheckMode.[Single]
@@ -610,6 +660,29 @@ Partial Class frmINH
         Me.txtBoilerType.StyleController = Me.LayoutControl1
         Me.txtBoilerType.TabIndex = 46
         Me.txtBoilerType.Tag = ""
+        '
+        'cboRepname
+        '
+        Me.cboRepname.Location = New System.Drawing.Point(141, 310)
+        Me.cboRepname.Name = "cboRepname"
+        Me.cboRepname.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboRepname.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboRepname.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 18, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 33, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboRepname.Properties.DataSource = Me.VwTTLBindingSource
+        Me.cboRepname.Properties.DisplayMember = "name"
+        Me.cboRepname.Properties.NullText = ""
+        Me.cboRepname.Properties.PopupSizeable = False
+        Me.cboRepname.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.cboRepname.Properties.ValueMember = "name"
+        Me.cboRepname.Size = New System.Drawing.Size(354, 20)
+        Me.cboRepname.StyleController = Me.LayoutControl1
+        Me.cboRepname.TabIndex = 29
+        Me.cboRepname.Tag = "repname,0,1,2"
+        '
+        'VwTTLBindingSource
+        '
+        Me.VwTTLBindingSource.DataMember = "vw_TTL"
+        Me.VwTTLBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
         '
         'Root
         '
@@ -773,7 +846,7 @@ Partial Class frmINH
         '
         'LayoutControlItem3
         '
-        Me.LayoutControlItem3.Control = Me.txtrepname
+        Me.LayoutControlItem3.Control = Me.cboRepname
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(475, 24)
@@ -884,6 +957,10 @@ Partial Class frmINH
         '
         Me.Vw_INCTableAdapter.ClearBeforeFill = True
         '
+        'Vw_TTLTableAdapter
+        '
+        Me.Vw_TTLTableAdapter.ClearBeforeFill = True
+        '
         'frmINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -893,6 +970,9 @@ Partial Class frmINH
         Me.Name = "frmINH"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmParast"
+        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -908,13 +988,13 @@ Partial Class frmINH
         Me.TabNavigationPage2.ResumeLayout(False)
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridINH, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabNavigationPage3.ResumeLayout(False)
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtrepname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkCALC_CAT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -922,6 +1002,8 @@ Partial Class frmINH
         CType(Me.dtTDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtHeatingType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBoilerType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
@@ -957,7 +1039,6 @@ Partial Class frmINH
     Friend WithEvents Root As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents chkCALC_CAT As DevExpress.XtraEditors.CheckedListBoxControl
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents txtrepname As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtAmt As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
@@ -1031,4 +1112,11 @@ Partial Class frmINH
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridINH As DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView
     Friend WithEvents apt As DevExpress.XtraGrid.Views.BandedGrid.GridBand
+    Friend WithEvents TabNavigationPage3 As DevExpress.XtraBars.Navigation.TabNavigationPage
+    Friend WithEvents grdAPM As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView7 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents cboRepname As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents VwTTLBindingSource As BindingSource
+    Friend WithEvents Vw_TTLTableAdapter As Priamos_NETDataSetTableAdapters.vw_TTLTableAdapter
 End Class
