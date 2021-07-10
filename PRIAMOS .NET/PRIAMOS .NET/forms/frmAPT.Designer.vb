@@ -52,6 +52,8 @@ Partial Class frmAPT
         Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.chksameOwnerTenant = New DevExpress.XtraEditors.CheckEdit()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,10 +85,13 @@ Partial Class frmAPT
         CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chksameOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.chksameOwnerTenant)
         Me.LayoutControl1.Controls.Add(Me.cboBDG)
         Me.LayoutControl1.Controls.Add(Me.chkOut)
         Me.LayoutControl1.Controls.Add(Me.txtCode)
@@ -125,7 +130,7 @@ Partial Class frmAPT
         'chkOut
         '
         Me.chkOut.EditValue = CType(0, Byte)
-        Me.chkOut.Location = New System.Drawing.Point(174, 156)
+        Me.chkOut.Location = New System.Drawing.Point(174, 178)
         Me.chkOut.Name = "chkOut"
         Me.chkOut.Properties.Caption = "Εκτός"
         Me.chkOut.Properties.ValueChecked = CType(1, Byte)
@@ -160,7 +165,7 @@ Partial Class frmAPT
         '
         'cboTenant
         '
-        Me.cboTenant.Location = New System.Drawing.Point(129, 108)
+        Me.cboTenant.Location = New System.Drawing.Point(129, 154)
         Me.cboTenant.Name = "cboTenant"
         Me.cboTenant.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboTenant.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
@@ -173,7 +178,7 @@ Partial Class frmAPT
         '
         'cboOwner
         '
-        Me.cboOwner.Location = New System.Drawing.Point(129, 132)
+        Me.cboOwner.Location = New System.Drawing.Point(129, 108)
         Me.cboOwner.Name = "cboOwner"
         Me.cboOwner.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboOwner.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
@@ -186,9 +191,9 @@ Partial Class frmAPT
         '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(45, 178)
+        Me.txtComments.Location = New System.Drawing.Point(45, 200)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(420, 103)
+        Me.txtComments.Size = New System.Drawing.Size(420, 81)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 17
         Me.txtComments.Tag = "cmt,0,1,2"
@@ -196,7 +201,7 @@ Partial Class frmAPT
         'chkClosed
         '
         Me.chkClosed.EditValue = CType(0, Byte)
-        Me.chkClosed.Location = New System.Drawing.Point(12, 156)
+        Me.chkClosed.Location = New System.Drawing.Point(12, 178)
         Me.chkClosed.Name = "chkClosed"
         Me.chkClosed.Properties.Caption = "Κλειστό"
         Me.chkClosed.Properties.ValueChecked = CType(1, Byte)
@@ -259,7 +264,7 @@ Partial Class frmAPT
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem3, Me.LayoutControlItem18, Me.LayoutControlItem5, Me.LayoutControlItem4, Me.EmptySpaceItem5, Me.LayoutControlItem6, Me.LayoutControlItem15, Me.LayoutControlItem2, Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.EmptySpaceItem6, Me.LayoutControlItem20, Me.LayoutControlItem19})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem3, Me.LayoutControlItem18, Me.LayoutControlItem5, Me.LayoutControlItem4, Me.EmptySpaceItem5, Me.LayoutControlItem6, Me.LayoutControlItem15, Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.EmptySpaceItem6, Me.LayoutControlItem20, Me.LayoutControlItem19, Me.LayoutControlItem2, Me.LayoutControlItem8})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(477, 341)
         Me.Root.TextVisible = False
@@ -277,9 +282,9 @@ Partial Class frmAPT
         Me.LayoutControlItem14.Control = Me.txtComments
         Me.LayoutControlItem14.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem14.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 166)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 188)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(457, 107)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(457, 85)
         Me.LayoutControlItem14.Text = "Σχόλια"
         Me.LayoutControlItem14.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(32, 13)
@@ -289,7 +294,7 @@ Partial Class frmAPT
         '
         Me.LayoutControlItem3.Control = Me.cboTenant
         Me.LayoutControlItem3.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 142)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(457, 24)
         Me.LayoutControlItem3.Text = "Ένοικος"
@@ -364,7 +369,7 @@ Partial Class frmAPT
         'LayoutControlItem15
         '
         Me.LayoutControlItem15.Control = Me.chkClosed
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 144)
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 166)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
         Me.LayoutControlItem15.Size = New System.Drawing.Size(162, 22)
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
@@ -374,7 +379,7 @@ Partial Class frmAPT
         '
         Me.LayoutControlItem2.Control = Me.cboOwner
         Me.LayoutControlItem2.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(457, 24)
         Me.LayoutControlItem2.Text = "Ιδιοκτήτης"
@@ -418,7 +423,7 @@ Partial Class frmAPT
         'LayoutControlItem20
         '
         Me.LayoutControlItem20.Control = Me.chkOut
-        Me.LayoutControlItem20.Location = New System.Drawing.Point(162, 144)
+        Me.LayoutControlItem20.Location = New System.Drawing.Point(162, 166)
         Me.LayoutControlItem20.Name = "LayoutControlItem20"
         Me.LayoutControlItem20.Size = New System.Drawing.Size(295, 22)
         Me.LayoutControlItem20.TextSize = New System.Drawing.Size(0, 0)
@@ -454,6 +459,28 @@ Partial Class frmAPT
         Me.cmdSave.Size = New System.Drawing.Size(111, 28)
         Me.cmdSave.TabIndex = 13
         Me.cmdSave.Text = "Αποθήκευση"
+        '
+        'chksameOwnerTenant
+        '
+        Me.chksameOwnerTenant.EditValue = CType(0, Byte)
+        Me.chksameOwnerTenant.Location = New System.Drawing.Point(12, 132)
+        Me.chksameOwnerTenant.Name = "chksameOwnerTenant"
+        Me.chksameOwnerTenant.Properties.Caption = "Ο ιδιοκτήτης είναι και ένοικος"
+        Me.chksameOwnerTenant.Properties.ValueChecked = CType(1, Byte)
+        Me.chksameOwnerTenant.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chksameOwnerTenant.Size = New System.Drawing.Size(453, 18)
+        Me.chksameOwnerTenant.StyleController = Me.LayoutControl1
+        Me.chksameOwnerTenant.TabIndex = 24
+        Me.chksameOwnerTenant.Tag = "sameOwnerTenant,0,1,2"
+        '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.chksameOwnerTenant
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(457, 22)
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem8.TextVisible = False
         '
         'frmAPT
         '
@@ -496,6 +523,8 @@ Partial Class frmAPT
         CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chksameOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -531,4 +560,6 @@ Partial Class frmAPT
     Friend WithEvents cboBDG As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem6 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents chksameOwnerTenant As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
 End Class

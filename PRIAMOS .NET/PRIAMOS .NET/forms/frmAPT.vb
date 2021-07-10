@@ -65,8 +65,8 @@ Public Class frmAPT
 
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APT where id ='" + sID + "'")
-                End Select
-                Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        End Select
+        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmAPT = Me.Location
         My.Settings.Save()
@@ -194,6 +194,14 @@ Public Class frmAPT
     End Sub
 
     Private Sub cboTenant_EditValueChanged(sender As Object, e As EventArgs) Handles cboTenant.EditValueChanged
+
+    End Sub
+
+    Private Sub chksameOwnerTenant_CheckStateChanged(sender As Object, e As EventArgs) Handles chksameOwnerTenant.CheckStateChanged
+        If chksameOwnerTenant.EditValue = 1 Then cboTenant.EditValue = cboOwner.EditValue
+    End Sub
+
+    Private Sub chksameOwnerTenant_CheckedChanged(sender As Object, e As EventArgs) Handles chksameOwnerTenant.CheckedChanged
 
     End Sub
 

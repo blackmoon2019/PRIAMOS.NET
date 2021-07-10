@@ -10,6 +10,7 @@ Public Class frmMain
         bbUser.Caption = "Χρήστης: " & UserProps.RealName
         bbServer.Caption = "SQL Server: " & CNDB.DataSource.ToString
         bbDB.Caption = "Database: " & CNDB.Database.ToString
+        bbVersion.Caption = "Ver:" + My.Application.Info.Version.ToString
     End Sub
 
     Private Sub MdiManager_PageAdded(sender As Object, e As MdiTabPageEventArgs)

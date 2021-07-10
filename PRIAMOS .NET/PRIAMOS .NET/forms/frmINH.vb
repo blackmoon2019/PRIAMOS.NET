@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports DevExpress.Export
 Imports DevExpress.Utils
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
@@ -8,6 +9,7 @@ Imports DevExpress.XtraGrid.Views.BandedGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPivotGrid
+Imports DevExpress.XtraPrinting
 
 Public Class frmINH
     Private sID As String
@@ -50,11 +52,15 @@ Public Class frmINH
                 txtCode.Text = DBQ.GetNextId("INH")
                 LayoutControlGroup2.Enabled = False
                 cmdSaveInd.Enabled = False
-                cmdINDDel.Enabled = False
+                cmdCalculate.Enabled = False
+                cmdDel.Enabled = False
             Case FormMode.EditRecord
                 LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'")
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+                Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+                Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+                If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
                 EditRecord()
                 'Χιλιοστά Διαμερισμάτων
                 ApmLoad()
@@ -184,7 +190,8 @@ Public Class frmINH
                     Valid.SChanged = False
                     LayoutControlGroup2.Enabled = True
                     cmdSaveInd.Enabled = True
-                    cmdINDDel.Enabled = True
+                    cmdDel.Enabled = True
+                    cmdCalculate.Enabled = True
                 End If
             End If
 
@@ -210,7 +217,7 @@ Public Class frmINH
         End If
     End Sub
 
-    Private Sub DeleteRecord()
+    Private Sub DeleteIND()
         Dim sSQL As String
         Try
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
@@ -224,21 +231,58 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub cmdINDDel_Click(sender As Object, e As EventArgs) Handles cmdINDDel.Click
-        DeleteRecord()
+    Private Sub DeleteINC()
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί o υπολογισμός?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM INC WHERE INHID = " & toSQLValueS(sID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                sSQL = "UPDATE INH SET AHPB_HID=NULL,CALCULATED=0 WHERE ID = " & toSQLValueS(sID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                If cboAhpbH.EditValue IsNot Nothing Then
+                    sSQL = "UPDATE AHPB_H SET FINALIZED=0 WHERE ID = " & toSQLValueS(cboAhpbH.EditValue.ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                End If
+                EditRecord() : Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+                    Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, System.Guid.Parse(cboBDG.EditValue.ToString))
+                End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
-    Private Sub cmdINDRefresh_Click(sender As Object, e As EventArgs) Handles cmdINDRefresh.Click
-        Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+
+    Private Sub cmdINDDel_Click(sender As Object, e As EventArgs) Handles cmdDel.Click
+        Select Case TabPane1.SelectedPageIndex
+            Case 0 : DeleteIND()
+            Case 1 : DeleteINC
+            Case 2
+            Case Else
+        End Select
+
+    End Sub
+
+    Private Sub cmdINDRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
+        Select Case TabPane1.SelectedPageIndex
+            Case 0 : Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+            Case 1 : EditRecord() : Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+            Case 2 : ApmLoad()
+            Case Else
+        End Select
+
     End Sub
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
-        'Χιλιοστά Διαμερισμάτων
-        ApmLoad()
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+            txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
         Else
             txtHeatingType.EditValue = Nothing
         End If
@@ -274,21 +318,21 @@ Public Class frmINH
 
     Private Sub cmdCalculate_Click(sender As Object, e As EventArgs) Handles cmdCalculate.Click
         Try
-            Using oCmd As New SqlCommand("inv_Calculate", CNDB)
-                oCmd.CommandType = CommandType.StoredProcedure
-                oCmd.Parameters.AddWithValue("@inhid", sID)
-                oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString)
-                oCmd.ExecuteNonQuery()
-            End Using
-            XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            EditRecord()
-            Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+            If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbH.EditValue Is Nothing Then
+                LayoutControl1.Enabled = False
+                FlyoutPanel1.OwnerControl = TabPane1
+                FlyoutPanel1.OptionsBeakPanel.AnimationType = Win.PopupToolWindowAnimation.Fade
+                'FlyoutPanel1.Options.CloseOnOuterClick = True
+                FlyoutPanel1.Options.AnchorType = Win.PopupToolWindowAnchor.Center
+                FlyoutPanel1.ShowPopup()
+            Else
+                Calculate()
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
 
     Private Sub dtFDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtFDate.EditValueChanged
         lbldate.Text = TranslateDates(dtFDate, dtTDate)
@@ -300,7 +344,7 @@ Public Class frmINH
 
     Private Sub GridView5_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView5.KeyDown
         Select Case e.KeyCode
-            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteRecord()
+            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteIND()
         End Select
     End Sub
 
@@ -332,9 +376,11 @@ Public Class frmINH
 
     Private Sub TabPane1_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles TabPane1.SelectedPageChanged
         Select Case TabPane1.SelectedPageIndex
-            Case 0 : cmdINDDel.Enabled = True
-            Case 2  'ApmLoad()
-            Case Else : cmdINDDel.Enabled = False
+            Case 0 : cmdDel.Enabled = True
+            Case 1 : cmdDel.Enabled = True
+            Case 2 : ApmLoad()        'Χιλιοστά Διαμερισμάτων
+
+            Case Else : cmdDel.Enabled = False
         End Select
     End Sub
 
@@ -391,6 +437,7 @@ Public Class frmINH
         form1.DataTable = "TTL"
         form1.CalledFromControl = True
         form1.CallerControl = cboRepname
+        form1.CallerForm = Me
         form1.MdiParent = frmMain
         form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -406,5 +453,86 @@ Public Class frmINH
 
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+    End Sub
+
+    Private Sub Calculate()
+        Dim sAhpbID As String
+        Using oCmd As New SqlCommand("inv_Calculate", CNDB)
+            oCmd.CommandType = CommandType.StoredProcedure
+            oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
+            oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
+            ' Εαν είναι νέα εγγραφή τότε παίρνω την τιμή της ώρας από το Combo στο FlyoutPanel
+            If Mode = FormMode.NewRecord Then
+                If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper
+            Else
+                ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
+                If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper
+            End If
+            oCmd.Parameters.AddWithValue("@ahpbHID", System.Guid.Parse(sAhpbID))
+            oCmd.ExecuteNonQuery()
+        End Using
+        XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        EditRecord()
+        Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+        FlyoutPanel1.HidePopup()
+        LayoutControl1.Enabled = True
+    End Sub
+
+    Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
+        FlyoutPanel1.HidePopup()
+        Calculate()
+        Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+        cboAhpbH.EditValue = cboAhpb.EditValue
+        LayoutControl1.Enabled = True
+    End Sub
+
+    Private Sub cmdExport_Click(sender As Object, e As EventArgs) Handles cmdExport.Click
+        Select Case TabPane1.SelectedPageIndex
+            Case 0 : ExportGrid(0, "Έξοδα")
+            Case 1 : ExportGrid(1, "Υπολογισμένα")
+            Case 2 : ExportGrid(2, "Χιλιοστά")
+            Case Else
+        End Select
+
+    End Sub
+    Private Sub ExportGrid(ByVal grdMode As Integer, ByVal fName As String)
+        Dim options = New XlsxExportOptionsEx()
+        options.UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula
+        options.ExportType = ExportType.WYSIWYG
+        XtraSaveFileDialog1.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
+        XtraSaveFileDialog1.FileName = fName
+        If XtraSaveFileDialog1.ShowDialog() = DialogResult.OK Then
+            Select Case grdMode
+                Case 0 : GridView5.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+                Case 1 : GridINH.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+                Case 2 : GridView7.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+            End Select
+
+            Process.Start(XtraSaveFileDialog1.FileName)
+        End If
+    End Sub
+
+    Private Sub cboBDG_Validated(sender As Object, e As EventArgs) Handles cboBDG.Validated
+        If cboBDG.EditValue = Nothing Then Exit Sub
+        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+            txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
+            If cboAhpb.Properties.DataSource.Count = 1 Then
+                cboAhpb.ItemIndex = 0
+            ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
+                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                cmdOK.Enabled = False
+            End If
+        Else
+            txtHeatingType.EditValue = Nothing
+        End If
+        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+        Else
+            txtBoilerType.EditValue = Nothing
+        End If
     End Sub
 End Class

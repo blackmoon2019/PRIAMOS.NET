@@ -11,6 +11,7 @@ Public Class frmGen
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private Frm As DevExpress.XtraEditors.XtraForm
+    Private FrmCaller As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private CalledFromCtrl As Boolean
     Private CalledFromCtrlRep As Boolean
@@ -44,6 +45,12 @@ Public Class frmGen
             Frm = value
         End Set
     End Property
+    Public WriteOnly Property CallerForm As DevExpress.XtraEditors.XtraForm
+        Set(value As DevExpress.XtraEditors.XtraForm)
+            FrmCaller = value
+        End Set
+    End Property
+
     Public WriteOnly Property CallerControl As DevExpress.XtraEditors.LookUpEdit
         Set(value As DevExpress.XtraEditors.LookUpEdit)
             CtrlCombo = value
@@ -91,12 +98,16 @@ Public Class frmGen
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TTL", LayoutControl1,,, sGuid, True)
                                 If CalledFromCtrl Then
-                                    FillCbo.TTL(CtrlCombo)
-                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
-                                Else
-                                    'Dim form As New frmScroller
-                                    'form = Frm
-                                    'form.LoadRecords("vw_COU")
+                                    If FrmCaller IsNot Nothing Then
+                                        If FrmCaller.Name = "frmINH" Then
+                                            frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_TTL)
+                                            CtrlCombo.Properties.DataSource = frmINH.VwTTLBindingSource
+                                            CtrlCombo.EditValue = txtName.Text
+                                        End If
+                                    Else
+                                        FillCbo.TTL(CtrlCombo)
+                                        CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                    End If
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -296,12 +307,16 @@ Public Class frmGen
                             Case "TTL"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TTL", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
-                                    FillCbo.TTL(CtrlCombo)
-                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
-                                Else
-                                    'Dim form As New frmScroller
-                                    'form = Frm
-                                    'form.LoadRecords("vw_TTL")
+                                    If FrmCaller IsNot Nothing Then
+                                        If FrmCaller.Name = "frmINH" Then
+                                            frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_TTL)
+                                            CtrlCombo.Properties.DataSource = frmINH.VwTTLBindingSource
+                                            CtrlCombo.EditValue = txtName.Text
+                                        End If
+                                    Else
+                                        FillCbo.TTL(CtrlCombo)
+                                        CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                    End If
                                 End If
                             Case "COU"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sID, True)
@@ -546,10 +561,14 @@ Public Class frmGen
                 Select Case sDataTable
                     Case "TTL"
                         If CalledFromCtrl Then
-                            FillCbo.TTL(CtrlCombo)
-                        Else
-                            'Dim form As New frmScroller
-                            'form.LoadRecords("vw_COU")
+                            If FrmCaller IsNot Nothing Then
+                                If FrmCaller.Name = "frmINH" Then
+                                    frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_TTL)
+                                    CtrlCombo.Properties.DataSource = frmINH.VwTTLBindingSource
+                                End If
+                            Else
+                                FillCbo.TTL(CtrlCombo)
+                            End If
                         End If
                     Case "COU"
                         If CalledFromCtrl Then

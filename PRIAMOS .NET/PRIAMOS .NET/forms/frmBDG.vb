@@ -791,7 +791,7 @@ Public Class frmBDG
             End If
         End If
         tabBDG.SelectedTabPage = XtraTabPage2
-        If sManageID.Length > 0 Then
+        If sManageID IsNot Nothing Then
             sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
             BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
         End If
@@ -1045,7 +1045,7 @@ Public Class frmBDG
     Private Sub LoadMefMes()
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
-            sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mdt, CUR.mes, BEF.mes as mesB, 
+            sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes, BEF.mes as mesB,  
 		            CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
 		            CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam  from ( " +
                     "Select * From vw_AHPB " +
@@ -1057,6 +1057,7 @@ Public Class frmBDG
             If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
             GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
             GridView2.Columns("mesB").OptionsColumn.ReadOnly = True : GridView2.Columns("mesB").OptionsColumn.AllowEdit = False
+            GridView2.Columns("mes").OptionsColumn.ReadOnly = False : GridView2.Columns("mes").OptionsColumn.AllowEdit = True
             GridView2.Columns("mesDif").OptionsColumn.ReadOnly = False : GridView2.Columns("mesDif").OptionsColumn.AllowEdit = True
             GridView2.Columns("nam").OptionsColumn.AllowEdit = False
             cmdDelAHPB.Enabled = True
