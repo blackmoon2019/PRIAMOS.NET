@@ -40,7 +40,7 @@
         'ProgressBarControl1
         '
         Me.ProgressBarControl1.Location = New System.Drawing.Point(8, 293)
-        Me.ProgressBarControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProgressBarControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.ProgressBarControl1.Name = "ProgressBarControl1"
         Me.ProgressBarControl1.Properties.ShowTitle = True
         Me.ProgressBarControl1.Size = New System.Drawing.Size(620, 19)
@@ -49,7 +49,7 @@
         'ProgressBarControl2
         '
         Me.ProgressBarControl2.Location = New System.Drawing.Point(8, 340)
-        Me.ProgressBarControl2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ProgressBarControl2.Margin = New System.Windows.Forms.Padding(2)
         Me.ProgressBarControl2.Name = "ProgressBarControl2"
         Me.ProgressBarControl2.Properties.ShowTitle = True
         Me.ProgressBarControl2.Size = New System.Drawing.Size(620, 19)
@@ -58,7 +58,7 @@
         'cmdUpdate
         '
         Me.cmdUpdate.Location = New System.Drawing.Point(551, 373)
-        Me.cmdUpdate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cmdUpdate.Margin = New System.Windows.Forms.Padding(2)
         Me.cmdUpdate.Name = "cmdUpdate"
         Me.cmdUpdate.Size = New System.Drawing.Size(75, 24)
         Me.cmdUpdate.TabIndex = 2
@@ -67,7 +67,7 @@
         'cmdExit
         '
         Me.cmdExit.Location = New System.Drawing.Point(470, 373)
-        Me.cmdExit.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cmdExit.Margin = New System.Windows.Forms.Padding(2)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(75, 24)
         Me.cmdExit.TabIndex = 3
@@ -76,7 +76,7 @@
         'lblTotal
         '
         Me.lblTotal.Location = New System.Drawing.Point(14, 322)
-        Me.lblTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lblTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(0, 13)
         Me.lblTotal.TabIndex = 4
@@ -101,13 +101,10 @@
         'lblFileCounter
         '
         Me.lblFileCounter.Location = New System.Drawing.Point(14, 269)
-        Me.lblFileCounter.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lblFileCounter.Margin = New System.Windows.Forms.Padding(2)
         Me.lblFileCounter.Name = "lblFileCounter"
         Me.lblFileCounter.Size = New System.Drawing.Size(0, 13)
         Me.lblFileCounter.TabIndex = 16
-        '
-        'BackgroundWorker1
-        '
         '
         'frmUpdate
         '

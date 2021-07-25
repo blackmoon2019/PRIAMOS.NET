@@ -14,7 +14,7 @@
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, dtu, iad, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, 
                          COU_Name, ar, prd, rmg, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, 
-                         eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged
+                         eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID
 FROM            vw_BDG</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -86,6 +86,8 @@ FROM            vw_BDG</CommandText>
               <Mapping SourceColumn="fHkasp" DataSetColumn="fHkasp" />
               <Mapping SourceColumn="fDeposit" DataSetColumn="fDeposit" />
               <Mapping SourceColumn="isManaged" DataSetColumn="isManaged" />
+              <Mapping SourceColumn="ManagerName" DataSetColumn="ManagerName" />
+              <Mapping SourceColumn="managerID" DataSetColumn="managerID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -124,11 +126,12 @@ WHERE        (inhID = @inhID)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_CALC_CATTableAdapter" GeneratorDataComponentClassName="vw_CALC_CATTableAdapter" Name="vw_CALC_CAT" UserDataComponentName="vw_CALC_CATTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CALC_CAT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CALC_CAT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ID, name
-FROM            vw_CALC_CAT</CommandText>
+FROM            vw_CALC_CAT
+ORDER BY ord</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -657,6 +660,14 @@ SELECT ID, mdt FROM AHPB_H WHERE (ID = @ID)</CommandText>
               </xs:element>
               <xs:element name="fDeposit" msprop:Generator_ColumnVarNameInTable="columnfDeposit" msprop:Generator_ColumnPropNameInRow="fDeposit" msprop:Generator_ColumnPropNameInTable="fDepositColumn" msprop:Generator_UserColumnName="fDeposit" type="xs:decimal" minOccurs="0" />
               <xs:element name="isManaged" msprop:Generator_ColumnVarNameInTable="columnisManaged" msprop:Generator_ColumnPropNameInRow="isManaged" msprop:Generator_ColumnPropNameInTable="isManagedColumn" msprop:Generator_UserColumnName="isManaged" type="xs:boolean" />
+              <xs:element name="ManagerName" msprop:Generator_ColumnVarNameInTable="columnManagerName" msprop:Generator_ColumnPropNameInRow="ManagerName" msprop:Generator_ColumnPropNameInTable="ManagerNameColumn" msprop:Generator_UserColumnName="ManagerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="managerID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnmanagerID" msprop:Generator_ColumnPropNameInRow="managerID" msprop:Generator_ColumnPropNameInTable="managerIDColumn" msprop:Generator_UserColumnName="managerID" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

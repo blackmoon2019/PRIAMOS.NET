@@ -666,10 +666,13 @@ Public Class frmScroller
                 fGen.L3.Control.Tag = "calcTypeID,0,1,2"
                 fGen.L3.Tag = ""
                 fGen.L3.ImageOptions.Image = Nothing
+                fGen.L8.Text = "Θέση Ταξινόμησης"
+                fGen.txtNum.Tag = "ord,0,1,2"
                 fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -877,10 +880,13 @@ Public Class frmScroller
                 fGen.L3.Control.Tag = "calcTypeID,0,1,2"
                 fGen.L3.Tag = ""
                 fGen.L3.ImageOptions.Image = Nothing
+                fGen.L8.Text = "Θέση Ταξινόμησης"
+                fGen.txtNum.Tag = "ord,0,1,2"
                 fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))

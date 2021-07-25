@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class CN
 
-    'Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
+    ' Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
     Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionStringRem").ConnectionString
     'Server=tcp:blackmoon.database.windows.net,1433;Initial Catalog=DreamyKitchen;Persist Security Info=False;User ID=blmoon;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     Public Function OpenConnection() As Boolean

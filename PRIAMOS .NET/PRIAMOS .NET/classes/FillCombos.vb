@@ -123,9 +123,15 @@ Public Class FillCombos
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Public Sub CCT(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+    Public Sub CCT(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, Optional ByVal sSQL As System.Text.StringBuilder = Nothing)
+        Dim sSQLs As String
         Try
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Fullname from vw_CCT order by Fullname", CNDB)
+            If sSQL Is Nothing Then
+                sSQLs = "Select id,Fullname from vw_CCT order by Fullname"
+            Else
+                sSQLs = "Select id,Fullname from vw_CCT " & sSQL.ToString & "  order by Fullname"
+            End If
+            Dim cmd As SqlCommand = New SqlCommand(sSQLs.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Fullname"
@@ -137,8 +143,8 @@ Public Class FillCombos
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
+
     Public Sub FLR(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,name from vw_FLR order by name", CNDB)

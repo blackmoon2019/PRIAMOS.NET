@@ -5,6 +5,7 @@ Public Class CN
 
     Dim s As String = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
     Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
+    'Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionStringRem").ConnectionString
 
     Public Function OpenConnection() As Boolean
         Dim DBConnection As New SqlConnection()

@@ -99,6 +99,10 @@ Public Class frmBDG
         txtIam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
         'Νομοί
         FillCbo.COU(cboCOU)
+        'Επαφές
+        Dim sSQLcct As New System.Text.StringBuilder
+        sSQLcct.AppendLine(" where isprivate =1")
+        FillCbo.CCT(cboManager, sSQLcct)
 
         Select Case Mode
             Case FormMode.NewRecord
@@ -1180,13 +1184,19 @@ Public Class frmBDG
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@bdgid", sID)
                     oCmd.Parameters.AddWithValue("@ahpbDT", dtMes.EditValue)
-                    oCmd.Parameters.AddWithValue("@bolier", RGTypeHeating.SelectedIndex)
+                    oCmd.Parameters.AddWithValue("@boiler", RGTypeHeating.SelectedIndex)
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString)
                     oCmd.ExecuteNonQuery()
                 End Using
                 LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
                 If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
-                If GridView2.RowCount = 0 Then XtraMessageBox.Show("Πρέπει πρώτα να καταχωρήσετε διαμερίσματα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                If GridView2.RowCount = 0 Then
+                    XtraMessageBox.Show("Πρέπει πρώτα να καταχωρήσετε διαμερίσματα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                Else
+                    cmdDelAHPB.Enabled = True
+                    cmdRefreshAHPB.Enabled = True
+                End If
                 Dim sSQL As New System.Text.StringBuilder
                 sSQL.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
                 'Προηγούμενες μετρήσεις
@@ -1194,7 +1204,7 @@ Public Class frmBDG
                 cboBefMes.EditValue = Nothing
                 GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
                 GridView2.Columns("nam").OptionsColumn.AllowEdit = False
-
+                cboBefMes.EditValue = dtMes.EditValue
             End If
 
         Catch ex As Exception
@@ -1206,18 +1216,20 @@ Public Class frmBDG
         Dim sSQL As String
         Dim sBoiler As String
         Try
-            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Boiler" Else sBoiler = "Θέρμανσης"
+            If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Θέρμανσης" Else sBoiler = "Boiler"
             If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 'sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
                 '        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
                 '        " and boiler = " & RGTypeHeating.SelectedIndex
                 DeleteSelectedRows()
                 LoadMefMes()
-
-                'Using oCmd As New SqlCommand(sSQL, CNDB)
-                '    oCmd.ExecuteNonQuery()
-                'End Using
-                'Cls.ClearGrid(grdAPTAHPB)
+                If GridView2.RowCount > 0 Then
+                    cmdDelAHPB.Enabled = True
+                Else
+                    cmdDelAHPB.Enabled = False
+                    cboBefMes.EditValue = Nothing
+                End If
+                cmdRefreshAHPB.Enabled = True
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
@@ -1234,6 +1246,18 @@ Public Class frmBDG
                 oCmd.ExecuteNonQuery()
             End Using
         Next
+        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+        If GridView2.RowCount <= 0 Then
+            If cboBefMes.EditValue = Nothing Then
+                sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd"))
+            Else
+                sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd"))
+            End If
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+        End If
     End Sub
     Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
         If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
@@ -2328,7 +2352,24 @@ Public Class frmBDG
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.ShowDialog()
     End Sub
+    Private Sub ManageManager()
+        Dim form1 As frmCustomers = New frmCustomers()
+        form1.Text = "Διαχειριστής"
+        'form1.MdiParent = frmMain
+        form1.CallerControl = cboManager
+        form1.CalledFromControl = True
+        If cboManager.EditValue <> Nothing Then
+            form1.ID = cboManager.EditValue.ToString
+            form1.Mode = FormMode.EditRecord
+        Else
+            form1.Mode = FormMode.NewRecord
+            form1.chkWorkshop.Checked = False
+            form1.chkPrivate.Checked = True
+        End If
 
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
+    End Sub
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
             Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False)
@@ -2406,6 +2447,21 @@ Public Class frmBDG
     End Sub
 
     Private Sub txtTK_EditValueChanged(sender As Object, e As EventArgs) Handles txtTK.EditValueChanged
+
+    End Sub
+
+    Private Sub cmdRefreshAHPB_Click(sender As Object, e As EventArgs) Handles cmdRefreshAHPB.Click
+        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+
+    End Sub
+
+    Private Sub cboManager_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboManager.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboManager.EditValue = Nothing : ManageManager()
+            Case 2 : If cboManager.EditValue <> Nothing Then ManageManager()
+            Case 3 : cboManager.EditValue = Nothing
+        End Select
 
     End Sub
     'ΘΕΡΜΑΝΣΗ

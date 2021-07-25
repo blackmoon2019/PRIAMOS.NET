@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿
+Imports System.Data.SqlClient
 Imports DevExpress.Export
 Imports DevExpress.Utils
 Imports DevExpress.XtraBars.Navigation
@@ -10,6 +11,7 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPivotGrid
 Imports DevExpress.XtraPrinting
+Imports DevExpress.XtraReports.UI
 
 Public Class frmINH
     Private sID As String
@@ -250,8 +252,8 @@ Public Class frmINH
                     End Using
                 End If
                 EditRecord() : Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
-                    Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, System.Guid.Parse(cboBDG.EditValue.ToString))
-                End If
+                Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, System.Guid.Parse(cboBDG.EditValue.ToString))
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -261,7 +263,7 @@ Public Class frmINH
     Private Sub cmdINDDel_Click(sender As Object, e As EventArgs) Handles cmdDel.Click
         Select Case TabPane1.SelectedPageIndex
             Case 0 : DeleteIND()
-            Case 1 : DeleteINC
+            Case 1 : DeleteINC()
             Case 2
             Case Else
         End Select
@@ -280,6 +282,7 @@ Public Class frmINH
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
+        Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
@@ -524,7 +527,7 @@ Public Class frmINH
                 cboAhpb.ItemIndex = 0
             ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
                 XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                cmdOK.Enabled = False
+                'cmdOK.Enabled = False
             End If
         Else
             txtHeatingType.EditValue = Nothing
@@ -535,4 +538,14 @@ Public Class frmINH
             txtBoilerType.EditValue = Nothing
         End If
     End Sub
+
+    Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
+        Dim report As New Rep_Sygentrotiki()
+        report.Parameters.Item(0).Value = sID
+        report.CreateDocument()
+        Dim printTool As New ReportPrintTool(report)
+        printTool.ShowRibbonPreview()
+    End Sub
+    ' ...
+
 End Class
