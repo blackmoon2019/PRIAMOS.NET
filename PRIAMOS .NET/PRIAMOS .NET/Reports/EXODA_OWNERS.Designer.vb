@@ -23,8 +23,8 @@ Partial Public Class EXODA_OWNERS
         Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EXODA_OWNERS))
-        Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.Title = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.GroupCaption1 = New DevExpress.XtraReports.UI.XRControlStyle()
@@ -36,18 +36,15 @@ Partial Public Class EXODA_OWNERS
         Me.PageInfo = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
-        Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
         Me.GroupHeader1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
-        Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
         Me.table1 = New DevExpress.XtraReports.UI.XRTable()
         Me.tableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.tableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel12 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
         Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.table1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -167,13 +164,6 @@ Partial Public Class EXODA_OWNERS
         Me.BottomMargin.Name = "BottomMargin"
         Me.BottomMargin.StylePriority.UseFont = False
         '
-        'ReportHeader
-        '
-        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel13, Me.XrLabel12})
-        Me.ReportHeader.Dpi = 254.0!
-        Me.ReportHeader.HeightF = 47.62504!
-        Me.ReportHeader.Name = "ReportHeader"
-        '
         'GroupHeader1
         '
         Me.GroupHeader1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel5, Me.table1})
@@ -183,15 +173,24 @@ Partial Public Class EXODA_OWNERS
         Me.GroupHeader1.HeightF = 39.20057!
         Me.GroupHeader1.Name = "GroupHeader1"
         '
-        'Detail
+        'XrLabel5
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2, Me.XrLabel1})
-        Me.Detail.Dpi = 254.0!
-        Me.Detail.HeightF = 45.19081!
-        Me.Detail.HierarchyPrintOptions.Indent = 50.8!
-        Me.Detail.MultiColumn.ColumnCount = 2
-        Me.Detail.MultiColumn.ColumnSpacing = 2.0!
-        Me.Detail.Name = "Detail"
+        Me.XrLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel5.Dpi = 254.0!
+        Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'")})
+        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(605.2744!, 0!)
+        Me.XrLabel5.Multiline = True
+        Me.XrLabel5.Name = "XrLabel5"
+        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(195.934!, 38.09998!)
+        Me.XrLabel5.StylePriority.UseBackColor = False
+        Me.XrLabel5.StylePriority.UseFont = False
+        Me.XrLabel5.StylePriority.UseTextAlignment = False
+        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+        Me.XrLabel5.Summary = XrSummary1
+        Me.XrLabel5.Text = "XrLabel5"
+        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
         'table1
         '
@@ -222,31 +221,30 @@ Partial Public Class EXODA_OWNERS
         Me.tableCell2.StylePriority.UseForeColor = False
         Me.tableCell2.Weight = 0.9357889498197115R
         '
-        'XrLabel13
+        'Detail
         '
-        Me.XrLabel13.Dpi = 254.0!
-        Me.XrLabel13.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(566.6309!, 10.16003!)
-        Me.XrLabel13.Multiline = True
-        Me.XrLabel13.Name = "XrLabel13"
-        Me.XrLabel13.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel13.SizeF = New System.Drawing.SizeF(168.5775!, 37.46497!)
-        Me.XrLabel13.StylePriority.UseFont = False
-        Me.XrLabel13.StylePriority.UseTextAlignment = False
-        Me.XrLabel13.Text = "ΠΟΣΟ"
-        Me.XrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2, Me.XrLabel1})
+        Me.Detail.Dpi = 254.0!
+        Me.Detail.HeightF = 45.19081!
+        Me.Detail.HierarchyPrintOptions.Indent = 50.8!
+        Me.Detail.MultiColumn.ColumnCount = 2
+        Me.Detail.MultiColumn.ColumnSpacing = 2.0!
+        Me.Detail.Name = "Detail"
         '
-        'XrLabel12
+        'XrLabel2
         '
-        Me.XrLabel12.Dpi = 254.0!
-        Me.XrLabel12.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(0!, 10.16003!)
-        Me.XrLabel12.Multiline = True
-        Me.XrLabel12.Name = "XrLabel12"
-        Me.XrLabel12.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel12.SizeF = New System.Drawing.SizeF(533.5244!, 37.46497!)
-        Me.XrLabel12.StylePriority.UseFont = False
-        Me.XrLabel12.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΟΥ"
+        Me.XrLabel2.Dpi = 254.0!
+        Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
+        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(605.2744!, 0!)
+        Me.XrLabel2.Multiline = True
+        Me.XrLabel2.Name = "XrLabel2"
+        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel2.SizeF = New System.Drawing.SizeF(195.9338!, 38.1!)
+        Me.XrLabel2.StylePriority.UseFont = False
+        Me.XrLabel2.Text = "XrLabel2"
+        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel2.TextFormatString = "{0:0.00€}"
         '
         'XrLabel1
         '
@@ -256,32 +254,17 @@ Partial Public Class EXODA_OWNERS
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
-        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel1.SizeF = New System.Drawing.SizeF(533.5244!, 38.1!)
         Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "XrLabel1"
-        '
-        'XrLabel2
-        '
-        Me.XrLabel2.Dpi = 254.0!
-        Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
-        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(539.2744!, 0!)
-        Me.XrLabel2.Multiline = True
-        Me.XrLabel2.Name = "XrLabel2"
-        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrLabel2.SizeF = New System.Drawing.SizeF(195.9338!, 38.1!)
-        Me.XrLabel2.StylePriority.UseFont = False
-        Me.XrLabel2.Text = "XrLabel2"
-        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel2.TextFormatString = "{0:0.00€}"
         '
         'inhID
         '
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "BF82461D-50B0-4616-9493-EC3BC5266CB7"
+        Me.inhID.ValueInfo = "bf82461d-50b0-4616-9493-ec3bc5266cb7"
         DynamicListLookUpSettings1.DataMember = "vw_IND"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "inhID"
@@ -290,34 +273,15 @@ Partial Public Class EXODA_OWNERS
         DynamicListLookUpSettings1.ValueMember = "inhID"
         Me.inhID.ValueSourceSettings = DynamicListLookUpSettings1
         '
-        'XrLabel5
-        '
-        Me.XrLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.XrLabel5.Dpi = 254.0!
-        Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'")})
-        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(539.2744!, 0!)
-        Me.XrLabel5.Multiline = True
-        Me.XrLabel5.Name = "XrLabel5"
-        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel5.SizeF = New System.Drawing.SizeF(195.934!, 38.09998!)
-        Me.XrLabel5.StylePriority.UseBackColor = False
-        Me.XrLabel5.StylePriority.UseFont = False
-        Me.XrLabel5.StylePriority.UseTextAlignment = False
-        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-        Me.XrLabel5.Summary = XrSummary1
-        Me.XrLabel5.Text = "XrLabel5"
-        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        '
         'EXODA_OWNERS
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.ReportHeader, Me.GroupHeader1, Me.Detail})
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.GroupHeader1, Me.Detail})
         Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSource1})
         Me.DataMember = "vw_IND"
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(254, 1093, 0, 2)
+        Me.Margins = New System.Drawing.Printing.Margins(254, 1080, 0, 2)
         Me.PageHeight = 2794
         Me.PageWidth = 2159
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
@@ -342,14 +306,11 @@ Partial Public Class EXODA_OWNERS
     Friend WithEvents PageInfo As DevExpress.XtraReports.UI.XRControlStyle
     Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
     Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
-    Friend WithEvents ReportHeader As DevExpress.XtraReports.UI.ReportHeaderBand
     Friend WithEvents GroupHeader1 As DevExpress.XtraReports.UI.GroupHeaderBand
     Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
     Friend WithEvents table1 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents tableRow1 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents tableCell2 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrLabel13 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel12 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents inhID As DevExpress.XtraReports.Parameters.Parameter

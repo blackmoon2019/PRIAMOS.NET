@@ -1051,7 +1051,7 @@ Public Class frmBDG
         If cboBefMes.EditValue <> Nothing Then
             sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes, BEF.mes as mesB,  
 		            CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
-		            CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam  from ( " +
+		            CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   from ( " +
                     "Select * From vw_AHPB " +
                     "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " ) as CUR " +
                     "Left Join vw_AHPB BEF on bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And 

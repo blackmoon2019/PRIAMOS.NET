@@ -41,6 +41,8 @@ Public Class frmINH
         End Set
     End Property
     Private Sub frmParast_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_ANN_MENTS' table. You can move, or remove it, as needed.
+        Me.Vw_ANN_MENTSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_ANN_MENTS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TTL' table. You can move, or remove it, as needed.
         Me.Vw_TTLTableAdapter.Fill(Me.Priamos_NETDataSet.vw_TTL)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_CALC_CAT' table. You can move, or remove it, as needed.
@@ -459,24 +461,29 @@ Public Class frmINH
     End Sub
 
     Private Sub Calculate()
-        Dim sAhpbID As String
-        Using oCmd As New SqlCommand("inv_Calculate", CNDB)
-            oCmd.CommandType = CommandType.StoredProcedure
-            oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
-            oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
-            ' Εαν είναι νέα εγγραφή τότε παίρνω την τιμή της ώρας από το Combo στο FlyoutPanel
-            If Mode = FormMode.NewRecord Then
-                If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper
-            Else
-                ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
-                If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper
-            End If
-            oCmd.Parameters.AddWithValue("@ahpbHID", System.Guid.Parse(sAhpbID))
-            oCmd.ExecuteNonQuery()
-        End Using
-        XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        EditRecord()
-        Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+        Try
+            Dim sAhpbID As String
+            Using oCmd As New SqlCommand("inv_Calculate", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
+                oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
+                ' Εαν είναι νέα εγγραφή τότε παίρνω την τιμή της ώρας από το Combo στο FlyoutPanel
+                If Mode = FormMode.NewRecord Then
+                    If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper
+                Else
+                    ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
+                    If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper
+                End If
+                oCmd.Parameters.AddWithValue("@ahpbHID", System.Guid.Parse(sAhpbID))
+                oCmd.ExecuteNonQuery()
+            End Using
+            XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            EditRecord()
+            Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
@@ -546,6 +553,47 @@ Public Class frmINH
         Dim printTool As New ReportPrintTool(report)
         printTool.ShowRibbonPreview()
     End Sub
-    ' ...
 
+    Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboAnnouncements.EditValue = Nothing : ManageAnnouncements()
+            Case 2 : If cboAnnouncements.EditValue <> Nothing Then ManageAnnouncements()
+            Case 3 : cboAnnouncements.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub ManageAnnouncements()
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Ανακοινώσεις"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Ανακοίνωση"
+        form1.DataTable = "ANN_MENTS"
+        form1.CalledFromControl = True
+        form1.CallerControl = cboAnnouncements
+        form1.CallerForm = Me
+        form1.MdiParent = frmMain
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        If cboAnnouncements.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            If cboAnnouncements.GetColumnValue("ID") Is Nothing Then Exit Sub
+            form1.ID = cboAnnouncements.GetColumnValue("ID").ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub ' ...
+
+    Private Sub ToolTipController1_GetActiveObjectInfo(sender As Object, e As ToolTipControllerGetActiveObjectInfoEventArgs) Handles ToolTipController1.GetActiveObjectInfo
+        If e.SelectedControl Is cboAnnouncements Then
+            If cboAnnouncements.CalcBestSize().Width > cboAnnouncements.Width Then
+                e.Info = New ToolTipControlInfo(cboAnnouncements, cboAnnouncements.EditValue)
+            End If
+        End If
+    End Sub
 End Class

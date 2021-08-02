@@ -162,7 +162,7 @@ Public Class frmTecnicalSupport
             e_mail.Body = txtAnswer.Text
             Dim myMailHTMLBody = "<html><head></head><body>" & txtAnswer.Text & " <img src=cid:ThePictureID></body></html>"
             Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
-            If PictureEdit11.EditValue <> Nothing Then
+            If PictureEdit11.EditValue IsNot Nothing Then
 
                 Dim myImageData() As Byte = PictureEdit11.EditValue
                 'CREATE LINKED RESOURCE FOR ALT VIEW

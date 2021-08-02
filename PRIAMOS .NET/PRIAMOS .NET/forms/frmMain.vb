@@ -223,4 +223,12 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub bbAnnouncements_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbAnnouncements.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Ανακοινώσεις"
+        form.DataTable = "vw_ANN_MENTS"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

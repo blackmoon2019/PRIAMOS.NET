@@ -626,6 +626,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-information-40.png" />
     <None Include="Resources\icons8-email-send-24.png" />
     <None Include="Resources\icons8-e-mail-24.png" />
     <None Include="Resources\icons8-table-of-content-40.png" />

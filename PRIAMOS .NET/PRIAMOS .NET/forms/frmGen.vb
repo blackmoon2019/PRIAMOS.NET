@@ -112,6 +112,24 @@ Public Class frmGen
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("TTL")
+                            Case "ANN_MENTS"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "ANN_MENTS", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    If FrmCaller IsNot Nothing Then
+                                        If FrmCaller.Name = "frmINH" Then
+                                            frmINH.Vw_ANN_MENTSTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_ANN_MENTS)
+                                            CtrlCombo.Properties.DataSource = frmINH.VwANNMENTSBindingSource
+                                            CtrlCombo.EditValue = txtName.Text
+                                        End If
+                                    Else
+                                        FillCbo.ANN_MENTS(CtrlCombo)
+                                        CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                    End If
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("ANN_MENTS")
                             Case "COU"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sGuid, True)
@@ -318,6 +336,21 @@ Public Class frmGen
                                         CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                     End If
                                 End If
+                            Case "ANN_MENTS"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ANN_MENTS", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    If FrmCaller IsNot Nothing Then
+                                        If FrmCaller.Name = "frmINH" Then
+                                            frmINH.Vw_ANN_MENTSTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_ANN_MENTS)
+                                            CtrlCombo.Properties.DataSource = frmINH.VwANNMENTSBindingSource
+                                            CtrlCombo.EditValue = txtName.Text
+                                        End If
+                                    Else
+                                        FillCbo.ANN_MENTS(CtrlCombo)
+                                        CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                    End If
+                                End If
+
                             Case "COU"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COU", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -453,6 +486,13 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+                Case "ANN_MENTS"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("ANN_MENTS")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_ANN_MENTS where id ='" + sID + "'", True)
+                    End If
+
                 Case "TTL"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("TTL")
@@ -559,6 +599,18 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+                    Case "ANN_MENTS"
+                        If CalledFromCtrl Then
+                            If FrmCaller IsNot Nothing Then
+                                If FrmCaller.Name = "frmINH" Then
+                                    frmINH.Vw_ANN_MENTSTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_ANN_MENTS)
+                                    CtrlCombo.Properties.DataSource = frmINH.VwANNMENTSBindingSource
+                                End If
+                            Else
+                                FillCbo.ANN_MENTS(CtrlCombo)
+                            End If
+                        End If
+
                     Case "TTL"
                         If CalledFromCtrl Then
                             If FrmCaller IsNot Nothing Then
