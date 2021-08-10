@@ -609,10 +609,7 @@ Public Class frmScroller
                 fGen.L3.Text = "Νομός"
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ADR"
@@ -628,9 +625,9 @@ Public Class frmScroller
                 fGen.L4.Text = "Περιοχές"
                 fGen.L7.Text = "ΤΚ"
                 fGen.L7.Control.Tag = "tk,0,1,2"
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                'fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -644,12 +641,11 @@ Public Class frmScroller
                 fGen.DataTable = "CALC_TYPES"
                 fGen.L1.Text = "Κωδικός"
                 fGen.L2.Text = "Όνομα"
-                fGen.chk1.Text = "Ενεργό"
                 fGen.L7.Text = "Τύπος"
+                fGen.chk1.Text = "Ενεργό"
                 fGen.txtL7.Tag = "type,0,1,2"
-                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -667,12 +663,19 @@ Public Class frmScroller
                 fGen.L3.Control.Tag = "calcTypeID,0,1,2"
                 fGen.L3.Tag = ""
                 fGen.L3.ImageOptions.Image = Nothing
+                fGen.L4.Text = "Κατηγορία Χιλιοστών"
+                fGen.L4.Control.Tag = "mlcID,0,1,2"
+                fGen.L4.Tag = ""
+                fGen.L4.ImageOptions.Image = Nothing
+                fGen.L7.Text = "Λεκτικό Εκτύπωσης"
+                fGen.L7.Control.Tag = "repName,0,1,2"
+                fGen.L7.Tag = ""
+                fGen.L7.ImageOptions.Image = Nothing
                 fGen.L8.Text = "Θέση Ταξινόμησης"
                 fGen.txtNum.Tag = "ord,0,1,2"
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
@@ -684,21 +687,22 @@ Public Class frmScroller
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.EditRecord
                 fGen.Scroller = GridView1
+                fGen.FormScroller = Me
                 fGen.DataTable = "MLC"
+                fGen.CalledFromControl = False
                 fGen.L1.Text = "Κωδικός"
                 fGen.L2.Text = "Κατηγορία"
-                'fGen.L3.Text = "Τύπος Υπολογισμού"
-                'fGen.cbo1.Tag = "calcID,0,1,2"
-                fGen.FormScroller = Me
-                fGen.CalledFromControl = False
-                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                'fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Text = "Χρώμα"
+                fGen.L7.Text = "Λεκτικό Εκτύπωσης"
+                fGen.L7.Control.Tag = "repName,0,1,2"
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL"
                 Select Case sDataTable
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
@@ -717,11 +721,6 @@ Public Class frmScroller
                 fGen.L1.Text = "Κωδικός"
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
-                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
         End Select
@@ -826,10 +825,7 @@ Public Class frmScroller
                 fGen.L3.Text = "Νομός"
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ADR"
@@ -844,9 +840,9 @@ Public Class frmScroller
                 fGen.L4.Text = "Περιοχές"
                 fGen.L7.Text = "ΤΚ"
                 fGen.L7.Control.Tag = "tk,0,1,2"
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                'fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -862,9 +858,8 @@ Public Class frmScroller
                 fGen.chk1.Text = "Ενεργό"
                 fGen.L7.Text = "Τύπος"
                 fGen.txtL7.Tag = "type,0,1,2"
-                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -881,12 +876,19 @@ Public Class frmScroller
                 fGen.L3.Control.Tag = "calcTypeID,0,1,2"
                 fGen.L3.Tag = ""
                 fGen.L3.ImageOptions.Image = Nothing
+                fGen.L4.Text = "Κατηγορία Χιλιοστών"
+                fGen.L4.Control.Tag = "mlcID,0,1,2"
+                fGen.L4.Tag = ""
+                fGen.L4.ImageOptions.Image = Nothing
+                fGen.L7.Text = "Λεκτικό Εκτύπωσης"
+                fGen.L7.Control.Tag = "repName,0,1,2"
+                fGen.L7.Tag = ""
+                fGen.L7.ImageOptions.Image = Nothing
                 fGen.L8.Text = "Θέση Ταξινόμησης"
                 fGen.txtNum.Tag = "ord,0,1,2"
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
@@ -901,15 +903,12 @@ Public Class frmScroller
                 fGen.L1.Text = "Κωδικός"
                 fGen.L2.Text = "Κατηγορία"
                 fGen.L6.Text = "Χρώμα"
-                'fGen.L3.Text = "Τύπος Υπολογισμού"
-                'fGen.cbo1.Tag = "calcID,0,1,2"
+                fGen.L7.Text = "Λεκτικό Εκτύπωσης"
+                fGen.L7.Control.Tag = "repName,0,1,2"
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
-                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                'fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL"
@@ -929,11 +928,6 @@ Public Class frmScroller
                 fGen.L1.Text = "Κωδικός"
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
-                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
         End Select
@@ -1040,6 +1034,8 @@ Public Class frmScroller
                 Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
             End If
             e.Handled = True
+        ElseIf e.KeyCode = Keys.Enter Then
+            If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub Else EditRecord()
         End If
     End Sub
     'Ορίζουμε το Detail View στο GridView2 που προσθέσαμε στο Design.  
@@ -1177,7 +1173,7 @@ Public Class frmScroller
             Next
 
         End If
-
+        LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
 
     End Sub
     ' Φίλτρο Με επιλογή

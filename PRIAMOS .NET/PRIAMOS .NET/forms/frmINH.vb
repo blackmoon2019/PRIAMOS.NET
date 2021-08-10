@@ -12,6 +12,7 @@ Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPivotGrid
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraReports.UI.CrossTab
 
 Public Class frmINH
     Private sID As String
@@ -45,8 +46,6 @@ Public Class frmINH
         Me.Vw_ANN_MENTSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_ANN_MENTS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TTL' table. You can move, or remove it, as needed.
         Me.Vw_TTLTableAdapter.Fill(Me.Priamos_NETDataSet.vw_TTL)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_CALC_CAT' table. You can move, or remove it, as needed.
-        Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_EXC' table. You can move, or remove it, as needed.
         'Me.Vw_EXCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_EXC)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
@@ -64,6 +63,7 @@ Public Class frmINH
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
                 Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
                 Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+                Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
                 If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
                 EditRecord()
                 'Χιλιοστά Διαμερισμάτων
@@ -285,6 +285,7 @@ Public Class frmINH
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
         Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+        Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
@@ -444,11 +445,6 @@ Public Class frmINH
         form1.CallerControl = cboRepname
         form1.CallerForm = Me
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboRepname.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboRepname.GetColumnValue("ID").ToString
@@ -549,9 +545,14 @@ Public Class frmINH
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
         Dim report As New Rep_Sygentrotiki()
         report.Parameters.Item(0).Value = sID
+        report.Parameters.Item(1).Value = cboBDG.EditValue
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
         report.CreateDocument()
+
         Dim printTool As New ReportPrintTool(report)
         printTool.ShowRibbonPreview()
+        SplashScreenManager1.CloseWaitForm()
     End Sub
 
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
@@ -562,6 +563,17 @@ Public Class frmINH
         End Select
     End Sub
 
+<<<<<<< HEAD
+=======
+    Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboAnnouncements.EditValue = Nothing : ManageAnnouncements()
+            Case 2 : If cboAnnouncements.EditValue <> Nothing Then ManageAnnouncements()
+            Case 3 : cboAnnouncements.EditValue = Nothing
+        End Select
+    End Sub
+
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
     Private Sub ManageAnnouncements()
         Dim form1 As frmGen = New frmGen()
         form1.Text = "Ανακοινώσεις"
@@ -572,11 +584,14 @@ Public Class frmINH
         form1.CallerControl = cboAnnouncements
         form1.CallerForm = Me
         form1.MdiParent = frmMain
+<<<<<<< HEAD
+=======
         form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         If cboAnnouncements.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             If cboAnnouncements.GetColumnValue("ID") Is Nothing Then Exit Sub

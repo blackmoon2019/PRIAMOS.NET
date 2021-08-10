@@ -35,6 +35,7 @@ Partial Class WaitForm
         Me.progressPanel1.AppearanceCaption.Options.UseFont = True
         Me.progressPanel1.AppearanceDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.progressPanel1.AppearanceDescription.Options.UseFont = True
+        Me.progressPanel1.Description = "Φόρτωση..."
         Me.progressPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.progressPanel1.ImageHorzOffset = 20
         Me.progressPanel1.Location = New System.Drawing.Point(0, 17)
@@ -42,8 +43,8 @@ Partial Class WaitForm
         Me.progressPanel1.Name = "progressPanel1"
         Me.progressPanel1.Size = New System.Drawing.Size(246, 39)
         Me.progressPanel1.TabIndex = 0
-        Me.progressPanel1.Text = "progressPanel1"
-        ' 
+        Me.progressPanel1.Text = "Φόρτωση"
+        '
         'tableLayoutPanel1
         '
         Me.tableLayoutPanel1.AutoSize = True
@@ -61,7 +62,7 @@ Partial Class WaitForm
         Me.tableLayoutPanel1.Size = New System.Drawing.Size(246, 73)
         Me.tableLayoutPanel1.TabIndex = 1
         '
-        'Form1
+        'WaitForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -70,12 +71,13 @@ Partial Class WaitForm
         Me.ClientSize = New System.Drawing.Size(246, 73)
         Me.Controls.Add(Me.tableLayoutPanel1)
         Me.DoubleBuffered = True
-        Me.Name = "Form1"
-        Me.StartPosition = FormStartPosition.Manual
+        Me.Name = "WaitForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form1"
-        Me.tableLayoutPanel1.ResumeLayout(false)
+        Me.tableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
+
     End Sub
 
     Private WithEvents progressPanel1 As DevExpress.XtraWaitForm.ProgressPanel

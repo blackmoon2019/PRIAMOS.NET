@@ -572,6 +572,7 @@ Public Class frmGen
                     End If
                 Case "CALC_CAT"
                     FillCbo.CALC_TYPES(cbo1)
+                    FillCbo.MLC(cbo2)
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("CALC_CAT")
                     Else

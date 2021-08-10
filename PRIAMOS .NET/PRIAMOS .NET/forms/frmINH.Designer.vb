@@ -69,6 +69,10 @@ Partial Class frmINH
         Me.colcode = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colinhID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcalcCatID = New DevExpress.XtraGrid.Columns.GridColumn()
+<<<<<<< HEAD
+        Me.RepositoryItemLookUpEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.colrepName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colamt = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colmodifiedBy = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -131,6 +135,10 @@ Partial Class frmINH
         Me.AHPB_H1TableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter()
         Me.Priamos_NETDataSet2 = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
+<<<<<<< HEAD
+        Me.SplashScreenManager1 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), True, True)
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -169,6 +177,10 @@ Partial Class frmINH
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+<<<<<<< HEAD
+        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.TabNavigationPage2.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridINH, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -229,7 +241,7 @@ Partial Class frmINH
         Me.grdAPM.Location = New System.Drawing.Point(3, 3)
         Me.grdAPM.MainView = Me.GridView1
         Me.grdAPM.Name = "grdAPM"
-        Me.grdAPM.Size = New System.Drawing.Size(858, 571)
+        Me.grdAPM.Size = New System.Drawing.Size(890, 680)
         Me.grdAPM.TabIndex = 23
         Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView7})
         '
@@ -686,6 +698,10 @@ Partial Class frmINH
         Me.GridControl1.Location = New System.Drawing.Point(0, 0)
         Me.GridControl1.MainView = Me.GridView5
         Me.GridControl1.Name = "GridControl1"
+<<<<<<< HEAD
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit2})
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.GridControl1.Size = New System.Drawing.Size(893, 683)
         Me.GridControl1.TabIndex = 54
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
@@ -731,7 +747,7 @@ Partial Class frmINH
         'colcalcCatID
         '
         Me.colcalcCatID.Caption = "Κατηγορία Υπολογισμού"
-        Me.colcalcCatID.ColumnEdit = Me.RepositoryItemLookUpEdit1
+        Me.colcalcCatID.ColumnEdit = Me.RepositoryItemLookUpEdit2
         Me.colcalcCatID.FieldName = "calcCatID"
         Me.colcalcCatID.FieldNameSortGroup = "calcCatID"
         Me.colcalcCatID.Name = "colcalcCatID"
@@ -739,6 +755,18 @@ Partial Class frmINH
         Me.colcalcCatID.VisibleIndex = 0
         Me.colcalcCatID.Width = 131
         '
+<<<<<<< HEAD
+        'RepositoryItemLookUpEdit2
+        '
+        Me.RepositoryItemLookUpEdit2.AutoHeight = False
+        Me.RepositoryItemLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemLookUpEdit2.DataSource = Me.VwCALCCATBindingSource
+        Me.RepositoryItemLookUpEdit2.DisplayMember = "name"
+        Me.RepositoryItemLookUpEdit2.Name = "RepositoryItemLookUpEdit2"
+        Me.RepositoryItemLookUpEdit2.ValueMember = "ID"
+        '
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         'colrepName
         '
         Me.colrepName.Caption = "Λεκτικό Εκτύπωσης"
@@ -808,7 +836,7 @@ Partial Class frmINH
         Me.TabNavigationPage2.Caption = "Υπολογισμένα"
         Me.TabNavigationPage2.Controls.Add(Me.GridControl2)
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
-        Me.TabNavigationPage2.Size = New System.Drawing.Size(813, 577)
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(896, 686)
         '
         'GridControl2
         '
@@ -818,7 +846,7 @@ Partial Class frmINH
         Me.GridControl2.Location = New System.Drawing.Point(4, 4)
         Me.GridControl2.MainView = Me.GridINH
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(806, 570)
+        Me.GridControl2.Size = New System.Drawing.Size(889, 679)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridINH})
         '
@@ -845,7 +873,7 @@ Partial Class frmINH
         Me.TabNavigationPage3.Caption = "Χιλιοστά Διαμερισμάτων"
         Me.TabNavigationPage3.Controls.Add(Me.grdAPM)
         Me.TabNavigationPage3.Name = "TabNavigationPage3"
-        Me.TabNavigationPage3.Size = New System.Drawing.Size(864, 577)
+        Me.TabNavigationPage3.Size = New System.Drawing.Size(896, 686)
         '
         'txtHpc
         '
@@ -1248,6 +1276,13 @@ Partial Class frmINH
         'Vw_ANN_MENTSTableAdapter
         '
         Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
+<<<<<<< HEAD
+        '
+        'SplashScreenManager1
+        '
+        Me.SplashScreenManager1.ClosingDelay = 500
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         '
         'frmINH
         '
@@ -1297,6 +1332,10 @@ Partial Class frmINH
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
+<<<<<<< HEAD
+        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.TabNavigationPage2.ResumeLayout(False)
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridINH, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1450,4 +1489,9 @@ Partial Class frmINH
     Friend WithEvents VwANNMENTSBindingSource As BindingSource
     Friend WithEvents Vw_ANN_MENTSTableAdapter As Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter
     Friend WithEvents ToolTipController1 As DevExpress.Utils.ToolTipController
+<<<<<<< HEAD
+    Friend WithEvents RepositoryItemLookUpEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents SplashScreenManager1 As DevExpress.XtraSplashScreen.SplashScreenManager
+=======
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
 End Class

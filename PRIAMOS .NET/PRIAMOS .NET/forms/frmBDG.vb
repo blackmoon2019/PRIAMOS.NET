@@ -170,11 +170,6 @@ Public Class frmBDG
         form1.CalledFromControl = True
         form1.CallerControl = cboCOU
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboCOU.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboCOU.EditValue.ToString
@@ -195,10 +190,7 @@ Public Class frmBDG
         form1.CalledFromControl = True
         form1.CallerControl = cboAREAS
         form1.MdiParent = frmMain
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         If cboAREAS.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboAREAS.EditValue.ToString
@@ -242,9 +234,9 @@ Public Class frmBDG
         form1.CalledFromControl = True
         form1.CallerControl = cboADR
         form1.MdiParent = frmMain
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        'form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         If cboADR.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboADR.EditValue.ToString
@@ -831,11 +823,6 @@ Public Class frmBDG
         form1.CalledFromControl = True
         form1.CallerControl = cboBtypes
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboBtypes.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboBtypes.EditValue.ToString
@@ -857,9 +844,8 @@ Public Class frmBDG
         fGen.chk1.Text = "Ενεργό"
         fGen.L7.Text = "Τύπος"
         fGen.txtL7.Tag = "type,0,1,2"
-        fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        fGen.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         fGen.CalledFromControl = True
         fGen.CallerControl = cbo
         If cbo.EditValue <> Nothing Then
@@ -896,11 +882,6 @@ Public Class frmBDG
         form1.CalledFromControl = True
         form1.CallerControl = cboHtypes
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboHtypes.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboHtypes.EditValue.ToString
@@ -920,11 +901,6 @@ Public Class frmBDG
         form1.CalledFromControl = True
         form1.CallerControl = cboFtypes
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboFtypes.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboFtypes.EditValue.ToString
@@ -2312,11 +2288,6 @@ Public Class frmBDG
         End If
 
         'form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
 
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.ShowDialog()

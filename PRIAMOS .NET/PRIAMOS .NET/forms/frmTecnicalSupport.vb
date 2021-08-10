@@ -192,11 +192,6 @@ Public Class frmTecnicalSupport
         form1.CallerControl = cboCategory
         form1.CallerForm = Me
         form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         If cboCategory.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             form1.ID = cboCategory.EditValue.ToString

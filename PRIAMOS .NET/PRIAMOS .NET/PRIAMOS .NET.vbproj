@@ -440,6 +440,12 @@
     <Compile Include="forms\frmDBConnection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reports\ClosedAPT.Designer.vb">
+      <DependentUpon>ClosedAPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ClosedAPT.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\EXODA.Designer.vb">
       <DependentUpon>EXODA.vb</DependentUpon>
     </Compile>
@@ -488,6 +494,12 @@
     </Compile>
     <Compile Include="Priamos_NETDataSet.vb">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SygHeader.Designer.vb">
+      <DependentUpon>SygHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SygHeader.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="forms\WaitForm.Designer.vb">
@@ -565,6 +577,9 @@
     <EmbeddedResource Include="forms\frmDBConnection.resx">
       <DependentUpon>frmDBConnection.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ClosedAPT.resx">
+      <DependentUpon>ClosedAPT.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\EXODA.resx">
       <DependentUpon>EXODA.vb</DependentUpon>
     </EmbeddedResource>
@@ -587,6 +602,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\WaitForm.resx">
       <DependentUpon>WaitForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SygHeader.resx">
+      <DependentUpon>SygHeader.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usefull forms\frmINH_pivot.resx">
       <DependentUpon>frmINH_pivot.vb</DependentUpon>

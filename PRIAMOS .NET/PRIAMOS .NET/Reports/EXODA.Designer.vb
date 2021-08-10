@@ -219,7 +219,11 @@ Partial Public Class EXODA
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 254.0!
+<<<<<<< HEAD
+        Me.BottomMargin.HeightF = 0!
+=======
         Me.BottomMargin.HeightF = 8.0!
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.BottomMargin.Name = "BottomMargin"
         '
         'GroupHeader1
@@ -325,7 +329,7 @@ Partial Public Class EXODA
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "bf82461d-50b0-4616-9493-ec3bc5266cb7"
+        Me.inhID.ValueInfo = "936eacb0-936a-4952-831a-9886b55df64a"
         DynamicListLookUpSettings1.DataMember = "vw_IND"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "inhID"
@@ -348,7 +352,11 @@ Partial Public Class EXODA
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
+<<<<<<< HEAD
+        Me.Margins = New System.Drawing.Printing.Margins(254, 111, 0, 0)
+=======
         Me.Margins = New System.Drawing.Printing.Margins(254, 111, 0, 8)
+>>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.PageHeight = 2794
         Me.PageWidth = 2159
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
