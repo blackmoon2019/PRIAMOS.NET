@@ -2,6 +2,8 @@
 Imports System.Data.SqlClient
 Imports DevExpress.Export
 Imports DevExpress.Utils
+Imports DevExpress.Utils.Menu
+Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
@@ -50,6 +52,8 @@ Public Class frmINH
         'Me.Vw_EXCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_EXC)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
+
+
         Select Case Mode
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("INH")
@@ -543,16 +547,7 @@ Public Class frmINH
     End Sub
 
     Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
-        Dim report As New Rep_Sygentrotiki()
-        report.Parameters.Item(0).Value = sID
-        report.Parameters.Item(1).Value = cboBDG.EditValue
-        SplashScreenManager1.ShowWaitForm()
-        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
-        report.CreateDocument()
 
-        Dim printTool As New ReportPrintTool(report)
-        printTool.ShowRibbonPreview()
-        SplashScreenManager1.CloseWaitForm()
     End Sub
 
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
@@ -563,17 +558,6 @@ Public Class frmINH
         End Select
     End Sub
 
-<<<<<<< HEAD
-=======
-    Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
-        Select Case e.Button.Index
-            Case 1 : cboAnnouncements.EditValue = Nothing : ManageAnnouncements()
-            Case 2 : If cboAnnouncements.EditValue <> Nothing Then ManageAnnouncements()
-            Case 3 : cboAnnouncements.EditValue = Nothing
-        End Select
-    End Sub
-
->>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
     Private Sub ManageAnnouncements()
         Dim form1 As frmGen = New frmGen()
         form1.Text = "Ανακοινώσεις"
@@ -584,14 +568,6 @@ Public Class frmINH
         form1.CallerControl = cboAnnouncements
         form1.CallerForm = Me
         form1.MdiParent = frmMain
-<<<<<<< HEAD
-=======
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
->>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         If cboAnnouncements.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
             If cboAnnouncements.GetColumnValue("ID") Is Nothing Then Exit Sub
@@ -610,5 +586,32 @@ Public Class frmINH
                 e.Info = New ToolTipControlInfo(cboAnnouncements, cboAnnouncements.EditValue)
             End If
         End If
+    End Sub
+
+
+    Private Sub BarButtonItem1_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem1.ItemClick
+        Dim report As New Rep_Sygentrotiki()
+        report.Parameters.Item(0).Value = sID
+        report.Parameters.Item(1).Value = cboBDG.EditValue
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        report.CreateDocument()
+
+        Dim printTool As New ReportPrintTool(report)
+        printTool.ShowRibbonPreview()
+        SplashScreenManager1.CloseWaitForm()
+    End Sub
+
+    Private Sub BarButtonItem2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem2.ItemClick
+        Dim report As New Eidop()
+        report.Parameters.Item(0).Value = sID
+        ' report.Parameters.Item(1).Value = cboBDG.EditValue
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        report.CreateDocument()
+
+        Dim printTool As New ReportPrintTool(report)
+        printTool.ShowRibbonPreview()
+        SplashScreenManager1.CloseWaitForm()
     End Sub
 End Class

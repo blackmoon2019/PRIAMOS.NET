@@ -35,7 +35,7 @@ Partial Public Class ClosedAPT
         '
         'SqlDataSource1
         '
-        Me.SqlDataSource1.ConnectionName = "Priamos_NETConnectionStringRemote"
+        Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
         Me.SqlDataSource1.Name = "SqlDataSource1"
         CustomSqlQuery1.Name = "RCA"
         QueryParameter1.Name = "inhID"

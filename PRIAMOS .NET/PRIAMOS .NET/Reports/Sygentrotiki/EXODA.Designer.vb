@@ -58,7 +58,7 @@ Partial Public Class EXODA
         '
         'SqlDataSource1
         '
-        Me.SqlDataSource1.ConnectionName = "Priamos_NETConnectionStringRemote"
+        Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
         Me.SqlDataSource1.Name = "SqlDataSource1"
         CustomSqlQuery1.Name = "vw_IND"
         QueryParameter1.Name = "inhID"
@@ -219,11 +219,7 @@ Partial Public Class EXODA
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 254.0!
-<<<<<<< HEAD
         Me.BottomMargin.HeightF = 0!
-=======
-        Me.BottomMargin.HeightF = 8.0!
->>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.BottomMargin.Name = "BottomMargin"
         '
         'GroupHeader1
@@ -352,11 +348,7 @@ Partial Public Class EXODA
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-<<<<<<< HEAD
         Me.Margins = New System.Drawing.Printing.Margins(254, 111, 0, 0)
-=======
-        Me.Margins = New System.Drawing.Printing.Margins(254, 111, 0, 8)
->>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
         Me.PageHeight = 2794
         Me.PageWidth = 2159
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})

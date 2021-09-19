@@ -46,7 +46,7 @@ Public Class frmScroller
         'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
         'LoadViews()
         'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-        LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+        'LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
 
         GridLocalizer.Active = New GreekGridLocalizer()
         'Localizer.Active = New GermanEditorsLocalizer()
@@ -491,11 +491,11 @@ Public Class frmScroller
     End Sub
     'Επεξεργασία Εγγραφής
     Private Sub BarEdit_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEdit.ItemClick
-        EditRecord()
+        If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub Else EditRecord()
     End Sub
     'Διαγραφή Εγγραφής
     Private Sub BarDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarDelete.ItemClick
-        DeleteRecord()
+        If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub Else DeleteRecord()
     End Sub
     'Ανανέωση εγγραφών
     Private Sub BarRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRefresh.ItemClick
@@ -699,10 +699,6 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-<<<<<<< HEAD
-=======
-
->>>>>>> 1de6926379c452e36a8b048127cf8c8b5aaae17a
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL"
                 Select Case sDataTable
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
@@ -1133,47 +1129,52 @@ Public Class frmScroller
     Private Sub BBUpdateViewFromDB_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdateViewFromDB.ItemClick
         'ReadXml.UpdateXMLFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
         'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
-        Dim col1 As GridColumn
-        Dim grdColumns As List(Of GridColumn)
-        LoadRecords()
-        If myReader Is Nothing Then Exit Sub
-        'Εαν υπάρχουν πεδία που πρέπει να προστεθούν από την βάση
-        If myReader.FieldCount > GridView1.Columns.Count Then
-            Dim schema As DataTable = myReader.GetSchemaTable()
-            grdColumns = GridView1.Columns.ToList()
-            For i As Integer = 0 To myReader.FieldCount - 1
-                Console.WriteLine(myReader.GetName(i))
-                Dim Col2 As GridColumn = GridView1.Columns(myReader.GetName(i))
-                If Col2 Is Nothing Then
-                    col1 = GridView1.Columns.AddField(myReader.GetName(i))
-                    col1.FieldName = myReader.GetName(i)
-                    col1.Visible = True
-                    col1.VisibleIndex = 0
-                    col1.AppearanceCell.BackColor = Color.Bisque
-                End If
+        Try
+            Dim col1 As GridColumn
+            Dim Col2 As GridColumn
+            Dim grdColumns As List(Of GridColumn)
+            LoadRecords()
+            If myReader Is Nothing Then Exit Sub
+            'Εαν υπάρχουν πεδία που πρέπει να προστεθούν από την βάση
+            If myReader.FieldCount >= GridView1.Columns.Count Then
+                Dim schema As DataTable = myReader.GetSchemaTable()
+                grdColumns = GridView1.Columns.ToList()
+                For i As Integer = 0 To myReader.FieldCount - 1
+                    Console.WriteLine(myReader.GetName(i))
+                    If i < GridView1.Columns.Count Then Col2 = GridView1.Columns.Item(i) Else Col2 = Nothing
+                    If Col2 Is Nothing Then
+                        col1 = GridView1.Columns.AddField(myReader.GetName(i))
+                        col1.FieldName = myReader.GetName(i)
+                        col1.Visible = True
+                        col1.VisibleIndex = 0
+                        col1.AppearanceCell.BackColor = Color.Bisque
+                    End If
 
-            Next
-            'Εαν έχουν σβηστεί πεδία από την βάση τα αφαιρεί και από το grid
-        ElseIf myReader.FieldCount < GridView1.Columns.Count Then
-            Dim schema As DataTable = myReader.GetSchemaTable()
-            grdColumns = GridView1.Columns.ToList()
+                Next
+                'Εαν έχουν σβηστεί πεδία από την βάση τα αφαιρεί και από το grid
+            ElseIf myReader.FieldCount < GridView1.Columns.Count Then
+                Dim schema As DataTable = myReader.GetSchemaTable()
+                grdColumns = GridView1.Columns.ToList()
 
-            For i As Integer = 0 To grdColumns.Count - 1
-                Try
-                    Dim Col2 As GridColumn = grdColumns(i)
-                    Dim sOrd As String = myReader.GetOrdinal(Col2.FieldName)
-                Catch ex As Exception
-                    Dim Col2 As GridColumn = grdColumns(i)
-                    GridView1.Columns.Remove(Col2)
-                    Console.WriteLine(ex.Message)
+                For i As Integer = 0 To grdColumns.Count - 1
+                    Try
+                        Col2 = grdColumns(i)
+                        Dim sOrd As String = myReader.GetOrdinal(Col2.FieldName)
+                    Catch ex As Exception
+                        Col2 = grdColumns(i)
+                        GridView1.Columns.Remove(Col2)
+                        Console.WriteLine(ex.Message)
 
-                    Continue For
-                End Try
+                        Continue For
+                    End Try
 
-            Next
+                Next
 
-        End If
-        LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+            End If
+            LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
     ' Φίλτρο Με επιλογή

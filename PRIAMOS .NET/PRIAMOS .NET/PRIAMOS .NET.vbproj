@@ -440,28 +440,46 @@
     <Compile Include="forms\frmDBConnection.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ClosedAPT.Designer.vb">
+    <Compile Include="Reports\Eidop\Eidop.Designer.vb">
+      <DependentUpon>Eidop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Eidop\Eidop.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Eidop\EXODA_PER_APT.Designer.vb">
+      <DependentUpon>EXODA_PER_APT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Eidop\EXODA_PER_APT.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\EXODA_PER_APT_OWNERS.Designer.vb">
+      <DependentUpon>EXODA_PER_APT_OWNERS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EXODA_PER_APT_OWNERS.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Sygentrotiki\ClosedAPT.Designer.vb">
       <DependentUpon>ClosedAPT.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ClosedAPT.vb">
+    <Compile Include="Reports\Sygentrotiki\ClosedAPT.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\EXODA.Designer.vb">
+    <Compile Include="Reports\Sygentrotiki\EXODA.Designer.vb">
       <DependentUpon>EXODA.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reports\EXODA.vb">
+    <Compile Include="Reports\Sygentrotiki\EXODA.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\EXODA_OWNERS.Designer.vb">
+    <Compile Include="Reports\Sygentrotiki\EXODA_OWNERS.Designer.vb">
       <DependentUpon>EXODA_OWNERS.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reports\EXODA_OWNERS.vb">
+    <Compile Include="Reports\Sygentrotiki\EXODA_OWNERS.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\Sygentrotiki.Designer.vb">
+    <Compile Include="Reports\Sygentrotiki\Sygentrotiki.Designer.vb">
       <DependentUpon>Sygentrotiki.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Sygentrotiki.vb">
+    <Compile Include="Reports\Sygentrotiki\Sygentrotiki.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Modules\Main.vb" />
@@ -495,10 +513,10 @@
     <Compile Include="Priamos_NETDataSet.vb">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\SygHeader.Designer.vb">
+    <Compile Include="Reports\Sygentrotiki\SygHeader.Designer.vb">
       <DependentUpon>SygHeader.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reports\SygHeader.vb">
+    <Compile Include="Reports\Sygentrotiki\SygHeader.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.vb" />
@@ -577,16 +595,25 @@
     <EmbeddedResource Include="forms\frmDBConnection.resx">
       <DependentUpon>frmDBConnection.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ClosedAPT.resx">
+    <EmbeddedResource Include="Reports\Eidop\Eidop.resx">
+      <DependentUpon>Eidop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Eidop\EXODA_PER_APT.resx">
+      <DependentUpon>EXODA_PER_APT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EXODA_PER_APT_OWNERS.resx">
+      <DependentUpon>EXODA_PER_APT_OWNERS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Sygentrotiki\ClosedAPT.resx">
       <DependentUpon>ClosedAPT.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\EXODA.resx">
+    <EmbeddedResource Include="Reports\Sygentrotiki\EXODA.resx">
       <DependentUpon>EXODA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\EXODA_OWNERS.resx">
+    <EmbeddedResource Include="Reports\Sygentrotiki\EXODA_OWNERS.resx">
       <DependentUpon>EXODA_OWNERS.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Sygentrotiki.resx">
+    <EmbeddedResource Include="Reports\Sygentrotiki\Sygentrotiki.resx">
       <DependentUpon>Sygentrotiki.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
@@ -603,7 +630,7 @@
     <EmbeddedResource Include="forms\WaitForm.resx">
       <DependentUpon>WaitForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\SygHeader.resx">
+    <EmbeddedResource Include="Reports\Sygentrotiki\SygHeader.resx">
       <DependentUpon>SygHeader.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usefull forms\frmINH_pivot.resx">
