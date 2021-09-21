@@ -288,7 +288,7 @@ Public Class frmINH
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
-        Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+        Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
@@ -468,7 +468,8 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
                 oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
                 ' Εαν είναι νέα εγγραφή τότε παίρνω την τιμή της ώρας από το Combo στο FlyoutPanel
-                If Mode = FormMode.NewRecord Then
+                If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                    cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbH.EditValue Is Nothing Then
                     If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper
                 Else
                     ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
@@ -532,6 +533,8 @@ Public Class frmINH
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
             If cboAhpb.Properties.DataSource.Count = 1 Then
                 cboAhpb.ItemIndex = 0
+                cboAhpb.Properties.ReadOnly = False
+
             ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
                 XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 'cmdOK.Enabled = False
@@ -544,10 +547,6 @@ Public Class frmINH
         Else
             txtBoilerType.EditValue = Nothing
         End If
-    End Sub
-
-    Private Sub cmdPrint_Click(sender As Object, e As EventArgs) Handles cmdPrint.Click
-
     End Sub
 
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed

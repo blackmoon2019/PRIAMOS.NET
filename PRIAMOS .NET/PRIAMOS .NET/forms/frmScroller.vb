@@ -159,6 +159,16 @@ Public Class frmScroller
                     Case "vw_TTL" : sSQL = "DELETE FROM TTL WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_MENTS" : sSQL = "DELETE FROM ANN_MENTS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
+
+                        sSQL = "Update AHPB_H 
+                                SET finalized=0
+                                From INH
+                                INNER Join AHPB_H ON INH.ahpb_HID = AHPB_H.ID
+                                WHERE INH.ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
                         sSQL = "DELETE FROM IND WHERE INHID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()

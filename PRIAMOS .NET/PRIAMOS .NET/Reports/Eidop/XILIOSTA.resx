@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="SqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="CustomSqlQuery1.Sql" xml:space="preserve">
+    <value>select inhid,aptid,mlcName,
+ case when s.TotElevator&lt;&gt; 0 then s.TotElevator
+	  when s.TotBilling&lt;&gt; 0 then s.TotBilling
+	  when s.TotGarage &lt;&gt; 0 then s.TotGarage
+	  when s.TotHeating  &lt;&gt; 0 then s.TotHeating
+	  when s.Totheating_consumption   &lt;&gt; 0 then s.Totheating_consumption
+	  when s.TotMonomers1   &lt;&gt; 0 then s.TotMonomers1
+	  when s.TotMonomers2   &lt;&gt; 0 then s.TotMonomers2
+	  when s.TotMonomers3   &lt;&gt; 0 then s.TotMonomers3
+	  when s.TotOwners   &lt;&gt; 0 then s.TotOwners   
+	  when s.TotSpecialCosts &lt;&gt; 0 then s.TotSpecialCosts
+	  when s.TotShared     &lt;&gt; 0 then s.TotShared     else 0 end as TotApm,
+case when s.Elevator&lt;&gt; 0 then s.Elevator
+	  when s.Billing&lt;&gt; 0 then s.Billing
+	  when s.Garage &lt;&gt; 0 then s.Garage
+	  when s.Heating  &lt;&gt; 0 then s.Heating
+	  when s.heating_consumption   &lt;&gt; 0 then s.heating_consumption
+	  when s.Monomers1   &lt;&gt; 0 then s.Monomers1
+	  when s.Monomers2   &lt;&gt; 0 then s.Monomers2
+	  when s.Monomers3   &lt;&gt; 0 then s.Monomers3
+	  when s.Owners   &lt;&gt; 0 then s.Owners   
+	  when s.SpecialCosts &lt;&gt; 0 then s.SpecialCosts
+	  when s.Shared     &lt;&gt; 0 then s.Shared     else 0 end as Apm
+  from(select i.inhid,a.aptid,mlcName ,
+/*ΑΝΕΛΚΥΣΤΗΡΑ*/	    case when calcCatID  = '7FA0D7BA-2713-405C-8748-61DD8537A9CC' then  (SELECT SUM(APMIL.elevator ) FROM APMIL inner join apt on apt.id=apmil.aptid and apmil.bdgid=i.bdgid  WHERE apt.out=0)   ELSE 0 END as TotElevator,
+/*ΚΟΙΝΟΧΡΗΣΤΩΝ*/    case when calcCatID  = 'C8ADCD0B-D8BC-4F68-B6BB-D5CBCB88B4B9' then  (SELECT SUM(APMIL.shared ) FROM APMIL  inner join apt on apt.id=apmil.aptid and apmil.bdgid=i.bdgid WHERE     apt.out=0)   ELSE 0 END as TotShared,
+/*ΘΕΡΜΑΝΣΕΩΣ*/	    case when calcCatID  = '8D47E8AB-3692-48F1-8CBA-1E3F41AFC13D' then  (SELECT SUM(APMIL.heating ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE      apt.out=0)   ELSE 0 END as TotHeating,
+/*ΕΙΔΙΚΕΣ ΔΑΠΑΝΕΣ*/ case when calcCatID  = 'BBFDA968-8C0C-431B-A804-AC8B8CA4B3D3' then  (SELECT SUM(APMIL.special_costs ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE   apt.out=0)   ELSE 0 END as TotSpecialCosts,
+/*ΙΔΙΟΚΤΗΤΩΝ*/	    case when calcCatID  =  'E371555E-BB81-425B-9702-FB1EDE8DE73D' then (SELECT SUM(APMIL.owners ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE  apt.out=0) ELSE  0 END as TotOwners,
+/*ΕΚΔΟΣΗ*/		    case when calcCatID  = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then  (SELECT SUM(APMIL.billing ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE   apt.out=0) ELSE 0 END as TotBilling,
+/*ΘΕΣΕΙΣ ΓΚΑΡΑΖ*/   case when calcCatID  =  '8D417A79-9757-4B18-8695-AE1BDF9416DD' then (SELECT SUM(APMIL.garage ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE   apt.out=0)   ELSE 0 END as TotGarage,
+/*ΜΟΝΟΜΕΡΗ 1*/      case when calcCatID  = '3FE81416-EF7C-4D3B-B1EA-E4CC40350FDE' then  (SELECT SUM(APMIL.monomers1 ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE apt.out=0)  ELSE 0 END as TotMonomers1,
+/*ΜΟΝΟΜΕΡΗ 2*/      case when calcCatID  = 'EBD46C24-FBB0-47AD-A325-143C953A4AB4' then  (SELECT SUM(APMIL.monomers2 ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE apt.out=0) ELSE 0 END  as TotMonomers2,
+/*ΜΟΝΟΜΕΡΗ 3*/	    case when calcCatID  =  '2AE90BA0-DD3D-424D-9F6E-DA7A9A518620' then (SELECT SUM(APMIL.monomers3 ) FROM APMIL  inner join apt on apt.id=apmil.aptid  and apmil.bdgid=i.bdgid WHERE apt.out=0)  ELSE 0 END  as TotMonomers3 ,
+/*ΚΑΤ/ΣΗ ΘΕΡΜΑΝΣΗΣ*/case when calcCatID  =  'B139CE26-1ABA-4680-A1EE-623EC97C475B' then (SELECT SUM(APMIL.heating_consumption)  FROM APMIL  inner join apt on apt.id=apmil.aptid  WHERE APMIL.bdgID= i.bdgid  and apt.out=0) ELSE 0 END as Totheating_consumption,
+ case when calcCatID  = '7FA0D7BA-2713-405C-8748-61DD8537A9CC' then  A.elevator  ELSE 0 END as Elevator,
+ case when calcCatID  = 'C8ADCD0B-D8BC-4F68-B6BB-D5CBCB88B4B9' then  A.shared    else 0 end AS  Shared, 
+ case when calcCatID  = '8D47E8AB-3692-48F1-8CBA-1E3F41AFC13D' then  A.heating   ELSE 0 END as Heating,
+ case when calcCatID  = 'BBFDA968-8C0C-431B-A804-AC8B8CA4B3D3' then  A.special_costs   ELSE 0 END as SpecialCosts,
+ case when calcCatID  =  'E371555E-BB81-425B-9702-FB1EDE8DE73D' then A.owners    ELSE  0 END as Owners,
+ case when calcCatID  = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then  A.billing   ELSE 0 END as Billing,
+ case when calcCatID  =  '8D417A79-9757-4B18-8695-AE1BDF9416DD' then A.garage    ELSE 0 END as Garage,
+ case when calcCatID  = '3FE81416-EF7C-4D3B-B1EA-E4CC40350FDE' then  A.monomers1   ELSE 0 END as Monomers1,
+ case when calcCatID  = 'EBD46C24-FBB0-47AD-A325-143C953A4AB4' then  A.monomers2  ELSE 0 END  as Monomers2,
+ case when calcCatID  =  '2AE90BA0-DD3D-424D-9F6E-DA7A9A518620' then A.monomers3   ELSE 0 END  as Monomers3,
+ case when calcCatID  =  'B139CE26-1ABA-4680-A1EE-623EC97C475B' then A.heating_consumption else 0 end as heating_consumption
+ from vw_inc I
+inner join vw_APMIL A on A.aptID =I.aptID and A.bdgID=I.bdgID 
+WHERE I.inhID=@inhID and I.aptID=@aptID
+group by i.inhid,A.aptid,mlcname,I.bdgID,I.calcCatID ,A.shared,a.Elevator,a.Heating,a.special_costs,a.owners,a.billing ,a.garage,a.monomers1  ,a.monomers2,a.monomers3,a.heating_consumption
+) as s
+order by mlcname</value>
+  </data>
+  <data name="SqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iaW5oaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImFwdGlkIiBUeXBlPSJHdWlkIiAvPjxGaWVsZCBOYW1lPSJtbGNOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlRvdEFwbSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iQXBtIiBUeXBlPSJEZWNpbWFsIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+  </data>
+</root>

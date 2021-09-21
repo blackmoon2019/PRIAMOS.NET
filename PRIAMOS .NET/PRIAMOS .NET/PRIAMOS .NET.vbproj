@@ -452,10 +452,16 @@
     <Compile Include="Reports\Eidop\EXODA_PER_APT.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\EXODA_PER_APT_OWNERS.Designer.vb">
+    <Compile Include="Reports\Eidop\EXODA_PER_APT_OWNERS.Designer.vb">
       <DependentUpon>EXODA_PER_APT_OWNERS.vb</DependentUpon>
     </Compile>
-    <Compile Include="Reports\EXODA_PER_APT_OWNERS.vb">
+    <Compile Include="Reports\Eidop\EXODA_PER_APT_OWNERS.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Eidop\XILIOSTA.Designer.vb">
+      <DependentUpon>XILIOSTA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Eidop\XILIOSTA.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\Sygentrotiki\ClosedAPT.Designer.vb">
@@ -601,8 +607,11 @@
     <EmbeddedResource Include="Reports\Eidop\EXODA_PER_APT.resx">
       <DependentUpon>EXODA_PER_APT.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\EXODA_PER_APT_OWNERS.resx">
+    <EmbeddedResource Include="Reports\Eidop\EXODA_PER_APT_OWNERS.resx">
       <DependentUpon>EXODA_PER_APT_OWNERS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Eidop\XILIOSTA.resx">
+      <DependentUpon>XILIOSTA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sygentrotiki\ClosedAPT.resx">
       <DependentUpon>ClosedAPT.vb</DependentUpon>
