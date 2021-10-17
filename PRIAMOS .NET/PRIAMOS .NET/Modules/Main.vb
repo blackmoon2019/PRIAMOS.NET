@@ -31,6 +31,7 @@ Module Main
     Public Structure PROG_PROPS
         Public Decimals As Integer
         Public SupportEmail As String
+        Public EXFolderPath As String
     End Structure
     Public ProgProps As PROG_PROPS
 

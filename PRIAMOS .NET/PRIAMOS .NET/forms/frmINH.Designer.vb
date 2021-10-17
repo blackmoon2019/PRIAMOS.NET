@@ -25,6 +25,28 @@ Partial Class frmINH
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colSelectedFiles = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.VwINDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PriamosNETDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcode = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colinhID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcalcCatID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemLookUpEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.VwCALCCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.colrepName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colamt = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedBy = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedOn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreatedOn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colnam = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colfDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colname = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colowner_tenant = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdPrintAll = New DevExpress.XtraEditors.DropDownButton()
@@ -48,11 +70,8 @@ Partial Class frmINH
         Me.cmdSaveINH = New DevExpress.XtraEditors.SimpleButton()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.txtAmt = New DevExpress.XtraEditors.TextEdit()
         Me.chkCALC_CAT = New DevExpress.XtraEditors.CheckedListBoxControl()
-        Me.VwCALCCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PriamosNETDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
         Me.dtTDate = New DevExpress.XtraEditors.DateEdit()
         Me.txtHeatingType = New DevExpress.XtraEditors.TextEdit()
@@ -60,7 +79,7 @@ Partial Class frmINH
         Me.cboRepname = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwTTLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cboAhpbH = New DevExpress.XtraEditors.LookUpEdit()
-        Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPane1 = New DevExpress.XtraBars.Navigation.TabPane()
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.FlyoutPanel1 = New DevExpress.Utils.FlyoutPanel()
@@ -69,24 +88,7 @@ Partial Class frmINH
         Me.cmdOK = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.cboAhpb = New DevExpress.XtraEditors.LookUpEdit()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.VwINDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcode = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colinhID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcalcCatID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemLookUpEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
-        Me.colrepName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colamt = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colmodifiedBy = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colmodifiedOn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcreatedOn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colnam = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colfDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.coltDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colname = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colowner_tenant = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabNavigationPage2 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridINH = New DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView()
@@ -126,7 +128,6 @@ Partial Class frmINH
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem23 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwEXCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
@@ -141,9 +142,18 @@ Partial Class frmINH
         Me.Priamos_NETDataSet2 = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
         Me.SplashScreenManager1 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), True, True)
+        Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
+        Me.colpaid = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -154,11 +164,8 @@ Partial Class frmINH
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkCALC_CAT, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtTDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -168,7 +175,7 @@ Partial Class frmINH
         CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAhpbH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane1.SuspendLayout()
         Me.TabNavigationPage1.SuspendLayout()
@@ -177,10 +184,7 @@ Partial Class frmINH
         CType(Me.FlyoutPanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlyoutPanelControl1.SuspendLayout()
         CType(Me.cboAhpb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPage2.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridINH, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -218,7 +222,6 @@ Partial Class frmINH
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -261,6 +264,164 @@ Partial Class frmINH
         Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
         Me.GridView1.OptionsView.ShowGroupPanel = False
         Me.GridView1.PreviewIndent = 0
+        '
+        'colSelectedFiles
+        '
+        Me.colSelectedFiles.FieldName = "SelectedFiles"
+        Me.colSelectedFiles.Name = "colSelectedFiles"
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GridControl1.DataSource = Me.VwINDBindingSource
+        Me.GridControl1.Location = New System.Drawing.Point(0, 0)
+        Me.GridControl1.MainView = Me.GridView5
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit2})
+        Me.GridControl1.Size = New System.Drawing.Size(862, 683)
+        Me.GridControl1.TabIndex = 54
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
+        '
+        'VwINDBindingSource
+        '
+        Me.VwINDBindingSource.DataMember = "vw_IND"
+        Me.VwINDBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        '
+        'PriamosNETDataSetBindingSource
+        '
+        Me.PriamosNETDataSetBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.PriamosNETDataSetBindingSource.Position = 0
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'GridView5
+        '
+        Me.GridView5.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colinhID, Me.colcalcCatID, Me.colrepName, Me.colamt, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colnam, Me.colfDate, Me.coltDate, Me.colname, Me.colowner_tenant, Me.colSelectedFiles, Me.colpaid})
+        Me.GridView5.GridControl = Me.GridControl1
+        Me.GridView5.GroupCount = 1
+        Me.GridView5.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", Me.colamt, " Σύνολο {0:n2}€"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "name", Nothing, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "owner_tenant", Nothing, "")})
+        Me.GridView5.LevelIndent = 0
+        Me.GridView5.Name = "GridView5"
+        Me.GridView5.OptionsBehavior.AutoExpandAllGroups = True
+        Me.GridView5.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.GridView5.OptionsPrint.PrintPreview = True
+        Me.GridView5.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView5.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView5.OptionsView.ShowFooter = True
+        Me.GridView5.OptionsView.ShowGroupedColumns = True
+        Me.GridView5.PreviewIndent = 0
+        Me.GridView5.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colowner_tenant, DevExpress.Data.ColumnSortOrder.Ascending)})
+        '
+        'colID
+        '
+        Me.colID.FieldName = "ID"
+        Me.colID.Name = "colID"
+        '
+        'colcode
+        '
+        Me.colcode.FieldName = "code"
+        Me.colcode.Name = "colcode"
+        '
+        'colinhID
+        '
+        Me.colinhID.FieldName = "inhID"
+        Me.colinhID.Name = "colinhID"
+        '
+        'colcalcCatID
+        '
+        Me.colcalcCatID.Caption = "Κατηγορία Υπολογισμού"
+        Me.colcalcCatID.ColumnEdit = Me.RepositoryItemLookUpEdit2
+        Me.colcalcCatID.FieldName = "calcCatID"
+        Me.colcalcCatID.FieldNameSortGroup = "calcCatID"
+        Me.colcalcCatID.Name = "colcalcCatID"
+        Me.colcalcCatID.Visible = True
+        Me.colcalcCatID.VisibleIndex = 0
+        Me.colcalcCatID.Width = 131
+        '
+        'RepositoryItemLookUpEdit2
+        '
+        Me.RepositoryItemLookUpEdit2.AutoHeight = False
+        Me.RepositoryItemLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepositoryItemLookUpEdit2.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 18, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Κατηγορία", 33, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemLookUpEdit2.DataSource = Me.VwCALCCATBindingSource
+        Me.RepositoryItemLookUpEdit2.DisplayMember = "name"
+        Me.RepositoryItemLookUpEdit2.Name = "RepositoryItemLookUpEdit2"
+        Me.RepositoryItemLookUpEdit2.ValueMember = "ID"
+        '
+        'VwCALCCATBindingSource
+        '
+        Me.VwCALCCATBindingSource.DataMember = "vw_CALC_CAT"
+        Me.VwCALCCATBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        '
+        'colrepName
+        '
+        Me.colrepName.Caption = "Λεκτικό Εκτύπωσης"
+        Me.colrepName.FieldName = "repName"
+        Me.colrepName.Name = "colrepName"
+        Me.colrepName.Visible = True
+        Me.colrepName.VisibleIndex = 2
+        Me.colrepName.Width = 181
+        '
+        'colamt
+        '
+        Me.colamt.Caption = "Ποσό"
+        Me.colamt.FieldName = "amt"
+        Me.colamt.Name = "colamt"
+        Me.colamt.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", "SUM={0:0.##}")})
+        Me.colamt.Visible = True
+        Me.colamt.VisibleIndex = 1
+        Me.colamt.Width = 93
+        '
+        'colmodifiedBy
+        '
+        Me.colmodifiedBy.FieldName = "modifiedBy"
+        Me.colmodifiedBy.Name = "colmodifiedBy"
+        '
+        'colmodifiedOn
+        '
+        Me.colmodifiedOn.FieldName = "modifiedOn"
+        Me.colmodifiedOn.Name = "colmodifiedOn"
+        '
+        'colcreatedOn
+        '
+        Me.colcreatedOn.FieldName = "createdOn"
+        Me.colcreatedOn.Name = "colcreatedOn"
+        '
+        'colnam
+        '
+        Me.colnam.Caption = "Πολυκατοικία"
+        Me.colnam.FieldName = "nam"
+        Me.colnam.Name = "colnam"
+        '
+        'colfDate
+        '
+        Me.colfDate.FieldName = "fDate"
+        Me.colfDate.Name = "colfDate"
+        '
+        'coltDate
+        '
+        Me.coltDate.FieldName = "tDate"
+        Me.coltDate.Name = "coltDate"
+        '
+        'colname
+        '
+        Me.colname.FieldName = "name"
+        Me.colname.Name = "colname"
+        Me.colname.Width = 139
+        '
+        'colowner_tenant
+        '
+        Me.colowner_tenant.Caption = "Ένοικος/Ιδιοκτήτης"
+        Me.colowner_tenant.FieldName = "owner_tenant"
+        Me.colowner_tenant.Name = "colowner_tenant"
+        Me.colowner_tenant.Visible = True
+        Me.colowner_tenant.VisibleIndex = 4
         '
         'RepositoryItemLookUpEdit1
         '
@@ -511,11 +672,6 @@ Partial Class frmINH
         Me.VwBDGBindingSource.DataMember = "vw_BDG"
         Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
         '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'txtAmt
         '
         Me.txtAmt.EditValue = "0,00 €"
@@ -550,16 +706,6 @@ Partial Class frmINH
         Me.chkCALC_CAT.TabIndex = 28
         Me.chkCALC_CAT.Tag = ""
         Me.chkCALC_CAT.ValueMember = "ID"
-        '
-        'VwCALCCATBindingSource
-        '
-        Me.VwCALCCATBindingSource.DataMember = "vw_CALC_CAT"
-        Me.VwCALCCATBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
-        'PriamosNETDataSetBindingSource
-        '
-        Me.PriamosNETDataSetBindingSource.DataSource = Me.Priamos_NETDataSet
-        Me.PriamosNETDataSetBindingSource.Position = 0
         '
         'dtFDate
         '
@@ -637,7 +783,8 @@ Partial Class frmINH
         Me.cboAhpbH.Location = New System.Drawing.Point(141, 272)
         Me.cboAhpbH.Name = "cboAhpbH"
         Me.cboAhpbH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.cboAhpbH.Properties.DataSource = Me.AHPBHBindingSource
+        Me.cboAhpbH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 18, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "ΗΜΕΡ/ΝΙΑ ΜΕΤΡΗΣΗΣ", 25, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboAhpbH.Properties.DataSource = Me.AHPBH1BindingSource
         Me.cboAhpbH.Properties.DisplayMember = "mdt"
         Me.cboAhpbH.Properties.NullText = ""
         Me.cboAhpbH.Properties.ValueMember = "ID"
@@ -646,10 +793,10 @@ Partial Class frmINH
         Me.cboAhpbH.TabIndex = 46
         Me.cboAhpbH.Tag = "ahpb_HID,0"
         '
-        'AHPBHBindingSource
+        'AHPBH1BindingSource
         '
-        Me.AHPBHBindingSource.DataMember = "AHPB_H"
-        Me.AHPBHBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.AHPBH1BindingSource.DataMember = "AHPB_H1"
+        Me.AHPBH1BindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'TabPane1
         '
@@ -745,148 +892,17 @@ Partial Class frmINH
         Me.cboAhpb.TabIndex = 55
         Me.cboAhpb.Tag = "bdgid,0,1,2"
         '
-        'GridControl1
+        'AHPBHBindingSource
         '
-        Me.GridControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GridControl1.DataSource = Me.VwINDBindingSource
-        Me.GridControl1.Location = New System.Drawing.Point(0, 0)
-        Me.GridControl1.MainView = Me.GridView5
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit2})
-        Me.GridControl1.Size = New System.Drawing.Size(862, 683)
-        Me.GridControl1.TabIndex = 54
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
-        '
-        'VwINDBindingSource
-        '
-        Me.VwINDBindingSource.DataMember = "vw_IND"
-        Me.VwINDBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
-        'GridView5
-        '
-        Me.GridView5.Appearance.HeaderPanel.Options.UseTextOptions = True
-        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colinhID, Me.colcalcCatID, Me.colrepName, Me.colamt, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colnam, Me.colfDate, Me.coltDate, Me.colname, Me.colowner_tenant})
-        Me.GridView5.GridControl = Me.GridControl1
-        Me.GridView5.GroupCount = 1
-        Me.GridView5.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", Me.colamt, " Σύνολο {0:n2}€"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "name", Nothing, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "owner_tenant", Nothing, "")})
-        Me.GridView5.LevelIndent = 0
-        Me.GridView5.Name = "GridView5"
-        Me.GridView5.OptionsBehavior.AutoExpandAllGroups = True
-        Me.GridView5.OptionsPrint.PrintPreview = True
-        Me.GridView5.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.GridView5.OptionsView.EnableAppearanceEvenRow = True
-        Me.GridView5.OptionsView.ShowFooter = True
-        Me.GridView5.OptionsView.ShowGroupedColumns = True
-        Me.GridView5.PreviewIndent = 0
-        Me.GridView5.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colowner_tenant, DevExpress.Data.ColumnSortOrder.Ascending)})
-        '
-        'colID
-        '
-        Me.colID.FieldName = "ID"
-        Me.colID.Name = "colID"
-        '
-        'colcode
-        '
-        Me.colcode.FieldName = "code"
-        Me.colcode.Name = "colcode"
-        '
-        'colinhID
-        '
-        Me.colinhID.FieldName = "inhID"
-        Me.colinhID.Name = "colinhID"
-        '
-        'colcalcCatID
-        '
-        Me.colcalcCatID.Caption = "Κατηγορία Υπολογισμού"
-        Me.colcalcCatID.ColumnEdit = Me.RepositoryItemLookUpEdit2
-        Me.colcalcCatID.FieldName = "calcCatID"
-        Me.colcalcCatID.FieldNameSortGroup = "calcCatID"
-        Me.colcalcCatID.Name = "colcalcCatID"
-        Me.colcalcCatID.Visible = True
-        Me.colcalcCatID.VisibleIndex = 0
-        Me.colcalcCatID.Width = 131
-        '
-        'RepositoryItemLookUpEdit2
-        '
-        Me.RepositoryItemLookUpEdit2.AutoHeight = False
-        Me.RepositoryItemLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemLookUpEdit2.DataSource = Me.VwCALCCATBindingSource
-        Me.RepositoryItemLookUpEdit2.DisplayMember = "name"
-        Me.RepositoryItemLookUpEdit2.Name = "RepositoryItemLookUpEdit2"
-        Me.RepositoryItemLookUpEdit2.ValueMember = "ID"
-        '
-        'colrepName
-        '
-        Me.colrepName.Caption = "Λεκτικό Εκτύπωσης"
-        Me.colrepName.FieldName = "repName"
-        Me.colrepName.Name = "colrepName"
-        Me.colrepName.Visible = True
-        Me.colrepName.VisibleIndex = 2
-        Me.colrepName.Width = 181
-        '
-        'colamt
-        '
-        Me.colamt.Caption = "Ποσό"
-        Me.colamt.FieldName = "amt"
-        Me.colamt.Name = "colamt"
-        Me.colamt.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", "SUM={0:0.##}")})
-        Me.colamt.Visible = True
-        Me.colamt.VisibleIndex = 1
-        Me.colamt.Width = 93
-        '
-        'colmodifiedBy
-        '
-        Me.colmodifiedBy.FieldName = "modifiedBy"
-        Me.colmodifiedBy.Name = "colmodifiedBy"
-        '
-        'colmodifiedOn
-        '
-        Me.colmodifiedOn.FieldName = "modifiedOn"
-        Me.colmodifiedOn.Name = "colmodifiedOn"
-        '
-        'colcreatedOn
-        '
-        Me.colcreatedOn.FieldName = "createdOn"
-        Me.colcreatedOn.Name = "colcreatedOn"
-        '
-        'colnam
-        '
-        Me.colnam.Caption = "Πολυκατοικία"
-        Me.colnam.FieldName = "nam"
-        Me.colnam.Name = "colnam"
-        '
-        'colfDate
-        '
-        Me.colfDate.FieldName = "fDate"
-        Me.colfDate.Name = "colfDate"
-        '
-        'coltDate
-        '
-        Me.coltDate.FieldName = "tDate"
-        Me.coltDate.Name = "coltDate"
-        '
-        'colname
-        '
-        Me.colname.FieldName = "name"
-        Me.colname.Name = "colname"
-        Me.colname.Width = 139
-        '
-        'colowner_tenant
-        '
-        Me.colowner_tenant.Caption = "Ένοικος/Ιδιοκτήτης"
-        Me.colowner_tenant.FieldName = "owner_tenant"
-        Me.colowner_tenant.Name = "colowner_tenant"
-        Me.colowner_tenant.Visible = True
-        Me.colowner_tenant.VisibleIndex = 3
+        Me.AHPBHBindingSource.DataMember = "AHPB_H"
+        Me.AHPBHBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'TabNavigationPage2
         '
         Me.TabNavigationPage2.Caption = "Υπολογισμένα"
         Me.TabNavigationPage2.Controls.Add(Me.GridControl2)
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
-        Me.TabNavigationPage2.Size = New System.Drawing.Size(896, 686)
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(865, 686)
         '
         'GridControl2
         '
@@ -896,7 +912,7 @@ Partial Class frmINH
         Me.GridControl2.Location = New System.Drawing.Point(4, 4)
         Me.GridControl2.MainView = Me.GridINH
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(889, 679)
+        Me.GridControl2.Size = New System.Drawing.Size(858, 679)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridINH})
         '
@@ -1272,11 +1288,6 @@ Partial Class frmINH
         Me.LayoutControlItem23.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem23.TextVisible = False
         '
-        'AHPBH1BindingSource
-        '
-        Me.AHPBH1BindingSource.DataMember = "AHPB_H1"
-        Me.AHPBH1BindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'VwINCBindingSource
         '
         Me.VwINCBindingSource.DataMember = "vw_INC"
@@ -1336,6 +1347,19 @@ Partial Class frmINH
         '
         Me.SplashScreenManager1.ClosingDelay = 500
         '
+        'XtraOpenFileDialog1
+        '
+        Me.XtraOpenFileDialog1.Multiselect = True
+        Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
+        '
+        'colpaid
+        '
+        Me.colpaid.Caption = "Πληρώθηκε"
+        Me.colpaid.FieldName = "paid"
+        Me.colpaid.Name = "colpaid"
+        Me.colpaid.Visible = True
+        Me.colpaid.VisibleIndex = 3
+        '
         'frmINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1352,6 +1376,13 @@ Partial Class frmINH
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
@@ -1362,11 +1393,8 @@ Partial Class frmINH
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkCALC_CAT, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtTDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1376,7 +1404,7 @@ Partial Class frmINH
         CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAhpbH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPane1.ResumeLayout(False)
         Me.TabNavigationPage1.ResumeLayout(False)
@@ -1386,10 +1414,7 @@ Partial Class frmINH
         Me.FlyoutPanelControl1.ResumeLayout(False)
         Me.FlyoutPanelControl1.PerformLayout()
         CType(Me.cboAhpb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPage2.ResumeLayout(False)
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridINH, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1427,7 +1452,6 @@ Partial Class frmINH
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1555,4 +1579,7 @@ Partial Class frmINH
     Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents PopupMenu1 As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents XtraOpenFileDialog1 As DevExpress.XtraEditors.XtraOpenFileDialog
+    Friend WithEvents colSelectedFiles As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colpaid As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -7,9 +7,13 @@ Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraGrid.Views.BandedGrid
 Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPivotGrid
 Imports DevExpress.XtraPrinting
@@ -27,6 +31,7 @@ Public Class frmINH
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
     Dim sGuid As String
+    Private Sfilenames As String = ""
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -84,7 +89,12 @@ Public Class frmINH
         dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
         lbldate.Text = TranslateDates(dtFDate, dtTDate)
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") = False Then
+            GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        End If
+        GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        LoadConditionalFormatting()
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
     Private Sub EditRecord()
@@ -207,6 +217,17 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub LoadConditionalFormatting()
+        Dim formatConditionRuleExpression As New StyleFormatCondition()
+        formatConditionRuleExpression.Appearance.ForeColor = Color.Orange
+        formatConditionRuleExpression.Appearance.Options.UseBackColor = True
+        formatConditionRuleExpression.ApplyToRow = True
+        formatConditionRuleExpression.Name = "Format0"
+        formatConditionRuleExpression.Column = GridView5.Columns("SelectedFiles")
+        formatConditionRuleExpression.Condition = FormatConditionEnum.Expression
+        formatConditionRuleExpression.Expression = "Not IsNullOrEmpty([SelectedFiles])"
+        GridView5.FormatConditions.Add(formatConditionRuleExpression)
+    End Sub
 
     Private Sub cmdSaveInd_Click(sender As Object, e As EventArgs) Handles cmdSaveInd.Click
         Dim sResult As Boolean
@@ -224,6 +245,28 @@ Public Class frmINH
             End If
         End If
     End Sub
+    Private Sub DeleteIND_F(Optional ByVal Question As Boolean = True)
+        Dim sSQL As String
+        Try
+            If Question Then
+                If XtraMessageBox.Show("Θέλετε να διαγραφεί τα αρχεία άπό το επιλεγμένο έξοδο?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then
+                    Exit Sub
+                End If
+            End If
+
+            sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString & "'"
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Dim Column As GridColumn
+            Column = GridView5.Columns.ColumnByName("colSelectedFiles")
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, Column, "")
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 
     Private Sub DeleteIND()
         Dim sSQL As String
@@ -234,6 +277,8 @@ Public Class frmINH
                     oCmd.ExecuteNonQuery()
                 End Using
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                'Διαγραφή αρχείων αν υπάρχουν
+                DeleteIND_F(False)
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -288,7 +333,7 @@ Public Class frmINH
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
-        Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+        Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
@@ -365,6 +410,8 @@ Public Class frmINH
                 ",repName = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "repName").ToString) &
                 ",amt = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "amt"), True) &
                 ",owner_tenant = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "owner_tenant")) &
+                ",SelectedFiles = " & toSQLValueS(IIf(IsDBNull(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "SelectedFiles")) = True, "", GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "SelectedFiles"))) &
+                ",paid = " & IIf(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "paid") = True, 1, 0) &
         " WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString)
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
@@ -531,7 +578,8 @@ Public Class frmINH
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
-            If cboAhpb.Properties.DataSource.Count = 1 Then
+
+            If Priamos_NETDataSet.AHPB_H1.Rows.Count > 0 Then
                 cboAhpb.ItemIndex = 0
                 cboAhpb.Properties.ReadOnly = False
 
@@ -613,4 +661,125 @@ Public Class frmINH
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()
     End Sub
+
+    Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : FilesSelection()
+            Case 2
+                SplashScreenManager1.ShowWaitForm()
+                SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                OpenPreviwer()
+            Case 3 : If UserProps.AllowDelete = True Then DeleteIND_F()
+        End Select
+    End Sub
+    Private Sub OpenPreviwer()
+        Dim frmFilePreviwer As New frmFilePreviwer
+        frmFilePreviwer.Text = "Προβολή Αρχείων"
+        frmFilePreviwer.ID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString
+        frmFilePreviwer.Spl = SplashScreenManager1
+        frmFilePreviwer.ShowDialog()
+    End Sub
+    Private Sub FilesSelection()
+
+        XtraOpenFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf"
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = ProgProps.EXFolderPath
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = True
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then
+            Dim Column As GridColumn
+            Column = GridView5.Columns.ColumnByName("colSelectedFiles")
+            Column.OptionsColumn.AllowEdit = False
+            Sfilenames = ""
+            For I = 0 To XtraOpenFileDialog1.FileNames.Count - 1
+                Sfilenames = Sfilenames & IIf(Sfilenames <> "", ";", "") & XtraOpenFileDialog1.FileNames(I)
+                GridView5.SetRowCellValue(GridView5.FocusedRowHandle, Column, Sfilenames)
+            Next I
+            ' Αποθήκευση Αρχείων
+            DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "IND_F", GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString)
+
+        End If
+    End Sub
+
+    Private Sub GridView5_PopupMenuShowing(sender As Object, e As Views.Grid.PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
+
+            End If
+        End If
+
+    End Sub
+
+    'Μετονομασία Στήλης Master
+    Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView5.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
+        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
+        item.Tag = New MenuColumnInfo(column)
+        Return item
+    End Function
+    'Αλλαγή Χρώματος Στήλης Master
+    Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView5.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
+    'Κλείδωμα Στήλης Master
+    Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
+        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
+        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
+        If info Is Nothing Then
+            Return
+        End If
+        info.Column.OptionsColumn.AllowMove = Not item.Checked
+    End Sub
+    'Αποθήκευση όψης 
+    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Friend Class MenuColumnInfo
+        Public Sub New(ByVal column As GridColumn)
+            Me.Column = column
+        End Sub
+        Public Column As GridColumn
+    End Class
 End Class

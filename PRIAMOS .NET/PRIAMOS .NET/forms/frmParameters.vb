@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraNavBar
 
 Public Class frmParameters
@@ -42,6 +43,7 @@ Public Class frmParameters
         'Δεκαδικά Προγράμματος
         txtDecimals.EditValue = Prog_Prop.GetProgDecimals()
         txtEmail.EditValue = Prog_Prop.GetProgTechSupportEmail
+        txtEXFolderPath.EditValue = Prog_Prop.GetProgEXFolderPath
 
     End Sub
 
@@ -58,5 +60,20 @@ Public Class frmParameters
     Private Sub txtEmail_EditValueChanged(sender As Object, e As EventArgs) Handles txtEmail.EditValueChanged
         'Email Support
         Prog_Prop.SetProgTechSupportEmail(txtEmail.EditValue)
+    End Sub
+
+    Private Sub txtEXFolderPath_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtEXFolderPath.ButtonClick
+        XtraFolderBrowserDialog1.DialogStyle = DevExpress.Utils.CommonDialogs.FolderBrowserDialogStyle.Wide
+        XtraFolderBrowserDialog1.ShowNewFolderButton = True
+        If XtraFolderBrowserDialog1.ShowDialog() = DialogResult.OK Then
+            txtEXFolderPath.EditValue = XtraFolderBrowserDialog1.SelectedPath
+        End If
+
+    End Sub
+
+    Private Sub txtEXFolderPath_EditValueChanged(sender As Object, e As EventArgs) Handles txtEXFolderPath.EditValueChanged
+        'EX Folder PATH
+        Prog_Prop.SetProgEXFolderPath(txtEXFolderPath.EditValue)
+        ProgProps.EXFolderPath = txtEXFolderPath.EditValue
     End Sub
 End Class
