@@ -2435,6 +2435,160 @@ Public Class frmBDG
         End Select
 
     End Sub
+
+    Private Sub XtraTabPage8_Paint(sender As Object, e As PaintEventArgs) Handles XtraTabPage8.Paint
+
+    End Sub
+
+    Private Sub NavINH_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavINH.ElementClick
+        tabBDG.SelectedTabPage = tabINH
+        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml") Then GridView10.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml", OptionsLayoutBase.FullLayout)
+
+    End Sub
+
+    Private Sub GridView10_DoubleClick(sender As Object, e As EventArgs) Handles GridView10.DoubleClick
+        If GridView10.IsGroupRow(GridView10.FocusedRowHandle) Then Exit Sub
+        Dim fINH As frmINH = New frmINH()
+        fINH.Text = "Κοινόχρηστα"
+        fINH.ID = GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString
+        fINH.MdiParent = frmMain
+        fINH.Mode = FormMode.EditRecord
+        fINH.Scroller = GridView10
+        fINH.FormScroller = Me
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
+        fINH.Show()
+    End Sub
+
+    Private Sub cmdNewINH_Click(sender As Object, e As EventArgs) Handles cmdNewINH.Click
+
+        Dim fINH As frmINH = New frmINH()
+        fINH.Text = "Κοινόχρηστα"
+        'fINH.MdiParent = frmMain
+        fINH.Mode = FormMode.NewRecord
+        'fINH.Scroller = GridView10
+        'fINH.FormScroller = Me
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+        fINH.ShowDialog()
+    End Sub
+
+    Private Sub cmdEditINH_Click(sender As Object, e As EventArgs) Handles cmdEditINH.Click
+        If GridView10.IsGroupRow(GridView10.FocusedRowHandle) Then Exit Sub
+        Dim fINH As frmINH = New frmINH()
+        fINH.Text = "Κοινόχρηστα"
+        fINH.ID = GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString
+        'fINH.MdiParent = frmMain
+        fINH.Mode = FormMode.EditRecord
+        'fINH.Scroller = GridView10
+        'fINH.FormScroller = Me
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+        fINH.ShowDialog()
+    End Sub
+
+    Private Sub cmdRefINH_Click(sender As Object, e As EventArgs) Handles cmdRefINH.Click
+        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
+    End Sub
+
+    Private Sub cmdExportINH_Click(sender As Object, e As EventArgs) Handles cmdExportINH.Click
+        Dim options = New XlsxExportOptionsEx()
+        options.UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula
+        options.ExportType = ExportType.WYSIWYG
+        XtraSaveFileDialog1.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
+        XtraSaveFileDialog1.FileName = "Παραστατικά_" & bdgName
+        If XtraSaveFileDialog1.ShowDialog() = DialogResult.OK Then
+            GridView10.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+            Process.Start(XtraSaveFileDialog1.FileName)
+        End If
+    End Sub
+
+    Private Sub cmdDelINH_Click(sender As Object, e As EventArgs) Handles cmdDelINH.Click
+        Dim sSQL As String
+        Try
+            If GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+
+                sSQL = "DELETE FROM INH WHERE ID = '" & GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINH, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItemINH("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINH, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '5nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINH, Nothing, Nothing, Nothing, Nothing))
+
+            End If
+        Else
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+    End Sub
+    Private Sub OnEditValueChangedINH(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView10.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+    'Αλλαγή Χρώματος Στήλης Master
+    Private Sub OnColumnsColorChangedINH(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView10.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
+    Private Function CreateCheckItemINH(ByVal caption As String, ByVal column As GridColumn, ByVal image As System.Drawing.Image) As DXMenuCheckItem
+        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClickINH))
+        item.Tag = New MenuColumnInfo(column)
+        Return item
+    End Function
+    Private Sub OnCanMoveItemClickINH(ByVal sender As Object, ByVal e As EventArgs)
+        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
+        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
+        If info Is Nothing Then
+            Return
+        End If
+        info.Column.OptionsColumn.AllowMove = Not item.Checked
+    End Sub
+    'Αποθήκευση όψης Παραστατικών
+    Private Sub OnSaveViewINH(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView10.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
 

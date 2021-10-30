@@ -60,7 +60,7 @@ Public Class frmLogin
                     ProgProps.Decimals = Prog_Prop.GetProgDecimals
                     'Support Email
                     ProgProps.SupportEmail = Prog_Prop.GetProgTechSupportEmail
-
+                    ProgProps.EXFolderPath = Prog_Prop.GetProgEXFolderPath
                     'General Permissions
                     UserPermissions.GetUserPermissions()
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)

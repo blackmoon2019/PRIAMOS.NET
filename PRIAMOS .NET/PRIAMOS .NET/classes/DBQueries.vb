@@ -84,9 +84,51 @@ Public Class DBQueries
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
+    End Function
+    Public Function InsertNewDataFilesFromListBox(ByVal control As DevExpress.XtraEditors.ImageListBoxControl, ByVal sTable As String, ByVal ID As String, ByVal sFilesPath As String) As Boolean
+        Dim sSQL As New System.Text.StringBuilder
+        Dim sFullFilenames As New System.Text.StringBuilder
+        Try
+            For Each item As DevExpress.XtraEditors.Controls.ImageListBoxItem In control.SelectedItems
+                sSQL.Clear()
+                Select Case sTable
+                    Case "CCT_F" : sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "INV_GASF" : sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "INV_OILF" : sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "IND_F" : sSQL.AppendLine("INSERT INTO IND_F (indID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                End Select
+                Dim extension As String = Path.GetExtension(item.Value)
+                Dim FilePath As String = sFilesPath
+                Dim FileName As String = item.Value
+                My.Computer.FileSystem.CopyFile(sFilesPath & "\" & FileName, My.Settings.SERVER_PATH & FileName, True)
+
+                sSQL.AppendLine("Select " & toSQLValueS(ID) & ",")
+                sSQL.AppendLine(toSQLValueS(sFilesPath & "\" & FileName) & ",")
+                sSQL.AppendLine(toSQLValueS(sFilesPath) & ",")
+                sSQL.AppendLine(toSQLValueS(extension) & ",")
+                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
+                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(My.Settings.SERVER_PATH & FileName) & ", SINGLE_BLOB) files")
+                sFullFilenames.AppendLine(sFilesPath & "\" & FileName & IIf(sFullFilenames.Length > 0, ";", ""))
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next
+            sSQL.Clear()
+            If sTable = "IND_F" Then
+                sSQL.AppendLine("UPDATE [IND] SET SelectedFiles = " & toSQLValueS(sFullFilenames.ToString) & " WHERE ID = " & toSQLValueS(ID))
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+            'ReadBlobFile()
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
 
     End Function
-
 
     'Η InsertData χρησιμοποιείται για να αποθηκεύσει Data για ένα LayoutContol
     Private Function InsertData(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sTable As String, Optional ByVal sGuid As String = "",

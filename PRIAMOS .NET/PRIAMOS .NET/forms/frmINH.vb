@@ -662,7 +662,7 @@ Public Class frmINH
         SplashScreenManager1.CloseWaitForm()
     End Sub
 
-    Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick
+    Private Sub RepositoryItemLookUpEdit3_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
         Select Case e.Button.Index
             Case 1 : FilesSelection()
             Case 2
@@ -782,4 +782,26 @@ Public Class frmINH
         End Sub
         Public Column As GridColumn
     End Class
+
+    Private Sub cmdNewInh_Click(sender As Object, e As EventArgs) Handles cmdNewInh.Click
+        Mode = FormMode.NewRecord
+        Cls.ClearGroupCtrls(LayoutControlGroup1) : Cls.ClearGroupCtrls(LayoutControlGroup2)
+        txtCode.Text = DBQ.GetNextId("INH")
+        LayoutControlGroup2.Enabled = False
+        cmdSaveInd.Enabled = False
+        cmdCalculate.Enabled = False
+        cmdDel.Enabled = False
+
+    End Sub
+
+    Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : FilesSelection()
+            Case 2
+                SplashScreenManager1.ShowWaitForm()
+                SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                OpenPreviwer()
+            Case 3 : If UserProps.AllowDelete = True Then DeleteIND_F()
+        End Select
+    End Sub
 End Class

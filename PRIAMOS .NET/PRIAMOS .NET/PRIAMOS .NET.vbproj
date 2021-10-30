@@ -159,7 +159,11 @@
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Janus.Data.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.CalendarCombo.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Janus.Windows.Common.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
+    <Reference Include="Janus.Windows.FilterEditor.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
+    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Janus.Windows.Ribbon.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
     <Reference Include="Janus.Windows.UI.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Microsoft.CSharp" />
@@ -347,6 +351,12 @@
       <DependentUpon>frmAPT.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\frmAPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmBatchInsertAttachmentsEX.Designer.vb">
+      <DependentUpon>frmBatchInsertAttachmentsEX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmBatchInsertAttachmentsEX.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmBDG.Designer.vb">
@@ -555,6 +565,9 @@
       <DependentUpon>frmAPT.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmBatchInsertAttachmentsEX.resx">
+      <DependentUpon>frmBatchInsertAttachmentsEX.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmBDG.resx">
       <DependentUpon>frmBDG.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -694,6 +707,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-new-file-24.png" />
+    <None Include="Resources\icons8-attach-401.png" />
+    <None Include="Resources\icons8-attach-40.png" />
     <None Include="Resources\icons8-information-40.png" />
     <None Include="Resources\icons8-email-send-24.png" />
     <None Include="Resources\icons8-e-mail-24.png" />
