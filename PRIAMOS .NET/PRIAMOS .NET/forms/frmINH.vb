@@ -66,6 +66,7 @@ Public Class frmINH
                 cmdSaveInd.Enabled = False
                 cmdCalculate.Enabled = False
                 cmdDel.Enabled = False
+                cmdRefresh.Enabled = False
             Case FormMode.EditRecord
                 LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'")
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
@@ -73,6 +74,7 @@ Public Class frmINH
                 Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
                 Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
+                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
                 If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
                 EditRecord()
                 'Χιλιοστά Διαμερισμάτων
@@ -194,6 +196,7 @@ Public Class frmINH
                                 oCmd.ExecuteNonQuery()
                             End Using
                             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sGuid))
+                            GridControl1.DataSource = VwINDBindingSource
                         End If
                     Case FormMode.EditRecord
                         Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
@@ -210,6 +213,8 @@ Public Class frmINH
                     cmdSaveInd.Enabled = True
                     cmdDel.Enabled = True
                     cmdCalculate.Enabled = True
+                    cmdRefresh.Enabled = True
+                    TabNavigationPage3.Enabled = True
                 End If
             End If
 
@@ -333,6 +338,7 @@ Public Class frmINH
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
+        chkCALC_CAT.DataSource = VwCALCCATBindingSource
         Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
@@ -352,7 +358,7 @@ Public Class frmINH
         Select Case e.Button.Index
             Case 1 : cboBDG.EditValue = Nothing : ManageBDG(cboBDG)
             Case 2 : If cboBDG.EditValue <> Nothing Then ManageBDG(cboBDG)
-            Case 3 : cboBDG.EditValue = Nothing
+            Case 3 : cboBDG.EditValue = Nothing : chkCALC_CAT.DataSource = Nothing : chkCALC_CAT.Items.Clear()
         End Select
     End Sub
     Private Sub ManageBDG(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
@@ -383,6 +389,8 @@ Public Class frmINH
                 FlyoutPanel1.ShowPopup()
             Else
                 Calculate()
+                TabNavigationPage2.Enabled = True
+
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -791,7 +799,11 @@ Public Class frmINH
         cmdSaveInd.Enabled = False
         cmdCalculate.Enabled = False
         cmdDel.Enabled = False
-
+        chkCALC_CAT.DataSource = Nothing
+        chkCALC_CAT.Items.Clear()
+        TabNavigationPage2.Enabled = False
+        TabNavigationPage3.Enabled = False
+        GridControl1.DataSource = Nothing
     End Sub
 
     Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick
@@ -804,4 +816,10 @@ Public Class frmINH
             Case 3 : If UserProps.AllowDelete = True Then DeleteIND_F()
         End Select
     End Sub
+
+    Private Sub TabPane1_SelectedPageChanging(sender As Object, e As SelectedPageChangingEventArgs) Handles TabPane1.SelectedPageChanging
+        If e.Page.Enabled = False Then e.Cancel = True
+    End Sub
+
+
 End Class

@@ -238,4 +238,11 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub BBIND_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBIND.ItemClick
+        Dim form As frmIND = New frmIND()
+        form.Text = "Χρεώσεις Πολυκατοικιών"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

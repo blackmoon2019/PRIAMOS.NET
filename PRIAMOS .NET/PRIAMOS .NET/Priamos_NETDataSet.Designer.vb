@@ -11997,13 +11997,13 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, dtu, iad, modif"& _ 
                 "iedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Are"& _ 
-                "a_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     COU_Name, ar, prd, rmg, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Na"& _ 
-                "me, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, b"& _ 
-                "ManageID, eName, eCounter, ePaymentCode, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         eServiceNum,"& _ 
-                " fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN,"& _ 
-                " fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
-                "      vw_BDG"
+                "a_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, "&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
+                "    COU_Name, ar, prd, rmg, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Nam"& _ 
+                "e, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bM"& _ 
+                "anageID, eName, eCounter, ePaymentCode, "&Global.Microsoft.VisualBasic.ChrW(10)&"                         eServiceNum, f"& _ 
+                "Name, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, f"& _ 
+                "PWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   vw_BDG"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -12193,13 +12193,13 @@ Namespace Priamos_NETDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, n"& _ 
                 "am, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS,"& _ 
-                " completeDate, bdgID, bManageID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (inhID = @"& _ 
-                "inhID)"
+                " completeDate, bdgID, bManageID"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_IND"&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (inhID = @in"& _ 
+                "hID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
@@ -12208,6 +12208,14 @@ Namespace Priamos_NETDataSetTableAdapters
                 "ate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, owner_tena"& _ 
                 "nt, paid, repName, tDate FROM vw_IND"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, n"& _ 
+                "am, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS,"& _ 
+                " completeDate, bdgID, bManageID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (bdgID = @"& _ 
+                "bdgID)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12255,6 +12263,32 @@ Namespace Priamos_NETDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByALL() As Priamos_NETDataSet.vw_INDDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Dim dataTable As Priamos_NETDataSet.vw_INDDataTable = New Priamos_NETDataSet.vw_INDDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByBDG(ByVal dataTable As Priamos_NETDataSet.vw_INDDataTable, ByVal bdgID As System.Guid) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID,System.Guid)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByBDG(ByVal bdgID As System.Guid) As Priamos_NETDataSet.vw_INDDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID,System.Guid)
             Dim dataTable As Priamos_NETDataSet.vw_INDDataTable = New Priamos_NETDataSet.vw_INDDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -12406,8 +12440,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = " SELECT        vw_CALC_CAT.ID, name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CALC_CAT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN vw_B"& _ 
-                "MLC  ON vw_CALC_CAT.mlcID = vw_BMLC.mlcID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE bdgID=@bdgID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ord"
+            Me._commandCollection(0).CommandText = " SELECT        vw_CALC_CAT.ID, name"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CALC_CAT"&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN vw_BML"& _ 
+                "C  ON vw_CALC_CAT.mlcID = vw_BMLC.mlcID "&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE bdgID=@bdgID"&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ord"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -12592,7 +12626,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_EXC"
+            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_EXC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -12801,10 +12835,10 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        cmt, fDate, tDate, bdgNam, aptNam, ttl, ord, calcCatNam, repName, a"& _ 
                 "mt, ID, inhID, indID, bdgID, aptID, shared, elevator, heating, heating_consumpti"& _ 
-                "on, boiler_consumption, special_costs, owners, billing, boiler, garage, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
-                "                   monomers1, monomers2, monomers3, fi, fiBoiler, modifiedBy, mo"& _ 
-                "difiedOn, createdOn, calcCatID, completeDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_INC"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE inhI"& _ 
-                "D = @inhID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+                "on, boiler_consumption, special_costs, owners, billing, boiler, garage, "&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  monomers1, monomers2, monomers3, fi, fiBoiler, modifiedBy, mod"& _ 
+                "ifiedOn, createdOn, calcCatID, completeDate"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_INC"&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE inhID ="& _ 
+                " @inhID"&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -12998,9 +13032,10 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        vw_BCCT.ID, vw_BCCT.code, vw_BCCT.bdgID, vw_BCCT.cctID, vw_BCCT.cmt"& _ 
                 ", vw_BCCT.modifiedBy, vw_BCCT.modifiedOn, vw_BCCT.createdOn, vw_BCCT.bdgName, vw"& _ 
-                "_BCCT.Fullname, vw_BCCT.RealName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         vw_BCCT.prfName, vw"& _ 
-                "_BCCT.prfID, vw_CCT.phn, vw_CCT.mob, vw_CCT.email, vw_CCT.afm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            v"& _ 
-                "w_BCCT INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         vw_CCT ON vw_BCCT.cctID = vw_CCT.ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (vw_BCCT.bdgID = @bdgID)"
+                "_BCCT.Fullname, vw_BCCT.RealName, "&Global.Microsoft.VisualBasic.ChrW(10)&"                         vw_BCCT.prfName, vw_"& _ 
+                "BCCT.prfID, vw_CCT.phn, vw_CCT.mob, vw_CCT.email, vw_CCT.afm"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_"& _ 
+                "BCCT INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(10)&"                         vw_CCT ON vw_BCCT.cctID = vw_CCT.ID"&Global.Microsoft.VisualBasic.ChrW(10)&"WHE"& _ 
+                "RE        (vw_BCCT.bdgID = @bdgID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -13182,8 +13217,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, Fullname, PrfID, phn, mob, email, afm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CCT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "WHERE        (PrfID = @PrfID)"
+            Me._commandCollection(0).CommandText = "SELECT        ID, Fullname, PrfID, phn, mob, email, afm"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CCT"&Global.Microsoft.VisualBasic.ChrW(10)&"WH"& _ 
+                "ERE        (PrfID = @PrfID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrfID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "PrfID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -13368,7 +13403,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_PRF"
+            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_PRF"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -13542,7 +13577,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_TTL"
+            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_TTL"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -13722,8 +13757,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [AHPB_H] ([ID], [bdgID], [mdt], [finalized], [createdOn]) VALUES (@ID"& _ 
-                ", @bdgID, @mdt, @finalized, @createdOn);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, code, bdgID, mdt, finalized"& _ 
-                ", createdOn FROM AHPB_H WHERE (ID = @ID)"
+                ", @bdgID, @mdt, @finalized, @createdOn);"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, code, bdgID, mdt, finalized,"& _ 
+                " createdOn FROM AHPB_H WHERE (ID = @ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13736,8 +13771,8 @@ Namespace Priamos_NETDataSetTableAdapters
                 "nalized, [createdOn] = @createdOn WHERE (([ID] = @Original_ID) AND ([code] = @Or"& _ 
                 "iginal_code) AND ([bdgID] = @Original_bdgID) AND ([mdt] = @Original_mdt) AND ([f"& _ 
                 "inalized] = @Original_finalized) AND ((@IsNull_createdOn = 1 AND [createdOn] IS "& _ 
-                "NULL) OR ([createdOn] = @Original_createdOn)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, code, bdgID, mdt, fi"& _ 
-                "nalized, createdOn FROM AHPB_H WHERE (ID = @ID)"
+                "NULL) OR ([createdOn] = @Original_createdOn)));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, code, bdgID, mdt, fin"& _ 
+                "alized, createdOn FROM AHPB_H WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -14075,7 +14110,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [AHPB_H] SET [ID] = @ID, [mdt] = @mdt WHERE (([ID] = @Original_ID) AND ([m"& _ 
-                "dt] = @Original_mdt));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, mdt FROM AHPB_H WHERE (ID = @ID)"
+                "dt] = @Original_mdt));"&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, mdt FROM AHPB_H WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@mdt", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "mdt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -14096,8 +14131,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, mdt"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AHPB_H"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (finalized =0) AND (b"& _ 
-                "dgID = @bdgid)"
+            Me._commandCollection(0).CommandText = "SELECT        ID, mdt"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AHPB_H"&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (finalized =1) AND (bdg"& _ 
+                "ID = @bdgid)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgid", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -14356,7 +14391,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_ANN_MENTS"
+            Me._commandCollection(0).CommandText = "SELECT        ID, name"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_ANN_MENTS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -14536,8 +14571,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, indID, files, filename, comefrom, extension, code, repName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FRO"& _ 
-                "M            vw_IND_F"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where indID = @indID"
+            Me._commandCollection(0).CommandText = "SELECT        ID, indID, files, filename, comefrom, extension, code, repName"&Global.Microsoft.VisualBasic.ChrW(10)&"FROM"& _ 
+                "            vw_IND_F"&Global.Microsoft.VisualBasic.ChrW(10)&"where indID = @indID"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "indID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -14735,8 +14770,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, code, bdgID, fDate, tDate, modifiedBy, modifiedOn, createdOn, n"& _ 
                 "am, cmt, completeDate, Calculated, ahpb_HID, mdt, DateOfPrint, TotalInh, isPrint"& _ 
-                "ed, announcement, extraordinary, hpc, hpb"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_INH"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
-                "(bdgID = @bdgID)"
+                "ed, announcement, extraordinary, hpc, hpb "&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_INH "&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(bdgID = @bdgID) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by fdate,tdate"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

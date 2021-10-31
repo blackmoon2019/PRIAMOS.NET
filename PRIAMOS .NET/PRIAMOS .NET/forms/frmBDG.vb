@@ -476,10 +476,6 @@ Public Class frmBDG
         EditApt()
     End Sub
 
-    Private Sub grdAPT_DoubleClick(sender As Object, e As EventArgs) Handles grdAPT.DoubleClick
-        EditApt()
-    End Sub
-
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
@@ -701,7 +697,7 @@ Public Class frmBDG
                 Exit Sub
             End If
         End If
-        tabBDG.SelectedTabPage = XtraTabPage3
+        Maintab.SelectedTabPage = tabHeating
         'Τύποι Υπολογισμού
         FillCbo.CALC_TYPES(cboHtypes)
         'Τύποι Υπολογισμού
@@ -745,7 +741,7 @@ Public Class frmBDG
                 Exit Sub
             End If
         End If
-        tabBDG.SelectedTabPage = XtraTabPage7
+        Maintab.SelectedTabPage = tabHeatingInvoices
         'Προμηθευτές για πετρέλαιο
         FillCbo.SUP(cboOInvSup)
         'Προμηθευτές για φυσικό αέριο
@@ -786,7 +782,7 @@ Public Class frmBDG
                 Exit Sub
             End If
         End If
-        tabBDG.SelectedTabPage = XtraTabPage2
+        Maintab.SelectedTabPage = tabManage
         If sManageID IsNot Nothing Then
             sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
             BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
@@ -806,7 +802,7 @@ Public Class frmBDG
                 Exit Sub
             End If
         End If
-        tabBDG.SelectedTabPage = XtraTabPage1
+        Maintab.SelectedTabPage = tabBDG
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
@@ -860,7 +856,7 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs)
+    Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs) Handles dtMes.DrawItem
         ''If (dtMes.EditValue = Nothing) Then
         ''    If (e.Selected = True) Then
         ''If (e.Date = DateTime.Today) Then
@@ -979,7 +975,7 @@ Public Class frmBDG
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
-    Private Sub cboOInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
+    Private Sub cboOInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboOInvSup.ButtonPressed
         Select Case e.Button.Index
             Case 1 : cboOInvSup.EditValue = Nothing : ManageCUS(cboOInvSup)
             Case 2 : If cboOInvSup.EditValue <> Nothing Then ManageCUS(cboOInvSup)
@@ -987,7 +983,7 @@ Public Class frmBDG
         End Select
     End Sub
 
-    Private Sub cboGInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
+    Private Sub cboGInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboGInvSup.ButtonPressed
         Select Case e.Button.Index
             Case 1 : cboGInvSup.EditValue = Nothing : ManageCUS(cboGInvSup)
             Case 2 : If cboGInvSup.EditValue <> Nothing Then ManageCUS(cboGInvSup)
@@ -1019,9 +1015,7 @@ Public Class frmBDG
         End Select
     End Sub
 
-    Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
-        LoadMefMes()
-    End Sub
+
     Private Sub LoadMefMes()
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
@@ -1069,7 +1063,7 @@ Public Class frmBDG
 
     Private Sub NavAPM_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavAPM.ElementClick
         Try
-            tabBDG.SelectedTabPage = XtraTabPage11
+            Maintab.SelectedTabPage = tabAPM
             ApmLoad()
             'GridView5.OptionsMenu.EnableFooterMenu = True
             'GridView5.Columns(6).AllowSummaryMenu = True
@@ -1235,7 +1229,7 @@ Public Class frmBDG
             End Using
         End If
     End Sub
-    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonClick
+    Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
         If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
     End Sub
 
@@ -1277,7 +1271,7 @@ Public Class frmBDG
         System.Diagnostics.Process.Start(e.Text)
     End Sub
 
-    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
         If e.MenuType = GridMenuType.Column Then
             Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
             Dim item As New DXEditMenuItem()
@@ -1312,10 +1306,6 @@ Public Class frmBDG
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
-    End Sub
-
-    Private Sub GridView2_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView2.RowUpdated
-
     End Sub
 
     Private Sub cmdGInvAdd_CheckedChanged(sender As Object, e As EventArgs) Handles cmdGInvAdd.CheckedChanged
@@ -1935,7 +1925,7 @@ Public Class frmBDG
                 Exit Sub
             End If
         End If
-        tabBDG.SelectedTabPage = XtraTabPage5
+        Maintab.SelectedTabPage = tabFixedCosts
         LoadIEP()
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
@@ -1994,11 +1984,11 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdAddIEP_Click(sender As Object, e As EventArgs) Handles cmdAddIEP.Click
-        NewIEP
+        NewIEP()
     End Sub
 
     Private Sub cmdEditIEP_Click(sender As Object, e As EventArgs) Handles cmdEditIEP.Click
-        EditIEP
+        EditIEP()
     End Sub
 
     Private Sub grdIEP_DoubleClick(sender As Object, e As EventArgs) Handles grdIEP.DoubleClick
@@ -2069,7 +2059,7 @@ Public Class frmBDG
         form1.ShowDialog()
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    Private Sub cmdDeiLogin_Click(sender As Object, e As EventArgs) Handles cmdDeiLogin.Click
         On Error Resume Next
         WebBrowser1.Document.GetElementById("ctl00_ctl00_Site_Main_Main_ApartmentBuildingBills_txtCustomerCode").SetAttribute("value", eCounter.Text)
         WebBrowser1.Document.GetElementById("ctl00$ctl00$Site_Main$Main$ApartmentBuildingBills$btnFindApartmentBuildingBills").InvokeMember("click")
@@ -2199,17 +2189,13 @@ Public Class frmBDG
 
     Private Sub NavMaintenance_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavMaintenance.ElementClick
         Try
-            tabBDG.SelectedTabPage = XtraTabPage4
+            Maintab.SelectedTabPage = tabMaintenance
             Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
             Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
             LayoutControlGroup15.Enabled = False
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
-        Me.Vw_CCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CCT, cboPrf.EditValue)
     End Sub
 
     Private Sub cmdSaveBCCT_Click(sender As Object, e As EventArgs) Handles cmdSaveBCCT.Click
@@ -2417,16 +2403,6 @@ Public Class frmBDG
         End Try
     End Sub
 
-    Private Sub txtTK_EditValueChanged(sender As Object, e As EventArgs) Handles txtTK.EditValueChanged
-
-    End Sub
-
-    Private Sub cmdRefreshAHPB_Click(sender As Object, e As EventArgs) Handles cmdRefreshAHPB.Click
-        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
-
-    End Sub
-
     Private Sub cboManager_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboManager.ButtonClick
         Select Case e.Button.Index
             Case 1 : cboManager.EditValue = Nothing : ManageManager()
@@ -2436,12 +2412,9 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub XtraTabPage8_Paint(sender As Object, e As PaintEventArgs) Handles XtraTabPage8.Paint
-
-    End Sub
 
     Private Sub NavINH_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavINH.ElementClick
-        tabBDG.SelectedTabPage = tabINH
+        Maintab.SelectedTabPage = tabINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml") Then GridView10.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml", OptionsLayoutBase.FullLayout)
 
@@ -2588,6 +2561,24 @@ Public Class frmBDG
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView10.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
+        LoadMefMes()
+    End Sub
+
+    Private Sub grdAPT_DoubleClick(sender As Object, e As EventArgs) Handles grdAPT.DoubleClick
+        EditApt()
+    End Sub
+
+    Private Sub cmdRefreshAHPB_Click(sender As Object, e As EventArgs) Handles cmdRefreshAHPB.Click
+        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+
+    End Sub
+
+    Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
+        Me.Vw_CCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CCT, cboPrf.EditValue)
     End Sub
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged

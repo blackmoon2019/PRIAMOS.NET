@@ -3,6 +3,9 @@ Imports System.IO
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
 
+
+
+
 Public Class frmFilePreviwer
     Private sID As String
     Private Splash As DevExpress.XtraSplashScreen.SplashScreenManager

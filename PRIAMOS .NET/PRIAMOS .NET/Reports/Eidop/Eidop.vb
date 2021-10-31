@@ -1,5 +1,4 @@
 ﻿Imports System.Drawing.Printing
-Imports DevExpress.XtraReports.UI
 
 Public Class Eidop
     Private Sub Eidop_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
@@ -12,5 +11,4 @@ Public Class Eidop
 
         'EXODA_PER_APT.ParameterBindings.Item(1).Parameter.Value = sAptID
     End Sub
-
 End Class

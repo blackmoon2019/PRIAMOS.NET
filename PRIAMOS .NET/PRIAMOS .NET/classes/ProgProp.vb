@@ -81,5 +81,4 @@ Public Class ProgProp
         End Try
 
     End Sub
-
 End Class

@@ -19,17 +19,12 @@ Partial Class frmParameters
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmParameters))
         Me.TablePanel1 = New DevExpress.Utils.Layout.TablePanel()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txtEXFolderPath = New DevExpress.XtraEditors.ButtonEdit()
         Me.txtDecimals = New DevExpress.XtraEditors.TextEdit()
-        Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
@@ -40,18 +35,15 @@ Partial Class frmParameters
         Me.NavBarGroup2 = New DevExpress.XtraNavBar.NavBarGroup()
         Me.navGen = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarControl1 = New DevExpress.XtraNavBar.NavBarControl()
-        Me.XtraFolderBrowserDialog1 = New DevExpress.XtraEditors.XtraFolderBrowserDialog(Me.components)
+        Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TablePanel1.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
-        CType(Me.txtEXFolderPath.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDecimals.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,6 +52,8 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TablePanel1
@@ -77,7 +71,6 @@ Partial Class frmParameters
         'LayoutControl2
         '
         Me.TablePanel1.SetColumn(Me.LayoutControl2, 0)
-        Me.LayoutControl2.Controls.Add(Me.txtEXFolderPath)
         Me.LayoutControl2.Controls.Add(Me.txtDecimals)
         Me.LayoutControl2.Controls.Add(Me.txtEmail)
         Me.LayoutControl2.Location = New System.Drawing.Point(3, 91)
@@ -88,19 +81,10 @@ Partial Class frmParameters
         Me.LayoutControl2.TabIndex = 1
         Me.LayoutControl2.Text = "LayoutControl2"
         '
-        'txtEXFolderPath
-        '
-        Me.txtEXFolderPath.Location = New System.Drawing.Point(161, 58)
-        Me.txtEXFolderPath.Name = "txtEXFolderPath"
-        Me.txtEXFolderPath.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.txtEXFolderPath.Size = New System.Drawing.Size(542, 20)
-        Me.txtEXFolderPath.StyleController = Me.LayoutControl2
-        Me.txtEXFolderPath.TabIndex = 39
-        '
         'txtDecimals
         '
         Me.txtDecimals.EditValue = "0"
-        Me.txtDecimals.Location = New System.Drawing.Point(160, 11)
+        Me.txtDecimals.Location = New System.Drawing.Point(135, 11)
         Me.txtDecimals.Name = "txtDecimals"
         Me.txtDecimals.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtDecimals.Properties.EditFormat.FormatString = "n0"
@@ -108,25 +92,17 @@ Partial Class frmParameters
         Me.txtDecimals.Properties.Mask.EditMask = "n0"
         Me.txtDecimals.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtDecimals.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtDecimals.Size = New System.Drawing.Size(544, 20)
+        Me.txtDecimals.Size = New System.Drawing.Size(569, 20)
         Me.txtDecimals.StyleController = Me.LayoutControl2
         Me.txtDecimals.TabIndex = 37
         Me.txtDecimals.Tag = "InvNumber,0,1,2"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Location = New System.Drawing.Point(161, 34)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(542, 20)
-        Me.txtEmail.StyleController = Me.LayoutControl2
-        Me.txtEmail.TabIndex = 38
         '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3, Me.LayoutControlItem4})
-        Me.LayoutControlGroup1.Name = "Root"
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3})
+        Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(715, 120)
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -142,25 +118,7 @@ Partial Class frmParameters
         Me.LayoutControlItem52.Padding = New DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1)
         Me.LayoutControlItem52.Size = New System.Drawing.Size(695, 22)
         Me.LayoutControlItem52.Text = "Δεκαδικά"
-        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(137, 13)
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.txtEmail
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 22)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(695, 24)
-        Me.LayoutControlItem3.Text = "Technical Support Email"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(137, 13)
-        '
-        'LayoutControlItem4
-        '
-        Me.LayoutControlItem4.Control = Me.txtEXFolderPath
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 46)
-        Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(695, 54)
-        Me.LayoutControlItem4.Text = "Διαδρομή Φακέλλου Εξόδων"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(137, 13)
+        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(112, 13)
         '
         'LayoutControl1
         '
@@ -246,9 +204,22 @@ Partial Class frmParameters
         Me.NavBarControl1.TabIndex = 0
         Me.NavBarControl1.View = New DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Office 2019 White")
         '
-        'XtraFolderBrowserDialog1
+        'txtEmail
         '
-        Me.XtraFolderBrowserDialog1.SelectedPath = "XtraFolderBrowserDialog1"
+        Me.txtEmail.Location = New System.Drawing.Point(136, 34)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(567, 20)
+        Me.txtEmail.StyleController = Me.LayoutControl2
+        Me.txtEmail.TabIndex = 38
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.txtEmail
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 22)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(695, 78)
+        Me.LayoutControlItem3.Text = "Technical Support Email"
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(112, 13)
         '
         'frmParameters
         '
@@ -264,13 +235,9 @@ Partial Class frmParameters
         Me.TablePanel1.ResumeLayout(False)
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
-        CType(Me.txtEXFolderPath.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDecimals.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -279,6 +246,8 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -299,7 +268,4 @@ Partial Class frmParameters
     Friend WithEvents NavBarControl1 As DevExpress.XtraNavBar.NavBarControl
     Friend WithEvents txtEmail As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents txtEXFolderPath As DevExpress.XtraEditors.ButtonEdit
-    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents XtraFolderBrowserDialog1 As DevExpress.XtraEditors.XtraFolderBrowserDialog
 End Class
