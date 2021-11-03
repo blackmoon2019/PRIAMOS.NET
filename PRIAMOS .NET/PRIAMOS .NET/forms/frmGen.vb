@@ -94,6 +94,20 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "APOL_TYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APOL_TYPES", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.APOL_TYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_COU")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("APOL_TYPES")
                             Case "TTL"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TTL", LayoutControl1,,, sGuid, True)
@@ -322,6 +336,16 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "APOL_TYPES"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APOL_TYPES", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.APOL_TYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_DOY")
+                                End If
                             Case "TTL"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TTL", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -486,6 +510,12 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+                Case "APOL_TYPES"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("APOL_TYPES")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_APOL_TYPES where id ='" + sID + "'", True)
+                    End If
                 Case "ANN_MENTS"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("ANN_MENTS")
@@ -622,6 +652,13 @@ Public Class frmGen
                             Else
                                 FillCbo.TTL(CtrlCombo)
                             End If
+                        End If
+                    Case "APOL_TYPES"
+                        If CalledFromCtrl Then
+                            FillCbo.APOL_TYPES(CtrlCombo)
+                        Else
+                            'Dim form As New frmScroller
+                            'form.LoadRecords("vw_COU")
                         End If
                     Case "COU"
                         If CalledFromCtrl Then

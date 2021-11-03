@@ -1040,13 +1040,13 @@ Public Class frmBDG
         End If
 
     End Sub
-    Private Sub cmdSaveBills_Click(sender As Object, e As EventArgs) Handles cmdSaveBills.Click
+    Private Sub cmdSaveManage_Click(sender As Object, e As EventArgs) Handles cmdSaveManage.Click
         Dim sResult As Boolean
         Try
             'Η Νέα εγγραφή γίνεται πάντα όταν καταχωρείται η πολυκατοικία
             If Mode = FormMode.EditRecord Then
-                sResult = BdgManage.UpdateBManageData(LayoutControl2BManage, sManageID)
-                DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BMANAGE", LayoutControl2BManage,,, sManageID, True)
+                ' sResult = BdgManage.UpdateBManageData(LayoutControl2BManage, sManageID)
+                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BMANAGE", LayoutControl2BManage,,, sManageID, True)
             End If
             If sResult Then
                 'Dim form As New frmScroller

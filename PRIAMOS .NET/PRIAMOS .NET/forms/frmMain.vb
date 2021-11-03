@@ -245,4 +245,35 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub BBApol_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBApol.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Τύποι Απολύμανσης"
+        form.DataTable = "vw_APOL_TYPES"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBcalendarApol_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBcalendarApol.ItemClick
+        Dim form As frmCalendarApol = New frmCalendarApol()
+        form.Text = "Πρόγραμμα Απολυμάνσεων"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBApolList_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBApolList.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Απολυμάνσεις"
+        form.DataTable = "vw_APOL"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBPriamosVer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBPriamosVer.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Ιστορικό Εκδόσεων"
+        form.DataTable = "vw_PRIAMOSVER"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

@@ -19,6 +19,7 @@ Module Main
         Public PWD As String
         Public DataTable As String
         Public CurrentView As String
+        Public ServerViewsPath As String
         Public AllowInsert As Boolean
         Public AllowEdit As Boolean
         Public AllowDelete As Boolean

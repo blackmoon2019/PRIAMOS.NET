@@ -20,14 +20,14 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SelectQuery3 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns3 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table3 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery4 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns4 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table4 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
@@ -45,6 +45,7 @@ Partial Class frmScroller
         Me.popDeleteView = New DevExpress.XtraBars.BarButtonItem()
         Me.popRestoreView = New DevExpress.XtraBars.BarButtonItem()
         Me.BBUpdateViewFromDB = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBUpdateViewFileFromServer = New DevExpress.XtraBars.BarButtonItem()
         Me.BarViews = New DevExpress.XtraBars.BarEditItem()
         Me.RepositoryBarViews = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.BarPrintPreview = New DevExpress.XtraBars.BarButtonItem()
@@ -130,9 +131,9 @@ Partial Class frmScroller
         '
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
-        GridLevelNode1.LevelTemplate = Me.GridView2
-        GridLevelNode1.RelationName = "Level1"
-        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.LevelTemplate = Me.GridView2
+        GridLevelNode2.RelationName = "Level1"
+        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.grdMain.Location = New System.Drawing.Point(27, 43)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Name = "grdMain"
@@ -168,9 +169,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 53
+        Me.BarManager1.MaxItemId = 54
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -210,7 +211,7 @@ Partial Class frmScroller
         '
         'PopMenuViews
         '
-        Me.PopMenuViews.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.popSaveView), New DevExpress.XtraBars.LinkPersistInfo(Me.popSaveAsView), New DevExpress.XtraBars.LinkPersistInfo(Me.popSaveAsDefault), New DevExpress.XtraBars.LinkPersistInfo(Me.popDeleteView), New DevExpress.XtraBars.LinkPersistInfo(Me.popRestoreView), New DevExpress.XtraBars.LinkPersistInfo(Me.BBUpdateViewFromDB)})
+        Me.PopMenuViews.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.popSaveView), New DevExpress.XtraBars.LinkPersistInfo(Me.popSaveAsView), New DevExpress.XtraBars.LinkPersistInfo(Me.popSaveAsDefault), New DevExpress.XtraBars.LinkPersistInfo(Me.popDeleteView), New DevExpress.XtraBars.LinkPersistInfo(Me.popRestoreView), New DevExpress.XtraBars.LinkPersistInfo(Me.BBUpdateViewFromDB), New DevExpress.XtraBars.LinkPersistInfo(Me.BBUpdateViewFileFromServer)})
         Me.PopMenuViews.Manager = Me.BarManager1
         Me.PopMenuViews.Name = "PopMenuViews"
         '
@@ -260,7 +261,15 @@ Partial Class frmScroller
         '
         Me.BBUpdateViewFromDB.Caption = "Ενημέρωση πεδίων όψης από Βάση"
         Me.BBUpdateViewFromDB.Id = 48
+        Me.BBUpdateViewFromDB.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_oracle_pl_sql_16
         Me.BBUpdateViewFromDB.Name = "BBUpdateViewFromDB"
+        '
+        'BBUpdateViewFileFromServer
+        '
+        Me.BBUpdateViewFileFromServer.Caption = "Συγχρονισμός όψης από Server"
+        Me.BBUpdateViewFileFromServer.Id = 53
+        Me.BBUpdateViewFileFromServer.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_server_16
+        Me.BBUpdateViewFileFromServer.Name = "BBUpdateViewFileFromServer"
         '
         'BarViews
         '
@@ -580,21 +589,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table1.Name = "USR"
-        AllColumns1.Table = Table1
-        SelectQuery1.Columns.Add(AllColumns1)
-        SelectQuery1.Name = "USR"
-        SelectQuery1.Tables.Add(Table1)
-        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table2.Name = "IAT"
-        AllColumns2.Table = Table2
-        SelectQuery2.Columns.Add(AllColumns2)
-        SelectQuery2.Name = "IAT"
-        SelectQuery2.Tables.Add(Table2)
-        CustomSqlQuery1.Name = "INH"
-        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
+        Table3.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table3.Name = "USR"
+        AllColumns3.Table = Table3
+        SelectQuery3.Columns.Add(AllColumns3)
+        SelectQuery3.Name = "USR"
+        SelectQuery3.Tables.Add(Table3)
+        Table4.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table4.Name = "IAT"
+        AllColumns4.Table = Table4
+        SelectQuery4.Columns.Add(AllColumns4)
+        SelectQuery4.Name = "IAT"
+        SelectQuery4.Tables.Add(Table4)
+        CustomSqlQuery2.Name = "INH"
+        CustomSqlQuery2.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery3, SelectQuery4, CustomSqlQuery2})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM
@@ -712,4 +721,5 @@ Partial Class frmScroller
     Friend WithEvents BarFilterWithoutCell As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarRemoveFilterWithCell As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarRemoveAllFilters As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BBUpdateViewFileFromServer As DevExpress.XtraBars.BarButtonItem
 End Class

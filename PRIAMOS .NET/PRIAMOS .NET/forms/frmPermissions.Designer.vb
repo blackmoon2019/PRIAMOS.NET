@@ -20,38 +20,38 @@ Partial Class frmPermissions
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.chkDelete = New DevExpress.XtraEditors.CheckEdit()
         Me.chkLstUsers = New DevExpress.XtraEditors.CheckedListBoxControl()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkDelete = New DevExpress.XtraEditors.CheckEdit()
         Me.chkEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.chkInsert = New DevExpress.XtraEditors.CheckEdit()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.cboUsers = New DevExpress.XtraEditors.LookUpEdit()
-        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.chkDelete.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkLstUsers, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkDelete.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkInsert.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboUsers.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -71,6 +71,55 @@ Partial Class frmPermissions
         Me.LayoutControl1.TabIndex = 2
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'chkLstUsers
+        '
+        Me.chkLstUsers.HorizontalScrollbar = True
+        Me.chkLstUsers.Location = New System.Drawing.Point(12, 12)
+        Me.chkLstUsers.Name = "chkLstUsers"
+        Me.chkLstUsers.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple
+        Me.chkLstUsers.Size = New System.Drawing.Size(295, 176)
+        Me.chkLstUsers.SortOrder = System.Windows.Forms.SortOrder.Ascending
+        Me.chkLstUsers.StyleController = Me.LayoutControl1
+        Me.chkLstUsers.TabIndex = 9
+        Me.chkLstUsers.Tag = ""
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem1})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(589, 200)
+        Me.Root.TextVisible = False
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.chkLstUsers
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(299, 180)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(299, 90)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(270, 58)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(311, 160)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(135, 28)
+        Me.cmdExit.StyleController = Me.LayoutControl1
+        Me.cmdExit.TabIndex = 6
+        Me.cmdExit.Text = "Έξοδος"
+        '
         'chkDelete
         '
         Me.chkDelete.EditValue = CType(0, Byte)
@@ -83,18 +132,6 @@ Partial Class frmPermissions
         Me.chkDelete.StyleController = Me.LayoutControl1
         Me.chkDelete.TabIndex = 11
         Me.chkDelete.Tag = "[delete],0,1,2"
-        '
-        'chkLstUsers
-        '
-        Me.chkLstUsers.HorizontalScrollbar = True
-        Me.chkLstUsers.Location = New System.Drawing.Point(12, 12)
-        Me.chkLstUsers.Name = "chkLstUsers"
-        Me.chkLstUsers.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple
-        Me.chkLstUsers.Size = New System.Drawing.Size(295, 176)
-        Me.chkLstUsers.SortOrder = System.Windows.Forms.SortOrder.Ascending
-        Me.chkLstUsers.StyleController = Me.LayoutControl1
-        Me.chkLstUsers.TabIndex = 9
-        Me.chkLstUsers.Tag = ""
         '
         'chkEdit
         '
@@ -122,17 +159,6 @@ Partial Class frmPermissions
         Me.chkInsert.TabIndex = 9
         Me.chkInsert.Tag = "[insert],0,1,2"
         '
-        'cmdExit
-        '
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(311, 160)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(135, 28)
-        Me.cmdExit.StyleController = Me.LayoutControl1
-        Me.cmdExit.TabIndex = 6
-        Me.cmdExit.Text = "Έξοδος"
-        '
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
@@ -155,15 +181,6 @@ Partial Class frmPermissions
         Me.cboUsers.StyleController = Me.LayoutControl1
         Me.cboUsers.TabIndex = 8
         Me.cboUsers.Tag = "uid,0,1,2"
-        '
-        'Root
-        '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem1})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(589, 200)
-        Me.Root.TextVisible = False
         '
         'LayoutControlItem6
         '
@@ -205,15 +222,6 @@ Partial Class frmPermissions
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.chkLstUsers
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(299, 180)
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem7.TextVisible = False
-        '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.cmdExit
@@ -232,14 +240,6 @@ Partial Class frmPermissions
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(299, 90)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(270, 58)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
         'frmPermissions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -252,20 +252,20 @@ Partial Class frmPermissions
         Me.Text = "frmPermissions"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.chkDelete.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkLstUsers, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkDelete.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkInsert.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboUsers.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

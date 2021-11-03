@@ -176,6 +176,8 @@ NextItem:
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDecimal(sdr.GetOrdinal(TagV)))
                                         Case "datetime"
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
+                                        Case "date"
+                                            If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
                                         Case "varbinary"
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
                                                 Dim pic As DevExpress.XtraEditors.PictureEdit
@@ -274,17 +276,23 @@ NextItem:
         Dim Ctrl As Control = LItem.Control
         If TypeOf Ctrl Is DevExpress.XtraEditors.LookUpEdit Then
             Dim cbo As DevExpress.XtraEditors.LookUpEdit
+            Dim stestGuid As Guid
+            Dim isValid As Boolean = Guid.TryParse(sValue, stestGuid)
             cbo = Ctrl
-            If cbo.Properties.DisplayMember = cbo.Properties.ValueMember Then
-                cbo.EditValue = sValue
-            Else
+            If isValid = True Then
                 cbo.EditValue = System.Guid.Parse(sValue)
+            Else
+                cbo.EditValue = Convert.ToInt32(sValue)
             End If
-
         ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
             Dim dt As DevExpress.XtraEditors.DateEdit
             dt = Ctrl
             dt.EditValue = CDate(sValue)
+        ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TimeEdit Then
+            Dim tm As DevExpress.XtraEditors.TimeEdit
+            tm = Ctrl
+
+            tm.EditValue = CDate(sValue).ToString("HH:mm")
         ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
             Dim txt As DevExpress.XtraEditors.MemoEdit
             txt = Ctrl
@@ -364,7 +372,7 @@ NextItem:
         Dim dt As New DataTable("sTable")
         Try
             If sView.Length > 0 Then
-                sSQL = "Select  VIEW_COLUMN_NAME = c.name,VIEW_CATALOG,VIEW_SCHEMA,VIEW_NAME,TABLE_CATALOG,TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME, ep.value As 'COLUMN_DESCRIPTION'
+                sSQL = "Select  VIEW_COLUMN_NAME = c.name,VIEW_CATALOG,VIEW_SCHEMA,VIEW_NAME,TABLE_CATALOG,TABLE_SCHEMA,TABLE_NAME,ISNULL(c.name,COLUMN_NAME) AS COLUMN_NAME, ISNULL(ep.value,ISNULL(c.name,COLUMN_NAME)) As 'COLUMN_DESCRIPTION'
                         From sys.columns c
                         INNER Join sys.views vw on c.OBJECT_ID = vw.OBJECT_ID
                         INNER Join sys.schemas s ON s.schema_id = vw.schema_id
@@ -390,19 +398,19 @@ NextItem:
             For Each row As DataRow In dt.Rows
                 Dim columnName As String = row.Item("COLUMN_NAME").ToString
                 Dim columnNameValue As String = row.Item("COLUMN_DESCRIPTION").ToString
+
                 If columnName.Length > 0 And columnNameValue.Length > 0 Then
-                    'If GRDView.Columns.Item(columnName) IsNot Nothing Then GRDView.Columns.Item(columnName).Caption = columnNameValue
-                    'GRDView.Columns.Item(columnName).Caption = columnNameValue
                     Dim C As New GridColumn
                     C = GRDView.Columns.ColumnByName("col" & columnName)
                     If C IsNot Nothing Then
-                        C.Caption = columnNameValue
+                        If C.Caption = "" Then C.Caption = columnNameValue
                         C = Nothing
                     End If
                 End If
+                'If columnName.Length > 0 And GRDView.Columns.Item(columnName) IsNot Nothing Then GRDView.Columns.Item(columnName).Caption = columnNameValue
             Next
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     ' Φορτώνει ενα query σε στήλες στο Grid

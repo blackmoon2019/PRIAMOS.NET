@@ -69,6 +69,7 @@ Public Class frmLogin
                     If My.Settings.UNSave = True Then My.Settings.UN = txtUN.EditValue : My.Settings.Save()
 
                 End If
+                UserProps.ServerViewsPath = My.Settings.SERVERVIEWS
                 frmMain.Show()
                 Me.Close()
             Else

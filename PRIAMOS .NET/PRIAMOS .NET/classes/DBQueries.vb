@@ -646,6 +646,22 @@ NextItem:
                                     Else
                                         sSQL.Append("NULL")
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        sSQL.Append(cbo.SelectedIndex)
+                                    Else
+                                        sSQL.Append("NULL")
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.GridLookUpEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.GridLookUpEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                    Else
+                                        sSQL.Append("NULL")
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.PictureEdit Then
                                     For I As Integer = 0 To UBound(FormHasPic)
                                         If FormHasPic(I) = False Then
@@ -662,7 +678,11 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
                                     Dim cpk As DevExpress.XtraEditors.ColorPickEdit
                                     cpk = Ctrl
-                                    sSQL.Append(cpk.Text)
+                                    If cpk.Text = "0" Then
+                                        sSQL.Append("NULL")
+                                    Else
+                                        sSQL.Append(cpk.Text)
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                     Dim dt As DevExpress.XtraEditors.DateEdit
                                     dt = Ctrl
