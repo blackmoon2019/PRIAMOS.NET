@@ -94,6 +94,33 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "COL_METHOD"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COL_METHOD", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.COL_METHOD(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_COL_METHOD")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("COL_METHOD")
+                            Case "BANKS"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BANKS", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.BANKS(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_BANKS")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("BANKS")
+
                             Case "APOL_TYPES"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APOL_TYPES", LayoutControl1,,, sGuid, True)
@@ -336,6 +363,24 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "COL_METHOD"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COL_METHOD", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.COL_METHOD(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_COL_METHOD")
+                                End If
+                            Case "BANKS"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BANKS", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.BANKS(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    Dim form As frmScroller = Frm
+                                    form.LoadRecords("vw_BANKS")
+                                End If
                             Case "APOL_TYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APOL_TYPES", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -510,6 +555,18 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+                Case "COL_METHOD"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("COL_METHOD")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_COL_METHOD where id ='" + sID + "'")
+                    End If
+                Case "BANKS"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("BANKS")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_BANKS where id ='" + sID + "'")
+                    End If
                 Case "APOL_TYPES"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("APOL_TYPES")
@@ -630,6 +687,20 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+                    Case "COL_METHOD"
+                        If CalledFromCtrl Then
+                            FillCbo.COL_METHOD(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_COL_METHOD")
+                        End If
+                    Case "BANKS"
+                        If CalledFromCtrl Then
+                            FillCbo.BANKS(CtrlCombo)
+                        Else
+                            Dim form As frmScroller = Frm
+                            form.LoadRecords("vw_BANKS")
+                        End If
                     Case "ANN_MENTS"
                         If CalledFromCtrl Then
                             If FrmCaller IsNot Nothing Then

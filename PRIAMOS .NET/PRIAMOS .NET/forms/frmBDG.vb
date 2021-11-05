@@ -342,6 +342,10 @@ Public Class frmBDG
                     'form.LoadRecords("vw_BDG", sID)
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
+                    cmdAPTAdd.Enabled = True
+                    cmdAptRefresh.Enabled = True
+                    cmdAPTEdit.Enabled = True
+                    cmdAptDel.Enabled = True
                 End If
             End If
 

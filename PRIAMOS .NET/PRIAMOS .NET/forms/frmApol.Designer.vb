@@ -22,17 +22,6 @@ Partial Class frmApol
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmApol))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.VwWORKSHOPSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
-        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VwAPOL_TYPESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
-        Me.Vw_WORKSHOPSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_WORKSHOPSTableAdapter()
-        Me.Vw_APOL_TYPESTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APOL_TYPESTableAdapter()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cboWorkshop = New DevExpress.XtraEditors.LookUpEdit()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
@@ -43,6 +32,8 @@ Partial Class frmApol
         Me.tmIN = New DevExpress.XtraEditors.TimeEdit()
         Me.tmOUT = New DevExpress.XtraEditors.TimeEdit()
         Me.txtPayDEI = New DevExpress.XtraEditors.TextEdit()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -53,14 +44,17 @@ Partial Class frmApol
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem121 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.VwWORKSHOPSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VwAPOL_TYPESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
+        Me.Vw_WORKSHOPSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_WORKSHOPSTableAdapter()
+        Me.Vw_APOL_TYPESTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APOL_TYPESTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.VwWORKSHOPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwAPOL_TYPESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboWorkshop.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +66,8 @@ Partial Class frmApol
         CType(Me.tmIN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tmOUT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPayDEI.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,6 +78,10 @@ Partial Class frmApol
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwWORKSHOPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAPOL_TYPESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -103,74 +103,6 @@ Partial Class frmApol
         Me.LayoutControl1.Size = New System.Drawing.Size(477, 341)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'VwWORKSHOPSBindingSource
-        '
-        Me.VwWORKSHOPSBindingSource.DataMember = "vw_WORKSHOPS"
-        Me.VwWORKSHOPSBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VwBDGBindingSource
-        '
-        Me.VwBDGBindingSource.DataMember = "vw_BDG"
-        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'VwAPOL_TYPESBindingSource
-        '
-        Me.VwAPOL_TYPESBindingSource.DataMember = "vw_APOL_TYPES"
-        Me.VwAPOL_TYPESBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Root
-        '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem7, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem11, Me.LayoutControlItem15, Me.LayoutControlItem121})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(477, 341)
-        Me.Root.TextVisible = False
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(172, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(285, 24)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'Vw_BDGTableAdapter
-        '
-        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_WORKSHOPSTableAdapter
-        '
-        Me.Vw_WORKSHOPSTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_APOL_TYPESTableAdapter
-        '
-        Me.Vw_APOL_TYPESTableAdapter.ClearBeforeFill = True
-        '
-        'cmdExit
-        '
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(353, 329)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(110, 28)
-        Me.cmdExit.TabIndex = 14
-        Me.cmdExit.Text = "Έξοδος"
-        '
-        'cmdSave
-        '
-        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(236, 329)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(111, 28)
-        Me.cmdSave.TabIndex = 15
-        Me.cmdSave.Text = "Αποθήκευση"
         '
         'txtCode
         '
@@ -320,6 +252,23 @@ Partial Class frmApol
         Me.txtPayDEI.Tag = "Amt,0,1,2"
         Me.txtPayDEI.Visible = False
         '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem7, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem11, Me.LayoutControlItem15, Me.LayoutControlItem121})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(477, 341)
+        Me.Root.TextVisible = False
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(172, 0)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(285, 24)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
         'LayoutControlItem14
         '
         Me.LayoutControlItem14.Control = Me.txtComments
@@ -443,6 +392,57 @@ Partial Class frmApol
         Me.LayoutControlItem121.Text = "Αξία"
         Me.LayoutControlItem121.TextSize = New System.Drawing.Size(106, 13)
         '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(353, 329)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(110, 28)
+        Me.cmdExit.TabIndex = 14
+        Me.cmdExit.Text = "Έξοδος"
+        '
+        'cmdSave
+        '
+        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSave.Location = New System.Drawing.Point(236, 329)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(111, 28)
+        Me.cmdSave.TabIndex = 15
+        Me.cmdSave.Text = "Αποθήκευση"
+        '
+        'VwWORKSHOPSBindingSource
+        '
+        Me.VwWORKSHOPSBindingSource.DataMember = "vw_WORKSHOPS"
+        Me.VwWORKSHOPSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwBDGBindingSource
+        '
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'VwAPOL_TYPESBindingSource
+        '
+        Me.VwAPOL_TYPESBindingSource.DataMember = "vw_APOL_TYPES"
+        Me.VwAPOL_TYPESBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_WORKSHOPSTableAdapter
+        '
+        Me.Vw_WORKSHOPSTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_APOL_TYPESTableAdapter
+        '
+        Me.Vw_APOL_TYPESTableAdapter.ClearBeforeFill = True
+        '
         'frmApol
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -455,12 +455,6 @@ Partial Class frmApol
         Me.Text = "frmApol"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.VwWORKSHOPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwAPOL_TYPESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboWorkshop.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -472,6 +466,8 @@ Partial Class frmApol
         CType(Me.tmIN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tmOUT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPayDEI.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -482,6 +478,10 @@ Partial Class frmApol
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwWORKSHOPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAPOL_TYPESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -116,7 +116,6 @@ Public Class frmINH
         GridControl2.DefaultView.PopulateColumns()
         myReader.Close()
         TransposeColumns()
-
         GridINH.BestFitColumns()
     End Sub
     Private Sub CreateBands()
@@ -281,9 +280,9 @@ Public Class frmINH
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 'Διαγραφή αρχείων αν υπάρχουν
                 DeleteIND_F(False)
+                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

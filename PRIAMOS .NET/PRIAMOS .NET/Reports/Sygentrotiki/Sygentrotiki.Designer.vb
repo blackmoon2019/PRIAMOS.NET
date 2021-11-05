@@ -20,150 +20,17 @@ Partial Public Class Rep_Sygentrotiki
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim Column1 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression1 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim Column2 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression2 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column3 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression3 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column4 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression4 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column5 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression5 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column6 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression6 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column7 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression7 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column8 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression8 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column9 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression9 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column10 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression10 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column11 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression11 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column12 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression12 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column13 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression13 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column14 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression14 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column15 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression15 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column16 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression16 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column17 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression17 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column18 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression18 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column19 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression19 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column20 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression20 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column21 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression21 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column22 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression22 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column23 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression23 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column24 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression24 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column25 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression25 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column26 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression26 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column27 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression27 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column28 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression28 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column29 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression29 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column30 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression30 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column31 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression31 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column32 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression32 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column33 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression33 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column34 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression34 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column35 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression35 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column36 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression36 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column37 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression37 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column38 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression38 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column39 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression39 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column40 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression40 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column41 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression41 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column42 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression42 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column43 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression43 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column44 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression44 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column45 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression45 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column46 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression46 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column47 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression47 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column48 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression48 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column49 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression49 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column50 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression50 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column51 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression51 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column52 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression52 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column53 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression53 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column54 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression54 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column55 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression55 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column56 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression56 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column57 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression57 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column58 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression58 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column59 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression59 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column60 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression60 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column61 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression61 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column62 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression62 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column63 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression63 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column64 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression64 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column65 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression65 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column66 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression66 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
         Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Rep_Sygentrotiki))
         Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery4 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter4 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery5 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter4 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery6 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter5 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim MasterDetailInfo1 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo1 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
@@ -226,6 +93,37 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
+        Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell10 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell11 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell13 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell14 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell15 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell16 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell17 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTable1 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell1 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell3 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell5 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell6 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell7 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell8 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell9 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPdfContent1 = New DevExpress.XtraReports.UI.XRPdfContent()
         Me.CrossTabTotalStyle1 = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.CrossTabHeaderStyle1 = New DevExpress.XtraReports.UI.XRControlStyle()
@@ -237,10 +135,31 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell37 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell38 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell39 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTable5 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow5 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell28 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell29 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell30 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell31 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell32 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell33 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell34 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell35 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell36 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTable4 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow4 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTableCell26 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell27 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTable3 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow3 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell18 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell19 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell20 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell21 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell22 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell23 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell24 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell25 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.CalculatedField1 = New DevExpress.XtraReports.UI.CalculatedField()
         Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
         Me.XrTable9 = New DevExpress.XtraReports.UI.XRTable()
@@ -249,400 +168,81 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell58 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell59 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.bdgID = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.XrTableCell48 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell47 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell46 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell45 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell44 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell43 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell42 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell41 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell40 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableRow7 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.XrTable7 = New DevExpress.XtraReports.UI.XRTable()
-        Me.XrTableCell56 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell55 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell54 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell53 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell52 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell51 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell50 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell49 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableRow8 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTable8 = New DevExpress.XtraReports.UI.XRTable()
-        Me.XrTableCell36 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell35 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell34 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell33 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell32 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell31 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell30 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell29 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell28 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableRow5 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.XrTable5 = New DevExpress.XtraReports.UI.XRTable()
-        Me.XrTableCell25 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell24 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell23 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell22 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell21 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell20 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell19 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell18 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableRow3 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.XrTable3 = New DevExpress.XtraReports.UI.XRTable()
-        Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrTableCell9 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell8 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell7 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell6 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell5 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell3 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell1 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.XrTable1 = New DevExpress.XtraReports.UI.XRTable()
-        Me.XrTableCell17 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell16 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell15 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell14 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell13 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell11 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell10 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
-        Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
-        CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XrTableRow8 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell49 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell50 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell51 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell52 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell53 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell54 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell55 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell56 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTable7 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow7 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell40 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell41 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell42 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell43 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell44 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell45 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell46 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell47 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell48 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.bdgID = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'SqlDataSource1
         '
         Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
         Me.SqlDataSource1.Name = "SqlDataSource1"
-        ColumnExpression1.ColumnName = "ID"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""1389"" />"
-        Table1.Name = "vw_BDG"
-        ColumnExpression1.Table = Table1
-        Column1.Expression = ColumnExpression1
-        ColumnExpression2.ColumnName = "code"
-        ColumnExpression2.Table = Table1
-        Column2.Expression = ColumnExpression2
-        ColumnExpression3.ColumnName = "old_code"
-        ColumnExpression3.Table = Table1
-        Column3.Expression = ColumnExpression3
-        ColumnExpression4.ColumnName = "nam"
-        ColumnExpression4.Table = Table1
-        Column4.Expression = ColumnExpression4
-        ColumnExpression5.ColumnName = "AdrID"
-        ColumnExpression5.Table = Table1
-        Column5.Expression = ColumnExpression5
-        ColumnExpression6.ColumnName = "cmt"
-        ColumnExpression6.Table = Table1
-        Column6.Expression = ColumnExpression6
-        ColumnExpression7.ColumnName = "aam"
-        ColumnExpression7.Table = Table1
-        Column7.Expression = ColumnExpression7
-        ColumnExpression8.ColumnName = "iam"
-        ColumnExpression8.Table = Table1
-        Column8.Expression = ColumnExpression8
-        ColumnExpression9.ColumnName = "dts"
-        ColumnExpression9.Table = Table1
-        Column9.Expression = ColumnExpression9
-        ColumnExpression10.ColumnName = "dtu"
-        ColumnExpression10.Table = Table1
-        Column10.Expression = ColumnExpression10
-        ColumnExpression11.ColumnName = "iad"
-        ColumnExpression11.Table = Table1
-        Column11.Expression = ColumnExpression11
-        ColumnExpression12.ColumnName = "modifiedBy"
-        ColumnExpression12.Table = Table1
-        Column12.Expression = ColumnExpression12
-        ColumnExpression13.ColumnName = "modifiedOn"
-        ColumnExpression13.Table = Table1
-        Column13.Expression = ColumnExpression13
-        ColumnExpression14.ColumnName = "createdOn"
-        ColumnExpression14.Table = Table1
-        Column14.Expression = ColumnExpression14
-        ColumnExpression15.ColumnName = "ADR_ID"
-        ColumnExpression15.Table = Table1
-        Column15.Expression = ColumnExpression15
-        ColumnExpression16.ColumnName = "ADR_Code"
-        ColumnExpression16.Table = Table1
-        Column16.Expression = ColumnExpression16
-        ColumnExpression17.ColumnName = "ADR_Name"
-        ColumnExpression17.Table = Table1
-        Column17.Expression = ColumnExpression17
-        ColumnExpression18.ColumnName = "tk"
-        ColumnExpression18.Table = Table1
-        Column18.Expression = ColumnExpression18
-        ColumnExpression19.ColumnName = "AreaID"
-        ColumnExpression19.Table = Table1
-        Column19.Expression = ColumnExpression19
-        ColumnExpression20.ColumnName = "CouID"
-        ColumnExpression20.Table = Table1
-        Column20.Expression = ColumnExpression20
-        ColumnExpression21.ColumnName = "Area_ID"
-        ColumnExpression21.Table = Table1
-        Column21.Expression = ColumnExpression21
-        ColumnExpression22.ColumnName = "Area_Code"
-        ColumnExpression22.Table = Table1
-        Column22.Expression = ColumnExpression22
-        ColumnExpression23.ColumnName = "Area_CouID"
-        ColumnExpression23.Table = Table1
-        Column23.Expression = ColumnExpression23
-        ColumnExpression24.ColumnName = "Area_Name"
-        ColumnExpression24.Table = Table1
-        Column24.Expression = ColumnExpression24
-        ColumnExpression25.ColumnName = "COU_ID"
-        ColumnExpression25.Table = Table1
-        Column25.Expression = ColumnExpression25
-        ColumnExpression26.ColumnName = "COU_Code"
-        ColumnExpression26.Table = Table1
-        Column26.Expression = ColumnExpression26
-        ColumnExpression27.ColumnName = "COU_Name"
-        ColumnExpression27.Table = Table1
-        Column27.Expression = ColumnExpression27
-        ColumnExpression28.ColumnName = "ar"
-        ColumnExpression28.Table = Table1
-        Column28.Expression = ColumnExpression28
-        ColumnExpression29.ColumnName = "prd"
-        ColumnExpression29.Table = Table1
-        Column29.Expression = ColumnExpression29
-        ColumnExpression30.ColumnName = "rmg"
-        ColumnExpression30.Table = Table1
-        Column30.Expression = ColumnExpression30
-        ColumnExpression31.ColumnName = "HTypeID"
-        ColumnExpression31.Table = Table1
-        Column31.Expression = ColumnExpression31
-        ColumnExpression32.ColumnName = "BTypeID"
-        ColumnExpression32.Table = Table1
-        Column32.Expression = ColumnExpression32
-        ColumnExpression33.ColumnName = "HTYPE_Name"
-        ColumnExpression33.Table = Table1
-        Column33.Expression = ColumnExpression33
-        ColumnExpression34.ColumnName = "BTYPE_Name"
-        ColumnExpression34.Table = Table1
-        Column34.Expression = ColumnExpression34
-        ColumnExpression35.ColumnName = "FBTYPE_Name"
-        ColumnExpression35.Table = Table1
-        Column35.Expression = ColumnExpression35
-        ColumnExpression36.ColumnName = "FTypeID"
-        ColumnExpression36.Table = Table1
-        Column36.Expression = ColumnExpression36
-        ColumnExpression37.ColumnName = "hpc"
-        ColumnExpression37.Table = Table1
-        Column37.Expression = ColumnExpression37
-        ColumnExpression38.ColumnName = "hpb"
-        ColumnExpression38.Table = Table1
-        Column38.Expression = ColumnExpression38
-        ColumnExpression39.ColumnName = "calH"
-        ColumnExpression39.Table = Table1
-        Column39.Expression = ColumnExpression39
-        ColumnExpression40.ColumnName = "calB"
-        ColumnExpression40.Table = Table1
-        Column40.Expression = ColumnExpression40
-        ColumnExpression41.ColumnName = "tacH"
-        ColumnExpression41.Table = Table1
-        Column41.Expression = ColumnExpression41
-        ColumnExpression42.ColumnName = "tacB"
-        ColumnExpression42.Table = Table1
-        Column42.Expression = ColumnExpression42
-        ColumnExpression43.ColumnName = "lpcH"
-        ColumnExpression43.Table = Table1
-        Column43.Expression = ColumnExpression43
-        ColumnExpression44.ColumnName = "lpcB"
-        ColumnExpression44.Table = Table1
-        Column44.Expression = ColumnExpression44
-        ColumnExpression45.ColumnName = "bCommon"
-        ColumnExpression45.Table = Table1
-        Column45.Expression = ColumnExpression45
-        ColumnExpression46.ColumnName = "bSeperate"
-        ColumnExpression46.Table = Table1
-        Column46.Expression = ColumnExpression46
-        ColumnExpression47.ColumnName = "bManageID"
-        ColumnExpression47.Table = Table1
-        Column47.Expression = ColumnExpression47
-        ColumnExpression48.ColumnName = "eName"
-        ColumnExpression48.Table = Table1
-        Column48.Expression = ColumnExpression48
-        ColumnExpression49.ColumnName = "eCounter"
-        ColumnExpression49.Table = Table1
-        Column49.Expression = ColumnExpression49
-        ColumnExpression50.ColumnName = "ePaymentCode"
-        ColumnExpression50.Table = Table1
-        Column50.Expression = ColumnExpression50
-        ColumnExpression51.ColumnName = "eServiceNum"
-        ColumnExpression51.Table = Table1
-        Column51.Expression = ColumnExpression51
-        ColumnExpression52.ColumnName = "fName"
-        ColumnExpression52.Table = Table1
-        Column52.Expression = ColumnExpression52
-        ColumnExpression53.ColumnName = "fCounter"
-        ColumnExpression53.Table = Table1
-        Column53.Expression = ColumnExpression53
-        ColumnExpression54.ColumnName = "fPaymentCode"
-        ColumnExpression54.Table = Table1
-        Column54.Expression = ColumnExpression54
-        ColumnExpression55.ColumnName = "fServiceNum"
-        ColumnExpression55.Table = Table1
-        Column55.Expression = ColumnExpression55
-        ColumnExpression56.ColumnName = "wName"
-        ColumnExpression56.Table = Table1
-        Column56.Expression = ColumnExpression56
-        ColumnExpression57.ColumnName = "wCounter"
-        ColumnExpression57.Table = Table1
-        Column57.Expression = ColumnExpression57
-        ColumnExpression58.ColumnName = "wRegisterNum"
-        ColumnExpression58.Table = Table1
-        Column58.Expression = ColumnExpression58
-        ColumnExpression59.ColumnName = "fUN"
-        ColumnExpression59.Table = Table1
-        Column59.Expression = ColumnExpression59
-        ColumnExpression60.ColumnName = "fPWD"
-        ColumnExpression60.Table = Table1
-        Column60.Expression = ColumnExpression60
-        ColumnExpression61.ColumnName = "fCusCode"
-        ColumnExpression61.Table = Table1
-        Column61.Expression = ColumnExpression61
-        ColumnExpression62.ColumnName = "fHkasp"
-        ColumnExpression62.Table = Table1
-        Column62.Expression = ColumnExpression62
-        ColumnExpression63.ColumnName = "fDeposit"
-        ColumnExpression63.Table = Table1
-        Column63.Expression = ColumnExpression63
-        ColumnExpression64.ColumnName = "isManaged"
-        ColumnExpression64.Table = Table1
-        Column64.Expression = ColumnExpression64
-        ColumnExpression65.ColumnName = "ManagerName"
-        ColumnExpression65.Table = Table1
-        Column65.Expression = ColumnExpression65
-        ColumnExpression66.ColumnName = "managerID"
-        ColumnExpression66.Table = Table1
-        Column66.Expression = ColumnExpression66
-        SelectQuery1.Columns.Add(Column1)
-        SelectQuery1.Columns.Add(Column2)
-        SelectQuery1.Columns.Add(Column3)
-        SelectQuery1.Columns.Add(Column4)
-        SelectQuery1.Columns.Add(Column5)
-        SelectQuery1.Columns.Add(Column6)
-        SelectQuery1.Columns.Add(Column7)
-        SelectQuery1.Columns.Add(Column8)
-        SelectQuery1.Columns.Add(Column9)
-        SelectQuery1.Columns.Add(Column10)
-        SelectQuery1.Columns.Add(Column11)
-        SelectQuery1.Columns.Add(Column12)
-        SelectQuery1.Columns.Add(Column13)
-        SelectQuery1.Columns.Add(Column14)
-        SelectQuery1.Columns.Add(Column15)
-        SelectQuery1.Columns.Add(Column16)
-        SelectQuery1.Columns.Add(Column17)
-        SelectQuery1.Columns.Add(Column18)
-        SelectQuery1.Columns.Add(Column19)
-        SelectQuery1.Columns.Add(Column20)
-        SelectQuery1.Columns.Add(Column21)
-        SelectQuery1.Columns.Add(Column22)
-        SelectQuery1.Columns.Add(Column23)
-        SelectQuery1.Columns.Add(Column24)
-        SelectQuery1.Columns.Add(Column25)
-        SelectQuery1.Columns.Add(Column26)
-        SelectQuery1.Columns.Add(Column27)
-        SelectQuery1.Columns.Add(Column28)
-        SelectQuery1.Columns.Add(Column29)
-        SelectQuery1.Columns.Add(Column30)
-        SelectQuery1.Columns.Add(Column31)
-        SelectQuery1.Columns.Add(Column32)
-        SelectQuery1.Columns.Add(Column33)
-        SelectQuery1.Columns.Add(Column34)
-        SelectQuery1.Columns.Add(Column35)
-        SelectQuery1.Columns.Add(Column36)
-        SelectQuery1.Columns.Add(Column37)
-        SelectQuery1.Columns.Add(Column38)
-        SelectQuery1.Columns.Add(Column39)
-        SelectQuery1.Columns.Add(Column40)
-        SelectQuery1.Columns.Add(Column41)
-        SelectQuery1.Columns.Add(Column42)
-        SelectQuery1.Columns.Add(Column43)
-        SelectQuery1.Columns.Add(Column44)
-        SelectQuery1.Columns.Add(Column45)
-        SelectQuery1.Columns.Add(Column46)
-        SelectQuery1.Columns.Add(Column47)
-        SelectQuery1.Columns.Add(Column48)
-        SelectQuery1.Columns.Add(Column49)
-        SelectQuery1.Columns.Add(Column50)
-        SelectQuery1.Columns.Add(Column51)
-        SelectQuery1.Columns.Add(Column52)
-        SelectQuery1.Columns.Add(Column53)
-        SelectQuery1.Columns.Add(Column54)
-        SelectQuery1.Columns.Add(Column55)
-        SelectQuery1.Columns.Add(Column56)
-        SelectQuery1.Columns.Add(Column57)
-        SelectQuery1.Columns.Add(Column58)
-        SelectQuery1.Columns.Add(Column59)
-        SelectQuery1.Columns.Add(Column60)
-        SelectQuery1.Columns.Add(Column61)
-        SelectQuery1.Columns.Add(Column62)
-        SelectQuery1.Columns.Add(Column63)
-        SelectQuery1.Columns.Add(Column64)
-        SelectQuery1.Columns.Add(Column65)
-        SelectQuery1.Columns.Add(Column66)
-        SelectQuery1.MetaSerializable = "<Meta X=""320"" Y=""20"" Width=""109"" Height=""1369"" />"
-        SelectQuery1.Name = "vw_BDG"
-        SelectQuery1.Tables.Add(Table1)
-        CustomSqlQuery1.MetaSerializable = "<Meta X=""-90"" Y=""20"" Width=""103"" Height=""389"" />"
-        CustomSqlQuery1.Name = "vw_INH"
+        CustomSqlQuery1.Name = "vw_BDG"
+        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
+        CustomSqlQuery2.MetaSerializable = "<Meta X=""-90"" Y=""20"" Width=""103"" Height=""389"" />"
+        CustomSqlQuery2.Name = "vw_INH"
         QueryParameter1.Name = "inhID"
         QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery1.Parameters.Add(QueryParameter1)
-        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
-        CustomSqlQuery2.MetaSerializable = "<Meta X=""449"" Y=""20"" Width=""146"" Height=""889"" />"
-        CustomSqlQuery2.Name = "vw_INC"
+        CustomSqlQuery2.Parameters.Add(QueryParameter1)
+        CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
+        CustomSqlQuery3.MetaSerializable = "<Meta X=""449"" Y=""20"" Width=""146"" Height=""889"" />"
+        CustomSqlQuery3.Name = "vw_INC"
         QueryParameter2.Name = "inhID"
         QueryParameter2.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter2.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery2.Parameters.Add(QueryParameter2)
-        CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
-        CustomSqlQuery3.MetaSerializable = "<Meta X=""920"" Y=""10"" Width=""100"" Height=""89"" />"
-        CustomSqlQuery3.Name = "INH_MLC"
+        CustomSqlQuery3.Parameters.Add(QueryParameter2)
+        CustomSqlQuery3.Sql = resources.GetString("CustomSqlQuery3.Sql")
+        CustomSqlQuery4.MetaSerializable = "<Meta X=""920"" Y=""10"" Width=""100"" Height=""89"" />"
+        CustomSqlQuery4.Name = "INH_MLC"
         QueryParameter3.Name = "inhID"
         QueryParameter3.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter3.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery3.Parameters.Add(QueryParameter3)
-        CustomSqlQuery3.Sql = "select distinct mlcRepName,calcCatOrd " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "from vw_inc " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID= @inhID order b" &
+        CustomSqlQuery4.Parameters.Add(QueryParameter3)
+        CustomSqlQuery4.Sql = "select distinct mlcRepName,calcCatOrd " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "from vw_inc " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID= @inhID order b" &
     "y calcCatOrd"
-        CustomSqlQuery4.MetaSerializable = "<Meta X=""680"" Y=""20"" Width=""146"" Height=""449"" />"
-        CustomSqlQuery4.Name = "Exoda"
+        CustomSqlQuery5.MetaSerializable = "<Meta X=""680"" Y=""20"" Width=""146"" Height=""449"" />"
+        CustomSqlQuery5.Name = "Exoda"
         QueryParameter4.Name = "inhID"
         QueryParameter4.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter4.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery4.Parameters.Add(QueryParameter4)
-        CustomSqlQuery4.Sql = resources.GetString("CustomSqlQuery4.Sql")
-        CustomSqlQuery5.Name = "vw_APMIL"
+        CustomSqlQuery5.Parameters.Add(QueryParameter4)
+        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
+        CustomSqlQuery6.Name = "vw_APMIL"
         QueryParameter5.Name = "bdgID"
         QueryParameter5.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter5.Value = New DevExpress.DataAccess.Expression("?bdgID", GetType(System.Guid))
-        CustomSqlQuery5.Parameters.Add(QueryParameter5)
-        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
-        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5})
+        CustomSqlQuery6.Parameters.Add(QueryParameter5)
+        CustomSqlQuery6.Sql = resources.GetString("CustomSqlQuery6.Sql")
+        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6})
         MasterDetailInfo1.DetailQueryName = "vw_BDG"
         RelationColumnInfo1.NestedKeyColumn = "ID"
         RelationColumnInfo1.ParentKeyColumn = "bdgID"
@@ -1356,6 +956,420 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel19.Text = "ΠΟΣΟ"
         Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
+        'SubBand1
+        '
+        Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTable2, Me.XrTable1, Me.XrLabel32, Me.XrLabel31, Me.XrLabel38, Me.XrLabel35, Me.XrLabel36, Me.XrLabel37, Me.XrLabel34, Me.XrLabel33, Me.XrLabel30})
+        Me.SubBand1.Dpi = 254.0!
+        Me.SubBand1.HeightF = 74.93009!
+        Me.SubBand1.Name = "SubBand1"
+        '
+        'XrTable2
+        '
+        Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable2.Dpi = 254.0!
+        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 36.46!)
+        Me.XrTable2.Name = "XrTable2"
+        Me.XrTable2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
+        Me.XrTable2.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
+        Me.XrTable2.StylePriority.UseBorders = False
+        '
+        'XrTableRow2
+        '
+        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell10, Me.XrTableCell11, Me.XrTableCell12, Me.XrTableCell13, Me.XrTableCell14, Me.XrTableCell15, Me.XrTableCell16, Me.XrTableCell17})
+        Me.XrTableRow2.Dpi = 254.0!
+        Me.XrTableRow2.Name = "XrTableRow2"
+        Me.XrTableRow2.Weight = 1.0R
+        '
+        'XrTableCell10
+        '
+        Me.XrTableCell10.CanGrow = False
+        Me.XrTableCell10.Dpi = 254.0!
+        Me.XrTableCell10.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell10.Name = "XrTableCell10"
+        Me.XrTableCell10.StylePriority.UseFont = False
+        Me.XrTableCell10.Text = "XrTableCell1"
+        Me.XrTableCell10.Visible = False
+        Me.XrTableCell10.Weight = 0.64960655448450677R
+        Me.XrTableCell10.WordWrap = False
+        '
+        'XrTableCell11
+        '
+        Me.XrTableCell11.CanGrow = False
+        Me.XrTableCell11.Dpi = 254.0!
+        Me.XrTableCell11.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell11.Name = "XrTableCell11"
+        Me.XrTableCell11.StylePriority.UseFont = False
+        Me.XrTableCell11.Text = "XrTableCell2"
+        Me.XrTableCell11.Visible = False
+        Me.XrTableCell11.Weight = 0.669291601136543R
+        Me.XrTableCell11.WordWrap = False
+        '
+        'XrTableCell12
+        '
+        Me.XrTableCell12.CanGrow = False
+        Me.XrTableCell12.Dpi = 254.0!
+        Me.XrTableCell12.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell12.Name = "XrTableCell12"
+        Me.XrTableCell12.StylePriority.UseFont = False
+        Me.XrTableCell12.Text = "XrTableCell3"
+        Me.XrTableCell12.Visible = False
+        Me.XrTableCell12.Weight = 0.70833320984408465R
+        Me.XrTableCell12.WordWrap = False
+        '
+        'XrTableCell13
+        '
+        Me.XrTableCell13.CanGrow = False
+        Me.XrTableCell13.Dpi = 254.0!
+        Me.XrTableCell13.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell13.Name = "XrTableCell13"
+        Me.XrTableCell13.StylePriority.UseFont = False
+        Me.XrTableCell13.Text = "XrTableCell4"
+        Me.XrTableCell13.Visible = False
+        Me.XrTableCell13.Weight = 0.70834648619694507R
+        Me.XrTableCell13.WordWrap = False
+        '
+        'XrTableCell14
+        '
+        Me.XrTableCell14.CanGrow = False
+        Me.XrTableCell14.Dpi = 254.0!
+        Me.XrTableCell14.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell14.Name = "XrTableCell14"
+        Me.XrTableCell14.StylePriority.UseFont = False
+        Me.XrTableCell14.Text = "XrTableCell5"
+        Me.XrTableCell14.Visible = False
+        Me.XrTableCell14.Weight = 0.70834648619699681R
+        Me.XrTableCell14.WordWrap = False
+        '
+        'XrTableCell15
+        '
+        Me.XrTableCell15.CanGrow = False
+        Me.XrTableCell15.Dpi = 254.0!
+        Me.XrTableCell15.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell15.Name = "XrTableCell15"
+        Me.XrTableCell15.StylePriority.UseFont = False
+        Me.XrTableCell15.Text = "XrTableCell6"
+        Me.XrTableCell15.Visible = False
+        Me.XrTableCell15.Weight = 0.70834654627092253R
+        Me.XrTableCell15.WordWrap = False
+        '
+        'XrTableCell16
+        '
+        Me.XrTableCell16.CanGrow = False
+        Me.XrTableCell16.Dpi = 254.0!
+        Me.XrTableCell16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell16.Name = "XrTableCell16"
+        Me.XrTableCell16.StylePriority.UseFont = False
+        Me.XrTableCell16.Text = "XrTableCell7"
+        Me.XrTableCell16.Visible = False
+        Me.XrTableCell16.Weight = 0.70834636677543117R
+        Me.XrTableCell16.WordWrap = False
+        '
+        'XrTableCell17
+        '
+        Me.XrTableCell17.CanGrow = False
+        Me.XrTableCell17.Dpi = 254.0!
+        Me.XrTableCell17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell17.Name = "XrTableCell17"
+        Me.XrTableCell17.StylePriority.UseFont = False
+        Me.XrTableCell17.Text = "XrTableCell17"
+        Me.XrTableCell17.Visible = False
+        Me.XrTableCell17.Weight = 0.61023640182134731R
+        Me.XrTableCell17.WordWrap = False
+        '
+        'XrTable1
+        '
+        Me.XrTable1.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable1.Dpi = 254.0!
+        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 36.46499!)
+        Me.XrTable1.Name = "XrTable1"
+        Me.XrTable1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow1})
+        Me.XrTable1.SizeF = New System.Drawing.SizeF(1623.914!, 38.46503!)
+        Me.XrTable1.StylePriority.UseBorders = False
+        '
+        'XrTableRow1
+        '
+        Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell1, Me.XrTableCell2, Me.XrTableCell3, Me.XrTableCell4, Me.XrTableCell5, Me.XrTableCell6, Me.XrTableCell7, Me.XrTableCell8, Me.XrTableCell9})
+        Me.XrTableRow1.Dpi = 254.0!
+        Me.XrTableRow1.Name = "XrTableRow1"
+        Me.XrTableRow1.Weight = 1.0R
+        '
+        'XrTableCell1
+        '
+        Me.XrTableCell1.CanGrow = False
+        Me.XrTableCell1.Dpi = 254.0!
+        Me.XrTableCell1.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell1.Name = "XrTableCell1"
+        Me.XrTableCell1.StylePriority.UseFont = False
+        Me.XrTableCell1.Text = "XrTableCell1"
+        Me.XrTableCell1.Visible = False
+        Me.XrTableCell1.Weight = 0.70833320984793513R
+        Me.XrTableCell1.WordWrap = False
+        '
+        'XrTableCell2
+        '
+        Me.XrTableCell2.CanGrow = False
+        Me.XrTableCell2.Dpi = 254.0!
+        Me.XrTableCell2.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell2.Name = "XrTableCell2"
+        Me.XrTableCell2.StylePriority.UseFont = False
+        Me.XrTableCell2.Text = "XrTableCell2"
+        Me.XrTableCell2.Visible = False
+        Me.XrTableCell2.Weight = 0.70834648619696239R
+        Me.XrTableCell2.WordWrap = False
+        '
+        'XrTableCell3
+        '
+        Me.XrTableCell3.CanGrow = False
+        Me.XrTableCell3.Dpi = 254.0!
+        Me.XrTableCell3.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell3.Name = "XrTableCell3"
+        Me.XrTableCell3.StylePriority.UseFont = False
+        Me.XrTableCell3.Text = "XrTableCell3"
+        Me.XrTableCell3.Visible = False
+        Me.XrTableCell3.Weight = 0.70834648619696239R
+        Me.XrTableCell3.WordWrap = False
+        '
+        'XrTableCell4
+        '
+        Me.XrTableCell4.CanGrow = False
+        Me.XrTableCell4.Dpi = 254.0!
+        Me.XrTableCell4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell4.Name = "XrTableCell4"
+        Me.XrTableCell4.StylePriority.UseFont = False
+        Me.XrTableCell4.Text = "XrTableCell4"
+        Me.XrTableCell4.Visible = False
+        Me.XrTableCell4.Weight = 0.70834654627094R
+        Me.XrTableCell4.WordWrap = False
+        '
+        'XrTableCell5
+        '
+        Me.XrTableCell5.CanGrow = False
+        Me.XrTableCell5.Dpi = 254.0!
+        Me.XrTableCell5.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell5.Name = "XrTableCell5"
+        Me.XrTableCell5.StylePriority.UseFont = False
+        Me.XrTableCell5.Text = "XrTableCell5"
+        Me.XrTableCell5.Visible = False
+        Me.XrTableCell5.Weight = 0.708346366049007R
+        Me.XrTableCell5.WordWrap = False
+        '
+        'XrTableCell6
+        '
+        Me.XrTableCell6.CanGrow = False
+        Me.XrTableCell6.Dpi = 254.0!
+        Me.XrTableCell6.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell6.Name = "XrTableCell6"
+        Me.XrTableCell6.StylePriority.UseFont = False
+        Me.XrTableCell6.Text = "XrTableCell6"
+        Me.XrTableCell6.Visible = False
+        Me.XrTableCell6.Weight = 0.70834660634491753R
+        Me.XrTableCell6.WordWrap = False
+        '
+        'XrTableCell7
+        '
+        Me.XrTableCell7.CanGrow = False
+        Me.XrTableCell7.Dpi = 254.0!
+        Me.XrTableCell7.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell7.Name = "XrTableCell7"
+        Me.XrTableCell7.StylePriority.UseFont = False
+        Me.XrTableCell7.Text = "XrTableCell7"
+        Me.XrTableCell7.Visible = False
+        Me.XrTableCell7.Weight = 0.70834660634491753R
+        Me.XrTableCell7.WordWrap = False
+        '
+        'XrTableCell8
+        '
+        Me.XrTableCell8.CanGrow = False
+        Me.XrTableCell8.Dpi = 254.0!
+        Me.XrTableCell8.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell8.Name = "XrTableCell8"
+        Me.XrTableCell8.StylePriority.UseFont = False
+        Me.XrTableCell8.Text = "XrTableCell8"
+        Me.XrTableCell8.Visible = False
+        Me.XrTableCell8.Weight = 0.70834660634491753R
+        Me.XrTableCell8.WordWrap = False
+        '
+        'XrTableCell9
+        '
+        Me.XrTableCell9.CanGrow = False
+        Me.XrTableCell9.Dpi = 254.0!
+        Me.XrTableCell9.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell9.Name = "XrTableCell9"
+        Me.XrTableCell9.StylePriority.UseFont = False
+        Me.XrTableCell9.Text = "XrTableCell9"
+        Me.XrTableCell9.Visible = False
+        Me.XrTableCell9.Weight = 0.726605254211111R
+        Me.XrTableCell9.WordWrap = False
+        '
+        'XrLabel32
+        '
+        Me.XrLabel32.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel32.CanGrow = False
+        Me.XrLabel32.Dpi = 254.0!
+        Me.XrLabel32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(132.5456!, 36.46499!)
+        Me.XrLabel32.Multiline = True
+        Me.XrLabel32.Name = "XrLabel32"
+        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel32.SizeF = New System.Drawing.SizeF(461.4283!, 38.46503!)
+        Me.XrLabel32.StylePriority.UseBorders = False
+        Me.XrLabel32.StylePriority.UseFont = False
+        Me.XrLabel32.StylePriority.UseTextAlignment = False
+        Me.XrLabel32.Text = "ΛΕΚΤΙΚΟ"
+        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'XrLabel31
+        '
+        Me.XrLabel31.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel31.CanGrow = False
+        Me.XrLabel31.Dpi = 254.0!
+        Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 36.46499!)
+        Me.XrLabel31.Multiline = True
+        Me.XrLabel31.Name = "XrLabel31"
+        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel31.SizeF = New System.Drawing.SizeF(128.5456!, 38.46503!)
+        Me.XrLabel31.StylePriority.UseBorders = False
+        Me.XrLabel31.StylePriority.UseFont = False
+        Me.XrLabel31.StylePriority.UseTextAlignment = False
+        Me.XrLabel31.Text = "ΔΙΑΜ."
+        Me.XrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'XrLabel38
+        '
+        Me.XrLabel38.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel38.CanGrow = False
+        Me.XrLabel38.Dpi = 254.0!
+        Me.XrLabel38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3916.559!, 37.46509!)
+        Me.XrLabel38.Name = "XrLabel38"
+        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel38.SizeF = New System.Drawing.SizeF(196.4419!, 37.465!)
+        Me.XrLabel38.StylePriority.UseBorders = False
+        Me.XrLabel38.StylePriority.UseFont = False
+        Me.XrLabel38.StylePriority.UseTextAlignment = False
+        Me.XrLabel38.Text = "ΣΥΝΟΛΟ"
+        Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel38.WordWrap = False
+        '
+        'XrLabel35
+        '
+        Me.XrLabel35.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel35.CanGrow = False
+        Me.XrLabel35.Dpi = 254.0!
+        Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3601.676!, 37.46507!)
+        Me.XrLabel35.Name = "XrLabel35"
+        Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel35.SizeF = New System.Drawing.SizeF(157.4414!, 37.46499!)
+        Me.XrLabel35.StylePriority.UseBorders = False
+        Me.XrLabel35.StylePriority.UseFont = False
+        Me.XrLabel35.StylePriority.UseTextAlignment = False
+        Me.XrLabel35.Text = "ΕΝΟΙΚ."
+        Me.XrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel35.WordWrap = False
+        '
+        'XrLabel36
+        '
+        Me.XrLabel36.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel36.CanGrow = False
+        Me.XrLabel36.Dpi = 254.0!
+        Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3759.117!, 37.46493!)
+        Me.XrLabel36.Name = "XrLabel36"
+        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel36.SizeF = New System.Drawing.SizeF(157.4424!, 37.46501!)
+        Me.XrLabel36.StylePriority.UseBorders = False
+        Me.XrLabel36.StylePriority.UseFont = False
+        Me.XrLabel36.StylePriority.UseTextAlignment = False
+        Me.XrLabel36.Text = "ΙΔΙΟΚ."
+        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel36.WordWrap = False
+        '
+        'XrLabel37
+        '
+        Me.XrLabel37.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel37.CanGrow = False
+        Me.XrLabel37.Dpi = 254.0!
+        Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3601.32!, 0!)
+        Me.XrLabel37.Name = "XrLabel37"
+        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel37.SizeF = New System.Drawing.SizeF(511.6802!, 37.465!)
+        Me.XrLabel37.StylePriority.UseBorders = False
+        Me.XrLabel37.StylePriority.UseFont = False
+        Me.XrLabel37.StylePriority.UseTextAlignment = False
+        Me.XrLabel37.Text = "ΤΕΛΙΚΑ ΠΟΣΑ"
+        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel37.WordWrap = False
+        '
+        'XrLabel34
+        '
+        Me.XrLabel34.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel34.CanGrow = False
+        Me.XrLabel34.Dpi = 254.0!
+        Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2217.887!, 0!)
+        Me.XrLabel34.Name = "XrLabel34"
+        Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel34.SizeF = New System.Drawing.SizeF(1383.433!, 38.46503!)
+        Me.XrLabel34.StylePriority.UseBorders = False
+        Me.XrLabel34.StylePriority.UseFont = False
+        Me.XrLabel34.StylePriority.UseTextAlignment = False
+        Me.XrLabel34.Text = "ΠΛΗΡΩΤΕΑ ΑΝΑ ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΟΥ"
+        Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel34.WordWrap = False
+        '
+        'XrLabel33
+        '
+        Me.XrLabel33.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel33.CanGrow = False
+        Me.XrLabel33.Dpi = 254.0!
+        Me.XrLabel33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(585.7459!, 0!)
+        Me.XrLabel33.Name = "XrLabel33"
+        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(1632.142!, 38.46503!)
+        Me.XrLabel33.StylePriority.UseBorders = False
+        Me.XrLabel33.StylePriority.UseFont = False
+        Me.XrLabel33.StylePriority.UseTextAlignment = False
+        Me.XrLabel33.Text = "ΠΟΣΟΣΤΑ ΣΥΝΤΕΛΕΣΤΩΝ ΚΑΤΑΜΕΡΙΣΜΟΥ ΕΞΟΔΩΝ ΚΑΤΑΜΕΡΙΣΜΟΥ "
+        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel33.WordWrap = False
+        '
+        'XrLabel30
+        '
+        Me.XrLabel30.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel30.CanGrow = False
+        Me.XrLabel30.Dpi = 254.0!
+        Me.XrLabel30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
+        Me.XrLabel30.Name = "XrLabel30"
+        Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel30.SizeF = New System.Drawing.SizeF(589.9739!, 37.465!)
+        Me.XrLabel30.StylePriority.UseBorders = False
+        Me.XrLabel30.StylePriority.UseFont = False
+        Me.XrLabel30.StylePriority.UseTextAlignment = False
+        Me.XrLabel30.Text = "ΣΤΟΙΧΕΙΑ ΔΙΑΜΕΡΙΣΜΑΤΩΝ"
+        Me.XrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel30.WordWrap = False
+        '
         'XrPdfContent1
         '
         Me.XrPdfContent1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
@@ -1457,6 +1471,160 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell39.Weight = 0.71827462673435771R
         Me.XrTableCell39.WordWrap = False
         '
+        'XrTable5
+        '
+        Me.XrTable5.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable5.Dpi = 254.0!
+        Me.XrTable5.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 0!)
+        Me.XrTable5.Name = "XrTable5"
+        Me.XrTable5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable5.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow5})
+        Me.XrTable5.SizeF = New System.Drawing.SizeF(1623.914!, 38.46503!)
+        Me.XrTable5.StylePriority.UseBorders = False
+        '
+        'XrTableRow5
+        '
+        Me.XrTableRow5.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell28, Me.XrTableCell29, Me.XrTableCell30, Me.XrTableCell31, Me.XrTableCell32, Me.XrTableCell33, Me.XrTableCell34, Me.XrTableCell35, Me.XrTableCell36})
+        Me.XrTableRow5.Dpi = 254.0!
+        Me.XrTableRow5.Name = "XrTableRow5"
+        Me.XrTableRow5.Weight = 1.0R
+        '
+        'XrTableCell28
+        '
+        Me.XrTableCell28.CanGrow = False
+        Me.XrTableCell28.Dpi = 254.0!
+        Me.XrTableCell28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", ""), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "")})
+        Me.XrTableCell28.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell28.Name = "XrTableCell28"
+        Me.XrTableCell28.StylePriority.UseFont = False
+        Me.XrTableCell28.StylePriority.UseTextAlignment = False
+        Me.XrTableCell28.Text = "XrTableCell1"
+        Me.XrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell28.TextFormatString = "{0:N2}"
+        Me.XrTableCell28.Visible = False
+        Me.XrTableCell28.Weight = 0.70833320984793513R
+        Me.XrTableCell28.WordWrap = False
+        '
+        'XrTableCell29
+        '
+        Me.XrTableCell29.CanGrow = False
+        Me.XrTableCell29.Dpi = 254.0!
+        Me.XrTableCell29.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell29.Name = "XrTableCell29"
+        Me.XrTableCell29.StylePriority.UseFont = False
+        Me.XrTableCell29.StylePriority.UseTextAlignment = False
+        Me.XrTableCell29.Text = "XrTableCell2"
+        Me.XrTableCell29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell29.TextFormatString = "{0:N2}"
+        Me.XrTableCell29.Visible = False
+        Me.XrTableCell29.Weight = 0.70834648619696239R
+        Me.XrTableCell29.WordWrap = False
+        '
+        'XrTableCell30
+        '
+        Me.XrTableCell30.CanGrow = False
+        Me.XrTableCell30.Dpi = 254.0!
+        Me.XrTableCell30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell30.Name = "XrTableCell30"
+        Me.XrTableCell30.StylePriority.UseFont = False
+        Me.XrTableCell30.StylePriority.UseTextAlignment = False
+        Me.XrTableCell30.Text = "XrTableCell3"
+        Me.XrTableCell30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell30.TextFormatString = "{0:N2}"
+        Me.XrTableCell30.Visible = False
+        Me.XrTableCell30.Weight = 0.70834648619696239R
+        Me.XrTableCell30.WordWrap = False
+        '
+        'XrTableCell31
+        '
+        Me.XrTableCell31.CanGrow = False
+        Me.XrTableCell31.Dpi = 254.0!
+        Me.XrTableCell31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell31.Name = "XrTableCell31"
+        Me.XrTableCell31.StylePriority.UseFont = False
+        Me.XrTableCell31.StylePriority.UseTextAlignment = False
+        Me.XrTableCell31.Text = "XrTableCell4"
+        Me.XrTableCell31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell31.TextFormatString = "{0:N2}"
+        Me.XrTableCell31.Visible = False
+        Me.XrTableCell31.Weight = 0.70834654627094R
+        Me.XrTableCell31.WordWrap = False
+        '
+        'XrTableCell32
+        '
+        Me.XrTableCell32.CanGrow = False
+        Me.XrTableCell32.Dpi = 254.0!
+        Me.XrTableCell32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell32.Name = "XrTableCell32"
+        Me.XrTableCell32.StylePriority.UseFont = False
+        Me.XrTableCell32.StylePriority.UseTextAlignment = False
+        Me.XrTableCell32.Text = "XrTableCell5"
+        Me.XrTableCell32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell32.TextFormatString = "{0:N2}"
+        Me.XrTableCell32.Visible = False
+        Me.XrTableCell32.Weight = 0.708346366049007R
+        Me.XrTableCell32.WordWrap = False
+        '
+        'XrTableCell33
+        '
+        Me.XrTableCell33.CanGrow = False
+        Me.XrTableCell33.Dpi = 254.0!
+        Me.XrTableCell33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell33.Name = "XrTableCell33"
+        Me.XrTableCell33.StylePriority.UseFont = False
+        Me.XrTableCell33.StylePriority.UseTextAlignment = False
+        Me.XrTableCell33.Text = "XrTableCell6"
+        Me.XrTableCell33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell33.TextFormatString = "{0:N2}"
+        Me.XrTableCell33.Visible = False
+        Me.XrTableCell33.Weight = 0.70834660634491753R
+        Me.XrTableCell33.WordWrap = False
+        '
+        'XrTableCell34
+        '
+        Me.XrTableCell34.CanGrow = False
+        Me.XrTableCell34.Dpi = 254.0!
+        Me.XrTableCell34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell34.Name = "XrTableCell34"
+        Me.XrTableCell34.StylePriority.UseFont = False
+        Me.XrTableCell34.StylePriority.UseTextAlignment = False
+        Me.XrTableCell34.Text = "XrTableCell7"
+        Me.XrTableCell34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell34.TextFormatString = "{0:N2}"
+        Me.XrTableCell34.Visible = False
+        Me.XrTableCell34.Weight = 0.70834660634491753R
+        Me.XrTableCell34.WordWrap = False
+        '
+        'XrTableCell35
+        '
+        Me.XrTableCell35.CanGrow = False
+        Me.XrTableCell35.Dpi = 254.0!
+        Me.XrTableCell35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell35.Name = "XrTableCell35"
+        Me.XrTableCell35.StylePriority.UseFont = False
+        Me.XrTableCell35.StylePriority.UseTextAlignment = False
+        Me.XrTableCell35.Text = "XrTableCell8"
+        Me.XrTableCell35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell35.TextFormatString = "{0:N2}"
+        Me.XrTableCell35.Visible = False
+        Me.XrTableCell35.Weight = 0.70834660634491753R
+        Me.XrTableCell35.WordWrap = False
+        '
+        'XrTableCell36
+        '
+        Me.XrTableCell36.CanGrow = False
+        Me.XrTableCell36.Dpi = 254.0!
+        Me.XrTableCell36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell36.Name = "XrTableCell36"
+        Me.XrTableCell36.StylePriority.UseFont = False
+        Me.XrTableCell36.StylePriority.UseTextAlignment = False
+        Me.XrTableCell36.Text = "XrTableCell9"
+        Me.XrTableCell36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell36.TextFormatString = "{0:N2}"
+        Me.XrTableCell36.Visible = False
+        Me.XrTableCell36.Weight = 0.726605254211111R
+        Me.XrTableCell36.WordWrap = False
+        '
         'XrTable4
         '
         Me.XrTable4.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
@@ -1501,6 +1669,137 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell27.Text = "XrTableCell2"
         Me.XrTableCell27.Weight = 1.8166483339689092R
         Me.XrTableCell27.WordWrap = False
+        '
+        'XrTable3
+        '
+        Me.XrTable3.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable3.Dpi = 254.0!
+        Me.XrTable3.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 0!)
+        Me.XrTable3.Name = "XrTable3"
+        Me.XrTable3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable3.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow3})
+        Me.XrTable3.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
+        Me.XrTable3.StylePriority.UseBorders = False
+        '
+        'XrTableRow3
+        '
+        Me.XrTableRow3.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell18, Me.XrTableCell19, Me.XrTableCell20, Me.XrTableCell21, Me.XrTableCell22, Me.XrTableCell23, Me.XrTableCell24, Me.XrTableCell25})
+        Me.XrTableRow3.Dpi = 254.0!
+        Me.XrTableRow3.Name = "XrTableRow3"
+        Me.XrTableRow3.Weight = 1.0R
+        '
+        'XrTableCell18
+        '
+        Me.XrTableCell18.CanGrow = False
+        Me.XrTableCell18.Dpi = 254.0!
+        Me.XrTableCell18.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell18.Name = "XrTableCell18"
+        Me.XrTableCell18.StylePriority.UseFont = False
+        Me.XrTableCell18.StylePriority.UseTextAlignment = False
+        Me.XrTableCell18.Text = "XrTableCell1"
+        Me.XrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell18.Visible = False
+        Me.XrTableCell18.Weight = 0.64960655448450677R
+        Me.XrTableCell18.WordWrap = False
+        '
+        'XrTableCell19
+        '
+        Me.XrTableCell19.CanGrow = False
+        Me.XrTableCell19.Dpi = 254.0!
+        Me.XrTableCell19.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell19.Name = "XrTableCell19"
+        Me.XrTableCell19.StylePriority.UseFont = False
+        Me.XrTableCell19.StylePriority.UseTextAlignment = False
+        Me.XrTableCell19.Text = "XrTableCell2"
+        Me.XrTableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell19.Visible = False
+        Me.XrTableCell19.Weight = 0.669291601136543R
+        Me.XrTableCell19.WordWrap = False
+        '
+        'XrTableCell20
+        '
+        Me.XrTableCell20.CanGrow = False
+        Me.XrTableCell20.Dpi = 254.0!
+        Me.XrTableCell20.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell20.Name = "XrTableCell20"
+        Me.XrTableCell20.StylePriority.UseFont = False
+        Me.XrTableCell20.StylePriority.UseTextAlignment = False
+        Me.XrTableCell20.Text = "XrTableCell3"
+        Me.XrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell20.Visible = False
+        Me.XrTableCell20.Weight = 0.70833320984408465R
+        Me.XrTableCell20.WordWrap = False
+        '
+        'XrTableCell21
+        '
+        Me.XrTableCell21.CanGrow = False
+        Me.XrTableCell21.Dpi = 254.0!
+        Me.XrTableCell21.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell21.Name = "XrTableCell21"
+        Me.XrTableCell21.StylePriority.UseFont = False
+        Me.XrTableCell21.StylePriority.UseTextAlignment = False
+        Me.XrTableCell21.Text = "XrTableCell4"
+        Me.XrTableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell21.Visible = False
+        Me.XrTableCell21.Weight = 0.70834648619694507R
+        Me.XrTableCell21.WordWrap = False
+        '
+        'XrTableCell22
+        '
+        Me.XrTableCell22.CanGrow = False
+        Me.XrTableCell22.Dpi = 254.0!
+        Me.XrTableCell22.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell22.Name = "XrTableCell22"
+        Me.XrTableCell22.StylePriority.UseFont = False
+        Me.XrTableCell22.StylePriority.UseTextAlignment = False
+        Me.XrTableCell22.Text = "XrTableCell5"
+        Me.XrTableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell22.Visible = False
+        Me.XrTableCell22.Weight = 0.70834648619699681R
+        Me.XrTableCell22.WordWrap = False
+        '
+        'XrTableCell23
+        '
+        Me.XrTableCell23.CanGrow = False
+        Me.XrTableCell23.Dpi = 254.0!
+        Me.XrTableCell23.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell23.Name = "XrTableCell23"
+        Me.XrTableCell23.StylePriority.UseFont = False
+        Me.XrTableCell23.StylePriority.UseTextAlignment = False
+        Me.XrTableCell23.Text = "XrTableCell6"
+        Me.XrTableCell23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell23.Visible = False
+        Me.XrTableCell23.Weight = 0.70834654627092253R
+        Me.XrTableCell23.WordWrap = False
+        '
+        'XrTableCell24
+        '
+        Me.XrTableCell24.CanGrow = False
+        Me.XrTableCell24.Dpi = 254.0!
+        Me.XrTableCell24.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell24.Name = "XrTableCell24"
+        Me.XrTableCell24.StylePriority.UseFont = False
+        Me.XrTableCell24.StylePriority.UseTextAlignment = False
+        Me.XrTableCell24.Text = "XrTableCell7"
+        Me.XrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell24.Visible = False
+        Me.XrTableCell24.Weight = 0.70834636677543117R
+        Me.XrTableCell24.WordWrap = False
+        '
+        'XrTableCell25
+        '
+        Me.XrTableCell25.CanGrow = False
+        Me.XrTableCell25.Dpi = 254.0!
+        Me.XrTableCell25.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell25.Name = "XrTableCell25"
+        Me.XrTableCell25.StylePriority.UseFont = False
+        Me.XrTableCell25.StylePriority.UseTextAlignment = False
+        Me.XrTableCell25.Text = "XrTableCell17"
+        Me.XrTableCell25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell25.Visible = False
+        Me.XrTableCell25.Weight = 0.61023640182134731R
+        Me.XrTableCell25.WordWrap = False
         '
         'CalculatedField1
         '
@@ -1594,139 +1893,156 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrLabel39.WordWrap = False
         '
-        'bdgID
+        'XrTable8
         '
-        Me.bdgID.Description = "bdgID"
-        Me.bdgID.Name = "bdgID"
-        Me.bdgID.Type = GetType(System.Guid)
-        Me.bdgID.ValueInfo = "821da3ae-86c6-4410-a933-714a30d7a4ac"
-        DynamicListLookUpSettings1.DataMember = "vw_APMIL"
-        DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
-        DynamicListLookUpSettings1.DisplayMember = "bdgID"
-        DynamicListLookUpSettings1.FilterString = Nothing
-        DynamicListLookUpSettings1.SortMember = Nothing
-        DynamicListLookUpSettings1.ValueMember = "bdgID"
-        Me.bdgID.ValueSourceSettings = DynamicListLookUpSettings1
+        Me.XrTable8.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable8.Dpi = 254.0!
+        Me.XrTable8.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 0!)
+        Me.XrTable8.Name = "XrTable8"
+        Me.XrTable8.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable8.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow8})
+        Me.XrTable8.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
+        Me.XrTable8.StylePriority.UseBorders = False
         '
-        'XrTableCell48
+        'XrTableRow8
         '
-        Me.XrTableCell48.CanGrow = False
-        Me.XrTableCell48.Dpi = 254.0!
-        Me.XrTableCell48.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell48.Name = "XrTableCell48"
-        Me.XrTableCell48.StylePriority.UseFont = False
-        Me.XrTableCell48.StylePriority.UseTextAlignment = False
-        Me.XrTableCell48.Text = "XrTableCell9"
-        Me.XrTableCell48.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell48.TextFormatString = "{0:N2}"
-        Me.XrTableCell48.Visible = False
-        Me.XrTableCell48.Weight = 0.726605254211111R
-        Me.XrTableCell48.WordWrap = False
+        Me.XrTableRow8.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell49, Me.XrTableCell50, Me.XrTableCell51, Me.XrTableCell52, Me.XrTableCell53, Me.XrTableCell54, Me.XrTableCell55, Me.XrTableCell56})
+        Me.XrTableRow8.Dpi = 254.0!
+        Me.XrTableRow8.Name = "XrTableRow8"
+        Me.XrTableRow8.Weight = 1.0R
         '
-        'XrTableCell47
+        'XrTableCell49
         '
-        Me.XrTableCell47.CanGrow = False
-        Me.XrTableCell47.Dpi = 254.0!
-        Me.XrTableCell47.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell47.Name = "XrTableCell47"
-        Me.XrTableCell47.StylePriority.UseFont = False
-        Me.XrTableCell47.StylePriority.UseTextAlignment = False
-        Me.XrTableCell47.Text = "XrTableCell8"
-        Me.XrTableCell47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell47.TextFormatString = "{0:N2}"
-        Me.XrTableCell47.Visible = False
-        Me.XrTableCell47.Weight = 0.70834660634491753R
-        Me.XrTableCell47.WordWrap = False
+        Me.XrTableCell49.CanGrow = False
+        Me.XrTableCell49.Dpi = 254.0!
+        Me.XrTableCell49.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell49.Name = "XrTableCell49"
+        Me.XrTableCell49.StylePriority.UseFont = False
+        Me.XrTableCell49.StylePriority.UseTextAlignment = False
+        Me.XrTableCell49.Text = "XrTableCell1"
+        Me.XrTableCell49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell49.Visible = False
+        Me.XrTableCell49.Weight = 0.64960655448450677R
+        Me.XrTableCell49.WordWrap = False
         '
-        'XrTableCell46
+        'XrTableCell50
         '
-        Me.XrTableCell46.CanGrow = False
-        Me.XrTableCell46.Dpi = 254.0!
-        Me.XrTableCell46.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell46.Name = "XrTableCell46"
-        Me.XrTableCell46.StylePriority.UseFont = False
-        Me.XrTableCell46.StylePriority.UseTextAlignment = False
-        Me.XrTableCell46.Text = "XrTableCell7"
-        Me.XrTableCell46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell46.TextFormatString = "{0:N2}"
-        Me.XrTableCell46.Visible = False
-        Me.XrTableCell46.Weight = 0.70834660634491753R
-        Me.XrTableCell46.WordWrap = False
+        Me.XrTableCell50.CanGrow = False
+        Me.XrTableCell50.Dpi = 254.0!
+        Me.XrTableCell50.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell50.Name = "XrTableCell50"
+        Me.XrTableCell50.StylePriority.UseFont = False
+        Me.XrTableCell50.StylePriority.UseTextAlignment = False
+        Me.XrTableCell50.Text = "XrTableCell2"
+        Me.XrTableCell50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell50.Visible = False
+        Me.XrTableCell50.Weight = 0.669291601136543R
+        Me.XrTableCell50.WordWrap = False
         '
-        'XrTableCell45
+        'XrTableCell51
         '
-        Me.XrTableCell45.CanGrow = False
-        Me.XrTableCell45.Dpi = 254.0!
-        Me.XrTableCell45.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell45.Name = "XrTableCell45"
-        Me.XrTableCell45.StylePriority.UseFont = False
-        Me.XrTableCell45.StylePriority.UseTextAlignment = False
-        Me.XrTableCell45.Text = "XrTableCell6"
-        Me.XrTableCell45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell45.TextFormatString = "{0:N2}"
-        Me.XrTableCell45.Visible = False
-        Me.XrTableCell45.Weight = 0.70834660634491753R
-        Me.XrTableCell45.WordWrap = False
+        Me.XrTableCell51.CanGrow = False
+        Me.XrTableCell51.Dpi = 254.0!
+        Me.XrTableCell51.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell51.Name = "XrTableCell51"
+        Me.XrTableCell51.StylePriority.UseFont = False
+        Me.XrTableCell51.StylePriority.UseTextAlignment = False
+        Me.XrTableCell51.Text = "XrTableCell3"
+        Me.XrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell51.Visible = False
+        Me.XrTableCell51.Weight = 0.70833320984408465R
+        Me.XrTableCell51.WordWrap = False
         '
-        'XrTableCell44
+        'XrTableCell52
         '
-        Me.XrTableCell44.CanGrow = False
-        Me.XrTableCell44.Dpi = 254.0!
-        Me.XrTableCell44.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell44.Name = "XrTableCell44"
-        Me.XrTableCell44.StylePriority.UseFont = False
-        Me.XrTableCell44.StylePriority.UseTextAlignment = False
-        Me.XrTableCell44.Text = "XrTableCell5"
-        Me.XrTableCell44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell44.TextFormatString = "{0:N2}"
-        Me.XrTableCell44.Visible = False
-        Me.XrTableCell44.Weight = 0.708346366049007R
-        Me.XrTableCell44.WordWrap = False
+        Me.XrTableCell52.CanGrow = False
+        Me.XrTableCell52.Dpi = 254.0!
+        Me.XrTableCell52.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell52.Name = "XrTableCell52"
+        Me.XrTableCell52.StylePriority.UseFont = False
+        Me.XrTableCell52.StylePriority.UseTextAlignment = False
+        Me.XrTableCell52.Text = "XrTableCell4"
+        Me.XrTableCell52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell52.Visible = False
+        Me.XrTableCell52.Weight = 0.70834648619694507R
+        Me.XrTableCell52.WordWrap = False
         '
-        'XrTableCell43
+        'XrTableCell53
         '
-        Me.XrTableCell43.CanGrow = False
-        Me.XrTableCell43.Dpi = 254.0!
-        Me.XrTableCell43.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell43.Name = "XrTableCell43"
-        Me.XrTableCell43.StylePriority.UseFont = False
-        Me.XrTableCell43.StylePriority.UseTextAlignment = False
-        Me.XrTableCell43.Text = "XrTableCell4"
-        Me.XrTableCell43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell43.TextFormatString = "{0:N2}"
-        Me.XrTableCell43.Visible = False
-        Me.XrTableCell43.Weight = 0.70834654627094R
-        Me.XrTableCell43.WordWrap = False
+        Me.XrTableCell53.CanGrow = False
+        Me.XrTableCell53.Dpi = 254.0!
+        Me.XrTableCell53.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell53.Name = "XrTableCell53"
+        Me.XrTableCell53.StylePriority.UseFont = False
+        Me.XrTableCell53.StylePriority.UseTextAlignment = False
+        Me.XrTableCell53.Text = "XrTableCell5"
+        Me.XrTableCell53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell53.Visible = False
+        Me.XrTableCell53.Weight = 0.70834648619699681R
+        Me.XrTableCell53.WordWrap = False
         '
-        'XrTableCell42
+        'XrTableCell54
         '
-        Me.XrTableCell42.CanGrow = False
-        Me.XrTableCell42.Dpi = 254.0!
-        Me.XrTableCell42.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell42.Name = "XrTableCell42"
-        Me.XrTableCell42.StylePriority.UseFont = False
-        Me.XrTableCell42.StylePriority.UseTextAlignment = False
-        Me.XrTableCell42.Text = "XrTableCell3"
-        Me.XrTableCell42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell42.TextFormatString = "{0:N2}"
-        Me.XrTableCell42.Visible = False
-        Me.XrTableCell42.Weight = 0.70834648619696239R
-        Me.XrTableCell42.WordWrap = False
+        Me.XrTableCell54.CanGrow = False
+        Me.XrTableCell54.Dpi = 254.0!
+        Me.XrTableCell54.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell54.Name = "XrTableCell54"
+        Me.XrTableCell54.StylePriority.UseFont = False
+        Me.XrTableCell54.StylePriority.UseTextAlignment = False
+        Me.XrTableCell54.Text = "XrTableCell6"
+        Me.XrTableCell54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell54.Visible = False
+        Me.XrTableCell54.Weight = 0.70834654627092253R
+        Me.XrTableCell54.WordWrap = False
         '
-        'XrTableCell41
+        'XrTableCell55
         '
-        Me.XrTableCell41.CanGrow = False
-        Me.XrTableCell41.Dpi = 254.0!
-        Me.XrTableCell41.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell41.Name = "XrTableCell41"
-        Me.XrTableCell41.StylePriority.UseFont = False
-        Me.XrTableCell41.StylePriority.UseTextAlignment = False
-        Me.XrTableCell41.Text = "XrTableCell2"
-        Me.XrTableCell41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell41.TextFormatString = "{0:N2}"
-        Me.XrTableCell41.Visible = False
-        Me.XrTableCell41.Weight = 0.70834648619696239R
-        Me.XrTableCell41.WordWrap = False
+        Me.XrTableCell55.CanGrow = False
+        Me.XrTableCell55.Dpi = 254.0!
+        Me.XrTableCell55.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell55.Name = "XrTableCell55"
+        Me.XrTableCell55.StylePriority.UseFont = False
+        Me.XrTableCell55.StylePriority.UseTextAlignment = False
+        Me.XrTableCell55.Text = "XrTableCell7"
+        Me.XrTableCell55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell55.Visible = False
+        Me.XrTableCell55.Weight = 0.70834636677543117R
+        Me.XrTableCell55.WordWrap = False
+        '
+        'XrTableCell56
+        '
+        Me.XrTableCell56.CanGrow = False
+        Me.XrTableCell56.Dpi = 254.0!
+        Me.XrTableCell56.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell56.Name = "XrTableCell56"
+        Me.XrTableCell56.StylePriority.UseFont = False
+        Me.XrTableCell56.StylePriority.UseTextAlignment = False
+        Me.XrTableCell56.Text = "XrTableCell17"
+        Me.XrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell56.Visible = False
+        Me.XrTableCell56.Weight = 0.61023640182134731R
+        Me.XrTableCell56.WordWrap = False
+        '
+        'XrTable7
+        '
+        Me.XrTable7.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrTable7.Dpi = 254.0!
+        Me.XrTable7.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.XrTable7.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 0!)
+        Me.XrTable7.Name = "XrTable7"
+        Me.XrTable7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable7.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow7})
+        Me.XrTable7.SizeF = New System.Drawing.SizeF(1623.914!, 38.46503!)
+        Me.XrTable7.StylePriority.UseBorders = False
+        Me.XrTable7.StylePriority.UseFont = False
+        '
+        'XrTableRow7
+        '
+        Me.XrTableRow7.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell40, Me.XrTableCell41, Me.XrTableCell42, Me.XrTableCell43, Me.XrTableCell44, Me.XrTableCell45, Me.XrTableCell46, Me.XrTableCell47, Me.XrTableCell48})
+        Me.XrTableRow7.Dpi = 254.0!
+        Me.XrTableRow7.Name = "XrTableRow7"
+        Me.XrTableRow7.Weight = 1.0R
         '
         'XrTableCell40
         '
@@ -1743,855 +2059,139 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell40.Weight = 0.70833320984793513R
         Me.XrTableCell40.WordWrap = False
         '
-        'XrTableRow7
-        '
-        Me.XrTableRow7.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell40, Me.XrTableCell41, Me.XrTableCell42, Me.XrTableCell43, Me.XrTableCell44, Me.XrTableCell45, Me.XrTableCell46, Me.XrTableCell47, Me.XrTableCell48})
-        Me.XrTableRow7.Dpi = 254.0!
-        Me.XrTableRow7.Name = "XrTableRow7"
-        Me.XrTableRow7.Weight = 1.0R
-        '
-        'XrTable7
-        '
-        Me.XrTable7.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable7.Dpi = 254.0!
-        Me.XrTable7.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.XrTable7.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 0!)
-        Me.XrTable7.Name = "XrTable7"
-        Me.XrTable7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable7.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow7})
-        Me.XrTable7.SizeF = New System.Drawing.SizeF(1623.914!, 38.46503!)
-        Me.XrTable7.StylePriority.UseBorders = False
-        Me.XrTable7.StylePriority.UseFont = False
-        '
-        'XrTableCell56
-        '
-        Me.XrTableCell56.CanGrow = False
-        Me.XrTableCell56.Dpi = 254.0!
-        Me.XrTableCell56.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell56.Name = "XrTableCell56"
-        Me.XrTableCell56.StylePriority.UseFont = False
-        Me.XrTableCell56.StylePriority.UseTextAlignment = False
-        Me.XrTableCell56.Text = "XrTableCell17"
-        Me.XrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell56.Visible = False
-        Me.XrTableCell56.Weight = 0.61023640182134731R
-        Me.XrTableCell56.WordWrap = False
-        '
-        'XrTableCell55
-        '
-        Me.XrTableCell55.CanGrow = False
-        Me.XrTableCell55.Dpi = 254.0!
-        Me.XrTableCell55.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell55.Name = "XrTableCell55"
-        Me.XrTableCell55.StylePriority.UseFont = False
-        Me.XrTableCell55.StylePriority.UseTextAlignment = False
-        Me.XrTableCell55.Text = "XrTableCell7"
-        Me.XrTableCell55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell55.Visible = False
-        Me.XrTableCell55.Weight = 0.70834636677543117R
-        Me.XrTableCell55.WordWrap = False
-        '
-        'XrTableCell54
-        '
-        Me.XrTableCell54.CanGrow = False
-        Me.XrTableCell54.Dpi = 254.0!
-        Me.XrTableCell54.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell54.Name = "XrTableCell54"
-        Me.XrTableCell54.StylePriority.UseFont = False
-        Me.XrTableCell54.StylePriority.UseTextAlignment = False
-        Me.XrTableCell54.Text = "XrTableCell6"
-        Me.XrTableCell54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell54.Visible = False
-        Me.XrTableCell54.Weight = 0.70834654627092253R
-        Me.XrTableCell54.WordWrap = False
-        '
-        'XrTableCell53
-        '
-        Me.XrTableCell53.CanGrow = False
-        Me.XrTableCell53.Dpi = 254.0!
-        Me.XrTableCell53.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell53.Name = "XrTableCell53"
-        Me.XrTableCell53.StylePriority.UseFont = False
-        Me.XrTableCell53.StylePriority.UseTextAlignment = False
-        Me.XrTableCell53.Text = "XrTableCell5"
-        Me.XrTableCell53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell53.Visible = False
-        Me.XrTableCell53.Weight = 0.70834648619699681R
-        Me.XrTableCell53.WordWrap = False
-        '
-        'XrTableCell52
-        '
-        Me.XrTableCell52.CanGrow = False
-        Me.XrTableCell52.Dpi = 254.0!
-        Me.XrTableCell52.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell52.Name = "XrTableCell52"
-        Me.XrTableCell52.StylePriority.UseFont = False
-        Me.XrTableCell52.StylePriority.UseTextAlignment = False
-        Me.XrTableCell52.Text = "XrTableCell4"
-        Me.XrTableCell52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell52.Visible = False
-        Me.XrTableCell52.Weight = 0.70834648619694507R
-        Me.XrTableCell52.WordWrap = False
-        '
-        'XrTableCell51
-        '
-        Me.XrTableCell51.CanGrow = False
-        Me.XrTableCell51.Dpi = 254.0!
-        Me.XrTableCell51.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell51.Name = "XrTableCell51"
-        Me.XrTableCell51.StylePriority.UseFont = False
-        Me.XrTableCell51.StylePriority.UseTextAlignment = False
-        Me.XrTableCell51.Text = "XrTableCell3"
-        Me.XrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell51.Visible = False
-        Me.XrTableCell51.Weight = 0.70833320984408465R
-        Me.XrTableCell51.WordWrap = False
-        '
-        'XrTableCell50
-        '
-        Me.XrTableCell50.CanGrow = False
-        Me.XrTableCell50.Dpi = 254.0!
-        Me.XrTableCell50.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell50.Name = "XrTableCell50"
-        Me.XrTableCell50.StylePriority.UseFont = False
-        Me.XrTableCell50.StylePriority.UseTextAlignment = False
-        Me.XrTableCell50.Text = "XrTableCell2"
-        Me.XrTableCell50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell50.Visible = False
-        Me.XrTableCell50.Weight = 0.669291601136543R
-        Me.XrTableCell50.WordWrap = False
-        '
-        'XrTableCell49
-        '
-        Me.XrTableCell49.CanGrow = False
-        Me.XrTableCell49.Dpi = 254.0!
-        Me.XrTableCell49.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell49.Name = "XrTableCell49"
-        Me.XrTableCell49.StylePriority.UseFont = False
-        Me.XrTableCell49.StylePriority.UseTextAlignment = False
-        Me.XrTableCell49.Text = "XrTableCell1"
-        Me.XrTableCell49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell49.Visible = False
-        Me.XrTableCell49.Weight = 0.64960655448450677R
-        Me.XrTableCell49.WordWrap = False
-        '
-        'XrTableRow8
-        '
-        Me.XrTableRow8.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell49, Me.XrTableCell50, Me.XrTableCell51, Me.XrTableCell52, Me.XrTableCell53, Me.XrTableCell54, Me.XrTableCell55, Me.XrTableCell56})
-        Me.XrTableRow8.Dpi = 254.0!
-        Me.XrTableRow8.Name = "XrTableRow8"
-        Me.XrTableRow8.Weight = 1.0R
-        '
-        'XrTable8
-        '
-        Me.XrTable8.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable8.Dpi = 254.0!
-        Me.XrTable8.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 0!)
-        Me.XrTable8.Name = "XrTable8"
-        Me.XrTable8.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable8.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow8})
-        Me.XrTable8.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
-        Me.XrTable8.StylePriority.UseBorders = False
-        '
-        'XrTableCell36
-        '
-        Me.XrTableCell36.CanGrow = False
-        Me.XrTableCell36.Dpi = 254.0!
-        Me.XrTableCell36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell36.Name = "XrTableCell36"
-        Me.XrTableCell36.StylePriority.UseFont = False
-        Me.XrTableCell36.StylePriority.UseTextAlignment = False
-        Me.XrTableCell36.Text = "XrTableCell9"
-        Me.XrTableCell36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell36.TextFormatString = "{0:N2}"
-        Me.XrTableCell36.Visible = False
-        Me.XrTableCell36.Weight = 0.726605254211111R
-        Me.XrTableCell36.WordWrap = False
-        '
-        'XrTableCell35
-        '
-        Me.XrTableCell35.CanGrow = False
-        Me.XrTableCell35.Dpi = 254.0!
-        Me.XrTableCell35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell35.Name = "XrTableCell35"
-        Me.XrTableCell35.StylePriority.UseFont = False
-        Me.XrTableCell35.StylePriority.UseTextAlignment = False
-        Me.XrTableCell35.Text = "XrTableCell8"
-        Me.XrTableCell35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell35.TextFormatString = "{0:N2}"
-        Me.XrTableCell35.Visible = False
-        Me.XrTableCell35.Weight = 0.70834660634491753R
-        Me.XrTableCell35.WordWrap = False
-        '
-        'XrTableCell34
-        '
-        Me.XrTableCell34.CanGrow = False
-        Me.XrTableCell34.Dpi = 254.0!
-        Me.XrTableCell34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell34.Name = "XrTableCell34"
-        Me.XrTableCell34.StylePriority.UseFont = False
-        Me.XrTableCell34.StylePriority.UseTextAlignment = False
-        Me.XrTableCell34.Text = "XrTableCell7"
-        Me.XrTableCell34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell34.TextFormatString = "{0:N2}"
-        Me.XrTableCell34.Visible = False
-        Me.XrTableCell34.Weight = 0.70834660634491753R
-        Me.XrTableCell34.WordWrap = False
-        '
-        'XrTableCell33
-        '
-        Me.XrTableCell33.CanGrow = False
-        Me.XrTableCell33.Dpi = 254.0!
-        Me.XrTableCell33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell33.Name = "XrTableCell33"
-        Me.XrTableCell33.StylePriority.UseFont = False
-        Me.XrTableCell33.StylePriority.UseTextAlignment = False
-        Me.XrTableCell33.Text = "XrTableCell6"
-        Me.XrTableCell33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell33.TextFormatString = "{0:N2}"
-        Me.XrTableCell33.Visible = False
-        Me.XrTableCell33.Weight = 0.70834660634491753R
-        Me.XrTableCell33.WordWrap = False
-        '
-        'XrTableCell32
-        '
-        Me.XrTableCell32.CanGrow = False
-        Me.XrTableCell32.Dpi = 254.0!
-        Me.XrTableCell32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell32.Name = "XrTableCell32"
-        Me.XrTableCell32.StylePriority.UseFont = False
-        Me.XrTableCell32.StylePriority.UseTextAlignment = False
-        Me.XrTableCell32.Text = "XrTableCell5"
-        Me.XrTableCell32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell32.TextFormatString = "{0:N2}"
-        Me.XrTableCell32.Visible = False
-        Me.XrTableCell32.Weight = 0.708346366049007R
-        Me.XrTableCell32.WordWrap = False
-        '
-        'XrTableCell31
-        '
-        Me.XrTableCell31.CanGrow = False
-        Me.XrTableCell31.Dpi = 254.0!
-        Me.XrTableCell31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell31.Name = "XrTableCell31"
-        Me.XrTableCell31.StylePriority.UseFont = False
-        Me.XrTableCell31.StylePriority.UseTextAlignment = False
-        Me.XrTableCell31.Text = "XrTableCell4"
-        Me.XrTableCell31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell31.TextFormatString = "{0:N2}"
-        Me.XrTableCell31.Visible = False
-        Me.XrTableCell31.Weight = 0.70834654627094R
-        Me.XrTableCell31.WordWrap = False
-        '
-        'XrTableCell30
-        '
-        Me.XrTableCell30.CanGrow = False
-        Me.XrTableCell30.Dpi = 254.0!
-        Me.XrTableCell30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell30.Name = "XrTableCell30"
-        Me.XrTableCell30.StylePriority.UseFont = False
-        Me.XrTableCell30.StylePriority.UseTextAlignment = False
-        Me.XrTableCell30.Text = "XrTableCell3"
-        Me.XrTableCell30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell30.TextFormatString = "{0:N2}"
-        Me.XrTableCell30.Visible = False
-        Me.XrTableCell30.Weight = 0.70834648619696239R
-        Me.XrTableCell30.WordWrap = False
-        '
-        'XrTableCell29
-        '
-        Me.XrTableCell29.CanGrow = False
-        Me.XrTableCell29.Dpi = 254.0!
-        Me.XrTableCell29.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell29.Name = "XrTableCell29"
-        Me.XrTableCell29.StylePriority.UseFont = False
-        Me.XrTableCell29.StylePriority.UseTextAlignment = False
-        Me.XrTableCell29.Text = "XrTableCell2"
-        Me.XrTableCell29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell29.TextFormatString = "{0:N2}"
-        Me.XrTableCell29.Visible = False
-        Me.XrTableCell29.Weight = 0.70834648619696239R
-        Me.XrTableCell29.WordWrap = False
-        '
-        'XrTableCell28
-        '
-        Me.XrTableCell28.CanGrow = False
-        Me.XrTableCell28.Dpi = 254.0!
-        Me.XrTableCell28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", ""), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "")})
-        Me.XrTableCell28.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell28.Name = "XrTableCell28"
-        Me.XrTableCell28.StylePriority.UseFont = False
-        Me.XrTableCell28.StylePriority.UseTextAlignment = False
-        Me.XrTableCell28.Text = "XrTableCell1"
-        Me.XrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell28.TextFormatString = "{0:N2}"
-        Me.XrTableCell28.Visible = False
-        Me.XrTableCell28.Weight = 0.70833320984793513R
-        Me.XrTableCell28.WordWrap = False
-        '
-        'XrTableRow5
-        '
-        Me.XrTableRow5.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell28, Me.XrTableCell29, Me.XrTableCell30, Me.XrTableCell31, Me.XrTableCell32, Me.XrTableCell33, Me.XrTableCell34, Me.XrTableCell35, Me.XrTableCell36})
-        Me.XrTableRow5.Dpi = 254.0!
-        Me.XrTableRow5.Name = "XrTableRow5"
-        Me.XrTableRow5.Weight = 1.0R
-        '
-        'XrTable5
-        '
-        Me.XrTable5.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable5.Dpi = 254.0!
-        Me.XrTable5.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 0!)
-        Me.XrTable5.Name = "XrTable5"
-        Me.XrTable5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable5.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow5})
-        Me.XrTable5.SizeF = New System.Drawing.SizeF(1623.914!, 38.46503!)
-        Me.XrTable5.StylePriority.UseBorders = False
-        '
-        'XrTableCell25
-        '
-        Me.XrTableCell25.CanGrow = False
-        Me.XrTableCell25.Dpi = 254.0!
-        Me.XrTableCell25.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell25.Name = "XrTableCell25"
-        Me.XrTableCell25.StylePriority.UseFont = False
-        Me.XrTableCell25.StylePriority.UseTextAlignment = False
-        Me.XrTableCell25.Text = "XrTableCell17"
-        Me.XrTableCell25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell25.Visible = False
-        Me.XrTableCell25.Weight = 0.61023640182134731R
-        Me.XrTableCell25.WordWrap = False
-        '
-        'XrTableCell24
-        '
-        Me.XrTableCell24.CanGrow = False
-        Me.XrTableCell24.Dpi = 254.0!
-        Me.XrTableCell24.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell24.Name = "XrTableCell24"
-        Me.XrTableCell24.StylePriority.UseFont = False
-        Me.XrTableCell24.StylePriority.UseTextAlignment = False
-        Me.XrTableCell24.Text = "XrTableCell7"
-        Me.XrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell24.Visible = False
-        Me.XrTableCell24.Weight = 0.70834636677543117R
-        Me.XrTableCell24.WordWrap = False
-        '
-        'XrTableCell23
-        '
-        Me.XrTableCell23.CanGrow = False
-        Me.XrTableCell23.Dpi = 254.0!
-        Me.XrTableCell23.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell23.Name = "XrTableCell23"
-        Me.XrTableCell23.StylePriority.UseFont = False
-        Me.XrTableCell23.StylePriority.UseTextAlignment = False
-        Me.XrTableCell23.Text = "XrTableCell6"
-        Me.XrTableCell23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell23.Visible = False
-        Me.XrTableCell23.Weight = 0.70834654627092253R
-        Me.XrTableCell23.WordWrap = False
-        '
-        'XrTableCell22
-        '
-        Me.XrTableCell22.CanGrow = False
-        Me.XrTableCell22.Dpi = 254.0!
-        Me.XrTableCell22.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell22.Name = "XrTableCell22"
-        Me.XrTableCell22.StylePriority.UseFont = False
-        Me.XrTableCell22.StylePriority.UseTextAlignment = False
-        Me.XrTableCell22.Text = "XrTableCell5"
-        Me.XrTableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell22.Visible = False
-        Me.XrTableCell22.Weight = 0.70834648619699681R
-        Me.XrTableCell22.WordWrap = False
-        '
-        'XrTableCell21
-        '
-        Me.XrTableCell21.CanGrow = False
-        Me.XrTableCell21.Dpi = 254.0!
-        Me.XrTableCell21.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell21.Name = "XrTableCell21"
-        Me.XrTableCell21.StylePriority.UseFont = False
-        Me.XrTableCell21.StylePriority.UseTextAlignment = False
-        Me.XrTableCell21.Text = "XrTableCell4"
-        Me.XrTableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell21.Visible = False
-        Me.XrTableCell21.Weight = 0.70834648619694507R
-        Me.XrTableCell21.WordWrap = False
-        '
-        'XrTableCell20
-        '
-        Me.XrTableCell20.CanGrow = False
-        Me.XrTableCell20.Dpi = 254.0!
-        Me.XrTableCell20.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell20.Name = "XrTableCell20"
-        Me.XrTableCell20.StylePriority.UseFont = False
-        Me.XrTableCell20.StylePriority.UseTextAlignment = False
-        Me.XrTableCell20.Text = "XrTableCell3"
-        Me.XrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell20.Visible = False
-        Me.XrTableCell20.Weight = 0.70833320984408465R
-        Me.XrTableCell20.WordWrap = False
-        '
-        'XrTableCell19
-        '
-        Me.XrTableCell19.CanGrow = False
-        Me.XrTableCell19.Dpi = 254.0!
-        Me.XrTableCell19.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell19.Name = "XrTableCell19"
-        Me.XrTableCell19.StylePriority.UseFont = False
-        Me.XrTableCell19.StylePriority.UseTextAlignment = False
-        Me.XrTableCell19.Text = "XrTableCell2"
-        Me.XrTableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell19.Visible = False
-        Me.XrTableCell19.Weight = 0.669291601136543R
-        Me.XrTableCell19.WordWrap = False
-        '
-        'XrTableCell18
-        '
-        Me.XrTableCell18.CanGrow = False
-        Me.XrTableCell18.Dpi = 254.0!
-        Me.XrTableCell18.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
-        Me.XrTableCell18.Name = "XrTableCell18"
-        Me.XrTableCell18.StylePriority.UseFont = False
-        Me.XrTableCell18.StylePriority.UseTextAlignment = False
-        Me.XrTableCell18.Text = "XrTableCell1"
-        Me.XrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell18.Visible = False
-        Me.XrTableCell18.Weight = 0.64960655448450677R
-        Me.XrTableCell18.WordWrap = False
-        '
-        'XrTableRow3
-        '
-        Me.XrTableRow3.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell18, Me.XrTableCell19, Me.XrTableCell20, Me.XrTableCell21, Me.XrTableCell22, Me.XrTableCell23, Me.XrTableCell24, Me.XrTableCell25})
-        Me.XrTableRow3.Dpi = 254.0!
-        Me.XrTableRow3.Name = "XrTableRow3"
-        Me.XrTableRow3.Weight = 1.0R
-        '
-        'XrTable3
-        '
-        Me.XrTable3.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable3.Dpi = 254.0!
-        Me.XrTable3.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 0!)
-        Me.XrTable3.Name = "XrTable3"
-        Me.XrTable3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable3.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow3})
-        Me.XrTable3.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
-        Me.XrTable3.StylePriority.UseBorders = False
-        '
-        'XrLabel30
-        '
-        Me.XrLabel30.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel30.CanGrow = False
-        Me.XrLabel30.Dpi = 254.0!
-        Me.XrLabel30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
-        Me.XrLabel30.Name = "XrLabel30"
-        Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel30.SizeF = New System.Drawing.SizeF(589.9739!, 37.465!)
-        Me.XrLabel30.StylePriority.UseBorders = False
-        Me.XrLabel30.StylePriority.UseFont = False
-        Me.XrLabel30.StylePriority.UseTextAlignment = False
-        Me.XrLabel30.Text = "ΣΤΟΙΧΕΙΑ ΔΙΑΜΕΡΙΣΜΑΤΩΝ"
-        Me.XrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel30.WordWrap = False
-        '
-        'XrLabel33
-        '
-        Me.XrLabel33.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel33.CanGrow = False
-        Me.XrLabel33.Dpi = 254.0!
-        Me.XrLabel33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(585.7459!, 0!)
-        Me.XrLabel33.Name = "XrLabel33"
-        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel33.SizeF = New System.Drawing.SizeF(1632.142!, 38.46503!)
-        Me.XrLabel33.StylePriority.UseBorders = False
-        Me.XrLabel33.StylePriority.UseFont = False
-        Me.XrLabel33.StylePriority.UseTextAlignment = False
-        Me.XrLabel33.Text = "ΠΟΣΟΣΤΑ ΣΥΝΤΕΛΕΣΤΩΝ ΚΑΤΑΜΕΡΙΣΜΟΥ ΕΞΟΔΩΝ ΚΑΤΑΜΕΡΙΣΜΟΥ "
-        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel33.WordWrap = False
-        '
-        'XrLabel34
-        '
-        Me.XrLabel34.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel34.CanGrow = False
-        Me.XrLabel34.Dpi = 254.0!
-        Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2217.887!, 0!)
-        Me.XrLabel34.Name = "XrLabel34"
-        Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel34.SizeF = New System.Drawing.SizeF(1383.433!, 38.46503!)
-        Me.XrLabel34.StylePriority.UseBorders = False
-        Me.XrLabel34.StylePriority.UseFont = False
-        Me.XrLabel34.StylePriority.UseTextAlignment = False
-        Me.XrLabel34.Text = "ΠΛΗΡΩΤΕΑ ΑΝΑ ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΟΥ"
-        Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel34.WordWrap = False
-        '
-        'XrLabel37
-        '
-        Me.XrLabel37.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel37.CanGrow = False
-        Me.XrLabel37.Dpi = 254.0!
-        Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3601.32!, 0!)
-        Me.XrLabel37.Name = "XrLabel37"
-        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel37.SizeF = New System.Drawing.SizeF(511.6802!, 37.465!)
-        Me.XrLabel37.StylePriority.UseBorders = False
-        Me.XrLabel37.StylePriority.UseFont = False
-        Me.XrLabel37.StylePriority.UseTextAlignment = False
-        Me.XrLabel37.Text = "ΤΕΛΙΚΑ ΠΟΣΑ"
-        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel37.WordWrap = False
-        '
-        'XrLabel36
-        '
-        Me.XrLabel36.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel36.CanGrow = False
-        Me.XrLabel36.Dpi = 254.0!
-        Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3759.117!, 37.46493!)
-        Me.XrLabel36.Name = "XrLabel36"
-        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel36.SizeF = New System.Drawing.SizeF(157.4424!, 37.46501!)
-        Me.XrLabel36.StylePriority.UseBorders = False
-        Me.XrLabel36.StylePriority.UseFont = False
-        Me.XrLabel36.StylePriority.UseTextAlignment = False
-        Me.XrLabel36.Text = "ΙΔΙΟΚ."
-        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel36.WordWrap = False
-        '
-        'XrLabel35
-        '
-        Me.XrLabel35.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel35.CanGrow = False
-        Me.XrLabel35.Dpi = 254.0!
-        Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3601.676!, 37.46507!)
-        Me.XrLabel35.Name = "XrLabel35"
-        Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel35.SizeF = New System.Drawing.SizeF(157.4414!, 37.46499!)
-        Me.XrLabel35.StylePriority.UseBorders = False
-        Me.XrLabel35.StylePriority.UseFont = False
-        Me.XrLabel35.StylePriority.UseTextAlignment = False
-        Me.XrLabel35.Text = "ΕΝΟΙΚ."
-        Me.XrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel35.WordWrap = False
-        '
-        'XrLabel38
-        '
-        Me.XrLabel38.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel38.CanGrow = False
-        Me.XrLabel38.Dpi = 254.0!
-        Me.XrLabel38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3916.559!, 37.46509!)
-        Me.XrLabel38.Name = "XrLabel38"
-        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel38.SizeF = New System.Drawing.SizeF(196.4419!, 37.465!)
-        Me.XrLabel38.StylePriority.UseBorders = False
-        Me.XrLabel38.StylePriority.UseFont = False
-        Me.XrLabel38.StylePriority.UseTextAlignment = False
-        Me.XrLabel38.Text = "ΣΥΝΟΛΟ"
-        Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel38.WordWrap = False
-        '
-        'XrLabel31
-        '
-        Me.XrLabel31.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel31.CanGrow = False
-        Me.XrLabel31.Dpi = 254.0!
-        Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 36.46499!)
-        Me.XrLabel31.Multiline = True
-        Me.XrLabel31.Name = "XrLabel31"
-        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel31.SizeF = New System.Drawing.SizeF(128.5456!, 38.46503!)
-        Me.XrLabel31.StylePriority.UseBorders = False
-        Me.XrLabel31.StylePriority.UseFont = False
-        Me.XrLabel31.StylePriority.UseTextAlignment = False
-        Me.XrLabel31.Text = "ΔΙΑΜ."
-        Me.XrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'XrLabel32
-        '
-        Me.XrLabel32.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel32.CanGrow = False
-        Me.XrLabel32.Dpi = 254.0!
-        Me.XrLabel32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(132.5456!, 36.46499!)
-        Me.XrLabel32.Multiline = True
-        Me.XrLabel32.Name = "XrLabel32"
-        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel32.SizeF = New System.Drawing.SizeF(461.4283!, 38.46503!)
-        Me.XrLabel32.StylePriority.UseBorders = False
-        Me.XrLabel32.StylePriority.UseFont = False
-        Me.XrLabel32.StylePriority.UseTextAlignment = False
-        Me.XrLabel32.Text = "ΛΕΚΤΙΚΟ"
-        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'XrTableCell9
-        '
-        Me.XrTableCell9.CanGrow = False
-        Me.XrTableCell9.Dpi = 254.0!
-        Me.XrTableCell9.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell9.Name = "XrTableCell9"
-        Me.XrTableCell9.StylePriority.UseFont = False
-        Me.XrTableCell9.Text = "XrTableCell9"
-        Me.XrTableCell9.Visible = False
-        Me.XrTableCell9.Weight = 0.726605254211111R
-        Me.XrTableCell9.WordWrap = False
-        '
-        'XrTableCell8
-        '
-        Me.XrTableCell8.CanGrow = False
-        Me.XrTableCell8.Dpi = 254.0!
-        Me.XrTableCell8.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell8.Name = "XrTableCell8"
-        Me.XrTableCell8.StylePriority.UseFont = False
-        Me.XrTableCell8.Text = "XrTableCell8"
-        Me.XrTableCell8.Visible = False
-        Me.XrTableCell8.Weight = 0.70834660634491753R
-        Me.XrTableCell8.WordWrap = False
-        '
-        'XrTableCell7
-        '
-        Me.XrTableCell7.CanGrow = False
-        Me.XrTableCell7.Dpi = 254.0!
-        Me.XrTableCell7.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell7.Name = "XrTableCell7"
-        Me.XrTableCell7.StylePriority.UseFont = False
-        Me.XrTableCell7.Text = "XrTableCell7"
-        Me.XrTableCell7.Visible = False
-        Me.XrTableCell7.Weight = 0.70834660634491753R
-        Me.XrTableCell7.WordWrap = False
-        '
-        'XrTableCell6
-        '
-        Me.XrTableCell6.CanGrow = False
-        Me.XrTableCell6.Dpi = 254.0!
-        Me.XrTableCell6.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell6.Name = "XrTableCell6"
-        Me.XrTableCell6.StylePriority.UseFont = False
-        Me.XrTableCell6.Text = "XrTableCell6"
-        Me.XrTableCell6.Visible = False
-        Me.XrTableCell6.Weight = 0.70834660634491753R
-        Me.XrTableCell6.WordWrap = False
-        '
-        'XrTableCell5
-        '
-        Me.XrTableCell5.CanGrow = False
-        Me.XrTableCell5.Dpi = 254.0!
-        Me.XrTableCell5.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell5.Name = "XrTableCell5"
-        Me.XrTableCell5.StylePriority.UseFont = False
-        Me.XrTableCell5.Text = "XrTableCell5"
-        Me.XrTableCell5.Visible = False
-        Me.XrTableCell5.Weight = 0.708346366049007R
-        Me.XrTableCell5.WordWrap = False
-        '
-        'XrTableCell4
-        '
-        Me.XrTableCell4.CanGrow = False
-        Me.XrTableCell4.Dpi = 254.0!
-        Me.XrTableCell4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell4.Name = "XrTableCell4"
-        Me.XrTableCell4.StylePriority.UseFont = False
-        Me.XrTableCell4.Text = "XrTableCell4"
-        Me.XrTableCell4.Visible = False
-        Me.XrTableCell4.Weight = 0.70834654627094R
-        Me.XrTableCell4.WordWrap = False
-        '
-        'XrTableCell3
-        '
-        Me.XrTableCell3.CanGrow = False
-        Me.XrTableCell3.Dpi = 254.0!
-        Me.XrTableCell3.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell3.Name = "XrTableCell3"
-        Me.XrTableCell3.StylePriority.UseFont = False
-        Me.XrTableCell3.Text = "XrTableCell3"
-        Me.XrTableCell3.Visible = False
-        Me.XrTableCell3.Weight = 0.70834648619696239R
-        Me.XrTableCell3.WordWrap = False
-        '
-        'XrTableCell2
-        '
-        Me.XrTableCell2.CanGrow = False
-        Me.XrTableCell2.Dpi = 254.0!
-        Me.XrTableCell2.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell2.Name = "XrTableCell2"
-        Me.XrTableCell2.StylePriority.UseFont = False
-        Me.XrTableCell2.Text = "XrTableCell2"
-        Me.XrTableCell2.Visible = False
-        Me.XrTableCell2.Weight = 0.70834648619696239R
-        Me.XrTableCell2.WordWrap = False
-        '
-        'XrTableCell1
-        '
-        Me.XrTableCell1.CanGrow = False
-        Me.XrTableCell1.Dpi = 254.0!
-        Me.XrTableCell1.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell1.Name = "XrTableCell1"
-        Me.XrTableCell1.StylePriority.UseFont = False
-        Me.XrTableCell1.Text = "XrTableCell1"
-        Me.XrTableCell1.Visible = False
-        Me.XrTableCell1.Weight = 0.70833320984793513R
-        Me.XrTableCell1.WordWrap = False
-        '
-        'XrTableRow1
-        '
-        Me.XrTableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell1, Me.XrTableCell2, Me.XrTableCell3, Me.XrTableCell4, Me.XrTableCell5, Me.XrTableCell6, Me.XrTableCell7, Me.XrTableCell8, Me.XrTableCell9})
-        Me.XrTableRow1.Dpi = 254.0!
-        Me.XrTableRow1.Name = "XrTableRow1"
-        Me.XrTableRow1.Weight = 1.0R
-        '
-        'XrTable1
-        '
-        Me.XrTable1.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable1.Dpi = 254.0!
-        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 36.46499!)
-        Me.XrTable1.Name = "XrTable1"
-        Me.XrTable1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow1})
-        Me.XrTable1.SizeF = New System.Drawing.SizeF(1623.914!, 38.46503!)
-        Me.XrTable1.StylePriority.UseBorders = False
-        '
-        'XrTableCell17
-        '
-        Me.XrTableCell17.CanGrow = False
-        Me.XrTableCell17.Dpi = 254.0!
-        Me.XrTableCell17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell17.Name = "XrTableCell17"
-        Me.XrTableCell17.StylePriority.UseFont = False
-        Me.XrTableCell17.Text = "XrTableCell17"
-        Me.XrTableCell17.Visible = False
-        Me.XrTableCell17.Weight = 0.61023640182134731R
-        Me.XrTableCell17.WordWrap = False
-        '
-        'XrTableCell16
-        '
-        Me.XrTableCell16.CanGrow = False
-        Me.XrTableCell16.Dpi = 254.0!
-        Me.XrTableCell16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell16.Name = "XrTableCell16"
-        Me.XrTableCell16.StylePriority.UseFont = False
-        Me.XrTableCell16.Text = "XrTableCell7"
-        Me.XrTableCell16.Visible = False
-        Me.XrTableCell16.Weight = 0.70834636677543117R
-        Me.XrTableCell16.WordWrap = False
-        '
-        'XrTableCell15
-        '
-        Me.XrTableCell15.CanGrow = False
-        Me.XrTableCell15.Dpi = 254.0!
-        Me.XrTableCell15.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell15.Name = "XrTableCell15"
-        Me.XrTableCell15.StylePriority.UseFont = False
-        Me.XrTableCell15.Text = "XrTableCell6"
-        Me.XrTableCell15.Visible = False
-        Me.XrTableCell15.Weight = 0.70834654627092253R
-        Me.XrTableCell15.WordWrap = False
-        '
-        'XrTableCell14
-        '
-        Me.XrTableCell14.CanGrow = False
-        Me.XrTableCell14.Dpi = 254.0!
-        Me.XrTableCell14.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell14.Name = "XrTableCell14"
-        Me.XrTableCell14.StylePriority.UseFont = False
-        Me.XrTableCell14.Text = "XrTableCell5"
-        Me.XrTableCell14.Visible = False
-        Me.XrTableCell14.Weight = 0.70834648619699681R
-        Me.XrTableCell14.WordWrap = False
-        '
-        'XrTableCell13
-        '
-        Me.XrTableCell13.CanGrow = False
-        Me.XrTableCell13.Dpi = 254.0!
-        Me.XrTableCell13.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell13.Name = "XrTableCell13"
-        Me.XrTableCell13.StylePriority.UseFont = False
-        Me.XrTableCell13.Text = "XrTableCell4"
-        Me.XrTableCell13.Visible = False
-        Me.XrTableCell13.Weight = 0.70834648619694507R
-        Me.XrTableCell13.WordWrap = False
-        '
-        'XrTableCell12
-        '
-        Me.XrTableCell12.CanGrow = False
-        Me.XrTableCell12.Dpi = 254.0!
-        Me.XrTableCell12.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell12.Name = "XrTableCell12"
-        Me.XrTableCell12.StylePriority.UseFont = False
-        Me.XrTableCell12.Text = "XrTableCell3"
-        Me.XrTableCell12.Visible = False
-        Me.XrTableCell12.Weight = 0.70833320984408465R
-        Me.XrTableCell12.WordWrap = False
-        '
-        'XrTableCell11
-        '
-        Me.XrTableCell11.CanGrow = False
-        Me.XrTableCell11.Dpi = 254.0!
-        Me.XrTableCell11.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell11.Name = "XrTableCell11"
-        Me.XrTableCell11.StylePriority.UseFont = False
-        Me.XrTableCell11.Text = "XrTableCell2"
-        Me.XrTableCell11.Visible = False
-        Me.XrTableCell11.Weight = 0.669291601136543R
-        Me.XrTableCell11.WordWrap = False
-        '
-        'XrTableCell10
-        '
-        Me.XrTableCell10.CanGrow = False
-        Me.XrTableCell10.Dpi = 254.0!
-        Me.XrTableCell10.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell10.Name = "XrTableCell10"
-        Me.XrTableCell10.StylePriority.UseFont = False
-        Me.XrTableCell10.Text = "XrTableCell1"
-        Me.XrTableCell10.Visible = False
-        Me.XrTableCell10.Weight = 0.64960655448450677R
-        Me.XrTableCell10.WordWrap = False
-        '
-        'XrTableRow2
-        '
-        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell10, Me.XrTableCell11, Me.XrTableCell12, Me.XrTableCell13, Me.XrTableCell14, Me.XrTableCell15, Me.XrTableCell16, Me.XrTableCell17})
-        Me.XrTableRow2.Dpi = 254.0!
-        Me.XrTableRow2.Name = "XrTableRow2"
-        Me.XrTableRow2.Weight = 1.0R
-        '
-        'XrTable2
-        '
-        Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable2.Dpi = 254.0!
-        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 36.46!)
-        Me.XrTable2.Name = "XrTable2"
-        Me.XrTable2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
-        Me.XrTable2.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
-        Me.XrTable2.StylePriority.UseBorders = False
-        '
-        'SubBand1
-        '
-        Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTable2, Me.XrTable1, Me.XrLabel32, Me.XrLabel31, Me.XrLabel38, Me.XrLabel35, Me.XrLabel36, Me.XrLabel37, Me.XrLabel34, Me.XrLabel33, Me.XrLabel30})
-        Me.SubBand1.Dpi = 254.0!
-        Me.SubBand1.HeightF = 74.93009!
-        Me.SubBand1.Name = "SubBand1"
+        'XrTableCell41
+        '
+        Me.XrTableCell41.CanGrow = False
+        Me.XrTableCell41.Dpi = 254.0!
+        Me.XrTableCell41.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell41.Name = "XrTableCell41"
+        Me.XrTableCell41.StylePriority.UseFont = False
+        Me.XrTableCell41.StylePriority.UseTextAlignment = False
+        Me.XrTableCell41.Text = "XrTableCell2"
+        Me.XrTableCell41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell41.TextFormatString = "{0:N2}"
+        Me.XrTableCell41.Visible = False
+        Me.XrTableCell41.Weight = 0.70834648619696239R
+        Me.XrTableCell41.WordWrap = False
+        '
+        'XrTableCell42
+        '
+        Me.XrTableCell42.CanGrow = False
+        Me.XrTableCell42.Dpi = 254.0!
+        Me.XrTableCell42.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell42.Name = "XrTableCell42"
+        Me.XrTableCell42.StylePriority.UseFont = False
+        Me.XrTableCell42.StylePriority.UseTextAlignment = False
+        Me.XrTableCell42.Text = "XrTableCell3"
+        Me.XrTableCell42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell42.TextFormatString = "{0:N2}"
+        Me.XrTableCell42.Visible = False
+        Me.XrTableCell42.Weight = 0.70834648619696239R
+        Me.XrTableCell42.WordWrap = False
+        '
+        'XrTableCell43
+        '
+        Me.XrTableCell43.CanGrow = False
+        Me.XrTableCell43.Dpi = 254.0!
+        Me.XrTableCell43.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell43.Name = "XrTableCell43"
+        Me.XrTableCell43.StylePriority.UseFont = False
+        Me.XrTableCell43.StylePriority.UseTextAlignment = False
+        Me.XrTableCell43.Text = "XrTableCell4"
+        Me.XrTableCell43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell43.TextFormatString = "{0:N2}"
+        Me.XrTableCell43.Visible = False
+        Me.XrTableCell43.Weight = 0.70834654627094R
+        Me.XrTableCell43.WordWrap = False
+        '
+        'XrTableCell44
+        '
+        Me.XrTableCell44.CanGrow = False
+        Me.XrTableCell44.Dpi = 254.0!
+        Me.XrTableCell44.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell44.Name = "XrTableCell44"
+        Me.XrTableCell44.StylePriority.UseFont = False
+        Me.XrTableCell44.StylePriority.UseTextAlignment = False
+        Me.XrTableCell44.Text = "XrTableCell5"
+        Me.XrTableCell44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell44.TextFormatString = "{0:N2}"
+        Me.XrTableCell44.Visible = False
+        Me.XrTableCell44.Weight = 0.708346366049007R
+        Me.XrTableCell44.WordWrap = False
+        '
+        'XrTableCell45
+        '
+        Me.XrTableCell45.CanGrow = False
+        Me.XrTableCell45.Dpi = 254.0!
+        Me.XrTableCell45.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell45.Name = "XrTableCell45"
+        Me.XrTableCell45.StylePriority.UseFont = False
+        Me.XrTableCell45.StylePriority.UseTextAlignment = False
+        Me.XrTableCell45.Text = "XrTableCell6"
+        Me.XrTableCell45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell45.TextFormatString = "{0:N2}"
+        Me.XrTableCell45.Visible = False
+        Me.XrTableCell45.Weight = 0.70834660634491753R
+        Me.XrTableCell45.WordWrap = False
+        '
+        'XrTableCell46
+        '
+        Me.XrTableCell46.CanGrow = False
+        Me.XrTableCell46.Dpi = 254.0!
+        Me.XrTableCell46.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell46.Name = "XrTableCell46"
+        Me.XrTableCell46.StylePriority.UseFont = False
+        Me.XrTableCell46.StylePriority.UseTextAlignment = False
+        Me.XrTableCell46.Text = "XrTableCell7"
+        Me.XrTableCell46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell46.TextFormatString = "{0:N2}"
+        Me.XrTableCell46.Visible = False
+        Me.XrTableCell46.Weight = 0.70834660634491753R
+        Me.XrTableCell46.WordWrap = False
+        '
+        'XrTableCell47
+        '
+        Me.XrTableCell47.CanGrow = False
+        Me.XrTableCell47.Dpi = 254.0!
+        Me.XrTableCell47.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell47.Name = "XrTableCell47"
+        Me.XrTableCell47.StylePriority.UseFont = False
+        Me.XrTableCell47.StylePriority.UseTextAlignment = False
+        Me.XrTableCell47.Text = "XrTableCell8"
+        Me.XrTableCell47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell47.TextFormatString = "{0:N2}"
+        Me.XrTableCell47.Visible = False
+        Me.XrTableCell47.Weight = 0.70834660634491753R
+        Me.XrTableCell47.WordWrap = False
+        '
+        'XrTableCell48
+        '
+        Me.XrTableCell48.CanGrow = False
+        Me.XrTableCell48.Dpi = 254.0!
+        Me.XrTableCell48.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell48.Name = "XrTableCell48"
+        Me.XrTableCell48.StylePriority.UseFont = False
+        Me.XrTableCell48.StylePriority.UseTextAlignment = False
+        Me.XrTableCell48.Text = "XrTableCell9"
+        Me.XrTableCell48.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrTableCell48.TextFormatString = "{0:N2}"
+        Me.XrTableCell48.Visible = False
+        Me.XrTableCell48.Weight = 0.726605254211111R
+        Me.XrTableCell48.WordWrap = False
+        '
+        'bdgID
+        '
+        Me.bdgID.Description = "bdgID"
+        Me.bdgID.Name = "bdgID"
+        Me.bdgID.Type = GetType(System.Guid)
+        Me.bdgID.ValueInfo = "821da3ae-86c6-4410-a933-714a30d7a4ac"
+        DynamicListLookUpSettings1.DataMember = "vw_APMIL"
+        DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
+        DynamicListLookUpSettings1.DisplayMember = "bdgID"
+        DynamicListLookUpSettings1.FilterString = Nothing
+        DynamicListLookUpSettings1.SortMember = Nothing
+        DynamicListLookUpSettings1.ValueMember = "bdgID"
+        Me.bdgID.ValueSourceSettings = DynamicListLookUpSettings1
         '
         'Rep_Sygentrotiki
         '
@@ -2613,15 +2213,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.CrossTabTotalStyle1, Me.CrossTabHeaderStyle1, Me.CrossTabDataStyle1, Me.CrossTabGeneralStyle1})
         Me.Version = "20.2"
-        CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub

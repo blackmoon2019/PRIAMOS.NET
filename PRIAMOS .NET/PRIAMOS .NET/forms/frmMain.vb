@@ -276,4 +276,28 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+
+    Private Sub BarButtonItem3_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Τράπεζες"
+        form.DataTable = "vw_BANKS"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBColMethod_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBColMethod.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Τρόποι Είσπραξης"
+        form.DataTable = "vw_COL_METHOD"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBCol_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCol.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Είσπραξεις"
+        form.DataTable = "vw_COL"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
 End Class

@@ -940,7 +940,7 @@ Partial Class frmINH
         Me.TabNavigationPage2.Caption = "Υπολογισμένα"
         Me.TabNavigationPage2.Controls.Add(Me.GridControl2)
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
-        Me.TabNavigationPage2.Size = New System.Drawing.Size(813, 686)
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(825, 698)
         '
         'GridControl2
         '
@@ -950,7 +950,7 @@ Partial Class frmINH
         Me.GridControl2.Location = New System.Drawing.Point(4, 4)
         Me.GridControl2.MainView = Me.GridINH
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(806, 679)
+        Me.GridControl2.Size = New System.Drawing.Size(818, 691)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridINH})
         '

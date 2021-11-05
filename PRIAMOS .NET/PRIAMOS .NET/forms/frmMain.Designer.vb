@@ -67,14 +67,14 @@ Partial Class frmMain
         Me.BBApol = New DevExpress.XtraBars.BarButtonItem()
         Me.BBApolList = New DevExpress.XtraBars.BarButtonItem()
         Me.BBPriamosVer = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBCol = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBColMethod = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup9 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup6 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage5 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup7 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage6 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -104,9 +104,9 @@ Partial Class frmMain
         '
         Me.RibbonControl1.ApplicationButtonDropDownControl = Me.ApplicationMenu1
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 52
+        Me.RibbonControl1.MaxItemId = 55
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2, Me.RibbonPage5, Me.RibbonPage6, Me.RibbonPage3, Me.RibbonPage4})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.BarClose)
@@ -473,6 +473,30 @@ Partial Class frmMain
         Me.BBPriamosVer.Name = "BBPriamosVer"
         Me.BBPriamosVer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'BBCol
+        '
+        Me.BBCol.Caption = "Εισπράξεις"
+        Me.BBCol.Id = 52
+        Me.BBCol.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_40
+        Me.BBCol.Name = "BBCol"
+        Me.BBCol.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BarButtonItem3
+        '
+        Me.BarButtonItem3.Caption = "Τράπεζες"
+        Me.BarButtonItem3.Id = 53
+        Me.BarButtonItem3.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_bank_building_40
+        Me.BarButtonItem3.Name = "BarButtonItem3"
+        Me.BarButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BBColMethod
+        '
+        Me.BBColMethod.Caption = "Τρόποι Είσπραξης"
+        Me.BBColMethod.Id = 54
+        Me.BBColMethod.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_payment_method_40
+        Me.BBColMethod.Name = "BBColMethod"
+        Me.BBColMethod.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9})
@@ -483,6 +507,7 @@ Partial Class frmMain
         '
         Me.RPG1.ItemLinks.Add(Me.bbParasts)
         Me.RPG1.ItemLinks.Add(Me.bbBDG)
+        Me.RPG1.ItemLinks.Add(Me.BBCol)
         Me.RPG1.ItemLinks.Add(Me.bbCCT)
         Me.RPG1.ItemLinks.Add(Me.bbUsers, True)
         Me.RPG1.ItemLinks.Add(Me.BBChangeUsr)
@@ -498,7 +523,7 @@ Partial Class frmMain
         '
         'RibbonPage2
         '
-        Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup2, Me.RibbonPageGroup1, Me.RibbonPageGroup4, Me.RibbonPageGroup6})
+        Me.RibbonPage2.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup2})
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "Βοηθητικές Πίνακες"
         '
@@ -511,29 +536,16 @@ Partial Class frmMain
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbPRF)
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbTTL)
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbAnnouncements)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem3)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BBColMethod)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbFuelType)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbCalcTypes)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbCalcCateg)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbMLC)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbTechCateg)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BBApol)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "Πίνακες"
-        '
-        'RibbonPageGroup1
-        '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbFuelType)
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "Θέρμανση"
-        '
-        'RibbonPageGroup4
-        '
-        Me.RibbonPageGroup4.ItemLinks.Add(Me.bbCalcTypes)
-        Me.RibbonPageGroup4.ItemLinks.Add(Me.bbCalcCateg)
-        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
-        Me.RibbonPageGroup4.Text = "Υπολογισμοί"
-        '
-        'RibbonPageGroup6
-        '
-        Me.RibbonPageGroup6.ItemLinks.Add(Me.bbMLC)
-        Me.RibbonPageGroup6.ItemLinks.Add(Me.bbTechCateg)
-        Me.RibbonPageGroup6.ItemLinks.Add(Me.BBApol)
-        Me.RibbonPageGroup6.Name = "RibbonPageGroup6"
-        Me.RibbonPageGroup6.Text = "RibbonPageGroup6"
         '
         'RibbonPage5
         '
@@ -697,11 +709,9 @@ Partial Class frmMain
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbParamaters As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
-    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents bbMLC As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbCalcTypes As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPage3 As DevExpress.XtraBars.Ribbon.RibbonPage
-    Friend WithEvents RibbonPageGroup4 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents BBChangeUsr As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents ApplicationMenu1 As DevExpress.XtraBars.Ribbon.ApplicationMenu
     Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
@@ -711,7 +721,6 @@ Partial Class frmMain
     Friend WithEvents bbTechCateg As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbCalcCateg As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbParasts As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents RibbonPageGroup6 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents bbTTL As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbVersion As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents bbAnnouncements As DevExpress.XtraBars.BarButtonItem
@@ -726,4 +735,7 @@ Partial Class frmMain
     Friend WithEvents BBApolList As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup9 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents BBPriamosVer As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BBCol As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BBColMethod As DevExpress.XtraBars.BarButtonItem
 End Class

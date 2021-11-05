@@ -167,6 +167,9 @@ Public Class frmScroller
                     Case "vw_ANN_MENTS" : sSQL = "DELETE FROM ANN_MENTS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_APOL_TYPES" : sSQL = "DELETE FROM APOL_TYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_APOL" : sSQL = "DELETE FROM APOL WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_BANKS" : sSQL = "DELETE FROM BANKS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL_METHOD" : sSQL = "DELETE FROM COL_METHOD WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL" : sSQL = "DELETE FROM COL WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         sSQL = "Update AHPB_H 
@@ -533,8 +536,20 @@ Public Class frmScroller
         Dim fParameters As frmParameters = New frmParameters()
         Dim fGen As frmGen = New frmGen()
         Dim fApol As frmApol = New frmApol()
+        Dim fcol As frmCollections = New frmCollections()
 
         Select Case sDataTable
+            Case "vw_COL"
+                fcol.Text = "Εισπράξεις"
+                fcol.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fcol.BDGID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString
+                fcol.INHID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString
+                fcol.MdiParent = frmMain
+                fcol.Mode = FormMode.EditRecord
+                fcol.Scroller = GridView1
+                fcol.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fcol), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fcol.Show()
             Case "vw_APOL"
                 fApol.Text = "Απολυμάνσεις"
                 fApol.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
@@ -728,7 +743,8 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-            Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL", "vw_APOL_TYPES"
+            Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT",
+                 "vw_TTL", "vw_APOL_TYPES", "vw_BANKS", "VW_COL_METHOD"
                 Select Case sDataTable
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
@@ -738,6 +754,8 @@ Public Class frmScroller
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
+                    Case "vw_BANKS" : fGen.Text = "Τράπεζες Καυσίμων" : fGen.DataTable = "BANKS" : fGen.L2.Text = "Τράπεζα"
+                    Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                 End Select
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -764,9 +782,17 @@ Public Class frmScroller
         Dim fINH As frmINH = New frmINH()
         Dim fApol As frmApol = New frmApol()
         Dim fExp As frmEXP = New frmEXP()
-
+        Dim fcol As frmCollections = New frmCollections()
 
         Select Case sDataTable
+            Case "vw_COL"
+                fcol.Text = "Εισπράξεις"
+                fcol.MdiParent = frmMain
+                fcol.Mode = FormMode.NewRecord
+                fcol.Scroller = GridView1
+                fcol.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fcol), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fcol.Show()
             Case "vw_APOL"
                 fApol.Text = "Απολυμάνσεις"
                 fApol.MdiParent = frmMain
@@ -945,7 +971,8 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-            Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL", "vw_APOL_TYPES"
+            Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL",
+                 "vw_APOL_TYPES", "vw_BANKS", "vw_COL_METHOD"
                 Select Case sDataTable
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
@@ -955,6 +982,8 @@ Public Class frmScroller
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
+                    Case "vw_BANKS" : fGen.Text = "ΤράπεζεςΚαυσίμων" : fGen.DataTable = "BANKS" : fGen.L2.Text = "Τράπεζα"
+                    Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                 End Select
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord

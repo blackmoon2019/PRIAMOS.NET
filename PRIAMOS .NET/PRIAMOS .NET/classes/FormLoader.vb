@@ -277,12 +277,17 @@ NextItem:
         If TypeOf Ctrl Is DevExpress.XtraEditors.LookUpEdit Then
             Dim cbo As DevExpress.XtraEditors.LookUpEdit
             Dim stestGuid As Guid
+            Dim isint As Integer
             Dim isValid As Boolean = Guid.TryParse(sValue, stestGuid)
             cbo = Ctrl
             If isValid = True Then
                 cbo.EditValue = System.Guid.Parse(sValue)
             Else
-                cbo.EditValue = Convert.ToInt32(sValue)
+                If Integer.TryParse(sValue, isint) Then
+                    cbo.EditValue = Convert.ToInt32(sValue)
+                Else
+                    cbo.EditValue = sValue
+                End If
             End If
         ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
             Dim dt As DevExpress.XtraEditors.DateEdit

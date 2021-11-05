@@ -381,6 +381,12 @@
     <Compile Include="forms\frmCalendarApol.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmCollections.Designer.vb">
+      <DependentUpon>frmCollections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmCollections.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmCustomers.designer.vb">
       <DependentUpon>frmCustomers.vb</DependentUpon>
     </Compile>
@@ -597,6 +603,9 @@
     <EmbeddedResource Include="forms\frmCalendarApol.resx">
       <DependentUpon>frmCalendarApol.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmCollections.resx">
+      <DependentUpon>frmCollections.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCustomers.resx">
       <DependentUpon>frmCustomers.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -732,6 +741,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-payment-method-40.png" />
+    <None Include="Resources\icons8-bank-building-40.png" />
+    <None Include="Resources\icons8-receipt-40.png" />
     <None Include="Resources\icons8-versions-40.png" />
     <None Include="Resources\icons8-hand-sanitizer-40.png" />
     <None Include="Resources\icons8-server-16.png" />
