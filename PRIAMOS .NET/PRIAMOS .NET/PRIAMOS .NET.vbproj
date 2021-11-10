@@ -741,6 +741,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-submit-for-approval-24.png" />
     <None Include="Resources\icons8-payment-method-40.png" />
     <None Include="Resources\icons8-bank-building-40.png" />
     <None Include="Resources\icons8-receipt-40.png" />

@@ -345,6 +345,7 @@ Public Class frmINH
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
         Else
             txtHeatingType.EditValue = Nothing
+            txtHpc.EditValue = Nothing
         End If
         If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")

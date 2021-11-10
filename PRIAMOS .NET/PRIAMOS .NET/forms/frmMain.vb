@@ -294,10 +294,17 @@ Public Class frmMain
     End Sub
 
     Private Sub BBCol_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCol.ItemClick
-        Dim form As frmScroller = New frmScroller()
+        'Dim form As frmScroller = New frmScroller()
+        'form.Text = "Είσπραξεις"
+        'form.DataTable = "vw_COL"
+        'form.MdiParent = Me
+        'form.Show()
+
+        Dim form As frmCollections = New frmCollections()
         form.Text = "Είσπραξεις"
-        form.DataTable = "vw_COL"
         form.MdiParent = Me
+        'form.DataTable = "vw_COL"
+        'form.MdiParent = Me
         form.Show()
     End Sub
 End Class
