@@ -80,7 +80,7 @@ Public Class frmTecnicalSupport
                     'Καθαρισμός Controls
                     'If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     'txtCode.Text = DBQ.GetNextId("TECH_SUP")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     cmdEmail.Enabled = True
                     Dim form As New frmScroller
                     form.LoadRecords("vw_TECH_SUP")
@@ -89,7 +89,7 @@ Public Class frmTecnicalSupport
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -132,11 +132,11 @@ Public Class frmTecnicalSupport
             End If
 
             Smtp_Server.Send(e_mail)
-            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             sSQL = "UPDATE TECH_SUP SET EmailSent = 1 where ID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID))
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -177,9 +177,9 @@ Public Class frmTecnicalSupport
             End If
 
             Smtp_Server.Send(e_mail)
-            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub ManageCategory()

@@ -4,6 +4,7 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraTabbedMdi
 Public Class frmMain
+    Private CheckFUpdate As New CheckForUpdates
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         XtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders
         bbDate.Caption = DateTime.Today
@@ -11,6 +12,7 @@ Public Class frmMain
         bbServer.Caption = "SQL Server: " & CNDB.DataSource.ToString
         bbDB.Caption = "Database: " & CNDB.Database.ToString
         bbVersion.Caption = "Ver:" + My.Application.Info.Version.ToString
+        Timer2.Stop()
     End Sub
 
     Private Sub MdiManager_PageAdded(sender As Object, e As MdiTabPageEventArgs)
@@ -306,5 +308,22 @@ Public Class frmMain
         'form.DataTable = "vw_COL"
         'form.MdiParent = Me
         form.Show()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'Έλεγχος νέας έκδοσης
+        If CheckFUpdate.CheckForNewVersion Then
+            BBUpdate.Visibility = BarItemVisibility.Always
+            Timer2.Start()
+        End If
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        If BBUpdate.Visibility = BarItemVisibility.Never Then BBUpdate.Visibility = BarItemVisibility.Always Else BBUpdate.Visibility = BarItemVisibility.Never
+    End Sub
+
+    Private Sub BBUpdate_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdate.ItemClick
+        Timer2.Stop()
+        CheckFUpdate.FindNewVersion()
     End Sub
 End Class

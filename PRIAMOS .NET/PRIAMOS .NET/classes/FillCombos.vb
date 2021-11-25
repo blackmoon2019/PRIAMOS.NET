@@ -11,6 +11,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Περιοχές"
@@ -30,6 +31,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Τεχνικής Υποστήριξης"
@@ -49,6 +51,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Εξόδων"
@@ -68,6 +71,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Υπολογισμών"
@@ -87,6 +91,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Έξοδα"
@@ -113,6 +118,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(2).Visible = True
@@ -136,6 +142,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Fullname"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Επαφές"
@@ -152,6 +159,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Ορόφοι"
@@ -168,6 +176,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "nam"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Πολυκατοικίες"
@@ -184,6 +193,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "mdt"
             CtrlCombo.Properties.ValueMember = "mdt"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
 
             'CtrlCombo.Properties.Columns(1).Visible = False
@@ -202,6 +212,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Λεκτικό Εκτύπωσης"
@@ -218,6 +229,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Ανακοίνωση"
@@ -236,12 +248,13 @@ Public Class FillCombos
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
             CtrlCombo.Properties.Columns.Clear()
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τρόποι Είσπραξης"
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -255,12 +268,13 @@ Public Class FillCombos
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
             CtrlCombo.Properties.Columns.Clear()
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τράπεζες"
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -272,6 +286,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τύπος"
@@ -295,6 +310,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Νομοί"
@@ -312,6 +328,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "RealName"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Χρήστης"
@@ -329,6 +346,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τύποι Θέρμανσης"
@@ -345,6 +363,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τύποι Καυσίμων"
@@ -361,6 +380,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τύποι Υπολογισμού"
@@ -377,6 +397,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Χιλιοστών"
@@ -394,6 +415,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Fullname"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Προμηθευτές"
@@ -411,6 +433,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Τύποι Boiler"
@@ -428,6 +451,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "ΔΟΥ"
@@ -445,6 +469,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Επαγγέλματα"
@@ -463,9 +488,25 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Server"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Email Account"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub FillComboboxEditItems(cbo As DevExpress.XtraEditors.Repository.RepositoryItemComboBox )
+        Try
+            Dim sSQL As String
+            sSQL = "Select id,RealName from vw_USR"
+            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            While sdr.Read()
+                cbo.Properties.Items.Add(sdr.Item(1).ToString)
+            End While
             sdr.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -544,6 +585,40 @@ Public Class FillCombos
         End Try
 
     End Sub
+    Public Sub FillCheckedListPRF(CtrlList As DevExpress.XtraEditors.CheckedListBoxControl, ByVal mode As Byte, Optional ByVal sID As String = "")
+        Try
+            Dim sSQL As String
+            If mode = FormMode.NewRecord Then
+                sSQL = "Select id,name from vw_PRF"
+            Else
+                sSQL = "Select id,name ,
+                       isnull((select case when PF.id is not null then 1 else 0 end as checked
+		               from vw_CCT_PF PF where cctid = '" & sID & "' and PF.prfID = P.ID),0) as checked
+                       from vw_PRF P"
+            End If
+            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            'chkLstUsers.DataSource = sdr
+            CtrlList.Items.Clear()
+            CtrlList.DisplayMember = "name"
+            CtrlList.ValueMember = "id"
+            While sdr.Read()
+                Dim chkLstItem As New DevExpress.XtraEditors.Controls.CheckedListBoxItem
+                chkLstItem.Value = sdr.Item(1).ToString
+                chkLstItem.Tag = sdr.Item(0).ToString
+                If mode = FormMode.EditRecord Then
+                    chkLstItem.CheckState = sdr.Item("checked").ToString
+                End If
+
+                CtrlList.Items.Add(chkLstItem)
+            End While
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
     Public Sub USR(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,un,Realname from vw_USR order by un", CNDB)
@@ -552,6 +627,7 @@ Public Class FillCombos
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "un"
             CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Visible = False

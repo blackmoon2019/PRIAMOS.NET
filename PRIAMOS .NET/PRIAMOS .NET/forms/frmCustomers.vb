@@ -64,7 +64,6 @@ Public Class frmCustomers
         FillCbo.COU(cboCOU)
         'FillCbo.ADR(cboADR, sSQL)
         'FillCbo.AREAS(cboAREAS, sSQL)
-        FillCbo.PRF(cboPRF)
         FillCbo.DOY(cboDOY)
 
 
@@ -72,7 +71,9 @@ Public Class frmCustomers
             Case FormMode.NewRecord
                 'dtDTS.EditValue = DateTime.Now
                 txtCode.Text = DBQ.GetNextId("CCT")
+                FillCbo.FillCheckedListPRF(chkPRF, FormMode.NewRecord)
             Case FormMode.EditRecord
+                FillCbo.FillCheckedListPRF(chkPRF, FormMode.EditRecord, sID)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_CCT where id ='" + sID + "'")
@@ -219,6 +220,25 @@ Public Class frmCustomers
                     'form.LoadRecords("vw_CCT")
                 End If
                 'Cls.ClearCtrls(LayoutControl1)
+                'Όταν είναι σε EditMode διαγραφουμε όλες τις κατηγορίες και τις ξανακαταχωρούμε
+                Dim sSQL2 As String
+                If Mode = FormMode.EditRecord Then
+                    sSQL2 = "DELETE FROM CCT_PF where CCTID = '" & sGuid & "'"
+                    Using oCmd As New SqlCommand(sSQL2, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                End If
+
+                ' Καταχώρηση Χιλιοστών πολυκατοικίας
+                For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkPRF.CheckedItems
+                    sSQL2 = "INSERT INTO CCT_PF ([CCTID],[prfID],[modifiedBy],[createdOn])  
+                                        values (" & toSQLValueS(sGuid) & "," & toSQLValueS(item.Tag.ToString()) & "," &
+                                                        toSQLValueS(UserProps.ID.ToString) & ", getdate() )"
+                    Using oCmd As New SqlCommand(sSQL2, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next
+                FillCbo.FillCheckedListPRF(chkPRF, FormMode.EditRecord, sGuid)
                 If sResult = True Then
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
@@ -320,27 +340,6 @@ Public Class frmCustomers
         form1.Show()
     End Sub
 
-    Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPRF.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : cboPRF.EditValue = Nothing : ManagePRF()
-            Case 2 : If cboPRF.EditValue <> Nothing Then ManagePRF()
-            Case 3 : cboPRF.EditValue = Nothing
-        End Select
-    End Sub
-    Private Sub ManagePRF()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Επαγγέλματα"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Επάγγελμα"
-        form1.DataTable = "PRF"
-        form1.CallerControl = cboPRF
-        form1.CalledFromControl = True
-        If cboPRF.EditValue <> Nothing Then form1.ID = cboPRF.EditValue.ToString
-        form1.MdiParent = frmMain
-        If cboPRF.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
     Private Sub cboCOU_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonClick
         Select Case e.Button.Index
@@ -422,12 +421,12 @@ Public Class frmCustomers
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
            UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
-            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
                 GridView1.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
             End If
@@ -436,7 +435,7 @@ Public Class frmCustomers
     End Sub
     'Συγχρονισμός όψης από Server
     Private Sub OnSyncView(ByVal sender As System.Object, ByVal e As EventArgs)
-        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
             If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = True Then
                 My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", True)
