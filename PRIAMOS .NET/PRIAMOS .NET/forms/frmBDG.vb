@@ -1266,7 +1266,7 @@ Public Class frmBDG
 
     Private Sub HyperlinkLabelControl1_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl1.HyperlinkClick
         'System.Diagnostics.Process.Start(e.Text)
-        WebBrowser1.Navigate("https://ebill.dei.gr/Login.aspx")
+        'WebBrowser1.Navigate("https://ebill.dei.gr/Login.aspx")
     End Sub
 
     Private Sub HyperlinkLabelControl111_HyperlinkClick(sender As Object, e As HyperlinkClickEventArgs) Handles HyperlinkLabelControl111.HyperlinkClick
@@ -2067,17 +2067,17 @@ Public Class frmBDG
 
     Private Sub cmdDeiLogin_Click(sender As Object, e As EventArgs) Handles cmdDeiLogin.Click
         On Error Resume Next
-        WebBrowser1.Document.GetElementById("ctl00_ctl00_Site_Main_Main_ApartmentBuildingBills_txtCustomerCode").SetAttribute("value", eCounter.Text)
-        WebBrowser1.Document.GetElementById("ctl00$ctl00$Site_Main$Main$ApartmentBuildingBills$btnFindApartmentBuildingBills").InvokeMember("click")
+        'WebBrowser1.Document.GetElementById("ctl00_ctl00_Site_Main_Main_ApartmentBuildingBills_txtCustomerCode").SetAttribute("value", txteCounter.Text)
+        'WebBrowser1.Document.GetElementById("ctl00$ctl00$Site_Main$Main$ApartmentBuildingBills$btnFindApartmentBuildingBills").InvokeMember("click")
 
     End Sub
 
-    Private Sub WebBrowser1_NewWindow(sender As Object, e As CancelEventArgs) Handles WebBrowser1.NewWindow
+    Private Sub WebBrowser1_NewWindow(sender As Object, e As CancelEventArgs)
         e.Cancel = True
 
-        Dim url As String = WebBrowser1.StatusText
+        'Dim url As String = WebBrowser1.StatusText
 
-        WebBrowser1.Navigate(url)
+        'WebBrowser1.Navigate(url)
 
     End Sub
     Public Shared Function GetTextFromPDF(PdfFileName As String) As String

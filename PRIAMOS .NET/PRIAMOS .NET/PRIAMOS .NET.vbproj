@@ -382,6 +382,12 @@
     <Compile Include="forms\frmCalendarApol.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmCases.Designer.vb">
+      <DependentUpon>frmCases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmCases.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmCollections.Designer.vb">
       <DependentUpon>frmCollections.vb</DependentUpon>
     </Compile>
@@ -464,6 +470,12 @@
       <DependentUpon>frmScroller.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\frmScroller.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmTasks.Designer.vb">
+      <DependentUpon>frmTasks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmTasks.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmTecnicalSupport.Designer.vb">
@@ -612,6 +624,9 @@
     <EmbeddedResource Include="forms\frmCalendarApol.resx">
       <DependentUpon>frmCalendarApol.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmCases.resx">
+      <DependentUpon>frmCases.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCollections.resx">
       <DependentUpon>frmCollections.vb</DependentUpon>
     </EmbeddedResource>
@@ -661,6 +676,9 @@
     <EmbeddedResource Include="forms\frmScroller.resx">
       <DependentUpon>frmScroller.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmTasks.resx">
+      <DependentUpon>frmTasks.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmTecnicalSupport.resx">
       <DependentUpon>frmTecnicalSupport.vb</DependentUpon>
@@ -750,6 +768,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-check-list-40.png" />
+    <None Include="Resources\icons8-case-40.png" />
+    <None Include="Resources\icons8-category-40%281%29.png" />
+    <None Include="Resources\icons8-tasks-40.png" />
     <None Include="Resources\icons8-installing-updates1.gif" />
     <None Include="Resources\icons8-installing-updates.gif" />
     <None Include="Resources\animated-update-image-0026.gif" />

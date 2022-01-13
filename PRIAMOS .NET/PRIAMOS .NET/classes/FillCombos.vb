@@ -169,9 +169,16 @@ Public Class FillCombos
         End Try
 
     End Sub
-    Public Sub BDG(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As System.Text.StringBuilder)
+    Public Sub BDG(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, Optional ByVal sSQL As System.Text.StringBuilder = Nothing)
+        Dim sSQLs As String
         Try
-            Dim cmd As SqlCommand = New SqlCommand("Select id,nam from vw_BDG  " & sSQL.ToString, CNDB)
+            If sSQL Is Nothing Then
+                sSQLs = "Select id,nam from vw_BDG order by nam"
+            Else
+                sSQLs = "Select id,nam from vw_BDG " & sSQL.ToString & "  order by nam"
+            End If
+
+            Dim cmd As SqlCommand = New SqlCommand(sSQLs, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "nam"
@@ -239,6 +246,26 @@ Public Class FillCombos
         End Try
 
     End Sub
+    Public Sub TASKS_CAT(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_TASKS_CAT order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "Name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.Columns.Clear()
+            CtrlCombo.Properties.ForceInitialize()
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Εργασίες"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
     Public Sub COL_METHOD(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_COL_METHOD order by name", CNDB)

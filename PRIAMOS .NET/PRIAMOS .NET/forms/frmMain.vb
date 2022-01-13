@@ -131,7 +131,7 @@ Public Class frmMain
 
     Private Sub bbCCT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCCT.ItemClick
         Dim form As frmScroller = New frmScroller()
-        form.Text = "Πελάτες"
+        form.Text = "Επαφές"
         form.DataTable = "vw_CCT"
         form.MdiParent = Me
         form.Show()
@@ -325,5 +325,29 @@ Public Class frmMain
     Private Sub BBUpdate_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdate.ItemClick
         Timer2.Stop()
         CheckFUpdate.FindNewVersion()
+    End Sub
+
+    Private Sub BBTasks_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBTasksCat.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Εργασίες"
+        form.DataTable = "vw_TASKS_CAT"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBCases_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCases.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Υποθέσεις"
+        form.DataTable = "vw_CASES"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Εργασίες υποθέσεων"
+        form.DataTable = "vw_TASKS"
+        form.MdiParent = Me
+        form.Show()
     End Sub
 End Class

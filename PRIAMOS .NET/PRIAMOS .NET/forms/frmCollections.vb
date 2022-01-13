@@ -78,6 +78,8 @@ Public Class frmCollections
 
 
         AddHandler Rep_DEBITUSR.EditValueChanged, AddressOf Rep_DEBITUSR_Changed
+        AddHandler Rep_COL_METHOD.EditValueChanged, AddressOf Rep_COL_METHOD_Changed
+        AddHandler Rep_ΒΑΝΚ.EditValueChanged, AddressOf Rep_ΒΑΝΚ_Changed
 
         If sbdgID <> Nothing Then
             cboBDG.EditValue = System.Guid.Parse(sbdgID)
@@ -88,10 +90,24 @@ Public Class frmCollections
         My.Settings.Save()
 
 
+
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_H_def.xml") = False Then
             GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_H_def.xml", OptionsLayoutBase.FullLayout)
         End If
         GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_H_def.xml", OptionsLayoutBase.FullLayout)
+
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml") Then
+            GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
+        End If
+
+        GridView2.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        GridView3.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        GridView5.OptionsMenu.EnableFooterMenu = True
+        GridView5.OptionsMenu.ShowConditionalFormattingItem = True
+        GridView5.OptionsMenu.EnableGroupRowMenu = True
+        GridView5.OptionsMenu.ShowGroupSummaryEditorItem = True
+        GridView5.OptionsMenu.ShowAddNewSummaryItem = True
+        GridView5.OptionsMenu.ShowSummaryItemMode = DefaultBoolean.True
         Level = 0
     End Sub
 
@@ -100,18 +116,21 @@ Public Class frmCollections
         Dim strSql As String
         Dim Tbl As SqlDataAdapter
         Try
-            strSql = "SELECT        bdgID, aptID, ttl, sum(debit) as debit , sum(credit) as credit , sum(bal) as bal " &
-                 "FROM  vw_COL group by bdgID, aptID, ttl"
+            ' Διαμερίσματα
+            strSql = "SELECT   bdgID, aptID, ttl, sum(debit) as debit , sum(credit) as credit , sum(bal) as bal,sum(Aptbal) as Aptbal " &
+                    "FROM  vw_COL 
+                    group by bdgID, aptID, ttl"
 
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
             Tbl.Fill(Priamos_NETDataSet2.COL_APT)
             Tbl.Dispose()
 
+            ' Παραστατικά
             strSql = "Select   aptID, bdgID, inhID, completeDate, SUM(debit) As debit, SUM(credit) As credit, SUM(bal) As bal, " &
-                     "debitusrID, dtDebit, dtCredit, bankID, ColMethodID  " &
+                     "debitusrID, dtDebit, dtCredit, bankID, ColMethodID,cmt  " &
                      "From vw_COL " &
-                     "Group By aptID, BDGID, INHID, completeDate, debitusrID, dtDebit, dtCredit, bankID, ColMethodID "
+                     "Group By aptID, BDGID, INHID, completeDate, debitusrID, dtDebit, dtCredit, bankID, ColMethodID,cmt "
 
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
@@ -130,9 +149,11 @@ Public Class frmCollections
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue <> Nothing Then
+            Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
             'Me.Vw_COLHTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COLH, System.Guid.Parse(cboBDG.EditValue.ToString))
             '    Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
         Else
+            Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
             'Me.Vw_COLHTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COLH)
             '    Me.Vw_COLHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COLH)
             '    Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Empty)
@@ -198,6 +219,7 @@ Public Class frmCollections
                     Using oCmd As New SqlCommand("COL_Calculate", CNDB)
                         oCmd.CommandType = CommandType.StoredProcedure
                         oCmd.Parameters.AddWithValue("@colHid", APTView.GetRowCellValue(APTView.FocusedRowHandle, "colHID").ToString.ToUpper)
+                        oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
                         oCmd.ExecuteNonQuery()
                     End Using
                 Case "ColMethodID"
@@ -359,48 +381,12 @@ Public Class frmCollections
         'End If
     End Sub
 
-    Private Sub GridView5_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
-
-            End If
-        End If
-    End Sub
-
     'Μετονομασία Στήλης Master
     Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As New DXEditMenuItem()
         item = sender
         If item.Tag Is Nothing Then Exit Sub
-        APTView.Columns(item.Tag).Caption = item.EditValue
+        GridView5.Columns(item.Tag).Caption = item.EditValue
         'MessageBox.Show(item.EditValue.ToString())
     End Sub
     Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
@@ -413,7 +399,7 @@ Public Class frmCollections
         Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
         item = sender
         If item.Tag Is Nothing Then Exit Sub
-        APTView.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+        GridView5.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
     End Sub
     'Κλείδωμα Στήλης Master
     Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
@@ -427,8 +413,13 @@ Public Class frmCollections
     'Αποθήκευση όψης 
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        APTView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+        GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+    'Εκτύπωση Όψης
+    Private Sub OnPrintView(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView5.GridControl.ShowRibbonPrintPreview()
     End Sub
 
     Private Sub RepositoryUSRCredit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
@@ -443,7 +434,7 @@ Public Class frmCollections
         End Select
     End Sub
 
-    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
             Dim item As New DXEditMenuItem()
@@ -524,6 +515,7 @@ Public Class frmCollections
             INHView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
         End If
         INHView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
+        INHView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
         Level = 2
     End Sub
 
@@ -540,39 +532,89 @@ Public Class frmCollections
             Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
             Dim debitUsrID As String = toSQLValueS(editor.GetColumnValue("ID").ToString)
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
-            UpdateCOLS(debitUsrID)
+            UpdateCOLS(0, debitUsrID)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
-    Private Sub UpdateCOLS(ByVal debitUsrID As String)
+    Friend Sub Rep_COL_METHOD_Changed(sender As Object, e As EventArgs)
+
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            Dim colMethodID As String = toSQLValueS(editor.EditValue.ToString)
+            'debitUsrName = editor.GetColumnValue("RealName").ToString()
+            UpdateCOLS(1, colMethodID)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Friend Sub Rep_ΒΑΝΚ_Changed(sender As Object, e As EventArgs)
+
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            Dim bankID As String = toSQLValueS(editor.EditValue.ToString)
+            'debitUsrName = editor.GetColumnValue("RealName").ToString()
+            UpdateCOLS(2, bankID)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Private Sub UpdateCOLS(ByVal mode As Byte, ByVal sField As String)
         Dim dtdebit As String
         Dim sSQL As String
         Try
-            If debitUsrID Is DBNull.Value Or debitUsrID = "NULL" Then
-                dtdebit = "NULL"
-            Else
-                dtdebit = toSQLValueS(CDate(Date.Now).ToString("yyyyMMdd"))
-            End If
+            Select Case mode
+                Case 0
+                    If sField Is DBNull.Value Or sField = "NULL" Then
+                        dtdebit = "NULL"
+                    Else
+                        dtdebit = toSQLValueS(CDate(Date.Now).ToString("yyyyMMdd"))
+                    End If
+            End Select
 
             Select Case GridControl2.FocusedView.Name
                 Case "GridView1"
-                    sSQL = "UPDATE [COL] SET debitusrID  = " & debitUsrID & ",dtdebit  = " & dtdebit &
-                        " WHERE bdgID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString)
+                    sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                           " WHERE bdgID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString)
                 Case "GridView2"
-                    sSQL = "UPDATE [COL] SET debitusrID  = " & debitUsrID & ",dtdebit  = " & dtdebit &
-                        " WHERE bdgID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString) &
-                        " and aptID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
+                    Select Case mode
+                        Case 0
+                            sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                                   " WHERE bdgID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString) &
+                                   " and aptID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
+                        Case 1
+                            sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
+                                   " WHERE bdgID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString) &
+                                   " and aptID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
+                        Case 2
+                            sSQL = "UPDATE [COL] SET bankID  = " & sField &
+                                   " WHERE bdgID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString) &
+                                   " and aptID = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
+                    End Select
                 Case "GridView3"
-                    sSQL = "UPDATE [COL] SET debitusrID  = " & debitUsrID & ",dtdebit  = " & dtdebit &
-                        " WHERE bdgID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString) &
-                        " and aptID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString) &
-                        " and inhID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString)
+                    Select Case mode
+                        Case 0
+                            sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                                   " WHERE bdgID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString) &
+                                   " and aptID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString) &
+                                   " and inhID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString)
+                        Case 1
+                            sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
+                                   " WHERE bdgID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString) &
+                                   " and aptID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString) &
+                                   " and inhID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString)
+                        Case 2
+                            sSQL = "UPDATE [COL] SET bankID  = " & sField &
+                                   " WHERE bdgID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString) &
+                                   " and aptID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString) &
+                                   " and inhID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString)
+                    End Select
                 Case "GridView4"
-                    sSQL = "UPDATE [COL] SET debitusrID  = " & debitUsrID & ",dtdebit  = " & dtdebit &
-                        " WHERE ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
-
+                    sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                           " WHERE ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
             End Select
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
@@ -593,7 +635,7 @@ Public Class frmCollections
     End Sub
     Private Sub Rep_DEBITUSR_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_DEBITUSR.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "debitusrID", "") : UpdateCOLS("NULL")
+            Case 1 : GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "debitusrID", "") : UpdateCOLS(0, "NULL")
         End Select
     End Sub
     'Function που ελέγχει αν ο χρήστης χρέωσης στα παραστατικά είναι μοναδικός
@@ -745,6 +787,7 @@ Public Class frmCollections
             INHView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_OWNERS_def.xml", OptionsLayoutBase.FullLayout)
         End If
         INHView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_OWNERS_def.xml", OptionsLayoutBase.FullLayout)
+        INHView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
 
     End Sub
 
@@ -764,7 +807,7 @@ Public Class frmCollections
     '    End If
     'End Sub
 
-    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
             Dim item As New DXEditMenuItem()
@@ -882,6 +925,7 @@ Public Class frmCollections
             OwnerTenantView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
         End If
         OwnerTenantView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
+        OwnerTenantView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
         Level = 3
     End Sub
 
@@ -1040,6 +1084,7 @@ Public Class frmCollections
             ElseIf APTView.FocusedColumn.FieldName = "credit" And IsDebitUserEmpty(INHView) = True Then
                 'XtraMessageBox.Show("Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
+                APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
                 APTView.SetMasterRowExpanded(APTView.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
@@ -1069,7 +1114,7 @@ Public Class frmCollections
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
-                    oCmd.Parameters.AddWithValue("@creditusrID", debitusrID.ToUpper)
+                    oCmd.Parameters.AddWithValue("@debitusrID", APTView.GetRowCellValue(APTView.FocusedRowHandle, "debitusrID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@bdgID", APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@aptID", APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@inhID", Guid.Empty)
@@ -1105,15 +1150,26 @@ Public Class frmCollections
             Dim credit As Decimal, debit As Decimal, bal As Decimal
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             INHView.SetMasterRowExpanded(INHView.FocusedRowHandle, True)
-            If INHView.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(OwnerTenantView) = False Then
+            If INHView.FocusedColumn.FieldName = "debit" And IsDebitUserUnique(INHView) = False Then
                 'XtraMessageBox.Show("Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
                 INHView.SetMasterRowExpanded(INHView.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
-            ElseIf INHView.FocusedColumn.FieldName = "credit" And IsDebitUserEmpty(OwnerTenantView) = True Then
+                'ElseIf INHView.FocusedColumn.FieldName = "debit" And IsDebitUserEmpty(INHView) = True Then
+            ElseIf IsDebitUserEmpty(INHView) = True Then
                 'XtraMessageBox.Show("Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
+                If INHView.FocusedColumn.FieldName = "credit" Then
+                    INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
+                    APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
+                ElseIf INHView.FocusedColumn.FieldName = "bankID" Then
+                    INHView.SetRowCellValue(INHView.FocusedRowHandle, "bankID", DBNull.Value)
+                ElseIf INHView.FocusedColumn.FieldName = "ColMethodID" Then
+                    INHView.SetRowCellValue(INHView.FocusedRowHandle, "ColMethodID", DBNull.Value)
+                ElseIf INHView.FocusedColumn.FieldName = "dtCredit" Then
+                    INHView.SetRowCellValue(INHView.FocusedRowHandle, "dtCredit", DBNull.Value)
+                End If
                 INHView.SetMasterRowExpanded(INHView.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
@@ -1134,37 +1190,36 @@ Public Class frmCollections
                     End If
 
                 End If
-            If INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal") Is DBNull.Value Then
-                bal = 0
-            Else
-                bal = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal")
-            End If
-            bal = Math.Abs(debit) - credit
+                If INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal") Is DBNull.Value Then
+                    bal = 0
+                Else
+                    bal = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal")
+                End If
+                bal = Math.Abs(debit) - credit
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
-                    oCmd.Parameters.AddWithValue("@creditusrID", INHView.GetRowCellValue(INHView.FocusedRowHandle, "debitusrID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@debitusrID", INHView.GetRowCellValue(INHView.FocusedRowHandle, "debitusrID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@bdgID", INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@aptID", INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@inhID", INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@Givencredit", credit)
+                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
                     oCmd.ExecuteNonQuery()
                 End Using
 
-                '    sSQL = "UPDATE [COL] SET dtcredit  = " & dtcredit &
-                '            ",credit = " & toSQLValueS(credit, True) &
-                '            ",creditusrID  = " & toSQLValueS(UserProps.ID.ToString) &
-                '            ",bal = " & toSQLValueS(bal, True) &
-                '            ",ColMethodID  = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "ColMethodID").ToString) &
-                '            ",bankID  = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bankID").ToString) &
-                '            " WHERE aptID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString) &
-                '            " and  bdgID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString) &
-                '            " and  inhID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString)
+                sSQL = "UPDATE [COL] SET 
+                        cmt  = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "cmt").ToString) &
+                        ",ColMethodID  = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "ColMethodID").ToString) &
+                        ",bankID  = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bankID").ToString) &
+                        " WHERE aptID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString) &
+                        " and  bdgID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString) &
+                        " and  inhID = " & toSQLValueS(INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString)
 
-                'Using oCmd As New SqlCommand(sSQL, CNDB)
-                '    oCmd.ExecuteNonQuery()
-                'End Using
-                '    INHView.SetRowCellValue(INHView.FocusedRowHandle, "bal", bal)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                'INHView.SetRowCellValue(INHView.FocusedRowHandle, "bal", bal)
                 '    INHView.SetRowCellValue(INHView.FocusedRowHandle, "dtCredit", Date.Now.ToString("MM/dd/yyyy"))
                 'INHView.SetRowCellValue(INHView.FocusedRowHandle, "creditusrID", System.Guid.Parse(UserProps.ID.ToString))
                 LoaderData()
@@ -1176,12 +1231,144 @@ Public Class frmCollections
         End Try
     End Sub
 
-    Private Sub Rep_Debit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_Debit.ButtonPressed
-        Select Case e.Button.Index
-            Case 0 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", APTView.GetRowCellValue(APTView.FocusedRowHandle, "debit"))
-            Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
-        End Select
-        APTView.ValidateEditor()
+    Private Sub Rep_Credit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_Credit.ButtonPressed
+        Try
+            Dim GRD As GridView = GridControl2.FocusedView
+            Select Case GRD.Name
+                Case "GridView2" ' Διαμερίσματα
+                    Select Case e.Button.Index
+                        Case 0 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", APTView.GetRowCellValue(APTView.FocusedRowHandle, "debit"))
+                        Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
+                    End Select
+                    APTView.ValidateEditor()
+                Case "GridView3" ' Παραστατικα
+                    Select Case e.Button.Index
+                        Case 0 : INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", INHView.GetRowCellValue(INHView.FocusedRowHandle, "debit"))
+                        Case 1 : INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
+                    End Select
+                    INHView.ValidateEditor()
+                Case "GridView4" ' Ένοικος/Ιδιοκτήτης
+                    Select Case e.Button.Index
+                        Case 0 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "debit"))
+                        Case 1 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", 0)
+                    End Select
+                    OwnerTenantView.ValidateEditor()
+            End Select
+
+        Catch ex As Exception
+            If ex.HResult <> -2146233088 Then XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub GridView5_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+            Dim itemSaveView As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Εκτύπωση όψης", AddressOf OnPrintView, Nothing, Nothing, Nothing, Nothing))
+
+
+                '5nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
+            End If
+
+        End If
+    End Sub
+
+    Private Sub GridView4_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView4.ValidatingEditor
+        Try
+            Dim sSQL As String, dtcredit As String
+            Dim credit As Decimal, debit As Decimal, bal As Decimal
+            'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
+            OwnerTenantView.SetMasterRowExpanded(OwnerTenantView.FocusedRowHandle, True)
+            If OwnerTenantView.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(OwnerTenantView) = False Then
+                'XtraMessageBox.Show("Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
+                OwnerTenantView.SetMasterRowExpanded(OwnerTenantView.FocusedRowHandle, False)
+                e.Valid = False
+                Exit Sub
+            ElseIf OwnerTenantView.FocusedColumn.FieldName = "credit" And IsDebitUserEmpty(OwnerTenantView) = True Then
+                'XtraMessageBox.Show("Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                e.ErrorText = "Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
+                OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", 0)
+                APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
+                INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
+                OwnerTenantView.SetMasterRowExpanded(OwnerTenantView.FocusedRowHandle, False)
+                e.Valid = False
+                Exit Sub
+            End If
+            If OwnerTenantView.FocusedColumn.FieldName = "credit" Or OwnerTenantView.FocusedColumn.FieldName = "ColMethodID" Or OwnerTenantView.FocusedColumn.FieldName = "bankID" Then
+                If OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "debit") Is DBNull.Value Then
+                    debit = 0
+                Else
+                    debit = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "debit")
+                End If
+                If OwnerTenantView.FocusedColumn.FieldName = "credit" Then
+                    credit = e.Value
+                Else
+                    If OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit") Is DBNull.Value Then
+                        credit = 0
+                    Else
+                        credit = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit")
+                    End If
+
+                End If
+                If OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bal") Is DBNull.Value Then
+                    bal = 0
+                Else
+                    bal = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bal")
+                End If
+                bal = Math.Abs(debit) - credit
+                dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
+                Using oCmd As New SqlCommand("col_Calculate", CNDB)
+                    oCmd.CommandType = CommandType.StoredProcedure
+                    oCmd.Parameters.AddWithValue("@debitusrID", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "debitusrID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@bdgID", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bdgID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@aptID", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "aptID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@inhID", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "inhID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@Givencredit", credit)
+                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                LoaderData()
+                Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
+
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub GridView2_LayoutUpgrade(sender As Object, e As LayoutUpgradeEventArgs) Handles GridView2.LayoutUpgrade
+
     End Sub
 
     Friend Class MenuColumnInfo

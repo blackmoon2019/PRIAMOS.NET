@@ -71,9 +71,13 @@ Partial Class frmMain
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.BBColMethod = New DevExpress.XtraBars.BarButtonItem()
         Me.BBUpdate = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBTasksCat = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBCases = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBTasks = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup9 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage5 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -112,16 +116,19 @@ Partial Class frmMain
         'RibbonControl1
         '
         Me.RibbonControl1.ApplicationButtonDropDownControl = Me.ApplicationMenu1
+        Me.RibbonControl1.EmptyAreaImageOptions.ImagePadding = New System.Windows.Forms.Padding(50, 53, 50, 53)
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 61
+        Me.RibbonControl1.Margin = New System.Windows.Forms.Padding(5)
+        Me.RibbonControl1.MaxItemId = 64
         Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.OptionsMenuMinWidth = 550
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2, Me.RibbonPage5, Me.RibbonPage6, Me.RibbonPage3, Me.RibbonPage4})
         Me.RibbonControl1.QuickToolbarItemLinks.Add(Me.BarClose)
         Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemCalcEdit1, Me.RepositoryItemDateEdit1, Me.RepositoryItemHyperLinkEdit1, Me.RepositoryItemHypertextLabel1, Me.RepositoryItemHypertextLabel2, Me.RepositoryItemHyperLinkEdit2, Me.RepositoryItemImageEdit1, Me.RepositoryItemPictureEdit1, Me.RepositoryItemButtonEdit1})
         Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019
-        Me.RibbonControl1.Size = New System.Drawing.Size(1177, 146)
+        Me.RibbonControl1.Size = New System.Drawing.Size(1962, 252)
         Me.RibbonControl1.StatusBar = Me.MainstatusBar
         '
         'ApplicationMenu1
@@ -395,6 +402,7 @@ Partial Class frmMain
         '
         Me.bbTechCateg.Caption = "Κατηγορίες Τεχνικής Υποστήριξης"
         Me.bbTechCateg.Id = 39
+        Me.bbTechCateg.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_category_40_1_
         Me.bbTechCateg.Name = "bbTechCateg"
         Me.bbTechCateg.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
@@ -521,9 +529,33 @@ Partial Class frmMain
         Me.BBUpdate.Name = "BBUpdate"
         Me.BBUpdate.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
+        'BBTasksCat
+        '
+        Me.BBTasksCat.Caption = "Εργασίες"
+        Me.BBTasksCat.Id = 61
+        Me.BBTasksCat.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_tasks_40
+        Me.BBTasksCat.Name = "BBTasksCat"
+        Me.BBTasksCat.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BBCases
+        '
+        Me.BBCases.Caption = "Υποθέσεις"
+        Me.BBCases.Id = 62
+        Me.BBCases.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_case_40
+        Me.BBCases.Name = "BBCases"
+        Me.BBCases.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'BBTasks
+        '
+        Me.BBTasks.Caption = "Εργασίες Υποθέσεων"
+        Me.BBTasks.Id = 63
+        Me.BBTasks.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_check_list_40
+        Me.BBTasks.Name = "BBTasks"
+        Me.BBTasks.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9, Me.RibbonPageGroup1})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Κεντρικές Λειτουργίες"
         '
@@ -544,6 +576,13 @@ Partial Class frmMain
         Me.RibbonPageGroup9.ItemLinks.Add(Me.BBApolList)
         Me.RibbonPageGroup9.Name = "RibbonPageGroup9"
         Me.RibbonPageGroup9.Text = "Απολυμάνσεις"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BBCases)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BBTasks)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
         '
         'RibbonPage2
         '
@@ -568,6 +607,7 @@ Partial Class frmMain
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbMLC)
         Me.RibbonPageGroup2.ItemLinks.Add(Me.bbTechCateg)
         Me.RibbonPageGroup2.ItemLinks.Add(Me.BBApol)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BBTasksCat)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "Πίνακες"
         '
@@ -668,10 +708,11 @@ Partial Class frmMain
         Me.MainstatusBar.ItemLinks.Add(Me.bbDB)
         Me.MainstatusBar.ItemLinks.Add(Me.bbVersion)
         Me.MainstatusBar.ItemLinks.Add(Me.bbLink)
-        Me.MainstatusBar.Location = New System.Drawing.Point(0, 734)
+        Me.MainstatusBar.Location = New System.Drawing.Point(0, 1300)
+        Me.MainstatusBar.Margin = New System.Windows.Forms.Padding(5)
         Me.MainstatusBar.Name = "MainstatusBar"
         Me.MainstatusBar.Ribbon = Me.RibbonControl1
-        Me.MainstatusBar.Size = New System.Drawing.Size(1177, 22)
+        Me.MainstatusBar.Size = New System.Drawing.Size(1962, 38)
         '
         'XtraTabbedMdiManager1
         '
@@ -696,13 +737,14 @@ Partial Class frmMain
         '
         'frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1177, 756)
+        Me.ClientSize = New System.Drawing.Size(1962, 1338)
         Me.Controls.Add(Me.MainstatusBar)
         Me.Controls.Add(Me.RibbonControl1)
         Me.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow
         Me.IsMdiContainer = True
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PRIAMOS .NET"
@@ -799,4 +841,8 @@ Partial Class frmMain
     Friend WithEvents RepositoryItemButtonEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents BBTasksCat As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BBCases As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents BBTasks As DevExpress.XtraBars.BarButtonItem
 End Class

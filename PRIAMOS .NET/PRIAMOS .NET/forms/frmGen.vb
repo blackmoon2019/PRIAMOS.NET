@@ -94,6 +94,20 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "TASKS_CAT"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TASKS_CAT", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.TASKS_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("TASKS_CAT")
+
                             Case "COL_METHOD"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COL_METHOD", LayoutControl1,,, sGuid, True)
@@ -101,8 +115,8 @@ Public Class frmGen
                                     FillCbo.COL_METHOD(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
-                                    form.LoadRecords("vw_COL_METHOD")
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_COL_METHOD")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -114,8 +128,8 @@ Public Class frmGen
                                     FillCbo.BANKS(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As frmScroller = Frm
-                                    form.LoadRecords("vw_BANKS")
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_BANKS")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -339,9 +353,9 @@ Public Class frmGen
                                     FillCbo.TECH_CAT(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sGuid)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_TECH_CAT")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_TECH_CAT")
                                 End If
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
@@ -363,14 +377,23 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "TASKS_CAT"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TASKS_CAT", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.TASKS_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
                             Case "COL_METHOD"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COL_METHOD", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
                                     FillCbo.COL_METHOD(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
-                                    form.LoadRecords("vw_COL_METHOD")
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_COL_METHOD")
                                 End If
                             Case "BANKS"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BANKS", LayoutControl1,,, sID, True)
@@ -378,8 +401,8 @@ Public Class frmGen
                                     FillCbo.BANKS(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As frmScroller = Frm
-                                    form.LoadRecords("vw_BANKS")
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_BANKS")
                                 End If
                             Case "APOL_TYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APOL_TYPES", LayoutControl1,,, sID, True)
@@ -426,9 +449,9 @@ Public Class frmGen
                                     FillCbo.COU(CtrlCombo)
                                     CtrlCombo.EditValue = System.Guid.Parse(sID)
                                 Else
-                                    Dim form As New frmScroller
-                                    form = Frm
-                                    form.LoadRecords("vw_COU")
+                                    'Dim form As New frmScroller
+                                    'form = Frm
+                                    'form.LoadRecords("vw_COU")
                                 End If
                             Case "AREAS"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "AREAS", LayoutControl1,,, sID, True)
@@ -555,6 +578,12 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+                Case "TASKS_CAT"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("TASKS_CAT")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_TASKS_CAT where id ='" + sID + "'")
+                    End If
                 Case "COL_METHOD"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("COL_METHOD")
@@ -687,19 +716,26 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+                    Case "TASKS_CAT"
+                        If CalledFromCtrl Then
+                            FillCbo.TASKS_CAT(CtrlCombo)
+                        Else
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_TASKS_CAT")
+                        End If
                     Case "COL_METHOD"
                         If CalledFromCtrl Then
                             FillCbo.COL_METHOD(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
-                            form.LoadRecords("vw_COL_METHOD")
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_COL_METHOD")
                         End If
                     Case "BANKS"
                         If CalledFromCtrl Then
                             FillCbo.BANKS(CtrlCombo)
                         Else
-                            Dim form As frmScroller = Frm
-                            form.LoadRecords("vw_BANKS")
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_BANKS")
                         End If
                     Case "ANN_MENTS"
                         If CalledFromCtrl Then
