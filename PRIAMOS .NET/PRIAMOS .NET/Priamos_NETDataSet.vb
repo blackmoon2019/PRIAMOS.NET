@@ -2,6 +2,9 @@
 End Class
 
 Namespace Priamos_NETDataSetTableAdapters
+    Partial Public Class vw_TASKSTableAdapter
+    End Class
+
     Partial Public Class vw_INHTableAdapter
     End Class
 

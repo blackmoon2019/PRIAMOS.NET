@@ -139,6 +139,8 @@ Public Class FillCombos
             End If
             Dim cmd As SqlCommand = New SqlCommand(sSQLs.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Fullname"
             CtrlCombo.Properties.ValueMember = "id"
@@ -156,6 +158,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,name from vw_FLR order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "name"
             CtrlCombo.Properties.ValueMember = "id"
@@ -180,6 +184,8 @@ Public Class FillCombos
 
             Dim cmd As SqlCommand = New SqlCommand(sSQLs, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "nam"
             CtrlCombo.Properties.ValueMember = "id"
@@ -197,6 +203,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("SELECT DISTINCT CONVERT(DATE, mdt, 103) AS mdt  FROM VW_AHPB   " & sSQL.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "mdt"
             CtrlCombo.Properties.ValueMember = "mdt"
@@ -215,7 +223,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_TTL order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
-
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
@@ -232,7 +241,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_ANN_MENTS order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
-
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
             CtrlCombo.Properties.ValueMember = "id"
@@ -250,6 +260,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_TASKS_CAT order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -270,6 +282,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_COL_METHOD order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -290,6 +304,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_BANKS order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -309,6 +325,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_APOL order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -333,6 +351,8 @@ Public Class FillCombos
             End If
             cmd.Connection = CNDB
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -351,6 +371,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,RealName from vw_USR", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "RealName"
@@ -369,6 +391,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_HTYPES order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -386,6 +410,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_FTYPES order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -403,6 +429,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_CALC_TYPES order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -420,6 +448,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_MLC order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -438,6 +468,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Fullname,company from vw_SUP order by Fullname", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Fullname"
@@ -456,6 +488,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_BTYPES order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -474,6 +508,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_DOY order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -492,6 +528,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_PRF order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Name"
@@ -511,6 +549,8 @@ Public Class FillCombos
             Dim ds As DataSet = New DataSet
             Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "Server"
@@ -650,6 +690,8 @@ Public Class FillCombos
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,un,Realname from vw_USR order by un", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
             CtrlCombo.Properties.DisplayMember = "un"

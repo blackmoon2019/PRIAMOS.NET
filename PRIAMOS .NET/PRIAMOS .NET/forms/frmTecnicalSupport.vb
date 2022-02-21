@@ -49,7 +49,9 @@ Public Class frmTecnicalSupport
                 cmdEmail.Enabled = False
                 cmdEmailAnswer.Enabled = False
             Case FormMode.EditRecord
-                LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_SUP where id ='" + sID + "'")
+                'LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_SUP where id ='" + sID + "'")
+                LoadForms.LoadForm(LayoutControl1, "Select IMAGE,imageAns,vw_TECH_SUP.*  from vw_TECH_SUP INNER JOIN TECH_SUP ON vw_TECH_SUP.ID = TECH_SUP.ID where vw_TECH_SUP.ID ='" + sID + "'")
+
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
                     chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True
                     cmdEmailAnswer.Enabled = True

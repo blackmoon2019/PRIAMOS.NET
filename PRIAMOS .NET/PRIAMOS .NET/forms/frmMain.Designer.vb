@@ -77,7 +77,6 @@ Partial Class frmMain
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup9 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage5 = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -555,7 +554,7 @@ Partial Class frmMain
         '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9, Me.RibbonPageGroup1})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Κεντρικές Λειτουργίες"
         '
@@ -565,6 +564,7 @@ Partial Class frmMain
         Me.RPG1.ItemLinks.Add(Me.bbBDG)
         Me.RPG1.ItemLinks.Add(Me.BBCol)
         Me.RPG1.ItemLinks.Add(Me.bbCCT)
+        Me.RPG1.ItemLinks.Add(Me.BBCases)
         Me.RPG1.ItemLinks.Add(Me.bbUsers, True)
         Me.RPG1.ItemLinks.Add(Me.BBChangeUsr)
         Me.RPG1.Name = "RPG1"
@@ -576,13 +576,6 @@ Partial Class frmMain
         Me.RibbonPageGroup9.ItemLinks.Add(Me.BBApolList)
         Me.RibbonPageGroup9.Name = "RibbonPageGroup9"
         Me.RibbonPageGroup9.Text = "Απολυμάνσεις"
-        '
-        'RibbonPageGroup1
-        '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.BBCases)
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.BBTasks)
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
         '
         'RibbonPage2
         '
@@ -843,6 +836,5 @@ Partial Class frmMain
     Friend WithEvents Timer2 As Timer
     Friend WithEvents BBTasksCat As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BBCases As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents BBTasks As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmTasks
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class frmTasks
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTasks))
@@ -26,15 +26,10 @@ Partial Class frmTasks
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.dtCompleteDate = New DevExpress.XtraEditors.DateEdit()
         Me.cboCCT = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
         Me.txtdescription = New DevExpress.XtraEditors.TextEdit()
         Me.cboCase = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwCASESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.cbotaskCat = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwTASKSCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -46,24 +41,20 @@ Partial Class frmTasks
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.VwCASESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_CASESTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CASESTableAdapter()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
-        Me.Vw_TASKS_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_TASKS_CATTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.dtCompleteDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCompleteDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtdescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCase.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbotaskCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwTASKSCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +66,9 @@ Partial Class frmTasks
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -88,7 +81,6 @@ Partial Class frmTasks
         Me.LayoutControl1.Controls.Add(Me.txtComments)
         Me.LayoutControl1.Controls.Add(Me.txtdescription)
         Me.LayoutControl1.Controls.Add(Me.cboCase)
-        Me.LayoutControl1.Controls.Add(Me.cbotaskCat)
         Me.LayoutControl1.Location = New System.Drawing.Point(8, 2)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
@@ -123,7 +115,7 @@ Partial Class frmTasks
         'dtCompleteDate
         '
         Me.dtCompleteDate.EditValue = Nothing
-        Me.dtCompleteDate.Location = New System.Drawing.Point(223, 226)
+        Me.dtCompleteDate.Location = New System.Drawing.Point(223, 184)
         Me.dtCompleteDate.Margin = New System.Windows.Forms.Padding(5)
         Me.dtCompleteDate.Name = "dtCompleteDate"
         Me.dtCompleteDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -138,7 +130,7 @@ Partial Class frmTasks
         '
         'cboCCT
         '
-        Me.cboCCT.Location = New System.Drawing.Point(223, 138)
+        Me.cboCCT.Location = New System.Drawing.Point(223, 96)
         Me.cboCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cboCCT.Name = "cboCCT"
         Me.cboCCT.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -155,16 +147,6 @@ Partial Class frmTasks
         Me.cboCCT.StyleController = Me.LayoutControl1
         Me.cboCCT.TabIndex = 44
         Me.cboCCT.Tag = "cctid,0,1,2"
-        '
-        'VwPARTNERANDWORKSHOPBindingSource
-        '
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'txtCode
         '
@@ -183,17 +165,17 @@ Partial Class frmTasks
         '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(223, 268)
+        Me.txtComments.Location = New System.Drawing.Point(223, 226)
         Me.txtComments.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(728, 419)
+        Me.txtComments.Size = New System.Drawing.Size(728, 461)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 46
         Me.txtComments.Tag = "cmt,0,1,2"
         '
         'txtdescription
         '
-        Me.txtdescription.Location = New System.Drawing.Point(224, 182)
+        Me.txtdescription.Location = New System.Drawing.Point(224, 140)
         Me.txtdescription.Margin = New System.Windows.Forms.Padding(5)
         Me.txtdescription.Name = "txtdescription"
         Me.txtdescription.Size = New System.Drawing.Size(726, 38)
@@ -209,9 +191,9 @@ Partial Class frmTasks
         Me.cboCase.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboCase.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
         Me.cboCase.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboCase.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("description", "Υπόθεση", 106, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("complete", "complete", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDateComplete", "dt Date Complete", 161, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboCase.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "nam", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("description", "description", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("complete", "complete", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDateComplete", "dt Date Complete", 161, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("usrID", "usr ID", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("URealname", "URealname", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("taskCatID", "task Cat ID", 107, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("TaskCatName", "Περιγραφή", 141, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.cboCase.Properties.DataSource = Me.VwCASESBindingSource
-        Me.cboCase.Properties.DisplayMember = "description"
+        Me.cboCase.Properties.DisplayMember = "TaskCatName"
         Me.cboCase.Properties.NullText = ""
         Me.cboCase.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.cboCase.Properties.PopupSizeable = False
@@ -221,41 +203,11 @@ Partial Class frmTasks
         Me.cboCase.TabIndex = 44
         Me.cboCase.Tag = "caseid,0,1,2"
         '
-        'VwCASESBindingSource
-        '
-        Me.VwCASESBindingSource.DataMember = "vw_CASES"
-        Me.VwCASESBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'cbotaskCat
-        '
-        Me.cbotaskCat.Location = New System.Drawing.Point(223, 96)
-        Me.cbotaskCat.Margin = New System.Windows.Forms.Padding(5)
-        Me.cbotaskCat.Name = "cbotaskCat"
-        Me.cbotaskCat.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cbotaskCat.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
-        Me.cbotaskCat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cbotaskCat.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Εργασία", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cbotaskCat.Properties.DataSource = Me.VwTASKSCATBindingSource
-        Me.cbotaskCat.Properties.DisplayMember = "name"
-        Me.cbotaskCat.Properties.NullText = ""
-        Me.cbotaskCat.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
-        Me.cbotaskCat.Properties.PopupSizeable = False
-        Me.cbotaskCat.Properties.ValueMember = "ID"
-        Me.cbotaskCat.Size = New System.Drawing.Size(728, 38)
-        Me.cbotaskCat.StyleController = Me.LayoutControl1
-        Me.cbotaskCat.TabIndex = 44
-        Me.cbotaskCat.Tag = "taskCatid,0,1,2"
-        '
-        'VwTASKSCATBindingSource
-        '
-        Me.VwTASKSCATBindingSource.DataMember = "vw_TASKS_CAT"
-        Me.VwTASKSCATBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlItem9, Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.EmptySpaceItem2, Me.LayoutControlItem3, Me.LayoutControlItem8, Me.LayoutControlItem4, Me.LayoutControlItem6, Me.LayoutControlItem53, Me.LayoutControlItem1})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlItem9, Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.EmptySpaceItem2, Me.LayoutControlItem3, Me.LayoutControlItem8, Me.LayoutControlItem4, Me.LayoutControlItem6, Me.LayoutControlItem53})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(963, 742)
         Me.Root.TextVisible = False
@@ -266,7 +218,7 @@ Partial Class frmTasks
         Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem5.CustomizationFormText = "Πολυκατοικία"
         Me.LayoutControlItem5.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem5.ImageOptions.Image"), System.Drawing.Image)
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 126)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
         Me.LayoutControlItem5.Size = New System.Drawing.Size(943, 42)
         Me.LayoutControlItem5.Tag = "1"
@@ -323,9 +275,9 @@ Partial Class frmTasks
         Me.LayoutControlItem8.Control = Me.txtComments
         Me.LayoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem8.CustomizationFormText = "Σχόλια"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 256)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 214)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(943, 423)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(943, 465)
         Me.LayoutControlItem8.Text = "Σχόλια"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(199, 23)
         '
@@ -336,7 +288,7 @@ Partial Class frmTasks
         Me.LayoutControlItem4.CustomizationFormText = "Έξοδο"
         Me.LayoutControlItem4.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem4.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem4.ImageOptions.Image"), System.Drawing.Image)
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Padding = New DevExpress.XtraLayout.Utils.Padding(3, 3, 4, 4)
         Me.LayoutControlItem4.Size = New System.Drawing.Size(943, 46)
@@ -364,24 +316,27 @@ Partial Class frmTasks
         Me.LayoutControlItem53.CustomizationFormText = "Ημερομηνία Τιμ."
         Me.LayoutControlItem53.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem53.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem53.Location = New System.Drawing.Point(0, 214)
+        Me.LayoutControlItem53.Location = New System.Drawing.Point(0, 172)
         Me.LayoutControlItem53.Name = "LayoutControlItem53"
         Me.LayoutControlItem53.Size = New System.Drawing.Size(943, 42)
         Me.LayoutControlItem53.Tag = "1"
         Me.LayoutControlItem53.Text = "Ημερ/νία Επίσκεψης"
         Me.LayoutControlItem53.TextSize = New System.Drawing.Size(199, 23)
         '
-        'LayoutControlItem1
+        'VwPARTNERANDWORKSHOPBindingSource
         '
-        Me.LayoutControlItem1.Control = Me.cbotaskCat
-        Me.LayoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem1.CustomizationFormText = "Πολυκατοικία"
-        Me.LayoutControlItem1.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem1.ImageOptions.Image"), System.Drawing.Image)
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 84)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(943, 42)
-        Me.LayoutControlItem1.Text = "Εργασία"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(199, 23)
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwCASESBindingSource
+        '
+        Me.VwCASESBindingSource.DataMember = "vw_CASES"
+        Me.VwCASESBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'Vw_CASESTableAdapter
         '
@@ -390,10 +345,6 @@ Partial Class frmTasks
         'Vw_PARTNER_AND_WORKSHOPTableAdapter
         '
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_TASKS_CATTableAdapter
-        '
-        Me.Vw_TASKS_CATTableAdapter.ClearBeforeFill = True
         '
         'frmTasks
         '
@@ -408,15 +359,10 @@ Partial Class frmTasks
         CType(Me.dtCompleteDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtCompleteDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtdescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCase.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbotaskCat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwTASKSCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -428,7 +374,9 @@ Partial Class frmTasks
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -458,8 +406,4 @@ Partial Class frmTasks
     Friend WithEvents Vw_CASESTableAdapter As Priamos_NETDataSetTableAdapters.vw_CASESTableAdapter
     Friend WithEvents VwPARTNERANDWORKSHOPBindingSource As BindingSource
     Friend WithEvents Vw_PARTNER_AND_WORKSHOPTableAdapter As Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter
-    Friend WithEvents cbotaskCat As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents VwTASKSCATBindingSource As BindingSource
-    Friend WithEvents Vw_TASKS_CATTableAdapter As Priamos_NETDataSetTableAdapters.vw_TASKS_CATTableAdapter
 End Class

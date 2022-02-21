@@ -1008,10 +1008,10 @@ where prfID = @prfID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_CASESTableAdapter" GeneratorDataComponentClassName="vw_CASESTableAdapter" Name="vw_CASES" UserDataComponentName="vw_CASESTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CASES" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CASES" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT vw_CASES.*
+                    <CommandText>SELECT nam, RealName, ID, code, description, bdgID, complete, dtDateComplete, usrID, cmt, modifiedBy, modifiedOn, createdOn, URealname, taskCatID, TaskCatName
 FROM   vw_CASES</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -1031,6 +1031,10 @@ FROM   vw_CASES</CommandText>
               <Mapping SourceColumn="modifiedBy" DataSetColumn="modifiedBy" />
               <Mapping SourceColumn="modifiedOn" DataSetColumn="modifiedOn" />
               <Mapping SourceColumn="createdOn" DataSetColumn="createdOn" />
+              <Mapping SourceColumn="usrID" DataSetColumn="usrID" />
+              <Mapping SourceColumn="URealname" DataSetColumn="URealname" />
+              <Mapping SourceColumn="taskCatID" DataSetColumn="taskCatID" />
+              <Mapping SourceColumn="TaskCatName" DataSetColumn="TaskCatName" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1110,6 +1114,53 @@ FROM   vw_TASKS_CAT</CommandText>
               <Mapping SourceColumn="RealName" DataSetColumn="RealName" />
             </Mappings>
             <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_TASKSTableAdapter" GeneratorDataComponentClassName="vw_TASKSTableAdapter" Name="vw_TASKS" UserDataComponentName="vw_TASKSTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_TASKS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT vw_TASKS.*
+FROM   vw_TASKS</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="code" DataSetColumn="code" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="caseID" DataSetColumn="caseID" />
+              <Mapping SourceColumn="cctID" DataSetColumn="cctID" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="dtVisit" DataSetColumn="dtVisit" />
+              <Mapping SourceColumn="modifiedBy" DataSetColumn="modifiedBy" />
+              <Mapping SourceColumn="modifiedOn" DataSetColumn="modifiedOn" />
+              <Mapping SourceColumn="createdOn" DataSetColumn="createdOn" />
+              <Mapping SourceColumn="caseDescription" DataSetColumn="caseDescription" />
+              <Mapping SourceColumn="complete" DataSetColumn="complete" />
+              <Mapping SourceColumn="dtDateComplete" DataSetColumn="dtDateComplete" />
+              <Mapping SourceColumn="casesCmt" DataSetColumn="casesCmt" />
+              <Mapping SourceColumn="taskCatName" DataSetColumn="taskCatName" />
+              <Mapping SourceColumn="Fullname" DataSetColumn="Fullname" />
+              <Mapping SourceColumn="cmt" DataSetColumn="cmt" />
+              <Mapping SourceColumn="bdgNam" DataSetColumn="bdgNam" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_TASKS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByCase" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByCase" GeneratorSourceName="FillByCase" GetMethodModifier="Public" GetMethodName="GetDataByCase" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByCase" UserSourceName="FillByCase">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT vw_TASKS.*
+FROM   vw_TASKS
+where caseID=@CaseID</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CaseID" ColumnName="caseID" DataSourceName="Priamos_NET.dbo.vw_TASKS" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@CaseID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumn="caseID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -2418,7 +2469,7 @@ FROM   vw_TASKS_CAT</CommandText>
               </xs:element>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
               <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code" type="xs:int" />
-              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description">
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
@@ -2438,6 +2489,22 @@ FROM   vw_TASKS_CAT</CommandText>
               <xs:element name="modifiedBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnmodifiedBy" msprop:Generator_ColumnPropNameInRow="modifiedBy" msprop:Generator_ColumnPropNameInTable="modifiedByColumn" msprop:Generator_UserColumnName="modifiedBy" type="xs:string" minOccurs="0" />
               <xs:element name="modifiedOn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_UserColumnName="modifiedOn" type="xs:dateTime" minOccurs="0" />
               <xs:element name="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_UserColumnName="createdOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="usrID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnusrID" msprop:Generator_ColumnPropNameInRow="usrID" msprop:Generator_ColumnPropNameInTable="usrIDColumn" msprop:Generator_UserColumnName="usrID" type="xs:string" />
+              <xs:element name="URealname" msprop:Generator_ColumnVarNameInTable="columnURealname" msprop:Generator_ColumnPropNameInRow="URealname" msprop:Generator_ColumnPropNameInTable="URealnameColumn" msprop:Generator_UserColumnName="URealname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="taskCatID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columntaskCatID" msprop:Generator_ColumnPropNameInRow="taskCatID" msprop:Generator_ColumnPropNameInTable="taskCatIDColumn" msprop:Generator_UserColumnName="taskCatID" type="xs:string" />
+              <xs:element name="TaskCatName" msprop:Generator_ColumnVarNameInTable="columnTaskCatName" msprop:Generator_ColumnPropNameInRow="TaskCatName" msprop:Generator_ColumnPropNameInTable="TaskCatNameColumn" msprop:Generator_UserColumnName="TaskCatName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2627,6 +2694,78 @@ FROM   vw_TASKS_CAT</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="vw_TASKS" msprop:Generator_TableClassName="vw_TASKSDataTable" msprop:Generator_TableVarName="tablevw_TASKS" msprop:Generator_TablePropName="vw_TASKS" msprop:Generator_RowDeletingName="vw_TASKSRowDeleting" msprop:Generator_RowChangingName="vw_TASKSRowChanging" msprop:Generator_RowEvHandlerName="vw_TASKSRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_TASKSRowDeleted" msprop:Generator_UserTableName="vw_TASKS" msprop:Generator_RowChangedName="vw_TASKSRowChanged" msprop:Generator_RowEvArgName="vw_TASKSRowChangeEvent" msprop:Generator_RowClassName="vw_TASKSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code" type="xs:int" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="caseID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columncaseID" msprop:Generator_ColumnPropNameInRow="caseID" msprop:Generator_ColumnPropNameInTable="caseIDColumn" msprop:Generator_UserColumnName="caseID" type="xs:string" />
+              <xs:element name="cctID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columncctID" msprop:Generator_ColumnPropNameInRow="cctID" msprop:Generator_ColumnPropNameInTable="cctIDColumn" msprop:Generator_UserColumnName="cctID" type="xs:string" />
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dtVisit" msprop:Generator_ColumnVarNameInTable="columndtVisit" msprop:Generator_ColumnPropNameInRow="dtVisit" msprop:Generator_ColumnPropNameInTable="dtVisitColumn" msprop:Generator_UserColumnName="dtVisit" type="xs:dateTime" />
+              <xs:element name="modifiedBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnmodifiedBy" msprop:Generator_ColumnPropNameInRow="modifiedBy" msprop:Generator_ColumnPropNameInTable="modifiedByColumn" msprop:Generator_UserColumnName="modifiedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="modifiedOn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_UserColumnName="modifiedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_UserColumnName="createdOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="caseDescription" msprop:Generator_ColumnVarNameInTable="columncaseDescription" msprop:Generator_ColumnPropNameInRow="caseDescription" msprop:Generator_ColumnPropNameInTable="caseDescriptionColumn" msprop:Generator_UserColumnName="caseDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="complete" msprop:Generator_ColumnVarNameInTable="columncomplete" msprop:Generator_ColumnPropNameInRow="complete" msprop:Generator_ColumnPropNameInTable="completeColumn" msprop:Generator_UserColumnName="complete" type="xs:boolean" />
+              <xs:element name="dtDateComplete" msprop:Generator_ColumnVarNameInTable="columndtDateComplete" msprop:Generator_ColumnPropNameInRow="dtDateComplete" msprop:Generator_ColumnPropNameInTable="dtDateCompleteColumn" msprop:Generator_UserColumnName="dtDateComplete" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="casesCmt" msprop:Generator_ColumnVarNameInTable="columncasesCmt" msprop:Generator_ColumnPropNameInRow="casesCmt" msprop:Generator_ColumnPropNameInTable="casesCmtColumn" msprop:Generator_UserColumnName="casesCmt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="taskCatName" msprop:Generator_ColumnVarNameInTable="columntaskCatName" msprop:Generator_ColumnPropNameInRow="taskCatName" msprop:Generator_ColumnPropNameInTable="taskCatNameColumn" msprop:Generator_UserColumnName="taskCatName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fullname" msprop:Generator_ColumnVarNameInTable="columnFullname" msprop:Generator_ColumnPropNameInRow="Fullname" msprop:Generator_ColumnPropNameInTable="FullnameColumn" msprop:Generator_UserColumnName="Fullname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cmt" msprop:Generator_ColumnVarNameInTable="columncmt" msprop:Generator_ColumnPropNameInRow="cmt" msprop:Generator_ColumnPropNameInTable="cmtColumn" msprop:Generator_UserColumnName="cmt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bdgNam" msprop:Generator_ColumnVarNameInTable="columnbdgNam" msprop:Generator_ColumnPropNameInRow="bdgNam" msprop:Generator_ColumnPropNameInTable="bdgNamColumn" msprop:Generator_UserColumnName="bdgNam" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -2727,6 +2866,10 @@ FROM   vw_TASKS_CAT</CommandText>
     </xs:unique>
     <xs:unique name="vw_TASKS_CAT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:vw_TASKS_CAT" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="vw_TASKS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vw_TASKS" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>

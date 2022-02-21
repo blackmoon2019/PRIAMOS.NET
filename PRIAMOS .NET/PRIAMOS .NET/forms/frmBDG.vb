@@ -2246,7 +2246,7 @@ Public Class frmBDG
     End Sub
     Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPrf.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboPrf.EditValue = Nothing : ManagePRF(False)
+            Case 1 : cboPrf.EditValue = Nothing : ManagePRF(False) ' Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, cboPrf.EditValue)
             Case 2 : If cboPrf.EditValue <> Nothing Then ManagePRF(False)
             Case 3 : cboPrf.EditValue = Nothing
         End Select
@@ -2400,6 +2400,7 @@ Public Class frmBDG
                 oCmd.ExecuteNonQuery()
             End Using
             Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -2590,13 +2591,30 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub RepositoryItemLookUpEditCCT_BeforePopup(sender As Object, e As EventArgs) Handles RepositoryItemLookUpEditCCT.BeforePopup
-        Dim view As GridView = TryCast(sender, GridView)
-        Dim prfID As String = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString()
-        If prfID.Length > 0 Then
-            Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(prfID))
+ 
+
+    Private Sub GridView8_ShownEditor(sender As Object, e As EventArgs) Handles GridView8.ShownEditor
+        Dim view As ColumnView = DirectCast(sender, ColumnView)
+        If view.FocusedColumn.FieldName = "cctID" Then
+
+            Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
+            Dim prfID As String = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString()
+            editor.Properties.DataSource = Me.Vw_CCT_PFTableAdapter.GetDataByPRFid(System.Guid.Parse(prfID))
+
+
         End If
     End Sub
+
+
+
+
+
+
+
+
+
+
+
 
     'ΘΕΡΜΑΝΣΗ
     '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged

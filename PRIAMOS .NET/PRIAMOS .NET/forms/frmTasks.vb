@@ -48,8 +48,6 @@ Public Class frmTasks
         Me.Close()
     End Sub
     Private Sub frmTasks_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TASKS_CAT' table. You can move, or remove it, as needed.
-        Me.Vw_TASKS_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_TASKS_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_CASES' table. You can move, or remove it, as needed.
@@ -155,29 +153,5 @@ Public Class frmTasks
         End If
         form1.ShowDialog()
     End Sub
-    Private Sub cbotaskCat_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cbotaskCat.ButtonPressed
-        Select Case e.Button.Index
-            Case 1 : cbotaskCat.EditValue = Nothing : ManageTASK(cbotaskCat)
-            Case 2 : If cbotaskCat.EditValue <> Nothing Then ManageTASK(cbotaskCat)
-            Case 3 : cbotaskCat.EditValue = Nothing
-        End Select
-    End Sub
-    Private Sub ManageTASK(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Εργασίες"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Εργασία"
-        form1.DataTable = "TASKS_CAT"
-        form1.CalledFromControl = True
-        form1.CallerControl = cbotaskCat
-        form1.MdiParent = frmMain
-        If cbotaskCat.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cbotaskCat.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
+
 End Class

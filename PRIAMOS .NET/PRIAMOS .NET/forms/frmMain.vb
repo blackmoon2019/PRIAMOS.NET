@@ -339,15 +339,16 @@ Public Class frmMain
         Dim form As frmScroller = New frmScroller()
         form.Text = "Υποθέσεις"
         form.DataTable = "vw_CASES"
+        form.DataDetail = "vw_TASKS"
         form.MdiParent = Me
         form.Show()
     End Sub
 
-    Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
-        Dim form As frmScroller = New frmScroller()
-        form.Text = "Εργασίες υποθέσεων"
-        form.DataTable = "vw_TASKS"
-        form.MdiParent = Me
-        form.Show()
-    End Sub
+    'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
+    '    Dim form As frmScroller = New frmScroller()
+    '    form.Text = "Εργασίες υποθέσεων"
+    '    form.DataTable = "vw_TASKS"
+    '    form.MdiParent = Me
+    '    form.Show()
+    'End Sub
 End Class
