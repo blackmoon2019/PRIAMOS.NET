@@ -344,6 +344,14 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBTechSup_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBTechSup.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Τεχνική Υποστήριξη"
+        form.DataTable = "vw_TECH_SUP"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()
     '    form.Text = "Εργασίες υποθέσεων"

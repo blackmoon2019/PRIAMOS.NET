@@ -80,6 +80,10 @@ Module Main
     End Function
     Public Function TranslateDates(ByVal fDate As DevExpress.XtraEditors.DateEdit, ByVal tDate As DevExpress.XtraEditors.DateEdit) As String
         TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & "-" & tDate.Text
+        ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
+        If fDate.Text.Replace(fDate.DateTime.Year, "") = tDate.Text.Replace(tDate.DateTime.Year, "") Then
+            TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year
+        End If
         Return TranslateDates
     End Function
 

@@ -73,6 +73,9 @@ Public Class frmScroller
         GridView1.OptionsMenu.ShowGroupSummaryEditorItem = True
         GridView1.OptionsMenu.ShowGroupSortSummaryItems = True
         GridView1.OptionsMenu.ShowConditionalFormattingItem = True
+        GridView1.OptionsSelection.MultiSelect = True
+        GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect
+
 
         GridView2.OptionsBehavior.AutoExpandAllGroups = True
         GridView2.OptionsMenu.ShowFooterItem = True
@@ -216,6 +219,90 @@ Public Class frmScroller
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    'Διαγραφη Εγγραφών
+    Private Sub DeleteBatchRecords()
+        Dim sSQL As String
+        Dim sSQL2 As String
+        Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
+        Dim I As Integer
+        Try
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+
+                If GridView1.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
+                Select Case sDataTable
+                    Case "vw_USR" : sSQL = "DELETE FROM USR WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_MAILS" : sSQL = "DELETE FROM MAILS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_RIGHTS" : sSQL = "DELETE FROM RIGHTS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        sSQL2 = "DELETE FROM FORM_RIGHTS WHERE RID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_BDG" : sSQL = "DELETE FROM BDG WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_COU" : sSQL = "DELETE FROM COU WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_AREAS" : sSQL = "DELETE FROM AREAS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_ADR" : sSQL = "DELETE FROM ADR WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_DOY" : sSQL = "DELETE FROM DOY WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_PRF" : sSQL = "DELETE FROM PRF WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_CCT" : sSQL = "DELETE FROM CCT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_FTYPES" : sSQL = "DELETE FROM FTYPES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_PRM" : sSQL = "DELETE FROM PRM WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_CALC_TYPES" : sSQL = "DELETE FROM CALC_TYPES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_MLC" : sSQL = "DELETE FROM MLC WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_TECH_CAT" : sSQL = "DELETE FROM TECH_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_TECH_SUP" : sSQL = "DELETE FROM TECH_SUP WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_CALC_CAT" : sSQL = "DELETE FROM CALC_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_EXP" : sSQL = "DELETE FROM EXP WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_TTL" : sSQL = "DELETE FROM TTL WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_ANN_MENTS" : sSQL = "DELETE FROM ANN_MENTS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_APOL_TYPES" : sSQL = "DELETE FROM APOL_TYPES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_APOL" : sSQL = "DELETE FROM APOL WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_BANKS" : sSQL = "DELETE FROM BANKS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL_METHOD" : sSQL = "DELETE FROM COL_METHOD WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL" : sSQL = "DELETE FROM COL WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_TASKS_CAT" : sSQL = "DELETE FROM TASKS_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_INH"
+
+                        ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
+                        sSQL = "Update AHPB_H 
+                                SET finalized=0
+                                From INH
+                                INNER Join AHPB_H ON INH.ahpb_HID = AHPB_H.ID
+                                WHERE INH.ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
+                        'Επαναφέρουμε το υπόλοιπο των Διαμερισμάτων αν το παραστατικό επαναυπολογίζεται
+                        sSQL = "UPDATE APT
+	                            SET bal = APT.bal - COL.[bal]
+	                            FROM APT
+	                            INNER JOIN COL ON COL.aptID = APT.ID 
+	                            where col.inhID   = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
+
+                        sSQL = "DELETE FROM INH WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+
+                End Select
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                If sSQL2 <> "" Then
+                    Using oCmd As New SqlCommand(sSQL2, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                End If
+            Next
+            LoadRecords()
+            XtraMessageBox.Show("Η εγγραφές διαγράφηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Public WriteOnly Property DataTable As String
         Set(value As String)
             sDataTable = value
@@ -255,7 +342,7 @@ Public Class frmScroller
     End Sub
     'Διαγραφή όψης
     Private Sub popDeleteView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popDeleteView.ItemClick
-        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα όψη?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα όψη?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             If BarViews.EditValue <> "" Then
                 My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
                 If sDataDetail <> "" Then My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue)
@@ -304,7 +391,7 @@ Public Class frmScroller
                 GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
             End If
             'GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
-            XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
     'Επαναφορά Default όψης
@@ -525,7 +612,15 @@ Public Class frmScroller
     End Sub
     'Διαγραφή Εγγραφής
     Private Sub BarDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarDelete.ItemClick
-        If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub Else DeleteRecord()
+        If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then
+            Exit Sub
+        Else
+            If GridView1.SelectedRowsCount = 1 Then
+                DeleteRecord()
+            Else
+                DeleteBatchRecords()
+            End If
+        End If
     End Sub
     'Ανανέωση εγγραφών
     Private Sub BarRefresh_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRefresh.ItemClick
@@ -544,7 +639,6 @@ Public Class frmScroller
         Dim fExp As frmEXP = New frmEXP()
         Dim fINH As frmINH = New frmINH()
         Dim fParameters As frmParameters = New frmParameters()
-        Dim fGen As frmGen = New frmGen()
         Dim fApol As frmApol = New frmApol()
         Dim fcol As frmCollections = New frmCollections()
         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") Is Nothing Then Exit Sub
@@ -670,6 +764,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fParameters), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fParameters.Show()
             Case "vw_AREAS"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Περιοχές"
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -685,6 +780,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ADR"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Διευθύνσεις"
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -705,6 +801,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_CALC_TYPES"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Τύποι Υπολογισμού"
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -723,6 +820,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_CALC_CAT"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Κατηγορίες Υπολογισμών"
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -754,6 +852,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_MLC"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Κατηγορίες Χιλιοστών"
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -771,8 +870,27 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+            Case "vw_BANKS"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Τράπεζες"
+                fGen.DataTable = "BANKS"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.FormScroller = Me
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Τράπεζα"
+                fGen.L9.Text = "Διαδρομή φακέλλου"
+                fGen.L9.Control.Tag = "folderPath,0,1,2"
+                fGen.L9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT",
-                 "vw_TTL", "vw_APOL_TYPES", "vw_BANKS", "VW_COL_METHOD", "vw_TASKS_CAT"
+                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT"
+                Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
@@ -782,7 +900,6 @@ Public Class frmScroller
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
-                    Case "vw_BANKS" : fGen.Text = "Τράπεζες Καυσίμων" : fGen.DataTable = "BANKS" : fGen.L2.Text = "Τράπεζα"
                     Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                     Case "vw_TASKS_CAT" : fGen.Text = "Εργασίες" : fGen.DataTable = "TASKS_CAT" : fGen.L2.Text = "Εργασίες"
                 End Select
@@ -808,7 +925,6 @@ Public Class frmScroller
         Dim fTASKS As frmTasks = New frmTasks()
         Dim fCustomers As frmCustomers = New frmCustomers()
         Dim fParameters As frmParameters = New frmParameters()
-        Dim fGen As frmGen = New frmGen()
         Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
         Dim fINH As frmINH = New frmINH()
         Dim fApol As frmApol = New frmApol()
@@ -898,7 +1014,6 @@ Public Class frmScroller
                 fPermissions.Show()
             Case "vw_BDG"
                 fBDG.Text = "Πολυκατοικίες"
-                fBDG.bManageID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bManageID").ToString
                 fBDG.MdiParent = frmMain
                 fBDG.Mode = FormMode.NewRecord
                 fBDG.Scroller = GridView1
@@ -922,6 +1037,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fParameters), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fParameters.Show()
             Case "vw_AREAS"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Περιοχές"
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -936,6 +1052,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ADR"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Διευθύνσεις"
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -955,6 +1072,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_CALC_TYPES"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Τύποι Υπολογισμού"
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -972,6 +1090,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_CALC_CAT"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Κατηγορίες Υπολογισμών"
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -1002,6 +1121,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_MLC"
+                Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Κατηγορίες Χιλιοστών"
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -1018,8 +1138,27 @@ Public Class frmScroller
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+            Case "vw_BANKS"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Τράπεζες"
+                fGen.DataTable = "BANKS"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.FormScroller = Me
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Τράπεζα"
+                fGen.L9.Text = "Διαδρομή φακέλλου"
+                fGen.L9.Control.Tag = "folderPath,0,1,2"
+                fGen.L9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL",
-                 "vw_APOL_TYPES", "vw_BANKS", "vw_COL_METHOD", "vw_TASKS_CAT"
+                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT"
+                Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
@@ -1029,7 +1168,6 @@ Public Class frmScroller
                     Case "vw_PRF" : fGen.Text = "Επαγγέλματα" : fGen.DataTable = "PRF" : fGen.L2.Text = "Επάγγελμα"
                     Case "vw_FTYPES" : fGen.Text = "Τύποι Καυσίμων" : fGen.DataTable = "FTYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
-                    Case "vw_BANKS" : fGen.Text = "ΤράπεζεςΚαυσίμων" : fGen.DataTable = "BANKS" : fGen.L2.Text = "Τράπεζα"
                     Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                     Case "vw_TASKS_CAT" : fGen.Text = "Εργασίες" : fGen.DataTable = "TASKS_CAT" : fGen.L2.Text = "Εργασίες"
                 End Select
@@ -1050,7 +1188,9 @@ Public Class frmScroller
             Dim sSQL As String
             Dim sSQL2 As String
             Dim sVal As Integer
+            Dim sActiveFilter As String
 
+            sActiveFilter = GridView1.ActiveFilterString
             sVal = RepositoryBarRecords.Items.IndexOf(BarRecords.EditValue)
 
             If sVal <> 4 And BarRecords.EditValue <> Nothing Then
@@ -1128,6 +1268,7 @@ Public Class frmScroller
                 'LoadViews()
             End If
             LoadViews()
+            GridView1.ActiveFilterString = sActiveFilter
             myCmd.Dispose()
             If CloseReader = True Then myReader.Close()
         Catch ex As Exception

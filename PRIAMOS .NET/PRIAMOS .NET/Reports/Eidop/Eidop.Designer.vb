@@ -79,6 +79,14 @@ Partial Public Class Eidop
         Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim Column26 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
+        Dim ColumnExpression26 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
+        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim Column27 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
+        Dim ColumnExpression27 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
+        Dim Column28 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
+        Dim ColumnExpression28 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
         Dim MasterDetailInfo1 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo1 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo2 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
@@ -89,6 +97,8 @@ Partial Public Class Eidop
         Dim RelationColumnInfo4 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo5 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo5 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo6 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo6 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.XrPanel1 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel8 = New DevExpress.XtraReports.UI.XRPanel()
@@ -139,6 +149,7 @@ Partial Public Class Eidop
         Me.XrLabel91 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel92 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel15 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLabel84 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel47 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
@@ -159,6 +170,7 @@ Partial Public Class Eidop
         Me.XrLabel48 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel16 = New DevExpress.XtraReports.UI.XRPanel()
         Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
+        Me.EXODA_PER_APT_OWNERS2 = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel44 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel40 = New DevExpress.XtraReports.UI.XRLabel()
@@ -175,6 +187,9 @@ Partial Public Class Eidop
         Me.XrLabel43 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel41 = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.EXODA_PER_APT2 = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel14 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel3 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
@@ -207,6 +222,7 @@ Partial Public Class Eidop
         Me.XrLabel62 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel63 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel64 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel5 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel12 = New DevExpress.XtraReports.UI.XRPanel()
@@ -223,11 +239,6 @@ Partial Public Class Eidop
         Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel16 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_PER_APT2 = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_PER_APT_OWNERS2 = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -276,7 +287,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel50.CanGrow = False
         Me.XrLabel50.Dpi = 254.0!
-        Me.XrLabel50.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[DateOfPrint]")})
+        Me.XrLabel50.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "IIF(IsNullOrEmpty([vw_INH].[DateOfPrint]),Now(),[vw_INH].[DateOfPrint])")})
         Me.XrLabel50.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel50.LocationFloat = New DevExpress.Utils.PointFloat(939.0135!, 87.76799!)
         Me.XrLabel50.Multiline = True
@@ -344,7 +355,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel54.CanGrow = False
         Me.XrLabel54.Dpi = 254.0!
-        Me.XrLabel54.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[bdgCode]")})
+        Me.XrLabel54.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[old_code]")})
         Me.XrLabel54.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel54.LocationFloat = New DevExpress.Utils.PointFloat(19.43921!, 77.05659!)
         Me.XrLabel54.Multiline = True
@@ -528,7 +539,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel12.CanGrow = False
         Me.XrLabel12.Dpi = 254.0!
-        Me.XrLabel12.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[DateOfPrint]")})
+        Me.XrLabel12.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "IIF(IsNullOrEmpty([vw_INH].[DateOfPrint]),Now(),[vw_INH].[DateOfPrint])")})
         Me.XrLabel12.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(864.265!, 87.76801!)
         Me.XrLabel12.Multiline = True
@@ -596,7 +607,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel8.CanGrow = False
         Me.XrLabel8.Dpi = 254.0!
-        Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[bdgCode]")})
+        Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[old_code]")})
         Me.XrLabel8.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(19.43921!, 77.05659!)
         Me.XrLabel8.Multiline = True
@@ -762,12 +773,12 @@ Partial Public Class Eidop
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "936eacb0-936a-4952-831a-9886b55df64a"
+        Me.inhID.ValueInfo = "ae7a36eb-56c2-4e0b-b624-a2b5b28fa9ff"
         Me.inhID.Visible = False
         '
         'SqlDataSource1
         '
-        Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
+        Me.SqlDataSource1.ConnectionName = "PRIAMOS.NET.My.MySettings.Priamos_NETConnectionStringRemote"
         Me.SqlDataSource1.Name = "SqlDataSource1"
         ColumnExpression1.ColumnName = "ID"
         Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""563"" />"
@@ -871,31 +882,48 @@ Partial Public Class Eidop
         SelectQuery1.Columns.Add(Column23)
         SelectQuery1.Columns.Add(Column24)
         SelectQuery1.Columns.Add(Column25)
-        SelectQuery1.MetaSerializable = "<Meta X=""130"" Y=""20"" Width=""130"" Height=""549"" />"
+        SelectQuery1.MetaSerializable = "<Meta X=""130"" Y=""20"" Width=""130"" Height=""552"" />"
         SelectQuery1.Name = "vw_APT"
         SelectQuery1.Tables.Add(Table1)
-        CustomSqlQuery1.MetaSerializable = "<Meta X=""-40"" Y=""10"" Width=""103"" Height=""169"" />"
+        CustomSqlQuery1.MetaSerializable = "<Meta X=""-40"" Y=""10"" Width=""103"" Height=""172"" />"
         CustomSqlQuery1.Name = "vw_INH"
         QueryParameter1.Name = "inhID"
         QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery1.Parameters.Add(QueryParameter1)
+        CustomSqlQuery1.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1})
         CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
-        CustomSqlQuery2.MetaSerializable = "<Meta X=""330"" Y=""20"" Width=""148"" Height=""129"" />"
+        CustomSqlQuery2.MetaSerializable = "<Meta X=""900"" Y=""60"" Width=""148"" Height=""132"" />"
         CustomSqlQuery2.Name = "SUM_VW_INC_TENANT"
         QueryParameter2.Name = "inhID"
         QueryParameter2.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter2.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery2.Parameters.Add(QueryParameter2)
+        CustomSqlQuery2.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter2})
         CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
-        CustomSqlQuery3.MetaSerializable = "<Meta X=""498"" Y=""20"" Width=""153"" Height=""129"" />"
+        CustomSqlQuery3.MetaSerializable = "<Meta X=""590"" Y=""260"" Width=""153"" Height=""132"" />"
         CustomSqlQuery3.Name = "SUM_VW_INC_OWNERS"
         QueryParameter3.Name = "inhID"
         QueryParameter3.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter3.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery3.Parameters.Add(QueryParameter3)
+        CustomSqlQuery3.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter3})
         CustomSqlQuery3.Sql = resources.GetString("CustomSqlQuery3.Sql")
-        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3})
+        ColumnExpression26.ColumnName = "old_code"
+        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""1438"" />"
+        Table2.Name = "vw_BDG"
+        ColumnExpression26.Table = Table2
+        Column26.Expression = ColumnExpression26
+        ColumnExpression27.ColumnName = "nam"
+        ColumnExpression27.Table = Table2
+        Column27.Expression = ColumnExpression27
+        ColumnExpression28.ColumnName = "ID"
+        ColumnExpression28.Table = Table2
+        Column28.Expression = ColumnExpression28
+        SelectQuery2.Columns.Add(Column26)
+        SelectQuery2.Columns.Add(Column27)
+        SelectQuery2.Columns.Add(Column28)
+        SelectQuery2.MetaSerializable = "<Meta X=""400"" Y=""610"" Width=""100"" Height=""112"" />"
+        SelectQuery2.Name = "vw_BDG"
+        SelectQuery2.Tables.Add(Table2)
+        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, SelectQuery2})
         MasterDetailInfo1.DetailQueryName = "vw_APT"
         RelationColumnInfo1.NestedKeyColumn = "bdgID"
         RelationColumnInfo1.ParentKeyColumn = "bdgID"
@@ -921,7 +949,12 @@ Partial Public Class Eidop
         RelationColumnInfo5.ParentKeyColumn = "ID"
         MasterDetailInfo5.KeyColumns.Add(RelationColumnInfo5)
         MasterDetailInfo5.MasterQueryName = "vw_APT"
-        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5})
+        MasterDetailInfo6.DetailQueryName = "vw_BDG"
+        RelationColumnInfo6.NestedKeyColumn = "ID"
+        RelationColumnInfo6.ParentKeyColumn = "bdgID"
+        MasterDetailInfo6.KeyColumns.Add(RelationColumnInfo6)
+        MasterDetailInfo6.MasterQueryName = "vw_INH"
+        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5, MasterDetailInfo6})
         Me.SqlDataSource1.ResultSchemaSerializable = resources.GetString("SqlDataSource1.ResultSchemaSerializable")
         '
         'PageHeader
@@ -1150,11 +1183,29 @@ Partial Public Class Eidop
         'XrPanel15
         '
         Me.XrPanel15.CanGrow = False
-        Me.XrPanel15.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel92, Me.XrLabel91, Me.XrLabel90, Me.XrPictureBox3, Me.XrLabel85, Me.XrPanel11})
+        Me.XrPanel15.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel84, Me.XrLabel92, Me.XrLabel91, Me.XrLabel90, Me.XrPictureBox3, Me.XrLabel85, Me.XrPanel11})
         Me.XrPanel15.Dpi = 254.0!
         Me.XrPanel15.LocationFloat = New DevExpress.Utils.PointFloat(1995.214!, 0!)
         Me.XrPanel15.Name = "XrPanel15"
         Me.XrPanel15.SizeF = New System.Drawing.SizeF(1426.786!, 594.0833!)
+        '
+        'XrLabel84
+        '
+        Me.XrLabel84.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel84.Dpi = 254.0!
+        Me.XrLabel84.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTSUM_VW_INC_TENANT].[TotAmtPerCalc] + isnull([vw_APTSUM_VW_INC_OWNERS].[Tot" &
+                    "AmtPerCalc],0)")})
+        Me.XrLabel84.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel84.LocationFloat = New DevExpress.Utils.PointFloat(1237.744!, 542.5595!)
+        Me.XrLabel84.Multiline = True
+        Me.XrLabel84.Name = "XrLabel84"
+        Me.XrLabel84.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel84.SizeF = New System.Drawing.SizeF(164.0417!, 37.46503!)
+        Me.XrLabel84.StylePriority.UseBorders = False
+        Me.XrLabel84.StylePriority.UseFont = False
+        Me.XrLabel84.Text = "XrLabel93"
+        Me.XrLabel84.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel84.TextFormatString = "{0:0.00€}"
         '
         'XrLabel47
         '
@@ -1462,6 +1513,17 @@ Partial Public Class Eidop
         Me.SubBand1.HeightF = 619.0833!
         Me.SubBand1.Name = "SubBand1"
         '
+        'EXODA_PER_APT_OWNERS2
+        '
+        Me.EXODA_PER_APT_OWNERS2.CanShrink = True
+        Me.EXODA_PER_APT_OWNERS2.Dpi = 254.0!
+        Me.EXODA_PER_APT_OWNERS2.LocationFloat = New DevExpress.Utils.PointFloat(2458.03!, 40.99106!)
+        Me.EXODA_PER_APT_OWNERS2.Name = "EXODA_PER_APT_OWNERS2"
+        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT_OWNERS2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
+        Me.EXODA_PER_APT_OWNERS2.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
+        '
         'XrLabel38
         '
         Me.XrLabel38.BorderColor = System.Drawing.Color.Blue
@@ -1714,6 +1776,39 @@ Partial Public Class Eidop
         Me.Detail.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
         Me.Detail.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand1})
         '
+        'XILIOSTA
+        '
+        Me.XILIOSTA.CanShrink = True
+        Me.XILIOSTA.Dpi = 254.0!
+        Me.XILIOSTA.LocationFloat = New DevExpress.Utils.PointFloat(959.9747!, 235.2409!)
+        Me.XILIOSTA.Name = "XILIOSTA"
+        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.XILIOSTA.ReportSource = New PRIAMOS.NET.XILIOSTA()
+        Me.XILIOSTA.SizeF = New System.Drawing.SizeF(929.4915!, 41.46179!)
+        '
+        'EXODA_PER_APT_OWNERS
+        '
+        Me.EXODA_PER_APT_OWNERS.CanShrink = True
+        Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
+        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(961.0587!, 83.83975!)
+        Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
+        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
+        Me.EXODA_PER_APT_OWNERS.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
+        '
+        'EXODA_PER_APT2
+        '
+        Me.EXODA_PER_APT2.CanShrink = True
+        Me.EXODA_PER_APT2.Dpi = 254.0!
+        Me.EXODA_PER_APT2.LocationFloat = New DevExpress.Utils.PointFloat(2409.704!, 50.37459!)
+        Me.EXODA_PER_APT2.Name = "EXODA_PER_APT2"
+        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
+        Me.EXODA_PER_APT2.SizeF = New System.Drawing.SizeF(939.9709!, 41.4618!)
+        '
         'XrPanel14
         '
         Me.XrPanel14.CanGrow = False
@@ -1756,7 +1851,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel73.CanGrow = False
         Me.XrLabel73.Dpi = 254.0!
-        Me.XrLabel73.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[DateOfPrint]")})
+        Me.XrLabel73.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "IIF(IsNullOrEmpty([vw_INH].[DateOfPrint]),Now(),[vw_INH].[DateOfPrint])")})
         Me.XrLabel73.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel73.LocationFloat = New DevExpress.Utils.PointFloat(939.0135!, 87.76799!)
         Me.XrLabel73.Multiline = True
@@ -1824,7 +1919,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel77.CanGrow = False
         Me.XrLabel77.Dpi = 254.0!
-        Me.XrLabel77.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[bdgCode]")})
+        Me.XrLabel77.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[old_code]")})
         Me.XrLabel77.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel77.LocationFloat = New DevExpress.Utils.PointFloat(19.43921!, 77.05659!)
         Me.XrLabel77.Multiline = True
@@ -2253,6 +2348,17 @@ Partial Public Class Eidop
         Me.XrLabel64.Text = "ΠΟΣΟ"
         Me.XrLabel64.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
+        'EXODA_PER_APT
+        '
+        Me.EXODA_PER_APT.CanShrink = True
+        Me.EXODA_PER_APT.Dpi = 254.0!
+        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 83.83976!)
+        Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
+        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
+        Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9709!, 41.4618!)
+        '
         'XrLabel21
         '
         Me.XrLabel21.BorderColor = System.Drawing.Color.Blue
@@ -2508,61 +2614,6 @@ Partial Public Class Eidop
         Me.XrLabel17.Text = "ΠΟΣΟ"
         Me.XrLabel17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'XILIOSTA
-        '
-        Me.XILIOSTA.CanShrink = True
-        Me.XILIOSTA.Dpi = 254.0!
-        Me.XILIOSTA.LocationFloat = New DevExpress.Utils.PointFloat(959.9747!, 235.2409!)
-        Me.XILIOSTA.Name = "XILIOSTA"
-        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.XILIOSTA.ReportSource = New PRIAMOS.NET.XILIOSTA()
-        Me.XILIOSTA.SizeF = New System.Drawing.SizeF(929.4915!, 41.46179!)
-        '
-        'EXODA_PER_APT_OWNERS
-        '
-        Me.EXODA_PER_APT_OWNERS.CanShrink = True
-        Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(961.0587!, 83.83975!)
-        Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
-        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
-        Me.EXODA_PER_APT_OWNERS.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
-        '
-        'EXODA_PER_APT2
-        '
-        Me.EXODA_PER_APT2.CanShrink = True
-        Me.EXODA_PER_APT2.Dpi = 254.0!
-        Me.EXODA_PER_APT2.LocationFloat = New DevExpress.Utils.PointFloat(2409.704!, 50.37459!)
-        Me.EXODA_PER_APT2.Name = "EXODA_PER_APT2"
-        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
-        Me.EXODA_PER_APT2.SizeF = New System.Drawing.SizeF(939.9709!, 41.4618!)
-        '
-        'EXODA_PER_APT
-        '
-        Me.EXODA_PER_APT.CanShrink = True
-        Me.EXODA_PER_APT.Dpi = 254.0!
-        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 83.83976!)
-        Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
-        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
-        Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9709!, 41.4618!)
-        '
-        'EXODA_PER_APT_OWNERS2
-        '
-        Me.EXODA_PER_APT_OWNERS2.CanShrink = True
-        Me.EXODA_PER_APT_OWNERS2.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS2.LocationFloat = New DevExpress.Utils.PointFloat(2458.03!, 40.99106!)
-        Me.EXODA_PER_APT_OWNERS2.Name = "EXODA_PER_APT_OWNERS2"
-        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT_OWNERS2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
-        Me.EXODA_PER_APT_OWNERS2.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
-        '
         'Eidop
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.PageHeader})
@@ -2582,7 +2633,7 @@ Partial Public Class Eidop
         Me.ScriptsSource = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Private Sub CalculatedField1_GetValue(ByVal sender As Object, ByVal e As DevExp" &
     "ress.XtraReports.UI.GetValueEventArgs)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "End Sub" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.SnapGridSize = 25.0!
-        Me.Version = "20.2"
+        Me.Version = "21.2"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -2726,4 +2777,5 @@ Partial Public Class Eidop
     Friend WithEvents XrLabel81 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel82 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel83 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel84 As DevExpress.XtraReports.UI.XRLabel
 End Class

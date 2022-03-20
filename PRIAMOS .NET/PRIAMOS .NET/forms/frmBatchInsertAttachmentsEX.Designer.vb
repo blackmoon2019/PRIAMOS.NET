@@ -184,15 +184,17 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl2.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarDockControl2.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl2.Manager = Me.BarManager1
-        Me.BarDockControl2.Size = New System.Drawing.Size(1446, 0)
+        Me.BarDockControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl2.Size = New System.Drawing.Size(2410, 0)
         '
         'BarDockControl3
         '
         Me.BarDockControl3.CausesValidation = False
         Me.BarDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BarDockControl3.Location = New System.Drawing.Point(0, 828)
+        Me.BarDockControl3.Location = New System.Drawing.Point(0, 1465)
         Me.BarDockControl3.Manager = Me.BarManager1
-        Me.BarDockControl3.Size = New System.Drawing.Size(1446, 0)
+        Me.BarDockControl3.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl3.Size = New System.Drawing.Size(2410, 0)
         '
         'BarDockControl4
         '
@@ -200,15 +202,17 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl4.Dock = System.Windows.Forms.DockStyle.Left
         Me.BarDockControl4.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl4.Manager = Me.BarManager1
-        Me.BarDockControl4.Size = New System.Drawing.Size(0, 828)
+        Me.BarDockControl4.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl4.Size = New System.Drawing.Size(0, 1465)
         '
         'BarDockControl5
         '
         Me.BarDockControl5.CausesValidation = False
         Me.BarDockControl5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.BarDockControl5.Location = New System.Drawing.Point(1446, 0)
+        Me.BarDockControl5.Location = New System.Drawing.Point(2410, 0)
         Me.BarDockControl5.Manager = Me.BarManager1
-        Me.BarDockControl5.Size = New System.Drawing.Size(0, 828)
+        Me.BarDockControl5.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl5.Size = New System.Drawing.Size(0, 1465)
         '
         'BBOpenInh
         '
@@ -239,9 +243,10 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1446, 0)
+        Me.barDockControlRight.Location = New System.Drawing.Point(2410, 0)
         Me.barDockControlRight.Manager = Nothing
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 828)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 1465)
         '
         'PdfFileOpenBarItem1
         '
@@ -479,11 +484,12 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         Me.ImageListBoxControl1.HorizontalScrollbar = True
         Me.ImageListBoxControl1.ImageList = Me.images
-        Me.ImageListBoxControl1.Location = New System.Drawing.Point(12, 38)
+        Me.ImageListBoxControl1.Location = New System.Drawing.Point(20, 70)
+        Me.ImageListBoxControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.ImageListBoxControl1.MultiColumn = True
         Me.ImageListBoxControl1.Name = "ImageListBoxControl1"
         Me.ImageListBoxControl1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.ImageListBoxControl1.Size = New System.Drawing.Size(603, 253)
+        Me.ImageListBoxControl1.Size = New System.Drawing.Size(1006, 446)
         Me.ImageListBoxControl1.StyleController = Me.LayoutControl1
         Me.ImageListBoxControl1.TabIndex = 7
         '
@@ -498,21 +504,23 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControl1.Controls.Add(Me.BarDockControl1)
         Me.LayoutControl1.Controls.Add(Me.barDockControlBottom)
         Me.LayoutControl1.Controls.Add(Me.barDockControlTop)
-        Me.LayoutControl1.Location = New System.Drawing.Point(8, 3)
+        Me.LayoutControl1.Location = New System.Drawing.Point(13, 5)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(850, 565, 650, 400)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(1444, 823)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2407, 1456)
         Me.LayoutControl1.TabIndex = 6
         Me.LayoutControl1.Text = "LayoutControl1"
         '
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_as_16
-        Me.cmdSave.Location = New System.Drawing.Point(529, 295)
+        Me.cmdSave.Location = New System.Drawing.Point(882, 524)
+        Me.cmdSave.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdSave.Size = New System.Drawing.Size(86, 22)
+        Me.cmdSave.Size = New System.Drawing.Size(144, 39)
         Me.cmdSave.StyleController = Me.LayoutControl1
         Me.cmdSave.TabIndex = 51
         Me.cmdSave.Text = "Αποθήκευση"
@@ -524,9 +532,11 @@ Partial Class frmBatchInsertAttachmentsEX
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PdfViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.PdfViewer1.DetachStreamAfterLoadComplete = True
-        Me.PdfViewer1.Location = New System.Drawing.Point(12, 321)
+        Me.PdfViewer1.Location = New System.Drawing.Point(20, 571)
+        Me.PdfViewer1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.PdfViewer1.MenuManager = Me.BarManager1
         Me.PdfViewer1.Name = "PdfViewer1"
-        Me.PdfViewer1.Size = New System.Drawing.Size(603, 490)
+        Me.PdfViewer1.Size = New System.Drawing.Size(1006, 863)
         Me.PdfViewer1.TabIndex = 16
         Me.PdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible
         '
@@ -536,10 +546,12 @@ Partial Class frmBatchInsertAttachmentsEX
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.DataSource = Me.VwINDBindingSource
-        Me.grdMain.Location = New System.Drawing.Point(619, 38)
+        Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.grdMain.Location = New System.Drawing.Point(1032, 70)
         Me.grdMain.MainView = Me.GridView1
+        Me.grdMain.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(813, 773)
+        Me.grdMain.Size = New System.Drawing.Size(1355, 1364)
         Me.grdMain.TabIndex = 10
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -557,6 +569,7 @@ Partial Class frmBatchInsertAttachmentsEX
         'GridView1
         '
         Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colinhID, Me.colETOS, Me.colrepName, Me.colamt, Me.colnam, Me.colcompleteDate, Me.colname, Me.colowner_tenant, Me.colcalcCatID, Me.colSelectedFiles, Me.colpaid, Me.colbdgID, Me.colbManageID})
+        Me.GridView1.DetailHeight = 619
         Me.GridView1.GridControl = Me.grdMain
         Me.GridView1.GroupCount = 1
         Me.GridView1.Name = "GridView1"
@@ -573,95 +586,124 @@ Partial Class frmBatchInsertAttachmentsEX
         'colID
         '
         Me.colID.FieldName = "ID"
+        Me.colID.MinWidth = 33
         Me.colID.Name = "colID"
+        Me.colID.Width = 125
         '
         'colinhID
         '
         Me.colinhID.FieldName = "inhID"
+        Me.colinhID.MinWidth = 33
         Me.colinhID.Name = "colinhID"
+        Me.colinhID.Width = 125
         '
         'colETOS
         '
         Me.colETOS.Caption = "Έτος"
         Me.colETOS.FieldName = "ETOS"
+        Me.colETOS.MinWidth = 33
         Me.colETOS.Name = "colETOS"
         Me.colETOS.Visible = True
         Me.colETOS.VisibleIndex = 2
+        Me.colETOS.Width = 125
         '
         'colrepName
         '
         Me.colrepName.Caption = "Λεκτικό Εκτύπωσης"
         Me.colrepName.FieldName = "repName"
+        Me.colrepName.MinWidth = 33
         Me.colrepName.Name = "colrepName"
         Me.colrepName.Visible = True
         Me.colrepName.VisibleIndex = 1
+        Me.colrepName.Width = 125
         '
         'colamt
         '
         Me.colamt.FieldName = "amt"
+        Me.colamt.MinWidth = 33
         Me.colamt.Name = "colamt"
+        Me.colamt.Width = 125
         '
         'colnam
         '
         Me.colnam.Caption = "Παραστατικό"
         Me.colnam.FieldName = "nam"
+        Me.colnam.MinWidth = 33
         Me.colnam.Name = "colnam"
         Me.colnam.Visible = True
         Me.colnam.VisibleIndex = 1
+        Me.colnam.Width = 125
         '
         'colcompleteDate
         '
         Me.colcompleteDate.Caption = "Ημερομηνία"
         Me.colcompleteDate.FieldName = "completeDate"
+        Me.colcompleteDate.MinWidth = 33
         Me.colcompleteDate.Name = "colcompleteDate"
         Me.colcompleteDate.Visible = True
         Me.colcompleteDate.VisibleIndex = 5
+        Me.colcompleteDate.Width = 125
         '
         'colname
         '
         Me.colname.Caption = "Έξοδο"
         Me.colname.FieldName = "name"
+        Me.colname.MinWidth = 33
         Me.colname.Name = "colname"
         Me.colname.Visible = True
         Me.colname.VisibleIndex = 3
+        Me.colname.Width = 125
         '
         'colowner_tenant
         '
         Me.colowner_tenant.Caption = "Ένοικος"
         Me.colowner_tenant.FieldName = "owner_tenant"
+        Me.colowner_tenant.MinWidth = 33
         Me.colowner_tenant.Name = "colowner_tenant"
+        Me.colowner_tenant.Width = 125
         '
         'colcalcCatID
         '
         Me.colcalcCatID.FieldName = "calcCatID"
+        Me.colcalcCatID.MinWidth = 33
         Me.colcalcCatID.Name = "colcalcCatID"
+        Me.colcalcCatID.Width = 125
         '
         'colSelectedFiles
         '
         Me.colSelectedFiles.FieldName = "SelectedFiles"
+        Me.colSelectedFiles.MinWidth = 33
         Me.colSelectedFiles.Name = "colSelectedFiles"
+        Me.colSelectedFiles.Width = 125
         '
         'colpaid
         '
         Me.colpaid.Caption = "Πληρωμένο"
         Me.colpaid.FieldName = "paid"
+        Me.colpaid.MinWidth = 33
         Me.colpaid.Name = "colpaid"
         Me.colpaid.Visible = True
         Me.colpaid.VisibleIndex = 4
+        Me.colpaid.Width = 125
         '
         'colbdgID
         '
         Me.colbdgID.FieldName = "bdgID"
+        Me.colbdgID.MinWidth = 33
         Me.colbdgID.Name = "colbdgID"
+        Me.colbdgID.Width = 125
         '
         'colbManageID
         '
         Me.colbManageID.FieldName = "bManageID"
+        Me.colbManageID.MinWidth = 33
         Me.colbManageID.Name = "colbManageID"
+        Me.colbManageID.Width = 125
         '
         'editBreadCrumb
         '
-        Me.editBreadCrumb.Location = New System.Drawing.Point(12, 12)
+        Me.editBreadCrumb.Location = New System.Drawing.Point(20, 22)
+        Me.editBreadCrumb.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.editBreadCrumb.Name = "editBreadCrumb"
         Me.editBreadCrumb.Properties.AutoHeight = False
         EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(8, 8)
@@ -680,37 +722,41 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.editBreadCrumb.Properties.Nodes.AddRange(New DevExpress.XtraEditors.BreadCrumbNode() {BreadCrumbNode1, BreadCrumbNode2})
         Me.editBreadCrumb.Properties.RootImageIndex = 0
         Me.editBreadCrumb.Properties.SortNodesByCaption = True
-        Me.editBreadCrumb.Size = New System.Drawing.Size(1420, 22)
+        Me.editBreadCrumb.Size = New System.Drawing.Size(2367, 40)
         Me.editBreadCrumb.StyleController = Me.LayoutControl1
         Me.editBreadCrumb.TabIndex = 8
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Location = New System.Drawing.Point(120, 675)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(200, 1194)
         Me.barDockControlLeft.Manager = Nothing
-        Me.barDockControlLeft.Size = New System.Drawing.Size(1223, 136)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(2038, 241)
         '
         'BarDockControl1
         '
         Me.BarDockControl1.CausesValidation = False
-        Me.BarDockControl1.Location = New System.Drawing.Point(120, 743)
+        Me.BarDockControl1.Location = New System.Drawing.Point(200, 1315)
         Me.BarDockControl1.Manager = Nothing
-        Me.BarDockControl1.Size = New System.Drawing.Size(1223, 68)
+        Me.BarDockControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl1.Size = New System.Drawing.Size(2038, 120)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Location = New System.Drawing.Point(120, 767)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(200, 1357)
         Me.barDockControlBottom.Manager = Nothing
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1223, 44)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(2038, 78)
         '
         'barDockControlTop
         '
         Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Location = New System.Drawing.Point(126, 791)
+        Me.barDockControlTop.Location = New System.Drawing.Point(210, 1399)
         Me.barDockControlTop.Manager = Nothing
-        Me.barDockControlTop.Size = New System.Drawing.Size(1217, 20)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlTop.Size = New System.Drawing.Size(2028, 35)
         '
         'Root
         '
@@ -718,15 +764,15 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem11, Me.EmptySpaceItem1})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1444, 823)
+        Me.Root.Size = New System.Drawing.Size(2407, 1456)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.ImageListBoxControl1
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(607, 257)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1012, 454)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -735,43 +781,43 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem2.Control = Me.editBreadCrumb
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(1424, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(2373, 48)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.grdMain
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(607, 26)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(1012, 48)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(817, 777)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1361, 1372)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.PdfViewer1
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 309)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 549)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(607, 494)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1012, 871)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.cmdSave
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(517, 283)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(862, 502)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(90, 26)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(150, 47)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 283)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 502)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(517, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(862, 47)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'GridControl1
@@ -827,6 +873,7 @@ Partial Class frmBatchInsertAttachmentsEX
         'PdfViewer2
         '
         Me.PdfViewer2.Location = New System.Drawing.Point(0, 0)
+        Me.PdfViewer2.MenuManager = Me.BarManager1
         Me.PdfViewer2.Name = "PdfViewer2"
         Me.PdfViewer2.Size = New System.Drawing.Size(150, 150)
         Me.PdfViewer2.TabIndex = 0
@@ -892,15 +939,17 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         'frmBatchInsertAttachmentsEX
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1446, 828)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(2410, 1465)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.BarDockControl4)
         Me.Controls.Add(Me.BarDockControl5)
         Me.Controls.Add(Me.BarDockControl3)
         Me.Controls.Add(Me.BarDockControl2)
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmBatchInsertAttachmentsEX"
         Me.Text = "frmBatchInsertAttachmentsEX"
         CType(Me.PopupMenuDeleteButton, System.ComponentModel.ISupportInitialize).EndInit()

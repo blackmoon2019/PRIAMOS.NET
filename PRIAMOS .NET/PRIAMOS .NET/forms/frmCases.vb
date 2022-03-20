@@ -328,12 +328,12 @@ Public Class frmCases
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView3.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "Dreamy Kitchen CRM", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
         ' Μόνο αν ο Χρήστης είναι ο Παναγόπουλος
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
            UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
-            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml") = False Then GridView3.OptionsLayout.LayoutVersion = "v1"
                 GridView3.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
             End If
@@ -342,7 +342,7 @@ Public Class frmCases
     End Sub
     'Συγχρονισμός όψης από Server
     Private Sub OnSyncView(ByVal sender As System.Object, ByVal e As EventArgs)
-        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
             If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml") = True Then
                 My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml", Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", True)

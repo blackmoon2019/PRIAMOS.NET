@@ -21,17 +21,22 @@ Partial Public Class Rep_Sygentrotiki
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Rep_Sygentrotiki))
         Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim CustomSqlQuery4 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim CustomSqlQuery5 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim CustomSqlQuery4 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter4 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim CustomSqlQuery6 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim CustomSqlQuery5 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter5 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery6 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter6 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery7 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter7 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery8 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter8 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim MasterDetailInfo1 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo1 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo2 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
@@ -41,8 +46,17 @@ Partial Public Class Rep_Sygentrotiki
         Dim RelationColumnInfo4 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo4 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo5 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
-        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim MasterDetailInfo5 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo6 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim RelationColumnInfo7 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo6 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo8 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim RelationColumnInfo9 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
+        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim DynamicListLookUpSettings2 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
@@ -203,46 +217,66 @@ Partial Public Class Rep_Sygentrotiki
         '
         'SqlDataSource1
         '
-        Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
+        Me.SqlDataSource1.ConnectionName = "PRIAMOS.NET.My.MySettings.Priamos_NETConnectionStringRemote"
         Me.SqlDataSource1.Name = "SqlDataSource1"
+        CustomSqlQuery1.MetaSerializable = "<Meta X=""1040"" Y=""20"" Width=""108"" Height=""1323"" />"
         CustomSqlQuery1.Name = "vw_BDG"
-        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
-        CustomSqlQuery2.MetaSerializable = "<Meta X=""-90"" Y=""20"" Width=""103"" Height=""389"" />"
-        CustomSqlQuery2.Name = "vw_INH"
-        QueryParameter1.Name = "inhID"
+        QueryParameter1.Name = "bdgID"
         QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
-        QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery2.Parameters.Add(QueryParameter1)
-        CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
-        CustomSqlQuery3.MetaSerializable = "<Meta X=""449"" Y=""20"" Width=""146"" Height=""889"" />"
-        CustomSqlQuery3.Name = "vw_INC"
+        QueryParameter1.Value = New DevExpress.DataAccess.Expression("?bdgID", GetType(System.Guid))
+        CustomSqlQuery1.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1})
+        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
+        CustomSqlQuery2.MetaSerializable = "<Meta X=""-90"" Y=""20"" Width=""103"" Height=""403"" />"
+        CustomSqlQuery2.Name = "vw_INH"
         QueryParameter2.Name = "inhID"
         QueryParameter2.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter2.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery3.Parameters.Add(QueryParameter2)
-        CustomSqlQuery3.Sql = resources.GetString("CustomSqlQuery3.Sql")
-        CustomSqlQuery4.MetaSerializable = "<Meta X=""920"" Y=""10"" Width=""100"" Height=""89"" />"
-        CustomSqlQuery4.Name = "INH_MLC"
+        CustomSqlQuery2.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter2})
+        CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
+        CustomSqlQuery3.MetaSerializable = "<Meta X=""449"" Y=""20"" Width=""146"" Height=""903"" />"
+        CustomSqlQuery3.Name = "vw_INC"
         QueryParameter3.Name = "inhID"
         QueryParameter3.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter3.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery4.Parameters.Add(QueryParameter3)
-        CustomSqlQuery4.Sql = "select distinct mlcRepName,calcCatOrd " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "from vw_inc " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID= @inhID order b" &
-    "y calcCatOrd"
-        CustomSqlQuery5.MetaSerializable = "<Meta X=""680"" Y=""20"" Width=""146"" Height=""449"" />"
-        CustomSqlQuery5.Name = "Exoda"
+        CustomSqlQuery3.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter3})
+        CustomSqlQuery3.Sql = resources.GetString("CustomSqlQuery3.Sql")
+        CustomSqlQuery4.MetaSerializable = "<Meta X=""920"" Y=""10"" Width=""100"" Height=""103"" />"
+        CustomSqlQuery4.Name = "INH_MLC"
         QueryParameter4.Name = "inhID"
         QueryParameter4.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter4.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery5.Parameters.Add(QueryParameter4)
-        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
-        CustomSqlQuery6.Name = "vw_APMIL"
-        QueryParameter5.Name = "bdgID"
+        CustomSqlQuery4.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter4})
+        CustomSqlQuery4.Sql = "select distinct mlcRepName,calcCatOrd " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "from vw_inc " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID= @inhID order b" &
+    "y calcCatOrd"
+        CustomSqlQuery5.MetaSerializable = "<Meta X=""710"" Y=""60"" Width=""146"" Height=""463"" />"
+        CustomSqlQuery5.Name = "Exoda"
+        QueryParameter5.Name = "inhID"
         QueryParameter5.Type = GetType(DevExpress.DataAccess.Expression)
-        QueryParameter5.Value = New DevExpress.DataAccess.Expression("?bdgID", GetType(System.Guid))
-        CustomSqlQuery6.Parameters.Add(QueryParameter5)
+        QueryParameter5.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery5.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter5})
+        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
+        CustomSqlQuery6.MetaSerializable = "<Meta X=""1168"" Y=""20"" Width=""147"" Height=""483"" />"
+        CustomSqlQuery6.Name = "vw_APMIL"
+        QueryParameter6.Name = "bdgID"
+        QueryParameter6.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter6.Value = New DevExpress.DataAccess.Expression("?bdgID", GetType(System.Guid))
+        CustomSqlQuery6.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter6})
         CustomSqlQuery6.Sql = resources.GetString("CustomSqlQuery6.Sql")
-        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6})
+        CustomSqlQuery7.MetaSerializable = "<Meta X=""-10"" Y=""490"" Width=""147"" Height=""463"" />"
+        CustomSqlQuery7.Name = "vw_INC_TENANT"
+        QueryParameter7.Name = "inhID"
+        QueryParameter7.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter7.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery7.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter7})
+        CustomSqlQuery7.Sql = resources.GetString("CustomSqlQuery7.Sql")
+        CustomSqlQuery8.MetaSerializable = "<Meta X=""1690"" Y=""170"" Width=""147"" Height=""463"" />"
+        CustomSqlQuery8.Name = "vw_INC_OWNER"
+        QueryParameter8.Name = "inhID"
+        QueryParameter8.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter8.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery8.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter8})
+        CustomSqlQuery8.Sql = resources.GetString("CustomSqlQuery8.Sql")
+        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8})
         MasterDetailInfo1.DetailQueryName = "vw_BDG"
         RelationColumnInfo1.NestedKeyColumn = "ID"
         RelationColumnInfo1.ParentKeyColumn = "bdgID"
@@ -254,7 +288,7 @@ Partial Public Class Rep_Sygentrotiki
         MasterDetailInfo2.KeyColumns.Add(RelationColumnInfo2)
         MasterDetailInfo2.MasterQueryName = "vw_INH"
         MasterDetailInfo3.DetailQueryName = "vw_INC"
-        RelationColumnInfo3.NestedKeyColumn = "indID"
+        RelationColumnInfo3.NestedKeyColumn = "inhID"
         RelationColumnInfo3.ParentKeyColumn = "inhid"
         RelationColumnInfo4.NestedKeyColumn = "aptID"
         RelationColumnInfo4.ParentKeyColumn = "aptid"
@@ -266,7 +300,23 @@ Partial Public Class Rep_Sygentrotiki
         RelationColumnInfo5.ParentKeyColumn = "aptid"
         MasterDetailInfo4.KeyColumns.Add(RelationColumnInfo5)
         MasterDetailInfo4.MasterQueryName = "Exoda"
-        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4})
+        MasterDetailInfo5.DetailQueryName = "vw_INC_TENANT"
+        RelationColumnInfo6.NestedKeyColumn = "aptid"
+        RelationColumnInfo6.ParentKeyColumn = "aptid"
+        RelationColumnInfo7.NestedKeyColumn = "inhid"
+        RelationColumnInfo7.ParentKeyColumn = "inhid"
+        MasterDetailInfo5.KeyColumns.Add(RelationColumnInfo6)
+        MasterDetailInfo5.KeyColumns.Add(RelationColumnInfo7)
+        MasterDetailInfo5.MasterQueryName = "Exoda"
+        MasterDetailInfo6.DetailQueryName = "vw_INC_OWNER"
+        RelationColumnInfo8.NestedKeyColumn = "aptid"
+        RelationColumnInfo8.ParentKeyColumn = "aptid"
+        RelationColumnInfo9.NestedKeyColumn = "inhid"
+        RelationColumnInfo9.ParentKeyColumn = "inhid"
+        MasterDetailInfo6.KeyColumns.Add(RelationColumnInfo8)
+        MasterDetailInfo6.KeyColumns.Add(RelationColumnInfo9)
+        MasterDetailInfo6.MasterQueryName = "Exoda"
+        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5, MasterDetailInfo6})
         Me.SqlDataSource1.ResultSchemaSerializable = resources.GetString("SqlDataSource1.ResultSchemaSerializable")
         '
         'TopMargin
@@ -286,7 +336,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "936eacb0-936a-4952-831a-9886b55df64a"
+        Me.inhID.ValueInfo = "7011d83c-b197-4db3-ac92-65bb7768e4a7"
+        DynamicListLookUpSettings1.DataMember = "vw_INH"
+        DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
+        DynamicListLookUpSettings1.DisplayMember = "ID"
+        DynamicListLookUpSettings1.FilterString = Nothing
+        DynamicListLookUpSettings1.SortMember = Nothing
+        DynamicListLookUpSettings1.ValueMember = "ID"
+        Me.inhID.ValueSourceSettings = DynamicListLookUpSettings1
+        Me.inhID.Visible = False
         '
         'PageHeader
         '
@@ -624,7 +682,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel21.BorderColor = System.Drawing.Color.Black
         Me.XrLabel21.Dpi = 254.0!
-        Me.XrLabel21.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[code]")})
+        Me.XrLabel21.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[old_code]")})
         Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(266.8503!, 36.51245!)
         Me.XrLabel21.Multiline = True
         Me.XrLabel21.Name = "XrLabel21"
@@ -1435,6 +1493,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell37.CanGrow = False
         Me.XrTableCell37.Dpi = 254.0!
+        Me.XrTableCell37.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell37.ExpressionBindings"))})
         Me.XrTableCell37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.XrTableCell37.Name = "XrTableCell37"
         Me.XrTableCell37.StylePriority.UseFont = False
@@ -1448,7 +1507,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell38.CanGrow = False
         Me.XrTableCell38.Dpi = 254.0!
-        Me.XrTableCell38.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[owners]")})
+        Me.XrTableCell38.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell38.ExpressionBindings"))})
         Me.XrTableCell38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.XrTableCell38.Name = "XrTableCell38"
         Me.XrTableCell38.StylePriority.UseFont = False
@@ -1462,6 +1521,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell39.CanGrow = False
         Me.XrTableCell39.Dpi = 254.0!
+        Me.XrTableCell39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell39.ExpressionBindings"))})
         Me.XrTableCell39.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.XrTableCell39.Name = "XrTableCell39"
         Me.XrTableCell39.StylePriority.UseFont = False
@@ -1836,10 +1896,13 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell57.CanGrow = False
         Me.XrTableCell57.Dpi = 254.0!
+        Me.XrTableCell57.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell57.ExpressionBindings"))})
         Me.XrTableCell57.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell57.Name = "XrTableCell57"
         Me.XrTableCell57.StylePriority.UseFont = False
         Me.XrTableCell57.StylePriority.UseTextAlignment = False
+        XrSummary1.IgnoreNullValues = True
+        Me.XrTableCell57.Summary = XrSummary1
         Me.XrTableCell57.Text = "XrTableCell1"
         Me.XrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell57.Weight = 0.61984751155561646R
@@ -1849,13 +1912,13 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell58.CanGrow = False
         Me.XrTableCell58.Dpi = 254.0!
-        Me.XrTableCell58.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([owners])")})
+        Me.XrTableCell58.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell58.ExpressionBindings")), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "AccessibleDescription", resources.GetString("XrTableCell58.ExpressionBindings1"))})
         Me.XrTableCell58.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell58.Name = "XrTableCell58"
         Me.XrTableCell58.StylePriority.UseFont = False
         Me.XrTableCell58.StylePriority.UseTextAlignment = False
-        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-        Me.XrTableCell58.Summary = XrSummary1
+        XrSummary2.IgnoreNullValues = True
+        Me.XrTableCell58.Summary = XrSummary2
         Me.XrTableCell58.Text = "XrTableCell2"
         Me.XrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell58.Weight = 0.61984654517984217R
@@ -1865,10 +1928,13 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell59.CanGrow = False
         Me.XrTableCell59.Dpi = 254.0!
+        Me.XrTableCell59.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell59.ExpressionBindings"))})
         Me.XrTableCell59.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell59.Name = "XrTableCell59"
         Me.XrTableCell59.StylePriority.UseFont = False
         Me.XrTableCell59.StylePriority.UseTextAlignment = False
+        XrSummary3.IgnoreNullValues = True
+        Me.XrTableCell59.Summary = XrSummary3
         Me.XrTableCell59.Text = "XrTableCell3"
         Me.XrTableCell59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell59.Weight = 0.71827462673435771R
@@ -2184,14 +2250,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.bdgID.Description = "bdgID"
         Me.bdgID.Name = "bdgID"
         Me.bdgID.Type = GetType(System.Guid)
-        Me.bdgID.ValueInfo = "821da3ae-86c6-4410-a933-714a30d7a4ac"
-        DynamicListLookUpSettings1.DataMember = "vw_APMIL"
-        DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
-        DynamicListLookUpSettings1.DisplayMember = "bdgID"
-        DynamicListLookUpSettings1.FilterString = Nothing
-        DynamicListLookUpSettings1.SortMember = Nothing
-        DynamicListLookUpSettings1.ValueMember = "bdgID"
-        Me.bdgID.ValueSourceSettings = DynamicListLookUpSettings1
+        Me.bdgID.ValueInfo = "8f683ac5-28d4-4699-b6b9-43335f81e880"
+        DynamicListLookUpSettings2.DataMember = "vw_BDG"
+        DynamicListLookUpSettings2.DataSource = Me.SqlDataSource1
+        DynamicListLookUpSettings2.DisplayMember = "ID"
+        DynamicListLookUpSettings2.FilterString = Nothing
+        DynamicListLookUpSettings2.SortMember = Nothing
+        DynamicListLookUpSettings2.ValueMember = "ID"
+        Me.bdgID.ValueSourceSettings = DynamicListLookUpSettings2
+        Me.bdgID.Visible = False
         '
         'Rep_Sygentrotiki
         '
@@ -2212,7 +2279,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.CrossTabTotalStyle1, Me.CrossTabHeaderStyle1, Me.CrossTabDataStyle1, Me.CrossTabGeneralStyle1})
-        Me.Version = "20.2"
+        Me.Version = "21.2"
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).EndInit()

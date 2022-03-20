@@ -3,7 +3,6 @@ Imports System.Drawing.Printing
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraReports.UI
-Imports DevExpress.XtraReports.UI.CrossTab
 
 Public Class Rep_Sygentrotiki
     Private Sub Rep_Sygentrotiki_AfterPrint(sender As Object, e As EventArgs) Handles Me.AfterPrint
@@ -20,6 +19,8 @@ Public Class Rep_Sygentrotiki
     End Sub
 
     Private Sub XrTable1_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTable1.BeforePrint
+        'Τον παρακάτω έλεγχο τον έβαλα γιατί για κάποιο λόγο φορτωνεται 2 φορές το Report
+        'If XrTable6.Rows(0).Cells(0).ExpressionBindings.Count = 1 Then Exit Sub
         FillMlcHeader()
         FillExodaHeader()
     End Sub
@@ -51,7 +52,9 @@ Public Class Rep_Sygentrotiki
         Try
             Dim sSQL As String
             Dim SumofEnoik As New System.Text.StringBuilder
+            Dim SumofIdiok As New System.Text.StringBuilder
             Dim TotalSumofEnoik As New System.Text.StringBuilder
+            Dim TotalSumofIdiok As New System.Text.StringBuilder
             Dim SumofAll As New System.Text.StringBuilder
             Dim GenTot As New System.Text.StringBuilder
 
@@ -81,27 +84,36 @@ Public Class Rep_Sygentrotiki
                     XrTable8.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum(" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & ")"))
                     XrTable8.Rows(0).Cells(i).Visible = True
                     'Μόνο για ενοίκους
-                    If sdr.GetString(sdr.GetOrdinal("apmilNam")) <> "owners" Then
-                        If SumofEnoik.Length > 0 Then
-                            SumofEnoik.Append(" + ")
-                            TotalSumofEnoik.Append(" + ")
-                        End If
-                        SumofEnoik.Append("[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "] ")
-                        TotalSumofEnoik.Append("sum([" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "]) ")
-                    End If
+                    '    If sdr.GetString(sdr.GetOrdinal("apmilNam")) <> "owners" Then
+                    '        If SumofEnoik.Length > 0 Then
+                    '            SumofEnoik.Append(" + ")
+                    '            TotalSumofEnoik.Append(" + ")
+                    '            SumofIdiok.Append(" + ")
+                    '            TotalSumofIdiok.Append(" + ")
+                    '        End If
+                    '        SumofEnoik.Append("[Exodavw_INC_TENANT]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "]")
+                    '        TotalSumofEnoik.Append("sum([Exodavw_INC_TENANT].[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "]) ")
+                    '        SumofIdiok.Append("IsNull([Exodavw_INC_OWNER]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "], 0)")
+                    '        TotalSumofIdiok.Append("sum(IsNull([Exodavw_INC_OWNER]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "],0)) ")
+                    '    End If
                 End If
                 i = i + 1
             End While
             sdr.Close()
             'Σύνολο γραμμών ενοίκου
-            XrTable6.Rows(0).Cells(0).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", SumofEnoik.ToString))
-            'Γενικό Σύνολο γραμμών ενοίκου
-            XrTable9.Rows(0).Cells(0).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", TotalSumofEnoik.ToString))
+            '  XrTable6.Rows(0).Cells(0).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", SumofEnoik.ToString))
+            'Σύνολο γραμμών Ιδιοκτητών
+            'XrTable6.Rows(0).Cells(1).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", SumofIdiok.ToString))
             'Γενικό Σύνολο ( ΙΔΙΟΚ. + ΕΝΟΙΚ)
-            SumofAll.Append("[owners] + " & SumofEnoik.ToString)
-            XrTable6.Rows(0).Cells(2).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", SumofAll.ToString))
-            GenTot.Append("Sum([owners]) + " & TotalSumofEnoik.ToString)
-            XrTable9.Rows(0).Cells(2).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", GenTot.ToString))
+            'SumofAll.Append(SumofIdiok.ToString & " + " & SumofEnoik.ToString)
+            '  XrTable6.Rows(0).Cells(2).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", SumofAll.ToString))
+            'Γενικό Σύνολο γραμμών ενοίκου
+            ' XrTable9.Rows(0).Cells(0).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", TotalSumofEnoik.ToString))
+            'Γενικό Σύνολο γραμμών Ιδιοκτητών
+            'XrTable9.Rows(0).Cells(1).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", TotalSumofIdiok.ToString))
+
+            'GenTot.Append(TotalSumofIdiok.ToString & " + " & TotalSumofEnoik.ToString)
+            'XrTable9.Rows(0).Cells(2).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", GenTot.ToString))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

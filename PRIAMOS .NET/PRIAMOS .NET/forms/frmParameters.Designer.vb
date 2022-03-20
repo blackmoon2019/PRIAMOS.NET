@@ -23,8 +23,10 @@ Partial Class frmParameters
         Me.TablePanel1 = New DevExpress.Utils.Layout.TablePanel()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtDecimals = New DevExpress.XtraEditors.TextEdit()
+        Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
@@ -35,15 +37,15 @@ Partial Class frmParameters
         Me.NavBarGroup2 = New DevExpress.XtraNavBar.NavBarGroup()
         Me.navGen = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarControl1 = New DevExpress.XtraNavBar.NavBarControl()
-        Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.TablePanel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TablePanel1.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
         CType(Me.txtDecimals.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,8 +54,6 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TablePanel1
@@ -62,10 +62,11 @@ Partial Class frmParameters
         Me.TablePanel1.Controls.Add(Me.LayoutControl2)
         Me.TablePanel1.Controls.Add(Me.LayoutControl1)
         Me.TablePanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TablePanel1.Location = New System.Drawing.Point(200, 0)
+        Me.TablePanel1.Location = New System.Drawing.Point(333, 0)
+        Me.TablePanel1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.TablePanel1.Name = "TablePanel1"
         Me.TablePanel1.Rows.AddRange(New DevExpress.Utils.Layout.TablePanelRow() {New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 82.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 139.0!), New DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26.0!)})
-        Me.TablePanel1.Size = New System.Drawing.Size(721, 592)
+        Me.TablePanel1.Size = New System.Drawing.Size(1202, 1047)
         Me.TablePanel1.TabIndex = 1
         '
         'LayoutControl2
@@ -73,18 +74,20 @@ Partial Class frmParameters
         Me.TablePanel1.SetColumn(Me.LayoutControl2, 0)
         Me.LayoutControl2.Controls.Add(Me.txtDecimals)
         Me.LayoutControl2.Controls.Add(Me.txtEmail)
-        Me.LayoutControl2.Location = New System.Drawing.Point(3, 91)
+        Me.LayoutControl2.Location = New System.Drawing.Point(5, 162)
+        Me.LayoutControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
         Me.TablePanel1.SetRow(Me.LayoutControl2, 1)
-        Me.LayoutControl2.Size = New System.Drawing.Size(715, 120)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1192, 212)
         Me.LayoutControl2.TabIndex = 1
         Me.LayoutControl2.Text = "LayoutControl2"
         '
         'txtDecimals
         '
         Me.txtDecimals.EditValue = "0"
-        Me.txtDecimals.Location = New System.Drawing.Point(135, 11)
+        Me.txtDecimals.Location = New System.Drawing.Point(242, 20)
+        Me.txtDecimals.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.txtDecimals.Name = "txtDecimals"
         Me.txtDecimals.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtDecimals.Properties.EditFormat.FormatString = "n0"
@@ -92,10 +95,19 @@ Partial Class frmParameters
         Me.txtDecimals.Properties.Mask.EditMask = "n0"
         Me.txtDecimals.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.txtDecimals.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtDecimals.Size = New System.Drawing.Size(569, 20)
+        Me.txtDecimals.Size = New System.Drawing.Size(931, 38)
         Me.txtDecimals.StyleController = Me.LayoutControl2
         Me.txtDecimals.TabIndex = 37
         Me.txtDecimals.Tag = "InvNumber,0,1,2"
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Location = New System.Drawing.Point(243, 64)
+        Me.txtEmail.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(929, 38)
+        Me.txtEmail.StyleController = Me.LayoutControl2
+        Me.txtEmail.TabIndex = 38
         '
         'LayoutControlGroup1
         '
@@ -103,7 +115,7 @@ Partial Class frmParameters
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3})
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(715, 120)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1192, 212)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem52
@@ -115,37 +127,49 @@ Partial Class frmParameters
         Me.LayoutControlItem52.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem52.ImageOptions.Image"), System.Drawing.Image)
         Me.LayoutControlItem52.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem52.Name = "LayoutControlItem52"
-        Me.LayoutControlItem52.Padding = New DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1)
-        Me.LayoutControlItem52.Size = New System.Drawing.Size(695, 22)
+        Me.LayoutControlItem52.Padding = New DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2)
+        Me.LayoutControlItem52.Size = New System.Drawing.Size(1158, 42)
         Me.LayoutControlItem52.Text = "Δεκαδικά"
-        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(112, 13)
+        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(203, 23)
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.txtEmail
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1158, 134)
+        Me.LayoutControlItem3.Text = "Technical Support Email"
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(203, 23)
         '
         'LayoutControl1
         '
         Me.TablePanel1.SetColumn(Me.LayoutControl1, 0)
         Me.LayoutControl1.Controls.Add(Me.TextEdit1)
         Me.LayoutControl1.Controls.Add(Me.TextEdit2)
-        Me.LayoutControl1.Location = New System.Drawing.Point(3, 3)
+        Me.LayoutControl1.Location = New System.Drawing.Point(5, 5)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
         Me.TablePanel1.SetRow(Me.LayoutControl1, 0)
-        Me.LayoutControl1.Size = New System.Drawing.Size(715, 76)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1192, 134)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
         'TextEdit1
         '
-        Me.TextEdit1.Location = New System.Drawing.Point(120, 12)
+        Me.TextEdit1.Location = New System.Drawing.Point(203, 22)
+        Me.TextEdit1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(583, 20)
+        Me.TextEdit1.Size = New System.Drawing.Size(969, 38)
         Me.TextEdit1.StyleController = Me.LayoutControl1
         Me.TextEdit1.TabIndex = 4
         '
         'TextEdit2
         '
-        Me.TextEdit2.Location = New System.Drawing.Point(120, 36)
+        Me.TextEdit2.Location = New System.Drawing.Point(203, 68)
+        Me.TextEdit2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Size = New System.Drawing.Size(583, 20)
+        Me.TextEdit2.Size = New System.Drawing.Size(969, 38)
         Me.TextEdit2.StyleController = Me.LayoutControl1
         Me.TextEdit2.TabIndex = 5
         '
@@ -155,7 +179,7 @@ Partial Class frmParameters
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(715, 76)
+        Me.Root.Size = New System.Drawing.Size(1192, 134)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -163,16 +187,16 @@ Partial Class frmParameters
         Me.LayoutControlItem1.Control = Me.TextEdit1
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(695, 24)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(96, 13)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1158, 46)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(163, 23)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.TextEdit2
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 46)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(695, 32)
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(96, 13)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(1158, 52)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(163, 23)
         '
         'navDisplay
         '
@@ -198,36 +222,22 @@ Partial Class frmParameters
         Me.NavBarControl1.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.NavBarGroup2})
         Me.NavBarControl1.Items.AddRange(New DevExpress.XtraNavBar.NavBarItem() {Me.navDisplay, Me.navGen})
         Me.NavBarControl1.Location = New System.Drawing.Point(0, 0)
+        Me.NavBarControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.NavBarControl1.Name = "NavBarControl1"
-        Me.NavBarControl1.OptionsNavPane.ExpandedWidth = 200
-        Me.NavBarControl1.Size = New System.Drawing.Size(200, 592)
+        Me.NavBarControl1.OptionsNavPane.ExpandedWidth = 333
+        Me.NavBarControl1.Size = New System.Drawing.Size(333, 1047)
         Me.NavBarControl1.TabIndex = 0
         Me.NavBarControl1.View = New DevExpress.XtraNavBar.ViewInfo.StandardSkinNavigationPaneViewInfoRegistrator("Office 2019 White")
         '
-        'txtEmail
-        '
-        Me.txtEmail.Location = New System.Drawing.Point(136, 34)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(567, 20)
-        Me.txtEmail.StyleController = Me.LayoutControl2
-        Me.txtEmail.TabIndex = 38
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.txtEmail
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 22)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(695, 78)
-        Me.LayoutControlItem3.Text = "Technical Support Email"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(112, 13)
-        '
         'frmParameters
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(921, 592)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(1535, 1047)
         Me.Controls.Add(Me.TablePanel1)
         Me.Controls.Add(Me.NavBarControl1)
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmParameters"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmParameters"
@@ -236,8 +246,10 @@ Partial Class frmParameters
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
         CType(Me.txtDecimals.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -246,8 +258,6 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

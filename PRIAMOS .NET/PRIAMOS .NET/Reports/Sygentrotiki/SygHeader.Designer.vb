@@ -51,13 +51,13 @@ Partial Public Class SygHeader
         '
         'SqlDataSource1
         '
-        Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
+        Me.SqlDataSource1.ConnectionName = "PRIAMOS.NET.My.MySettings.Priamos_NETConnectionStringRemote"
         Me.SqlDataSource1.Name = "SqlDataSource1"
         CustomSqlQuery1.Name = "vw_INC"
         QueryParameter1.Name = "inhID"
         QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery1.Parameters.Add(QueryParameter1)
+        CustomSqlQuery1.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1})
         CustomSqlQuery1.Sql = "select distinct inhID,mlcRepName,calcCatOrd from vw_inc where inhID= @inhID order" &
     " by calcCatOrd"
         Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1})
@@ -200,7 +200,7 @@ Partial Public Class SygHeader
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.CrossTabGeneralStyle1, Me.CrossTabHeaderStyle1, Me.CrossTabDataStyle1, Me.CrossTabTotalStyle1})
-        Me.Version = "20.2"
+        Me.Version = "21.2"
         CType(Me.XrCrossTab1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 

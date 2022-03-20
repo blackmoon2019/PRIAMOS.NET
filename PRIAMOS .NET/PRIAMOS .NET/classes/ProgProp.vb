@@ -10,6 +10,7 @@ Public Class ProgProp
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then ProgProps.Decimals = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
             Return ProgProps.Decimals
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -37,6 +38,7 @@ Public Class ProgProp
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then ProgProps.SupportEmail = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
             Return ProgProps.SupportEmail
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -52,6 +54,7 @@ Public Class ProgProp
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then ProgProps.EXFolderPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
             Return ProgProps.EXFolderPath
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

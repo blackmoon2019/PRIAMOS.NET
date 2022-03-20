@@ -913,4 +913,10 @@ Public Class frmGen
             FillCbo.COU(cbo1, sSQL)
         End If
     End Sub
+
+    Private Sub ButtonEdit1_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles ButtonEdit1.ButtonClick
+        XtraFolderBrowserDialog1.DialogStyle = DevExpress.Utils.CommonDialogs.FolderBrowserDialogStyle.Wide
+        XtraFolderBrowserDialog1.ShowDialog()
+        ButtonEdit1.Text = XtraFolderBrowserDialog1.SelectedPath
+    End Sub
 End Class

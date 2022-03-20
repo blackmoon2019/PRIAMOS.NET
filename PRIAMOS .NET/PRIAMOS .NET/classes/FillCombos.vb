@@ -133,9 +133,9 @@ Public Class FillCombos
         Dim sSQLs As String
         Try
             If sSQL Is Nothing Then
-                sSQLs = "Select id,Fullname from vw_CCT order by Fullname"
+                sSQLs = "Select id,Fullname,mob,mob2,mob3 from vw_CCT order by Fullname"
             Else
-                sSQLs = "Select id,Fullname from vw_CCT " & sSQL.ToString & "  order by Fullname"
+                sSQLs = "Select id,Fullname,mob,mob2,mob3  from vw_CCT " & sSQL.ToString & "  order by Fullname"
             End If
             Dim cmd As SqlCommand = New SqlCommand(sSQLs.ToString, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
@@ -147,7 +147,11 @@ Public Class FillCombos
             CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
-            CtrlCombo.Properties.Columns(1).Caption = "Επαφές"
+            CtrlCombo.Properties.Columns(1).Caption = "Επαφές" : CtrlCombo.Properties.Columns(1).Width = 900
+            CtrlCombo.Properties.Columns(2).Caption = "Κινητό 1" : CtrlCombo.Properties.Columns(2).Width = 500
+            CtrlCombo.Properties.Columns(3).Caption = "Κινητό 2" : CtrlCombo.Properties.Columns(3).Width = 500
+            CtrlCombo.Properties.Columns(4).Caption = "Κινητό 3" : CtrlCombo.Properties.Columns(4).Width = 500
+
             sdr.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

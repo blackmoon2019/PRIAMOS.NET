@@ -205,6 +205,10 @@ Public Class frmAPT
 
     End Sub
 
+    Private Sub cboOwner_EditValueChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
 
     'Private Sub LoadAPT()
     '    Dim sSQL As String

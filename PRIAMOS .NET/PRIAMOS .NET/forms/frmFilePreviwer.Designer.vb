@@ -90,10 +90,12 @@ Partial Class frmFilePreviwer
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.DataSource = Me.VwINDFBindingSource
-        Me.grdMain.Location = New System.Drawing.Point(8, 33)
+        Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.grdMain.Location = New System.Drawing.Point(13, 58)
         Me.grdMain.MainView = Me.GridView1
+        Me.grdMain.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(568, 734)
+        Me.grdMain.Size = New System.Drawing.Size(947, 1299)
         Me.grdMain.TabIndex = 6
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -116,6 +118,7 @@ Partial Class frmFilePreviwer
         'GridView1
         '
         Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colrepName, Me.colID, Me.colindID, Me.colfiles, Me.colfilename, Me.colcomefrom, Me.colextension, Me.colcode})
+        Me.GridView1.DetailHeight = 619
         Me.GridView1.GridControl = Me.grdMain
         Me.GridView1.GroupCount = 1
         Me.GridView1.Name = "GridView1"
@@ -129,53 +132,66 @@ Partial Class frmFilePreviwer
         '
         Me.colrepName.Caption = "Έξοδο"
         Me.colrepName.FieldName = "repName"
+        Me.colrepName.MinWidth = 33
         Me.colrepName.Name = "colrepName"
         Me.colrepName.Visible = True
         Me.colrepName.VisibleIndex = 0
-        Me.colrepName.Width = 308
+        Me.colrepName.Width = 513
         '
         'colID
         '
         Me.colID.FieldName = "ID"
+        Me.colID.MinWidth = 33
         Me.colID.Name = "colID"
+        Me.colID.Width = 125
         '
         'colindID
         '
         Me.colindID.FieldName = "indID"
+        Me.colindID.MinWidth = 33
         Me.colindID.Name = "colindID"
+        Me.colindID.Width = 125
         '
         'colfiles
         '
         Me.colfiles.FieldName = "files"
+        Me.colfiles.MinWidth = 33
         Me.colfiles.Name = "colfiles"
+        Me.colfiles.Width = 125
         '
         'colfilename
         '
         Me.colfilename.Caption = "Όνομα Αρχείου"
         Me.colfilename.FieldName = "filename"
+        Me.colfilename.MinWidth = 33
         Me.colfilename.Name = "colfilename"
         Me.colfilename.Visible = True
         Me.colfilename.VisibleIndex = 0
-        Me.colfilename.Width = 246
+        Me.colfilename.Width = 410
         '
         'colcomefrom
         '
         Me.colcomefrom.Caption = "Διαδρομή"
         Me.colcomefrom.FieldName = "comefrom"
+        Me.colcomefrom.MinWidth = 33
         Me.colcomefrom.Name = "colcomefrom"
         Me.colcomefrom.Visible = True
         Me.colcomefrom.VisibleIndex = 1
-        Me.colcomefrom.Width = 1189
+        Me.colcomefrom.Width = 1982
         '
         'colextension
         '
         Me.colextension.FieldName = "extension"
+        Me.colextension.MinWidth = 33
         Me.colextension.Name = "colextension"
+        Me.colextension.Width = 125
         '
         'colcode
         '
         Me.colcode.FieldName = "code"
+        Me.colcode.MinWidth = 33
         Me.colcode.Name = "colcode"
+        Me.colcode.Width = 125
         '
         'PdfViewer1
         '
@@ -184,10 +200,11 @@ Partial Class frmFilePreviwer
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PdfViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.PdfViewer1.DetachStreamAfterLoadComplete = True
-        Me.PdfViewer1.Location = New System.Drawing.Point(582, 33)
+        Me.PdfViewer1.Location = New System.Drawing.Point(970, 58)
+        Me.PdfViewer1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.PdfViewer1.MenuManager = Me.BarManager1
         Me.PdfViewer1.Name = "PdfViewer1"
-        Me.PdfViewer1.Size = New System.Drawing.Size(652, 734)
+        Me.PdfViewer1.Size = New System.Drawing.Size(1087, 1299)
         Me.PdfViewer1.TabIndex = 0
         Me.PdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible
         '
@@ -249,7 +266,6 @@ Partial Class frmFilePreviwer
         '
         Me.PdfSetPageNumberBarItem1.Edit = Me.RepositoryItemPageNumberEdit1
         Me.PdfSetPageNumberBarItem1.EditValue = 0
-        Me.PdfSetPageNumberBarItem1.Enabled = False
         Me.PdfSetPageNumberBarItem1.Id = 6
         Me.PdfSetPageNumberBarItem1.Name = "PdfSetPageNumberBarItem1"
         '
@@ -395,31 +411,35 @@ Partial Class frmFilePreviwer
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1240, 27)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlTop.Size = New System.Drawing.Size(2067, 46)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 768)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1359)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1240, 0)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(2067, 0)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 27)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 46)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 741)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 1313)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1240, 27)
+        Me.barDockControlRight.Location = New System.Drawing.Point(2067, 46)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 741)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 1313)
         '
         'Vw_IND_FTableAdapter
         '
@@ -461,15 +481,17 @@ Partial Class frmFilePreviwer
         '
         'frmFilePreviwer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1240, 768)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(2067, 1359)
         Me.Controls.Add(Me.grdMain)
         Me.Controls.Add(Me.PdfViewer1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmFilePreviwer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmFilePreviwer"

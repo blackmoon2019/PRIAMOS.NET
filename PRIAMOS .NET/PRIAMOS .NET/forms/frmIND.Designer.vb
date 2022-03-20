@@ -43,6 +43,8 @@ Partial Class frmIND
         Me.colpaid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colETOS = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcompleteDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colbdgID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colbManageID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemLookUpEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.SimpleButton39 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup31 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -58,8 +60,6 @@ Partial Class frmIND
         Me.BBOpenInh = New DevExpress.XtraBars.BarButtonItem()
         Me.BBOpenBdg = New DevExpress.XtraBars.BarButtonItem()
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.colbdgID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colbManageID = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.LayoutControl9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl9.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,11 +81,12 @@ Partial Class frmIND
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl9.Controls.Add(Me.GridControl1)
         Me.LayoutControl9.Controls.Add(Me.SimpleButton39)
-        Me.LayoutControl9.Location = New System.Drawing.Point(-7, -9)
+        Me.LayoutControl9.Location = New System.Drawing.Point(-12, -16)
+        Me.LayoutControl9.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.LayoutControl9.Name = "LayoutControl9"
         Me.LayoutControl9.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(704, 399, 650, 400)
         Me.LayoutControl9.Root = Me.LayoutControlGroup31
-        Me.LayoutControl9.Size = New System.Drawing.Size(1345, 796)
+        Me.LayoutControl9.Size = New System.Drawing.Size(2242, 1408)
         Me.LayoutControl9.TabIndex = 3
         Me.LayoutControl9.Text = "LayoutControl1"
         '
@@ -95,11 +96,13 @@ Partial Class frmIND
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GridControl1.DataSource = Me.VwINDBindingSource
-        Me.GridControl1.Location = New System.Drawing.Point(38, 12)
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.GridControl1.Location = New System.Drawing.Point(63, 22)
         Me.GridControl1.MainView = Me.GridView5
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit3})
-        Me.GridControl1.Size = New System.Drawing.Size(1295, 772)
+        Me.GridControl1.Size = New System.Drawing.Size(2159, 1364)
         Me.GridControl1.TabIndex = 60
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
         '
@@ -117,6 +120,7 @@ Partial Class frmIND
         '
         Me.GridView5.Appearance.HeaderPanel.Options.UseTextOptions = True
         Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colinhID, Me.colrepName, Me.colamt, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colnam, Me.colfDate, Me.coltDate, Me.colname, Me.colowner_tenant, Me.colSelectedFiles, Me.colpaid, Me.colETOS, Me.colcompleteDate, Me.colbdgID, Me.colbManageID})
+        Me.GridView5.DetailHeight = 619
         Me.GridView5.GridControl = Me.GridControl1
         Me.GridView5.GroupCount = 1
         Me.GridView5.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", Me.colamt, " Σύνολο {0:n2}€"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "name", Nothing, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "owner_tenant", Nothing, "")})
@@ -136,127 +140,172 @@ Partial Class frmIND
         'colID
         '
         Me.colID.FieldName = "ID"
+        Me.colID.MinWidth = 33
         Me.colID.Name = "colID"
+        Me.colID.Width = 125
         '
         'colcode
         '
         Me.colcode.FieldName = "code"
+        Me.colcode.MinWidth = 33
         Me.colcode.Name = "colcode"
+        Me.colcode.Width = 125
         '
         'colinhID
         '
         Me.colinhID.FieldName = "inhID"
+        Me.colinhID.MinWidth = 33
         Me.colinhID.Name = "colinhID"
+        Me.colinhID.Width = 125
         '
         'colrepName
         '
         Me.colrepName.Caption = "Λεκτικό Εκτύπωσης"
         Me.colrepName.FieldName = "repName"
+        Me.colrepName.MinWidth = 33
         Me.colrepName.Name = "colrepName"
         Me.colrepName.Visible = True
         Me.colrepName.VisibleIndex = 1
-        Me.colrepName.Width = 181
+        Me.colrepName.Width = 302
         '
         'colamt
         '
         Me.colamt.Caption = "Ποσό"
         Me.colamt.FieldName = "amt"
+        Me.colamt.MinWidth = 33
         Me.colamt.Name = "colamt"
         Me.colamt.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", "SUM={0:0.##}")})
         Me.colamt.Visible = True
         Me.colamt.VisibleIndex = 0
-        Me.colamt.Width = 93
+        Me.colamt.Width = 155
         '
         'colmodifiedBy
         '
         Me.colmodifiedBy.FieldName = "modifiedBy"
+        Me.colmodifiedBy.MinWidth = 33
         Me.colmodifiedBy.Name = "colmodifiedBy"
+        Me.colmodifiedBy.Width = 125
         '
         'colmodifiedOn
         '
         Me.colmodifiedOn.FieldName = "modifiedOn"
+        Me.colmodifiedOn.MinWidth = 33
         Me.colmodifiedOn.Name = "colmodifiedOn"
+        Me.colmodifiedOn.Width = 125
         '
         'colcreatedOn
         '
         Me.colcreatedOn.FieldName = "createdOn"
+        Me.colcreatedOn.MinWidth = 33
         Me.colcreatedOn.Name = "colcreatedOn"
+        Me.colcreatedOn.Width = 125
         '
         'colnam
         '
         Me.colnam.Caption = "Πολυκατοικία"
         Me.colnam.FieldName = "nam"
+        Me.colnam.MinWidth = 33
         Me.colnam.Name = "colnam"
         Me.colnam.Visible = True
         Me.colnam.VisibleIndex = 9
+        Me.colnam.Width = 125
         '
         'colfDate
         '
         Me.colfDate.Caption = "Από Ημερ/νία"
         Me.colfDate.FieldName = "fDate"
+        Me.colfDate.MinWidth = 33
         Me.colfDate.Name = "colfDate"
         Me.colfDate.Visible = True
         Me.colfDate.VisibleIndex = 6
+        Me.colfDate.Width = 125
         '
         'coltDate
         '
         Me.coltDate.Caption = "Έως  Ημερ/νία"
         Me.coltDate.FieldName = "tDate"
+        Me.coltDate.MinWidth = 33
         Me.coltDate.Name = "coltDate"
         Me.coltDate.Visible = True
         Me.coltDate.VisibleIndex = 7
+        Me.coltDate.Width = 125
         '
         'colname
         '
         Me.colname.Caption = "Κατηγορία Υπολογισμού"
         Me.colname.FieldName = "name"
+        Me.colname.MinWidth = 33
         Me.colname.Name = "colname"
         Me.colname.Visible = True
         Me.colname.VisibleIndex = 5
-        Me.colname.Width = 139
+        Me.colname.Width = 232
         '
         'colowner_tenant
         '
         Me.colowner_tenant.Caption = "Ένοικος/Ιδιοκτήτης"
         Me.colowner_tenant.FieldName = "owner_tenant"
+        Me.colowner_tenant.MinWidth = 33
         Me.colowner_tenant.Name = "colowner_tenant"
         Me.colowner_tenant.Visible = True
         Me.colowner_tenant.VisibleIndex = 3
+        Me.colowner_tenant.Width = 125
         '
         'colSelectedFiles
         '
         Me.colSelectedFiles.FieldName = "SelectedFiles"
+        Me.colSelectedFiles.MinWidth = 33
         Me.colSelectedFiles.Name = "colSelectedFiles"
+        Me.colSelectedFiles.Width = 125
         '
         'colpaid
         '
         Me.colpaid.Caption = "Πληρώθηκε"
         Me.colpaid.FieldName = "paid"
+        Me.colpaid.MinWidth = 33
         Me.colpaid.Name = "colpaid"
         Me.colpaid.Visible = True
         Me.colpaid.VisibleIndex = 2
+        Me.colpaid.Width = 125
         '
         'colETOS
         '
         Me.colETOS.Caption = "Έτος"
         Me.colETOS.FieldName = "ETOS"
+        Me.colETOS.MinWidth = 33
         Me.colETOS.Name = "colETOS"
         Me.colETOS.Visible = True
         Me.colETOS.VisibleIndex = 4
+        Me.colETOS.Width = 125
         '
         'colcompleteDate
         '
         Me.colcompleteDate.Caption = "Περίοδος"
         Me.colcompleteDate.FieldName = "completeDate"
+        Me.colcompleteDate.MinWidth = 33
         Me.colcompleteDate.Name = "colcompleteDate"
         Me.colcompleteDate.Visible = True
         Me.colcompleteDate.VisibleIndex = 8
+        Me.colcompleteDate.Width = 125
+        '
+        'colbdgID
+        '
+        Me.colbdgID.FieldName = "bdgID"
+        Me.colbdgID.MinWidth = 33
+        Me.colbdgID.Name = "colbdgID"
+        Me.colbdgID.Width = 125
+        '
+        'colbManageID
+        '
+        Me.colbManageID.FieldName = "bManageID"
+        Me.colbManageID.MinWidth = 33
+        Me.colbManageID.Name = "colbManageID"
+        Me.colbManageID.Width = 125
         '
         'RepositoryItemLookUpEdit3
         '
         Me.RepositoryItemLookUpEdit3.AutoHeight = False
         Me.RepositoryItemLookUpEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
-        Me.RepositoryItemLookUpEdit3.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 18, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Κατηγορία", 33, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemLookUpEdit3.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 30, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Κατηγορία", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.RepositoryItemLookUpEdit3.DisplayMember = "name"
         Me.RepositoryItemLookUpEdit3.KeyMember = "name"
         Me.RepositoryItemLookUpEdit3.Name = "RepositoryItemLookUpEdit3"
@@ -265,10 +314,11 @@ Partial Class frmIND
         'SimpleButton39
         '
         Me.SimpleButton39.ImageOptions.Image = CType(resources.GetObject("SimpleButton39.ImageOptions.Image"), System.Drawing.Image)
-        Me.SimpleButton39.Location = New System.Drawing.Point(12, 12)
+        Me.SimpleButton39.Location = New System.Drawing.Point(20, 22)
+        Me.SimpleButton39.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.SimpleButton39.Name = "SimpleButton39"
         Me.SimpleButton39.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.SimpleButton39.Size = New System.Drawing.Size(22, 22)
+        Me.SimpleButton39.Size = New System.Drawing.Size(37, 39)
         Me.SimpleButton39.StyleController = Me.LayoutControl9
         Me.SimpleButton39.TabIndex = 59
         '
@@ -278,15 +328,15 @@ Partial Class frmIND
         Me.LayoutControlGroup31.GroupBordersVisible = False
         Me.LayoutControlGroup31.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem246})
         Me.LayoutControlGroup31.Name = "Root"
-        Me.LayoutControlGroup31.Size = New System.Drawing.Size(1345, 796)
+        Me.LayoutControlGroup31.Size = New System.Drawing.Size(2242, 1408)
         Me.LayoutControlGroup31.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.GridControl1
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(26, 0)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(43, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1299, 776)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(2165, 1372)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -295,7 +345,7 @@ Partial Class frmIND
         Me.LayoutControlItem246.Control = Me.SimpleButton39
         Me.LayoutControlItem246.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem246.Name = "LayoutControlItem107"
-        Me.LayoutControlItem246.Size = New System.Drawing.Size(26, 776)
+        Me.LayoutControlItem246.Size = New System.Drawing.Size(43, 1372)
         Me.LayoutControlItem246.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem246.TextVisible = False
         '
@@ -323,15 +373,17 @@ Partial Class frmIND
         Me.BarDockControl2.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarDockControl2.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl2.Manager = Me.BarManager1
-        Me.BarDockControl2.Size = New System.Drawing.Size(1329, 0)
+        Me.BarDockControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl2.Size = New System.Drawing.Size(2215, 0)
         '
         'BarDockControl3
         '
         Me.BarDockControl3.CausesValidation = False
         Me.BarDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BarDockControl3.Location = New System.Drawing.Point(0, 779)
+        Me.BarDockControl3.Location = New System.Drawing.Point(0, 1378)
         Me.BarDockControl3.Manager = Me.BarManager1
-        Me.BarDockControl3.Size = New System.Drawing.Size(1329, 0)
+        Me.BarDockControl3.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl3.Size = New System.Drawing.Size(2215, 0)
         '
         'BarDockControl4
         '
@@ -339,15 +391,17 @@ Partial Class frmIND
         Me.BarDockControl4.Dock = System.Windows.Forms.DockStyle.Left
         Me.BarDockControl4.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl4.Manager = Me.BarManager1
-        Me.BarDockControl4.Size = New System.Drawing.Size(0, 779)
+        Me.BarDockControl4.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl4.Size = New System.Drawing.Size(0, 1378)
         '
         'BarDockControl5
         '
         Me.BarDockControl5.CausesValidation = False
         Me.BarDockControl5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.BarDockControl5.Location = New System.Drawing.Point(1329, 0)
+        Me.BarDockControl5.Location = New System.Drawing.Point(2215, 0)
         Me.BarDockControl5.Manager = Me.BarManager1
-        Me.BarDockControl5.Size = New System.Drawing.Size(0, 779)
+        Me.BarDockControl5.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl5.Size = New System.Drawing.Size(0, 1378)
         '
         'BBOpenInh
         '
@@ -367,26 +421,18 @@ Partial Class frmIND
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
         '
-        'colbdgID
-        '
-        Me.colbdgID.FieldName = "bdgID"
-        Me.colbdgID.Name = "colbdgID"
-        '
-        'colbManageID
-        '
-        Me.colbManageID.FieldName = "bManageID"
-        Me.colbManageID.Name = "colbManageID"
-        '
         'frmIND
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1329, 779)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(2215, 1378)
         Me.Controls.Add(Me.LayoutControl9)
         Me.Controls.Add(Me.BarDockControl4)
         Me.Controls.Add(Me.BarDockControl5)
         Me.Controls.Add(Me.BarDockControl3)
         Me.Controls.Add(Me.BarDockControl2)
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmIND"
         Me.Text = "frmIND"
         CType(Me.LayoutControl9, System.ComponentModel.ISupportInitialize).EndInit()

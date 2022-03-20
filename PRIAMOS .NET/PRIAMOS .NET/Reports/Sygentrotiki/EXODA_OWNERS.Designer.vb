@@ -50,13 +50,13 @@ Partial Public Class EXODA_OWNERS
         '
         'SqlDataSource1
         '
-        Me.SqlDataSource1.ConnectionName = "myConnectionStringRem"
+        Me.SqlDataSource1.ConnectionName = "PRIAMOS.NET.My.MySettings.Priamos_NETConnectionStringRemote"
         Me.SqlDataSource1.Name = "SqlDataSource1"
         CustomSqlQuery1.Name = "vw_IND"
         QueryParameter1.Name = "inhID"
         QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery1.Parameters.Add(QueryParameter1)
+        CustomSqlQuery1.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1})
         CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
         Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1})
         Me.SqlDataSource1.ResultSchemaSerializable = resources.GetString("SqlDataSource1.ResultSchemaSerializable")
@@ -289,7 +289,7 @@ Partial Public Class EXODA_OWNERS
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.Title, Me.GroupCaption1, Me.GroupData1, Me.DetailCaption1, Me.DetailData1, Me.GroupFooterBackground3, Me.DetailData3_Odd, Me.PageInfo})
-        Me.Version = "20.2"
+        Me.Version = "21.2"
         CType(Me.table1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 

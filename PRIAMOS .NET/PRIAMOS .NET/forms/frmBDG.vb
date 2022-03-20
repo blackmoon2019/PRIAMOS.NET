@@ -125,6 +125,7 @@ Public Class frmBDG
                 NavConsumption.Enabled = False
                 NavBoiler.Enabled = False
                 NavAPM.Enabled = False
+                NavINH.Enabled = False
             Case FormMode.EditRecord
                 FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
@@ -142,14 +143,13 @@ Public Class frmBDG
         My.Settings.frmBDG = Me.Location
         My.Settings.Save()
         bdgName = txtNam.Text
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APT_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView1, "APT_def.xml")
+
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
-
     Private Sub frmBDG_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
-
     Private Sub txtTK_LostFocus(sender As Object, e As EventArgs) Handles txtTK.LostFocus
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
@@ -283,6 +283,7 @@ Public Class frmBDG
                     NavConsumption.Enabled = True
                     NavBoiler.Enabled = True
                     NavAPM.Enabled = True
+                    NavINH.Enabled = True
 
                     If Mode = FormMode.NewRecord Then sID = sGuid
                     ' Εαν έχει γίνει αλλαγή στην αμοιβή διαχείρισης
@@ -425,7 +426,7 @@ Public Class frmBDG
     End Sub
     Public Sub AptRefresh()
         LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APT_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView1, "APT_def.xml")
     End Sub
     Private Sub DeleteApt()
         Dim sSQL As String
@@ -484,180 +485,12 @@ Public Class frmBDG
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3nd Custom Menu Item
-                menu.Items.Add(CreateEditGRID("Επεξεργασία GRID", GridView1, Nothing))
-
-                '4rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '5nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView1, "APT_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView1.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChangedIEP(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView6.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChangedAHPB(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView2.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChangedINV_OIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView3.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    Private Sub OnColumnsColorChangedINV_GAS(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView4.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    Private Sub OnColumnsColorChangedAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView5.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
 
-    'Αποθήκευση όψης Διαμερισμάτων
-    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APT_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-    'Αποθήκευση όψης Μετρήσεων ωρών
-    Private Sub OnSaveViewAHPB(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-    Private Sub OnSaveViewINV_OIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView3.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INV_OIL_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-    Private Sub OnSaveViewINV_GAS(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView4.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INV_GAS_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-    Private Sub OnSaveViewAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-    Private Sub OnSaveViewDetailAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView7.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-    Private Sub OnSaveViewIEP(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView6.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\IEP_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-    Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView1.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    Private Sub OnEditValueChangedIEP(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView6.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-
-    Private Sub OnEditValueChangedAHPB(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView2.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    Private Sub OnEditValueChangedINV_OIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView3.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    Private Sub OnEditValueChangedINV_GAS(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView4.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    Private Sub OnEditValueChangedAPMIL(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView5.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-
-    Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
-        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
-        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
-        If info Is Nothing Then
-            Return
-        End If
-        info.Column.OptionsColumn.AllowMove = Not item.Checked
-    End Sub
-    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As System.Drawing.Image) As DXMenuCheckItem
-        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
-        item.Tag = New MenuColumnInfo(column)
-        Return item
-    End Function
     Private Sub OnCanGRIDEdit(ByVal sender As Object, ByVal e As EventArgs)
         Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
         GridView1.OptionsBehavior.Editable = item.Checked
@@ -956,8 +789,6 @@ Public Class frmBDG
         myProcess.Start()
         myProcess.Dispose()
     End Sub
-
-
     Private Sub CheckButton2_CheckedChanged(sender As Object, e As EventArgs)
         Dim btn As CheckButton = TryCast(sender, CheckButton)
         If btn.Checked = True Then
@@ -1020,8 +851,6 @@ Public Class frmBDG
             Case 3 : cboADR.EditValue = Nothing
         End Select
     End Sub
-
-
     Private Sub LoadMefMes()
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
@@ -1034,7 +863,7 @@ Public Class frmBDG
                     BEF.mdt = (select max(mdt) from vw_AHPB where mdt < " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ORDER BY CUR.ORD   "
             'sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
             LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
             GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
             GridView2.Columns("mesB").OptionsColumn.ReadOnly = True : GridView2.Columns("mesB").OptionsColumn.AllowEdit = False
             GridView2.Columns("mes").OptionsColumn.ReadOnly = False : GridView2.Columns("mes").OptionsColumn.AllowEdit = True
@@ -1115,36 +944,7 @@ Public Class frmBDG
 
     Private Sub GridView5_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAPMIL, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAPMIL, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAPMIL, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView5, "APMIL_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -1165,7 +965,7 @@ Public Class frmBDG
                     oCmd.ExecuteNonQuery()
                 End Using
                 LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-                If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+                LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
                 If GridView2.RowCount = 0 Then
                     XtraMessageBox.Show("Πρέπει πρώτα να καταχωρήσετε διαμερίσματα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -1223,7 +1023,7 @@ Public Class frmBDG
             End Using
         Next
         LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
         If GridView2.RowCount <= 0 Then
             If cboBefMes.EditValue = Nothing Then
                 sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd"))
@@ -1277,38 +1077,9 @@ Public Class frmBDG
         System.Diagnostics.Process.Start(e.Text)
     End Sub
 
-    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedAHPB, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedAHPB, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewAHPB, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView2, "AHPB_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -1353,7 +1124,7 @@ Public Class frmBDG
         'If XtraOpenFileDialog1.FileName = "" Then Exit Sub
         'Dim sGID As String = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString
         '' Διαγραφή πρώτα παλιού αρχείου
-        'Using oCmd As New SqlCommand("delete from INV_GAS WHERE ID = " & toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InvGFID").ToString), CNDB)
+        'Using oCmd As New SqlCommand("delete from INV_GAS WHERE ID = " & toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString), CNDB)
         '    oCmd.ExecuteNonQuery()
         'End Using
 
@@ -1367,7 +1138,7 @@ Public Class frmBDG
         'If XtraOpenFileDialog1.FileName = "" Then Exit Sub
         'Dim sOID As String = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString
         '' Διαγραφή πρώτα παλιού αρχείου
-        'Using oCmd As New SqlCommand("delete from INV_OILF WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "InvOILFID").ToString), CNDB)
+        'Using oCmd As New SqlCommand("delete from INV_OILF WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString), CNDB)
         '    oCmd.ExecuteNonQuery()
         'End Using
         'If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
@@ -1400,12 +1171,15 @@ Public Class frmBDG
 
     Private Sub grdOil_DoubleClick(sender As Object, e As EventArgs) Handles grdOil.DoubleClick
         If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
         Try
-            Dim b() As Byte = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "files")
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
+
+            Dim b() As Byte = LoadForms.GetFile(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
             fs.Write(b, 0, b.Length)
             fs.Close()
             ShellExecute(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
+        Catch ex As IOException
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1413,12 +1187,15 @@ Public Class frmBDG
 
     Private Sub grdGas_DoubleClick(sender As Object, e As EventArgs) Handles grdGas.DoubleClick
         If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
         Try
-            Dim b() As Byte = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "files")
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
+
+            Dim b() As Byte = LoadForms.GetFile(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
             fs.Write(b, 0, b.Length)
             fs.Close()
             ShellExecute(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
+        Catch ex As IOException
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1442,36 +1219,7 @@ Public Class frmBDG
 
     Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView4.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINV_GAS, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINV_GAS, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_GAS, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView4, "INV_GAS_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -1488,7 +1236,7 @@ Public Class frmBDG
                 XtraOpenFileDialog1.FileName = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "comefrom").ToString & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename").ToString
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
                     ' Διαγραφή πρώτα παλιού αρχείου
-                    InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InvGFID").ToString, "INV_GASF")
+                    InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
 
                     If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString) = False Then
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1496,6 +1244,7 @@ Public Class frmBDG
                 End If
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 XtraOpenFileDialog1.FileName = ""
+                InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1516,7 +1265,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdGInvDelete_Click(sender As Object, e As EventArgs) Handles cmdGInvDelete.Click
-        InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InvGFID").ToString, "INV_GASF")
+        InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
         InvGas.DeleteRecord(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, "INV_GAS")
         InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
 
@@ -1535,7 +1284,7 @@ Public Class frmBDG
 
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
                     ' Διαγραφή πρώτα παλιού αρχείου
-                    InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "InvOILFID").ToString, "INV_OILF")
+                    InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
 
                     If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1543,6 +1292,7 @@ Public Class frmBDG
                 End If
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 XtraOpenFileDialog1.FileName = ""
+                InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1551,36 +1301,7 @@ Public Class frmBDG
 
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINV_OIL, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINV_OIL, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINV_OIL, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView3, "INV_OIL_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -1596,7 +1317,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdOInvDelete_Click(sender As Object, e As EventArgs) Handles cmdOInvDelete.Click
-        InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "InvOILFID").ToString, "INV_OILF")
+        InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
         InvOils.DeleteRecord(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, "INV_OIL")
         InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
     End Sub
@@ -1724,8 +1445,9 @@ Public Class frmBDG
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
             LoadForms.LoadColumnDescriptionNames(grdAPM, GridView5, , "vw_APMIL")
             LoadForms.LoadColumnDescriptionNames(grdAPM, GridView7, , "vw_APMIL_D")
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml") Then GridView7.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView5, "APMIL_def.xml")
+            LoadForms.RestoreLayoutFromXml(GridView7, "APMIL_D_def.xml")
+
             GridView5.OptionsCustomization.AllowSort = False
 
             ApmilFieldsToBeUpdate.Clear()
@@ -1772,8 +1494,8 @@ Public Class frmBDG
                     End If
                 End If
             Next
-            GridView5.Columns("AptNam").OptionsColumn.ReadOnly = True
-            GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
+            'GridView5.Columns("AptNam").OptionsColumn.ReadOnly = True
+            'GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
             ApmilFieldsToBeUpdate.Add("ΠΟΣΟΣΤΟ ΚΛΕΙΣΤΟΥ")
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1945,45 +1667,13 @@ Public Class frmBDG
         LoadForms.LoadDataToGrid(grdIEP, GridView6, sSQL)
         'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
         LoadForms.LoadColumnDescriptionNames(grdIEP, GridView6,, "vw_IEP")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\IEP_def.xml") Then GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\IEP_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView6, "IEP_def.xml")
         GridView6.ExpandAllGroups()
 
     End Sub
     Private Sub GridView6_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-            Dim itemSaveView As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedIEP, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3nd Custom Menu Item
-                'menu.Items.Add(CreateEditGRID("Επεξεργασία GRID", GridView1, Nothing))
-
-                '4rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedIEP, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '5nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewIEP, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView6, "IEP_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -2060,7 +1750,7 @@ Public Class frmBDG
         form1.FormScroller = Me
         form1.ID = GridView6.GetRowCellValue(GridView6.FocusedRowHandle, "ID").ToString
         form1.BDGID = sID
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        '    frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         'form1.Show()
         form1.ShowDialog()
     End Sub
@@ -2130,67 +1820,10 @@ Public Class frmBDG
 
     Private Sub GridView7_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView7.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnDetailEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItemDetail("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnDetailColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewDetailAPMIL, Nothing, Nothing, Nothing, Nothing))
-            End If
+            LoadForms.PopupMenuShow(e, GridView7, "APMIL_D_def.xml")
         Else
             'PopupMenuRowsDetail.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
-    End Sub
-    Private Sub OnDetailEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView7.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    'Αλλαγή Χρώματος Στήλης Detail
-    Private Sub OnDetailColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView7.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-
-    Private Function CreateCheckItemDetail(ByVal caption As String, ByVal column As GridColumn, ByVal image As System.Drawing.Image) As DXMenuCheckItem
-        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClickDetail))
-        item.Tag = New MenuColumnInfo(column)
-        Return item
-    End Function
-    'Κλείδωμα Στήλης Detail
-    Private Sub OnCanMoveItemClickDetail(ByVal sender As Object, ByVal e As EventArgs)
-        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
-        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
-        If info Is Nothing Then
-            Return
-        End If
-        info.Column.OptionsColumn.AllowMove = Not item.Checked
     End Sub
 
     Private Sub NavMaintenance_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavMaintenance.ElementClick
@@ -2239,10 +1872,6 @@ Public Class frmBDG
         Cls.ClearGroupCtrls(LayoutControlGroup15)
         txtCodeBcct.Text = DBQ.GetNextId("BCCT")
         ModeBCCT = FormMode.NewRecord
-    End Sub
-
-    Private Sub GridView8_CustomRowCellEdit(sender As Object, e As CustomRowCellEditEventArgs) Handles GridView8.CustomRowCellEdit
-
     End Sub
     Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPrf.ButtonClick
         Select Case e.Button.Index
@@ -2419,7 +2048,8 @@ Public Class frmBDG
     Private Sub NavINH_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavINH.ElementClick
         Maintab.SelectedTabPage = tabINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml") Then GridView10.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView10, "INH_BDG_def.xml")
+
 
     End Sub
 
@@ -2498,72 +2128,10 @@ Public Class frmBDG
 
     Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChangedINH, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItemINH("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChangedINH, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '5nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveViewINH, Nothing, Nothing, Nothing, Nothing))
-
-            End If
+            LoadForms.PopupMenuShow(e, GridView10, "INH_BDG_def.xml")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
-    End Sub
-    Private Sub OnEditValueChangedINH(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView10.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChangedINH(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView10.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    Private Function CreateCheckItemINH(ByVal caption As String, ByVal column As GridColumn, ByVal image As System.Drawing.Image) As DXMenuCheckItem
-        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClickINH))
-        item.Tag = New MenuColumnInfo(column)
-        Return item
-    End Function
-    Private Sub OnCanMoveItemClickINH(ByVal sender As Object, ByVal e As EventArgs)
-        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
-        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
-        If info Is Nothing Then
-            Return
-        End If
-        info.Column.OptionsColumn.AllowMove = Not item.Checked
-    End Sub
-    'Αποθήκευση όψης Παραστατικών
-    Private Sub OnSaveViewINH(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView10.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INH_BDG_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
@@ -2576,7 +2144,7 @@ Public Class frmBDG
 
     Private Sub cmdRefreshAHPB_Click(sender As Object, e As EventArgs) Handles cmdRefreshAHPB.Click
         LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml") Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\AHPB_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
 
     End Sub
 
@@ -2604,6 +2172,8 @@ Public Class frmBDG
 
         End If
     End Sub
+
+
 
 
 

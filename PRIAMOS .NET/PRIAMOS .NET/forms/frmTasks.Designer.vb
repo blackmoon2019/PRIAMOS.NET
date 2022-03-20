@@ -26,10 +26,13 @@ Partial Class frmTasks
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.dtCompleteDate = New DevExpress.XtraEditors.DateEdit()
         Me.cboCCT = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
         Me.txtdescription = New DevExpress.XtraEditors.TextEdit()
         Me.cboCase = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwCASESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -41,9 +44,6 @@ Partial Class frmTasks
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
-        Me.VwCASESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_CASESTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CASESTableAdapter()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,10 +51,13 @@ Partial Class frmTasks
         CType(Me.dtCompleteDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCompleteDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtdescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCase.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,9 +69,6 @@ Partial Class frmTasks
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -148,6 +148,16 @@ Partial Class frmTasks
         Me.cboCCT.TabIndex = 44
         Me.cboCCT.Tag = "cctid,0,1,2"
         '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'txtCode
         '
         Me.txtCode.Location = New System.Drawing.Point(223, 12)
@@ -202,6 +212,11 @@ Partial Class frmTasks
         Me.cboCase.StyleController = Me.LayoutControl1
         Me.cboCase.TabIndex = 44
         Me.cboCase.Tag = "caseid,0,1,2"
+        '
+        'VwCASESBindingSource
+        '
+        Me.VwCASESBindingSource.DataMember = "vw_CASES"
+        Me.VwCASESBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'Root
         '
@@ -323,21 +338,6 @@ Partial Class frmTasks
         Me.LayoutControlItem53.Text = "Ημερ/νία Επίσκεψης"
         Me.LayoutControlItem53.TextSize = New System.Drawing.Size(199, 23)
         '
-        'VwPARTNERANDWORKSHOPBindingSource
-        '
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VwCASESBindingSource
-        '
-        Me.VwCASESBindingSource.DataMember = "vw_CASES"
-        Me.VwCASESBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'Vw_CASESTableAdapter
         '
         Me.Vw_CASESTableAdapter.ClearBeforeFill = True
@@ -350,6 +350,7 @@ Partial Class frmTasks
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(978, 746)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmTasks"
@@ -359,10 +360,13 @@ Partial Class frmTasks
         CType(Me.dtCompleteDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtCompleteDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtdescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCase.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -374,9 +378,6 @@ Partial Class frmTasks
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCASESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

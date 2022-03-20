@@ -79,6 +79,7 @@ Public Class frmINH
                 EditRecord()
                 'Χιλιοστά Διαμερισμάτων
                 ApmLoad()
+                lbldate.Text = TranslateDates(dtFDate, dtTDate)
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -90,12 +91,13 @@ Public Class frmINH
         dtTDate.Properties.Mask.EditMask = "Y"
         dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
-        lbldate.Text = TranslateDates(dtFDate, dtTDate)
+
         'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") = False Then
             GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
         End If
         GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+
         LoadConditionalFormatting()
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
@@ -334,11 +336,34 @@ Public Class frmINH
         End Select
 
     End Sub
+    Private Sub cboBDG_Validated(sender As Object, e As EventArgs) Handles cboBDG.Validated
+        If cboBDG.EditValue = Nothing Then Exit Sub
+        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+            txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
 
+            If Priamos_NETDataSet.AHPB_H.Rows.Count > 0 Then
+                cboAhpb.ItemIndex = 0
+                cboAhpb.Properties.ReadOnly = False
+
+            ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
+                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'cmdOK.Enabled = False
+            End If
+        Else
+            txtHeatingType.EditValue = Nothing
+        End If
+        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+        Else
+            txtBoilerType.EditValue = Nothing
+        End If
+    End Sub
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
         chkCALC_CAT.DataSource = VwCALCCATBindingSource
-        Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+        'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+        Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
@@ -476,12 +501,12 @@ Public Class frmINH
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
             LoadForms.LoadColumnDescriptionNames(grdAPM, GridView1, , "vw_APMIL")
             LoadForms.LoadColumnDescriptionNames(grdAPM, GridView7, , "vw_APMIL_D")
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml") Then GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml") Then GridView7.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView1, "APMIL_def.xml")
+            LoadForms.RestoreLayoutFromXml(GridView7, "APMIL_D_def.xml")
             GridView1.OptionsCustomization.AllowSort = False
 
-            GridView1.Columns("AptNam").OptionsColumn.ReadOnly = True
-            GridView1.Columns("AptNam").OptionsColumn.AllowEdit = False
+            'GridView1.Columns("AptNam").OptionsColumn.ReadOnly = True
+            'GridView1.Columns("AptNam").OptionsColumn.AllowEdit = False
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -581,29 +606,7 @@ Public Class frmINH
         End If
     End Sub
 
-    Private Sub cboBDG_Validated(sender As Object, e As EventArgs) Handles cboBDG.Validated
-        If cboBDG.EditValue = Nothing Then Exit Sub
-        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-            txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
-            txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
 
-            If Priamos_NETDataSet.AHPB_H1.Rows.Count > 0 Then
-                cboAhpb.ItemIndex = 0
-                cboAhpb.Properties.ReadOnly = False
-
-            ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
-                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                'cmdOK.Enabled = False
-            End If
-        Else
-            txtHeatingType.EditValue = Nothing
-        End If
-        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-            txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
-        Else
-            txtBoilerType.EditValue = Nothing
-        End If
-    End Sub
 
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
         Select Case e.Button.Index
@@ -822,4 +825,110 @@ Public Class frmINH
     End Sub
 
 
+
+    'Μετονομασία Στήλης Master
+    Private Sub OnEditValueChanged2(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As New DXEditMenuItem()
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView1.Columns(item.Tag).Caption = item.EditValue
+        'MessageBox.Show(item.EditValue.ToString())
+    End Sub
+    Private Function CreateCheckItem2(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
+        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
+        item.Tag = New MenuColumnInfo(column)
+        Return item
+    End Function
+    'Αλλαγή Χρώματος Στήλης Master
+    Private Sub OnColumnsColorChanged2(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
+        item = sender
+        If item.Tag Is Nothing Then Exit Sub
+        GridView1.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+    End Sub
+    'Κλείδωμα Στήλης Master
+    Private Sub OnCanMoveItemClick2(ByVal sender As Object, ByVal e As EventArgs)
+        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
+        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
+        If info Is Nothing Then
+            Return
+        End If
+        info.Column.OptionsColumn.AllowMove = Not item.Checked
+    End Sub
+    'Αποθήκευση όψης 
+    Private Sub OnSaveView2(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
+        GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+        GridView7.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
+           UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
+           UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
+            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
+                If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml") = False Then GridView7.OptionsLayout.LayoutVersion = "v1"
+                GridView1.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+                GridView7.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+            End If
+        End If
+    End Sub
+    'Συγχρονισμός όψης από Server
+    Private Sub OnSyncView2(ByVal sender As System.Object, ByVal e As EventArgs)
+        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
+            If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml") = True Then
+                My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml", Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", True)
+                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
+            End If
+            If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml") = True Then
+                My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml", Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", True)
+                GridView7.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
+            End If
+
+        End If
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
+            Dim item As New DXEditMenuItem()
+            Dim itemColor As New DXEditMenuItem()
+
+            'menu.Items.Clear()
+            If menu.Column IsNot Nothing Then
+                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
+                'Υπάρχουν πολλών ειδών Repositorys
+                '1st Custom Menu Item
+                Dim popRenameColumn As New RepositoryItemTextEdit
+                popRenameColumn.Name = "RenameColumn"
+                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged2, Nothing, Nothing, 100, 0))
+                item = menu.Items.Item("Μετονομασία Στήλης")
+                item.EditValue = menu.Column.GetTextCaption
+                item.Tag = menu.Column.AbsoluteIndex
+
+                '2nd Custom Menu Item
+                menu.Items.Add(CreateCheckItem2("Κλείδωμα Στήλης", menu.Column, Nothing))
+
+                '3rd Custom Menu Item
+                Dim popColorsColumn As New RepositoryItemColorEdit
+                popColorsColumn.Name = "ColorsColumn"
+                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged2, Nothing, Nothing, 100, 0))
+                itemColor = menu.Items.Item("Χρώμα Στήλης")
+                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
+                itemColor.Tag = menu.Column.AbsoluteIndex
+
+                '4nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView2, Nothing, Nothing, Nothing, Nothing))
+                '5nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Συγχρονισμός όψης από Server", AddressOf OnSyncView2, Nothing, Nothing, Nothing, Nothing))
+
+
+            End If
+        End If
+    End Sub
+
+    Private Sub cboBDG_RightToLeftChanged(sender As Object, e As EventArgs) Handles cboBDG.RightToLeftChanged
+
+    End Sub
 End Class

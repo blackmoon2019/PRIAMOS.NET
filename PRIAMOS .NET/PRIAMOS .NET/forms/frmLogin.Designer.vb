@@ -33,25 +33,28 @@ Partial Class frmLogin
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(13, 22)
+        Me.LabelControl1.Location = New System.Drawing.Point(22, 39)
+        Me.LabelControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(71, 13)
+        Me.LabelControl1.Size = New System.Drawing.Size(125, 23)
         Me.LabelControl1.TabIndex = 1
         Me.LabelControl1.Text = "Όνομα Χρήστη"
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(14, 80)
+        Me.LabelControl2.Location = New System.Drawing.Point(23, 142)
+        Me.LabelControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(39, 13)
+        Me.LabelControl2.Size = New System.Drawing.Size(67, 23)
         Me.LabelControl2.TabIndex = 3
         Me.LabelControl2.Text = "Κωδικός"
         '
         'cmdLogin
         '
-        Me.cmdLogin.Location = New System.Drawing.Point(14, 172)
+        Me.cmdLogin.Location = New System.Drawing.Point(23, 304)
+        Me.cmdLogin.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.cmdLogin.Name = "cmdLogin"
-        Me.cmdLogin.Size = New System.Drawing.Size(209, 23)
+        Me.cmdLogin.Size = New System.Drawing.Size(348, 41)
         Me.cmdLogin.TabIndex = 4
         Me.cmdLogin.Text = "Είσοδος"
         '
@@ -59,46 +62,51 @@ Partial Class frmLogin
         '
         Me.cmdConnect.BackgroundImage = Global.PRIAMOS.NET.My.Resources.Resources.icons8_database_administrator_40
         Me.cmdConnect.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_database_administrator_24
-        Me.cmdConnect.Location = New System.Drawing.Point(229, 172)
+        Me.cmdConnect.Location = New System.Drawing.Point(382, 304)
+        Me.cmdConnect.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.cmdConnect.Name = "cmdConnect"
-        Me.cmdConnect.Size = New System.Drawing.Size(30, 27)
+        Me.cmdConnect.Size = New System.Drawing.Size(50, 48)
         Me.cmdConnect.TabIndex = 6
         '
         'chkRememberUN
         '
-        Me.chkRememberUN.Location = New System.Drawing.Point(14, 136)
+        Me.chkRememberUN.Location = New System.Drawing.Point(23, 241)
+        Me.chkRememberUN.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkRememberUN.Name = "chkRememberUN"
         Me.chkRememberUN.Properties.Caption = "Απομνημόνευση ""Όνομα Χρήστη"""
         Me.chkRememberUN.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
-        Me.chkRememberUN.Size = New System.Drawing.Size(214, 18)
+        Me.chkRememberUN.Size = New System.Drawing.Size(357, 32)
         Me.chkRememberUN.TabIndex = 5
         '
         'txtPWD
         '
-        Me.txtPWD.Location = New System.Drawing.Point(13, 100)
+        Me.txtPWD.Location = New System.Drawing.Point(22, 177)
+        Me.txtPWD.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.txtPWD.Name = "txtPWD"
         Me.txtPWD.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtPWD.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.txtPWD.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPWD.Size = New System.Drawing.Size(237, 20)
+        Me.txtPWD.Size = New System.Drawing.Size(395, 38)
         Me.txtPWD.TabIndex = 2
         '
         'txtUN
         '
-        Me.txtUN.Location = New System.Drawing.Point(12, 41)
+        Me.txtUN.Location = New System.Drawing.Point(20, 73)
+        Me.txtUN.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.txtUN.Name = "txtUN"
         Me.txtUN.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtUN.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.txtUN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtUN.Properties.NullText = ""
-        Me.txtUN.Size = New System.Drawing.Size(238, 20)
+        Me.txtUN.Size = New System.Drawing.Size(397, 38)
         Me.txtUN.TabIndex = 7
         '
         'frmLogin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(262, 205)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(437, 363)
         Me.Controls.Add(Me.txtUN)
         Me.Controls.Add(Me.cmdConnect)
         Me.Controls.Add(Me.chkRememberUN)
@@ -106,6 +114,7 @@ Partial Class frmLogin
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.txtPWD)
         Me.Controls.Add(Me.LabelControl1)
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PRIAMOS .NET"

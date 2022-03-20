@@ -930,6 +930,7 @@ Partial Class frmCases
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1297, 1280)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.LayoutControl2)
