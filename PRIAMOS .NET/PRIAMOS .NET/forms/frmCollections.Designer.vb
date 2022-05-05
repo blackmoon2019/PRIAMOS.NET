@@ -91,42 +91,46 @@ Partial Class frmCollections
         Me.GridColumn34 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn35 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.cboDebitUsr = New DevExpress.XtraEditors.LookUpEdit()
-        Me.grdAPT = New DevExpress.XtraGrid.GridControl()
-        Me.vw_COLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.YEARSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.cmdConfirmation = New DevExpress.XtraEditors.SimpleButton()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.VwCOLDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colold_code1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colbdgNam2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colaptNam = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coletos = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcompleteDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCredit1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coldebit4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colBal1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedOn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreatedOn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedBy = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreditUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coldebitUser = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcode = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcolID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colbdgID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colaptID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colinhID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcolHID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colttl1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcreditusrID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebitusrID3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colbankID2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colColMethodID2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colmodifiedBy = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colmodifiedOn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcreatedOn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colColMethod = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colBankName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colBdgNam1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colAptNam = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcompleteDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colmodifiedRealName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colUsrCreditName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colUsrDebittName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.coldtDebit2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.coldtCredit2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colcredit1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.coldebit1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colbal1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colttl1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coltenant1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colagreed = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmdCol_Refresh = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboDebitUsr = New DevExpress.XtraEditors.LookUpEdit()
+        Me.grdAPT = New DevExpress.XtraGrid.GridControl()
+        Me.COLREPORTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.cboINH = New DevExpress.XtraEditors.LookUpEdit()
-        Me.vw_COL_INHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VwINHBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.chkShowAgree = New DevExpress.XtraEditors.ToggleSwitch()
+        Me.cboBDG1 = New DevExpress.XtraEditors.LookUpEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -138,6 +142,16 @@ Partial Class frmCollections
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.VwINHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.vw_COL_INHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.vw_COLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
         Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
         Me.Vw_USRTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_USRTableAdapter()
@@ -145,6 +159,17 @@ Partial Class frmCollections
         Me.Vw_COL_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_COL_BDGTableAdapter()
         Me.Vw_COLTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter()
         Me.SvgImageCollection1 = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.COL_REPORTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.COL_REPORTTableAdapter()
+        Me.colold_code = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colBdgNam1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coldebit1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRealName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colArea_Name = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_INHTableAdapter()
+        Me.Vw_COL_DTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_COL_DTableAdapter()
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
+        Me.YEARSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.YEARSTableAdapter()
+        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -162,13 +187,20 @@ Partial Class frmCollections
         CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.YEARSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCOLDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboDebitUsr.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.vw_COLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.COLREPORTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboINH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.vw_COL_INHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINHBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkShowAgree.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboBDG1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,8 +212,19 @@ Partial Class frmCollections
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.vw_COL_INHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.vw_COLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.vw_COL_APTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SvgImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView2
@@ -419,8 +462,9 @@ Partial Class frmCollections
         Me.GridControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Rep_DEBITUSR, Me.Rep_ΒΑΝΚ, Me.Rep_COL_METHOD, Me.Rep_Credit})
-        Me.GridControl2.Size = New System.Drawing.Size(2343, 1272)
+        Me.GridControl2.Size = New System.Drawing.Size(2343, 1265)
         Me.GridControl2.TabIndex = 3
+        Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView3, Me.GridView4, Me.GridView2})
         '
         'VwCOLBDGBindingSource
@@ -658,9 +702,6 @@ Partial Class frmCollections
         Me.GridView4.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "name", Nothing, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "owner_tenant", Nothing, "")})
         Me.GridView4.LevelIndent = 0
         Me.GridView4.Name = "GridView4"
-        Me.GridView4.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.GridView4.OptionsBehavior.AutoExpandAllGroups = True
-        Me.GridView4.OptionsDetail.ShowEmbeddedDetailIndent = DevExpress.Utils.DefaultBoolean.[False]
         Me.GridView4.OptionsMenu.ShowConditionalFormattingItem = True
         Me.GridView4.OptionsMenu.ShowFooterItem = True
         Me.GridView4.OptionsPrint.PrintPreview = True
@@ -857,20 +898,334 @@ Partial Class frmCollections
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.cmdConfirmation)
+        Me.LayoutControl1.Controls.Add(Me.GridControl1)
+        Me.LayoutControl1.Controls.Add(Me.cmdCol_Refresh)
         Me.LayoutControl1.Controls.Add(Me.cboDebitUsr)
         Me.LayoutControl1.Controls.Add(Me.grdAPT)
         Me.LayoutControl1.Controls.Add(Me.cboINH)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.cmdExit)
         Me.LayoutControl1.Controls.Add(Me.cboBDG)
-        Me.LayoutControl1.Location = New System.Drawing.Point(-5, -12)
+        Me.LayoutControl1.Controls.Add(Me.chkShowAgree)
+        Me.LayoutControl1.Controls.Add(Me.cboBDG1)
+        Me.LayoutControl1.Location = New System.Drawing.Point(-5, -6)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(718, 214, 650, 400)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(2393, 1472)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2393, 1466)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'YEARSBindingSource
+        '
+        Me.YEARSBindingSource.DataMember = "YEARS"
+        Me.YEARSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'cmdConfirmation
+        '
+        Me.cmdConfirmation.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdConfirmation.ImageOptions.Image = CType(resources.GetObject("cmdConfirmation.ImageOptions.Image"), System.Drawing.Image)
+        Me.cmdConfirmation.Location = New System.Drawing.Point(25, 1357)
+        Me.cmdConfirmation.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdConfirmation.Name = "cmdConfirmation"
+        Me.cmdConfirmation.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdConfirmation.Size = New System.Drawing.Size(278, 40)
+        Me.cmdConfirmation.StyleController = Me.LayoutControl1
+        Me.cmdConfirmation.TabIndex = 31
+        Me.cmdConfirmation.Text = "Επιβεβαίωση"
+        Me.cmdConfirmation.ToolTip = "Επιβεβαίωση Συμφωνίας Πίστωσης"
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GridControl1.DataSource = Me.VwCOLDBindingSource
+        Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.GridControl1.Location = New System.Drawing.Point(25, 132)
+        Me.GridControl1.MainView = Me.GridView6
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(2343, 1221)
+        Me.GridControl1.TabIndex = 30
+        Me.GridControl1.UseEmbeddedNavigator = True
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView6})
+        '
+        'VwCOLDBindingSource
+        '
+        Me.VwCOLDBindingSource.DataMember = "vw_COL_D"
+        Me.VwCOLDBindingSource.DataSource = Me.Priamos_NETDataSet2
+        '
+        'GridView6
+        '
+        Me.GridView6.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colold_code1, Me.colbdgNam2, Me.colaptNam, Me.coletos, Me.colcompleteDate, Me.colCredit1, Me.coldebit4, Me.colBal1, Me.colmodifiedOn, Me.colcreatedOn, Me.colmodifiedBy, Me.colcreditUser, Me.coldebitUser, Me.colID, Me.colcode, Me.colcolID, Me.colbdgID, Me.colaptID, Me.colinhID, Me.coldebitusrID3, Me.colttl1, Me.coltenant1, Me.colagreed})
+        Me.GridView6.DetailHeight = 619
+        Me.GridView6.GridControl = Me.GridControl1
+        Me.GridView6.LevelIndent = 0
+        Me.GridView6.Name = "GridView6"
+        Me.GridView6.OptionsBehavior.Editable = False
+        Me.GridView6.OptionsBehavior.ReadOnly = True
+        Me.GridView6.OptionsLayout.StoreAllOptions = True
+        Me.GridView6.OptionsLayout.StoreAppearance = True
+        Me.GridView6.OptionsLayout.StoreFormatRules = True
+        Me.GridView6.OptionsMenu.EnableGroupRowMenu = True
+        Me.GridView6.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.GridView6.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.GridView6.OptionsMenu.ShowFooterItem = True
+        Me.GridView6.OptionsMenu.ShowGroupSummaryEditorItem = True
+        Me.GridView6.OptionsPrint.PrintPreview = True
+        Me.GridView6.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView6.OptionsSelection.MultiSelect = True
+        Me.GridView6.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect
+        Me.GridView6.OptionsView.ColumnAutoWidth = False
+        Me.GridView6.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView6.OptionsView.ShowFooter = True
+        Me.GridView6.PreviewIndent = 0
+        '
+        'colold_code1
+        '
+        Me.colold_code1.Caption = "ΚΩΔΙΚΟΣ ΠΟΛΥΚΑΤΟΙΚΙΑΣ"
+        Me.colold_code1.FieldName = "old_code"
+        Me.colold_code1.MinWidth = 35
+        Me.colold_code1.Name = "colold_code1"
+        Me.colold_code1.Visible = True
+        Me.colold_code1.VisibleIndex = 1
+        Me.colold_code1.Width = 131
+        '
+        'colbdgNam2
+        '
+        Me.colbdgNam2.Caption = "ΠΟΛΥΚΑΤΟΙΚΙΑ"
+        Me.colbdgNam2.FieldName = "bdgNam"
+        Me.colbdgNam2.MinWidth = 35
+        Me.colbdgNam2.Name = "colbdgNam2"
+        Me.colbdgNam2.Visible = True
+        Me.colbdgNam2.VisibleIndex = 2
+        Me.colbdgNam2.Width = 131
+        '
+        'colaptNam
+        '
+        Me.colaptNam.Caption = "ΔΙΑΜΕΡΙΣΜΑ"
+        Me.colaptNam.FieldName = "aptNam"
+        Me.colaptNam.MinWidth = 35
+        Me.colaptNam.Name = "colaptNam"
+        Me.colaptNam.Visible = True
+        Me.colaptNam.VisibleIndex = 4
+        Me.colaptNam.Width = 131
+        '
+        'coletos
+        '
+        Me.coletos.FieldName = "etos"
+        Me.coletos.MinWidth = 35
+        Me.coletos.Name = "coletos"
+        Me.coletos.Visible = True
+        Me.coletos.VisibleIndex = 3
+        Me.coletos.Width = 131
+        '
+        'colcompleteDate
+        '
+        Me.colcompleteDate.Caption = "ΠΑΡΑΣΤΑΤΙΚΟ"
+        Me.colcompleteDate.FieldName = "completeDate"
+        Me.colcompleteDate.MinWidth = 35
+        Me.colcompleteDate.Name = "colcompleteDate"
+        Me.colcompleteDate.Visible = True
+        Me.colcompleteDate.VisibleIndex = 5
+        Me.colcompleteDate.Width = 131
+        '
+        'colCredit1
+        '
+        Me.colCredit1.Caption = "ΠΙΣΤΩΣΗ"
+        Me.colCredit1.FieldName = "Credit"
+        Me.colCredit1.MinWidth = 35
+        Me.colCredit1.Name = "colCredit1"
+        Me.colCredit1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit", "Σύνολο={0:c2}")})
+        Me.colCredit1.Visible = True
+        Me.colCredit1.VisibleIndex = 6
+        Me.colCredit1.Width = 131
+        '
+        'coldebit4
+        '
+        Me.coldebit4.Caption = "ΧΡΕΩΣΗ"
+        Me.coldebit4.FieldName = "debit"
+        Me.coldebit4.MinWidth = 35
+        Me.coldebit4.Name = "coldebit4"
+        Me.coldebit4.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "debit", "Σύνολο={0:c2}")})
+        Me.coldebit4.Visible = True
+        Me.coldebit4.VisibleIndex = 7
+        Me.coldebit4.Width = 131
+        '
+        'colBal1
+        '
+        Me.colBal1.Caption = "ΥΠΟΛΟΙΠΟ"
+        Me.colBal1.FieldName = "Bal"
+        Me.colBal1.MinWidth = 35
+        Me.colBal1.Name = "colBal1"
+        Me.colBal1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Bal", "Σύνολο={0:c2}")})
+        Me.colBal1.Visible = True
+        Me.colBal1.VisibleIndex = 8
+        Me.colBal1.Width = 131
+        '
+        'colmodifiedOn
+        '
+        Me.colmodifiedOn.Caption = "ΗΜΕΡ/ΝΙΑ ΤΡΟΠΟΠΟΙΗΣΗΣ"
+        Me.colmodifiedOn.FieldName = "modifiedOn"
+        Me.colmodifiedOn.MinWidth = 35
+        Me.colmodifiedOn.Name = "colmodifiedOn"
+        Me.colmodifiedOn.Visible = True
+        Me.colmodifiedOn.VisibleIndex = 9
+        Me.colmodifiedOn.Width = 131
+        '
+        'colcreatedOn
+        '
+        Me.colcreatedOn.Caption = "ΗΜΕΡ/ΝΙΑ ΔΗΜΙΟΥΡΓΙΑΣ"
+        Me.colcreatedOn.FieldName = "createdOn"
+        Me.colcreatedOn.MinWidth = 35
+        Me.colcreatedOn.Name = "colcreatedOn"
+        Me.colcreatedOn.Visible = True
+        Me.colcreatedOn.VisibleIndex = 10
+        Me.colcreatedOn.Width = 131
+        '
+        'colmodifiedBy
+        '
+        Me.colmodifiedBy.Caption = "ΧΡΗΣΤΗΣ ΤΡΟΠΟΠΟΙΗΣΗΣ"
+        Me.colmodifiedBy.FieldName = "modifiedBy"
+        Me.colmodifiedBy.MinWidth = 35
+        Me.colmodifiedBy.Name = "colmodifiedBy"
+        Me.colmodifiedBy.Visible = True
+        Me.colmodifiedBy.VisibleIndex = 11
+        Me.colmodifiedBy.Width = 131
+        '
+        'colcreditUser
+        '
+        Me.colcreditUser.Caption = "ΧΡΗΣΤΗΣ ΠΙΣΤΩΣΗΣ"
+        Me.colcreditUser.FieldName = "creditUser"
+        Me.colcreditUser.MinWidth = 35
+        Me.colcreditUser.Name = "colcreditUser"
+        Me.colcreditUser.Visible = True
+        Me.colcreditUser.VisibleIndex = 12
+        Me.colcreditUser.Width = 131
+        '
+        'coldebitUser
+        '
+        Me.coldebitUser.Caption = "ΧΡΗΣΤΗΣ ΧΡΕΩΣΗΣ"
+        Me.coldebitUser.FieldName = "debitUser"
+        Me.coldebitUser.MinWidth = 35
+        Me.coldebitUser.Name = "coldebitUser"
+        Me.coldebitUser.Visible = True
+        Me.coldebitUser.VisibleIndex = 13
+        Me.coldebitUser.Width = 131
+        '
+        'colID
+        '
+        Me.colID.FieldName = "ID"
+        Me.colID.MinWidth = 35
+        Me.colID.Name = "colID"
+        Me.colID.Visible = True
+        Me.colID.VisibleIndex = 14
+        Me.colID.Width = 131
+        '
+        'colcode
+        '
+        Me.colcode.Caption = "ΚΩΔΙΚΟΣ ΕΙΣΠΡΑΞΗΣ"
+        Me.colcode.FieldName = "code"
+        Me.colcode.MinWidth = 35
+        Me.colcode.Name = "colcode"
+        Me.colcode.Visible = True
+        Me.colcode.VisibleIndex = 15
+        Me.colcode.Width = 131
+        '
+        'colcolID
+        '
+        Me.colcolID.Caption = "ID ΕΙΣΠΡΑΞΗΣ"
+        Me.colcolID.FieldName = "colID"
+        Me.colcolID.MinWidth = 35
+        Me.colcolID.Name = "colcolID"
+        Me.colcolID.Visible = True
+        Me.colcolID.VisibleIndex = 16
+        Me.colcolID.Width = 131
+        '
+        'colbdgID
+        '
+        Me.colbdgID.Caption = "ID ΠΟΛΥΚΑΤΟΙΚΙΑΣ"
+        Me.colbdgID.FieldName = "bdgID"
+        Me.colbdgID.MinWidth = 35
+        Me.colbdgID.Name = "colbdgID"
+        Me.colbdgID.Visible = True
+        Me.colbdgID.VisibleIndex = 17
+        Me.colbdgID.Width = 131
+        '
+        'colaptID
+        '
+        Me.colaptID.Caption = "ID ΔΙΑΜΕΡΙΣΜΑΤΟΣ"
+        Me.colaptID.FieldName = "aptID"
+        Me.colaptID.MinWidth = 35
+        Me.colaptID.Name = "colaptID"
+        Me.colaptID.Visible = True
+        Me.colaptID.VisibleIndex = 18
+        Me.colaptID.Width = 131
+        '
+        'colinhID
+        '
+        Me.colinhID.Caption = "ID ΠΑΡΑΣΤΑΤΙΚΟΥ"
+        Me.colinhID.FieldName = "inhID"
+        Me.colinhID.MinWidth = 35
+        Me.colinhID.Name = "colinhID"
+        Me.colinhID.Visible = True
+        Me.colinhID.VisibleIndex = 19
+        Me.colinhID.Width = 131
+        '
+        'coldebitusrID3
+        '
+        Me.coldebitusrID3.Caption = "ID ΧΡΗΣΤΗ ΧΡΕΩΣΗΣ"
+        Me.coldebitusrID3.FieldName = "debitusrID"
+        Me.coldebitusrID3.MinWidth = 35
+        Me.coldebitusrID3.Name = "coldebitusrID3"
+        Me.coldebitusrID3.Visible = True
+        Me.coldebitusrID3.VisibleIndex = 20
+        Me.coldebitusrID3.Width = 131
+        '
+        'colttl1
+        '
+        Me.colttl1.Caption = "ΤΙΤΛΟΣ"
+        Me.colttl1.FieldName = "ttl"
+        Me.colttl1.MinWidth = 35
+        Me.colttl1.Name = "colttl1"
+        Me.colttl1.Visible = True
+        Me.colttl1.VisibleIndex = 21
+        Me.colttl1.Width = 131
+        '
+        'coltenant1
+        '
+        Me.coltenant1.Caption = "ΕΝΟΙΚΟΣ"
+        Me.coltenant1.FieldName = "tenant"
+        Me.coltenant1.MinWidth = 35
+        Me.coltenant1.Name = "coltenant1"
+        Me.coltenant1.Visible = True
+        Me.coltenant1.VisibleIndex = 22
+        Me.coltenant1.Width = 131
+        '
+        'colagreed
+        '
+        Me.colagreed.Caption = "ΣΥΜΦΩΝΙΑ ΠΙΣΤΩΣΗΣ"
+        Me.colagreed.FieldName = "agreed"
+        Me.colagreed.MinWidth = 35
+        Me.colagreed.Name = "colagreed"
+        Me.colagreed.Visible = True
+        Me.colagreed.VisibleIndex = 23
+        Me.colagreed.Width = 131
+        '
+        'cmdCol_Refresh
+        '
+        Me.cmdCol_Refresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Refresh
+        Me.cmdCol_Refresh.Location = New System.Drawing.Point(12, 1414)
+        Me.cmdCol_Refresh.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdCol_Refresh.Name = "cmdCol_Refresh"
+        Me.cmdCol_Refresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdCol_Refresh.Size = New System.Drawing.Size(42, 40)
+        Me.cmdCol_Refresh.StyleController = Me.LayoutControl1
+        Me.cmdCol_Refresh.TabIndex = 29
+        Me.cmdCol_Refresh.ToolTip = "Ανανέωση"
+        Me.cmdCol_Refresh.Visible = False
         '
         'cboDebitUsr
         '
@@ -894,24 +1249,23 @@ Partial Class frmCollections
         '
         Me.grdAPT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grdAPT.DataSource = Me.vw_COLBindingSource
+        Me.grdAPT.DataSource = Me.COLREPORTBindingSource
         Me.grdAPT.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
         Me.grdAPT.Location = New System.Drawing.Point(25, 62)
         Me.grdAPT.MainView = Me.GridView5
         Me.grdAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPT.Name = "grdAPT"
-        Me.grdAPT.Size = New System.Drawing.Size(2343, 1342)
+        Me.grdAPT.Size = New System.Drawing.Size(2343, 1335)
         Me.grdAPT.TabIndex = 23
         Me.grdAPT.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
         '
-        'vw_COLBindingSource
+        'COLREPORTBindingSource
         '
-        Me.vw_COLBindingSource.DataMember = "vw_COL"
-        Me.vw_COLBindingSource.DataSource = Me.Priamos_NETDataSet2
+        Me.COLREPORTBindingSource.DataMember = "COL_REPORT"
+        Me.COLREPORTBindingSource.DataSource = Me.Priamos_NETDataSet2
         '
         'GridView5
         '
-        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colbdgID, Me.colaptID, Me.colinhID, Me.colcolHID, Me.colttl1, Me.colcreditusrID, Me.coldebitusrID3, Me.colbankID2, Me.colColMethodID2, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colColMethod, Me.colBankName, Me.colBdgNam1, Me.colAptNam, Me.colcompleteDate, Me.colmodifiedRealName, Me.colUsrCreditName, Me.colUsrDebittName, Me.coldtDebit2, Me.coldtCredit2, Me.colcredit1, Me.coldebit1, Me.colbal1, Me.coltenant1})
         Me.GridView5.DetailHeight = 619
         Me.GridView5.GridControl = Me.grdAPT
         Me.GridView5.LevelIndent = 0
@@ -933,258 +1287,6 @@ Partial Class frmCollections
         Me.GridView5.OptionsView.ShowFooter = True
         Me.GridView5.PreviewIndent = 0
         '
-        'colID
-        '
-        Me.colID.FieldName = "ID"
-        Me.colID.MinWidth = 33
-        Me.colID.Name = "colID"
-        Me.colID.Visible = True
-        Me.colID.VisibleIndex = 0
-        Me.colID.Width = 125
-        '
-        'colcode
-        '
-        Me.colcode.FieldName = "code"
-        Me.colcode.MinWidth = 33
-        Me.colcode.Name = "colcode"
-        Me.colcode.Visible = True
-        Me.colcode.VisibleIndex = 1
-        Me.colcode.Width = 125
-        '
-        'colbdgID
-        '
-        Me.colbdgID.FieldName = "bdgID"
-        Me.colbdgID.MinWidth = 33
-        Me.colbdgID.Name = "colbdgID"
-        Me.colbdgID.Visible = True
-        Me.colbdgID.VisibleIndex = 2
-        Me.colbdgID.Width = 125
-        '
-        'colaptID
-        '
-        Me.colaptID.FieldName = "aptID"
-        Me.colaptID.MinWidth = 33
-        Me.colaptID.Name = "colaptID"
-        Me.colaptID.Visible = True
-        Me.colaptID.VisibleIndex = 3
-        Me.colaptID.Width = 125
-        '
-        'colinhID
-        '
-        Me.colinhID.FieldName = "inhID"
-        Me.colinhID.MinWidth = 33
-        Me.colinhID.Name = "colinhID"
-        Me.colinhID.Visible = True
-        Me.colinhID.VisibleIndex = 4
-        Me.colinhID.Width = 125
-        '
-        'colcolHID
-        '
-        Me.colcolHID.FieldName = "colHID"
-        Me.colcolHID.MinWidth = 33
-        Me.colcolHID.Name = "colcolHID"
-        Me.colcolHID.Visible = True
-        Me.colcolHID.VisibleIndex = 5
-        Me.colcolHID.Width = 125
-        '
-        'colttl1
-        '
-        Me.colttl1.FieldName = "ttl"
-        Me.colttl1.MinWidth = 33
-        Me.colttl1.Name = "colttl1"
-        Me.colttl1.Visible = True
-        Me.colttl1.VisibleIndex = 6
-        Me.colttl1.Width = 125
-        '
-        'colcreditusrID
-        '
-        Me.colcreditusrID.FieldName = "creditusrID"
-        Me.colcreditusrID.MinWidth = 33
-        Me.colcreditusrID.Name = "colcreditusrID"
-        Me.colcreditusrID.Visible = True
-        Me.colcreditusrID.VisibleIndex = 7
-        Me.colcreditusrID.Width = 125
-        '
-        'coldebitusrID3
-        '
-        Me.coldebitusrID3.FieldName = "debitusrID"
-        Me.coldebitusrID3.MinWidth = 33
-        Me.coldebitusrID3.Name = "coldebitusrID3"
-        Me.coldebitusrID3.Visible = True
-        Me.coldebitusrID3.VisibleIndex = 8
-        Me.coldebitusrID3.Width = 125
-        '
-        'colbankID2
-        '
-        Me.colbankID2.FieldName = "bankID"
-        Me.colbankID2.MinWidth = 33
-        Me.colbankID2.Name = "colbankID2"
-        Me.colbankID2.Visible = True
-        Me.colbankID2.VisibleIndex = 9
-        Me.colbankID2.Width = 125
-        '
-        'colColMethodID2
-        '
-        Me.colColMethodID2.FieldName = "ColMethodID"
-        Me.colColMethodID2.MinWidth = 33
-        Me.colColMethodID2.Name = "colColMethodID2"
-        Me.colColMethodID2.Visible = True
-        Me.colColMethodID2.VisibleIndex = 10
-        Me.colColMethodID2.Width = 125
-        '
-        'colmodifiedBy
-        '
-        Me.colmodifiedBy.FieldName = "modifiedBy"
-        Me.colmodifiedBy.MinWidth = 33
-        Me.colmodifiedBy.Name = "colmodifiedBy"
-        Me.colmodifiedBy.Visible = True
-        Me.colmodifiedBy.VisibleIndex = 11
-        Me.colmodifiedBy.Width = 125
-        '
-        'colmodifiedOn
-        '
-        Me.colmodifiedOn.FieldName = "modifiedOn"
-        Me.colmodifiedOn.MinWidth = 33
-        Me.colmodifiedOn.Name = "colmodifiedOn"
-        Me.colmodifiedOn.Visible = True
-        Me.colmodifiedOn.VisibleIndex = 12
-        Me.colmodifiedOn.Width = 125
-        '
-        'colcreatedOn
-        '
-        Me.colcreatedOn.FieldName = "createdOn"
-        Me.colcreatedOn.MinWidth = 33
-        Me.colcreatedOn.Name = "colcreatedOn"
-        Me.colcreatedOn.Visible = True
-        Me.colcreatedOn.VisibleIndex = 13
-        Me.colcreatedOn.Width = 125
-        '
-        'colColMethod
-        '
-        Me.colColMethod.FieldName = "ColMethod"
-        Me.colColMethod.MinWidth = 33
-        Me.colColMethod.Name = "colColMethod"
-        Me.colColMethod.Visible = True
-        Me.colColMethod.VisibleIndex = 14
-        Me.colColMethod.Width = 125
-        '
-        'colBankName
-        '
-        Me.colBankName.FieldName = "BankName"
-        Me.colBankName.MinWidth = 33
-        Me.colBankName.Name = "colBankName"
-        Me.colBankName.Visible = True
-        Me.colBankName.VisibleIndex = 15
-        Me.colBankName.Width = 125
-        '
-        'colBdgNam1
-        '
-        Me.colBdgNam1.FieldName = "BdgNam"
-        Me.colBdgNam1.MinWidth = 33
-        Me.colBdgNam1.Name = "colBdgNam1"
-        Me.colBdgNam1.Visible = True
-        Me.colBdgNam1.VisibleIndex = 16
-        Me.colBdgNam1.Width = 125
-        '
-        'colAptNam
-        '
-        Me.colAptNam.FieldName = "AptNam"
-        Me.colAptNam.MinWidth = 33
-        Me.colAptNam.Name = "colAptNam"
-        Me.colAptNam.Visible = True
-        Me.colAptNam.VisibleIndex = 17
-        Me.colAptNam.Width = 125
-        '
-        'colcompleteDate
-        '
-        Me.colcompleteDate.FieldName = "completeDate"
-        Me.colcompleteDate.MinWidth = 33
-        Me.colcompleteDate.Name = "colcompleteDate"
-        Me.colcompleteDate.Visible = True
-        Me.colcompleteDate.VisibleIndex = 18
-        Me.colcompleteDate.Width = 125
-        '
-        'colmodifiedRealName
-        '
-        Me.colmodifiedRealName.FieldName = "modifiedRealName"
-        Me.colmodifiedRealName.MinWidth = 33
-        Me.colmodifiedRealName.Name = "colmodifiedRealName"
-        Me.colmodifiedRealName.Visible = True
-        Me.colmodifiedRealName.VisibleIndex = 19
-        Me.colmodifiedRealName.Width = 125
-        '
-        'colUsrCreditName
-        '
-        Me.colUsrCreditName.FieldName = "UsrCreditName"
-        Me.colUsrCreditName.MinWidth = 33
-        Me.colUsrCreditName.Name = "colUsrCreditName"
-        Me.colUsrCreditName.Visible = True
-        Me.colUsrCreditName.VisibleIndex = 20
-        Me.colUsrCreditName.Width = 125
-        '
-        'colUsrDebittName
-        '
-        Me.colUsrDebittName.FieldName = "UsrDebittName"
-        Me.colUsrDebittName.MinWidth = 33
-        Me.colUsrDebittName.Name = "colUsrDebittName"
-        Me.colUsrDebittName.Visible = True
-        Me.colUsrDebittName.VisibleIndex = 21
-        Me.colUsrDebittName.Width = 125
-        '
-        'coldtDebit2
-        '
-        Me.coldtDebit2.FieldName = "dtDebit"
-        Me.coldtDebit2.MinWidth = 33
-        Me.coldtDebit2.Name = "coldtDebit2"
-        Me.coldtDebit2.Visible = True
-        Me.coldtDebit2.VisibleIndex = 22
-        Me.coldtDebit2.Width = 125
-        '
-        'coldtCredit2
-        '
-        Me.coldtCredit2.FieldName = "dtCredit"
-        Me.coldtCredit2.MinWidth = 33
-        Me.coldtCredit2.Name = "coldtCredit2"
-        Me.coldtCredit2.Visible = True
-        Me.coldtCredit2.VisibleIndex = 23
-        Me.coldtCredit2.Width = 125
-        '
-        'colcredit1
-        '
-        Me.colcredit1.FieldName = "credit"
-        Me.colcredit1.MinWidth = 33
-        Me.colcredit1.Name = "colcredit1"
-        Me.colcredit1.Visible = True
-        Me.colcredit1.VisibleIndex = 24
-        Me.colcredit1.Width = 125
-        '
-        'coldebit1
-        '
-        Me.coldebit1.FieldName = "debit"
-        Me.coldebit1.MinWidth = 33
-        Me.coldebit1.Name = "coldebit1"
-        Me.coldebit1.Visible = True
-        Me.coldebit1.VisibleIndex = 25
-        Me.coldebit1.Width = 125
-        '
-        'colbal1
-        '
-        Me.colbal1.FieldName = "bal"
-        Me.colbal1.MinWidth = 33
-        Me.colbal1.Name = "colbal1"
-        Me.colbal1.Visible = True
-        Me.colbal1.VisibleIndex = 26
-        Me.colbal1.Width = 125
-        '
-        'coltenant1
-        '
-        Me.coltenant1.FieldName = "tenant"
-        Me.coltenant1.MinWidth = 33
-        Me.coltenant1.Name = "coltenant1"
-        Me.coltenant1.Visible = True
-        Me.coltenant1.VisibleIndex = 27
-        Me.coltenant1.Width = 125
-        '
         'cboINH
         '
         Me.cboINH.Location = New System.Drawing.Point(1215, 90)
@@ -1192,30 +1294,30 @@ Partial Class frmCollections
         Me.cboINH.Name = "cboINH"
         Me.cboINH.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboINH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboINH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("inhID", "inh ID", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 103, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("creditusrID", "creditusr ID", 108, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bankID", "bank ID", 77, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ColMethodID", "Col Method ID", 128, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 78, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 85, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 60, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "debit", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "bal", 38, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("completeDate", "Παραστατικά", 130, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aptID", "apt ID", 65, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboINH.Properties.DataSource = Me.vw_COL_INHBindingSource
+        Me.cboINH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDate", "f Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tDate", "t Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "nam", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("completeDate", "Παραστατικό", 136, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Calculated", "Calculated", 101, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ahpb_HID", "ahpb_HID", 101, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "mdt", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DateOfPrint", "Date Of Print", 123, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("TotalInh", "Total Inh", 91, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("isPrinted", "is Printed", 92, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("announcement", "announcement", 141, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("extraordinary", "extraordinary", 126, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpc", "hpc", 46, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpb", "hpb", 48, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ETOS", "Έτος", 61, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboINH.Properties.DataSource = Me.VwINHBindingSource1
         Me.cboINH.Properties.DisplayMember = "completeDate"
         Me.cboINH.Properties.NullText = ""
         Me.cboINH.Properties.PopupSizeable = False
-        Me.cboINH.Properties.ValueMember = "inhID"
+        Me.cboINH.Properties.ValueMember = "ID"
         Me.cboINH.Size = New System.Drawing.Size(1153, 38)
         Me.cboINH.StyleController = Me.LayoutControl1
         Me.cboINH.TabIndex = 5
         Me.cboINH.Tag = ""
         '
-        'vw_COL_INHBindingSource
+        'VwINHBindingSource1
         '
-        Me.vw_COL_INHBindingSource.DataMember = "COL_INH"
-        Me.vw_COL_INHBindingSource.DataSource = Me.Priamos_NETDataSet2
+        Me.VwINHBindingSource1.DataMember = "vw_INH"
+        Me.VwINHBindingSource1.DataSource = Me.Priamos_NETDataSet2
         '
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = CType(resources.GetObject("cmdExit.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdExit.Location = New System.Drawing.Point(2182, 1421)
+        Me.cmdExit.Location = New System.Drawing.Point(2228, 1414)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(199, 39)
+        Me.cmdExit.Size = New System.Drawing.Size(153, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
         Me.cmdExit.TabIndex = 4
         Me.cmdExit.Text = "Έξοδος"
@@ -1227,40 +1329,77 @@ Partial Class frmCollections
         Me.cboBDG.Name = "cboBDG"
         Me.cboBDG.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboBDG.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboBDG.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BdgNam", "Πολυκατοικίες", 85, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "debit", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 60, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "bal", 38, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 103, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 78, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 85, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 33, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "nam", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboBDG.Properties.DataSource = Me.VwCOLBDGBindingSource
-        Me.cboBDG.Properties.DisplayMember = "BdgNam"
+        Me.cboBDG.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "Πολυκατοικία", 52, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aam", "aam", 51, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("iam", "iam", 45, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dts", "dts", 40, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_ID", "ADR_ID", 81, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Code", "ADR_Code", 103, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 79, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_ID", "Area_ID", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_Code", "Area_Code", 105, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_CouID", "Area_Cou ID", 121, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_Name", "Area_Name", 112, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_ID", "COU_ID", 81, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Code", "COU_Code", 103, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ar", "ar", 32, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("prd", "prd", 44, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("HTypeID", "HType ID", 95, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BTypeID", "BType ID", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("HTYPE_Name", "HTYPE_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BTYPE_Name", "BTYPE_Name", 128, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FBTYPE_Name", "FBTYPE_Name", 138, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FTypeID", "FType ID", 92, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpc", "hpc", 46, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpb", "hpb", 48, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calH", "cal H", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calB", "cal B", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tacH", "tac H", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tacB", "tac B", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lpcH", "lpc H", 58, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lpcB", "lpc B", 56, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bCommon", "b Common", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bSeperate", "b Seperate", 107, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bManageID", "b Manage ID", 125, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eName", "e Name", 80, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eCounter", "e Counter", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ePaymentCode", "e Payment Code", 151, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eServiceNum", "e Service Num", 137, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fName", "f Name", 76, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fCounter", "f Counter", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fPaymentCode", "f Payment Code", 147, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fServiceNum", "f Service Num", 133, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wName", "w Name", 84, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wCounter", "w Counter", 101, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wRegisterNum", "w Register Num", 149, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fUN", "f UN", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fPWD", "f PWD", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fCusCode", "f Cus Code", 105, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fHkasp", "f Hkasp", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDeposit", "f Deposit", 89, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("isManaged", "is Managed", 111, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ManagerName", "Manager Name", 144, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("managerID", "manager ID", 116, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BdgNam", "Bdg Nam", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "debit", 57, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "bal", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 109, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 82, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboBDG.Properties.DataSource = Me.VwBDGBindingSource
+        Me.cboBDG.Properties.DisplayMember = "nam"
         Me.cboBDG.Properties.NullText = ""
         Me.cboBDG.Properties.PopupSizeable = False
-        Me.cboBDG.Properties.ValueMember = "bdgID"
+        Me.cboBDG.Properties.ValueMember = "ID"
         Me.cboBDG.Size = New System.Drawing.Size(805, 38)
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 0
         Me.cboBDG.Tag = ""
         '
+        'VwBDGBindingSource
+        '
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'chkShowAgree
+        '
+        Me.chkShowAgree.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.chkShowAgree.EditValue = True
+        Me.chkShowAgree.Location = New System.Drawing.Point(307, 1361)
+        Me.chkShowAgree.Name = "chkShowAgree"
+        Me.chkShowAgree.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
+        Me.chkShowAgree.Properties.OffText = "Εμφάνιση Όλων"
+        Me.chkShowAgree.Properties.OnText = "Εμφάνιση μη συμφωνηθέντων"
+        Me.chkShowAgree.Size = New System.Drawing.Size(345, 35)
+        Me.chkShowAgree.StyleController = Me.LayoutControl1
+        Me.chkShowAgree.TabIndex = 32
+        '
+        'cboBDG1
+        '
+        Me.cboBDG1.Location = New System.Drawing.Point(25, 90)
+        Me.cboBDG1.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboBDG1.Name = "cboBDG1"
+        Me.cboBDG1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboBDG1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboBDG1.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "Πολυκατοικια", 52, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aam", "aam", 51, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("iam", "iam", 45, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dts", "dts", 40, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_ID", "ADR_ID", 81, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Code", "ADR_Code", 103, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 79, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_ID", "Area_ID", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_Code", "Area_Code", 105, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_CouID", "Area_Cou ID", 121, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_Name", "Area_Name", 112, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_ID", "COU_ID", 81, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Code", "COU_Code", 103, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ar", "ar", 32, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("prd", "prd", 44, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("HTypeID", "HType ID", 95, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BTypeID", "BType ID", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("HTYPE_Name", "HTYPE_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BTYPE_Name", "BTYPE_Name", 128, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FBTYPE_Name", "FBTYPE_Name", 138, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FTypeID", "FType ID", 92, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpc", "hpc", 46, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpb", "hpb", 48, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calH", "cal H", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calB", "cal B", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tacH", "tac H", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tacB", "tac B", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lpcH", "lpc H", 58, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lpcB", "lpc B", 56, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bCommon", "b Common", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bSeperate", "b Seperate", 107, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bManageID", "b Manage ID", 125, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eName", "e Name", 80, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eCounter", "e Counter", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ePaymentCode", "e Payment Code", 151, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eServiceNum", "e Service Num", 137, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fName", "f Name", 76, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fCounter", "f Counter", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fPaymentCode", "f Payment Code", 147, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fServiceNum", "f Service Num", 133, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wName", "w Name", 84, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wCounter", "w Counter", 101, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wRegisterNum", "w Register Num", 149, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fUN", "f UN", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fPWD", "f PWD", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fCusCode", "f Cus Code", 105, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fHkasp", "f Hkasp", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDeposit", "f Deposit", 89, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("isManaged", "is Managed", 111, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ManagerName", "Manager Name", 144, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("managerID", "manager ID", 116, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboBDG1.Properties.DataSource = Me.VwBDGBindingSource
+        Me.cboBDG1.Properties.DisplayMember = "nam"
+        Me.cboBDG1.Properties.NullText = ""
+        Me.cboBDG1.Properties.PopupSizeable = False
+        Me.cboBDG1.Properties.ValueMember = "ID"
+        Me.cboBDG1.Size = New System.Drawing.Size(839, 38)
+        Me.cboBDG1.StyleController = Me.LayoutControl1
+        Me.cboBDG1.TabIndex = 0
+        Me.cboBDG1.Tag = ""
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.TabbedControlGroup1})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.TabbedControlGroup1, Me.LayoutControlItem6})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2393, 1472)
+        Me.Root.Size = New System.Drawing.Size(2393, 1466)
         Me.Root.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 1409)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(46, 1402)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(2170, 43)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(2170, 44)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cmdExit
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(2170, 1409)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(2216, 1402)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(203, 43)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(157, 44)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
@@ -1269,15 +1408,15 @@ Partial Class frmCollections
         Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup1
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(2373, 1409)
-        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlGroup2})
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(2373, 1402)
+        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlGroup2, Me.LayoutControlGroup3})
         '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem11, Me.LayoutControlItem1, Me.LayoutControlItem4, Me.LayoutControlItem5})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2347, 1346)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2347, 1339)
         Me.LayoutControlGroup1.Text = "Τρέχων Εισπράξεις"
         '
         'LayoutControlItem11
@@ -1285,14 +1424,13 @@ Partial Class frmCollections
         Me.LayoutControlItem11.Control = Me.cboBDG
         Me.LayoutControlItem11.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem11.CustomizationFormText = "Κατηγορία"
-        Me.LayoutControlItem11.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem11.ImageOptions.Image"), System.Drawing.Image)
         Me.LayoutControlItem11.Location = New System.Drawing.Point(381, 0)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(809, 70)
         Me.LayoutControlItem11.Text = "Πολυκατοικία"
         Me.LayoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem11.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(121, 23)
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(110, 23)
         Me.LayoutControlItem11.TextToControlDistance = 5
         '
         'LayoutControlItem1
@@ -1312,7 +1450,7 @@ Partial Class frmCollections
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 70)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(2347, 1276)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(2347, 1269)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -1333,7 +1471,7 @@ Partial Class frmCollections
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(2347, 1346)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(2347, 1339)
         Me.LayoutControlGroup2.Text = "Εκτύπωση Χρεώσεων"
         '
         'LayoutControlItem3
@@ -1341,9 +1479,91 @@ Partial Class frmCollections
         Me.LayoutControlItem3.Control = Me.grdAPT
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(2347, 1346)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(2347, 1339)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
+        '
+        'LayoutControlGroup3
+        '
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.EmptySpaceItem2, Me.LayoutControlItem9, Me.LayoutControlItem8, Me.LayoutControlItem10, Me.EmptySpaceItem3})
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(2347, 1339)
+        Me.LayoutControlGroup3.Text = "Χρεωπιστώσεις"
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.GridControl1
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 70)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(2347, 1225)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(631, 1295)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1716, 44)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.chkShowAgree
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(282, 1295)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(349, 44)
+        Me.LayoutControlItem9.Spacing = New DevExpress.XtraLayout.Utils.Padding(0, 0, 4, 0)
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem9.TextVisible = False
+        '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.cmdConfirmation
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 1295)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(282, 44)
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem8.TextVisible = False
+        '
+        'LayoutControlItem10
+        '
+        Me.LayoutControlItem10.Control = Me.cboBDG1
+        Me.LayoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem10.CustomizationFormText = "Κατηγορία"
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem10.Name = "LayoutControlItem10"
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(843, 70)
+        Me.LayoutControlItem10.Text = "Πολυκατοικία"
+        Me.LayoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem10.TextLocation = DevExpress.Utils.Locations.Top
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(110, 23)
+        Me.LayoutControlItem10.TextToControlDistance = 5
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.cmdCol_Refresh
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 1402)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(46, 44)
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem6.TextVisible = False
+        '
+        'VwINHBindingSource
+        '
+        Me.VwINHBindingSource.DataMember = "vw_INH"
+        Me.VwINHBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'vw_COL_INHBindingSource
+        '
+        Me.vw_COL_INHBindingSource.DataMember = "COL_INH"
+        Me.vw_COL_INHBindingSource.DataSource = Me.Priamos_NETDataSet2
+        '
+        'vw_COLBindingSource
+        '
+        Me.vw_COLBindingSource.DataMember = "vw_COL"
+        Me.vw_COLBindingSource.DataSource = Me.Priamos_NETDataSet2
         '
         'Vw_COL_METHODTableAdapter
         '
@@ -1376,6 +1596,89 @@ Partial Class frmCollections
         Me.SvgImageCollection1.Add("bo_invoice", "image://svgimages/business objects/bo_invoice.svg")
         Me.SvgImageCollection1.Add("bo_employee", "image://svgimages/business objects/bo_employee.svg")
         '
+        'COL_REPORTTableAdapter
+        '
+        Me.COL_REPORTTableAdapter.ClearBeforeFill = True
+        '
+        'colold_code
+        '
+        Me.colold_code.Caption = "ΚΩΔΙΚΟΣ"
+        Me.colold_code.FieldName = "old_code"
+        Me.colold_code.MinWidth = 35
+        Me.colold_code.Name = "colold_code"
+        Me.colold_code.OptionsColumn.AllowEdit = False
+        Me.colold_code.Visible = True
+        Me.colold_code.VisibleIndex = 0
+        Me.colold_code.Width = 131
+        '
+        'colBdgNam1
+        '
+        Me.colBdgNam1.Caption = "ΠΟΛΥΚΑΤΟΙΚΙΑ"
+        Me.colBdgNam1.FieldName = "BdgNam"
+        Me.colBdgNam1.MinWidth = 35
+        Me.colBdgNam1.Name = "colBdgNam1"
+        Me.colBdgNam1.OptionsColumn.AllowEdit = False
+        Me.colBdgNam1.Visible = True
+        Me.colBdgNam1.VisibleIndex = 1
+        Me.colBdgNam1.Width = 169
+        '
+        'coldebit1
+        '
+        Me.coldebit1.Caption = "ΧΡΕΩΣΗ"
+        Me.coldebit1.FieldName = "debit"
+        Me.coldebit1.MinWidth = 35
+        Me.coldebit1.Name = "coldebit1"
+        Me.coldebit1.OptionsColumn.AllowEdit = False
+        Me.coldebit1.Visible = True
+        Me.coldebit1.VisibleIndex = 3
+        Me.coldebit1.Width = 131
+        '
+        'colRealName
+        '
+        Me.colRealName.Caption = "ΕΙΣΠΡΑΚΤΟΡΑΣ"
+        Me.colRealName.FieldName = "RealName"
+        Me.colRealName.MinWidth = 35
+        Me.colRealName.Name = "colRealName"
+        Me.colRealName.OptionsColumn.AllowEdit = False
+        Me.colRealName.Visible = True
+        Me.colRealName.VisibleIndex = 4
+        Me.colRealName.Width = 168
+        '
+        'colArea_Name
+        '
+        Me.colArea_Name.Caption = "ΠΕΡΙΟΧΗ"
+        Me.colArea_Name.FieldName = "Area_Name"
+        Me.colArea_Name.MinWidth = 35
+        Me.colArea_Name.Name = "colArea_Name"
+        Me.colArea_Name.OptionsColumn.AllowEdit = False
+        Me.colArea_Name.Visible = True
+        Me.colArea_Name.VisibleIndex = 2
+        Me.colArea_Name.Width = 131
+        '
+        'Vw_INHTableAdapter
+        '
+        Me.Vw_INHTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_COL_DTableAdapter
+        '
+        Me.Vw_COL_DTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
+        '
+        'YEARSTableAdapter
+        '
+        Me.YEARSTableAdapter.ClearBeforeFill = True
+        '
+        'EmptySpaceItem3
+        '
+        Me.EmptySpaceItem3.AllowHotTrack = False
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(843, 0)
+        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1504, 70)
+        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
+        '
         'frmCollections
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -1386,7 +1689,7 @@ Partial Class frmCollections
         Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmCollections"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Εισπράξεις"
+        Me.Text = "Εισπράξεις Κοινοχρήστων"
         Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1405,13 +1708,20 @@ Partial Class frmCollections
         CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.YEARSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCOLDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboDebitUsr.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.vw_COLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.COLREPORTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboINH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.vw_COL_INHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINHBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkShowAgree.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboBDG1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1423,8 +1733,19 @@ Partial Class frmCollections
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.vw_COL_INHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.vw_COLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.vw_COL_APTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SvgImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1442,7 +1763,7 @@ Partial Class frmCollections
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents Vw_USR_CREDITTableAdapter As Priamos_NETDataSetTableAdapters.vw_USR_creditTableAdapter
-    Friend WithEvents Vw_COLTableAdapter1 As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
+    'Friend WithEvents Vw_COLTableAdapter1 As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
@@ -1451,7 +1772,7 @@ Partial Class frmCollections
     Friend WithEvents GridView3 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents vw_COL_APTBindingSource As BindingSource
     Friend WithEvents vw_COLBindingSource As BindingSource
-    Friend WithEvents Vw_COLTableAdapter2 As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
+    'Friend WithEvents Vw_COLTableAdapter2 As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
     Friend WithEvents colttl2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colcompleteDate1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents VwCOLBDGBindingSource As BindingSource
@@ -1512,41 +1833,67 @@ Partial Class frmCollections
     Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents grdAPT As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colcode As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colbdgID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colaptID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colinhID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colcolHID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colttl1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colcreditusrID As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents coldebitusrID3 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colbankID2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colColMethodID2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colmodifiedBy As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colmodifiedOn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colcreatedOn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colColMethod As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colBankName As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colBdgNam1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colAptNam As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colcompleteDate As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colmodifiedRealName As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colUsrCreditName As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colUsrDebittName As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents coldtDebit2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents coldtCredit2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colcredit1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents coldebit1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colbal1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents coltenant1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colcmt1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents cboDebitUsr As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colinhID1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colbdgID1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colaptID1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents COLREPORTBindingSource As BindingSource
+    Friend WithEvents COL_REPORTTableAdapter As Priamos_NETDataSet2TableAdapters.COL_REPORTTableAdapter
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents colold_code As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colBdgNam1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coldebit1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colRealName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colArea_Name As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdCol_Refresh As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwINHBindingSource As BindingSource
+    Friend WithEvents VwINHBindingSource1 As BindingSource
+    Friend WithEvents Vw_INHTableAdapter As Priamos_NETDataSet2TableAdapters.vw_INHTableAdapter
+    Friend WithEvents grdAPT As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView6 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwCOLDBindingSource As BindingSource
+    Friend WithEvents colold_code1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colbdgNam2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colaptNam As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcompleteDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCredit1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coldebit4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colBal1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmodifiedOn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcreatedOn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmodifiedBy As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcreditUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coldebitUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcode As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcolID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colbdgID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colaptID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colinhID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coldebitusrID3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colttl1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coltenant1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colagreed As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Vw_COL_DTableAdapter As Priamos_NETDataSet2TableAdapters.vw_COL_DTableAdapter
+    Friend WithEvents cmdConfirmation As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents chkShowAgree As DevExpress.XtraEditors.ToggleSwitch
+    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents cboBDG1 As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwBDGBindingSource As BindingSource
+    Friend WithEvents Vw_BDGTableAdapter As Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter
+    Friend WithEvents coletos As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents YEARSBindingSource As BindingSource
+    Friend WithEvents YEARSTableAdapter As Priamos_NETDataSetTableAdapters.YEARSTableAdapter
+    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
 End Class

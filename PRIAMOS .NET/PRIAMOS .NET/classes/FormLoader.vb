@@ -491,6 +491,7 @@ NextItem:
         cmd = New SqlCommand(sSQL, CNDB) : sdr = cmd.ExecuteReader()
         If sdr.Read() = True Then
             bytes = DirectCast(sdr("files"), Byte())
+            sdr.Close()
             Return bytes
         End If
         sdr.Close()

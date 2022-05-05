@@ -628,22 +628,10 @@ Public Class frmScroller
     End Sub
     'Επεξεργασία Εγγραφής
     Private Sub EditRecord()
-        Dim fUsers As frmUsers = New frmUsers()
-        Dim fMailSettings As frmMailSettings = New frmMailSettings()
-        Dim fPermissions As frmPermissions = New frmPermissions()
-        Dim fBDG As frmBDG = New frmBDG()
-        Dim fCASES As frmCases = New frmCases()
-        Dim fTASKS As frmTasks = New frmTasks()
-        Dim fCustomers As frmCustomers = New frmCustomers()
-        Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
-        Dim fExp As frmEXP = New frmEXP()
-        Dim fINH As frmINH = New frmINH()
-        Dim fParameters As frmParameters = New frmParameters()
-        Dim fApol As frmApol = New frmApol()
-        Dim fcol As frmCollections = New frmCollections()
         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") Is Nothing Then Exit Sub
         Select Case sDataTable
             Case "vw_TASKS"
+                Dim fTASKS As frmTasks = New frmTasks()
                 fTASKS.Text = "Εργασίες Υποθέσεων"
                 fTASKS.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fTASKS.MdiParent = frmMain
@@ -653,6 +641,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fTASKS), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fTASKS.Show()
             Case "vw_CASES"
+                Dim fCASES As frmCases = New frmCases()
                 fCASES.Text = "Υποθέσεις"
                 fCASES.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fCASES.MdiParent = frmMain
@@ -662,6 +651,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fCASES), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fCASES.Show()
             Case "vw_COL"
+                Dim fcol As frmCollections = New frmCollections()
                 fcol.Text = "Εισπράξεις"
                 fcol.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fcol.BDGID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString
@@ -673,6 +663,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fcol), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fcol.Show()
             Case "vw_APOL"
+                Dim fApol As frmApol = New frmApol()
                 fApol.Text = "Απολυμάνσεις"
                 fApol.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fApol.MdiParent = frmMain
@@ -682,6 +673,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fApol), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fApol.Show()
             Case "vw_INH"
+                Dim fINH As frmINH = New frmINH()
                 fINH.Text = "Κοινόχρηστα"
                 fINH.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fINH.MdiParent = frmMain
@@ -691,6 +683,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fINH.Show()
             Case "vw_EXP"
+                Dim fExp As frmEXP = New frmEXP()
                 fExp.Text = "Έξοδα"
                 fExp.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fExp.MdiParent = frmMain
@@ -700,6 +693,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fExp), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fExp.Show()
             Case "vw_TECH_SUP"
+                Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
                 fTechicalSupport.Text = "Διαχείριση Τεχνικής Υποστήριξης"
                 fTechicalSupport.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fTechicalSupport.MdiParent = frmMain
@@ -709,6 +703,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fTechicalSupport), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fTechicalSupport.Show()
             Case "vw_USR"
+                Dim fUsers As frmUsers = New frmUsers()
                 fUsers.Text = "Διαχείριση Χρηστών"
                 fUsers.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fUsers.MdiParent = frmMain
@@ -718,6 +713,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fUsers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fUsers.Show()
             Case "vw_MAILS"
+                Dim fMailSettings As frmMailSettings = New frmMailSettings()
                 fMailSettings.Text = "Email Settings"
                 fMailSettings.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fMailSettings.MdiParent = frmMain
@@ -727,6 +723,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fMailSettings), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fMailSettings.Show()
             Case "vw_RIGHTS"
+                Dim fPermissions As frmPermissions = New frmPermissions()
                 fPermissions.Text = "Δικαιώματα"
                 fPermissions.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fPermissions.MdiParent = frmMain
@@ -736,6 +733,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fPermissions), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fPermissions.Show()
             Case "vw_BDG"
+                Dim fBDG As frmBDG = New frmBDG()
                 fBDG.Text = "Πολυκατοικίες"
                 fBDG.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fBDG.bManageID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bManageID").ToString
@@ -745,7 +743,8 @@ Public Class frmScroller
                 fBDG.FormScroller = Me
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fBDG.Show()
-            Case "vw_CCT"
+            Case "vw_CCT", "vw_CCT_PF"
+                Dim fCustomers As frmCustomers = New frmCustomers()
                 fCustomers.Text = "Επαφές"
                 fCustomers.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fCustomers.MdiParent = frmMain
@@ -755,6 +754,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fCustomers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fCustomers.Show()
             Case "vw_PRM"
+                Dim fParameters As frmParameters = New frmParameters()
                 fParameters.Text = "Παράμετροι"
                 fParameters.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fParameters.MdiParent = frmMain
@@ -917,22 +917,9 @@ Public Class frmScroller
     End Sub
     'Νέα Εγγραφή
     Private Sub NewRecord()
-        Dim fUsers As frmUsers = New frmUsers()
-        Dim fMailSettings As frmMailSettings = New frmMailSettings()
-        Dim fPermissions As frmPermissions = New frmPermissions()
-        Dim fBDG As frmBDG = New frmBDG()
-        Dim fCASES As frmCases = New frmCases()
-        Dim fTASKS As frmTasks = New frmTasks()
-        Dim fCustomers As frmCustomers = New frmCustomers()
-        Dim fParameters As frmParameters = New frmParameters()
-        Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
-        Dim fINH As frmINH = New frmINH()
-        Dim fApol As frmApol = New frmApol()
-        Dim fExp As frmEXP = New frmEXP()
-        Dim fcol As frmCollections = New frmCollections()
-
         Select Case sDataTable
             Case "vw_TASKS"
+                Dim fTASKS As frmTasks = New frmTasks()
                 fTASKS.Text = "Εργασίες Υποθέσεων"
                 fTASKS.MdiParent = frmMain
                 fTASKS.Mode = FormMode.NewRecord
@@ -941,6 +928,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fTASKS), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fTASKS.Show()
             Case "vw_CASES"
+                Dim fCASES As frmCases = New frmCases()
                 fCASES.Text = "Υποθέσεις"
                 fCASES.MdiParent = frmMain
                 fCASES.Mode = FormMode.NewRecord
@@ -949,6 +937,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fCASES), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fCASES.Show()
             Case "vw_COL"
+                Dim fcol As frmCollections = New frmCollections()
                 fcol.Text = "Εισπράξεις"
                 fcol.MdiParent = frmMain
                 fcol.Mode = FormMode.NewRecord
@@ -957,6 +946,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fcol), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fcol.Show()
             Case "vw_APOL"
+                Dim fApol As frmApol = New frmApol()
                 fApol.Text = "Απολυμάνσεις"
                 fApol.MdiParent = frmMain
                 fApol.Mode = FormMode.NewRecord
@@ -965,6 +955,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fApol), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fApol.Show()
             Case "vw_INH"
+                Dim fINH As frmINH = New frmINH()
                 fINH.Text = "Έξοδα"
                 fINH.MdiParent = frmMain
                 fINH.Mode = FormMode.NewRecord
@@ -973,6 +964,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fINH.Show()
             Case "vw_EXP"
+                Dim fExp As frmEXP = New frmEXP()
                 fExp.Text = "Έξοδα"
                 fExp.MdiParent = frmMain
                 fExp.Mode = FormMode.NewRecord
@@ -981,6 +973,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fExp), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fExp.Show()
             Case "vw_TECH_SUP"
+                Dim fTechicalSupport As frmTecnicalSupport = New frmTecnicalSupport()
                 fTechicalSupport.Text = "Διαχείριση Τεχνικής Υποστήριξης"
                 fTechicalSupport.MdiParent = frmMain
                 fTechicalSupport.Mode = FormMode.NewRecord
@@ -989,6 +982,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fTechicalSupport), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fTechicalSupport.Show()
             Case "vw_USR"
+                Dim fUsers As frmUsers = New frmUsers()
                 fUsers.Text = "Διαχείριση Χρηστών"
                 fUsers.MdiParent = frmMain
                 fUsers.Mode = FormMode.NewRecord
@@ -997,6 +991,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fUsers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fUsers.Show()
             Case "vw_MAILS"
+                Dim fMailSettings As frmMailSettings = New frmMailSettings()
                 fMailSettings.Text = "Email Settings"
                 fMailSettings.MdiParent = frmMain
                 fMailSettings.Mode = FormMode.NewRecord
@@ -1005,6 +1000,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fMailSettings), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fMailSettings.Show()
             Case "vw_RIGHTS"
+                Dim fPermissions As frmPermissions = New frmPermissions()
                 fPermissions.Text = "Δικαιώματα"
                 fPermissions.MdiParent = frmMain
                 fPermissions.Mode = FormMode.NewRecord
@@ -1013,6 +1009,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fPermissions), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fPermissions.Show()
             Case "vw_BDG"
+                Dim fBDG As frmBDG = New frmBDG()
                 fBDG.Text = "Πολυκατοικίες"
                 fBDG.MdiParent = frmMain
                 fBDG.Mode = FormMode.NewRecord
@@ -1021,6 +1018,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fBDG.Show()
             Case "vw_CCT"
+                Dim fCustomers As frmCustomers = New frmCustomers()
                 fCustomers.Text = "Πελάτες"
                 fCustomers.MdiParent = frmMain
                 fCustomers.Mode = FormMode.NewRecord
@@ -1029,6 +1027,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fCustomers), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fCustomers.Show()
             Case "vw_PRM"
+                Dim fParameters As frmParameters = New frmParameters()
                 fParameters.Text = "Παράμετροι"
                 fParameters.MdiParent = frmMain
                 fParameters.Mode = FormMode.NewRecord

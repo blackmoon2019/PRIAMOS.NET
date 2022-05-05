@@ -58,6 +58,7 @@ Public Class DBQueries
                     Case "CCT_F" : sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "INV_GASF" : sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "INV_OILF" : sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "BDG_F" : sSQL.AppendLine("INSERT INTO BDG_F (bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                 End Select
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
@@ -542,22 +543,23 @@ NextItem:
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Or
+                                        txt.Properties.MaskSettings.MaskExpression = "c" Then
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                     End If
                                     '*******DevExpress.XtraEditors.ButtonEdit******
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
-                                        Dim txt As DevExpress.XtraEditors.ButtonEdit
-                                        txt = Ctrl
-                                        If txt.Properties.Tag = True Then
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
-                                        Else
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
-                                        End If
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
-                                        Dim chk As DevExpress.XtraEditors.CheckEdit
+                                    Dim txt As DevExpress.XtraEditors.ButtonEdit
+                                    txt = Ctrl
+                                    If txt.Properties.Tag = True Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
+                                    Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
                                     sSQLV.Append(IIf(IsFirstField = True, "", ",") & chk.EditValue)
                                 End If
@@ -578,6 +580,7 @@ NextItem:
             End Using
             Return True
         Catch ex As Exception
+
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try

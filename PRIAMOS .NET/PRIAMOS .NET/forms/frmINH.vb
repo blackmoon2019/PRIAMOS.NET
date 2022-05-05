@@ -673,7 +673,7 @@ Public Class frmINH
         SplashScreenManager1.CloseWaitForm()
     End Sub
 
-    Private Sub RepositoryItemLookUpEdit3_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
+    Private Sub RepositoryItemLookUpEdit3_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit3.ButtonClick
         Select Case e.Button.Index
             Case 1 : FilesSelection()
             Case 2

@@ -132,13 +132,13 @@ Partial Class frmScroller
         '
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
         GridLevelNode1.LevelTemplate = Me.GridView2
         GridLevelNode1.RelationName = "Level1"
         Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdMain.Location = New System.Drawing.Point(46, 74)
         Me.grdMain.MainView = Me.GridView1
-        Me.grdMain.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
         Me.grdMain.Name = "grdMain"
         Me.grdMain.Size = New System.Drawing.Size(1679, 1039)
         Me.grdMain.TabIndex = 5
@@ -464,7 +464,7 @@ Partial Class frmScroller
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlTop.Size = New System.Drawing.Size(1725, 74)
         '
         'barDockControlBottom
@@ -473,7 +473,7 @@ Partial Class frmScroller
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1113)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlBottom.Size = New System.Drawing.Size(1725, 49)
         '
         'barDockControlLeft
@@ -482,7 +482,7 @@ Partial Class frmScroller
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 74)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlLeft.Size = New System.Drawing.Size(46, 1039)
         '
         'barDockControlRight
@@ -491,7 +491,7 @@ Partial Class frmScroller
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(1725, 74)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 1039)
         '
         'BarStaticItem5
@@ -645,7 +645,7 @@ Partial Class frmScroller
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmScroller"
         Me.Text = "frmScroller"
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()

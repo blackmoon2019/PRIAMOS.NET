@@ -116,8 +116,8 @@ Public Class frmTecnicalSupport
             If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
             e_mail.Subject = txtSubject.Text
             e_mail.IsBodyHtml = True
-            e_mail.Body = txtBody.Text
-            Dim myMailHTMLBody = "<html><head></head><body>" & txtBody.Text & " <img src=cid:ThePictureID></body></html>"
+            e_mail.Body = "Από: [" & UserProps.RealName & "]" & vbNewLine & vbNewLine & txtBody.Text
+            Dim myMailHTMLBody = "<html><head></head><body>" & e_mail.Body & " <img src=cid:ThePictureID></body></html>"
             Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
             If PictureEdit1.EditValue IsNot Nothing Then
 

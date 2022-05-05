@@ -81,12 +81,12 @@ Partial Class frmIND
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl9.Controls.Add(Me.GridControl1)
         Me.LayoutControl9.Controls.Add(Me.SimpleButton39)
-        Me.LayoutControl9.Location = New System.Drawing.Point(-12, -16)
-        Me.LayoutControl9.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.LayoutControl9.Location = New System.Drawing.Point(-12, -6)
+        Me.LayoutControl9.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl9.Name = "LayoutControl9"
         Me.LayoutControl9.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(704, 399, 650, 400)
         Me.LayoutControl9.Root = Me.LayoutControlGroup31
-        Me.LayoutControl9.Size = New System.Drawing.Size(2242, 1408)
+        Me.LayoutControl9.Size = New System.Drawing.Size(2232, 1407)
         Me.LayoutControl9.TabIndex = 3
         Me.LayoutControl9.Text = "LayoutControl1"
         '
@@ -97,12 +97,12 @@ Partial Class frmIND
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GridControl1.DataSource = Me.VwINDBindingSource
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        Me.GridControl1.Location = New System.Drawing.Point(63, 22)
+        Me.GridControl1.Location = New System.Drawing.Point(55, 12)
         Me.GridControl1.MainView = Me.GridView5
-        Me.GridControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit3})
-        Me.GridControl1.Size = New System.Drawing.Size(2159, 1364)
+        Me.GridControl1.Size = New System.Drawing.Size(2165, 1383)
         Me.GridControl1.TabIndex = 60
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
         '
@@ -314,11 +314,11 @@ Partial Class frmIND
         'SimpleButton39
         '
         Me.SimpleButton39.ImageOptions.Image = CType(resources.GetObject("SimpleButton39.ImageOptions.Image"), System.Drawing.Image)
-        Me.SimpleButton39.Location = New System.Drawing.Point(20, 22)
-        Me.SimpleButton39.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.SimpleButton39.Location = New System.Drawing.Point(12, 12)
+        Me.SimpleButton39.Margin = New System.Windows.Forms.Padding(5)
         Me.SimpleButton39.Name = "SimpleButton39"
         Me.SimpleButton39.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.SimpleButton39.Size = New System.Drawing.Size(37, 39)
+        Me.SimpleButton39.Size = New System.Drawing.Size(39, 39)
         Me.SimpleButton39.StyleController = Me.LayoutControl9
         Me.SimpleButton39.TabIndex = 59
         '
@@ -328,7 +328,7 @@ Partial Class frmIND
         Me.LayoutControlGroup31.GroupBordersVisible = False
         Me.LayoutControlGroup31.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem246})
         Me.LayoutControlGroup31.Name = "Root"
-        Me.LayoutControlGroup31.Size = New System.Drawing.Size(2242, 1408)
+        Me.LayoutControlGroup31.Size = New System.Drawing.Size(2232, 1407)
         Me.LayoutControlGroup31.TextVisible = False
         '
         'LayoutControlItem1
@@ -336,7 +336,7 @@ Partial Class frmIND
         Me.LayoutControlItem1.Control = Me.GridControl1
         Me.LayoutControlItem1.Location = New System.Drawing.Point(43, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(2165, 1372)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(2169, 1387)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -345,7 +345,7 @@ Partial Class frmIND
         Me.LayoutControlItem246.Control = Me.SimpleButton39
         Me.LayoutControlItem246.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem246.Name = "LayoutControlItem107"
-        Me.LayoutControlItem246.Size = New System.Drawing.Size(43, 1372)
+        Me.LayoutControlItem246.Size = New System.Drawing.Size(43, 1387)
         Me.LayoutControlItem246.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem246.TextVisible = False
         '
@@ -373,16 +373,16 @@ Partial Class frmIND
         Me.BarDockControl2.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarDockControl2.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl2.Manager = Me.BarManager1
-        Me.BarDockControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl2.Size = New System.Drawing.Size(2215, 0)
         '
         'BarDockControl3
         '
         Me.BarDockControl3.CausesValidation = False
         Me.BarDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BarDockControl3.Location = New System.Drawing.Point(0, 1378)
+        Me.BarDockControl3.Location = New System.Drawing.Point(0, 1397)
         Me.BarDockControl3.Manager = Me.BarManager1
-        Me.BarDockControl3.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl3.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl3.Size = New System.Drawing.Size(2215, 0)
         '
         'BarDockControl4
@@ -391,8 +391,8 @@ Partial Class frmIND
         Me.BarDockControl4.Dock = System.Windows.Forms.DockStyle.Left
         Me.BarDockControl4.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl4.Manager = Me.BarManager1
-        Me.BarDockControl4.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
-        Me.BarDockControl4.Size = New System.Drawing.Size(0, 1378)
+        Me.BarDockControl4.Margin = New System.Windows.Forms.Padding(5)
+        Me.BarDockControl4.Size = New System.Drawing.Size(0, 1397)
         '
         'BarDockControl5
         '
@@ -400,8 +400,8 @@ Partial Class frmIND
         Me.BarDockControl5.Dock = System.Windows.Forms.DockStyle.Right
         Me.BarDockControl5.Location = New System.Drawing.Point(2215, 0)
         Me.BarDockControl5.Manager = Me.BarManager1
-        Me.BarDockControl5.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
-        Me.BarDockControl5.Size = New System.Drawing.Size(0, 1378)
+        Me.BarDockControl5.Margin = New System.Windows.Forms.Padding(5)
+        Me.BarDockControl5.Size = New System.Drawing.Size(0, 1397)
         '
         'BBOpenInh
         '
@@ -426,13 +426,13 @@ Partial Class frmIND
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(2215, 1378)
+        Me.ClientSize = New System.Drawing.Size(2215, 1397)
         Me.Controls.Add(Me.LayoutControl9)
         Me.Controls.Add(Me.BarDockControl4)
         Me.Controls.Add(Me.BarDockControl5)
         Me.Controls.Add(Me.BarDockControl3)
         Me.Controls.Add(Me.BarDockControl2)
-        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmIND"
         Me.Text = "frmIND"
         CType(Me.LayoutControl9, System.ComponentModel.ISupportInitialize).EndInit()

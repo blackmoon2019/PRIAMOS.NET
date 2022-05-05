@@ -31,7 +31,7 @@ Partial Class frmCases
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
         Me.txtdescription = New DevExpress.XtraEditors.TextEdit()
-        Me.cboBDG1 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cboUSR = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwUSRBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbotaskCat = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwTASKSCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -56,7 +56,7 @@ Partial Class frmCases
         Me.cmAddTask = New DevExpress.XtraEditors.CheckButton()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSaveTask = New DevExpress.XtraEditors.SimpleButton()
-        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
+        Me.dtVisitDate = New DevExpress.XtraEditors.DateEdit()
         Me.MemoEdit1 = New DevExpress.XtraEditors.MemoEdit()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.cboCCT = New DevExpress.XtraEditors.LookUpEdit()
@@ -111,7 +111,7 @@ Partial Class frmCases
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtdescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboBDG1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboUSR.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwUSRBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbotaskCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwTASKSCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,8 +129,8 @@ Partial Class frmCases
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
-        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtVisitDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtVisitDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,7 +165,7 @@ Partial Class frmCases
         Me.LayoutControl1.Controls.Add(Me.txtCode)
         Me.LayoutControl1.Controls.Add(Me.txtComments)
         Me.LayoutControl1.Controls.Add(Me.txtdescription)
-        Me.LayoutControl1.Controls.Add(Me.cboBDG1)
+        Me.LayoutControl1.Controls.Add(Me.cboUSR)
         Me.LayoutControl1.Controls.Add(Me.cbotaskCat)
         Me.LayoutControl1.Location = New System.Drawing.Point(19, 11)
         Me.LayoutControl1.Name = "LayoutControl1"
@@ -281,25 +281,25 @@ Partial Class frmCases
         Me.txtdescription.TabIndex = 9
         Me.txtdescription.Tag = "description,0,1,2"
         '
-        'cboBDG1
+        'cboUSR
         '
-        Me.cboBDG1.Location = New System.Drawing.Point(233, 103)
-        Me.cboBDG1.Margin = New System.Windows.Forms.Padding(5)
-        Me.cboBDG1.Name = "cboBDG1"
-        Me.cboBDG1.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboBDG1.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
-        Me.cboBDG1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboBDG1.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Χρήστης", 106, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboBDG1.Properties.DataSource = Me.VwUSRBindingSource
-        Me.cboBDG1.Properties.DisplayMember = "RealName"
-        Me.cboBDG1.Properties.NullText = ""
-        Me.cboBDG1.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
-        Me.cboBDG1.Properties.PopupSizeable = False
-        Me.cboBDG1.Properties.ValueMember = "ID"
-        Me.cboBDG1.Size = New System.Drawing.Size(1019, 38)
-        Me.cboBDG1.StyleController = Me.LayoutControl1
-        Me.cboBDG1.TabIndex = 44
-        Me.cboBDG1.Tag = "usrID,0,1,2"
+        Me.cboUSR.Location = New System.Drawing.Point(233, 103)
+        Me.cboUSR.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboUSR.Name = "cboUSR"
+        Me.cboUSR.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboUSR.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.cboUSR.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboUSR.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Χρήστης", 106, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboUSR.Properties.DataSource = Me.VwUSRBindingSource
+        Me.cboUSR.Properties.DisplayMember = "RealName"
+        Me.cboUSR.Properties.NullText = ""
+        Me.cboUSR.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
+        Me.cboUSR.Properties.PopupSizeable = False
+        Me.cboUSR.Properties.ValueMember = "ID"
+        Me.cboUSR.Size = New System.Drawing.Size(1019, 38)
+        Me.cboUSR.StyleController = Me.LayoutControl1
+        Me.cboUSR.TabIndex = 44
+        Me.cboUSR.Tag = "usrID,0,1,2"
         '
         'VwUSRBindingSource
         '
@@ -389,7 +389,7 @@ Partial Class frmCases
         '
         'LayoutControlItem6
         '
-        Me.LayoutControlItem6.Control = Me.cboBDG1
+        Me.LayoutControlItem6.Control = Me.cboUSR
         Me.LayoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem6.CustomizationFormText = "Πολυκατοικία"
         Me.LayoutControlItem6.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem6.ImageOptions.Image"), System.Drawing.Image)
@@ -478,7 +478,7 @@ Partial Class frmCases
         Me.LayoutControl2.Controls.Add(Me.cmAddTask)
         Me.LayoutControl2.Controls.Add(Me.cmdExit)
         Me.LayoutControl2.Controls.Add(Me.cmdSaveTask)
-        Me.LayoutControl2.Controls.Add(Me.DateEdit1)
+        Me.LayoutControl2.Controls.Add(Me.dtVisitDate)
         Me.LayoutControl2.Controls.Add(Me.MemoEdit1)
         Me.LayoutControl2.Controls.Add(Me.TextEdit1)
         Me.LayoutControl2.Controls.Add(Me.cboCCT)
@@ -546,21 +546,21 @@ Partial Class frmCases
         Me.cmdSaveTask.TabIndex = 51
         Me.cmdSaveTask.Text = "Αποθήκευση"
         '
-        'DateEdit1
+        'dtVisitDate
         '
-        Me.DateEdit1.EditValue = Nothing
-        Me.DateEdit1.Location = New System.Drawing.Point(1039, 61)
-        Me.DateEdit1.Margin = New System.Windows.Forms.Padding(5)
-        Me.DateEdit1.Name = "DateEdit1"
-        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateEdit1.Properties.MaskSettings.Set("mask", "d")
-        Me.DateEdit1.Properties.ShowMonthNavigationButtons = DevExpress.Utils.DefaultBoolean.[True]
-        Me.DateEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.DateEdit1.Size = New System.Drawing.Size(208, 38)
-        Me.DateEdit1.StyleController = Me.LayoutControl2
-        Me.DateEdit1.TabIndex = 48
-        Me.DateEdit1.Tag = "dtVisit,0,1,2"
+        Me.dtVisitDate.EditValue = Nothing
+        Me.dtVisitDate.Location = New System.Drawing.Point(1039, 61)
+        Me.dtVisitDate.Margin = New System.Windows.Forms.Padding(5)
+        Me.dtVisitDate.Name = "dtVisitDate"
+        Me.dtVisitDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtVisitDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtVisitDate.Properties.MaskSettings.Set("mask", "d")
+        Me.dtVisitDate.Properties.ShowMonthNavigationButtons = DevExpress.Utils.DefaultBoolean.[True]
+        Me.dtVisitDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.dtVisitDate.Size = New System.Drawing.Size(208, 38)
+        Me.dtVisitDate.StyleController = Me.LayoutControl2
+        Me.dtVisitDate.TabIndex = 48
+        Me.dtVisitDate.Tag = "dtVisit,0,1,2"
         '
         'MemoEdit1
         '
@@ -792,7 +792,7 @@ Partial Class frmCases
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup2})
-        Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
+        Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1272, 820)
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -833,7 +833,7 @@ Partial Class frmCases
         '
         'LayoutControlItem12
         '
-        Me.LayoutControlItem12.Control = Me.DateEdit1
+        Me.LayoutControlItem12.Control = Me.dtVisitDate
         Me.LayoutControlItem12.Location = New System.Drawing.Point(814, 0)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
         Me.LayoutControlItem12.Size = New System.Drawing.Size(412, 42)
@@ -947,7 +947,7 @@ Partial Class frmCases
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtdescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboBDG1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboUSR.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwUSRBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbotaskCat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwTASKSCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -965,8 +965,8 @@ Partial Class frmCases
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
-        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtVisitDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtVisitDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1013,7 +1013,7 @@ Partial Class frmCases
     Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
     Friend WithEvents VwBDGBindingSource As BindingSource
     Friend WithEvents Vw_BDGTableAdapter As Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter
-    Friend WithEvents cboBDG1 As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents cboUSR As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents VwUSRBindingSource As BindingSource
     Friend WithEvents Vw_USRTableAdapter As Priamos_NETDataSetTableAdapters.vw_USRTableAdapter
@@ -1028,7 +1028,7 @@ Partial Class frmCases
     Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents cboCCT As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents DateEdit1 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents dtVisitDate As DevExpress.XtraEditors.DateEdit
     Friend WithEvents MemoEdit1 As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem

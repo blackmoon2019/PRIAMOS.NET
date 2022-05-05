@@ -90,15 +90,17 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
+        Me.Vw_DOYTableAdapter.Fill(Me.Priamos_NETDataSet.vw_DOY)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet1.vw_CCT_PF' table. You can move, or remove it, as needed.
-        Me.Vw_CCT_PFTableAdapter.Fill(Me.Priamos_NETDataSet1.vw_CCT_PF)
+        'Me.Vw_CCT_PFTableAdapter.Fill(Me.Priamos_NETDataSet1.vw_CCT_PF)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PRF' table. You can move, or remove it, as needed.
         Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
         Dim sSQL As New System.Text.StringBuilder
-        txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        txtAam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
-        txtIam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
+        'txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        'txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        'txtAam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
+        'txtIam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
         'Νομοί
         FillCbo.COU(cboCOU)
         'Επαφές
@@ -854,14 +856,33 @@ Public Class frmBDG
     Private Sub LoadMefMes()
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
-            sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes, BEF.mes as mesB,  
-		            CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
-		            CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   from ( " +
-                    "Select * From vw_AHPB " +
-                    "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " ) as CUR " +
-                    "Left Join vw_AHPB BEF on bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And 
-                    BEF.mdt = (select max(mdt) from vw_AHPB where mdt < " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ORDER BY CUR.ORD   "
+            'sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes,   
+            '  CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
+            '  CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt,   " &
+            '        "(select BEF.mes as mesB from AHPB BEF where boiler=" + RGTypeHeating.SelectedIndex.ToString + " and bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And BEF.mdt = (select max(mdt) from vw_AHPB where  boiler=" + RGTypeHeating.SelectedIndex.ToString + " and mdt < " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ) as mesB " &
+            '        "from ( " +
+            '        "Select * From vw_AHPB " +
+            '        "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) + " ) as CUR " +
+            '        "   ORDER BY CUR.ORD   "
             'sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
+            sSQL = "SELECT CUR.ID, CUR.code, CUR.aptID,     BEF.mdt,CUR.mes, cur.mesB, " +
+                    "CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor,  " +
+                    "CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   " +
+                    "from vw_AHPB CUR " +
+                    "inner join ( " +
+                    "Select    [bdgID], [aptID], max([mdt]) as mdt " +
+                    "From vw_AHPB " +
+                    "Where bdgid =" + toSQLValueS(sID) + "  And boiler = " + RGTypeHeating.SelectedIndex.ToString + " And mdt <= " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) +
+                    "group by [bdgID], [aptID]) as BEF on BEF.aptID=CUR.aptID and BEF.mdt =cur.mdt and boiler=1 ORDER BY CUR.ORD   "
+
+            'sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes, BEF.mes as mesB,  
+            '  CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
+            '  CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   from ( " +
+            '        "Select * From vw_AHPB " +
+            '        "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) + " ) as CUR " +
+            '        "Left Join vw_AHPB BEF on bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And 
+            '        BEF.mdt = (select max(mdt) from vw_AHPB where mdt < " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ORDER BY CUR.ORD   "
+            'LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
             LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
             LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
             GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
@@ -1016,24 +1037,33 @@ Public Class frmBDG
     Private Sub DeleteSelectedRows()
         Dim sSQL As String
         Dim I As Integer
-        For I = 0 To GridView2.SelectedRowsCount - 1
-            sSQL = "DELETE FROM AHPB WHERE ID = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.GetSelectedRows(I), "ID").ToString)
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
-        Next
-        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-        LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
-        If GridView2.RowCount <= 0 Then
-            If cboBefMes.EditValue = Nothing Then
-                sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd"))
-            Else
-                sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd"))
+        Try
+            For I = 0 To GridView2.SelectedRowsCount - 1
+                sSQL = "DELETE FROM AHPB WHERE ID = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.GetSelectedRows(I), "ID").ToString)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next
+            LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+            LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
+            If GridView2.RowCount <= 0 Then
+                If cboBefMes.EditValue = Nothing Then
+                    sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd"))
+                Else
+                    sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd"))
+                End If
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Dim sSQL2 As New System.Text.StringBuilder
+                sSQL2.AppendLine("where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " ORDER BY mdt desc")
+                'Προηγούμενες μετρήσεις
+                FillCbo.BEF_MES(cboBefMes, sSQL2)
             End If
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
-        End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
         If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
@@ -2136,6 +2166,7 @@ Public Class frmBDG
 
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
         LoadMefMes()
+        cmdRefreshAHPB.Enabled = True
     End Sub
 
     Private Sub grdAPT_DoubleClick(sender As Object, e As EventArgs) Handles grdAPT.DoubleClick
@@ -2143,7 +2174,22 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdRefreshAHPB_Click(sender As Object, e As EventArgs) Handles cmdRefreshAHPB.Click
-        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
+        If cboBefMes.Text = "" Then
+            XtraMessageBox.Show("Δεν έχετε επιλέξει ημερομηνία προηγ. μέτρησης", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        Dim sSQL As String
+        sSQL = "SELECT CUR.ID, CUR.code, CUR.aptID,     BEF.mdt,CUR.mes, cur.mesB, " +
+                    "CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor,  " +
+                    "CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   " +
+                    "from vw_AHPB CUR " +
+                    "inner join ( " +
+                    "Select    [bdgID], [aptID], max([mdt]) as mdt " +
+                    "From vw_AHPB " +
+                    "Where bdgid =" + toSQLValueS(sID) + "  And boiler = " + RGTypeHeating.SelectedIndex.ToString + " And mdt <= " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) +
+                    "group by [bdgID], [aptID]) as BEF on BEF.aptID=CUR.aptID and BEF.mdt =cur.mdt and boiler=1 ORDER BY CUR.ORD   "
+
+        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
         LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
 
     End Sub
@@ -2159,7 +2205,7 @@ Public Class frmBDG
 
     End Sub
 
- 
+
 
     Private Sub GridView8_ShownEditor(sender As Object, e As EventArgs) Handles GridView8.ShownEditor
         Dim view As ColumnView = DirectCast(sender, ColumnView)
@@ -2173,10 +2219,167 @@ Public Class frmBDG
         End If
     End Sub
 
+    Private Sub cboBefMes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBefMes.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboBefMes.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub NavBDGF_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavBDGF.ElementClick
+        Try
+            Maintab.SelectedTabPage = tabBDG_F
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            GridView12.OptionsBehavior.Editable = False
+            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+            Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cmdBDGFAddNew.Name)
+            ExcludeControls.Add(cmdBDGFDelete.Name)
+            ExcludeControls.Add(cmdBDGFEdit.Name)
+            ExcludeControls.Add(cmdBDGFRefresh.Name)
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup18, ExcludeControls)
+            cmdBDGFAddNew.Checked = False : cmdBDGFEdit.Checked = False
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cboDOY_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDOY.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboDOY.EditValue = Nothing : ManageDOY()
+            Case 2 : If cboDOY.EditValue <> Nothing Then ManageDOY()
+            Case 3 : cboDOY.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManageDOY()
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "ΔΟΥ"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "ΔΟΥ"
+        form1.DataTable = "DOY"
+        form1.CallerControl = cboDOY
+        form1.CalledFromControl = True
+        If cboDOY.EditValue <> Nothing Then form1.ID = cboDOY.EditValue.ToString
+        form1.MdiParent = frmMain
+        If cboDOY.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+    Private Sub txtInvoiceFilename_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtBDGFilename.ButtonClick
+        If e.Button.Index = 1 Then
+            BDGFileSelection()
+        Else
+            txtBDGFilename.EditValue = Nothing
+        End If
+    End Sub
+    Private Sub BDGFileSelection(Optional ByVal ValueToGrid As Boolean = False)
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then
+            If ValueToGrid Then
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "comefrom", System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
+            Else
+                txtBDGFilename.EditValue = ""
+                txtBDGFilename.EditValue = XtraOpenFileDialog1.SafeFileName
+            End If
+        End If
+
+    End Sub
+
+    Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
+        If Valid.ValidateFormGRP(LayoutControlGroup18) Then
+            If XtraOpenFileDialog1.SafeFileName <> "" Then
+                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID) = False Then
+                    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Else
+                    Cls.ClearGroupCtrls(LayoutControlGroup18)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
+                    XtraOpenFileDialog1.FileName = ""
+                    txtBDGFilename.EditValue = ""
+                    GridView12.OptionsBehavior.Editable = False
+                End If
+            End If
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+
+        End If
+
+    End Sub
+
+    Private Sub cmdBDGFAddNew_CheckedChanged(sender As Object, e As EventArgs) Handles cmdBDGFAddNew.CheckedChanged
+        Dim btn As CheckButton = TryCast(sender, CheckButton)
+        If btn.Checked = True Then
+            GridView12.OptionsBehavior.Editable = False
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup18)
+            Cls.ClearGroupCtrls(LayoutControlGroup18)
+            txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
+            cmdSaveBDGFile.Enabled = True
+            cmdBDGFEdit.Enabled = False
+        Else
+            Cls.ClearGroupCtrls(LayoutControlGroup18)
+            Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cmdBDGFAddNew.Name)
+            ExcludeControls.Add(cmdBDGFDelete.Name)
+            ExcludeControls.Add(cmdBDGFEdit.Name)
+            ExcludeControls.Add(cmdBDGFRefresh.Name)
+            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup18, ExcludeControls)
+            cmdSaveBDGFile.Enabled = False
+            cmdBDGFEdit.Enabled = True
+        End If
+    End Sub
+
+    Private Sub cmdBDGFEdit_CheckedChanged(sender As Object, e As EventArgs) Handles cmdBDGFEdit.CheckedChanged
+        Dim btn As CheckButton = TryCast(sender, CheckButton)
+        If btn.Checked = True Then
+            cmdBDGFAddNew.Enabled = False
+            GridView12.OptionsBehavior.Editable = True
+        Else
+            GridView12.OptionsBehavior.Editable = False
+            cmdBDGFAddNew.Enabled = True
+        End If
+    End Sub
 
 
+    Private Sub GridControl3_DoubleClick(sender As Object, e As EventArgs) Handles GridControl3.DoubleClick
+        Try
+            Dim sFilename = GridView12.GetRowCellValue(GridView1.FocusedRowHandle, "filename")
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
+            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString, "BDG_F")
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+            ShellExecute(Application.StartupPath & "\" & GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "filename"))
+        Catch ex As IOException
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
+    Private Sub cmdBDGFDelete_Click(sender As Object, e As EventArgs) Handles cmdBDGFDelete.Click
+        Dim sSQL As String
+        Try
 
+            sSQL = "DELETE FROM BDG_F WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString)
+
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub cmdBDGFRefresh_Click(sender As Object, e As EventArgs) Handles cmdBDGFRefresh.Click
+        Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+    End Sub
 
 
 

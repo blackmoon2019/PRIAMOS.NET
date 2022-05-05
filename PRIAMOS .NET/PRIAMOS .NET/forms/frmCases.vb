@@ -55,7 +55,6 @@ Public Class frmCases
 
     Private Sub frmCases_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TASKS_CAT' table. You can move, or remove it, as needed.
@@ -63,7 +62,7 @@ Public Class frmCases
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_USR' table. You can move, or remove it, as needed.
         Me.Vw_USRTableAdapter.Fill(Me.Priamos_NETDataSet.vw_USR)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
-        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
+        Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NETDataSet.vw_BDG)
         Dim sSQL As New System.Text.StringBuilder
         'Πολυκατοικίες
         'FillCbo.BDG(cboBDG)
@@ -71,10 +70,13 @@ Public Class frmCases
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("CASES")
                 LayoutControl2.Enabled = False
+                cboUSR.EditValue = UserProps.ID
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_CASES where id ='" + sID + "'")
                 Me.Vw_TASKSTableAdapter.FillByCase(Me.Priamos_NETDataSet.vw_TASKS, System.Guid.Parse(sID))
         End Select
+        cboCCT.EditValue = System.Guid.Parse(ProgProps.ADM)
+        dtVisitDate.EditValue = Date.Now
         If System.IO.File.Exists(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml") = True Then GridView3.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -105,6 +107,8 @@ Public Class frmCases
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     LayoutControl2.Enabled = True
+                    cboCCT.EditValue = System.Guid.Parse(ProgProps.ADM)
+                    dtVisitDate.EditValue = Date.Now
                 End If
             End If
         Catch ex As Exception
@@ -373,5 +377,7 @@ Public Class frmCases
 
     Private Sub cmAddTask_Click(sender As Object, e As EventArgs) Handles cmAddTask.Click
         Cls.ClearCtrls(LayoutControl2)
+        cboCCT.EditValue = System.Guid.Parse(ProgProps.ADM)
+        dtVisitDate.EditValue = Date.Now
     End Sub
 End Class

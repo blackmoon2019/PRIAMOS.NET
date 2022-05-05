@@ -31,9 +31,11 @@ Module Main
     End Structure
     Public UserProps As USER_PROPS
     Public Structure PROG_PROPS
+        Public VAT As Integer
         Public Decimals As Integer
         Public SupportEmail As String
         Public EXFolderPath As String
+        Public ADM As String
     End Structure
     Public ProgProps As PROG_PROPS
 
@@ -41,12 +43,7 @@ Module Main
         If t.Text.Length = 0 Then
             Return "NULL" 'this will pass through any SQL statement without notice  
         Else 'Lets suppose our textbox is checked to contain only numbers, so we count on it  
-            If t.Properties.Mask.EditMask <> Nothing Then
-                If Not isnum Then Return "'" + t.EditValue + "'" Else Return t.EditValue
-            Else
-                If Not isnum Then Return "'" + t.Text + "'" Else Return t.Text.Replace(",", ".")
-            End If
-
+            If Not isnum Then Return "'" + t.Text + "'" Else Return t.Text.Replace(",", ".").Replace(" €", "").Replace("%", "")
         End If
     End Function
     Public Sub HideColumns(GridView1 As DevExpress.XtraGrid.Views.Grid.GridView, sExclude As String)

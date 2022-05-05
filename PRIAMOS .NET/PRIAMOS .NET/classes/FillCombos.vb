@@ -551,13 +551,13 @@ Public Class FillCombos
     Public Sub MAIL(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim ds As DataSet = New DataSet
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Server from vw_MAILS", CNDB)
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Server,un from vw_MAILS", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = ""
             CtrlCombo.Properties.Columns.Clear()
 
             CtrlCombo.Properties.DataSource = sdr
-            CtrlCombo.Properties.DisplayMember = "Server"
+            CtrlCombo.Properties.DisplayMember = "un"
             CtrlCombo.Properties.ValueMember = "id"
             CtrlCombo.Properties.ForceInitialize()
             CtrlCombo.Properties.PopulateColumns()

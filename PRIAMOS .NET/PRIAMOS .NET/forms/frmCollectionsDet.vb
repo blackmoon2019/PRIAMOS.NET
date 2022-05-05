@@ -5,7 +5,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmCollectionsDet
     Private sID As String, sbdgID As String, saptID As String, sinhID As String
-    Private sTenant As Boolean
+    Private sTenant As Boolean, sCheckForTenant As Boolean = False
     Private LoadForms As New FormLoader
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -34,10 +34,16 @@ Public Class frmCollectionsDet
             sTenant = value
         End Set
     End Property
+    Public WriteOnly Property CheckForTenant As Boolean
+        Set(value As Boolean)
+            sCheckForTenant = value
+        End Set
+    End Property
     Private Sub frmCollectionsDet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If sinhID <> "" And sTenant <> Nothing Then
-            Me.Vw_COL_DTableAdapter.FillByInhIDAndTenant(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), sTenant)
-            Me.Vw_COL_DTableAdapter.FillByInhID(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID))
+        If sinhID <> "" And sCheckForTenant = True Then
+            Me.Vw_COL_DTableAdapter.FillByInhIDAndTenant(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), sTenant, System.Guid.Parse(saptID))
+        ElseIf sinhID <> "" Then
+            Me.Vw_COL_DTableAdapter.FillByInhID(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), System.Guid.Parse(saptID))
         Else
             Me.Vw_COL_DTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sbdgID), System.Guid.Parse(saptID))
         End If
@@ -56,7 +62,7 @@ Public Class frmCollectionsDet
         Dim sSQL As String
         Dim AptBal As Decimal, Credit As Decimal
         Try
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι επιλεγμένες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 
@@ -75,8 +81,10 @@ Public Class frmCollectionsDet
             sSQL = "UPDATE APT SET BAL=BAL + " & toSQLValueS(AptBal, True) & " where id = " & toSQLValueS(saptID)
             Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
             frmCollections.LoaderData(sbdgID)
-            If sinhID <> "" Then
-                Me.Vw_COL_DTableAdapter.FillByInhID(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID))
+            If sinhID <> "" And sCheckForTenant = True Then
+                Me.Vw_COL_DTableAdapter.FillByInhIDAndTenant(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), sTenant, System.Guid.Parse(saptID))
+            ElseIf sinhID <> "" Then
+                Me.Vw_COL_DTableAdapter.FillByInhID(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), System.Guid.Parse(saptID))
             Else
                 Me.Vw_COL_DTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sbdgID), System.Guid.Parse(saptID))
             End If

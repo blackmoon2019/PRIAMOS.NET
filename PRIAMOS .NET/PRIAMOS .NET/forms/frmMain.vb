@@ -303,7 +303,7 @@ Public Class frmMain
         'form.Show()
 
         Dim form As frmCollections = New frmCollections()
-        form.Text = "Είσπραξεις"
+        form.Text = "Είσπραξεις Κοινοχρήστων"
         form.MdiParent = Me
         'form.DataTable = "vw_COL"
         'form.MdiParent = Me
@@ -348,6 +348,14 @@ Public Class frmMain
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τεχνική Υποστήριξη"
         form.DataTable = "vw_TECH_SUP"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBCT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCT.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Επαφές ανα επάγγελμα"
+        form.DataTable = "vw_CCT_PF"
         form.MdiParent = Me
         form.Show()
     End Sub

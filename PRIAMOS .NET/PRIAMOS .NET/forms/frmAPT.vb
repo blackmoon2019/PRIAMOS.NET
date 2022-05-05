@@ -47,6 +47,8 @@ Public Class frmAPT
         FillCbo.CCT(cboTenant)
         'Ιδιοκτήτες
         FillCbo.CCT(cboOwner)
+        'Εκπρόσωποι
+        FillCbo.CCT(cboRepresentative)
         'Ορόφοι
         FillCbo.FLR(cboFloor)
         'Πολυκατοικίες  
@@ -193,21 +195,34 @@ Public Class frmAPT
         End If
     End Sub
 
-    Private Sub cboTenant_EditValueChanged(sender As Object, e As EventArgs) Handles cboTenant.EditValueChanged
-
-    End Sub
-
     Private Sub chksameOwnerTenant_CheckStateChanged(sender As Object, e As EventArgs) Handles chksameOwnerTenant.CheckStateChanged
         If chksameOwnerTenant.EditValue = 1 Then cboTenant.EditValue = cboOwner.EditValue
     End Sub
 
-    Private Sub chksameOwnerTenant_CheckedChanged(sender As Object, e As EventArgs) Handles chksameOwnerTenant.CheckedChanged
-
+    Private Sub cboRepresentative_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboRepresentative.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboRepresentative.EditValue = Nothing : ManageRepresentative()
+            Case 2 : If cboRepresentative.EditValue <> Nothing Then ManageRepresentative()
+            Case 3 : cboRepresentative.EditValue = Nothing
+        End Select
     End Sub
 
-    Private Sub cboOwner_EditValueChanged(sender As Object, e As EventArgs)
-
+    Private Sub ManageRepresentative()
+        Dim form1 As frmCustomers = New frmCustomers()
+        form1.Text = "Επαφές"
+        form1.CallerControl = cboRepresentative
+        form1.CalledFromControl = True
+        form1.MdiParent = frmMain
+        If cboRepresentative.EditValue <> Nothing Then
+            form1.ID = cboRepresentative.EditValue.ToString
+            form1.Mode = FormMode.EditRecord
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
     End Sub
+
 
 
     'Private Sub LoadAPT()
