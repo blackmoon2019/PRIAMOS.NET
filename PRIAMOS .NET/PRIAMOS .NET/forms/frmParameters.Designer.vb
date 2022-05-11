@@ -124,7 +124,7 @@ Partial Class frmParameters
         'txtDecimals
         '
         Me.txtDecimals.EditValue = "0"
-        Me.txtDecimals.Location = New System.Drawing.Point(239, 12)
+        Me.txtDecimals.Location = New System.Drawing.Point(468, 12)
         Me.txtDecimals.Margin = New System.Windows.Forms.Padding(5)
         Me.txtDecimals.Name = "txtDecimals"
         Me.txtDecimals.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -133,24 +133,24 @@ Partial Class frmParameters
         Me.txtDecimals.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtDecimals.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtDecimals.Properties.MaskSettings.Set("mask", "n0")
-        Me.txtDecimals.Size = New System.Drawing.Size(1005, 38)
+        Me.txtDecimals.Size = New System.Drawing.Size(776, 38)
         Me.txtDecimals.StyleController = Me.LayoutControl2
         Me.txtDecimals.TabIndex = 37
         Me.txtDecimals.Tag = ""
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(239, 96)
+        Me.txtEmail.Location = New System.Drawing.Point(468, 96)
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(5)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(1005, 38)
+        Me.txtEmail.Size = New System.Drawing.Size(776, 38)
         Me.txtEmail.StyleController = Me.LayoutControl2
         Me.txtEmail.TabIndex = 38
         '
         'txtVAT
         '
         Me.txtVAT.EditValue = "0"
-        Me.txtVAT.Location = New System.Drawing.Point(239, 54)
+        Me.txtVAT.Location = New System.Drawing.Point(468, 54)
         Me.txtVAT.Margin = New System.Windows.Forms.Padding(5)
         Me.txtVAT.Name = "txtVAT"
         Me.txtVAT.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -159,14 +159,14 @@ Partial Class frmParameters
         Me.txtVAT.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtVAT.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtVAT.Properties.MaskSettings.Set("mask", "P0")
-        Me.txtVAT.Size = New System.Drawing.Size(1005, 38)
+        Me.txtVAT.Size = New System.Drawing.Size(776, 38)
         Me.txtVAT.StyleController = Me.LayoutControl2
         Me.txtVAT.TabIndex = 37
         Me.txtVAT.Tag = "InvNumber,0,1,2"
         '
         'ADM
         '
-        Me.ADM.Location = New System.Drawing.Point(239, 138)
+        Me.ADM.Location = New System.Drawing.Point(468, 138)
         Me.ADM.Margin = New System.Windows.Forms.Padding(5)
         Me.ADM.Name = "ADM"
         Me.ADM.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -179,7 +179,7 @@ Partial Class frmParameters
         Me.ADM.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.ADM.Properties.PopupSizeable = False
         Me.ADM.Properties.ValueMember = "ID"
-        Me.ADM.Size = New System.Drawing.Size(1005, 38)
+        Me.ADM.Size = New System.Drawing.Size(776, 38)
         Me.ADM.StyleController = Me.LayoutControl2
         Me.ADM.TabIndex = 45
         Me.ADM.Tag = "ADM"
@@ -214,7 +214,7 @@ Partial Class frmParameters
         Me.LayoutControlItem52.Name = "LayoutControlItem52"
         Me.LayoutControlItem52.Size = New System.Drawing.Size(1236, 42)
         Me.LayoutControlItem52.Text = "Δεκαδικά"
-        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(215, 23)
+        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(444, 23)
         '
         'LayoutControlItem3
         '
@@ -223,7 +223,7 @@ Partial Class frmParameters
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(1236, 42)
         Me.LayoutControlItem3.Text = "Technical Support Email"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(215, 23)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(444, 23)
         '
         'LayoutControlItem2
         '
@@ -262,7 +262,7 @@ Partial Class frmParameters
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
         Me.LayoutControlItem13.Size = New System.Drawing.Size(1236, 42)
         Me.LayoutControlItem13.Text = "ΦΠΑ"
-        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(215, 23)
+        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(444, 23)
         '
         'LayoutControlItem11
         '
@@ -272,8 +272,8 @@ Partial Class frmParameters
         Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(1236, 42)
-        Me.LayoutControlItem11.Text = "Διαχείριση Προγράμματος"
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(215, 23)
+        Me.LayoutControlItem11.Text = "Διαχείριση Προγράμματος - Προεπιλεγμένο Συνεργείο"
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(444, 23)
         '
         'Vw_PARTNER_AND_WORKSHOPTableAdapter
         '

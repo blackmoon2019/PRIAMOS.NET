@@ -344,6 +344,7 @@ Public Class frmCollections
                 oCmd.ExecuteNonQuery()
             End Using
             LoaderData(bdgID)
+
             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(bdgID))
 
 

@@ -43,7 +43,15 @@ Module Main
         If t.Text.Length = 0 Then
             Return "NULL" 'this will pass through any SQL statement without notice  
         Else 'Lets suppose our textbox is checked to contain only numbers, so we count on it  
-            If Not isnum Then Return "'" + t.Text + "'" Else Return t.Text.Replace(",", ".").Replace(" €", "").Replace("%", "")
+            Dim sValue As String = t.Text
+            If Not isnum Then
+                Return "'" + sValue + "'"
+            Else
+                sValue = sValue.Replace(",", ".")
+                sValue = sValue.Replace(" €", "")
+                sValue = sValue.Replace("%", "")
+                Return sValue
+            End If
         End If
     End Function
     Public Sub HideColumns(GridView1 As DevExpress.XtraGrid.Views.Grid.GridView, sExclude As String)

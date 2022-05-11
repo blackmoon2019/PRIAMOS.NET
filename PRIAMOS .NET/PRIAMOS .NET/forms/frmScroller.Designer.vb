@@ -20,14 +20,14 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SelectQuery3 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns3 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table3 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery4 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns4 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table4 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
@@ -69,6 +69,17 @@ Partial Class frmScroller
         Me.BarDelete = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEdit = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRefresh = New DevExpress.XtraBars.BarButtonItem()
+        Me.Bar4 = New DevExpress.XtraBars.Bar()
+        Me.cboDebitUsr = New DevExpress.XtraBars.BarEditItem()
+        Me.Rep_DEBITUSR = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.cboColMethod = New DevExpress.XtraBars.BarEditItem()
+        Me.Rep_COL_METHOD = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.VwCOLMETHODBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.cboBank = New DevExpress.XtraBars.BarEditItem()
+        Me.Rep_ΒΑΝΚ = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.VwBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BBcolExtSave = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
@@ -93,6 +104,11 @@ Partial Class frmScroller
         Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.PopupMenuRowsDetail = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarEditItem2 = New DevExpress.XtraBars.BarEditItem()
+        Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
+        Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
+        Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,12 +118,19 @@ Partial Class frmScroller
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rep_COL_METHOD, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rep_ΒΑΝΚ, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRowsDetail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView2
@@ -133,14 +156,14 @@ Partial Class frmScroller
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode1.LevelTemplate = Me.GridView2
-        GridLevelNode1.RelationName = "Level1"
-        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.grdMain.Location = New System.Drawing.Point(46, 74)
+        GridLevelNode2.LevelTemplate = Me.GridView2
+        GridLevelNode2.RelationName = "Level1"
+        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        Me.grdMain.Location = New System.Drawing.Point(46, 112)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(1679, 1039)
+        Me.grdMain.Size = New System.Drawing.Size(1719, 1055)
         Me.grdMain.TabIndex = 5
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView2})
@@ -167,16 +190,16 @@ Partial Class frmScroller
         '
         'BarManager1
         '
-        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3, Me.Bar2})
+        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar3, Me.Bar2, Me.Bar4})
         Me.BarManager1.DockControls.Add(Me.barDockControlTop)
         Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 54
-        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
+        Me.BarManager1.MaxItemId = 58
+        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ})
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'Bar1
@@ -458,6 +481,97 @@ Partial Class frmScroller
         Me.BarRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
         Me.BarRefresh.Name = "BarRefresh"
         '
+        'Bar4
+        '
+        Me.Bar4.BarName = "COL_EXT"
+        Me.Bar4.DockCol = 0
+        Me.Bar4.DockRow = 1
+        Me.Bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.Bar4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboDebitUsr, "", False, True, True, 179), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboColMethod, "", False, True, True, 127), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboBank, "", False, True, True, 130), New DevExpress.XtraBars.LinkPersistInfo(Me.BBcolExtSave)})
+        Me.Bar4.Text = "Custom 5"
+        Me.Bar4.Visible = False
+        '
+        'cboDebitUsr
+        '
+        Me.cboDebitUsr.Caption = "Εισπράκτορας"
+        Me.cboDebitUsr.CaptionAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.cboDebitUsr.Edit = Me.Rep_DEBITUSR
+        Me.cboDebitUsr.Id = 54
+        Me.cboDebitUsr.Name = "cboDebitUsr"
+        Me.cboDebitUsr.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
+        '
+        'Rep_DEBITUSR
+        '
+        Me.Rep_DEBITUSR.AutoHeight = False
+        Me.Rep_DEBITUSR.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.Rep_DEBITUSR.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Εισπράκτορας", 106, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.Rep_DEBITUSR.DataSource = Me.CollectorsBindingSource
+        Me.Rep_DEBITUSR.DisplayMember = "RealName"
+        Me.Rep_DEBITUSR.Name = "Rep_DEBITUSR"
+        Me.Rep_DEBITUSR.NullText = ""
+        Me.Rep_DEBITUSR.ValueMember = "ID"
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'cboColMethod
+        '
+        Me.cboColMethod.Caption = "Τρόπος Πληρωμής"
+        Me.cboColMethod.CaptionAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.cboColMethod.Edit = Me.Rep_COL_METHOD
+        Me.cboColMethod.Id = 55
+        Me.cboColMethod.Name = "cboColMethod"
+        Me.cboColMethod.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
+        '
+        'Rep_COL_METHOD
+        '
+        Me.Rep_COL_METHOD.AutoHeight = False
+        Me.Rep_COL_METHOD.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.Rep_COL_METHOD.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Τρόπος Πληρωμής", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.Rep_COL_METHOD.DataSource = Me.VwCOLMETHODBindingSource
+        Me.Rep_COL_METHOD.DisplayMember = "name"
+        Me.Rep_COL_METHOD.Name = "Rep_COL_METHOD"
+        Me.Rep_COL_METHOD.NullText = ""
+        Me.Rep_COL_METHOD.ValueMember = "ID"
+        '
+        'VwCOLMETHODBindingSource
+        '
+        Me.VwCOLMETHODBindingSource.DataMember = "vw_COL_METHOD"
+        Me.VwCOLMETHODBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'cboBank
+        '
+        Me.cboBank.Caption = "Τράπεζα"
+        Me.cboBank.CaptionAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.cboBank.Edit = Me.Rep_ΒΑΝΚ
+        Me.cboBank.Id = 56
+        Me.cboBank.Name = "cboBank"
+        Me.cboBank.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
+        '
+        'Rep_ΒΑΝΚ
+        '
+        Me.Rep_ΒΑΝΚ.AutoHeight = False
+        Me.Rep_ΒΑΝΚ.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.Rep_ΒΑΝΚ.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Τράπεζα", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.Rep_ΒΑΝΚ.DataSource = Me.VwBANKSBindingSource
+        Me.Rep_ΒΑΝΚ.DisplayMember = "name"
+        Me.Rep_ΒΑΝΚ.Name = "Rep_ΒΑΝΚ"
+        Me.Rep_ΒΑΝΚ.NullText = ""
+        Me.Rep_ΒΑΝΚ.ValueMember = "ID"
+        '
+        'VwBANKSBindingSource
+        '
+        Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
+        Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'BBcolExtSave
+        '
+        Me.BBcolExtSave.Caption = "Επιβεβαίωση Είσπραξης"
+        Me.BBcolExtSave.Id = 57
+        Me.BBcolExtSave.Name = "BBcolExtSave"
+        '
         'barDockControlTop
         '
         Me.barDockControlTop.CausesValidation = False
@@ -465,34 +579,34 @@ Partial Class frmScroller
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5)
-        Me.barDockControlTop.Size = New System.Drawing.Size(1725, 74)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1765, 112)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1113)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1167)
         Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5)
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1725, 49)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1765, 49)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 74)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 112)
         Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5)
-        Me.barDockControlLeft.Size = New System.Drawing.Size(46, 1039)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(46, 1055)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1725, 74)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1765, 112)
         Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5)
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 1039)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 1055)
         '
         'BarStaticItem5
         '
@@ -597,21 +711,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table1.Name = "USR"
-        AllColumns1.Table = Table1
-        SelectQuery1.Columns.Add(AllColumns1)
-        SelectQuery1.Name = "USR"
-        SelectQuery1.Tables.Add(Table1)
-        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table2.Name = "IAT"
-        AllColumns2.Table = Table2
-        SelectQuery2.Columns.Add(AllColumns2)
-        SelectQuery2.Name = "IAT"
-        SelectQuery2.Tables.Add(Table2)
-        CustomSqlQuery1.Name = "INH"
-        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
+        Table3.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table3.Name = "USR"
+        AllColumns3.Table = Table3
+        SelectQuery3.Columns.Add(AllColumns3)
+        SelectQuery3.Name = "USR"
+        SelectQuery3.Tables.Add(Table3)
+        Table4.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table4.Name = "IAT"
+        AllColumns4.Table = Table4
+        SelectQuery4.Columns.Add(AllColumns4)
+        SelectQuery4.Name = "IAT"
+        SelectQuery4.Tables.Add(Table4)
+        CustomSqlQuery2.Name = "INH"
+        CustomSqlQuery2.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery3, SelectQuery4, CustomSqlQuery2})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM
@@ -634,12 +748,38 @@ Partial Class frmScroller
         Me.PopupMenuRowsDetail.Manager = Me.BarManager1
         Me.PopupMenuRowsDetail.Name = "PopupMenuRowsDetail"
         '
+        'BarEditItem2
+        '
+        Me.BarEditItem2.Caption = "Εισπράκτορας"
+        Me.BarEditItem2.CaptionAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.BarEditItem2.Edit = Me.Rep_DEBITUSR
+        Me.BarEditItem2.Id = 54
+        Me.BarEditItem2.Name = "BarEditItem2"
+        Me.BarEditItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption
+        '
+        'Vw_COL_METHODTableAdapter
+        '
+        Me.Vw_COL_METHODTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BANKSTableAdapter
+        '
+        Me.Vw_BANKSTableAdapter.ClearBeforeFill = True
+        '
+        'CollectorsBindingSource
+        '
+        Me.CollectorsBindingSource.DataMember = "Collectors"
+        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'CollectorsTableAdapter
+        '
+        Me.CollectorsTableAdapter.ClearBeforeFill = True
+        '
         'frmScroller
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1725, 1162)
+        Me.ClientSize = New System.Drawing.Size(1765, 1216)
         Me.Controls.Add(Me.grdMain)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
@@ -657,12 +797,19 @@ Partial Class frmScroller
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rep_COL_METHOD, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rep_ΒΑΝΚ, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRowsDetail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -732,4 +879,20 @@ Partial Class frmScroller
     Friend WithEvents BarRemoveFilterWithCell As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarRemoveAllFilters As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BBUpdateViewFileFromServer As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Bar4 As DevExpress.XtraBars.Bar
+    Friend WithEvents cboDebitUsr As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents Rep_DEBITUSR As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
+    Friend WithEvents cboColMethod As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents Rep_COL_METHOD As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents BarEditItem2 As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents VwCOLMETHODBindingSource As BindingSource
+    Friend WithEvents Vw_COL_METHODTableAdapter As Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter
+    Friend WithEvents cboBank As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents Rep_ΒΑΝΚ As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents VwBANKSBindingSource As BindingSource
+    Friend WithEvents Vw_BANKSTableAdapter As Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter
+    Friend WithEvents BBcolExtSave As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents CollectorsBindingSource As BindingSource
+    Friend WithEvents CollectorsTableAdapter As Priamos_NETDataSetTableAdapters.CollectorsTableAdapter
 End Class

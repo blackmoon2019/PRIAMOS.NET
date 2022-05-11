@@ -174,7 +174,7 @@ Public Class frmINH_pivot
                         End If
                     Case FormMode.EditRecord
                         Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,, "completeDate = " & toSQLValueS(sCompleteDate))
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
                 End Select
                 If sResult Then
                     If Mode = FormMode.NewRecord Then sID = sGuid

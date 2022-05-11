@@ -9,6 +9,9 @@ Public Class frmAPT
     Private sBDGID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
+    Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
+    Private FrmCaller As DevExpress.XtraEditors.XtraForm
+    Private CalledFromCtrl As Boolean
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private LoadForms As New FormLoader
@@ -37,6 +40,24 @@ Public Class frmAPT
             Frm = value
         End Set
     End Property
+    Public WriteOnly Property CallerForm As DevExpress.XtraEditors.XtraForm
+        Set(value As DevExpress.XtraEditors.XtraForm)
+            FrmCaller = value
+        End Set
+    End Property
+
+    Public WriteOnly Property CallerControl As DevExpress.XtraEditors.LookUpEdit
+        Set(value As DevExpress.XtraEditors.LookUpEdit)
+            CtrlCombo = value
+        End Set
+    End Property
+
+    Public WriteOnly Property CalledFromControl As Boolean
+        Set(value As Boolean)
+            CalledFromCtrl = value
+        End Set
+    End Property
+
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub

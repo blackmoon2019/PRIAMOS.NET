@@ -25,6 +25,10 @@ Public Class frmScroller
     Private CurrentView As String
     Private ReadXml As New XmlUpdateFromDB
     Private LoadForms As New FormLoader
+    Private bankID As String
+    Private colMethodID As String
+    Private debitUsrID As String
+
 
     Public Sub New()
 
@@ -42,6 +46,12 @@ Public Class frmScroller
     End Property
     'Private settings = System.Configuration.ConfigurationManager.AppSettings
     Private Sub frmScroller_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.Collectors' table. You can move, or remove it, as needed.
+        Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
+        Me.Vw_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BANKS)
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
+        Me.Vw_COL_METHODTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COL_METHOD)
         'Λίστα με τιμές για TOP RECORDS
         LoadComboRecordValues()
         popSaveAsView.EditValue = BarViews.EditValue
@@ -50,6 +60,12 @@ Public Class frmScroller
         GetCurrentView(True)
         'Φόρτωση Εγγραφών
         LoadRecords()
+        If sDataTable = "vw_COL_EXT" Then
+            AddHandler Rep_DEBITUSR.EditValueChanged, AddressOf Rep_DEBITUSR_Changed
+            AddHandler Rep_COL_METHOD.EditValueChanged, AddressOf Rep_COL_METHOD_Changed
+            AddHandler Rep_ΒΑΝΚ.EditValueChanged, AddressOf Rep_ΒΑΝΚ_Changed
+        End If
+
         'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
         'LoadViews()
         'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
@@ -176,6 +192,9 @@ Public Class frmScroller
                     Case "vw_TASKS_CAT" : sSQL = "DELETE FROM TASKS_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_FOLDER_CAT" : sSQL = "DELETE FROM FOLDER_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -260,6 +279,7 @@ Public Class frmScroller
                     Case "vw_TASKS_CAT" : sSQL = "DELETE FROM TASKS_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -630,6 +650,17 @@ Public Class frmScroller
     Private Sub EditRecord()
         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") Is Nothing Then Exit Sub
         Select Case sDataTable
+            Case "vw_COL_EXT"
+                Dim fColEXT As frmColExt = New frmColExt()
+                frmColExt.Text = "Λοιπές Εισπράξεις"
+                frmColExt.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                frmColExt.ApolID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "apolID").ToString
+                frmColExt.MdiParent = frmMain
+                frmColExt.Mode = FormMode.EditRecord
+                frmColExt.Scroller = GridView1
+                frmColExt.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmColExt), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                frmColExt.Show()
             Case "vw_TASKS"
                 Dim fTASKS As frmTasks = New frmTasks()
                 fTASKS.Text = "Εργασίες Υποθέσεων"
@@ -889,7 +920,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT",
-                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT"
+                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT"
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
@@ -902,6 +933,7 @@ Public Class frmScroller
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
                     Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                     Case "vw_TASKS_CAT" : fGen.Text = "Εργασίες" : fGen.DataTable = "TASKS_CAT" : fGen.L2.Text = "Εργασίες"
+                    Case "vw_FOLDER_CAT" : fGen.Text = "Κατηγορίες Φακέλων" : fGen.DataTable = "FOLDER_CAT" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -918,6 +950,15 @@ Public Class frmScroller
     'Νέα Εγγραφή
     Private Sub NewRecord()
         Select Case sDataTable
+            Case "vw_COL_EXT"
+                Dim fColEXT As frmColExt = New frmColExt()
+                frmColExt.Text = "Λοιπές Εισπράξεις"
+                frmColExt.MdiParent = frmMain
+                frmColExt.Mode = FormMode.NewRecord
+                frmColExt.Scroller = GridView1
+                frmColExt.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmColExt), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                frmColExt.Show()
             Case "vw_TASKS"
                 Dim fTASKS As frmTasks = New frmTasks()
                 fTASKS.Text = "Εργασίες Υποθέσεων"
@@ -1156,7 +1197,7 @@ Public Class frmScroller
                 fGen.Show()
 
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL",
-                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT"
+                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT"
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
@@ -1169,6 +1210,7 @@ Public Class frmScroller
                     Case "vw_TECH_CAT" : fGen.Text = "Κατηγορίες Τεχνικής Υποστήριξης" : fGen.DataTable = "TECH_CAT" : fGen.L2.Text = "Κατηγορία"
                     Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                     Case "vw_TASKS_CAT" : fGen.Text = "Εργασίες" : fGen.DataTable = "TASKS_CAT" : fGen.L2.Text = "Εργασίες"
+                    Case "vw_FOLDER_CAT" : fGen.Text = "Κατηγορίες Φακέλων" : fGen.DataTable = "FOLDER_CAT" : fGen.L2.Text = "Κατηγορία"
                 End Select
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
@@ -1515,4 +1557,77 @@ Public Class frmScroller
             End If
         End If
     End Sub
+
+    Private Sub BBcolExtSave_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBcolExtSave.ItemClick
+        Dim sSQL As String
+        Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
+        Dim I As Integer
+        Dim credit As Decimal
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+
+                If GridView1.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
+                If debitUsrID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει εισπράκτορα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                If colMethodID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει τρόπο πληρωμής", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                credit = Decimal.Parse(GridView1.GetRowCellValue(selectedRowHandle, "debit"))
+
+                ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
+                sSQL = "Update COL_EXT 
+                        SET creditusrID = " & toSQLValueS(UserProps.ID.ToString) & " ," &
+                        "debitusrID = " & toSQLValueS(debitUsrID) & " ," &
+                        "colMethodID = " & toSQLValueS(colMethodID) & " ," &
+                        "bankID = " & toSQLValueS(bankID) & " ," &
+                        "credit = " & toSQLValueS(credit, True) & " ," &
+                        "dtCredit = getdate() ," &
+                        "completed = 1 ," &
+                        "bal = 0 " &
+                    "WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next
+            LoadRecords()
+
+            XtraMessageBox.Show("Η εγγραφές επιβεβαιώθηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Friend Sub Rep_DEBITUSR_Changed(sender As Object, e As EventArgs)
+
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            debitUsrID = editor.GetColumnValue("ID").ToString
+            'debitUsrName = editor.GetColumnValue("RealName").ToString()
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Friend Sub Rep_COL_METHOD_Changed(sender As Object, e As EventArgs)
+
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            colMethodID = editor.EditValue.ToString
+            'debitUsrName = editor.GetColumnValue("RealName").ToString()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Friend Sub Rep_ΒΑΝΚ_Changed(sender As Object, e As EventArgs)
+
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            bankID = editor.EditValue.ToString
+            'debitUsrName = editor.GetColumnValue("RealName").ToString()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
 End Class

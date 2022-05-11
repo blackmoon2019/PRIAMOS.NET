@@ -90,6 +90,8 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
+        Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_FOLDER_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
         Me.Vw_DOYTableAdapter.Fill(Me.Priamos_NETDataSet.vw_DOY)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet1.vw_CCT_PF' table. You can move, or remove it, as needed.
@@ -2230,15 +2232,8 @@ Public Class frmBDG
             Maintab.SelectedTabPage = tabBDG_F
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
             GridView12.OptionsBehavior.Editable = False
-            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
-            Dim ExcludeControls As New List(Of String)
-            ExcludeControls.Add(cmdBDGFAddNew.Name)
-            ExcludeControls.Add(cmdBDGFDelete.Name)
-            ExcludeControls.Add(cmdBDGFEdit.Name)
-            ExcludeControls.Add(cmdBDGFRefresh.Name)
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup18, ExcludeControls)
-            cmdBDGFAddNew.Checked = False : cmdBDGFEdit.Checked = False
-
+            txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
+            cmdSaveBDGFile.Enabled = True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -2278,7 +2273,7 @@ Public Class frmBDG
         XtraOpenFileDialog1.InitialDirectory = "C:\"
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
-        XtraOpenFileDialog1.Multiselect = False
+        XtraOpenFileDialog1.Multiselect = True
         Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
         If result = DialogResult.OK Then
             If ValueToGrid Then
@@ -2287,15 +2282,16 @@ Public Class frmBDG
             Else
                 txtBDGFilename.EditValue = ""
                 txtBDGFilename.EditValue = XtraOpenFileDialog1.SafeFileName
+                If XtraOpenFileDialog1.SafeFileNames.Length > 1 Then txtBDGFilename.EditValue = "{Πολλαπλά Αρχεία}"
             End If
-        End If
+            End If
 
     End Sub
 
     Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
         If Valid.ValidateFormGRP(LayoutControlGroup18) Then
             If XtraOpenFileDialog1.SafeFileName <> "" Then
-                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID) = False Then
+                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID, "folderCatID", toSQLValueS(cboFolderCat.EditValue.ToString), PB) = False Then
                     XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     Cls.ClearGroupCtrls(LayoutControlGroup18)
@@ -2303,7 +2299,7 @@ Public Class frmBDG
                     Valid.SChanged = False
                     XtraOpenFileDialog1.FileName = ""
                     txtBDGFilename.EditValue = ""
-                    GridView12.OptionsBehavior.Editable = False
+                    txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
                 End If
             End If
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
@@ -2312,48 +2308,17 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub cmdBDGFAddNew_CheckedChanged(sender As Object, e As EventArgs) Handles cmdBDGFAddNew.CheckedChanged
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            GridView12.OptionsBehavior.Editable = False
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup18)
-            Cls.ClearGroupCtrls(LayoutControlGroup18)
-            txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
-            cmdSaveBDGFile.Enabled = True
-            cmdBDGFEdit.Enabled = False
-        Else
-            Cls.ClearGroupCtrls(LayoutControlGroup18)
-            Dim ExcludeControls As New List(Of String)
-            ExcludeControls.Add(cmdBDGFAddNew.Name)
-            ExcludeControls.Add(cmdBDGFDelete.Name)
-            ExcludeControls.Add(cmdBDGFEdit.Name)
-            ExcludeControls.Add(cmdBDGFRefresh.Name)
-            EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup18, ExcludeControls)
-            cmdSaveBDGFile.Enabled = False
-            cmdBDGFEdit.Enabled = True
-        End If
-    End Sub
-
-    Private Sub cmdBDGFEdit_CheckedChanged(sender As Object, e As EventArgs) Handles cmdBDGFEdit.CheckedChanged
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            cmdBDGFAddNew.Enabled = False
-            GridView12.OptionsBehavior.Editable = True
-        Else
-            GridView12.OptionsBehavior.Editable = False
-            cmdBDGFAddNew.Enabled = True
-        End If
-    End Sub
 
 
     Private Sub GridControl3_DoubleClick(sender As Object, e As EventArgs) Handles GridControl3.DoubleClick
         Try
             Dim sFilename = GridView12.GetRowCellValue(GridView1.FocusedRowHandle, "filename")
+            'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\" & sFilename)
             Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
             Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString, "BDG_F")
             fs.Write(b, 0, b.Length)
             fs.Close()
-            ShellExecute(Application.StartupPath & "\" & GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "filename"))
+            ShellExecute(Application.StartupPath & "\" & sFilename)
         Catch ex As IOException
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
@@ -2363,13 +2328,19 @@ Public Class frmBDG
 
     Private Sub cmdBDGFDelete_Click(sender As Object, e As EventArgs) Handles cmdBDGFDelete.Click
         Dim sSQL As String
-        Try
-
-            sSQL = "DELETE FROM BDG_F WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString)
+        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView12.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
+            sSQL = "DELETE FROM BDG_F WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString)
 
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
+
+        Next
+        Try
+
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -2380,6 +2351,34 @@ Public Class frmBDG
     Private Sub cmdBDGFRefresh_Click(sender As Object, e As EventArgs) Handles cmdBDGFRefresh.Click
         Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
     End Sub
+
+    Private Sub cboFolderCat_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboFolderCat.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboFolderCat.EditValue = Nothing : ManageFolderCat()
+            Case 2 : If cboFolderCat.EditValue <> Nothing Then ManageFolderCat()
+            Case 3 : cboFolderCat.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManageFolderCat()
+        Dim form1 As frmGen = New frmGen()
+        form1.Text = "Κατηγορίες Φακέλων"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Κατηγορία"
+        form1.DataTable = "FOLDER_CAT"
+        form1.CalledFromControl = True
+        form1.CallerControl = cboFolderCat
+        form1.MdiParent = frmMain
+        If cboFolderCat.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = cboFolderCat.EditValue.ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+
+
 
 
 

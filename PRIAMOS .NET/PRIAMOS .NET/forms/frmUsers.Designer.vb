@@ -34,6 +34,8 @@ Partial Class frmUsers
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.chkisCollector = New DevExpress.XtraEditors.CheckEdit()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,10 +50,13 @@ Partial Class frmUsers
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkisCollector.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.chkisCollector)
         Me.LayoutControl1.Controls.Add(Me.txtPWD)
         Me.LayoutControl1.Controls.Add(Me.txtRealName)
         Me.LayoutControl1.Controls.Add(Me.cmdExit)
@@ -92,7 +97,7 @@ Partial Class frmUsers
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(423, 180)
+        Me.cmdExit.Location = New System.Drawing.Point(423, 216)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(195, 39)
@@ -103,7 +108,7 @@ Partial Class frmUsers
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(622, 180)
+        Me.cmdSave.Location = New System.Drawing.Point(622, 216)
         Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(204, 39)
@@ -140,7 +145,7 @@ Partial Class frmUsers
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem7})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(838, 280)
         Me.Root.TextVisible = False
@@ -183,18 +188,18 @@ Partial Class frmUsers
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.cmdExit
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(411, 168)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(411, 204)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(199, 92)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(199, 56)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.cmdSave
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(610, 168)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(610, 204)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(208, 92)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(208, 56)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
@@ -211,10 +216,33 @@ Partial Class frmUsers
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 168)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 204)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(411, 92)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(411, 56)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'chkisCollector
+        '
+        Me.chkisCollector.EditValue = CType(0, Byte)
+        Me.chkisCollector.Location = New System.Drawing.Point(12, 180)
+        Me.chkisCollector.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkisCollector.Name = "chkisCollector"
+        Me.chkisCollector.Properties.Caption = "Δυνατότητα είσπραξης"
+        Me.chkisCollector.Properties.ValueChecked = CType(1, Byte)
+        Me.chkisCollector.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkisCollector.Size = New System.Drawing.Size(814, 32)
+        Me.chkisCollector.StyleController = Me.LayoutControl1
+        Me.chkisCollector.TabIndex = 25
+        Me.chkisCollector.Tag = "isCollector,0,1,2"
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.chkisCollector
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(818, 36)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
         '
         'frmUsers
         '
@@ -242,6 +270,8 @@ Partial Class frmUsers
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkisCollector.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -260,4 +290,6 @@ Partial Class frmUsers
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents cboMail As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents chkisCollector As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
 End Class

@@ -20,23 +20,23 @@ Partial Class frmBDG
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim EditorButtonImageOptions7 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject25 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject26 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject27 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject28 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions8 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject29 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject30 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject31 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject32 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBDG))
-        Dim EditorButtonImageOptions9 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject33 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject34 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject35 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject36 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions6 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject21 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject22 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject23 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject24 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -505,8 +505,7 @@ Partial Class frmBDG
         Me.tabBDG_F = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl13BDG_F = New DevExpress.XtraLayout.LayoutControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.cmdBDGFEdit = New DevExpress.XtraEditors.CheckButton()
-        Me.cmdBDGFAddNew = New DevExpress.XtraEditors.CheckButton()
+        Me.PB = New DevExpress.XtraEditors.ProgressBarControl()
         Me.cmdBDGFDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdBDGFRefresh = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSaveBDGFile = New DevExpress.XtraEditors.SimpleButton()
@@ -522,21 +521,23 @@ Partial Class frmBDG
         Me.colfilename = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcomefrom = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colextension = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFolderCatName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemButtonEdit4 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.txtBDGFCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtBDGFilename = New DevExpress.XtraEditors.ButtonEdit()
+        Me.cboFolderCat = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwFOLDERCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LayoutControlGroup17 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup18 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem127 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem128 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem26 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem133 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem134 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem135 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem136 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem137 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem123 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem122 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem126 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup16 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem150 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GridView9 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -544,6 +545,7 @@ Partial Class frmBDG
         Me.Vw_CCT_PFTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CCT_PFTableAdapter()
         Me.Vw_DOYTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_DOYTableAdapter()
         Me.Vw_BDG_FTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDG_FTableAdapter()
+        Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_FOLDER_CATTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -883,24 +885,26 @@ Partial Class frmBDG
         Me.LayoutControl13BDG_F.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.PB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBDGFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem128, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem26, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem133, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem134, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem135, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem136, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem137, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem123, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem122, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem150, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -920,9 +924,9 @@ Partial Class frmBDG
         Me.grdAPM.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdAPM.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode1.LevelTemplate = Me.GridView7
-        GridLevelNode1.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
-        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.LevelTemplate = Me.GridView7
+        GridLevelNode2.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
+        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.grdAPM.Location = New System.Drawing.Point(57, 12)
         Me.grdAPM.MainView = Me.GridView5
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
@@ -1529,7 +1533,7 @@ Partial Class frmBDG
         '
         Me.Maintab.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Maintab.Location = New System.Drawing.Point(4, 36)
+        Me.Maintab.Location = New System.Drawing.Point(4, 34)
         Me.Maintab.Margin = New System.Windows.Forms.Padding(5)
         Me.Maintab.Name = "Maintab"
         Me.Maintab.SelectedTabPage = Me.tabBDG
@@ -4600,8 +4604,8 @@ Partial Class frmBDG
         'RepositoryItemButtonGas
         '
         Me.RepositoryItemButtonGas.AutoHeight = False
-        EditorButtonImageOptions7.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions7, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject25, SerializableAppearanceObject26, SerializableAppearanceObject27, SerializableAppearanceObject28, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions4.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonGas.Name = "RepositoryItemButtonGas"
         '
         'txtGInvTotalPrice
@@ -4839,8 +4843,8 @@ Partial Class frmBDG
         'RepositoryItemButtonOil
         '
         Me.RepositoryItemButtonOil.AutoHeight = False
-        EditorButtonImageOptions8.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions8, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject29, SerializableAppearanceObject30, SerializableAppearanceObject31, SerializableAppearanceObject32, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions5.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonOil.Name = "RepositoryItemButtonOil"
         '
         'txtOInvCode
@@ -5838,14 +5842,14 @@ Partial Class frmBDG
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LayoutControl1.Controls.Add(Me.cmdBDGFEdit)
-        Me.LayoutControl1.Controls.Add(Me.cmdBDGFAddNew)
+        Me.LayoutControl1.Controls.Add(Me.PB)
         Me.LayoutControl1.Controls.Add(Me.cmdBDGFDelete)
         Me.LayoutControl1.Controls.Add(Me.cmdBDGFRefresh)
         Me.LayoutControl1.Controls.Add(Me.cmdSaveBDGFile)
         Me.LayoutControl1.Controls.Add(Me.GridControl3)
         Me.LayoutControl1.Controls.Add(Me.txtBDGFCode)
         Me.LayoutControl1.Controls.Add(Me.txtBDGFilename)
+        Me.LayoutControl1.Controls.Add(Me.cboFolderCat)
         Me.LayoutControl1.Location = New System.Drawing.Point(12, 12)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl1.Name = "LayoutControl1"
@@ -5855,30 +5859,23 @@ Partial Class frmBDG
         Me.LayoutControl1.TabIndex = 10
         Me.LayoutControl1.Text = "LayoutControl3"
         '
-        'cmdBDGFEdit
+        'PB
         '
-        Me.cmdBDGFEdit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
-        Me.cmdBDGFEdit.Location = New System.Drawing.Point(25, 274)
-        Me.cmdBDGFEdit.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdBDGFEdit.Name = "cmdBDGFEdit"
-        Me.cmdBDGFEdit.Size = New System.Drawing.Size(26, 39)
-        Me.cmdBDGFEdit.StyleController = Me.LayoutControl1
-        Me.cmdBDGFEdit.TabIndex = 62
-        '
-        'cmdBDGFAddNew
-        '
-        Me.cmdBDGFAddNew.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdBDGFAddNew.Location = New System.Drawing.Point(25, 188)
-        Me.cmdBDGFAddNew.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdBDGFAddNew.Name = "cmdBDGFAddNew"
-        Me.cmdBDGFAddNew.Size = New System.Drawing.Size(26, 39)
-        Me.cmdBDGFAddNew.StyleController = Me.LayoutControl1
-        Me.cmdBDGFAddNew.TabIndex = 61
+        Me.PB.Location = New System.Drawing.Point(261, 61)
+        Me.PB.MenuManager = Me.BarManager1
+        Me.PB.Name = "PB"
+        Me.PB.Properties.ProgressViewStyle = DevExpress.XtraEditors.Controls.ProgressViewStyle.Solid
+        Me.PB.Properties.ShowTitle = True
+        Me.PB.Properties.Step = 1
+        Me.PB.ShowProgressInTaskBar = True
+        Me.PB.Size = New System.Drawing.Size(1898, 26)
+        Me.PB.StyleController = Me.LayoutControl1
+        Me.PB.TabIndex = 62
         '
         'cmdBDGFDelete
         '
         Me.cmdBDGFDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdBDGFDelete.Location = New System.Drawing.Point(25, 231)
+        Me.cmdBDGFDelete.Location = New System.Drawing.Point(25, 188)
         Me.cmdBDGFDelete.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdBDGFDelete.Name = "cmdBDGFDelete"
         Me.cmdBDGFDelete.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -5889,7 +5886,7 @@ Partial Class frmBDG
         'cmdBDGFRefresh
         '
         Me.cmdBDGFRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdBDGFRefresh.Location = New System.Drawing.Point(25, 317)
+        Me.cmdBDGFRefresh.Location = New System.Drawing.Point(25, 231)
         Me.cmdBDGFRefresh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdBDGFRefresh.Name = "cmdBDGFRefresh"
         Me.cmdBDGFRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -5921,6 +5918,7 @@ Partial Class frmBDG
         Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonEdit4})
         Me.GridControl3.Size = New System.Drawing.Size(2104, 1079)
         Me.GridControl3.TabIndex = 36
+        Me.GridControl3.UseEmbeddedNavigator = True
         Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView12})
         '
         'VwBDGFBindingSource
@@ -5930,13 +5928,14 @@ Partial Class frmBDG
         '
         'GridView12
         '
-        Me.GridView12.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colcode1, Me.colbdgID1, Me.colmodifiedBy1, Me.colmodifiedOn1, Me.colcreatedOn1, Me.colfilename, Me.colcomefrom, Me.colextension})
+        Me.GridView12.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colcode1, Me.colbdgID1, Me.colmodifiedBy1, Me.colmodifiedOn1, Me.colcreatedOn1, Me.colfilename, Me.colcomefrom, Me.colextension, Me.colFolderCatName})
         Me.GridView12.DetailHeight = 619
         Me.GridView12.GridControl = Me.GridControl3
         Me.GridView12.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.GridView12.LevelIndent = 0
         Me.GridView12.Name = "GridView12"
         Me.GridView12.OptionsBehavior.Editable = False
+        Me.GridView12.OptionsSelection.MultiSelect = True
         Me.GridView12.OptionsView.ColumnAutoWidth = False
         Me.GridView12.OptionsView.ShowGroupPanel = False
         Me.GridView12.PreviewIndent = 0
@@ -5990,8 +5989,8 @@ Partial Class frmBDG
         Me.colfilename.MinWidth = 35
         Me.colfilename.Name = "colfilename"
         Me.colfilename.Visible = True
-        Me.colfilename.VisibleIndex = 0
-        Me.colfilename.Width = 452
+        Me.colfilename.VisibleIndex = 1
+        Me.colfilename.Width = 631
         '
         'colcomefrom
         '
@@ -6007,16 +6006,26 @@ Partial Class frmBDG
         Me.colextension.Name = "colextension"
         Me.colextension.Width = 131
         '
+        'colFolderCatName
+        '
+        Me.colFolderCatName.Caption = "Κατηγορία Φακέλου"
+        Me.colFolderCatName.FieldName = "FolderCatName"
+        Me.colFolderCatName.MinWidth = 35
+        Me.colFolderCatName.Name = "colFolderCatName"
+        Me.colFolderCatName.Visible = True
+        Me.colFolderCatName.VisibleIndex = 0
+        Me.colFolderCatName.Width = 209
+        '
         'RepositoryItemButtonEdit4
         '
         Me.RepositoryItemButtonEdit4.AutoHeight = False
-        EditorButtonImageOptions9.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions9, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject33, SerializableAppearanceObject34, SerializableAppearanceObject35, SerializableAppearanceObject36, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions6.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonEdit4.Name = "RepositoryItemButtonEdit4"
         '
         'txtBDGFCode
         '
-        Me.txtBDGFCode.Location = New System.Drawing.Point(104, 61)
+        Me.txtBDGFCode.Location = New System.Drawing.Point(134, 61)
         Me.txtBDGFCode.Margin = New System.Windows.Forms.Padding(5)
         Me.txtBDGFCode.Name = "txtBDGFCode"
         Me.txtBDGFCode.Properties.Appearance.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
@@ -6024,23 +6033,46 @@ Partial Class frmBDG
         Me.txtBDGFCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtBDGFCode.Properties.Appearance.Options.UseFont = True
         Me.txtBDGFCode.Properties.ReadOnly = True
-        Me.txtBDGFCode.Size = New System.Drawing.Size(237, 38)
+        Me.txtBDGFCode.Size = New System.Drawing.Size(123, 38)
         Me.txtBDGFCode.StyleController = Me.LayoutControl1
         Me.txtBDGFCode.TabIndex = 32
         Me.txtBDGFCode.Tag = "code,0"
         '
         'txtBDGFilename
         '
-        Me.txtBDGFilename.Location = New System.Drawing.Point(104, 103)
+        Me.txtBDGFilename.Location = New System.Drawing.Point(682, 103)
         Me.txtBDGFilename.Margin = New System.Windows.Forms.Padding(5)
         Me.txtBDGFilename.Name = "txtBDGFilename"
         Me.txtBDGFilename.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.txtBDGFilename.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph), New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
         Me.txtBDGFilename.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.txtBDGFilename.Size = New System.Drawing.Size(2055, 38)
+        Me.txtBDGFilename.Size = New System.Drawing.Size(1477, 38)
         Me.txtBDGFilename.StyleController = Me.LayoutControl1
         Me.txtBDGFilename.TabIndex = 6
         Me.txtBDGFilename.Tag = ""
+        '
+        'cboFolderCat
+        '
+        Me.cboFolderCat.Location = New System.Drawing.Point(134, 103)
+        Me.cboFolderCat.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboFolderCat.Name = "cboFolderCat"
+        Me.cboFolderCat.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboFolderCat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboFolderCat.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Κατηγορία", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboFolderCat.Properties.DataSource = Me.VwFOLDERCATBindingSource
+        Me.cboFolderCat.Properties.DisplayMember = "name"
+        Me.cboFolderCat.Properties.NullText = ""
+        Me.cboFolderCat.Properties.PopupSizeable = False
+        Me.cboFolderCat.Properties.ValueMember = "ID"
+        Me.cboFolderCat.Size = New System.Drawing.Size(435, 38)
+        Me.cboFolderCat.StyleController = Me.LayoutControl1
+        Me.cboFolderCat.TabIndex = 5
+        Me.cboFolderCat.Tag = "couid,0"
+        '
+        'VwFOLDERCATBindingSource
+        '
+        Me.VwFOLDERCATBindingSource.DataMember = "vw_FOLDER_CAT"
+        Me.VwFOLDERCATBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
         '
         'LayoutControlGroup17
         '
@@ -6055,7 +6087,7 @@ Partial Class frmBDG
         '
         Me.LayoutControlGroup18.CustomizationFormText = "Αρχεία Πολυκατοικίας"
         Me.LayoutControlGroup18.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.BeforeText
-        Me.LayoutControlGroup18.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem127, Me.LayoutControlItem128, Me.EmptySpaceItem3, Me.EmptySpaceItem26, Me.LayoutControlItem133, Me.LayoutControlItem134, Me.LayoutControlItem135, Me.LayoutControlItem136, Me.LayoutControlItem137, Me.LayoutControlItem123})
+        Me.LayoutControlGroup18.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem127, Me.LayoutControlItem128, Me.EmptySpaceItem26, Me.LayoutControlItem133, Me.LayoutControlItem134, Me.LayoutControlItem135, Me.LayoutControlItem123, Me.LayoutControlItem122, Me.LayoutControlItem126})
         Me.LayoutControlGroup18.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup18.Name = "LayoutControlGroup5"
         Me.LayoutControlGroup18.Size = New System.Drawing.Size(2164, 1272)
@@ -6068,9 +6100,9 @@ Partial Class frmBDG
         Me.LayoutControlItem127.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem127.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem127.Name = "LayoutControlItem48"
-        Me.LayoutControlItem127.Size = New System.Drawing.Size(320, 42)
+        Me.LayoutControlItem127.Size = New System.Drawing.Size(236, 42)
         Me.LayoutControlItem127.Text = "Κωδικός"
-        Me.LayoutControlItem127.TextSize = New System.Drawing.Size(67, 23)
+        Me.LayoutControlItem127.TextSize = New System.Drawing.Size(97, 23)
         '
         'LayoutControlItem128
         '
@@ -6081,26 +6113,18 @@ Partial Class frmBDG
         Me.LayoutControlItem128.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem128.TextVisible = False
         '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(320, 0)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem13"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1818, 42)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
-        '
         'EmptySpaceItem26
         '
         Me.EmptySpaceItem26.AllowHotTrack = False
-        Me.EmptySpaceItem26.Location = New System.Drawing.Point(0, 299)
+        Me.EmptySpaceItem26.Location = New System.Drawing.Point(0, 213)
         Me.EmptySpaceItem26.Name = "EmptySpaceItem24"
-        Me.EmptySpaceItem26.Size = New System.Drawing.Size(30, 911)
+        Me.EmptySpaceItem26.Size = New System.Drawing.Size(30, 997)
         Me.EmptySpaceItem26.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem133
         '
         Me.LayoutControlItem133.Control = Me.cmdBDGFDelete
-        Me.LayoutControlItem133.Location = New System.Drawing.Point(0, 170)
+        Me.LayoutControlItem133.Location = New System.Drawing.Point(0, 127)
         Me.LayoutControlItem133.Name = "LayoutControlItem69"
         Me.LayoutControlItem133.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem133.TextSize = New System.Drawing.Size(0, 0)
@@ -6109,7 +6133,7 @@ Partial Class frmBDG
         'LayoutControlItem134
         '
         Me.LayoutControlItem134.Control = Me.cmdBDGFRefresh
-        Me.LayoutControlItem134.Location = New System.Drawing.Point(0, 256)
+        Me.LayoutControlItem134.Location = New System.Drawing.Point(0, 170)
         Me.LayoutControlItem134.Name = "LayoutControlItem71"
         Me.LayoutControlItem134.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem134.TextSize = New System.Drawing.Size(0, 0)
@@ -6124,35 +6148,40 @@ Partial Class frmBDG
         Me.LayoutControlItem135.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem135.TextVisible = False
         '
-        'LayoutControlItem136
-        '
-        Me.LayoutControlItem136.Control = Me.cmdBDGFAddNew
-        Me.LayoutControlItem136.Location = New System.Drawing.Point(0, 127)
-        Me.LayoutControlItem136.Name = "LayoutControlItem77"
-        Me.LayoutControlItem136.Size = New System.Drawing.Size(30, 43)
-        Me.LayoutControlItem136.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem136.TextVisible = False
-        '
-        'LayoutControlItem137
-        '
-        Me.LayoutControlItem137.Control = Me.cmdBDGFEdit
-        Me.LayoutControlItem137.Location = New System.Drawing.Point(0, 213)
-        Me.LayoutControlItem137.Name = "LayoutControlItem68"
-        Me.LayoutControlItem137.Size = New System.Drawing.Size(30, 43)
-        Me.LayoutControlItem137.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem137.TextVisible = False
-        '
         'LayoutControlItem123
         '
         Me.LayoutControlItem123.Control = Me.txtBDGFilename
         Me.LayoutControlItem123.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem123.CustomizationFormText = "Περιοχή"
         Me.LayoutControlItem123.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem123.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem123.Location = New System.Drawing.Point(548, 42)
         Me.LayoutControlItem123.Name = "LayoutControlItem123"
-        Me.LayoutControlItem123.Size = New System.Drawing.Size(2138, 42)
-        Me.LayoutControlItem123.Text = "Αρχείο"
-        Me.LayoutControlItem123.TextSize = New System.Drawing.Size(67, 23)
+        Me.LayoutControlItem123.Size = New System.Drawing.Size(1590, 42)
+        Me.LayoutControlItem123.Text = "Αρχεία"
+        Me.LayoutControlItem123.TextSize = New System.Drawing.Size(97, 23)
+        '
+        'LayoutControlItem122
+        '
+        Me.LayoutControlItem122.Control = Me.cboFolderCat
+        Me.LayoutControlItem122.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem122.CustomizationFormText = "Νομός"
+        Me.LayoutControlItem122.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem122.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem122.ImageOptions.Image"), System.Drawing.Image)
+        Me.LayoutControlItem122.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem122.Name = "LayoutControlItem122"
+        Me.LayoutControlItem122.Size = New System.Drawing.Size(548, 42)
+        Me.LayoutControlItem122.Tag = "1"
+        Me.LayoutControlItem122.Text = "Κατηγορία"
+        Me.LayoutControlItem122.TextSize = New System.Drawing.Size(97, 23)
+        '
+        'LayoutControlItem126
+        '
+        Me.LayoutControlItem126.Control = Me.PB
+        Me.LayoutControlItem126.Location = New System.Drawing.Point(236, 0)
+        Me.LayoutControlItem126.Name = "LayoutControlItem126"
+        Me.LayoutControlItem126.Size = New System.Drawing.Size(1902, 42)
+        Me.LayoutControlItem126.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem126.TextVisible = False
         '
         'LayoutControlGroup16
         '
@@ -6195,6 +6224,10 @@ Partial Class frmBDG
         'Vw_BDG_FTableAdapter
         '
         Me.Vw_BDG_FTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_FOLDER_CATTableAdapter
+        '
+        Me.Vw_FOLDER_CATTableAdapter.ClearBeforeFill = True
         '
         'frmBDG
         '
@@ -6554,24 +6587,26 @@ Partial Class frmBDG
         Me.LayoutControl13BDG_F.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.PB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBDGFBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem128, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem26, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem133, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem134, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem135, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem136, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem137, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem123, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem122, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem150, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -7047,8 +7082,6 @@ Partial Class frmBDG
     Friend WithEvents LayoutControl13BDG_F As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents LayoutControlGroup16 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents cmdBDGFEdit As DevExpress.XtraEditors.CheckButton
-    Friend WithEvents cmdBDGFAddNew As DevExpress.XtraEditors.CheckButton
     Friend WithEvents cmdBDGFDelete As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdBDGFRefresh As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdSaveBDGFile As DevExpress.XtraEditors.SimpleButton
@@ -7060,13 +7093,10 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlGroup18 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem127 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem128 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem26 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents LayoutControlItem133 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem134 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem135 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem136 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem137 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem150 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtBDGFilename As DevExpress.XtraEditors.ButtonEdit
     Friend WithEvents LayoutControlItem123 As DevExpress.XtraLayout.LayoutControlItem
@@ -7088,4 +7118,11 @@ Partial Class frmBDG
     Friend WithEvents colfilename As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colcomefrom As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colextension As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cboFolderCat As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem122 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwFOLDERCATBindingSource As BindingSource
+    Friend WithEvents Vw_FOLDER_CATTableAdapter As Priamos_NETDataSetTableAdapters.vw_FOLDER_CATTableAdapter
+    Friend WithEvents colFolderCatName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents PB As DevExpress.XtraEditors.ProgressBarControl
+    Friend WithEvents LayoutControlItem126 As DevExpress.XtraLayout.LayoutControlItem
 End Class

@@ -360,6 +360,23 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBFolderCat_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBFolderCat.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Φακέλων"
+        form.DataTable = "vw_FOLDER_CAT"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBCol2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCol2.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Λοιπές Εισπράξεις"
+        form.DataTable = "vw_COL_EXT"
+        form.MdiParent = Me
+        form.Bar4.Visible = True
+        form.Show()
+    End Sub
+
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()
     '    form.Text = "Εργασίες υποθέσεων"

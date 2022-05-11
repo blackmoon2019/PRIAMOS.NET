@@ -395,6 +395,12 @@
     <Compile Include="forms\frmCases.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmColExt.Designer.vb">
+      <DependentUpon>frmColExt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmColExt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmCollections.Designer.vb">
       <DependentUpon>frmCollections.vb</DependentUpon>
     </Compile>
@@ -642,6 +648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCases.resx">
       <DependentUpon>frmCases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmColExt.resx">
+      <DependentUpon>frmColExt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCollections.resx">
       <DependentUpon>frmCollections.vb</DependentUpon>

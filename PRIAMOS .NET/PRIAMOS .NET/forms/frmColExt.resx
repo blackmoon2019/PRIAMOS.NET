@@ -117,64 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="BarManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>126, 17</value>
-  </metadata>
-  <metadata name="CollectorsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>316, 69</value>
-  </metadata>
   <metadata name="VwCOLMETHODBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2521, 17</value>
-  </metadata>
-  <metadata name="VwBANKSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>387, 69</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>165</value>
-  </metadata>
-  <metadata name="PopMenuViews.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>472, 17</value>
-  </metadata>
-  <metadata name="PopupMenuExport.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>686, 17</value>
-  </metadata>
-  <metadata name="PopMenuViews.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>472, 17</value>
-  </metadata>
-  <metadata name="PopupMenuExport.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>686, 17</value>
+    <value>1962, 17</value>
   </metadata>
   <metadata name="Priamos_NETDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1711, 17</value>
+    <value>17, 17</value>
   </metadata>
-  <metadata name="VwCOLMETHODBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1976, 17</value>
+  <metadata name="VwBDGBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>870, 17</value>
   </metadata>
-  <metadata name="VwBANKSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2708, 17</value>
+  <metadata name="CollectorsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>282, 17</value>
   </metadata>
-  <metadata name="SQLMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>320, 17</value>
-  </metadata>
-  <data name="SQLMain.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0iU1FMTWFpbiI+PFZpZXcgTmFtZT0iVVNSIj48RmllbGQgTmFtZT0iaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImNvZGUiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJ1biIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJwd2QiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUmVhbE5hbWUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZHRMb2dpbiIgVHlwZT0iRGF0ZVRpbWUiIC8+PC9WaWV3PjxWaWV3IE5hbWU9IklBVCI+PEZpZWxkIE5hbWU9ImlkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iaGlkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iYWlkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0ibWlkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iY2F0IiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9Im1pbCIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJmaWMiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iYXRvIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9ImVwdiIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJvbG0iIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJhcGMiIFR5cGU9IkRvdWJsZSIgLz48RmllbGQgTmFtZT0iZWlkIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iSU5IIj48RmllbGQgTmFtZT0iaWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJiaWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJmZHQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJ0ZHQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJwcmQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0ic3RzIiBUeXBlPSJCeXRlIiAvPjxGaWVsZCBOYW1lPSJlZHQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJtZzEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0ibWcyIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Im1nMyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJtZzQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0ic21hIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJkcHIiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Inh0ciIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iZWlkIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
-  </data>
-  <metadata name="XtraSaveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>931, 17</value>
-  </metadata>
-  <metadata name="PopupMenuRows.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1186, 17</value>
-  </metadata>
-  <metadata name="PopupMenuRowsDetail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="VwAPTBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1421, 17</value>
   </metadata>
+  <metadata name="VwBANKSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>2694, 17</value>
+  </metadata>
+  <metadata name="CollectorsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>581, 17</value>
+  </metadata>
+  <metadata name="Vw_BDGTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1146, 17</value>
+  </metadata>
+  <metadata name="Vw_APTTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1692, 17</value>
+  </metadata>
   <metadata name="Vw_COL_METHODTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>2338, 17</value>
+    <value>2324, 17</value>
   </metadata>
   <metadata name="Vw_BANKSTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 69</value>
-  </metadata>
-  <metadata name="CollectorsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>615, 69</value>
   </metadata>
 </root>

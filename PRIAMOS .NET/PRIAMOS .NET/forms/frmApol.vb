@@ -1,4 +1,5 @@
-﻿Imports DevExpress.XtraEditors
+﻿Imports System.Data.SqlClient
+Imports DevExpress.XtraEditors
 
 Public Class frmApol
     Private sID As String
@@ -53,6 +54,7 @@ Public Class frmApol
         Select Case Mode
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("APOL")
+                cboWorkshop.EditValue = System.Guid.Parse(ProgProps.ADM)
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APOL where id ='" + sID + "'")
         End Select
@@ -64,12 +66,22 @@ Public Class frmApol
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sResult As Boolean
+        Dim sSQL As New System.Text.StringBuilder
         Try
             If Valid.ValidateForm(LayoutControl1) Then
 
                 Select Case Mode
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APOL", LayoutControl1)
+                        Dim sGuid As String = System.Guid.NewGuid.ToString
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APOL", LayoutControl1,,, sGuid)
+                        sSQL.AppendLine("INSERT INTO COL_EXT(bdgid,apolID,credit,debit,bal,ColMethodID,dtdebit)")
+                        sSQL.AppendLine("VALUES( " & toSQLValueS(cboBDG.EditValue.ToString) & "," & toSQLValueS(sGuid) & ",0," &
+                                        toSQLValue(txtAmt, True) & "," & toSQLValue(txtAmt, True) & "," & toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & ",getdate())")
+                        'Εκτέλεση QUERY
+                        Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APOL", LayoutControl1,,, sID)
                 End Select
@@ -77,6 +89,7 @@ Public Class frmApol
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         End Try
     End Sub
 
