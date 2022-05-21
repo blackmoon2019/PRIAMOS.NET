@@ -67,7 +67,7 @@ Public Class frmCollections
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.YEARS' table. You can move, or remove it, as needed.
         Me.YEARSTableAdapter.Fill(Me.Priamos_NETDataSet.YEARS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
-        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
+        Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NETDataSet.vw_BDG)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.vw_INH' table. You can move, or remove it, as needed.
         'Me.Vw_INHTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_INH)
 
@@ -111,7 +111,7 @@ Public Class frmCollections
             GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
         End If
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml") Then
-            GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
+            '  GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
         End If
 
         GridView2.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
@@ -125,12 +125,12 @@ Public Class frmCollections
         Dim Tbl As SqlDataAdapter
         Try
             ' Διαμερίσματα
-            strSql = "SELECT   C.bdgID, aptID, a.ttl, sum(debit) as debit , 0 as credit , sum(C.bal) as bal,A.Bal as Aptbal  " &
+            strSql = "SELECT   C.bdgID, aptID, a.ttl,a.ord, sum(debit) as debit , 0 as credit , sum(C.bal) as bal,A.Bal as Aptbal  " &
                      "From COL C " &
                      "INNER Join INH I ON I.ID=C.inhID " &
                      "INNER Join APT A ON C.aptID = A.ID " &
                     "where Completed=0 " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
-                    "group by C.bdgID, aptID, ttl,a.bal"
+                    "group by C.bdgID, aptID, ttl,a.bal,a.ord"
 
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
@@ -139,12 +139,12 @@ Public Class frmCollections
 
             ' Παραστατικά
             strSql = "Select   aptID, c.bdgID, inhID, completeDate, SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, " &
-                     "debitusrID, dtDebit, max(dtCredit) As dtCredit " &
+                     "debitusrID, dtDebit, max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos  " &
                      "From COL C " &
                      "INNER Join INH I ON I.ID=C.inhID " &
                      "INNER Join APT A ON C.aptID = A.ID " &
                      "where completed=0  " & IIf(bdgID.Length > 0, "  And c.bdgID = " & toSQLValueS(bdgID), "") &
-                     "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit"
+                     "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE) "
 
 
             Tbl = New SqlDataAdapter(strSql, CNDB)

@@ -21,23 +21,32 @@ Partial Class frmColExt
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.cboColMethod = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwCOLMETHODBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
-        Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.txtCode = New DevExpress.XtraEditors.TextEdit()
-        Me.cboCollector = New DevExpress.XtraEditors.LookUpEdit()
         Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
-        Me.cboApt = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.cboBank = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.dtCredit = New DevExpress.XtraEditors.DateEdit()
-        Me.txtDebit = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
+        Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
+        Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
+        Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.chkCompleted = New DevExpress.XtraEditors.CheckEdit()
+        Me.cboColMethod = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
+        Me.txtCode = New DevExpress.XtraEditors.TextEdit()
+        Me.cboCollector = New DevExpress.XtraEditors.LookUpEdit()
+        Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
+        Me.cboApt = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cboBank = New DevExpress.XtraEditors.LookUpEdit()
+        Me.dtCredit = New DevExpress.XtraEditors.DateEdit()
+        Me.txtDebit = New DevExpress.XtraEditors.TextEdit()
+        Me.txtInh = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -47,35 +56,30 @@ Partial Class frmColExt
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem24 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem41 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
-        Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
-        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
-        Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
-        Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
-        Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
-        Me.chkCompleted = New DevExpress.XtraEditors.CheckEdit()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.cboColMethod.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboColMethod.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCollector.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCredit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCredit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDebit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtInh.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,8 +89,8 @@ Partial Class frmColExt
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -101,6 +105,7 @@ Partial Class frmColExt
         Me.LayoutControl1.Controls.Add(Me.cboBank)
         Me.LayoutControl1.Controls.Add(Me.dtCredit)
         Me.LayoutControl1.Controls.Add(Me.txtDebit)
+        Me.LayoutControl1.Controls.Add(Me.txtInh)
         Me.LayoutControl1.Location = New System.Drawing.Point(14, 14)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl1.Name = "LayoutControl1"
@@ -110,9 +115,111 @@ Partial Class frmColExt
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'VwCOLMETHODBindingSource
+        '
+        Me.VwCOLMETHODBindingSource.DataMember = "vw_COL_METHOD"
+        Me.VwCOLMETHODBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwBDGBindingSource
+        '
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'CollectorsBindingSource
+        '
+        Me.CollectorsBindingSource.DataMember = "Collectors"
+        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'VwAPTBindingSource
+        '
+        Me.VwAPTBindingSource.DataMember = "vw_APT"
+        Me.VwAPTBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'VwBANKSBindingSource
+        '
+        Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
+        Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem5, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem9, Me.LayoutControlItem2, Me.LayoutControlItem10, Me.LayoutControlItem24, Me.LayoutControlItem41, Me.LayoutControlItem3, Me.LayoutControlItem19})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(795, 603)
+        Me.Root.TextVisible = False
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(257, 0)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(518, 42)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'CollectorsTableAdapter
+        '
+        Me.CollectorsTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_APTTableAdapter
+        '
+        Me.Vw_APTTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_COL_METHODTableAdapter
+        '
+        Me.Vw_COL_METHODTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BANKSTableAdapter
+        '
+        Me.Vw_BANKSTableAdapter.ClearBeforeFill = True
+        '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(614, 614)
+        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(183, 50)
+        Me.cmdExit.TabIndex = 14
+        Me.cmdExit.Text = "Έξοδος"
+        '
+        'cmdSave
+        '
+        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSave.Location = New System.Drawing.Point(419, 614)
+        Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(185, 50)
+        Me.cmdSave.TabIndex = 15
+        Me.cmdSave.Text = "Αποθήκευση"
+        '
+        'chkCompleted
+        '
+        Me.chkCompleted.EditValue = CType(0, Byte)
+        Me.chkCompleted.Location = New System.Drawing.Point(12, 559)
+        Me.chkCompleted.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkCompleted.Name = "chkCompleted"
+        Me.chkCompleted.Properties.Caption = "Επιβεβαιωμένη"
+        Me.chkCompleted.Properties.ValueChecked = CType(1, Byte)
+        Me.chkCompleted.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkCompleted.Size = New System.Drawing.Size(771, 32)
+        Me.chkCompleted.StyleController = Me.LayoutControl1
+        Me.chkCompleted.TabIndex = 44
+        Me.chkCompleted.Tag = "completed,0,1,2"
+        '
         'cboColMethod
         '
-        Me.cboColMethod.Location = New System.Drawing.Point(178, 222)
+        Me.cboColMethod.Location = New System.Drawing.Point(178, 264)
         Me.cboColMethod.Margin = New System.Windows.Forms.Padding(5)
         Me.cboColMethod.Name = "cboColMethod"
         Me.cboColMethod.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -127,16 +234,6 @@ Partial Class frmColExt
         Me.cboColMethod.StyleController = Me.LayoutControl1
         Me.cboColMethod.TabIndex = 25
         Me.cboColMethod.Tag = "ColMethodID,0,1,2"
-        '
-        'VwCOLMETHODBindingSource
-        '
-        Me.VwCOLMETHODBindingSource.DataMember = "vw_COL_METHOD"
-        Me.VwCOLMETHODBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'cboBDG
         '
@@ -157,11 +254,6 @@ Partial Class frmColExt
         Me.cboBDG.TabIndex = 23
         Me.cboBDG.Tag = "bdgid,0,1,2"
         '
-        'VwBDGBindingSource
-        '
-        Me.VwBDGBindingSource.DataMember = "vw_BDG"
-        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'txtCode
         '
         Me.txtCode.Location = New System.Drawing.Point(178, 12)
@@ -172,7 +264,7 @@ Partial Class frmColExt
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(91, 38)
+        Me.txtCode.Size = New System.Drawing.Size(87, 38)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 4
         Me.txtCode.Tag = "code,0"
@@ -195,17 +287,12 @@ Partial Class frmColExt
         Me.cboCollector.TabIndex = 5
         Me.cboCollector.Tag = "debitusrID,0,1,2"
         '
-        'CollectorsBindingSource
-        '
-        Me.CollectorsBindingSource.DataMember = "Collectors"
-        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(67, 348)
+        Me.txtComments.Location = New System.Drawing.Point(67, 390)
         Me.txtComments.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(716, 207)
+        Me.txtComments.Size = New System.Drawing.Size(716, 165)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 17
         Me.txtComments.Tag = "cmt,0,1,2"
@@ -226,14 +313,9 @@ Partial Class frmColExt
         Me.cboApt.TabIndex = 8
         Me.cboApt.Tag = "aptID,0,1,2"
         '
-        'VwAPTBindingSource
-        '
-        Me.VwAPTBindingSource.DataMember = "vw_APT"
-        Me.VwAPTBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'cboBank
         '
-        Me.cboBank.Location = New System.Drawing.Point(178, 264)
+        Me.cboBank.Location = New System.Drawing.Point(178, 306)
         Me.cboBank.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBank.Name = "cboBank"
         Me.cboBank.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -248,11 +330,6 @@ Partial Class frmColExt
         Me.cboBank.StyleController = Me.LayoutControl1
         Me.cboBank.TabIndex = 25
         Me.cboBank.Tag = "bankID,0,1,2"
-        '
-        'VwBANKSBindingSource
-        '
-        Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
-        Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'dtCredit
         '
@@ -270,7 +347,7 @@ Partial Class frmColExt
         'txtDebit
         '
         Me.txtDebit.EditValue = "0,00 €"
-        Me.txtDebit.Location = New System.Drawing.Point(178, 306)
+        Me.txtDebit.Location = New System.Drawing.Point(178, 348)
         Me.txtDebit.Margin = New System.Windows.Forms.Padding(5)
         Me.txtDebit.Name = "txtDebit"
         Me.txtDebit.Properties.DisplayFormat.FormatString = "c"
@@ -287,31 +364,25 @@ Partial Class frmColExt
         Me.txtDebit.Tag = "debit,0,1,2"
         Me.txtDebit.Visible = False
         '
-        'Root
+        'txtInh
         '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem5, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem9, Me.LayoutControlItem2, Me.LayoutControlItem10, Me.LayoutControlItem24, Me.LayoutControlItem41, Me.LayoutControlItem3})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(795, 603)
-        Me.Root.TextVisible = False
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(261, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(514, 42)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        Me.txtInh.Enabled = False
+        Me.txtInh.Location = New System.Drawing.Point(178, 222)
+        Me.txtInh.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtInh.Name = "txtInh"
+        Me.txtInh.Size = New System.Drawing.Size(605, 38)
+        Me.txtInh.StyleController = Me.LayoutControl1
+        Me.txtInh.TabIndex = 35
+        Me.txtInh.Tag = "completeDate,0"
         '
         'LayoutControlItem14
         '
         Me.LayoutControlItem14.Control = Me.txtComments
         Me.LayoutControlItem14.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem14.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 336)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 378)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(775, 211)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(775, 169)
         Me.LayoutControlItem14.Text = "Σχόλια"
         Me.LayoutControlItem14.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(54, 23)
@@ -334,7 +405,7 @@ Partial Class frmColExt
         Me.LayoutControlItem1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(261, 42)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(257, 42)
         Me.LayoutControlItem1.Text = "Κωδικός"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(154, 23)
         '
@@ -352,7 +423,7 @@ Partial Class frmColExt
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.cboColMethod
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 210)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 252)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
         Me.LayoutControlItem9.Size = New System.Drawing.Size(775, 42)
         Me.LayoutControlItem9.Text = "Τρόπος Πληρωμής"
@@ -375,7 +446,7 @@ Partial Class frmColExt
         Me.LayoutControlItem10.Control = Me.cboBank
         Me.LayoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem10.CustomizationFormText = "Τρόπος Πληρωμής"
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 252)
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 294)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
         Me.LayoutControlItem10.Size = New System.Drawing.Size(775, 42)
         Me.LayoutControlItem10.Text = "Τράπεζα"
@@ -399,67 +470,12 @@ Partial Class frmColExt
         Me.LayoutControlItem41.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem41.CustomizationFormText = "Ποσό Πληρωμής"
         Me.LayoutControlItem41.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem41.Location = New System.Drawing.Point(0, 294)
+        Me.LayoutControlItem41.Location = New System.Drawing.Point(0, 336)
         Me.LayoutControlItem41.Name = "LayoutControlItem41"
         Me.LayoutControlItem41.Size = New System.Drawing.Size(775, 42)
         Me.LayoutControlItem41.Tag = "1"
         Me.LayoutControlItem41.Text = "Ποσό"
         Me.LayoutControlItem41.TextSize = New System.Drawing.Size(154, 23)
-        '
-        'cmdExit
-        '
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(614, 614)
-        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(183, 50)
-        Me.cmdExit.TabIndex = 14
-        Me.cmdExit.Text = "Έξοδος"
-        '
-        'cmdSave
-        '
-        Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(419, 614)
-        Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(185, 50)
-        Me.cmdSave.TabIndex = 15
-        Me.cmdSave.Text = "Αποθήκευση"
-        '
-        'CollectorsTableAdapter
-        '
-        Me.CollectorsTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_BDGTableAdapter
-        '
-        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_APTTableAdapter
-        '
-        Me.Vw_APTTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_COL_METHODTableAdapter
-        '
-        Me.Vw_COL_METHODTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_BANKSTableAdapter
-        '
-        Me.Vw_BANKSTableAdapter.ClearBeforeFill = True
-        '
-        'chkCompleted
-        '
-        Me.chkCompleted.EditValue = CType(0, Byte)
-        Me.chkCompleted.Location = New System.Drawing.Point(12, 559)
-        Me.chkCompleted.Margin = New System.Windows.Forms.Padding(5)
-        Me.chkCompleted.Name = "chkCompleted"
-        Me.chkCompleted.Properties.Caption = "Επιβεβαιωμένη"
-        Me.chkCompleted.Properties.ValueChecked = CType(1, Byte)
-        Me.chkCompleted.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkCompleted.Size = New System.Drawing.Size(771, 32)
-        Me.chkCompleted.StyleController = Me.LayoutControl1
-        Me.chkCompleted.TabIndex = 44
-        Me.chkCompleted.Tag = "completed,0,1,2"
         '
         'LayoutControlItem3
         '
@@ -470,6 +486,19 @@ Partial Class frmColExt
         Me.LayoutControlItem3.Text = "Επιβεβαιωμένη"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
+        '
+        'LayoutControlItem19
+        '
+        Me.LayoutControlItem19.Control = Me.txtInh
+        Me.LayoutControlItem19.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem19.CustomizationFormText = "Εταιρία"
+        Me.LayoutControlItem19.Enabled = False
+        Me.LayoutControlItem19.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 210)
+        Me.LayoutControlItem19.Name = "LayoutControlItem19"
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(775, 42)
+        Me.LayoutControlItem19.Text = "Παραστατικό"
+        Me.LayoutControlItem19.TextSize = New System.Drawing.Size(154, 23)
         '
         'frmColExt
         '
@@ -483,24 +512,26 @@ Partial Class frmColExt
         Me.Text = "frmColExt"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.cboColMethod.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboColMethod.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCollector.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtCredit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtCredit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDebit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtInh.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -510,8 +541,8 @@ Partial Class frmColExt
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -552,4 +583,6 @@ Partial Class frmColExt
     Friend WithEvents LayoutControlItem41 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents chkCompleted As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtInh As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem19 As DevExpress.XtraLayout.LayoutControlItem
 End Class

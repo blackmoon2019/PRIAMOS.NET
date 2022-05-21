@@ -102,8 +102,8 @@ Public Class frmCases
                 End Select
                 If sResult Then
                     'Καθαρισμός Controls
-                    If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
-                    txtCode.Text = DBQ.GetNextId("CASES")
+                    If Mode = FormMode.NewRecord Then Mode = FormMode.EditRecord : sID = sGuid
+                    'txtCode.Text = DBQ.GetNextId("CASES")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     LayoutControl2.Enabled = True

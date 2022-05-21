@@ -13,6 +13,8 @@ Public Class frmMain
         bbDB.Caption = "Database: " & CNDB.Database.ToString
         bbVersion.Caption = "Ver:" + My.Application.Info.Version.ToString
         Timer2.Stop()
+        'Η Καταχώριση έκδοσης εμφανίζεται μόνο σε μένα
+        If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then BBVer.Visibility = BarItemVisibility.Always
     End Sub
 
     Private Sub MdiManager_PageAdded(sender As Object, e As MdiTabPageEventArgs)
@@ -35,6 +37,13 @@ Public Class frmMain
     End Sub
 
     Private Sub XtraTabbedMdiManager1_EndFloating(sender As Object, e As FloatingEventArgs) Handles XtraTabbedMdiManager1.EndFloating
+        If XtraTabbedMdiManager1.ActiveFloatForm.Name = "frmScroller" Then
+            XtraTabbedMdiManager1.ActiveFloatForm.Height = 800
+            XtraTabbedMdiManager1.ActiveFloatForm.Width = 1500
+            Dim form As frmScroller = XtraTabbedMdiManager1.ActiveFloatForm
+            form.BarRefresh.PerformClick()
+            form = Nothing
+        End If
         'Select Case XtraTabbedMdiManager1.ActiveFloatForm.Name
         '    Case "frmUsers"
         '        XtraTabbedMdiManager1.ActiveFloatForm.Width = 489 : XtraTabbedMdiManager1.ActiveFloatForm.Height = 166
@@ -374,6 +383,22 @@ Public Class frmMain
         form.DataTable = "vw_COL_EXT"
         form.MdiParent = Me
         form.Bar4.Visible = True
+        form.Show()
+    End Sub
+
+    Private Sub BBVer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBVer.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Εκδόσεις"
+        form.DataTable = "vw_PRIAMOSVER"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub bbVersion_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbVersion.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Εκδόσεις"
+        form.DataTable = "vw_PRIAMOSVER"
+        form.MdiParent = Me
         form.Show()
     End Sub
 

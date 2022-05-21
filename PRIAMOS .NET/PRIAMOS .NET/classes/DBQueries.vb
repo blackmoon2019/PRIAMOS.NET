@@ -36,16 +36,20 @@ Public Class DBQueries
 
 
     Public Function InsertNewDataFiles(ByVal control As DevExpress.XtraEditors.XtraOpenFileDialog, ByVal sTable As String, ByVal ID As String,
-                                       Optional ByVal ExtraFields As String = "", Optional ByVal ExtraValues As String = "", Optional ByVal PB As DevExpress.XtraEditors.ProgressBarControl = Nothing) As Boolean
+                                       Optional ByVal ExtraFields As String = "", Optional ByVal ExtraValues As String = "", Optional ByVal PB As System.Windows.Forms.ProgressBar = Nothing) As Boolean
         Dim sSQL As New System.Text.StringBuilder
         Dim i As Integer
         Try
             If PB IsNot Nothing Then
-                PB.Properties.Minimum = 0
-                PB.Properties.Maximum = control.FileNames.Count - 1
-                PB.Properties.Step = 1
-                PB.Properties.PercentView = True
-                PB.Properties.ShowTitle = True
+                PB.Minimum = 0
+                PB.Maximum = control.FileNames.Count - 1
+                PB.Step = 1
+                PB.Style = ProgressBarStyle.Continuous
+                'PB.Properties.Minimum = 0
+                'PB.Properties.Maximum = control.FileNames.Count - 1
+                'PB.Properties.Step = 1
+                'PB.Properties.PercentView = True
+                'PB.Properties.ShowTitle = True
             End If
             For i = 0 To control.FileNames.Count - 1
                 sSQL.Clear()
@@ -82,10 +86,7 @@ Public Class DBQueries
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                If PB IsNot Nothing Then
-                    PB.PerformStep()
-                    PB.Update()
-                End If
+                If PB IsNot Nothing Then PB.PerformStep()
             Next
             control.FileName = ""
             'ReadBlobFile()
@@ -228,6 +229,18 @@ Public Class DBQueries
                                             Exit For
                                         End If
                                     Next
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                        End If
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                     Dim dt As DevExpress.XtraEditors.DateEdit
                                     dt = Ctrl
@@ -389,6 +402,18 @@ NextItem:
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                        End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                        Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                        cbo = Ctrl
+                                        If cbo.EditValue <> Nothing Then
+                                            If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                            Else
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                            End If
+                                        Else
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                         End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                         Dim dt As DevExpress.XtraEditors.DateEdit
@@ -862,36 +887,56 @@ NextItem:
                                             Exit For
                                         End If
                                     Next
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
-                                    Dim dt As DevExpress.XtraEditors.DateEdit
-                                    dt = Ctrl
-                                    If dt.Text <> "" Then
-                                        sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                    cbo = Ctrl
+                                    If cbo.EditValue <> Nothing Then
+                                        If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
+                                            sSQL.Append(cbo.SelectedIndex)
+                                        Else
+                                            sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                        End If
                                     Else
                                         sSQL.Append("NULL")
                                     End If
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
-                                    Dim spn As DevExpress.XtraEditors.SpinEdit
-                                    spn = Ctrl
-                                    sSQL.Append(toSQLValueS(spn.Text))
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
-                                    Dim txt As DevExpress.XtraEditors.MemoEdit
-                                    txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
-                                        sSQL.Append(toSQLValueS(txt.EditValue, True))
-                                    Else
-                                        sSQL.Append(toSQLValueS(txt.Text))
-                                    End If
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
-                                    Dim txt As DevExpress.XtraEditors.TextEdit
-                                    txt = Ctrl
-                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
-                                        sSQL.Append(toSQLValueS(txt.EditValue, True))
-                                    Else
-                                        sSQL.Append(toSQLValueS(txt.Text.Replace("%", "")))
-                                    End If
-                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
-                                    Dim chk As DevExpress.XtraEditors.CheckEdit
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
+                                        Dim dt As DevExpress.XtraEditors.DateEdit
+                                        dt = Ctrl
+                                        If dt.Text <> "" Then
+                                            sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                        Else
+                                            sSQL.Append("NULL")
+                                        End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
+                                        Dim spn As DevExpress.XtraEditors.SpinEdit
+                                        spn = Ctrl
+                                        sSQL.Append(toSQLValueS(spn.Text))
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
+                                        Dim cpk As DevExpress.XtraEditors.ColorPickEdit
+                                        cpk = Ctrl
+                                        If cpk.Text = "0" Then
+                                            sSQL.Append("NULL")
+                                        Else
+                                            sSQL.Append(cpk.Text)
+                                        End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
+                                        Dim txt As DevExpress.XtraEditors.MemoEdit
+                                        txt = Ctrl
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                            sSQL.Append(toSQLValueS(txt.EditValue, True))
+                                        Else
+                                            sSQL.Append(toSQLValueS(txt.Text))
+                                        End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
+                                        Dim txt As DevExpress.XtraEditors.TextEdit
+                                        txt = Ctrl
+                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                            sSQL.Append(toSQLValueS(txt.EditValue, True))
+                                        Else
+                                            sSQL.Append(toSQLValueS(txt.Text.Replace("%", "")))
+                                        End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
+                                        Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
                                     sSQL.Append(chk.EditValue)
                                 End If

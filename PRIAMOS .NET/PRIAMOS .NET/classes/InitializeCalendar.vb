@@ -59,7 +59,7 @@ Public Class InitializeCalendar
                                       ByVal Completed As Boolean, ByVal sWorkshopName As String, Optional ByVal EnableReminder As Boolean = False
                                       )
         Dim apt As Appointment = SCH_Storage.CreateAppointment(AppointmentType.Normal, CDate(AptDate), CDate(AptDate),
-                                                               "Πολυκατοικία: " & sBdgName)
+                                                               "Πολυκατοικία: " & sBdgName & vbCrLf & "Εργασία: " & Cmt)
         Try
 
             Dim Field As New DevExpress.XtraScheduler.Native.CustomField("StatusColor", sColor)

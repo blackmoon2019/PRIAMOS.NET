@@ -22,6 +22,7 @@ Partial Class frmApol
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmApol))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkCancelled = New DevExpress.XtraEditors.CheckEdit()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cboWorkshop = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwWORKSHOPSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -48,15 +49,15 @@ Partial Class frmApol
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem121 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.Vw_WORKSHOPSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_WORKSHOPSTableAdapter()
         Me.Vw_APOL_TYPESTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APOL_TYPESTableAdapter()
-        Me.chkCancelled = New DevExpress.XtraEditors.CheckEdit()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkCancelled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboWorkshop.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwWORKSHOPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +85,6 @@ Partial Class frmApol
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCancelled.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -109,6 +109,20 @@ Partial Class frmApol
         Me.LayoutControl1.Size = New System.Drawing.Size(795, 603)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'chkCancelled
+        '
+        Me.chkCancelled.EditValue = CType(0, Byte)
+        Me.chkCancelled.Location = New System.Drawing.Point(546, 264)
+        Me.chkCancelled.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkCancelled.Name = "chkCancelled"
+        Me.chkCancelled.Properties.Caption = "Ακυρωμένη"
+        Me.chkCancelled.Properties.ValueChecked = CType(1, Byte)
+        Me.chkCancelled.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkCancelled.Size = New System.Drawing.Size(237, 32)
+        Me.chkCancelled.StyleController = Me.LayoutControl1
+        Me.chkCancelled.TabIndex = 45
+        Me.chkCancelled.Tag = "cancelled,0,1,2"
         '
         'txtCode
         '
@@ -428,6 +442,15 @@ Partial Class frmApol
         Me.LayoutControlItem121.Text = "Αξία"
         Me.LayoutControlItem121.TextSize = New System.Drawing.Size(176, 23)
         '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.chkCancelled
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(534, 252)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(241, 42)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem4.TextVisible = False
+        '
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -461,29 +484,6 @@ Partial Class frmApol
         '
         Me.Vw_APOL_TYPESTableAdapter.ClearBeforeFill = True
         '
-        'chkCancelled
-        '
-        Me.chkCancelled.EditValue = CType(0, Byte)
-        Me.chkCancelled.Location = New System.Drawing.Point(546, 264)
-        Me.chkCancelled.Margin = New System.Windows.Forms.Padding(5)
-        Me.chkCancelled.Name = "chkCancelled"
-        Me.chkCancelled.Properties.Caption = "Ακυρωμένη"
-        Me.chkCancelled.Properties.ValueChecked = CType(1, Byte)
-        Me.chkCancelled.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkCancelled.Size = New System.Drawing.Size(237, 32)
-        Me.chkCancelled.StyleController = Me.LayoutControl1
-        Me.chkCancelled.TabIndex = 45
-        Me.chkCancelled.Tag = "cancelled,0,1,2"
-        '
-        'LayoutControlItem4
-        '
-        Me.LayoutControlItem4.Control = Me.chkCancelled
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(534, 252)
-        Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(241, 42)
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem4.TextVisible = False
-        '
         'frmApol
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -498,6 +498,7 @@ Partial Class frmApol
         Me.Text = "frmApol"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkCancelled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboWorkshop.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwWORKSHOPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -525,7 +526,6 @@ Partial Class frmApol
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCancelled.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

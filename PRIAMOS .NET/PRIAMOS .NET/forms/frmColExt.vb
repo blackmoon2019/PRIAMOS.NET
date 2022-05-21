@@ -43,7 +43,7 @@ Public Class frmColExt
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
         Me.Vw_COL_METHODTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COL_METHOD)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
-        Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NETDataSet.vw_BDG)
+        Me.Vw_BDGTableAdapter.FillByIsNotManaged(Me.Priamos_NETDataSet.vw_BDG)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.Collectors' table. You can move, or remove it, as needed.
         Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
         Select Case Mode
@@ -52,6 +52,10 @@ Public Class frmColExt
                 dtCredit.EditValue = Date.Now
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_COL_EXT where id = " & toSQLValueS(sID))
+                If sApolID.Length <> 0 Then
+                    cboBDG.ReadOnly = True
+                    cboApt.ReadOnly = True
+                End If
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -232,5 +236,16 @@ Public Class frmColExt
 
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+    End Sub
+
+
+    Private Sub cboColMethod_EditValueChanged(sender As Object, e As EventArgs) Handles cboColMethod.EditValueChanged
+        If cboColMethod.EditValue Is Nothing Then Exit Sub
+        If cboColMethod.EditValue.ToString.ToUpper = "F34B402C-ADD8-48E7-85A9-FFDF7DAED582" Then cboBank.ReadOnly = False Else cboBank.ReadOnly = True : cboBank.EditValue = Nothing
+    End Sub
+
+    Private Sub cboBDG_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles cboBDG.EditValueChanging
+        '    If XtraMessageBox.Show("Είστε σίγουρός/η ότι θέλετε να αλλάξετε πολυκατοκία?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then e.Cancel = True
+
     End Sub
 End Class

@@ -20,14 +20,14 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SelectQuery3 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns3 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table3 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery4 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns4 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table4 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
@@ -72,6 +72,7 @@ Partial Class frmScroller
         Me.Bar4 = New DevExpress.XtraBars.Bar()
         Me.cboDebitUsr = New DevExpress.XtraBars.BarEditItem()
         Me.Rep_DEBITUSR = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.cboColMethod = New DevExpress.XtraBars.BarEditItem()
         Me.Rep_COL_METHOD = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
@@ -79,6 +80,7 @@ Partial Class frmScroller
         Me.cboBank = New DevExpress.XtraBars.BarEditItem()
         Me.Rep_ΒΑΝΚ = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.VwBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BBcolExtCollector = New DevExpress.XtraBars.BarButtonItem()
         Me.BBcolExtSave = New DevExpress.XtraBars.BarButtonItem()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -107,7 +109,6 @@ Partial Class frmScroller
         Me.BarEditItem2 = New DevExpress.XtraBars.BarEditItem()
         Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
         Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
-        Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,6 +120,7 @@ Partial Class frmScroller
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_COL_METHOD, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,7 +132,6 @@ Partial Class frmScroller
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRowsDetail, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView2
@@ -156,9 +157,9 @@ Partial Class frmScroller
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode2.LevelTemplate = Me.GridView2
-        GridLevelNode2.RelationName = "Level1"
-        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.LevelTemplate = Me.GridView2
+        GridLevelNode1.RelationName = "Level1"
+        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdMain.Location = New System.Drawing.Point(46, 112)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
@@ -196,9 +197,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 58
+        Me.BarManager1.MaxItemId = 59
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -487,7 +488,7 @@ Partial Class frmScroller
         Me.Bar4.DockCol = 0
         Me.Bar4.DockRow = 1
         Me.Bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboDebitUsr, "", False, True, True, 179), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboColMethod, "", False, True, True, 127), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboBank, "", False, True, True, 130), New DevExpress.XtraBars.LinkPersistInfo(Me.BBcolExtSave)})
+        Me.Bar4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboDebitUsr, "", False, True, True, 179), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboColMethod, "", False, True, True, 127), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.cboBank, "", False, True, True, 130), New DevExpress.XtraBars.LinkPersistInfo(Me.BBcolExtCollector), New DevExpress.XtraBars.LinkPersistInfo(Me.BBcolExtSave)})
         Me.Bar4.Text = "Custom 5"
         Me.Bar4.Visible = False
         '
@@ -510,6 +511,11 @@ Partial Class frmScroller
         Me.Rep_DEBITUSR.Name = "Rep_DEBITUSR"
         Me.Rep_DEBITUSR.NullText = ""
         Me.Rep_DEBITUSR.ValueMember = "ID"
+        '
+        'CollectorsBindingSource
+        '
+        Me.CollectorsBindingSource.DataMember = "Collectors"
+        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'Priamos_NETDataSet
         '
@@ -565,6 +571,12 @@ Partial Class frmScroller
         '
         Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
         Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'BBcolExtCollector
+        '
+        Me.BBcolExtCollector.Caption = "Χρέωση Εισπράκτορα"
+        Me.BBcolExtCollector.Id = 58
+        Me.BBcolExtCollector.Name = "BBcolExtCollector"
         '
         'BBcolExtSave
         '
@@ -711,21 +723,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table3.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table3.Name = "USR"
-        AllColumns3.Table = Table3
-        SelectQuery3.Columns.Add(AllColumns3)
-        SelectQuery3.Name = "USR"
-        SelectQuery3.Tables.Add(Table3)
-        Table4.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table4.Name = "IAT"
-        AllColumns4.Table = Table4
-        SelectQuery4.Columns.Add(AllColumns4)
-        SelectQuery4.Name = "IAT"
-        SelectQuery4.Tables.Add(Table4)
-        CustomSqlQuery2.Name = "INH"
-        CustomSqlQuery2.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery3, SelectQuery4, CustomSqlQuery2})
+        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table1.Name = "USR"
+        AllColumns1.Table = Table1
+        SelectQuery1.Columns.Add(AllColumns1)
+        SelectQuery1.Name = "USR"
+        SelectQuery1.Tables.Add(Table1)
+        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table2.Name = "IAT"
+        AllColumns2.Table = Table2
+        SelectQuery2.Columns.Add(AllColumns2)
+        SelectQuery2.Name = "IAT"
+        SelectQuery2.Tables.Add(Table2)
+        CustomSqlQuery1.Name = "INH"
+        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM
@@ -765,11 +777,6 @@ Partial Class frmScroller
         '
         Me.Vw_BANKSTableAdapter.ClearBeforeFill = True
         '
-        'CollectorsBindingSource
-        '
-        Me.CollectorsBindingSource.DataMember = "Collectors"
-        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'CollectorsTableAdapter
         '
         Me.CollectorsTableAdapter.ClearBeforeFill = True
@@ -787,6 +794,7 @@ Partial Class frmScroller
         Me.Controls.Add(Me.barDockControlTop)
         Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmScroller"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmScroller"
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).EndInit()
@@ -798,6 +806,7 @@ Partial Class frmScroller
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_COL_METHOD, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -809,7 +818,6 @@ Partial Class frmScroller
         CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRowsDetail, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -895,4 +903,5 @@ Partial Class frmScroller
     Friend WithEvents BBcolExtSave As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents CollectorsBindingSource As BindingSource
     Friend WithEvents CollectorsTableAdapter As Priamos_NETDataSetTableAdapters.CollectorsTableAdapter
+    Friend WithEvents BBcolExtCollector As DevExpress.XtraBars.BarButtonItem
 End Class

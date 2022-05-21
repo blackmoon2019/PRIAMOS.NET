@@ -61,6 +61,7 @@ Partial Class frmCollections
         Me.coldebitusrID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumnDebitUsrID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colEtos1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcompleteDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebit3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcredit3 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -98,7 +99,6 @@ Partial Class frmCollections
         Me.colold_code1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colbdgNam2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colaptNam = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.coletos = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcompleteDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCredit1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebit4 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -118,6 +118,9 @@ Partial Class frmCollections
         Me.colttl1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coltenant1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colagreed = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colfDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colETOS = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.cmdCol_Refresh = New DevExpress.XtraEditors.SimpleButton()
         Me.cboDebitUsr = New DevExpress.XtraEditors.LookUpEdit()
         Me.grdAPT = New DevExpress.XtraGrid.GridControl()
@@ -170,6 +173,7 @@ Partial Class frmCollections
         Me.Vw_COL_DTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_COL_DTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.YEARSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.YEARSTableAdapter()
+        Me.colord = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -236,7 +240,7 @@ Partial Class frmCollections
         Me.GridView2.Appearance.ViewCaption.BackColor2 = System.Drawing.Color.White
         Me.GridView2.Appearance.ViewCaption.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
         Me.GridView2.Appearance.ViewCaption.Options.UseBackColor = True
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colttl2, Me.colAptbal, Me.coldebit2, Me.colcredit2, Me.colbal2, Me.coldebitusrID1, Me.colbankID, Me.colColMethodID, Me.coldtDebit1, Me.coldtCredit1, Me.colbdgID1, Me.colaptID1})
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colord, Me.colttl2, Me.colAptbal, Me.coldebit2, Me.colcredit2, Me.colbal2, Me.coldebitusrID1, Me.colbankID, Me.colColMethodID, Me.coldtDebit1, Me.coldtCredit1, Me.colbdgID1, Me.colaptID1})
         Me.GridView2.DetailHeight = 619
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
@@ -261,7 +265,7 @@ Partial Class frmCollections
         Me.colttl2.Name = "colttl2"
         Me.colttl2.OptionsColumn.AllowEdit = False
         Me.colttl2.Visible = True
-        Me.colttl2.VisibleIndex = 0
+        Me.colttl2.VisibleIndex = 1
         Me.colttl2.Width = 483
         '
         'colAptbal
@@ -274,7 +278,7 @@ Partial Class frmCollections
         Me.colAptbal.Name = "colAptbal"
         Me.colAptbal.OptionsColumn.AllowEdit = False
         Me.colAptbal.Visible = True
-        Me.colAptbal.VisibleIndex = 1
+        Me.colAptbal.VisibleIndex = 2
         Me.colAptbal.Width = 298
         '
         'coldebit2
@@ -288,7 +292,7 @@ Partial Class frmCollections
         Me.coldebit2.OptionsColumn.AllowEdit = False
         Me.coldebit2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "debit", "Σύνολο={0:c2}")})
         Me.coldebit2.Visible = True
-        Me.coldebit2.VisibleIndex = 2
+        Me.coldebit2.VisibleIndex = 3
         Me.coldebit2.Width = 528
         '
         'colcredit2
@@ -302,7 +306,7 @@ Partial Class frmCollections
         Me.colcredit2.Name = "colcredit2"
         Me.colcredit2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "credit", "Σύνολο={0:c2}")})
         Me.colcredit2.Visible = True
-        Me.colcredit2.VisibleIndex = 3
+        Me.colcredit2.VisibleIndex = 4
         Me.colcredit2.Width = 528
         '
         'Rep_Credit
@@ -323,7 +327,7 @@ Partial Class frmCollections
         Me.colbal2.OptionsColumn.AllowEdit = False
         Me.colbal2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "bal", "Σύνολο={0:c2}")})
         Me.colbal2.Visible = True
-        Me.colbal2.VisibleIndex = 4
+        Me.colbal2.VisibleIndex = 5
         Me.colbal2.Width = 528
         '
         'coldebitusrID1
@@ -334,7 +338,7 @@ Partial Class frmCollections
         Me.coldebitusrID1.MinWidth = 33
         Me.coldebitusrID1.Name = "coldebitusrID1"
         Me.coldebitusrID1.Visible = True
-        Me.coldebitusrID1.VisibleIndex = 5
+        Me.coldebitusrID1.VisibleIndex = 6
         Me.coldebitusrID1.Width = 538
         '
         'Rep_DEBITUSR
@@ -463,7 +467,7 @@ Partial Class frmCollections
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Rep_DEBITUSR, Me.Rep_ΒΑΝΚ, Me.Rep_COL_METHOD, Me.Rep_Credit})
         Me.GridControl2.Size = New System.Drawing.Size(2343, 1265)
-        Me.GridControl2.TabIndex = 3
+        Me.GridControl2.TabIndex = 5
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView3, Me.GridView4, Me.GridView2})
         '
@@ -559,7 +563,7 @@ Partial Class frmCollections
         '
         'GridView3
         '
-        Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colcompleteDate1, Me.coldebit3, Me.colcredit3, Me.colbal3, Me.coldebitusrID2, Me.colbankID1, Me.colColMethodID1, Me.coldtDebit, Me.coldtCredit, Me.colcmt1, Me.colinhID1})
+        Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colEtos1, Me.colcompleteDate1, Me.coldebit3, Me.colcredit3, Me.colbal3, Me.coldebitusrID2, Me.colbankID1, Me.colColMethodID1, Me.coldtDebit, Me.coldtCredit, Me.colcmt1, Me.colinhID1})
         Me.GridView3.DetailHeight = 619
         Me.GridView3.GridControl = Me.GridControl2
         Me.GridView3.Name = "GridView3"
@@ -575,6 +579,16 @@ Partial Class frmCollections
         Me.GridView3.OptionsView.ShowGroupPanel = False
         Me.GridView3.ViewCaption = "Παραστατικά"
         '
+        'colEtos1
+        '
+        Me.colEtos1.Caption = "Έτος"
+        Me.colEtos1.FieldName = "Etos"
+        Me.colEtos1.MinWidth = 35
+        Me.colEtos1.Name = "colEtos1"
+        Me.colEtos1.Visible = True
+        Me.colEtos1.VisibleIndex = 0
+        Me.colEtos1.Width = 131
+        '
         'colcompleteDate1
         '
         Me.colcompleteDate1.Caption = "Παραστατικά"
@@ -583,7 +597,7 @@ Partial Class frmCollections
         Me.colcompleteDate1.Name = "colcompleteDate1"
         Me.colcompleteDate1.OptionsColumn.AllowEdit = False
         Me.colcompleteDate1.Visible = True
-        Me.colcompleteDate1.VisibleIndex = 0
+        Me.colcompleteDate1.VisibleIndex = 1
         Me.colcompleteDate1.Width = 125
         '
         'coldebit3
@@ -597,7 +611,7 @@ Partial Class frmCollections
         Me.coldebit3.OptionsColumn.AllowEdit = False
         Me.coldebit3.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "debit", "Σύνολο={0:c2}")})
         Me.coldebit3.Visible = True
-        Me.coldebit3.VisibleIndex = 1
+        Me.coldebit3.VisibleIndex = 2
         Me.coldebit3.Width = 125
         '
         'colcredit3
@@ -611,7 +625,7 @@ Partial Class frmCollections
         Me.colcredit3.Name = "colcredit3"
         Me.colcredit3.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "credit", "Σύνολο={0:c2}")})
         Me.colcredit3.Visible = True
-        Me.colcredit3.VisibleIndex = 2
+        Me.colcredit3.VisibleIndex = 3
         Me.colcredit3.Width = 125
         '
         'colbal3
@@ -625,7 +639,7 @@ Partial Class frmCollections
         Me.colbal3.OptionsColumn.AllowEdit = False
         Me.colbal3.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "bal", "Σύνολο={0:c2}")})
         Me.colbal3.Visible = True
-        Me.colbal3.VisibleIndex = 3
+        Me.colbal3.VisibleIndex = 4
         Me.colbal3.Width = 125
         '
         'coldebitusrID2
@@ -636,7 +650,7 @@ Partial Class frmCollections
         Me.coldebitusrID2.MinWidth = 33
         Me.coldebitusrID2.Name = "coldebitusrID2"
         Me.coldebitusrID2.Visible = True
-        Me.coldebitusrID2.VisibleIndex = 6
+        Me.coldebitusrID2.VisibleIndex = 7
         Me.coldebitusrID2.Width = 125
         '
         'colbankID1
@@ -665,7 +679,7 @@ Partial Class frmCollections
         Me.coldtDebit.Name = "coldtDebit"
         Me.coldtDebit.OptionsColumn.AllowEdit = False
         Me.coldtDebit.Visible = True
-        Me.coldtDebit.VisibleIndex = 5
+        Me.coldtDebit.VisibleIndex = 6
         Me.coldtDebit.Width = 125
         '
         'coldtCredit
@@ -675,7 +689,7 @@ Partial Class frmCollections
         Me.coldtCredit.MinWidth = 33
         Me.coldtCredit.Name = "coldtCredit"
         Me.coldtCredit.Visible = True
-        Me.coldtCredit.VisibleIndex = 4
+        Me.coldtCredit.VisibleIndex = 5
         Me.coldtCredit.Width = 125
         '
         'colcmt1
@@ -928,7 +942,7 @@ Partial Class frmCollections
         Me.cmdConfirmation.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdConfirmation.Size = New System.Drawing.Size(278, 40)
         Me.cmdConfirmation.StyleController = Me.LayoutControl1
-        Me.cmdConfirmation.TabIndex = 31
+        Me.cmdConfirmation.TabIndex = 1
         Me.cmdConfirmation.Text = "Επιβεβαίωση"
         Me.cmdConfirmation.ToolTip = "Επιβεβαίωση Συμφωνίας Πίστωσης"
         '
@@ -943,7 +957,7 @@ Partial Class frmCollections
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(2343, 1221)
-        Me.GridControl1.TabIndex = 30
+        Me.GridControl1.TabIndex = 1
         Me.GridControl1.UseEmbeddedNavigator = True
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView6})
         '
@@ -954,7 +968,7 @@ Partial Class frmCollections
         '
         'GridView6
         '
-        Me.GridView6.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colold_code1, Me.colbdgNam2, Me.colaptNam, Me.coletos, Me.colcompleteDate, Me.colCredit1, Me.coldebit4, Me.colBal1, Me.colmodifiedOn, Me.colcreatedOn, Me.colmodifiedBy, Me.colcreditUser, Me.coldebitUser, Me.colID, Me.colcode, Me.colcolID, Me.colbdgID, Me.colaptID, Me.colinhID, Me.coldebitusrID3, Me.colttl1, Me.coltenant1, Me.colagreed})
+        Me.GridView6.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colold_code1, Me.colbdgNam2, Me.colaptNam, Me.colcompleteDate, Me.colCredit1, Me.coldebit4, Me.colBal1, Me.colmodifiedOn, Me.colcreatedOn, Me.colmodifiedBy, Me.colcreditUser, Me.coldebitUser, Me.colID, Me.colcode, Me.colcolID, Me.colbdgID, Me.colaptID, Me.colinhID, Me.coldebitusrID3, Me.colttl1, Me.coltenant1, Me.colagreed, Me.colfDate, Me.coltDate, Me.colETOS})
         Me.GridView6.DetailHeight = 619
         Me.GridView6.GridControl = Me.GridControl1
         Me.GridView6.LevelIndent = 0
@@ -1005,17 +1019,8 @@ Partial Class frmCollections
         Me.colaptNam.MinWidth = 35
         Me.colaptNam.Name = "colaptNam"
         Me.colaptNam.Visible = True
-        Me.colaptNam.VisibleIndex = 4
+        Me.colaptNam.VisibleIndex = 3
         Me.colaptNam.Width = 131
-        '
-        'coletos
-        '
-        Me.coletos.FieldName = "etos"
-        Me.coletos.MinWidth = 35
-        Me.coletos.Name = "coletos"
-        Me.coletos.Visible = True
-        Me.coletos.VisibleIndex = 3
-        Me.coletos.Width = 131
         '
         'colcompleteDate
         '
@@ -1024,7 +1029,7 @@ Partial Class frmCollections
         Me.colcompleteDate.MinWidth = 35
         Me.colcompleteDate.Name = "colcompleteDate"
         Me.colcompleteDate.Visible = True
-        Me.colcompleteDate.VisibleIndex = 5
+        Me.colcompleteDate.VisibleIndex = 4
         Me.colcompleteDate.Width = 131
         '
         'colCredit1
@@ -1035,7 +1040,7 @@ Partial Class frmCollections
         Me.colCredit1.Name = "colCredit1"
         Me.colCredit1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit", "Σύνολο={0:c2}")})
         Me.colCredit1.Visible = True
-        Me.colCredit1.VisibleIndex = 6
+        Me.colCredit1.VisibleIndex = 5
         Me.colCredit1.Width = 131
         '
         'coldebit4
@@ -1046,7 +1051,7 @@ Partial Class frmCollections
         Me.coldebit4.Name = "coldebit4"
         Me.coldebit4.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "debit", "Σύνολο={0:c2}")})
         Me.coldebit4.Visible = True
-        Me.coldebit4.VisibleIndex = 7
+        Me.coldebit4.VisibleIndex = 6
         Me.coldebit4.Width = 131
         '
         'colBal1
@@ -1057,7 +1062,7 @@ Partial Class frmCollections
         Me.colBal1.Name = "colBal1"
         Me.colBal1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Bal", "Σύνολο={0:c2}")})
         Me.colBal1.Visible = True
-        Me.colBal1.VisibleIndex = 8
+        Me.colBal1.VisibleIndex = 7
         Me.colBal1.Width = 131
         '
         'colmodifiedOn
@@ -1067,7 +1072,7 @@ Partial Class frmCollections
         Me.colmodifiedOn.MinWidth = 35
         Me.colmodifiedOn.Name = "colmodifiedOn"
         Me.colmodifiedOn.Visible = True
-        Me.colmodifiedOn.VisibleIndex = 9
+        Me.colmodifiedOn.VisibleIndex = 8
         Me.colmodifiedOn.Width = 131
         '
         'colcreatedOn
@@ -1077,7 +1082,7 @@ Partial Class frmCollections
         Me.colcreatedOn.MinWidth = 35
         Me.colcreatedOn.Name = "colcreatedOn"
         Me.colcreatedOn.Visible = True
-        Me.colcreatedOn.VisibleIndex = 10
+        Me.colcreatedOn.VisibleIndex = 9
         Me.colcreatedOn.Width = 131
         '
         'colmodifiedBy
@@ -1087,7 +1092,7 @@ Partial Class frmCollections
         Me.colmodifiedBy.MinWidth = 35
         Me.colmodifiedBy.Name = "colmodifiedBy"
         Me.colmodifiedBy.Visible = True
-        Me.colmodifiedBy.VisibleIndex = 11
+        Me.colmodifiedBy.VisibleIndex = 10
         Me.colmodifiedBy.Width = 131
         '
         'colcreditUser
@@ -1097,7 +1102,7 @@ Partial Class frmCollections
         Me.colcreditUser.MinWidth = 35
         Me.colcreditUser.Name = "colcreditUser"
         Me.colcreditUser.Visible = True
-        Me.colcreditUser.VisibleIndex = 12
+        Me.colcreditUser.VisibleIndex = 11
         Me.colcreditUser.Width = 131
         '
         'coldebitUser
@@ -1107,7 +1112,7 @@ Partial Class frmCollections
         Me.coldebitUser.MinWidth = 35
         Me.coldebitUser.Name = "coldebitUser"
         Me.coldebitUser.Visible = True
-        Me.coldebitUser.VisibleIndex = 13
+        Me.coldebitUser.VisibleIndex = 12
         Me.coldebitUser.Width = 131
         '
         'colID
@@ -1116,7 +1121,7 @@ Partial Class frmCollections
         Me.colID.MinWidth = 35
         Me.colID.Name = "colID"
         Me.colID.Visible = True
-        Me.colID.VisibleIndex = 14
+        Me.colID.VisibleIndex = 13
         Me.colID.Width = 131
         '
         'colcode
@@ -1126,7 +1131,7 @@ Partial Class frmCollections
         Me.colcode.MinWidth = 35
         Me.colcode.Name = "colcode"
         Me.colcode.Visible = True
-        Me.colcode.VisibleIndex = 15
+        Me.colcode.VisibleIndex = 14
         Me.colcode.Width = 131
         '
         'colcolID
@@ -1136,7 +1141,7 @@ Partial Class frmCollections
         Me.colcolID.MinWidth = 35
         Me.colcolID.Name = "colcolID"
         Me.colcolID.Visible = True
-        Me.colcolID.VisibleIndex = 16
+        Me.colcolID.VisibleIndex = 15
         Me.colcolID.Width = 131
         '
         'colbdgID
@@ -1146,7 +1151,7 @@ Partial Class frmCollections
         Me.colbdgID.MinWidth = 35
         Me.colbdgID.Name = "colbdgID"
         Me.colbdgID.Visible = True
-        Me.colbdgID.VisibleIndex = 17
+        Me.colbdgID.VisibleIndex = 16
         Me.colbdgID.Width = 131
         '
         'colaptID
@@ -1156,7 +1161,7 @@ Partial Class frmCollections
         Me.colaptID.MinWidth = 35
         Me.colaptID.Name = "colaptID"
         Me.colaptID.Visible = True
-        Me.colaptID.VisibleIndex = 18
+        Me.colaptID.VisibleIndex = 17
         Me.colaptID.Width = 131
         '
         'colinhID
@@ -1166,7 +1171,7 @@ Partial Class frmCollections
         Me.colinhID.MinWidth = 35
         Me.colinhID.Name = "colinhID"
         Me.colinhID.Visible = True
-        Me.colinhID.VisibleIndex = 19
+        Me.colinhID.VisibleIndex = 18
         Me.colinhID.Width = 131
         '
         'coldebitusrID3
@@ -1176,7 +1181,7 @@ Partial Class frmCollections
         Me.coldebitusrID3.MinWidth = 35
         Me.coldebitusrID3.Name = "coldebitusrID3"
         Me.coldebitusrID3.Visible = True
-        Me.coldebitusrID3.VisibleIndex = 20
+        Me.coldebitusrID3.VisibleIndex = 19
         Me.coldebitusrID3.Width = 131
         '
         'colttl1
@@ -1186,7 +1191,7 @@ Partial Class frmCollections
         Me.colttl1.MinWidth = 35
         Me.colttl1.Name = "colttl1"
         Me.colttl1.Visible = True
-        Me.colttl1.VisibleIndex = 21
+        Me.colttl1.VisibleIndex = 20
         Me.colttl1.Width = 131
         '
         'coltenant1
@@ -1196,7 +1201,7 @@ Partial Class frmCollections
         Me.coltenant1.MinWidth = 35
         Me.coltenant1.Name = "coltenant1"
         Me.coltenant1.Visible = True
-        Me.coltenant1.VisibleIndex = 22
+        Me.coltenant1.VisibleIndex = 21
         Me.coltenant1.Width = 131
         '
         'colagreed
@@ -1206,8 +1211,35 @@ Partial Class frmCollections
         Me.colagreed.MinWidth = 35
         Me.colagreed.Name = "colagreed"
         Me.colagreed.Visible = True
-        Me.colagreed.VisibleIndex = 23
+        Me.colagreed.VisibleIndex = 25
         Me.colagreed.Width = 131
+        '
+        'colfDate
+        '
+        Me.colfDate.FieldName = "fDate"
+        Me.colfDate.MinWidth = 35
+        Me.colfDate.Name = "colfDate"
+        Me.colfDate.Visible = True
+        Me.colfDate.VisibleIndex = 22
+        Me.colfDate.Width = 131
+        '
+        'coltDate
+        '
+        Me.coltDate.FieldName = "tDate"
+        Me.coltDate.MinWidth = 35
+        Me.coltDate.Name = "coltDate"
+        Me.coltDate.Visible = True
+        Me.coltDate.VisibleIndex = 23
+        Me.coltDate.Width = 131
+        '
+        'colETOS
+        '
+        Me.colETOS.FieldName = "ETOS"
+        Me.colETOS.MinWidth = 35
+        Me.colETOS.Name = "colETOS"
+        Me.colETOS.Visible = True
+        Me.colETOS.VisibleIndex = 24
+        Me.colETOS.Width = 131
         '
         'cmdCol_Refresh
         '
@@ -1218,7 +1250,7 @@ Partial Class frmCollections
         Me.cmdCol_Refresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdCol_Refresh.Size = New System.Drawing.Size(42, 40)
         Me.cmdCol_Refresh.StyleController = Me.LayoutControl1
-        Me.cmdCol_Refresh.TabIndex = 29
+        Me.cmdCol_Refresh.TabIndex = 6
         Me.cmdCol_Refresh.ToolTip = "Ανανέωση"
         Me.cmdCol_Refresh.Visible = False
         '
@@ -1237,7 +1269,7 @@ Partial Class frmCollections
         Me.cboDebitUsr.Properties.ValueMember = "ID"
         Me.cboDebitUsr.Size = New System.Drawing.Size(377, 38)
         Me.cboDebitUsr.StyleController = Me.LayoutControl1
-        Me.cboDebitUsr.TabIndex = 24
+        Me.cboDebitUsr.TabIndex = 2
         Me.cboDebitUsr.Tag = ""
         '
         'grdAPT
@@ -1251,7 +1283,7 @@ Partial Class frmCollections
         Me.grdAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPT.Name = "grdAPT"
         Me.grdAPT.Size = New System.Drawing.Size(2343, 1335)
-        Me.grdAPT.TabIndex = 23
+        Me.grdAPT.TabIndex = 1
         Me.grdAPT.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
         '
         'COLREPORTBindingSource
@@ -1297,7 +1329,7 @@ Partial Class frmCollections
         Me.cboINH.Properties.ValueMember = "ID"
         Me.cboINH.Size = New System.Drawing.Size(1153, 38)
         Me.cboINH.StyleController = Me.LayoutControl1
-        Me.cboINH.TabIndex = 5
+        Me.cboINH.TabIndex = 4
         Me.cboINH.Tag = ""
         '
         'VwINHBindingSource1
@@ -1314,7 +1346,7 @@ Partial Class frmCollections
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(153, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
-        Me.cmdExit.TabIndex = 4
+        Me.cmdExit.TabIndex = 7
         Me.cmdExit.Text = "Έξοδος"
         '
         'cboBDG
@@ -1332,7 +1364,7 @@ Partial Class frmCollections
         Me.cboBDG.Properties.ValueMember = "ID"
         Me.cboBDG.Size = New System.Drawing.Size(805, 38)
         Me.cboBDG.StyleController = Me.LayoutControl1
-        Me.cboBDG.TabIndex = 0
+        Me.cboBDG.TabIndex = 3
         Me.cboBDG.Tag = ""
         '
         'VwBDGBindingSource
@@ -1352,7 +1384,7 @@ Partial Class frmCollections
         Me.chkShowAgree.Properties.OnText = "Εμφάνιση μη συμφωνηθέντων"
         Me.chkShowAgree.Size = New System.Drawing.Size(345, 35)
         Me.chkShowAgree.StyleController = Me.LayoutControl1
-        Me.chkShowAgree.TabIndex = 32
+        Me.chkShowAgree.TabIndex = 1
         '
         'cboBDG1
         '
@@ -1369,7 +1401,7 @@ Partial Class frmCollections
         Me.cboBDG1.Properties.ValueMember = "ID"
         Me.cboBDG1.Size = New System.Drawing.Size(839, 38)
         Me.cboBDG1.StyleController = Me.LayoutControl1
-        Me.cboBDG1.TabIndex = 0
+        Me.cboBDG1.TabIndex = 1
         Me.cboBDG1.Tag = ""
         '
         'Root
@@ -1679,6 +1711,16 @@ Partial Class frmCollections
         '
         Me.YEARSTableAdapter.ClearBeforeFill = True
         '
+        'colord
+        '
+        Me.colord.Caption = "AA"
+        Me.colord.FieldName = "ord"
+        Me.colord.MinWidth = 35
+        Me.colord.Name = "colord"
+        Me.colord.Visible = True
+        Me.colord.VisibleIndex = 0
+        Me.colord.Width = 131
+        '
         'frmCollections
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -1892,8 +1934,12 @@ Partial Class frmCollections
     Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents VwBDGBindingSource As BindingSource
     Friend WithEvents Vw_BDGTableAdapter As Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter
-    Friend WithEvents coletos As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents YEARSBindingSource As BindingSource
     Friend WithEvents YEARSTableAdapter As Priamos_NETDataSetTableAdapters.YEARSTableAdapter
     Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents colfDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coltDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colETOS As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colEtos1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colord As DevExpress.XtraGrid.Columns.GridColumn
 End Class

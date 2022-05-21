@@ -16,6 +16,9 @@ Public Class frmTecnicalSupport
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
+    Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
+    Private CalledFromCtrl As Boolean
+
     Dim sGuid As String
 
     Public WriteOnly Property ID As String
@@ -33,6 +36,16 @@ Public Class frmTecnicalSupport
             Frm = value
         End Set
     End Property
+    Public WriteOnly Property CallerControl As DevExpress.XtraEditors.LookUpEdit
+        Set(value As DevExpress.XtraEditors.LookUpEdit)
+            CtrlCombo = value
+        End Set
+    End Property
+    Public WriteOnly Property CalledFromControl As Boolean
+        Set(value As Boolean)
+            CalledFromCtrl = value
+        End Set
+    End Property
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
@@ -46,28 +59,31 @@ Public Class frmTecnicalSupport
                 txtCode.Text = DBQ.GetNextId("TECH_SUP")
                 txtFrom.Text = UserProps.Email
                 txtEmailTo.Text = ProgProps.SupportEmail
-                cmdEmail.Enabled = False
+                'cmdEmail.Enabled = False
                 cmdEmailAnswer.Enabled = False
             Case FormMode.EditRecord
                 'LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_SUP where id ='" + sID + "'")
-                LoadForms.LoadForm(LayoutControl1, "Select IMAGE,imageAns,vw_TECH_SUP.*  from vw_TECH_SUP INNER JOIN TECH_SUP ON vw_TECH_SUP.ID = TECH_SUP.ID where vw_TECH_SUP.ID ='" + sID + "'")
+                LoadForms.LoadForm(LayoutControl1, "Select IMAGE,imageAns,IMAGE1,IMAGE2,IMAGE3, vw_TECH_SUP.*  from vw_TECH_SUP INNER JOIN TECH_SUP ON vw_TECH_SUP.ID = TECH_SUP.ID where vw_TECH_SUP.ID ='" + sID + "'")
 
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
-                    chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True
+                    chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True
+                    chkMoreInfo.Enabled = True
                     cmdEmailAnswer.Enabled = True
                 End If
         End Select
         Me.CenterToScreen()
         My.Settings.frmTecnicalSupport = Me.Location
         My.Settings.Save()
-        cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
 
     Private Sub frmTecnicalSupport_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
 
-    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs)
+
+    End Sub
+    Private Function SaveTech() As Boolean
         Dim sResult As Boolean
         Try
             If Valid.ValidateForm(LayoutControl1) Then
@@ -79,64 +95,108 @@ Public Class frmTecnicalSupport
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sID)
                 End Select
                 If sResult Then
+                    SaveTech = True
                     'Καθαρισμός Controls
                     'If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     'txtCode.Text = DBQ.GetNextId("TECH_SUP")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    cmdEmail.Enabled = True
+                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'cmdEmail.Enabled = True
                     Dim form As New frmScroller
                     form.LoadRecords("vw_TECH_SUP")
-
+                Else
+                    SaveTech = False
 
                 End If
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            SaveTech = False
         End Try
-    End Sub
-
+    End Function
 
 
     Private Sub cmdEmail_Click(sender As Object, e As EventArgs) Handles cmdEmail.Click
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
-            Dim Smtp_Server As New SmtpClient
-            Dim e_mail As New MailMessage()
-            Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New System.Net.NetworkCredential(UserProps.Email, UserProps.EmailPassword)
+            If SaveTech() = True Then
+                Dim Smtp_Server As New SmtpClient
+                Dim e_mail As New MailMessage()
+                Smtp_Server.UseDefaultCredentials = False
+                Smtp_Server.Credentials = New System.Net.NetworkCredential(UserProps.Email, UserProps.EmailPassword)
 
-            Smtp_Server.Port = UserProps.EmailPort
-            Smtp_Server.EnableSsl = UserProps.EmailSSL
-            Smtp_Server.Host = UserProps.EmailServer
+                Smtp_Server.Port = UserProps.EmailPort
+                Smtp_Server.EnableSsl = UserProps.EmailSSL
+                Smtp_Server.Host = UserProps.EmailServer
 
-            e_mail = New MailMessage()
-            e_mail.From = New MailAddress(txtFrom.Text)
-            If txtEmailTo.Text <> "" Then e_mail.To.Add(txtEmailTo.Text)
-            If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
-            e_mail.Subject = txtSubject.Text
-            e_mail.IsBodyHtml = True
-            e_mail.Body = "Από: [" & UserProps.RealName & "]" & vbNewLine & vbNewLine & txtBody.Text
-            Dim myMailHTMLBody = "<html><head></head><body>" & e_mail.Body & " <img src=cid:ThePictureID></body></html>"
-            Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
-            If PictureEdit1.EditValue IsNot Nothing Then
+                e_mail = New MailMessage()
+                e_mail.From = New MailAddress(txtFrom.Text)
+                If txtEmailTo.Text <> "" Then e_mail.To.Add(txtEmailTo.Text)
+                If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
+                e_mail.Subject = txtSubject.Text
+                e_mail.IsBodyHtml = True
+                e_mail.Body = "Από: [" & UserProps.RealName & "]" & vbNewLine & vbNewLine & txtBody.Text
+                Dim myMailHTMLBody = "<html><head></head><body>" & e_mail.Body & " <img src=cid:ThePictureID></body></html>"
+                Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
+                If PictureEdit1.EditValue IsNot Nothing Then
 
-                Dim myImageData() As Byte = PictureEdit1.EditValue
-                'CREATE LINKED RESOURCE FOR ALT VIEW
-                Dim myStream As New MemoryStream(myImageData)
-                Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
-                'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
-                myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+                    Dim myImageData() As Byte = PictureEdit1.EditValue
+                    'CREATE LINKED RESOURCE FOR ALT VIEW
+                    Dim myStream As New MemoryStream(myImageData)
+                    Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
+                    'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
+                    myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
 
-                'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
-                myAltView.LinkedResources.Add(myLinkedResouce)
-                e_mail.AlternateViews.Add(myAltView)
+                    'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
+                    myAltView.LinkedResources.Add(myLinkedResouce)
+                    e_mail.AlternateViews.Add(myAltView)
+                End If
+                If PictureEdit12.EditValue IsNot Nothing Then
+
+                    Dim myImageData() As Byte = PictureEdit12.EditValue
+                    'CREATE LINKED RESOURCE FOR ALT VIEW
+                    Dim myStream As New MemoryStream(myImageData)
+                    Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
+                    'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
+                    myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+
+                    'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
+                    myAltView.LinkedResources.Add(myLinkedResouce)
+                    e_mail.AlternateViews.Add(myAltView)
+                End If
+                If PictureEdit13.EditValue IsNot Nothing Then
+
+                    Dim myImageData() As Byte = PictureEdit13.EditValue
+                    'CREATE LINKED RESOURCE FOR ALT VIEW
+                    Dim myStream As New MemoryStream(myImageData)
+                    Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
+                    'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
+                    myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+
+                    'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
+                    myAltView.LinkedResources.Add(myLinkedResouce)
+                    e_mail.AlternateViews.Add(myAltView)
+                End If
+                If PictureEdit14.EditValue IsNot Nothing Then
+
+                    Dim myImageData() As Byte = PictureEdit14.EditValue
+                    'CREATE LINKED RESOURCE FOR ALT VIEW
+                    Dim myStream As New MemoryStream(myImageData)
+                    Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
+                    'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
+                    myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+
+                    'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
+                    myAltView.LinkedResources.Add(myLinkedResouce)
+                    e_mail.AlternateViews.Add(myAltView)
+                End If
+
+                Smtp_Server.Send(e_mail)
+                XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                sSQL = "UPDATE TECH_SUP SET EmailSent = 1 where ID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID))
+                cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
             End If
 
-            Smtp_Server.Send(e_mail)
-            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            sSQL = "UPDATE TECH_SUP SET EmailSent = 1 where ID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID))
-            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -146,40 +206,51 @@ Public Class frmTecnicalSupport
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
-            Dim Smtp_Server As New SmtpClient
-            Dim e_mail As New MailMessage()
-            Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New System.Net.NetworkCredential(UserProps.Email, UserProps.EmailPassword)
+            If SaveTech() = True Then
+                Dim Smtp_Server As New SmtpClient
+                Dim e_mail As New MailMessage()
+                Smtp_Server.UseDefaultCredentials = False
+                Smtp_Server.Credentials = New System.Net.NetworkCredential(UserProps.Email, UserProps.EmailPassword)
 
-            Smtp_Server.Port = UserProps.EmailPort
-            Smtp_Server.EnableSsl = UserProps.EmailSSL
-            Smtp_Server.Host = UserProps.EmailServer
+                Smtp_Server.Port = UserProps.EmailPort
+                Smtp_Server.EnableSsl = UserProps.EmailSSL
+                Smtp_Server.Host = UserProps.EmailServer
 
-            e_mail = New MailMessage()
-            e_mail.From = New MailAddress(txtEmailTo.Text)
-            If txtEmailTo.Text <> "" Then e_mail.To.Add(txtFrom.Text)
-            If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
-            e_mail.Subject = "ΑΠ:" + txtSubject.Text
-            e_mail.IsBodyHtml = True
-            e_mail.Body = txtAnswer.Text
-            Dim myMailHTMLBody = "<html><head></head><body>" & txtAnswer.Text & " <img src=cid:ThePictureID></body></html>"
-            Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
-            If PictureEdit11.EditValue IsNot Nothing Then
+                e_mail = New MailMessage()
+                e_mail.From = New MailAddress(txtEmailTo.Text)
+                If txtEmailTo.Text <> "" Then e_mail.To.Add(txtFrom.Text)
+                If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
+                e_mail.Subject = "ΑΠ:" + txtSubject.Text.Replace(vbCr, "").Replace(vbLf, "")
+                e_mail.IsBodyHtml = True
+                If chkFixed.Checked Then
+                    e_mail.Body = chkFixed.Text & vbCrLf & txtAnswer.Text
+                End If
+                If chkRejected.Checked Then
+                    e_mail.Body = chkRejected.Text & vbCrLf & txtAnswer.Text
+                End If
+                If chkMoreInfo.Checked Then
+                    e_mail.Body = chkMoreInfo.Text & vbCrLf & txtAnswer.Text
+                End If
 
-                Dim myImageData() As Byte = PictureEdit11.EditValue
-                'CREATE LINKED RESOURCE FOR ALT VIEW
-                Dim myStream As New MemoryStream(myImageData)
-                Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
-                'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
-                myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+                Dim myMailHTMLBody = "<html><head></head><body>" & txtAnswer.Text & " <img src=cid:ThePictureID></body></html>"
+                Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
+                If PictureEdit11.EditValue IsNot Nothing Then
 
-                'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
-                myAltView.LinkedResources.Add(myLinkedResouce)
-                e_mail.AlternateViews.Add(myAltView)
+                    Dim myImageData() As Byte = PictureEdit11.EditValue
+                    'CREATE LINKED RESOURCE FOR ALT VIEW
+                    Dim myStream As New MemoryStream(myImageData)
+                    Dim myLinkedResouce = New LinkedResource(myStream, "image/jpeg")
+                    'SET CONTENTID SO HTML CAN REFERENCE CORRECTLY
+                    myLinkedResouce.ContentId = "ThePictureID" 'this must match in the HTML of the message body
+
+                    'ADD LINKED RESOURCE TO ALT VIEW, AND ADD ALT VIEW TO MESSAGE
+                    myAltView.LinkedResources.Add(myLinkedResouce)
+                    e_mail.AlternateViews.Add(myAltView)
+                End If
+
+                Smtp_Server.Send(e_mail)
+                XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
-
-            Smtp_Server.Send(e_mail)
-            XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -211,5 +282,44 @@ Public Class frmTecnicalSupport
             Case 2 : If cboCategory.EditValue <> Nothing Then ManageCategory()
             Case 3 : cboCategory.EditValue = Nothing
         End Select
+    End Sub
+
+    Private Sub PictureEdit1_DoubleClick(sender As Object, e As EventArgs) Handles PictureEdit1.DoubleClick
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\Pictures") = False Then My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\Pictures")
+        PictureEdit1.Image.Save(Application.StartupPath & "\Pictures\Image1.jpg", Imaging.ImageFormat.Jpeg)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\Pictures\Image1.jpg") Then ShellExecute(Application.StartupPath & "\Pictures\Image1.jpg")
+    End Sub
+    Private Sub ShellExecute(ByVal File As String)
+        Dim myProcess As New Process
+        myProcess.StartInfo.FileName = File
+        myProcess.StartInfo.UseShellExecute = True
+        myProcess.StartInfo.RedirectStandardOutput = False
+        myProcess.Start()
+        myProcess.Dispose()
+    End Sub
+
+    Private Sub PictureEdit11_DoubleClick(sender As Object, e As EventArgs) Handles PictureEdit11.DoubleClick
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\Pictures") = False Then My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\Pictures")
+        PictureEdit11.Image.Save(Application.StartupPath & "\Pictures\Image5.jpg", Imaging.ImageFormat.Jpeg)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\Pictures\Image5.jpg") Then ShellExecute(Application.StartupPath & "\Pictures\Image5.jpg")
+    End Sub
+
+    Private Sub PictureEdit12_DoubleClick(sender As Object, e As EventArgs) Handles PictureEdit12.DoubleClick
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\Pictures") = False Then My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\Pictures")
+        PictureEdit12.Image.Save(Application.StartupPath & "\Pictures\Image2.jpg", Imaging.ImageFormat.Jpeg)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\Pictures\Image2.jpg") Then ShellExecute(Application.StartupPath & "\Pictures\Image2.jpg")
+    End Sub
+
+    Private Sub PictureEdit13_DoubleClick(sender As Object, e As EventArgs) Handles PictureEdit13.DoubleClick
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\Pictures") = False Then My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\Pictures")
+        PictureEdit13.Image.Save(Application.StartupPath & "\Pictures\Image3.jpg", Imaging.ImageFormat.Jpeg)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\Pictures\Image3.jpg") Then ShellExecute(Application.StartupPath & "\Pictures\Image3.jpg")
+    End Sub
+
+    Private Sub PictureEdit14_DoubleClick(sender As Object, e As EventArgs) Handles PictureEdit14.DoubleClick
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath & "\Pictures") = False Then My.Computer.FileSystem.CreateDirectory(Application.StartupPath & "\Pictures")
+        PictureEdit14.Image.Save(Application.StartupPath & "\Pictures\Image4.jpg", Imaging.ImageFormat.Jpeg)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\Pictures\Image4.jpg") Then ShellExecute(Application.StartupPath & "\Pictures\Image4.jpg")
+
     End Sub
 End Class

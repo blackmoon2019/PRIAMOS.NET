@@ -27,6 +27,8 @@ Public Class frmCalendarApol
             cboCompleted.Items(1).CheckState = CheckState.Unchecked
 
             SchedulerControl1.Start = Now.Date
+            SchedulerControl1.OptionsCustomization.AllowAppointmentDelete = UsedAppointmentType.All
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -66,6 +68,7 @@ Public Class frmCalendarApol
             e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewAllDayEvent)
             e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewAppointment)
             e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewRecurringEvent)
+            e.Menu.RemoveMenuItem(SchedulerMenuItemId.DeleteAppointment)
             ' Disable the "New Recurring Appointment" menu item.
             e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewRecurringAppointment)
             ' Create a menu item for the Scheduler command.
@@ -78,7 +81,63 @@ Public Class frmCalendarApol
 
             ' Insert a new item into the Scheduler popup menu and handle its click event.
             e.Menu.Items.Add(New SchedulerMenuItem("Δημιουργία Απολύμανσης", AddressOf MyClickHandler))
+        ElseIf e.Menu.Id = DevExpress.XtraScheduler.SchedulerMenuItemId.AppointmentMenu Then
+            e.Menu.RemoveMenuItem(SchedulerMenuItemId.StatusSubMenu)
+            e.Menu.RemoveMenuItem(SchedulerMenuItemId.EditSeries)
+            e.Menu.RemoveMenuItem(SchedulerMenuItemId.LabelSubMenu)
+            e.Menu.RemoveMenuItem(SchedulerMenuItemId.DeleteAppointment)
+            e.Menu.RemoveMenuItem(SchedulerMenuItemId.OpenAppointment)
+            e.Menu.Items.Add(New SchedulerMenuItem("Διαγραφή", AddressOf SetApolAsDeleted))
+            e.Menu.Items.Add(New SchedulerMenuItem("Ορισμός ως Εκτελεσμένη", AddressOf SetApolAsCompleted))
+            e.Menu.Items.Add(New SchedulerMenuItem("Ορισμός ως Ακυρωμένη", AddressOf SetApolAsCanceled))
+            'e.Menu.Items.Item(SchedulerMenuItemId.DeleteAppointment).Enabled = True
         End If
+    End Sub
+    Private Sub SetApolAsDeleted(ByVal sender As Object, ByVal e As EventArgs)
+        DeleteApol()
+    End Sub
+    Private Sub SetApolAsCanceled(ByVal sender As Object, ByVal e As EventArgs)
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να ακυρωθεί η τρέχουσα εγγραφή? " & vbCrLf &
+                               "Προσοχή θα διαγραφεί και η είσπραξη που αφορά την εργασία και θα επηρεάσει το ταμείο σας.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                For i As Integer = 0 To SchedulerControl1.SelectedAppointments.Count - 1
+
+                    Dim apol As Appointment = SchedulerControl1.SelectedAppointments(i)
+                    sSQL = "UPDATE APOL SET cancelled=1 WHERE ID = " & toSQLValueS(apol.Id)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    sSQL = "DELETE FROM COL_EXT WHERE APOLID = " & toSQLValueS(apol.Id)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next i
+                SetCalendarFilter()
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Private Sub SetApolAsCompleted(ByVal sender As Object, ByVal e As EventArgs)
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να ορισθεί εκτελεσμένη η τρέχουσα εγγραφή? ", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                For i As Integer = 0 To SchedulerControl1.SelectedAppointments.Count - 1
+
+                    Dim apol As Appointment = SchedulerControl1.SelectedAppointments(i)
+                    sSQL = "UPDATE APOL SET completed=1 WHERE ID = " & toSQLValueS(apol.Id)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next i
+                SetCalendarFilter()
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Public Sub MyClickHandler(ByVal sender As Object, ByVal e As EventArgs)
         Dim form1 As frmApol = New frmApol()
@@ -150,6 +209,33 @@ Public Class frmCalendarApol
         Dim teText As String = If(value Is Nothing, String.Empty, value.ToString())
         SetCalendarFilter(teText)
     End Sub
+
+    Private Sub SchedulerControl1_KeyDown(sender As Object, e As KeyEventArgs) Handles SchedulerControl1.KeyDown
+        If e.KeyCode = Keys.Delete Then DeleteApol()
+    End Sub
+    Private Function DeleteApol() As Boolean
+        Dim sSQL As String
+        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? " & vbCrLf &
+                               "Προσοχή θα διαγραφεί και η είσπραξη που αφορά την εργασία και θα επηρεάσει το ταμείο σας.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            For i As Integer = 0 To SchedulerControl1.SelectedAppointments.Count - 1
+
+                Dim apol As Appointment = SchedulerControl1.SelectedAppointments(i)
+                sSQL = "DELETE FROM APOL WHERE ID = " & toSQLValueS(apol.Id)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next i
+            SetCalendarFilter()
+            DeleteApol = True
+        Else
+            DeleteApol = False
+        End If
+    End Function
+
+    Private Sub SchedulerDataStorage1_AppointmentDeleting(sender As Object, e As PersistentObjectCancelEventArgs) Handles SchedulerDataStorage1.AppointmentDeleting
+        If DeleteApol() = False Then e.Cancel = True
+    End Sub
+
     Public Class MySchedulerLocalizer
         Inherits SchedulerLocalizer
         Public Overrides Function GetLocalizedString(ByVal id As SchedulerStringId) As String

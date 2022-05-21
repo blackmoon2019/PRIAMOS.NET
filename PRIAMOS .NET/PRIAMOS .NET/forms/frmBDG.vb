@@ -1,24 +1,22 @@
 ﻿Imports System.IO
-Imports iTextSharp.text 'Core PDF Text Functionalities
-Imports iTextSharp.text.pdf 'PDF Content
-Imports iTextSharp.text.pdf.parser
+'Imports iTextSharp.text 'Core PDF Text Functionalities
+'Imports iTextSharp.text.pdf 'PDF Content
+'Imports iTextSharp.text.pdf.parser
 Imports System.Data.SqlClient
 Imports DevExpress.Utils.Menu
 Imports DevExpress.Utils
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
-Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraBars
-Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraEditors.Calendar
 Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraGrid
 Imports System.ComponentModel
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
+Imports System.Drawing.Printing
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -1694,11 +1692,14 @@ Public Class frmBDG
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
     End Sub
     Public Sub LoadIEP()
-        Dim sSQL As String
-        sSQL = "SELECT * FROM vw_IEP WHERE BDGID = '" & sID & "' ORDER BY code"
-        LoadForms.LoadDataToGrid(grdIEP, GridView6, sSQL)
-        'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-        LoadForms.LoadColumnDescriptionNames(grdIEP, GridView6,, "vw_IEP")
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_IEP' table. You can move, or remove it, as needed.
+        Me.Vw_IEPTableAdapter.FillByBDG(Me.Priamos_NETDataSet.vw_IEP, System.Guid.Parse(sID))
+
+        'Dim sSQL As String
+        'sSQL = "SELECT * FROM vw_IEP WHERE BDGID = '" & sID & "' ORDER BY code"
+        'LoadForms.LoadDataToGrid(grdIEP, GridView6, sSQL)
+        ''Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
+        'LoadForms.LoadColumnDescriptionNames(grdIEP, GridView6,, "vw_IEP")
         LoadForms.RestoreLayoutFromXml(GridView6, "IEP_def.xml")
         GridView6.ExpandAllGroups()
 
@@ -1949,7 +1950,7 @@ Public Class frmBDG
         'form1.MdiParent = frmMain
         If isFromGrid = False Then
             form1.CallerControl = cboCCT
-            form1.CalledFromControl = True
+            form1.CalledFromControl = False
             If cboCCT.EditValue <> Nothing Then
                 form1.ID = cboCCT.EditValue.ToString
                 form1.Mode = FormMode.EditRecord
@@ -1992,8 +1993,8 @@ Public Class frmBDG
     End Sub
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False)
-            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCCT(False)
+            Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCCT(False) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
             Case 3 : cboCCT.EditValue = Nothing
         End Select
     End Sub
@@ -2197,7 +2198,8 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
-        Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, cboPrf.EditValue)
+        Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+
     End Sub
 
     Private Sub RepositoryItemLookUpEditPRF_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemLookUpEditPRF.EditValueChanged
@@ -2284,7 +2286,7 @@ Public Class frmBDG
                 txtBDGFilename.EditValue = XtraOpenFileDialog1.SafeFileName
                 If XtraOpenFileDialog1.SafeFileNames.Length > 1 Then txtBDGFilename.EditValue = "{Πολλαπλά Αρχεία}"
             End If
-            End If
+        End If
 
     End Sub
 
@@ -2303,16 +2305,14 @@ Public Class frmBDG
                 End If
             End If
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            PB.Value = 0
 
         End If
 
     End Sub
-
-
-
     Private Sub GridControl3_DoubleClick(sender As Object, e As EventArgs) Handles GridControl3.DoubleClick
         Try
-            Dim sFilename = GridView12.GetRowCellValue(GridView1.FocusedRowHandle, "filename")
+            Dim sFilename = GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "filename")
             'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\" & sFilename)
             Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
             Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString, "BDG_F")
@@ -2377,6 +2377,75 @@ Public Class frmBDG
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
+
+    Private Sub cmdBDGFPrint_Click(sender As Object, e As EventArgs) Handles cmdBDGFPrint.Click
+        Dim sSQL As String
+        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        Dim cbo As New DevExpress.XtraEditors.ComboBoxEdit
+        cbo.Properties.TextEditStyle=TextEditStyles.DisableTextEditor 
+        For Each printer As String In PrinterSettings.InstalledPrinters
+            cbo.Properties.Items.Add(printer)
+        Next printer
+        Dim args = New XtraInputBoxArgs()
+        args.Caption = "Επιλογή Εκτυπωτή"
+        args.Prompt = "Επιλέξτε εκτυπωτή"
+        args.DefaultButtonIndex = 0
+        'args.DefaultResponse = "Test"
+        args.Editor = cbo
+        Dim Result = XtraInputBox.Show(args)
+        If Result Is Nothing Then
+            XtraMessageBox.Show("Πρέπει υποχρεωτικά να επιλέξετε εκτυπωτή για να προχωρήσετε.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim sFilename = GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "filename")
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
+            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString, "BDG_F")
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+
+            printme(Application.StartupPath & "\" & sFilename, Result)
+
+        Next
+        Try
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Sub printme(ByVal filename As String, ByVal PrinterName As String)
+        Dim SelProcess As New Process
+
+        Dim printDialog1 As New System.Windows.Forms.PrintDialog
+        Dim psi As New ProcessStartInfo
+        printDialog1.AllowSomePages = True
+        printDialog1.UseEXDialog = True
+        With printDialog1.PrinterSettings
+            .PrintFileName = filename
+            .Copies = 2
+            .FromPage = 1
+            .ToPage = 1
+            .PrinterName = PrinterName
+        End With
+
+        psi.UseShellExecute = True
+        psi.Verb = "print"
+        psi.FileName = filename
+        psi.Arguments = printDialog1.PrinterSettings.ToString
+        psi.WindowStyle = ProcessWindowStyle.Hidden
+        SelProcess.StartInfo = psi
+        SelProcess.Start()
+    End Sub
+
+
+
+    Private Sub GridView8_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles GridView8.CustomDrawCell
+        Dim GRD8 As GridView = sender
+        If e.Column.FieldName = "cctID" Then e.DisplayText = GRD8.GetRowCellValue(e.RowHandle, "Fullname").ToString()
+
+    End Sub
+
 
 
 

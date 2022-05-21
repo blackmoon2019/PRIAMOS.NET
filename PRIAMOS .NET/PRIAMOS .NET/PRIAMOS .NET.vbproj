@@ -117,6 +117,7 @@
     <Reference Include="DevExpress.Images.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Drawing, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Persistent.Base.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -419,6 +420,12 @@
     <Compile Include="forms\frmCustomers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmDocumentViewer.Designer.vb">
+      <DependentUpon>frmDocumentViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmDocumentViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmEXP.Designer.vb">
       <DependentUpon>frmEXP.vb</DependentUpon>
     </Compile>
@@ -513,6 +520,12 @@
       <DependentUpon>frmDBConnection.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\frmDBConnection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmVersions.Designer.vb">
+      <DependentUpon>frmVersions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmVersions.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Priamos_NETDataSet2.vb">
@@ -662,6 +675,9 @@
       <DependentUpon>frmCustomers.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmDocumentViewer.resx">
+      <DependentUpon>frmDocumentViewer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmEXP.resx">
       <DependentUpon>frmEXP.vb</DependentUpon>
     </EmbeddedResource>
@@ -716,6 +732,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmDBConnection.resx">
       <DependentUpon>frmDBConnection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmVersions.resx">
+      <DependentUpon>frmVersions.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\Eidop.resx">
       <DependentUpon>Eidop.vb</DependentUpon>
@@ -796,6 +815,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-print-16.png" />
+    <None Include="Resources\icons8-filter-7.png" />
+    <None Include="Resources\icons8-filter-8.png" />
+    <None Include="Resources\icons8-filter-12.png" />
     <None Include="Resources\icons8-check-list-40.png" />
     <None Include="Resources\icons8-case-40.png" />
     <None Include="Resources\icons8-category-40%281%29.png" />
@@ -2377,6 +2400,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>RD /S /Q "$(TargetDir)cs\"

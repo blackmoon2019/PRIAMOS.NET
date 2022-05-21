@@ -1531,7 +1531,11 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columnagreed As Global.System.Data.DataColumn
         
-        Private columnetos As Global.System.Data.DataColumn
+        Private columnETOS As Global.System.Data.DataColumn
+        
+        Private columnfDate As Global.System.Data.DataColumn
+        
+        Private columntDate As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -1746,9 +1750,25 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property etosColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ETOSColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnetos
+                Return Me.columnETOS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property tDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntDate
             End Get
         End Property
         
@@ -1812,9 +1832,11 @@ Partial Public Class Priamos_NETDataSet2
                     ByVal ttl As String,  _
                     ByVal tenant As Boolean,  _
                     ByVal agreed As Boolean,  _
-                    ByVal etos As Integer) As vw_COL_DRow
+                    ByVal ETOS As Integer,  _
+                    ByVal fDate As Date,  _
+                    ByVal tDate As Date) As vw_COL_DRow
             Dim rowvw_COL_DRow As vw_COL_DRow = CType(Me.NewRow,vw_COL_DRow)
-            Dim columnValuesArray() As Object = New Object() {old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, etos}
+            Dim columnValuesArray() As Object = New Object() {old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate}
             rowvw_COL_DRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_COL_DRow)
             Return rowvw_COL_DRow
@@ -1865,7 +1887,9 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnttl = MyBase.Columns("ttl")
             Me.columntenant = MyBase.Columns("tenant")
             Me.columnagreed = MyBase.Columns("agreed")
-            Me.columnetos = MyBase.Columns("etos")
+            Me.columnETOS = MyBase.Columns("ETOS")
+            Me.columnfDate = MyBase.Columns("fDate")
+            Me.columntDate = MyBase.Columns("tDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1915,8 +1939,12 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columntenant)
             Me.columnagreed = New Global.System.Data.DataColumn("agreed", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnagreed)
-            Me.columnetos = New Global.System.Data.DataColumn("etos", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnetos)
+            Me.columnETOS = New Global.System.Data.DataColumn("ETOS", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnETOS)
+            Me.columnfDate = New Global.System.Data.DataColumn("fDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfDate)
+            Me.columntDate = New Global.System.Data.DataColumn("tDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnbdgNam.MaxLength = 250
             Me.columnaptNam.MaxLength = 150
@@ -1927,7 +1955,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnID.Unique = true
             Me.columncode.AllowDBNull = false
             Me.columnttl.MaxLength = 150
-            Me.columnetos.ReadOnly = true
+            Me.columnETOS.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2952,6 +2980,8 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columnttl As Global.System.Data.DataColumn
         
+        Private columnord As Global.System.Data.DataColumn
+        
         Private columnAptbal As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3039,6 +3069,14 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ordColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnord
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property AptbalColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnAptbal
@@ -3082,9 +3120,9 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCOL_APTRow(ByVal parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT As vw_COL_BDGRow, ByVal aptID As System.Guid, ByVal credit As Decimal, ByVal debit As Decimal, ByVal bal As Decimal, ByVal ttl As String, ByVal Aptbal As Decimal) As COL_APTRow
+        Public Overloads Function AddCOL_APTRow(ByVal parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT As vw_COL_BDGRow, ByVal aptID As System.Guid, ByVal credit As Decimal, ByVal debit As Decimal, ByVal bal As Decimal, ByVal ttl As String, ByVal ord As Integer, ByVal Aptbal As Decimal) As COL_APTRow
             Dim rowCOL_APTRow As COL_APTRow = CType(Me.NewRow,COL_APTRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, aptID, credit, debit, bal, ttl, Aptbal}
+            Dim columnValuesArray() As Object = New Object() {Nothing, aptID, credit, debit, bal, ttl, ord, Aptbal}
             If (Not (parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT) Is Nothing) Then
                 columnValuesArray(0) = parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT(0)
             End If
@@ -3122,6 +3160,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columndebit = MyBase.Columns("debit")
             Me.columnbal = MyBase.Columns("bal")
             Me.columnttl = MyBase.Columns("ttl")
+            Me.columnord = MyBase.Columns("ord")
             Me.columnAptbal = MyBase.Columns("Aptbal")
         End Sub
         
@@ -3140,6 +3179,8 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columnbal)
             Me.columnttl = New Global.System.Data.DataColumn("ttl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnttl)
+            Me.columnord = New Global.System.Data.DataColumn("ord", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnord)
             Me.columnAptbal = New Global.System.Data.DataColumn("Aptbal", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAptbal)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnbdgID, Me.columnaptID}, true))
@@ -3310,6 +3351,8 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columncmt As Global.System.Data.DataColumn
         
+        Private columnEtos As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -3458,6 +3501,14 @@ Partial Public Class Priamos_NETDataSet2
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EtosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEtos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3494,9 +3545,9 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCOL_INHRow(ByVal bdgID As System.Guid, ByVal inhID As System.Guid, ByVal debitusrID As System.Guid, ByVal creditusrID As System.Guid, ByVal bankID As System.Guid, ByVal ColMethodID As System.Guid, ByVal dtDebit As Date, ByVal dtCredit As Date, ByVal credit As Decimal, ByVal debit As Decimal, ByVal bal As Decimal, ByVal completeDate As String, ByVal aptID As System.Guid, ByVal cmt As String) As COL_INHRow
+        Public Overloads Function AddCOL_INHRow(ByVal bdgID As System.Guid, ByVal inhID As System.Guid, ByVal debitusrID As System.Guid, ByVal creditusrID As System.Guid, ByVal bankID As System.Guid, ByVal ColMethodID As System.Guid, ByVal dtDebit As Date, ByVal dtCredit As Date, ByVal credit As Decimal, ByVal debit As Decimal, ByVal bal As Decimal, ByVal completeDate As String, ByVal aptID As System.Guid, ByVal cmt As String, ByVal Etos As Integer) As COL_INHRow
             Dim rowCOL_INHRow As COL_INHRow = CType(Me.NewRow,COL_INHRow)
-            Dim columnValuesArray() As Object = New Object() {bdgID, inhID, debitusrID, creditusrID, bankID, ColMethodID, dtDebit, dtCredit, credit, debit, bal, completeDate, aptID, cmt}
+            Dim columnValuesArray() As Object = New Object() {bdgID, inhID, debitusrID, creditusrID, bankID, ColMethodID, dtDebit, dtCredit, credit, debit, bal, completeDate, aptID, cmt, Etos}
             rowCOL_INHRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCOL_INHRow)
             Return rowCOL_INHRow
@@ -3539,6 +3590,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columncompleteDate = MyBase.Columns("completeDate")
             Me.columnaptID = MyBase.Columns("aptID")
             Me.columncmt = MyBase.Columns("cmt")
+            Me.columnEtos = MyBase.Columns("Etos")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3572,6 +3624,8 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columnaptID)
             Me.columncmt = New Global.System.Data.DataColumn("cmt", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncmt)
+            Me.columnEtos = New Global.System.Data.DataColumn("Etos", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEtos)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnbdgID, Me.columninhID, Me.columnaptID}, true))
             Me.columnbdgID.AllowDBNull = false
             Me.columninhID.AllowDBNull = false
@@ -4919,16 +4973,46 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property etos() As Integer
+        Public Property ETOS() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablevw_COL_D.etosColumn),Integer)
+                    Return CType(Me(Me.tablevw_COL_D.ETOSColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'etos' in table 'vw_COL_D' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ETOS' in table 'vw_COL_D' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevw_COL_D.etosColumn) = value
+                Me(Me.tablevw_COL_D.ETOSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_COL_D.fDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'fDate' in table 'vw_COL_D' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_COL_D.fDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property tDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_COL_D.tDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'tDate' in table 'vw_COL_D' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_COL_D.tDateColumn) = value
             End Set
         End Property
         
@@ -5174,14 +5258,38 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsetosNull() As Boolean
-            Return Me.IsNull(Me.tablevw_COL_D.etosColumn)
+        Public Function IsETOSNull() As Boolean
+            Return Me.IsNull(Me.tablevw_COL_D.ETOSColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetetosNull()
-            Me(Me.tablevw_COL_D.etosColumn) = Global.System.Convert.DBNull
+        Public Sub SetETOSNull()
+            Me(Me.tablevw_COL_D.ETOSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsfDateNull() As Boolean
+            Return Me.IsNull(Me.tablevw_COL_D.fDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetfDateNull()
+            Me(Me.tablevw_COL_D.fDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IstDateNull() As Boolean
+            Return Me.IsNull(Me.tablevw_COL_D.tDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SettDateNull()
+            Me(Me.tablevw_COL_D.tDateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5949,6 +6057,21 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ord() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableCOL_APT.ordColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ord' in table 'COL_APT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCOL_APT.ordColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property Aptbal() As Decimal
             Get
                 Try 
@@ -6019,6 +6142,18 @@ Partial Public Class Priamos_NETDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetttlNull()
             Me(Me.tableCOL_APT.ttlColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsordNull() As Boolean
+            Return Me.IsNull(Me.tableCOL_APT.ordColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetordNull()
+            Me(Me.tableCOL_APT.ordColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6259,6 +6394,21 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Etos() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableCOL_INH.EtosColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Etos' in table 'COL_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCOL_INH.EtosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property COL_APTRowParent() As COL_APTRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("vw_COL_APT_vw_COL_INH")),COL_APTRow)
@@ -6398,6 +6548,18 @@ Partial Public Class Priamos_NETDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetcmtNull()
             Me(Me.tableCOL_INH.cmtColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEtosNull() As Boolean
+            Return Me.IsNull(Me.tableCOL_INH.EtosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEtosNull()
+            Me(Me.tableCOL_INH.EtosColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6848,8 +7010,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(1).CommandText = "SELECT AptNam, BankName, BdgNam, ColMethod, ColMethodID, ID, UsrCreditName, UsrDe"& _ 
                 "bittName, aptID, bal, bankID, bdgID, cmt, code, colHID, completeDate, createdOn,"& _ 
                 " credit, creditusrID, debit, debitusrID, dtCredit, dtDebit, inhID, modifiedBy, m"& _ 
-                "odifiedOn, modifiedRealName, tenant, ttl FROM vw_COL WHERE (bdgID = @bdgID) AND "& _ 
-                "(Agreed = 0)"
+                "odifiedOn, modifiedRealName, tenant, ttl, fDate, tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bd"& _ 
+                "gID = @bdgID) AND (Agreed = 0)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
@@ -6866,7 +7028,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(3).CommandText = "SELECT AptNam, BankName, BdgNam, ColMethod, ColMethodID, ID, UsrCreditName, UsrDe"& _ 
                 "bittName, aptID, bal, bankID, bdgID, cmt, code, colHID, completeDate, createdOn,"& _ 
                 " credit, creditusrID, debit, debitusrID, dtCredit, dtDebit, inhID, modifiedBy, m"& _ 
-                "odifiedOn, modifiedRealName, tenant, ttl FROM vw_COL WHERE (Agreed = 0)"
+                "odifiedOn, modifiedRealName, tenant, ttl, fDate, tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (Ag"& _ 
+                "reed = 0)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -7421,7 +7584,9 @@ Namespace Priamos_NETDataSet2TableAdapters
             tableMapping.ColumnMappings.Add("ttl", "ttl")
             tableMapping.ColumnMappings.Add("tenant", "tenant")
             tableMapping.ColumnMappings.Add("agreed", "agreed")
-            tableMapping.ColumnMappings.Add("etos", "etos")
+            tableMapping.ColumnMappings.Add("ETOS", "ETOS")
+            tableMapping.ColumnMappings.Add("fDate", "fDate")
+            tableMapping.ColumnMappings.Add("tDate", "tDate")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -7440,40 +7605,42 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, cr"& _ 
                 "eatedOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID"& _ 
-                ", debitusrID, ttl, tenant, agreed,etos"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID) "& _ 
-                "AND (aptID = @aptID)  and agreed=0 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY createdOn"
+                ", debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (b"& _ 
+                "dgID = @bdgID) AND (aptID = @aptID) AND (agreed = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY createdOn"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
-                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, inhID, modifi"& _ 
-                "edBy, modifiedOn, old_code, tenant, ttl FROM vw_COL_D ORDER BY bdgNam, ttl"
+                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D ORDER BY bdg"& _ 
+                "Nam, ttl"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
-                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, inhID, modifi"& _ 
-                "edBy, modifiedOn, old_code, tenant, ttl FROM vw_COL_D WHERE (bdgID = @bdgID) ORD"& _ 
-                "ER BY createdOn"
+                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (bdgID"& _ 
+                " = @bdgID) ORDER BY createdOn"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
-                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, inhID, modifi"& _ 
-                "edBy, modifiedOn, old_code, tenant, ttl FROM vw_COL_D WHERE (inhID = @inhID) AND"& _ 
-                " (aptID = @aptID) AND (agreed = 0) ORDER BY createdOn"
+                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (inhID"& _ 
+                " = @inhID) AND (aptID = @aptID) AND (agreed = 0) ORDER BY createdOn"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
-                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, inhID, modifi"& _ 
-                "edBy, modifiedOn, old_code, tenant, ttl FROM vw_COL_D WHERE (inhID = @inhID) AND"& _ 
-                " (tenant = @tenant) AND (aptID = @aptID) AND (agreed = 0) ORDER BY createdOn"
+                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (inhID"& _ 
+                " = @inhID) AND (tenant = @tenant) AND (aptID = @aptID) AND (agreed = 0) ORDER BY"& _ 
+                " createdOn"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tenant", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "tenant", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7481,9 +7648,9 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
-                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, inhID, modifi"& _ 
-                "edBy, modifiedOn, old_code, tenant, ttl FROM vw_COL_D WHERE (agreed = 0) AND (bd"& _ 
-                "gID = @bdgid) ORDER BY bdgNam, ttl"
+                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (agree"& _ 
+                "d = 0) AND (bdgID = @bdgid) ORDER BY bdgNam, ttl"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgid", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

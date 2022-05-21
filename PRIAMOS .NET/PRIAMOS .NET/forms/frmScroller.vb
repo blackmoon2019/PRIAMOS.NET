@@ -46,62 +46,68 @@ Public Class frmScroller
     End Property
     'Private settings = System.Configuration.ConfigurationManager.AppSettings
     Private Sub frmScroller_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.Collectors' table. You can move, or remove it, as needed.
-        Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
-        Me.Vw_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BANKS)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
-        Me.Vw_COL_METHODTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COL_METHOD)
-        'Λίστα με τιμές για TOP RECORDS
-        LoadComboRecordValues()
-        popSaveAsView.EditValue = BarViews.EditValue
-        If BarViews.EditValue = "" Then popSaveView.Enabled = False : popDeleteView.Enabled = False
-        'Παίρνω το όνομα της όψης για τον συγκεκριμένο χρήστη και για τον συγκεκριμένο πίνακα 
-        GetCurrentView(True)
-        'Φόρτωση Εγγραφών
-        LoadRecords()
-        If sDataTable = "vw_COL_EXT" Then
-            AddHandler Rep_DEBITUSR.EditValueChanged, AddressOf Rep_DEBITUSR_Changed
-            AddHandler Rep_COL_METHOD.EditValueChanged, AddressOf Rep_COL_METHOD_Changed
-            AddHandler Rep_ΒΑΝΚ.EditValueChanged, AddressOf Rep_ΒΑΝΚ_Changed
-        End If
+        Try
 
-        'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
-        'LoadViews()
-        'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-        'LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+            'TODO: This line of code loads data into the 'Priamos_NETDataSet.Collectors' table. You can move, or remove it, as needed.
+            Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
+            'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
+            Me.Vw_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BANKS)
+            'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
+            Me.Vw_COL_METHODTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COL_METHOD)
+            'Λίστα με τιμές για TOP RECORDS
+            LoadComboRecordValues()
+            popSaveAsView.EditValue = BarViews.EditValue
+            If BarViews.EditValue = "" Then popSaveView.Enabled = False : popDeleteView.Enabled = False
+            'Παίρνω το όνομα της όψης για τον συγκεκριμένο χρήστη και για τον συγκεκριμένο πίνακα 
+            GetCurrentView(True)
+            'Φόρτωση Εγγραφών
+            LoadRecords()
+            If sDataTable = "vw_COL_EXT" Then
+                AddHandler Rep_DEBITUSR.EditValueChanged, AddressOf Rep_DEBITUSR_Changed
+                AddHandler Rep_COL_METHOD.EditValueChanged, AddressOf Rep_COL_METHOD_Changed
+                AddHandler Rep_ΒΑΝΚ.EditValueChanged, AddressOf Rep_ΒΑΝΚ_Changed
+            End If
 
-        GridLocalizer.Active = New GreekGridLocalizer()
-        'Localizer.Active = New GermanEditorsLocalizer()
+            'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
+            'LoadViews()
+            'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
+            'LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
 
-        'Κρύψιμο Στηλών
-        'HideColumns(GridView1, "ID")
-        'Δικαιώματα
-        BarNewRec.Enabled = UserProps.AllowInsert
-        BarDelete.Enabled = UserProps.AllowDelete
-        BarEdit.Enabled = UserProps.AllowEdit
-        GridView1.OptionsBehavior.AutoExpandAllGroups = True
-        GridView1.OptionsMenu.ShowFooterItem = True
-        GridView1.OptionsMenu.EnableFooterMenu = True
-        GridView1.OptionsMenu.EnableGroupPanelMenu = True
-        GridView1.OptionsMenu.EnableGroupRowMenu = True
-        GridView1.OptionsView.ShowFooter = True
-        GridView1.OptionsMenu.ShowGroupSummaryEditorItem = True
-        GridView1.OptionsMenu.ShowGroupSortSummaryItems = True
-        GridView1.OptionsMenu.ShowConditionalFormattingItem = True
-        GridView1.OptionsSelection.MultiSelect = True
-        GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect
+            GridLocalizer.Active = New GreekGridLocalizer()
+            'Localizer.Active = New GermanEditorsLocalizer()
 
+            'Κρύψιμο Στηλών
+            'HideColumns(GridView1, "ID")
+            'Δικαιώματα
+            BarNewRec.Enabled = UserProps.AllowInsert
+            BarDelete.Enabled = UserProps.AllowDelete
+            BarEdit.Enabled = UserProps.AllowEdit
+            GridView1.OptionsBehavior.AutoExpandAllGroups = True
+            GridView1.OptionsMenu.ShowFooterItem = True
+            GridView1.OptionsMenu.EnableFooterMenu = True
+            GridView1.OptionsMenu.EnableGroupPanelMenu = True
+            GridView1.OptionsMenu.EnableGroupRowMenu = True
+            GridView1.OptionsView.ShowFooter = True
+            GridView1.OptionsMenu.ShowGroupSummaryEditorItem = True
+            GridView1.OptionsMenu.ShowGroupSortSummaryItems = True
+            GridView1.OptionsMenu.ShowConditionalFormattingItem = True
+            GridView1.OptionsSelection.MultiSelect = True
+            GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect
+            GridView1.OptionsView.HeaderFilterButtonShowMode = FilterButtonShowMode.Button
 
-        GridView2.OptionsBehavior.AutoExpandAllGroups = True
-        GridView2.OptionsMenu.ShowFooterItem = True
-        GridView2.OptionsMenu.EnableFooterMenu = True
-        GridView2.OptionsMenu.EnableGroupPanelMenu = True
-        GridView2.OptionsMenu.EnableGroupRowMenu = True
-        GridView2.OptionsView.ShowFooter = True
-        GridView2.OptionsMenu.ShowGroupSummaryEditorItem = True
-        GridView2.OptionsMenu.ShowGroupSortSummaryItems = True
-        GridView2.OptionsMenu.ShowConditionalFormattingItem = True
+            GridView2.OptionsBehavior.AutoExpandAllGroups = True
+            GridView2.OptionsMenu.ShowFooterItem = True
+            GridView2.OptionsMenu.EnableFooterMenu = True
+            GridView2.OptionsMenu.EnableGroupPanelMenu = True
+            GridView2.OptionsMenu.EnableGroupRowMenu = True
+            GridView2.OptionsView.ShowFooter = True
+            GridView2.OptionsMenu.ShowGroupSummaryEditorItem = True
+            GridView2.OptionsMenu.ShowGroupSortSummaryItems = True
+            GridView2.OptionsMenu.ShowConditionalFormattingItem = True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     'Λίστα με τιμές για TOP RECORDS
@@ -194,7 +200,7 @@ Public Class frmScroller
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_FOLDER_CAT" : sSQL = "DELETE FROM FOLDER_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
-
+                    Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -280,6 +286,7 @@ Public Class frmScroller
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -354,7 +361,9 @@ Public Class frmScroller
         Try
             'Παίρνω το όνομα της όψης για τον συγκεκριμένο χρήστη και για τον συγκεκριμένο πίνακα και το αποθηκεύω στην βάση
             GetCurrentView(False)
-            If sDataDetail = "" Then myReader.Close()
+            If sDataDetail = "" Then
+                If myReader IsNot Nothing Then myReader.Close()
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -650,6 +659,16 @@ Public Class frmScroller
     Private Sub EditRecord()
         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") Is Nothing Then Exit Sub
         Select Case sDataTable
+            Case "vw_PRIAMOSVER"
+                Dim frmVersions As frmVersions = New frmVersions()
+                frmVersions.Text = "Εκδόσεις"
+                frmVersions.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                frmVersions.MdiParent = frmMain
+                frmVersions.Mode = FormMode.EditRecord
+                frmVersions.Scroller = GridView1
+                frmVersions.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmVersions), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                frmVersions.Show()
             Case "vw_COL_EXT"
                 Dim fColEXT As frmColExt = New frmColExt()
                 frmColExt.Text = "Λοιπές Εισπράξεις"
@@ -950,6 +969,15 @@ Public Class frmScroller
     'Νέα Εγγραφή
     Private Sub NewRecord()
         Select Case sDataTable
+            Case "vw_PRIAMOSVER"
+                Dim frmVersions As frmVersions = New frmVersions()
+                frmVersions.Text = "Εκδόσεις"
+                frmVersions.MdiParent = frmMain
+                frmVersions.Mode = FormMode.NewRecord
+                frmVersions.Scroller = GridView1
+                frmVersions.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmVersions), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                frmVersions.Show()
             Case "vw_COL_EXT"
                 Dim fColEXT As frmColExt = New frmColExt()
                 frmColExt.Text = "Λοιπές Εισπράξεις"
@@ -1311,7 +1339,7 @@ Public Class frmScroller
             LoadViews()
             GridView1.ActiveFilterString = sActiveFilter
             myCmd.Dispose()
-            If CloseReader = True Then myReader.Close()
+            If CloseReader = True Then myReader.Close():myReader=nothing
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1573,7 +1601,6 @@ Public Class frmScroller
                 If colMethodID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει τρόπο πληρωμής", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
                 credit = Decimal.Parse(GridView1.GetRowCellValue(selectedRowHandle, "debit"))
 
-                ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
                 sSQL = "Update COL_EXT 
                         SET creditusrID = " & toSQLValueS(UserProps.ID.ToString) & " ," &
                         "debitusrID = " & toSQLValueS(debitUsrID) & " ," &
@@ -1590,7 +1617,7 @@ Public Class frmScroller
             Next
             LoadRecords()
 
-            XtraMessageBox.Show("Η εγγραφές επιβεβαιώθηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Οι εγγραφές επιβεβαιώθηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1630,4 +1657,55 @@ Public Class frmScroller
 
     End Sub
 
+    Private Sub GridView1_CustomDrawColumnHeader(sender As Object, e As ColumnHeaderCustomDrawEventArgs) Handles GridView1.CustomDrawColumnHeader
+        'If e.Column IsNot Nothing Then
+        '    Dim filterIcon As Bitmap = My.Resources.icons8_filter_7
+
+        '    'e.Info.InnerElements(e.Info.InnerElements.Count - 1).Alignment = StringAlignment.Far
+        '    Dim filterBounds As Rectangle = Rectangle.Empty
+        '    For Each info As DevExpress.Utils.Drawing.DrawElementInfo In e.Info.InnerElements
+        '        Dim filterArguments As DevExpress.Utils.Drawing.ObjectInfoArgs = info.ElementInfo
+        '        If filterArguments IsNot Nothing Then
+        '            info.Visible = True
+        '            e.Info.InnerElements.CalcBounds(e.Info, e.Cache, e.Bounds, e.Bounds)
+        '            filterBounds = filterArguments.Bounds
+
+        '        End If
+        '    Next
+
+
+        '    e.Painter.DrawObject(e.Info)
+        '    e.Graphics.DrawImage(filterIcon, filterBounds)
+        '    e.Handled = True
+        'End If
+    End Sub
+
+    Private Sub BBcolExtCollector_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBcolExtCollector.ItemClick
+        Dim sSQL As String
+        Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
+        Dim I As Integer
+        Try
+            Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+
+                If GridView1.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
+                If debitUsrID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει εισπράκτορα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+
+
+                sSQL = "Update COL_EXT 
+                        SET creditusrID = " & toSQLValueS(UserProps.ID.ToString) & " ," &
+                        "debitusrID = " & toSQLValueS(debitUsrID) &
+                    "WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next
+            LoadRecords()
+
+            XtraMessageBox.Show("Οι εγγραφές χρεώθηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class
