@@ -111,7 +111,7 @@ Public Class frmCollections
             GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
         End If
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml") Then
-            '  GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
+            GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
         End If
 
         GridView2.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
@@ -528,6 +528,7 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID)
                     oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ
                     oCmd.Parameters.AddWithValue("@TenantOwner", 2)
+                    oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
 
@@ -622,6 +623,7 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ 
                     oCmd.Parameters.AddWithValue("@TenantOwner", 2)
+                    oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
 
@@ -704,6 +706,7 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ
                     oCmd.Parameters.AddWithValue("@TenantOwner", IIf(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant") = False, 0, 1))
+                    oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
                 LoaderData(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString)
@@ -801,8 +804,14 @@ Public Class frmCollections
     Private Sub cmdCol_Refresh_Click(sender As Object, e As EventArgs) Handles cmdCol_Refresh.Click
         Select Case TabbedControlGroup1.SelectedTabPageIndex
             Case 0
-                LoaderData()
-                Me.Vw_COLTableAdapter.FillByNotAgreed(Me.Priamos_NETDataSet2.vw_COL)
+                If cboBDG.EditValue Is Nothing Then
+                    LoaderData()
+                    Me.Vw_COLTableAdapter.FillByNotAgreed(Me.Priamos_NETDataSet2.vw_COL)
+                Else
+                    LoaderData(cboBDG.EditValue.ToString)
+                    Me.Vw_COLTableAdapter.FillByNotAgreedByBDG(Me.Priamos_NETDataSet2.vw_COL, cboBDG.EditValue)
+                End If
+
                 'Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
             Case 1 : Me.COL_REPORTTableAdapter.Fill(Me.Priamos_NETDataSet2.COL_REPORT)
             Case 2
@@ -1249,6 +1258,7 @@ Public Class frmCollections
             Case 0
             Case 1 : Me.COL_REPORTTableAdapter.Fill(Me.Priamos_NETDataSet2.COL_REPORT)
             Case 2
+                cboBDG1.EditValue = cboBDG.EditValue
                 If chkShowAgree.IsOn Then
                     Me.Vw_COL_DTableAdapter.FillByNotAgreed(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
                 Else

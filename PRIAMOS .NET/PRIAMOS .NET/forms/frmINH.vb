@@ -79,7 +79,7 @@ Public Class frmINH
                 EditRecord()
                 'Χιλιοστά Διαμερισμάτων
                 ApmLoad()
-                lbldate.Text = TranslateDates(dtFDate, dtTDate)
+                'lbldate.Text = TranslateDates(dtFDate, dtTDate)
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -187,12 +187,16 @@ Public Class frmINH
                 'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
                 Select Case Mode
                     Case FormMode.NewRecord
+                        Dim date1 As Date = Date.Parse(dtFDate.EditValue.ToString)
+                        Dim date2 As Date = Date.Parse(dtTDate.EditValue.ToString)
+                        Dim Months As Long = DateDiff(DateInterval.Month, date1, date2) + 1
                         sGuid = System.Guid.NewGuid.ToString
                         Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sGuid, True, "completeDate", toSQLValueS(sCompleteDate))
                         If sResult Then
+                            ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
                             sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,amt,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
+                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt else (amt " & "*" & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
                             Using oCmd As New SqlCommand(sSQL, CNDB)
                                 oCmd.ExecuteNonQuery()
                             End Using
@@ -365,17 +369,26 @@ Public Class frmINH
         'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
-        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-            txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
-            txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
-        Else
+        If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
             txtHeatingType.EditValue = Nothing
             txtHpc.EditValue = Nothing
-        End If
-        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-            txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
         Else
+            If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+                txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+                txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
+            Else
+                txtHeatingType.EditValue = Nothing
+                txtHpc.EditValue = Nothing
+            End If
+        End If
+        If cboBDG.GetColumnValue("BTypeID") Is Nothing Then
             txtBoilerType.EditValue = Nothing
+        Else
+            If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+                txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+            Else
+                txtBoilerType.EditValue = Nothing
+            End If
         End If
     End Sub
 
@@ -928,7 +941,5 @@ Public Class frmINH
         End If
     End Sub
 
-    Private Sub cboBDG_RightToLeftChanged(sender As Object, e As EventArgs) Handles cboBDG.RightToLeftChanged
 
-    End Sub
 End Class

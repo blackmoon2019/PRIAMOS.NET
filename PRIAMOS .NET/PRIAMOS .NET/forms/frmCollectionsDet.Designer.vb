@@ -48,6 +48,7 @@ Partial Class frmCollectionsDet
         Me.colaptID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colinhID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebitusrID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltenant = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -55,7 +56,7 @@ Partial Class frmCollectionsDet
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.coltenant = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colagreed = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.VwCOLDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,7 +138,7 @@ Partial Class frmCollectionsDet
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colold_code, Me.colbdgNam, Me.colttl, Me.colcompleteDate, Me.coldebit, Me.colCredit, Me.colBal, Me.colmodifiedOn, Me.colcreatedOn, Me.colmodifiedBy, Me.colcreditUser, Me.coldebitUser, Me.colID, Me.colcode, Me.colcolID, Me.colbdgID, Me.colaptID, Me.colinhID, Me.coldebitusrID, Me.coltenant})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colold_code, Me.colbdgNam, Me.colttl, Me.colcompleteDate, Me.coldebit, Me.colCredit, Me.colBal, Me.colmodifiedOn, Me.colcreatedOn, Me.colmodifiedBy, Me.colcreditUser, Me.coldebitUser, Me.colID, Me.colcode, Me.colcolID, Me.colbdgID, Me.colaptID, Me.colinhID, Me.coldebitusrID, Me.coltenant, Me.colagreed})
         Me.GridView1.DetailHeight = 619
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
@@ -331,6 +332,16 @@ Partial Class frmCollectionsDet
         Me.coldebitusrID.Name = "coldebitusrID"
         Me.coldebitusrID.Width = 131
         '
+        'coltenant
+        '
+        Me.coltenant.Caption = "ΕΝΟΙΚΟΣ"
+        Me.coltenant.FieldName = "tenant"
+        Me.coltenant.MinWidth = 35
+        Me.coltenant.Name = "coltenant"
+        Me.coltenant.Visible = True
+        Me.coltenant.VisibleIndex = 3
+        Me.coltenant.Width = 165
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -391,15 +402,15 @@ Partial Class frmCollectionsDet
         Me.EmptySpaceItem3.Size = New System.Drawing.Size(30, 36)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
-        'coltenant
+        'colagreed
         '
-        Me.coltenant.Caption = "ΕΝΟΙΚΟΣ"
-        Me.coltenant.FieldName = "tenant"
-        Me.coltenant.MinWidth = 35
-        Me.coltenant.Name = "coltenant"
-        Me.coltenant.Visible = True
-        Me.coltenant.VisibleIndex = 3
-        Me.coltenant.Width = 165
+        Me.colagreed.Caption = "ΣΥΜΦΩΝΙΑ ΠΙΣΤΩΣΗΣ"
+        Me.colagreed.FieldName = "agreed"
+        Me.colagreed.MinWidth = 35
+        Me.colagreed.Name = "colagreed"
+        Me.colagreed.Visible = True
+        Me.colagreed.VisibleIndex = 10
+        Me.colagreed.Width = 131
         '
         'frmCollectionsDet
         '
@@ -465,4 +476,5 @@ Partial Class frmCollectionsDet
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents coltenant As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colagreed As DevExpress.XtraGrid.Columns.GridColumn
 End Class

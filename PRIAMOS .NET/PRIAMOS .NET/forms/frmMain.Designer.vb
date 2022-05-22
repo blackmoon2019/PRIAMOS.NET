@@ -53,7 +53,7 @@ Partial Class frmMain
         Me.bbMLC = New DevExpress.XtraBars.BarButtonItem()
         Me.bbCalcTypes = New DevExpress.XtraBars.BarButtonItem()
         Me.BBChangeUsr = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBAbout = New DevExpress.XtraBars.BarButtonItem()
         Me.bbTechnicalSupport = New DevExpress.XtraBars.BarButtonItem()
         Me.bbTechCateg = New DevExpress.XtraBars.BarButtonItem()
         Me.bbCalcCateg = New DevExpress.XtraBars.BarButtonItem()
@@ -123,7 +123,7 @@ Partial Class frmMain
         Me.RibbonControl1.ApplicationButtonDropDownControl = Me.ApplicationMenu1
         Me.RibbonControl1.EmptyAreaImageOptions.ImagePadding = New System.Windows.Forms.Padding(50, 53, 50, 53)
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BarButtonItem4, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks, Me.BBatchCollectionInsert, Me.BBTechSup, Me.BBCT, Me.BBCol2, Me.BBFolderCat, Me.BBVer})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BBAbout, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks, Me.BBatchCollectionInsert, Me.BBTechSup, Me.BBCT, Me.BBCol2, Me.BBFolderCat, Me.BBVer})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.RibbonControl1.MaxItemId = 70
@@ -389,11 +389,13 @@ Partial Class frmMain
         Me.BBChangeUsr.Name = "BBChangeUsr"
         Me.BBChangeUsr.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
-        'BarButtonItem4
+        'BBAbout
         '
-        Me.BarButtonItem4.Caption = "Περί"
-        Me.BarButtonItem4.Id = 37
-        Me.BarButtonItem4.Name = "BarButtonItem4"
+        Me.BBAbout.Caption = "Περί"
+        Me.BBAbout.Id = 37
+        Me.BBAbout.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_about_40
+        Me.BBAbout.Name = "BBAbout"
+        Me.BBAbout.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'bbTechnicalSupport
         '
@@ -603,6 +605,7 @@ Partial Class frmMain
         '
         Me.BBVer.Caption = "Καταχώρηση Έκδοσης"
         Me.BBVer.Id = 69
+        Me.BBVer.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_support_40
         Me.BBVer.Name = "BBVer"
         Me.BBVer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         Me.BBVer.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
@@ -711,12 +714,12 @@ Partial Class frmMain
         '
         'RibbonPageGroup5
         '
-        Me.RibbonPageGroup5.ItemLinks.Add(Me.BarButtonItem4)
+        Me.RibbonPageGroup5.ItemLinks.Add(Me.BBAbout)
         Me.RibbonPageGroup5.ItemLinks.Add(Me.bbTechnicalSupport)
         Me.RibbonPageGroup5.ItemLinks.Add(Me.BBPriamosVer)
         Me.RibbonPageGroup5.ItemLinks.Add(Me.BBVer)
         Me.RibbonPageGroup5.Name = "RibbonPageGroup5"
-        Me.RibbonPageGroup5.Text = "RibbonPageGroup5"
+        Me.RibbonPageGroup5.Text = "Τεχνική Υποστήριξη"
         '
         'RepositoryItemHypertextLabel1
         '
@@ -866,7 +869,7 @@ Partial Class frmMain
     Friend WithEvents RibbonPage3 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents BBChangeUsr As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents ApplicationMenu1 As DevExpress.XtraBars.Ribbon.ApplicationMenu
-    Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BBAbout As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bbTechnicalSupport As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPage4 As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup5 As DevExpress.XtraBars.Ribbon.RibbonPageGroup

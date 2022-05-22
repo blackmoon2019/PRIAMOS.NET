@@ -636,6 +636,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\frmAbout.resx">
+      <DependentUpon>frmAbout.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmApol.resx">
       <DependentUpon>frmApol.vb</DependentUpon>
     </EmbeddedResource>
@@ -815,6 +818,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-cancel-subscription-24.png" />
+    <None Include="Resources\icons8-support-40.png" />
+    <None Include="Resources\icons8-about-40.png" />
     <None Include="Resources\icons8-print-16.png" />
     <None Include="Resources\icons8-filter-7.png" />
     <None Include="Resources\icons8-filter-8.png" />

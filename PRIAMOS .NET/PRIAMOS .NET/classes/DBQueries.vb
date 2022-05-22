@@ -894,7 +894,11 @@ NextItem:
                                         If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
                                             sSQL.Append(cbo.SelectedIndex)
                                         Else
-                                            sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                            If cbo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                                sSQL.Append(cbo.SelectedIndex)
+                                            Else
+                                                sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                            End If
                                         End If
                                     Else
                                         sSQL.Append("NULL")

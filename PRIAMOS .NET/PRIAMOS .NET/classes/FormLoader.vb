@@ -321,7 +321,10 @@ NextItem:
             Else
                 cbo.EditValue = sValue
             End If
-
+        ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.LabelControl Then
+            Dim txt As DevExpress.XtraEditors.LabelControl
+            txt = Ctrl
+            txt.Text = sValue
         ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
             Dim txt As DevExpress.XtraEditors.TextEdit
             txt = Ctrl

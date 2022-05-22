@@ -1267,6 +1267,7 @@ Public Class frmScroller
             Else
                 sSQL = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
             End If
+            sSQL = sSQL & " order by code desc "
             If sDataDetail <> "" Then sSQL2 = "SELECT  * FROM " & sDataDetail
             myCmd = CNDB.CreateCommand
             myCmd.CommandText = sSQL

@@ -402,6 +402,15 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBAbout_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBAbout.ItemClick
+        Dim form As frmAbout = New frmAbout()
+        form.Text = "Περί"
+        form.MdiParent = Me
+        Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
+        form.Show()
+    End Sub
+
+
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()
     '    form.Text = "Εργασίες υποθέσεων"

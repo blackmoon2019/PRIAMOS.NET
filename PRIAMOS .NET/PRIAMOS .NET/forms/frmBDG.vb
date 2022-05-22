@@ -139,6 +139,7 @@ Public Class frmBDG
                 Iam = txtIam.EditValue
                 Aam = txtAam.EditValue
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
+                Me.Text = "Πολυκατοικία: " & txtNam.Text
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         Me.CenterToScreen()
@@ -2105,6 +2106,7 @@ Public Class frmBDG
         fINH.Text = "Κοινόχρηστα"
         'fINH.MdiParent = frmMain
         fINH.Mode = FormMode.NewRecord
+        fINH.cboBDG.EditValue = System.Guid.Parse(sID)
         'fINH.Scroller = GridView10
         'fINH.FormScroller = Me
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))

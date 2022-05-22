@@ -67,14 +67,19 @@ Public Class frmCollectionsDet
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 
                 If GridView1.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
-                sSQL = "DELETE FROM COL_D WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)
-                Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
-                AptBal = AptBal + GridView1.GetRowCellValue(selectedRowHandle, "debit")
-                If GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView1.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
-                ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση της είσπραξης
-                sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
+                If GridView1.GetRowCellValue(selectedRowHandle, "agreed") = 0 Then
+                    sSQL = "DELETE FROM COL_D WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                    AptBal = AptBal + GridView1.GetRowCellValue(selectedRowHandle, "debit")
+                    If GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView1.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
+                    ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση της είσπραξης
+                    sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
                       ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
-                Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                Else
+                    XtraMessageBox.Show("Δεν μπορείτε να διαγράψετε πίστωση που έχει συμφωνηθεί." & vbCrLf &
+                    "Για να κάνετε διαγραφή θα πρέπει πρώτα να την ενημερώσετε ως 'ΜΗ ΣΥΜΦΩΝΙΑ ΠΙΣΤΩΣΗΣ'", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
 
             Next
             ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
