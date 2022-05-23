@@ -53,6 +53,7 @@ Public Class frmCollectionsDet
 
         GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_def.xml", OptionsLayoutBase.FullLayout)
 
+
         cmdCol_D_Del.Enabled = UserProps.AllowDelete
     End Sub
 
@@ -62,6 +63,7 @@ Public Class frmCollectionsDet
         Dim sSQL As String
         Dim AptBal As Decimal, Credit As Decimal
         Try
+            If selectedRowHandles.Length - 1 = -1 Then XtraMessageBox.Show("Δεν έχετε επιλέξει κάποια εγγραφή για διαγραφή", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             If XtraMessageBox.Show("Θέλετε να διαγραφούν οι επιλεγμένες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)

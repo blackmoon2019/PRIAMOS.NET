@@ -20,16 +20,12 @@ Partial Class frmCollections
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCollections))
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colord = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colttl2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAptbal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebit2 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -173,7 +169,6 @@ Partial Class frmCollections
         Me.Vw_COL_DTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_COL_DTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.YEARSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.YEARSTableAdapter()
-        Me.colord = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -257,6 +252,16 @@ Partial Class frmCollections
         Me.GridView2.OptionsView.ShowGroupPanel = False
         Me.GridView2.ViewCaption = "Διαμερίσματα"
         '
+        'colord
+        '
+        Me.colord.Caption = "AA"
+        Me.colord.FieldName = "ord"
+        Me.colord.MinWidth = 35
+        Me.colord.Name = "colord"
+        Me.colord.Visible = True
+        Me.colord.VisibleIndex = 0
+        Me.colord.Width = 131
+        '
         'colttl2
         '
         Me.colttl2.Caption = "Διαμερίσματα"
@@ -312,8 +317,7 @@ Partial Class frmCollections
         'Rep_Credit
         '
         Me.Rep_Credit.AutoHeight = False
-        EditorButtonImageOptions1.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_transfer_16
-        Me.Rep_Credit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear), New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.Rep_Credit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Left), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear), New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.Rep_Credit.Name = "Rep_Credit"
         '
         'colbal2
@@ -1710,16 +1714,6 @@ Partial Class frmCollections
         'YEARSTableAdapter
         '
         Me.YEARSTableAdapter.ClearBeforeFill = True
-        '
-        'colord
-        '
-        Me.colord.Caption = "AA"
-        Me.colord.FieldName = "ord"
-        Me.colord.MinWidth = 35
-        Me.colord.Name = "colord"
-        Me.colord.Visible = True
-        Me.colord.VisibleIndex = 0
-        Me.colord.Width = 131
         '
         'frmCollections
         '

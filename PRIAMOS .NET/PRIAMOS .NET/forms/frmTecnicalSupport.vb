@@ -322,4 +322,12 @@ Public Class frmTecnicalSupport
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\Pictures\Image4.jpg") Then ShellExecute(Application.StartupPath & "\Pictures\Image4.jpg")
 
     End Sub
+
+    Private Sub cmdSave_Click_1(sender As Object, e As EventArgs) Handles cmdSave.Click
+        If SaveTech() Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        If SaveTech() Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class
