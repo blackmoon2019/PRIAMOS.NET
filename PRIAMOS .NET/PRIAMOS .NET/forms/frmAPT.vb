@@ -145,7 +145,16 @@ Public Class frmAPT
                     'txtOrd.Value = OrdValue + 1
                     'Dim form As frmBDG = Frm
                     'form.AptRefresh()
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Dim args As New XtraMessageBoxArgs()
+                    args.AutoCloseOptions.Delay = 2000
+                    args.AutoCloseOptions.ShowTimerOnDefaultButton = True
+                    args.DefaultButtonIndex = 0
+                    args.Caption = "PRIAMOS .NET"
+                    args.Text = "Η εγγραφή αποθηκέυτηκε με επιτυχία."
+                    args.Buttons = New DialogResult() {DialogResult.OK}
+                    args.Icon = System.Drawing.SystemIcons.Information
+                    XtraMessageBox.Show(args).ToString()
+                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     If Mode = FormMode.NewRecord Then txtOrd.EditValue = txtOrd.OldEditValue + 1
                     txtName.Select()

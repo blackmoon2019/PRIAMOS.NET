@@ -7653,7 +7653,7 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(3).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
                 " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (inhID"& _ 
-                " = @inhID) AND (aptID = @aptID) AND (agreed = 0) ORDER BY createdOn"
+                " = @inhID) AND (aptID = @aptID)  ORDER BY createdOn"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7662,8 +7662,7 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(4).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
                 " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (inhID"& _ 
-                " = @inhID) AND (tenant = @tenant) AND (aptID = @aptID) AND (agreed = 0) ORDER BY"& _ 
-                " createdOn"
+                " = @inhID) AND (tenant = @tenant) AND (aptID = @aptID)  ORDER BY createdOn"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tenant", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "tenant", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7828,18 +7827,14 @@ Namespace Priamos_NETDataSet2TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByInhIDAndTenant(ByVal dataTable As Priamos_NETDataSet2.vw_COL_DDataTable, ByVal inhID As Global.System.Nullable(Of Global.System.Guid), ByVal tenant As Global.System.Nullable(Of Boolean), ByVal aptID As Global.System.Nullable(Of Global.System.Guid)) As Integer
+        Public Overloads Overridable Function FillByInhIDAndTenant(ByVal dataTable As Priamos_NETDataSet2.vw_COL_DDataTable, ByVal inhID As Global.System.Nullable(Of Global.System.Guid), ByVal tenant As Boolean, ByVal aptID As Global.System.Nullable(Of Global.System.Guid)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (inhID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(inhID.Value,System.Guid)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (tenant.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(tenant.Value,Boolean)
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(tenant,Boolean)
             If (aptID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(aptID.Value,System.Guid)
             Else
@@ -7856,18 +7851,14 @@ Namespace Priamos_NETDataSet2TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataByInhIDAndTenant(ByVal inhID As Global.System.Nullable(Of Global.System.Guid), ByVal tenant As Global.System.Nullable(Of Boolean), ByVal aptID As Global.System.Nullable(Of Global.System.Guid)) As Priamos_NETDataSet2.vw_COL_DDataTable
+        Public Overloads Overridable Function GetDataByInhIDAndTenant(ByVal inhID As Global.System.Nullable(Of Global.System.Guid), ByVal tenant As Boolean, ByVal aptID As Global.System.Nullable(Of Global.System.Guid)) As Priamos_NETDataSet2.vw_COL_DDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (inhID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(inhID.Value,System.Guid)
             Else
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
-            If (tenant.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(tenant.Value,Boolean)
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(tenant,Boolean)
             If (aptID.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(aptID.Value,System.Guid)
             Else

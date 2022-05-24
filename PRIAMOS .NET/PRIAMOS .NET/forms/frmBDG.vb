@@ -552,7 +552,7 @@ Public Class frmBDG
         If Mode = FormMode.NewRecord Then
             'cboHtypes.EditValue = System.Guid.Parse("C331F98B-8504-44CE-9C75-2546B76BAD4E") 'Χωρίς Θέρμανση
         Else
-            LoadForms.LoadForm(LayoutControl3Heating, "Select * from vw_BDG where id ='" + sID + "'", True)
+            LoadForms.LoadForm(LayoutControl3Heating, "Select * from BDG where id ='" + sID + "'", True)
         End If
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl3Heating)
         Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)

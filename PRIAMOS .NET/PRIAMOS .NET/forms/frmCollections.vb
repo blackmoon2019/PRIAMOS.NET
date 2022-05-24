@@ -640,6 +640,7 @@ Public Class frmCollections
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
             Dim debitusrID As String
+            If sender.FocusedColumn.FieldName = "debit" Then Exit Sub
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(sender, debitusrID) = False Then
@@ -1114,108 +1115,124 @@ Public Class frmCollections
         'End Try
     End Sub
     Private Sub GridView4_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView4.CellValueChanged
-        'Try
-        'Dim sSQL As String, dtcredit As String, dtdebit As String
-        'Dim credit As Decimal, debit As Decimal, bal As Decimal
-        'Dim debitUsrID As String
+        Try
+            Dim sSQL As String
+            'Dim dtcredit As String, dtdebit As String
+            Dim credit As Decimal, debit As Decimal, bal As Decimal
+            'Dim debitUsrID As String
 
-        '    '1st Level
-        Select Case e.Column.FieldName
-            'Case "debitusrIDs"
+            '    '1st Level
+            Select Case e.Column.FieldName
+                Case "debit"
+                    If e.Value Is DBNull.Value Then debit = 0 Else debit = e.Value
+                    If sender.GetRowCellValue(sender.FocusedRowHandle, "credit") Is DBNull.Value Then
+                        credit = 0
+                    Else
+                        credit = sender.GetRowCellValue(sender.FocusedRowHandle, "credit")
+                    End If
+                    bal = debit - credit
 
-            'debitUsrID = toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "debitusrID").ToString)
-            'sSQL = "UPDATE [COL] SET debitusrID  = " & debitUsrID &
-            '        " WHERE bdgID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString)
-            'Using oCmd As New SqlCommand(sSQL, CNDB)
-            '    oCmd.ExecuteNonQuery()
-            'End Using
-            'Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
-            'Me.Vw_COL_APTTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_APT)
-            'Me.Vw_COL_INHTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_INH)
-            'Me.Vw_COLTableAdapter3.Fill(Me.Priamos_NETDataSet2.vw_COL)
-        End Select
+                    sSQL = "UPDATE [COL] SET debit = " & toSQLValueS(debit, True) & " , bal =  " & toSQLValueS(bal, True) &
+                        " WHERE ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
+                    'Case "debitusrIDs"
 
-
-        'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtCredit") Is DBNull.Value Then
-        '    dtcredit = "NULL"
-        'Else
-        '    dtcredit = toSQLValueS(CDate(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtCredit")).ToString("yyyyMMdd"))
-
-        'End If
-
-        'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtDebit") Is DBNull.Value Then
-        '    dtdebit = "NULL"
-        'Else
-        '    dtdebit = toSQLValueS(CDate(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtDebit")).ToString("yyyyMMdd"))
-        'End If
-        'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-        'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "debit") Is DBNull.Value Then
-        '    debit = 0
-        'Else
-        '    debit = OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "debit")
-        'End If
-        'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit") Is DBNull.Value Then
-        '    credit = 0
-        'Else
-        '    credit = OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit")
-        'End If
-        'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal") Is DBNull.Value Then
-        '    bal = 0
-        'Else
-        '    bal = OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal")
-        'End If
-
-        'Select Case e.Column.FieldName
-        '    Case "credit"
-        '        bal = debit - credit
-        '        dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
-        '        sSQL = "UPDATE [COL] SET dtcredit  = " & dtcredit & ",dtdebit  = " & dtdebit &
-        '                ",credit = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit"), True) &
-        '                ",creditusrID  = " & toSQLValueS(UserProps.ID.ToString) &
-        '                ",bal = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal"), True) &
-        '                " WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
-
-        '        Using oCmd As New SqlCommand(sSQL, CNDB)
-        '            oCmd.ExecuteNonQuery()
-        '        End Using
-        '        OwnersView.SetRowCellValue(OwnersView.FocusedRowHandle, "bal", bal)
-        '        OwnersView.SetRowCellValue(OwnersView.FocusedRowHandle, "dtCredit", Date.Now.ToString("MM/dd/yyyy"))
-        '        OwnersView.SetRowCellValue(OwnersView.FocusedRowHandle, "creditusrID", System.Guid.Parse(UserProps.ID.ToString))
-        '        ' Ενημέρωση Header Είσπραξης
-        '        Using oCmd As New SqlCommand("COL_Calculate", CNDB)
-        '            oCmd.CommandType = CommandType.StoredProcedure
-        '            oCmd.Parameters.AddWithValue("@colHid", OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "colHID").ToString.ToUpper)
-        '            oCmd.ExecuteNonQuery()
-        '        End Using
-        '    Case "ColMethodID"
-        '        sSQL = "UPDATE [COL] SET ColMethodID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ColMethodID").ToString) &
-        '                " WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
-        '        Using oCmd As New SqlCommand(sSQL, CNDB)
-        '            oCmd.ExecuteNonQuery()
-        '        End Using
-        '    Case "bankID"
-        '        sSQL = "UPDATE [COL] SET bankID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bankID").ToString) &
-        '                " WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
-        '        Using oCmd As New SqlCommand(sSQL, CNDB)
-        '            oCmd.ExecuteNonQuery()
-        '        End Using
-
-        'End Select
+                    'debitUsrID = toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "debitusrID").ToString)
+                    'sSQL = "UPDATE [COL] SET debitusrID  = " & debitUsrID &
+                    '        " WHERE bdgID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString)
+                    'Using oCmd As New SqlCommand(sSQL, CNDB)
+                    '    oCmd.ExecuteNonQuery()
+                    'End Using
+                    'Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
+                    'Me.Vw_COL_APTTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_APT)
+                    'Me.Vw_COL_INHTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_INH)
+                    'Me.Vw_COLTableAdapter3.Fill(Me.Priamos_NETDataSet2.vw_COL)
+            End Select
 
 
-        '    sSQL = "UPDATE [COL] SET ColMethodID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ColMethodID").ToString) &
-        '        ",bankID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bankID").ToString) &
-        '        ",debitusrID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "debitusrID").ToString) &
-        '        ",creditusrID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "creditusrID").ToString) &
-        '        ",dtcredit  = " & dtcredit &
-        '        ",dtdebit  = " & dtdebit &
-        '        ",credit = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit"), True) &
-        '        ",bal = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal"), True) &
-        '" WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
+            'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtCredit") Is DBNull.Value Then
+            '    dtcredit = "NULL"
+            'Else
+            '    dtcredit = toSQLValueS(CDate(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtCredit")).ToString("yyyyMMdd"))
 
-        'Catch ex As Exception
-        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End Try
+            'End If
+
+            'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtDebit") Is DBNull.Value Then
+            '    dtdebit = "NULL"
+            'Else
+            '    dtdebit = toSQLValueS(CDate(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "dtDebit")).ToString("yyyyMMdd"))
+            'End If
+            'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "debit") Is DBNull.Value Then
+            '    debit = 0
+            'Else
+            '    debit = OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "debit")
+            'End If
+            'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit") Is DBNull.Value Then
+            '    credit = 0
+            'Else
+            '    credit = OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit")
+            'End If
+            'If OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal") Is DBNull.Value Then
+            '    bal = 0
+            'Else
+            '    bal = OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal")
+            'End If
+
+            'Select Case e.Column.FieldName
+            '    Case "credit"
+            '        bal = debit - credit
+            '        dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
+            '        sSQL = "UPDATE [COL] SET dtcredit  = " & dtcredit & ",dtdebit  = " & dtdebit &
+            '                ",credit = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit"), True) &
+            '                ",creditusrID  = " & toSQLValueS(UserProps.ID.ToString) &
+            '                ",bal = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal"), True) &
+            '                " WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
+
+            '        Using oCmd As New SqlCommand(sSQL, CNDB)
+            '            oCmd.ExecuteNonQuery()
+            '        End Using
+            '        OwnersView.SetRowCellValue(OwnersView.FocusedRowHandle, "bal", bal)
+            '        OwnersView.SetRowCellValue(OwnersView.FocusedRowHandle, "dtCredit", Date.Now.ToString("MM/dd/yyyy"))
+            '        OwnersView.SetRowCellValue(OwnersView.FocusedRowHandle, "creditusrID", System.Guid.Parse(UserProps.ID.ToString))
+            '        ' Ενημέρωση Header Είσπραξης
+            '        Using oCmd As New SqlCommand("COL_Calculate", CNDB)
+            '            oCmd.CommandType = CommandType.StoredProcedure
+            '            oCmd.Parameters.AddWithValue("@colHid", OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "colHID").ToString.ToUpper)
+            '            oCmd.ExecuteNonQuery()
+            '        End Using
+            '    Case "ColMethodID"
+            '        sSQL = "UPDATE [COL] SET ColMethodID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ColMethodID").ToString) &
+            '                " WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
+            '        Using oCmd As New SqlCommand(sSQL, CNDB)
+            '            oCmd.ExecuteNonQuery()
+            '        End Using
+            '    Case "bankID"
+            '        sSQL = "UPDATE [COL] SET bankID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bankID").ToString) &
+            '                " WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
+            '        Using oCmd As New SqlCommand(sSQL, CNDB)
+            '            oCmd.ExecuteNonQuery()
+            '        End Using
+
+            'End Select
+
+
+            '    sSQL = "UPDATE [COL] SET ColMethodID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ColMethodID").ToString) &
+            '        ",bankID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bankID").ToString) &
+            '        ",debitusrID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "debitusrID").ToString) &
+            '        ",creditusrID  = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "creditusrID").ToString) &
+            '        ",dtcredit  = " & dtcredit &
+            '        ",dtdebit  = " & dtdebit &
+            '        ",credit = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "credit"), True) &
+            '        ",bal = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "bal"), True) &
+            '" WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub cmdConfirmation_Click(sender As Object, e As EventArgs) Handles cmdConfirmation.Click
