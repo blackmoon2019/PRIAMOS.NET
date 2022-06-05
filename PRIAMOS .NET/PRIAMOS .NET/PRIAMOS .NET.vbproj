@@ -396,6 +396,12 @@
     <Compile Include="forms\frmCases.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmColEnanti.Designer.vb">
+      <DependentUpon>frmColEnanti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmColEnanti.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmColExt.Designer.vb">
       <DependentUpon>frmColExt.vb</DependentUpon>
     </Compile>
@@ -528,6 +534,11 @@
     <Compile Include="forms\frmVersions.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Priamos_NETDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Priamos_NETDataSet2.vb">
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
     </Compile>
@@ -607,11 +618,6 @@
     <Compile Include="forms\frmSplash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Priamos_NETDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Priamos_NETDataSet.vb">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
     </Compile>
@@ -664,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCases.resx">
       <DependentUpon>frmCases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmColEnanti.resx">
+      <DependentUpon>frmColEnanti.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmColExt.resx">
       <DependentUpon>frmColExt.vb</DependentUpon>
@@ -870,8 +879,8 @@
     </None>
     <None Include="Priamos_NETDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Priamos_NETDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Priamos_NETDataSet.Designer.vb</LastGenOutput>
     </None>
     <None Include="Priamos_NETDataSet.xss">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>

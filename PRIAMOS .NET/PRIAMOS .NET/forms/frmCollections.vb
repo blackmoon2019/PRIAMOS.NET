@@ -71,7 +71,6 @@ Public Class frmCollections
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.vw_INH' table. You can move, or remove it, as needed.
         'Me.Vw_INHTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_INH)
 
-
         LoaderData()
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.vw_COLH' table. You can move, or remove it, as needed.
         'Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
@@ -100,9 +99,9 @@ Public Class frmCollections
 
 
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml") = False Then
-            GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+            grdVBDG.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
         End If
-        GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+        grdVAPT.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
 
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml") = False Then
             GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
@@ -114,8 +113,11 @@ Public Class frmCollections
             GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
         End If
 
-        GridView2.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
-        GridView3.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        grdVAPT.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        grdVINH.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        grdVAPT.DataController.CollapseDetailRowsOnReset = False
+        grdVINH.DataController.CollapseDetailRowsOnReset = False
+        grdVBDG.DataController.CollapseDetailRowsOnReset = False
         Level = 0
     End Sub
 
@@ -134,21 +136,23 @@ Public Class frmCollections
 
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
+            Priamos_NETDataSet2.COL_APT.Clear()
             Tbl.Fill(Priamos_NETDataSet2.COL_APT)
             Tbl.Dispose()
-
             ' Παραστατικά
             strSql = "Select   aptID, c.bdgID, inhID, completeDate, SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, " &
-                     "debitusrID, dtDebit, max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos  " &
+                     "debitusrID, dtDebit, max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth  " &
                      "From COL C " &
                      "INNER Join INH I ON I.ID=C.inhID " &
                      "INNER Join APT A ON C.aptID = A.ID " &
                      "where completed=0  " & IIf(bdgID.Length > 0, "  And c.bdgID = " & toSQLValueS(bdgID), "") &
-                     "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE) "
+                     "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate) "
 
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
+            Priamos_NETDataSet2.COL_INH.Clear()
             Tbl.Fill(Priamos_NETDataSet2.COL_INH)
+
             Tbl.Dispose()
 
         Catch ex As Exception
@@ -164,9 +168,12 @@ Public Class frmCollections
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue <> Nothing Then
             Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
+            Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(cboBDG.EditValue.ToString))
             Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+            LoaderData(cboBDG.EditValue.ToString)
         Else
             Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
+            Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
             Me.Vw_INHTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_INH)
         End If
     End Sub
@@ -295,11 +302,11 @@ Public Class frmCollections
                     End If
             End Select
 
-            Select Case GridControl2.FocusedView.Name
-                Case "GridView1"
+            Select Case grdBDG.FocusedView.Name
+                Case "GridView1", "grdVBDG"
                     sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
-                           " WHERE bdgID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString)
-                    bdgID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString
+                           " WHERE bdgID = " & toSQLValueS(grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "bdgID").ToString)
+                    bdgID = grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "bdgID").ToString
                 Case "GridView2"
                     Select Case mode
                         Case 0
@@ -361,7 +368,7 @@ Public Class frmCollections
     End Sub
     Private Sub Rep_DEBITUSR_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_DEBITUSR.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "debitusrID", "") : UpdateCOLS(0, "NULL")
+            Case 1 : grdVBDG.SetRowCellValue(grdVBDG.FocusedRowHandle, "debitusrID", "") : UpdateCOLS(0, "NULL")
         End Select
     End Sub
     'Function που ελέγχει αν ο χρήστης χρέωσης στα παραστατικά είναι μοναδικός
@@ -401,26 +408,26 @@ Public Class frmCollections
         End Try
     End Function
 
-    Private Sub GridView1_DetailTabStyle(sender As Object, e As DetailTabStyleEventArgs) Handles GridView1.DetailTabStyle
+    Private Sub GridView1_DetailTabStyle(sender As Object, e As DetailTabStyleEventArgs) Handles grdVBDG.DetailTabStyle
         e.Appearance.Header.ForeColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
         e.Appearance.Header.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
         e.ImageOptions.SvgImage = SvgImageCollection1("bo_address")
     End Sub
 
-    Private Sub GridView2_DetailTabStyle(sender As Object, e As DetailTabStyleEventArgs) Handles GridView2.DetailTabStyle
+    Private Sub GridView2_DetailTabStyle(sender As Object, e As DetailTabStyleEventArgs) Handles grdVAPT.DetailTabStyle
         e.Appearance.Header.ForeColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Warning
         e.Appearance.Header.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Warning
         e.ImageOptions.SvgImage = SvgImageCollection1("bo_invoice")
     End Sub
 
-    Private Sub GridView3_DetailTabStyle(sender As Object, e As DetailTabStyleEventArgs) Handles GridView3.DetailTabStyle
+    Private Sub GridView3_DetailTabStyle(sender As Object, e As DetailTabStyleEventArgs) Handles grdVINH.DetailTabStyle
         e.Appearance.Header.ForeColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
         e.Appearance.Header.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
         e.ImageOptions.SvgImage = SvgImageCollection1("bo_employee")
     End Sub
 
 
-    Private Sub GridView1_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles GridView1.MasterRowExpanded
+    Private Sub GridView1_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles grdVBDG.MasterRowExpanded
         Dim APTView2 = TryCast(sender, DevExpress.XtraGrid.Views.Grid.GridView)
         APTView = APTView2.GetDetailView(e.RowHandle, e.RelationIndex)
 
@@ -429,10 +436,11 @@ Public Class frmCollections
             APTView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
         End If
         APTView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+        APTView.DataController.CollapseDetailRowsOnReset = False
         Level = 1
 
     End Sub
-    Private Sub GridView2_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles GridView2.MasterRowExpanded
+    Private Sub GridView2_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles grdVAPT.MasterRowExpanded
         Dim INHView2 = TryCast(sender, DevExpress.XtraGrid.Views.Grid.GridView)
         INHView = INHView2.GetDetailView(e.RowHandle, e.RelationIndex)
 
@@ -442,12 +450,13 @@ Public Class frmCollections
         End If
 
         INHView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
+        INHView.DataController.CollapseDetailRowsOnReset = False
         INHView.OptionsLayout.StoreAllOptions = True
         INHView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
         Level = 2
     End Sub
 
-    Private Sub GridView3_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles GridView3.MasterRowExpanded
+    Private Sub GridView3_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles grdVINH.MasterRowExpanded
         Dim OwnerTenantView2 = TryCast(sender, DevExpress.XtraGrid.Views.Grid.GridView)
         OwnerTenantView = OwnerTenantView2.GetDetailView(e.RowHandle, e.RelationIndex)
 
@@ -456,23 +465,24 @@ Public Class frmCollections
             OwnerTenantView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
         End If
         OwnerTenantView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
+        OwnerTenantView.DataController.CollapseDetailRowsOnReset = False
         OwnerTenantView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
         Level = 3
     End Sub
 
-    Private Sub GridView1_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles GridView1.CustomColumnDisplayText
+    Private Sub GridView1_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles grdVBDG.CustomColumnDisplayText
         If IsNothing(e.Value) Then e.DisplayText = "*******"
     End Sub
 
-    Private Sub GridView2_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles GridView2.CustomColumnDisplayText
+    Private Sub GridView2_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles grdVAPT.CustomColumnDisplayText
         If IsNothing(e.Value) Then e.DisplayText = "*******"
     End Sub
 
-    Private Sub GridView2_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView2.ValidatingEditor
+    Private Sub GridView2_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVAPT.ValidatingEditor
         Try
             Dim dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
-            Dim debitusrID As String
+            Dim debitusrID As String, sAptID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
             ' Επίτηδες έχει μπει το INHVIEW. Με ενδιαφέρει να ελένξω σε επίπεδο παραστατικού αν υπάρχει διαφορετικός χρήστης
@@ -516,13 +526,13 @@ Public Class frmCollections
                 bal = Math.Abs(debit) - credit
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
 
-
+                sAptID=sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper
                 'Ενημέρωση Header είσπραξης
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@debitusrID", debitusrID.ToUpper)
                     oCmd.Parameters.AddWithValue("@bdgID", sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@aptID", sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@aptID", sAptID)
                     oCmd.Parameters.AddWithValue("@inhID", Guid.Empty)
                     oCmd.Parameters.AddWithValue("@Givencredit", credit)
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID)
@@ -532,6 +542,9 @@ Public Class frmCollections
                     oCmd.ExecuteNonQuery()
                 End Using
 
+                ' Ενημέρωση υπολοίπου διαμερίσματος
+                'Dim sSQL As String = "Update apt set apt.bal_adm =   (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
+                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
                 LoaderData(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString)
                 Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString))
@@ -542,11 +555,11 @@ Public Class frmCollections
         End Try
     End Sub
 
-    Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
+    Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVINH.ValidatingEditor
         Try
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
-            Dim debitusrID As String
+            Dim debitusrID As String, sBdgID As String, sAptID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(sender, debitusrID) = False Then
@@ -612,12 +625,15 @@ Public Class frmCollections
                     bal = sender.GetRowCellValue(sender.FocusedRowHandle, "bal")
                 End If
                 bal = Math.Abs(debit) - credit
+                sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
+                sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString
+                sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@debitusrID", sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@bdgID", sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@aptID", sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID.ToUpper)
+                    oCmd.Parameters.AddWithValue("@aptID", sAptID)
                     oCmd.Parameters.AddWithValue("@inhID", sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@Givencredit", credit)
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
@@ -626,20 +642,24 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
+                ' Ενημέρωση υπολοίπου διαμερίσματος
+                'sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
+                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
-                LoaderData(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString)
-                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString))
+                LoaderData(sBdgID)
+                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sBdgID))
+                'Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString))
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub GridView4_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView4.ValidatingEditor
+    Private Sub GridView4_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVO_T.ValidatingEditor
         Try
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
-            Dim debitusrID As String
+            Dim debitusrID As String, sBdgID As String, sInhID As String, sAptID As String
             If sender.FocusedColumn.FieldName = "debit" Then Exit Sub
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
@@ -697,12 +717,16 @@ Public Class frmCollections
                 End If
                 bal = Math.Abs(debit) - credit
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
+                sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString
+                sInhID = sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString
+                sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString
+                sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@debitusrID", sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@bdgID", sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@aptID", sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@inhID", sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID.ToUpper)
+                    oCmd.Parameters.AddWithValue("@aptID", sAptID.ToUpper)
+                    oCmd.Parameters.AddWithValue("@inhID", sInhID.ToUpper)
                     oCmd.Parameters.AddWithValue("@Givencredit", credit)
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ
@@ -710,8 +734,14 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
-                LoaderData(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString)
-                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString))
+                ' Ενημέρωση υπολοίπου διαμερίσματος
+                'sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
+                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+
+                LoaderData(sBdgID)
+                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sBdgID))
+                'If bal = 0 Then grdVO_T.DeleteRow(sender.FocusedRowHandle)
+                'Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(sBdgID))
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
             End If
         Catch ex As Exception
@@ -720,7 +750,7 @@ Public Class frmCollections
     End Sub
     Private Sub Rep_Credit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_Credit.ButtonPressed
         Try
-            Dim GRD As GridView = GridControl2.FocusedView
+            Dim GRD As GridView = grdBDG.FocusedView
             Select Case GRD.Name
                 Case "GridView2" ' Διαμερίσματα
                     Select Case e.Button.Index
@@ -735,6 +765,7 @@ Public Class frmCollections
                             frmCollectionsDet.ShowDialog()
                             LoaderData(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString))
+                            'Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString))
                     End Select
 
                 Case "GridView3" ' Παραστατικα
@@ -750,6 +781,7 @@ Public Class frmCollections
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))
+                            'Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))
 
                     End Select
 
@@ -767,6 +799,7 @@ Public Class frmCollections
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))
+                            'Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))
                     End Select
             End Select
 
@@ -783,18 +816,18 @@ Public Class frmCollections
             Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
         End If
     End Sub
-    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView1, "COL_BDG_def.xml")
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVBDG.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVBDG, "COL_BDG_def.xml")
     End Sub
-    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView2, "COL_APT_def.xml")
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVAPT.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVAPT, "COL_APT_def.xml")
     End Sub
-    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "COL_INH_def.xml")
+    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVINH.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVINH, "COL_INH_def.xml")
     End Sub
 
-    Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView4.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView4, "COL_OW_TEN_def.xml")
+    Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVO_T.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVO_T, "COL_OW_TEN_def.xml")
     End Sub
     Private Sub GridView5_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView5, "COL_APTCREDE_def.xml")
@@ -807,10 +840,11 @@ Public Class frmCollections
             Case 0
                 If cboBDG.EditValue Is Nothing Then
                     LoaderData()
-                    Me.Vw_COLTableAdapter.FillByNotAgreed(Me.Priamos_NETDataSet2.vw_COL)
+                    Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
                 Else
                     LoaderData(cboBDG.EditValue.ToString)
-                    Me.Vw_COLTableAdapter.FillByNotAgreedByBDG(Me.Priamos_NETDataSet2.vw_COL, cboBDG.EditValue)
+                    Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(cboBDG.EditValue.ToString))
+                    Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
                 End If
 
                 'Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
@@ -985,7 +1019,7 @@ Public Class frmCollections
 
     '    End If
     'End Sub
-    Private Sub GridView1_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView1.CellValueChanged
+    Private Sub GridView1_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles grdVBDG.CellValueChanged
         'Try
         '    Dim sSQL As String, dtcredit As String, dtdebit As String
         '    Dim credit As Decimal, debit As Decimal, bal As Decimal
@@ -1089,7 +1123,7 @@ Public Class frmCollections
         '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try
     End Sub
-    Private Sub GridView3_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView3.CellValueChanged
+    Private Sub GridView3_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles grdVINH.CellValueChanged
         'Try
         '    Dim sSQL As String, dtcredit As String, dtdebit As String
         '    Dim credit As Decimal, debit As Decimal, bal As Decimal
@@ -1114,7 +1148,7 @@ Public Class frmCollections
         '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try
     End Sub
-    Private Sub GridView4_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView4.CellValueChanged
+    Private Sub GridView4_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles grdVO_T.CellValueChanged
         Try
             Dim sSQL As String
             'Dim dtcredit As String, dtdebit As String
@@ -1237,30 +1271,40 @@ Public Class frmCollections
 
     Private Sub cmdConfirmation_Click(sender As Object, e As EventArgs) Handles cmdConfirmation.Click
         Dim sSQL As String
+        Dim Credit As Decimal
         If chkShowAgree.IsOn = True Then
             If XtraMessageBox.Show("Θέλετε να επιβεβαιωθούν οι επιλεγμένες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         Else
-            If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         End If
-        For Each rowHandle As Integer In GridView6.GetSelectedRows
-            If chkShowAgree.IsOn = True Then
-                sSQL = "UPDATE [COL_D] SET agreed=1  WHERE ID = " & toSQLValueS(GridView6.GetRowCellValue(rowHandle, "ID").ToString)
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
+        Dim selectedRowHandles As Int32() = GridView6.GetSelectedRows()
+        'For Each rowHandle As Integer In GridView6.GetSelectedRows
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView6.IsGroupRow(selectedRowHandle) = False Then
+                If chkShowAgree.IsOn = True Then
+                    sSQL = "UPDATE [COL_D] SET agreed=1  WHERE ID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
 
-            Else
-                sSQL = "UPDATE [COL_D] SET agreed=0  WHERE ID = " & toSQLValueS(GridView6.GetRowCellValue(rowHandle, "ID").ToString)
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                sSQL = "UPDATE [COL] SET completed=0  WHERE ID = " & toSQLValueS(GridView6.GetRowCellValue(rowHandle, "colID").ToString)
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
+                Else
+                    sSQL = "DELETE FROM COL_D WHERE ID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                    If GridView6.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView6.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
+                    ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση της είσπραξης
+                    sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
+                      ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "colID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                    ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
+                    ' Ενημέρωση υπολοίπου διαμερίσματος
+                    sSQL = "Update apt set apt.bal_adm =   case when apt.bal_adm <0 then apt.bal_adm else 0 end - " &
+                            "(select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString) & ") where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
+                End If
             End If
-        Next
+        Next I
         If chkShowAgree.IsOn = True Then
             Me.Vw_COL_DTableAdapter.FillByNotAgreed(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
         Else
@@ -1275,7 +1319,7 @@ Public Class frmCollections
             Case 0
             Case 1 : Me.COL_REPORTTableAdapter.Fill(Me.Priamos_NETDataSet2.COL_REPORT)
             Case 2
-                cboBDG1.EditValue = cboBDG.EditValue
+                If cboBDG.EditValue IsNot Nothing Then cboBDG1.EditValue = cboBDG.EditValue
                 If chkShowAgree.IsOn Then
                     Me.Vw_COL_DTableAdapter.FillByNotAgreed(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
                 Else
@@ -1336,6 +1380,12 @@ Public Class frmCollections
             Case 3
         End Select
     End Sub
+
+    Private Sub cmdColAdd_Click(sender As Object, e As EventArgs) Handles cmdColAdd.Click
+        Dim form1 As frmColEnanti = New frmColEnanti()
+        form1.ShowDialog()
+    End Sub
+
     Private Sub ManageUSR(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
         Dim form1 As frmUsers = New frmUsers()
         form1.Text = "Χρήστης"
@@ -1352,4 +1402,21 @@ Public Class frmCollections
         form1.Show()
     End Sub
 
+    Private Sub Rep_AddnewCOL_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_AddnewCOL.ButtonPressed
+        Dim form1 As frmColEnanti = New frmColEnanti()
+        Select Case e.Button.Index
+            Case 0
+                form1.BdgID = grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "bdgID").ToString
+                form1.BdgNam = grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "BdgNam").ToString
+                form1.ShowDialog()
+        End Select
+    End Sub
+
+    Private Sub cboBDG1_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG1.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : If cboBDG1.EditValue <> Nothing Then ManageBDG(cboBDG1)
+            Case 2 : cboBDG1.EditValue = Nothing
+            Case 3
+        End Select
+    End Sub
 End Class

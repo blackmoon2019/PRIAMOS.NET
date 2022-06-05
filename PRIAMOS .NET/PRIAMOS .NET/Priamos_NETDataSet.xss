@@ -37,12 +37,12 @@
     <Shape ID="DesignTable:vw_TASKS" ZOrder="17" X="1204" Y="1014" Height="516" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
     <Shape ID="DesignTable:YEARS" ZOrder="10" X="1474" Y="497" Height="144" Width="287" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="70" />
     <Shape ID="DesignTable:vw_DOY" ZOrder="8" X="2091" Y="343" Height="175" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="100" />
-    <Shape ID="DesignTable:vw_BDG_F" ZOrder="2" X="565" Y="492" Height="454" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="379" />
+    <Shape ID="DesignTable:vw_BDG_F" ZOrder="3" X="565" Y="492" Height="454" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="379" />
     <Shape ID="DesignTable:vw_FOLDER_CAT" ZOrder="7" X="2751" Y="61" Height="175" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="100" />
     <Shape ID="DesignTable:Collectors" ZOrder="5" X="765" Y="1173" Height="206" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="131" />
-    <Shape ID="DesignTable:vw_APT" ZOrder="4" X="582" Y="58" Height="485" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
-    <Shape ID="DesignTable:vw_IEP" ZOrder="3" X="1505" Y="468" Height="516" Width="290" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
-    <Shape ID="DesignTable:vw_TECH_SUP" ZOrder="1" X="1829" Y="371" Height="268" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="162" />
+    <Shape ID="DesignTable:vw_APT" ZOrder="1" X="582" Y="58" Height="516" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
+    <Shape ID="DesignTable:vw_IEP" ZOrder="4" X="1505" Y="468" Height="516" Width="290" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
+    <Shape ID="DesignTable:vw_TECH_SUP" ZOrder="2" X="1829" Y="371" Height="268" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="162" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:vw_COL_ΤΕΝΑΝΤ_vw_COLH" ZOrder="29" LineWidth="11">

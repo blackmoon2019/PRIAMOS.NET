@@ -83,16 +83,16 @@ Public Class frmTecnicalSupport
     Private Sub cmdSave_Click(sender As Object, e As EventArgs)
 
     End Sub
-    Private Function SaveTech() As Boolean
+    Private Function SaveTech(ByVal FromProgrammer As Boolean) As Boolean
         Dim sResult As Boolean
         Try
             If Valid.ValidateForm(LayoutControl1) Then
                 Select Case Mode
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sGuid)
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sGuid,, IIf(FromProgrammer = False, "fromUserID", ""), IIf(FromProgrammer = False, toSQLValueS(UserProps.ID.ToString), ""))
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sID)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TECH_SUP", LayoutControl1,,, sID,,,,, IIf(FromProgrammer = False, "fromUserID =  " & toSQLValueS(UserProps.ID.ToString), ""))
                 End Select
                 If sResult Then
                     SaveTech = True
@@ -119,7 +119,7 @@ Public Class frmTecnicalSupport
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
-            If SaveTech() = True Then
+            If SaveTech(False) = True Then
                 Dim Smtp_Server As New SmtpClient
                 Dim e_mail As New MailMessage()
                 Smtp_Server.UseDefaultCredentials = False
@@ -206,7 +206,7 @@ Public Class frmTecnicalSupport
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
-            If SaveTech() = True Then
+            If SaveTech(True) = True Then
                 Dim Smtp_Server As New SmtpClient
                 Dim e_mail As New MailMessage()
                 Smtp_Server.UseDefaultCredentials = False
@@ -324,10 +324,10 @@ Public Class frmTecnicalSupport
     End Sub
 
     Private Sub cmdSave_Click_1(sender As Object, e As EventArgs) Handles cmdSave.Click
-        If SaveTech() Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If SaveTech(False) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        If SaveTech() Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If SaveTech(True) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

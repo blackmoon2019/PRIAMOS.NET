@@ -72,11 +72,15 @@ Public Class frmCollectionsDet
                 If GridView1.GetRowCellValue(selectedRowHandle, "agreed") = 0 Then
                     sSQL = "DELETE FROM COL_D WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
-                    AptBal = AptBal + GridView1.GetRowCellValue(selectedRowHandle, "debit")
+                    'AptBal = AptBal + GridView1.GetRowCellValue(selectedRowHandle, "debit")
                     If GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView1.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
                     ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση της είσπραξης
-                    sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
-                      ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
+                    'sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
+                    '  ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
+
+                    sSQL = "UPDATE COL SET completed=0,bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
+
+
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
                 Else
                     XtraMessageBox.Show("Δεν μπορείτε να διαγράψετε πίστωση που έχει συμφωνηθεί." & vbCrLf &
@@ -85,8 +89,13 @@ Public Class frmCollectionsDet
 
             Next
             ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
-            sSQL = "UPDATE APT SET BAL=BAL + " & toSQLValueS(AptBal, True) & " where id = " & toSQLValueS(saptID)
+            ' Ενημέρωση υπολοίπου διαμερίσματος
+            sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(saptID) & ") where id = " & toSQLValueS(saptID)
             Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+
+            ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
+            'sSQL = "UPDATE APT SET BAL=BAL + " & toSQLValueS(AptBal, True) & " where id = " & toSQLValueS(saptID)
+            'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
             frmCollections.LoaderData(sbdgID)
             If sinhID <> "" And sCheckForTenant = True Then
                 Me.Vw_COL_DTableAdapter.FillByInhIDAndTenant(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), sTenant, System.Guid.Parse(saptID))

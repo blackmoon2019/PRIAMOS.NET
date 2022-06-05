@@ -566,7 +566,7 @@ NextItem:
     Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
         item = sender
-        If item.Tag Is Nothing Then Exit Sub
+        If item.Tag Is Nothing Or item.Tag = -1 Then Exit Sub
         GRDview.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
     End Sub
     'Κλείδωμα Στήλης Master

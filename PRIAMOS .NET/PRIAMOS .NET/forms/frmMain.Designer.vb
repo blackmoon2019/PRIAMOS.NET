@@ -499,7 +499,7 @@ Partial Class frmMain
         '
         'BBCol
         '
-        Me.BBCol.Caption = "Εισπράξεις Κοινοχρήστων(Διαχειρίσεις)"
+        Me.BBCol.Caption = "Εισπράξεις - Οφειλές Κοινοχρήστων(Διαχειρίσεις)"
         Me.BBCol.Id = 52
         Me.BBCol.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_40
         Me.BBCol.Name = "BBCol"

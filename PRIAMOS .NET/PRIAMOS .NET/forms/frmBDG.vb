@@ -147,7 +147,6 @@ Public Class frmBDG
         My.Settings.Save()
         bdgName = txtNam.Text
         LoadForms.RestoreLayoutFromXml(GridView1, "APT_def.xml")
-
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
     Private Sub frmBDG_Resize(sender As Object, e As EventArgs) Handles Me.Resize

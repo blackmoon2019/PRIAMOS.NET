@@ -157,19 +157,22 @@ Public Class frmINH
 
     End Function
     Private Sub TransposeColumns()
-        Dim B As DevExpress.XtraGrid.Views.BandedGrid.GridBand = GridINH.Bands.Item("apt")
+        Try
+            Dim B As DevExpress.XtraGrid.Views.BandedGrid.GridBand = GridINH.Bands.Item("apt")
 
-        If B.Columns.Count = 0 Then Exit Sub
-        For Each column As BandedGridColumn In B.Columns
-            If column.ColIndex > 0 Then
-                column.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum
-                column.SummaryItem.DisplayFormat = "Σύνολο {0:n2}€"
-            End If
-        Next column
-        For i As Integer = 0 To GridView5.DataRowCount - 1
-            B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
-        Next
-
+            If B.Columns.Count = 0 Then Exit Sub
+            For Each column As BandedGridColumn In B.Columns
+                If column.ColIndex > 0 Then
+                    column.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum
+                    column.SummaryItem.DisplayFormat = "Σύνολο {0:n2}€"
+                End If
+            Next column
+            For i As Integer = 0 To GridView5.DataRowCount - 1
+                B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+            Next
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
     Private Sub frmINH_Resize(sender As Object, e As EventArgs) Handles Me.Resize

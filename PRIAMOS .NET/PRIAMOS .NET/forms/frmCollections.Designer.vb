@@ -24,7 +24,7 @@ Partial Class frmCollections
         Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCollections))
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdVAPT = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colord = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colttl2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAptbal = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -46,17 +46,19 @@ Partial Class frmCollections
         Me.coldtCredit1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colbdgID1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colaptID1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
+        Me.grdBDG = New DevExpress.XtraGrid.GridControl()
         Me.VwCOLBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet2 = New PRIAMOS.NET.Priamos_NETDataSet2()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdVBDG = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colBTN = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Rep_AddnewCOL = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.colBdgNam = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebit = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcredit = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colbal = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebitusrID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumnDebitUsrID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdVINH = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colEtos1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcompleteDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coldebit3 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -69,7 +71,7 @@ Partial Class frmCollections
         Me.coldtCredit = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcmt1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colinhID1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridView4 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.grdVO_T = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.coltenant = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -88,6 +90,7 @@ Partial Class frmCollections
         Me.GridColumn34 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn35 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdColAdd = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdConfirmation = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.VwCOLDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -138,6 +141,7 @@ Partial Class frmCollections
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -169,7 +173,8 @@ Partial Class frmCollections
         Me.Vw_COL_DTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_COL_DTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.YEARSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.YEARSTableAdapter()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
+        CType(Me.grdVAPT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwUSRBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,12 +183,13 @@ Partial Class frmCollections
         CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_COL_METHOD, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdBDG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCOLBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdVBDG, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rep_AddnewCOL, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdVINH, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdVO_T, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -208,6 +214,7 @@ Partial Class frmCollections
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -224,33 +231,34 @@ Partial Class frmCollections
         CType(Me.vw_COLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.vw_COL_APTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SvgImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GridView2
+        'grdVAPT
         '
-        Me.GridView2.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.GridView2.Appearance.GroupRow.BackColor2 = System.Drawing.Color.White
-        Me.GridView2.Appearance.GroupRow.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.GridView2.Appearance.ViewCaption.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.GridView2.Appearance.ViewCaption.BackColor2 = System.Drawing.Color.White
-        Me.GridView2.Appearance.ViewCaption.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-        Me.GridView2.Appearance.ViewCaption.Options.UseBackColor = True
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colord, Me.colttl2, Me.colAptbal, Me.coldebit2, Me.colcredit2, Me.colbal2, Me.coldebitusrID1, Me.colbankID, Me.colColMethodID, Me.coldtDebit1, Me.coldtCredit1, Me.colbdgID1, Me.colaptID1})
-        Me.GridView2.DetailHeight = 619
-        Me.GridView2.GridControl = Me.GridControl2
-        Me.GridView2.Name = "GridView2"
-        Me.GridView2.OptionsEditForm.ShowOnF2Key = DevExpress.Utils.DefaultBoolean.[False]
-        Me.GridView2.OptionsLayout.Columns.StoreAllOptions = True
-        Me.GridView2.OptionsLayout.Columns.StoreAppearance = True
-        Me.GridView2.OptionsLayout.LayoutVersion = "2.0"
-        Me.GridView2.OptionsLayout.StoreAllOptions = True
-        Me.GridView2.OptionsLayout.StoreAppearance = True
-        Me.GridView2.OptionsLayout.StoreFormatRules = True
-        Me.GridView2.OptionsMenu.ShowConditionalFormattingItem = True
-        Me.GridView2.OptionsMenu.ShowFooterItem = True
-        Me.GridView2.OptionsView.ShowFooter = True
-        Me.GridView2.OptionsView.ShowGroupPanel = False
-        Me.GridView2.ViewCaption = "Διαμερίσματα"
+        Me.grdVAPT.Appearance.GroupRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.grdVAPT.Appearance.GroupRow.BackColor2 = System.Drawing.Color.White
+        Me.grdVAPT.Appearance.GroupRow.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.grdVAPT.Appearance.ViewCaption.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.grdVAPT.Appearance.ViewCaption.BackColor2 = System.Drawing.Color.White
+        Me.grdVAPT.Appearance.ViewCaption.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+        Me.grdVAPT.Appearance.ViewCaption.Options.UseBackColor = True
+        Me.grdVAPT.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colord, Me.colttl2, Me.colAptbal, Me.coldebit2, Me.colcredit2, Me.colbal2, Me.coldebitusrID1, Me.colbankID, Me.colColMethodID, Me.coldtDebit1, Me.coldtCredit1, Me.colbdgID1, Me.colaptID1})
+        Me.grdVAPT.DetailHeight = 619
+        Me.grdVAPT.GridControl = Me.grdBDG
+        Me.grdVAPT.Name = "grdVAPT"
+        Me.grdVAPT.OptionsEditForm.ShowOnF2Key = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grdVAPT.OptionsLayout.Columns.StoreAllOptions = True
+        Me.grdVAPT.OptionsLayout.Columns.StoreAppearance = True
+        Me.grdVAPT.OptionsLayout.LayoutVersion = "2.0"
+        Me.grdVAPT.OptionsLayout.StoreAllOptions = True
+        Me.grdVAPT.OptionsLayout.StoreAppearance = True
+        Me.grdVAPT.OptionsLayout.StoreFormatRules = True
+        Me.grdVAPT.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.grdVAPT.OptionsMenu.ShowFooterItem = True
+        Me.grdVAPT.OptionsView.ShowFooter = True
+        Me.grdVAPT.OptionsView.ShowGroupPanel = False
+        Me.grdVAPT.ViewCaption = "Διαμερίσματα"
         '
         'colord
         '
@@ -260,7 +268,7 @@ Partial Class frmCollections
         Me.colord.Name = "colord"
         Me.colord.Visible = True
         Me.colord.VisibleIndex = 0
-        Me.colord.Width = 131
+        Me.colord.Width = 142
         '
         'colttl2
         '
@@ -271,7 +279,7 @@ Partial Class frmCollections
         Me.colttl2.OptionsColumn.AllowEdit = False
         Me.colttl2.Visible = True
         Me.colttl2.VisibleIndex = 1
-        Me.colttl2.Width = 483
+        Me.colttl2.Width = 526
         '
         'colAptbal
         '
@@ -284,7 +292,7 @@ Partial Class frmCollections
         Me.colAptbal.OptionsColumn.AllowEdit = False
         Me.colAptbal.Visible = True
         Me.colAptbal.VisibleIndex = 2
-        Me.colAptbal.Width = 298
+        Me.colAptbal.Width = 324
         '
         'coldebit2
         '
@@ -298,7 +306,7 @@ Partial Class frmCollections
         Me.coldebit2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "debit", "Σύνολο={0:c2}")})
         Me.coldebit2.Visible = True
         Me.coldebit2.VisibleIndex = 3
-        Me.coldebit2.Width = 528
+        Me.coldebit2.Width = 575
         '
         'colcredit2
         '
@@ -312,7 +320,7 @@ Partial Class frmCollections
         Me.colcredit2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "credit", "Σύνολο={0:c2}")})
         Me.colcredit2.Visible = True
         Me.colcredit2.VisibleIndex = 4
-        Me.colcredit2.Width = 528
+        Me.colcredit2.Width = 575
         '
         'Rep_Credit
         '
@@ -332,7 +340,7 @@ Partial Class frmCollections
         Me.colbal2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "bal", "Σύνολο={0:c2}")})
         Me.colbal2.Visible = True
         Me.colbal2.VisibleIndex = 5
-        Me.colbal2.Width = 528
+        Me.colbal2.Width = 575
         '
         'coldebitusrID1
         '
@@ -343,7 +351,7 @@ Partial Class frmCollections
         Me.coldebitusrID1.Name = "coldebitusrID1"
         Me.coldebitusrID1.Visible = True
         Me.coldebitusrID1.VisibleIndex = 6
-        Me.coldebitusrID1.Width = 538
+        Me.coldebitusrID1.Width = 593
         '
         'Rep_DEBITUSR
         '
@@ -452,28 +460,33 @@ Partial Class frmCollections
         Me.colaptID1.Name = "colaptID1"
         Me.colaptID1.Width = 131
         '
-        'GridControl2
+        'grdBDG
         '
-        Me.GridControl2.DataSource = Me.VwCOLBDGBindingSource
-        Me.GridControl2.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        GridLevelNode1.LevelTemplate = Me.GridView2
-        GridLevelNode2.LevelTemplate = Me.GridView3
-        GridLevelNode3.LevelTemplate = Me.GridView4
+        Me.grdBDG.DataSource = Me.VwCOLBDGBindingSource
+        Me.grdBDG.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.grdBDG.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.grdBDG.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.grdBDG.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.grdBDG.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.grdBDG.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        GridLevelNode1.LevelTemplate = Me.grdVAPT
+        GridLevelNode2.LevelTemplate = Me.grdVINH
+        GridLevelNode3.LevelTemplate = Me.grdVO_T
         GridLevelNode3.RelationName = "vw_COL_INH_vw_COL"
         GridLevelNode2.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
         GridLevelNode2.RelationName = "vw_COL_APT_vw_COL_INH"
         GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         GridLevelNode1.RelationName = "vw_COL_BDG_vw_COL_APT"
-        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(25, 132)
-        Me.GridControl2.MainView = Me.GridView1
-        Me.GridControl2.Margin = New System.Windows.Forms.Padding(5)
-        Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Rep_DEBITUSR, Me.Rep_ΒΑΝΚ, Me.Rep_COL_METHOD, Me.Rep_Credit})
-        Me.GridControl2.Size = New System.Drawing.Size(2343, 1265)
-        Me.GridControl2.TabIndex = 5
-        Me.GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView3, Me.GridView4, Me.GridView2})
+        Me.grdBDG.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        Me.grdBDG.Location = New System.Drawing.Point(25, 132)
+        Me.grdBDG.MainView = Me.grdVBDG
+        Me.grdBDG.Margin = New System.Windows.Forms.Padding(5)
+        Me.grdBDG.Name = "grdBDG"
+        Me.grdBDG.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Rep_DEBITUSR, Me.Rep_ΒΑΝΚ, Me.Rep_COL_METHOD, Me.Rep_Credit, Me.Rep_AddnewCOL})
+        Me.grdBDG.Size = New System.Drawing.Size(2343, 1265)
+        Me.grdBDG.TabIndex = 5
+        Me.grdBDG.UseEmbeddedNavigator = True
+        Me.grdBDG.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.grdVBDG, Me.grdVINH, Me.grdVO_T, Me.grdVAPT})
         '
         'VwCOLBDGBindingSource
         '
@@ -485,19 +498,35 @@ Partial Class frmCollections
         Me.Priamos_NETDataSet2.DataSetName = "Priamos_NETDataSet2"
         Me.Priamos_NETDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'GridView1
+        'grdVBDG
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colBdgNam, Me.coldebit, Me.colcredit, Me.colbal, Me.coldebitusrID, Me.GridColumnDebitUsrID})
-        Me.GridView1.DetailHeight = 619
-        Me.GridView1.GridControl = Me.GridControl2
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsLayout.Columns.StoreAllOptions = True
-        Me.GridView1.OptionsLayout.StoreAllOptions = True
-        Me.GridView1.OptionsLayout.StoreFormatRules = True
-        Me.GridView1.OptionsMenu.ShowConditionalFormattingItem = True
-        Me.GridView1.OptionsMenu.ShowFooterItem = True
-        Me.GridView1.OptionsView.ShowFooter = True
-        Me.GridView1.OptionsView.ShowGroupPanel = False
+        Me.grdVBDG.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colBTN, Me.colBdgNam, Me.coldebit, Me.colcredit, Me.colbal, Me.coldebitusrID, Me.GridColumnDebitUsrID})
+        Me.grdVBDG.DetailHeight = 619
+        Me.grdVBDG.GridControl = Me.grdBDG
+        Me.grdVBDG.Name = "grdVBDG"
+        Me.grdVBDG.OptionsLayout.Columns.StoreAllOptions = True
+        Me.grdVBDG.OptionsLayout.StoreAllOptions = True
+        Me.grdVBDG.OptionsLayout.StoreFormatRules = True
+        Me.grdVBDG.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.grdVBDG.OptionsMenu.ShowFooterItem = True
+        Me.grdVBDG.OptionsView.ShowFooter = True
+        Me.grdVBDG.OptionsView.ShowGroupPanel = False
+        '
+        'colBTN
+        '
+        Me.colBTN.ColumnEdit = Me.Rep_AddnewCOL
+        Me.colBTN.MinWidth = 35
+        Me.colBTN.Name = "colBTN"
+        Me.colBTN.Visible = True
+        Me.colBTN.VisibleIndex = 0
+        Me.colBTN.Width = 131
+        '
+        'Rep_AddnewCOL
+        '
+        Me.Rep_AddnewCOL.AutoHeight = False
+        Me.Rep_AddnewCOL.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)})
+        Me.Rep_AddnewCOL.Name = "Rep_AddnewCOL"
+        Me.Rep_AddnewCOL.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
         'colBdgNam
         '
@@ -507,7 +536,7 @@ Partial Class frmCollections
         Me.colBdgNam.Name = "colBdgNam"
         Me.colBdgNam.OptionsColumn.AllowEdit = False
         Me.colBdgNam.Visible = True
-        Me.colBdgNam.VisibleIndex = 0
+        Me.colBdgNam.VisibleIndex = 1
         Me.colBdgNam.Width = 587
         '
         'coldebit
@@ -519,7 +548,7 @@ Partial Class frmCollections
         Me.coldebit.OptionsColumn.AllowEdit = False
         Me.coldebit.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "debit", "Σύνολο={0:c2}")})
         Me.coldebit.Visible = True
-        Me.coldebit.VisibleIndex = 1
+        Me.coldebit.VisibleIndex = 2
         Me.coldebit.Width = 587
         '
         'colcredit
@@ -531,7 +560,7 @@ Partial Class frmCollections
         Me.colcredit.OptionsColumn.AllowEdit = False
         Me.colcredit.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "credit", "Σύνολο={0:c2}")})
         Me.colcredit.Visible = True
-        Me.colcredit.VisibleIndex = 2
+        Me.colcredit.VisibleIndex = 3
         Me.colcredit.Width = 587
         '
         'colbal
@@ -543,7 +572,7 @@ Partial Class frmCollections
         Me.colbal.OptionsColumn.AllowEdit = False
         Me.colbal.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "bal", "Σύνολο={0:c2}")})
         Me.colbal.Visible = True
-        Me.colbal.VisibleIndex = 3
+        Me.colbal.VisibleIndex = 4
         Me.colbal.Width = 343
         '
         'coldebitusrID
@@ -562,26 +591,28 @@ Partial Class frmCollections
         Me.GridColumnDebitUsrID.MinWidth = 33
         Me.GridColumnDebitUsrID.Name = "GridColumnDebitUsrID"
         Me.GridColumnDebitUsrID.Visible = True
-        Me.GridColumnDebitUsrID.VisibleIndex = 4
+        Me.GridColumnDebitUsrID.VisibleIndex = 5
         Me.GridColumnDebitUsrID.Width = 417
         '
-        'GridView3
+        'grdVINH
         '
-        Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colEtos1, Me.colcompleteDate1, Me.coldebit3, Me.colcredit3, Me.colbal3, Me.coldebitusrID2, Me.colbankID1, Me.colColMethodID1, Me.coldtDebit, Me.coldtCredit, Me.colcmt1, Me.colinhID1})
-        Me.GridView3.DetailHeight = 619
-        Me.GridView3.GridControl = Me.GridControl2
-        Me.GridView3.Name = "GridView3"
-        Me.GridView3.OptionsLayout.Columns.StoreAllOptions = True
-        Me.GridView3.OptionsLayout.Columns.StoreAppearance = True
-        Me.GridView3.OptionsLayout.LayoutVersion = "1.0"
-        Me.GridView3.OptionsLayout.StoreAllOptions = True
-        Me.GridView3.OptionsLayout.StoreAppearance = True
-        Me.GridView3.OptionsLayout.StoreFormatRules = True
-        Me.GridView3.OptionsMenu.ShowConditionalFormattingItem = True
-        Me.GridView3.OptionsMenu.ShowFooterItem = True
-        Me.GridView3.OptionsView.ShowFooter = True
-        Me.GridView3.OptionsView.ShowGroupPanel = False
-        Me.GridView3.ViewCaption = "Παραστατικά"
+        Me.grdVINH.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colEtos1, Me.colcompleteDate1, Me.coldebit3, Me.colcredit3, Me.colbal3, Me.coldebitusrID2, Me.colbankID1, Me.colColMethodID1, Me.coldtDebit, Me.coldtCredit, Me.colcmt1, Me.colinhID1})
+        Me.grdVINH.DetailHeight = 619
+        Me.grdVINH.GridControl = Me.grdBDG
+        Me.grdVINH.Name = "grdVINH"
+        Me.grdVINH.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grdVINH.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
+        Me.grdVINH.OptionsLayout.Columns.StoreAllOptions = True
+        Me.grdVINH.OptionsLayout.Columns.StoreAppearance = True
+        Me.grdVINH.OptionsLayout.LayoutVersion = "1.0"
+        Me.grdVINH.OptionsLayout.StoreAllOptions = True
+        Me.grdVINH.OptionsLayout.StoreAppearance = True
+        Me.grdVINH.OptionsLayout.StoreFormatRules = True
+        Me.grdVINH.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.grdVINH.OptionsMenu.ShowFooterItem = True
+        Me.grdVINH.OptionsView.ShowFooter = True
+        Me.grdVINH.OptionsView.ShowGroupPanel = False
+        Me.grdVINH.ViewCaption = "Παραστατικά"
         '
         'colEtos1
         '
@@ -711,25 +742,25 @@ Partial Class frmCollections
         Me.colinhID1.Name = "colinhID1"
         Me.colinhID1.Width = 131
         '
-        'GridView4
+        'grdVO_T
         '
-        Me.GridView4.Appearance.HeaderPanel.Options.UseTextOptions = True
-        Me.GridView4.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn3, Me.GridColumn17, Me.coltenant, Me.colttl, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.GridColumn31, Me.GridColumn32, Me.GridColumn33, Me.GridColumn34, Me.GridColumn35})
-        Me.GridView4.DetailHeight = 619
-        Me.GridView4.GridControl = Me.GridControl2
-        Me.GridView4.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "name", Nothing, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "owner_tenant", Nothing, "")})
-        Me.GridView4.LevelIndent = 0
-        Me.GridView4.Name = "GridView4"
-        Me.GridView4.OptionsMenu.ShowConditionalFormattingItem = True
-        Me.GridView4.OptionsMenu.ShowFooterItem = True
-        Me.GridView4.OptionsPrint.PrintPreview = True
-        Me.GridView4.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.GridView4.OptionsView.EnableAppearanceEvenRow = True
-        Me.GridView4.OptionsView.ShowFooter = True
-        Me.GridView4.OptionsView.ShowGroupedColumns = True
-        Me.GridView4.OptionsView.ShowGroupPanel = False
-        Me.GridView4.PreviewIndent = 0
-        Me.GridView4.ViewCaption = "Ένοικος-Ιδιοκτήτης"
+        Me.grdVO_T.Appearance.HeaderPanel.Options.UseTextOptions = True
+        Me.grdVO_T.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn3, Me.GridColumn17, Me.coltenant, Me.colttl, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.GridColumn31, Me.GridColumn32, Me.GridColumn33, Me.GridColumn34, Me.GridColumn35})
+        Me.grdVO_T.DetailHeight = 619
+        Me.grdVO_T.GridControl = Me.grdBDG
+        Me.grdVO_T.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "name", Nothing, ""), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "owner_tenant", Nothing, "")})
+        Me.grdVO_T.LevelIndent = 0
+        Me.grdVO_T.Name = "grdVO_T"
+        Me.grdVO_T.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.grdVO_T.OptionsMenu.ShowFooterItem = True
+        Me.grdVO_T.OptionsPrint.PrintPreview = True
+        Me.grdVO_T.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.grdVO_T.OptionsView.EnableAppearanceEvenRow = True
+        Me.grdVO_T.OptionsView.ShowFooter = True
+        Me.grdVO_T.OptionsView.ShowGroupedColumns = True
+        Me.grdVO_T.OptionsView.ShowGroupPanel = False
+        Me.grdVO_T.PreviewIndent = 0
+        Me.grdVO_T.ViewCaption = "Ένοικος-Ιδιοκτήτης"
         '
         'GridColumn3
         '
@@ -916,13 +947,14 @@ Partial Class frmCollections
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.cmdColAdd)
         Me.LayoutControl1.Controls.Add(Me.cmdConfirmation)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
         Me.LayoutControl1.Controls.Add(Me.cmdCol_Refresh)
         Me.LayoutControl1.Controls.Add(Me.cboDebitUsr)
         Me.LayoutControl1.Controls.Add(Me.grdAPT)
         Me.LayoutControl1.Controls.Add(Me.cboINH)
-        Me.LayoutControl1.Controls.Add(Me.GridControl2)
+        Me.LayoutControl1.Controls.Add(Me.grdBDG)
         Me.LayoutControl1.Controls.Add(Me.cmdExit)
         Me.LayoutControl1.Controls.Add(Me.cboBDG)
         Me.LayoutControl1.Controls.Add(Me.chkShowAgree)
@@ -930,11 +962,23 @@ Partial Class frmCollections
         Me.LayoutControl1.Location = New System.Drawing.Point(-5, -6)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(718, 214, 650, 400)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(718, 214, 1107, 936)
         Me.LayoutControl1.Root = Me.Root
         Me.LayoutControl1.Size = New System.Drawing.Size(2393, 1466)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'cmdColAdd
+        '
+        Me.cmdColAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdColAdd.ImageOptions.Image = CType(resources.GetObject("cmdColAdd.ImageOptions.Image"), System.Drawing.Image)
+        Me.cmdColAdd.Location = New System.Drawing.Point(25, 62)
+        Me.cmdColAdd.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdColAdd.Name = "cmdColAdd"
+        Me.cmdColAdd.Size = New System.Drawing.Size(176, 40)
+        Me.cmdColAdd.StyleController = Me.LayoutControl1
+        Me.cmdColAdd.TabIndex = 8
+        Me.cmdColAdd.Text = "Νέα Είσπραξη"
         '
         'cmdConfirmation
         '
@@ -1260,7 +1304,7 @@ Partial Class frmCollections
         '
         'cboDebitUsr
         '
-        Me.cboDebitUsr.Location = New System.Drawing.Point(25, 90)
+        Me.cboDebitUsr.Location = New System.Drawing.Point(385, 90)
         Me.cboDebitUsr.Margin = New System.Windows.Forms.Padding(5)
         Me.cboDebitUsr.Name = "cboDebitUsr"
         Me.cboDebitUsr.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -1271,7 +1315,7 @@ Partial Class frmCollections
         Me.cboDebitUsr.Properties.NullText = ""
         Me.cboDebitUsr.Properties.PopupSizeable = False
         Me.cboDebitUsr.Properties.ValueMember = "ID"
-        Me.cboDebitUsr.Size = New System.Drawing.Size(377, 38)
+        Me.cboDebitUsr.Size = New System.Drawing.Size(461, 38)
         Me.cboDebitUsr.StyleController = Me.LayoutControl1
         Me.cboDebitUsr.TabIndex = 2
         Me.cboDebitUsr.Tag = ""
@@ -1320,7 +1364,7 @@ Partial Class frmCollections
         '
         'cboINH
         '
-        Me.cboINH.Location = New System.Drawing.Point(1215, 90)
+        Me.cboINH.Location = New System.Drawing.Point(1408, 90)
         Me.cboINH.Margin = New System.Windows.Forms.Padding(5)
         Me.cboINH.Name = "cboINH"
         Me.cboINH.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -1331,7 +1375,7 @@ Partial Class frmCollections
         Me.cboINH.Properties.NullText = ""
         Me.cboINH.Properties.PopupSizeable = False
         Me.cboINH.Properties.ValueMember = "ID"
-        Me.cboINH.Size = New System.Drawing.Size(1153, 38)
+        Me.cboINH.Size = New System.Drawing.Size(960, 38)
         Me.cboINH.StyleController = Me.LayoutControl1
         Me.cboINH.TabIndex = 4
         Me.cboINH.Tag = ""
@@ -1355,7 +1399,7 @@ Partial Class frmCollections
         '
         'cboBDG
         '
-        Me.cboBDG.Location = New System.Drawing.Point(406, 90)
+        Me.cboBDG.Location = New System.Drawing.Point(850, 90)
         Me.cboBDG.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBDG.Name = "cboBDG"
         Me.cboBDG.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -1366,7 +1410,7 @@ Partial Class frmCollections
         Me.cboBDG.Properties.NullText = ""
         Me.cboBDG.Properties.PopupSizeable = False
         Me.cboBDG.Properties.ValueMember = "ID"
-        Me.cboBDG.Size = New System.Drawing.Size(805, 38)
+        Me.cboBDG.Size = New System.Drawing.Size(554, 38)
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 3
         Me.cboBDG.Tag = ""
@@ -1444,20 +1488,20 @@ Partial Class frmCollections
         '
         'LayoutControlGroup1
         '
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem11, Me.LayoutControlItem1, Me.LayoutControlItem4, Me.LayoutControlItem5})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem11, Me.LayoutControlItem1, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem12, Me.EmptySpaceItem4})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(2347, 1339)
-        Me.LayoutControlGroup1.Text = "Τρέχων Εισπράξεις"
+        Me.LayoutControlGroup1.Text = "Οφειλές"
         '
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.cboBDG
         Me.LayoutControlItem11.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem11.CustomizationFormText = "Κατηγορία"
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(381, 0)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(825, 0)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(809, 70)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(558, 70)
         Me.LayoutControlItem11.Text = "Πολυκατοικία"
         Me.LayoutControlItem11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem11.TextLocation = DevExpress.Utils.Locations.Top
@@ -1467,9 +1511,9 @@ Partial Class frmCollections
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.cboINH
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(1190, 0)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(1383, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1157, 70)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(964, 70)
         Me.LayoutControlItem1.Text = "Παραστατικά"
         Me.LayoutControlItem1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top
@@ -1478,7 +1522,7 @@ Partial Class frmCollections
         '
         'LayoutControlItem4
         '
-        Me.LayoutControlItem4.Control = Me.GridControl2
+        Me.LayoutControlItem4.Control = Me.grdBDG
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 70)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Size = New System.Drawing.Size(2347, 1269)
@@ -1488,14 +1532,23 @@ Partial Class frmCollections
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.cboDebitUsr
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(360, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(381, 70)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(465, 70)
         Me.LayoutControlItem5.Text = "Χρήστης Χρέωσης"
         Me.LayoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(152, 23)
         Me.LayoutControlItem5.TextToControlDistance = 5
+        '
+        'LayoutControlItem12
+        '
+        Me.LayoutControlItem12.Control = Me.cmdColAdd
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem12.Name = "LayoutControlItem12"
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(180, 70)
+        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem12.TextVisible = False
         '
         'LayoutControlGroup2
         '
@@ -1520,7 +1573,7 @@ Partial Class frmCollections
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(2347, 1339)
-        Me.LayoutControlGroup3.Text = "Χρεωπιστώσεις"
+        Me.LayoutControlGroup3.Text = "Συμφωνία Πιστώσεων"
         '
         'LayoutControlItem7
         '
@@ -1715,6 +1768,14 @@ Partial Class frmCollections
         '
         Me.YEARSTableAdapter.ClearBeforeFill = True
         '
+        'EmptySpaceItem4
+        '
+        Me.EmptySpaceItem4.AllowHotTrack = False
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(180, 0)
+        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(180, 70)
+        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
+        '
         'frmCollections
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -1727,7 +1788,7 @@ Partial Class frmCollections
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Εισπράξεις Κοινοχρήστων"
         Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVAPT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwUSRBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1736,12 +1797,13 @@ Partial Class frmCollections
         CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_COL_METHOD, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdBDG, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCOLBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVBDG, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rep_AddnewCOL, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVINH, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdVO_T, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1766,6 +1828,7 @@ Partial Class frmCollections
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1782,6 +1845,7 @@ Partial Class frmCollections
         CType(Me.vw_COLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.vw_COL_APTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SvgImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1800,12 +1864,12 @@ Partial Class frmCollections
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents Vw_USR_CREDITTableAdapter As Priamos_NETDataSetTableAdapters.vw_USR_creditTableAdapter
     'Friend WithEvents Vw_COLTableAdapter1 As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
-    Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdBDG As DevExpress.XtraGrid.GridControl
+    Friend WithEvents grdVBDG As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents Priamos_NETDataSet2 As Priamos_NETDataSet2
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridView3 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdVAPT As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdVINH As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents vw_COL_APTBindingSource As BindingSource
     Friend WithEvents vw_COLBindingSource As BindingSource
     'Friend WithEvents Vw_COLTableAdapter2 As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
@@ -1813,7 +1877,7 @@ Partial Class frmCollections
     Friend WithEvents colcompleteDate1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents VwCOLBDGBindingSource As BindingSource
     Friend WithEvents Vw_COL_BDGTableAdapter As Priamos_NETDataSet2TableAdapters.vw_COL_BDGTableAdapter
-    Friend WithEvents GridView4 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents grdVO_T As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents vw_COL_INHBindingSource As BindingSource
     Friend WithEvents Vw_COL_INHTableAdapter As Priamos_NETDataSet2TableAdapters.vw_COL_INHTableAdapter
     Friend WithEvents Vw_COLTableAdapter As Priamos_NETDataSet2TableAdapters.vw_COLTableAdapter
@@ -1936,4 +2000,9 @@ Partial Class frmCollections
     Friend WithEvents colETOS As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colEtos1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colord As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colBTN As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Rep_AddnewCOL As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents cmdColAdd As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
 End Class
