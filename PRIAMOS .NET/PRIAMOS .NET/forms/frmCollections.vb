@@ -127,7 +127,7 @@ Public Class frmCollections
         Dim Tbl As SqlDataAdapter
         Try
             ' Διαμερίσματα
-            strSql = "SELECT   C.bdgID, aptID, a.ttl,a.ord, sum(debit) as debit , 0 as credit , sum(C.bal) as bal,A.Bal as Aptbal  " &
+            strSql = "SELECT   C.bdgID, aptID, a.ttl,a.ord, sum(debit) as debit , sum(credit) as credit , sum(C.bal) as bal,A.Bal as Aptbal  " &
                      "From COL C " &
                      "INNER Join INH I ON I.ID=C.inhID " &
                      "INNER Join APT A ON C.aptID = A.ID " &

@@ -76,7 +76,7 @@ Public Class frmColEnanti
                 End Using
                 'Καταχώρηση Είσπραξης
                 sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL (ID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,dtdebit,cmt,ColMethodID,createdOn,completed,modifiedBY)")
+                sSQL.AppendLine("INSERT INTO COL (ID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,dtdebit,cmt,ColMethodID,createdOn,completed,tenant,modifiedBY)")
                 sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
                 sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
                 sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
@@ -88,7 +88,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine("GETDATE(),")
                 sSQL.AppendLine(toSQLValue(txtComments) & ",")
                 sSQL.AppendLine("'75E3251D-077D-42B0-B79A-9F2886381A97',")
-                sSQL.AppendLine("GETDATE(),1,")
+                sSQL.AppendLine("GETDATE(),1,1,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -114,7 +114,7 @@ Public Class frmColEnanti
                 End Using
                 'Ενημέρωση Υπολοίπου διαμερίσματος
                 sSQL.Clear()
-                sSQL.AppendLine("UPDATE APT set bal_adm = " & toSQLValue(txtDebit, True) & "*(-1) WHERE ID = " & toSQLValueS(cboApt.EditValue.ToString))
+                sSQL.AppendLine("UPDATE APT set bal_adm = bal_adm + " & toSQLValue(txtDebit, True) & "*(-1) WHERE ID = " & toSQLValueS(cboApt.EditValue.ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
