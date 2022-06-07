@@ -83,7 +83,7 @@ Public Class frmBDG
             CalledFromCtrl = value
         End Set
     End Property
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs)
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
 
@@ -142,11 +142,9 @@ Public Class frmBDG
                 Me.Text = "Πολυκατοικία: " & txtNam.Text
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        'Me.CenterToScreen()
-        'Me.Size = New Size(2244, 1444)
-
-        'My.Settings.frmBDG = Me.Location
-        '  My.Settings.Save()
+        Me.CenterToScreen()
+        My.Settings.frmBDG = Me.Location
+        My.Settings.Save()
         bdgName = txtNam.Text
         LoadForms.RestoreLayoutFromXml(GridView1, "APT_def.xml")
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)

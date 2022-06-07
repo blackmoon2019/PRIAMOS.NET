@@ -75,10 +75,10 @@ Public Class frmCollectionsDet
                     'AptBal = AptBal + GridView1.GetRowCellValue(selectedRowHandle, "debit")
                     If GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView1.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
                     ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση της είσπραξης
-                    'sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
-                    '  ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
+                    sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
+                            ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
 
-                    sSQL = "UPDATE COL SET completed=0,bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
+                    'sSQL = "UPDATE COL SET completed=0,bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
 
 
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
@@ -90,8 +90,8 @@ Public Class frmCollectionsDet
             Next
             ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
             ' Ενημέρωση υπολοίπου διαμερίσματος
-            sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(saptID) & ") where id = " & toSQLValueS(saptID)
-            Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+            'sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(saptID) & ") where id = " & toSQLValueS(saptID)
+            'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
             ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
             'sSQL = "UPDATE APT SET BAL=BAL + " & toSQLValueS(AptBal, True) & " where id = " & toSQLValueS(saptID)

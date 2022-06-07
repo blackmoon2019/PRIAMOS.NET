@@ -730,7 +730,7 @@ Public Class frmScroller
                 fINH.Mode = FormMode.EditRecord
                 fINH.Scroller = GridView1
                 fINH.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fINH.Show()
             Case "vw_EXP"
                 Dim fExp As frmEXP = New frmEXP()
@@ -791,7 +791,7 @@ Public Class frmScroller
                 fBDG.Mode = FormMode.EditRecord
                 fBDG.Scroller = GridView1
                 fBDG.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fBDG.Show()
             Case "vw_CCT", "vw_CCT_PF"
                 Dim fCustomers As frmCustomers = New frmCustomers()
@@ -1030,7 +1030,7 @@ Public Class frmScroller
                 fINH.Mode = FormMode.NewRecord
                 fINH.Scroller = GridView1
                 fINH.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                '                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fINH.Show()
             Case "vw_EXP"
                 Dim fExp As frmEXP = New frmEXP()
@@ -1084,7 +1084,7 @@ Public Class frmScroller
                 fBDG.Mode = FormMode.NewRecord
                 fBDG.Scroller = GridView1
                 fBDG.FormScroller = Me
-                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fBDG.Show()
             Case "vw_CCT"
                 Dim fCustomers As frmCustomers = New frmCustomers()

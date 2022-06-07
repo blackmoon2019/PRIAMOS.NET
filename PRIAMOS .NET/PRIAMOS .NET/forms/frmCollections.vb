@@ -497,6 +497,9 @@ Public Class frmCollections
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
+            ElseIf sender.FocusedColumn.FieldName = "credit" And Decimal.Parse(e.Value) = 0 Then
+                e.Valid = False
+                Exit Sub
             End If
 
             If debitusrID = "" Then
@@ -542,9 +545,6 @@ Public Class frmCollections
                     oCmd.ExecuteNonQuery()
                 End Using
 
-                ' Ενημέρωση υπολοίπου διαμερίσματος
-                'Dim sSQL As String = "Update apt set apt.bal_adm =   (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
-                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
                 LoaderData(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString)
                 Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString))
@@ -593,6 +593,8 @@ Public Class frmCollections
                     e.Valid = False
                     Exit Sub
                 End If
+                If credit = 0 Then e.Valid = False : Exit Sub
+
             End If
             If debitusrID = "" Then
                 e.ErrorText = "Δεν έχετε επιλέξει χρήστη χρέωσης "
@@ -690,6 +692,7 @@ Public Class frmCollections
                     e.Valid = False
                     Exit Sub
                 End If
+                If credit = 0 Then e.Valid = False : Exit Sub
             End If
 
             If debit = 0 And credit = 0 Then Exit Sub
@@ -1287,8 +1290,16 @@ Public Class frmCollections
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
+                    sSQL = "Update apt set apt.bal_adm = apt.bal_adm -   (select isnull(col_d.credit,0) from col_d where col_d.agreed=1 And col_d.ID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "ID").ToString) & ") " &
+                        "where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
                 Else
+                    ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
+                    ' Ενημέρωση υπολοίπου διαμερίσματος
+                    sSQL = "Update apt set apt.bal_adm = apt.bal_adm +   (select isnull(col_d.credit,0) from col_d where col_d.agreed=1 And col_d.ID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "ID").ToString) & ") " &
+                        "where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
                     sSQL = "DELETE FROM COL_D WHERE ID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "ID").ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
                     If GridView6.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView6.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
@@ -1296,12 +1307,6 @@ Public Class frmCollections
                     sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
                       ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "colID").ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
-                    ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος
-                    ' Ενημέρωση υπολοίπου διαμερίσματος
-                    sSQL = "Update apt set apt.bal_adm =   case when apt.bal_adm <0 then apt.bal_adm else 0 end - " &
-                            "(select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString) & ") where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString)
-                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
-
                 End If
             End If
         Next I
