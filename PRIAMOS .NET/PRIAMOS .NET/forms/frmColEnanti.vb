@@ -88,8 +88,21 @@ Public Class frmColEnanti
                 sSQL.AppendLine("GETDATE(),")
                 sSQL.AppendLine(toSQLValue(txtComments) & ",")
                 sSQL.AppendLine("'75E3251D-077D-42B0-B79A-9F2886381A97',")
-                sSQL.AppendLine("GETDATE(),1,1,")
+                sSQL.AppendLine("GETDATE(),0,1,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                'Καταχώρηση Προοδευτικής Χρέωσης
+                sSQL.Clear()
+                sSQL.AppendLine("INSERT INTO COL_P (BDGID,APTID,INHID,debit,tenant)")
+                sSQL.AppendLine("select ")
+                sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
+                sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(sINHID) & ",")
+                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                sSQL.AppendLine("1")
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()

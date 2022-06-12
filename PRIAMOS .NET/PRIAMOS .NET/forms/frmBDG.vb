@@ -489,7 +489,7 @@ Public Class frmBDG
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView1, "APT_def.xml")
+            LoadForms.PopupMenuShow(e, GridView1, "APT_def.xml", "vw_APT")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -1475,8 +1475,8 @@ Public Class frmBDG
             'LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by ORD")
             'LoadForms.LoadDataToGrid(grdAPM, GridView7, "SELECT * from vw_APMIL_D where bdgid = '" & sID & "' order by ORD")
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView5, , "vw_APMIL")
-            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView7, , "vw_APMIL_D")
+            LoadForms.LoadColumnDescriptionNames(GridView5, , "vw_APMIL")
+            LoadForms.LoadColumnDescriptionNames(GridView7, , "vw_APMIL_D")
             LoadForms.RestoreLayoutFromXml(GridView5, "APMIL_def.xml")
             LoadForms.RestoreLayoutFromXml(GridView7, "APMIL_D_def.xml")
 
@@ -1701,7 +1701,7 @@ Public Class frmBDG
         'sSQL = "SELECT * FROM vw_IEP WHERE BDGID = '" & sID & "' ORDER BY code"
         'LoadForms.LoadDataToGrid(grdIEP, GridView6, sSQL)
         ''Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-        'LoadForms.LoadColumnDescriptionNames(grdIEP, GridView6,, "vw_IEP")
+        'LoadForms.LoadColumnDescriptionNames(GridView6,, "vw_IEP")
         LoadForms.RestoreLayoutFromXml(GridView6, "IEP_def.xml")
         GridView6.ExpandAllGroups()
 

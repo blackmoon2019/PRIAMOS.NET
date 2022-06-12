@@ -71,7 +71,7 @@ Public Class frmScroller
             'Φόρτωση Σχεδίων στην Λίστα βάση επιλογής από το μενού
             'LoadViews()
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-            'LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+            'LoadForms.LoadColumnDescriptionNames( GridView1, , sDataTable)
 
             GridLocalizer.Active = New GreekGridLocalizer()
             'Localizer.Active = New GermanEditorsLocalizer()
@@ -215,7 +215,7 @@ Public Class frmScroller
 
                         'Επαναφέρουμε το υπόλοιπο των Διαμερισμάτων αν το παραστατικό επαναυπολογίζεται
                         sSQL = "UPDATE APT
-	                            SET bal = APT.bal - COL.[bal]
+	                            SET bal_adm = bal_adm - COL.[bal]
 	                            FROM APT
 	                            INNER JOIN COL ON COL.aptID = APT.ID 
 	                            where col.inhID   = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
@@ -1533,7 +1533,7 @@ Public Class frmScroller
                 Next
 
             End If
-            LoadForms.LoadColumnDescriptionNames(grdMain, GridView1, , sDataTable)
+            LoadForms.LoadColumnDescriptionNames(GridView1, , sDataTable)
             myReader.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

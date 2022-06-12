@@ -59,6 +59,7 @@ Public Class frmINH
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
 
 
+
         Select Case Mode
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("INH")
@@ -67,8 +68,11 @@ Public Class frmINH
                 cmdCalculate.Enabled = False
                 cmdDel.Enabled = False
                 cmdRefresh.Enabled = False
+                cmdCancelInvoice.Enabled = False
+                lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                lbldate.Text = ""
             Case FormMode.EditRecord
-                LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'")
+                LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
                 Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
@@ -76,10 +80,17 @@ Public Class frmINH
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
                 If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
-                EditRecord()
-                'Χιλιοστά Διαμερισμάτων
-                ApmLoad()
                 'lbldate.Text = TranslateDates(dtFDate, dtTDate)
+                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+                DataNavigator1.Position = SetNavigatorPosition()
+                If lblCancel.Text = "True" Then
+                    lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
+                    lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                    cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
+                Else
+                    lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                    cmdSaveINH.Enabled = True : cmdCancelInvoice.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True :: GridControl1.Enabled = True
+                End If
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -101,6 +112,7 @@ Public Class frmINH
         LoadConditionalFormatting()
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
+
     Private Sub EditRecord()
         'Δημιουργία BANDS
         CreateBands()
@@ -369,6 +381,8 @@ Public Class frmINH
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
         chkCALC_CAT.DataSource = VwCALCCATBindingSource
+        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+        If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
         'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
@@ -483,8 +497,9 @@ Public Class frmINH
     Private Sub TabPane1_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles TabPane1.SelectedPageChanged
         Select Case TabPane1.SelectedPageIndex
             Case 0 : cmdDel.Enabled = True
-            Case 1 : cmdDel.Enabled = True
+            Case 1 : cmdDel.Enabled = True : EditRecord()
             Case 2 : ApmLoad()        'Χιλιοστά Διαμερισμάτων
+
 
             Case Else : cmdDel.Enabled = False
         End Select
@@ -515,8 +530,8 @@ Public Class frmINH
             'LoadForms.LoadDataToGrid(grdAPM, GridView5, "SELECT * from vw_APMIL where bdgid = '" & sID & "' order by ORD")
             'LoadForms.LoadDataToGrid(grdAPM, GridView7, "SELECT * from vw_APMIL_D where bdgid = '" & sID & "' order by ORD")
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
-            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView1, , "vw_APMIL")
-            LoadForms.LoadColumnDescriptionNames(grdAPM, GridView7, , "vw_APMIL_D")
+            LoadForms.LoadColumnDescriptionNames(GridView1, , "vw_APMIL")
+            LoadForms.LoadColumnDescriptionNames(GridView7, , "vw_APMIL_D")
             LoadForms.RestoreLayoutFromXml(GridView1, "APMIL_def.xml")
             LoadForms.RestoreLayoutFromXml(GridView7, "APMIL_D_def.xml")
             GridView1.OptionsCustomization.AllowSort = False
@@ -818,11 +833,14 @@ Public Class frmINH
         cmdSaveInd.Enabled = False
         cmdCalculate.Enabled = False
         cmdDel.Enabled = False
+        cmdCancelInvoice.Enabled = False
         chkCALC_CAT.DataSource = Nothing
         chkCALC_CAT.Items.Clear()
         TabNavigationPage2.Enabled = False
         TabNavigationPage3.Enabled = False
         GridControl1.DataSource = Nothing
+        lbldate.Text = ""
+        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.NewGuid)
     End Sub
 
     Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick
@@ -944,5 +962,91 @@ Public Class frmINH
         End If
     End Sub
 
+    Private Sub DataNavigator1_Click(sender As Object, e As EventArgs) Handles DataNavigator1.Click
 
+    End Sub
+
+    Private Sub DataNavigator1_ButtonClick(sender As Object, e As NavigatorButtonClickEventArgs) Handles DataNavigator1.ButtonClick
+        Select Case e.Button.ButtonType
+            Case e.Button.ButtonType.Next : LoadINH(e.Button.ButtonType.Next)
+            Case e.Button.ButtonType.Prev : LoadINH(e.Button.ButtonType.Prev)
+            Case e.Button.ButtonType.First : LoadINH(e.Button.ButtonType.First)
+            Case e.Button.ButtonType.Last : LoadINH(e.Button.ButtonType.Last)
+        End Select
+    End Sub
+    Private Sub LoadINH(ByVal ButtonType As Integer)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            Select Case ButtonType
+                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   code > " & toSQLValue(txtCode, True) & " order by code asc "
+                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   code < " & toSQLValue(txtCode, True) & " order by code asc "
+                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by code asc "
+                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by code desc"
+            End Select
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then sID = sdr.GetGuid(sdr.GetOrdinal("ID").ToString).ToString
+            sdr.Close()
+
+            LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
+            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+            Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+            If lblCancel.Text = "True" Then
+                lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
+                lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
+            Else
+                lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                cmdSaveINH.Enabled = True : cmdCancelInvoice.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridControl1.Enabled = True
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Function SetNavigatorPosition() As Integer
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim Code As Integer
+        Try
+            sSQL = "select count(id) + 1 as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   code < " & toSQLValue(txtCode, True)
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then Code = sdr.GetInt32(sdr.GetOrdinal("Position")) - 1 Else Code = 0
+            sdr.Close()
+            Return Code
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
+
+    Private Sub cmdCancelInvoice_Click(sender As Object, e As EventArgs) Handles cmdCancelInvoice.Click
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim Credit As Decimal
+        If XtraMessageBox.Show("Θέλετε να ακυρώσετε το παραστατικό?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            sSQL = "Select   sum(isnull(credit,0)) As credit  from col_d where inhID = " & toSQLValueS(sID)
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then If sdr.IsDBNull(sdr.GetOrdinal("credit")) = False Then Credit = sdr.GetDecimal(sdr.GetOrdinal("credit")) Else Credit = 0
+            sdr.Close()
+            If Credit > 0 Then XtraMessageBox.Show("Έχετε εισπράξει από αυτό το παραστατικό " & Credit & "€. Θα πρέπει να ξαναπεράσετε τις εισπράξεις αυτές στο νέο παραστατικό", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Using oCmd As New SqlCommand("inv_cancel", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
+                oCmd.Parameters.AddWithValue("@canceledBY", UserProps.ID.ToString.ToUpper)
+                oCmd.ExecuteNonQuery()
+            End Using
+            lblCancel.Visible = True
+            lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+            lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
+            cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
+        End If
+
+
+    End Sub
 End Class

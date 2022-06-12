@@ -75,13 +75,18 @@ Public Class frmCollectionsDet
                     'AptBal = AptBal + GridView1.GetRowCellValue(selectedRowHandle, "debit")
                     If GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then Credit = GridView1.GetRowCellValue(selectedRowHandle, "Credit") Else Credit = 0
                     ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση της είσπραξης
-                    sSQL = "UPDATE COL SET completed=0,debit = debit +  " & toSQLValueS(Credit.ToString, True) &
-                            ",bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
-
-                    'sSQL = "UPDATE COL SET completed=0,bal=bal + " & toSQLValueS(Credit.ToString, True) & " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
-
+                    sSQL = "UPDATE COL SET completed=0,bal=bal + " & toSQLValueS(Credit.ToString, True) &
+                            " where id = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "colID").ToString)
 
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+
+                    sSQL = "UPDATE COL_P SET debit=isnull(debit,0) + " & toSQLValueS(Credit.ToString, True) &
+                           " where bdgid = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "bdgID").ToString) &
+                           "and aptID= " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "aptID").ToString) &
+                           "and inhID= " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString) &
+                           "and tenant= " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "tenant").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+
                 Else
                     XtraMessageBox.Show("Δεν μπορείτε να διαγράψετε πίστωση που έχει συμφωνηθεί." & vbCrLf &
                     "Για να κάνετε διαγραφή θα πρέπει πρώτα να την ενημερώσετε ως 'ΜΗ ΣΥΜΦΩΝΙΑ ΠΙΣΤΩΣΗΣ'", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

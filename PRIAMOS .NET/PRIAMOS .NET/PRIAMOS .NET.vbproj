@@ -827,6 +827,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-cancel-subscription-48.png" />
     <None Include="Resources\icons8-cancel-subscription-24.png" />
     <None Include="Resources\icons8-support-40.png" />
     <None Include="Resources\icons8-about-40.png" />

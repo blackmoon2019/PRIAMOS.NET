@@ -12,6 +12,7 @@ Imports DevExpress.Utils
 Public Class FormLoader
     Private GRDview As GridView
     Private XMLName As String
+    Private DbTblName As String
     Public Function LoadFormNew(ByVal controls As List(Of Control), ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
 
         Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
@@ -82,6 +83,8 @@ Public Class FormLoader
                                                 If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetString(sdr.GetOrdinal(TagV)))
                                             Case "int"
                                                 If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt32(sdr.GetOrdinal(TagV)))
+                                            Case "bigint"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt64(sdr.GetOrdinal(TagV)))
                                             Case "uniqueidentifier"
                                                 If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetGuid(sdr.GetOrdinal(TagV)).ToString)
                                             Case "bit"
@@ -175,6 +178,8 @@ NextItem:
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetString(sdr.GetOrdinal(TagV)))
                                         Case "int"
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt32(sdr.GetOrdinal(TagV)))
+                                        Case "bigint"
+                                            If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt64(sdr.GetOrdinal(TagV)))
                                         Case "uniqueidentifier"
                                             If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetGuid(sdr.GetOrdinal(TagV)).ToString)
                                         Case "bit"
@@ -206,7 +211,7 @@ NextItem:
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
-    Public Function LoadFormGRP(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, ByVal sSQL As String) As Boolean
+    Public Function LoadFormGRP(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = True) As Boolean
 
         Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
         Dim sdr As SqlDataReader = cmd.ExecuteReader()
@@ -230,41 +235,47 @@ NextItem:
                                 'Ψάχνω αν το πεδίο έχει δικάιωμα Προβολής
                                 Dim value As String = Array.Find(TagValue, Function(x) (x.StartsWith("0")))
                                 ' Εαν δεν είναι visible το Control δεν θα συμπεριληφθεί στο INSERT-UPDATE
-                                If LItem.Control.Visible = True Then
-                                    If value <> Nothing Then
-                                        TagV = TagValue(0).Replace("[", "").Replace("]", "")
-                                        Console.WriteLine(TagV)
-                                        If sdr.GetSchemaTable().Select("ColumnName='" & TagV & "'").Length > 0 Then
-                                            sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
-                                            Dim index = sdr.GetOrdinal(TagV)
-                                            Console.WriteLine(sdr.GetDataTypeName(index))
-                                            Select Case sdr.GetDataTypeName(index)
-                                                Case "nvarchar"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetString(sdr.GetOrdinal(TagV)))
-                                                Case "int"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt32(sdr.GetOrdinal(TagV)))
-                                                Case "uniqueidentifier"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetGuid(sdr.GetOrdinal(TagV)).ToString)
-                                                Case "bit"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetBoolean(sdr.GetOrdinal(TagV)))
-                                                Case "decimal"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDecimal(sdr.GetOrdinal(TagV)))
-                                                Case "datetime"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
-                                                Case "date"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
-                                                Case "varbinary"
-                                                    If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
-                                                        Dim pic As DevExpress.XtraEditors.PictureEdit
-                                                        Dim bytes As Byte()
-                                                        pic = LItem.Control
-                                                        bytes = DirectCast(sdr(TagV), Byte())
-                                                        pic.EditValue = bytes
-                                                    End If
-                                            End Select
-                                        End If
+                                If IgnoreVisibility = True Then
+                                    If LItem.Control.Visible = False Then GoTo NextItem
+                                End If
+                                ' If LItem.Control.Visible = True Then
+                                If value <> Nothing Then
+                                    TagV = TagValue(0).Replace("[", "").Replace("]", "")
+                                    Console.WriteLine(TagV)
+                                    If sdr.GetSchemaTable().Select("ColumnName='" & TagV & "'").Length > 0 Then
+                                        sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
+                                        Dim index = sdr.GetOrdinal(TagV)
+                                        Console.WriteLine(sdr.GetDataTypeName(index))
+                                        Select Case sdr.GetDataTypeName(index)
+                                            Case "nvarchar"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetString(sdr.GetOrdinal(TagV)))
+                                            Case "int"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt32(sdr.GetOrdinal(TagV)))
+                                            Case "bigint"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetInt64(sdr.GetOrdinal(TagV)))
+                                            Case "uniqueidentifier"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetGuid(sdr.GetOrdinal(TagV)).ToString)
+                                            Case "bit"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetBoolean(sdr.GetOrdinal(TagV)))
+                                            Case "decimal"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDecimal(sdr.GetOrdinal(TagV)))
+                                            Case "datetime"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
+                                            Case "date"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
+                                            Case "varbinary"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
+                                                    Dim pic As DevExpress.XtraEditors.PictureEdit
+                                                    Dim bytes As Byte()
+                                                    pic = LItem.Control
+                                                    bytes = DirectCast(sdr(TagV), Byte())
+                                                    pic.EditValue = bytes
+                                                End If
+                                        End Select
                                     End If
                                 End If
+NextItem:
+                                'End If
                             End If
                         End If
                     End If
@@ -384,8 +395,7 @@ NextItem:
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Public Sub LoadColumnDescriptionNames(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView,
-                                          Optional ByVal sTable As String = "", Optional ByVal sView As String = "")
+    Public Sub LoadColumnDescriptionNames(ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, Optional ByVal sTable As String = "", Optional ByVal sView As String = "")
         Dim myCmd As SqlCommand
         Dim myReader As SqlDataReader
         Dim sSQL As String
@@ -509,7 +519,7 @@ NextItem:
     Public Sub RestoreLayoutFromXml(ByVal GridView As GridView, ByVal sXMLName As String)
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sXMLName) Then GridView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sXMLName, OptionsLayoutBase.FullLayout)
     End Sub
-    Public Sub PopupMenuShow(ByVal e As Views.Grid.PopupMenuShowingEventArgs, ByVal GridView As GridView, ByVal sXMLName As String)
+    Public Sub PopupMenuShow(ByVal e As Views.Grid.PopupMenuShowingEventArgs, ByVal GridView As GridView, ByVal sXMLName As String, Optional ByVal sTableName As String = "")
         If e.MenuType = GridMenuType.Column Then
             Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
             Dim item As New DXEditMenuItem()
@@ -523,6 +533,7 @@ NextItem:
                 Dim popRenameColumn As New RepositoryItemTextEdit
                 popRenameColumn.Name = "RenameColumn"
                 menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
+
                 item = menu.Items.Item("Μετονομασία Στήλης")
                 item.EditValue = menu.Column.GetTextCaption
                 item.Tag = menu.Column.AbsoluteIndex
@@ -544,9 +555,80 @@ NextItem:
                 '6nd Custom Menu Item
                 menu.Items.Add(New DXMenuItem("Συγχρονισμός όψης από Server", AddressOf OnSyncView, Nothing, Nothing, Nothing, Nothing))
 
+                If sTableName <> "" Then
+                    DbTblName = sTableName
+                    '7nd Custom Menu Item
+                    menu.Items.Add(New DXMenuItem("Ενημέρωση πεδίων όψης από Βάση", AddressOf OnUpdateViewFromDB, Nothing, Nothing, Nothing, Nothing))
 
+                End If
             End If
         End If
+
+    End Sub
+    Private Sub OnUpdateViewFromDB(ByVal sender As System.Object, ByVal e As EventArgs)
+        'ReadXml.UpdateXMLFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+        'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
+        Try
+            Dim col1 As GridColumn
+            Dim Col2 As GridColumn
+            Dim grdColumns As List(Of GridColumn)
+            Dim sSQL As String
+            Dim myCmd As SqlCommand
+            Dim myReader As SqlDataReader
+            sSQL = "SELECT top 1 * FROM " & DbTblName
+            myCmd = CNDB.CreateCommand
+            myCmd.CommandText = sSQL
+            myReader = myCmd.ExecuteReader()
+
+
+            If myReader Is Nothing Then Exit Sub
+            'Εαν υπάρχουν πεδία που πρέπει να προστεθούν από την βάση
+            If myReader.FieldCount >= GRDview.Columns.Count Then
+                Dim schema As DataTable = myReader.GetSchemaTable()
+                grdColumns = GRDview.Columns.ToList()
+                For i As Integer = 0 To myReader.FieldCount - 1
+                    Console.WriteLine(myReader.GetName(i))
+                    If i < GRDview.Columns.Count Then
+                        'Col2 = GridView1.Columns.Item(i)
+                        Col2 = GRDview.Columns.ColumnByFieldName(myReader.GetName(i))
+                    Else
+                        Col2 = Nothing
+                    End If
+                    If Col2 Is Nothing Then
+                        col1 = GRDview.Columns.AddField(myReader.GetName(i))
+                        col1.FieldName = myReader.GetName(i)
+                        col1.Visible = True
+                        col1.VisibleIndex = 0
+                        col1.AppearanceCell.BackColor = Color.Bisque
+                    End If
+
+                Next
+                'Εαν έχουν σβηστεί πεδία από την βάση τα αφαιρεί και από το grid
+            ElseIf myReader.FieldCount < GRDview.Columns.Count Then
+                Dim schema As DataTable = myReader.GetSchemaTable()
+                grdColumns = GRDview.Columns.ToList()
+
+                For i As Integer = 0 To grdColumns.Count - 1
+                    Try
+                        Col2 = grdColumns(i)
+                        Dim sOrd As String = myReader.GetOrdinal(Col2.FieldName)
+                    Catch ex As Exception
+                        Col2 = grdColumns(i)
+                        GRDview.Columns.Remove(Col2)
+                        Console.WriteLine(ex.Message)
+
+                        Continue For
+                    End Try
+
+                Next
+
+            End If
+
+            LoadColumnDescriptionNames(GRDview, , DbTblName)
+            myReader.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
     'Μετονομασία Στήλης Master
@@ -554,6 +636,7 @@ NextItem:
         Dim item As New DXEditMenuItem()
         item = sender
         If item.Tag Is Nothing Then Exit Sub
+        If item.Tag = -1 Then Exit Sub
         GRDview.Columns(item.Tag).Caption = item.EditValue
         'MessageBox.Show(item.EditValue.ToString())
     End Sub
