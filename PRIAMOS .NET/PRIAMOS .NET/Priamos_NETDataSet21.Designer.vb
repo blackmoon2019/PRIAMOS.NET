@@ -41,9 +41,9 @@ Partial Public Class Priamos_NETDataSet2
     
     Private relationvw_COL_BDG_vw_COL_APT As Global.System.Data.DataRelation
     
-    Private relationvw_COL_APT_vw_COL_INH As Global.System.Data.DataRelation
-    
     Private relationvw_COL_INH_vw_COL As Global.System.Data.DataRelation
+    
+    Private relationvw_COL_APT_vw_COL_INH As Global.System.Data.DataRelation
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -345,8 +345,8 @@ Partial Public Class Priamos_NETDataSet2
             End If
         End If
         Me.relationvw_COL_BDG_vw_COL_APT = Me.Relations("vw_COL_BDG_vw_COL_APT")
-        Me.relationvw_COL_APT_vw_COL_INH = Me.Relations("vw_COL_APT_vw_COL_INH")
         Me.relationvw_COL_INH_vw_COL = Me.Relations("vw_COL_INH_vw_COL")
+        Me.relationvw_COL_APT_vw_COL_INH = Me.Relations("vw_COL_APT_vw_COL_INH")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -373,10 +373,10 @@ Partial Public Class Priamos_NETDataSet2
         MyBase.Tables.Add(Me.tableCOL_INH)
         Me.relationvw_COL_BDG_vw_COL_APT = New Global.System.Data.DataRelation("vw_COL_BDG_vw_COL_APT", New Global.System.Data.DataColumn() {Me.tablevw_COL_BDG.bdgIDColumn}, New Global.System.Data.DataColumn() {Me.tableCOL_APT.bdgIDColumn}, false)
         Me.Relations.Add(Me.relationvw_COL_BDG_vw_COL_APT)
-        Me.relationvw_COL_APT_vw_COL_INH = New Global.System.Data.DataRelation("vw_COL_APT_vw_COL_INH", New Global.System.Data.DataColumn() {Me.tableCOL_APT.bdgIDColumn, Me.tableCOL_APT.aptIDColumn}, New Global.System.Data.DataColumn() {Me.tableCOL_INH.bdgIDColumn, Me.tableCOL_INH.aptIDColumn}, false)
-        Me.Relations.Add(Me.relationvw_COL_APT_vw_COL_INH)
         Me.relationvw_COL_INH_vw_COL = New Global.System.Data.DataRelation("vw_COL_INH_vw_COL", New Global.System.Data.DataColumn() {Me.tableCOL_INH.bdgIDColumn, Me.tableCOL_INH.aptIDColumn, Me.tableCOL_INH.inhIDColumn}, New Global.System.Data.DataColumn() {Me.tablevw_COL.bdgIDColumn, Me.tablevw_COL.aptIDColumn, Me.tablevw_COL.inhIDColumn}, false)
         Me.Relations.Add(Me.relationvw_COL_INH_vw_COL)
+        Me.relationvw_COL_APT_vw_COL_INH = New Global.System.Data.DataRelation("vw_COL_APT_vw_COL_INH", New Global.System.Data.DataColumn() {Me.tableCOL_APT.bdgIDColumn, Me.tableCOL_APT.aptIDColumn}, New Global.System.Data.DataColumn() {Me.tableCOL_INH.bdgIDColumn, Me.tableCOL_INH.aptIDColumn}, false)
+        Me.Relations.Add(Me.relationvw_COL_APT_vw_COL_INH)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3357,6 +3357,8 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columnToMonth As Global.System.Data.DataColumn
         
+        Private columndebitusrName As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -3529,6 +3531,14 @@ Partial Public Class Priamos_NETDataSet2
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property debitusrNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndebitusrName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3582,9 +3592,10 @@ Partial Public Class Priamos_NETDataSet2
                     ByVal cmt As String,  _
                     ByVal Etos As Integer,  _
                     ByVal FromMonth As Integer,  _
-                    ByVal ToMonth As Integer) As COL_INHRow
+                    ByVal ToMonth As Integer,  _
+                    ByVal debitusrName As String) As COL_INHRow
             Dim rowCOL_INHRow As COL_INHRow = CType(Me.NewRow,COL_INHRow)
-            Dim columnValuesArray() As Object = New Object() {bdgID, inhID, debitusrID, creditusrID, bankID, ColMethodID, dtDebit, dtCredit, credit, debit, bal, completeDate, aptID, cmt, Etos, FromMonth, ToMonth}
+            Dim columnValuesArray() As Object = New Object() {bdgID, inhID, debitusrID, creditusrID, bankID, ColMethodID, dtDebit, dtCredit, credit, debit, bal, completeDate, aptID, cmt, Etos, FromMonth, ToMonth, debitusrName}
             rowCOL_INHRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCOL_INHRow)
             Return rowCOL_INHRow
@@ -3630,6 +3641,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnEtos = MyBase.Columns("Etos")
             Me.columnFromMonth = MyBase.Columns("FromMonth")
             Me.columnToMonth = MyBase.Columns("ToMonth")
+            Me.columndebitusrName = MyBase.Columns("debitusrName")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3669,6 +3681,8 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columnFromMonth)
             Me.columnToMonth = New Global.System.Data.DataColumn("ToMonth", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnToMonth)
+            Me.columndebitusrName = New Global.System.Data.DataColumn("debitusrName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndebitusrName)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnbdgID, Me.columninhID, Me.columnaptID}, true))
             Me.columnbdgID.AllowDBNull = false
             Me.columninhID.AllowDBNull = false
@@ -6482,6 +6496,21 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property debitusrName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCOL_INH.debitusrNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'debitusrName' in table 'COL_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCOL_INH.debitusrNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property COL_APTRowParent() As COL_APTRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("vw_COL_APT_vw_COL_INH")),COL_APTRow)
@@ -6657,6 +6686,18 @@ Partial Public Class Priamos_NETDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetToMonthNull()
             Me(Me.tableCOL_INH.ToMonthColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsdebitusrNameNull() As Boolean
+            Return Me.IsNull(Me.tableCOL_INH.debitusrNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetdebitusrNameNull()
+            Me(Me.tableCOL_INH.debitusrNameColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7355,28 +7396,29 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT bdgID, BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_COL  where completed=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BdgNam"
+            Me._commandCollection(0).CommandText = "SELECT bdgID, BDG.NAM AS BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM("& _ 
+                "bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where completed="& _ 
+                "0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT bdgID, BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID = @bdgID  and completed=0 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID"& _ 
-                ", BdgNam"
+            Me._commandCollection(1).CommandText = "SELECT bdgID, BDG.NAM AS BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM("& _ 
+                "bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID = @b"& _ 
+                "dgID  and completed=0 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT bdgID, BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where debitusrID= @debitusrID  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BdgNa"& _ 
-                "m"
+            Me._commandCollection(2).CommandText = "SELECT bdgID, BDG.NAM AS BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM("& _ 
+                "bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where debitusrID"& _ 
+                "= @debitusrID  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@debitusrID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "debitusrID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT bdgID, BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where inhID= @inhID  and completed=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, "& _ 
-                "BdgNam"
+            Me._commandCollection(3).CommandText = "SELECT bdgID, BDG.NAM  as BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM"& _ 
+                "(bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where COL.inh"& _ 
+                "ID= @inhID  and completed=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -7686,16 +7728,16 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
-                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (bdgID"& _ 
-                " = @bdgID) ORDER BY createdOn"
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE reserv"& _ 
+                "eAPT=0 and (bdgID = @bdgID) ORDER BY createdOn"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
-                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (inhID"& _ 
-                " = @inhID) AND (aptID = @aptID)  ORDER BY createdOn"
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE reserv"& _ 
+                "eAPT=0 and (inhID = @inhID) AND (aptID = @aptID)  ORDER BY createdOn"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7703,8 +7745,9 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(4).Connection = Me.Connection
             Me._commandCollection(4).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
-                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (inhID"& _ 
-                " = @inhID) AND (tenant = @tenant) AND (aptID = @aptID)  ORDER BY createdOn"
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE reserv"& _ 
+                "eAPT=0 and (inhID = @inhID) AND (tenant = @tenant) AND (aptID = @aptID)  ORDER B"& _ 
+                "Y createdOn"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tenant", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "tenant", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7713,8 +7756,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
-                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE (agree"& _ 
-                "d = 0) AND (bdgID = @bdgid) ORDER BY bdgNam, ttl"
+                " modifiedBy, modifiedOn, old_code, tDate, tenant, ttl FROM vw_COL_D WHERE reserv"& _ 
+                "eAPT=0 and (agreed = 0) AND (bdgID = @bdgid) ORDER BY bdgNam, ttl"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgid", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

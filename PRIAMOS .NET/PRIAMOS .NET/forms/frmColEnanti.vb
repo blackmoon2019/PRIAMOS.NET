@@ -76,7 +76,7 @@ Public Class frmColEnanti
                 End Using
                 'Καταχώρηση Είσπραξης
                 sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL (ID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,dtdebit,cmt,ColMethodID,createdOn,completed,tenant,modifiedBY)")
+                sSQL.AppendLine("INSERT INTO COL (ID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,dtdebit,cmt,ColMethodID,createdOn,completed,tenant,reserveAPT,modifiedBY)")
                 sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
                 sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
                 sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
@@ -88,7 +88,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine("GETDATE(),")
                 sSQL.AppendLine(toSQLValue(txtComments) & ",")
                 sSQL.AppendLine("'75E3251D-077D-42B0-B79A-9F2886381A97',")
-                sSQL.AppendLine("GETDATE(),0,1,")
+                sSQL.AppendLine("GETDATE(),1,1,1,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -109,7 +109,7 @@ Public Class frmColEnanti
                 End Using
                 'Καταχώρηση Επιμέρους είσπραξης
                 sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,modifiedBY)")
+                sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,reserveAPT,modifiedBY)")
                 sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
                 sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
                 sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
@@ -119,7 +119,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
                 sSQL.AppendLine("0,1,")
-                sSQL.AppendLine("GETDATE(),")
+                sSQL.AppendLine("GETDATE(),1,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)

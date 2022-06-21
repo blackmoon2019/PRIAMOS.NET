@@ -20,23 +20,23 @@ Partial Class frmBDG
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim EditorButtonImageOptions28 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject109 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject110 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject111 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject112 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions29 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject113 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject114 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject115 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject116 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBDG))
-        Dim EditorButtonImageOptions30 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject117 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject118 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject119 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject120 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -290,7 +290,6 @@ Partial Class frmBDG
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem31 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleLabelItem2 = New DevExpress.XtraLayout.SimpleLabelItem()
-        Me.LayoutControlItem42 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem43 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem45 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem46 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -320,6 +319,7 @@ Partial Class frmBDG
         Me.LayoutControlItem44 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem91 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem35 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem42 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabMaintenance = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl4Maintenance = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdSaveBCCT = New DevExpress.XtraEditors.SimpleButton()
@@ -757,7 +757,6 @@ Partial Class frmBDG
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -787,6 +786,7 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabMaintenance.SuspendLayout()
         CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl4Maintenance.SuspendLayout()
@@ -961,9 +961,9 @@ Partial Class frmBDG
         Me.grdAPM.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdAPM.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode2.LevelTemplate = Me.GridView7
-        GridLevelNode2.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
-        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.LevelTemplate = Me.GridView7
+        GridLevelNode1.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
+        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdAPM.Location = New System.Drawing.Point(57, 12)
         Me.grdAPM.MainView = Me.GridView5
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
@@ -1556,7 +1556,7 @@ Partial Class frmBDG
         '
         'Maintab
         '
-        Me.Maintab.Location = New System.Drawing.Point(4, 28)
+        Me.Maintab.Location = New System.Drawing.Point(4, 41)
         Me.Maintab.Margin = New System.Windows.Forms.Padding(5)
         Me.Maintab.Name = "Maintab"
         Me.Maintab.SelectedTabPage = Me.tabBDG
@@ -3593,15 +3593,6 @@ Partial Class frmBDG
         Me.SimpleLabelItem2.Text = "Μετρήσεις Ωρών"
         Me.SimpleLabelItem2.TextSize = New System.Drawing.Size(407, 25)
         '
-        'LayoutControlItem42
-        '
-        Me.LayoutControlItem42.Control = Me.cmdAddAHPB
-        Me.LayoutControlItem42.Location = New System.Drawing.Point(625, 0)
-        Me.LayoutControlItem42.Name = "LayoutControlItem20"
-        Me.LayoutControlItem42.Size = New System.Drawing.Size(30, 43)
-        Me.LayoutControlItem42.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem42.TextVisible = False
-        '
         'LayoutControlItem43
         '
         Me.LayoutControlItem43.Control = Me.cmdDelAHPB
@@ -3910,6 +3901,15 @@ Partial Class frmBDG
         Me.EmptySpaceItem35.Name = "EmptySpaceItem35"
         Me.EmptySpaceItem35.Size = New System.Drawing.Size(313, 43)
         Me.EmptySpaceItem35.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem42
+        '
+        Me.LayoutControlItem42.Control = Me.cmdAddAHPB
+        Me.LayoutControlItem42.Location = New System.Drawing.Point(625, 0)
+        Me.LayoutControlItem42.Name = "LayoutControlItem20"
+        Me.LayoutControlItem42.Size = New System.Drawing.Size(30, 43)
+        Me.LayoutControlItem42.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem42.TextVisible = False
         '
         'tabMaintenance
         '
@@ -4869,8 +4869,8 @@ Partial Class frmBDG
         'RepositoryItemButtonGas
         '
         Me.RepositoryItemButtonGas.AutoHeight = False
-        EditorButtonImageOptions28.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions28, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject109, SerializableAppearanceObject110, SerializableAppearanceObject111, SerializableAppearanceObject112, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonGas.Name = "RepositoryItemButtonGas"
         '
         'txtGInvTotalPrice
@@ -5108,8 +5108,8 @@ Partial Class frmBDG
         'RepositoryItemButtonOil
         '
         Me.RepositoryItemButtonOil.AutoHeight = False
-        EditorButtonImageOptions29.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions29, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject113, SerializableAppearanceObject114, SerializableAppearanceObject115, SerializableAppearanceObject116, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonOil.Name = "RepositoryItemButtonOil"
         '
         'txtOInvCode
@@ -6294,8 +6294,8 @@ Partial Class frmBDG
         'RepositoryItemButtonEdit4
         '
         Me.RepositoryItemButtonEdit4.AutoHeight = False
-        EditorButtonImageOptions30.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions30, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject117, SerializableAppearanceObject118, SerializableAppearanceObject119, SerializableAppearanceObject120, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonEdit4.Name = "RepositoryItemButtonEdit4"
         '
         'txtBDGFCode
@@ -6718,7 +6718,6 @@ Partial Class frmBDG
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6748,6 +6747,7 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabMaintenance.ResumeLayout(False)
         CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl4Maintenance.ResumeLayout(False)

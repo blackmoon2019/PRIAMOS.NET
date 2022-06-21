@@ -153,7 +153,6 @@ Partial Class frmINH
         Me.Vw_TTLTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_TTLTableAdapter()
         Me.AHPB_HTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_HTableAdapter()
         Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
-        Me.Priamos_NETDataSet2 = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
         Me.SplashScreenManager1 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), True, True)
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
@@ -251,7 +250,6 @@ Partial Class frmINH
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -1595,11 +1593,6 @@ Partial Class frmINH
         '
         Me.XtraSaveFileDialog1.FileName = "XtraSaveFileDialog1"
         '
-        'Priamos_NETDataSet2
-        '
-        Me.Priamos_NETDataSet2.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Vw_ANN_MENTSTableAdapter
         '
         Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
@@ -1741,7 +1734,6 @@ Partial Class frmINH
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1848,7 +1840,6 @@ Partial Class frmINH
     Friend WithEvents LayoutControlItem20 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents cboAnnouncements As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem22 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents Priamos_NETDataSet2 As Priamos_NETDataSet
     Friend WithEvents RepositoryItemLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
     Friend WithEvents VwANNMENTSBindingSource As BindingSource
     Friend WithEvents Vw_ANN_MENTSTableAdapter As Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter

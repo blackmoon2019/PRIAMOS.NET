@@ -382,7 +382,7 @@ Public Class frmINH
         If cboBDG.EditValue = Nothing Then Exit Sub
         chkCALC_CAT.DataSource = VwCALCCATBindingSource
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
-        If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
+        '    If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
         'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
@@ -443,12 +443,30 @@ Public Class frmINH
                 FlyoutPanel1.Options.AnchorType = Win.PopupToolWindowAnchor.Center
                 FlyoutPanel1.ShowPopup()
             Else
+                'Dim cmd As SqlCommand
+                'Dim sdr As SqlDataReader
+                'Dim CountUsers As Integer
+                'cmd = New SqlCommand("select count(distinct debitusrid) as CountUsers from col where debitusrID is not null and bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & " And completed = 0", CNDB)
+                'sdr = cmd.ExecuteReader()
+                'If (sdr.Read() = True) Then
+                '    If sdr.IsDBNull(sdr.GetOrdinal("CountUsers")) = True Then
+                '        CountUsers = 0
+                '    Else
+                '        CountUsers = sdr.GetInt32(sdr.GetOrdinal("CountUsers"))
+                '    End If
+                '    sdr.Close()
+                '    If CountUsers > 1 Then
+                '        XtraMessageBox.Show("Υπάρχουν  εισπράξεις σε άλλον χρήστη χρεωμένες. " & vbCrLf &
+                '                        "Πρέπει να αποχρεώσετε τις εισπράξεις αυτές ή να εκδόσετε το παραστατικό με τον ίδιο χρήστη.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '        Exit Sub
+                '    End If
+                'End If
                 Calculate()
                 TabNavigationPage2.Enabled = True
 
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -980,10 +998,10 @@ Public Class frmINH
         Dim sdr As SqlDataReader
         Try
             Select Case ButtonType
-                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   code > " & toSQLValue(txtCode, True) & " order by code asc "
-                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   code < " & toSQLValue(txtCode, True) & " order by code asc "
-                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by code asc "
-                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by code desc"
+                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   fdate > " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " order by fDate "
+                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   fdate < " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " order by fDate desc"
+                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by fdate asc "
+                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by fdate desc"
             End Select
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
@@ -1012,7 +1030,7 @@ Public Class frmINH
         Dim sdr As SqlDataReader
         Dim Code As Integer
         Try
-            sSQL = "select count(id) + 1 as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   code < " & toSQLValue(txtCode, True)
+            sSQL = "select count(id) + 1 as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   fdate < " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd"))
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then Code = sdr.GetInt32(sdr.GetOrdinal("Position")) - 1 Else Code = 0
