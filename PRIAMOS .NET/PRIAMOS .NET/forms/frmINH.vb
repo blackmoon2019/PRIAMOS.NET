@@ -137,7 +137,8 @@ Public Class frmINH
         'Dim cmd As SqlCommand
         'Dim sdr As SqlDataReader
         Try
-            For i As Integer = 0 To GridView5.DataRowCount - 1
+            Dim i As Integer
+            For i = 0 To GridView5.DataRowCount - 1
 
                 Dim B As New DevExpress.XtraGrid.Views.BandedGrid.GridBand
                 B.Caption = GridView5.GetRowCellDisplayText(i, "calcCatID")
@@ -145,7 +146,14 @@ Public Class frmINH
                 B.AppearanceHeader.Options.UseTextOptions = True
                 B.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center
                 If CheckIfBandExists(B.Caption) = False Then GridINH.Bands.Add(B)
-            Next              'cmd = New SqlCommand(sSQL, CNDB)
+            Next
+            Dim B2 As New DevExpress.XtraGrid.Views.BandedGrid.GridBand
+            B2.Caption = "Πάγιο ή Επιβ."
+            B2.Name = "Πάγιο ή Επιβ."
+            B2.AppearanceHeader.Options.UseTextOptions = True
+            B2.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center
+            If CheckIfBandExists(B2.Caption) = False Then GridINH.Bands.Add(B2)
+            'cmd = New SqlCommand(sSQL, CNDB)
             ''sdr = cmd.ExecuteReader()
             ''GridINH.Bands.AddBand("ΔΙΑΜΕΡΙΣΜΑΤΑ")
             ''Dim Col As DevExpress.XtraGrid.Columns.GridColumn
@@ -710,7 +718,8 @@ Public Class frmINH
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        Dim report As New Eidop()
+        'Dim report As New Eidop()
+        Dim report As New Receipt
         report.Parameters.Item(0).Value = sID
         ' report.Parameters.Item(1).Value = cboBDG.EditValue
         SplashScreenManager1.ShowWaitForm()

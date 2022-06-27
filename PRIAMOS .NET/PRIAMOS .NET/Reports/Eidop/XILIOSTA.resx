@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="SqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="SqlDataSourceMIL.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="CustomSqlQuery1.Sql" xml:space="preserve">
@@ -174,7 +174,7 @@ group by i.inhid,A.aptid,mlcname,I.bdgID,I.calcCatID ,A.shared,a.Elevator,a.Heat
 ) as s
 order by mlcname</value>
   </data>
-  <data name="SqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iaW5oaWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImFwdGlkIiBUeXBlPSJHdWlkIiAvPjxGaWVsZCBOYW1lPSJtbGNOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlRvdEFwbSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iQXBtIiBUeXBlPSJEZWNpbWFsIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+  <data name="SqlDataSourceMIL.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZU1JTCI+PFZpZXcgTmFtZT0iUXVlcnkiPjxGaWVsZCBOYW1lPSJpbmhpZCIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0iYXB0aWQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9Im1sY05hbWUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVG90QXBtIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJBcG0iIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
   </data>
 </root>

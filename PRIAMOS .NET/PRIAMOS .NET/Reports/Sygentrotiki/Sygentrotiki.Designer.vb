@@ -336,7 +336,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "7011d83c-b197-4db3-ac92-65bb7768e4a7"
+        Me.inhID.ValueInfo = "4fb33e1f-11c8-403f-89f6-7f9fda81b890"
         DynamicListLookUpSettings1.DataMember = "vw_INH"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "ID"
@@ -2250,7 +2250,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.bdgID.Description = "bdgID"
         Me.bdgID.Name = "bdgID"
         Me.bdgID.Type = GetType(System.Guid)
-        Me.bdgID.ValueInfo = "8f683ac5-28d4-4699-b6b9-43335f81e880"
+        Me.bdgID.ValueInfo = "9980e875-415e-452d-87ef-326e34cc0864"
         DynamicListLookUpSettings2.DataMember = "vw_BDG"
         DynamicListLookUpSettings2.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings2.DisplayMember = "ID"

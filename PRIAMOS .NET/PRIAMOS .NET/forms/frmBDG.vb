@@ -875,7 +875,7 @@ Public Class frmBDG
                     "Select    [bdgID], [aptID], max([mdt]) as mdt " +
                     "From vw_AHPB " +
                     "Where bdgid =" + toSQLValueS(sID) + "  And boiler = " + RGTypeHeating.SelectedIndex.ToString + " And mdt <= " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) +
-                    "group by [bdgID], [aptID]) as BEF on BEF.aptID=CUR.aptID and BEF.mdt =cur.mdt and boiler=1 ORDER BY CUR.ORD   "
+                    "group by [bdgID], [aptID]) as BEF on BEF.aptID=CUR.aptID and BEF.mdt =cur.mdt and boiler=" + RGTypeHeating.SelectedIndex.ToString + " ORDER BY CUR.ORD   "
 
             'sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes, BEF.mes as mesB,  
             '  CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
@@ -2465,14 +2465,14 @@ Public Class frmBDG
 
     '        Select Case cboHtypes.EditValue
     '            'Αυτονομία με σταθερό πάγιο
-    '            Case System.Guid.Parse("1879D79E-6071-4C1B-A9A4-0AEC70EB8025")
+    '            Case System.Guid.Parse("9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE")
     '                cboBtypes.Enabled = True
     '                cmdCboManageBtypes.Enabled = True
     '                cboFtypes.Enabled = True
     '                txtHpc.Enabled = True
     '                RGBolier.Enabled = True
     '            'Αυτονομία με χρήση Fi
-    '            Case System.Guid.Parse("64FE370B-9499-4263-861E-E1820E0ED9CD")
+    '            Case System.Guid.Parse("11F7A89C-F64D-4596-A5AF-005290C5FA49")
     '                cboBtypes.Enabled = True
     '                cmdCboManageBtypes.Enabled = True
     '                cboFtypes.Enabled = True
@@ -2515,8 +2515,8 @@ Public Class frmBDG
     '            'Πετρέλαιο
     '            Case System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB")
     '                If cboHtypes.EditValue = System.Guid.Parse("D29BAB0F-F94C-428F-A699-102EE9EF0BC2") Or
-    '                   cboHtypes.EditValue = System.Guid.Parse("1879D79E-6071-4C1B-A9A4-0AEC70EB8025") Or
-    '                   cboHtypes.EditValue = System.Guid.Parse("64FE370B-9499-4263-861E-E1820E0ED9CD") Then
+    '                   cboHtypes.EditValue = System.Guid.Parse("9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Or
+    '                   cboHtypes.EditValue = System.Guid.Parse("11F7A89C-F64D-4596-A5AF-005290C5FA49") Then
     '                    txtTacH.Enabled = True
     '                    txtLpcH.Enabled = True
     '                Else
