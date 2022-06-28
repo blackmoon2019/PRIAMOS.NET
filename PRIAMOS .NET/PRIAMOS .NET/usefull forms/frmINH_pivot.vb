@@ -77,7 +77,9 @@ Public Class frmINH_pivot
             While sdr.Read()
                 If sdr.IsDBNull(sdr.GetOrdinal("calcCatID")) = False Then
                     Select Case sdr.GetGuid(sdr.GetOrdinal("calcCatID")).ToString
-                        Case "c8adcd0b-d8bc-4f68-b6bb-d5cbcb88b4b9" : PivotGridControl1.Fields("shared").Visible = True
+                        Case "c8adcd0b-d8bc-4f68-b6bb-d5cbcb88b4b9"
+                            PivotGridControl1.Fields("shared").Visible = True
+                            PivotGridControl1.Fields("ep_shared").Visible = True
                         Case "7fa0d7ba-2713-405c-8748-61dd8537a9cc" : PivotGridControl1.Fields("elevator").Visible = True
                         Case "8d47e8ab-3692-48f1-8cba-1e3f41afc13d" : PivotGridControl1.Fields("heating").Visible = True
                         Case "bbfda968-8c0c-431b-a804-ac8b8ca4b3d3" : PivotGridControl1.Fields("special_costs").Visible = True

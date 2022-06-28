@@ -147,12 +147,12 @@ Public Class frmINH
                 B.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center
                 If CheckIfBandExists(B.Caption) = False Then GridINH.Bands.Add(B)
             Next
-            Dim B2 As New DevExpress.XtraGrid.Views.BandedGrid.GridBand
-            B2.Caption = "Πάγιο ή Επιβ."
-            B2.Name = "Πάγιο ή Επιβ."
-            B2.AppearanceHeader.Options.UseTextOptions = True
-            B2.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center
-            If CheckIfBandExists(B2.Caption) = False Then GridINH.Bands.Add(B2)
+            'Dim B2 As New DevExpress.XtraGrid.Views.BandedGrid.GridBand
+            'B2.Caption = "Πάγιο ή Επιβ."
+            'B2.Name = "Πάγιο ή Επιβ."
+            'B2.AppearanceHeader.Options.UseTextOptions = True
+            'B2.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center
+            'If CheckIfBandExists(B2.Caption) = False Then GridINH.Bands.Add(B2)
             'cmd = New SqlCommand(sSQL, CNDB)
             ''sdr = cmd.ExecuteReader()
             ''GridINH.Bands.AddBand("ΔΙΑΜΕΡΙΣΜΑΤΑ")
@@ -189,6 +189,7 @@ Public Class frmINH
             Next column
             For i As Integer = 0 To GridView5.DataRowCount - 1
                 B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΕΠΙΒ.").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
             Next
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
