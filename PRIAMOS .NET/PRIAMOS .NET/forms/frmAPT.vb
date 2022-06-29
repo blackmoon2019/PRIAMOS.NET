@@ -19,6 +19,7 @@ Public Class frmAPT
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
+    Private Ord As Integer
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -88,6 +89,7 @@ Public Class frmAPT
 
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APT where id ='" + sID + "'")
+                Ord = txtOrd.EditValue
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -121,6 +123,19 @@ Public Class frmAPT
                         sAptID = System.Guid.NewGuid.ToString
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1,,, sAptID)
                     Case FormMode.EditRecord
+                        If Ord <> txtOrd.EditValue Then
+                            If XtraMessageBox.Show("Εντοπίστηκε αλλαγή στο ΑΑ του διαμερίσματος. " & vbCrLf &
+                                                   "Θέλετε να αλλάξει το ΑΑ και σε όλα τα υπόλοιπα διαμερίσματα που είναι μετά το επιλεγμένο?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                                Using oCmd As New SqlCommand("ChangeAPTOrder", CNDB)
+                                    oCmd.CommandType = CommandType.StoredProcedure
+                                    oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
+                                    oCmd.Parameters.AddWithValue("@aptID ", sID)
+                                    oCmd.Parameters.AddWithValue("@oldOrd", Ord)
+                                    oCmd.Parameters.AddWithValue("@NewOrd", txtOrd.EditValue)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                            End If
+                        End If
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "APT", LayoutControl1,,, sID)
                 End Select
                 If sResult Then

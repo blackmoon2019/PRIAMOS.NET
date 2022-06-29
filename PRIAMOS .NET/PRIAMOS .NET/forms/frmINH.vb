@@ -89,8 +89,9 @@ Public Class frmINH
                     cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
                 Else
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                    cmdSaveINH.Enabled = True : cmdCancelInvoice.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True :: GridControl1.Enabled = True
+                    cmdSaveINH.Enabled = True : cmdCancelInvoice.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridControl1.Enabled = True
                 End If
+                Me.Text = "Παραστατικό-" & cboBDG.Text
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -190,6 +191,7 @@ Public Class frmINH
             For i As Integer = 0 To GridView5.DataRowCount - 1
                 B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
                 B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΕΠΙΒ.").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΣΥΝΟΛΟ").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
             Next
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)

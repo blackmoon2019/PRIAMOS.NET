@@ -149,6 +149,8 @@ Public Class frmBDG
         '  My.Settings.Save()
         bdgName = txtNam.Text
         LoadForms.RestoreLayoutFromXml(GridView1, "APT_def.xml")
+        GridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True
+
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
     Private Sub frmBDG_Resize(sender As Object, e As EventArgs) Handles Me.Resize
@@ -2091,7 +2093,7 @@ Public Class frmBDG
     Private Sub GridView10_DoubleClick(sender As Object, e As EventArgs) Handles GridView10.DoubleClick
         If GridView10.IsGroupRow(GridView10.FocusedRowHandle) Then Exit Sub
         Dim fINH As frmINH = New frmINH()
-        fINH.Text = "Κοινόχρηστα"
+        fINH.Text = "Παραστατικό"
         fINH.ID = GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString
         fINH.MdiParent = frmMain
         fINH.Mode = FormMode.EditRecord
@@ -2447,6 +2449,18 @@ Public Class frmBDG
         Dim GRD8 As GridView = sender
         If e.Column.FieldName = "cctID" Then e.DisplayText = GRD8.GetRowCellValue(e.RowHandle, "Fullname").ToString()
 
+    End Sub
+
+    Private Sub cmdAHPBExport_Click(sender As Object, e As EventArgs) Handles cmdAHPBExport.Click
+        Dim options = New XlsxExportOptionsEx()
+        options.UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula
+        options.ExportType = ExportType.WYSIWYG
+        XtraSaveFileDialog1.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
+        XtraSaveFileDialog1.FileName = "Ώρες Μέτρησης_" & bdgName
+        If XtraSaveFileDialog1.ShowDialog() = DialogResult.OK Then
+            GridView2.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+            Process.Start(XtraSaveFileDialog1.FileName)
+        End If
     End Sub
 
 
