@@ -75,11 +75,12 @@ Public Class frmINH
                 LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
-                Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+                Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
                 Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
                 If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
+                If cboAhpbHB.EditValue IsNot Nothing Then cboAhpbB.EditValue = cboAhpbHB.EditValue
                 'lbldate.Text = TranslateDates(dtFDate, dtTDate)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
                 DataNavigator1.Position = SetNavigatorPosition()
@@ -333,13 +334,19 @@ Public Class frmINH
                     oCmd.ExecuteNonQuery()
                 End Using
                 If cboAhpbH.EditValue IsNot Nothing Then
-                    sSQL = "UPDATE AHPB_H SET FINALIZED=0 WHERE ID = " & toSQLValueS(cboAhpbH.EditValue.ToString)
+                    sSQL = "UPDATE AHPB_H SET FINALIZED=0 WHERE BOILER=0 AND ID = " & toSQLValueS(cboAhpbH.EditValue.ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                End If
+                If cboAhpbHB.EditValue IsNot Nothing Then
+                    sSQL = "UPDATE AHPB_H SET FINALIZED=0 WHERE BOILER=1 AND ID = " & toSQLValueS(cboAhpbHB.EditValue.ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
                 End If
                 EditRecord() : Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
-                Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, System.Guid.Parse(cboBDG.EditValue.ToString))
+                Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, System.Guid.Parse(cboBDG.EditValue.ToString))
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -377,7 +384,7 @@ Public Class frmINH
                 cboAhpb.Properties.ReadOnly = False
 
             ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
-                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Θέρμανσης", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 'cmdOK.Enabled = False
             End If
         Else
@@ -385,6 +392,15 @@ Public Class frmINH
         End If
         If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+            txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
+            If Priamos_NETDataSet.AHPB_Β.Rows.Count > 0 Then
+                cboAhpbHB.ItemIndex = 0
+                cboAhpbHB.Properties.ReadOnly = False
+
+            ElseIf cboAhpbHB.Properties.DataSource.Count = 0 Then
+                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Boiler", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'cmdOK.Enabled = False
+            End If
         Else
             txtBoilerType.EditValue = Nothing
         End If
@@ -395,7 +411,11 @@ Public Class frmINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
         '    If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
         'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
-        Me.AHPB_HTableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+        Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+
+        Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
+
+
         Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
         If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
             txtHeatingType.EditValue = Nothing
@@ -411,11 +431,14 @@ Public Class frmINH
         End If
         If cboBDG.GetColumnValue("BTypeID") Is Nothing Then
             txtBoilerType.EditValue = Nothing
+            txtHpb.EditValue = Nothing
         Else
             If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
                 txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+                txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
             Else
                 txtBoilerType.EditValue = Nothing
+                txtHpb.EditValue = Nothing
             End If
         End If
     End Sub
@@ -453,7 +476,16 @@ Public Class frmINH
                 'FlyoutPanel1.Options.CloseOnOuterClick = True
                 FlyoutPanel1.Options.AnchorType = Win.PopupToolWindowAnchor.Center
                 FlyoutPanel1.ShowPopup()
+            ElseIf (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbHB.EditValue Is Nothing Then
+                LayoutControl1.Enabled = False
+                FlyoutPanel1.OwnerControl = TabPane1
+                FlyoutPanel1.OptionsBeakPanel.AnimationType = Win.PopupToolWindowAnimation.Fade
+                'FlyoutPanel1.Options.CloseOnOuterClick = True
+                FlyoutPanel1.Options.AnchorType = Win.PopupToolWindowAnchor.Center
+                FlyoutPanel1.ShowPopup()
             Else
+
                 'Dim cmd As SqlCommand
                 'Dim sdr As SqlDataReader
                 'Dim CountUsers As Integer
@@ -603,6 +635,7 @@ Public Class frmINH
     Private Sub Calculate()
         Try
             Dim sAhpbID As String
+            Dim sAhpbBID As String
             Using oCmd As New SqlCommand("inv_Calculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
@@ -615,7 +648,16 @@ Public Class frmINH
                     ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
                     If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper
                 End If
+                If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                    cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbHB.EditValue Is Nothing Then
+                    If cboAhpbB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbB.EditValue.ToString.ToUpper
+                Else
+                    ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
+                    If cboAhpbHB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper
+                End If
+
                 oCmd.Parameters.AddWithValue("@ahpbHID", System.Guid.Parse(sAhpbID))
+                oCmd.Parameters.AddWithValue("@ahpbHIDB", System.Guid.Parse(sAhpbBID))
                 oCmd.ExecuteNonQuery()
             End Using
             XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -627,16 +669,13 @@ Public Class frmINH
 
     End Sub
 
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
-        FlyoutPanel1.HidePopup()
-        LayoutControl1.Enabled = True
-    End Sub
 
     Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
         FlyoutPanel1.HidePopup()
         Calculate()
         Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
         cboAhpbH.EditValue = cboAhpb.EditValue
+        cboAhpbHB.EditValue = cboAhpbB.EditValue
         LayoutControl1.Enabled = True
     End Sub
 
@@ -1078,5 +1117,43 @@ Public Class frmINH
         End If
 
 
+    End Sub
+
+    Private Sub GridView5_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView5.ValidatingEditor
+        Dim sSQL As String
+        ' Παίρνει το μεγαλύτερο Α/Α και το αυξάνει κατα 1
+        Dim cmd As SqlCommand = New SqlCommand("Select  count(repName) As CountRep FROM IND WHERE INHID= " & toSQLValueS(sID) & " AND repName =  " & toSQLValueS(e.Value), CNDB)
+        Dim sdr As SqlDataReader = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            If sdr.GetInt32(sdr.GetOrdinal("CountRep")) = 1 Then
+                e.ErrorText = "Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο."
+                sdr.Close()
+                e.Valid = False
+                Exit Sub
+            End If
+            sdr.Close()
+        End If
+
+    End Sub
+
+    Private Sub cboAhpbH_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbH.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboAhpbH.EditValue = Nothing
+            Case 2
+            Case 3
+        End Select
+    End Sub
+
+    Private Sub cboAhpbHB_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbHB.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboAhpbHB.EditValue = Nothing
+            Case 2
+            Case 3
+        End Select
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+        FlyoutPanel1.HidePopup()
+        LayoutControl1.Enabled = True
     End Sub
 End Class

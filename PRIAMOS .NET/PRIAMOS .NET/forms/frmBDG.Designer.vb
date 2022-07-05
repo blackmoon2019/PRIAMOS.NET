@@ -1559,7 +1559,7 @@ Partial Class frmBDG
         '
         'Maintab
         '
-        Me.Maintab.Location = New System.Drawing.Point(4, 29)
+        Me.Maintab.Location = New System.Drawing.Point(4, 28)
         Me.Maintab.Margin = New System.Windows.Forms.Padding(5)
         Me.Maintab.Name = "Maintab"
         Me.Maintab.SelectedTabPage = Me.tabBDG
