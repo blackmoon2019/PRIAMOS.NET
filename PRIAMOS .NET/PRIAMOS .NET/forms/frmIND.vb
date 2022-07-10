@@ -98,7 +98,7 @@ Public Class frmIND
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\IND_BDG_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub SimpleButton39_Click(sender As Object, e As EventArgs) Handles SimpleButton39.Click

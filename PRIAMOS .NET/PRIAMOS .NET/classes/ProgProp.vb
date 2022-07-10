@@ -13,7 +13,7 @@ Public Class ProgProp
             sdr.Close()
             Return ProgProps.Decimals
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Function
@@ -28,7 +28,7 @@ Public Class ProgProp
             If (sdr.Read() = True) Then ProgProps.VAT = sdr.GetString(sdr.GetOrdinal("VAL"))
             Return ProgProps.VAT
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
 
@@ -39,7 +39,7 @@ Public Class ProgProp
             sSQL = "Update PRM set val = '" & sValue & "' where prm= 'DECIMAL_PLACES'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -50,7 +50,7 @@ Public Class ProgProp
             sSQL = "Update PRM set val = '" & sValue & "' where prm= 'VAT'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -61,7 +61,7 @@ Public Class ProgProp
             sSQL = "Update PRM set val = '" & sValue & "' where prm= 'VAT'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -78,7 +78,7 @@ Public Class ProgProp
             sdr.Close()
             Return ProgProps.SupportEmail
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Function
@@ -94,7 +94,7 @@ Public Class ProgProp
             sdr.Close()
             Return ProgProps.ADM
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Function
@@ -111,7 +111,7 @@ Public Class ProgProp
             sdr.Close()
             Return ProgProps.EXFolderPath
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Function
@@ -123,7 +123,7 @@ Public Class ProgProp
             sSQL = "Update PRM set val = '" & sValue & "' where prm= 'SUPPORT_EMAIL'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -134,7 +134,7 @@ Public Class ProgProp
             sSQL = "Update PRM set val = '" & sValue & "' where prm= 'EX_FOLDER_PATH'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub

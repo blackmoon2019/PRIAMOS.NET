@@ -12,11 +12,12 @@ Public Class frmLogin
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim CN As New CN
         'MultipleActiveResultSets=True
+        ProgProps.ProgTitle = "PRIAMOS .NET"
         My.Settings.Upgrade()
         My.Settings.Save()
         chkRememberUN.EditValue = My.Settings.UNSave
         If CNDB.ConnectionString.ToString = "" Then
-            If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             'Έλεγχος νέας έκδοσης
             If CheckFUpdate.FindNewVersion Then
 
@@ -66,7 +67,7 @@ Public Class frmLogin
                     UserPermissions.GetUserPermissions()
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
-                    XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     If My.Settings.UNSave = True Then My.Settings.UN = txtUN.EditValue : My.Settings.Save()
 
                 End If
@@ -74,11 +75,11 @@ Public Class frmLogin
                 frmMain.Show()
                 Me.Close()
             Else
-                XtraMessageBox.Show("Πληκτρολογήσατε λάθος στοιχεία. Παρακαλώ προσπαθήστε ξανά.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                XtraMessageBox.Show("Πληκτρολογήσατε λάθος στοιχεία. Παρακαλώ προσπαθήστε ξανά.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub txtUN_KeyDown(sender As Object, e As KeyEventArgs)

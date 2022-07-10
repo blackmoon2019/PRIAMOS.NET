@@ -69,7 +69,7 @@ Partial Public Class XILIOSTA
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel3, Me.XrLabel2, Me.XrLabel1})
         Me.Detail.Dpi = 254.0!
-        Me.Detail.HeightF = 51.54082!
+        Me.Detail.HeightF = 39.44559!
         Me.Detail.HierarchyPrintOptions.Indent = 50.8!
         Me.Detail.KeepTogether = True
         Me.Detail.MultiColumn.ColumnSpacing = 12.9032!
@@ -82,7 +82,7 @@ Partial Public Class XILIOSTA
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Apm]")})
         Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(627.0625!, 0!)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(808.8958!, 0!)
         Me.XrLabel3.Multiline = True
         Me.XrLabel3.Name = "XrLabel3"
         Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -98,7 +98,7 @@ Partial Public Class XILIOSTA
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TotApm]")})
         Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(470.9583!, 0!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(589.7916!, 0!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
         Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -118,7 +118,7 @@ Partial Public Class XILIOSTA
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(470.9584!, 33.02!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(399.8989!, 33.02!)
         Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "XrLabel1"
         '

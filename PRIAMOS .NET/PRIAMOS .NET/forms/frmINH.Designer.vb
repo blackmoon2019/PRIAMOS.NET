@@ -66,6 +66,7 @@ Partial Class frmINH
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.cmdNewInh = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPrintAll = New DevExpress.XtraEditors.DropDownButton()
         Me.PopupMenu1 = New DevExpress.XtraBars.PopupMenu(Me.components)
@@ -681,8 +682,8 @@ Partial Class frmINH
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarButtonItem1, Me.BarButtonItem2})
-        Me.BarManager1.MaxItemId = 2
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3})
+        Me.BarManager1.MaxItemId = 3
         '
         'barDockControlTop
         '
@@ -732,6 +733,12 @@ Partial Class frmINH
         Me.BarButtonItem2.Id = 1
         Me.BarButtonItem2.Name = "BarButtonItem2"
         '
+        'BarButtonItem3
+        '
+        Me.BarButtonItem3.Caption = "Αποδείξεις"
+        Me.BarButtonItem3.Id = 2
+        Me.BarButtonItem3.Name = "BarButtonItem3"
+        '
         'cmdNewInh
         '
         Me.cmdNewInh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_new_file_24
@@ -757,7 +764,7 @@ Partial Class frmINH
         '
         'PopupMenu1
         '
-        Me.PopupMenu1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem2)})
+        Me.PopupMenu1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem3)})
         Me.PopupMenu1.Manager = Me.BarManager1
         Me.PopupMenu1.Name = "PopupMenu1"
         '
@@ -1999,4 +2006,5 @@ Partial Class frmINH
     Friend WithEvents cboAhpb As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents txtHpb As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem28 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
 End Class

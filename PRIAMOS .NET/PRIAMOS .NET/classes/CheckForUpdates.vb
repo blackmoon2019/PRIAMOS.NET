@@ -31,7 +31,7 @@ Public Class CheckForUpdates
                     Dim version2 = New Version(sExeVer)
                     If version1.CompareTo(version2) < 0 Then
                         XtraMessageBox.Show("Βρέθηκε νέα έκδοση του προγράμματος " & sExeVer & "." & vbCrLf &
-                                            "Θα πραγματοποιηθεί έξοδος του προγράμματος και έναρξη της αναβάθμισης", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                            "Θα πραγματοποιηθεί έξοδος του προγράμματος και έναρξη της αναβάθμισης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                         sdr.Close()
                         ' Shell(Application.StartupPath & "\Updater\PriamosUpdate.exe")
                         Dim pHelp As New ProcessStartInfo
@@ -50,7 +50,7 @@ Public Class CheckForUpdates
             End If
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         Return False
@@ -94,7 +94,7 @@ Public Class CheckForUpdates
             End If
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         Return False

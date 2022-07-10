@@ -187,7 +187,7 @@ Public Class frmBatchInsertAttachmentsEX
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Try
             If GridView1.SelectedRowsCount = 0 Then
-                XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
             For I = 0 To GridView1.SelectedRowsCount - 1
@@ -197,11 +197,11 @@ Public Class frmBatchInsertAttachmentsEX
 
                 End If
             Next
-            XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -277,7 +277,7 @@ Public Class frmBatchInsertAttachmentsEX
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INDF_BATCH.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
     Private Sub OpenPreviwer()
         Dim frmFilePreviwer As New frmFilePreviwer

@@ -24,10 +24,10 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EXODA_PER_APT_OWNERS))
-        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-        Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Dim DynamicListLookUpSettings2 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
+        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Me.SqlDataSourceAPTOWN = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
@@ -36,16 +36,13 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel8 = New DevExpress.XtraReports.UI.XRLabel()
         Me.GroupHeader1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
-        Me.table1 = New DevExpress.XtraReports.UI.XRTable()
-        Me.tableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.tableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
         Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
         Me.aptID = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.tableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.tableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.table1 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.table1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -68,13 +65,13 @@ Partial Public Class EXODA_PER_APT_OWNERS
         'TopMargin
         '
         Me.TopMargin.Dpi = 254.0!
-        Me.TopMargin.HeightF = 0!
+        Me.TopMargin.HeightF = 10.0!
         Me.TopMargin.Name = "TopMargin"
         '
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 254.0!
-        Me.BottomMargin.HeightF = 7.9375!
+        Me.BottomMargin.HeightF = 10.0!
         Me.BottomMargin.Name = "BottomMargin"
         '
         'Detail
@@ -91,7 +88,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel6.Dpi = 254.0!
         Me.XrLabel6.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
         Me.XrLabel6.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(606.0044!, 0!)
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(587.0146!, 0!)
         Me.XrLabel6.Multiline = True
         Me.XrLabel6.Name = "XrLabel6"
         Me.XrLabel6.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -111,7 +108,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel7.Multiline = True
         Me.XrLabel7.Name = "XrLabel7"
         Me.XrLabel7.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel7.SizeF = New System.Drawing.SizeF(491.191!, 38.09998!)
+        Me.XrLabel7.SizeF = New System.Drawing.SizeF(554.01!, 38.09998!)
         Me.XrLabel7.StylePriority.UseFont = False
         Me.XrLabel7.Text = "XrLabel1"
         '
@@ -121,11 +118,11 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel8.Dpi = 254.0!
         Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[AmtPerCalc]")})
         Me.XrLabel8.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(779.6073!, 0!)
+        Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(783.2402!, 0!)
         Me.XrLabel8.Multiline = True
         Me.XrLabel8.Name = "XrLabel8"
         Me.XrLabel8.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel8.SizeF = New System.Drawing.SizeF(160.6409!, 38.09998!)
+        Me.XrLabel8.SizeF = New System.Drawing.SizeF(175.7598!, 38.09998!)
         Me.XrLabel8.StylePriority.UseFont = False
         Me.XrLabel8.StylePriority.UseTextAlignment = False
         Me.XrLabel8.Text = "XrLabel3"
@@ -134,127 +131,11 @@ Partial Public Class EXODA_PER_APT_OWNERS
         '
         'GroupHeader1
         '
-        Me.GroupHeader1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.table1, Me.XrLabel5, Me.XrLabel4, Me.XrLabel2, Me.XrLabel1, Me.XrLabel3})
+        Me.GroupHeader1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.table1, Me.XrLabel5, Me.XrLabel4})
         Me.GroupHeader1.Dpi = 254.0!
         Me.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail
         Me.GroupHeader1.HeightF = 39.6875!
         Me.GroupHeader1.Name = "GroupHeader1"
-        '
-        'table1
-        '
-        Me.table1.Dpi = 254.0!
-        Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
-        Me.table1.Name = "table1"
-        Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
-        Me.table1.SizeF = New System.Drawing.SizeF(580.4431!, 38.09998!)
-        '
-        'tableRow1
-        '
-        Me.tableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.tableCell2})
-        Me.tableRow1.Dpi = 254.0!
-        Me.tableRow1.Name = "tableRow1"
-        Me.tableRow1.Weight = 1.0R
-        '
-        'tableCell2
-        '
-        Me.tableCell2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.tableCell2.CanGrow = False
-        Me.tableCell2.Dpi = 254.0!
-        Me.tableCell2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[calcCatNam]")})
-        Me.tableCell2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.tableCell2.ForeColor = System.Drawing.Color.Black
-        Me.tableCell2.Name = "tableCell2"
-        Me.tableCell2.StylePriority.UseBackColor = False
-        Me.tableCell2.StylePriority.UseFont = False
-        Me.tableCell2.StylePriority.UseForeColor = False
-        Me.tableCell2.Weight = 0.9357889498197115R
-        '
-        'XrLabel5
-        '
-        Me.XrLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.XrLabel5.CanGrow = False
-        Me.XrLabel5.Dpi = 254.0!
-        Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(580.4431!, 0!)
-        Me.XrLabel5.Multiline = True
-        Me.XrLabel5.Name = "XrLabel5"
-        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel5.SizeF = New System.Drawing.SizeF(195.0367!, 38.09998!)
-        Me.XrLabel5.StylePriority.UseBackColor = False
-        Me.XrLabel5.StylePriority.UseFont = False
-        Me.XrLabel5.StylePriority.UseTextAlignment = False
-        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-        Me.XrLabel5.Summary = XrSummary1
-        Me.XrLabel5.Text = "XrLabel5"
-        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        '
-        'XrLabel4
-        '
-        Me.XrLabel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.XrLabel4.CanGrow = False
-        Me.XrLabel4.Dpi = 254.0!
-        Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([AmtPerCalc]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(779.6073!, 0!)
-        Me.XrLabel4.Multiline = True
-        Me.XrLabel4.Name = "XrLabel4"
-        Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel4.SizeF = New System.Drawing.SizeF(160.6409!, 38.09998!)
-        Me.XrLabel4.StylePriority.UseBackColor = False
-        Me.XrLabel4.StylePriority.UseFont = False
-        Me.XrLabel4.StylePriority.UseTextAlignment = False
-        XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
-        Me.XrLabel4.Summary = XrSummary2
-        Me.XrLabel4.Text = "XrLabel5"
-        Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        '
-        'XrLabel2
-        '
-        Me.XrLabel2.CanGrow = False
-        Me.XrLabel2.Dpi = 254.0!
-        Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
-        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(606.0044!, 0!)
-        Me.XrLabel2.Multiline = True
-        Me.XrLabel2.Name = "XrLabel2"
-        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel2.SizeF = New System.Drawing.SizeF(169.4754!, 38.09998!)
-        Me.XrLabel2.StylePriority.UseFont = False
-        Me.XrLabel2.Text = "XrLabel2"
-        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel2.TextFormatString = "{0:0.00€}"
-        '
-        'XrLabel1
-        '
-        Me.XrLabel1.CanGrow = False
-        Me.XrLabel1.Dpi = 254.0!
-        Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[repName]")})
-        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
-        Me.XrLabel1.Multiline = True
-        Me.XrLabel1.Name = "XrLabel1"
-        Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(491.191!, 38.09998!)
-        Me.XrLabel1.StylePriority.UseFont = False
-        Me.XrLabel1.Text = "XrLabel1"
-        '
-        'XrLabel3
-        '
-        Me.XrLabel3.CanGrow = False
-        Me.XrLabel3.Dpi = 254.0!
-        Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[AmtPerCalc]")})
-        Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(779.6073!, 0!)
-        Me.XrLabel3.Multiline = True
-        Me.XrLabel3.Name = "XrLabel3"
-        Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel3.SizeF = New System.Drawing.SizeF(160.6409!, 38.09998!)
-        Me.XrLabel3.StylePriority.UseFont = False
-        Me.XrLabel3.StylePriority.UseTextAlignment = False
-        Me.XrLabel3.Text = "XrLabel3"
-        Me.XrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel3.TextFormatString = "{0:0.00€}"
         '
         'inhID
         '
@@ -284,6 +165,75 @@ Partial Public Class EXODA_PER_APT_OWNERS
         DynamicListLookUpSettings2.ValueMember = "aptID"
         Me.aptID.ValueSourceSettings = DynamicListLookUpSettings2
         '
+        'tableCell2
+        '
+        Me.tableCell2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.tableCell2.CanGrow = False
+        Me.tableCell2.Dpi = 254.0!
+        Me.tableCell2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[calcCatNam]")})
+        Me.tableCell2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.tableCell2.ForeColor = System.Drawing.Color.Black
+        Me.tableCell2.Name = "tableCell2"
+        Me.tableCell2.StylePriority.UseBackColor = False
+        Me.tableCell2.StylePriority.UseFont = False
+        Me.tableCell2.StylePriority.UseForeColor = False
+        Me.tableCell2.Weight = 0.89317356278546745R
+        '
+        'tableRow1
+        '
+        Me.tableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.tableCell2})
+        Me.tableRow1.Dpi = 254.0!
+        Me.tableRow1.Name = "tableRow1"
+        Me.tableRow1.Weight = 1.0R
+        '
+        'table1
+        '
+        Me.table1.Dpi = 254.0!
+        Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.table1.Name = "table1"
+        Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
+        Me.table1.SizeF = New System.Drawing.SizeF(554.01!, 38.09998!)
+        '
+        'XrLabel5
+        '
+        Me.XrLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel5.CanGrow = False
+        Me.XrLabel5.Dpi = 254.0!
+        Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(558.01!, 0!)
+        Me.XrLabel5.Multiline = True
+        Me.XrLabel5.Name = "XrLabel5"
+        Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(198.48!, 38.09998!)
+        Me.XrLabel5.StylePriority.UseBackColor = False
+        Me.XrLabel5.StylePriority.UseFont = False
+        Me.XrLabel5.StylePriority.UseTextAlignment = False
+        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+        Me.XrLabel5.Summary = XrSummary1
+        Me.XrLabel5.Text = "XrLabel5"
+        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'XrLabel4
+        '
+        Me.XrLabel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel4.CanGrow = False
+        Me.XrLabel4.Dpi = 254.0!
+        Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([AmtPerCalc]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(760.52!, 0!)
+        Me.XrLabel4.Multiline = True
+        Me.XrLabel4.Name = "XrLabel4"
+        Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel4.SizeF = New System.Drawing.SizeF(198.48!, 38.09998!)
+        Me.XrLabel4.StylePriority.UseBackColor = False
+        Me.XrLabel4.StylePriority.UseFont = False
+        Me.XrLabel4.StylePriority.UseTextAlignment = False
+        XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+        Me.XrLabel4.Summary = XrSummary2
+        Me.XrLabel4.Text = "XrLabel5"
+        Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
         'EXODA_PER_APT_OWNERS
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.GroupHeader1})
@@ -292,9 +242,10 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.DataSource = Me.SqlDataSourceAPTOWN
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(254, 254, 0, 8)
-        Me.PageHeight = 2794
-        Me.PageWidth = 2159
+        Me.Margins = New System.Drawing.Printing.Margins(10, 511, 10, 10)
+        Me.PageHeight = 2100
+        Me.PageWidth = 1480
+        Me.PaperKind = System.Drawing.Printing.PaperKind.A5
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID, Me.aptID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
@@ -310,17 +261,14 @@ Partial Public Class EXODA_PER_APT_OWNERS
     Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
     Friend WithEvents SqlDataSourceAPTOWN As DevExpress.DataAccess.Sql.SqlDataSource
     Friend WithEvents GroupHeader1 As DevExpress.XtraReports.UI.GroupHeaderBand
-    Friend WithEvents table1 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents tableRow1 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents tableCell2 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel7 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel8 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents inhID As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents aptID As DevExpress.XtraReports.Parameters.Parameter
+    Friend WithEvents table1 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents tableRow1 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents tableCell2 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
 End Class

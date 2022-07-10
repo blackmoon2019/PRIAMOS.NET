@@ -167,7 +167,7 @@ Public Class frmINH
             'End While
             'sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -195,7 +195,7 @@ Public Class frmINH
                 B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΣΥΝΟΛΟ").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
             Next
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -239,7 +239,7 @@ Public Class frmINH
                     txtCode.Text = DBQ.GetNextId("INH")
                     Dim form As New frmScroller
                     form.LoadRecords("vw_INH")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     LayoutControlGroup2.Enabled = True
                     cmdSaveInd.Enabled = True
@@ -251,7 +251,7 @@ Public Class frmINH
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub LoadConditionalFormatting()
@@ -276,7 +276,7 @@ Public Class frmINH
             sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
             If sResult Then
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Cls.ClearGroupCtrls(LayoutControlGroup2)
                 Valid.SChanged = False
             End If
@@ -286,7 +286,7 @@ Public Class frmINH
         Dim sSQL As String
         Try
             If Question Then
-                If XtraMessageBox.Show("Θέλετε να διαγραφεί τα αρχεία άπό το επιλεγμένο έξοδο?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then
+                If XtraMessageBox.Show("Θέλετε να διαγραφεί τα αρχεία άπό το επιλεγμένο έξοδο?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then
                     Exit Sub
                 End If
             End If
@@ -300,7 +300,7 @@ Public Class frmINH
             GridView5.SetRowCellValue(GridView5.FocusedRowHandle, Column, "")
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -308,7 +308,7 @@ Public Class frmINH
     Private Sub DeleteIND()
         Dim sSQL As String
         Try
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM IND WHERE ID = '" & GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString & "'"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
@@ -318,13 +318,13 @@ Public Class frmINH
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub DeleteINC()
         Dim sSQL As String
         Try
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί o υπολογισμός?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί o υπολογισμός?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM INC WHERE INHID = " & toSQLValueS(sID)
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
@@ -349,7 +349,7 @@ Public Class frmINH
                 Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, System.Guid.Parse(cboBDG.EditValue.ToString))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -384,7 +384,7 @@ Public Class frmINH
                 cboAhpb.Properties.ReadOnly = False
 
             ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
-                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Θέρμανσης", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Θέρμανσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 'cmdOK.Enabled = False
             End If
         Else
@@ -398,7 +398,7 @@ Public Class frmINH
                 cboAhpbHB.Properties.ReadOnly = False
 
             ElseIf cboAhpbHB.Properties.DataSource.Count = 0 Then
-                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Boiler", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Boiler", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 'cmdOK.Enabled = False
             End If
         Else
@@ -500,7 +500,7 @@ Public Class frmINH
                 '    sdr.Close()
                 '    If CountUsers > 1 Then
                 '        XtraMessageBox.Show("Υπάρχουν  εισπράξεις σε άλλον χρήστη χρεωμένες. " & vbCrLf &
-                '                        "Πρέπει να αποχρεώσετε τις εισπράξεις αυτές ή να εκδόσετε το παραστατικό με τον ίδιο χρήστη.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '                        "Πρέπει να αποχρεώσετε τις εισπράξεις αυτές ή να εκδόσετε το παραστατικό με τον ίδιο χρήστη.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 '        Exit Sub
                 '    End If
                 'End If
@@ -509,7 +509,7 @@ Public Class frmINH
 
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -542,7 +542,7 @@ Public Class frmINH
             End Using
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -600,7 +600,7 @@ Public Class frmINH
             'GridView1.Columns("AptNam").OptionsColumn.ReadOnly = True
             'GridView1.Columns("AptNam").OptionsColumn.AllowEdit = False
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -660,11 +660,11 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@ahpbHIDB", System.Guid.Parse(sAhpbBID))
                 oCmd.ExecuteNonQuery()
             End Using
-            XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -760,8 +760,7 @@ Public Class frmINH
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        'Dim report As New Eidop()
-        Dim report As New Receipt
+        Dim report As New Eidop()
         report.Parameters.Item(0).Value = sID
         ' report.Parameters.Item(1).Value = cboBDG.EditValue
         SplashScreenManager1.ShowWaitForm()
@@ -884,7 +883,7 @@ Public Class frmINH
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Friend Class MenuColumnInfo
@@ -963,12 +962,12 @@ Public Class frmINH
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
         GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
         GridView7.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
            UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
-            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
                 If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml") = False Then GridView7.OptionsLayout.LayoutVersion = "v1"
                 GridView1.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml", OptionsLayoutBase.FullLayout)
@@ -978,7 +977,7 @@ Public Class frmINH
     End Sub
     'Συγχρονισμός όψης από Server
     Private Sub OnSyncView2(ByVal sender As System.Object, ByVal e As EventArgs)
-        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
             If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml") = True Then
                 My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml", Application.StartupPath & "\DSGNS\DEF\APMIL_def.xml", True)
@@ -1072,7 +1071,7 @@ Public Class frmINH
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Function SetNavigatorPosition() As Integer
@@ -1088,7 +1087,7 @@ Public Class frmINH
             sdr.Close()
             Return Code
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
 
@@ -1097,13 +1096,13 @@ Public Class frmINH
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim Credit As Decimal
-        If XtraMessageBox.Show("Θέλετε να ακυρώσετε το παραστατικό?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να ακυρώσετε το παραστατικό?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             sSQL = "Select   sum(isnull(credit,0)) As credit  from col_d where inhID = " & toSQLValueS(sID)
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then If sdr.IsDBNull(sdr.GetOrdinal("credit")) = False Then Credit = sdr.GetDecimal(sdr.GetOrdinal("credit")) Else Credit = 0
             sdr.Close()
-            If Credit > 0 Then XtraMessageBox.Show("Έχετε εισπράξει από αυτό το παραστατικό " & Credit & "€. Θα πρέπει να ξαναπεράσετε τις εισπράξεις αυτές στο νέο παραστατικό", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If Credit > 0 Then XtraMessageBox.Show("Έχετε εισπράξει από αυτό το παραστατικό " & Credit & "€. Θα πρέπει να ξαναπεράσετε τις εισπράξεις αυτές στο νέο παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Using oCmd As New SqlCommand("inv_cancel", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
@@ -1155,5 +1154,19 @@ Public Class frmINH
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         FlyoutPanel1.HidePopup()
         LayoutControl1.Enabled = True
+    End Sub
+
+    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+        'Dim report As New Eidop()
+        Dim report As New Receipt
+        report.Parameters.Item(0).Value = sID
+        ' report.Parameters.Item(1).Value = cboBDG.EditValue
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        report.CreateDocument()
+
+        Dim printTool As New ReportPrintTool(report)
+        printTool.ShowRibbonPreview()
+        SplashScreenManager1.CloseWaitForm()
     End Sub
 End Class

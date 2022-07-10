@@ -91,11 +91,11 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[AmtPerCalc]")})
         Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(779.6073!, 0!)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(792.3114!, 0!)
         Me.XrLabel3.Multiline = True
         Me.XrLabel3.Name = "XrLabel3"
         Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel3.SizeF = New System.Drawing.SizeF(160.6409!, 38.09998!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(166.6886!, 38.09998!)
         Me.XrLabel3.StylePriority.UseFont = False
         Me.XrLabel3.StylePriority.UseTextAlignment = False
         Me.XrLabel3.Text = "XrLabel3"
@@ -112,7 +112,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(491.191!, 38.09998!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(554.006!, 38.09998!)
         Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "XrLabel1"
         '
@@ -122,7 +122,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
         Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(606.0044!, 0!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(587.0106!, 0!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
         Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -148,11 +148,11 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel4.Dpi = 254.0!
         Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([AmtPerCalc]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(779.6073!, 0!)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(760.52!, 0!)
         Me.XrLabel4.Multiline = True
         Me.XrLabel4.Name = "XrLabel4"
         Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel4.SizeF = New System.Drawing.SizeF(160.6409!, 38.09998!)
+        Me.XrLabel4.SizeF = New System.Drawing.SizeF(198.48!, 38.09998!)
         Me.XrLabel4.StylePriority.UseBackColor = False
         Me.XrLabel4.StylePriority.UseFont = False
         Me.XrLabel4.StylePriority.UseTextAlignment = False
@@ -168,11 +168,11 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(580.4431!, 0!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(558.006!, 0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel5.SizeF = New System.Drawing.SizeF(195.0367!, 38.09998!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(198.48!, 38.09998!)
         Me.XrLabel5.StylePriority.UseBackColor = False
         Me.XrLabel5.StylePriority.UseFont = False
         Me.XrLabel5.StylePriority.UseTextAlignment = False
@@ -187,7 +187,7 @@ Partial Public Class EXODA_PER_APT
         Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.table1.Name = "table1"
         Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
-        Me.table1.SizeF = New System.Drawing.SizeF(580.4431!, 38.09998!)
+        Me.table1.SizeF = New System.Drawing.SizeF(554.006!, 38.09998!)
         '
         'tableRow1
         '
@@ -208,7 +208,7 @@ Partial Public Class EXODA_PER_APT
         Me.tableCell2.StylePriority.UseBackColor = False
         Me.tableCell2.StylePriority.UseFont = False
         Me.tableCell2.StylePriority.UseForeColor = False
-        Me.tableCell2.Weight = 0.9357889498197115R
+        Me.tableCell2.Weight = 0.9518129780713297R
         '
         'inhID
         '
@@ -273,9 +273,6 @@ Partial Public Class EXODA_PER_APT
     Friend WithEvents GroupHeader1 As DevExpress.XtraReports.UI.GroupHeaderBand
     Friend WithEvents SqlDataSourceAPT As DevExpress.DataAccess.Sql.SqlDataSource
     Friend WithEvents inhID As DevExpress.XtraReports.Parameters.Parameter
-    Friend WithEvents table1 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents tableRow1 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents tableCell2 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
@@ -283,4 +280,7 @@ Partial Public Class EXODA_PER_APT
     Friend WithEvents CalculatedField1 As DevExpress.XtraReports.UI.CalculatedField
     Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents table1 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents tableRow1 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents tableCell2 As DevExpress.XtraReports.UI.XRTableCell
 End Class

@@ -117,7 +117,7 @@ Partial Class frmLogin
         Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PRIAMOS .NET"
+        Me.Text = ProgProps.ProgTitle
         CType(Me.chkRememberUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()

@@ -93,18 +93,18 @@ Public Class frmColExt
                     'Καθαρισμός Controls
                     If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     txtCode.Text = DBQ.GetNextId("COL_EXT")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub frmColExt_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 e.Cancel = True
@@ -245,7 +245,7 @@ Public Class frmColExt
     End Sub
 
     Private Sub cboBDG_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles cboBDG.EditValueChanging
-        '    If XtraMessageBox.Show("Είστε σίγουρός/η ότι θέλετε να αλλάξετε πολυκατοκία?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then e.Cancel = True
+        '    If XtraMessageBox.Show("Είστε σίγουρός/η ότι θέλετε να αλλάξετε πολυκατοκία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then e.Cancel = True
 
     End Sub
 End Class

@@ -23,12 +23,12 @@ Public Class frmDBConnection
         Dim Auth As String
         If cboAuthentication.EditValue = "SQL Server Authentication" Then Auth = "True" Else Auth = "False"
         If CN.OpenConnectionWithParam(txtServerName.Text, Auth, txtLogin.Text, txtPWD.Text, cboDatabases.EditValue) = False Then
-            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            XtraMessageBox.Show("Σύνδεση επιτυχής!! στο " & sDatabaseName, "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Σύνδεση επιτυχής!! στο " & sDatabaseName, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             CNDB = CNDB2
             If NewButtonPressed Or cboSavedServers.EditValue Is Nothing Then
-                If XtraMessageBox.Show("Θέλετε να σωθεί η σύνδεση για μελοντική χρήση?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                If XtraMessageBox.Show("Θέλετε να σωθεί η σύνδεση για μελοντική χρήση?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     If My.Settings.ConString Is Nothing Then My.Settings.ConString = New Specialized.StringCollection
                     My.Settings.ConString.Add(CNDB.ConnectionString.ToString)
                     My.Settings.Save()
@@ -89,7 +89,7 @@ Public Class frmDBConnection
     Private Sub cboSavedServers_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboSavedServers.ButtonPressed
         Select Case e.Button.Index
             Case 1
-                If XtraMessageBox.Show("Θέλετε να διαγραφή η σύνδεση?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                If XtraMessageBox.Show("Θέλετε να διαγραφή η σύνδεση?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     cboSavedServers.Properties.Items.Remove(cboSavedServers.SelectedItem)
                     My.Settings.ConStringServers.Remove(cboSavedServers.EditValue)
                     My.Settings.Save()

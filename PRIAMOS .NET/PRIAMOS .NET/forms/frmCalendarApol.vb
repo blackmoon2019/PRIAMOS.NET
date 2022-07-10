@@ -30,7 +30,7 @@ Public Class frmCalendarApol
             SchedulerControl1.OptionsCustomization.AllowAppointmentDelete = UsedAppointmentType.All
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -100,7 +100,7 @@ Public Class frmCalendarApol
         Dim sSQL As String
         Try
             If XtraMessageBox.Show("Θέλετε να ακυρωθεί η τρέχουσα εγγραφή? " & vbCrLf &
-                               "Προσοχή θα διαγραφεί και η είσπραξη που αφορά την εργασία και θα επηρεάσει το ταμείο σας.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                               "Προσοχή θα διαγραφεί και η είσπραξη που αφορά την εργασία και θα επηρεάσει το ταμείο σας.", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 For i As Integer = 0 To SchedulerControl1.SelectedAppointments.Count - 1
 
                     Dim apol As Appointment = SchedulerControl1.SelectedAppointments(i)
@@ -116,14 +116,14 @@ Public Class frmCalendarApol
                 SetCalendarFilter()
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
     Private Sub SetApolAsCompleted(ByVal sender As Object, ByVal e As EventArgs)
         Dim sSQL As String
         Try
-            If XtraMessageBox.Show("Θέλετε να ορισθεί εκτελεσμένη η τρέχουσα εγγραφή? ", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να ορισθεί εκτελεσμένη η τρέχουσα εγγραφή? ", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 For i As Integer = 0 To SchedulerControl1.SelectedAppointments.Count - 1
 
                     Dim apol As Appointment = SchedulerControl1.SelectedAppointments(i)
@@ -135,7 +135,7 @@ Public Class frmCalendarApol
                 SetCalendarFilter()
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -216,7 +216,7 @@ Public Class frmCalendarApol
     Private Function DeleteApol() As Boolean
         Dim sSQL As String
         If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? " & vbCrLf &
-                               "Προσοχή θα διαγραφεί και η είσπραξη που αφορά την εργασία και θα επηρεάσει το ταμείο σας.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                               "Προσοχή θα διαγραφεί και η είσπραξη που αφορά την εργασία και θα επηρεάσει το ταμείο σας.", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             For i As Integer = 0 To SchedulerControl1.SelectedAppointments.Count - 1
 
                 Dim apol As Appointment = SchedulerControl1.SelectedAppointments(i)

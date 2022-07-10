@@ -36,6 +36,7 @@ Module Main
         Public SupportEmail As String
         Public EXFolderPath As String
         Public ADM As String
+        Public ProgTitle As String
     End Structure
     Public ProgProps As PROG_PROPS
 
@@ -80,7 +81,7 @@ Module Main
                 Return "NULL" 'this will pass through any SQL statement without notice  
             End If
         Catch ex As Exception
-            DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            DevExpress.XtraEditors.XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
     Public Function TranslateDates(ByVal fDate As DevExpress.XtraEditors.DateEdit, ByVal tDate As DevExpress.XtraEditors.DateEdit) As String

@@ -66,13 +66,13 @@ Public Class frmVersions
                     'Καθαρισμός Controls
                     If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     txtCode.Text = DBQ.GetNextId("PRIAMOS_VER")
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     dtFDate.EditValue = Date.Now
                     Valid.SChanged = False
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -96,9 +96,9 @@ Public Class frmVersions
                 Dim exePath As String = Application.ExecutablePath()
                 My.Computer.FileSystem.CopyFile(Application.ExecutablePath().Replace("Debug", "Release"), "\\192.168.1.51\priamos.net\Updates\" & myValue & "\PRIAMOS.NET.exe")
             End If
-            XtraMessageBox.Show("Η έκδοση δημιουργήθηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Η έκδοση δημιουργήθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

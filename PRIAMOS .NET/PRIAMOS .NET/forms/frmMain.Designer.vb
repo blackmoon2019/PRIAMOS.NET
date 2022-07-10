@@ -805,7 +805,7 @@ Partial Class frmMain
         Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PRIAMOS .NET"
+        Me.Text = ProgProps.ProgTitle
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).EndInit()

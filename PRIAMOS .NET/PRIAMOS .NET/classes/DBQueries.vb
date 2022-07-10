@@ -92,7 +92,7 @@ Public Class DBQueries
             'ReadBlobFile()
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -135,7 +135,7 @@ Public Class DBQueries
             'ReadBlobFile()
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
 
@@ -321,7 +321,7 @@ NextItem:
             End Using
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -413,7 +413,7 @@ NextItem:
                                                 sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
                                             End If
                                         Else
-                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                         End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                         Dim dt As DevExpress.XtraEditors.DateEdit
@@ -466,7 +466,7 @@ NextItem:
             End Using
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -616,7 +616,7 @@ NextItem:
             Return True
         Catch ex As Exception
 
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -805,7 +805,7 @@ NextItem:
             End Using
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -904,43 +904,43 @@ NextItem:
                                         sSQL.Append("NULL")
                                     End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
-                                        Dim dt As DevExpress.XtraEditors.DateEdit
-                                        dt = Ctrl
-                                        If dt.Text <> "" Then
-                                            sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
-                                        Else
-                                            sSQL.Append("NULL")
-                                        End If
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
-                                        Dim spn As DevExpress.XtraEditors.SpinEdit
-                                        spn = Ctrl
-                                        sSQL.Append(toSQLValueS(spn.Text))
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
-                                        Dim cpk As DevExpress.XtraEditors.ColorPickEdit
-                                        cpk = Ctrl
-                                        If cpk.Text = "0" Then
-                                            sSQL.Append("NULL")
-                                        Else
-                                            sSQL.Append(cpk.Text)
-                                        End If
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
-                                        Dim txt As DevExpress.XtraEditors.MemoEdit
-                                        txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
-                                            sSQL.Append(toSQLValueS(txt.EditValue, True))
-                                        Else
-                                            sSQL.Append(toSQLValueS(txt.Text))
-                                        End If
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
-                                        Dim txt As DevExpress.XtraEditors.TextEdit
-                                        txt = Ctrl
-                                        If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
-                                            sSQL.Append(toSQLValueS(txt.EditValue, True))
-                                        Else
-                                            sSQL.Append(toSQLValueS(txt.Text.Replace("%", "")))
-                                        End If
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
-                                        Dim chk As DevExpress.XtraEditors.CheckEdit
+                                    Dim dt As DevExpress.XtraEditors.DateEdit
+                                    dt = Ctrl
+                                    If dt.Text <> "" Then
+                                        sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                    Else
+                                        sSQL.Append("NULL")
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
+                                    Dim spn As DevExpress.XtraEditors.SpinEdit
+                                    spn = Ctrl
+                                    sSQL.Append(toSQLValueS(spn.Text))
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
+                                    Dim cpk As DevExpress.XtraEditors.ColorPickEdit
+                                    cpk = Ctrl
+                                    If cpk.Text = "0" Then
+                                        sSQL.Append("NULL")
+                                    Else
+                                        sSQL.Append(cpk.Text)
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
+                                    Dim txt As DevExpress.XtraEditors.MemoEdit
+                                    txt = Ctrl
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                        sSQL.Append(toSQLValueS(txt.EditValue, True))
+                                    Else
+                                        sSQL.Append(toSQLValueS(txt.Text))
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
+                                    Dim txt As DevExpress.XtraEditors.TextEdit
+                                    txt = Ctrl
+                                    If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                        sSQL.Append(toSQLValueS(txt.EditValue, True))
+                                    Else
+                                        sSQL.Append(toSQLValueS(txt.Text.Replace("%", "")))
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
+                                    Dim chk As DevExpress.XtraEditors.CheckEdit
                                     chk = Ctrl
                                     sSQL.Append(chk.EditValue)
                                 End If
@@ -1091,7 +1091,7 @@ NextItem:
             End Using
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
@@ -1331,7 +1331,7 @@ NextItem:
 
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
 

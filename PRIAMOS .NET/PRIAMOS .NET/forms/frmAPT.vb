@@ -112,7 +112,7 @@ Public Class frmAPT
                 'Dim sdr As SqlDataReader = cmd.ExecuteReader()
                 'If (sdr.Read() = True) Then
                 '    If sdr.IsDBNull(sdr.GetOrdinal("id")) = False Then
-                '        XtraMessageBox.Show("Βρέθηκαν διαμερίσματα με ίδιο Α/Α. Παρακαλώ διορθώστε το για να προχωρήσετε", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '        XtraMessageBox.Show("Βρέθηκαν διαμερίσματα με ίδιο Α/Α. Παρακαλώ διορθώστε το για να προχωρήσετε", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 '        sdr.Close()
                 '        Exit Sub
                 '    End If
@@ -125,7 +125,7 @@ Public Class frmAPT
                     Case FormMode.EditRecord
                         If Ord <> txtOrd.EditValue Then
                             If XtraMessageBox.Show("Εντοπίστηκε αλλαγή στο ΑΑ του διαμερίσματος. " & vbCrLf &
-                                                   "Θέλετε να αλλάξει το ΑΑ και σε όλα τα υπόλοιπα διαμερίσματα που είναι μετά το επιλεγμένο?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                                                   "Θέλετε να αλλάξει το ΑΑ και σε όλα τα υπόλοιπα διαμερίσματα που είναι μετά το επιλεγμένο?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                                 Using oCmd As New SqlCommand("ChangeAPTOrder", CNDB)
                                     oCmd.CommandType = CommandType.StoredProcedure
                                     oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
@@ -164,19 +164,19 @@ Public Class frmAPT
                     args.AutoCloseOptions.Delay = 2000
                     args.AutoCloseOptions.ShowTimerOnDefaultButton = True
                     args.DefaultButtonIndex = 0
-                    args.Caption = "PRIAMOS .NET"
+                    args.Caption = ProgProps.ProgTitle
                     args.Text = "Η εγγραφή αποθηκέυτηκε με επιτυχία."
                     args.Buttons = New DialogResult() {DialogResult.OK}
                     args.Icon = System.Drawing.SystemIcons.Information
                     XtraMessageBox.Show(args).ToString()
-                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     If Mode = FormMode.NewRecord Then txtOrd.EditValue = txtOrd.OldEditValue + 1
                     txtName.Select()
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -232,7 +232,7 @@ Public Class frmAPT
 
     Private Sub frmAPT_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 e.Cancel = True

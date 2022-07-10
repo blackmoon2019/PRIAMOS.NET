@@ -349,7 +349,7 @@ Public Class frmBDG
                     txtCode.Text = DBQ.GetNextId("BDG")
                     'Dim form As New frmScroller
                     'form.LoadRecords("vw_BDG", sID)
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     cmdAPTAdd.Enabled = True
                     cmdAptRefresh.Enabled = True
@@ -359,7 +359,7 @@ Public Class frmBDG
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -391,7 +391,7 @@ Public Class frmBDG
             sdr.Close()
             sdr = Nothing
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub FillAAM_H()
@@ -410,7 +410,7 @@ Public Class frmBDG
             sdr.Close()
             sdr = Nothing
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -438,17 +438,17 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM APT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
                 AptRefresh()
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub NewApt()
@@ -536,7 +536,7 @@ Public Class frmBDG
     Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
         Dim sSQL As New System.Text.StringBuilder
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 Exit Sub
@@ -580,7 +580,7 @@ Public Class frmBDG
     End Sub
     Private Sub NavHeatingInvoices_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeatingInvoices.ElementClick
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 Exit Sub
@@ -621,7 +621,7 @@ Public Class frmBDG
     Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
         Dim sSQL As String
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 Exit Sub
@@ -641,7 +641,7 @@ Public Class frmBDG
 
     Private Sub NavGeneral_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavGeneral.ElementClick
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 Exit Sub
@@ -857,43 +857,41 @@ Public Class frmBDG
             Case 3 : cboADR.EditValue = Nothing
         End Select
     End Sub
-    Private Sub LoadMefMes()
+    Private Sub LoadMefMes(ByVal sDate As String)
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
-            'sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes,   
-            '  CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
-            '  CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt,   " &
-            '        "(select BEF.mes as mesB from AHPB BEF where boiler=" + RGTypeHeating.SelectedIndex.ToString + " and bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And BEF.mdt = (select max(mdt) from vw_AHPB where  boiler=" + RGTypeHeating.SelectedIndex.ToString + " and mdt < " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ) as mesB " &
-            '        "from ( " +
-            '        "Select * From vw_AHPB " +
-            '        "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) + " ) as CUR " +
-            '        "   ORDER BY CUR.ORD   "
-            'sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + "  ORDER BY ORD"
-            sSQL = "SELECT CUR.ID, CUR.code, CUR.aptID,     BEF.mdt,CUR.mes, cur.mesB, " +
-                    "CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor,  " +
-                    "CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   " +
-                    "from vw_AHPB CUR " +
-                    "inner join ( " +
-                    "Select    [bdgID], [aptID], max([mdt]) as mdt " +
-                    "From vw_AHPB " +
-                    "Where bdgid =" + toSQLValueS(sID) + "  And boiler = " + RGTypeHeating.SelectedIndex.ToString + " And mdt <= " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) +
-                    "group by [bdgID], [aptID]) as BEF on BEF.aptID=CUR.aptID and BEF.mdt =cur.mdt and boiler=" + RGTypeHeating.SelectedIndex.ToString + " ORDER BY CUR.ORD   "
+            sSQL = "Select CUR.ID
+	                ,CUR.code
+	                ,CUR.aptID
+	                ,case when CUR.mes<>0 then cur.mdt else  (select MAX(mdt) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler =  " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + "	and AHPB.aptID = CUR.aptID) end AS mdt	
+	                ,CUR.mes
+	                ,(select TOP 1 SUM(mesB) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler = " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + " and AHPB.aptID = CUR.aptID GROUP BY MDT ORDER BY MDT DESC ) AS mesB
+	                ,CUR.mesDif
+	                ,CUR.boiler
+	                ,CUR.RealName
+	                ,CUR.nam
+	                ,CUR.ttl
+	                ,CUR.ord
+	                ,CUR.Floor
+	                ,CUR.flrID
+	                ,CUR.cmt
+	                ,CUR.bdgID
+	                ,CUR.bdgNam
+	                ,CUR.mdt
+	                ,CUR.finalized
+                From vw_AHPB CUR
+                Where bdgid ='" + sID + "' and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + " ORDER BY CUR.ORD"
 
-            'sSQL = "Select CUR.ID, CUR.code, CUR.aptID, CUR.mes, BEF.mes as mesB,  
-            '  CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor, 
-            '  CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   from ( " +
-            '        "Select * From vw_AHPB " +
-            '        "Where bdgid =" + toSQLValueS(sID) + "  and boiler = " + RGTypeHeating.SelectedIndex.ToString + " and mdt = " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) + " ) as CUR " +
-            '        "Left Join vw_AHPB BEF on bef.bdgID= CUR.bdgID And BEF.aptID =CUR.aptID And 
-            '        BEF.mdt = (select max(mdt) from vw_AHPB where mdt < " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) + " and aptID=BEF.aptID and bdgID=BEF.bdgID ) ORDER BY CUR.ORD   "
-            'LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
             LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
             LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
+            GridView2.OptionsMenu.ShowConditionalFormattingItem = True
             GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
             GridView2.Columns("mesB").OptionsColumn.ReadOnly = True : GridView2.Columns("mesB").OptionsColumn.AllowEdit = False
             GridView2.Columns("mes").OptionsColumn.ReadOnly = False : GridView2.Columns("mes").OptionsColumn.AllowEdit = True
             GridView2.Columns("mesDif").OptionsColumn.ReadOnly = False : GridView2.Columns("mesDif").OptionsColumn.AllowEdit = True
-            GridView2.Columns("nam").OptionsColumn.AllowEdit = False
+            GridView2.Columns("nam").OptionsColumn.AllowEdit = False : GridView2.Columns("ord").OptionsColumn.AllowEdit = False
+            GridView2.Columns("finalized").OptionsColumn.AllowEdit = False
+            GridView2.Columns("mdt").OptionsColumn.ReadOnly = False : GridView2.Columns("mdt").OptionsColumn.AllowEdit = True
             cmdDelAHPB.Enabled = True
         Else
             cmdDelAHPB.Enabled = False
@@ -911,12 +909,12 @@ Public Class frmBDG
             If sResult Then
                 'Dim form As New frmScroller
                 'form.LoadRecords("vw_BDG")
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -933,7 +931,7 @@ Public Class frmBDG
             'GridView5.Columns(6).Summary.Add(siTotal)
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -948,12 +946,12 @@ Public Class frmBDG
             If sResult Then
                 'Dim form As New frmScroller
                 'form.LoadRecords("vw_BDG")
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
 
@@ -978,7 +976,7 @@ Public Class frmBDG
     Private Sub cmdAddAHPB_Click(sender As Object, e As EventArgs) Handles cmdAddAHPB.Click
         Try
             If dtMes.EditValue = Nothing Then
-                XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                XtraMessageBox.Show("Παρακαλώ επιλέξτε πρώτα ημερομηνία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
                 Cls.ClearGrid(grdAPTAHPB)
                 Using oCmd As New SqlCommand("CreateAHPB", CNDB)
@@ -992,7 +990,7 @@ Public Class frmBDG
                 LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
                 LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
                 If GridView2.RowCount = 0 Then
-                    XtraMessageBox.Show("Πρέπει πρώτα να καταχωρήσετε διαμερίσματα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    XtraMessageBox.Show("Πρέπει πρώτα να καταχωρήσετε διαμερίσματα", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 Else
                     cmdDelAHPB.Enabled = True
@@ -1006,10 +1004,16 @@ Public Class frmBDG
                 GridView2.Columns("boiler").OptionsColumn.ReadOnly = True
                 GridView2.Columns("nam").OptionsColumn.AllowEdit = False
                 cboBefMes.EditValue = dtMes.EditValue
+                cmdRefreshAHPB.PerformClick()
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If Err.Number = 5 Then
+                XtraMessageBox.Show("Υπάρχει ήδη καταχωρημένη μέτρηση στην συγκεκριμένη ημερομηνία.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Else
+                XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
         End Try
     End Sub
 
@@ -1018,12 +1022,12 @@ Public Class frmBDG
         Dim sBoiler As String
         Try
             If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Θέρμανσης" Else sBoiler = "Boiler"
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 'sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
                 '        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
                 '        " and boiler = " & RGTypeHeating.SelectedIndex
                 DeleteSelectedRows()
-                LoadMefMes()
+                LoadMefMes(cboBefMes.Text)
                 If GridView2.RowCount > 0 Then
                     cmdDelAHPB.Enabled = True
                 Else
@@ -1031,10 +1035,10 @@ Public Class frmBDG
                     cboBefMes.EditValue = Nothing
                 End If
                 cmdRefreshAHPB.Enabled = True
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1044,18 +1048,19 @@ Public Class frmBDG
         Try
             For I = 0 To GridView2.SelectedRowsCount - 1
                 sSQL = "DELETE FROM AHPB WHERE ID = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.GetSelectedRows(I), "ID").ToString)
+
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
             Next
-            LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & "and mdt = " + toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD")
-            LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
+            If cboBefMes.Text <> "" Then
+                sSQL = "SELECT * FROM vw_AHPB where bdgid ='" + sID + "' and boiler = " & RGTypeHeating.SelectedIndex & " and mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) & " ORDER BY ORD"
+                LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
+                LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
+            End If
+
             If GridView2.RowCount <= 0 Then
-                If cboBefMes.EditValue = Nothing Then
-                    sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(dtMes.Text).ToString("yyyyMMdd"))
-                Else
-                    sSQL = "DELETE FROM AHPB_H WHERE bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd"))
-                End If
+                sSQL = "DELETE FROM AHPB_H WHERE boiler = " & RGTypeHeating.SelectedIndex & " and bdgID = " & toSQLValueS(sID) & " and mdt = " & toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd"))
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
@@ -1064,8 +1069,10 @@ Public Class frmBDG
                 'Προηγούμενες μετρήσεις
                 FillCbo.BEF_MES(cboBefMes, sSQL2)
             End If
+            cboBefMes.EditValue = Nothing
+            Cls.ClearGrid(grdAPTAHPB)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1163,7 +1170,7 @@ Public Class frmBDG
         'End Using
 
         'If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
-        '    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End If
     End Sub
 
@@ -1176,7 +1183,7 @@ Public Class frmBDG
         '    oCmd.ExecuteNonQuery()
         'End Using
         'If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
-        '    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End If
 
     End Sub
@@ -1213,9 +1220,9 @@ Public Class frmBDG
             fs.Close()
             ShellExecute(Application.StartupPath & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename"))
         Catch ex As IOException
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1229,9 +1236,9 @@ Public Class frmBDG
             fs.Close()
             ShellExecute(Application.StartupPath & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename"))
         Catch ex As IOException
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1273,15 +1280,15 @@ Public Class frmBDG
                     InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
 
                     If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 XtraOpenFileDialog1.FileName = ""
                 InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1321,15 +1328,15 @@ Public Class frmBDG
                     InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
 
                     If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 XtraOpenFileDialog1.FileName = ""
                 InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1367,7 +1374,7 @@ Public Class frmBDG
                 InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
                     If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
                 Cls.ClearGroupCtrls(LayoutControlGroup6)
@@ -1378,7 +1385,7 @@ Public Class frmBDG
                 'ExcludeControls.Add(cmdGInvEdit.Name)
                 'ExcludeControls.Add(cmdGInvRefresh.Name)
                 'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
                 XtraOpenFileDialog1.FileName = ""
                 GridView4.OptionsBehavior.Editable = False
@@ -1395,7 +1402,7 @@ Public Class frmBDG
                 InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
                     If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
                 Cls.ClearGroupCtrls(LayoutControlGroup5)
@@ -1406,7 +1413,7 @@ Public Class frmBDG
                 'ExcludeControls.Add(cmdOInvEdit.Name)
                 'ExcludeControls.Add(cmdOInvRefresh.Name)
                 'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
                 XtraOpenFileDialog1.FileName = ""
                 txtOInvFileNames.EditValue = ""
@@ -1421,7 +1428,7 @@ Public Class frmBDG
         Try
             Apmil.UpdateApMilData(GridView5, GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString, ApmilFieldsToBeUpdate)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1429,17 +1436,17 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM APMIL WHERE ID = '" & GridView5.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
                 GridView5.DeleteRow(GridView1.FocusedRowHandle)
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1448,7 +1455,7 @@ Public Class frmBDG
         Try
             ApmLoad()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1532,7 +1539,7 @@ Public Class frmBDG
             'GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
             ApmilFieldsToBeUpdate.Add("ΠΟΣΟΣΤΟ ΚΛΕΙΣΤΟΥ")
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1549,7 +1556,7 @@ Public Class frmBDG
             End Using
             ApmLoad()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1568,7 +1575,7 @@ Public Class frmBDG
 
     Private Sub frmBDG_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 e.Cancel = True
@@ -1610,50 +1617,44 @@ Public Class frmBDG
                 End Using
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub GridView2_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView2.CellValueChanged
-        Dim mes As Decimal, mesB As Decimal, Dif As Decimal
+        ChangeValues(e.Column.FieldName, e.RowHandle)
+    End Sub
+    Private Sub ChangeValues(ByVal FieldName As String, ByVal RowHandle As Integer)
+        Dim mes As Decimal, mesB As Decimal, Dif As Decimal, sDate As String, sSQL As String
+        Dim row As DataRow
         Try
-            If e.Column.FieldName <> "mes" Or e.Column.FieldName = "mesDif" Then Exit Sub
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes") Is DBNull.Value Then
-                mes = 0
-            Else
-                mes = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mes")
-            End If
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB") Is DBNull.Value Then
-                mesB = 0
-            Else
-                mesB = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesB")
-            End If
-            If GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesDif") Is DBNull.Value Then
-                Dif = 0
-            Else
-                Dif = GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "mesDif")
-            End If
 
-            If e.Column.FieldName = "mes" Then
+            row = GridView2.GetDataRow(RowHandle)
+            mesB = row("mesB")
+            mes = row("mes")
+            Dif = row("mesDif")
+            row.Table.Columns.Item("mdt").ReadOnly = False
+            If dtMes.EditValue = Nothing Then sDate = CDate(cboBefMes.EditValue).ToString("yyyyMMdd") Else sDate = CDate(dtMes.EditValue).ToString("yyyyMMdd")
+            If FieldName = "mes" Then
                 Dif = mes - mesB
-                GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mesDif", Dif)
-            ElseIf e.Column.FieldName = "mesDif" Then
+                row("mesDif") = Dif
+                If dtMes.EditValue = Nothing Then row("mdt") = cboBefMes.EditValue Else row("mdt") = dtMes.EditValue
+            ElseIf FieldName = "mesDif" Then
                 mes = Dif + mesB
-                GridView2.SetRowCellValue(GridView2.FocusedRowHandle, "mes", mes)
+                row("mes") = mes
+                If dtMes.EditValue = Nothing Then row("mdt") = cboBefMes.EditValue Else row("mdt") = dtMes.EditValue
             End If
-
-            Dim sSQL As String
 
             sSQL = "UPDATE  AHPB SET MES = " & toSQLValueS(mes, True) &
                         ",MESDIF = " & toSQLValueS(Dif, True) &
-                        " WHERE ID = '" & GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString & "'"
+                        ",mdt = " & toSQLValueS(sDate) &
+                        " WHERE ID = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ID").ToString)
 
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1670,9 +1671,9 @@ Public Class frmBDG
 
         Catch ex As Exception
             If Err.Number = 5 Then
-                XtraMessageBox.Show("Η συγκεκριμένη στήλη δεν διατίθεται προς επεξεργασία απευθείας από την όψη", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                XtraMessageBox.Show("Η συγκεκριμένη στήλη δεν διατίθεται προς επεξεργασία απευθείας από την όψη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Else
-                XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         End Try
@@ -1681,7 +1682,7 @@ Public Class frmBDG
     Private Sub NavFixedCosts_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavFixedCosts.ElementClick
         Dim sSQL As String
         If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Valid.SChanged = False
             Else
                 Exit Sub
@@ -1742,17 +1743,17 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView6.GetRowCellValue(GridView6.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM IEP WHERE ID = '" & GridView6.GetRowCellValue(GridView6.FocusedRowHandle, "ID").ToString & "'"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
                 LoadIEP()
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1870,7 +1871,7 @@ Public Class frmBDG
             Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
             LayoutControlGroup15.Enabled = False
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1894,13 +1895,13 @@ Public Class frmBDG
                     txtCode.Text = DBQ.GetNextId("BCCT")
                     Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
                     LayoutControlGroup15.Enabled = False
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                 End If
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -2033,7 +2034,7 @@ Public Class frmBDG
     Private Sub DeleteRecordBCCT()
         Dim sSQL As String
         Try
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM BCCT WHERE ID = '" & GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "ID").ToString & "'"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
@@ -2041,7 +2042,7 @@ Public Class frmBDG
                 Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -2068,7 +2069,7 @@ Public Class frmBDG
             Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -2149,18 +2150,18 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
 
                 sSQL = "DELETE FROM INH WHERE ID = '" & GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString & "'"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -2173,7 +2174,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
-        LoadMefMes()
+        LoadMefMes(cboBefMes.Text)
         cmdRefreshAHPB.Enabled = True
     End Sub
 
@@ -2183,22 +2184,11 @@ Public Class frmBDG
 
     Private Sub cmdRefreshAHPB_Click(sender As Object, e As EventArgs) Handles cmdRefreshAHPB.Click
         If cboBefMes.Text = "" Then
-            XtraMessageBox.Show("Δεν έχετε επιλέξει ημερομηνία προηγ. μέτρησης", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
+            XtraMessageBox.Show("Δεν έχετε επιλέξει ημερομηνία προηγ. μέτρησης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            LoadMefMes(cboBefMes.Text)
         End If
-        Dim sSQL As String
-        sSQL = "SELECT CUR.ID, CUR.code, CUR.aptID,     BEF.mdt,CUR.mes, cur.mesB, " +
-                    "CUR.mesDif, CUR.boiler, CUR.RealName, CUR.nam, CUR.ttl, CUR.ord, CUR.Floor,  " +
-                    "CUR.flrID, CUR.cmt, CUR.bdgID, CUR.bdgNam,CUR.mdt   " +
-                    "from vw_AHPB CUR " +
-                    "inner join ( " +
-                    "Select    [bdgID], [aptID], max([mdt]) as mdt " +
-                    "From vw_AHPB " +
-                    "Where bdgid =" + toSQLValueS(sID) + "  And boiler = " + RGTypeHeating.SelectedIndex.ToString + " And mdt <= " + toSQLValueS(CDate(cboBefMes.EditValue).ToString("yyyyMMdd")) +
-                    "group by [bdgID], [aptID]) as BEF on BEF.aptID=CUR.aptID and BEF.mdt =cur.mdt and boiler=1 ORDER BY CUR.ORD   "
 
-        LoadForms.LoadDataToGrid(grdAPTAHPB, GridView2, sSQL)
-        LoadForms.RestoreLayoutFromXml(GridView2, "AHPB_def.xml")
 
     End Sub
 
@@ -2242,7 +2232,7 @@ Public Class frmBDG
             txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
             cmdSaveBDGFile.Enabled = True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -2299,10 +2289,10 @@ Public Class frmBDG
         If Valid.ValidateFormGRP(LayoutControlGroup18) Then
             If XtraOpenFileDialog1.SafeFileName <> "" Then
                 If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID, "folderCatID", toSQLValueS(cboFolderCat.EditValue.ToString), PB) = False Then
-                    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     Cls.ClearGroupCtrls(LayoutControlGroup18)
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     XtraOpenFileDialog1.FileName = ""
                     txtBDGFilename.EditValue = ""
@@ -2325,9 +2315,9 @@ Public Class frmBDG
             fs.Close()
             ShellExecute(Application.StartupPath & "\" & sFilename)
         Catch ex As IOException
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -2348,7 +2338,7 @@ Public Class frmBDG
 
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -2387,7 +2377,7 @@ Public Class frmBDG
         Dim sSQL As String
         Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
         Dim cbo As New DevExpress.XtraEditors.ComboBoxEdit
-        cbo.Properties.TextEditStyle=TextEditStyles.DisableTextEditor 
+        cbo.Properties.TextEditStyle = TextEditStyles.DisableTextEditor
         For Each printer As String In PrinterSettings.InstalledPrinters
             cbo.Properties.Items.Add(printer)
         Next printer
@@ -2399,7 +2389,7 @@ Public Class frmBDG
         args.Editor = cbo
         Dim Result = XtraInputBox.Show(args)
         If Result Is Nothing Then
-            XtraMessageBox.Show("Πρέπει υποχρεωτικά να επιλέξετε εκτυπωτή για να προχωρήσετε.", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show("Πρέπει υποχρεωτικά να επιλέξετε εκτυπωτή για να προχωρήσετε.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
         For I = 0 To selectedRowHandles.Length - 1
@@ -2415,7 +2405,7 @@ Public Class frmBDG
         Try
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -2462,6 +2452,16 @@ Public Class frmBDG
             Process.Start(XtraSaveFileDialog1.FileName)
         End If
     End Sub
+
+
+    Private Sub GridView2_ShowingEditor(sender As Object, e As CancelEventArgs) Handles GridView2.ShowingEditor
+        Dim View As GridView = sender
+        Dim CellValue As String = View.GetRowCellValue(View.FocusedRowHandle, "finalized").ToString()
+        If CellValue = "True" Then e.Cancel = True
+    End Sub
+
+
+
 
 
 

@@ -205,7 +205,7 @@ Public Class frmCollections
             Tbl.Dispose()
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -334,7 +334,7 @@ Public Class frmCollections
             'End Select
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -346,7 +346,7 @@ Public Class frmCollections
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
             UpdateCOLS(1, colMethodID)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -358,7 +358,7 @@ Public Class frmCollections
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
             UpdateCOLS(2, bankID)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -433,7 +433,7 @@ Public Class frmCollections
             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(bdgID))
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -459,7 +459,7 @@ Public Class frmCollections
             dbusrID = debitusrID
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
     'Function που ελέγχει αν δεν υπάρχει κανένας χρήστης χρέωσης στα παραστατικά
@@ -475,7 +475,7 @@ Public Class frmCollections
             Next
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Function
 
@@ -622,7 +622,7 @@ Public Class frmCollections
                 Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -725,7 +725,7 @@ Public Class frmCollections
                 Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub GridView4_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVO_T.ValidatingEditor
@@ -737,13 +737,13 @@ Public Class frmCollections
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(sender, debitusrID) = False Then
-                'XtraMessageBox.Show("Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'XtraMessageBox.Show("Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
             ElseIf sender.FocusedColumn.FieldName = "credit" And IsDebitUserEmpty(sender) = True Then
-                'XtraMessageBox.Show("Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'XtraMessageBox.Show("Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
                 sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
                 APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
@@ -819,7 +819,7 @@ Public Class frmCollections
                 Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub Rep_Credit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_Credit.ButtonPressed
@@ -879,7 +879,7 @@ Public Class frmCollections
             End Select
 
         Catch ex As Exception
-            If ex.HResult <> -2146233088 Then XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If ex.HResult <> -2146233088 Then XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1016,7 +1016,7 @@ Public Class frmCollections
 
         '    End Select
         'Catch ex As Exception
-        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try
     End Sub
     Private Sub cboINH_EditValueChanged(sender As Object, e As EventArgs)
@@ -1195,7 +1195,7 @@ Public Class frmCollections
         '" WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
 
         'Catch ex As Exception
-        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try
     End Sub
     Private Sub GridView3_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles grdVINH.CellValueChanged
@@ -1220,7 +1220,7 @@ Public Class frmCollections
         '    End Select
 
         'Catch ex As Exception
-        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         'End Try
     End Sub
     Private Sub GridView4_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles grdVO_T.CellValueChanged
@@ -1343,7 +1343,7 @@ Public Class frmCollections
             '" WHERE ID = " & toSQLValueS(OwnersView.GetRowCellValue(OwnersView.FocusedRowHandle, "ID").ToString)
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -1351,9 +1351,9 @@ Public Class frmCollections
         Dim sSQL As String
         Dim Credit As Decimal
         If chkShowAgree.IsOn = True Then
-            If XtraMessageBox.Show("Θέλετε να επιβεβαιωθούν οι επιλεγμένες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να επιβεβαιωθούν οι επιλεγμένες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         Else
-            If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         End If
         Dim selectedRowHandles As Int32() = GridView6.GetSelectedRows()
         'For Each rowHandle As Integer In GridView6.GetSelectedRows
@@ -1551,7 +1551,7 @@ Public Class frmCollections
     Private Sub cmdRestore_Click(sender As Object, e As EventArgs) Handles cmdRestore.Click
         Dim sSQL As String
         Dim Credit As Decimal
-        If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+        If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         Dim selectedRowHandles As Int32() = GridView6.GetSelectedRows()
         For I = 0 To selectedRowHandles.Length - 1
             Dim selectedRowHandle As Int32 = selectedRowHandles(I)

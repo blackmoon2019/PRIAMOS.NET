@@ -105,7 +105,7 @@ Public Class frmScroller
             GridView2.OptionsMenu.ShowGroupSortSummaryItems = True
             GridView2.OptionsMenu.ShowConditionalFormattingItem = True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -158,7 +158,7 @@ Public Class frmScroller
                 If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     'Διαγραφη Εγγραφής
@@ -167,7 +167,7 @@ Public Class frmScroller
         Dim sSQL2 As String
         Try
             If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 Select Case sDataTable
                     Case "vw_USR" : sSQL = "DELETE FROM USR WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_MAILS" : sSQL = "DELETE FROM MAILS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
@@ -238,10 +238,10 @@ Public Class frmScroller
                     End Using
                 End If
                 LoadRecords()
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     'Διαγραφη Εγγραφών
@@ -251,6 +251,7 @@ Public Class frmScroller
         Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
         Dim I As Integer
         Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 
@@ -325,9 +326,9 @@ Public Class frmScroller
                 End If
             Next
             LoadRecords()
-            XtraMessageBox.Show("Η εγγραφές διαγράφηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Η εγγραφές διαγράφηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Public WriteOnly Property DataTable As String
@@ -353,7 +354,7 @@ Public Class frmScroller
                 popDeleteView.Enabled = True
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     'Κλείσιμο Φόρμας
@@ -365,13 +366,13 @@ Public Class frmScroller
                 If myReader IsNot Nothing Then myReader.Close()
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
     'Διαγραφή όψης
     Private Sub popDeleteView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popDeleteView.ItemClick
-        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα όψη?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα όψη?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             If BarViews.EditValue <> "" Then
                 My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
                 If sDataDetail <> "" Then My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue)
@@ -391,16 +392,29 @@ Public Class frmScroller
                 Else
                     GridView1.OptionsLayout.LayoutVersion = "v1"
                 End If
-                GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
-                If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
-                'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml")
-                CType(BarViews.Edit, RepositoryItemComboBox).Items.Add(sender.EditValue & "_" & UserProps.Code & ".xml")
+                If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue) = True Then
+                    GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue, OptionsLayoutBase.FullLayout)
+                    CType(BarViews.Edit, RepositoryItemComboBox).Items.Add(sender.EditValue)
+                    BarViews.EditValue = sender.EditValue
+                Else
+                    GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
+                    CType(BarViews.Edit, RepositoryItemComboBox).Items.Add(sender.EditValue & "_" & UserProps.Code & ".xml")
+                    BarViews.EditValue = sender.EditValue & "_" & UserProps.Code & ".xml"
+                End If
 
-                BarViews.EditValue = sender.EditValue & "_" & UserProps.Code & ".xml"
+                If sDataDetail <> "" Then
+                    If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue) = True Then
+                        GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue, OptionsLayoutBase.FullLayout)
+                    Else
+                        GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
+                    End If
+                End If
+                'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml")
                 CurrentView = BarViews.EditValue
             End If
+
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     'Αποθήκευση όψης
@@ -420,7 +434,7 @@ Public Class frmScroller
                 GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
             End If
             'GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
-            XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
     'Επαναφορά Default όψης
@@ -623,7 +637,7 @@ Public Class frmScroller
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             If GetVal Then sdr.Close()
         End Try
 
@@ -1341,9 +1355,9 @@ Public Class frmScroller
             If CurrentView Is Nothing Then CurrentView = ""
             If CurrentView = "" And GridView1.ActiveFilterString.Length = 0 Then GridView1.ActiveFilterString = sActiveFilter
             myCmd.Dispose()
-            If CloseReader = True Then myReader.Close():myReader=nothing
+            If CloseReader = True Then myReader.Close() : myReader = Nothing
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         'If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close() 'myReader.Close()
     End Sub
@@ -1413,11 +1427,11 @@ Public Class frmScroller
         End If
         GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
         If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
            UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
-            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
                 GridView1.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
             End If
@@ -1536,7 +1550,7 @@ Public Class frmScroller
             LoadForms.LoadColumnDescriptionNames(GridView1, , sDataTable)
             myReader.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1573,12 +1587,12 @@ Public Class frmScroller
                 Case "color" : If Not IsDBNull(e.CellValue) Then e.Appearance.BackColor = Color.FromArgb(e.CellValue)
             End Select
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub BBUpdateViewFileFromServer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdateViewFileFromServer.ItemClick
-        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
             If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = True Then
                 My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", True)
@@ -1599,8 +1613,8 @@ Public Class frmScroller
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 
                 If GridView1.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
-                If debitUsrID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει εισπράκτορα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
-                If colMethodID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει τρόπο πληρωμής", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                If debitUsrID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει εισπράκτορα", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                If colMethodID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει τρόπο πληρωμής", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
                 credit = Decimal.Parse(GridView1.GetRowCellValue(selectedRowHandle, "debit"))
 
                 sSQL = "Update COL_EXT 
@@ -1619,9 +1633,9 @@ Public Class frmScroller
             Next
             LoadRecords()
 
-            XtraMessageBox.Show("Οι εγγραφές επιβεβαιώθηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Οι εγγραφές επιβεβαιώθηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Friend Sub Rep_DEBITUSR_Changed(sender As Object, e As EventArgs)
@@ -1632,7 +1646,7 @@ Public Class frmScroller
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1643,7 +1657,7 @@ Public Class frmScroller
             colMethodID = editor.EditValue.ToString
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1654,7 +1668,7 @@ Public Class frmScroller
             bankID = editor.EditValue.ToString
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -1692,7 +1706,7 @@ Public Class frmScroller
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 
                 If GridView1.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
-                If debitUsrID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει εισπράκτορα", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                If debitUsrID = Nothing Then XtraMessageBox.Show("Δεν έχετε επιλέξει εισπράκτορα", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
 
 
                 sSQL = "Update COL_EXT 
@@ -1705,9 +1719,9 @@ Public Class frmScroller
             Next
             LoadRecords()
 
-            XtraMessageBox.Show("Οι εγγραφές χρεώθηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Οι εγγραφές χρεώθηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class

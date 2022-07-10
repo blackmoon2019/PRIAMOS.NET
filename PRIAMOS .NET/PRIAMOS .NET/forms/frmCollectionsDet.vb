@@ -63,8 +63,8 @@ Public Class frmCollectionsDet
         Dim sSQL As String
         Dim AptBal As Decimal, Credit As Decimal
         Try
-            If selectedRowHandles.Length - 1 = -1 Then XtraMessageBox.Show("Δεν έχετε επιλέξει κάποια εγγραφή για διαγραφή", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι επιλεγμένες εγγραφές?", "PRIAMOS .NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If selectedRowHandles.Length - 1 = -1 Then XtraMessageBox.Show("Δεν έχετε επιλέξει κάποια εγγραφή για διαγραφή", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι επιλεγμένες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 
@@ -89,7 +89,7 @@ Public Class frmCollectionsDet
 
                 Else
                     XtraMessageBox.Show("Δεν μπορείτε να διαγράψετε πίστωση που έχει συμφωνηθεί." & vbCrLf &
-                    "Για να κάνετε διαγραφή θα πρέπει πρώτα να την ενημερώσετε ως 'ΜΗ ΣΥΜΦΩΝΙΑ ΠΙΣΤΩΣΗΣ'", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    "Για να κάνετε διαγραφή θα πρέπει πρώτα να την ενημερώσετε ως 'ΜΗ ΣΥΜΦΩΝΙΑ ΠΙΣΤΩΣΗΣ'", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
 
             Next
@@ -109,9 +109,9 @@ Public Class frmCollectionsDet
             Else
                 Me.Vw_COL_DTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sbdgID), System.Guid.Parse(saptID))
             End If
-            XtraMessageBox.Show("Η εγγραφές διαγράφηκαν με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            XtraMessageBox.Show("Η εγγραφές διαγράφηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub

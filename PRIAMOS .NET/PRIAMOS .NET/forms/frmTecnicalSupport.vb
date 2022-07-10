@@ -99,7 +99,7 @@ Public Class frmTecnicalSupport
                     'Καθαρισμός Controls
                     'If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
                     'txtCode.Text = DBQ.GetNextId("TECH_SUP")
-                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'cmdEmail.Enabled = True
                     Dim form As New frmScroller
                     form.LoadRecords("vw_TECH_SUP")
@@ -109,7 +109,7 @@ Public Class frmTecnicalSupport
                 End If
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             SaveTech = False
         End Try
     End Function
@@ -192,13 +192,13 @@ Public Class frmTecnicalSupport
                 End If
 
                 Smtp_Server.Send(e_mail)
-                XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 sSQL = "UPDATE TECH_SUP SET EmailSent = 1 where ID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID))
                 cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
             End If
 
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -249,10 +249,10 @@ Public Class frmTecnicalSupport
                 End If
 
                 Smtp_Server.Send(e_mail)
-                XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                XtraMessageBox.Show("Το email στάλθηκε με επιτυχία!!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub ManageCategory()
@@ -324,10 +324,10 @@ Public Class frmTecnicalSupport
     End Sub
 
     Private Sub cmdSave_Click_1(sender As Object, e As EventArgs) Handles cmdSave.Click
-        If SaveTech(False) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If SaveTech(False) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        If SaveTech(True) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If SaveTech(True) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

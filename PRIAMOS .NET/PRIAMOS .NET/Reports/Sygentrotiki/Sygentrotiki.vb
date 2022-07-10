@@ -43,7 +43,7 @@ Public Class Rep_Sygentrotiki
             End While
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -115,7 +115,7 @@ Public Class Rep_Sygentrotiki
             'GenTot.Append(TotalSumofIdiok.ToString & " + " & TotalSumofEnoik.ToString)
             'XrTable9.Rows(0).Cells(2).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", GenTot.ToString))
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), "PRIAMOS .NET", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
