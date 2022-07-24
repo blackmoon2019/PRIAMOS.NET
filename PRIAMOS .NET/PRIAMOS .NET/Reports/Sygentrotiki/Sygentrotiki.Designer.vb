@@ -53,9 +53,6 @@ Partial Public Class Rep_Sygentrotiki
         Dim RelationColumnInfo8 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim RelationColumnInfo9 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
-        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-        Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
-        Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim DynamicListLookUpSettings2 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
@@ -336,7 +333,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "4fb33e1f-11c8-403f-89f6-7f9fda81b890"
+        Me.inhID.ValueInfo = "7a2a8994-b80d-4411-9279-46f063a59017"
         DynamicListLookUpSettings1.DataMember = "vw_INH"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "ID"
@@ -1897,12 +1894,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell57.CanGrow = False
         Me.XrTableCell57.Dpi = 254.0!
         Me.XrTableCell57.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell57.ExpressionBindings"))})
-        Me.XrTableCell57.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell57.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.XrTableCell57.Name = "XrTableCell57"
         Me.XrTableCell57.StylePriority.UseFont = False
         Me.XrTableCell57.StylePriority.UseTextAlignment = False
-        XrSummary1.IgnoreNullValues = True
-        Me.XrTableCell57.Summary = XrSummary1
         Me.XrTableCell57.Text = "XrTableCell1"
         Me.XrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell57.Weight = 0.61984751155561646R
@@ -1912,13 +1907,11 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell58.CanGrow = False
         Me.XrTableCell58.Dpi = 254.0!
-        Me.XrTableCell58.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell58.ExpressionBindings")), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "AccessibleDescription", resources.GetString("XrTableCell58.ExpressionBindings1"))})
-        Me.XrTableCell58.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell58.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell58.ExpressionBindings"))})
+        Me.XrTableCell58.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.XrTableCell58.Name = "XrTableCell58"
         Me.XrTableCell58.StylePriority.UseFont = False
         Me.XrTableCell58.StylePriority.UseTextAlignment = False
-        XrSummary2.IgnoreNullValues = True
-        Me.XrTableCell58.Summary = XrSummary2
         Me.XrTableCell58.Text = "XrTableCell2"
         Me.XrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell58.Weight = 0.61984654517984217R
@@ -1929,12 +1922,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell59.CanGrow = False
         Me.XrTableCell59.Dpi = 254.0!
         Me.XrTableCell59.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell59.ExpressionBindings"))})
-        Me.XrTableCell59.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell59.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
         Me.XrTableCell59.Name = "XrTableCell59"
         Me.XrTableCell59.StylePriority.UseFont = False
         Me.XrTableCell59.StylePriority.UseTextAlignment = False
-        XrSummary3.IgnoreNullValues = True
-        Me.XrTableCell59.Summary = XrSummary3
         Me.XrTableCell59.Text = "XrTableCell3"
         Me.XrTableCell59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell59.Weight = 0.71827462673435771R
@@ -2250,7 +2241,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.bdgID.Description = "bdgID"
         Me.bdgID.Name = "bdgID"
         Me.bdgID.Type = GetType(System.Guid)
-        Me.bdgID.ValueInfo = "9980e875-415e-452d-87ef-326e34cc0864"
+        Me.bdgID.ValueInfo = "d9b75203-6adc-48d2-a587-f8af1a733b90"
         DynamicListLookUpSettings2.DataMember = "vw_BDG"
         DynamicListLookUpSettings2.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings2.DisplayMember = "ID"
@@ -2351,20 +2342,10 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrLabel17 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel18 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel19 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrTable6 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents XrTableRow6 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents XrTableCell37 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell38 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell39 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTable4 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents XrTableRow4 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents XrTableCell26 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell27 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTable9 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents XrTableRow9 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents XrTableCell57 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell58 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell59 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrLabel39 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents bdgID As DevExpress.XtraReports.Parameters.Parameter
     Friend WithEvents SubBand1 As DevExpress.XtraReports.UI.SubBand
@@ -2391,10 +2372,6 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrTableCell9 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrLabel32 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel34 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel30 As DevExpress.XtraReports.UI.XRLabel
@@ -2440,4 +2417,18 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrTableCell46 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell47 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell48 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrTable6 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents XrTableRow6 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents XrTableCell37 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell38 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell39 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTable9 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents XrTableRow9 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents XrTableCell57 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell58 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell59 As DevExpress.XtraReports.UI.XRTableCell
 End Class

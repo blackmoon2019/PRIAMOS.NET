@@ -54,7 +54,7 @@ Partial Public Class ClosedAPT
         '
         'BottomMargin
         '
-        Me.BottomMargin.HeightF = 3.625011!
+        Me.BottomMargin.HeightF = 4.0!
         Me.BottomMargin.Name = "BottomMargin"
         '
         'Detail
@@ -66,6 +66,7 @@ Partial Public Class ClosedAPT
         'XrLabel1
         '
         Me.XrLabel1.CanGrow = False
+        Me.XrLabel1.CanShrink = True
         Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Closed]")})
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.0!)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)

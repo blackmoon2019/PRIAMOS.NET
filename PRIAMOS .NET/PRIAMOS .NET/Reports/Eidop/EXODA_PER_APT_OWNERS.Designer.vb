@@ -24,10 +24,10 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EXODA_PER_APT_OWNERS))
-        Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
-        Dim DynamicListLookUpSettings2 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
+        Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
+        Dim DynamicListLookUpSettings2 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Me.SqlDataSourceAPTOWN = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
@@ -36,13 +36,13 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel7 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel8 = New DevExpress.XtraReports.UI.XRLabel()
         Me.GroupHeader1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
-        Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.aptID = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.tableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.tableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.table1 = New DevExpress.XtraReports.UI.XRTable()
+        Me.tableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.tableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
+        Me.aptID = New DevExpress.XtraReports.Parameters.Parameter()
         CType(Me.table1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -137,33 +137,20 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.GroupHeader1.HeightF = 39.6875!
         Me.GroupHeader1.Name = "GroupHeader1"
         '
-        'inhID
+        'table1
         '
-        Me.inhID.Description = "inhID"
-        Me.inhID.Name = "inhID"
-        Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "936eacb0-936a-4952-831a-9886b55df64a"
-        DynamicListLookUpSettings1.DataMember = "vw_INC"
-        DynamicListLookUpSettings1.DataSource = Me.SqlDataSourceAPTOWN
-        DynamicListLookUpSettings1.DisplayMember = "inhID"
-        DynamicListLookUpSettings1.FilterString = Nothing
-        DynamicListLookUpSettings1.SortMember = Nothing
-        DynamicListLookUpSettings1.ValueMember = "inhID"
-        Me.inhID.ValueSourceSettings = DynamicListLookUpSettings1
+        Me.table1.Dpi = 254.0!
+        Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.table1.Name = "table1"
+        Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
+        Me.table1.SizeF = New System.Drawing.SizeF(554.01!, 38.09998!)
         '
-        'aptID
+        'tableRow1
         '
-        Me.aptID.Description = "aptID"
-        Me.aptID.Name = "aptID"
-        Me.aptID.Type = GetType(System.Guid)
-        Me.aptID.ValueInfo = "16c55615-308b-41c3-ae4c-009eb8fd1fe2"
-        DynamicListLookUpSettings2.DataMember = "vw_INC"
-        DynamicListLookUpSettings2.DataSource = Me.SqlDataSourceAPTOWN
-        DynamicListLookUpSettings2.DisplayMember = "aptID"
-        DynamicListLookUpSettings2.FilterString = Nothing
-        DynamicListLookUpSettings2.SortMember = Nothing
-        DynamicListLookUpSettings2.ValueMember = "aptID"
-        Me.aptID.ValueSourceSettings = DynamicListLookUpSettings2
+        Me.tableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.tableCell2})
+        Me.tableRow1.Dpi = 254.0!
+        Me.tableRow1.Name = "tableRow1"
+        Me.tableRow1.Weight = 1.0R
         '
         'tableCell2
         '
@@ -178,21 +165,6 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.tableCell2.StylePriority.UseFont = False
         Me.tableCell2.StylePriority.UseForeColor = False
         Me.tableCell2.Weight = 0.89317356278546745R
-        '
-        'tableRow1
-        '
-        Me.tableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.tableCell2})
-        Me.tableRow1.Dpi = 254.0!
-        Me.tableRow1.Name = "tableRow1"
-        Me.tableRow1.Weight = 1.0R
-        '
-        'table1
-        '
-        Me.table1.Dpi = 254.0!
-        Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
-        Me.table1.Name = "table1"
-        Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
-        Me.table1.SizeF = New System.Drawing.SizeF(554.01!, 38.09998!)
         '
         'XrLabel5
         '
@@ -233,6 +205,34 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel4.Summary = XrSummary2
         Me.XrLabel4.Text = "XrLabel5"
         Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'inhID
+        '
+        Me.inhID.Description = "inhID"
+        Me.inhID.Name = "inhID"
+        Me.inhID.Type = GetType(System.Guid)
+        Me.inhID.ValueInfo = "936eacb0-936a-4952-831a-9886b55df64a"
+        DynamicListLookUpSettings1.DataMember = "vw_INC"
+        DynamicListLookUpSettings1.DataSource = Me.SqlDataSourceAPTOWN
+        DynamicListLookUpSettings1.DisplayMember = "inhID"
+        DynamicListLookUpSettings1.FilterString = Nothing
+        DynamicListLookUpSettings1.SortMember = Nothing
+        DynamicListLookUpSettings1.ValueMember = "inhID"
+        Me.inhID.ValueSourceSettings = DynamicListLookUpSettings1
+        '
+        'aptID
+        '
+        Me.aptID.Description = "aptID"
+        Me.aptID.Name = "aptID"
+        Me.aptID.Type = GetType(System.Guid)
+        Me.aptID.ValueInfo = "16c55615-308b-41c3-ae4c-009eb8fd1fe2"
+        DynamicListLookUpSettings2.DataMember = "vw_INC"
+        DynamicListLookUpSettings2.DataSource = Me.SqlDataSourceAPTOWN
+        DynamicListLookUpSettings2.DisplayMember = "aptID"
+        DynamicListLookUpSettings2.FilterString = Nothing
+        DynamicListLookUpSettings2.SortMember = Nothing
+        DynamicListLookUpSettings2.ValueMember = "aptID"
+        Me.aptID.ValueSourceSettings = DynamicListLookUpSettings2
         '
         'EXODA_PER_APT_OWNERS
         '

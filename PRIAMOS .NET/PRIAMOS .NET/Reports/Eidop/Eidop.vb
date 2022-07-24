@@ -8,8 +8,8 @@ Public Class Eidop
     End Sub
 
     Private Sub Detail_BeforePrint(sender As Object, e As PrintEventArgs) Handles Detail.BeforePrint
-        Dim sAptID As String
-        sAptID = GetCurrentColumnValue("ID").ToString
+        'Dim sAptID As String
+        'sAptID = GetCurrentColumnValue("ID").ToString
 
         'EXODA_PER_APT.ParameterBindings.Item(1).Parameter.Value = sAptID
     End Sub

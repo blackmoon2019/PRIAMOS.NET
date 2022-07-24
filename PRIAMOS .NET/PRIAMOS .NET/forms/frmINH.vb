@@ -112,6 +112,7 @@ Public Class frmINH
         GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
 
         LoadConditionalFormatting()
+        cboOwnerTenant.SelectedIndex = 1 : If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
 
@@ -247,6 +248,7 @@ Public Class frmINH
                     cmdCalculate.Enabled = True
                     cmdRefresh.Enabled = True
                     TabNavigationPage3.Enabled = True
+                    chkCALC_CAT.SetItemChecked(0, True)
                 End If
             End If
 
@@ -280,6 +282,7 @@ Public Class frmINH
                 Cls.ClearGroupCtrls(LayoutControlGroup2)
                 Valid.SChanged = False
             End If
+            cboOwnerTenant.SelectedIndex = 1 : chkCALC_CAT.SetItemChecked(0, True) : cboRepname.Select()
         End If
     End Sub
     Private Sub DeleteIND_F(Optional ByVal Question As Boolean = True)
@@ -1151,7 +1154,7 @@ Public Class frmINH
         End Select
     End Sub
 
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdCancelMES.Click
         FlyoutPanel1.HidePopup()
         LayoutControl1.Enabled = True
     End Sub
@@ -1168,5 +1171,9 @@ Public Class frmINH
         Dim printTool As New ReportPrintTool(report)
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()
+    End Sub
+
+    Private Sub cmdExit_Click_1(sender As Object, e As EventArgs) Handles cmdExit.Click
+        Me.Close()
     End Sub
 End Class

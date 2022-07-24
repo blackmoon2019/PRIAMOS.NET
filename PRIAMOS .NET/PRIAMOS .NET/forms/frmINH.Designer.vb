@@ -51,6 +51,7 @@ Partial Class frmINH
         Me.colpaid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.txtHpb = New DevExpress.XtraEditors.TextEdit()
         Me.cboAhpbHB = New DevExpress.XtraEditors.LookUpEdit()
         Me.AHPBB = New System.Windows.Forms.BindingSource(Me.components)
@@ -96,7 +97,7 @@ Partial Class frmINH
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.FlyoutPanel1 = New DevExpress.Utils.FlyoutPanel()
         Me.FlyoutPanelControl1 = New DevExpress.Utils.FlyoutPanelControl()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdCancelMES = New DevExpress.XtraEditors.SimpleButton()
         Me.cboAhpbB = New DevExpress.XtraEditors.LookUpEdit()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.cmdOK = New DevExpress.XtraEditors.SimpleButton()
@@ -135,12 +136,12 @@ Partial Class frmINH
         Me.lCanceled = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem27 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem28 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
@@ -150,6 +151,8 @@ Partial Class frmINH
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem23 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem7 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem29 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwEXCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -247,12 +250,12 @@ Partial Class frmINH
         CType(Me.lCanceled, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -262,6 +265,8 @@ Partial Class frmINH
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -289,7 +294,7 @@ Partial Class frmINH
         Me.grdAPM.MainView = Me.GridView1
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPM.Name = "grdAPM"
-        Me.grdAPM.Size = New System.Drawing.Size(1309, 1255)
+        Me.grdAPM.Size = New System.Drawing.Size(1412, 1243)
         Me.grdAPM.TabIndex = 23
         Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView7})
         '
@@ -529,6 +534,7 @@ Partial Class frmINH
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.cmdExit)
         Me.LayoutControl1.Controls.Add(Me.txtHpb)
         Me.LayoutControl1.Controls.Add(Me.cboAhpbHB)
         Me.LayoutControl1.Controls.Add(Me.lblCancel)
@@ -568,6 +574,18 @@ Partial Class frmINH
         Me.LayoutControl1.Size = New System.Drawing.Size(2211, 1343)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(603, 1292)
+        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(140, 39)
+        Me.cmdExit.StyleController = Me.LayoutControl1
+        Me.cmdExit.TabIndex = 58
+        Me.cmdExit.Text = "Έξοδος"
         '
         'txtHpb
         '
@@ -754,10 +772,10 @@ Partial Class frmINH
         '
         Me.cmdPrintAll.DropDownControl = Me.PopupMenu1
         Me.cmdPrintAll.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_estimates_24
-        Me.cmdPrintAll.Location = New System.Drawing.Point(25, 1292)
+        Me.cmdPrintAll.Location = New System.Drawing.Point(303, 1292)
         Me.cmdPrintAll.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdPrintAll.Name = "cmdPrintAll"
-        Me.cmdPrintAll.Size = New System.Drawing.Size(222, 37)
+        Me.cmdPrintAll.Size = New System.Drawing.Size(149, 37)
         Me.cmdPrintAll.StyleController = Me.LayoutControl1
         Me.cmdPrintAll.TabIndex = 62
         Me.cmdPrintAll.Text = "Εκτύπωση"
@@ -798,10 +816,10 @@ Partial Class frmINH
         'cmdCalculate
         '
         Me.cmdCalculate.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_estimates_24
-        Me.cmdCalculate.Location = New System.Drawing.Point(490, 1292)
+        Me.cmdCalculate.Location = New System.Drawing.Point(456, 1292)
         Me.cmdCalculate.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCalculate.Name = "cmdCalculate"
-        Me.cmdCalculate.Size = New System.Drawing.Size(253, 39)
+        Me.cmdCalculate.Size = New System.Drawing.Size(143, 39)
         Me.cmdCalculate.StyleController = Me.LayoutControl1
         Me.cmdCalculate.TabIndex = 53
         Me.cmdCalculate.Text = "Υπολογισμός"
@@ -844,10 +862,10 @@ Partial Class frmINH
         'cmdSaveInd
         '
         Me.cmdSaveInd.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveInd.Location = New System.Drawing.Point(251, 1292)
+        Me.cmdSaveInd.Location = New System.Drawing.Point(25, 681)
         Me.cmdSaveInd.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveInd.Name = "cmdSaveInd"
-        Me.cmdSaveInd.Size = New System.Drawing.Size(235, 39)
+        Me.cmdSaveInd.Size = New System.Drawing.Size(705, 39)
         Me.cmdSaveInd.StyleController = Me.LayoutControl1
         Me.cmdSaveInd.TabIndex = 48
         Me.cmdSaveInd.Text = "Καταχώρηση Εξόδου"
@@ -940,10 +958,10 @@ Partial Class frmINH
         Me.chkCALC_CAT.DataSource = Me.VwCALCCATBindingSource
         Me.chkCALC_CAT.DisplayMember = "name"
         Me.chkCALC_CAT.HorizontalScrollbar = True
-        Me.chkCALC_CAT.Location = New System.Drawing.Point(25, 681)
+        Me.chkCALC_CAT.Location = New System.Drawing.Point(25, 724)
         Me.chkCALC_CAT.Margin = New System.Windows.Forms.Padding(5)
         Me.chkCALC_CAT.Name = "chkCALC_CAT"
-        Me.chkCALC_CAT.Size = New System.Drawing.Size(705, 594)
+        Me.chkCALC_CAT.Size = New System.Drawing.Size(705, 551)
         Me.chkCALC_CAT.SortOrder = System.Windows.Forms.SortOrder.Ascending
         Me.chkCALC_CAT.StyleController = Me.LayoutControl1
         Me.chkCALC_CAT.TabIndex = 28
@@ -1084,7 +1102,7 @@ Partial Class frmINH
         'FlyoutPanelControl1
         '
         Me.FlyoutPanelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
-        Me.FlyoutPanelControl1.Controls.Add(Me.cmdExit)
+        Me.FlyoutPanelControl1.Controls.Add(Me.cmdCancelMES)
         Me.FlyoutPanelControl1.Controls.Add(Me.cboAhpbB)
         Me.FlyoutPanelControl1.Controls.Add(Me.LabelControl2)
         Me.FlyoutPanelControl1.Controls.Add(Me.cmdOK)
@@ -1098,17 +1116,17 @@ Partial Class frmINH
         Me.FlyoutPanelControl1.Size = New System.Drawing.Size(613, 211)
         Me.FlyoutPanelControl1.TabIndex = 0
         '
-        'cmdExit
+        'cmdCancelMES
         '
-        Me.cmdExit.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(458, 153)
-        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(133, 50)
-        Me.cmdExit.TabIndex = 61
-        Me.cmdExit.Text = "Ακύρωση"
+        Me.cmdCancelMES.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cmdCancelMES.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdCancelMES.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdCancelMES.Location = New System.Drawing.Point(458, 153)
+        Me.cmdCancelMES.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdCancelMES.Name = "cmdCancelMES"
+        Me.cmdCancelMES.Size = New System.Drawing.Size(133, 50)
+        Me.cmdCancelMES.TabIndex = 61
+        Me.cmdCancelMES.Text = "Ακύρωση"
         '
         'cboAhpbB
         '
@@ -1227,7 +1245,7 @@ Partial Class frmINH
         Me.TabNavigationPage3.Controls.Add(Me.grdAPM)
         Me.TabNavigationPage3.Margin = New System.Windows.Forms.Padding(5)
         Me.TabNavigationPage3.Name = "TabNavigationPage3"
-        Me.TabNavigationPage3.Size = New System.Drawing.Size(1319, 1266)
+        Me.TabNavigationPage3.Size = New System.Drawing.Size(1422, 1254)
         '
         'txtHpc
         '
@@ -1285,7 +1303,7 @@ Partial Class frmINH
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlItem10, Me.LayoutControlGroup2, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.EmptySpaceItem3, Me.EmptySpaceItem4, Me.LayoutControlItem16, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.EmptySpaceItem5, Me.LayoutControlItem23})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlGroup2, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.EmptySpaceItem3, Me.EmptySpaceItem4, Me.LayoutControlItem16, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.EmptySpaceItem5, Me.LayoutControlItem23, Me.EmptySpaceItem7, Me.LayoutControlItem29})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(2211, 1343)
         Me.Root.TextVisible = False
@@ -1518,18 +1536,9 @@ Partial Class frmINH
         Me.LayoutControlItem28.Text = "Πάγιο Boiler"
         Me.LayoutControlItem28.TextSize = New System.Drawing.Size(170, 23)
         '
-        'LayoutControlItem10
-        '
-        Me.LayoutControlItem10.Control = Me.cmdSaveInd
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(239, 1280)
-        Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(239, 43)
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem10.TextVisible = False
-        '
         'LayoutControlGroup2
         '
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem13})
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem13, Me.LayoutControlItem10})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 494)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
         Me.LayoutControlGroup2.Size = New System.Drawing.Size(735, 786)
@@ -1559,9 +1568,9 @@ Partial Class frmINH
         '
         Me.LayoutControlItem2.Control = Me.chkCALC_CAT
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 126)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 169)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(709, 598)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(709, 555)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
@@ -1576,6 +1585,15 @@ Partial Class frmINH
         Me.LayoutControlItem13.Tag = "1"
         Me.LayoutControlItem13.Text = "Ένοικος/Ιδιοκτήτης"
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(170, 23)
+        '
+        'LayoutControlItem10
+        '
+        Me.LayoutControlItem10.Control = Me.cmdSaveInd
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 126)
+        Me.LayoutControlItem10.Name = "LayoutControlItem10"
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(709, 43)
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem10.TextVisible = False
         '
         'LayoutControlItem11
         '
@@ -1614,9 +1632,9 @@ Partial Class frmINH
         'LayoutControlItem16
         '
         Me.LayoutControlItem16.Control = Me.cmdCalculate
-        Me.LayoutControlItem16.Location = New System.Drawing.Point(478, 1280)
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(444, 1280)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(257, 43)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(147, 43)
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
         '
@@ -1649,11 +1667,28 @@ Partial Class frmINH
         'LayoutControlItem23
         '
         Me.LayoutControlItem23.Control = Me.cmdPrintAll
-        Me.LayoutControlItem23.Location = New System.Drawing.Point(13, 1280)
+        Me.LayoutControlItem23.Location = New System.Drawing.Point(291, 1280)
         Me.LayoutControlItem23.Name = "LayoutControlItem23"
-        Me.LayoutControlItem23.Size = New System.Drawing.Size(226, 43)
+        Me.LayoutControlItem23.Size = New System.Drawing.Size(153, 43)
         Me.LayoutControlItem23.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem23.TextVisible = False
+        '
+        'EmptySpaceItem7
+        '
+        Me.EmptySpaceItem7.AllowHotTrack = False
+        Me.EmptySpaceItem7.Location = New System.Drawing.Point(13, 1280)
+        Me.EmptySpaceItem7.Name = "EmptySpaceItem7"
+        Me.EmptySpaceItem7.Size = New System.Drawing.Size(278, 43)
+        Me.EmptySpaceItem7.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem29
+        '
+        Me.LayoutControlItem29.Control = Me.cmdExit
+        Me.LayoutControlItem29.Location = New System.Drawing.Point(591, 1280)
+        Me.LayoutControlItem29.Name = "LayoutControlItem29"
+        Me.LayoutControlItem29.Size = New System.Drawing.Size(144, 43)
+        Me.LayoutControlItem29.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem29.TextVisible = False
         '
         'AHPBHBindingSource
         '
@@ -1836,12 +1871,12 @@ Partial Class frmINH
         CType(Me.lCanceled, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1851,6 +1886,8 @@ Partial Class frmINH
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1998,7 +2035,7 @@ Partial Class frmINH
     Friend WithEvents AHPBB As BindingSource
     Friend WithEvents AHPB_Β As Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter
     Friend WithEvents FlyoutPanelControl1 As DevExpress.Utils.FlyoutPanelControl
-    Friend WithEvents cmdExit As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdCancelMES As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cboAhpbB As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents cmdOK As DevExpress.XtraEditors.SimpleButton
@@ -2007,4 +2044,7 @@ Partial Class frmINH
     Friend WithEvents txtHpb As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem28 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents EmptySpaceItem7 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents cmdExit As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem29 As DevExpress.XtraLayout.LayoutControlItem
 End Class
