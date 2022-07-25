@@ -128,6 +128,7 @@ Public Class frmBDG
                 NavBoiler.Enabled = False
                 NavAPM.Enabled = False
                 NavINH.Enabled = False
+                chkPRD.Checked = True
             Case FormMode.EditRecord
                 FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
@@ -2458,6 +2459,10 @@ Public Class frmBDG
         Dim View As GridView = sender
         Dim CellValue As String = View.GetRowCellValue(View.FocusedRowHandle, "finalized").ToString()
         If CellValue = "True" Then e.Cancel = True
+    End Sub
+
+    Private Sub chkManage_CheckedChanged(sender As Object, e As EventArgs) Handles chkManage.CheckedChanged
+        If chkManage.Checked = True Then cboManager.EditValue = System.Guid.Parse("C2ADEEFC-37F1-460B-A40D-A41729371535") Else cboManager.EditValue = Nothing
     End Sub
 
 

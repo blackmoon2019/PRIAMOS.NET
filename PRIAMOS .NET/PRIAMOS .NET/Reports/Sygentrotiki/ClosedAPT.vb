@@ -5,7 +5,7 @@ Public Class ClosedAPT
 
     End Sub
 
-    Private Sub XrLabel1_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrLabel1.BeforePrint
-        XrLabel1.WidthF = 300
+    Private Sub XrLabel1_BeforePrint(sender As Object, e As PrintEventArgs)
+        'XrLabel1.WidthF = 300
     End Sub
 End Class

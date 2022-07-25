@@ -5,6 +5,19 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraReports.UI
 
 Public Class Rep_Sygentrotiki
+    Private bHasFI As Boolean
+    Private bHasFIBoiler As Boolean
+    Public WriteOnly Property HasFI As Boolean
+        Set(value As Boolean)
+            bHasFI = value
+        End Set
+    End Property
+
+    Public WriteOnly Property HasFIBoiler As Boolean
+        Set(value As Boolean)
+            bHasFIBoiler = value
+        End Set
+    End Property
     Private Sub Rep_Sygentrotiki_AfterPrint(sender As Object, e As EventArgs) Handles Me.AfterPrint
 
 
@@ -28,7 +41,10 @@ Public Class Rep_Sygentrotiki
         Dim i As Integer = 0
         Try
             Dim sSQL As String
-            sSQL = "select distinct mlcRepName,calcCatOrd from vw_inc where inhID= " & toSQLValueS(Parameters.Item(0).Value.ToString) & " order by calcCatOrd"
+            sSQL = "select distinct mlcRepName,calcCatOrd from vw_inc where inhID= " & toSQLValueS(Parameters.Item(0).Value.ToString) &
+                    IIf(bHasFI, " UNION select 'FI ΘΕΡΜ.',10   ", " ") &
+                    IIf(bHasFIBoiler, " UNION select 'FI BOIL.',11   ", " ") &
+                    "order by calcCatOrd"
             Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
 
@@ -41,9 +57,18 @@ Public Class Rep_Sygentrotiki
                 End If
                 i = i + 1
             End While
+            If bHasFI = True Then
+                XrTable1.Rows(0).Cells(i).Text = "ΩΡΕΣ Θ."
+                XrTable1.Rows(0).Cells(i).Visible = True
+                i = i + 1
+            End If
+            If bHasFIBoiler = True Then
+                XrTable1.Rows(0).Cells(i).Text = "ΩΡΕΣ B."
+                XrTable1.Rows(0).Cells(i).Visible = True
+            End If
             sdr.Close()
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -58,7 +83,11 @@ Public Class Rep_Sygentrotiki
             Dim SumofAll As New System.Text.StringBuilder
             Dim GenTot As New System.Text.StringBuilder
 
-            sSQL = "select distinct apmilNam,calcCatRepName,calcCatOrd from vw_inc where inhID= " & toSQLValueS(Parameters.Item(0).Value.ToString) & " order by calcCatOrd"
+            sSQL = "select distinct apmilNam,calcCatRepName,calcCatOrd from vw_inc where inhID= " & toSQLValueS(Parameters.Item(0).Value.ToString) &
+                    IIf(bHasFI, " UNION select 'fi','fi',10    ", " ") &
+                    IIf(bHasFIBoiler, " UNION select 'fiBoiler','fiBoiler',11 ", " ") &
+                    "order by calcCatOrd"
+
             Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             Dim summary As New XRSummary()
@@ -99,6 +128,21 @@ Public Class Rep_Sygentrotiki
                 End If
                 i = i + 1
             End While
+            If bHasFI = True Then
+                XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[ExodaahpbH].[mesDif]"))
+                XrTable5.Rows(0).Cells(i).Visible = True
+                XrTable7.Rows(0).Cells(i).Summary = summary
+                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([ExodaahpbH].[mesDif])"))
+                XrTable7.Rows(0).Cells(i).Visible = True
+                i = i + 1
+            End If
+            If bHasFIBoiler = True Then
+                XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[ExodaahpbB].[mesDif]"))
+                XrTable5.Rows(0).Cells(i).Visible = True
+                XrTable7.Rows(0).Cells(i).Summary = summary
+                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([ExodaahpbB].[mesDif])"))
+                XrTable7.Rows(0).Cells(i).Visible = True
+            End If
             sdr.Close()
             'Σύνολο γραμμών ενοίκου
             '  XrTable6.Rows(0).Cells(0).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", SumofEnoik.ToString))

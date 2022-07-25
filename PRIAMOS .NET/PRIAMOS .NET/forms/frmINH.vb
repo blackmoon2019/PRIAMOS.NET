@@ -751,6 +751,10 @@ Public Class frmINH
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem1.ItemClick
         Dim report As New Rep_Sygentrotiki()
+        ' Εαν έχει FI
+        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+        ' Εαν έχει FI Boiler
+        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
         report.Parameters.Item(0).Value = sID
         report.Parameters.Item(1).Value = cboBDG.EditValue
         SplashScreenManager1.ShowWaitForm()
