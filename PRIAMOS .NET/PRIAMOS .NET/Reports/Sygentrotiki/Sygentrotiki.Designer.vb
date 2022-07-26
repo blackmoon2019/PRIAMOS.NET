@@ -1468,8 +1468,8 @@ Partial Public Class Rep_Sygentrotiki
         '
         'CrossTabGeneralStyle1
         '
-        Me.CrossTabGeneralStyle1.BackColor = System.Drawing.Color.White
-        Me.CrossTabGeneralStyle1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(160, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(160, Byte), Integer))
+        Me.CrossTabGeneralStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.CrossTabGeneralStyle1.BorderColor = System.Drawing.Color.Black
         Me.CrossTabGeneralStyle1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
@@ -1482,6 +1482,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTable6, Me.XrTable5, Me.XrTable4, Me.XrTable3})
         Me.Detail.Dpi = 254.0!
+        Me.Detail.EvenStyleName = "CrossTabGeneralStyle1"
         Me.Detail.HeightF = 38.46503!
         Me.Detail.HierarchyPrintOptions.Indent = 50.8!
         Me.Detail.Name = "Detail"

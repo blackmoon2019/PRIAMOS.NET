@@ -331,7 +331,7 @@ Partial Public Class Receipt
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "47f19e20-9b55-4d6d-986c-f9f8d3a902f5"
+        Me.inhID.ValueInfo = "10d813ec-1b56-4493-87ff-0ba5ed687c95"
         Me.inhID.Visible = False
         '
         'Detail
@@ -1173,11 +1173,11 @@ Partial Public Class Receipt
         Me.XrLabel84.Dpi = 254.0!
         Me.XrLabel84.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[bal]")})
         Me.XrLabel84.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel84.LocationFloat = New DevExpress.Utils.PointFloat(554.0993!, 510.7456!)
+        Me.XrLabel84.LocationFloat = New DevExpress.Utils.PointFloat(554.0992!, 510.7455!)
         Me.XrLabel84.Multiline = True
         Me.XrLabel84.Name = "XrLabel84"
         Me.XrLabel84.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel84.SizeF = New System.Drawing.SizeF(182.6989!, 37.46509!)
+        Me.XrLabel84.SizeF = New System.Drawing.SizeF(228.7994!, 37.46503!)
         Me.XrLabel84.StylePriority.UseBorderColor = False
         Me.XrLabel84.StylePriority.UseBorders = False
         Me.XrLabel84.StylePriority.UseBorderWidth = False
