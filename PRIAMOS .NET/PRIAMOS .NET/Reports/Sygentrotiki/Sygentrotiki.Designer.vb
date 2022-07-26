@@ -41,6 +41,10 @@ Partial Public Class Rep_Sygentrotiki
         Dim QueryParameter9 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery10 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter10 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery11 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter11 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery12 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter12 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim MasterDetailInfo1 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo1 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo2 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
@@ -64,6 +68,10 @@ Partial Public Class Rep_Sygentrotiki
         Dim RelationColumnInfo12 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo10 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo13 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo11 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo14 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo12 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo15 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim DynamicListLookUpSettings1 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Dim DynamicListLookUpSettings2 As DevExpress.XtraReports.Parameters.DynamicListLookUpSettings = New DevExpress.XtraReports.Parameters.DynamicListLookUpSettings()
         Me.SqlDataSource1 = New DevExpress.DataAccess.Sql.SqlDataSource(Me.components)
@@ -71,6 +79,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
+        Me.ClosedAPT = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel7 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel3 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
@@ -78,10 +87,12 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLine5 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel6 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLine4 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel4 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel26 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel25 = New DevExpress.XtraReports.UI.XRLabel()
@@ -210,9 +221,6 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell47 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell48 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.bdgID = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.ClosedAPT = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -299,7 +307,21 @@ Partial Public Class Rep_Sygentrotiki
         QueryParameter10.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
         CustomSqlQuery10.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter10})
         CustomSqlQuery10.Sql = resources.GetString("CustomSqlQuery10.Sql")
-        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8, CustomSqlQuery9, CustomSqlQuery10})
+        CustomSqlQuery11.MetaSerializable = "<Meta X=""1280"" Y=""660"" Width=""100"" Height=""103"" />"
+        CustomSqlQuery11.Name = "ahpbHTOT"
+        QueryParameter11.Name = "inhID"
+        QueryParameter11.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter11.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery11.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter11})
+        CustomSqlQuery11.Sql = resources.GetString("CustomSqlQuery11.Sql")
+        CustomSqlQuery12.MetaSerializable = "<Meta X=""1530"" Y=""750"" Width=""100"" Height=""103"" />"
+        CustomSqlQuery12.Name = "ahpbBTOT"
+        QueryParameter12.Name = "inhID"
+        QueryParameter12.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter12.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery12.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter12})
+        CustomSqlQuery12.Sql = resources.GetString("CustomSqlQuery12.Sql")
+        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8, CustomSqlQuery9, CustomSqlQuery10, CustomSqlQuery11, CustomSqlQuery12})
         MasterDetailInfo1.DetailQueryName = "vw_BDG"
         RelationColumnInfo1.NestedKeyColumn = "ID"
         RelationColumnInfo1.ParentKeyColumn = "bdgID"
@@ -359,7 +381,17 @@ Partial Public Class Rep_Sygentrotiki
         RelationColumnInfo13.ParentKeyColumn = "ahpb_HIDB"
         MasterDetailInfo10.KeyColumns.Add(RelationColumnInfo13)
         MasterDetailInfo10.MasterQueryName = "vw_INH"
-        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5, MasterDetailInfo6, MasterDetailInfo7, MasterDetailInfo8, MasterDetailInfo9, MasterDetailInfo10})
+        MasterDetailInfo11.DetailQueryName = "ahpbBTOT"
+        RelationColumnInfo14.NestedKeyColumn = "ahpbHID"
+        RelationColumnInfo14.ParentKeyColumn = "ahpb_HIDB"
+        MasterDetailInfo11.KeyColumns.Add(RelationColumnInfo14)
+        MasterDetailInfo11.MasterQueryName = "vw_INH"
+        MasterDetailInfo12.DetailQueryName = "ahpbHTOT"
+        RelationColumnInfo15.NestedKeyColumn = "ahpbHID"
+        RelationColumnInfo15.ParentKeyColumn = "ahpb_HID"
+        MasterDetailInfo12.KeyColumns.Add(RelationColumnInfo15)
+        MasterDetailInfo12.MasterQueryName = "vw_INH"
+        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5, MasterDetailInfo6, MasterDetailInfo7, MasterDetailInfo8, MasterDetailInfo9, MasterDetailInfo10, MasterDetailInfo11, MasterDetailInfo12})
         Me.SqlDataSource1.ResultSchemaSerializable = resources.GetString("SqlDataSource1.ResultSchemaSerializable")
         '
         'TopMargin
@@ -396,6 +428,16 @@ Partial Public Class Rep_Sygentrotiki
         Me.PageHeader.HeightF = 934.125!
         Me.PageHeader.Name = "PageHeader"
         Me.PageHeader.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand1})
+        '
+        'ClosedAPT
+        '
+        Me.ClosedAPT.CanShrink = True
+        Me.ClosedAPT.Dpi = 254.0!
+        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(2791.578!, 401.7253!)
+        Me.ClosedAPT.Name = "ClosedAPT"
+        Me.ClosedAPT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.ClosedAPT.ReportSource = New PRIAMOS.NET.ClosedAPT()
+        Me.ClosedAPT.SizeF = New System.Drawing.SizeF(1307.422!, 58.42004!)
         '
         'XrPanel7
         '
@@ -499,6 +541,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel13.Text = "ΣΥΝΟΛΟ ΕΞΟΔΩΝ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ΠΕΡΙΟΔΟΥ"
         Me.XrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
+        'EXODA_OWNERS
+        '
+        Me.EXODA_OWNERS.Dpi = 254.0!
+        Me.EXODA_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1891.58!, 408.1003!)
+        Me.EXODA_OWNERS.Name = "EXODA_OWNERS"
+        Me.EXODA_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_OWNERS()
+        Me.EXODA_OWNERS.SizeF = New System.Drawing.SizeF(870.5852!, 58.42004!)
+        '
         'XrPanel6
         '
         Me.XrPanel6.BorderColor = System.Drawing.Color.Blue
@@ -555,6 +606,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel27.StylePriority.UseTextAlignment = False
         Me.XrLabel27.Text = "ΠΟΣΟ"
         Me.XrLabel27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'EXODA
+        '
+        Me.EXODA.Dpi = 254.0!
+        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 390.1002!)
+        Me.EXODA.Name = "EXODA"
+        Me.EXODA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA.ReportSource = New PRIAMOS.NET.EXODA()
+        Me.EXODA.SizeF = New System.Drawing.SizeF(1830.258!, 41.46179!)
         '
         'XrPanel4
         '
@@ -2270,34 +2330,6 @@ Partial Public Class Rep_Sygentrotiki
         DynamicListLookUpSettings2.ValueMember = "ID"
         Me.bdgID.ValueSourceSettings = DynamicListLookUpSettings2
         Me.bdgID.Visible = False
-        '
-        'ClosedAPT
-        '
-        Me.ClosedAPT.CanShrink = True
-        Me.ClosedAPT.Dpi = 254.0!
-        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(2791.578!, 401.7253!)
-        Me.ClosedAPT.Name = "ClosedAPT"
-        Me.ClosedAPT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.ClosedAPT.ReportSource = New PRIAMOS.NET.ClosedAPT()
-        Me.ClosedAPT.SizeF = New System.Drawing.SizeF(1307.422!, 58.42004!)
-        '
-        'EXODA_OWNERS
-        '
-        Me.EXODA_OWNERS.Dpi = 254.0!
-        Me.EXODA_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1891.58!, 408.1003!)
-        Me.EXODA_OWNERS.Name = "EXODA_OWNERS"
-        Me.EXODA_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_OWNERS()
-        Me.EXODA_OWNERS.SizeF = New System.Drawing.SizeF(870.5852!, 58.42004!)
-        '
-        'EXODA
-        '
-        Me.EXODA.Dpi = 254.0!
-        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 390.1002!)
-        Me.EXODA.Name = "EXODA"
-        Me.EXODA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA.ReportSource = New PRIAMOS.NET.EXODA()
-        Me.EXODA.SizeF = New System.Drawing.SizeF(1830.258!, 41.46179!)
         '
         'Rep_Sygentrotiki
         '

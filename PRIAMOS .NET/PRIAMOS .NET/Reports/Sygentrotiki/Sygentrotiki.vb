@@ -7,6 +7,8 @@ Imports DevExpress.XtraReports.UI
 Public Class Rep_Sygentrotiki
     Private bHasFI As Boolean
     Private bHasFIBoiler As Boolean
+    Private bHasHoursH As Boolean
+    Private bHasHoursBoiler As Boolean
     Public WriteOnly Property HasFI As Boolean
         Set(value As Boolean)
             bHasFI = value
@@ -18,10 +20,18 @@ Public Class Rep_Sygentrotiki
             bHasFIBoiler = value
         End Set
     End Property
-    Private Sub Rep_Sygentrotiki_AfterPrint(sender As Object, e As EventArgs) Handles Me.AfterPrint
+    Public WriteOnly Property HasHoursH As Boolean
+        Set(value As Boolean)
+            bHasHoursH = value
+        End Set
+    End Property
 
+    Public WriteOnly Property HasHoursBoiler As Boolean
+        Set(value As Boolean)
+            bHasHoursBoiler = value
+        End Set
+    End Property
 
-    End Sub
     'Ενημέρωση ημερομηνίας εκτύπωσης
     Private Sub Rep_Sygentrotiki_PrintProgress(sender As Object, e As PrintProgressEventArgs) Handles Me.PrintProgress
         Dim sSQL As String
@@ -57,12 +67,12 @@ Public Class Rep_Sygentrotiki
                 End If
                 i = i + 1
             End While
-            If bHasFI = True Then
+            If bHasHoursH = True Then
                 XrTable1.Rows(0).Cells(i).Text = "ΩΡΕΣ Θ."
                 XrTable1.Rows(0).Cells(i).Visible = True
                 i = i + 1
             End If
-            If bHasFIBoiler = True Then
+            If bHasHoursBoiler = True Then
                 XrTable1.Rows(0).Cells(i).Text = "ΩΡΕΣ B."
                 XrTable1.Rows(0).Cells(i).Visible = True
             End If
@@ -100,18 +110,22 @@ Public Class Rep_Sygentrotiki
             While sdr.Read()
                 Console.WriteLine(sdr.Item(0).ToString())
                 If sdr.IsDBNull(sdr.GetOrdinal("calcCatRepName")) = False Then
-                    XrTable2.Rows(0).Cells(i).Text = sdr.GetString(sdr.GetOrdinal("calcCatRepName"))
-                    XrTable2.Rows(0).Cells(i).Visible = True
-                    XrTable3.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", sdr.GetString(sdr.GetOrdinal("apmilNam"))))
-                    XrTable3.Rows(0).Cells(i).Visible = True
-                    XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[Exodavw_APMIL]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "]"))
-                    XrTable5.Rows(0).Cells(i).Visible = True
-                    XrTable7.Rows(0).Cells(i).Summary = summary
-                    XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([Exodavw_APMIL]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "])"))
-                    XrTable7.Rows(0).Cells(i).Visible = True
-                    XrTable8.Rows(0).Cells(i).Summary = summary
-                    XrTable8.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum(" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & ")"))
-                    XrTable8.Rows(0).Cells(i).Visible = True
+                    If sdr.GetString(sdr.GetOrdinal("calcCatRepName")) <> "fi" And sdr.GetString(sdr.GetOrdinal("calcCatRepName")) <> "fiBoiler" Then
+                        XrTable2.Rows(0).Cells(i).Text = sdr.GetString(sdr.GetOrdinal("calcCatRepName"))
+                        XrTable2.Rows(0).Cells(i).Visible = True
+                        XrTable3.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", sdr.GetString(sdr.GetOrdinal("apmilNam"))))
+                        XrTable3.Rows(0).Cells(i).Visible = True
+                        XrTable8.Rows(0).Cells(i).Summary = summary
+                        XrTable8.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum(" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & ")"))
+                        XrTable8.Rows(0).Cells(i).Visible = True
+                        XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[Exodavw_APMIL]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "]"))
+                        XrTable5.Rows(0).Cells(i).Visible = True
+                        XrTable7.Rows(0).Cells(i).Summary = summary
+                        XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([Exodavw_APMIL]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "])"))
+                        XrTable7.Rows(0).Cells(i).Visible = True
+                        i = i + 1
+                    End If
+
                     'Μόνο για ενοίκους
                     '    If sdr.GetString(sdr.GetOrdinal("apmilNam")) <> "owners" Then
                     '        If SumofEnoik.Length > 0 Then
@@ -126,21 +140,37 @@ Public Class Rep_Sygentrotiki
                     '        TotalSumofIdiok.Append("sum(IsNull([Exodavw_INC_OWNER]." & "[" & sdr.GetString(sdr.GetOrdinal("apmilNam")) & "],0)) ")
                     '    End If
                 End If
-                i = i + 1
+
             End While
             If bHasFI = True Then
+                XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[Exodavw_APMIL].[fi]"))
+                XrTable5.Rows(0).Cells(i).Visible = True
+                XrTable7.Rows(0).Cells(i).Summary = summary
+                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([Exodavw_APMIL].[fi])"))
+                XrTable7.Rows(0).Cells(i).Visible = True
+            End If
+            If bHasHoursH Then
+                i = i + 1
                 XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[ExodaahpbH].[mesDif]"))
                 XrTable5.Rows(0).Cells(i).Visible = True
-                XrTable7.Rows(0).Cells(i).Summary = summary
-                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([ExodaahpbH].[mesDif])"))
+                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHahpbHTOT].[TotAhpbMesDif]"))
                 XrTable7.Rows(0).Cells(i).Visible = True
-                i = i + 1
+
             End If
+
             If bHasFIBoiler = True Then
-                XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[ExodaahpbB].[mesDif]"))
+                i = i + 1
+                XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[Exodavw_APMIL].[fiboiler]"))
                 XrTable5.Rows(0).Cells(i).Visible = True
                 XrTable7.Rows(0).Cells(i).Summary = summary
-                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([ExodaahpbB].[mesDif])"))
+                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([Exodavw_APMIL].[fiboiler])"))
+                XrTable7.Rows(0).Cells(i).Visible = True
+            End If
+            If bHasHoursBoiler Then
+                i = i + 1
+                XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[ExodaahpbB].[mesDif]"))
+                XrTable5.Rows(0).Cells(i).Visible = True
+                XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHahpbBTOT].[TotAhpbMesDifBoiler]"))
                 XrTable7.Rows(0).Cells(i).Visible = True
             End If
             sdr.Close()
