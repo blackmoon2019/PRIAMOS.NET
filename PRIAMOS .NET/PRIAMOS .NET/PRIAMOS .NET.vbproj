@@ -547,6 +547,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Eidop\ClosedAPTSmall.Designer.vb">
+      <DependentUpon>ClosedAPTSmall.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Eidop\ClosedAPTSmall.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Eidop\Eidop.Designer.vb">
       <DependentUpon>Eidop.vb</DependentUpon>
     </Compile>
@@ -754,6 +760,9 @@
     <EmbeddedResource Include="forms\frmVersions.resx">
       <DependentUpon>frmVersions.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Eidop\ClosedAPTSmall.resx">
+      <DependentUpon>ClosedAPTSmall.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\Eidop.resx">
       <DependentUpon>Eidop.vb</DependentUpon>
     </EmbeddedResource>
@@ -836,6 +845,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-receipt-approved-16.png" />
+    <None Include="Resources\icons8-documents-16.png" />
+    <None Include="Resources\icons8-aggregator-16.png" />
+    <None Include="Resources\icons8-aggregator-64.png" />
     <None Include="Resources\icons8-cancel-subscription-48.png" />
     <None Include="Resources\icons8-cancel-subscription-24.png" />
     <None Include="Resources\icons8-support-40.png" />

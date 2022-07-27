@@ -142,7 +142,9 @@ Public Class Rep_Sygentrotiki
                 End If
 
             End While
+            i = i - 1
             If bHasFI = True Then
+                i = i + 1
                 XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[Exodavw_APMIL].[fi]"))
                 XrTable5.Rows(0).Cells(i).Visible = True
                 XrTable7.Rows(0).Cells(i).Summary = summary

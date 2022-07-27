@@ -14,6 +14,8 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
+Imports DevExpress.XtraReports.UI
+
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -94,6 +96,13 @@ Public Class frmScroller
             GridView1.OptionsSelection.MultiSelect = True
             GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect
             GridView1.OptionsView.HeaderFilterButtonShowMode = FilterButtonShowMode.Button
+            If sDataTable = "vw_INH" Then
+                GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect
+                BarPrint.Visibility = BarItemVisibility.Always
+            Else
+                BarPrint.Visibility = BarItemVisibility.Never
+            End If
+
 
             GridView2.OptionsBehavior.AutoExpandAllGroups = True
             GridView2.OptionsMenu.ShowFooterItem = True
@@ -1356,6 +1365,12 @@ Public Class frmScroller
             If CurrentView = "" And GridView1.ActiveFilterString.Length = 0 Then GridView1.ActiveFilterString = sActiveFilter
             myCmd.Dispose()
             If CloseReader = True Then myReader.Close() : myReader = Nothing
+            If sDataTable = "vw_INH" Then
+                GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect
+                BarPrint.Visibility = BarItemVisibility.Always
+            Else
+                BarPrint.Visibility = BarItemVisibility.Never
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1724,4 +1739,56 @@ Public Class frmScroller
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub BarSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSYG.ItemClick
+        For I = 0 To GridView1.SelectedRowsCount - 1
+            If GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "Calculated") = True Then PrintReport(0, I)
+        Next
+    End Sub
+    Private Sub BarEIDOP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEIDOP.ItemClick
+        For I = 0 To GridView1.SelectedRowsCount - 1
+            If GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "Calculated") = True Then PrintReport(1, I)
+        Next
+    End Sub
+    Private Sub BarRECEIPTS_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRECEIPTS.ItemClick
+        For I = 0 To GridView1.SelectedRowsCount - 1
+            If GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "Calculated") = True Then PrintReport(2, I)
+        Next
+
+    End Sub
+    Private Sub PrintReport(ByVal sWichReport As Integer, ByVal Row As Integer)
+        Select Case sWichReport
+            Case 0
+                Dim report As New Rep_Sygentrotiki()
+                ' Εαν έχει FI
+                If GridView1.GetRowCellValue(Row, "HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+                ' Εαν έχει FI Boiler
+                If GridView1.GetRowCellValue(Row, "BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
+
+                If GridView1.GetRowCellValue(Row, "ahpb_HID").ToString.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
+                If GridView1.GetRowCellValue(Row, "ahpb_HIDB").ToString.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+                report.Parameters.Item(0).Value = GridView1.GetRowCellValue(Row, "ID").ToString
+                report.Parameters.Item(1).Value = GridView1.GetRowCellValue(Row, "bdgID").ToString
+                report.CreateDocument()
+
+                Dim tool As New PrintToolBase(report.PrintingSystem)
+                tool.Print()
+            Case 1
+                Dim report As New Eidop()
+                report.Parameters.Item(0).Value = GridView1.GetRowCellValue(Row, "ID").ToString
+                report.CreateDocument()
+                Dim tool As New PrintToolBase(report.PrintingSystem)
+                tool.Print()
+            Case 2
+                Dim report As New Receipt
+                report.Parameters.Item(0).Value = GridView1.GetRowCellValue(Row, "ID").ToString
+                report.CreateDocument()
+                Dim tool As New PrintToolBase(report.PrintingSystem)
+                tool.Print()
+
+        End Select
+
+    End Sub
+
+
 End Class

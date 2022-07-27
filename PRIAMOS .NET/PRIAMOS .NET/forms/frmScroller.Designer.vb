@@ -69,6 +69,11 @@ Partial Class frmScroller
         Me.BarDelete = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEdit = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRefresh = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarPrint = New DevExpress.XtraBars.BarButtonItem()
+        Me.PopupMenuPrint = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarSYG = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEIDOP = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarRECEIPTS = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar4 = New DevExpress.XtraBars.Bar()
         Me.cboDebitUsr = New DevExpress.XtraBars.BarEditItem()
         Me.Rep_DEBITUSR = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
@@ -119,6 +124,7 @@ Partial Class frmScroller
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -197,9 +203,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 59
+        Me.BarManager1.MaxItemId = 63
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -450,7 +456,7 @@ Partial Class frmScroller
         Me.Bar2.DockRow = 0
         Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Left
         Me.Bar2.FloatLocation = New System.Drawing.Point(49, 225)
-        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh)})
+        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh), New DevExpress.XtraBars.LinkPersistInfo(Me.BarPrint)})
         Me.Bar2.Offset = 1
         Me.Bar2.Text = "Custom 4"
         '
@@ -481,6 +487,44 @@ Partial Class frmScroller
         Me.BarRefresh.Id = 35
         Me.BarRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
         Me.BarRefresh.Name = "BarRefresh"
+        '
+        'BarPrint
+        '
+        Me.BarPrint.ActAsDropDown = True
+        Me.BarPrint.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.BarPrint.Caption = "Εκτύπωση"
+        Me.BarPrint.DropDownControl = Me.PopupMenuPrint
+        Me.BarPrint.Id = 59
+        Me.BarPrint.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_print_16
+        Me.BarPrint.Name = "BarPrint"
+        Me.BarPrint.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'PopupMenuPrint
+        '
+        Me.PopupMenuPrint.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSYG), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEIDOP), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRECEIPTS)})
+        Me.PopupMenuPrint.Manager = Me.BarManager1
+        Me.PopupMenuPrint.Name = "PopupMenuPrint"
+        '
+        'BarSYG
+        '
+        Me.BarSYG.Caption = "Συγκεντρωτική"
+        Me.BarSYG.Id = 60
+        Me.BarSYG.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_aggregator_16
+        Me.BarSYG.Name = "BarSYG"
+        '
+        'BarEIDOP
+        '
+        Me.BarEIDOP.Caption = "Ειδοποιήσεις"
+        Me.BarEIDOP.Id = 61
+        Me.BarEIDOP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_documents_16
+        Me.BarEIDOP.Name = "BarEIDOP"
+        '
+        'BarRECEIPTS
+        '
+        Me.BarRECEIPTS.Caption = "Αποδείξεις"
+        Me.BarRECEIPTS.Id = 62
+        Me.BarRECEIPTS.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_approved_16
+        Me.BarRECEIPTS.Name = "BarRECEIPTS"
         '
         'Bar4
         '
@@ -805,6 +849,7 @@ Partial Class frmScroller
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -904,4 +949,9 @@ Partial Class frmScroller
     Friend WithEvents CollectorsBindingSource As BindingSource
     Friend WithEvents CollectorsTableAdapter As Priamos_NETDataSetTableAdapters.CollectorsTableAdapter
     Friend WithEvents BBcolExtCollector As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarPrint As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents PopupMenuPrint As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents BarSYG As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarEIDOP As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarRECEIPTS As DevExpress.XtraBars.BarButtonItem
 End Class

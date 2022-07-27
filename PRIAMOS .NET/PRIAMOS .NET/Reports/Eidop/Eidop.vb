@@ -16,9 +16,10 @@ Public Class Eidop
 
     Private Sub Eidop_PrintProgress(sender As Object, e As PrintProgressEventArgs) Handles Me.PrintProgress
         Dim sSQL As String
-        sSQL = "UPDATE INH SET DATEOFPRINT = GETDATE() WHERE DATEOFPRINT IS NULL AND ID = " & toSQLValueS(inhID.Value.ToString)
+        sSQL = "UPDATE INH SET DateOfPrintEidop = GETDATE() WHERE DateOfPrintEidop IS NULL AND ID = " & toSQLValueS(inhID.Value.ToString)
         Using oCmd As New SqlCommand(sSQL, CNDB)
             oCmd.ExecuteNonQuery()
         End Using
     End Sub
+
 End Class

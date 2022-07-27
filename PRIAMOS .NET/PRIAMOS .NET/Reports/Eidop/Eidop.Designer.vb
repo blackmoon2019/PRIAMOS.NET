@@ -251,7 +251,7 @@ Partial Public Class Eidop
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
         Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
         Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.ClosedAPT = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.ClosedAPTSmall = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -575,7 +575,7 @@ Partial Public Class Eidop
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "10d813ec-1b56-4493-87ff-0ba5ed687c95"
+        Me.inhID.ValueInfo = "6149083a-25e5-4428-9dcf-1ab5e33f8d97"
         Me.inhID.Visible = False
         '
         'SqlDataSource1
@@ -771,17 +771,14 @@ Partial Public Class Eidop
         QueryParameter8.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter8.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
         CustomSqlQuery8.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter8})
-        CustomSqlQuery8.Sql = "select inhID,aptID,bdgID, fixedAmountB,boiler_consumption " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "from vw_inc where inh" &
-    "id=@inhID " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
+        CustomSqlQuery8.Sql = resources.GetString("CustomSqlQuery8.Sql")
         CustomSqlQuery9.MetaSerializable = "<Meta X=""1704"" Y=""20"" Width=""147"" Height=""163"" />"
         CustomSqlQuery9.Name = "INC_H"
         QueryParameter9.Name = "inhID"
         QueryParameter9.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter9.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
         CustomSqlQuery9.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter9})
-        CustomSqlQuery9.Sql = "select inhID,aptID,bdgID, fixedAmount,heating_consumption,[fi*ei],[ei*Ω] " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "from v" &
-    "w_inc where inhid=@inhID " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'" &
-    ""
+        CustomSqlQuery9.Sql = resources.GetString("CustomSqlQuery9.Sql")
         CustomSqlQuery10.Name = "INC_ToteiΩ"
         QueryParameter10.Name = "inhID"
         QueryParameter10.Type = GetType(DevExpress.DataAccess.Expression)
@@ -896,7 +893,7 @@ Partial Public Class Eidop
         'XrLabel81
         '
         Me.XrLabel81.Dpi = 254.0!
-        Me.XrLabel81.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif ([vw_APTINC_H].[fi*ei]<>0,[INC_Totfiei].[Totfiei],'')")})
+        Me.XrLabel81.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif ([INC_Totfiei].[Totfiei]<>0,[INC_Totfiei].[Totfiei],'')")})
         Me.XrLabel81.Font = New System.Drawing.Font("Segoe UI", 7.0!)
         Me.XrLabel81.LocationFloat = New DevExpress.Utils.PointFloat(794.8994!, 131.6823!)
         Me.XrLabel81.Multiline = True
@@ -920,7 +917,7 @@ Partial Public Class Eidop
         Me.XrLabel80.StylePriority.UseFont = False
         Me.XrLabel80.Text = "XrLabel77"
         Me.XrLabel80.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel80.TextFormatString = "{0:#}"
+        Me.XrLabel80.TextFormatString = "{0:%}"
         '
         'XrLabel79
         '
@@ -935,7 +932,6 @@ Partial Public Class Eidop
         Me.XrLabel79.StylePriority.UseFont = False
         Me.XrLabel79.Text = "XrLabel77"
         Me.XrLabel79.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel79.TextFormatString = "{0:#.00}"
         '
         'XrLabel78
         '
@@ -950,7 +946,6 @@ Partial Public Class Eidop
         Me.XrLabel78.StylePriority.UseFont = False
         Me.XrLabel78.Text = "XrLabel77"
         Me.XrLabel78.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel78.TextFormatString = "{0:#.00}"
         '
         'XrLabel77
         '
@@ -1457,7 +1452,7 @@ Partial Public Class Eidop
         '
         'SubBand1
         '
-        Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.ClosedAPT, Me.XILIOSTA, Me.XrPanel16})
+        Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.ClosedAPTSmall, Me.XILIOSTA, Me.XrPanel16})
         Me.SubBand1.Dpi = 254.0!
         Me.SubBand1.HeightF = 848.1806!
         Me.SubBand1.Name = "SubBand1"
@@ -2500,15 +2495,15 @@ Partial Public Class Eidop
         Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
         Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9711!, 41.4618!)
         '
-        'ClosedAPT
+        'ClosedAPTSmall
         '
-        Me.ClosedAPT.CanShrink = True
-        Me.ClosedAPT.Dpi = 254.0!
-        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(1002.59!, 112.4042!)
-        Me.ClosedAPT.Name = "ClosedAPT"
-        Me.ClosedAPT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.ClosedAPT.ReportSource = New PRIAMOS.NET.ClosedAPT()
-        Me.ClosedAPT.SizeF = New System.Drawing.SizeF(963.941!, 58.42001!)
+        Me.ClosedAPTSmall.CanShrink = True
+        Me.ClosedAPTSmall.Dpi = 254.0!
+        Me.ClosedAPTSmall.LocationFloat = New DevExpress.Utils.PointFloat(1002.59!, 112.4042!)
+        Me.ClosedAPTSmall.Name = "ClosedAPTSmall"
+        Me.ClosedAPTSmall.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.ClosedAPTSmall.ReportSource = New PRIAMOS.NET.ClosedAPTSmall()
+        Me.ClosedAPTSmall.SizeF = New System.Drawing.SizeF(963.941!, 58.42001!)
         '
         'XILIOSTA
         '
@@ -2635,7 +2630,7 @@ Partial Public Class Eidop
     Friend WithEvents XrLabel45 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel48 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel47 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents ClosedAPT As DevExpress.XtraReports.UI.XRSubreport
+    Friend WithEvents ClosedAPTSmall As DevExpress.XtraReports.UI.XRSubreport
     Friend WithEvents XrLabel81 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel80 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel79 As DevExpress.XtraReports.UI.XRLabel
