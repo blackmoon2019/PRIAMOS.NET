@@ -113,7 +113,6 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrPanel2 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel10 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel11 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrPanel5 = New DevExpress.XtraReports.UI.XRPanel()
@@ -397,13 +396,13 @@ Partial Public Class Rep_Sygentrotiki
         'TopMargin
         '
         Me.TopMargin.Dpi = 254.0!
-        Me.TopMargin.HeightF = 0!
+        Me.TopMargin.HeightF = 8.0!
         Me.TopMargin.Name = "TopMargin"
         '
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 254.0!
-        Me.BottomMargin.HeightF = 0!
+        Me.BottomMargin.HeightF = 1.456883!
         Me.BottomMargin.Name = "BottomMargin"
         '
         'inhID
@@ -411,7 +410,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "10d813ec-1b56-4493-87ff-0ba5ed687c95"
+        Me.inhID.ValueInfo = "0285e9f5-40a5-4c47-a188-9260c0b31114"
         DynamicListLookUpSettings1.DataMember = "vw_INH"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "ID"
@@ -425,7 +424,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.ClosedAPT, Me.XrPanel7, Me.EXODA_OWNERS, Me.XrPanel6, Me.EXODA, Me.XrPanel4, Me.XrLabel15, Me.XrLabel12, Me.XrLabel1, Me.XrPanel1, Me.XrPanel5})
         Me.PageHeader.Dpi = 254.0!
-        Me.PageHeader.HeightF = 934.125!
+        Me.PageHeader.HeightF = 944.125!
         Me.PageHeader.Name = "PageHeader"
         Me.PageHeader.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand1})
         '
@@ -433,7 +432,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.ClosedAPT.CanShrink = True
         Me.ClosedAPT.Dpi = 254.0!
-        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(2791.578!, 401.7253!)
+        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(2842.578!, 411.7253!)
         Me.ClosedAPT.Name = "ClosedAPT"
         Me.ClosedAPT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
         Me.ClosedAPT.ReportSource = New PRIAMOS.NET.ClosedAPT()
@@ -444,9 +443,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrPanel7.BorderColor = System.Drawing.Color.Blue
         Me.XrPanel7.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrPanel7.CanGrow = False
         Me.XrPanel7.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel3, Me.XrLine5, Me.XrLabel14, Me.XrLabel13})
         Me.XrPanel7.Dpi = 254.0!
-        Me.XrPanel7.LocationFloat = New DevExpress.Utils.PointFloat(2788.578!, 401.7253!)
+        Me.XrPanel7.LocationFloat = New DevExpress.Utils.PointFloat(2839.578!, 411.7253!)
         Me.XrPanel7.Name = "XrPanel7"
         Me.XrPanel7.SizeF = New System.Drawing.SizeF(1324.422!, 532.3997!)
         Me.XrPanel7.StylePriority.UseBorderColor = False
@@ -459,12 +459,13 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrPanel3.Dpi = 254.0!
         Me.XrPanel3.LocationFloat = New DevExpress.Utils.PointFloat(228.9409!, 317.7916!)
         Me.XrPanel3.Name = "XrPanel3"
-        Me.XrPanel3.SizeF = New System.Drawing.SizeF(1081.481!, 209.6081!)
+        Me.XrPanel3.SizeF = New System.Drawing.SizeF(1081.481!, 214.608!)
         Me.XrPanel3.StylePriority.UseBorders = False
         '
         'XrLabel28
         '
         Me.XrLabel28.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel28.CanGrow = False
         Me.XrLabel28.Dpi = 254.0!
         Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[announcement]")})
         Me.XrLabel28.Font = New System.Drawing.Font("Arial", 9.0!)
@@ -480,6 +481,7 @@ Partial Public Class Rep_Sygentrotiki
         'XrLabel29
         '
         Me.XrLabel29.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel29.CanGrow = False
         Me.XrLabel29.Dpi = 254.0!
         Me.XrLabel29.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
@@ -498,9 +500,9 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLine5.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLine5.Dpi = 254.0!
         Me.XrLine5.ForeColor = System.Drawing.Color.Blue
-        Me.XrLine5.LocationFloat = New DevExpress.Utils.PointFloat(3.0!, 300.83!)
+        Me.XrLine5.LocationFloat = New DevExpress.Utils.PointFloat(3.0!, 313.613!)
         Me.XrLine5.Name = "XrLine5"
-        Me.XrLine5.SizeF = New System.Drawing.SizeF(1307.422!, 21.37823!)
+        Me.XrLine5.SizeF = New System.Drawing.SizeF(1321.421!, 6.178589!)
         Me.XrLine5.StylePriority.UseBorders = False
         Me.XrLine5.StylePriority.UseForeColor = False
         '
@@ -510,10 +512,11 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel14.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel14.CanGrow = False
         Me.XrLabel14.Dpi = 254.0!
         Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[TotalInh]")})
         Me.XrLabel14.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(25.0!, 470.9796!)
+        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(23.0!, 470.9796!)
         Me.XrLabel14.Multiline = True
         Me.XrLabel14.Name = "XrLabel14"
         Me.XrLabel14.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -521,13 +524,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel14.StylePriority.UseBorderColor = False
         Me.XrLabel14.StylePriority.UseBorders = False
         Me.XrLabel14.StylePriority.UseFont = False
+        Me.XrLabel14.StylePriority.UseTextAlignment = False
         Me.XrLabel14.Text = "XrLabel14"
-        Me.XrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         Me.XrLabel14.TextFormatString = "{0:0.00€}"
         '
         'XrLabel13
         '
         Me.XrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel13.CanGrow = False
         Me.XrLabel13.Dpi = 254.0!
         Me.XrLabel13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(3.000244!, 322.7916!)
@@ -544,7 +549,7 @@ Partial Public Class Rep_Sygentrotiki
         'EXODA_OWNERS
         '
         Me.EXODA_OWNERS.Dpi = 254.0!
-        Me.EXODA_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1891.58!, 408.1003!)
+        Me.EXODA_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1942.58!, 418.1003!)
         Me.EXODA_OWNERS.Name = "EXODA_OWNERS"
         Me.EXODA_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
         Me.EXODA_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_OWNERS()
@@ -555,9 +560,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrPanel6.BorderColor = System.Drawing.Color.Blue
         Me.XrPanel6.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrPanel6.CanGrow = False
         Me.XrPanel6.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine4, Me.XrLabel23, Me.XrLabel27})
         Me.XrPanel6.Dpi = 254.0!
-        Me.XrPanel6.LocationFloat = New DevExpress.Utils.PointFloat(1887.58!, 354.1003!)
+        Me.XrPanel6.LocationFloat = New DevExpress.Utils.PointFloat(1938.58!, 364.1003!)
         Me.XrPanel6.Name = "XrPanel6"
         Me.XrPanel6.SizeF = New System.Drawing.SizeF(874.5854!, 580.0247!)
         Me.XrPanel6.StylePriority.UseBorderColor = False
@@ -588,7 +594,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel23.StylePriority.UseBorders = False
         Me.XrLabel23.StylePriority.UseFont = False
         Me.XrLabel23.StylePriority.UseTextAlignment = False
-        Me.XrLabel23.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΟΥ"
+        Me.XrLabel23.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΩΝ"
         Me.XrLabel23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'XrLabel27
@@ -610,7 +616,7 @@ Partial Public Class Rep_Sygentrotiki
         'EXODA
         '
         Me.EXODA.Dpi = 254.0!
-        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 390.1002!)
+        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(59.0!, 400.1002!)
         Me.EXODA.Name = "EXODA"
         Me.EXODA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
         Me.EXODA.ReportSource = New PRIAMOS.NET.EXODA()
@@ -622,9 +628,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrPanel4.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrPanel4.CanGrow = False
         Me.XrPanel4.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel26, Me.XrLabel25, Me.XrLabel24, Me.XrLabel4, Me.XrLabel9, Me.XrLabel8, Me.XrLabel22, Me.XrLabel20, Me.XrLabel21, Me.XrLabel6, Me.XrLabel5, Me.XrLabel7})
         Me.XrPanel4.Dpi = 254.0!
-        Me.XrPanel4.LocationFloat = New DevExpress.Utils.PointFloat(2356.583!, 35.56001!)
+        Me.XrPanel4.LocationFloat = New DevExpress.Utils.PointFloat(2407.583!, 45.56001!)
         Me.XrPanel4.Name = "XrPanel4"
         Me.XrPanel4.SizeF = New System.Drawing.SizeF(1756.417!, 261.3658!)
         Me.XrPanel4.StylePriority.UseBorderColor = False
@@ -690,7 +697,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel4.StylePriority.UseFont = False
         Me.XrLabel4.StylePriority.UseTextAlignment = False
         Me.XrLabel4.Text = "ΚΩΔΙΚΟΣ :"
-        Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel9
         '
@@ -706,7 +713,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel9.StylePriority.UseFont = False
         Me.XrLabel9.StylePriority.UseTextAlignment = False
         Me.XrLabel9.Text = "ΕΚΤΥΠΩΣΗ :"
-        Me.XrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel8
         '
@@ -722,7 +729,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel8.StylePriority.UseFont = False
         Me.XrLabel8.StylePriority.UseTextAlignment = False
         Me.XrLabel8.Text = "ΠΕΡΙΟΔΟΣ :"
-        Me.XrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel22
         '
@@ -783,7 +790,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel6.StylePriority.UseFont = False
         Me.XrLabel6.StylePriority.UseTextAlignment = False
         Me.XrLabel6.Text = "ΠΕΡΙΟΧΗ :"
-        Me.XrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel5
         '
@@ -799,7 +806,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel5.StylePriority.UseFont = False
         Me.XrLabel5.StylePriority.UseTextAlignment = False
         Me.XrLabel5.Text = "ΟΔΟΣ :"
-        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel7
         '
@@ -815,7 +822,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel7.StylePriority.UseFont = False
         Me.XrLabel7.StylePriority.UseTextAlignment = False
         Me.XrLabel7.Text = "ΔΙΑΧ/ΣΤΗΣ  :"
-        Me.XrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        Me.XrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'XrLabel15
         '
@@ -823,9 +830,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel15.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel15.CanGrow = False
         Me.XrLabel15.Dpi = 254.0!
         Me.XrLabel15.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(2788.577!, 313.1091!)
+        Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(2839.577!, 323.1091!)
         Me.XrLabel15.Multiline = True
         Me.XrLabel15.Name = "XrLabel15"
         Me.XrLabel15.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -843,9 +851,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel12.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel12.CanGrow = False
         Me.XrLabel12.Dpi = 254.0!
         Me.XrLabel12.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(1887.579!, 313.1091!)
+        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(1938.579!, 323.1091!)
         Me.XrLabel12.Multiline = True
         Me.XrLabel12.Name = "XrLabel12"
         Me.XrLabel12.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -863,9 +872,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel1.CanGrow = False
         Me.XrLabel1.Dpi = 254.0!
         Me.XrLabel1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 313.1091!)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 323.1091!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -879,15 +889,17 @@ Partial Public Class Rep_Sygentrotiki
         '
         'XrPanel1
         '
-        Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel2, Me.XrLabel2, Me.XrLabel3, Me.XrPictureBox1})
+        Me.XrPanel1.CanGrow = False
+        Me.XrPanel1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel2, Me.XrLabel3, Me.XrPictureBox1})
         Me.XrPanel1.Dpi = 254.0!
-        Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 10.16003!)
+        Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(51.0!, 20.16003!)
         Me.XrPanel1.Name = "XrPanel1"
         Me.XrPanel1.SizeF = New System.Drawing.SizeF(4113.0!, 302.9491!)
         '
         'XrPanel2
         '
         Me.XrPanel2.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrPanel2.CanGrow = False
         Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel10, Me.XrLabel11})
         Me.XrPanel2.Dpi = 254.0!
         Me.XrPanel2.LocationFloat = New DevExpress.Utils.PointFloat(793.75!, 21.58995!)
@@ -898,6 +910,7 @@ Partial Public Class Rep_Sygentrotiki
         'XrLabel10
         '
         Me.XrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel10.CanGrow = False
         Me.XrLabel10.Dpi = 254.0!
         Me.XrLabel10.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel10.ForeColor = System.Drawing.Color.Blue
@@ -917,6 +930,7 @@ Partial Public Class Rep_Sygentrotiki
         'XrLabel11
         '
         Me.XrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel11.CanGrow = False
         Me.XrLabel11.Dpi = 254.0!
         Me.XrLabel11.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel11.ForeColor = System.Drawing.Color.Red
@@ -932,34 +946,21 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel11.Text = "ΑΛΛΕΣ ΥΠΗΡΕΣΙΕΣ ΜΑΣ"
         Me.XrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
-        'XrLabel2
-        '
-        Me.XrLabel2.Dpi = 254.0!
-        Me.XrLabel2.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(96.52!, 181.1405!)
-        Me.XrLabel2.Multiline = True
-        Me.XrLabel2.Name = "XrLabel2"
-        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel2.SizeF = New System.Drawing.SizeF(615.2962!, 115.0965!)
-        Me.XrLabel2.StylePriority.UseFont = False
-        Me.XrLabel2.StylePriority.UseTextAlignment = False
-        Me.XrLabel2.Text = "ΙΩΑΝΝΟΥ ΘΕΟΛΟΓΟΥ 11 - ΖΩΓΡΑΦΟΥ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ΤΗΛ. 2107784837" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "email : info@priamoservice.gr"
-        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
         'XrLabel3
         '
         Me.XrLabel3.BorderColor = System.Drawing.Color.Red
         Me.XrLabel3.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel3.CanGrow = False
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
         Me.XrLabel3.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(1871.579!, 25.39999!)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(1887.579!, 29.21011!)
         Me.XrLabel3.Multiline = True
         Me.XrLabel3.Name = "XrLabel3"
         Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel3.SizeF = New System.Drawing.SizeF(455.4443!, 267.0269!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(455.4443!, 257.5557!)
         Me.XrLabel3.StylePriority.UseBorderColor = False
         Me.XrLabel3.StylePriority.UseBorders = False
         Me.XrLabel3.StylePriority.UseFont = False
@@ -972,9 +973,9 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrPictureBox1.Dpi = 254.0!
         Me.XrPictureBox1.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("XrPictureBox1.ImageSource"))
-        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(96.52!, 15.23997!)
+        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(8.000069!, 29.2101!)
         Me.XrPictureBox1.Name = "XrPictureBox1"
-        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(615.2962!, 148.5901!)
+        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(768.75!, 220.1026!)
         Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'XrPanel5
@@ -982,9 +983,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrPanel5.BorderColor = System.Drawing.Color.Blue
         Me.XrPanel5.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrPanel5.CanGrow = False
         Me.XrPanel5.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine3, Me.XrLine2, Me.XrLine1, Me.XrLabel16, Me.XrLabel17, Me.XrLabel18, Me.XrLabel19})
         Me.XrPanel5.Dpi = 254.0!
-        Me.XrPanel5.LocationFloat = New DevExpress.Utils.PointFloat(0!, 354.1003!)
+        Me.XrPanel5.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 364.1003!)
         Me.XrPanel5.Name = "XrPanel5"
         Me.XrPanel5.SizeF = New System.Drawing.SizeF(1834.258!, 580.0247!)
         Me.XrPanel5.StylePriority.UseBorderColor = False
@@ -1039,7 +1041,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel16.StylePriority.UseBorders = False
         Me.XrLabel16.StylePriority.UseFont = False
         Me.XrLabel16.StylePriority.UseTextAlignment = False
-        Me.XrLabel16.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΟΥ"
+        Me.XrLabel16.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΩΝ"
         Me.XrLabel16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'XrLabel17
@@ -1071,7 +1073,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel18.StylePriority.UseBorders = False
         Me.XrLabel18.StylePriority.UseFont = False
         Me.XrLabel18.StylePriority.UseTextAlignment = False
-        Me.XrLabel18.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΟΥ"
+        Me.XrLabel18.Text = "ΠΕΡΙΓΡΑΦΗ ΕΞΟΔΩΝ"
         Me.XrLabel18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'XrLabel19
@@ -1102,11 +1104,11 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable2.Dpi = 254.0!
-        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 36.46!)
+        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(2268.888!, 36.46!)
         Me.XrTable2.Name = "XrTable2"
         Me.XrTable2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
-        Me.XrTable2.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
+        Me.XrTable2.SizeF = New System.Drawing.SizeF(1383.788!, 38.46503!)
         Me.XrTable2.StylePriority.UseBorders = False
         '
         'XrTableRow2
@@ -1209,14 +1211,14 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell17.StylePriority.UseFont = False
         Me.XrTableCell17.Text = "XrTableCell17"
         Me.XrTableCell17.Visible = False
-        Me.XrTableCell17.Weight = 0.61023640182134731R
+        Me.XrTableCell17.Weight = 0.58736983036821444R
         Me.XrTableCell17.WordWrap = False
         '
         'XrTable1
         '
         Me.XrTable1.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable1.Dpi = 254.0!
-        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 36.46499!)
+        Me.XrTable1.LocationFloat = New DevExpress.Utils.PointFloat(644.9739!, 36.46499!)
         Me.XrTable1.Name = "XrTable1"
         Me.XrTable1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow1})
@@ -1345,7 +1347,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel32.CanGrow = False
         Me.XrLabel32.Dpi = 254.0!
         Me.XrLabel32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(132.5456!, 36.46499!)
+        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(183.5456!, 36.46499!)
         Me.XrLabel32.Multiline = True
         Me.XrLabel32.Name = "XrLabel32"
         Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1364,7 +1366,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel31.CanGrow = False
         Me.XrLabel31.Dpi = 254.0!
         Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 36.46499!)
+        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 36.46499!)
         Me.XrLabel31.Multiline = True
         Me.XrLabel31.Name = "XrLabel31"
         Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1383,10 +1385,10 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel38.CanGrow = False
         Me.XrLabel38.Dpi = 254.0!
         Me.XrLabel38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3916.559!, 37.46509!)
+        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3967.559!, 36.45996!)
         Me.XrLabel38.Name = "XrLabel38"
         Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel38.SizeF = New System.Drawing.SizeF(196.4419!, 37.465!)
+        Me.XrLabel38.SizeF = New System.Drawing.SizeF(196.4417!, 38.46505!)
         Me.XrLabel38.StylePriority.UseBorders = False
         Me.XrLabel38.StylePriority.UseFont = False
         Me.XrLabel38.StylePriority.UseTextAlignment = False
@@ -1402,7 +1404,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel35.CanGrow = False
         Me.XrLabel35.Dpi = 254.0!
         Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3601.676!, 37.46507!)
+        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3652.676!, 37.46507!)
         Me.XrLabel35.Name = "XrLabel35"
         Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel35.SizeF = New System.Drawing.SizeF(157.4414!, 37.46499!)
@@ -1421,7 +1423,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel36.CanGrow = False
         Me.XrLabel36.Dpi = 254.0!
         Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3759.117!, 37.46493!)
+        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3810.117!, 37.46493!)
         Me.XrLabel36.Name = "XrLabel36"
         Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel36.SizeF = New System.Drawing.SizeF(157.4424!, 37.46501!)
@@ -1439,7 +1441,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel37.CanGrow = False
         Me.XrLabel37.Dpi = 254.0!
         Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3601.32!, 0!)
+        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3652.32!, 0!)
         Me.XrLabel37.Name = "XrLabel37"
         Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel37.SizeF = New System.Drawing.SizeF(511.6802!, 37.465!)
@@ -1458,14 +1460,14 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel34.CanGrow = False
         Me.XrLabel34.Dpi = 254.0!
         Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2217.887!, 0!)
+        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2268.887!, 0!)
         Me.XrLabel34.Name = "XrLabel34"
         Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel34.SizeF = New System.Drawing.SizeF(1383.433!, 38.46503!)
         Me.XrLabel34.StylePriority.UseBorders = False
         Me.XrLabel34.StylePriority.UseFont = False
         Me.XrLabel34.StylePriority.UseTextAlignment = False
-        Me.XrLabel34.Text = "ΠΛΗΡΩΤΕΑ ΑΝΑ ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΟΥ"
+        Me.XrLabel34.Text = "ΠΛΗΡΩΤΕΑ ΑΝΑ ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΩΝ"
         Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         Me.XrLabel34.WordWrap = False
         '
@@ -1475,14 +1477,14 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel33.CanGrow = False
         Me.XrLabel33.Dpi = 254.0!
         Me.XrLabel33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(585.7459!, 0!)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(636.7459!, 0!)
         Me.XrLabel33.Name = "XrLabel33"
         Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel33.SizeF = New System.Drawing.SizeF(1632.142!, 38.46503!)
         Me.XrLabel33.StylePriority.UseBorders = False
         Me.XrLabel33.StylePriority.UseFont = False
         Me.XrLabel33.StylePriority.UseTextAlignment = False
-        Me.XrLabel33.Text = "ΠΟΣΟΣΤΑ ΣΥΝΤΕΛΕΣΤΩΝ ΚΑΤΑΜΕΡΙΣΜΟΥ ΕΞΟΔΩΝ ΚΑΤΑΜΕΡΙΣΜΟΥ "
+        Me.XrLabel33.Text = "ΣΥΝΤΕΛΕΣΤΕΣ ΚΑΤΑΜΕΡΙΣΜΟΥ ΕΞΟΔΩΝ"
         Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         Me.XrLabel33.WordWrap = False
         '
@@ -1493,7 +1495,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel30.CanGrow = False
         Me.XrLabel30.Dpi = 254.0!
         Me.XrLabel30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
         Me.XrLabel30.Name = "XrLabel30"
         Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel30.SizeF = New System.Drawing.SizeF(589.9739!, 37.465!)
@@ -1528,7 +1530,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         'CrossTabGeneralStyle1
         '
-        Me.CrossTabGeneralStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.CrossTabGeneralStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(233, Byte), Integer), CType(CType(233, Byte), Integer))
         Me.CrossTabGeneralStyle1.BorderColor = System.Drawing.Color.Black
         Me.CrossTabGeneralStyle1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
@@ -1552,11 +1554,11 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable6.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable6.Dpi = 254.0!
-        Me.XrTable6.LocationFloat = New DevExpress.Utils.PointFloat(3601.676!, 0!)
+        Me.XrTable6.LocationFloat = New DevExpress.Utils.PointFloat(3652.676!, 0!)
         Me.XrTable6.Name = "XrTable6"
         Me.XrTable6.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable6.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow6})
-        Me.XrTable6.SizeF = New System.Drawing.SizeF(511.3232!, 38.46503!)
+        Me.XrTable6.SizeF = New System.Drawing.SizeF(511.3257!, 38.46503!)
         Me.XrTable6.StylePriority.UseBorders = False
         '
         'XrTableRow6
@@ -1577,7 +1579,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell37.StylePriority.UseTextAlignment = False
         Me.XrTableCell37.Text = "XrTableCell1"
         Me.XrTableCell37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell37.Weight = 0.61984751155561646R
+        Me.XrTableCell37.Weight = 0.60287767112090085R
         Me.XrTableCell37.WordWrap = False
         '
         'XrTableCell38
@@ -1591,7 +1593,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell38.StylePriority.UseTextAlignment = False
         Me.XrTableCell38.Text = "XrTableCell2"
         Me.XrTableCell38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell38.Weight = 0.61984654517984217R
+        Me.XrTableCell38.Weight = 0.60288143751427625R
         Me.XrTableCell38.WordWrap = False
         '
         'XrTableCell39
@@ -1605,14 +1607,14 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell39.StylePriority.UseTextAlignment = False
         Me.XrTableCell39.Text = "XrTableCell3"
         Me.XrTableCell39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell39.Weight = 0.71827462673435771R
+        Me.XrTableCell39.Weight = 0.75221904037293852R
         Me.XrTableCell39.WordWrap = False
         '
         'XrTable5
         '
         Me.XrTable5.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable5.Dpi = 254.0!
-        Me.XrTable5.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 0!)
+        Me.XrTable5.LocationFloat = New DevExpress.Utils.PointFloat(644.9739!, 0!)
         Me.XrTable5.Name = "XrTable5"
         Me.XrTable5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable5.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow5})
@@ -1767,7 +1769,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable4.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable4.Dpi = 254.0!
-        Me.XrTable4.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
+        Me.XrTable4.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
         Me.XrTable4.Name = "XrTable4"
         Me.XrTable4.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable4.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow4})
@@ -1812,11 +1814,11 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable3.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable3.Dpi = 254.0!
-        Me.XrTable3.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 0!)
+        Me.XrTable3.LocationFloat = New DevExpress.Utils.PointFloat(2268.888!, 0!)
         Me.XrTable3.Name = "XrTable3"
         Me.XrTable3.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable3.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow3})
-        Me.XrTable3.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
+        Me.XrTable3.SizeF = New System.Drawing.SizeF(1383.432!, 38.46503!)
         Me.XrTable3.StylePriority.UseBorders = False
         '
         'XrTableRow3
@@ -1935,7 +1937,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell25.Text = "XrTableCell17"
         Me.XrTableCell25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell25.Visible = False
-        Me.XrTableCell25.Weight = 0.61023640182134731R
+        Me.XrTableCell25.Weight = 0.58596842384536163R
         Me.XrTableCell25.WordWrap = False
         '
         'CalculatedField1
@@ -1947,7 +1949,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTable9, Me.XrLabel39, Me.XrTable8, Me.XrTable7})
         Me.GroupFooter1.Dpi = 254.0!
-        Me.GroupFooter1.HeightF = 45.66905!
+        Me.GroupFooter1.HeightF = 41.0595!
         Me.GroupFooter1.Name = "GroupFooter1"
         '
         'XrTable9
@@ -1955,11 +1957,11 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable9.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable9.Dpi = 254.0!
-        Me.XrTable9.LocationFloat = New DevExpress.Utils.PointFloat(3601.676!, 0!)
+        Me.XrTable9.LocationFloat = New DevExpress.Utils.PointFloat(3652.676!, 0!)
         Me.XrTable9.Name = "XrTable9"
         Me.XrTable9.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable9.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow9})
-        Me.XrTable9.SizeF = New System.Drawing.SizeF(511.3232!, 38.46503!)
+        Me.XrTable9.SizeF = New System.Drawing.SizeF(511.3257!, 38.46503!)
         Me.XrTable9.StylePriority.UseBorders = False
         '
         'XrTableRow9
@@ -1974,13 +1976,13 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell57.CanGrow = False
         Me.XrTableCell57.Dpi = 254.0!
         Me.XrTableCell57.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell57.ExpressionBindings"))})
-        Me.XrTableCell57.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell57.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell57.Name = "XrTableCell57"
         Me.XrTableCell57.StylePriority.UseFont = False
         Me.XrTableCell57.StylePriority.UseTextAlignment = False
         Me.XrTableCell57.Text = "XrTableCell1"
         Me.XrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell57.Weight = 0.61984751155561646R
+        Me.XrTableCell57.Weight = 0.60287767112090085R
         Me.XrTableCell57.WordWrap = False
         '
         'XrTableCell58
@@ -1988,13 +1990,13 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell58.CanGrow = False
         Me.XrTableCell58.Dpi = 254.0!
         Me.XrTableCell58.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell58.ExpressionBindings"))})
-        Me.XrTableCell58.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell58.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell58.Name = "XrTableCell58"
         Me.XrTableCell58.StylePriority.UseFont = False
         Me.XrTableCell58.StylePriority.UseTextAlignment = False
         Me.XrTableCell58.Text = "XrTableCell2"
         Me.XrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell58.Weight = 0.61984654517984217R
+        Me.XrTableCell58.Weight = 0.60288143751427625R
         Me.XrTableCell58.WordWrap = False
         '
         'XrTableCell59
@@ -2002,13 +2004,13 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell59.CanGrow = False
         Me.XrTableCell59.Dpi = 254.0!
         Me.XrTableCell59.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell59.ExpressionBindings"))})
-        Me.XrTableCell59.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell59.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrTableCell59.Name = "XrTableCell59"
         Me.XrTableCell59.StylePriority.UseFont = False
         Me.XrTableCell59.StylePriority.UseTextAlignment = False
         Me.XrTableCell59.Text = "XrTableCell3"
         Me.XrTableCell59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrTableCell59.Weight = 0.71827462673435771R
+        Me.XrTableCell59.Weight = 0.75221904037293852R
         Me.XrTableCell59.WordWrap = False
         '
         'XrLabel39
@@ -2019,14 +2021,14 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel39.CanGrow = False
         Me.XrLabel39.Dpi = 254.0!
         Me.XrLabel39.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
+        Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
         Me.XrLabel39.Name = "XrLabel39"
         Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel39.SizeF = New System.Drawing.SizeF(589.9739!, 38.46503!)
         Me.XrLabel39.StylePriority.UseBorders = False
         Me.XrLabel39.StylePriority.UseFont = False
         Me.XrLabel39.StylePriority.UseTextAlignment = False
-        Me.XrLabel39.Text = "Σύνολο"
+        Me.XrLabel39.Text = "Σύνολα"
         Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrLabel39.WordWrap = False
         '
@@ -2035,11 +2037,11 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable8.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable8.Dpi = 254.0!
-        Me.XrTable8.LocationFloat = New DevExpress.Utils.PointFloat(2217.888!, 0!)
+        Me.XrTable8.LocationFloat = New DevExpress.Utils.PointFloat(2268.888!, 0!)
         Me.XrTable8.Name = "XrTable8"
         Me.XrTable8.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable8.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow8})
-        Me.XrTable8.SizeF = New System.Drawing.SizeF(1389.596!, 38.46503!)
+        Me.XrTable8.SizeF = New System.Drawing.SizeF(1383.432!, 38.46503!)
         Me.XrTable8.StylePriority.UseBorders = False
         '
         'XrTableRow8
@@ -2158,7 +2160,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell56.Text = "XrTableCell17"
         Me.XrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrTableCell56.Visible = False
-        Me.XrTableCell56.Weight = 0.61023640182134731R
+        Me.XrTableCell56.Weight = 0.58596842384536163R
         Me.XrTableCell56.WordWrap = False
         '
         'XrTable7
@@ -2166,7 +2168,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTable7.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable7.Dpi = 254.0!
         Me.XrTable7.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.XrTable7.LocationFloat = New DevExpress.Utils.PointFloat(593.9739!, 0!)
+        Me.XrTable7.LocationFloat = New DevExpress.Utils.PointFloat(644.9739!, 0!)
         Me.XrTable7.Name = "XrTable7"
         Me.XrTable7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable7.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow7})
@@ -2341,13 +2343,14 @@ Partial Public Class Rep_Sygentrotiki
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
         Me.Landscape = True
-        Me.Margins = New System.Drawing.Printing.Margins(13, 58, 0, 0)
+        Me.Margins = New System.Drawing.Printing.Margins(3, 0, 8, 1)
         Me.PageHeight = 2970
         Me.PageWidth = 4200
         Me.PaperKind = System.Drawing.Printing.PaperKind.A3
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID, Me.bdgID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
+        Me.ShowPrintMarginsWarning = False
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.CrossTabTotalStyle1, Me.CrossTabHeaderStyle1, Me.CrossTabDataStyle1, Me.CrossTabGeneralStyle1})
         Me.Version = "21.2"
@@ -2372,7 +2375,6 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrPanel1 As DevExpress.XtraReports.UI.XRPanel
     Friend WithEvents XrLabel5 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel20 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrPictureBox1 As DevExpress.XtraReports.UI.XRPictureBox

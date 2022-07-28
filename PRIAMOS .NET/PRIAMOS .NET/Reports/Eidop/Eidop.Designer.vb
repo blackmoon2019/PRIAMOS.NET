@@ -21,6 +21,13 @@ Partial Public Class Eidop
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Eidop))
+        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery4 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
         Dim Column1 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
         Dim ColumnExpression1 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
@@ -33,82 +40,26 @@ Partial Public Class Eidop
         Dim ColumnExpression4 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
         Dim Column5 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
         Dim ColumnExpression5 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column6 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression6 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column7 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression7 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column8 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression8 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column9 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression9 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column10 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression10 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column11 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression11 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column12 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression12 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column13 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression13 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column14 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression14 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column15 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression15 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column16 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression16 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column17 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression17 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column18 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression18 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column19 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression19 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column20 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression20 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column21 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression21 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column22 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression22 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column23 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression23 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column24 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression24 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column25 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression25 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Sorting1 As DevExpress.DataAccess.Sql.Sorting = New DevExpress.DataAccess.Sql.Sorting()
-        Dim ColumnExpression26 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter1 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter2 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim CustomSqlQuery3 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim Column26 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression27 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim Column27 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression28 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column28 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression29 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column29 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression30 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column30 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression31 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim CustomSqlQuery4 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter4 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery5 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter5 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter4 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery6 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter6 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter5 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery7 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter7 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter6 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery8 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter8 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter7 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery9 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter9 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter8 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery10 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter10 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter9 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery11 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter10 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery12 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter11 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery13 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter12 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery14 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter13 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim MasterDetailInfo1 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo1 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo2 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
@@ -129,6 +80,14 @@ Partial Public Class Eidop
         Dim RelationColumnInfo9 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Dim MasterDetailInfo10 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo10 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo11 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo11 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo12 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo12 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo13 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo13 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
+        Dim MasterDetailInfo14 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
+        Dim RelationColumnInfo14 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.XrPanel1 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel15 = New DevExpress.XtraReports.UI.XRLabel()
@@ -154,9 +113,12 @@ Partial Public Class Eidop
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
         Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel2 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLabel57 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel79 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel82 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel83 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel81 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel80 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel79 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel78 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel77 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel62 = New DevExpress.XtraReports.UI.XRLabel()
@@ -164,7 +126,6 @@ Partial Public Class Eidop
         Me.XrLabel60 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel59 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel58 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel57 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel56 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel55 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel54 = New DevExpress.XtraReports.UI.XRLabel()
@@ -249,6 +210,7 @@ Partial Public Class Eidop
         Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel16 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLine13 = New DevExpress.XtraReports.UI.XRLine()
         Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
         Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
         Me.ClosedAPTSmall = New DevExpress.XtraReports.UI.XRSubreport()
@@ -267,7 +229,7 @@ Partial Public Class Eidop
         Me.XrPanel1.Dpi = 254.0!
         Me.XrPanel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrPanel1.Name = "XrPanel1"
-        Me.XrPanel1.SizeF = New System.Drawing.SizeF(1986.0!, 414.7091!)
+        Me.XrPanel1.SizeF = New System.Drawing.SizeF(1986.0!, 590.3412!)
         '
         'XrLabel15
         '
@@ -279,7 +241,7 @@ Partial Public Class Eidop
         Me.XrLabel15.Dpi = 254.0!
         Me.XrLabel15.Font = New System.Drawing.Font("Bookman Old Style", 14.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel15.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(475.1959!, 159.5901!)
+        Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(475.1959!, 282.981!)
         Me.XrLabel15.Name = "XrLabel15"
         Me.XrLabel15.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel15.SizeF = New System.Drawing.SizeF(1045.263!, 55.783!)
@@ -296,9 +258,9 @@ Partial Public Class Eidop
         '
         Me.XrPictureBox1.Dpi = 254.0!
         Me.XrPictureBox1.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("XrPictureBox1.ImageSource"))
-        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(620.1035!, 0!)
+        Me.XrPictureBox1.LocationFloat = New DevExpress.Utils.PointFloat(620.1038!, 17.0!)
         Me.XrPictureBox1.Name = "XrPictureBox1"
-        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(742.0079!, 148.5901!)
+        Me.XrPictureBox1.SizeF = New System.Drawing.SizeF(807.0701!, 215.2709!)
         Me.XrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage
         '
         'XrPanel4
@@ -307,18 +269,18 @@ Partial Public Class Eidop
         Me.XrPanel4.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrPanel4.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel14, Me.XrLabel2, Me.XrLabel6, Me.XrLabel10, Me.XrLabel13, Me.XrLabel12, Me.XrLabel11, Me.XrLabel20, Me.XrLabel8, Me.XrLabel1, Me.XrLabel9, Me.XrLabel5, Me.XrLabel7, Me.XrLabel4})
         Me.XrPanel4.Dpi = 254.0!
-        Me.XrPanel4.LocationFloat = New DevExpress.Utils.PointFloat(50.70861!, 226.4892!)
+        Me.XrPanel4.LocationFloat = New DevExpress.Utils.PointFloat(9.000327!, 377.5717!)
         Me.XrPanel4.Name = "XrPanel4"
-        Me.XrPanel4.SizeF = New System.Drawing.SizeF(1849.321!, 188.2198!)
+        Me.XrPanel4.SizeF = New System.Drawing.SizeF(1976.999!, 212.7695!)
         Me.XrPanel4.StylePriority.UseBorderColor = False
         Me.XrPanel4.StylePriority.UseBorders = False
         '
         'XrLabel14
         '
         Me.XrLabel14.Dpi = 254.0!
-        Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[code]")})
+        Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINV_NUMBERS].[invNumber]")})
         Me.XrLabel14.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(694.6263!, 125.996!)
+        Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(815.1303!, 139.996!)
         Me.XrLabel14.Multiline = True
         Me.XrLabel14.Name = "XrLabel14"
         Me.XrLabel14.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -334,7 +296,7 @@ Partial Public Class Eidop
         Me.XrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(681.0192!, 92.44641!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(801.5233!, 106.4464!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
         Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -354,7 +316,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel6.Dpi = 254.0!
         Me.XrLabel6.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(861.2651!, 0!)
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(981.7691!, 14.0!)
         Me.XrLabel6.Multiline = True
         Me.XrLabel6.Name = "XrLabel6"
         Me.XrLabel6.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -372,7 +334,7 @@ Partial Public Class Eidop
         Me.XrLabel10.Dpi = 254.0!
         Me.XrLabel10.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[nam]")})
         Me.XrLabel10.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(863.265!, 38.02634!)
+        Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(983.769!, 52.02634!)
         Me.XrLabel10.Multiline = True
         Me.XrLabel10.Name = "XrLabel10"
         Me.XrLabel10.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -388,7 +350,7 @@ Partial Public Class Eidop
         Me.XrLabel13.Dpi = 254.0!
         Me.XrLabel13.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[completeDate]")})
         Me.XrLabel13.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(286.7411!, 125.996!)
+        Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(407.2451!, 139.996!)
         Me.XrLabel13.Multiline = True
         Me.XrLabel13.Name = "XrLabel13"
         Me.XrLabel13.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -404,7 +366,7 @@ Partial Public Class Eidop
         Me.XrLabel12.Dpi = 254.0!
         Me.XrLabel12.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "IIF(IsNullOrEmpty([vw_INH].[DateOfPrint]),Now(),[vw_INH].[DateOfPrint])")})
         Me.XrLabel12.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(1099.639!, 133.0428!)
+        Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(1220.143!, 147.0428!)
         Me.XrLabel12.Multiline = True
         Me.XrLabel12.Name = "XrLabel12"
         Me.XrLabel12.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -421,7 +383,7 @@ Partial Public Class Eidop
         Me.XrLabel11.Dpi = 254.0!
         Me.XrLabel11.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[ttl]")})
         Me.XrLabel11.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(1382.466!, 37.91312!)
+        Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(1502.97!, 51.91312!)
         Me.XrLabel11.Multiline = True
         Me.XrLabel11.Name = "XrLabel11"
         Me.XrLabel11.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -439,7 +401,7 @@ Partial Public Class Eidop
         Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[AdrName] + ' ' + [vw_INH].[vw_INHvw_APT].[ar] + ' ' + [v" &
                     "w_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel20.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(176.2518!, 37.54415!)
+        Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(296.7558!, 51.54415!)
         Me.XrLabel20.Multiline = True
         Me.XrLabel20.Name = "XrLabel20"
         Me.XrLabel20.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -456,7 +418,7 @@ Partial Public Class Eidop
         Me.XrLabel8.Dpi = 254.0!
         Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[old_code]")})
         Me.XrLabel8.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(19.43921!, 40.54415!)
+        Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(139.9432!, 54.54415!)
         Me.XrLabel8.Multiline = True
         Me.XrLabel8.Name = "XrLabel8"
         Me.XrLabel8.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -473,7 +435,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel1.Dpi = 254.0!
         Me.XrLabel1.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(276.1341!, 92.44641!)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(396.6381!, 106.4464!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -492,7 +454,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel9.Dpi = 254.0!
         Me.XrLabel9.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(1083.639!, 92.44641!)
+        Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(1204.143!, 106.4464!)
         Me.XrLabel9.Multiline = True
         Me.XrLabel9.Name = "XrLabel9"
         Me.XrLabel9.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -512,7 +474,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(176.2518!, 0!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(296.7558!, 14.0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -532,7 +494,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel7.Dpi = 254.0!
         Me.XrLabel7.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(1381.466!, 0!)
+        Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(1501.97!, 14.0!)
         Me.XrLabel7.Multiline = True
         Me.XrLabel7.Name = "XrLabel7"
         Me.XrLabel7.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -552,7 +514,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel4.Dpi = 254.0!
         Me.XrLabel4.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(10.19922!, 0.000003814697!)
+        Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(130.7032!, 14.0!)
         Me.XrLabel4.Multiline = True
         Me.XrLabel4.Name = "XrLabel4"
         Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -582,219 +544,131 @@ Partial Public Class Eidop
         '
         Me.SqlDataSource1.ConnectionName = "PRIAMOS.NET.My.MySettings.Priamos_NETConnectionStringRemote"
         Me.SqlDataSource1.Name = "SqlDataSource1"
-        ColumnExpression1.ColumnName = "ID"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""658"" />"
-        Table1.Name = "vw_APT"
+        CustomSqlQuery1.Name = "vw_APT"
+        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
+        CustomSqlQuery2.MetaSerializable = "<Meta X=""-40"" Y=""10"" Width=""103"" Height=""203"" />"
+        CustomSqlQuery2.Name = "vw_INH"
+        QueryParameter1.Name = "inhID"
+        QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery2.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1})
+        CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
+        CustomSqlQuery3.MetaSerializable = "<Meta X=""900"" Y=""60"" Width=""148"" Height=""143"" />"
+        CustomSqlQuery3.Name = "SUM_VW_INC_TENANT"
+        QueryParameter2.Name = "inhID"
+        QueryParameter2.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter2.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery3.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter2})
+        CustomSqlQuery3.Sql = resources.GetString("CustomSqlQuery3.Sql")
+        CustomSqlQuery4.MetaSerializable = "<Meta X=""590"" Y=""260"" Width=""153"" Height=""143"" />"
+        CustomSqlQuery4.Name = "SUM_VW_INC_OWNERS"
+        QueryParameter3.Name = "inhID"
+        QueryParameter3.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter3.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery4.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter3})
+        CustomSqlQuery4.Sql = resources.GetString("CustomSqlQuery4.Sql")
+        ColumnExpression1.ColumnName = "old_code"
+        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""1558"" />"
+        Table1.Name = "vw_BDG"
         ColumnExpression1.Table = Table1
         Column1.Expression = ColumnExpression1
-        ColumnExpression2.ColumnName = "code"
+        ColumnExpression2.ColumnName = "nam"
         ColumnExpression2.Table = Table1
         Column2.Expression = ColumnExpression2
-        ColumnExpression3.ColumnName = "nam"
+        ColumnExpression3.ColumnName = "ID"
         ColumnExpression3.Table = Table1
         Column3.Expression = ColumnExpression3
-        ColumnExpression4.ColumnName = "ttl"
+        ColumnExpression4.ColumnName = "hpc"
         ColumnExpression4.Table = Table1
         Column4.Expression = ColumnExpression4
-        ColumnExpression5.ColumnName = "ord"
+        ColumnExpression5.ColumnName = "HTypeID"
         ColumnExpression5.Table = Table1
         Column5.Expression = ColumnExpression5
-        ColumnExpression6.ColumnName = "name"
-        ColumnExpression6.Table = Table1
-        Column6.Expression = ColumnExpression6
-        ColumnExpression7.ColumnName = "OwnerFullName"
-        ColumnExpression7.Table = Table1
-        Column7.Expression = ColumnExpression7
-        ColumnExpression8.ColumnName = "TenantFullName"
-        ColumnExpression8.Table = Table1
-        Column8.Expression = ColumnExpression8
-        ColumnExpression9.ColumnName = "bal"
-        ColumnExpression9.Table = Table1
-        Column9.Expression = ColumnExpression9
-        ColumnExpression10.ColumnName = "out"
-        ColumnExpression10.Table = Table1
-        Column10.Expression = ColumnExpression10
-        ColumnExpression11.ColumnName = "closed"
-        ColumnExpression11.Table = Table1
-        Column11.Expression = ColumnExpression11
-        ColumnExpression12.ColumnName = "cmt"
-        ColumnExpression12.Table = Table1
-        Column12.Expression = ColumnExpression12
-        ColumnExpression13.ColumnName = "RealName"
-        ColumnExpression13.Table = Table1
-        Column13.Expression = ColumnExpression13
-        ColumnExpression14.ColumnName = "bdgNam"
-        ColumnExpression14.Table = Table1
-        Column14.Expression = ColumnExpression14
-        ColumnExpression15.ColumnName = "bdgID"
-        ColumnExpression15.Table = Table1
-        Column15.Expression = ColumnExpression15
-        ColumnExpression16.ColumnName = "flrID"
-        ColumnExpression16.Table = Table1
-        Column16.Expression = ColumnExpression16
-        ColumnExpression17.ColumnName = "OwnerID"
-        ColumnExpression17.Table = Table1
-        Column17.Expression = ColumnExpression17
-        ColumnExpression18.ColumnName = "TenantID"
-        ColumnExpression18.Table = Table1
-        Column18.Expression = ColumnExpression18
-        ColumnExpression19.ColumnName = "old_code"
-        ColumnExpression19.Table = Table1
-        Column19.Expression = ColumnExpression19
-        ColumnExpression20.ColumnName = "sameOwnerTenant"
-        ColumnExpression20.Table = Table1
-        Column20.Expression = ColumnExpression20
-        ColumnExpression21.ColumnName = "bdgCode"
-        ColumnExpression21.Table = Table1
-        Column21.Expression = ColumnExpression21
-        ColumnExpression22.ColumnName = "AdrID"
-        ColumnExpression22.Table = Table1
-        Column22.Expression = ColumnExpression22
-        ColumnExpression23.ColumnName = "AdrName"
-        ColumnExpression23.Table = Table1
-        Column23.Expression = ColumnExpression23
-        ColumnExpression24.ColumnName = "ar"
-        ColumnExpression24.Table = Table1
-        Column24.Expression = ColumnExpression24
-        ColumnExpression25.ColumnName = "AreaName"
-        ColumnExpression25.Table = Table1
-        Column25.Expression = ColumnExpression25
         SelectQuery1.Columns.Add(Column1)
         SelectQuery1.Columns.Add(Column2)
         SelectQuery1.Columns.Add(Column3)
         SelectQuery1.Columns.Add(Column4)
         SelectQuery1.Columns.Add(Column5)
-        SelectQuery1.Columns.Add(Column6)
-        SelectQuery1.Columns.Add(Column7)
-        SelectQuery1.Columns.Add(Column8)
-        SelectQuery1.Columns.Add(Column9)
-        SelectQuery1.Columns.Add(Column10)
-        SelectQuery1.Columns.Add(Column11)
-        SelectQuery1.Columns.Add(Column12)
-        SelectQuery1.Columns.Add(Column13)
-        SelectQuery1.Columns.Add(Column14)
-        SelectQuery1.Columns.Add(Column15)
-        SelectQuery1.Columns.Add(Column16)
-        SelectQuery1.Columns.Add(Column17)
-        SelectQuery1.Columns.Add(Column18)
-        SelectQuery1.Columns.Add(Column19)
-        SelectQuery1.Columns.Add(Column20)
-        SelectQuery1.Columns.Add(Column21)
-        SelectQuery1.Columns.Add(Column22)
-        SelectQuery1.Columns.Add(Column23)
-        SelectQuery1.Columns.Add(Column24)
-        SelectQuery1.Columns.Add(Column25)
-        SelectQuery1.MetaSerializable = "<Meta X=""130"" Y=""20"" Width=""130"" Height=""563"" />"
-        SelectQuery1.Name = "vw_APT"
-        ColumnExpression26.ColumnName = "ord"
-        ColumnExpression26.Table = Table1
-        Sorting1.Expression = ColumnExpression26
-        SelectQuery1.Sorting.Add(Sorting1)
+        SelectQuery1.MetaSerializable = "<Meta X=""400"" Y=""610"" Width=""100"" Height=""163"" />"
+        SelectQuery1.Name = "vw_BDG"
         SelectQuery1.Tables.Add(Table1)
-        CustomSqlQuery1.MetaSerializable = "<Meta X=""-40"" Y=""10"" Width=""103"" Height=""203"" />"
-        CustomSqlQuery1.Name = "vw_INH"
-        QueryParameter1.Name = "inhID"
-        QueryParameter1.Type = GetType(DevExpress.DataAccess.Expression)
-        QueryParameter1.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery1.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter1})
-        CustomSqlQuery1.Sql = resources.GetString("CustomSqlQuery1.Sql")
-        CustomSqlQuery2.MetaSerializable = "<Meta X=""900"" Y=""60"" Width=""148"" Height=""143"" />"
-        CustomSqlQuery2.Name = "SUM_VW_INC_TENANT"
-        QueryParameter2.Name = "inhID"
-        QueryParameter2.Type = GetType(DevExpress.DataAccess.Expression)
-        QueryParameter2.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery2.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter2})
-        CustomSqlQuery2.Sql = resources.GetString("CustomSqlQuery2.Sql")
-        CustomSqlQuery3.MetaSerializable = "<Meta X=""590"" Y=""260"" Width=""153"" Height=""143"" />"
-        CustomSqlQuery3.Name = "SUM_VW_INC_OWNERS"
-        QueryParameter3.Name = "inhID"
-        QueryParameter3.Type = GetType(DevExpress.DataAccess.Expression)
-        QueryParameter3.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery3.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter3})
-        CustomSqlQuery3.Sql = resources.GetString("CustomSqlQuery3.Sql")
-        ColumnExpression27.ColumnName = "old_code"
-        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""1558"" />"
-        Table2.Name = "vw_BDG"
-        ColumnExpression27.Table = Table2
-        Column26.Expression = ColumnExpression27
-        ColumnExpression28.ColumnName = "nam"
-        ColumnExpression28.Table = Table2
-        Column27.Expression = ColumnExpression28
-        ColumnExpression29.ColumnName = "ID"
-        ColumnExpression29.Table = Table2
-        Column28.Expression = ColumnExpression29
-        ColumnExpression30.ColumnName = "hpc"
-        ColumnExpression30.Table = Table2
-        Column29.Expression = ColumnExpression30
-        ColumnExpression31.ColumnName = "HTypeID"
-        ColumnExpression31.Table = Table2
-        Column30.Expression = ColumnExpression31
-        SelectQuery2.Columns.Add(Column26)
-        SelectQuery2.Columns.Add(Column27)
-        SelectQuery2.Columns.Add(Column28)
-        SelectQuery2.Columns.Add(Column29)
-        SelectQuery2.Columns.Add(Column30)
-        SelectQuery2.MetaSerializable = "<Meta X=""400"" Y=""610"" Width=""100"" Height=""123"" />"
-        SelectQuery2.Name = "vw_BDG"
-        SelectQuery2.Tables.Add(Table2)
-        CustomSqlQuery4.MetaSerializable = "<Meta X=""1308"" Y=""20"" Width=""100"" Height=""143"" />"
-        CustomSqlQuery4.Name = "AHPBH"
+        CustomSqlQuery5.MetaSerializable = "<Meta X=""1308"" Y=""20"" Width=""100"" Height=""143"" />"
+        CustomSqlQuery5.Name = "AHPBH"
         QueryParameter4.Name = "inhID"
         QueryParameter4.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter4.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery4.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter4})
-        CustomSqlQuery4.Sql = resources.GetString("CustomSqlQuery4.Sql")
-        CustomSqlQuery5.MetaSerializable = "<Meta X=""1428"" Y=""20"" Width=""100"" Height=""143"" />"
-        CustomSqlQuery5.Name = "AHPBB"
+        CustomSqlQuery5.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter4})
+        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
+        CustomSqlQuery6.MetaSerializable = "<Meta X=""1428"" Y=""20"" Width=""100"" Height=""143"" />"
+        CustomSqlQuery6.Name = "AHPBB"
         QueryParameter5.Name = "inhID"
         QueryParameter5.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter5.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery5.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter5})
-        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
-        CustomSqlQuery6.MetaSerializable = "<Meta X=""1068"" Y=""20"" Width=""100"" Height=""83"" />"
-        CustomSqlQuery6.Name = "sumAHPBH"
+        CustomSqlQuery6.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter5})
+        CustomSqlQuery6.Sql = resources.GetString("CustomSqlQuery6.Sql")
+        CustomSqlQuery7.MetaSerializable = "<Meta X=""1068"" Y=""20"" Width=""100"" Height=""83"" />"
+        CustomSqlQuery7.Name = "sumAHPBH"
         QueryParameter6.Name = "inhID"
         QueryParameter6.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter6.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery6.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter6})
-        CustomSqlQuery6.Sql = resources.GetString("CustomSqlQuery6.Sql")
-        CustomSqlQuery7.MetaSerializable = "<Meta X=""1188"" Y=""20"" Width=""100"" Height=""83"" />"
-        CustomSqlQuery7.Name = "sumAHPBB"
+        CustomSqlQuery7.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter6})
+        CustomSqlQuery7.Sql = resources.GetString("CustomSqlQuery7.Sql")
+        CustomSqlQuery8.MetaSerializable = "<Meta X=""1188"" Y=""20"" Width=""100"" Height=""83"" />"
+        CustomSqlQuery8.Name = "sumAHPBB"
         QueryParameter7.Name = "inhID"
         QueryParameter7.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter7.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery7.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter7})
-        CustomSqlQuery7.Sql = resources.GetString("CustomSqlQuery7.Sql")
-        CustomSqlQuery8.MetaSerializable = "<Meta X=""1548"" Y=""20"" Width=""136"" Height=""163"" />"
-        CustomSqlQuery8.Name = "INC_B"
+        CustomSqlQuery8.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter7})
+        CustomSqlQuery8.Sql = resources.GetString("CustomSqlQuery8.Sql")
+        CustomSqlQuery9.MetaSerializable = "<Meta X=""1548"" Y=""20"" Width=""136"" Height=""163"" />"
+        CustomSqlQuery9.Name = "INC_B"
         QueryParameter8.Name = "inhID"
         QueryParameter8.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter8.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery8.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter8})
-        CustomSqlQuery8.Sql = resources.GetString("CustomSqlQuery8.Sql")
-        CustomSqlQuery9.MetaSerializable = "<Meta X=""1704"" Y=""20"" Width=""147"" Height=""163"" />"
-        CustomSqlQuery9.Name = "INC_H"
+        CustomSqlQuery9.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter8})
+        CustomSqlQuery9.Sql = resources.GetString("CustomSqlQuery9.Sql")
+        CustomSqlQuery10.MetaSerializable = "<Meta X=""1704"" Y=""20"" Width=""147"" Height=""203"" />"
+        CustomSqlQuery10.Name = "INC_H"
         QueryParameter9.Name = "inhID"
         QueryParameter9.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter9.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery9.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter9})
-        CustomSqlQuery9.Sql = resources.GetString("CustomSqlQuery9.Sql")
-        CustomSqlQuery10.Name = "INC_ToteiΩ"
+        CustomSqlQuery10.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter9})
+        CustomSqlQuery10.Sql = resources.GetString("CustomSqlQuery10.Sql")
+        CustomSqlQuery11.MetaSerializable = "<Meta X=""1871"" Y=""20"" Width=""100"" Height=""83"" />"
+        CustomSqlQuery11.Name = "INC_ToteiΩ"
         QueryParameter10.Name = "inhID"
         QueryParameter10.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter10.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery10.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter10})
-        CustomSqlQuery10.Sql = "select sum(case when   calcCatID  ='B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTy" &
+        CustomSqlQuery11.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter10})
+        CustomSqlQuery11.Sql = "select sum(case when   calcCatID  ='B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTy" &
     "peID='9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE' then [ei*Ω] else 0 end) as ToteiΩ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " " &
     "from vw_INC" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID=@inhID"
-        CustomSqlQuery11.Name = "INC_Totfiei"
+        CustomSqlQuery12.MetaSerializable = "<Meta X=""1991"" Y=""20"" Width=""100"" Height=""83"" />"
+        CustomSqlQuery12.Name = "INC_Totfiei"
         QueryParameter11.Name = "inhID"
         QueryParameter11.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter11.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery11.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter11})
-        CustomSqlQuery11.Sql = "select  sum(case when  calcCatID  ='B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTy" &
+        CustomSqlQuery12.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter11})
+        CustomSqlQuery12.Sql = "select  sum(case when  calcCatID  ='B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTy" &
     "peID='11F7A89C-F64D-4596-A5AF-005290C5FA49' then [fi*ei] else 0 end) as Totfiei" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " from vw_INC" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID=@inhID"
-        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, SelectQuery2, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8, CustomSqlQuery9, CustomSqlQuery10, CustomSqlQuery11})
+        CustomSqlQuery13.MetaSerializable = "<Meta X=""770"" Y=""550"" Width=""109"" Height=""123"" />"
+        CustomSqlQuery13.Name = "INV_NUMBERS"
+        QueryParameter12.Name = "inhID"
+        QueryParameter12.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter12.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery13.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter12})
+        CustomSqlQuery13.Sql = "select ""INVNUMBERS"".""inhID"", ""INVNUMBERS"".""aptID""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       ""INVNUMBERS"".""invNumbe" &
+    "r""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INVNUMBERS"" ""INVNUMBERS""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID=@inhID"
+        CustomSqlQuery14.MetaSerializable = "<Meta X=""900"" Y=""360"" Width=""100"" Height=""123"" />"
+        CustomSqlQuery14.Name = "INCei*Ω"
+        QueryParameter13.Name = "inhID"
+        QueryParameter13.Type = GetType(DevExpress.DataAccess.Expression)
+        QueryParameter13.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
+        CustomSqlQuery14.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter13})
+        CustomSqlQuery14.Sql = "select inhID,aptID, [ei*Ω] from vw_INC" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID=@inhID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and  calcCatID  ='B13" &
+    "9CE26-1ABA-4680-A1EE-623EC97C475B'" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and HTypeID='9F7BD209-A5A0-47F4-BB0B-9CEA948" &
+    "3B6AE'"
+        Me.SqlDataSource1.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, SelectQuery1, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8, CustomSqlQuery9, CustomSqlQuery10, CustomSqlQuery11, CustomSqlQuery12, CustomSqlQuery13, CustomSqlQuery14})
         MasterDetailInfo1.DetailQueryName = "vw_APT"
         RelationColumnInfo1.NestedKeyColumn = "bdgID"
         RelationColumnInfo1.ParentKeyColumn = "bdgID"
@@ -845,14 +719,34 @@ Partial Public Class Eidop
         RelationColumnInfo10.ParentKeyColumn = "ID"
         MasterDetailInfo10.KeyColumns.Add(RelationColumnInfo10)
         MasterDetailInfo10.MasterQueryName = "vw_APT"
-        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5, MasterDetailInfo6, MasterDetailInfo7, MasterDetailInfo8, MasterDetailInfo9, MasterDetailInfo10})
+        MasterDetailInfo11.DetailQueryName = "INV_NUMBERS"
+        RelationColumnInfo11.NestedKeyColumn = "inhID"
+        RelationColumnInfo11.ParentKeyColumn = "ID"
+        MasterDetailInfo11.KeyColumns.Add(RelationColumnInfo11)
+        MasterDetailInfo11.MasterQueryName = "vw_INH"
+        MasterDetailInfo12.DetailQueryName = "INV_NUMBERS"
+        RelationColumnInfo12.NestedKeyColumn = "aptID"
+        RelationColumnInfo12.ParentKeyColumn = "ID"
+        MasterDetailInfo12.KeyColumns.Add(RelationColumnInfo12)
+        MasterDetailInfo12.MasterQueryName = "vw_APT"
+        MasterDetailInfo13.DetailQueryName = "INCei*Ω"
+        RelationColumnInfo13.NestedKeyColumn = "aptID"
+        RelationColumnInfo13.ParentKeyColumn = "ID"
+        MasterDetailInfo13.KeyColumns.Add(RelationColumnInfo13)
+        MasterDetailInfo13.MasterQueryName = "vw_APT"
+        MasterDetailInfo14.DetailQueryName = "INCei*Ω"
+        RelationColumnInfo14.NestedKeyColumn = "inhID"
+        RelationColumnInfo14.ParentKeyColumn = "ID"
+        MasterDetailInfo14.KeyColumns.Add(RelationColumnInfo14)
+        MasterDetailInfo14.MasterQueryName = "vw_INH"
+        Me.SqlDataSource1.Relations.AddRange(New DevExpress.DataAccess.Sql.MasterDetailInfo() {MasterDetailInfo1, MasterDetailInfo2, MasterDetailInfo3, MasterDetailInfo4, MasterDetailInfo5, MasterDetailInfo6, MasterDetailInfo7, MasterDetailInfo8, MasterDetailInfo9, MasterDetailInfo10, MasterDetailInfo11, MasterDetailInfo12, MasterDetailInfo13, MasterDetailInfo14})
         Me.SqlDataSource1.ResultSchemaSerializable = resources.GetString("SqlDataSource1.ResultSchemaSerializable")
         '
         'PageHeader
         '
         Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel1})
         Me.PageHeader.Dpi = 254.0!
-        Me.PageHeader.HeightF = 414.7091!
+        Me.PageHeader.HeightF = 620.1232!
         Me.PageHeader.Name = "PageHeader"
         '
         'XrLabel3
@@ -864,11 +758,11 @@ Partial Public Class Eidop
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel3.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(4.0!, 535.7774!)
+        Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 643.4235!)
         Me.XrLabel3.Multiline = True
         Me.XrLabel3.Name = "XrLabel3"
         Me.XrLabel3.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel3.SizeF = New System.Drawing.SizeF(964.16!, 40.99109!)
+        Me.XrLabel3.SizeF = New System.Drawing.SizeF(968.1603!, 40.99109!)
         Me.XrLabel3.StylePriority.UseBorderColor = False
         Me.XrLabel3.StylePriority.UseBorders = False
         Me.XrLabel3.StylePriority.UseFont = False
@@ -883,15 +777,82 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrPanel2.CanGrow = False
-        Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel81, Me.XrLabel80, Me.XrLabel79, Me.XrLabel78, Me.XrLabel77, Me.XrLabel62, Me.XrLabel61, Me.XrLabel60, Me.XrLabel59, Me.XrLabel58, Me.XrLabel57, Me.XrLabel56, Me.XrLabel55, Me.XrLabel54, Me.XrLabel31, Me.XrLabel32, Me.XrLabel33, Me.XrLabel46, Me.XrLabel49, Me.XrLabel51, Me.XrLabel50, Me.XrLabel52, Me.XrLabel53, Me.XrLabel29, Me.XrLabel30, Me.XrLabel22, Me.XrLabel23, Me.XrLabel24, Me.XrLabel26, Me.XrLabel25, Me.XrLabel27, Me.XrLabel28})
+        Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine13, Me.XrLabel57, Me.XrLabel79, Me.XrLabel82, Me.XrLabel83, Me.XrLabel81, Me.XrLabel80, Me.XrLabel78, Me.XrLabel77, Me.XrLabel62, Me.XrLabel61, Me.XrLabel60, Me.XrLabel59, Me.XrLabel58, Me.XrLabel56, Me.XrLabel55, Me.XrLabel54, Me.XrLabel31, Me.XrLabel32, Me.XrLabel33, Me.XrLabel46, Me.XrLabel49, Me.XrLabel51, Me.XrLabel50, Me.XrLabel52, Me.XrLabel53, Me.XrLabel29, Me.XrLabel30, Me.XrLabel22, Me.XrLabel23, Me.XrLabel24, Me.XrLabel26, Me.XrLabel25, Me.XrLabel27, Me.XrLabel28})
         Me.XrPanel2.Dpi = 254.0!
-        Me.XrPanel2.LocationFloat = New DevExpress.Utils.PointFloat(5.000427!, 576.7684!)
+        Me.XrPanel2.LocationFloat = New DevExpress.Utils.PointFloat(0!, 684.4144!)
         Me.XrPanel2.Name = "XrPanel2"
-        Me.XrPanel2.SizeF = New System.Drawing.SizeF(963.1595!, 508.6102!)
+        Me.XrPanel2.SizeF = New System.Drawing.SizeF(968.1621!, 513.9936!)
         Me.XrPanel2.StylePriority.UseBorders = False
+        '
+        'XrLabel57
+        '
+        Me.XrLabel57.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel57.Dpi = 254.0!
+        Me.XrLabel57.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel57.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel57.LocationFloat = New DevExpress.Utils.PointFloat(13.60736!, 131.6823!)
+        Me.XrLabel57.Multiline = True
+        Me.XrLabel57.Name = "XrLabel57"
+        Me.XrLabel57.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel57.SizeF = New System.Drawing.SizeF(309.5979!, 31.96155!)
+        Me.XrLabel57.StylePriority.UseBorders = False
+        Me.XrLabel57.StylePriority.UseFont = False
+        Me.XrLabel57.StylePriority.UseForeColor = False
+        Me.XrLabel57.StylePriority.UseTextAlignment = False
+        Me.XrLabel57.Text = "ΣΥΝ.ΣΥΝΤΕΛ/ΣΤΩΝ ei*Ω:"
+        Me.XrLabel57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'XrLabel79
+        '
+        Me.XrLabel79.CanGrow = False
+        Me.XrLabel79.Dpi = 254.0!
+        Me.XrLabel79.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif([INC_ToteiΩ].[ToteiΩ]=0,'',[INC_ToteiΩ].[ToteiΩ])" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel79.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel79.LocationFloat = New DevExpress.Utils.PointFloat(323.2053!, 131.6823!)
+        Me.XrLabel79.Multiline = True
+        Me.XrLabel79.Name = "XrLabel79"
+        Me.XrLabel79.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel79.SizeF = New System.Drawing.SizeF(159.4225!, 31.96155!)
+        Me.XrLabel79.StylePriority.UseFont = False
+        Me.XrLabel79.Text = "XrLabel77"
+        Me.XrLabel79.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'XrLabel82
+        '
+        Me.XrLabel82.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel82.Dpi = 254.0!
+        Me.XrLabel82.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel82.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel82.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 84.72076!)
+        Me.XrLabel82.Multiline = True
+        Me.XrLabel82.Name = "XrLabel82"
+        Me.XrLabel82.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel82.SizeF = New System.Drawing.SizeF(309.5979!, 31.96155!)
+        Me.XrLabel82.StylePriority.UseBorders = False
+        Me.XrLabel82.StylePriority.UseFont = False
+        Me.XrLabel82.StylePriority.UseForeColor = False
+        Me.XrLabel82.StylePriority.UseTextAlignment = False
+        Me.XrLabel82.Text = "ΣΥΝΤΕΛ/ΣΤΗΣ ei*Ω :"
+        Me.XrLabel82.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+        '
+        'XrLabel83
+        '
+        Me.XrLabel83.CanGrow = False
+        Me.XrLabel83.Dpi = 254.0!
+        Me.XrLabel83.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINCei*Ω].[ei*Ω]")})
+        Me.XrLabel83.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel83.LocationFloat = New DevExpress.Utils.PointFloat(323.2053!, 84.72079!)
+        Me.XrLabel83.Multiline = True
+        Me.XrLabel83.Name = "XrLabel83"
+        Me.XrLabel83.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel83.SizeF = New System.Drawing.SizeF(159.4225!, 31.96155!)
+        Me.XrLabel83.StylePriority.UseFont = False
+        Me.XrLabel83.Text = "XrLabel77"
+        Me.XrLabel83.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
         'XrLabel81
         '
+        Me.XrLabel81.CanGrow = False
         Me.XrLabel81.Dpi = 254.0!
         Me.XrLabel81.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif ([INC_Totfiei].[Totfiei]<>0,[INC_Totfiei].[Totfiei],'')")})
         Me.XrLabel81.Font = New System.Drawing.Font("Segoe UI", 7.0!)
@@ -906,6 +867,7 @@ Partial Public Class Eidop
         '
         'XrLabel80
         '
+        Me.XrLabel80.CanGrow = False
         Me.XrLabel80.Dpi = 254.0!
         Me.XrLabel80.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[hpc]")})
         Me.XrLabel80.Font = New System.Drawing.Font("Segoe UI", 7.0!)
@@ -919,22 +881,9 @@ Partial Public Class Eidop
         Me.XrLabel80.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         Me.XrLabel80.TextFormatString = "{0:%}"
         '
-        'XrLabel79
-        '
-        Me.XrLabel79.Dpi = 254.0!
-        Me.XrLabel79.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif([INC_ToteiΩ].[ToteiΩ]=0,'',[INC_ToteiΩ].[ToteiΩ])" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel79.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel79.LocationFloat = New DevExpress.Utils.PointFloat(323.2052!, 84.72076!)
-        Me.XrLabel79.Multiline = True
-        Me.XrLabel79.Name = "XrLabel79"
-        Me.XrLabel79.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel79.SizeF = New System.Drawing.SizeF(159.4225!, 31.96155!)
-        Me.XrLabel79.StylePriority.UseFont = False
-        Me.XrLabel79.Text = "XrLabel77"
-        Me.XrLabel79.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        '
         'XrLabel78
         '
+        Me.XrLabel78.CanGrow = False
         Me.XrLabel78.Dpi = 254.0!
         Me.XrLabel78.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif ([vw_APTINC_H].[ei*Ω]<>0, [vw_APTINC_H].[ei*Ω],'')")})
         Me.XrLabel78.Font = New System.Drawing.Font("Segoe UI", 7.0!)
@@ -949,6 +898,7 @@ Partial Public Class Eidop
         '
         'XrLabel77
         '
+        Me.XrLabel77.CanGrow = False
         Me.XrLabel77.Dpi = 254.0!
         Me.XrLabel77.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif([vw_APTINC_H].[fi*ei]=0,'',[vw_APTINC_H].[fi*ei])")})
         Me.XrLabel77.Font = New System.Drawing.Font("Segoe UI", 7.0!)
@@ -969,7 +919,7 @@ Partial Public Class Eidop
         Me.XrLabel62.Dpi = 254.0!
         Me.XrLabel62.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel62.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel62.LocationFloat = New DevExpress.Utils.PointFloat(508.3784!, 171.6438!)
+        Me.XrLabel62.LocationFloat = New DevExpress.Utils.PointFloat(508.3784!, 183.1118!)
         Me.XrLabel62.Multiline = True
         Me.XrLabel62.Name = "XrLabel62"
         Me.XrLabel62.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1044,11 +994,11 @@ Partial Public Class Eidop
         Me.XrLabel58.Dpi = 254.0!
         Me.XrLabel58.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel58.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel58.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 139.6823!)
+        Me.XrLabel58.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 166.3296!)
         Me.XrLabel58.Multiline = True
         Me.XrLabel58.Name = "XrLabel58"
         Me.XrLabel58.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel58.SizeF = New System.Drawing.SizeF(410.9747!, 115.5485!)
+        Me.XrLabel58.SizeF = New System.Drawing.SizeF(410.9747!, 100.3693!)
         Me.XrLabel58.StylePriority.UseBorderColor = False
         Me.XrLabel58.StylePriority.UseBorders = False
         Me.XrLabel58.StylePriority.UseFont = False
@@ -1056,24 +1006,6 @@ Partial Public Class Eidop
         Me.XrLabel58.StylePriority.UseTextAlignment = False
         Me.XrLabel58.Text = "ΜΑΘΗΜΑΤΙΚΟΣ ΤΥΠΟΣ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "((€*Π%)/(Σei*ei))+" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(((€*(100%-Π%))/Σ(ei*Ω))*(ei*Ω))"
         Me.XrLabel58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'XrLabel57
-        '
-        Me.XrLabel57.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLabel57.Dpi = 254.0!
-        Me.XrLabel57.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel57.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel57.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 84.72076!)
-        Me.XrLabel57.Multiline = True
-        Me.XrLabel57.Name = "XrLabel57"
-        Me.XrLabel57.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel57.SizeF = New System.Drawing.SizeF(309.5979!, 31.96155!)
-        Me.XrLabel57.StylePriority.UseBorders = False
-        Me.XrLabel57.StylePriority.UseFont = False
-        Me.XrLabel57.StylePriority.UseForeColor = False
-        Me.XrLabel57.StylePriority.UseTextAlignment = False
-        Me.XrLabel57.Text = "ΣΥΝ.ΣΥΝΤΕΛ/ΣΤΩΝ ei*Ω:"
-        Me.XrLabel57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
         '
         'XrLabel56
         '
@@ -1138,10 +1070,11 @@ Partial Public Class Eidop
         'XrLabel31
         '
         Me.XrLabel31.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel31.CanGrow = False
         Me.XrLabel31.Dpi = 254.0!
         Me.XrLabel31.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel31.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(537.2852!, 260.2998!)
+        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(537.2852!, 294.6988!)
         Me.XrLabel31.Multiline = True
         Me.XrLabel31.Name = "XrLabel31"
         Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1156,10 +1089,11 @@ Partial Public Class Eidop
         'XrLabel32
         '
         Me.XrLabel32.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel32.CanGrow = False
         Me.XrLabel32.Dpi = 254.0!
         Me.XrLabel32.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel32.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 306.1478!)
+        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 337.5468!)
         Me.XrLabel32.Multiline = True
         Me.XrLabel32.Name = "XrLabel32"
         Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1174,10 +1108,11 @@ Partial Public Class Eidop
         'XrLabel33
         '
         Me.XrLabel33.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel33.CanGrow = False
         Me.XrLabel33.Dpi = 254.0!
         Me.XrLabel33.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel33.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 345.7255!)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 377.1245!)
         Me.XrLabel33.Multiline = True
         Me.XrLabel33.Name = "XrLabel33"
         Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1192,10 +1127,11 @@ Partial Public Class Eidop
         'XrLabel46
         '
         Me.XrLabel46.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel46.CanGrow = False
         Me.XrLabel46.Dpi = 254.0!
         Me.XrLabel46.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel46.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 384.687!)
+        Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 416.086!)
         Me.XrLabel46.Multiline = True
         Me.XrLabel46.Name = "XrLabel46"
         Me.XrLabel46.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1210,10 +1146,11 @@ Partial Public Class Eidop
         'XrLabel49
         '
         Me.XrLabel49.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel49.CanGrow = False
         Me.XrLabel49.Dpi = 254.0!
         Me.XrLabel49.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel49.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel49.LocationFloat = New DevExpress.Utils.PointFloat(537.2854!, 424.6486!)
+        Me.XrLabel49.LocationFloat = New DevExpress.Utils.PointFloat(537.2854!, 456.0476!)
         Me.XrLabel49.Multiline = True
         Me.XrLabel49.Name = "XrLabel49"
         Me.XrLabel49.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1228,10 +1165,11 @@ Partial Public Class Eidop
         'XrLabel51
         '
         Me.XrLabel51.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel51.CanGrow = False
         Me.XrLabel51.Dpi = 254.0!
         Me.XrLabel51.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_B].[boiler_consumption]")})
         Me.XrLabel51.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel51.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 424.6486!)
+        Me.XrLabel51.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 456.0476!)
         Me.XrLabel51.Multiline = True
         Me.XrLabel51.Name = "XrLabel51"
         Me.XrLabel51.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1245,10 +1183,11 @@ Partial Public Class Eidop
         'XrLabel50
         '
         Me.XrLabel50.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel50.CanGrow = False
         Me.XrLabel50.Dpi = 254.0!
         Me.XrLabel50.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_B].[fixedAmountB]")})
         Me.XrLabel50.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel50.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 384.687!)
+        Me.XrLabel50.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 416.086!)
         Me.XrLabel50.Multiline = True
         Me.XrLabel50.Name = "XrLabel50"
         Me.XrLabel50.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1262,10 +1201,11 @@ Partial Public Class Eidop
         'XrLabel52
         '
         Me.XrLabel52.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel52.CanGrow = False
         Me.XrLabel52.Dpi = 254.0!
         Me.XrLabel52.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[sumAHPBB].[sumMesDIF]")})
         Me.XrLabel52.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel52.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 345.7255!)
+        Me.XrLabel52.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 377.1245!)
         Me.XrLabel52.Multiline = True
         Me.XrLabel52.Name = "XrLabel52"
         Me.XrLabel52.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1278,10 +1218,11 @@ Partial Public Class Eidop
         'XrLabel53
         '
         Me.XrLabel53.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel53.CanGrow = False
         Me.XrLabel53.Dpi = 254.0!
         Me.XrLabel53.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTAHPBB].[mesDIF]")})
         Me.XrLabel53.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel53.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 306.1478!)
+        Me.XrLabel53.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 337.5468!)
         Me.XrLabel53.Multiline = True
         Me.XrLabel53.Name = "XrLabel53"
         Me.XrLabel53.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1294,10 +1235,11 @@ Partial Public Class Eidop
         'XrLabel29
         '
         Me.XrLabel29.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel29.CanGrow = False
         Me.XrLabel29.Dpi = 254.0!
         Me.XrLabel29.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTAHPBH].[mesDIF]")})
         Me.XrLabel29.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 306.1479!)
+        Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 337.5469!)
         Me.XrLabel29.Multiline = True
         Me.XrLabel29.Name = "XrLabel29"
         Me.XrLabel29.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1310,10 +1252,11 @@ Partial Public Class Eidop
         'XrLabel30
         '
         Me.XrLabel30.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel30.CanGrow = False
         Me.XrLabel30.Dpi = 254.0!
         Me.XrLabel30.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_H].[fixedAmount]")})
         Me.XrLabel30.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 384.687!)
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 416.086!)
         Me.XrLabel30.Multiline = True
         Me.XrLabel30.Name = "XrLabel30"
         Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1332,7 +1275,7 @@ Partial Public Class Eidop
         Me.XrLabel22.Dpi = 254.0!
         Me.XrLabel22.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel22.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel22.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 260.2998!)
+        Me.XrLabel22.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 294.6988!)
         Me.XrLabel22.Multiline = True
         Me.XrLabel22.Name = "XrLabel22"
         Me.XrLabel22.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1348,10 +1291,11 @@ Partial Public Class Eidop
         'XrLabel23
         '
         Me.XrLabel23.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel23.CanGrow = False
         Me.XrLabel23.Dpi = 254.0!
         Me.XrLabel23.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel23.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 306.1478!)
+        Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 337.5468!)
         Me.XrLabel23.Multiline = True
         Me.XrLabel23.Name = "XrLabel23"
         Me.XrLabel23.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1366,10 +1310,11 @@ Partial Public Class Eidop
         'XrLabel24
         '
         Me.XrLabel24.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel24.CanGrow = False
         Me.XrLabel24.Dpi = 254.0!
         Me.XrLabel24.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel24.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 345.7255!)
+        Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 377.1245!)
         Me.XrLabel24.Multiline = True
         Me.XrLabel24.Name = "XrLabel24"
         Me.XrLabel24.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1384,10 +1329,11 @@ Partial Public Class Eidop
         'XrLabel26
         '
         Me.XrLabel26.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel26.CanGrow = False
         Me.XrLabel26.Dpi = 254.0!
         Me.XrLabel26.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel26.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel26.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 384.6871!)
+        Me.XrLabel26.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 416.0861!)
         Me.XrLabel26.Multiline = True
         Me.XrLabel26.Name = "XrLabel26"
         Me.XrLabel26.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1402,10 +1348,11 @@ Partial Public Class Eidop
         'XrLabel25
         '
         Me.XrLabel25.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel25.CanGrow = False
         Me.XrLabel25.Dpi = 254.0!
         Me.XrLabel25.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel25.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel25.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 424.6486!)
+        Me.XrLabel25.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 456.0476!)
         Me.XrLabel25.Multiline = True
         Me.XrLabel25.Name = "XrLabel25"
         Me.XrLabel25.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1420,10 +1367,11 @@ Partial Public Class Eidop
         'XrLabel27
         '
         Me.XrLabel27.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel27.CanGrow = False
         Me.XrLabel27.Dpi = 254.0!
         Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_H].[heating_consumption]")})
         Me.XrLabel27.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 424.6486!)
+        Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 456.0476!)
         Me.XrLabel27.Multiline = True
         Me.XrLabel27.Name = "XrLabel27"
         Me.XrLabel27.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1437,10 +1385,11 @@ Partial Public Class Eidop
         'XrLabel28
         '
         Me.XrLabel28.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel28.CanGrow = False
         Me.XrLabel28.Dpi = 254.0!
         Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[sumAHPBH].[sumMesDIF]")})
         Me.XrLabel28.Font = New System.Drawing.Font("Segoe UI", 7.0!)
-        Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 345.7255!)
+        Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 377.1245!)
         Me.XrLabel28.Multiline = True
         Me.XrLabel28.Name = "XrLabel28"
         Me.XrLabel28.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1454,7 +1403,7 @@ Partial Public Class Eidop
         '
         Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.ClosedAPTSmall, Me.XILIOSTA, Me.XrPanel16})
         Me.SubBand1.Dpi = 254.0!
-        Me.SubBand1.HeightF = 848.1806!
+        Me.SubBand1.HeightF = 848.1807!
         Me.SubBand1.Name = "SubBand1"
         '
         'XrPanel16
@@ -1462,9 +1411,9 @@ Partial Public Class Eidop
         Me.XrPanel16.CanGrow = False
         Me.XrPanel16.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel75, Me.XrLabel76, Me.XrLabel74, Me.XrPanel10, Me.XrLabel67, Me.XrPanel3, Me.XrLabel45, Me.XrLabel48, Me.XrLabel47})
         Me.XrPanel16.Dpi = 254.0!
-        Me.XrPanel16.LocationFloat = New DevExpress.Utils.PointFloat(3.99994!, 0!)
+        Me.XrPanel16.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrPanel16.Name = "XrPanel16"
-        Me.XrPanel16.SizeF = New System.Drawing.SizeF(1971.417!, 834.7071!)
+        Me.XrPanel16.SizeF = New System.Drawing.SizeF(1975.417!, 848.1807!)
         '
         'XrLabel75
         '
@@ -1473,7 +1422,7 @@ Partial Public Class Eidop
         Me.XrLabel75.CanShrink = True
         Me.XrLabel75.Dpi = 254.0!
         Me.XrLabel75.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel75.LocationFloat = New DevExpress.Utils.PointFloat(1385.568!, 771.9883!)
+        Me.XrLabel75.LocationFloat = New DevExpress.Utils.PointFloat(1385.568!, 782.9883!)
         Me.XrLabel75.Multiline = True
         Me.XrLabel75.Name = "XrLabel75"
         Me.XrLabel75.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1495,7 +1444,7 @@ Partial Public Class Eidop
         Me.XrLabel76.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "ISNULL([vw_APTSUM_VW_INC_OWNERS].[TotAmtPerCalc],0) + ISNULL([vw_APTSUM_VW_INC_TE" &
                     "NANT].[TotAmtPerCalc],0)" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel76.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel76.LocationFloat = New DevExpress.Utils.PointFloat(1743.875!, 771.9883!)
+        Me.XrLabel76.LocationFloat = New DevExpress.Utils.PointFloat(1743.875!, 782.9883!)
         Me.XrLabel76.Multiline = True
         Me.XrLabel76.Name = "XrLabel76"
         Me.XrLabel76.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1510,20 +1459,22 @@ Partial Public Class Eidop
         '
         'XrLabel74
         '
-        Me.XrLabel74.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel74.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel74.CanGrow = False
         Me.XrLabel74.Dpi = 254.0!
         Me.XrLabel74.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel74.LocationFloat = New DevExpress.Utils.PointFloat(9.00028!, 778.9883!)
+        Me.XrLabel74.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 789.9883!)
         Me.XrLabel74.Multiline = True
         Me.XrLabel74.Name = "XrLabel74"
         Me.XrLabel74.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel74.SizeF = New System.Drawing.SizeF(755.5334!, 37.46503!)
+        Me.XrLabel74.SizeF = New System.Drawing.SizeF(1340.561!, 37.46503!)
         Me.XrLabel74.StylePriority.UseBorders = False
         Me.XrLabel74.StylePriority.UseFont = False
         Me.XrLabel74.StylePriority.UseTextAlignment = False
         Me.XrLabel74.Text = "ΚΩΔΙΚΟΣ ΠΛΗΡΩΜΗΣ (ΓΙΑ ΚΑΤΑΘΕΣΗ) :"
-        Me.XrLabel74.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.XrLabel74.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
         '
         'XrPanel10
         '
@@ -1717,7 +1668,7 @@ Partial Public Class Eidop
         Me.XrLabel67.Dpi = 254.0!
         Me.XrLabel67.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel67.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel67.LocationFloat = New DevExpress.Utils.PointFloat(0!, 5.383485!)
+        Me.XrLabel67.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 5.383485!)
         Me.XrLabel67.Multiline = True
         Me.XrLabel67.Name = "XrLabel67"
         Me.XrLabel67.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1727,7 +1678,7 @@ Partial Public Class Eidop
         Me.XrLabel67.StylePriority.UseFont = False
         Me.XrLabel67.StylePriority.UseForeColor = False
         Me.XrLabel67.StylePriority.UseTextAlignment = False
-        Me.XrLabel67.Text = "ΚΑΤΗΓΟΡΙΕΣ ΠΟΣΟΣΤΩΝ ΠΟΥ ΧΡΗΣΙΜΟΠΟΙΗΘΗΚΑΝ"
+        Me.XrLabel67.Text = "ΚΑΤΗΓΟΡΙΕΣ ΧΙΛΙΟΣΤΩΝ ΠΟΥ ΧΡΗΣΙΜΟΠΟΙΗΘΗΚΑΝ"
         Me.XrLabel67.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'XrPanel3
@@ -1740,7 +1691,7 @@ Partial Public Class Eidop
         Me.XrPanel3.CanShrink = True
         Me.XrPanel3.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel8, Me.XrPanel9, Me.XrLine9, Me.XrLine10, Me.XrLabel64, Me.XrLabel65, Me.XrLabel66})
         Me.XrPanel3.Dpi = 254.0!
-        Me.XrPanel3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 46.37466!)
+        Me.XrPanel3.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 46.37466!)
         Me.XrPanel3.Name = "XrPanel3"
         Me.XrPanel3.SizeF = New System.Drawing.SizeF(968.1614!, 434.9175!)
         Me.XrPanel3.StylePriority.UseBorderColor = False
@@ -1940,11 +1891,11 @@ Partial Public Class Eidop
         Me.XrLabel65.CanGrow = False
         Me.XrLabel65.Dpi = 254.0!
         Me.XrLabel65.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel65.LocationFloat = New DevExpress.Utils.PointFloat(3.99994!, 0!)
+        Me.XrLabel65.LocationFloat = New DevExpress.Utils.PointFloat(3.999857!, 0.00002288818!)
         Me.XrLabel65.Multiline = True
         Me.XrLabel65.Name = "XrLabel65"
         Me.XrLabel65.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel65.SizeF = New System.Drawing.SizeF(445.7976!, 37.465!)
+        Me.XrLabel65.SizeF = New System.Drawing.SizeF(477.5906!, 37.465!)
         Me.XrLabel65.StylePriority.UseBorders = False
         Me.XrLabel65.StylePriority.UseFont = False
         Me.XrLabel65.StylePriority.UseTextAlignment = False
@@ -1975,7 +1926,7 @@ Partial Public Class Eidop
         Me.XrLabel45.Dpi = 254.0!
         Me.XrLabel45.Font = New System.Drawing.Font("Bookman Old Style", 7.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel45.ForeColor = System.Drawing.Color.Blue
-        Me.XrLabel45.LocationFloat = New DevExpress.Utils.PointFloat(9.000189!, 516.7618!)
+        Me.XrLabel45.LocationFloat = New DevExpress.Utils.PointFloat(10.99994!, 516.7618!)
         Me.XrLabel45.Multiline = True
         Me.XrLabel45.Name = "XrLabel45"
         Me.XrLabel45.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1996,7 +1947,7 @@ Partial Public Class Eidop
         Me.XrLabel48.Dpi = 254.0!
         Me.XrLabel48.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[announcement]")})
         Me.XrLabel48.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel48.LocationFloat = New DevExpress.Utils.PointFloat(9.000189!, 622.783!)
+        Me.XrLabel48.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 622.783!)
         Me.XrLabel48.Multiline = True
         Me.XrLabel48.Name = "XrLabel48"
         Me.XrLabel48.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -2030,14 +1981,14 @@ Partial Public Class Eidop
         Me.XrPanel13.CanGrow = False
         Me.XrPanel13.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel2, Me.XrLabel3, Me.XrPanel7})
         Me.XrPanel13.Dpi = 254.0!
-        Me.XrPanel13.LocationFloat = New DevExpress.Utils.PointFloat(1002.592!, 46.37461!)
+        Me.XrPanel13.LocationFloat = New DevExpress.Utils.PointFloat(1002.592!, 51.75822!)
         Me.XrPanel13.Name = "XrPanel13"
-        Me.XrPanel13.SizeF = New System.Drawing.SizeF(972.8248!, 1085.379!)
+        Me.XrPanel13.SizeF = New System.Drawing.SizeF(972.8248!, 1198.408!)
         Me.XrPanel13.StylePriority.UseBorderColor = False
         '
         'XrPanel7
         '
-        Me.XrPanel7.BorderColor = System.Drawing.Color.Black
+        Me.XrPanel7.BorderColor = System.Drawing.Color.Blue
         Me.XrPanel7.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
@@ -2047,7 +1998,7 @@ Partial Public Class Eidop
         Me.XrPanel7.Dpi = 254.0!
         Me.XrPanel7.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrPanel7.Name = "XrPanel7"
-        Me.XrPanel7.SizeF = New System.Drawing.SizeF(968.16!, 532.8948!)
+        Me.XrPanel7.SizeF = New System.Drawing.SizeF(968.16!, 621.016!)
         Me.XrPanel7.StylePriority.UseBorderColor = False
         Me.XrPanel7.StylePriority.UseBorders = False
         '
@@ -2056,7 +2007,7 @@ Partial Public Class Eidop
         Me.XrPanel18.CanGrow = False
         Me.XrPanel18.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel95, Me.XrLabel96})
         Me.XrPanel18.Dpi = 254.0!
-        Me.XrPanel18.LocationFloat = New DevExpress.Utils.PointFloat(0!, 458.3323!)
+        Me.XrPanel18.LocationFloat = New DevExpress.Utils.PointFloat(0!, 546.4535!)
         Me.XrPanel18.Name = "XrPanel18"
         Me.XrPanel18.SizeF = New System.Drawing.SizeF(968.16!, 74.5625!)
         '
@@ -2126,7 +2077,7 @@ Partial Public Class Eidop
         Me.XrLine6.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
         Me.XrLine6.LocationFloat = New DevExpress.Utils.PointFloat(744.8159!, 0!)
         Me.XrLine6.Name = "XrLine6"
-        Me.XrLine6.SizeF = New System.Drawing.SizeF(37.08325!, 458.3324!)
+        Me.XrLine6.SizeF = New System.Drawing.SizeF(37.08325!, 546.4535!)
         Me.XrLine6.StylePriority.UseBorderColor = False
         Me.XrLine6.StylePriority.UseBorders = False
         Me.XrLine6.StylePriority.UseForeColor = False
@@ -2140,7 +2091,7 @@ Partial Public Class Eidop
         Me.XrLine7.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
         Me.XrLine7.LocationFloat = New DevExpress.Utils.PointFloat(543.0001!, 0!)
         Me.XrLine7.Name = "XrLine7"
-        Me.XrLine7.SizeF = New System.Drawing.SizeF(37.08337!, 458.0828!)
+        Me.XrLine7.SizeF = New System.Drawing.SizeF(37.08325!, 546.4535!)
         Me.XrLine7.StylePriority.UseBorderColor = False
         Me.XrLine7.StylePriority.UseBorders = False
         Me.XrLine7.StylePriority.UseForeColor = False
@@ -2183,7 +2134,7 @@ Partial Public Class Eidop
         '
         Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel38, Me.EXODA_PER_APT_OWNERS, Me.XrPanel13, Me.EXODA_PER_APT, Me.XrLabel21, Me.XrPanel5})
         Me.Detail.Dpi = 254.0!
-        Me.Detail.HeightF = 1132.441!
+        Me.Detail.HeightF = 1255.927!
         Me.Detail.HierarchyPrintOptions.Indent = 50.8!
         Me.Detail.Name = "Detail"
         Me.Detail.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
@@ -2222,11 +2173,11 @@ Partial Public Class Eidop
         Me.XrLabel21.Dpi = 254.0!
         Me.XrLabel21.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel21.ForeColor = System.Drawing.Color.Black
-        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(0!, 5.383485!)
+        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 5.383485!)
         Me.XrLabel21.Multiline = True
         Me.XrLabel21.Name = "XrLabel21"
         Me.XrLabel21.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel21.SizeF = New System.Drawing.SizeF(968.1614!, 40.99118!)
+        Me.XrLabel21.SizeF = New System.Drawing.SizeF(968.1614!, 40.99109!)
         Me.XrLabel21.StylePriority.UseBorderColor = False
         Me.XrLabel21.StylePriority.UseBorders = False
         Me.XrLabel21.StylePriority.UseFont = False
@@ -2245,9 +2196,9 @@ Partial Public Class Eidop
         Me.XrPanel5.CanShrink = True
         Me.XrPanel5.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel12, Me.XrPanel6, Me.XrLine2, Me.XrLine1, Me.XrLabel35, Me.XrLabel16, Me.XrLabel17})
         Me.XrPanel5.Dpi = 254.0!
-        Me.XrPanel5.LocationFloat = New DevExpress.Utils.PointFloat(0!, 46.37461!)
+        Me.XrPanel5.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 51.75821!)
         Me.XrPanel5.Name = "XrPanel5"
-        Me.XrPanel5.SizeF = New System.Drawing.SizeF(968.1614!, 1085.379!)
+        Me.XrPanel5.SizeF = New System.Drawing.SizeF(968.1614!, 1198.408!)
         Me.XrPanel5.StylePriority.UseBorderColor = False
         Me.XrPanel5.StylePriority.UseBorders = False
         '
@@ -2255,7 +2206,7 @@ Partial Public Class Eidop
         '
         Me.XrPanel12.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel93, Me.XrLabel37})
         Me.XrPanel12.Dpi = 254.0!
-        Me.XrPanel12.LocationFloat = New DevExpress.Utils.PointFloat(0!, 1010.816!)
+        Me.XrPanel12.LocationFloat = New DevExpress.Utils.PointFloat(0!, 1123.846!)
         Me.XrPanel12.Name = "XrPanel12"
         Me.XrPanel12.SizeF = New System.Drawing.SizeF(968.1614!, 74.5625!)
         '
@@ -2401,9 +2352,9 @@ Partial Public Class Eidop
         Me.XrLine2.Dpi = 254.0!
         Me.XrLine2.ForeColor = System.Drawing.Color.Black
         Me.XrLine2.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
-        Me.XrLine2.LocationFloat = New DevExpress.Utils.PointFloat(745.82!, 0!)
+        Me.XrLine2.LocationFloat = New DevExpress.Utils.PointFloat(745.8202!, 0!)
         Me.XrLine2.Name = "XrLine2"
-        Me.XrLine2.SizeF = New System.Drawing.SizeF(37.08344!, 1011.295!)
+        Me.XrLine2.SizeF = New System.Drawing.SizeF(37.08337!, 1123.846!)
         Me.XrLine2.StylePriority.UseBorderColor = False
         Me.XrLine2.StylePriority.UseBorders = False
         Me.XrLine2.StylePriority.UseForeColor = False
@@ -2415,9 +2366,9 @@ Partial Public Class Eidop
         Me.XrLine1.Dpi = 254.0!
         Me.XrLine1.ForeColor = System.Drawing.Color.Black
         Me.XrLine1.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
-        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(542.75!, 0!)
+        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(542.7501!, 0!)
         Me.XrLine1.Name = "XrLine1"
-        Me.XrLine1.SizeF = New System.Drawing.SizeF(37.08337!, 1011.295!)
+        Me.XrLine1.SizeF = New System.Drawing.SizeF(37.08337!, 1123.846!)
         Me.XrLine1.StylePriority.UseBorderColor = False
         Me.XrLine1.StylePriority.UseBorders = False
         Me.XrLine1.StylePriority.UseForeColor = False
@@ -2473,11 +2424,22 @@ Partial Public Class Eidop
         Me.XrLabel17.Text = "ΠΟΣΟ"
         Me.XrLabel17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
+        'XrLine13
+        '
+        Me.XrLine13.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLine13.Dpi = 254.0!
+        Me.XrLine13.ForeColor = System.Drawing.Color.Blue
+        Me.XrLine13.LocationFloat = New DevExpress.Utils.PointFloat(1.607239!, 273.0267!)
+        Me.XrLine13.Name = "XrLine13"
+        Me.XrLine13.SizeF = New System.Drawing.SizeF(966.5527!, 14.67194!)
+        Me.XrLine13.StylePriority.UseBorders = False
+        Me.XrLine13.StylePriority.UseForeColor = False
+        '
         'EXODA_PER_APT_OWNERS
         '
         Me.EXODA_PER_APT_OWNERS.CanShrink = True
         Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1007.592!, 83.83975!)
+        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1006.592!, 83.83975!)
         Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
         Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
         Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
@@ -2488,7 +2450,7 @@ Partial Public Class Eidop
         '
         Me.EXODA_PER_APT.CanShrink = True
         Me.EXODA_PER_APT.Dpi = 254.0!
-        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(3.99994!, 83.83975!)
+        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(11.99982!, 83.83975!)
         Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
         Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
         Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
@@ -2533,6 +2495,7 @@ Partial Public Class Eidop
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.ScriptsSource = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Private Sub CalculatedField1_GetValue(ByVal sender As Object, ByVal e As DevExp" &
     "ress.XtraReports.UI.GetValueEventArgs)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "End Sub" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.ShowPrintMarginsWarning = False
         Me.SnapGridSize = 25.0!
         Me.Version = "21.2"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2633,7 +2596,6 @@ Partial Public Class Eidop
     Friend WithEvents ClosedAPTSmall As DevExpress.XtraReports.UI.XRSubreport
     Friend WithEvents XrLabel81 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel80 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel79 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel78 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel77 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel62 As DevExpress.XtraReports.UI.XRLabel
@@ -2641,7 +2603,6 @@ Partial Public Class Eidop
     Friend WithEvents XrLabel60 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel59 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel58 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel57 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel56 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel55 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel54 As DevExpress.XtraReports.UI.XRLabel
@@ -2663,4 +2624,9 @@ Partial Public Class Eidop
     Friend WithEvents XrLabel25 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel27 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel28 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel82 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel83 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel57 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel79 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLine13 As DevExpress.XtraReports.UI.XRLine
 End Class

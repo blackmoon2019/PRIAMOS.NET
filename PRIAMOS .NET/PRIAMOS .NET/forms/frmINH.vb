@@ -763,6 +763,7 @@ Public Class frmINH
         SplashScreenManager1.ShowWaitForm()
         SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
         report.CreateDocument()
+        report.PrintingSystem.Document.ScaleFactor = 0.99
 
         Dim printTool As New ReportPrintTool(report)
         printTool.ShowRibbonPreview()
@@ -1174,7 +1175,7 @@ Public Class frmINH
         SplashScreenManager1.ShowWaitForm()
         SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
         report.CreateDocument()
-
+        report.PrintingSystem.Document.ScaleFactor = 0.97
         Dim printTool As New ReportPrintTool(report)
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()

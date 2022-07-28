@@ -72,7 +72,7 @@ Partial Public Class ClosedAPT
         Me.XrTable1.Name = "XrTable1"
         Me.XrTable1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
         Me.XrTable1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow1})
-        Me.XrTable1.SizeF = New System.Drawing.SizeF(525.9999!, 15.00001!)
+        Me.XrTable1.SizeF = New System.Drawing.SizeF(517.9999!, 15.00001!)
         '
         'XrTableRow1
         '
@@ -116,7 +116,7 @@ Partial Public Class ClosedAPT
         Me.DataMember = "RCA"
         Me.DataSource = Me.SqlDataSource1
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(4, 318, 0, 0)
+        Me.Margins = New System.Drawing.Printing.Margins(4, 326, 0, 0)
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.Version = "21.2"

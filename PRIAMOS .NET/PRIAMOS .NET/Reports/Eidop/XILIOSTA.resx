@@ -172,6 +172,23 @@ inner join vw_APMIL A on A.aptID =I.aptID and A.bdgID=I.bdgID
 WHERE I.inhID=@inhID and I.aptID=@aptID
 group by i.inhid,A.aptid,mlcname,I.bdgID,I.calcCatID ,A.shared,a.Elevator,a.Heating,a.special_costs,a.owners,a.billing ,a.garage,a.monomers1  ,a.monomers2,a.monomers3,a.heating_consumption
 ) as s
+union 
+select i.inhid,a.aptid,'FI' ,
+ (SELECT SUM(APMIL.FI)  FROM APMIL  inner join apt on apt.id=apmil.aptid  WHERE APMIL.bdgID= i.bdgid  and apt.out=0) as TotFI,
+ case when calcCatID  =  'B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTypeID='11F7A89C-F64D-4596-A5AF-005290C5FA49' then A.fi else 0 end as fi
+ from vw_inc I
+inner join vw_APMIL A on A.aptID =I.aptID and A.bdgID=I.bdgID 
+WHERE I.inhID=@inhID and I.aptID=@aptID
+and calcCatID  =  'B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTypeID='11F7A89C-F64D-4596-A5AF-005290C5FA49'
+union
+select i.inhid,a.aptid,'FI BOILER',
+ (SELECT SUM(APMIL.FI)  FROM APMIL  inner join apt on apt.id=apmil.aptid  WHERE APMIL.bdgID= i.bdgid  and apt.out=0) as TotFI,
+ case when calcCatID  =  'B139CE26-1ABA-4680-A1EE-623EC97C475B' and HTypeID='11F7A89C-F64D-4596-A5AF-005290C5FA49' then A.fi else 0 end as fi
+ from vw_inc I
+inner join vw_APMIL A on A.aptID =I.aptID and A.bdgID=I.bdgID 
+WHERE I.inhID=@inhID and I.aptID=@aptID
+and calcCatID  =  'B139CE26-1ABA-4680-A1EE-623EC97C475B' and BTypeID='11F7A89C-F64D-4596-A5AF-005290C5FA49'
+
 order by mlcname</value>
   </data>
   <data name="SqlDataSourceMIL.ResultSchemaSerializable" xml:space="preserve">
