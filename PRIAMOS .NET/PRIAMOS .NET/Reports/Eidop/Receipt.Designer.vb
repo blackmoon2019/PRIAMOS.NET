@@ -128,10 +128,8 @@ Partial Public Class Receipt
         Me.XrLabel63 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel64 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.EXODA_PER_APT2 = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrLabel9 = New DevExpress.XtraReports.UI.XRLabel()
         Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
-        Me.EXODA_PER_APT_OWNERS2 = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel2 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel90 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel84 = New DevExpress.XtraReports.UI.XRLabel()
@@ -161,18 +159,20 @@ Partial Public Class Receipt
         Me.XrLabel52 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_PER_APT2 = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.EXODA_PER_APT_OWNERS2 = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
         '
         Me.TopMargin.Dpi = 254.0!
-        Me.TopMargin.HeightF = 25.58334!
+        Me.TopMargin.HeightF = 9.0!
         Me.TopMargin.Name = "TopMargin"
         '
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 254.0!
-        Me.BottomMargin.HeightF = 10.0!
+        Me.BottomMargin.HeightF = 5.0!
         Me.BottomMargin.Name = "BottomMargin"
         '
         'PageHeader
@@ -1136,16 +1136,6 @@ Partial Public Class Receipt
         Me.XrLabel1.Text = "ΠΕΡΙΟΔΟΣ"
         Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'EXODA_PER_APT2
-        '
-        Me.EXODA_PER_APT2.Dpi = 254.0!
-        Me.EXODA_PER_APT2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 378.508!)
-        Me.EXODA_PER_APT2.Name = "EXODA_PER_APT2"
-        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
-        Me.EXODA_PER_APT2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46179!)
-        '
         'XrLabel9
         '
         Me.XrLabel9.BorderColor = System.Drawing.Color.Black
@@ -1171,17 +1161,6 @@ Partial Public Class Receipt
         Me.SubBand1.Dpi = 254.0!
         Me.SubBand1.HeightF = 874.906!
         Me.SubBand1.Name = "SubBand1"
-        '
-        'EXODA_PER_APT_OWNERS2
-        '
-        Me.EXODA_PER_APT_OWNERS2.CanShrink = True
-        Me.EXODA_PER_APT_OWNERS2.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 365.8051!)
-        Me.EXODA_PER_APT_OWNERS2.Name = "EXODA_PER_APT_OWNERS2"
-        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT_OWNERS2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
-        Me.EXODA_PER_APT_OWNERS2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46176!)
         '
         'XrPanel2
         '
@@ -1694,6 +1673,27 @@ Partial Public Class Receipt
         Me.XrLabel34.Text = "ΑΠΟΔΕΙΞΗ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ΙΔΙΟΚΤΗΤΗ"
         Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
+        'EXODA_PER_APT2
+        '
+        Me.EXODA_PER_APT2.Dpi = 254.0!
+        Me.EXODA_PER_APT2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 378.508!)
+        Me.EXODA_PER_APT2.Name = "EXODA_PER_APT2"
+        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
+        Me.EXODA_PER_APT2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46179!)
+        '
+        'EXODA_PER_APT_OWNERS2
+        '
+        Me.EXODA_PER_APT_OWNERS2.CanShrink = True
+        Me.EXODA_PER_APT_OWNERS2.Dpi = 254.0!
+        Me.EXODA_PER_APT_OWNERS2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 365.8051!)
+        Me.EXODA_PER_APT_OWNERS2.Name = "EXODA_PER_APT_OWNERS2"
+        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT_OWNERS2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
+        Me.EXODA_PER_APT_OWNERS2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46176!)
+        '
         'Receipt
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.PageHeader})
@@ -1702,7 +1702,7 @@ Partial Public Class Receipt
         Me.DataSource = Me.SqlDataSourceReceipt
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(18, 26, 26, 10)
+        Me.Margins = New System.Drawing.Printing.Margins(10, 5, 9, 5)
         Me.PageHeight = 2100
         Me.PageWidth = 1480
         Me.PaperKind = System.Drawing.Printing.PaperKind.A5
@@ -1711,6 +1711,7 @@ Partial Public Class Receipt
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.ScriptsSource = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Private Sub CalculatedField1_GetValue(ByVal sender As Object, ByVal e As DevExp" &
     "ress.XtraReports.UI.GetValueEventArgs)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "End Sub" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.ShowPrintMarginsWarning = False
         Me.SnapGridSize = 25.0!
         Me.Version = "21.2"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()

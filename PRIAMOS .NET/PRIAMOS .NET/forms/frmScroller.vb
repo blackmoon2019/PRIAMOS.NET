@@ -1781,7 +1781,13 @@ Public Class frmScroller
                 tool.Print()
             Case 2
                 Dim report As New Receipt
+                Dim sMargins As New System.Drawing.Printing.Margins
                 report.Parameters.Item(0).Value = GridView1.GetRowCellValue(Row, "ID").ToString
+                report.PrintingSystem.Document.ScaleFactor = 0.92
+                report.DefaultPrinterSettingsUsing.UsePaperKind = False
+                report.DefaultPrinterSettingsUsing.UseMargins = False
+                sMargins.Bottom = 50 : sMargins.Top = 90 : sMargins.Left = 100 : sMargins.Right = 50
+                report.Margins = sMargins
                 report.CreateDocument()
                 Dim tool As New PrintToolBase(report.PrintingSystem)
                 tool.Print()

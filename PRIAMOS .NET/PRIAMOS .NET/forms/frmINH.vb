@@ -30,6 +30,7 @@ Public Class frmINH
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
+    Private InhFieldAndValues As Dictionary(Of String, String)
     Dim sGuid As String
     Private Sfilenames As String = ""
 
@@ -72,7 +73,9 @@ Public Class frmINH
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 lbldate.Text = ""
             Case FormMode.EditRecord
-                LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
+                'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
+                InhFieldAndValues = New Dictionary(Of String, String)
+                LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
                 Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
@@ -90,7 +93,8 @@ Public Class frmINH
                     cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
                 Else
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                    cmdSaveINH.Enabled = True : cmdCancelInvoice.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridControl1.Enabled = True
+                    cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridControl1.Enabled = True
+                    'cmdCancelInvoice.Enabled = True
                 End If
                 Me.Text = "Παραστατικό-" & cboBDG.Text
         End Select
@@ -444,6 +448,7 @@ Public Class frmINH
                 txtHpb.EditValue = Nothing
             End If
         End If
+        txtBdgCmt.Text = cboBDG.GetColumnValue("cmt").ToString
     End Sub
 
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
@@ -745,42 +750,28 @@ Public Class frmINH
             If cboAnnouncements.CalcBestSize().Width > cboAnnouncements.Width Then
                 e.Info = New ToolTipControlInfo(cboAnnouncements, cboAnnouncements.EditValue)
             End If
+        ElseIf e.SelectedControl Is chkCalculated Then
+
+        ElseIf e.SelectedControl Is chkPrintEidop Then
+            If chkPrintReceipt.Checked = True Then
+                e.Info = New ToolTipControlInfo(chkCalculated, "Εκτύπωση Ειδοποίησης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEidop"))
+                e.Info.ToolTipType = ToolTipType.Flyout
+                e.Info.IconType = ToolTipIconType.Information
+            End If
+        ElseIf e.SelectedControl Is chkPrintReceipt Then
+            If chkPrintReceipt.Checked = True Then
+                e.Info = New ToolTipControlInfo(chkCalculated, "Εκτύπωση Απόδειξης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEisp"))
+                e.Info.ToolTipType = ToolTipType.Flyout
+                e.Info.IconType = ToolTipIconType.Information
+            End If
+
+        ElseIf e.SelectedControl Is chkPrintSyg Then
+            If chkPrintSyg.Checked = True Then
+                e.Info = New ToolTipControlInfo(chkCalculated, "Εκτύπωση Συγεντρωτικής στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrint"))
+                e.Info.ToolTipType = ToolTipType.Flyout
+                e.Info.IconType = ToolTipIconType.Information
+            End If
         End If
-    End Sub
-
-
-    Private Sub BarButtonItem1_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        Dim report As New Rep_Sygentrotiki()
-        ' Εαν έχει FI
-        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
-        ' Εαν έχει FI Boiler
-        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
-
-        If cboAhpbH.EditValue IsNot Nothing Then report.HasHoursH = True Else report.HasHoursH = False
-        If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
-        report.Parameters.Item(0).Value = sID
-        report.Parameters.Item(1).Value = cboBDG.EditValue
-        SplashScreenManager1.ShowWaitForm()
-        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
-        report.CreateDocument()
-        report.PrintingSystem.Document.ScaleFactor = 0.99
-
-        Dim printTool As New ReportPrintTool(report)
-        printTool.ShowRibbonPreview()
-        SplashScreenManager1.CloseWaitForm()
-    End Sub
-
-    Private Sub BarButtonItem2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        Dim report As New Eidop()
-        report.Parameters.Item(0).Value = sID
-        ' report.Parameters.Item(1).Value = cboBDG.EditValue
-        SplashScreenManager1.ShowWaitForm()
-        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
-        report.CreateDocument()
-
-        Dim printTool As New ReportPrintTool(report)
-        printTool.ShowRibbonPreview()
-        SplashScreenManager1.CloseWaitForm()
     End Sub
 
     Private Sub RepositoryItemLookUpEdit3_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit3.ButtonClick
@@ -1166,16 +1157,55 @@ Public Class frmINH
         FlyoutPanel1.HidePopup()
         LayoutControl1.Enabled = True
     End Sub
+    Private Sub BarButtonItem1_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem1.ItemClick
+        Dim report As New Rep_Sygentrotiki()
+        ' Εαν έχει FI
+        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+        ' Εαν έχει FI Boiler
+        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
 
-    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
-        'Dim report As New Eidop()
-        Dim report As New Receipt
+        If cboAhpbH.EditValue IsNot Nothing Then report.HasHoursH = True Else report.HasHoursH = False
+        If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+        report.Parameters.Item(0).Value = sID
+        report.Parameters.Item(1).Value = cboBDG.EditValue
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        report.CreateDocument()
+        report.PrintingSystem.Document.ScaleFactor = 0.99
+
+        Dim printTool As New ReportPrintTool(report)
+        printTool.ShowRibbonPreview()
+        SplashScreenManager1.CloseWaitForm()
+    End Sub
+
+    Private Sub BarButtonItem2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem2.ItemClick
+        Dim report As New Eidop()
         report.Parameters.Item(0).Value = sID
         ' report.Parameters.Item(1).Value = cboBDG.EditValue
         SplashScreenManager1.ShowWaitForm()
         SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
         report.CreateDocument()
-        report.PrintingSystem.Document.ScaleFactor = 0.97
+
+        Dim printTool As New ReportPrintTool(report)
+        printTool.ShowRibbonPreview()
+        SplashScreenManager1.CloseWaitForm()
+    End Sub
+
+    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+        'Dim report As New Eidop()
+        Dim report As New Receipt
+        Dim sMargins As New System.Drawing.Printing.Margins
+        report.Parameters.Item(0).Value = sID
+        ' report.Parameters.Item(1).Value = cboBDG.EditValue
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        report.PrintingSystem.Document.ScaleFactor = 0.92
+        report.DefaultPrinterSettingsUsing.UsePaperKind = False
+        report.DefaultPrinterSettingsUsing.UseMargins = False
+        sMargins.Bottom = 50 : sMargins.Top = 90 : sMargins.Left = 100 : sMargins.Right = 50
+        report.Margins = sMargins
+
+        report.CreateDocument()
         Dim printTool As New ReportPrintTool(report)
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()
@@ -1183,5 +1213,25 @@ Public Class frmINH
 
     Private Sub cmdExit_Click_1(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
+    End Sub
+
+    Private Sub cmdCancelCalculate_Click(sender As Object, e As EventArgs) Handles cmdCancelCalculate.Click
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim Credit As Decimal
+        If XtraMessageBox.Show("Θέλετε να ακυρώσετε τον υπολογισμό του παραστατικού?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            sSQL = "Select   sum(isnull(credit,0)) As credit  from col_d where inhID = " & toSQLValueS(sID)
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then If sdr.IsDBNull(sdr.GetOrdinal("credit")) = False Then Credit = sdr.GetDecimal(sdr.GetOrdinal("credit")) Else Credit = 0
+            sdr.Close()
+            If Credit > 0 Then XtraMessageBox.Show("Έχετε εισπράξει από αυτό το παραστατικό " & Credit & "€. Θα πρέπει να ξαναπεράσετε τις εισπράξεις αυτές στο νέο παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Using oCmd As New SqlCommand("inv_cancelCalculate", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
+                oCmd.ExecuteNonQuery()
+            End Using
+        End If
     End Sub
 End Class

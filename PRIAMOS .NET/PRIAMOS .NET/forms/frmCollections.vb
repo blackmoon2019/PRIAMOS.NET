@@ -166,7 +166,7 @@ Public Class frmCollections
                         where C.reserveAPT = 0 and Completed=0  " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
                         "group by C.bdgID, aptID, ttl,a.bal,a.ord
                         ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
-                        where COL.reserveAPT = 0 
+                        where COL.reserveAPT = 0 and Completed=0
                         GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal "
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
@@ -1232,6 +1232,7 @@ Public Class frmCollections
 
             '    '1st Level
             Select Case e.Column.FieldName
+                '******  TO BE DELETED  *********
                 Case "debit"
                     If e.Value Is DBNull.Value Then debit = 0 Else debit = e.Value
                     If sender.GetRowCellValue(sender.FocusedRowHandle, "credit") Is DBNull.Value Then
@@ -1243,13 +1244,61 @@ Public Class frmCollections
 
                     'sSQL = "UPDATE [COL] SET debit = " & toSQLValueS(debit, True) & " , bal =  " & toSQLValueS(bal, True) &
                     '    " WHERE ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
-                    sSQL = "UPDATE [COL] SET bal =  " & toSQLValueS(bal, True) &
+                    sSQL = "UPDATE [COL] SET bal =  " & toSQLValueS(bal, True) & ",  debit= " & toSQLValueS(bal, True) &
                         " WHERE ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
 
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
+
+                    sSQL = "Update COL_P Set DEBIT= " & toSQLValueS(bal, True) &
+                      " From col " &
+                      "inner Join col_p On col_p.bdgID = col.bdgID And col_p.aptID = col.aptID And col_p.inhID = col.inhID  " &
+                      "WHERE COL_P.TENANT = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & " and COL.ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+
+                    sSQL = "INSERT INTO COL_D(colID,aptID,bdgid,inhid,debitusrID,Credit,debit,Bal,modifiedBy,modifiedOn,createdOn,tenant,Agreed)" &
+                           "SELECT " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString) &
+                           ",col_p.aptid,col_p.bdgid,col_p.inhid, '26521B58-5590-4880-A31E-4E91A6CF964D' ,0, " &
+                             toSQLValueS(bal, True) & "," & toSQLValueS(bal, True) & ", '26521B58-5590-4880-A31E-4E91A6CF964D' " &
+                           ",getdate(),getdate(), " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & ",1" &
+                           " From col " &
+                            "inner Join col_p On col_p.bdgID = col.bdgID And col_p.aptID = col.aptID And col_p.inhID = col.inhID  " &
+                            "WHERE COL_P.TENANT = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & " and COL.ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
+
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+
+                    sSQL = "UPDATE apt
+                        set apt.bal_adm = d.bal
+                        from apt 
+                        inner join(
+
+                        SELECT S.aptID, S.bal
+                        FROM COL
+                        INNER JOIN
+                        (
+                        SELECT  C.bdgID, aptID, a.ttl,a.ord, 
+                        sum(debit) as debit , 
+                        sum(credit) as credit , sum(C.bal) as bal,A.Bal as Aptbal  
+                        From COL C 
+                        INNER Join INH I ON I.ID=C.inhID 
+                        INNER Join APT A ON C.aptID = A.ID 
+                        where C.reserveAPT = 0 and Completed=0  
+                        group by C.bdgID, aptID, ttl,a.bal,a.ord
+
+                        ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
+                        where COL.reserveAPT = 0 and Completed=0  and COL.id = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString) &
+                        " GROUP BY S.bdgID,S.aptID ,S.BAL) as d on d.aptID = apt.id "
+
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
                     sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
+
                     'Case "debitusrIDs"
 
                     'debitUsrID = toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "debitusrID").ToString)

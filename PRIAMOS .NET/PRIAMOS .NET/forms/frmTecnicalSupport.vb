@@ -67,9 +67,9 @@ Public Class frmTecnicalSupport
                 LoadForms.LoadForm(LayoutControl1, "Select IMAGE,imageAns,IMAGE1,IMAGE2,IMAGE3, vw_TECH_SUP.*  from vw_TECH_SUP INNER JOIN TECH_SUP ON vw_TECH_SUP.ID = TECH_SUP.ID where vw_TECH_SUP.ID ='" + sID + "'")
 
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
-                    chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True
+                    chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True : txtAnswer.ReadOnly = False
                     chkMoreInfo.Enabled = True
-                    cmdEmailAnswer.Enabled = True
+                    cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True
                 End If
         End Select
         Me.CenterToScreen()

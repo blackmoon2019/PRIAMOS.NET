@@ -110,20 +110,43 @@ NextItem:
         End Try
     End Function
 
-    Public Function LoadForm(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
+    Public Function LoadForm(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False, Optional ByRef dictionary As Dictionary(Of String, String) = Nothing) As Boolean
 
         Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
         Dim sdr As SqlDataReader = cmd.ExecuteReader()
-        Dim sTable As DataTable
+        'Dim sTable As DataTable
         Dim TagValue As String()
         'Tag Value = 0 For Load
         'Tag Value = 1 For Insert
         'Tag Value = 2 For Update
         Dim TagV As String
         Try
-            sTable = sdr.GetSchemaTable()
+            'sTable = sdr.GetSchemaTable()
             If (sdr.Read() = True) Then
-
+                ' Αυτό μπήκε αγια να φέρει όλα τα πεδία του view μαζί με τιμές 
+                If Not IsNothing(dictionary) Then
+                    For index As Integer = 0 To sdr.FieldCount - 1
+                        Select Case sdr.GetDataTypeName(index)
+                            Case "nvarchar"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetString(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "int"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetInt32(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "bigint"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetInt64(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "uniqueidentifier"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetGuid(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "bit"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetBoolean(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "decimal"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetDecimal(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "datetime"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "date"
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Case "varbinary"
+                        End Select
+                    Next
+                End If
                 For Each item As BaseLayoutItem In control.Items
                     If TypeOf item Is LayoutControlItem Then
                         Dim LItem As LayoutControlItem = CType(item, LayoutControlItem)
