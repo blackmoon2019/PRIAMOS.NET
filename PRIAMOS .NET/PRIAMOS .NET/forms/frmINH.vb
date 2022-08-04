@@ -712,9 +712,6 @@ Public Class frmINH
             Process.Start(XtraSaveFileDialog1.FileName)
         End If
     End Sub
-
-
-
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
         Select Case e.Button.Index
             Case 1 : cboAnnouncements.EditValue = Nothing : ManageAnnouncements()
@@ -1121,12 +1118,15 @@ Public Class frmINH
     End Sub
 
     Private Sub GridView5_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView5.ValidatingEditor
-        Dim sSQL As String
+        Dim sSQL As String, repName As String
+        Dim GRDB As GridView = sender
+        repName = GRDB.GetRowCellValue(GRDB.FocusedRowHandle, "repName").ToString
         ' Παίρνει το μεγαλύτερο Α/Α και το αυξάνει κατα 1
-        Dim cmd As SqlCommand = New SqlCommand("Select  count(repName) As CountRep FROM IND WHERE INHID= " & toSQLValueS(sID) & " AND repName =  " & toSQLValueS(e.Value), CNDB)
+        Dim cmd As SqlCommand = New SqlCommand("Select  count(repName) As CountRep FROM IND WHERE INHID= " & toSQLValueS(sID) & " AND repName =  " & toSQLValueS(repName), CNDB)
+
         Dim sdr As SqlDataReader = cmd.ExecuteReader()
         If (sdr.Read() = True) Then
-            If sdr.GetInt32(sdr.GetOrdinal("CountRep")) = 1 Then
+            If sdr.GetInt32(sdr.GetOrdinal("CountRep")) > 1 Then
                 e.ErrorText = "Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο."
                 sdr.Close()
                 e.Valid = False

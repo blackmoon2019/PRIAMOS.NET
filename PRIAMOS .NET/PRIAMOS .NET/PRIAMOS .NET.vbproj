@@ -338,6 +338,7 @@
     <Compile Include="classes\Notification.vb" />
     <Compile Include="classes\ProgProp.vb" />
     <Compile Include="classes\ScanToPDF.vb" />
+    <Compile Include="classes\SendEmail.vb" />
     <Compile Include="classes\Transactions.vb" />
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XmlUpdateFromDB.vb" />
@@ -538,6 +539,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Priamos_NETDataSet3.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NETDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="Priamos_NETDataSet2.vb">
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
@@ -845,6 +851,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Priamos_NETDataSet3.xsc">
+      <DependentUpon>Priamos_NETDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Priamos_NETDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Priamos_NETDataSet3.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Priamos_NETDataSet3.xss">
+      <DependentUpon>Priamos_NETDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\icons8-email-16.png" />
     <None Include="Resources\icons8-receipt-approved-16.png" />
     <None Include="Resources\icons8-documents-16.png" />
     <None Include="Resources\icons8-aggregator-16.png" />

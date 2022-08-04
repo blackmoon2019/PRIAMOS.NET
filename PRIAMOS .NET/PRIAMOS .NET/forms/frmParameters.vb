@@ -41,19 +41,16 @@ Public Class frmParameters
 
         'Διαχείριση
         Prog_Prop.SetProgADM(ADM.EditValue.ToString)
+
     End Sub
 
     Private Sub frmParameters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet3.MAILS' table. You can move, or remove it, as needed.
+        Me.MAILSTableAdapter.Fill(Me.Priamos_NETDataSet3.MAILS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP)
-        ''ΦΠΑ
-        'txtVAT.EditValue = Prog_Prop.GetProgvat()
-        ''Δεκαδικά Προγράμματος
-        'txtDecimals.EditValue = Prog_Prop.GetProgDecimals()
-        ''Technical Support Email
-        'txtEmail.EditValue = Prog_Prop.GetProgTechSupportEmail
-        ''Διαχείριση
-        'ADM.EditValue = Prog_Prop.GetProgADM
+
+
         Me.CenterToScreen()
     End Sub
 
@@ -69,6 +66,13 @@ Public Class frmParameters
                 'Διαχείριση
                 ADM.EditValue = Prog_Prop.GetProgADM
             Case 1
+                'Email Έκδοσης Κοινοχρήστων
+                Prog_Prop.GetProgInvoicesEmail()
+                INVOICES_EMAIL.EditValue = Guid.Parse(ProgProps.InvoicesEmailID)
+                BODY.EditValue = ProgProps.InvoicesBody
+                BODY_RESEND.EditValue = ProgProps.InvoicesBodyResend
+                BODY_RECREATE.EditValue = ProgProps.InvoicesBodyRecreate
+
             Case 2
             Case 3
             Case Else
@@ -98,5 +102,11 @@ Public Class frmParameters
             End If
         End If
         form1.ShowDialog()
+    End Sub
+
+    Private Sub cmdSave2_Click(sender As Object, e As EventArgs) Handles cmdSave2.Click
+        'Παράμετροι email Έκδοσης Κοινοχρήστων
+        Prog_Prop.SetProgInvoicesEmail(INVOICES_EMAIL.EditValue.ToString, BODY.EditValue, BODY_RESEND.EditValue, BODY_RECREATE.EditValue)
+
     End Sub
 End Class

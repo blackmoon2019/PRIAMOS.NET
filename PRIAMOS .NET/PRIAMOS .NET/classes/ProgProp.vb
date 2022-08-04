@@ -66,6 +66,45 @@ Public Class ProgProp
 
     End Sub
 
+    Public Sub GetProgInvoicesEmail()
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select prm,val FROM PRM where prm in('INVOICES_EMAIL','BODY_RECREATE','BODY_RESEND','BODY')"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            While sdr.Read()
+                If sdr.IsDBNull(sdr.GetOrdinal("VAL")) = False Then
+                    Select Case sdr.GetString(sdr.GetOrdinal("prm")).ToString
+                        Case "INVOICES_EMAIL" : ProgProps.InvoicesEmailID = sdr.GetString(sdr.GetOrdinal("VAL"))
+                        Case "BODY" : ProgProps.InvoicesBody = sdr.GetString(sdr.GetOrdinal("VAL"))
+                        Case "BODY_RESEND" : ProgProps.InvoicesBodyResend = sdr.GetString(sdr.GetOrdinal("VAL"))
+                        Case "BODY_RECREATE" : ProgProps.InvoicesBodyRecreate = sdr.GetString(sdr.GetOrdinal("VAL"))
+                    End Select
+
+                End If
+            End While
+            sdr.Close()
+            If ProgProps.InvoicesEmailID <> "" Then
+                sSQL = "select server,un,pwd,port,ssl FROM MAILS where ID = " & toSQLValueS(ProgProps.InvoicesEmailID)
+                cmd = New SqlCommand(sSQL, CNDB)
+                sdr = cmd.ExecuteReader()
+                If (sdr.Read() = True) Then
+                    If sdr.IsDBNull(sdr.GetOrdinal("un")) = False Then ProgProps.InvoicesEmailUsername = sdr.GetString(sdr.GetOrdinal("un"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("server")) = False Then ProgProps.InvoicesEmailServer = sdr.GetString(sdr.GetOrdinal("server"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("pwd")) = False Then ProgProps.InvoicesEmailPassword = sdr.GetString(sdr.GetOrdinal("pwd"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("port")) = False Then ProgProps.InvoicesEmailPort = sdr.GetInt32(sdr.GetOrdinal("port"))
+                    If sdr.IsDBNull(sdr.GetOrdinal("ssl")) = False Then ProgProps.InvoicesEmailSSL = sdr.GetBoolean(sdr.GetOrdinal("ssl"))
+                End If
+                sdr.Close()
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
     Public Function GetProgTechSupportEmail() As String
         Dim sSQL As String
         Dim cmd As SqlCommand
@@ -74,7 +113,11 @@ Public Class ProgProp
             sSQL = "select val FROM PRM where prm= 'SUPPORT_EMAIL'"
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
-            If (sdr.Read() = True) Then ProgProps.SupportEmail = sdr.GetString(sdr.GetOrdinal("VAL"))
+            If (sdr.Read() = True) Then
+                If sdr.IsDBNull(sdr.GetOrdinal("VAL")) = False Then
+                    ProgProps.SupportEmail = sdr.GetString(sdr.GetOrdinal("VAL"))
+                End If
+            End If
             sdr.Close()
             Return ProgProps.SupportEmail
         Catch ex As Exception
@@ -82,6 +125,7 @@ Public Class ProgProp
         End Try
 
     End Function
+
     Public Function GetProgADM() As String
         Dim sSQL As String
         Dim cmd As SqlCommand
@@ -122,11 +166,34 @@ Public Class ProgProp
         Try
             sSQL = "Update PRM set val = '" & sValue & "' where prm= 'SUPPORT_EMAIL'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            ProgProps.SupportEmail = sValue
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
+    Public Sub SetProgInvoicesEmail(ByVal sValue As String, ByVal sValue2 As String, ByVal sValue3 As String, ByVal sValue4 As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'INVOICES_EMAIL'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            ProgProps.InvoicesEmailID = sValue
+            sSQL = "Update PRM set val = '" & sValue2 & "' where prm= 'BODY'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            ProgProps.InvoicesBody = sValue2
+            sSQL = "Update PRM set val = '" & sValue3 & "' where prm= 'BODY_RESEND'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            ProgProps.InvoicesBodyResend = sValue3
+            sSQL = "Update PRM set val = '" & sValue4 & "' where prm= 'BODY_RECREATE'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            ProgProps.InvoicesBodyRecreate = sValue4
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
     Public Sub SetProgEXFolderPath(ByVal sValue As String)
         Dim sSQL As String
         Dim cmd As SqlCommand

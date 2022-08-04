@@ -20,14 +20,14 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SelectQuery3 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns3 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table3 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery4 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns4 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table4 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
@@ -64,6 +64,8 @@ Partial Class frmScroller
         Me.BarStaticItem2 = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItem3 = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItem4 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarPB = New DevExpress.XtraBars.BarEditItem()
+        Me.RepositoryItemProgressBar1 = New DevExpress.XtraEditors.Repository.RepositoryItemProgressBar()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.BarNewRec = New DevExpress.XtraBars.BarButtonItem()
         Me.BarDelete = New DevExpress.XtraBars.BarButtonItem()
@@ -74,6 +76,7 @@ Partial Class frmScroller
         Me.BarSYG = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEIDOP = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRECEIPTS = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEmail = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar4 = New DevExpress.XtraBars.Bar()
         Me.cboDebitUsr = New DevExpress.XtraBars.BarEditItem()
         Me.Rep_DEBITUSR = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
@@ -102,6 +105,7 @@ Partial Class frmScroller
         Me.BarFilterWithoutCell = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRemoveFilterWithCell = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRemoveAllFilters = New DevExpress.XtraBars.BarButtonItem()
+        Me.RepositoryItemMarqueeProgressBar1 = New DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar()
         Me.RepositoryItemButtonEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.RepositoryItemBreadCrumbEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit()
         Me.RepositoryItemButtonEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
@@ -124,6 +128,7 @@ Partial Class frmScroller
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemProgressBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,6 +137,7 @@ Partial Class frmScroller
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_ΒΑΝΚ, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMarqueeProgressBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,9 +169,9 @@ Partial Class frmScroller
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode1.LevelTemplate = Me.GridView2
-        GridLevelNode1.RelationName = "Level1"
-        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.LevelTemplate = Me.GridView2
+        GridLevelNode2.RelationName = "Level1"
+        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.grdMain.Location = New System.Drawing.Point(46, 112)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
@@ -203,10 +209,10 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS, Me.BarEmail, Me.BarPB})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 63
-        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ})
+        Me.BarManager1.MaxItemId = 66
+        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ, Me.RepositoryItemMarqueeProgressBar1, Me.RepositoryItemProgressBar1})
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'Bar1
@@ -407,7 +413,7 @@ Partial Class frmScroller
         Me.Bar3.DockCol = 0
         Me.Bar3.DockRow = 0
         Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem4)})
+        Me.Bar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.BarStaticItem4), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, Me.BarPB, "", False, True, True, 203)})
         Me.Bar3.OptionsBar.AllowQuickCustomization = False
         Me.Bar3.OptionsBar.DrawDragBorder = False
         Me.Bar3.OptionsBar.UseWholeRow = True
@@ -449,6 +455,18 @@ Partial Class frmScroller
         Me.BarStaticItem4.Name = "BarStaticItem4"
         Me.BarStaticItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
+        'BarPB
+        '
+        Me.BarPB.Caption = "BarPB"
+        Me.BarPB.Edit = Me.RepositoryItemProgressBar1
+        Me.BarPB.Id = 65
+        Me.BarPB.Name = "BarPB"
+        Me.BarPB.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'RepositoryItemProgressBar1
+        '
+        Me.RepositoryItemProgressBar1.Name = "RepositoryItemProgressBar1"
+        '
         'Bar2
         '
         Me.Bar2.BarName = "Custom 4"
@@ -456,7 +474,7 @@ Partial Class frmScroller
         Me.Bar2.DockRow = 0
         Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Left
         Me.Bar2.FloatLocation = New System.Drawing.Point(49, 225)
-        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh), New DevExpress.XtraBars.LinkPersistInfo(Me.BarPrint)})
+        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh), New DevExpress.XtraBars.LinkPersistInfo(Me.BarPrint), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmail)})
         Me.Bar2.Offset = 1
         Me.Bar2.Text = "Custom 4"
         '
@@ -525,6 +543,13 @@ Partial Class frmScroller
         Me.BarRECEIPTS.Id = 62
         Me.BarRECEIPTS.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_approved_16
         Me.BarRECEIPTS.Name = "BarRECEIPTS"
+        '
+        'BarEmail
+        '
+        Me.BarEmail.Caption = "Email"
+        Me.BarEmail.Id = 63
+        Me.BarEmail.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_email_16
+        Me.BarEmail.Name = "BarEmail"
         '
         'Bar4
         '
@@ -740,6 +765,10 @@ Partial Class frmScroller
         Me.BarRemoveAllFilters.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_clear_filters_16
         Me.BarRemoveAllFilters.Name = "BarRemoveAllFilters"
         '
+        'RepositoryItemMarqueeProgressBar1
+        '
+        Me.RepositoryItemMarqueeProgressBar1.Name = "RepositoryItemMarqueeProgressBar1"
+        '
         'RepositoryItemButtonEdit1
         '
         Me.RepositoryItemButtonEdit1.AutoHeight = False
@@ -767,21 +796,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table1.Name = "USR"
-        AllColumns1.Table = Table1
-        SelectQuery1.Columns.Add(AllColumns1)
-        SelectQuery1.Name = "USR"
-        SelectQuery1.Tables.Add(Table1)
-        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table2.Name = "IAT"
-        AllColumns2.Table = Table2
-        SelectQuery2.Columns.Add(AllColumns2)
-        SelectQuery2.Name = "IAT"
-        SelectQuery2.Tables.Add(Table2)
-        CustomSqlQuery1.Name = "INH"
-        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
+        Table3.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table3.Name = "USR"
+        AllColumns3.Table = Table3
+        SelectQuery3.Columns.Add(AllColumns3)
+        SelectQuery3.Name = "USR"
+        SelectQuery3.Tables.Add(Table3)
+        Table4.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table4.Name = "IAT"
+        AllColumns4.Table = Table4
+        SelectQuery4.Columns.Add(AllColumns4)
+        SelectQuery4.Name = "IAT"
+        SelectQuery4.Tables.Add(Table4)
+        CustomSqlQuery2.Name = "INH"
+        CustomSqlQuery2.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery3, SelectQuery4, CustomSqlQuery2})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM
@@ -849,6 +878,7 @@ Partial Class frmScroller
         CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemProgressBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -857,6 +887,7 @@ Partial Class frmScroller
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_ΒΑΝΚ, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMarqueeProgressBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -954,4 +985,8 @@ Partial Class frmScroller
     Friend WithEvents BarSYG As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarEIDOP As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarRECEIPTS As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarEmail As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RepositoryItemMarqueeProgressBar1 As DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar
+    Friend WithEvents BarPB As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents RepositoryItemProgressBar1 As DevExpress.XtraEditors.Repository.RepositoryItemProgressBar
 End Class

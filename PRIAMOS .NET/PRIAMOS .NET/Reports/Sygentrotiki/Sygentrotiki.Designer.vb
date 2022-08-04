@@ -123,17 +123,16 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
-        Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
-        Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.XrTableCell10 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell11 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell13 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell14 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell15 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell16 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrTableCell17 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.SubBand2 = New DevExpress.XtraReports.UI.SubBand()
+        Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrTable1 = New DevExpress.XtraReports.UI.XRTable()
         Me.XrTableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
         Me.XrTableCell1 = New DevExpress.XtraReports.UI.XRTableCell()
@@ -145,15 +144,16 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell7 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell8 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell9 = New DevExpress.XtraReports.UI.XRTableCell()
-        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrTable2 = New DevExpress.XtraReports.UI.XRTable()
+        Me.XrTableRow2 = New DevExpress.XtraReports.UI.XRTableRow()
+        Me.XrTableCell10 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell11 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell12 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell13 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell14 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell15 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell16 = New DevExpress.XtraReports.UI.XRTableCell()
+        Me.XrTableCell17 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrPdfContent1 = New DevExpress.XtraReports.UI.XRPdfContent()
         Me.CrossTabTotalStyle1 = New DevExpress.XtraReports.UI.XRControlStyle()
         Me.CrossTabHeaderStyle1 = New DevExpress.XtraReports.UI.XRControlStyle()
@@ -220,8 +220,8 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell47 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell48 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.bdgID = New DevExpress.XtraReports.Parameters.Parameter()
-        CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -410,7 +410,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "0285e9f5-40a5-4c47-a188-9260c0b31114"
+        Me.inhID.ValueInfo = "bed18719-a9bd-41dc-b3ff-6bdaef12e326"
         DynamicListLookUpSettings1.DataMember = "vw_INH"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "ID"
@@ -426,7 +426,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.PageHeader.Dpi = 254.0!
         Me.PageHeader.HeightF = 944.125!
         Me.PageHeader.Name = "PageHeader"
-        Me.PageHeader.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand1})
+        Me.PageHeader.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand2})
         '
         'ClosedAPT
         '
@@ -616,7 +616,7 @@ Partial Public Class Rep_Sygentrotiki
         'EXODA
         '
         Me.EXODA.Dpi = 254.0!
-        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(59.0!, 400.1002!)
+        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(59.0!, 398.1002!)
         Me.EXODA.Name = "EXODA"
         Me.EXODA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
         Me.EXODA.ReportSource = New PRIAMOS.NET.EXODA()
@@ -1092,127 +1092,178 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel19.Text = "ΠΟΣΟ"
         Me.XrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'SubBand1
+        'SubBand2
         '
-        Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTable2, Me.XrTable1, Me.XrLabel32, Me.XrLabel31, Me.XrLabel38, Me.XrLabel35, Me.XrLabel36, Me.XrLabel37, Me.XrLabel34, Me.XrLabel33, Me.XrLabel30})
-        Me.SubBand1.Dpi = 254.0!
-        Me.SubBand1.HeightF = 74.93009!
-        Me.SubBand1.Name = "SubBand1"
+        Me.SubBand2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel30, Me.XrLabel33, Me.XrLabel34, Me.XrLabel37, Me.XrLabel36, Me.XrLabel35, Me.XrLabel38, Me.XrLabel31, Me.XrLabel32, Me.XrTable1, Me.XrTable2})
+        Me.SubBand2.Dpi = 254.0!
+        Me.SubBand2.HeightF = 74.93005!
+        Me.SubBand2.Name = "SubBand2"
         '
-        'XrTable2
+        'XrLabel30
         '
-        Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+        Me.XrLabel30.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel30.CanGrow = False
+        Me.XrLabel30.Dpi = 254.0!
+        Me.XrLabel30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
+        Me.XrLabel30.Name = "XrLabel30"
+        Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel30.SizeF = New System.Drawing.SizeF(589.9739!, 37.465!)
+        Me.XrLabel30.StylePriority.UseBorders = False
+        Me.XrLabel30.StylePriority.UseFont = False
+        Me.XrLabel30.StylePriority.UseTextAlignment = False
+        Me.XrLabel30.Text = "ΣΤΟΙΧΕΙΑ ΔΙΑΜΕΡΙΣΜΑΤΩΝ"
+        Me.XrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel30.WordWrap = False
+        '
+        'XrLabel33
+        '
+        Me.XrLabel33.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel33.CanGrow = False
+        Me.XrLabel33.Dpi = 254.0!
+        Me.XrLabel33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(636.7459!, 0!)
+        Me.XrLabel33.Name = "XrLabel33"
+        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel33.SizeF = New System.Drawing.SizeF(1632.142!, 38.46503!)
+        Me.XrLabel33.StylePriority.UseBorders = False
+        Me.XrLabel33.StylePriority.UseFont = False
+        Me.XrLabel33.StylePriority.UseTextAlignment = False
+        Me.XrLabel33.Text = "ΣΥΝΤΕΛΕΣΤΕΣ ΚΑΤΑΜΕΡΙΣΜΟΥ ΕΞΟΔΩΝ"
+        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel33.WordWrap = False
+        '
+        'XrLabel34
+        '
+        Me.XrLabel34.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrTable2.Dpi = 254.0!
-        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(2268.888!, 36.46!)
-        Me.XrTable2.Name = "XrTable2"
-        Me.XrTable2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
-        Me.XrTable2.SizeF = New System.Drawing.SizeF(1383.788!, 38.46503!)
-        Me.XrTable2.StylePriority.UseBorders = False
+        Me.XrLabel34.CanGrow = False
+        Me.XrLabel34.Dpi = 254.0!
+        Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2268.887!, 0!)
+        Me.XrLabel34.Name = "XrLabel34"
+        Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel34.SizeF = New System.Drawing.SizeF(1383.433!, 38.46503!)
+        Me.XrLabel34.StylePriority.UseBorders = False
+        Me.XrLabel34.StylePriority.UseFont = False
+        Me.XrLabel34.StylePriority.UseTextAlignment = False
+        Me.XrLabel34.Text = "ΠΛΗΡΩΤΕΑ ΑΝΑ ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΩΝ"
+        Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel34.WordWrap = False
         '
-        'XrTableRow2
+        'XrLabel37
         '
-        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell10, Me.XrTableCell11, Me.XrTableCell12, Me.XrTableCell13, Me.XrTableCell14, Me.XrTableCell15, Me.XrTableCell16, Me.XrTableCell17})
-        Me.XrTableRow2.Dpi = 254.0!
-        Me.XrTableRow2.Name = "XrTableRow2"
-        Me.XrTableRow2.Weight = 1.0R
+        Me.XrLabel37.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel37.CanGrow = False
+        Me.XrLabel37.Dpi = 254.0!
+        Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3652.32!, 0!)
+        Me.XrLabel37.Name = "XrLabel37"
+        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel37.SizeF = New System.Drawing.SizeF(511.6802!, 37.465!)
+        Me.XrLabel37.StylePriority.UseBorders = False
+        Me.XrLabel37.StylePriority.UseFont = False
+        Me.XrLabel37.StylePriority.UseTextAlignment = False
+        Me.XrLabel37.Text = "ΤΕΛΙΚΑ ΠΟΣΑ"
+        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel37.WordWrap = False
         '
-        'XrTableCell10
+        'XrLabel36
         '
-        Me.XrTableCell10.CanGrow = False
-        Me.XrTableCell10.Dpi = 254.0!
-        Me.XrTableCell10.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell10.Name = "XrTableCell10"
-        Me.XrTableCell10.StylePriority.UseFont = False
-        Me.XrTableCell10.Text = "XrTableCell1"
-        Me.XrTableCell10.Visible = False
-        Me.XrTableCell10.Weight = 0.64960655448450677R
-        Me.XrTableCell10.WordWrap = False
+        Me.XrLabel36.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel36.CanGrow = False
+        Me.XrLabel36.Dpi = 254.0!
+        Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3810.117!, 37.46493!)
+        Me.XrLabel36.Name = "XrLabel36"
+        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel36.SizeF = New System.Drawing.SizeF(157.4424!, 37.46501!)
+        Me.XrLabel36.StylePriority.UseBorders = False
+        Me.XrLabel36.StylePriority.UseFont = False
+        Me.XrLabel36.StylePriority.UseTextAlignment = False
+        Me.XrLabel36.Text = "ΙΔΙΟΚ."
+        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel36.WordWrap = False
         '
-        'XrTableCell11
+        'XrLabel35
         '
-        Me.XrTableCell11.CanGrow = False
-        Me.XrTableCell11.Dpi = 254.0!
-        Me.XrTableCell11.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell11.Name = "XrTableCell11"
-        Me.XrTableCell11.StylePriority.UseFont = False
-        Me.XrTableCell11.Text = "XrTableCell2"
-        Me.XrTableCell11.Visible = False
-        Me.XrTableCell11.Weight = 0.669291601136543R
-        Me.XrTableCell11.WordWrap = False
+        Me.XrLabel35.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel35.CanGrow = False
+        Me.XrLabel35.Dpi = 254.0!
+        Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3652.676!, 37.46507!)
+        Me.XrLabel35.Name = "XrLabel35"
+        Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel35.SizeF = New System.Drawing.SizeF(157.4414!, 37.46499!)
+        Me.XrLabel35.StylePriority.UseBorders = False
+        Me.XrLabel35.StylePriority.UseFont = False
+        Me.XrLabel35.StylePriority.UseTextAlignment = False
+        Me.XrLabel35.Text = "ΕΝΟΙΚ."
+        Me.XrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel35.WordWrap = False
         '
-        'XrTableCell12
+        'XrLabel38
         '
-        Me.XrTableCell12.CanGrow = False
-        Me.XrTableCell12.Dpi = 254.0!
-        Me.XrTableCell12.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell12.Name = "XrTableCell12"
-        Me.XrTableCell12.StylePriority.UseFont = False
-        Me.XrTableCell12.Text = "XrTableCell3"
-        Me.XrTableCell12.Visible = False
-        Me.XrTableCell12.Weight = 0.70833320984408465R
-        Me.XrTableCell12.WordWrap = False
+        Me.XrLabel38.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel38.CanGrow = False
+        Me.XrLabel38.Dpi = 254.0!
+        Me.XrLabel38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3967.559!, 36.45996!)
+        Me.XrLabel38.Name = "XrLabel38"
+        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel38.SizeF = New System.Drawing.SizeF(196.4417!, 38.46505!)
+        Me.XrLabel38.StylePriority.UseBorders = False
+        Me.XrLabel38.StylePriority.UseFont = False
+        Me.XrLabel38.StylePriority.UseTextAlignment = False
+        Me.XrLabel38.Text = "ΣΥΝΟΛΟ"
+        Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.XrLabel38.WordWrap = False
         '
-        'XrTableCell13
+        'XrLabel31
         '
-        Me.XrTableCell13.CanGrow = False
-        Me.XrTableCell13.Dpi = 254.0!
-        Me.XrTableCell13.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell13.Name = "XrTableCell13"
-        Me.XrTableCell13.StylePriority.UseFont = False
-        Me.XrTableCell13.Text = "XrTableCell4"
-        Me.XrTableCell13.Visible = False
-        Me.XrTableCell13.Weight = 0.70834648619694507R
-        Me.XrTableCell13.WordWrap = False
+        Me.XrLabel31.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel31.CanGrow = False
+        Me.XrLabel31.Dpi = 254.0!
+        Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 36.46499!)
+        Me.XrLabel31.Multiline = True
+        Me.XrLabel31.Name = "XrLabel31"
+        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel31.SizeF = New System.Drawing.SizeF(128.5456!, 38.46503!)
+        Me.XrLabel31.StylePriority.UseBorders = False
+        Me.XrLabel31.StylePriority.UseFont = False
+        Me.XrLabel31.StylePriority.UseTextAlignment = False
+        Me.XrLabel31.Text = "ΔΙΑΜ."
+        Me.XrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'XrTableCell14
+        'XrLabel32
         '
-        Me.XrTableCell14.CanGrow = False
-        Me.XrTableCell14.Dpi = 254.0!
-        Me.XrTableCell14.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell14.Name = "XrTableCell14"
-        Me.XrTableCell14.StylePriority.UseFont = False
-        Me.XrTableCell14.Text = "XrTableCell5"
-        Me.XrTableCell14.Visible = False
-        Me.XrTableCell14.Weight = 0.70834648619699681R
-        Me.XrTableCell14.WordWrap = False
-        '
-        'XrTableCell15
-        '
-        Me.XrTableCell15.CanGrow = False
-        Me.XrTableCell15.Dpi = 254.0!
-        Me.XrTableCell15.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell15.Name = "XrTableCell15"
-        Me.XrTableCell15.StylePriority.UseFont = False
-        Me.XrTableCell15.Text = "XrTableCell6"
-        Me.XrTableCell15.Visible = False
-        Me.XrTableCell15.Weight = 0.70834654627092253R
-        Me.XrTableCell15.WordWrap = False
-        '
-        'XrTableCell16
-        '
-        Me.XrTableCell16.CanGrow = False
-        Me.XrTableCell16.Dpi = 254.0!
-        Me.XrTableCell16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell16.Name = "XrTableCell16"
-        Me.XrTableCell16.StylePriority.UseFont = False
-        Me.XrTableCell16.Text = "XrTableCell7"
-        Me.XrTableCell16.Visible = False
-        Me.XrTableCell16.Weight = 0.70834636677543117R
-        Me.XrTableCell16.WordWrap = False
-        '
-        'XrTableCell17
-        '
-        Me.XrTableCell17.CanGrow = False
-        Me.XrTableCell17.Dpi = 254.0!
-        Me.XrTableCell17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrTableCell17.Name = "XrTableCell17"
-        Me.XrTableCell17.StylePriority.UseFont = False
-        Me.XrTableCell17.Text = "XrTableCell17"
-        Me.XrTableCell17.Visible = False
-        Me.XrTableCell17.Weight = 0.58736983036821444R
-        Me.XrTableCell17.WordWrap = False
+        Me.XrLabel32.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel32.CanGrow = False
+        Me.XrLabel32.Dpi = 254.0!
+        Me.XrLabel32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(183.5456!, 36.46499!)
+        Me.XrLabel32.Multiline = True
+        Me.XrLabel32.Name = "XrLabel32"
+        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel32.SizeF = New System.Drawing.SizeF(461.4283!, 38.46503!)
+        Me.XrLabel32.StylePriority.UseBorders = False
+        Me.XrLabel32.StylePriority.UseFont = False
+        Me.XrLabel32.StylePriority.UseTextAlignment = False
+        Me.XrLabel32.Text = "ΛΕΚΤΙΚΟ"
+        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'XrTable1
         '
@@ -1340,171 +1391,120 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell9.Weight = 0.726605254211111R
         Me.XrTableCell9.WordWrap = False
         '
-        'XrLabel32
+        'XrTable2
         '
-        Me.XrLabel32.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Right) _
+        Me.XrTable2.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel32.CanGrow = False
-        Me.XrLabel32.Dpi = 254.0!
-        Me.XrLabel32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(183.5456!, 36.46499!)
-        Me.XrLabel32.Multiline = True
-        Me.XrLabel32.Name = "XrLabel32"
-        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel32.SizeF = New System.Drawing.SizeF(461.4283!, 38.46503!)
-        Me.XrLabel32.StylePriority.UseBorders = False
-        Me.XrLabel32.StylePriority.UseFont = False
-        Me.XrLabel32.StylePriority.UseTextAlignment = False
-        Me.XrLabel32.Text = "ΛΕΚΤΙΚΟ"
-        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.XrTable2.Dpi = 254.0!
+        Me.XrTable2.LocationFloat = New DevExpress.Utils.PointFloat(2268.888!, 36.46!)
+        Me.XrTable2.Name = "XrTable2"
+        Me.XrTable2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.XrTable2.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.XrTableRow2})
+        Me.XrTable2.SizeF = New System.Drawing.SizeF(1383.788!, 38.46503!)
+        Me.XrTable2.StylePriority.UseBorders = False
         '
-        'XrLabel31
+        'XrTableRow2
         '
-        Me.XrLabel31.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel31.CanGrow = False
-        Me.XrLabel31.Dpi = 254.0!
-        Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 36.46499!)
-        Me.XrLabel31.Multiline = True
-        Me.XrLabel31.Name = "XrLabel31"
-        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel31.SizeF = New System.Drawing.SizeF(128.5456!, 38.46503!)
-        Me.XrLabel31.StylePriority.UseBorders = False
-        Me.XrLabel31.StylePriority.UseFont = False
-        Me.XrLabel31.StylePriority.UseTextAlignment = False
-        Me.XrLabel31.Text = "ΔΙΑΜ."
-        Me.XrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.XrTableRow2.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.XrTableCell10, Me.XrTableCell11, Me.XrTableCell12, Me.XrTableCell13, Me.XrTableCell14, Me.XrTableCell15, Me.XrTableCell16, Me.XrTableCell17})
+        Me.XrTableRow2.Dpi = 254.0!
+        Me.XrTableRow2.Name = "XrTableRow2"
+        Me.XrTableRow2.Weight = 1.0R
         '
-        'XrLabel38
+        'XrTableCell10
         '
-        Me.XrLabel38.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel38.CanGrow = False
-        Me.XrLabel38.Dpi = 254.0!
-        Me.XrLabel38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3967.559!, 36.45996!)
-        Me.XrLabel38.Name = "XrLabel38"
-        Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel38.SizeF = New System.Drawing.SizeF(196.4417!, 38.46505!)
-        Me.XrLabel38.StylePriority.UseBorders = False
-        Me.XrLabel38.StylePriority.UseFont = False
-        Me.XrLabel38.StylePriority.UseTextAlignment = False
-        Me.XrLabel38.Text = "ΣΥΝΟΛΟ"
-        Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel38.WordWrap = False
+        Me.XrTableCell10.CanGrow = False
+        Me.XrTableCell10.Dpi = 254.0!
+        Me.XrTableCell10.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell10.Name = "XrTableCell10"
+        Me.XrTableCell10.StylePriority.UseFont = False
+        Me.XrTableCell10.Text = "XrTableCell1"
+        Me.XrTableCell10.Visible = False
+        Me.XrTableCell10.Weight = 0.64960655448450677R
+        Me.XrTableCell10.WordWrap = False
         '
-        'XrLabel35
+        'XrTableCell11
         '
-        Me.XrLabel35.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel35.CanGrow = False
-        Me.XrLabel35.Dpi = 254.0!
-        Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3652.676!, 37.46507!)
-        Me.XrLabel35.Name = "XrLabel35"
-        Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel35.SizeF = New System.Drawing.SizeF(157.4414!, 37.46499!)
-        Me.XrLabel35.StylePriority.UseBorders = False
-        Me.XrLabel35.StylePriority.UseFont = False
-        Me.XrLabel35.StylePriority.UseTextAlignment = False
-        Me.XrLabel35.Text = "ΕΝΟΙΚ."
-        Me.XrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel35.WordWrap = False
+        Me.XrTableCell11.CanGrow = False
+        Me.XrTableCell11.Dpi = 254.0!
+        Me.XrTableCell11.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell11.Name = "XrTableCell11"
+        Me.XrTableCell11.StylePriority.UseFont = False
+        Me.XrTableCell11.Text = "XrTableCell2"
+        Me.XrTableCell11.Visible = False
+        Me.XrTableCell11.Weight = 0.669291601136543R
+        Me.XrTableCell11.WordWrap = False
         '
-        'XrLabel36
+        'XrTableCell12
         '
-        Me.XrLabel36.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel36.CanGrow = False
-        Me.XrLabel36.Dpi = 254.0!
-        Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3810.117!, 37.46493!)
-        Me.XrLabel36.Name = "XrLabel36"
-        Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel36.SizeF = New System.Drawing.SizeF(157.4424!, 37.46501!)
-        Me.XrLabel36.StylePriority.UseBorders = False
-        Me.XrLabel36.StylePriority.UseFont = False
-        Me.XrLabel36.StylePriority.UseTextAlignment = False
-        Me.XrLabel36.Text = "ΙΔΙΟΚ."
-        Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel36.WordWrap = False
+        Me.XrTableCell12.CanGrow = False
+        Me.XrTableCell12.Dpi = 254.0!
+        Me.XrTableCell12.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell12.Name = "XrTableCell12"
+        Me.XrTableCell12.StylePriority.UseFont = False
+        Me.XrTableCell12.Text = "XrTableCell3"
+        Me.XrTableCell12.Visible = False
+        Me.XrTableCell12.Weight = 0.70833320984408465R
+        Me.XrTableCell12.WordWrap = False
         '
-        'XrLabel37
+        'XrTableCell13
         '
-        Me.XrLabel37.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel37.CanGrow = False
-        Me.XrLabel37.Dpi = 254.0!
-        Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3652.32!, 0!)
-        Me.XrLabel37.Name = "XrLabel37"
-        Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel37.SizeF = New System.Drawing.SizeF(511.6802!, 37.465!)
-        Me.XrLabel37.StylePriority.UseBorders = False
-        Me.XrLabel37.StylePriority.UseFont = False
-        Me.XrLabel37.StylePriority.UseTextAlignment = False
-        Me.XrLabel37.Text = "ΤΕΛΙΚΑ ΠΟΣΑ"
-        Me.XrLabel37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel37.WordWrap = False
+        Me.XrTableCell13.CanGrow = False
+        Me.XrTableCell13.Dpi = 254.0!
+        Me.XrTableCell13.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell13.Name = "XrTableCell13"
+        Me.XrTableCell13.StylePriority.UseFont = False
+        Me.XrTableCell13.Text = "XrTableCell4"
+        Me.XrTableCell13.Visible = False
+        Me.XrTableCell13.Weight = 0.70834648619694507R
+        Me.XrTableCell13.WordWrap = False
         '
-        'XrLabel34
+        'XrTableCell14
         '
-        Me.XrLabel34.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel34.CanGrow = False
-        Me.XrLabel34.Dpi = 254.0!
-        Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2268.887!, 0!)
-        Me.XrLabel34.Name = "XrLabel34"
-        Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel34.SizeF = New System.Drawing.SizeF(1383.433!, 38.46503!)
-        Me.XrLabel34.StylePriority.UseBorders = False
-        Me.XrLabel34.StylePriority.UseFont = False
-        Me.XrLabel34.StylePriority.UseTextAlignment = False
-        Me.XrLabel34.Text = "ΠΛΗΡΩΤΕΑ ΑΝΑ ΚΑΤΗΓΟΡΙΑ ΕΞΟΔΩΝ"
-        Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel34.WordWrap = False
+        Me.XrTableCell14.CanGrow = False
+        Me.XrTableCell14.Dpi = 254.0!
+        Me.XrTableCell14.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell14.Name = "XrTableCell14"
+        Me.XrTableCell14.StylePriority.UseFont = False
+        Me.XrTableCell14.Text = "XrTableCell5"
+        Me.XrTableCell14.Visible = False
+        Me.XrTableCell14.Weight = 0.70834648619699681R
+        Me.XrTableCell14.WordWrap = False
         '
-        'XrLabel33
+        'XrTableCell15
         '
-        Me.XrLabel33.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel33.CanGrow = False
-        Me.XrLabel33.Dpi = 254.0!
-        Me.XrLabel33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(636.7459!, 0!)
-        Me.XrLabel33.Name = "XrLabel33"
-        Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel33.SizeF = New System.Drawing.SizeF(1632.142!, 38.46503!)
-        Me.XrLabel33.StylePriority.UseBorders = False
-        Me.XrLabel33.StylePriority.UseFont = False
-        Me.XrLabel33.StylePriority.UseTextAlignment = False
-        Me.XrLabel33.Text = "ΣΥΝΤΕΛΕΣΤΕΣ ΚΑΤΑΜΕΡΙΣΜΟΥ ΕΞΟΔΩΝ"
-        Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel33.WordWrap = False
+        Me.XrTableCell15.CanGrow = False
+        Me.XrTableCell15.Dpi = 254.0!
+        Me.XrTableCell15.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell15.Name = "XrTableCell15"
+        Me.XrTableCell15.StylePriority.UseFont = False
+        Me.XrTableCell15.Text = "XrTableCell6"
+        Me.XrTableCell15.Visible = False
+        Me.XrTableCell15.Weight = 0.70834654627092253R
+        Me.XrTableCell15.WordWrap = False
         '
-        'XrLabel30
+        'XrTableCell16
         '
-        Me.XrLabel30.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
-            Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel30.CanGrow = False
-        Me.XrLabel30.Dpi = 254.0!
-        Me.XrLabel30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
-        Me.XrLabel30.Name = "XrLabel30"
-        Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel30.SizeF = New System.Drawing.SizeF(589.9739!, 37.465!)
-        Me.XrLabel30.StylePriority.UseBorders = False
-        Me.XrLabel30.StylePriority.UseFont = False
-        Me.XrLabel30.StylePriority.UseTextAlignment = False
-        Me.XrLabel30.Text = "ΣΤΟΙΧΕΙΑ ΔΙΑΜΕΡΙΣΜΑΤΩΝ"
-        Me.XrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        Me.XrLabel30.WordWrap = False
+        Me.XrTableCell16.CanGrow = False
+        Me.XrTableCell16.Dpi = 254.0!
+        Me.XrTableCell16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell16.Name = "XrTableCell16"
+        Me.XrTableCell16.StylePriority.UseFont = False
+        Me.XrTableCell16.Text = "XrTableCell7"
+        Me.XrTableCell16.Visible = False
+        Me.XrTableCell16.Weight = 0.70834636677543117R
+        Me.XrTableCell16.WordWrap = False
+        '
+        'XrTableCell17
+        '
+        Me.XrTableCell17.CanGrow = False
+        Me.XrTableCell17.Dpi = 254.0!
+        Me.XrTableCell17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell17.Name = "XrTableCell17"
+        Me.XrTableCell17.StylePriority.UseFont = False
+        Me.XrTableCell17.Text = "XrTableCell17"
+        Me.XrTableCell17.Visible = False
+        Me.XrTableCell17.Weight = 0.58736983036821444R
+        Me.XrTableCell17.WordWrap = False
         '
         'XrPdfContent1
         '
@@ -2323,7 +2323,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.bdgID.Description = "bdgID"
         Me.bdgID.Name = "bdgID"
         Me.bdgID.Type = GetType(System.Guid)
-        Me.bdgID.ValueInfo = "9980e875-415e-452d-87ef-326e34cc0864"
+        Me.bdgID.ValueInfo = "4faafea2-8fda-483e-9bfc-92dd27394b05"
         DynamicListLookUpSettings2.DataMember = "vw_BDG"
         DynamicListLookUpSettings2.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings2.DisplayMember = "ID"
@@ -2354,8 +2354,8 @@ Partial Public Class Rep_Sygentrotiki
         Me.SnapGridSize = 25.0!
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.CrossTabTotalStyle1, Me.CrossTabHeaderStyle1, Me.CrossTabDataStyle1, Me.CrossTabGeneralStyle1})
         Me.Version = "21.2"
-        CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XrTable4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2430,33 +2430,6 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrTableCell27 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrLabel39 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents bdgID As DevExpress.XtraReports.Parameters.Parameter
-    Friend WithEvents SubBand1 As DevExpress.XtraReports.UI.SubBand
-    Friend WithEvents XrTable2 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents XrTableRow2 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents XrTableCell10 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell11 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell12 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell13 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell14 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell15 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell16 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell17 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTable1 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents XrTableRow1 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents XrTableCell1 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell2 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell3 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell4 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell5 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell6 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell7 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell8 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrTableCell9 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrLabel32 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel34 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel30 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrTable5 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents XrTableRow5 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents XrTableCell28 As DevExpress.XtraReports.UI.XRTableCell
@@ -2499,10 +2472,6 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrTableCell46 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell47 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell48 As DevExpress.XtraReports.UI.XRTableCell
-    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrTable6 As DevExpress.XtraReports.UI.XRTable
     Friend WithEvents XrTableRow6 As DevExpress.XtraReports.UI.XRTableRow
     Friend WithEvents XrTableCell37 As DevExpress.XtraReports.UI.XRTableCell
@@ -2513,4 +2482,35 @@ Partial Public Class Rep_Sygentrotiki
     Friend WithEvents XrTableCell58 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell59 As DevExpress.XtraReports.UI.XRTableCell
     Friend WithEvents XrTableCell38 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents SubBand2 As DevExpress.XtraReports.UI.SubBand
+    Friend WithEvents XrLabel30 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel34 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel36 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel35 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel38 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel32 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrTable1 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents XrTableRow1 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents XrTableCell1 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell2 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell3 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell4 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell5 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell6 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell7 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell8 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell9 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTable2 As DevExpress.XtraReports.UI.XRTable
+    Friend WithEvents XrTableRow2 As DevExpress.XtraReports.UI.XRTableRow
+    Friend WithEvents XrTableCell10 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell11 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell12 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell13 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell14 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell15 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell16 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents XrTableCell17 As DevExpress.XtraReports.UI.XRTableCell
 End Class

@@ -425,7 +425,6 @@ Partial Class frmINH
         Me.colcalcCatID.Caption = "Κατηγορία Υπολογισμού"
         Me.colcalcCatID.ColumnEdit = Me.RepositoryItemLookUpEdit3
         Me.colcalcCatID.FieldName = "calcCatID"
-        Me.colcalcCatID.FieldNameSortGroup = "calcCatID"
         Me.colcalcCatID.MinWidth = 33
         Me.colcalcCatID.Name = "colcalcCatID"
         Me.colcalcCatID.Visible = True
@@ -436,10 +435,9 @@ Partial Class frmINH
         '
         Me.RepositoryItemLookUpEdit3.AutoHeight = False
         Me.RepositoryItemLookUpEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
-        Me.RepositoryItemLookUpEdit3.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 30, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Κατηγορία", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemLookUpEdit3.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Κατηγορία", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.RepositoryItemLookUpEdit3.DataSource = Me.VwCALCCATBindingSource
         Me.RepositoryItemLookUpEdit3.DisplayMember = "name"
-        Me.RepositoryItemLookUpEdit3.KeyMember = "name"
         Me.RepositoryItemLookUpEdit3.Name = "RepositoryItemLookUpEdit3"
         Me.RepositoryItemLookUpEdit3.ValueMember = "ID"
         '
@@ -1201,7 +1199,6 @@ Partial Class frmINH
         Me.TabPane1.Controls.Add(Me.TabNavigationPage1)
         Me.TabPane1.Controls.Add(Me.TabNavigationPage2)
         Me.TabPane1.Controls.Add(Me.TabNavigationPage3)
-        Me.TabPane1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabPane1.Location = New System.Drawing.Point(809, 12)
         Me.TabPane1.Margin = New System.Windows.Forms.Padding(5)
         Me.TabPane1.Name = "TabPane1"

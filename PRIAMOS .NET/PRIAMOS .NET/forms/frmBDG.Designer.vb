@@ -1042,7 +1042,7 @@ Partial Class frmBDG
         Me.TileNavPane1.Location = New System.Drawing.Point(5, 5)
         Me.TileNavPane1.Margin = New System.Windows.Forms.Padding(5)
         Me.TileNavPane1.Name = "TileNavPane1"
-        Me.TileNavPane1.Size = New System.Drawing.Size(2230, 59)
+        Me.TileNavPane1.Size = New System.Drawing.Size(2230, 64)
         Me.TileNavPane1.TabIndex = 0
         Me.TileNavPane1.Text = "TileNavPane1"
         '

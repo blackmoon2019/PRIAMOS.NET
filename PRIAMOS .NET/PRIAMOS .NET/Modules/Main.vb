@@ -34,6 +34,15 @@ Module Main
         Public VAT As Integer
         Public Decimals As Integer
         Public SupportEmail As String
+        Public InvoicesEmailID As String
+        Public InvoicesBody As String
+        Public InvoicesBodyResend As String
+        Public InvoicesBodyRecreate As String
+        Public InvoicesEmailServer As String
+        Public InvoicesEmailUsername As String
+        Public InvoicesEmailPassword As String
+        Public InvoicesEmailPort As Integer
+        Public InvoicesEmailSSL As Boolean
         Public EXFolderPath As String
         Public ADM As String
         Public ProgTitle As String

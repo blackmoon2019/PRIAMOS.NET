@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Public Class EXODA
     Inherits DevExpress.XtraReports.UI.XtraReport
 
     'XtraReport overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Public Class EXODA
     'NOTE: The following procedure is required by the Designer
     'It can be modified using the Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
@@ -230,6 +230,7 @@ Partial Public Class EXODA
         Me.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail
         Me.GroupHeader1.HeightF = 38.09998!
         Me.GroupHeader1.Name = "GroupHeader1"
+        Me.GroupHeader1.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
         XrGroupSortingSummary1.FieldName = "amt"
         Me.GroupHeader1.SortingSummary = XrGroupSortingSummary1
         '
@@ -325,7 +326,7 @@ Partial Public Class EXODA
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "936eacb0-936a-4952-831a-9886b55df64a"
+        Me.inhID.ValueInfo = "973a4732-c4bd-4987-ab62-da289ef9dc1a"
         DynamicListLookUpSettings1.DataMember = "vw_IND"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "inhID"

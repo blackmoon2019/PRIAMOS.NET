@@ -63,6 +63,8 @@ Public Class frmLogin
                     ProgProps.SupportEmail = Prog_Prop.GetProgTechSupportEmail
                     ProgProps.EXFolderPath = Prog_Prop.GetProgEXFolderPath
                     ProgProps.ADM = Prog_Prop.GetProgADM
+                    'Παράμετροι Email Κοινοχρήστων
+                    Prog_Prop.GetProgInvoicesEmail()
                     'General Permissions
                     UserPermissions.GetUserPermissions()
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)

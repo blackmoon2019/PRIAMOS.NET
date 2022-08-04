@@ -1741,18 +1741,21 @@ Public Class frmScroller
     End Sub
 
     Private Sub BarSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSYG.ItemClick
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "Calculated") = True Then PrintReport(0, I)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(0, I)
         Next
     End Sub
     Private Sub BarEIDOP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEIDOP.ItemClick
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "Calculated") = True Then PrintReport(1, I)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(1, I)
         Next
     End Sub
     Private Sub BarRECEIPTS_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRECEIPTS.ItemClick
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "Calculated") = True Then PrintReport(2, I)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(2, I)
         Next
 
     End Sub
@@ -1796,5 +1799,114 @@ Public Class frmScroller
 
     End Sub
 
+    Private Sub BarEmail_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmail.ItemClick
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
+        BarPB.Visibility = BarItemVisibility.Always
 
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Step = 1
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
+        RepositoryItemProgressBar1.Minimum = 0
+        For I As Integer = 0 To selectedRowHandles.Length - 1
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True And
+               GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrint").ToString <> "" And
+               GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEidop").ToString <> "" And
+               GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEisp").ToString <> "" Then
+                ExportReport(1, selectedRowHandles(I))
+                RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
+            End If
+
+        Next
+        RepositoryItemProgressBar1.Step = 0
+        BarPB.Visibility = BarItemVisibility.Never
+    End Sub
+    Private Sub ExportReport(ByVal sWichReport As Integer, ByVal Row As Integer)
+        Dim Cmd As SqlCommand, sdr As SqlDataReader
+        Dim Emails As New SendEmail
+        Try
+
+            Select Case sWichReport
+                Case 0 ' Συγκεντρωτική
+                Case 1 ' Ειδοποιήσεις
+                    SSM.ShowWaitForm()
+                    SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
+
+
+                    Dim report As New Eidop()
+                    Dim sInhID As String = GridView1.GetRowCellValue(Row, "ID").ToString
+                    report.Parameters.Item(0).Value = sInhID
+                    Dim sSQL As String =
+                                    "select '1' AS SKEY,APT.ID as AptID,COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) AS EMAIL,
+                                    INH.completeDate,BDG.nam as BDGNAM,BDG.code as BDGCode,APT.ttl as APTNAM,
+                                    (select sum(vw_INC.AmtPerCalc) as AMOUNT  from dbo.vw_INC vw_INC
+                                    where vw_INC.inhID=INH.ID
+                                    and vw_INC.aptID=APT.ID) as AMOUNT 
+                                from INH 
+                                INNER JOIN BDG ON BDG.ID =INH.bdgID 
+                                INNER JOIN APT ON APT.bdgID =INH.bdgID 
+                                INNER JOIN CCT CCT_OWNER ON CCT_OWNER.ID =APT.OwnerID 
+                                WHERE INH.ID= " & toSQLValueS(sInhID) &
+                                    " AND COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL
+                                UNION
+                                select '2' AS SKEY,APT.ID as AptID,COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) AS EMAIL,
+                                    INH.completeDate,BDG.nam as BDGNAM,BDG.code as BDGCode,APT.ttl as APTNAM,
+                                    (select sum(vw_INC.AmtPerCalc) as AMOUNT  from dbo.vw_INC vw_INC
+                                    where vw_INC.inhID=INH.ID
+                                    and vw_INC.aptID=APT.ID) as AMOUNT 
+                                from INH 
+                                INNER JOIN BDG ON BDG.ID =INH.bdgID 
+                                INNER JOIN APT ON APT.bdgID =INH.bdgID 
+                                INNER JOIN CCT CCT_TENANT ON CCT_TENANT.ID =APT.TenantID
+                                WHERE INH.ID= " & toSQLValueS(sInhID) &
+                            " AND COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) IS NOT NULL"
+                    Cmd = New SqlCommand(sSQL, CNDB)
+                    sdr = Cmd.ExecuteReader()
+                    While sdr.Read()
+                        Dim sAptID As String
+                        Dim sEmailTo As String
+                        Dim sFName As String
+                        Dim sBody As String
+                        Dim Subject As String = ""
+                        If sdr.IsDBNull(sdr.GetOrdinal("AptID")) = False Then
+                            sAptID = sdr.GetGuid(sdr.GetOrdinal("AptID").ToString).ToString
+                            sEmailTo = sdr.GetString(sdr.GetOrdinal("EMAIL").ToString).ToString
+                            report.FilterString = "[ID] = {" & sAptID & "}"
+                            sFName = sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString +
+                                     sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString
+                            sBody = ProgProps.InvoicesBody
+                            sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
+                            sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
+                            sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
+                            sBody = sBody.Replace("{APTNAM}", sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString)
+                            sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
+                            Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
+
+
+                            'sEmailTo = "johnmavroselinos@gmail.com"
+                            report.CreateDocument()
+                            'Dim xr As XRLabel = report.Bands(2).SubBands.Item(0).Controls(2).Controls(2)
+                            'Debug.Print(report.XrLabel76.Value)
+                            report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
+                            If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf") = True Then
+                                sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
+                                Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                                sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate)
+                                        SELECT " & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL"
+                                oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            End If
+                        End If
+                    End While
+                    sdr.Close()
+                    SSM.CloseWaitForm()
+                Case 2 ' Εισπράξεις
+
+            End Select
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            SSM.CloseWaitForm()
+            BarPB.Visibility = BarItemVisibility.Never
+        End Try
+
+    End Sub
 End Class
