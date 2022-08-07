@@ -68,7 +68,7 @@ Public Class frmTecnicalSupport
 
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
                     chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True : txtAnswer.ReadOnly = False
-                    chkMoreInfo.Enabled = True
+                    chkMoreInfo.Enabled = True : chkBuilded.Enabled = True : txtBuildVersion.Enabled = True
                     cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True
                 End If
         End Select
@@ -136,7 +136,7 @@ Public Class frmTecnicalSupport
                 If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
                 e_mail.Subject = txtSubject.Text
                 e_mail.IsBodyHtml = True
-                e_mail.Body = "Από: [" & UserProps.RealName & "]" & vbNewLine & vbNewLine & txtBody.Text
+                e_mail.Body = "Από: [" & UserProps.RealName & "]" & vbNewLine & vbNewLine & txtCode.Text & " - " & txtBody.Text
                 Dim myMailHTMLBody = "<html><head></head><body>" & e_mail.Body & " <img src=cid:ThePictureID></body></html>"
                 Dim myAltView As AlternateView = AlternateView.CreateAlternateViewFromString(myMailHTMLBody, New System.Net.Mime.ContentType("text/html"))
                 If PictureEdit1.EditValue IsNot Nothing Then
@@ -224,13 +224,13 @@ Public Class frmTecnicalSupport
                 e_mail.Subject = "ΑΠ:" + txtSubject.Text.Replace(vbCr, "").Replace(vbLf, "")
                 e_mail.IsBodyHtml = True
                 If chkFixed.Checked Then
-                    e_mail.Body = chkFixed.Text & vbCrLf & txtAnswer.Text
+                    e_mail.Body = chkFixed.Text & vbCrLf & txtCode.Text & " - " & txtAnswer.Text
                 End If
                 If chkRejected.Checked Then
-                    e_mail.Body = chkRejected.Text & vbCrLf & txtAnswer.Text
+                    e_mail.Body = chkRejected.Text & vbCrLf & txtCode.Text & " - " & txtAnswer.Text
                 End If
                 If chkMoreInfo.Checked Then
-                    e_mail.Body = chkMoreInfo.Text & vbCrLf & txtAnswer.Text
+                    e_mail.Body = chkMoreInfo.Text & vbCrLf & txtCode.Text & " - " & txtAnswer.Text
                 End If
 
                 Dim myMailHTMLBody = "<html><head></head><body>" & txtAnswer.Text & " <img src=cid:ThePictureID></body></html>"

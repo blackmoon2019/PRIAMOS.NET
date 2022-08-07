@@ -30,9 +30,6 @@ Partial Class frmParameters
         Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
         Me.txtVAT = New DevExpress.XtraEditors.TextEdit()
         Me.ADM = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
-        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -41,26 +38,29 @@ Partial Class frmParameters
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
-        Me.MAILSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.MAILSTableAdapter()
-        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.BODY = New DevExpress.XtraEditors.MemoEdit()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.BODY_RESEND = New DevExpress.XtraEditors.MemoEdit()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.BODY_RECREATE = New DevExpress.XtraEditors.MemoEdit()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.INVOICES_EMAIL = New DevExpress.XtraEditors.LookUpEdit()
-        Me.Priamos_NETDataSet32 = New PRIAMOS.NET.Priamos_NETDataSet3()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit2 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.BODY = New DevExpress.XtraEditors.MemoEdit()
+        Me.BODY_RESEND = New DevExpress.XtraEditors.MemoEdit()
+        Me.BODY_RECREATE = New DevExpress.XtraEditors.MemoEdit()
+        Me.INVOICES_EMAIL = New DevExpress.XtraEditors.LookUpEdit()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
+        Me.MAILSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.MAILSTableAdapter()
+        Me.Priamos_NETDataSet32 = New PRIAMOS.NET.Priamos_NETDataSet3()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
         CType(Me.TabPane2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane2.SuspendLayout()
         Me.TabNavigationPage3.SuspendLayout()
@@ -70,9 +70,6 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,23 +78,26 @@ Partial Class frmParameters
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPage1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPane2
@@ -225,21 +225,6 @@ Partial Class frmParameters
         Me.ADM.TabIndex = 45
         Me.ADM.Tag = "ADM"
         '
-        'VwPARTNERANDWORKSHOPBindingSource
-        '
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Priamos_NETDataSet3
-        '
-        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -321,19 +306,6 @@ Partial Class frmParameters
         Me.LayoutControlItem11.Text = "Διαχείριση Προγράμματος - Προεπιλεγμένο Συνεργείο"
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(444, 23)
         '
-        'Vw_PARTNER_AND_WORKSHOPTableAdapter
-        '
-        Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.ClearBeforeFill = True
-        '
-        'MAILSTableAdapter
-        '
-        Me.MAILSTableAdapter.ClearBeforeFill = True
-        '
-        'MAILSBindingSource
-        '
-        Me.MAILSBindingSource.DataMember = "MAILS"
-        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
-        '
         'TabNavigationPage1
         '
         Me.TabNavigationPage1.Caption = "TabNavigationPage1"
@@ -357,14 +329,28 @@ Partial Class frmParameters
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'Root
+        'cmdExit2
         '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem1})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1466, 1002)
-        Me.Root.TextVisible = False
+        Me.cmdExit2.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit2.ImageOptions.Image = CType(resources.GetObject("cmdExit2.ImageOptions.Image"), System.Drawing.Image)
+        Me.cmdExit2.Location = New System.Drawing.Point(1291, 951)
+        Me.cmdExit2.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdExit2.Name = "cmdExit2"
+        Me.cmdExit2.Size = New System.Drawing.Size(163, 39)
+        Me.cmdExit2.StyleController = Me.LayoutControl1
+        Me.cmdExit2.TabIndex = 41
+        Me.cmdExit2.Text = "Έξοδος"
+        '
+        'cmdSave2
+        '
+        Me.cmdSave2.ImageOptions.Image = CType(resources.GetObject("cmdSave2.ImageOptions.Image"), System.Drawing.Image)
+        Me.cmdSave2.Location = New System.Drawing.Point(1144, 951)
+        Me.cmdSave2.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdSave2.Name = "cmdSave2"
+        Me.cmdSave2.Size = New System.Drawing.Size(143, 39)
+        Me.cmdSave2.StyleController = Me.LayoutControl1
+        Me.cmdSave2.TabIndex = 42
+        Me.cmdSave2.Text = "Αποθήκευση"
         '
         'BODY
         '
@@ -377,17 +363,6 @@ Partial Class frmParameters
         Me.BODY.TabIndex = 7
         Me.BODY.Tag = "answer,0,1,2"
         '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.BODY
-        Me.LayoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem6.CustomizationFormText = "Απάντηση"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 42)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(1446, 279)
-        Me.LayoutControlItem6.Text = "Κείμενο"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(264, 23)
-        '
         'BODY_RESEND
         '
         Me.BODY_RESEND.Location = New System.Drawing.Point(288, 333)
@@ -399,17 +374,6 @@ Partial Class frmParameters
         Me.BODY_RESEND.TabIndex = 7
         Me.BODY_RESEND.Tag = "answer,0,1,2"
         '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.BODY_RESEND
-        Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem5.CustomizationFormText = "Απάντηση"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 321)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1446, 304)
-        Me.LayoutControlItem5.Text = "Κείμενο Επαναποστολής"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(264, 23)
-        '
         'BODY_RECREATE
         '
         Me.BODY_RECREATE.Location = New System.Drawing.Point(288, 637)
@@ -420,17 +384,6 @@ Partial Class frmParameters
         Me.BODY_RECREATE.StyleController = Me.LayoutControl1
         Me.BODY_RECREATE.TabIndex = 7
         Me.BODY_RECREATE.Tag = "answer,0,1,2"
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.BODY_RECREATE
-        Me.LayoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem7.CustomizationFormText = "Απάντηση"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 625)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(1446, 314)
-        Me.LayoutControlItem7.Text = "Κείμενο Επανέκδοσης"
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(264, 23)
         '
         'INVOICES_EMAIL
         '
@@ -452,10 +405,47 @@ Partial Class frmParameters
         Me.INVOICES_EMAIL.TabIndex = 45
         Me.INVOICES_EMAIL.Tag = "INVOICES_EMAIL"
         '
-        'Priamos_NETDataSet32
+        'Root
         '
-        Me.Priamos_NETDataSet32.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet32.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem1})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(1466, 1002)
+        Me.Root.TextVisible = False
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.BODY
+        Me.LayoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem6.CustomizationFormText = "Απάντηση"
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(1446, 279)
+        Me.LayoutControlItem6.Text = "Κείμενο"
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(264, 23)
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.BODY_RESEND
+        Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem5.CustomizationFormText = "Απάντηση"
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 321)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1446, 304)
+        Me.LayoutControlItem5.Text = "Κείμενο Επαναποστολής"
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(264, 23)
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.BODY_RECREATE
+        Me.LayoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem7.CustomizationFormText = "Απάντηση"
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 625)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(1446, 314)
+        Me.LayoutControlItem7.Text = "Κείμενο Επανέκδοσης"
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(264, 23)
         '
         'LayoutControlItem4
         '
@@ -467,29 +457,6 @@ Partial Class frmParameters
         Me.LayoutControlItem4.Size = New System.Drawing.Size(1446, 42)
         Me.LayoutControlItem4.Text = "Email Αποστολής Κοινοχρήστων"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(264, 23)
-        '
-        'cmdExit2
-        '
-        Me.cmdExit2.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit2.ImageOptions.Image = CType(resources.GetObject("SimpleButton2.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdExit2.Location = New System.Drawing.Point(1291, 951)
-        Me.cmdExit2.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdExit2.Name = "cmdExit2"
-        Me.cmdExit2.Size = New System.Drawing.Size(163, 39)
-        Me.cmdExit2.StyleController = Me.LayoutControl1
-        Me.cmdExit2.TabIndex = 41
-        Me.cmdExit2.Text = "Έξοδος"
-        '
-        'cmdSave2
-        '
-        Me.cmdSave2.ImageOptions.Image = CType(resources.GetObject("SimpleButton3.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdSave2.Location = New System.Drawing.Point(1144, 951)
-        Me.cmdSave2.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdSave2.Name = "cmdSave2"
-        Me.cmdSave2.Size = New System.Drawing.Size(143, 39)
-        Me.cmdSave2.StyleController = Me.LayoutControl1
-        Me.cmdSave2.TabIndex = 42
-        Me.cmdSave2.Text = "Αποθήκευση"
         '
         'LayoutControlItem8
         '
@@ -517,6 +484,39 @@ Partial Class frmParameters
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(1132, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
+        'MAILSBindingSource
+        '
+        Me.MAILSBindingSource.DataMember = "MAILS"
+        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'Priamos_NETDataSet3
+        '
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'MAILSTableAdapter
+        '
+        Me.MAILSTableAdapter.ClearBeforeFill = True
+        '
+        'Priamos_NETDataSet32
+        '
+        Me.Priamos_NETDataSet32.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet32.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_PARTNER_AND_WORKSHOPTableAdapter
+        '
+        Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.ClearBeforeFill = True
+        '
         'frmParameters
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -537,9 +537,6 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -548,23 +545,26 @@ Partial Class frmParameters
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPage1.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

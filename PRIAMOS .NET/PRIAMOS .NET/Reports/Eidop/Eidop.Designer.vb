@@ -140,6 +140,8 @@ Partial Public Class Eidop
         Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
         Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
+        Me.ClosedAPTSmall = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel16 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel84 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel75 = New DevExpress.XtraReports.UI.XRLabel()
@@ -187,6 +189,8 @@ Partial Public Class Eidop
         Me.XrLabel44 = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel5 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel12 = New DevExpress.XtraReports.UI.XRPanel()
@@ -203,10 +207,6 @@ Partial Public Class Eidop
         Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel16 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.ClosedAPTSmall = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -390,8 +390,8 @@ Partial Public Class Eidop
         Me.XrLabel20.BorderColor = System.Drawing.Color.Black
         Me.XrLabel20.CanGrow = False
         Me.XrLabel20.Dpi = 254.0!
-        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[AdrName] + ' ' + [vw_INH].[vw_INHvw_APT].[ar] + ' ' + [v" &
-                    "w_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[AdrName] + ' ' + [vw_INH].[vw_INHvw_APT].[ar] + ' - ' + " &
+                    "[vw_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel20.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(296.7558!, 51.54415!)
         Me.XrLabel20.Multiline = True
@@ -1395,6 +1395,27 @@ Partial Public Class Eidop
         Me.SubBand1.HeightF = 848.1807!
         Me.SubBand1.Name = "SubBand1"
         '
+        'ClosedAPTSmall
+        '
+        Me.ClosedAPTSmall.CanShrink = True
+        Me.ClosedAPTSmall.Dpi = 254.0!
+        Me.ClosedAPTSmall.LocationFloat = New DevExpress.Utils.PointFloat(1002.59!, 112.4042!)
+        Me.ClosedAPTSmall.Name = "ClosedAPTSmall"
+        Me.ClosedAPTSmall.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.ClosedAPTSmall.ReportSource = New PRIAMOS.NET.ClosedAPTSmall()
+        Me.ClosedAPTSmall.SizeF = New System.Drawing.SizeF(963.941!, 58.42001!)
+        '
+        'XILIOSTA
+        '
+        Me.XILIOSTA.CanShrink = True
+        Me.XILIOSTA.Dpi = 254.0!
+        Me.XILIOSTA.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 92.74941!)
+        Me.XILIOSTA.Name = "XILIOSTA"
+        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.XILIOSTA.ReportSource = New PRIAMOS.NET.XILIOSTA()
+        Me.XILIOSTA.SizeF = New System.Drawing.SizeF(929.4915!, 41.46179!)
+        '
         'XrPanel16
         '
         Me.XrPanel16.CanGrow = False
@@ -2170,6 +2191,28 @@ Partial Public Class Eidop
         Me.XrLabel38.Text = "ΕΞΟΔΑ ΙΔΙΟΚΤΗΤΩΝ"
         Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
+        'EXODA_PER_APT_OWNERS
+        '
+        Me.EXODA_PER_APT_OWNERS.CanShrink = True
+        Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
+        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1006.592!, 83.83975!)
+        Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
+        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
+        Me.EXODA_PER_APT_OWNERS.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
+        '
+        'EXODA_PER_APT
+        '
+        Me.EXODA_PER_APT.CanShrink = True
+        Me.EXODA_PER_APT.Dpi = 254.0!
+        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(11.99982!, 83.83975!)
+        Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
+        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
+        Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9711!, 41.4618!)
+        '
         'XrLabel21
         '
         Me.XrLabel21.BorderColor = System.Drawing.Color.Blue
@@ -2430,49 +2473,6 @@ Partial Public Class Eidop
         Me.XrLabel17.StylePriority.UseTextAlignment = False
         Me.XrLabel17.Text = "ΠΟΣΟ"
         Me.XrLabel17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'EXODA_PER_APT_OWNERS
-        '
-        Me.EXODA_PER_APT_OWNERS.CanShrink = True
-        Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1006.592!, 83.83975!)
-        Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
-        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
-        Me.EXODA_PER_APT_OWNERS.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
-        '
-        'EXODA_PER_APT
-        '
-        Me.EXODA_PER_APT.CanShrink = True
-        Me.EXODA_PER_APT.Dpi = 254.0!
-        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(11.99982!, 83.83975!)
-        Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
-        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
-        Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9711!, 41.4618!)
-        '
-        'ClosedAPTSmall
-        '
-        Me.ClosedAPTSmall.CanShrink = True
-        Me.ClosedAPTSmall.Dpi = 254.0!
-        Me.ClosedAPTSmall.LocationFloat = New DevExpress.Utils.PointFloat(1002.59!, 112.4042!)
-        Me.ClosedAPTSmall.Name = "ClosedAPTSmall"
-        Me.ClosedAPTSmall.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.ClosedAPTSmall.ReportSource = New PRIAMOS.NET.ClosedAPTSmall()
-        Me.ClosedAPTSmall.SizeF = New System.Drawing.SizeF(963.941!, 58.42001!)
-        '
-        'XILIOSTA
-        '
-        Me.XILIOSTA.CanShrink = True
-        Me.XILIOSTA.Dpi = 254.0!
-        Me.XILIOSTA.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 92.74941!)
-        Me.XILIOSTA.Name = "XILIOSTA"
-        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.XILIOSTA.ReportSource = New PRIAMOS.NET.XILIOSTA()
-        Me.XILIOSTA.SizeF = New System.Drawing.SizeF(929.4915!, 41.46179!)
         '
         'Eidop
         '

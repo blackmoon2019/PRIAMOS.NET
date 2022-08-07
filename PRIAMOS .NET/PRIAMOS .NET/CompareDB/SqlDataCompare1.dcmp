@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataComparison>
+  <Version>10</Version>
+  <ConnectionProperties1>
+    <ConnectionString>Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=True;User ID=sa;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</ConnectionString>
+    <FullDisplayName>192.168.1.52,1433.Priamos_NET (sa)</FullDisplayName>
+  </ConnectionProperties1>
+  <ConnectionProperties2>
+    <ConnectionString>Data Source=BLACKMOON-PC;Initial Catalog=Priamos_NET;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False</ConnectionString>
+    <FullDisplayName>BLACKMOON-PC.Priamos_NET (BLACKMOON-PC\USER)</FullDisplayName>
+  </ConnectionProperties2>
+  <SessionSettings>IncludeIdenticalRecords, IncludeDifferentRecords, IncludeRecordsInOne</SessionSettings>
+</DataComparison>

@@ -1743,19 +1743,19 @@ Public Class frmScroller
     Private Sub BarSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSYG.ItemClick
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(0, I)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(0, selectedRowHandles(I))
         Next
     End Sub
     Private Sub BarEIDOP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEIDOP.ItemClick
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(1, I)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(1, selectedRowHandles(I))
         Next
     End Sub
     Private Sub BarRECEIPTS_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRECEIPTS.ItemClick
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(2, I)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(2, selectedRowHandles(I))
         Next
 
     End Sub
@@ -1833,12 +1833,11 @@ Public Class frmScroller
                     SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
 
 
-                    Dim report As New Eidop()
+
                     Dim sInhID As String = GridView1.GetRowCellValue(Row, "ID").ToString
-                    report.Parameters.Item(0).Value = sInhID
                     Dim sSQL As String =
                                     "select '1' AS SKEY,APT.ID as AptID,COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) AS EMAIL,
-                                    INH.completeDate,BDG.nam as BDGNAM,BDG.code as BDGCode,APT.ttl as APTNAM,
+                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,
                                     (select sum(vw_INC.AmtPerCalc) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -1850,7 +1849,7 @@ Public Class frmScroller
                                     " AND COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL
                                 UNION
                                 select '2' AS SKEY,APT.ID as AptID,COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) AS EMAIL,
-                                    INH.completeDate,BDG.nam as BDGNAM,BDG.code as BDGCode,APT.ttl as APTNAM,
+                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,
                                     (select sum(vw_INC.AmtPerCalc) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -1868,6 +1867,8 @@ Public Class frmScroller
                         Dim sFName As String
                         Dim sBody As String
                         Dim Subject As String = ""
+                        Dim report As New Eidop()
+                        report.Parameters.Item(0).Value = sInhID
                         If sdr.IsDBNull(sdr.GetOrdinal("AptID")) = False Then
                             sAptID = sdr.GetGuid(sdr.GetOrdinal("AptID").ToString).ToString
                             sEmailTo = sdr.GetString(sdr.GetOrdinal("EMAIL").ToString).ToString
@@ -1887,7 +1888,11 @@ Public Class frmScroller
                             report.CreateDocument()
                             'Dim xr As XRLabel = report.Bands(2).SubBands.Item(0).Controls(2).Controls(2)
                             'Debug.Print(report.XrLabel76.Value)
+
+
                             report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
+                            report.Dispose()
+                            report = Nothing
                             If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf") = True Then
                                 sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
                                 Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()

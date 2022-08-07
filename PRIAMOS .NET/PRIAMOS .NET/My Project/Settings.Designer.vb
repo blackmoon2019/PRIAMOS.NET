@@ -292,17 +292,6 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=T"& _ 
-            "rue;User ID=sa;Password=12pri2020#$;MultipleActiveResultSets=True")>  _
-        Public ReadOnly Property Priamos_NETConnectionStringRemote() As String
-            Get
-                Return CType(Me("Priamos_NETConnectionStringRemote"),String)
-            End Get
-        End Property
-        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
@@ -368,9 +357,31 @@ Namespace My
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Priamos_NET;"& _ 
             "Data Source=BLACKMOON-PC;MultipleActiveResultSets=True")>  _
-        Public ReadOnly Property Priamos_NETConnectionStringRemoteBackup() As String
+        Public ReadOnly Property Priamos_NETConnectionStringLocal() As String
             Get
-                Return CType(Me("Priamos_NETConnectionStringRemoteBackup"),String)
+                Return CType(Me("Priamos_NETConnectionStringLocal"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=T"& _ 
+            "rue;User ID=sa;Password=12pri2020#$;MultipleActiveResultSets=True")>  _
+        Public ReadOnly Property Priamos_NETConnectionStringRemote() As String
+            Get
+                Return CType(Me("Priamos_NETConnectionStringRemote"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=T"& _ 
+            "rue;User ID=sa;Password=12pri2020#$;MultipleActiveResultSets=True")>  _
+        Public ReadOnly Property PriamosCN() As String
+            Get
+                Return CType(Me("PriamosCN"),String)
             End Get
         End Property
     End Class

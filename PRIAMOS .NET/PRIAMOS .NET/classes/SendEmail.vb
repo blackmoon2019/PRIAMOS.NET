@@ -22,6 +22,9 @@ Public Class SendEmail
             e_mail.IsBodyHtml = True
             Body.Replace("\n", "<br />")
             e_mail.Body = Body
+            e_mail.Headers.Add("Disposition-Notification-To", "admin@priamoservice.gr")
+
+            e_mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess
             Dim myMailHTMLBody = "<html><head></head><body>" & Body & " </body></html>"
             If System.IO.File.Exists(sFile) Then
                 Dim data As System.Net.Mail.Attachment = New System.Net.Mail.Attachment(sFile)
@@ -31,7 +34,8 @@ Public Class SendEmail
                 XtraMessageBox.Show("Δεν βρέθηκε το αρχείο " & sFile, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If
-
+            e_mail.Dispose()
+            Smtp_Server.Dispose()
             Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

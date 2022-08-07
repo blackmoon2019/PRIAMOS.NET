@@ -167,7 +167,8 @@ Public Class frmCollections
                         "group by C.bdgID, aptID, ttl,a.bal,a.ord
                         ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
                         where COL.reserveAPT = 0 and Completed=0
-                        GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal "
+                        GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal 
+                        order by S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal "
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
             Priamos_NETDataSet2.COL_APT.Clear()
@@ -183,20 +184,21 @@ Public Class frmCollections
             '         "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate) "
             strSql = "SELECT S.aptID, S.bdgID, S.inhID, S.completeDate, 
 		                    SUM(COL.debit) As debit, S.credit, S.bal, S.debitusrID, S.dtDebit, 
-		                    S.dtCredit,S.Etos,S.FromMonth,S.ToMonth   
+		                    S.dtCredit,S.Etos,S.FromMonth,S.ToMonth,s.fDate,s.tDate    
                     FROM COL
                     INNER JOIN
                     (
                     Select   aptID, c.bdgID, inhID, completeDate, 
 		                    SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
-		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth  
+		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth,fDate,tDate 
                     From COL C 
 	                    INNER Join INH I ON I.ID=C.inhID 
 	                    INNER Join APT A ON C.aptID = A.ID where C.reserveAPT = 0 and completed=0    " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
-                        "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate) )
+                        "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate  )
 	                    AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
                         where COL.reserveAPT = 0 
-                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit   "
+                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate   
+                    order by S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate   "
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
             Priamos_NETDataSet2.COL_INH.Clear()
@@ -540,7 +542,9 @@ Public Class frmCollections
         OwnerTenantView.DataController.CollapseDetailRowsOnReset = False
         OwnerTenantView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
     End Sub
+    Private Sub grdVO_T_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles grdVO_T.MasterRowExpanded
 
+    End Sub
     Private Sub GridView1_CustomColumnDisplayText(sender As Object, e As CustomColumnDisplayTextEventArgs) Handles grdVBDG.CustomColumnDisplayText
         'If IsNothing(e.Value) Then e.DisplayText = "*******"
     End Sub
@@ -898,7 +902,24 @@ Public Class frmCollections
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVAPT, "COL_APT_def.xml")
     End Sub
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVINH.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVINH, "COL_INH_def.xml")
+        Dim strSql As String = "SELECT TOP 1 S.aptID, S.bdgID, S.inhID, S.completeDate, 
+		                        SUM(COL.debit) As debit, S.credit, S.bal, S.debitusrID, S.dtDebit, 
+		                        S.dtCredit,S.Etos,S.FromMonth,S.ToMonth ,s.fDate,s.tDate   
+                                FROM COL
+                                INNER JOIN
+                                (
+                                Select   aptID, c.bdgID, inhID, completeDate, 
+		                                SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
+		                                max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth  ,fDate,tDate  
+                                From COL C 
+	                                INNER Join INH I ON I.ID=C.inhID 
+	                                INNER Join APT A ON C.aptID = A.ID where C.reserveAPT = 0 and completed=0    
+                                    Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate   )
+	                                AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
+                                    where COL.reserveAPT = 0 
+                                GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate    "
+
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVINH, "COL_INH_def.xml",, strSql)
     End Sub
 
     Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVO_T.PopupMenuShowing
@@ -1298,7 +1319,19 @@ Public Class frmCollections
                         oCmd.ExecuteNonQuery()
                     End Using
                     sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
+                    'sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
+                    LoaderData()
+                    Select Case grdBDG.FocusedView.Name
+                        Case "GridView1", "grdVBDG"
 
+                        Case "GridView4"
+                            'grdVBDG.SetMasterRowExpanded(INHLastRowExpanded, True)
+                            grdVAPT.SetMasterRowExpanded(INHLastRowExpanded, True)
+                            grdVINH.SetMasterRowExpanded(OwnerTenantLastRowExpanded, True)
+                            sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
+                            'BDGID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString
+                            'aptID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString
+                    End Select
                     'Case "debitusrIDs"
 
                     'debitUsrID = toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "debitusrID").ToString)
@@ -1450,8 +1483,6 @@ Public Class frmCollections
             Me.Vw_COL_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
         End If
     End Sub
-
-
 
     Private Sub TabbedControlGroup1_SelectedPageChanged(sender As Object, e As DevExpress.XtraLayout.LayoutTabPageChangedEventArgs) Handles TabbedControlGroup1.SelectedPageChanged
         Select Case TabbedControlGroup1.SelectedTabPageIndex
@@ -1631,4 +1662,6 @@ Public Class frmCollections
         End If
 
     End Sub
+
+
 End Class

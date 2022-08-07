@@ -2465,6 +2465,19 @@ Public Class frmBDG
         If chkManage.Checked = True Then cboManager.EditValue = System.Guid.Parse("C2ADEEFC-37F1-460B-A40D-A41729371535") Else cboManager.EditValue = Nothing
     End Sub
 
+    Private Sub cmdAptExport_Click(sender As Object, e As EventArgs) Handles cmdAptExport.Click
+        Dim options = New XlsxExportOptionsEx()
+        options.UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula
+        options.ExportType = ExportType.WYSIWYG
+        XtraSaveFileDialog1.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
+        XtraSaveFileDialog1.FileName = "Διαμερίσματα_" & bdgName
+        If XtraSaveFileDialog1.ShowDialog() = DialogResult.OK Then
+            GridView1.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+            Process.Start(XtraSaveFileDialog1.FileName)
+        End If
+
+    End Sub
+
 
 
 

@@ -13,6 +13,7 @@ Public Class FormLoader
     Private GRDview As GridView
     Private XMLName As String
     Private DbTblName As String
+    Private DbQuery As String
     Public Function LoadFormNew(ByVal controls As List(Of Control), ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
 
         Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
@@ -544,7 +545,8 @@ NextItem:
     Public Sub RestoreLayoutFromXml(ByVal GridView As GridView, ByVal sXMLName As String)
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sXMLName) Then GridView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sXMLName, OptionsLayoutBase.FullLayout)
     End Sub
-    Public Sub PopupMenuShow(ByVal e As Views.Grid.PopupMenuShowingEventArgs, ByVal GridView As GridView, ByVal sXMLName As String, Optional ByVal sTableName As String = "")
+    Public Sub PopupMenuShow(ByVal e As Views.Grid.PopupMenuShowingEventArgs, ByVal GridView As GridView, ByVal sXMLName As String, Optional ByVal sTableName As String = "",
+                             Optional ByVal sQuery As String = "")
         If e.MenuType = GridMenuType.Column Then
             Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
             Dim item As New DXEditMenuItem()
@@ -584,7 +586,10 @@ NextItem:
                     DbTblName = sTableName
                     '7nd Custom Menu Item
                     menu.Items.Add(New DXMenuItem("Ενημέρωση πεδίων όψης από Βάση", AddressOf OnUpdateViewFromDB, Nothing, Nothing, Nothing, Nothing))
-
+                ElseIf sQuery <> "" Then
+                    DbQuery = sQuery
+                    '7nd Custom Menu Item
+                    menu.Items.Add(New DXMenuItem("Ενημέρωση πεδίων όψης από Βάση", AddressOf OnUpdateViewFromDB, Nothing, Nothing, Nothing, Nothing))
                 End If
             End If
         End If
@@ -600,9 +605,13 @@ NextItem:
             Dim sSQL As String
             Dim myCmd As SqlCommand
             Dim myReader As SqlDataReader
-            sSQL = "SELECT top 1 * FROM " & DbTblName
+            If DbTblName <> "" Then
+                sSQL = "SELECT top 1 * FROM " & DbTblName
+            ElseIf DbQuery <> "" Then
+                sSQL = DbQuery
+            End If
             myCmd = CNDB.CreateCommand
-            myCmd.CommandText = sSQL
+                myCmd.CommandText = sSQL
             myReader = myCmd.ExecuteReader()
 
 
@@ -648,8 +657,7 @@ NextItem:
                 Next
 
             End If
-
-            LoadColumnDescriptionNames(GRDview, , DbTblName)
+            If DbTblName <> "" Then LoadColumnDescriptionNames(GRDview, , DbTblName)
             myReader.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

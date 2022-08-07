@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 
 Public Class CN
 
-    Private connStr As String = ConfigurationManager.ConnectionStrings.Item(1).ConnectionString
+    Private connStr As String = My.Settings.Priamos_NETConnectionStringRemote
     'Private connStr As String = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Priamos_NET;Data Source=BLACKMOON-PC;MultipleActiveResultSets=True"
     'Server=tcp:blackmoon.database.windows.net,1433;Initial Catalog=DreamyKitchen;Persist Security Info=False;User ID=blmoon;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     Public Function OpenConnection() As Boolean

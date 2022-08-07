@@ -145,13 +145,14 @@ Partial Class frmIEP
         '
         'cboOwnerTenant
         '
-        Me.cboOwnerTenant.EditValue = CType(0, Byte)
+        Me.cboOwnerTenant.EditValue = ""
         Me.cboOwnerTenant.Location = New System.Drawing.Point(194, 96)
         Me.cboOwnerTenant.Margin = New System.Windows.Forms.Padding(5)
         Me.cboOwnerTenant.Name = "cboOwnerTenant"
         Me.cboOwnerTenant.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboOwnerTenant.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.cboOwnerTenant.Properties.Items.AddRange(New Object() {"Ιδιοκτήτης", "Ένοικος"})
+        Me.cboOwnerTenant.Properties.Tag = CType(0, Byte)
         Me.cboOwnerTenant.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.cboOwnerTenant.Size = New System.Drawing.Size(491, 38)
         Me.cboOwnerTenant.StyleController = Me.LayoutControl1

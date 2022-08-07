@@ -232,8 +232,9 @@ Public Class DBQueries
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
                                     Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
                                     cbo = Ctrl
+                                    Debug.Print(cbo.Name)
                                     If cbo.EditValue <> Nothing Then
-                                        If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
+                                        If cbo.EditValue = "False" Or cbo.EditValue = "True" Or cbo.Properties.Tag = "0" Then
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
