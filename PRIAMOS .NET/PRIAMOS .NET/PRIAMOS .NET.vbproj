@@ -851,6 +851,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-balance-16%281%29.png" />
     <None Include="Priamos_NETDataSet3.xsc">
       <DependentUpon>Priamos_NETDataSet3.xsd</DependentUpon>
     </None>

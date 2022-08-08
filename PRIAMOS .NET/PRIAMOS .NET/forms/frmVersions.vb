@@ -91,11 +91,11 @@ Public Class frmVersions
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
-            'sSQL = "update into BuildVersion set BuildVersion = " &  toSQLValueS(myValue) & "," & 
-            ''Εκτέλεση QUERY
-            'Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-            '    oCmd.ExecuteNonQuery()
-            'End Using
+            sSQL = "update TECH_SUP set Builded = 1 where BuildVersion = " & toSQLValueS(myValue)
+            'Εκτέλεση QUERY
+            Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
 
             If My.Computer.FileSystem.DirectoryExists("\\192.168.1.51\priamos.net\Updates\" & myValue) = False Then
                 My.Computer.FileSystem.CreateDirectory("\\192.168.1.51\priamos.net\Updates\" & myValue)

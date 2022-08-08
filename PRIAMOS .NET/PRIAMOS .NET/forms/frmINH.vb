@@ -195,9 +195,14 @@ Public Class frmINH
                 End If
             Next column
             For i As Integer = 0 To GridView5.DataRowCount - 1
-                B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
-                B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΕΠΙΒ.").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
-                B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΣΥΝΟΛΟ").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                If CheckRepNameIfExists(GridView5.GetRowCellDisplayText(i, "repName"), True) = True Then
+                    XtraMessageBox.Show("Υπάρχει διπλή καταχώρηση στα έξοδα. Το έξοδο '" & GridView5.GetRowCellDisplayText(i, "repName").ToString & "' υπάρχει 2 φορές. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit For
+                Else
+                    B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                    B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΕΠΙΒ.").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                    B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΣΥΝΟΛΟ").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                End If
             Next
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -222,8 +227,10 @@ Public Class frmINH
                         Dim date1 As Date = Date.Parse(dtFDate.EditValue.ToString)
                         Dim date2 As Date = Date.Parse(dtTDate.EditValue.ToString)
                         Dim Months As Long = DateDiff(DateInterval.Month, date1, date2) + 1
+                        dtTDate.EditValue = date2.AddMonths(1).AddDays(-1)
                         sGuid = System.Guid.NewGuid.ToString
                         Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
+
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sGuid, True, "completeDate", toSQLValueS(sCompleteDate))
                         If sResult Then
                             ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
@@ -240,7 +247,7 @@ Public Class frmINH
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
                 End Select
                 If sResult Then
-                    If Mode = FormMode.NewRecord Then sID = sGuid
+                    If Mode = FormMode.NewRecord Then sID = sGuid : Mode = FormMode.EditRecord
                     txtCode.Text = DBQ.GetNextId("INH")
                     Dim form As New frmScroller
                     form.LoadRecords("vw_INH")
@@ -277,16 +284,21 @@ Public Class frmINH
         Dim sCalcCatID As String
 
         If Valid.ValidateFormGRP(LayoutControlGroup2) Then
-
-            sCalcCatID = chkCALC_CAT.SelectedValue.ToString
-            sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
-            If sResult Then
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Cls.ClearGroupCtrls(LayoutControlGroup2)
-                Valid.SChanged = False
+            Dim repName As String
+            repName = cboRepname.EditValue
+            If CheckRepNameIfExists(repName) = False Then
+                sCalcCatID = chkCALC_CAT.SelectedValue.ToString
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
+                If sResult Then
+                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Cls.ClearGroupCtrls(LayoutControlGroup2)
+                    Valid.SChanged = False
+                End If
+                cboOwnerTenant.SelectedIndex = 1 : chkCALC_CAT.SetItemChecked(0, True) : cboRepname.Select()
+            Else
+                XtraMessageBox.Show("Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
-            cboOwnerTenant.SelectedIndex = 1 : chkCALC_CAT.SetItemChecked(0, True) : cboRepname.Select()
         End If
     End Sub
     Private Sub DeleteIND_F(Optional ByVal Question As Boolean = True)
@@ -751,23 +763,27 @@ Public Class frmINH
 
         ElseIf e.SelectedControl Is chkPrintEidop Then
             If chkPrintReceipt.Checked = True Then
-                e.Info = New ToolTipControlInfo(chkCalculated, "Εκτύπωση Ειδοποίησης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEidop"))
+                e.Info = New ToolTipControlInfo(chkPrintEidop, "Εκτύπωση Ειδοποίησης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEidop"))
                 e.Info.ToolTipType = ToolTipType.Flyout
                 e.Info.IconType = ToolTipIconType.Information
             End If
         ElseIf e.SelectedControl Is chkPrintReceipt Then
             If chkPrintReceipt.Checked = True Then
-                e.Info = New ToolTipControlInfo(chkCalculated, "Εκτύπωση Απόδειξης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEisp"))
+                e.Info = New ToolTipControlInfo(chkPrintReceipt, "Εκτύπωση Απόδειξης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEisp"))
                 e.Info.ToolTipType = ToolTipType.Flyout
                 e.Info.IconType = ToolTipIconType.Information
             End If
 
         ElseIf e.SelectedControl Is chkPrintSyg Then
             If chkPrintSyg.Checked = True Then
-                e.Info = New ToolTipControlInfo(chkCalculated, "Εκτύπωση Συγεντρωτικής στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrint"))
+                e.Info = New ToolTipControlInfo(chkPrintSyg, "Εκτύπωση Συγεντρωτικής στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrint"))
                 e.Info.ToolTipType = ToolTipType.Flyout
                 e.Info.IconType = ToolTipIconType.Information
             End If
+        ElseIf e.SelectedControl Is txtBdgCmt Then
+            e.Info = New ToolTipControlInfo(txtBdgCmt, txtBdgCmt.Text)
+            e.Info.ToolTipType = ToolTipType.Flyout
+            e.Info.IconType = ToolTipIconType.Application
         End If
     End Sub
 
@@ -813,62 +829,16 @@ Public Class frmINH
     End Sub
 
     Private Sub GridView5_PopupMenuShowing(sender As Object, e As Views.Grid.PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
-
-            End If
-        End If
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView5, "INHDET_def.xml", "VW_IND")
 
     End Sub
 
-    'Μετονομασία Στήλης Master
-    Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView5.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
     Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
         Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
         item.Tag = New MenuColumnInfo(column)
         Return item
     End Function
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView5.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
+
     'Κλείδωμα Στήλης Master
     Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
         Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
@@ -877,12 +847,6 @@ Public Class frmINH
             Return
         End If
         info.Column.OptionsColumn.AllowMove = Not item.Checked
-    End Sub
-    'Αποθήκευση όψης 
-    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Friend Class MenuColumnInfo
@@ -1118,25 +1082,30 @@ Public Class frmINH
     End Sub
 
     Private Sub GridView5_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView5.ValidatingEditor
-        Dim sSQL As String, repName As String
-        Dim GRDB As GridView = sender
-        repName = GRDB.GetRowCellValue(GRDB.FocusedRowHandle, "repName").ToString
+        If CheckRepNameIfExists(e.Value) = True Then
+            e.ErrorText = "Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο."
+            e.Valid = False
+        End If
+    End Sub
+    Private Function CheckRepNameIfExists(ByVal repName As String, Optional ByVal CheckForUpTo1 As Boolean = False) As Boolean
         ' Παίρνει το μεγαλύτερο Α/Α και το αυξάνει κατα 1
         Dim cmd As SqlCommand = New SqlCommand("Select  count(repName) As CountRep FROM IND WHERE INHID= " & toSQLValueS(sID) & " AND repName =  " & toSQLValueS(repName), CNDB)
-
         Dim sdr As SqlDataReader = cmd.ExecuteReader()
         If (sdr.Read() = True) Then
-            If sdr.GetInt32(sdr.GetOrdinal("CountRep")) > 1 Then
-                e.ErrorText = "Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο."
-                sdr.Close()
-                e.Valid = False
-                Exit Sub
+            If CheckForUpTo1 = True Then
+                If sdr.GetInt32(sdr.GetOrdinal("CountRep")) > 1 Then
+                    sdr.Close()
+                    Return True
+                End If
+            Else
+                If sdr.GetInt32(sdr.GetOrdinal("CountRep")) = 1 Then
+                    sdr.Close()
+                    Return True
+                End If
             End If
-            sdr.Close()
         End If
-
-    End Sub
-
+        Return False
+    End Function
     Private Sub cboAhpbH_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbH.ButtonPressed
         Select Case e.Button.Index
             Case 1 : cboAhpbH.EditValue = Nothing

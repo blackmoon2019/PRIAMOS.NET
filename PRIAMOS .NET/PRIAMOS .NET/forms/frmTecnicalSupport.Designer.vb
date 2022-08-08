@@ -218,10 +218,10 @@ Partial Class frmTecnicalSupport
         '
         Me.cmdEmailAnswer.Enabled = False
         Me.cmdEmailAnswer.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_email_send_24
-        Me.cmdEmailAnswer.Location = New System.Drawing.Point(1473, 1249)
+        Me.cmdEmailAnswer.Location = New System.Drawing.Point(1572, 1249)
         Me.cmdEmailAnswer.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdEmailAnswer.Name = "cmdEmailAnswer"
-        Me.cmdEmailAnswer.Size = New System.Drawing.Size(509, 39)
+        Me.cmdEmailAnswer.Size = New System.Drawing.Size(410, 39)
         Me.cmdEmailAnswer.StyleController = Me.LayoutControl1
         Me.cmdEmailAnswer.TabIndex = 48
         Me.cmdEmailAnswer.Text = "Αποθήκευση και Αποστολή Email(Απάντηση)"
@@ -570,9 +570,9 @@ Partial Class frmTecnicalSupport
         'LayoutControlItem13
         '
         Me.LayoutControlItem13.Control = Me.cmdEmailAnswer
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(1461, 1237)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(1560, 1237)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(513, 43)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(414, 43)
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem13.TextVisible = False
         '
@@ -650,7 +650,7 @@ Partial Class frmTecnicalSupport
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(463, 1237)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(998, 43)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1097, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'chkBuilded

@@ -551,7 +551,7 @@ NextItem:
                                     Dim dt As DevExpress.XtraEditors.DateEdit
                                     dt = Ctrl
                                     If dt.Text <> "" Then
-                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CDate(dt.EditValue).ToString("yyyyMMdd")))
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                     End If

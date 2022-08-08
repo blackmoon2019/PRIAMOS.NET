@@ -122,9 +122,13 @@ Public Class frmCollections
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml") Then
             GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
         End If
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml") Then
+            grdVBDG.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml", OptionsLayoutBase.FullLayout)
+        End If
 
-        grdVBDG.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml", OptionsLayoutBase.FullLayout)
-        grdVAPT.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml") Then
+            grdVAPT.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+        End If
         grdVINH.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
         grdVO_T.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
 
@@ -756,6 +760,11 @@ Public Class frmCollections
                 e.Valid = False
                 Exit Sub
             ElseIf sender.FocusedColumn.FieldName = "credit" Then
+                If e.Value < 0 Then
+                    e.ErrorText = "Δεν επιτρέπονται αρνητικοί αριθμοί. "
+                    e.Valid = False
+                    Exit Sub
+                End If
                 If sender.GetRowCellValue(sender.FocusedRowHandle, "debit") Is DBNull.Value Then
                     debit = 0
                 Else
@@ -1662,6 +1671,14 @@ Public Class frmCollections
         End If
 
     End Sub
-
-
+    '********* TO BE DELETED*********
+    Private Sub Rep_FixAptBalance_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_FixAptBalance.ButtonPressed
+        Dim sSQL As String
+        If XtraMessageBox.Show("Θέλετε να ενημερώσετε το υπόλοιπο του διαμερίσματος?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            sSQL = "UPDATE APT SET BAL_ADM = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal").ToString, True) &
+                           " where id = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
+            Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+            APTView.SetRowCellValue(APTView.FocusedRowHandle, "Aptbal", APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal"))
+        End If
+    End Sub
 End Class

@@ -99,8 +99,10 @@ Public Class frmScroller
             If sDataTable = "vw_INH" Then
                 GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect
                 BarPrint.Visibility = BarItemVisibility.Always
+                BarEmail.Visibility = BarItemVisibility.Always
             Else
                 BarPrint.Visibility = BarItemVisibility.Never
+                BarEmail.Visibility = BarItemVisibility.Never
             End If
 
 
