@@ -9,6 +9,13 @@ Public Class Rep_Sygentrotiki
     Private bHasFIBoiler As Boolean
     Private bHasHoursH As Boolean
     Private bHasHoursBoiler As Boolean
+    Private Frm As frmINH
+
+    Public WriteOnly Property INHForm As frmINH
+        Set(value As frmINH)
+            Frm = value
+        End Set
+    End Property
     Public WriteOnly Property HasFI As Boolean
         Set(value As Boolean)
             bHasFI = value
@@ -39,6 +46,12 @@ Public Class Rep_Sygentrotiki
         Using oCmd As New SqlCommand(sSQL, CNDB)
             oCmd.ExecuteNonQuery()
         End Using
+        Frm.chkPrintSyg.CheckState = CheckState.Checked
+        Frm.chkPrintSyg.Checked = True
+        Frm.chkPrintSyg.EditValue = 1
+        Frm.chkPrintSyg.Refresh()
+        Frm.chkPrintSyg.Select()
+        Frm.Refresh()
     End Sub
 
     Private Sub XrTable1_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTable1.BeforePrint
@@ -46,6 +59,7 @@ Public Class Rep_Sygentrotiki
         'If XrTable6.Rows(0).Cells(0).ExpressionBindings.Count = 1 Then Exit Sub
         FillMlcHeader()
         FillExodaHeader()
+
     End Sub
     Private Sub FillMlcHeader()
         Dim i As Integer = 0
@@ -398,4 +412,7 @@ Public Class Rep_Sygentrotiki
         If CVAL = 0 Then c.Text = ""
     End Sub
 
+    Private Sub Rep_Sygentrotiki_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
+
+    End Sub
 End Class

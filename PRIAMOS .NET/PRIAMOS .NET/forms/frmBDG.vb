@@ -2112,6 +2112,7 @@ Public Class frmBDG
         'fINH.MdiParent = frmMain
         fINH.Mode = FormMode.NewRecord
         fINH.cboBDG.EditValue = System.Guid.Parse(sID)
+
         'fINH.Scroller = GridView10
         'fINH.FormScroller = Me
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))

@@ -3,9 +3,12 @@ Imports System.Drawing.Printing
 Imports DevExpress.XtraPrinting
 
 Public Class Eidop
-    Private Sub Eidop_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
-
-    End Sub
+    Private Frm As frmINH
+    Public WriteOnly Property INHForm As frmINH
+        Set(value As frmINH)
+            Frm = value
+        End Set
+    End Property
 
     Private Sub Detail_BeforePrint(sender As Object, e As PrintEventArgs) Handles Detail.BeforePrint
         'Dim sAptID As String
@@ -20,6 +23,14 @@ Public Class Eidop
         Using oCmd As New SqlCommand(sSQL, CNDB)
             oCmd.ExecuteNonQuery()
         End Using
+        Frm.chkPrintEidop.CheckState = CheckState.Checked
+        Frm.chkPrintEidop.Checked = True
+        Frm.chkPrintEidop.EditValue = 1
+        Frm.chkPrintEidop.Select()
+        Frm.Refresh()
     End Sub
 
+    Private Sub Eidop_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
+
+    End Sub
 End Class

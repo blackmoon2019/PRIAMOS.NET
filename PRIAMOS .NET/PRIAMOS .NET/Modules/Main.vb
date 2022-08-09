@@ -94,11 +94,23 @@ Module Main
         End Try
     End Function
     Public Function TranslateDates(ByVal fDate As DevExpress.XtraEditors.DateEdit, ByVal tDate As DevExpress.XtraEditors.DateEdit) As String
-        TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & "-" & tDate.Text
+        If fDate.DateTime.Year = tDate.DateTime.Year Then TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & "-" & tDate.Text Else TranslateDates = fDate.Text & "-" & tDate.Text
         ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
         If fDate.Text.Replace(fDate.DateTime.Year, "") = tDate.Text.Replace(tDate.DateTime.Year, "") Then
             TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year
         End If
+        TranslateDates = TranslateDates.Replace("Ιανουάριος", "Ιαν.")
+        TranslateDates = TranslateDates.Replace("Φεβρουάριος", "Φεβ.")
+        TranslateDates = TranslateDates.Replace("Μάρτιος ", "Μαρ.")
+        TranslateDates = TranslateDates.Replace("Απρίλιος", "Απρ.")
+        TranslateDates = TranslateDates.Replace("Μάϊος", "Μάι.")
+        TranslateDates = TranslateDates.Replace("Ιούνιος ", "Ιούν.")
+        TranslateDates = TranslateDates.Replace("Ιούλιος", "Ιούλ.")
+        TranslateDates = TranslateDates.Replace("Αύγουστος", "Αυγ.")
+        TranslateDates = TranslateDates.Replace("Σεπτέμβριος", "Σεπ.")
+        TranslateDates = TranslateDates.Replace("Οκτώβριος", "Οκτ.")
+        TranslateDates = TranslateDates.Replace("Νοέμβριος", "Νοέ.")
+        TranslateDates = TranslateDates.Replace("Δεκέμβριος", "Δεκ.")
         Return TranslateDates
     End Function
 

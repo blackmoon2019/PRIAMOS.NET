@@ -222,11 +222,13 @@ Public Class frmCollections
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue <> Nothing Then
+            grdVBDG.SetMasterRowExpanded(0, False)
             LoaderData(cboBDG.EditValue.ToString)
             Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(cboBDG.EditValue.ToString))
             Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
 
+            grdVBDG.SetMasterRowExpanded(0, True)
         Else
             'Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)
             'Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
@@ -776,7 +778,11 @@ Public Class frmCollections
                     e.Valid = False
                     Exit Sub
                 End If
-                If credit = 0 Then e.Valid = False : Exit Sub
+                If credit = 0 Then
+                    e.Valid = False
+                    e.ErrorText = "Δεν μπορεί η είσπραξη να είναι μηδενική."
+                    Exit Sub
+                End If
             End If
 
             If debit = 0 And credit = 0 Then Exit Sub
@@ -1504,7 +1510,7 @@ Public Class frmCollections
                 Else
                     Me.Vw_COL_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
                 End If
-                GridView6.SelectAll()
+                ' GridView6.SelectAll()
             Case Else
         End Select
     End Sub

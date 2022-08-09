@@ -18,6 +18,7 @@ Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPivotGrid
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraPrinting.Control
 Imports DevExpress.XtraReports.UI.CrossTab
 
 Public Class frmINH
@@ -90,10 +91,10 @@ Public Class frmINH
                 If lblCancel.Text = "True" Then
                     lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-                    cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
+                    cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : grdIND.Enabled = False
                 Else
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                    cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridControl1.Enabled = True
+                    cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : grdIND.Enabled = True
                     'cmdCancelInvoice.Enabled = True
                 End If
                 Me.Text = "Παραστατικό-" & cboBDG.Text
@@ -108,6 +109,11 @@ Public Class frmINH
         dtTDate.Properties.Mask.EditMask = "Y"
         dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
+        If chkCalculated.Checked = True And chkPrintEidop.Checked = True And chkPrintReceipt.Checked = True And chkPrintSyg.Checked = True Then
+            cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False
+        Else
+            cmdCancelCalculate.Enabled = False : cmdCalculate.Enabled = True
+        End If
 
         'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") = False Then
@@ -233,18 +239,35 @@ Public Class frmINH
 
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sGuid, True, "completeDate", toSQLValueS(sCompleteDate))
                         If sResult Then
-                            ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
-                            sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
+                            ' Αν είναι θερμιδομέτρηση δεν καταχωρούντε πάγια έξοδα
+                            If chkCalorimetric.CheckState = CheckState.Unchecked Then
+                                ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
+                                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
                                    "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt else (amt " & "*" & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
-                            Using oCmd As New SqlCommand(sSQL, CNDB)
-                                oCmd.ExecuteNonQuery()
-                            End Using
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                            End If
                             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sGuid))
-                            GridControl1.DataSource = VwINDBindingSource
+                            grdIND.DataSource = VwINDBindingSource
                         End If
                     Case FormMode.EditRecord
-                        Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
+                        If chkCalorimetric.CheckState = CheckState.Checked Then
+                            If XtraMessageBox.Show("Έχετε επιλέξει θερμιδομέτρηση. Αν έχετε καταχωρήσει έξοδα θα διαγραφούν.Να προχωρήσει η διαδικασία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                                Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
+                                ' Αν είναι θερμιδομέτρηση δεν καταχωρούντε πάγια έξοδα
+                                sSQL = "DELETE FROM IND where inhID = " & toSQLValueS(sID)
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                                grdIND.DataSource = VwINDBindingSource
+                            End If
+                        Else
+                            Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
+                            sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
+                        End If
                 End Select
                 If sResult Then
                     If Mode = FormMode.NewRecord Then sID = sGuid : Mode = FormMode.EditRecord
@@ -291,7 +314,7 @@ Public Class frmINH
                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
                 If sResult Then
                     Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Cls.ClearGroupCtrls(LayoutControlGroup2)
                     Valid.SChanged = False
                 End If
@@ -425,42 +448,47 @@ Public Class frmINH
         End If
     End Sub
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
-        If cboBDG.EditValue = Nothing Then Exit Sub
-        chkCALC_CAT.DataSource = VwCALCCATBindingSource
-        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
-        '    If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
-        'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
-        Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+        Try
+            If cboBDG.EditValue = Nothing Then Exit Sub
+            chkCALC_CAT.DataSource = VwCALCCATBindingSource
+            Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+            '    If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
+            'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+            Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
 
-        Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
+            Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
 
 
-        Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
-        If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
-            txtHeatingType.EditValue = Nothing
-            txtHpc.EditValue = Nothing
-        Else
-            If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-                txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
-                txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
-            Else
+            Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
+            If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
                 txtHeatingType.EditValue = Nothing
                 txtHpc.EditValue = Nothing
-            End If
-        End If
-        If cboBDG.GetColumnValue("BTypeID") Is Nothing Then
-            txtBoilerType.EditValue = Nothing
-            txtHpb.EditValue = Nothing
-        Else
-            If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-                txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
-                txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
             Else
+                If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+                    txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+                    txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
+                Else
+                    txtHeatingType.EditValue = Nothing
+                    txtHpc.EditValue = Nothing
+                End If
+            End If
+            If cboBDG.GetColumnValue("BTypeID") Is Nothing Then
                 txtBoilerType.EditValue = Nothing
                 txtHpb.EditValue = Nothing
+            Else
+                If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+                    txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+                    txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
+                Else
+                    txtBoilerType.EditValue = Nothing
+                    txtHpb.EditValue = Nothing
+                End If
             End If
-        End If
-        txtBdgCmt.Text = cboBDG.GetColumnValue("cmt").ToString
+            If cboBDG.GetColumnValue("cmt") Is Nothing Then Exit Sub
+            txtBdgCmt.Text = cboBDG.GetColumnValue("cmt").ToString
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
@@ -681,6 +709,9 @@ Public Class frmINH
                 oCmd.ExecuteNonQuery()
             End Using
             XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            chkCalculated.CheckState = CheckState.Checked
+            chkCalculated.Checked = True
+            Frm.Refresh()
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
         Catch ex As Exception
@@ -755,36 +786,47 @@ Public Class frmINH
     End Sub ' ...
 
     Private Sub ToolTipController1_GetActiveObjectInfo(sender As Object, e As ToolTipControllerGetActiveObjectInfoEventArgs) Handles ToolTipController1.GetActiveObjectInfo
-        If e.SelectedControl Is cboAnnouncements Then
-            If cboAnnouncements.CalcBestSize().Width > cboAnnouncements.Width Then
-                e.Info = New ToolTipControlInfo(cboAnnouncements, cboAnnouncements.EditValue)
-            End If
-        ElseIf e.SelectedControl Is chkCalculated Then
+        Try
+            If e.SelectedControl Is cboAnnouncements Then
+                If cboAnnouncements.CalcBestSize().Width > cboAnnouncements.Width Then
+                    e.Info = New ToolTipControlInfo(cboAnnouncements, cboAnnouncements.EditValue)
+                End If
+            ElseIf e.SelectedControl Is chkCalculated Then
 
-        ElseIf e.SelectedControl Is chkPrintEidop Then
-            If chkPrintReceipt.Checked = True Then
-                e.Info = New ToolTipControlInfo(chkPrintEidop, "Εκτύπωση Ειδοποίησης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEidop"))
-                e.Info.ToolTipType = ToolTipType.Flyout
-                e.Info.IconType = ToolTipIconType.Information
-            End If
-        ElseIf e.SelectedControl Is chkPrintReceipt Then
-            If chkPrintReceipt.Checked = True Then
-                e.Info = New ToolTipControlInfo(chkPrintReceipt, "Εκτύπωση Απόδειξης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEisp"))
-                e.Info.ToolTipType = ToolTipType.Flyout
-                e.Info.IconType = ToolTipIconType.Information
-            End If
+            ElseIf e.SelectedControl Is chkPrintEidop Then
+                If chkPrintReceipt.Checked = True Then
+                    e.Info = New ToolTipControlInfo(chkPrintEidop, "Εκτύπωση Ειδοποίησης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEidop"))
+                    e.Info.ToolTipType = ToolTipType.Flyout
+                    e.Info.IconType = ToolTipIconType.Information
+                End If
+            ElseIf e.SelectedControl Is chkPrintReceipt Then
+                If chkPrintReceipt.Checked = True Then
+                    e.Info = New ToolTipControlInfo(chkPrintReceipt, "Εκτύπωση Απόδειξης στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrintEisp"))
+                    e.Info.ToolTipType = ToolTipType.Flyout
+                    e.Info.IconType = ToolTipIconType.Information
+                End If
 
-        ElseIf e.SelectedControl Is chkPrintSyg Then
-            If chkPrintSyg.Checked = True Then
-                e.Info = New ToolTipControlInfo(chkPrintSyg, "Εκτύπωση Συγεντρωτικής στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrint"))
+            ElseIf e.SelectedControl Is chkPrintSyg Then
+                If chkPrintSyg.Checked = True Then
+                    e.Info = New ToolTipControlInfo(chkPrintSyg, "Εκτύπωση Συγεντρωτικής στις " & vbCrLf & InhFieldAndValues.Item("DateOfPrint"))
+                    e.Info.ToolTipType = ToolTipType.Flyout
+                    e.Info.IconType = ToolTipIconType.Information
+                End If
+            ElseIf e.SelectedControl Is grdIND Then
+                If chkEmail.Checked = True Then
+                    e.Info = New ToolTipControlInfo(chkEmail, "Email Ειδοποίησης στις " & vbCrLf & InhFieldAndValues.Item("DateOfEmail"))
+                    e.Info.ToolTipType = ToolTipType.Flyout
+                    e.Info.IconType = ToolTipIconType.Information
+                End If
+
+            ElseIf e.SelectedControl Is txtBdgCmt Then
+                e.Info = New ToolTipControlInfo(txtBdgCmt, txtBdgCmt.Text)
                 e.Info.ToolTipType = ToolTipType.Flyout
-                e.Info.IconType = ToolTipIconType.Information
+                e.Info.IconType = ToolTipIconType.Application
             End If
-        ElseIf e.SelectedControl Is txtBdgCmt Then
-            e.Info = New ToolTipControlInfo(txtBdgCmt, txtBdgCmt.Text)
-            e.Info.ToolTipType = ToolTipType.Flyout
-            e.Info.IconType = ToolTipIconType.Application
-        End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub RepositoryItemLookUpEdit3_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit3.ButtonClick
@@ -869,7 +911,7 @@ Public Class frmINH
         chkCALC_CAT.Items.Clear()
         TabNavigationPage2.Enabled = False
         TabNavigationPage3.Enabled = False
-        GridControl1.DataSource = Nothing
+        grdIND.DataSource = Nothing
         lbldate.Text = ""
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.NewGuid)
     End Sub
@@ -1027,10 +1069,11 @@ Public Class frmINH
             If lblCancel.Text = "True" Then
                 lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-                cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
+                cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : grdIND.Enabled = False
             Else
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                cmdSaveINH.Enabled = True : cmdCancelInvoice.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridControl1.Enabled = True
+                cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : grdIND.Enabled = True
+                'cmdCancelInvoice.Enabled = True 
             End If
 
         Catch ex As Exception
@@ -1075,7 +1118,7 @@ Public Class frmINH
             lblCancel.Visible = True
             lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
-            cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridControl1.Enabled = False
+            cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : grdIND.Enabled = False
         End If
 
 
@@ -1126,7 +1169,7 @@ Public Class frmINH
         FlyoutPanel1.HidePopup()
         LayoutControl1.Enabled = True
     End Sub
-    Private Sub BarButtonItem1_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem1.ItemClick
+    Private Sub BarSygentrotiki_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSygentrotiki.ItemClick
         Dim report As New Rep_Sygentrotiki()
         ' Εαν έχει FI
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
@@ -1137,30 +1180,48 @@ Public Class frmINH
         If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
         report.Parameters.Item(0).Value = sID
         report.Parameters.Item(1).Value = cboBDG.EditValue
+        report.INHForm = Me
         SplashScreenManager1.ShowWaitForm()
         SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
         report.CreateDocument()
         report.PrintingSystem.Document.ScaleFactor = 0.99
-
         Dim printTool As New ReportPrintTool(report)
+        If chkCalculated.Checked = False Then
+            Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
+            printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
+            PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
+            PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
+            PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
+            PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
+            PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
+        End If
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()
     End Sub
 
-    Private Sub BarButtonItem2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem2.ItemClick
+    Private Sub BarEidop_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEidop.ItemClick
         Dim report As New Eidop()
         report.Parameters.Item(0).Value = sID
         ' report.Parameters.Item(1).Value = cboBDG.EditValue
         SplashScreenManager1.ShowWaitForm()
         SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        report.INHForm = Me
         report.CreateDocument()
-
         Dim printTool As New ReportPrintTool(report)
+        If chkPrintSyg.Checked = False Then
+            Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
+            printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
+            PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
+            PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
+            PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
+            PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
+            PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
+        End If
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()
     End Sub
 
-    Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+    Private Sub BarReceipt_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarReceipt.ItemClick
         'Dim report As New Eidop()
         Dim report As New Receipt
         Dim sMargins As New System.Drawing.Printing.Margins
@@ -1172,13 +1233,23 @@ Public Class frmINH
         report.DefaultPrinterSettingsUsing.UsePaperKind = False
         report.DefaultPrinterSettingsUsing.UseMargins = False
         sMargins.Bottom = 50 : sMargins.Top = 90 : sMargins.Left = 100 : sMargins.Right = 50
+        report.INHForm = Me
         report.Margins = sMargins
-
         report.CreateDocument()
         Dim printTool As New ReportPrintTool(report)
+        If chkPrintEidop.Checked = False Then
+            Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
+            printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
+            PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
+            PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
+            PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
+            PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
+            PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
+        End If
         printTool.ShowRibbonPreview()
         SplashScreenManager1.CloseWaitForm()
     End Sub
+
 
     Private Sub cmdExit_Click_1(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
@@ -1201,6 +1272,16 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
                 oCmd.ExecuteNonQuery()
             End Using
+            cmdCalculate.Enabled = True
         End If
+    End Sub
+
+    Private Sub chkCalorimetric_CheckStateChanged(sender As Object, e As EventArgs) Handles chkCalorimetric.CheckStateChanged
+        If chkCalorimetric.Checked = True Then
+            LayoutControlGroup2.Enabled = False
+        Else
+            LayoutControlGroup2.Enabled = True
+        End If
+
     End Sub
 End Class

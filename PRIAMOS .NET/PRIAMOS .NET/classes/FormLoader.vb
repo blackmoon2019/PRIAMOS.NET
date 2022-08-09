@@ -129,21 +129,53 @@ NextItem:
                     For index As Integer = 0 To sdr.FieldCount - 1
                         Select Case sdr.GetDataTypeName(index)
                             Case "nvarchar"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetString(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetString(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "int"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetInt32(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetInt32(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "bigint"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetInt64(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetInt64(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "uniqueidentifier"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetGuid(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetGuid(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "bit"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetBoolean(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetBoolean(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "decimal"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetDecimal(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetDecimal(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "datetime"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "date"
-                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then dictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                    dictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                                Else
+                                    dictionary.Add(sdr.GetName(index), "")
+                                End If
                             Case "varbinary"
                         End Select
                     Next
