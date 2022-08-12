@@ -91,10 +91,10 @@ Public Class frmINH
                 If lblCancel.Text = "True" Then
                     lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-                    cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : grdIND.Enabled = False
+                    cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
                 Else
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                    cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : grdIND.Enabled = True
+                    cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
                     'cmdCancelInvoice.Enabled = True
                 End If
                 Me.Text = "Παραστατικό-" & cboBDG.Text
@@ -109,17 +109,17 @@ Public Class frmINH
         dtTDate.Properties.Mask.EditMask = "Y"
         dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
-        If chkCalculated.Checked = True And chkPrintEidop.Checked = True And chkPrintReceipt.Checked = True And chkPrintSyg.Checked = True Then
-            cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False
-        Else
-            cmdCancelCalculate.Enabled = False : cmdCalculate.Enabled = True
-        End If
 
         'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
         If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") = False Then
             GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
         End If
         GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        If chkCalculated.Checked = True Then
+            cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+        Else
+            cmdCancelCalculate.Enabled = False : cmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
+        End If
 
         LoadConditionalFormatting()
         cboOwnerTenant.SelectedIndex = 1 : If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
@@ -711,6 +711,7 @@ Public Class frmINH
             XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             chkCalculated.CheckState = CheckState.Checked
             chkCalculated.Checked = True
+            cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
             Frm.Refresh()
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
@@ -1069,13 +1070,17 @@ Public Class frmINH
             If lblCancel.Text = "True" Then
                 lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-                cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : grdIND.Enabled = False
+                cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
             Else
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : grdIND.Enabled = True
+                cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
                 'cmdCancelInvoice.Enabled = True 
             End If
-
+            If chkCalculated.Checked = True Then
+                cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+            Else
+                cmdCancelCalculate.Enabled = False : cmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1118,13 +1123,15 @@ Public Class frmINH
             lblCancel.Visible = True
             lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
-            cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : grdIND.Enabled = False
+            cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
         End If
 
 
     End Sub
 
     Private Sub GridView5_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView5.ValidatingEditor
+        Dim grdView As GridView = sender
+        If grdView.FocusedColumn.FieldName <> "repName" Then Exit Sub
         If CheckRepNameIfExists(e.Value) = True Then
             e.ErrorText = "Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο."
             e.Valid = False
@@ -1272,7 +1279,8 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
                 oCmd.ExecuteNonQuery()
             End Using
-            cmdCalculate.Enabled = True
+            cmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
+            chkCalculated.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
         End If
     End Sub
 

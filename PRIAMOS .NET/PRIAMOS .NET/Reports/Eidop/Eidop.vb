@@ -23,11 +23,16 @@ Public Class Eidop
         Using oCmd As New SqlCommand(sSQL, CNDB)
             oCmd.ExecuteNonQuery()
         End Using
-        Frm.chkPrintEidop.CheckState = CheckState.Checked
-        Frm.chkPrintEidop.Checked = True
-        Frm.chkPrintEidop.EditValue = 1
-        Frm.chkPrintEidop.Select()
-        Frm.Refresh()
+        If Frm IsNot Nothing Then
+            Frm.chkPrintEidop.CheckState = CheckState.Checked
+            Frm.chkPrintEidop.Properties.ValueChecked = True
+            Frm.chkPrintEidop.Checked = True
+            Frm.chkPrintEidop.EditValue = True
+            'Frm.chkPrintEidop.Refresh()
+            Frm.chkPrintEidop.Select()
+            Frm.Refresh()
+        End If
+
     End Sub
 
     Private Sub Eidop_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint

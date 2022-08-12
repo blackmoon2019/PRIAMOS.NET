@@ -94,10 +94,18 @@ Module Main
         End Try
     End Function
     Public Function TranslateDates(ByVal fDate As DevExpress.XtraEditors.DateEdit, ByVal tDate As DevExpress.XtraEditors.DateEdit) As String
-        If fDate.DateTime.Year = tDate.DateTime.Year Then TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & "-" & tDate.Text Else TranslateDates = fDate.Text & "-" & tDate.Text
-        ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
-        If fDate.Text.Replace(fDate.DateTime.Year, "") = tDate.Text.Replace(tDate.DateTime.Year, "") Then
-            TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year
+        If fDate.DateTime.Year = tDate.DateTime.Year Then
+            TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & "-" & tDate.Text
+            ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
+            If fDate.Text.Replace(fDate.DateTime.Year, "") = tDate.Text.Replace(tDate.DateTime.Year, "") Then
+                TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year
+            End If
+        Else
+            TranslateDates = fDate.Text & "-" & tDate.Text
+            ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
+            If fDate.Text.Replace(fDate.DateTime.Year, "") <> tDate.Text.Replace(tDate.DateTime.Year, "") Then
+                TranslateDates = fDate.Text.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year & "-" & tDate.Text
+            End If
         End If
         TranslateDates = TranslateDates.Replace("Ιανουάριος", "Ιαν.")
         TranslateDates = TranslateDates.Replace("Φεβρουάριος", "Φεβ.")

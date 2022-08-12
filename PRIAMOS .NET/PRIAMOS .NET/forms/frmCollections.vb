@@ -966,7 +966,7 @@ Public Class frmCollections
                 Else
                     Me.Vw_COL_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
                 End If
-                GridView6.SelectAll()
+                'GridView6.SelectAll()
         End Select
 
     End Sub
@@ -1502,6 +1502,12 @@ Public Class frmCollections
     Private Sub TabbedControlGroup1_SelectedPageChanged(sender As Object, e As DevExpress.XtraLayout.LayoutTabPageChangedEventArgs) Handles TabbedControlGroup1.SelectedPageChanged
         Select Case TabbedControlGroup1.SelectedTabPageIndex
             Case 0
+                If cboBDG.EditValue IsNot Nothing Then
+                    LoaderData(cboBDG.EditValue.ToString)
+                    Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(cboBDG.EditValue.ToString))
+                    Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+                End If
+
             Case 1 : Me.COL_REPORTTableAdapter.Fill(Me.Priamos_NETDataSet2.COL_REPORT)
             Case 2
                 If cboBDG.EditValue IsNot Nothing Then cboBDG1.EditValue = cboBDG.EditValue
@@ -1546,7 +1552,7 @@ Public Class frmCollections
         End If
 
 
-        GridView6.SelectAll()
+        'GridView6.SelectAll()
     End Sub
 
     Private Sub cboBDG1_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG1.EditValueChanged
@@ -1557,7 +1563,7 @@ Public Class frmCollections
         End If
 
 
-        GridView6.SelectAll()
+        'GridView6.SelectAll()
     End Sub
 
     Private Sub cboDebitUsr_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboDebitUsr.ButtonPressed

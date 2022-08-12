@@ -46,12 +46,14 @@ Public Class Rep_Sygentrotiki
         Using oCmd As New SqlCommand(sSQL, CNDB)
             oCmd.ExecuteNonQuery()
         End Using
-        Frm.chkPrintSyg.CheckState = CheckState.Checked
-        Frm.chkPrintSyg.Checked = True
-        Frm.chkPrintSyg.EditValue = 1
-        Frm.chkPrintSyg.Refresh()
-        Frm.chkPrintSyg.Select()
-        Frm.Refresh()
+        If Frm IsNot Nothing Then
+            Frm.chkPrintSyg.CheckState = CheckState.Checked
+            Frm.chkPrintSyg.Properties.ValueChecked = True
+            Frm.chkPrintSyg.EditValue = True
+            'Frm.chkPrintSyg.Refresh()
+            Frm.chkPrintSyg.Select()
+            Frm.Refresh()
+        End If
     End Sub
 
     Private Sub XrTable1_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTable1.BeforePrint

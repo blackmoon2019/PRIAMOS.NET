@@ -45,16 +45,16 @@ Partial Class frmColExt
         Me.LayoutControlItem41 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
-        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.VwCOLMETHODBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
         Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
         Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
@@ -429,10 +429,6 @@ Partial Class frmColExt
         Me.LayoutControlItem19.Text = "Παραστατικό"
         Me.LayoutControlItem19.TextSize = New System.Drawing.Size(154, 23)
         '
-        'Vw_APTTableAdapter
-        '
-        Me.Vw_APTTableAdapter.ClearBeforeFill = True
-        '
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
@@ -453,10 +449,6 @@ Partial Class frmColExt
         Me.cmdSave.Size = New System.Drawing.Size(185, 50)
         Me.cmdSave.TabIndex = 15
         Me.cmdSave.Text = "Αποθήκευση"
-        '
-        'Vw_BDGTableAdapter
-        '
-        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
         '
         'VwCOLMETHODBindingSource
         '
@@ -487,6 +479,14 @@ Partial Class frmColExt
         '
         Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
         Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Vw_APTTableAdapter
+        '
+        Me.Vw_APTTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
         '
         'CollectorsTableAdapter
         '

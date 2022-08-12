@@ -16,11 +16,15 @@ Public Class Receipt
         Using oCmd As New SqlCommand(sSQL, CNDB)
             oCmd.ExecuteNonQuery()
         End Using
-        Frm.chkPrintReceipt.CheckState = CheckState.Checked
-        Frm.chkPrintReceipt.Checked = True
-        Frm.chkPrintReceipt.EditValue = 1
-        Frm.chkPrintEidop.Select()
-        Frm.Refresh()
+        If Frm IsNot Nothing Then
+            Frm.chkPrintReceipt.CheckState = CheckState.Checked
+            Frm.chkPrintReceipt.Properties.ValueChecked = True
+            Frm.chkPrintReceipt.Checked = True
+            Frm.chkPrintReceipt.EditValue = True
+            'Frm.chkPrintReceipt.Refresh()
+            Frm.chkPrintReceipt.Select()
+            Frm.Refresh()
+        End If
     End Sub
 
     Private Sub Receipt_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
