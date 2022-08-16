@@ -1841,7 +1841,7 @@ Public Class frmScroller
                     Dim sSQL As String =
                                     "select '1' AS SKEY,APT.ID as AptID,COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) AS EMAIL,
                                     INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,
-                                    (select sum(vw_INC.AmtPerCalc) as AMOUNT  from dbo.vw_INC vw_INC
+                                    (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
                                 from INH 
@@ -1853,7 +1853,7 @@ Public Class frmScroller
                                 UNION
                                 select '2' AS SKEY,APT.ID as AptID,COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) AS EMAIL,
                                     INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,
-                                    (select sum(vw_INC.AmtPerCalc) as AMOUNT  from dbo.vw_INC vw_INC
+                                    (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
                                 from INH 

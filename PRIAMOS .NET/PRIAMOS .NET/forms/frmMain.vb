@@ -410,6 +410,11 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBatchInsertINH_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBatchInsertINH.ItemClick
+        Dim frmbatchCreateINH As frmbatchCreateINH = New frmbatchCreateINH()
+        frmbatchCreateINH.ShowDialog()
+    End Sub
+
 
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()

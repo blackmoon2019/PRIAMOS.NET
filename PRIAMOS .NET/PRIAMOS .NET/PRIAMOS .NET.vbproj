@@ -343,6 +343,12 @@
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XmlUpdateFromDB.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
+    <Compile Include="forms\batchCreateINH.Designer.vb">
+      <DependentUpon>batchCreateINH.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\batchCreateINH.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
@@ -660,6 +666,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\batchCreateINH.resx">
+      <DependentUpon>batchCreateINH.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
@@ -851,6 +860,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-batch-40.png" />
     <None Include="Resources\icons8-balance-16%281%29.png" />
     <None Include="Priamos_NETDataSet3.xsc">
       <DependentUpon>Priamos_NETDataSet3.xsd</DependentUpon>
