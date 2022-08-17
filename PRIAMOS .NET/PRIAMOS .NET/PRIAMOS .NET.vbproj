@@ -346,201 +346,139 @@
     <Compile Include="forms\batchCreateINH.Designer.vb">
       <DependentUpon>batchCreateINH.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\batchCreateINH.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\batchCreateINH.vb" />
     <Compile Include="forms\frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmAbout.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmAbout.vb" />
     <Compile Include="forms\frmApol.Designer.vb">
       <DependentUpon>frmApol.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmApol.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmApol.vb" />
     <Compile Include="forms\frmAPT.Designer.vb">
       <DependentUpon>frmAPT.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmAPT.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmAPT.vb" />
     <Compile Include="forms\frmBankCollectionInsert.Designer.vb">
       <DependentUpon>frmBankCollectionInsert.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmBankCollectionInsert.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmBankCollectionInsert.vb" />
     <Compile Include="forms\frmBatchInsertAttachmentsEX.Designer.vb">
       <DependentUpon>frmBatchInsertAttachmentsEX.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmBatchInsertAttachmentsEX.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmBatchInsertAttachmentsEX.vb" />
     <Compile Include="forms\frmBDG.Designer.vb">
       <DependentUpon>frmBDG.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmBDG.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmBDG.vb" />
     <Compile Include="forms\frmCalendar.Designer.vb">
       <DependentUpon>frmCalendar.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCalendar.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmCalendar.vb" />
     <Compile Include="forms\frmCalendarApol.Designer.vb">
       <DependentUpon>frmCalendarApol.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCalendarApol.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmCalendarApol.vb" />
     <Compile Include="forms\frmCases.Designer.vb">
       <DependentUpon>frmCases.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCases.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmCases.vb" />
     <Compile Include="forms\frmColEnanti.Designer.vb">
       <DependentUpon>frmColEnanti.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmColEnanti.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmColEnanti.vb" />
     <Compile Include="forms\frmColExt.Designer.vb">
       <DependentUpon>frmColExt.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmColExt.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmColExt.vb" />
     <Compile Include="forms\frmCollections.Designer.vb">
       <DependentUpon>frmCollections.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCollections.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmCollections.vb" />
     <Compile Include="forms\frmCollectionsDet.Designer.vb">
       <DependentUpon>frmCollectionsDet.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCollectionsDet.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmCollectionsDet.vb" />
     <Compile Include="forms\frmCustomers.designer.vb">
       <DependentUpon>frmCustomers.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmCustomers.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmCustomers.vb" />
     <Compile Include="forms\frmDocumentViewer.Designer.vb">
       <DependentUpon>frmDocumentViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmDocumentViewer.vb">
-      <SubType>Form</SubType>
+    <Compile Include="forms\frmDocumentViewer.vb" />
+    <Compile Include="forms\frmEmailAPT.Designer.vb">
+      <DependentUpon>frmEmailAPT.vb</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmEmailAPT.vb" />
     <Compile Include="forms\frmEXP.Designer.vb">
       <DependentUpon>frmEXP.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmEXP.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmEXP.vb" />
     <Compile Include="forms\frmFilePreviwer.Designer.vb">
       <DependentUpon>frmFilePreviwer.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmFilePreviwer.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmFilePreviwer.vb" />
     <Compile Include="forms\frmGen.Designer.vb">
       <DependentUpon>frmGen.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmGen.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmGen.vb" />
     <Compile Include="forms\frmIEP.Designer.vb">
       <DependentUpon>frmIEP.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmIEP.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmIEP.vb" />
     <Compile Include="forms\frmIND.Designer.vb">
       <DependentUpon>frmIND.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmIND.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmIND.vb" />
     <Compile Include="forms\frmMailSettings.Designer.vb">
       <DependentUpon>frmMailSettings.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmMailSettings.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmMailSettings.vb" />
     <Compile Include="forms\frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmMain.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmMain.vb" />
     <Compile Include="forms\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmLogin.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmLogin.vb" />
     <Compile Include="forms\frmParameters.Designer.vb">
       <DependentUpon>frmParameters.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmParameters.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmParameters.vb" />
     <Compile Include="forms\frmINH.Designer.vb">
       <DependentUpon>frmINH.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmINH.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmINH.vb" />
     <Compile Include="forms\frmPermissions.Designer.vb">
       <DependentUpon>frmPermissions.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmPermissions.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmPermissions.vb" />
     <Compile Include="forms\frmScroller.Designer.vb">
       <DependentUpon>frmScroller.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmScroller.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmScroller.vb" />
     <Compile Include="forms\frmTasks.Designer.vb">
       <DependentUpon>frmTasks.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmTasks.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmTasks.vb" />
     <Compile Include="forms\frmTecnicalSupport.Designer.vb">
       <DependentUpon>frmTecnicalSupport.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmTecnicalSupport.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmTecnicalSupport.vb" />
     <Compile Include="forms\frmUsers.Designer.vb">
       <DependentUpon>frmUsers.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmUsers.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmUsers.vb" />
     <Compile Include="forms\frmDBConnection.Designer.vb">
       <DependentUpon>frmDBConnection.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmDBConnection.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmDBConnection.vb" />
     <Compile Include="forms\frmVersions.Designer.vb">
       <DependentUpon>frmVersions.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmVersions.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmVersions.vb" />
     <Compile Include="Priamos_NETDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -639,9 +577,7 @@
     <Compile Include="forms\frmSplash.Designer.vb">
       <DependentUpon>frmSplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmSplash.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\frmSplash.vb" />
     <Compile Include="Priamos_NETDataSet.vb">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
     </Compile>
@@ -655,15 +591,11 @@
     <Compile Include="forms\WaitForm.Designer.vb">
       <DependentUpon>WaitForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\WaitForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="forms\WaitForm.vb" />
     <Compile Include="usefull forms\frmINH_pivot.designer.vb">
       <DependentUpon>frmINH_pivot.vb</DependentUpon>
     </Compile>
-    <Compile Include="usefull forms\frmINH_pivot.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="usefull forms\frmINH_pivot.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="forms\batchCreateINH.resx">
@@ -716,6 +648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmDocumentViewer.resx">
       <DependentUpon>frmDocumentViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmEmailAPT.resx">
+      <DependentUpon>frmEmailAPT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmEXP.resx">
       <DependentUpon>frmEXP.vb</DependentUpon>
@@ -860,6 +795,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-sent-24.png" />
+    <None Include="Resources\icons8-sent-32.png" />
     <None Include="Resources\icons8-batch-40.png" />
     <None Include="Resources\icons8-balance-16%281%29.png" />
     <None Include="Priamos_NETDataSet3.xsc">

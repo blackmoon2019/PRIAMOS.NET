@@ -25,10 +25,11 @@ Public Class frmbatchCreateINH
                     oCmd.Parameters.AddWithValue("@tdate", date2)
                     oCmd.Parameters.AddWithValue("@completeDate", sCompleteDate)
                     oCmd.Parameters.AddWithValue("@Months", Months)
+                    oCmd.Parameters.AddWithValue("@modifiedby", UserProps.ID.ToString)
                     oCmd.ExecuteNonQuery()
                 End Using
+                XtraMessageBox.Show("Τα παραστατικά δημιουργήθηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
-            XtraMessageBox.Show("Τα παραστατικά δημιουργήθηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

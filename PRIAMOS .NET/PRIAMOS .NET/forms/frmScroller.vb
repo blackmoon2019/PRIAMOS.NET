@@ -1840,7 +1840,7 @@ Public Class frmScroller
                     Dim sInhID As String = GridView1.GetRowCellValue(Row, "ID").ToString
                     Dim sSQL As String =
                                     "select '1' AS SKEY,APT.ID as AptID,COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) AS EMAIL,
-                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,
+                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
                                     (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -1852,7 +1852,7 @@ Public Class frmScroller
                                     " AND COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL
                                 UNION
                                 select '2' AS SKEY,APT.ID as AptID,COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) AS EMAIL,
-                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,
+                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
                                     (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -1884,6 +1884,7 @@ Public Class frmScroller
                             sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
                             sBody = sBody.Replace("{APTNAM}", sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString)
                             sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
+                            sBody = sBody.Replace("{BAL_ADM}", sdr.GetDecimal(sdr.GetOrdinal("BAL_ADM").ToString).ToString)
                             Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
 
 

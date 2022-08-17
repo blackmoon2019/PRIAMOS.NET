@@ -2479,6 +2479,20 @@ Public Class frmBDG
 
     End Sub
 
+    Private Sub cmdINHEmail_Click(sender As Object, e As EventArgs) Handles cmdINHEmail.Click
+        Dim form As frmEmailAPT = New frmEmailAPT()
+        Dim sInhIDS As New Dictionary(Of Integer, String)
+        Dim selectedRowHandles As Integer() = GridView10.GetSelectedRows()
+        If selectedRowHandles.Length = 0 Then XtraMessageBox.Show("Δεν έχετε επιλέξει παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+        For I = 0 To GridView10.SelectedRowsCount - 1
+            sInhIDS.Add(selectedRowHandles(I), GridView10.GetRowCellValue(selectedRowHandles(I), "ID").ToString)
+        Next
+        form.Text = "Αποστολή Email"
+        form.InhIDS = sInhIDS
+        form.bdgID = sID
+        form.ShowDialog()
+    End Sub
+
 
 
 
