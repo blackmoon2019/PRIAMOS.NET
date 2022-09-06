@@ -2980,6 +2980,8 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columnttl As Global.System.Data.DataColumn
         
+        Private columnnam As Global.System.Data.DataColumn
+        
         Private columnord As Global.System.Data.DataColumn
         
         Private columnAptbal As Global.System.Data.DataColumn
@@ -3069,6 +3071,14 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property namColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnam
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property ordColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnord
@@ -3120,9 +3130,9 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCOL_APTRow(ByVal parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT As vw_COL_BDGRow, ByVal aptID As System.Guid, ByVal credit As Decimal, ByVal debit As Decimal, ByVal bal As Decimal, ByVal ttl As String, ByVal ord As Integer, ByVal Aptbal As Decimal) As COL_APTRow
+        Public Overloads Function AddCOL_APTRow(ByVal parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT As vw_COL_BDGRow, ByVal aptID As System.Guid, ByVal credit As Decimal, ByVal debit As Decimal, ByVal bal As Decimal, ByVal ttl As String, ByVal nam As String, ByVal ord As Integer, ByVal Aptbal As Decimal) As COL_APTRow
             Dim rowCOL_APTRow As COL_APTRow = CType(Me.NewRow,COL_APTRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, aptID, credit, debit, bal, ttl, ord, Aptbal}
+            Dim columnValuesArray() As Object = New Object() {Nothing, aptID, credit, debit, bal, ttl, nam, ord, Aptbal}
             If (Not (parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT) Is Nothing) Then
                 columnValuesArray(0) = parentvw_COL_BDGRowByvw_COL_BDG_vw_COL_APT(0)
             End If
@@ -3160,6 +3170,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columndebit = MyBase.Columns("debit")
             Me.columnbal = MyBase.Columns("bal")
             Me.columnttl = MyBase.Columns("ttl")
+            Me.columnnam = MyBase.Columns("nam")
             Me.columnord = MyBase.Columns("ord")
             Me.columnAptbal = MyBase.Columns("Aptbal")
         End Sub
@@ -3179,6 +3190,8 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columnbal)
             Me.columnttl = New Global.System.Data.DataColumn("ttl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnttl)
+            Me.columnnam = New Global.System.Data.DataColumn("nam", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnam)
             Me.columnord = New Global.System.Data.DataColumn("ord", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnord)
             Me.columnAptbal = New Global.System.Data.DataColumn("Aptbal", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
@@ -6114,6 +6127,21 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property nam() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableCOL_APT.namColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'nam' in table 'COL_APT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableCOL_APT.namColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property ord() As Integer
             Get
                 Try 
@@ -6199,6 +6227,18 @@ Partial Public Class Priamos_NETDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetttlNull()
             Me(Me.tableCOL_APT.ttlColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsnamNull() As Boolean
+            Return Me.IsNull(Me.tableCOL_APT.namColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetnamNull()
+            Me(Me.tableCOL_APT.namColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8140,8 +8180,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(0).CommandText = "SELECT B.old_code,Nam AS BdgNam, SUM(debit) AS debit,usr.RealName,A.name AS Area_"& _ 
                 "Name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  COL C"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"inner join USR on usr.ID = C.debitusrID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"inner join BDG B on"& _ 
                 " B.ID = C.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"inner join ADR AD on AD.ID = B.AdrID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"inner join AREAS A on A"& _ 
-                ".ID = AD.AreaID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE C.completed=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, B.nam,usr.RealName,B.old_"& _ 
-                "code ,A.name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+                ".ID = AD.AreaID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE C.completed=0 and usr.ID<>'26521B58-5590-4880-A31E-4E91A"& _ 
+                "6CF964D'"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, B.nam,usr.RealName,B.old_code ,A.name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

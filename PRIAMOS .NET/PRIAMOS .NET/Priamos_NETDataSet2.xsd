@@ -250,7 +250,7 @@ inner join USR on usr.ID = C.debitusrID
 inner join BDG B on B.ID = C.bdgID 
 inner join ADR AD on AD.ID = B.AdrID 
 inner join AREAS A on A.ID = AD.AreaID 
-WHERE C.completed=0
+WHERE C.completed=0 and usr.ID&lt;&gt;'26521B58-5590-4880-A31E-4E91A6CF964D'
 GROUP BY bdgID, B.nam,usr.RealName,B.old_code ,A.name
 </CommandText>
                     <Parameters />
@@ -445,6 +445,7 @@ FROM   vw_INH</CommandText>
               <xs:element name="debit" msprop:Generator_ColumnVarNameInTable="columndebit" msprop:Generator_ColumnPropNameInRow="debit" msprop:Generator_ColumnPropNameInTable="debitColumn" msprop:Generator_UserColumnName="debit" type="xs:decimal" minOccurs="0" />
               <xs:element name="bal" msprop:Generator_ColumnVarNameInTable="columnbal" msprop:Generator_ColumnPropNameInRow="bal" msprop:Generator_ColumnPropNameInTable="balColumn" msprop:Generator_UserColumnName="bal" type="xs:decimal" minOccurs="0" />
               <xs:element name="ttl" msprop:Generator_ColumnVarNameInTable="columnttl" msprop:Generator_ColumnPropNameInRow="ttl" msprop:Generator_ColumnPropNameInTable="ttlColumn" msprop:Generator_UserColumnName="ttl" type="xs:string" minOccurs="0" />
+              <xs:element name="nam" msprop:Generator_ColumnVarNameInTable="columnnam" msprop:Generator_ColumnPropNameInRow="nam" msprop:Generator_ColumnPropNameInTable="namColumn" msprop:Generator_UserColumnName="nam" type="xs:string" minOccurs="0" />
               <xs:element name="ord" msprop:Generator_ColumnVarNameInTable="columnord" msprop:Generator_ColumnPropNameInRow="ord" msprop:Generator_ColumnPropNameInTable="ordColumn" msprop:Generator_UserColumnName="ord" type="xs:int" minOccurs="0" />
               <xs:element name="Aptbal" msprop:Generator_ColumnVarNameInTable="columnAptbal" msprop:Generator_ColumnPropNameInRow="Aptbal" msprop:Generator_ColumnPropNameInTable="AptbalColumn" msprop:Generator_UserColumnName="Aptbal" type="xs:decimal" minOccurs="0" />
             </xs:sequence>

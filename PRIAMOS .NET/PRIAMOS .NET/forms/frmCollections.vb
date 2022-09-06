@@ -151,7 +151,7 @@ Public Class frmCollections
             '         "INNER Join APT A ON C.aptID = A.ID " &
             '        "where Completed=0 " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
             '        "group by C.bdgID, aptID, ttl,a.bal,a.ord"
-            strSql = "SELECT S.bdgID, S.aptID, S.ttl,S.ord,SUM(COL.debit ) AS debit, S.credit, S.bal,S.Aptbal ,
+            strSql = "SELECT S.bdgID, S.aptID, S.ttl,S.nam,S.ord,SUM(COL.debit ) AS debit, S.credit, S.bal,S.Aptbal ,
                     (select STUFF((SELECT DISTINCT ',' + isnull(USR.RealName,'ΧΩΡΙΣ ΧΡΗΣΤΗ')   AS debitusrName   
 					                    FROM COL C
 					                    LEFT JOIN USR ON USR.ID = c.debitusrID
@@ -161,18 +161,18 @@ Public Class frmCollections
                         FROM COL
                         INNER JOIN
                         (
-                        SELECT  C.bdgID, aptID, a.ttl,a.ord, 
+                        SELECT  C.bdgID, aptID, a.ttl,a.ord, a.nam,
                         sum(debit) as debit , 
                         sum(credit) as credit , sum(C.bal) as bal,A.Bal as Aptbal  
                         From COL C 
                         INNER Join INH I ON I.ID=C.inhID 
                         INNER Join APT A ON C.aptID = A.ID 
                         where C.reserveAPT = 0 and Completed=0  " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
-                        "group by C.bdgID, aptID, ttl,a.bal,a.ord
+                        "group by C.bdgID, aptID, ttl,a.bal,a.ord,a.nam 
                         ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
                         where COL.reserveAPT = 0 and Completed=0
-                        GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal 
-                        order by S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal "
+                        GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal,s.nam  
+                        order by S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal,s.nam  "
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
             Priamos_NETDataSet2.COL_APT.Clear()
@@ -370,7 +370,7 @@ Public Class frmCollections
         End Try
 
     End Sub
-    Private Sub UpdateCOLS(ByVal mode As Byte, ByVal sField As String)
+    Private Sub UpdateCOLS(ByVal mode As Byte, ByVal sField As String, Optional ByVal OtherGrid As String = "")
         Dim dtdebit As String
         Dim sSQL As String
         Dim bdgID As String
@@ -386,54 +386,64 @@ Public Class frmCollections
                     End If
             End Select
 
-            Select Case grdBDG.FocusedView.Name
-                Case "GridView1", "grdVBDG"
-                    bdgID = grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "bdgID").ToString
-                    sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+            If OtherGrid <> "" Then
+                Select Case OtherGrid
+                    Case "GridView1", "grdVBDG"
+                        bdgID = grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "bdgID").ToString
+                        sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
                            " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID)
-                Case "GridView2"
-                    bdgID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString
-                    aptID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString
-                    Select Case mode
-                        Case 0
-                            sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                End Select
+            Else
+
+                Select Case grdBDG.FocusedView.Name
+                    Case "GridView1", "grdVBDG"
+                        bdgID = grdVBDG.GetRowCellValue(grdVBDG.FocusedRowHandle, "bdgID").ToString
+                        sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                           " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID)
+                    Case "GridView2"
+                        bdgID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString
+                        aptID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString
+                        Select Case mode
+                            Case 0
+                                sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
                                    " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID) &
                                    " and aptID = " & toSQLValueS(aptID)
-                        Case 1
-                            sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
+                            Case 1
+                                sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
                                    " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID) &
                                    " and aptID = " & toSQLValueS(aptID)
-                        Case 2
-                            sSQL = "UPDATE [COL] SET bankID  = " & sField &
+                            Case 2
+                                sSQL = "UPDATE [COL] SET bankID  = " & sField &
                                    " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID) &
                                    " and aptID = " & toSQLValueS(aptID)
-                    End Select
-                Case "GridView3"
-                    bdgID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString
-                    aptID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString
-                    inhID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString
-                    Select Case mode
-                        Case 0
-                            sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                        End Select
+                    Case "GridView3"
+                        bdgID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString
+                        aptID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString
+                        inhID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString
+                        Select Case mode
+                            Case 0
+                                sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
                                    " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID) &
                                    " and aptID = " & toSQLValueS(aptID) &
                                    " and inhID = " & toSQLValueS(inhID)
-                        Case 1
-                            sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
+                            Case 1
+                                sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
                                    " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID) &
                                    " and aptID = " & toSQLValueS(aptID) &
                                    " and inhID = " & toSQLValueS(inhID)
-                        Case 2
-                            sSQL = "UPDATE [COL] SET bankID  = " & sField &
+                            Case 2
+                                sSQL = "UPDATE [COL] SET bankID  = " & sField &
                                    " WHERE completed=0 and bdgID = " & toSQLValueS(bdgID) &
                                    " and aptID = " & toSQLValueS(aptID) &
                                    " and inhID = " & toSQLValueS(inhID)
-                    End Select
-                Case "GridView4"
-                    sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                        End Select
+                    Case "GridView4"
+                        sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
                            " WHERE completed=0 and ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
-                    bdgID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bdgID").ToString
-            End Select
+                        bdgID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bdgID").ToString
+                End Select
+            End If
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
@@ -566,6 +576,14 @@ Public Class frmCollections
             Dim debitusrID As String, sAptID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
+
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrName").ToString() = "System User" Then
+                e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
+                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
+                sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
+                e.Valid = False
+                Exit Sub
+            End If
             ' Επίτηδες έχει μπει το INHVIEW. Με ενδιαφέρει να ελένξω σε επίπεδο παραστατικού αν υπάρχει διαφορετικός χρήστης
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(INHView, debitusrID) = False Then
                 e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
@@ -1465,6 +1483,10 @@ Public Class frmCollections
                     sSQL = "Update apt set apt.bal_adm = isnull(apt.bal_adm,0) -  ISNULL( (select isnull(col_d.credit,0) from col_d where col_d.agreed=1 And col_d.ID = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "ID").ToString) & ") ,0)" &
                         "where id = " & toSQLValueS(GridView6.GetRowCellValue(selectedRowHandle, "aptID").ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                    ' Όταν ολοκληρώσει την συμφωνία βάζει το System user ξανά για όλα τα μη επιβεβαιωμένα
+                    UpdateCOLS(0, "'26521B58-5590-4880-A31E-4E91A6CF964D'", "grdVBDG")
+
+
 
                 Else
                     ' Από την στιγμή που διαγράφω κινήσεις είσπραξης θα πρέπει να γίνει Ενημέρωση υπολοίπου διαμερίσματος

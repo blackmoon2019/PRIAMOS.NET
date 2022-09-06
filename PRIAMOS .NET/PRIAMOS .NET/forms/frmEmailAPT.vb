@@ -39,9 +39,9 @@ Public Class frmEmailAPT
             Dim sendEmailOwner As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "sendEmailOwner") = True, 1, 0)
             Dim sendEmailTenant As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "sendEmailTenant") = True, 1, 0)
             Dim sendEmailRepresentative As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "sendEmailRepresentative") = True, 1, 0)
-            Dim EmailRepresentative As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctRepresentativeEmail")
-            Dim EmailOwner As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctOwnerEmail")
-            Dim EmailTenant As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctTenantEmail")
+            Dim EmailRepresentative As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctRepresentativeEmail").ToString
+            Dim EmailOwner As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctOwnerEmail").ToString
+            Dim EmailTenant As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctTenantEmail").ToString
             Dim receipt As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "receipt") = True, 1, 0)
             Dim syg As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "syg") = True, 1, 0)
             Dim Eidop As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "eidop") = True, 1, 0)

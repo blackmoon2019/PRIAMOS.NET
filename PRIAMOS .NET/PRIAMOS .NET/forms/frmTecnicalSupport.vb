@@ -331,4 +331,8 @@ Public Class frmTecnicalSupport
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         If SaveTech(True) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+    Private Sub PictureEdit13_EditValueChanged(sender As Object, e As EventArgs) Handles PictureEdit13.EditValueChanged
+
+    End Sub
 End Class

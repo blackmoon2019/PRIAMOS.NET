@@ -20,6 +20,7 @@ Partial Class frmTecnicalSupport
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkBuilded = New DevExpress.XtraEditors.CheckEdit()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.chkMoreInfo = New DevExpress.XtraEditors.CheckEdit()
@@ -41,6 +42,7 @@ Partial Class frmTecnicalSupport
         Me.PictureEdit12 = New DevExpress.XtraEditors.PictureEdit()
         Me.PictureEdit13 = New DevExpress.XtraEditors.PictureEdit()
         Me.PictureEdit14 = New DevExpress.XtraEditors.PictureEdit()
+        Me.txtBuildVersion = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.lCode = New DevExpress.XtraLayout.LayoutControlItem()
@@ -63,14 +65,13 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.chkBuilded = New DevExpress.XtraEditors.CheckEdit()
         Me.LayoutControlItem20 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.txtBuildVersion = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlItem21 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkBuilded.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkMoreInfo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkRejected.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkFixed.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,6 +88,7 @@ Partial Class frmTecnicalSupport
         CType(Me.PictureEdit12.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureEdit13.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureEdit14.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtBuildVersion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lCode, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,12 +111,10 @@ Partial Class frmTecnicalSupport
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkBuilded.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBuildVersion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -151,6 +151,26 @@ Partial Class frmTecnicalSupport
         Me.LayoutControl1.Size = New System.Drawing.Size(2243, 1300)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'chkBuilded
+        '
+        Me.chkBuilded.EditValue = CType(0, Byte)
+        Me.chkBuilded.Enabled = False
+        Me.chkBuilded.Location = New System.Drawing.Point(1856, 12)
+        Me.chkBuilded.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkBuilded.Name = "chkBuilded"
+        Me.chkBuilded.Properties.Appearance.BackColor = System.Drawing.Color.LightSlateGray
+        Me.chkBuilded.Properties.Appearance.ForeColor = System.Drawing.Color.White
+        Me.chkBuilded.Properties.Appearance.Options.UseBackColor = True
+        Me.chkBuilded.Properties.Appearance.Options.UseForeColor = True
+        Me.chkBuilded.Properties.Caption = "Εκδώθηκε"
+        Me.chkBuilded.Properties.Tag = "dimChanged"
+        Me.chkBuilded.Properties.ValueChecked = CType(1, Byte)
+        Me.chkBuilded.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkBuilded.Size = New System.Drawing.Size(121, 32)
+        Me.chkBuilded.StyleController = Me.LayoutControl1
+        Me.chkBuilded.TabIndex = 54
+        Me.chkBuilded.Tag = "Builded,0,1,2"
         '
         'SimpleButton1
         '
@@ -425,6 +445,16 @@ Partial Class frmTecnicalSupport
         Me.PictureEdit14.TabIndex = 4
         Me.PictureEdit14.Tag = "image3,0,1,2"
         '
+        'txtBuildVersion
+        '
+        Me.txtBuildVersion.Location = New System.Drawing.Point(2092, 12)
+        Me.txtBuildVersion.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtBuildVersion.Name = "txtBuildVersion"
+        Me.txtBuildVersion.Size = New System.Drawing.Size(139, 38)
+        Me.txtBuildVersion.StyleController = Me.LayoutControl1
+        Me.txtBuildVersion.TabIndex = 19
+        Me.txtBuildVersion.Tag = "BuildVersion,0,1,2"
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -636,15 +666,6 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
         '
-        'LayoutControlItem19
-        '
-        Me.LayoutControlItem19.Control = Me.SimpleButton1
-        Me.LayoutControlItem19.Location = New System.Drawing.Point(1974, 1237)
-        Me.LayoutControlItem19.Name = "LayoutControlItem19"
-        Me.LayoutControlItem19.Size = New System.Drawing.Size(147, 43)
-        Me.LayoutControlItem19.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem19.TextVisible = False
-        '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
@@ -652,26 +673,6 @@ Partial Class frmTecnicalSupport
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(1097, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'chkBuilded
-        '
-        Me.chkBuilded.EditValue = CType(0, Byte)
-        Me.chkBuilded.Enabled = False
-        Me.chkBuilded.Location = New System.Drawing.Point(1856, 12)
-        Me.chkBuilded.Margin = New System.Windows.Forms.Padding(5)
-        Me.chkBuilded.Name = "chkBuilded"
-        Me.chkBuilded.Properties.Appearance.BackColor = System.Drawing.Color.LightSlateGray
-        Me.chkBuilded.Properties.Appearance.ForeColor = System.Drawing.Color.White
-        Me.chkBuilded.Properties.Appearance.Options.UseBackColor = True
-        Me.chkBuilded.Properties.Appearance.Options.UseForeColor = True
-        Me.chkBuilded.Properties.Caption = "Εκδώθηκε"
-        Me.chkBuilded.Properties.Tag = "dimChanged"
-        Me.chkBuilded.Properties.ValueChecked = CType(1, Byte)
-        Me.chkBuilded.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkBuilded.Size = New System.Drawing.Size(121, 32)
-        Me.chkBuilded.StyleController = Me.LayoutControl1
-        Me.chkBuilded.TabIndex = 54
-        Me.chkBuilded.Tag = "Builded,0,1,2"
         '
         'LayoutControlItem20
         '
@@ -681,16 +682,6 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem20.Size = New System.Drawing.Size(125, 42)
         Me.LayoutControlItem20.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem20.TextVisible = False
-        '
-        'txtBuildVersion
-        '
-        Me.txtBuildVersion.Location = New System.Drawing.Point(2092, 12)
-        Me.txtBuildVersion.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtBuildVersion.Name = "txtBuildVersion"
-        Me.txtBuildVersion.Size = New System.Drawing.Size(139, 38)
-        Me.txtBuildVersion.StyleController = Me.LayoutControl1
-        Me.txtBuildVersion.TabIndex = 19
-        Me.txtBuildVersion.Tag = "BuildVersion,0,1,2"
         '
         'LayoutControlItem21
         '
@@ -704,6 +695,15 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem21.Text = "Έκδοση"
         Me.LayoutControlItem21.TextSize = New System.Drawing.Size(99, 23)
         '
+        'LayoutControlItem19
+        '
+        Me.LayoutControlItem19.Control = Me.SimpleButton1
+        Me.LayoutControlItem19.Location = New System.Drawing.Point(1974, 1237)
+        Me.LayoutControlItem19.Name = "LayoutControlItem19"
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(147, 43)
+        Me.LayoutControlItem19.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem19.TextVisible = False
+        '
         'frmTecnicalSupport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -716,6 +716,7 @@ Partial Class frmTecnicalSupport
         Me.Text = "frmTecnicalSupport"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkBuilded.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkMoreInfo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkRejected.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkFixed.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -732,6 +733,7 @@ Partial Class frmTecnicalSupport
         CType(Me.PictureEdit12.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureEdit13.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureEdit14.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtBuildVersion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lCode, System.ComponentModel.ISupportInitialize).EndInit()
@@ -754,12 +756,10 @@ Partial Class frmTecnicalSupport
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkBuilded.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBuildVersion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

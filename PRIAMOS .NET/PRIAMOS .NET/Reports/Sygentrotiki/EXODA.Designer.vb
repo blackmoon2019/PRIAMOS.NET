@@ -240,11 +240,11 @@ Partial Public Class EXODA
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(673.9009!, 0!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(664.2709!, 0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel5.SizeF = New System.Drawing.SizeF(195.559!, 38.09998!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(260.0!, 38.09998!)
         Me.XrLabel5.StylePriority.UseBackColor = False
         Me.XrLabel5.StylePriority.UseFont = False
         Me.XrLabel5.StylePriority.UseTextAlignment = False
@@ -259,7 +259,7 @@ Partial Public Class EXODA
         Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.table1.Name = "table1"
         Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
-        Me.table1.SizeF = New System.Drawing.SizeF(491.1911!, 38.09998!)
+        Me.table1.SizeF = New System.Drawing.SizeF(664.8295!, 38.09998!)
         '
         'tableRow1
         '
@@ -298,7 +298,7 @@ Partial Public Class EXODA
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
         Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
-        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(699.9843!, 0!)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(753.9846!, 0!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
         Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -317,7 +317,7 @@ Partial Public Class EXODA
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel1.SizeF = New System.Drawing.SizeF(491.1911!, 38.09998!)
+        Me.XrLabel1.SizeF = New System.Drawing.SizeF(742.3176!, 38.09998!)
         Me.XrLabel1.StylePriority.UseFont = False
         Me.XrLabel1.Text = "XrLabel1"
         '
@@ -326,7 +326,7 @@ Partial Public Class EXODA
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "973a4732-c4bd-4987-ab62-da289ef9dc1a"
+        Me.inhID.ValueInfo = "23764476-d7f9-48fa-b4ed-a817a58a1978"
         DynamicListLookUpSettings1.DataMember = "vw_IND"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "inhID"
@@ -349,7 +349,7 @@ Partial Public Class EXODA
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
         Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(254, 111, 0, 0)
+        Me.Margins = New System.Drawing.Printing.Margins(200, 111, 0, 0)
         Me.PageHeight = 2794
         Me.PageWidth = 2159
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})

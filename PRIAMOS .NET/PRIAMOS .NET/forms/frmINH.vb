@@ -1292,4 +1292,20 @@ Public Class frmINH
         End If
 
     End Sub
+
+    Private Sub cboAhpb_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpb.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboAhpb.EditValue = Nothing
+            Case 2
+            Case 3
+        End Select
+    End Sub
+
+    Private Sub cboAhpbB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbB.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboAhpb.EditValue = Nothing
+            Case 2
+            Case 3
+        End Select
+    End Sub
 End Class
