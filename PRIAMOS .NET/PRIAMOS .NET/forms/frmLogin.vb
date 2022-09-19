@@ -65,8 +65,6 @@ Public Class frmLogin
                     ProgProps.ADM = Prog_Prop.GetProgADM
                     'Παράμετροι Email Κοινοχρήστων
                     Prog_Prop.GetProgInvoicesEmail()
-                    'General Permissions
-                    UserPermissions.GetUserPermissions()
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
                     XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)

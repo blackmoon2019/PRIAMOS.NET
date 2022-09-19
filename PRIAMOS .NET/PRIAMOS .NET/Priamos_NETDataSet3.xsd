@@ -149,6 +149,31 @@ ORDER BY APT.ord</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FORMRIGHTSTableAdapter" GeneratorDataComponentClassName="FORMRIGHTSTableAdapter" Name="FORMRIGHTS" UserDataComponentName="FORMRIGHTSTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT USR.RealName, FORM_RIGHTS.ID, FORM_RIGHTS.[view], FORM_RIGHTS.[insert], FORM_RIGHTS.edit, FORM_RIGHTS.[delete], FORMS.name
+FROM   FORM_RIGHTS INNER JOIN
+           FORMS ON FORMS.ID = FORM_RIGHTS.Fid INNER JOIN
+           USR ON USR.ID = FORM_RIGHTS.uID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RealName" DataSetColumn="RealName" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="view" DataSetColumn="view" />
+              <Mapping SourceColumn="insert" DataSetColumn="insert" />
+              <Mapping SourceColumn="edit" DataSetColumn="edit" />
+              <Mapping SourceColumn="delete" DataSetColumn="delete" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -157,7 +182,7 @@ ORDER BY APT.ord</CommandText>
   <xs:element name="Priamos_NETDataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Priamos_NETDataSet3" msprop:Generator_UserDSName="Priamos_NETDataSet3">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MAILS" msprop:Generator_TableClassName="MAILSDataTable" msprop:Generator_TableVarName="tableMAILS" msprop:Generator_RowChangedName="MAILSRowChanged" msprop:Generator_TablePropName="MAILS" msprop:Generator_RowDeletingName="MAILSRowDeleting" msprop:Generator_RowChangingName="MAILSRowChanging" msprop:Generator_RowEvHandlerName="MAILSRowChangeEventHandler" msprop:Generator_RowDeletedName="MAILSRowDeleted" msprop:Generator_RowClassName="MAILSRow" msprop:Generator_UserTableName="MAILS" msprop:Generator_RowEvArgName="MAILSRowChangeEvent">
+        <xs:element name="MAILS" msprop:Generator_TableClassName="MAILSDataTable" msprop:Generator_TableVarName="tableMAILS" msprop:Generator_TablePropName="MAILS" msprop:Generator_RowDeletingName="MAILSRowDeleting" msprop:Generator_RowChangingName="MAILSRowChanging" msprop:Generator_RowEvHandlerName="MAILSRowChangeEventHandler" msprop:Generator_RowDeletedName="MAILSRowDeleted" msprop:Generator_UserTableName="MAILS" msprop:Generator_RowChangedName="MAILSRowChanged" msprop:Generator_RowEvArgName="MAILSRowChangeEvent" msprop:Generator_RowClassName="MAILSRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -191,7 +216,7 @@ ORDER BY APT.ord</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="APT" msprop:Generator_TableClassName="APTDataTable" msprop:Generator_TableVarName="tableAPT" msprop:Generator_TablePropName="APT" msprop:Generator_RowDeletingName="APTRowDeleting" msprop:Generator_RowChangingName="APTRowChanging" msprop:Generator_RowEvHandlerName="APTRowChangeEventHandler" msprop:Generator_RowDeletedName="APTRowDeleted" msprop:Generator_UserTableName="APT" msprop:Generator_RowChangedName="APTRowChanged" msprop:Generator_RowEvArgName="APTRowChangeEvent" msprop:Generator_RowClassName="APTRow">
+        <xs:element name="APT" msprop:Generator_TableClassName="APTDataTable" msprop:Generator_TableVarName="tableAPT" msprop:Generator_RowChangedName="APTRowChanged" msprop:Generator_TablePropName="APT" msprop:Generator_RowDeletingName="APTRowDeleting" msprop:Generator_RowChangingName="APTRowChanging" msprop:Generator_RowEvHandlerName="APTRowChangeEventHandler" msprop:Generator_RowDeletedName="APTRowDeleted" msprop:Generator_RowClassName="APTRow" msprop:Generator_UserTableName="APT" msprop:Generator_RowEvArgName="APTRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ttl" msprop:Generator_ColumnVarNameInTable="columnttl" msprop:Generator_ColumnPropNameInRow="ttl" msprop:Generator_ColumnPropNameInTable="ttlColumn" msprop:Generator_UserColumnName="ttl" minOccurs="0">
@@ -243,6 +268,31 @@ ORDER BY APT.ord</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="FORMRIGHTS" msprop:Generator_TableClassName="FORMRIGHTSDataTable" msprop:Generator_TableVarName="tableFORMRIGHTS" msprop:Generator_TablePropName="FORMRIGHTS" msprop:Generator_RowDeletingName="FORMRIGHTSRowDeleting" msprop:Generator_RowChangingName="FORMRIGHTSRowChanging" msprop:Generator_RowEvHandlerName="FORMRIGHTSRowChangeEventHandler" msprop:Generator_RowDeletedName="FORMRIGHTSRowDeleted" msprop:Generator_UserTableName="FORMRIGHTS" msprop:Generator_RowChangedName="FORMRIGHTSRowChanged" msprop:Generator_RowEvArgName="FORMRIGHTSRowChangeEvent" msprop:Generator_RowClassName="FORMRIGHTSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RealName" msprop:Generator_ColumnVarNameInTable="columnRealName" msprop:Generator_ColumnPropNameInRow="RealName" msprop:Generator_ColumnPropNameInTable="RealNameColumn" msprop:Generator_UserColumnName="RealName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="view" msprop:Generator_ColumnVarNameInTable="columnview" msprop:Generator_ColumnPropNameInRow="view" msprop:Generator_ColumnPropNameInTable="viewColumn" msprop:Generator_UserColumnName="view" type="xs:boolean" />
+              <xs:element name="insert" msprop:Generator_ColumnVarNameInTable="columninsert" msprop:Generator_ColumnPropNameInRow="insert" msprop:Generator_ColumnPropNameInTable="insertColumn" msprop:Generator_UserColumnName="insert" type="xs:boolean" />
+              <xs:element name="edit" msprop:Generator_ColumnVarNameInTable="columnedit" msprop:Generator_ColumnPropNameInRow="edit" msprop:Generator_ColumnPropNameInTable="editColumn" msprop:Generator_UserColumnName="edit" type="xs:boolean" />
+              <xs:element name="delete" msprop:Generator_ColumnVarNameInTable="columndelete" msprop:Generator_ColumnPropNameInRow="delete" msprop:Generator_ColumnPropNameInTable="deleteColumn" msprop:Generator_UserColumnName="delete" type="xs:boolean" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -251,6 +301,10 @@ ORDER BY APT.ord</CommandText>
     </xs:unique>
     <xs:unique name="APT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:APT" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="FORMRIGHTS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:FORMRIGHTS" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>

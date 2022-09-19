@@ -1776,7 +1776,7 @@ Public Class frmScroller
                 report.Parameters.Item(0).Value = GridView1.GetRowCellValue(Row, "ID").ToString
                 report.Parameters.Item(1).Value = GridView1.GetRowCellValue(Row, "bdgID").ToString
                 report.CreateDocument()
-
+                report.PrintingSystem.Document.ScaleFactor = 0.99
                 Dim tool As New PrintToolBase(report.PrintingSystem)
                 tool.Print()
             Case 1

@@ -1222,7 +1222,7 @@ Partial Public Class Receipt
         Me.XrLabel84.Dpi = 254.0!
         Me.XrLabel84.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[bal]")})
         Me.XrLabel84.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel84.ForeColor = System.Drawing.Color.White
+        Me.XrLabel84.ForeColor = System.Drawing.Color.Black
         Me.XrLabel84.LocationFloat = New DevExpress.Utils.PointFloat(554.0992!, 510.7455!)
         Me.XrLabel84.Multiline = True
         Me.XrLabel84.Name = "XrLabel84"

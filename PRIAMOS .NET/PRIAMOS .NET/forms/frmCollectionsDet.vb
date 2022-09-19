@@ -7,6 +7,7 @@ Public Class frmCollectionsDet
     Private sID As String, sbdgID As String, saptID As String, sinhID As String
     Private sTenant As Boolean, sCheckForTenant As Boolean = False
     Private LoadForms As New FormLoader
+    Private UserPermissions As New CheckPermissions
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -40,6 +41,7 @@ Public Class frmCollectionsDet
         End Set
     End Property
     Private Sub frmCollectionsDet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowDelete = False Then cmdCol_D_Del.Enabled = False
         If sinhID <> "" And sCheckForTenant = True Then
             Me.Vw_COL_DTableAdapter.FillByInhIDAndTenant(Me.Priamos_NETDataSet2.vw_COL_D, System.Guid.Parse(sinhID), sTenant, System.Guid.Parse(saptID))
         ElseIf sinhID <> "" Then
@@ -123,7 +125,8 @@ Public Class frmCollectionsDet
 
     Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
         Select Case e.KeyCode
-            Case Keys.Delete : If UserProps.AllowDelete = True Then cmdCol_D_Del.PerformClick()
+            Case Keys.Delete
+                UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowDelete = True Then cmdCol_D_Del.PerformClick()
         End Select
     End Sub
 

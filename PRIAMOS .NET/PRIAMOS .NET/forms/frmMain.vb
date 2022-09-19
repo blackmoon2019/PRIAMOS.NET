@@ -5,6 +5,7 @@ Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraTabbedMdi
 Public Class frmMain
     Private CheckFUpdate As New CheckForUpdates
+    Private UserPermissions As New CheckPermissions
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         XtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders
         bbDate.Caption = DateTime.Today
@@ -22,6 +23,7 @@ Public Class frmMain
     Private Sub bbUsers_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles bbUsers.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Χρήστες"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_USR"
         form.MdiParent = Me
         form.Show()
@@ -30,6 +32,7 @@ Public Class frmMain
     Private Sub bbMailSettings_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbMailSettings.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Email Settings"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_MAILS"
         form.MdiParent = Me
         form.Show()
@@ -77,10 +80,9 @@ Public Class frmMain
         End Select
     End Sub
     Private Sub bbRights_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbRights.ItemClick
-        Dim form As frmScroller = New frmScroller()
+        Dim form As frmPermissions = New frmPermissions()
         form.Text = "Δικαιώματα"
-        form.DataTable = "vw_RIGHTS"
-        form.DataDetail = "vw_FORM_RIGHTS"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         form.Show()
     End Sub
@@ -93,6 +95,7 @@ Public Class frmMain
     Private Sub bbBDG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbBDG.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Πολυκατοικίες"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_BDG"
         form.MdiParent = Me
         form.Show()
@@ -101,6 +104,7 @@ Public Class frmMain
     Private Sub bbCOU_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCOU.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Νομοί"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_COU"
         form.MdiParent = Me
         form.Show()
@@ -109,6 +113,7 @@ Public Class frmMain
     Private Sub bbAreas_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbAreas.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Περιοχές"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_AREAS"
         form.MdiParent = Me
         form.Show()
@@ -117,6 +122,7 @@ Public Class frmMain
     Private Sub bbADR_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbADR.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Διευθύνσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_ADR"
         form.MdiParent = Me
         form.Show()
@@ -125,6 +131,7 @@ Public Class frmMain
     Private Sub bbDOY_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbDOY.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "ΔΟΥ"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_DOY"
         form.MdiParent = Me
         form.Show()
@@ -133,6 +140,7 @@ Public Class frmMain
     Private Sub bbPRF_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbPRF.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Επαγγέλματα"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_PRF"
         form.MdiParent = Me
         form.Show()
@@ -141,6 +149,7 @@ Public Class frmMain
     Private Sub bbCCT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCCT.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Επαφές"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_CCT"
         form.MdiParent = Me
         form.Show()
@@ -150,6 +159,7 @@ Public Class frmMain
     Private Sub bbFuelType_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbFuelType.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τύποι Καυσίμων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_FTYPES"
         form.MdiParent = Me
         form.Show()
@@ -158,6 +168,7 @@ Public Class frmMain
     Private Sub bbParamaters_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbParamaters.ItemClick
         Dim form As frmParameters = New frmParameters()
         form.Text = "Παράμετροι"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         form.Mode = FormMode.NewRecord
         Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -167,6 +178,7 @@ Public Class frmMain
     Private Sub bbCalcTypes_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCalcTypes.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τύποι Υπολογισμού"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_CALC_TYPES"
         form.MdiParent = Me
         form.Show()
@@ -175,6 +187,7 @@ Public Class frmMain
     Private Sub BarButtonItem3_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbMLC.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κατηγορίες Χιλιοσστών"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_MLC"
         form.MdiParent = Me
         form.Show()
@@ -188,6 +201,7 @@ Public Class frmMain
     Private Sub bbTechnicalSupport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTechnicalSupport.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τεχνική Υποστήριξη"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_TECH_SUP"
         form.MdiParent = Me
         form.Show()
@@ -196,6 +210,7 @@ Public Class frmMain
     Private Sub bbTechCateg_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTechCateg.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κατηγορίες Τεχνικής Υποστήριξης"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_TECH_CAT"
         form.MdiParent = Me
         form.Show()
@@ -213,6 +228,7 @@ Public Class frmMain
     Private Sub bbParasts_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbParasts.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κοινόχρηστα"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_INH"
         form.MdiParent = Me
         form.Show()
@@ -221,6 +237,7 @@ Public Class frmMain
     Private Sub bbCalcCateg_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbCalcCateg.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κατηγορίες Υπολογισμών"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_CALC_CAT"
         form.MdiParent = Me
         form.Show()
@@ -230,6 +247,7 @@ Public Class frmMain
     Private Sub bbTTL_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbTTL.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Λεκτικά Εκτυπώσεων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_TTL"
         form.MdiParent = Me
         form.Show()
@@ -238,6 +256,7 @@ Public Class frmMain
     Private Sub bbAnnouncements_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbAnnouncements.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Ανακοινώσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_ANN_MENTS"
         form.MdiParent = Me
         form.Show()
@@ -253,6 +272,7 @@ Public Class frmMain
     Private Sub BBIND_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBIND.ItemClick
         Dim form As frmIND = New frmIND()
         form.Text = "Χρεώσεις Πολυκατοικιών"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         form.Show()
     End Sub
@@ -260,6 +280,7 @@ Public Class frmMain
     Private Sub BBApol_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBApol.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τύποι Απολύμανσης"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_APOL_TYPES"
         form.MdiParent = Me
         form.Show()
@@ -268,6 +289,7 @@ Public Class frmMain
     Private Sub BBcalendarApol_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBcalendarApol.ItemClick
         Dim form As frmCalendarApol = New frmCalendarApol()
         form.Text = "Πρόγραμμα Απολυμάνσεων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         form.Show()
     End Sub
@@ -275,6 +297,7 @@ Public Class frmMain
     Private Sub BBApolList_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBApolList.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Απολυμάνσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_APOL"
         form.MdiParent = Me
         form.Show()
@@ -282,7 +305,8 @@ Public Class frmMain
 
     Private Sub BBPriamosVer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBPriamosVer.ItemClick
         Dim form As frmScroller = New frmScroller()
-        form.Text = "Ιστορικό Εκδόσεων"
+        form.Text = "Εκδόσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_PRIAMOSVER"
         form.MdiParent = Me
         form.Show()
@@ -291,6 +315,7 @@ Public Class frmMain
     Private Sub BarButtonItem3_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BarButtonItem3.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τράπεζες"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_BANKS"
         form.MdiParent = Me
         form.Show()
@@ -299,6 +324,7 @@ Public Class frmMain
     Private Sub BBColMethod_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBColMethod.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τρόποι Είσπραξης"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_COL_METHOD"
         form.MdiParent = Me
         form.Show()
@@ -313,6 +339,7 @@ Public Class frmMain
 
         Dim form As frmCollections = New frmCollections()
         form.Text = "Είσπραξεις Κοινοχρήστων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         'form.DataTable = "vw_COL"
         'form.MdiParent = Me
@@ -339,6 +366,7 @@ Public Class frmMain
     Private Sub BBTasks_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBTasksCat.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Εργασίες"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_TASKS_CAT"
         form.MdiParent = Me
         form.Show()
@@ -347,6 +375,7 @@ Public Class frmMain
     Private Sub BBCases_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCases.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Υποθέσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_CASES"
         form.DataDetail = "vw_TASKS"
         form.MdiParent = Me
@@ -356,6 +385,7 @@ Public Class frmMain
     Private Sub BBTechSup_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBTechSup.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Τεχνική Υποστήριξη"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_TECH_SUP"
         form.MdiParent = Me
         form.Show()
@@ -364,6 +394,7 @@ Public Class frmMain
     Private Sub BBCT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCT.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Επαφές ανα επάγγελμα"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_CCT_PF"
         form.MdiParent = Me
         form.Show()
@@ -372,6 +403,7 @@ Public Class frmMain
     Private Sub BBFolderCat_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBFolderCat.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Κατηγορίες Φακέλων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_FOLDER_CAT"
         form.MdiParent = Me
         form.Show()
@@ -380,6 +412,7 @@ Public Class frmMain
     Private Sub BBCol2_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBCol2.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Λοιπές Εισπράξεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_COL_EXT"
         form.MdiParent = Me
         form.Bar4.Visible = True
@@ -389,6 +422,7 @@ Public Class frmMain
     Private Sub BBVer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBVer.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Εκδόσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_PRIAMOSVER"
         form.MdiParent = Me
         form.Show()
@@ -397,6 +431,7 @@ Public Class frmMain
     Private Sub bbVersion_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbVersion.ItemClick
         Dim form As frmScroller = New frmScroller()
         form.Text = "Εκδόσεις"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_PRIAMOSVER"
         form.MdiParent = Me
         form.Show()
@@ -405,6 +440,7 @@ Public Class frmMain
     Private Sub BBAbout_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBAbout.ItemClick
         Dim form As frmAbout = New frmAbout()
         form.Text = "Περί"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
         form.Show()

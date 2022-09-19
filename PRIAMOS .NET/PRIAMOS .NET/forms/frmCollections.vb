@@ -31,6 +31,7 @@ Public Class frmCollections
     Private INHLastRowExpanded As Integer
     Private OwnerTenantLastRowExpanded As Integer
     Private APTLastRowExpanded As Integer
+    Private UserPermissions As New CheckPermissions
     'Dim debitUsrIDBDG As String
     'Dim debitUsrIDAPT As String
     'Dim debitUsrIDINH As String
@@ -137,6 +138,7 @@ Public Class frmCollections
         grdVAPT.DataController.CollapseDetailRowsOnReset = False
         grdVINH.DataController.CollapseDetailRowsOnReset = False
         grdVBDG.DataController.CollapseDetailRowsOnReset = False
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowInsert = False Then cmdColAdd.Enabled = False
     End Sub
 
 
@@ -293,12 +295,14 @@ Public Class frmCollections
     End Sub
 
     Private Sub RepositoryUSRCredit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Select Case e.Button.Index
             Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "creditusrID", "")
         End Select
     End Sub
 
     Private Sub RepositoryUSRDebit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs)
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Select Case e.Button.Index
             Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "debitusrID", "")
         End Select
@@ -314,6 +318,7 @@ Public Class frmCollections
     Friend Sub Rep_DEBITUSR_Changed(sender As Object, e As EventArgs)
 
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
             Dim debitUsrID As String
             debitUsrID = toSQLValueS(editor.GetColumnValue("ID").ToString)
@@ -349,6 +354,7 @@ Public Class frmCollections
     Friend Sub Rep_COL_METHOD_Changed(sender As Object, e As EventArgs)
 
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
             Dim colMethodID As String = toSQLValueS(editor.EditValue.ToString)
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
@@ -361,6 +367,7 @@ Public Class frmCollections
     Friend Sub Rep_ΒΑΝΚ_Changed(sender As Object, e As EventArgs)
 
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
             Dim bankID As String = toSQLValueS(editor.EditValue.ToString)
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
@@ -456,6 +463,7 @@ Public Class frmCollections
 
     End Sub
     Private Sub Rep_DEBITUSR_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_DEBITUSR.ButtonPressed
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Select Case e.Button.Index
             Case 1 : grdVBDG.SetRowCellValue(grdVBDG.FocusedRowHandle, "debitusrID", "") : UpdateCOLS(0, "NULL")
         End Select
@@ -571,6 +579,7 @@ Public Class frmCollections
 
     Private Sub GridView2_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVAPT.ValidatingEditor
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
             Dim debitusrID As String, sAptID As String
@@ -656,11 +665,19 @@ Public Class frmCollections
 
     Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVINH.ValidatingEditor
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
             Dim debitusrID As String, sBdgID As String, sAptID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrName").ToString() = "System User" Then
+                e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
+                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
+                sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
+                e.Valid = False
+                Exit Sub
+            End If
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(sender, debitusrID) = False Then
                 e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
@@ -758,6 +775,7 @@ Public Class frmCollections
     End Sub
     Private Sub GridView4_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles grdVO_T.ValidatingEditor
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
             Dim debitusrID As String, sBdgID As String, sInhID As String, sAptID As String
@@ -865,7 +883,14 @@ Public Class frmCollections
             Select Case GRD.Name
                 Case "GridView2" ' Διαμερίσματα
                     Select Case e.Button.Index
-                        Case 0 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal")) : APTView.ValidateEditor()
+                        Case 0
+                            UserPermissions.GetUserPermissions(Me.Text)
+                            If UserProps.AllowEdit = False Then
+                                XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
+                                Exit Sub
+                            End If
+                            APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal")) : APTView.ValidateEditor()
                         Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
                         Case 2
                             Dim frm As New frmCollectionsDet
@@ -881,7 +906,15 @@ Public Class frmCollections
 
                 Case "GridView3" ' Παραστατικα
                     Select Case e.Button.Index
-                        Case 0 : INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal")) : INHView.ValidateEditor()
+                        Case 0
+                            UserPermissions.GetUserPermissions(Me.Text)
+                            If UserProps.AllowEdit = False Then
+                                XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
+                                Exit Sub
+                            End If
+
+                            INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal")) : INHView.ValidateEditor()
                         Case 1 : INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
                         Case 2
                             If INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID") = Nothing Then Exit Sub
@@ -899,7 +932,15 @@ Public Class frmCollections
 
                 Case "GridView4" ' Ένοικος/Ιδιοκτήτης
                     Select Case e.Button.Index
-                        Case 0 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bal")) : OwnerTenantView.ValidateEditor()
+                        Case 0
+                            UserPermissions.GetUserPermissions(Me.Text)
+                            If UserProps.AllowEdit = False Then
+                                XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", 0)
+                                Exit Sub
+                            End If
+
+                            OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bal")) : OwnerTenantView.ValidateEditor()
                         Case 1 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", 0)
                         Case 2
                             Dim frm As New frmCollectionsDet
@@ -1279,6 +1320,7 @@ Public Class frmCollections
     End Sub
     Private Sub GridView4_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles grdVO_T.CellValueChanged
         Try
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim sSQL As String
             'Dim dtcredit As String, dtdebit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
@@ -1463,6 +1505,7 @@ Public Class frmCollections
     End Sub
 
     Private Sub cmdConfirmation_Click(sender As Object, e As EventArgs) Handles cmdConfirmation.Click
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Dim sSQL As String
         Dim Credit As Decimal
         If chkShowAgree.IsOn = True Then
@@ -1671,7 +1714,12 @@ Public Class frmCollections
         'End If
     End Sub
 
+    Private Sub grdBDG_Click(sender As Object, e As EventArgs) Handles grdBDG.Click
+
+    End Sub
+
     Private Sub cmdRestore_Click(sender As Object, e As EventArgs) Handles cmdRestore.Click
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Dim sSQL As String
         Dim Credit As Decimal
         If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
@@ -1707,6 +1755,7 @@ Public Class frmCollections
     End Sub
     '********* TO BE DELETED*********
     Private Sub Rep_FixAptBalance_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_FixAptBalance.ButtonPressed
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Dim sSQL As String
         If XtraMessageBox.Show("Θέλετε να ενημερώσετε το υπόλοιπο του διαμερίσματος?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             sSQL = "UPDATE APT SET BAL_ADM = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal").ToString, True) &
