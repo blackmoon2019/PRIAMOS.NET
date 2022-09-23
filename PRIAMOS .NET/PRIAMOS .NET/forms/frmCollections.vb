@@ -586,7 +586,7 @@ Public Class frmCollections
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
 
-            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrName").ToString() = "System User" Then
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString().ToUpper = "26521B58-5590-4880-A31E-4E91A6CF964D" Then
                 e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
@@ -671,7 +671,7 @@ Public Class frmCollections
             Dim debitusrID As String, sBdgID As String, sAptID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
-            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrName").ToString() = "System User" Then
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString().ToUpper = "26521B58-5590-4880-A31E-4E91A6CF964D" Then
                 e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
@@ -782,6 +782,14 @@ Public Class frmCollections
             If sender.FocusedColumn.FieldName = "debit" Then Exit Sub
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString().ToUpper = "26521B58-5590-4880-A31E-4E91A6CF964D" Then
+                e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
+                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
+                sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
+                e.Valid = False
+                Exit Sub
+            End If
+
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(sender, debitusrID) = False Then
                 'XtraMessageBox.Show("Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "

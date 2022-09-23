@@ -2195,6 +2195,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
+        If cboPrf.EditValue Is Nothing Then Exit Sub
         Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
 
     End Sub

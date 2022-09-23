@@ -1054,17 +1054,18 @@ Public Class frmINH
         Dim sdr As SqlDataReader
         Try
             Select Case ButtonType
-                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   fdate > " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " order by fDate "
-                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   fdate < " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " order by fDate desc"
-                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by fdate asc "
-                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by fdate desc"
+                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) > " & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd")) & " order by tDate "
+                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) < " & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd")) & " order by tDate desc"
+                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by tdate asc "
+                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by tdate desc"
             End Select
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then sID = sdr.GetGuid(sdr.GetOrdinal("ID").ToString).ToString
             sdr.Close()
 
-            LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
+            'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
+            LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
             If lblCancel.Text = "True" Then
@@ -1091,7 +1092,7 @@ Public Class frmINH
         Dim sdr As SqlDataReader
         Dim Code As Integer
         Try
-            sSQL = "select count(id) + 1 as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   fdate < " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd"))
+            sSQL = "select count(id) + 1 as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) < " & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd"))
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then Code = sdr.GetInt32(sdr.GetOrdinal("Position")) - 1 Else Code = 0
@@ -1303,7 +1304,7 @@ Public Class frmINH
 
     Private Sub cboAhpbB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbB.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboAhpb.EditValue = Nothing
+            Case 1 : cboAhpbB.EditValue = Nothing
             Case 2
             Case 3
         End Select
