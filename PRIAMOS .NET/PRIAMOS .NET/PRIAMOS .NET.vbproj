@@ -342,10 +342,16 @@
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XmlUpdateFromDB.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
-    <Compile Include="forms\batchCreateINH.Designer.vb">
-      <DependentUpon>batchCreateINH.vb</DependentUpon>
+    <Compile Include="forms\frmBatchCreateAnnments.Designer.vb">
+      <DependentUpon>frmBatchCreateAnnments.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\batchCreateINH.vb">
+    <Compile Include="forms\frmBatchCreateAnnments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmbatchCreateINH.Designer.vb">
+      <DependentUpon>frmbatchCreateINH.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmbatchCreateINH.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmAbout.Designer.vb">
@@ -671,8 +677,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="forms\batchCreateINH.resx">
-      <DependentUpon>batchCreateINH.vb</DependentUpon>
+    <EmbeddedResource Include="forms\frmBatchCreateAnnments.resx">
+      <DependentUpon>frmBatchCreateAnnments.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmbatchCreateINH.resx">
+      <DependentUpon>frmbatchCreateINH.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>

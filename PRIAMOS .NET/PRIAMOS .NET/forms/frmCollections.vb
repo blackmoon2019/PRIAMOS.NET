@@ -586,7 +586,7 @@ Public Class frmCollections
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
 
-            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString().ToUpper = "26521B58-5590-4880-A31E-4E91A6CF964D" Then
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrName").ToString().ToUpper = "SYSTEM USER" Then
                 e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)

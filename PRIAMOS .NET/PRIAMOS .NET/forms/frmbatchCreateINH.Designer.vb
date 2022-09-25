@@ -21,33 +21,33 @@ Partial Class frmbatchCreateINH
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmbatchCreateINH))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
-        Me.cmdSaveINH = New DevExpress.XtraEditors.SimpleButton()
         Me.lbldate = New DevExpress.XtraEditors.LabelControl()
-        Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
-        Me.dtTDate = New DevExpress.XtraEditors.DateEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdSaveINH = New DevExpress.XtraEditors.SimpleButton()
+        Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
+        Me.dtTDate = New DevExpress.XtraEditors.DateEdit()
+        Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtTDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtTDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -64,6 +64,55 @@ Partial Class frmbatchCreateINH
         Me.LayoutControl1.Size = New System.Drawing.Size(793, 158)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'lbldate
+        '
+        Me.lbldate.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.lbldate.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbldate.Appearance.Options.UseFont = True
+        Me.lbldate.Appearance.Options.UseForeColor = True
+        Me.lbldate.Location = New System.Drawing.Point(348, 12)
+        Me.lbldate.Margin = New System.Windows.Forms.Padding(5)
+        Me.lbldate.Name = "lbldate"
+        Me.lbldate.Size = New System.Drawing.Size(170, 28)
+        Me.lbldate.StyleController = Me.LayoutControl1
+        Me.lbldate.TabIndex = 56
+        Me.lbldate.Tag = "completeDate,0"
+        Me.lbldate.Text = "ΗΜΕΡΟΜΗΝΙΑ"
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(793, 158)
+        Me.Root.TextVisible = False
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.lbldate
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(336, 0)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(174, 32)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 0)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(336, 32)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(510, 0)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(263, 32)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'cmdExit
         '
@@ -87,21 +136,6 @@ Partial Class frmbatchCreateINH
         Me.cmdSaveINH.StyleController = Me.LayoutControl1
         Me.cmdSaveINH.TabIndex = 57
         Me.cmdSaveINH.Text = "Καταχώρηση"
-        '
-        'lbldate
-        '
-        Me.lbldate.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.lbldate.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lbldate.Appearance.Options.UseFont = True
-        Me.lbldate.Appearance.Options.UseForeColor = True
-        Me.lbldate.Location = New System.Drawing.Point(348, 12)
-        Me.lbldate.Margin = New System.Windows.Forms.Padding(5)
-        Me.lbldate.Name = "lbldate"
-        Me.lbldate.Size = New System.Drawing.Size(170, 28)
-        Me.lbldate.StyleController = Me.LayoutControl1
-        Me.lbldate.TabIndex = 56
-        Me.lbldate.Tag = "completeDate,0"
-        Me.lbldate.Text = "ΗΜΕΡΟΜΗΝΙΑ"
         '
         'dtFDate
         '
@@ -133,15 +167,6 @@ Partial Class frmbatchCreateINH
         Me.dtTDate.TabIndex = 38
         Me.dtTDate.Tag = "tDate,0,1,2"
         '
-        'Root
-        '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(793, 158)
-        Me.Root.TextVisible = False
-        '
         'LayoutControlItem53
         '
         Me.LayoutControlItem53.Control = Me.dtFDate
@@ -170,15 +195,6 @@ Partial Class frmbatchCreateINH
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(47, 23)
         Me.LayoutControlItem6.TextToControlDistance = 5
         '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.lbldate
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(336, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(174, 32)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cmdSaveINH
@@ -197,22 +213,6 @@ Partial Class frmbatchCreateINH
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(336, 32)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(510, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(263, 32)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
         'frmbatchCreateINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -225,18 +225,19 @@ Partial Class frmbatchCreateINH
         Me.Text = "Μαζική Καταχώρηση Παραστατικών"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        Me.LayoutControl1.PerformLayout()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtTDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtTDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

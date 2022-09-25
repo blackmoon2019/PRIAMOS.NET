@@ -451,6 +451,25 @@ Public Class frmMain
         frmbatchCreateINH.ShowDialog()
     End Sub
 
+    Private Sub BBatchInsertAnnment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBatchInsertAnnment.ItemClick
+        Dim form As frmBatchCreateAnnments = New frmBatchCreateAnnments()
+        form.Text = "Μαζική Ενημέρωση Ανακοινώσεων"
+        UserPermissions.GetUserPermissions(Form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Form.Dispose() : Exit Sub
+        Form.MdiParent = Me
+        Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(Form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
+        Form.Show()
+
+    End Sub
+
+    Private Sub BBGrps_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBGrps.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Ανακοινώσεων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "vw_ANN_GRPS"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
 
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()

@@ -237,7 +237,11 @@ Public Class DBQueries
                                         If cbo.EditValue = "False" Or cbo.EditValue = "True" Or cbo.Properties.Tag = "0" Then
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
                                         Else
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                            If cbo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                            Else
+                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                            End If
                                         End If
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")

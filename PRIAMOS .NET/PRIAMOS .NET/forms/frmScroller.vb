@@ -212,6 +212,7 @@ Public Class frmScroller
                     Case "vw_FOLDER_CAT" : sSQL = "DELETE FROM FOLDER_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -299,6 +300,7 @@ Public Class frmScroller
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -964,9 +966,10 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT",
-                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT"
+                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS"
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
+                    Case "vw_ANN_GRPS" : fGen.Text = "Κατηγορίες Ανακοινώσεων" : fGen.DataTable = "ANN_GRPS" : fGen.L2.Text = "Κατηγορία"
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
                     Case "vw_TTL" : fGen.Text = "Λεκτικά Εκτυπώσεων" : fGen.DataTable = "TTL" : fGen.L2.Text = "Λεκτικό"
@@ -1250,9 +1253,10 @@ Public Class frmScroller
                 fGen.Show()
 
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL",
-                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT"
+                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS"
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
+                    Case "vw_ANN_GRPS" : fGen.Text = "Κατηγορίες Ανακοινώσεων" : fGen.DataTable = "ANN_GRPS" : fGen.L2.Text = "Κατηγορία"
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
                     Case "vw_TTL" : fGen.Text = "Λεκτικά Εκτυπώσεων" : fGen.DataTable = "TTL" : fGen.L2.Text = "Λεκτικό"

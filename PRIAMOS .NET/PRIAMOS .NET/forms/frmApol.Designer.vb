@@ -262,7 +262,6 @@ Partial Class frmApol
         Me.tmIN.Properties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI
         Me.tmIN.Properties.UseMaskAsDisplayFormat = True
         Me.tmIN.Size = New System.Drawing.Size(232, 38)
-        Me.tmIN.StyleController = Me.LayoutControl1
         Me.tmIN.TabIndex = 44
         Me.tmIN.Tag = "tmIN,0,1,2"
         '
@@ -278,7 +277,6 @@ Partial Class frmApol
         Me.tmOUT.Properties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI
         Me.tmOUT.Properties.UseMaskAsDisplayFormat = True
         Me.tmOUT.Size = New System.Drawing.Size(222, 38)
-        Me.tmOUT.StyleController = Me.LayoutControl1
         Me.tmOUT.TabIndex = 44
         Me.tmOUT.Tag = "tmOUT,0,1,2"
         '

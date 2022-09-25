@@ -260,6 +260,28 @@ Public Class FillCombos
         End Try
 
     End Sub
+    Public Sub ANN_GRPS(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_ANN_GRPS order by name", CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            CtrlCombo.Properties.DataSource = ""
+            CtrlCombo.Properties.Columns.Clear()
+
+            CtrlCombo.Properties.DataSource = sdr
+            CtrlCombo.Properties.DisplayMember = "Name"
+            CtrlCombo.Properties.ValueMember = "id"
+            CtrlCombo.Properties.Columns.Clear()
+            CtrlCombo.Properties.ForceInitialize()
+            CtrlCombo.Properties.PopulateColumns()
+            CtrlCombo.Properties.Columns(0).Visible = False
+            CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες"
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
     Public Sub TASKS_CAT(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_TASKS_CAT order by name", CNDB)
@@ -701,6 +723,44 @@ Public Class FillCombos
                 If mode = FormMode.EditRecord Then
                     chkLstItem.CheckState = sdr.Item("checked").ToString
                 End If
+
+                CtrlList.Items.Add(chkLstItem)
+            End While
+            sdr.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub FillCheckedListANNGRPS(CtrlList As DevExpress.XtraEditors.CheckedListBoxControl, ByVal mode As Byte, Optional ByVal sID As String = "", Optional ByRef CheckedFields As Dictionary(Of String, String) = Nothing)
+        Try
+            Dim sSQL As String
+            If mode = FormMode.NewRecord Then
+                sSQL = "Select id,name from vw_ANN_GRPS"
+            Else
+                'sSQL = "Select id,name ,apmilNam,color,
+                '       isnull((select case when BM.id is not null then 1 else 0 end as checked
+                ' from vw_BMLC BM where bdgid = '" & sID & "' and BM.mlcID = M.ID),0) as checked
+                '       from vw_MLC M"
+            End If
+            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            'chkLstUsers.DataSource = sdr
+            CtrlList.Items.Clear()
+            CtrlList.DisplayMember = "name"
+            CtrlList.ValueMember = "id"
+            While sdr.Read()
+                Dim chkLstItem As New DevExpress.XtraEditors.Controls.CheckedListBoxItem
+                chkLstItem.Value = sdr.Item(1).ToString
+                chkLstItem.Tag = sdr.Item(0).ToString
+                'If mode = FormMode.EditRecord Then
+                '    chkLstItem.CheckState = sdr.Item("checked").ToString
+
+                '    If sdr.IsDBNull(sdr.GetOrdinal("apmilNam")) = False Then
+                '        CheckedFields.Add(sdr.Item("apmilNam").ToString, sdr.Item("checked").ToString)
+                '    End If
+
+                'End If
 
                 CtrlList.Items.Add(chkLstItem)
             End While

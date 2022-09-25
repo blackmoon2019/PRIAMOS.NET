@@ -94,6 +94,20 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "ANN_GRPS"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "ANN_GRPS", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.FOLDER_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("ANN_GRPS")
+
                             Case "FOLDER_CAT"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "FOLDER_CAT", LayoutControl1,,, sGuid, True)
@@ -390,6 +404,16 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "ANN_GRPS"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ANN_GRPS", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.ANN_GRPS(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
                             Case "TASKS_CAT"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "TASKS_CAT", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -600,6 +624,13 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+                Case "ANN_GRPS"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("ANN_GRPS")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_ANN_GRPS where id ='" + sID + "'")
+                    End If
+
                 Case "TASKS_CAT"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("TASKS_CAT")
@@ -744,6 +775,13 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+                    Case "ANN_GRPS"
+                        If CalledFromCtrl Then
+                            FillCbo.ANN_GRPS(CtrlCombo)
+                        Else
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_TASKS_CAT")
+                        End If
                     Case "FOLDER_CAT"
                         If CalledFromCtrl Then
                             FillCbo.FOLDER_CAT(CtrlCombo)

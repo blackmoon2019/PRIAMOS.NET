@@ -88,6 +88,10 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
+        Me.ANN_GRPSTableAdapter.Fill(Me.Priamos_NETDataSet.ANN_GRPS)
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet2.Collectors' table. You can move, or remove it, as needed.
+        Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet2.Collectors)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
         Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_FOLDER_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
@@ -2492,6 +2496,29 @@ Public Class frmBDG
         form.InhIDS = sInhIDS
         form.bdgID = sID
         form.ShowDialog()
+    End Sub
+
+    Private Sub cboDebitUsr_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDebitUsr.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : cboDebitUsr.EditValue = Nothing : ManageUSR(cboDebitUsr)
+            Case 2 : If cboDebitUsr.EditValue <> Nothing Then ManageUSR(cboDebitUsr)
+            Case 3 : cboDebitUsr.EditValue = Nothing
+        End Select
+    End Sub
+    Private Sub ManageUSR(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
+        Dim form1 As frmUsers = New frmUsers()
+        form1.Text = "Χρήστης"
+        form1.CallerControl = cbo
+        form1.CalledFromControl = True
+        form1.MdiParent = frmMain
+        If cbo.EditValue <> Nothing Then
+            form1.ID = cbo.EditValue.ToString
+            form1.Mode = FormMode.EditRecord
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
     End Sub
 
 
