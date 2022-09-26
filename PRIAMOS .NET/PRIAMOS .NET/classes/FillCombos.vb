@@ -736,7 +736,7 @@ Public Class FillCombos
         Try
             Dim sSQL As String
             If mode = FormMode.NewRecord Then
-                sSQL = "Select id,name from vw_ANN_GRPS"
+                sSQL = "Select id,name from vw_ANN_GRPS ORDER BY ORD"
             Else
                 'sSQL = "Select id,name ,apmilNam,color,
                 '       isnull((select case when BM.id is not null then 1 else 0 end as checked

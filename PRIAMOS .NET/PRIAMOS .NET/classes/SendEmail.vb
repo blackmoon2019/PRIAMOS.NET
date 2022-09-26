@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 
 Public Class SendEmail
-    Public Function SendInvoiceEmail(ByVal Subject As String, ByVal Body As String, ByVal sType As Integer, ByVal sToEmail As String, ByVal sFile As String) As Boolean
+    Public Function SendInvoiceEmail(ByVal Subject As String, ByVal Body As String, ByVal sType As Integer, ByVal sToEmail As String, ByVal sFile As String, ByRef statusMsg As String) As Boolean
         Try
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
@@ -31,14 +31,17 @@ Public Class SendEmail
                 e_mail.Attachments.Add(data)
                 Smtp_Server.Send(e_mail)
             Else
-                XtraMessageBox.Show("Δεν βρέθηκε το αρχείο " & sFile, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                statusMsg = "Δεν βρέθηκε το αρχείο " & sFile
+                'XtraMessageBox.Show("Δεν βρέθηκε το αρχείο " & sFile, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If
             e_mail.Dispose()
             Smtp_Server.Dispose()
+            statusMsg = "Email Sent Successfully"
             Return True
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            statusMsg = String.Format("Error: {0}", ex.Message)
+            'XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function

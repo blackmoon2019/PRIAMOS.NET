@@ -2521,6 +2521,10 @@ Public Class frmBDG
         form1.Show()
     End Sub
 
+    Private Sub GridControl10_Click(sender As Object, e As EventArgs) Handles GridControl10.Click
+
+    End Sub
+
 
 
 

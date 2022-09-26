@@ -204,6 +204,11 @@ Public Class frmGen
                                             CtrlCombo.Properties.DataSource = frmINH.VwANNMENTSBindingSource
                                             CtrlCombo.EditValue = txtName.Text
                                         End If
+                                        If FrmCaller.Name = "frmBatchCreateAnnments" Then
+                                            frmBatchCreateAnnments.Vw_ANN_MENTSTableAdapter.Fill(frmBatchCreateAnnments.Priamos_NETDataSet.vw_ANN_MENTS)
+                                            CtrlCombo.Properties.DataSource = frmBatchCreateAnnments.VwANNMENTSBindingSource
+                                            CtrlCombo.EditValue = txtName.Text
+                                        End If
                                     Else
                                         FillCbo.ANN_MENTS(CtrlCombo)
                                         CtrlCombo.EditValue = System.Guid.Parse(sGuid)

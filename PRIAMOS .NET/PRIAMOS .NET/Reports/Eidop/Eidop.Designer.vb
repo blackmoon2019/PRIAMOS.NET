@@ -390,8 +390,7 @@ Partial Public Class Eidop
         Me.XrLabel20.BorderColor = System.Drawing.Color.Black
         Me.XrLabel20.CanGrow = False
         Me.XrLabel20.Dpi = 254.0!
-        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[AdrName] + ' ' + [vw_INH].[vw_INHvw_APT].[ar] + ' - ' + " &
-                    "[vw_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[bdgNam]  + ' - ' + [vw_INH].[vw_INHvw_APT].[AreaName]")})
         Me.XrLabel20.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(296.7558!, 51.54415!)
         Me.XrLabel20.Multiline = True
@@ -529,7 +528,7 @@ Partial Public Class Eidop
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "5595508a-24eb-446a-b11f-cd9c305f95cc"
+        Me.inhID.ValueInfo = "08cd5ef6-8a3f-4d55-9e10-22f4ff3e783e"
         Me.inhID.Visible = False
         '
         'SqlDataSource1
@@ -1973,7 +1972,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel48.CanGrow = False
         Me.XrLabel48.Dpi = 254.0!
-        Me.XrLabel48.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[announcement]")})
+        Me.XrLabel48.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[Colannouncement] + ' ' +" & Global.Microsoft.VisualBasic.ChrW(10) & "[vw_INH].[announcement]")})
         Me.XrLabel48.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel48.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 622.783!)
         Me.XrLabel48.Multiline = True

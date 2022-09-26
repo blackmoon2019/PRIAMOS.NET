@@ -73,6 +73,7 @@ Public Class frmEmailAPT
                              ByVal EmailRepresentative As String, ByVal EmailOwner As String, ByVal EmailTenant As String) As Boolean
         Dim Cmd As SqlCommand, sdr As SqlDataReader
         Dim Emails As New SendEmail
+        Dim statusMsg As String
         Try
 
             Select Case sWichReport
@@ -116,10 +117,19 @@ Public Class frmEmailAPT
                         report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
                         report.Dispose()
                         report = Nothing
-                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf") = True Then
+
+                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg)
+                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg)
+                            oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+
                         Else
+                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg)
+                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg)
+                            oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             Return False
                         End If
                     End While

@@ -1309,4 +1309,8 @@ Public Class frmINH
             Case 3
         End Select
     End Sub
+
+    Private Sub cboAnnouncements_EditValueChanged(sender As Object, e As EventArgs) Handles cboAnnouncements.EditValueChanged
+
+    End Sub
 End Class

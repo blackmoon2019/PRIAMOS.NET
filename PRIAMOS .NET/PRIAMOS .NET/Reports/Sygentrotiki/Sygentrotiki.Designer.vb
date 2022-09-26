@@ -467,7 +467,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel28.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel28.CanGrow = False
         Me.XrLabel28.Dpi = 254.0!
-        Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[announcement]")})
+        Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[colannouncement] + ' ' +" & Global.Microsoft.VisualBasic.ChrW(10) & "[vw_INH].[announcement]")})
         Me.XrLabel28.Font = New System.Drawing.Font("Arial", 9.0!)
         Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(3.0!, 39.79498!)
         Me.XrLabel28.Multiline = True
@@ -750,7 +750,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel20.BorderColor = System.Drawing.Color.Black
         Me.XrLabel20.Dpi = 254.0!
-        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[ADR_Name] + ' ' + [vw_BDG].[ar]")})
+        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[nam]")})
         Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(266.8503!, 111.4825!)
         Me.XrLabel20.Multiline = True
         Me.XrLabel20.Name = "XrLabel20"

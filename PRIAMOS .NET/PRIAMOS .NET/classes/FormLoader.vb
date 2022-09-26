@@ -730,7 +730,7 @@ NextItem:
     Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
         Dim grdVer As Decimal
         Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        grdVer = IIf(GRDview.OptionsLayout.LayoutVersion = "", 0.5, GRDview.OptionsLayout.LayoutVersion)
+        grdVer = IIf(GRDview.OptionsLayout.LayoutVersion.Replace("v", "") = "", 0.5, GRDview.OptionsLayout.LayoutVersion.Replace("v", ""))
         grdVer = grdVer + 0.5 : GRDview.OptionsLayout.LayoutVersion = grdVer
         GRDview.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & XMLName, OptionsLayoutBase.FullLayout)
         '  GridView7.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)

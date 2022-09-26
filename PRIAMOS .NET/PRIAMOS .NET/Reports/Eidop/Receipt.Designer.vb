@@ -429,8 +429,7 @@ Partial Public Class Receipt
         Me.XrLabel20.BorderColor = System.Drawing.Color.Black
         Me.XrLabel20.CanGrow = False
         Me.XrLabel20.Dpi = 254.0!
-        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[AdrName] + ' ' + [vw_INH].[vw_INHvw_APT].[ar] + ' ' + [v" &
-                    "w_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[bdgNam] + ' ' + [vw_INH].[vw_INHvw_APT].[AreaName]")})
         Me.XrLabel20.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(792.3355!, 62.54418!)
         Me.XrLabel20.Multiline = True
@@ -1600,8 +1599,7 @@ Partial Public Class Receipt
         Me.XrLabel31.BorderColor = System.Drawing.Color.Black
         Me.XrLabel31.CanGrow = False
         Me.XrLabel31.Dpi = 254.0!
-        Me.XrLabel31.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[AdrName] + ' ' + [vw_INH].[vw_INHvw_APT].[ar] + ' ' + [v" &
-                    "w_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
+        Me.XrLabel31.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[bdgNam] + ' ' + [vw_INH].[vw_INHvw_APT].[AreaName]" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(792.3355!, 62.54418!)
         Me.XrLabel31.Multiline = True

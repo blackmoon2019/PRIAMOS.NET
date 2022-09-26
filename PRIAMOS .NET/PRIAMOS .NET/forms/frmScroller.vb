@@ -15,7 +15,7 @@ Imports DevExpress.Utils
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
 Imports DevExpress.XtraReports.UI
-
+Imports System.Text
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -49,7 +49,11 @@ Public Class frmScroller
     'Private settings = System.Configuration.ConfigurationManager.AppSettings
     Private Sub frmScroller_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
-
+            PanelResults.Visible = False
+            'Κεντράρισμα Panel
+            PanelResults.Parent = frmMain
+            PanelResults.Left = (PanelResults.Parent.Width - PanelResults.Width) / 2
+            PanelResults.Top = (PanelResults.Parent.Height - PanelResults.Height) / 2
             'TODO: This line of code loads data into the 'Priamos_NETDataSet.Collectors' table. You can move, or remove it, as needed.
             Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
             'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
@@ -970,6 +974,7 @@ Public Class frmScroller
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_ANN_GRPS" : fGen.Text = "Κατηγορίες Ανακοινώσεων" : fGen.DataTable = "ANN_GRPS" : fGen.L2.Text = "Κατηγορία"
+                        fGen.L8.Text = "Θέση Ταξινόμησης" : fGen.txtNum.Tag = "ord,0,1,2" : fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
                     Case "vw_TTL" : fGen.Text = "Λεκτικά Εκτυπώσεων" : fGen.DataTable = "TTL" : fGen.L2.Text = "Λεκτικό"
@@ -1257,6 +1262,7 @@ Public Class frmScroller
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_ANN_GRPS" : fGen.Text = "Κατηγορίες Ανακοινώσεων" : fGen.DataTable = "ANN_GRPS" : fGen.L2.Text = "Κατηγορία"
+                        fGen.L8.Text = "Θέση Ταξινόμησης" : fGen.txtNum.Tag = "ord,0,1,2" : fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                     Case "vw_APOL_TYPES" : fGen.Text = "Τύποι Απολύμανσης" : fGen.DataTable = "APOL_TYPES" : fGen.L2.Text = "Τύπος"
                     Case "vw_ANN_MENTS" : fGen.Text = "Ανακοινώσεις" : fGen.DataTable = "ANN_MENTS" : fGen.L2.Text = "Ανακοίνωση"
                     Case "vw_TTL" : fGen.Text = "Λεκτικά Εκτυπώσεων" : fGen.DataTable = "TTL" : fGen.L2.Text = "Λεκτικό"
@@ -1807,9 +1813,13 @@ Public Class frmScroller
     End Sub
 
     Private Sub BarEmail_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmail.ItemClick
+        Dim sIDS As New StringBuilder
+        Dim sSQL As String
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
         BarPB.Visibility = BarItemVisibility.Always
-
+        PanelResults.Visible = True
+        LoadForms.LoadDataToGrid(GridControl1, GridView3, "select '1'='2'")
+        LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
         RepositoryItemProgressBar1.PercentView = True
         RepositoryItemProgressBar1.Step = 1
         RepositoryItemProgressBar1.PercentView = True
@@ -1820,7 +1830,8 @@ Public Class frmScroller
                GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrint").ToString <> "" And
                GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEidop").ToString <> "" And
                GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEisp").ToString <> "" Then
-                ExportReport(1, selectedRowHandles(I))
+
+                ExportReport(1, selectedRowHandles(I), sIDS)
                 RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
             End If
 
@@ -1828,9 +1839,11 @@ Public Class frmScroller
         RepositoryItemProgressBar1.Step = 0
         BarPB.Visibility = BarItemVisibility.Never
     End Sub
-    Private Sub ExportReport(ByVal sWichReport As Integer, ByVal Row As Integer)
+    Private Sub ExportReport(ByVal sWichReport As Integer, ByVal Row As Integer, ByRef sIDS As StringBuilder)
         Dim Cmd As SqlCommand, sdr As SqlDataReader
         Dim Emails As New SendEmail
+        Dim sEmailID As String
+        Dim statusMsg As String
         Try
 
             Select Case sWichReport
@@ -1901,13 +1914,30 @@ Public Class frmScroller
                             report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
                             report.Dispose()
                             report = Nothing
-                            If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf") = True Then
+                            sEmailID = System.Guid.NewGuid.ToString
+                            If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg) = True Then
                                 sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
+                                'sSQL = "select '1'='2'"
                                 Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                                sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate)
-                                        SELECT " & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL"
+
+                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg)
+                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg)
+                                oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            Else
+                                Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg)
+                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg)
                                 oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             End If
+                            If sIDS.Length > 0 Then sIDS.Append(",")
+                            sIDS.Append(toSQLValueS(sEmailID))
+                            sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, " & toSQLValueS(sEmailTo) & " as ToEmail 
+                                from EMAIL_LOG 
+                                inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
+                                left join APT  on APT.id=EMAIL_LOG.aptID 
+                                where EMAIL_LOG.id in( " & sIDS.ToString & ")"
+                            LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
+                            LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
                         End If
                     End While
                     sdr.Close()
@@ -1921,5 +1951,12 @@ Public Class frmScroller
             BarPB.Visibility = BarItemVisibility.Never
         End Try
 
+    End Sub
+    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "EMAIL_LOGS.xml")
+
+    End Sub
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+        PanelResults.Visible = False
     End Sub
 End Class
