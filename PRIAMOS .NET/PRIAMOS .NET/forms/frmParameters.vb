@@ -42,9 +42,14 @@ Public Class frmParameters
         'Διαχείριση
         Prog_Prop.SetProgADM(ADM.EditValue.ToString)
 
+        'Ανακοίνωση
+        Prog_Prop.SetProgANNMENT(ANN_MENT.EditValue.ToString)
+
     End Sub
 
     Private Sub frmParameters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_ANN_MENTS' table. You can move, or remove it, as needed.
+        Me.Vw_ANN_MENTSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_ANN_MENTS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet3.MAILS' table. You can move, or remove it, as needed.
         Me.MAILSTableAdapter.Fill(Me.Priamos_NETDataSet3.MAILS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
@@ -65,6 +70,9 @@ Public Class frmParameters
                 txtEmail.EditValue = Prog_Prop.GetProgTechSupportEmail
                 'Διαχείριση
                 ADM.EditValue = Prog_Prop.GetProgADM
+                'Ανακοίνωση
+                ANN_MENT.EditValue = Prog_Prop.GetProgANNMENT
+
             Case 1
                 'Email Έκδοσης Κοινοχρήστων
                 Prog_Prop.GetProgInvoicesEmail()
@@ -108,5 +116,13 @@ Public Class frmParameters
         'Παράμετροι email Έκδοσης Κοινοχρήστων
         Prog_Prop.SetProgInvoicesEmail(INVOICES_EMAIL.EditValue.ToString, BODY.EditValue, BODY_RESEND.EditValue, BODY_RECREATE.EditValue)
 
+    End Sub
+
+    Private Sub cmdExit2_Click(sender As Object, e As EventArgs) Handles cmdExit2.Click
+        Me.Close()
+    End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+        Me.Close()
     End Sub
 End Class

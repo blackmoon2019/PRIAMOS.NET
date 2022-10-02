@@ -6,6 +6,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 Public Class frmBatchCreateAnnments
     Private LoadForms As New FormLoader
     Private FillCbo As New FillCombos
+    Private Valid As New ValidateControls
     Private Sub dtFDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtFDate.EditValueChanged
         lbldate.Text = Convert.ToDateTime(dtFDate.EditValue).ToLongDateString
         If txtBefDate.EditValue <> Nothing Then txtSample.EditValue = txtBefDate.EditValue.ToString.Replace("[DATE]", lbldate.Text).Replace("[TIME]", "[]-[]")
@@ -24,18 +25,16 @@ Public Class frmBatchCreateAnnments
         Me.Vw_ANN_MENTSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_ANN_MENTS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
         Me.ANN_GRPSTableAdapter.Fill(Me.Priamos_NETDataSet.ANN_GRPS)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
-        'Me.ANN_GRPSTableAdapter.Fill(Me.Priamos_NETDataSet.ANN_GRPS)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_INHNotCalculated' table. You can move, or remove it, as needed.
-        Me.Vw_INHNotCalculatedTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INHNotCalculated)
         FillCbo.FillCheckedListANNGRPS(chkGroups, FormMode.NewRecord)
+        FillCbo.FillINHNotCalculated(chkNotCalcInv, FormMode.NewRecord)
+        cboAnnouncements.EditValue = Guid.Parse(ProgProps.ANNMENT)
         dtFDate.EditValue = Date.Now
         lbldate.Text = Convert.ToDateTime(dtFDate.EditValue).ToLongDateString
         LoadForms.RestoreLayoutFromXml(GridView10, "vw_ANN_GRPS.xml")
         Me.CenterToScreen()
     End Sub
 
-    Private Sub cboINH_EditValueChanged(sender As Object, e As EventArgs) Handles cboINH.EditValueChanged
+    Private Sub cboINH_EditValueChanged(sender As Object, e As EventArgs)
         LoadInh()
     End Sub
     Private Sub LoadInh()
@@ -53,8 +52,20 @@ Public Class frmBatchCreateAnnments
             LoadForms.RestoreLayoutFromXml(GridView10, "vw_ANN_GRPS.xml")
             Exit Sub
         End If
-        sSQL.Append(")")
-        If cboINH.EditValue <> Nothing Then sSQL.Append(" and completedate = " & toSQLValueS(cboINH.Text.ToString))
+        sSQL.Append(") ")
+        If chkNotCalcInv.CheckedItemsCount > 0 Then
+            sSQL.Append(" and completedate in( ")
+
+            i = 0
+            For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkNotCalcInv.CheckedItems
+                If i <> 0 Then sSQL.Append(",")
+                sSQL.Append(toSQLValueS(item.Tag.ToString()))
+                i = i + 1
+            Next
+
+            sSQL.Append(") ")
+        End If
+        'If cboINH.EditValue <> Nothing Then sSQL.Append(" and completedate = " & toSQLValueS(cboINH.Text.ToString))
         sSQL.Append(" and Calculated = 0 And reserveAPT = 0 And isManaged = 1 ")
         LoadForms.LoadDataToGrid(GridControl10, GridView10, sSQL.ToString)
         LoadForms.RestoreLayoutFromXml(GridView10, "vw_ANN_GRPS.xml")
@@ -80,22 +91,24 @@ Public Class frmBatchCreateAnnments
         Dim sAnnouncment As String
         Dim sFTime As String, sTTime As String
         Try
-            If txtBefDate.EditValue = Nothing Then txtBefDate.EditValue = ""
-            For i As Integer = 0 To GridView10.DataRowCount - 1
-                sFTime = GridView10.GetRowCellValue(i, "tmIn").ToString : sTTime = GridView10.GetRowCellValue(i, "tmOut").ToString
-                sAnnouncment = txtBefDate.EditValue.ToString.Replace("[DATE]", lbldate.Text).Replace("[TIME]", sFTime & "-" & sTTime)
-                If sAnnouncment = "" Then
-                    sSQL = "UPDATE INH SET COLANNOUNCEMENT = NULL WHERE ID = " & toSQLValueS(GridView10.GetRowCellValue(i, "ID").ToString)
-                Else
-                    sSQL = "UPDATE INH SET COLANNOUNCEMENT = " & toSQLValueS(sAnnouncment) & " WHERE ID = " & toSQLValueS(GridView10.GetRowCellValue(i, "ID").ToString)
-                End If
+            If Valid.ValidateForm(LayoutControl1) Then
+                If txtBefDate.EditValue = Nothing Then txtBefDate.EditValue = ""
+                For i As Integer = 0 To GridView10.DataRowCount - 1
+                    sFTime = GridView10.GetRowCellValue(i, "tmIn").ToString : sTTime = GridView10.GetRowCellValue(i, "tmOut").ToString
+                    sAnnouncment = txtBefDate.EditValue.ToString.Replace("[DATE]", lbldate.Text).Replace("[TIME]", sFTime & "-" & sTTime)
+                    If sAnnouncment = "" Then
+                        sSQL = "UPDATE INH SET modifiedBY = " & toSQLValueS(UserProps.ID.ToString) & ",modifiedOn=getdate(), COLANNOUNCEMENT = NULL WHERE ID = " & toSQLValueS(GridView10.GetRowCellValue(i, "ID").ToString)
+                    Else
+                        sSQL = "UPDATE INH SET modifiedBY = " & toSQLValueS(UserProps.ID.ToString) & ",modifiedOn=getdate(), COLANNOUNCEMENT = " & toSQLValueS(sAnnouncment) & " WHERE ID = " & toSQLValueS(GridView10.GetRowCellValue(i, "ID").ToString)
+                    End If
 
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-            Next
-            XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            LoadInh()
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next
+                XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LoadInh()
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -103,14 +116,6 @@ Public Class frmBatchCreateAnnments
     End Sub
     Private Sub chkGroups_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles chkGroups.ItemCheck
         LoadInh()
-    End Sub
-
-    Private Sub cboINH_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboINH.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : cboINH.EditValue = Nothing
-            Case 2
-            Case 3
-        End Select
     End Sub
 
     Private Sub GridView10_DoubleClick(sender As Object, e As EventArgs) Handles GridView10.DoubleClick
@@ -157,5 +162,9 @@ Public Class frmBatchCreateAnnments
     Private Sub cboAnnouncements_EditValueChanged(sender As Object, e As EventArgs) Handles cboAnnouncements.EditValueChanged
         txtBefDate.EditValue = cboAnnouncements.Text
 
+    End Sub
+
+    Private Sub chkNotCalcInv_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles chkNotCalcInv.ItemCheck
+        LoadInh()
     End Sub
 End Class

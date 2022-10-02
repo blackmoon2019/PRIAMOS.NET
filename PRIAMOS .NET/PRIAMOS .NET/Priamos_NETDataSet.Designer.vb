@@ -12786,6 +12786,8 @@ Partial Public Class Priamos_NETDataSet
         
         Private columnFullname As Global.System.Data.DataColumn
         
+        Private columnPFID As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -12870,6 +12872,14 @@ Partial Public Class Priamos_NETDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PFIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPFID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -12906,9 +12916,9 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addvw_CCT_PFRow(ByVal ID As System.Guid, ByVal code As Integer, ByVal cctID As System.Guid, ByVal prfID As System.Guid, ByVal PrfName As String, ByVal Fullname As String) As vw_CCT_PFRow
+        Public Overloads Function Addvw_CCT_PFRow(ByVal ID As System.Guid, ByVal code As Integer, ByVal cctID As System.Guid, ByVal prfID As System.Guid, ByVal PrfName As String, ByVal Fullname As String, ByVal PFID As System.Guid) As vw_CCT_PFRow
             Dim rowvw_CCT_PFRow As vw_CCT_PFRow = CType(Me.NewRow,vw_CCT_PFRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, cctID, prfID, PrfName, Fullname}
+            Dim columnValuesArray() As Object = New Object() {ID, code, cctID, prfID, PrfName, Fullname, PFID}
             rowvw_CCT_PFRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_CCT_PFRow)
             Return rowvw_CCT_PFRow
@@ -12943,6 +12953,7 @@ Partial Public Class Priamos_NETDataSet
             Me.columnprfID = MyBase.Columns("prfID")
             Me.columnPrfName = MyBase.Columns("PrfName")
             Me.columnFullname = MyBase.Columns("Fullname")
+            Me.columnPFID = MyBase.Columns("PFID")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12960,6 +12971,8 @@ Partial Public Class Priamos_NETDataSet
             MyBase.Columns.Add(Me.columnPrfName)
             Me.columnFullname = New Global.System.Data.DataColumn("Fullname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFullname)
+            Me.columnPFID = New Global.System.Data.DataColumn("PFID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPFID)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -12969,6 +12982,7 @@ Partial Public Class Priamos_NETDataSet
             Me.columnPrfName.MaxLength = 50
             Me.columnFullname.AllowDBNull = false
             Me.columnFullname.MaxLength = 200
+            Me.columnPFID.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18717,6 +18731,8 @@ Partial Public Class Priamos_NETDataSet
         
         Private columncreatedOn As Global.System.Data.DataColumn
         
+        Private columnord As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -18801,6 +18817,14 @@ Partial Public Class Priamos_NETDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ordColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnord
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -18837,9 +18861,9 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddANN_GRPSRow(ByVal ID As System.Guid, ByVal code As Integer, ByVal name As String, ByVal modifiedBy As System.Guid, ByVal modifiedOn As Date, ByVal createdOn As Date) As ANN_GRPSRow
+        Public Overloads Function AddANN_GRPSRow(ByVal ID As System.Guid, ByVal code As Integer, ByVal name As String, ByVal modifiedBy As System.Guid, ByVal modifiedOn As Date, ByVal createdOn As Date, ByVal ord As Integer) As ANN_GRPSRow
             Dim rowANN_GRPSRow As ANN_GRPSRow = CType(Me.NewRow,ANN_GRPSRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, name, modifiedBy, modifiedOn, createdOn}
+            Dim columnValuesArray() As Object = New Object() {ID, code, name, modifiedBy, modifiedOn, createdOn, ord}
             rowANN_GRPSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowANN_GRPSRow)
             Return rowANN_GRPSRow
@@ -18874,6 +18898,7 @@ Partial Public Class Priamos_NETDataSet
             Me.columnmodifiedBy = MyBase.Columns("modifiedBy")
             Me.columnmodifiedOn = MyBase.Columns("modifiedOn")
             Me.columncreatedOn = MyBase.Columns("createdOn")
+            Me.columnord = MyBase.Columns("ord")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18891,6 +18916,8 @@ Partial Public Class Priamos_NETDataSet
             MyBase.Columns.Add(Me.columnmodifiedOn)
             Me.columncreatedOn = New Global.System.Data.DataColumn("createdOn", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncreatedOn)
+            Me.columnord = New Global.System.Data.DataColumn("ord", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnord)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -27498,6 +27525,17 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PFID() As System.Guid
+            Get
+                Return CType(Me(Me.tablevw_CCT_PF.PFIDColumn),Global.System.Guid)
+            End Get
+            Set
+                Me(Me.tablevw_CCT_PF.PFIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsPrfNameNull() As Boolean
             Return Me.IsNull(Me.tablevw_CCT_PF.PrfNameColumn)
         End Function
@@ -31098,6 +31136,21 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ord() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableANN_GRPS.ordColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ord' in table 'ANN_GRPS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableANN_GRPS.ordColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsnameNull() As Boolean
             Return Me.IsNull(Me.tableANN_GRPS.nameColumn)
         End Function
@@ -31142,6 +31195,18 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetcreatedOnNull()
             Me(Me.tableANN_GRPS.createdOnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsordNull() As Boolean
+            Return Me.IsNull(Me.tableANN_GRPS.ordColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetordNull()
+            Me(Me.tableANN_GRPS.ordColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -34053,7 +34118,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, Fullname, PrfID, phn, mob, email, afm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_CCT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (PrfID = @"& _ 
-                "PrfID)"
+                "PrfID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by Fullname "
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrfID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "PrfID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -38056,6 +38121,7 @@ Namespace Priamos_NETDataSetTableAdapters
             tableMapping.ColumnMappings.Add("prfID", "prfID")
             tableMapping.ColumnMappings.Add("PrfName", "PrfName")
             tableMapping.ColumnMappings.Add("Fullname", "Fullname")
+            tableMapping.ColumnMappings.Add("PFID", "PFID")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -38072,11 +38138,12 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        vw_CCT_PF.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CCT_PF"
+            Me._commandCollection(0).CommandText = "SELECT        vw_CCT_PF.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CCT_PF order by Fullname "
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        vw_CCT_PF.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_CCT_PF"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where prfID = @prfID"
+            Me._commandCollection(1).CommandText = "SELECT Fullname, ID, PFID, PrfName, cctID, code, prfID FROM vw_CCT_PF WHERE (prfI"& _ 
+                "D = @prfID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by Fullname "
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@prfID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "prfID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -41097,18 +41164,22 @@ Namespace Priamos_NETDataSetTableAdapters
             tableMapping.ColumnMappings.Add("modifiedBy", "modifiedBy")
             tableMapping.ColumnMappings.Add("modifiedOn", "modifiedOn")
             tableMapping.ColumnMappings.Add("createdOn", "createdOn")
+            tableMapping.ColumnMappings.Add("ord", "ord")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [ANN_GRPS] WHERE (([ID] = @Original_ID) AND ([code] = @Original_code)"& _ 
-                " AND ((@IsNull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND (("& _ 
-                "@IsNull_modifiedBy = 1 AND [modifiedBy] IS NULL) OR ([modifiedBy] = @Original_mo"& _ 
-                "difiedBy)) AND ((@IsNull_modifiedOn = 1 AND [modifiedOn] IS NULL) OR ([modifiedO"& _ 
-                "n] = @Original_modifiedOn)) AND ((@IsNull_createdOn = 1 AND [createdOn] IS NULL)"& _ 
-                " OR ([createdOn] = @Original_createdOn)))"
+                " AND ((@IsNull_ord = 1 AND [ord] IS NULL) OR ([ord] = @Original_ord)) AND ((@IsN"& _ 
+                "ull_name = 1 AND [name] IS NULL) OR ([name] = @Original_name)) AND ((@IsNull_mod"& _ 
+                "ifiedBy = 1 AND [modifiedBy] IS NULL) OR ([modifiedBy] = @Original_modifiedBy)) "& _ 
+                "AND ((@IsNull_modifiedOn = 1 AND [modifiedOn] IS NULL) OR ([modifiedOn] = @Origi"& _ 
+                "nal_modifiedOn)) AND ((@IsNull_createdOn = 1 AND [createdOn] IS NULL) OR ([creat"& _ 
+                "edOn] = @Original_createdOn)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_modifiedBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -41119,37 +41190,40 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [ANN_GRPS] ([ID], [code], [name], [modifiedBy], [modifiedOn], [create"& _ 
-                "dOn]) VALUES (@ID, @code, @name, @modifiedBy, @modifiedOn, @createdOn);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
-                "ID, code, name, modifiedBy, modifiedOn, createdOn FROM ANN_GRPS WHERE (ID = @ID)"& _ 
-                ""
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [ANN_GRPS] ([ID], [ord], [name], [modifiedBy], [modifiedOn], [created"& _ 
+                "On]) VALUES (@ID, @ord, @name, @modifiedBy, @modifiedOn, @createdOn);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID"& _ 
+                ", code, ord, name, modifiedBy, modifiedOn, createdOn FROM ANN_GRPS WHERE (ID = @"& _ 
+                "ID) ORDER BY ord"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [ANN_GRPS] SET [ID] = @ID, [code] = @code, [name] = @name, [modifiedBy] = "& _ 
-                "@modifiedBy, [modifiedOn] = @modifiedOn, [createdOn] = @createdOn WHERE (([ID] ="& _ 
-                " @Original_ID) AND ([code] = @Original_code) AND ((@IsNull_name = 1 AND [name] I"& _ 
-                "S NULL) OR ([name] = @Original_name)) AND ((@IsNull_modifiedBy = 1 AND [modified"& _ 
-                "By] IS NULL) OR ([modifiedBy] = @Original_modifiedBy)) AND ((@IsNull_modifiedOn "& _ 
-                "= 1 AND [modifiedOn] IS NULL) OR ([modifiedOn] = @Original_modifiedOn)) AND ((@I"& _ 
-                "sNull_createdOn = 1 AND [createdOn] IS NULL) OR ([createdOn] = @Original_created"& _ 
-                "On)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, code, name, modifiedBy, modifiedOn, createdOn FROM ANN_GRPS W"& _ 
-                "HERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [ANN_GRPS] SET [ID] = @ID, [ord] = @ord, [name] = @name, [modifiedBy] = @m"& _ 
+                "odifiedBy, [modifiedOn] = @modifiedOn, [createdOn] = @createdOn WHERE (([ID] = @"& _ 
+                "Original_ID) AND ([code] = @Original_code) AND ((@IsNull_ord = 1 AND [ord] IS NU"& _ 
+                "LL) OR ([ord] = @Original_ord)) AND ((@IsNull_name = 1 AND [name] IS NULL) OR (["& _ 
+                "name] = @Original_name)) AND ((@IsNull_modifiedBy = 1 AND [modifiedBy] IS NULL) "& _ 
+                "OR ([modifiedBy] = @Original_modifiedBy)) AND ((@IsNull_modifiedOn = 1 AND [modi"& _ 
+                "fiedOn] IS NULL) OR ([modifiedOn] = @Original_modifiedOn)) AND ((@IsNull_created"& _ 
+                "On = 1 AND [createdOn] IS NULL) OR ([createdOn] = @Original_createdOn)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
+                "T ID, code, ord, name, modifiedBy, modifiedOn, createdOn FROM ANN_GRPS WHERE (ID"& _ 
+                " = @ID) ORDER BY ord"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "code", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_modifiedBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -41173,7 +41247,7 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ANN_GRPS.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   ANN_GRPS"
+            Me._commandCollection(0).CommandText = "SELECT ANN_GRPS.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   ANN_GRPS ORDER BY ORD"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

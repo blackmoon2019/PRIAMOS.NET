@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:vw_COL" ZOrder="5" X="1246" Y="130" Height="547" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
     <Shape ID="DesignTable:vw_COL_BDG" ZOrder="4" X="310" Y="58" Height="361" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="193" />
-    <Shape ID="DesignTable:vw_COL_D" ZOrder="1" X="1985" Y="183" Height="609" Width="408" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
+    <Shape ID="DesignTable:vw_COL_D" ZOrder="1" X="1985" Y="183" Height="609" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="410" />
     <Shape ID="DesignTable:COL_REPORT" ZOrder="7" X="1418" Y="975" Height="268" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="193" />
     <Shape ID="DesignTable:vw_INH" ZOrder="6" X="1869" Y="1103" Height="578" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="443" />
     <Shape ID="DesignTable:COL_APT" ZOrder="3" X="342" Y="602" Height="320" Width="174" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="316" />

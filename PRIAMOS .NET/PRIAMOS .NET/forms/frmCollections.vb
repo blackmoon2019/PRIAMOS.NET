@@ -1011,7 +1011,7 @@ Public Class frmCollections
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView5, "COL_APTCREDE_def.xml")
     End Sub
     Private Sub GridView6_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView6, "COL_D_CREDE_def.xml")
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView6, "COL_D_CREDE_def.xml",, "SELECT top 1 old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate,ord FROM   vw_COL_D")
     End Sub
     Private Sub cmdCol_Refresh_Click(sender As Object, e As EventArgs) Handles cmdCol_Refresh.Click
         Select Case TabbedControlGroup1.SelectedTabPageIndex
@@ -1722,10 +1722,6 @@ Public Class frmCollections
         'End If
     End Sub
 
-    Private Sub grdBDG_Click(sender As Object, e As EventArgs) Handles grdBDG.Click
-
-    End Sub
-
     Private Sub cmdRestore_Click(sender As Object, e As EventArgs) Handles cmdRestore.Click
         UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Dim sSQL As String
@@ -1770,6 +1766,25 @@ Public Class frmCollections
                            " where id = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
             Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
             APTView.SetRowCellValue(APTView.FocusedRowHandle, "Aptbal", APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal"))
+        End If
+    End Sub
+
+    Private Sub txtBDGCode_KeyDown(sender As Object, e As KeyEventArgs) Handles txtBDGCode.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Dim sID As String
+            Dim sSQL As String = "select ID from BDG where isnull(old_code,code) = " & txtBDGCode.EditValue.ToString
+            Dim cmd As SqlCommand
+            Dim sdr As SqlDataReader
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then
+                sID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+                cboBDG.EditValue = System.Guid.Parse(sID)
+                cboBDG.Text = cboBDG.GetColumnValue("nam")
+            Else
+                cboBDG.EditValue = Nothing
+            End If
+            sdr.Close()
         End If
     End Sub
 End Class

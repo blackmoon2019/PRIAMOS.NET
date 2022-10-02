@@ -288,7 +288,6 @@ Partial Public Class EXODA
         Me.Detail.Dpi = 254.0!
         Me.Detail.HeightF = 41.16916!
         Me.Detail.HierarchyPrintOptions.Indent = 50.8!
-        Me.Detail.MultiColumn.ColumnCount = 2
         Me.Detail.MultiColumn.ColumnSpacing = 5.08!
         Me.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount
         Me.Detail.Name = "Detail"

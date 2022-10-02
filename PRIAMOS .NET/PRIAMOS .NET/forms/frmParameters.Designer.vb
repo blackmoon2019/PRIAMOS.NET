@@ -24,12 +24,16 @@ Partial Class frmParameters
         Me.TabPane2 = New DevExpress.XtraBars.Navigation.TabPane()
         Me.TabNavigationPage3 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSaveGen = New DevExpress.XtraEditors.SimpleButton()
         Me.txtDecimals = New DevExpress.XtraEditors.TextEdit()
         Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
         Me.txtVAT = New DevExpress.XtraEditors.TextEdit()
         Me.ADM = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.ANN_MENT = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -38,6 +42,7 @@ Partial Class frmParameters
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdExit2 = New DevExpress.XtraEditors.SimpleButton()
@@ -46,6 +51,8 @@ Partial Class frmParameters
         Me.BODY_RESEND = New DevExpress.XtraEditors.MemoEdit()
         Me.BODY_RECREATE = New DevExpress.XtraEditors.MemoEdit()
         Me.INVOICES_EMAIL = New DevExpress.XtraEditors.LookUpEdit()
+        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -54,13 +61,10 @@ Partial Class frmParameters
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.MAILSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.MAILSTableAdapter()
         Me.Priamos_NETDataSet32 = New PRIAMOS.NET.Priamos_NETDataSet3()
-        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
+        Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
         CType(Me.TabPane2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane2.SuspendLayout()
         Me.TabNavigationPage3.SuspendLayout()
@@ -70,6 +74,10 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ANN_MENT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +86,7 @@ Partial Class frmParameters
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPage1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -85,6 +94,8 @@ Partial Class frmParameters
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,11 +104,7 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPane2
@@ -125,12 +132,13 @@ Partial Class frmParameters
         '
         'LayoutControl2
         '
-        Me.LayoutControl2.Controls.Add(Me.SimpleButton1)
+        Me.LayoutControl2.Controls.Add(Me.cmdExit)
         Me.LayoutControl2.Controls.Add(Me.cmdSaveGen)
         Me.LayoutControl2.Controls.Add(Me.txtDecimals)
         Me.LayoutControl2.Controls.Add(Me.txtEmail)
         Me.LayoutControl2.Controls.Add(Me.txtVAT)
         Me.LayoutControl2.Controls.Add(Me.ADM)
+        Me.LayoutControl2.Controls.Add(Me.ANN_MENT)
         Me.LayoutControl2.Location = New System.Drawing.Point(3, 11)
         Me.LayoutControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl2.Name = "LayoutControl2"
@@ -139,22 +147,22 @@ Partial Class frmParameters
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl2"
         '
-        'SimpleButton1
+        'cmdExit
         '
-        Me.SimpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.SimpleButton1.ImageOptions.Image = CType(resources.GetObject("SimpleButton1.ImageOptions.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(1290, 180)
-        Me.SimpleButton1.Margin = New System.Windows.Forms.Padding(5)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(172, 39)
-        Me.SimpleButton1.StyleController = Me.LayoutControl2
-        Me.SimpleButton1.TabIndex = 39
-        Me.SimpleButton1.Text = "Έξοδος"
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = CType(resources.GetObject("SimpleButton1.ImageOptions.Image"), System.Drawing.Image)
+        Me.cmdExit.Location = New System.Drawing.Point(1290, 222)
+        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(172, 39)
+        Me.cmdExit.StyleController = Me.LayoutControl2
+        Me.cmdExit.TabIndex = 39
+        Me.cmdExit.Text = "Έξοδος"
         '
         'cmdSaveGen
         '
         Me.cmdSaveGen.ImageOptions.Image = CType(resources.GetObject("cmdSaveGen.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdSaveGen.Location = New System.Drawing.Point(1122, 180)
+        Me.cmdSaveGen.Location = New System.Drawing.Point(1122, 222)
         Me.cmdSaveGen.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveGen.Name = "cmdSaveGen"
         Me.cmdSaveGen.Size = New System.Drawing.Size(164, 39)
@@ -165,7 +173,7 @@ Partial Class frmParameters
         'txtDecimals
         '
         Me.txtDecimals.EditValue = "0"
-        Me.txtDecimals.Location = New System.Drawing.Point(468, 12)
+        Me.txtDecimals.Location = New System.Drawing.Point(552, 12)
         Me.txtDecimals.Margin = New System.Windows.Forms.Padding(5)
         Me.txtDecimals.Name = "txtDecimals"
         Me.txtDecimals.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -174,24 +182,24 @@ Partial Class frmParameters
         Me.txtDecimals.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtDecimals.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtDecimals.Properties.MaskSettings.Set("mask", "n0")
-        Me.txtDecimals.Size = New System.Drawing.Size(994, 38)
+        Me.txtDecimals.Size = New System.Drawing.Size(910, 38)
         Me.txtDecimals.StyleController = Me.LayoutControl2
         Me.txtDecimals.TabIndex = 37
         Me.txtDecimals.Tag = ""
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(468, 96)
+        Me.txtEmail.Location = New System.Drawing.Point(552, 96)
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(5)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(994, 38)
+        Me.txtEmail.Size = New System.Drawing.Size(910, 38)
         Me.txtEmail.StyleController = Me.LayoutControl2
         Me.txtEmail.TabIndex = 38
         '
         'txtVAT
         '
         Me.txtVAT.EditValue = "0"
-        Me.txtVAT.Location = New System.Drawing.Point(468, 54)
+        Me.txtVAT.Location = New System.Drawing.Point(552, 54)
         Me.txtVAT.Margin = New System.Windows.Forms.Padding(5)
         Me.txtVAT.Name = "txtVAT"
         Me.txtVAT.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -200,14 +208,14 @@ Partial Class frmParameters
         Me.txtVAT.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtVAT.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtVAT.Properties.MaskSettings.Set("mask", "P0")
-        Me.txtVAT.Size = New System.Drawing.Size(994, 38)
+        Me.txtVAT.Size = New System.Drawing.Size(910, 38)
         Me.txtVAT.StyleController = Me.LayoutControl2
         Me.txtVAT.TabIndex = 37
         Me.txtVAT.Tag = "InvNumber,0,1,2"
         '
         'ADM
         '
-        Me.ADM.Location = New System.Drawing.Point(468, 138)
+        Me.ADM.Location = New System.Drawing.Point(552, 138)
         Me.ADM.Margin = New System.Windows.Forms.Padding(5)
         Me.ADM.Name = "ADM"
         Me.ADM.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -220,16 +228,51 @@ Partial Class frmParameters
         Me.ADM.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.ADM.Properties.PopupSizeable = False
         Me.ADM.Properties.ValueMember = "ID"
-        Me.ADM.Size = New System.Drawing.Size(994, 38)
+        Me.ADM.Size = New System.Drawing.Size(910, 38)
         Me.ADM.StyleController = Me.LayoutControl2
         Me.ADM.TabIndex = 45
         Me.ADM.Tag = "ADM"
+        '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ANN_MENT
+        '
+        Me.ANN_MENT.Location = New System.Drawing.Point(552, 180)
+        Me.ANN_MENT.Margin = New System.Windows.Forms.Padding(5)
+        Me.ANN_MENT.Name = "ANN_MENT"
+        Me.ANN_MENT.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.ANN_MENT.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup
+        Me.ANN_MENT.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.ANN_MENT.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Όνομα", 92, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fax", "fax", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 58, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email2", "email2", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email3", "email3", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("website", "website", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 107, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AREAS_Name", "AREAS_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PRF_Name", "PRF_Name", 107, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DoyID", "Doy ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 63, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ar", "Ar", 33, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 32, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("company", "company", 92, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isprivate", "Isprivate", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isworkshop", "Συνεργέιο", 110, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Issupplier", "Issupplier", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsPartner", "Συνεργάτης", 97, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrAr", "Adr Ar", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("color", "color", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.ANN_MENT.Properties.DataSource = Me.VwANNMENTSBindingSource
+        Me.ANN_MENT.Properties.DisplayMember = "name"
+        Me.ANN_MENT.Properties.NullText = ""
+        Me.ANN_MENT.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
+        Me.ANN_MENT.Properties.PopupSizeable = False
+        Me.ANN_MENT.Properties.ValueMember = "ID"
+        Me.ANN_MENT.Size = New System.Drawing.Size(910, 38)
+        Me.ANN_MENT.StyleController = Me.LayoutControl2
+        Me.ANN_MENT.TabIndex = 45
+        Me.ANN_MENT.Tag = "ANN_MENT"
+        '
+        'VwANNMENTSBindingSource
+        '
+        Me.VwANNMENTSBindingSource.DataMember = "vw_ANN_MENTS"
+        Me.VwANNMENTSBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem1, Me.EmptySpaceItem2, Me.LayoutControlItem13, Me.LayoutControlItem11})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem1, Me.EmptySpaceItem2, Me.LayoutControlItem13, Me.LayoutControlItem11, Me.LayoutControlItem10})
         Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1474, 288)
         Me.LayoutControlGroup1.TextVisible = False
@@ -245,7 +288,7 @@ Partial Class frmParameters
         Me.LayoutControlItem52.Name = "LayoutControlItem52"
         Me.LayoutControlItem52.Size = New System.Drawing.Size(1454, 42)
         Me.LayoutControlItem52.Text = "Δεκαδικά"
-        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(444, 23)
+        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(528, 23)
         '
         'LayoutControlItem3
         '
@@ -254,32 +297,32 @@ Partial Class frmParameters
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(1454, 42)
         Me.LayoutControlItem3.Text = "Technical Support Email"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(444, 23)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(528, 23)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cmdSaveGen
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1110, 168)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1110, 210)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(168, 100)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(168, 58)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem1
         '
-        Me.LayoutControlItem1.Control = Me.SimpleButton1
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(1278, 168)
+        Me.LayoutControlItem1.Control = Me.cmdExit
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(1278, 210)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(176, 100)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(176, 58)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 168)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 210)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1110, 100)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1110, 58)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem13
@@ -293,7 +336,7 @@ Partial Class frmParameters
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
         Me.LayoutControlItem13.Size = New System.Drawing.Size(1454, 42)
         Me.LayoutControlItem13.Text = "ΦΠΑ"
-        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(444, 23)
+        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(528, 23)
         '
         'LayoutControlItem11
         '
@@ -304,7 +347,18 @@ Partial Class frmParameters
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(1454, 42)
         Me.LayoutControlItem11.Text = "Διαχείριση Προγράμματος - Προεπιλεγμένο Συνεργείο"
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(444, 23)
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(528, 23)
+        '
+        'LayoutControlItem10
+        '
+        Me.LayoutControlItem10.Control = Me.ANN_MENT
+        Me.LayoutControlItem10.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem10.CustomizationFormText = "Συνεργείο/Συνεργάτης"
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem10.Name = "LayoutControlItem10"
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(1454, 42)
+        Me.LayoutControlItem10.Text = "Μαζική Ενημέρωση Ανακοινώσεων- Προεπιλεγμένη Ανακοίνωση"
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(528, 23)
         '
         'TabNavigationPage1
         '
@@ -405,6 +459,16 @@ Partial Class frmParameters
         Me.INVOICES_EMAIL.TabIndex = 45
         Me.INVOICES_EMAIL.Tag = "INVOICES_EMAIL"
         '
+        'MAILSBindingSource
+        '
+        Me.MAILSBindingSource.DataMember = "MAILS"
+        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'Priamos_NETDataSet3
+        '
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -484,16 +548,6 @@ Partial Class frmParameters
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(1132, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
-        'MAILSBindingSource
-        '
-        Me.MAILSBindingSource.DataMember = "MAILS"
-        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
-        '
-        'Priamos_NETDataSet3
-        '
-        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'MAILSTableAdapter
         '
         Me.MAILSTableAdapter.ClearBeforeFill = True
@@ -503,19 +557,13 @@ Partial Class frmParameters
         Me.Priamos_NETDataSet32.DataSetName = "Priamos_NETDataSet3"
         Me.Priamos_NETDataSet32.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'VwPARTNERANDWORKSHOPBindingSource
-        '
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Vw_PARTNER_AND_WORKSHOPTableAdapter
         '
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_ANN_MENTSTableAdapter
+        '
+        Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
         '
         'frmParameters
         '
@@ -527,7 +575,7 @@ Partial Class frmParameters
         Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmParameters"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "frmParameters"
+        Me.Text = "Γενικές Παράμετροι"
         CType(Me.TabPane2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPane2.ResumeLayout(False)
         Me.TabNavigationPage3.ResumeLayout(False)
@@ -537,6 +585,10 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ANN_MENT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -545,6 +597,7 @@ Partial Class frmParameters
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPage1.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
@@ -552,6 +605,8 @@ Partial Class frmParameters
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
@@ -560,11 +615,7 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -572,7 +623,7 @@ Partial Class frmParameters
     Friend WithEvents TabPane2 As DevExpress.XtraBars.Navigation.TabPane
     Friend WithEvents TabNavigationPage3 As DevExpress.XtraBars.Navigation.TabNavigationPage
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdExit As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdSaveGen As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtDecimals As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtEmail As DevExpress.XtraEditors.TextEdit
@@ -609,4 +660,8 @@ Partial Class frmParameters
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents ANN_MENT As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwANNMENTSBindingSource As BindingSource
+    Friend WithEvents Vw_ANN_MENTSTableAdapter As Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter
 End Class

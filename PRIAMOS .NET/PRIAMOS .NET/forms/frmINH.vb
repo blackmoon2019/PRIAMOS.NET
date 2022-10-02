@@ -67,10 +67,10 @@ Public Class frmINH
                 txtCode.Text = DBQ.GetNextId("INH")
                 LayoutControlGroup2.Enabled = False
                 cmdSaveInd.Enabled = False
-                cmdCalculate.Enabled = False
+                LcmdCalculate.Enabled = False
                 cmdDel.Enabled = False
                 cmdRefresh.Enabled = False
-                cmdCancelInvoice.Enabled = False
+                LcmdCancelInvoice.Enabled = False
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 lbldate.Text = ""
             Case FormMode.EditRecord
@@ -91,10 +91,10 @@ Public Class frmINH
                 If lblCancel.Text = "True" Then
                     lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-                    cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
+                    LcmdSaveINH.Enabled = False : LcmdCancelInvoice.Enabled = False : LcmdCalculate.Enabled = False : LcmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
                 Else
                     lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                    cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
+                    LcmdSaveINH.Enabled = True : LcmdCalculate.Enabled = True : LcmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
                     'cmdCancelInvoice.Enabled = True
                 End If
                 Me.Text = "Παραστατικό-" & cboBDG.Text
@@ -116,14 +116,15 @@ Public Class frmINH
         End If
         GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
         If chkCalculated.Checked = True Then
-            cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+            LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
         Else
-            cmdCancelCalculate.Enabled = False : cmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
+            LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
         End If
 
         LoadConditionalFormatting()
-        cboOwnerTenant.SelectedIndex = 1 : If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
+        cboOwnerTenant.SelectedIndex = 1  'If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
+        If chkreserveAPT.Checked = True Then LayoutControl1.Enabled = False
     End Sub
 
     Private Sub EditRecord()
@@ -189,6 +190,22 @@ Public Class frmINH
         Return False
 
     End Function
+    Private Function CheckIfOwnerBandExists(ByVal Band As String) As Boolean
+        Try
+            Dim B As DevExpress.XtraGrid.Views.BandedGrid.GridBand = GridINH.Bands.Item("apt")
+            If B.Columns.Item("col" & Band.Replace(" ", "")) Is Nothing Then
+                Return False
+            Else
+                Return True
+            End If
+
+
+        Catch ex As Exception
+            Return False
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
+
     Private Sub TransposeColumns()
         Try
             Dim B As DevExpress.XtraGrid.Views.BandedGrid.GridBand = GridINH.Bands.Item("apt")
@@ -205,9 +222,14 @@ Public Class frmINH
                     XtraMessageBox.Show("Υπάρχει διπλή καταχώρηση στα έξοδα. Το έξοδο '" & GridView5.GetRowCellDisplayText(i, "repName").ToString & "' υπάρχει 2 φορές. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit For
                 Else
-                    B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
-                    B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΕΠΙΒ.").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
-                    B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΣΥΝΟΛΟ").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                    If CheckIfOwnerBandExists(GridView5.GetRowCellDisplayText(i, "repName").ToString) = False Then
+                        XtraMessageBox.Show("Το έξοδο '" & GridView5.GetRowCellDisplayText(i, "repName").ToString & "' έχει καταχωρηθεί χωρίς να υπολογιστεί το παραστατικό. " + Environment.NewLine &
+                                                "Στα Υπολογισμένα δεν θα το δείτε ως Στήλη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Else
+                        B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "")).OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                        B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΕΠΙΒ.").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                        B.Columns.Item("col" & GridView5.GetRowCellDisplayText(i, "repName").Replace(" ", "") & "ΣΥΝΟΛΟ").OwnerBand = GridINH.Bands.Item(GridView5.GetRowCellDisplayText(i, "calcCatID"))
+                    End If
                 End If
             Next
         Catch ex As Exception
@@ -230,6 +252,8 @@ Public Class frmINH
                 'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
                 Select Case Mode
                     Case FormMode.NewRecord
+                        'Ελεγχος αν υπάρχει παρασττικό στο δίάστημα
+                        If CheckIfINHMonthExists() Then Exit Sub
                         Dim date1 As Date = Date.Parse(dtFDate.EditValue.ToString)
                         Dim date2 As Date = Date.Parse(dtTDate.EditValue.ToString)
                         Dim Months As Long = DateDiff(DateInterval.Month, date1, date2) + 1
@@ -277,9 +301,9 @@ Public Class frmINH
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
                     LayoutControlGroup2.Enabled = True
-                    cmdSaveInd.Enabled = True
+                    LcmdSaveInd.Enabled = True
                     cmdDel.Enabled = True
-                    cmdCalculate.Enabled = True
+                    LcmdCalculate.Enabled = True
                     cmdRefresh.Enabled = True
                     TabNavigationPage3.Enabled = True
                     chkCALC_CAT.SetItemChecked(0, True)
@@ -290,6 +314,29 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Function CheckIfINHMonthExists() As Boolean
+
+        Dim sSQL As String = "select count(id) as CountINH from inh where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim CountINH As Integer
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            If sdr.IsDBNull(sdr.GetOrdinal("CountINH")) = True Then
+                CountINH = 0
+            Else
+                CountINH = sdr.GetInt32(sdr.GetOrdinal("CountINH"))
+            End If
+            sdr.Close()
+            If CountINH > 0 Then
+                XtraMessageBox.Show("Υπάρχει ήδη καταχωρημένο παραστατικό στο δίαστημα.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return True
+            End If
+        End If
+        Return False
+
+    End Function
     Private Sub LoadConditionalFormatting()
         Dim formatConditionRuleExpression As New StyleFormatCondition()
         formatConditionRuleExpression.Appearance.ForeColor = Color.Orange
@@ -309,6 +356,10 @@ Public Class frmINH
         If Valid.ValidateFormGRP(LayoutControlGroup2) Then
             Dim repName As String
             repName = cboRepname.EditValue
+            If chkCALC_CAT.CheckedItemsCount = 0 Then
+                XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο προς καταχώρηση.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             If CheckRepNameIfExists(repName) = False Then
                 sCalcCatID = chkCALC_CAT.SelectedValue.ToString
                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
@@ -318,12 +369,23 @@ Public Class frmINH
                     Cls.ClearGroupCtrls(LayoutControlGroup2)
                     Valid.SChanged = False
                 End If
-                cboOwnerTenant.SelectedIndex = 1 : chkCALC_CAT.SetItemChecked(0, True) : cboRepname.Select()
+                cboOwnerTenant.SelectedIndex = 1 : cboRepname.Select() 'chkCALC_CAT.SetItemChecked(0, True) : cboRepname.Select()
+                chkCALC_CAT.UnCheckAll()
             Else
                 XtraMessageBox.Show("Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
+    Protected Overrides Function ProcessMnemonic(charCode As Char) As Boolean
+        If ModifierKeys <> Keys.Alt Then
+            Return False
+        Else
+            If charCode.ToString = "s" Or charCode.ToString = "S" Or charCode.ToString = "σ" Or charCode.ToString = "S" Then
+                cmdSaveInd.PerformClick()
+            End If
+        End If
+        Return MyBase.ProcessMnemonic(charCode)
+    End Function
     Private Sub DeleteIND_F(Optional ByVal Question As Boolean = True)
         Dim sSQL As String
         Try
@@ -711,10 +773,14 @@ Public Class frmINH
             XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             chkCalculated.CheckState = CheckState.Checked
             chkCalculated.Checked = True
-            cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+            LcmdCancelCalculate.Enabled = True
+            LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
             Frm.Refresh()
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+        Catch SQLex As SqlException
+            XtraMessageBox.Show(String.Format("Error: {0}", SQLex.Errors.Item(0).ToString), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -904,10 +970,10 @@ Public Class frmINH
         Cls.ClearGroupCtrls(LayoutControlGroup1) : Cls.ClearGroupCtrls(LayoutControlGroup2)
         txtCode.Text = DBQ.GetNextId("INH")
         LayoutControlGroup2.Enabled = False
-        cmdSaveInd.Enabled = False
-        cmdCalculate.Enabled = False
+        LcmdSaveInd.Enabled = False
+        LcmdCalculate.Enabled = False
         cmdDel.Enabled = False
-        cmdCancelInvoice.Enabled = False
+        LcmdCancelInvoice.Enabled = False
         chkCALC_CAT.DataSource = Nothing
         chkCALC_CAT.Items.Clear()
         TabNavigationPage2.Enabled = False
@@ -1071,16 +1137,16 @@ Public Class frmINH
             If lblCancel.Text = "True" Then
                 lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-                cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
+                LcmdSaveINH.Enabled = False : LcmdCancelInvoice.Enabled = False : LcmdCalculate.Enabled = False : LcmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
             Else
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-                cmdSaveINH.Enabled = True : cmdCalculate.Enabled = True : cmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
+                LcmdSaveINH.Enabled = True : LcmdCalculate.Enabled = True : LcmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
                 'cmdCancelInvoice.Enabled = True 
             End If
             If chkCalculated.Checked = True Then
-                cmdCancelCalculate.Enabled = True : cmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+                LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
             Else
-                cmdCancelCalculate.Enabled = False : cmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
+                LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1124,7 +1190,7 @@ Public Class frmINH
             lblCancel.Visible = True
             lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
-            cmdSaveINH.Enabled = False : cmdCancelInvoice.Enabled = False : cmdCalculate.Enabled = False : cmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
+            LcmdSaveINH.Enabled = False : LcmdCancelInvoice.Enabled = False : LcmdCalculate.Enabled = False : LcmdSaveInd.Enabled = False : GridView5.OptionsBehavior.Editable = False
         End If
 
 
@@ -1280,7 +1346,7 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
                 oCmd.ExecuteNonQuery()
             End Using
-            cmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
+            LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
             chkCalculated.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
         End If
     End Sub

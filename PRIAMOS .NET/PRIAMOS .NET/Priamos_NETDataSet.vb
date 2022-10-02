@@ -19,3 +19,8 @@ Namespace Priamos_NETDataSetTableAdapters
     Partial Public Class vw_USRTableAdapter
     End Class
 End Namespace
+
+Namespace Priamos_NETDataSetTableAdapters
+    Partial Public Class vw_BDGTableAdapter
+    End Class
+End Namespace

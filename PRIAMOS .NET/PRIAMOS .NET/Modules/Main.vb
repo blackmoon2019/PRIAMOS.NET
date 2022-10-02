@@ -46,6 +46,7 @@ Module Main
         Public InvoicesEmailSSL As Boolean
         Public EXFolderPath As String
         Public ADM As String
+        Public ANNMENT As String
         Public ProgTitle As String
     End Structure
     Public ProgProps As PROG_PROPS

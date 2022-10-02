@@ -167,7 +167,7 @@ Public Class frmMain
 
     Private Sub bbParamaters_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbParamaters.ItemClick
         Dim form As frmParameters = New frmParameters()
-        form.Text = "Παράμετροι"
+        form.Text = "Γενικές Παράμετροι"
         UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
         form.Mode = FormMode.NewRecord
@@ -466,6 +466,15 @@ Public Class frmMain
         form.Text = "Κατηγορίες Ανακοινώσεων"
         UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "vw_ANN_GRPS"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BCCT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BCCT.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Επαφές Πολυκατοικιών"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "REPORT_3"
         form.MdiParent = Me
         form.Show()
     End Sub

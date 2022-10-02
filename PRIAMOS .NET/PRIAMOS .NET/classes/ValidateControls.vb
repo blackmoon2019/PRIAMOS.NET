@@ -20,6 +20,14 @@ Public Class ValidateControls
                                 End If
                             End If
                         End If
+                        If TypeOf Ctrl Is DevExpress.XtraEditors.CheckedListBoxControl Then
+                            Dim chkLst As DevExpress.XtraEditors.CheckedListBoxControl
+                            chkLst = Ctrl
+                            If chkLst.CheckedItemsCount = 0 Then
+                                XtraMessageBox.Show("Υπάρχουν υποχρεωτικά πεδία που δεν έχετε συμπληρώσει.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                Return False
+                            End If
+                        End If
                         If LItem.Control.Text = "" Then
                             XtraMessageBox.Show("Υπάρχουν υποχρεωτικά πεδία που δεν έχετε συμπληρώσει.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                             Return False

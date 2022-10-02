@@ -878,6 +878,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons-notes-40.png" />
     <None Include="Resources\icons8-sent-24.png" />
     <None Include="Resources\icons8-sent-32.png" />
     <None Include="Resources\icons8-batch-40.png" />

@@ -21,6 +21,9 @@ Partial Class frmBatchCreateAnnments
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.chkNotCalcInv = New DevExpress.XtraEditors.CheckedListBoxControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.cboAnnouncements = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
@@ -52,8 +55,6 @@ Partial Class frmBatchCreateAnnments
         Me.cmdSaveANNGRP = New DevExpress.XtraEditors.SimpleButton()
         Me.txtBefDate = New DevExpress.XtraEditors.MemoEdit()
         Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
-        Me.cboINH = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwINHNotCalculatedBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lbldate = New DevExpress.XtraEditors.LabelControl()
         Me.txtSample = New DevExpress.XtraEditors.TextEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -61,20 +62,22 @@ Partial Class frmBatchCreateAnnments
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.VwINHNotCalculatedBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ANNGRPSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_INHNotCalculatedTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INHNotCalculatedTableAdapter()
         Me.ANN_GRPSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.ANN_GRPSTableAdapter()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkNotCalcInv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAnnouncements.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,26 +87,28 @@ Partial Class frmBatchCreateAnnments
         CType(Me.txtBefDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboINH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwINHNotCalculatedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtSample.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINHNotCalculatedBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.LabelControl2)
+        Me.LayoutControl1.Controls.Add(Me.chkNotCalcInv)
         Me.LayoutControl1.Controls.Add(Me.LabelControl1)
         Me.LayoutControl1.Controls.Add(Me.cboAnnouncements)
         Me.LayoutControl1.Controls.Add(Me.chkGroups)
@@ -112,20 +117,62 @@ Partial Class frmBatchCreateAnnments
         Me.LayoutControl1.Controls.Add(Me.cmdSaveANNGRP)
         Me.LayoutControl1.Controls.Add(Me.txtBefDate)
         Me.LayoutControl1.Controls.Add(Me.dtFDate)
-        Me.LayoutControl1.Controls.Add(Me.cboINH)
         Me.LayoutControl1.Controls.Add(Me.lbldate)
         Me.LayoutControl1.Controls.Add(Me.txtSample)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2225, 593, 1137, 700)
         Me.LayoutControl1.Root = Me.Root
         Me.LayoutControl1.Size = New System.Drawing.Size(2140, 1043)
         Me.LayoutControl1.TabIndex = 2
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'LabelControl2
+        '
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.LabelControl2.Appearance.Options.UseFont = True
+        Me.LabelControl2.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.LabelControl2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LabelControl2.Location = New System.Drawing.Point(12, 402)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(427, 23)
+        Me.LabelControl2.StyleController = Me.LayoutControl1
+        Me.LabelControl2.TabIndex = 71
+        Me.LabelControl2.Text = "Διάστημα μη υπολογισμένων παραστατικών"
+        '
+        'chkNotCalcInv
+        '
+        Me.chkNotCalcInv.CheckOnClick = True
+        Me.chkNotCalcInv.Location = New System.Drawing.Point(12, 429)
+        Me.chkNotCalcInv.MultiColumn = True
+        Me.chkNotCalcInv.Name = "chkNotCalcInv"
+        Me.chkNotCalcInv.Size = New System.Drawing.Size(427, 183)
+        Me.chkNotCalcInv.StyleController = Me.LayoutControl1
+        Me.chkNotCalcInv.TabIndex = 69
+        Me.chkNotCalcInv.Tag = ""
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Green
+        Me.LabelControl1.Appearance.Options.UseFont = True
+        Me.LabelControl1.Appearance.Options.UseForeColor = True
+        Me.LabelControl1.Appearance.Options.UseTextOptions = True
+        Me.LabelControl1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.LabelControl1.Location = New System.Drawing.Point(12, 965)
+        Me.LabelControl1.Margin = New System.Windows.Forms.Padding(5)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(969, 23)
+        Me.LabelControl1.StyleController = Me.LayoutControl1
+        Me.LabelControl1.TabIndex = 68
+        Me.LabelControl1.Tag = ""
+        Me.LabelControl1.Text = "Για να προσθέσετε την ημερομηνία θα πρέπει να βάλτε την μεταβλητή [DATE] και για " &
+    "την ώρα [TIME]"
+        '
         'cboAnnouncements
         '
-        Me.cboAnnouncements.Location = New System.Drawing.Point(12, 500)
+        Me.cboAnnouncements.Location = New System.Drawing.Point(12, 642)
         Me.cboAnnouncements.Margin = New System.Windows.Forms.Padding(5)
         Me.cboAnnouncements.Name = "cboAnnouncements"
         Me.cboAnnouncements.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.[True]
@@ -136,7 +183,7 @@ Partial Class frmBatchCreateAnnments
         Me.cboAnnouncements.Properties.NullText = ""
         Me.cboAnnouncements.Properties.PopupSizeable = False
         Me.cboAnnouncements.Properties.ValueMember = "ID"
-        Me.cboAnnouncements.Size = New System.Drawing.Size(969, 38)
+        Me.cboAnnouncements.Size = New System.Drawing.Size(427, 38)
         Me.cboAnnouncements.StyleController = Me.LayoutControl1
         Me.cboAnnouncements.TabIndex = 67
         Me.cboAnnouncements.Tag = "announcement,0,1,2"
@@ -157,7 +204,7 @@ Partial Class frmBatchCreateAnnments
         Me.chkGroups.Location = New System.Drawing.Point(12, 80)
         Me.chkGroups.MultiColumn = True
         Me.chkGroups.Name = "chkGroups"
-        Me.chkGroups.Size = New System.Drawing.Size(969, 322)
+        Me.chkGroups.Size = New System.Drawing.Size(427, 318)
         Me.chkGroups.StyleController = Me.LayoutControl1
         Me.chkGroups.TabIndex = 66
         '
@@ -170,11 +217,11 @@ Partial Class frmBatchCreateAnnments
         Me.GridControl10.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.GridControl10.EmbeddedNavigator.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
         Me.GridControl10.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        Me.GridControl10.Location = New System.Drawing.Point(985, 12)
+        Me.GridControl10.Location = New System.Drawing.Point(443, 12)
         Me.GridControl10.MainView = Me.GridView10
         Me.GridControl10.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl10.Name = "GridControl10"
-        Me.GridControl10.Size = New System.Drawing.Size(1143, 949)
+        Me.GridControl10.Size = New System.Drawing.Size(1685, 949)
         Me.GridControl10.TabIndex = 64
         Me.GridControl10.UseEmbeddedNavigator = True
         Me.GridControl10.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView10})
@@ -404,10 +451,10 @@ Partial Class frmBatchCreateAnnments
         '
         'txtBefDate
         '
-        Me.txtBefDate.Location = New System.Drawing.Point(12, 568)
+        Me.txtBefDate.Location = New System.Drawing.Point(12, 710)
         Me.txtBefDate.Margin = New System.Windows.Forms.Padding(5)
         Me.txtBefDate.Name = "txtBefDate"
-        Me.txtBefDate.Size = New System.Drawing.Size(969, 393)
+        Me.txtBefDate.Size = New System.Drawing.Size(427, 251)
         Me.txtBefDate.StyleController = Me.LayoutControl1
         Me.txtBefDate.TabIndex = 61
         Me.txtBefDate.Tag = "notes,0,1,2"
@@ -423,33 +470,10 @@ Partial Class frmBatchCreateAnnments
         Me.dtFDate.Properties.MaskSettings.Set("mask", "d")
         Me.dtFDate.Properties.ShowMonthNavigationButtons = DevExpress.Utils.DefaultBoolean.[True]
         Me.dtFDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.dtFDate.Size = New System.Drawing.Size(795, 38)
+        Me.dtFDate.Size = New System.Drawing.Size(253, 38)
         Me.dtFDate.StyleController = Me.LayoutControl1
         Me.dtFDate.TabIndex = 38
         Me.dtFDate.Tag = "fDate,0,1,2"
-        '
-        'cboINH
-        '
-        Me.cboINH.Location = New System.Drawing.Point(12, 432)
-        Me.cboINH.Margin = New System.Windows.Forms.Padding(5)
-        Me.cboINH.Name = "cboINH"
-        Me.cboINH.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboINH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboINH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("completeDate", "Διάστημα", 136, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboINH.Properties.DataSource = Me.VwINHNotCalculatedBindingSource
-        Me.cboINH.Properties.DisplayMember = "completeDate"
-        Me.cboINH.Properties.NullText = ""
-        Me.cboINH.Properties.PopupSizeable = False
-        Me.cboINH.Properties.ValueMember = "completeDate"
-        Me.cboINH.Size = New System.Drawing.Size(969, 38)
-        Me.cboINH.StyleController = Me.LayoutControl1
-        Me.cboINH.TabIndex = 4
-        Me.cboINH.Tag = ""
-        '
-        'VwINHNotCalculatedBindingSource
-        '
-        Me.VwINHNotCalculatedBindingSource.DataMember = "vw_INHNotCalculated"
-        Me.VwINHNotCalculatedBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'lbldate
         '
@@ -457,7 +481,7 @@ Partial Class frmBatchCreateAnnments
         Me.lbldate.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lbldate.Appearance.Options.UseFont = True
         Me.lbldate.Appearance.Options.UseForeColor = True
-        Me.lbldate.Location = New System.Drawing.Point(811, 12)
+        Me.lbldate.Location = New System.Drawing.Point(269, 30)
         Me.lbldate.Margin = New System.Windows.Forms.Padding(5)
         Me.lbldate.Name = "lbldate"
         Me.lbldate.Size = New System.Drawing.Size(170, 28)
@@ -482,7 +506,7 @@ Partial Class frmBatchCreateAnnments
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem8, Me.LayoutControlItem53, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem4, Me.LayoutControlItem5})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem8, Me.LayoutControlItem53, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem11, Me.LayoutControlItem7})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(2140, 1043)
         Me.Root.TextVisible = False
@@ -492,19 +516,20 @@ Partial Class frmBatchCreateAnnments
         Me.LayoutControlItem6.Control = Me.txtBefDate
         Me.LayoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem6.CustomizationFormText = "Ανακοίνωση προ ημερομηνίας"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 530)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 672)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(973, 423)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(431, 281)
+        Me.LayoutControlItem6.Tag = ""
         Me.LayoutControlItem6.Text = "Επεξεργασία Ανακοίνωσης"
         Me.LayoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(362, 23)
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(218, 23)
         '
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.GridControl10
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(973, 0)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(431, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(1147, 953)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(1689, 953)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -516,39 +541,22 @@ Partial Class frmBatchCreateAnnments
         Me.LayoutControlItem53.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem53.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem53.Name = "LayoutControlItem53"
-        Me.LayoutControlItem53.Size = New System.Drawing.Size(799, 68)
+        Me.LayoutControlItem53.Size = New System.Drawing.Size(257, 68)
         Me.LayoutControlItem53.Text = "Ημερομηνία"
         Me.LayoutControlItem53.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem53.TextSize = New System.Drawing.Size(362, 23)
+        Me.LayoutControlItem53.TextSize = New System.Drawing.Size(218, 23)
         '
         'LayoutControlItem1
         '
+        Me.LayoutControlItem1.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center
         Me.LayoutControlItem1.Control = Me.lbldate
         Me.LayoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(799, 0)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(257, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Size = New System.Drawing.Size(174, 68)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.cboINH
-        Me.LayoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem7.CustomizationFormText = "Παραστατικά"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 394)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.OptionsPrint.AppearanceItem.Options.UseTextOptions = True
-        Me.LayoutControlItem7.OptionsPrint.AppearanceItem.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.LayoutControlItem7.OptionsPrint.AppearanceItemControl.Options.UseTextOptions = True
-        Me.LayoutControlItem7.OptionsPrint.AppearanceItemControl.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.LayoutControlItem7.OptionsPrint.AppearanceItemText.Options.UseTextOptions = True
-        Me.LayoutControlItem7.OptionsPrint.AppearanceItemText.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(973, 68)
-        Me.LayoutControlItem7.Text = "Διάστημα μη υπολογισμένωνΠαραστατικών"
-        Me.LayoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(362, 23)
         '
         'LayoutControlItem3
         '
@@ -587,19 +595,52 @@ Partial Class frmBatchCreateAnnments
         Me.LayoutControlItem10.Control = Me.chkGroups
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 68)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(973, 326)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(431, 322)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.cboAnnouncements
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 462)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 604)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(973, 68)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(431, 68)
         Me.LayoutControlItem4.Text = "Ανακοινώσεις"
         Me.LayoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(362, 23)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(218, 23)
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.LabelControl1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 953)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(2120, 27)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        '
+        'LayoutControlItem11
+        '
+        Me.LayoutControlItem11.Control = Me.chkNotCalcInv
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 417)
+        Me.LayoutControlItem11.Name = "LayoutControlItem11"
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(431, 187)
+        Me.LayoutControlItem11.Tag = "1"
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem11.TextVisible = False
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.LabelControl2
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 390)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(431, 27)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
+        '
+        'VwINHNotCalculatedBindingSource
+        '
+        Me.VwINHNotCalculatedBindingSource.DataMember = "vw_INHNotCalculated"
+        Me.VwINHNotCalculatedBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'ANNGRPSBindingSource
         '
@@ -618,33 +659,6 @@ Partial Class frmBatchCreateAnnments
         '
         Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
         '
-        'LabelControl1
-        '
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl1.Appearance.ForeColor = System.Drawing.Color.Green
-        Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Appearance.Options.UseForeColor = True
-        Me.LabelControl1.Appearance.Options.UseTextOptions = True
-        Me.LabelControl1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.LabelControl1.Location = New System.Drawing.Point(12, 965)
-        Me.LabelControl1.Margin = New System.Windows.Forms.Padding(5)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(969, 23)
-        Me.LabelControl1.StyleController = Me.LayoutControl1
-        Me.LabelControl1.TabIndex = 68
-        Me.LabelControl1.Tag = ""
-        Me.LabelControl1.Text = "Για να προσθέσετε την ημερομηνία θα πρέπει να βάλτε την μεταβλητή [DATE] και για " &
-    "την ώρα [TIME]"
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.LabelControl1
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 953)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(2120, 27)
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem5.TextVisible = False
-        '
         'frmBatchCreateAnnments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -656,6 +670,7 @@ Partial Class frmBatchCreateAnnments
         Me.Text = "Μαζική Ενημέρωση Ανακοινώσεων"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkNotCalcInv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAnnouncements.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -665,22 +680,22 @@ Partial Class frmBatchCreateAnnments
         CType(Me.txtBefDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboINH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwINHNotCalculatedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtSample.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINHNotCalculatedBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -718,9 +733,7 @@ Partial Class frmBatchCreateAnnments
     Friend WithEvents GridColumn37 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents dtFDate As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents cboINH As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem53 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lbldate As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
@@ -738,4 +751,8 @@ Partial Class frmBatchCreateAnnments
     Friend WithEvents Vw_ANN_MENTSTableAdapter As Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents chkNotCalcInv As DevExpress.XtraEditors.CheckedListBoxControl
+    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
 End Class

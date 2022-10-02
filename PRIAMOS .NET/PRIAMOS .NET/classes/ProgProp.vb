@@ -65,6 +65,17 @@ Public Class ProgProp
         End Try
 
     End Sub
+    Public Sub SetProgANNMENT(ByVal sValue As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'ANN_MENT'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
 
     Public Sub GetProgInvoicesEmail()
         Dim sSQL As String
@@ -132,6 +143,22 @@ Public Class ProgProp
         Dim sdr As SqlDataReader
         Try
             sSQL = "select val FROM PRM where prm= 'ADM'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.ADM = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.ADM
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgANNMENT() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'ANN_MENT'"
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then ProgProps.ADM = sdr.GetString(sdr.GetOrdinal("VAL"))
