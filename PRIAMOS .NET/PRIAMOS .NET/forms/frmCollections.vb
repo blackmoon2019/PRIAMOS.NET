@@ -101,7 +101,7 @@ Public Class frmCollections
 
         If sbdgID <> Nothing Then
             cboBDG.EditValue = System.Guid.Parse(sbdgID)
-            cboINH.EditValue = System.Guid.Parse(sinhID)
+            If sinhID <> Nothing Then cboINH.EditValue = System.Guid.Parse(sinhID)
         End If
         Me.CenterToScreen()
         My.Settings.frmCollections = Me.Location
@@ -153,7 +153,7 @@ Public Class frmCollections
             '         "INNER Join APT A ON C.aptID = A.ID " &
             '        "where Completed=0 " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
             '        "group by C.bdgID, aptID, ttl,a.bal,a.ord"
-            strSql = "SELECT S.bdgID, S.aptID, S.ttl,S.nam,S.ord,SUM(COL.debit ) AS debit, S.credit, S.bal,S.Aptbal ,
+            strSql = "SELECT S.bdgID, S.aptID, S.ttl,S.nam,S.ord,S.Bdgcode,SUM(COL.debit ) AS debit, S.credit, S.bal,S.Aptbal ,
                     (select STUFF((SELECT DISTINCT ',' + isnull(USR.RealName,'ΧΩΡΙΣ ΧΡΗΣΤΗ')   AS debitusrName   
 					                    FROM COL C
 					                    LEFT JOIN USR ON USR.ID = c.debitusrID
@@ -163,18 +163,19 @@ Public Class frmCollections
                         FROM COL
                         INNER JOIN
                         (
-                        SELECT  C.bdgID, aptID, a.ttl,a.ord, a.nam,
+                        SELECT  C.bdgID, aptID, a.ttl,a.ord, a.nam,coalesce(B.old_code,B.code) as BdgCode,
                         sum(debit) as debit , 
                         sum(credit) as credit , sum(C.bal) as bal,A.Bal as Aptbal  
                         From COL C 
                         INNER Join INH I ON I.ID=C.inhID 
+                        INNER Join BDG B ON B.ID = I.bdgID 
                         INNER Join APT A ON C.aptID = A.ID 
                         where C.reserveAPT = 0 and Completed=0  " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
-                        "group by C.bdgID, aptID, ttl,a.bal,a.ord,a.nam 
+                        "group by C.bdgID, aptID, ttl,a.bal,a.ord,a.nam,coalesce(B.old_code,B.code) 
                         ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
                         where COL.reserveAPT = 0 and Completed=0
-                        GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal,s.nam  
-                        order by S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal,s.nam  "
+                        GROUP BY S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal,s.nam,S.Bdgcode  
+                        order by S.bdgID,S.aptID ,S.TTL,S.ORD,S.DEBIT,S.credit,S.BAL,S.Aptbal,s.nam,S.Bdgcode  "
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
             Priamos_NETDataSet2.COL_APT.Clear()
@@ -1011,7 +1012,7 @@ Public Class frmCollections
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView5, "COL_APTCREDE_def.xml")
     End Sub
     Private Sub GridView6_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView6, "COL_D_CREDE_def.xml",, "SELECT top 1 old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate,ord FROM   vw_COL_D")
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView6, "COL_D_CREDE_def.xml",, "SELECT top 1 old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate,ord,modifiedByRealName FROM   vw_COL_D")
     End Sub
     Private Sub cmdCol_Refresh_Click(sender As Object, e As EventArgs) Handles cmdCol_Refresh.Click
         Select Case TabbedControlGroup1.SelectedTabPageIndex

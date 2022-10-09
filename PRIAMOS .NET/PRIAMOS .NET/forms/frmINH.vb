@@ -98,6 +98,7 @@ Public Class frmINH
                     'cmdCancelInvoice.Enabled = True
                 End If
                 Me.Text = "Παραστατικό-" & cboBDG.Text
+                If chkCalculated.CheckState = CheckState.Checked Then cmdSaveInd.Enabled = False : cmdDel.Enabled = False : cmdSaveINH.Enabled = False
         End Select
         Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -380,7 +381,7 @@ Public Class frmINH
         If ModifierKeys <> Keys.Alt Then
             Return False
         Else
-            If charCode.ToString = "s" Or charCode.ToString = "S" Or charCode.ToString = "σ" Or charCode.ToString = "S" Then
+            If charCode.ToString = "s" Or charCode.ToString = "S" Or charCode.ToString = "σ" Or charCode.ToString = "Σ" Then
                 cmdSaveInd.PerformClick()
             End If
         End If
@@ -667,8 +668,9 @@ Public Class frmINH
 
     Private Sub TabPane1_SelectedPageChanged(sender As Object, e As SelectedPageChangedEventArgs) Handles TabPane1.SelectedPageChanged
         Select Case TabPane1.SelectedPageIndex
-            Case 0 : cmdDel.Enabled = True
-            Case 1 : cmdDel.Enabled = True : EditRecord()
+            Case 0 : If chkCalculated.CheckState = CheckState.Checked Then cmdDel.Enabled = False Else cmdDel.Enabled = True
+            Case 1 : If chkCalculated.CheckState = CheckState.Checked Then cmdDel.Enabled = False Else cmdDel.Enabled = True : 
+                EditRecord()
             Case 2 : ApmLoad()        'Χιλιοστά Διαμερισμάτων
 
 
@@ -979,7 +981,7 @@ Public Class frmINH
         TabNavigationPage2.Enabled = False
         TabNavigationPage3.Enabled = False
         grdIND.DataSource = Nothing
-        lbldate.Text = ""
+        lbldate.Text = " "
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.NewGuid)
     End Sub
 
@@ -1348,6 +1350,7 @@ Public Class frmINH
             End Using
             LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
             chkCalculated.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
+            cmdSaveInd.Enabled = True : cmdDel.Enabled = True : cmdSaveINH.Enabled = True
         End If
     End Sub
 

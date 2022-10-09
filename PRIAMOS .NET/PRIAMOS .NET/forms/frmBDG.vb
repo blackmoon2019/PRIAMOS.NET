@@ -36,6 +36,7 @@ Public Class frmBDG
     Private ModeBCCT As Byte
 
     '------C L A S S E S------
+    Private UserPermissions As New CheckPermissions
     Private Valid As New ValidateControls
     Private Log As New Transactions
     Private FillCbo As New FillCombos
@@ -2468,7 +2469,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub chkManage_CheckedChanged(sender As Object, e As EventArgs) Handles chkManage.CheckedChanged
-        If chkManage.Checked = True Then cboManager.EditValue = System.Guid.Parse("C2ADEEFC-37F1-460B-A40D-A41729371535") Else cboManager.EditValue = Nothing
+        If Me.IsActive = True Then If chkManage.Checked = True Then cboManager.EditValue = System.Guid.Parse("C2ADEEFC-37F1-460B-A40D-A41729371535") Else cboManager.EditValue = Nothing
     End Sub
 
     Private Sub cmdAptExport_Click(sender As Object, e As EventArgs) Handles cmdAptExport.Click
@@ -2522,6 +2523,16 @@ Public Class frmBDG
     End Sub
 
     Private Sub GridControl10_Click(sender As Object, e As EventArgs) Handles GridControl10.Click
+
+    End Sub
+
+    Private Sub cmdCol_Click(sender As Object, e As EventArgs) Handles cmdCol.Click
+        Dim form As frmCollections = New frmCollections()
+        form.Text = "Είσπραξεις Κοινοχρήστων"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.BDGID = sID
+        form.MdiParent = frmMain
+        form.Show()
 
     End Sub
 

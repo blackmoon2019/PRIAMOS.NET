@@ -16,7 +16,13 @@ Public Class SendEmail
 
             e_mail = New MailMessage()
             e_mail.From = New MailAddress(ProgProps.InvoicesEmailUsername)
-            e_mail.To.Add(sToEmail)
+            Dim parts As String() = sToEmail.Split(";")
+
+            ' Loop through result strings with For Each.
+            For Each part As String In parts
+                If part.Length > 0 Then e_mail.To.Add(part)
+            Next
+
             'If txtCC.Text <> "" Then e_mail.CC.Add(txtCC.Text)
             e_mail.Subject = Subject
             e_mail.IsBodyHtml = True

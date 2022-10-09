@@ -1856,7 +1856,10 @@ Public Class frmScroller
 
                     Dim sInhID As String = GridView1.GetRowCellValue(Row, "ID").ToString
                     Dim sSQL As String =
-                                    "select '1' AS SKEY,APT.ID as AptID,COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) AS EMAIL,
+                                    "select APT.ID as AptID,
+                                    CONCAT(CCT_OWNER.email + ';',CCT_OWNER.email2 +';',CCT_OWNER.email3 +
+                                    ';',CCT_TENANT.email +';',CCT_TENANT.email2 +';',CCT_TENANT.email3 + 
+                                    ';' ,CCT_REP.email + ';',CCT_REP.email2 +';',CCT_REP.email3  ) AS EMAIL,
                                     INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
                                     (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
@@ -1864,26 +1867,19 @@ Public Class frmScroller
                                 from INH 
                                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
                                 INNER JOIN APT ON APT.bdgID =INH.bdgID 
-                                INNER JOIN CCT CCT_OWNER ON CCT_OWNER.ID =APT.OwnerID 
+                                LEFT JOIN CCT CCT_OWNER ON CCT_OWNER.ID =APT.OwnerID 
+								LEFT JOIN CCT CCT_TENANT ON CCT_TENANT.ID =APT.TenantID
+                                LEFT JOIN CCT CCT_REP ON CCT_REP.ID =APT.RepresentativeID
                                 WHERE INH.ID= " & toSQLValueS(sInhID) &
-                                    " AND COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL
-                                UNION
-                                select '2' AS SKEY,APT.ID as AptID,COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) AS EMAIL,
-                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
-                                    (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
-                                    where vw_INC.inhID=INH.ID
-                                    and vw_INC.aptID=APT.ID) as AMOUNT 
-                                from INH 
-                                INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                                INNER JOIN APT ON APT.bdgID =INH.bdgID 
-                                INNER JOIN CCT CCT_TENANT ON CCT_TENANT.ID =APT.TenantID
-                                WHERE INH.ID= " & toSQLValueS(sInhID) &
-                            " AND COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) IS NOT NULL"
+                                    " AND (COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL OR
+								COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) IS NOT NULL OR 
+                                COALESCE(CCT_REP.email,CCT_REP.EMAIL2,CCT_REP.EMAIL3) IS NOT NULL ) "
                     Cmd = New SqlCommand(sSQL, CNDB)
                     sdr = Cmd.ExecuteReader()
+                    Dim sEmailTo As String
                     While sdr.Read()
                         Dim sAptID As String
-                        Dim sEmailTo As String
+
                         Dim sFName As String
                         Dim sBody As String
                         Dim Subject As String = ""
@@ -1892,6 +1888,7 @@ Public Class frmScroller
                         If sdr.IsDBNull(sdr.GetOrdinal("AptID")) = False Then
                             sAptID = sdr.GetGuid(sdr.GetOrdinal("AptID").ToString).ToString
                             sEmailTo = sdr.GetString(sdr.GetOrdinal("EMAIL").ToString).ToString
+                            If sEmailTo.Last = ";" Then sEmailTo = sEmailTo.Substring(0, sEmailTo.Length - 1)
                             report.FilterString = "[ID] = {" & sAptID & "}"
                             sFName = sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString +
                                      sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString
@@ -1920,26 +1917,26 @@ Public Class frmScroller
                                 'sSQL = "select '1'='2'"
                                 Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
-                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg)
-                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg)
+                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
+                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
                                 oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             Else
                                 Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg)
-                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg)
+                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
+                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
                                 oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             End If
                             If sIDS.Length > 0 Then sIDS.Append(",")
                             sIDS.Append(toSQLValueS(sEmailID))
-                            sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, " & toSQLValueS(sEmailTo) & " as ToEmail 
+                        End If
+                    End While
+                    sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
                                 from EMAIL_LOG 
                                 inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
                                 left join APT  on APT.id=EMAIL_LOG.aptID 
                                 where EMAIL_LOG.id in( " & sIDS.ToString & ")"
-                            LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
-                            LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
-                        End If
-                    End While
+                    LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
+                    LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
                     sdr.Close()
                     SSM.CloseWaitForm()
                 Case 2 ' Εισπράξεις

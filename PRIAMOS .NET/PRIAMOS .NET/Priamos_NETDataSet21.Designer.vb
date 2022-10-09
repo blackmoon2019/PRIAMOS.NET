@@ -1186,6 +1186,8 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columnbal As Global.System.Data.DataColumn
         
+        Private columnBdgCode As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1262,6 +1264,14 @@ Partial Public Class Priamos_NETDataSet2
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BdgCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBdgCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1298,9 +1308,9 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addvw_COL_BDGRow(ByVal bdgID As System.Guid, ByVal BdgNam As String, ByVal debit As Decimal, ByVal credit As Decimal, ByVal bal As Decimal) As vw_COL_BDGRow
+        Public Overloads Function Addvw_COL_BDGRow(ByVal bdgID As System.Guid, ByVal BdgNam As String, ByVal debit As Decimal, ByVal credit As Decimal, ByVal bal As Decimal, ByVal BdgCode As Integer) As vw_COL_BDGRow
             Dim rowvw_COL_BDGRow As vw_COL_BDGRow = CType(Me.NewRow,vw_COL_BDGRow)
-            Dim columnValuesArray() As Object = New Object() {bdgID, BdgNam, debit, credit, bal}
+            Dim columnValuesArray() As Object = New Object() {bdgID, BdgNam, debit, credit, bal, BdgCode}
             rowvw_COL_BDGRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_COL_BDGRow)
             Return rowvw_COL_BDGRow
@@ -1328,6 +1338,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columndebit = MyBase.Columns("debit")
             Me.columncredit = MyBase.Columns("credit")
             Me.columnbal = MyBase.Columns("bal")
+            Me.columnBdgCode = MyBase.Columns("BdgCode")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1343,6 +1354,8 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columncredit)
             Me.columnbal = New Global.System.Data.DataColumn("bal", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbal)
+            Me.columnBdgCode = New Global.System.Data.DataColumn("BdgCode", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBdgCode)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnbdgID}, false))
             Me.columnbdgID.AllowDBNull = false
             Me.columnbdgID.Unique = true
@@ -1350,6 +1363,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columndebit.ReadOnly = true
             Me.columncredit.ReadOnly = true
             Me.columnbal.ReadOnly = true
+            Me.columnBdgCode.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4661,6 +4675,21 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BdgCode() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_COL_BDG.BdgCodeColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BdgCode' in table 'vw_COL_BDG' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_COL_BDG.BdgCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsBdgNamNull() As Boolean
             Return Me.IsNull(Me.tablevw_COL_BDG.BdgNamColumn)
         End Function
@@ -4705,6 +4734,18 @@ Partial Public Class Priamos_NETDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetbalNull()
             Me(Me.tablevw_COL_BDG.balColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBdgCodeNull() As Boolean
+            Return Me.IsNull(Me.tablevw_COL_BDG.BdgCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBdgCodeNull()
+            Me(Me.tablevw_COL_BDG.BdgCodeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7461,6 +7502,7 @@ Namespace Priamos_NETDataSet2TableAdapters
             tableMapping.ColumnMappings.Add("debit", "debit")
             tableMapping.ColumnMappings.Add("credit", "credit")
             tableMapping.ColumnMappings.Add("bal", "bal")
+            tableMapping.ColumnMappings.Add("BdgCode", "BdgCode")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -7477,29 +7519,33 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT bdgID, BDG.NAM AS BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM("& _ 
-                "bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where completed="& _ 
-                "0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
+            Me._commandCollection(0).CommandText = "SELECT COL.bdgID, COALESCE (BDG.old_code, BDG.code) AS BdgCode, BDG.nam AS BdgNam"& _ 
+                ", SUM(COL.debit) AS debit, SUM(COL.credit) AS credit, SUM(COL.bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM "& _ 
+                "  COL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           BDG ON BDG.ID = COL.bdgID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (COL.completed = 0"& _ 
+                ")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY COL.bdgID, BDG.nam, COALESCE (BDG.old_code, BDG.code)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT bdgID, BDG.NAM AS BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM("& _ 
-                "bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID = @b"& _ 
-                "dgID  and completed=0 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
+            Me._commandCollection(1).CommandText = "SELECT bdgID, COALESCE (BDG.old_code, BDG.code) AS BdgCode, BDG.NAM AS BdgNam, SU"& _ 
+                "M(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOI"& _ 
+                "N BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID = @bdgID  and completed=0 "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY b"& _ 
+                "dgID, BDG.NAM ,COALESCE (BDG.old_code, BDG.code) "
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT bdgID, BDG.NAM AS BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM("& _ 
-                "bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where debitusrID"& _ 
-                "= @debitusrID  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
+            Me._commandCollection(2).CommandText = "SELECT bdgID, COALESCE (BDG.old_code, BDG.code) AS BdgCode, BDG.NAM AS BdgNam, SU"& _ 
+                "M(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM COL  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOI"& _ 
+                "N BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where debitusrID= @debitusrID  "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, B"& _ 
+                "DG.NAM ,COALESCE (BDG.old_code, BDG.code) "
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@debitusrID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "debitusrID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT bdgID, BDG.NAM  as BdgNam, SUM(debit) AS debit, SUM(credit) AS credit, SUM"& _ 
-                "(bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where COL.inh"& _ 
-                "ID= @inhID  and completed=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY bdgID, BDG.NAM "
+            Me._commandCollection(3).CommandText = "SELECT bdgID, COALESCE (BDG.old_code, BDG.code) AS BdgCode, BDG.NAM  as BdgNam, S"& _ 
+                "UM(debit) AS debit, SUM(credit) AS credit, SUM(bal) AS bal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     COL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"INNER "& _ 
+                "JOIN BDG ON BDG.ID = COL.bdgID "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where COL.inhID= @inhID  and completed=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP"& _ 
+                " BY bdgID, BDG.NAM ,COALESCE (BDG.old_code, BDG.code) "
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -7810,8 +7856,9 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
-                " modifiedBy, modifiedOn, old_code, ord, tDate, tenant, ttl FROM vw_COL_D WHERE ("& _ 
-                "reserveAPT = 0) AND (bdgID = @bdgID) ORDER BY createdOn"
+                " modifiedBy, modifiedOn, old_code, ord, tDate, tenant, ttl, modifiedByRealName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "FROM   vw_COL_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (reserveAPT = 0) AND (bdgID = @bdgID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY createdOn"& _ 
+                ""
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
@@ -7838,8 +7885,9 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(5).Connection = Me.Connection
             Me._commandCollection(5).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
                 "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
-                " modifiedBy, modifiedOn, old_code, ord, tDate, tenant, ttl FROM vw_COL_D WHERE ("& _ 
-                "reserveAPT = 0) AND (agreed = 0) AND (bdgID = @bdgid) ORDER BY bdgNam, ttl"
+                " modifiedBy, modifiedOn, old_code, ord, tDate, tenant, ttl, modifiedByRealName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "FROM   vw_COL_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (reserveAPT = 0) AND (agreed = 0) AND (bdgID = @bdgid)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"O"& _ 
+                "RDER BY bdgNam, ttl"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgid", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

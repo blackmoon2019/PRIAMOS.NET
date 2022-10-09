@@ -40041,7 +40041,8 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(1).CommandText = "SELECT ID, code, nam, ttl, ord, name, OwnerFullName, TenantFullName, bal, out, cl"& _ 
                 "osed, cmt, RealName, bdgNam, bdgID, flrID, OwnerID, TenantID, old_code, sameOwne"& _ 
                 "rTenant, bdgCode, AdrID, AdrName, ar, AreaName, RepresentativeID, Representative"& _ 
-                "Fullname"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_APT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID=@bdgID and bal_adm<=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by ord"
+                "Fullname"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_APT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID=@bdgID and bal_adm<=0 and out = 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by"& _ 
+                " ord"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

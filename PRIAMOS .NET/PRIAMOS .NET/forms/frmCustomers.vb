@@ -200,6 +200,7 @@ Public Class frmCustomers
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "CCT", LayoutControl1,,, sGuid)
+                        sID = sGuid
                     Case FormMode.EditRecord
                         sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "CCT", LayoutControl1,,, sID)
                         sGuid = sID

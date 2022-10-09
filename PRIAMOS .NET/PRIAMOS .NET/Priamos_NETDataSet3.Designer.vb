@@ -2851,18 +2851,18 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT APT.ID, APT.ttl, APT.nam, COALESCE (cctOwner.email, cctOwner.email2, cctOw"& _ 
-                "ner.email3) AS cctOwnerEmail, COALESCE (cctTenant.email, cctTenant.email2, cctTe"& _ 
-                "nant.email3) AS cctTenantEmail, COALESCE (cctRepresentative.email, cctRepresenta"& _ 
-                "tive.email2, cctRepresentative.email3) AS cctRepresentativeEmail, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           A"& _ 
-                "PT.sendEmailOwner, APT.sendEmailTenant, APT.sendEmailRepresentative, APT.OwnerID"& _ 
-                ", APT.TenantID, APT.RepresentativeID, APT.bal_adm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   APT LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "          CCT AS cctOwner ON cctOwner.ID = APT.OwnerID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "   CCT AS cctTenant ON cctTenant.ID = APT.TenantID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           C"& _ 
-                "CT AS cctRepresentative ON cctRepresentative.ID = APT.RepresentativeID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (A"& _ 
-                "PT.sendEmailOwner = 1) AND (APT.bdgID = @bdgID) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           (APT.bdgID = @bdg"& _ 
-                "ID) AND (APT.sendEmailTenant = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           (APT.bdgID = @bdgID) AND (APT.s"& _ 
-                "endEmailRepresentative = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY APT.ord"
+            Me._commandCollection(0).CommandText = "SELECT APT.ID, APT.ttl, APT.nam, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"CONCAT(cctOwner.email + ';',cctOwner.email2 +'"& _ 
+                ";',cctOwner.email3) AS cctOwnerEmail,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"CONCAT(cctTenant.email +';',cctTenant.ema"& _ 
+                "il2 +';',cctTenant.email3) AS cctTenantEmail,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"CONCAT(cctRepresentative.email + "& _ 
+                "';',cctRepresentative.email2 +';',cctRepresentative.email3  ) AS cctRepresentati"& _ 
+                "veEmail,"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           APT.sendEmailOwner, APT.sendEmailTenant, APT.sendEmailRepre"& _ 
+                "sentative, APT.OwnerID, APT.TenantID, APT.RepresentativeID, APT.bal_adm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
+                "APT LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           CCT AS cctOwner ON cctOwner.ID = APT.OwnerID LEF"& _ 
+                "T OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           CCT AS cctTenant ON cctTenant.ID = APT.TenantID LEFT OU"& _ 
+                "TER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           CCT AS cctRepresentative ON cctRepresentative.ID = APT.Repr"& _ 
+                "esentativeID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (APT.sendEmailOwner = 1) AND (APT.bdgID = @bdgID) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "     (APT.bdgID = @bdgID) AND (APT.sendEmailTenant = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           (APT.bdgI"& _ 
+                "D = @bdgID) AND (APT.sendEmailRepresentative = 1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY APT.ord"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
