@@ -23,6 +23,7 @@ Partial Class frmColEnanti
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmColEnanti))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cboApt = New DevExpress.XtraEditors.LookUpEdit()
@@ -38,16 +39,16 @@ Partial Class frmColEnanti
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwUSRBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
         Me.Vw_USRTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_USRTableAdapter()
-        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDebit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +63,6 @@ Partial Class frmColEnanti
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwUSRBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -102,6 +102,11 @@ Partial Class frmColEnanti
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 45
         Me.cboBDG.Tag = ""
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'cmdSave
         '
@@ -287,15 +292,18 @@ Partial Class frmColEnanti
         Me.LayoutControlItem4.Text = "Πολυκατοικία"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(163, 23)
         '
+        'Vw_APTTableAdapter
+        '
+        Me.Vw_APTTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
+        '
         'VwBDGBindingSource
         '
         Me.VwBDGBindingSource.DataMember = "vw_BDG"
         Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'VwAPTBindingSource
         '
@@ -307,17 +315,9 @@ Partial Class frmColEnanti
         Me.VwUSRBindingSource.DataMember = "vw_USR"
         Me.VwUSRBindingSource.DataSource = Me.Priamos_NETDataSet
         '
-        'Vw_APTTableAdapter
-        '
-        Me.Vw_APTTableAdapter.ClearBeforeFill = True
-        '
         'Vw_USRTableAdapter
         '
         Me.Vw_USRTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_BDGTableAdapter
-        '
-        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
         '
         'frmColEnanti
         '
@@ -335,6 +335,7 @@ Partial Class frmColEnanti
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDebit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -349,7 +350,6 @@ Partial Class frmColEnanti
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwUSRBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

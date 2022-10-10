@@ -447,6 +447,11 @@ Public Class frmCollections
                                    " and inhID = " & toSQLValueS(inhID)
                         End Select
                     Case "GridView4"
+                        If dtdebit Is DBNull.Value Or sField = "NULL" Then
+                            dtdebit = "NULL"
+                        Else
+                            dtdebit = toSQLValueS(CDate(Date.Now).ToString("yyyyMMdd"))
+                        End If
                         sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
                            " WHERE completed=0 and ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
                         bdgID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bdgID").ToString

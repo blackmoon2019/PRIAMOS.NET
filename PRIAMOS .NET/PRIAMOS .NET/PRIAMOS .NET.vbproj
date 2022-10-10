@@ -878,11 +878,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
-    <None Include="Resources\icons8-delete-16.png" />
-    <None Include="Resources\icons8-new-copy-24.png" />
-    <None Include="Resources\icons8-delete-24.png" />
-    <None Include="Resources\icons8-edit-24.png" />
-    <None Include="Resources\icons8-refresh-24.png" />
     <None Include="Resources\icons-notes-40.png" />
     <None Include="Resources\icons8-sent-24.png" />
     <None Include="Resources\icons8-sent-32.png" />

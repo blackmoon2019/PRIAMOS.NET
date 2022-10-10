@@ -23,18 +23,12 @@ Partial Class frmColExt
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.chkCompleted = New DevExpress.XtraEditors.CheckEdit()
         Me.cboColMethod = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwCOLMETHODBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cboCollector = New DevExpress.XtraEditors.LookUpEdit()
-        Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
         Me.cboApt = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cboBank = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dtCredit = New DevExpress.XtraEditors.DateEdit()
         Me.txtDebit = New DevExpress.XtraEditors.TextEdit()
         Me.txtInh = New DevExpress.XtraEditors.TextEdit()
@@ -53,6 +47,12 @@ Partial Class frmColExt
         Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.VwCOLMETHODBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VwBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
@@ -62,18 +62,12 @@ Partial Class frmColExt
         Me.LayoutControl1.SuspendLayout()
         CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboColMethod.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCollector.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCredit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCredit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtDebit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,6 +85,12 @@ Partial Class frmColExt
         CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -147,16 +147,6 @@ Partial Class frmColExt
         Me.cboColMethod.TabIndex = 25
         Me.cboColMethod.Tag = "ColMethodID,0,1,2"
         '
-        'VwCOLMETHODBindingSource
-        '
-        Me.VwCOLMETHODBindingSource.DataMember = "vw_COL_METHOD"
-        Me.VwCOLMETHODBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'cboBDG
         '
         Me.cboBDG.Location = New System.Drawing.Point(178, 138)
@@ -175,11 +165,6 @@ Partial Class frmColExt
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 23
         Me.cboBDG.Tag = "bdgid,0,1,2"
-        '
-        'VwBDGBindingSource
-        '
-        Me.VwBDGBindingSource.DataMember = "vw_BDG"
-        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'txtCode
         '
@@ -214,11 +199,6 @@ Partial Class frmColExt
         Me.cboCollector.TabIndex = 5
         Me.cboCollector.Tag = "debitusrID,0,1,2"
         '
-        'CollectorsBindingSource
-        '
-        Me.CollectorsBindingSource.DataMember = "Collectors"
-        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'txtComments
         '
         Me.txtComments.Location = New System.Drawing.Point(67, 390)
@@ -245,11 +225,6 @@ Partial Class frmColExt
         Me.cboApt.TabIndex = 8
         Me.cboApt.Tag = "aptID,0,1,2"
         '
-        'VwAPTBindingSource
-        '
-        Me.VwAPTBindingSource.DataMember = "vw_APT"
-        Me.VwAPTBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'cboBank
         '
         Me.cboBank.Location = New System.Drawing.Point(178, 306)
@@ -267,11 +242,6 @@ Partial Class frmColExt
         Me.cboBank.StyleController = Me.LayoutControl1
         Me.cboBank.TabIndex = 25
         Me.cboBank.Tag = "bankID,0,1,2"
-        '
-        'VwBANKSBindingSource
-        '
-        Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
-        Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'dtCredit
         '
@@ -480,6 +450,36 @@ Partial Class frmColExt
         Me.cmdSave.TabIndex = 15
         Me.cmdSave.Text = "Αποθήκευση"
         '
+        'VwCOLMETHODBindingSource
+        '
+        Me.VwCOLMETHODBindingSource.DataMember = "vw_COL_METHOD"
+        Me.VwCOLMETHODBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwBDGBindingSource
+        '
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'CollectorsBindingSource
+        '
+        Me.CollectorsBindingSource.DataMember = "Collectors"
+        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'VwAPTBindingSource
+        '
+        Me.VwAPTBindingSource.DataMember = "vw_APT"
+        Me.VwAPTBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'VwBANKSBindingSource
+        '
+        Me.VwBANKSBindingSource.DataMember = "vw_BANKS"
+        Me.VwBANKSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
         'Vw_APTTableAdapter
         '
         Me.Vw_APTTableAdapter.ClearBeforeFill = True
@@ -514,18 +514,12 @@ Partial Class frmColExt
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboColMethod.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCollector.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtCredit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtCredit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtDebit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -543,6 +537,12 @@ Partial Class frmColExt
         CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
