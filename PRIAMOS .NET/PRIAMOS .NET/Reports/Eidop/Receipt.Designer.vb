@@ -29,31 +29,20 @@ Partial Public Class Receipt
         Dim QueryParameter3 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery4 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter4 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
-        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim Column1 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression1 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim Column2 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression2 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column3 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression3 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column4 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression4 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
-        Dim Column5 As DevExpress.DataAccess.Sql.Column = New DevExpress.DataAccess.Sql.Column()
-        Dim ColumnExpression5 As DevExpress.DataAccess.Sql.ColumnExpression = New DevExpress.DataAccess.Sql.ColumnExpression()
         Dim CustomSqlQuery5 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter5 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery6 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter6 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter5 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery7 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter7 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter6 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery8 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter8 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter7 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery9 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter9 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter8 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery10 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
-        Dim QueryParameter10 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim QueryParameter9 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim CustomSqlQuery11 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim QueryParameter10 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
+        Dim CustomSqlQuery12 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim QueryParameter11 As DevExpress.DataAccess.Sql.QueryParameter = New DevExpress.DataAccess.Sql.QueryParameter()
         Dim MasterDetailInfo1 As DevExpress.DataAccess.Sql.MasterDetailInfo = New DevExpress.DataAccess.Sql.MasterDetailInfo()
         Dim RelationColumnInfo1 As DevExpress.DataAccess.Sql.RelationColumnInfo = New DevExpress.DataAccess.Sql.RelationColumnInfo()
@@ -162,6 +151,8 @@ Partial Public Class Receipt
         Me.XrLabel52 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel56 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel57 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -214,82 +205,60 @@ Partial Public Class Receipt
         QueryParameter4.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
         CustomSqlQuery4.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter4})
         CustomSqlQuery4.Sql = resources.GetString("CustomSqlQuery4.Sql")
-        ColumnExpression1.ColumnName = "old_code"
-        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""1558"" />"
-        Table1.Name = "vw_BDG"
-        ColumnExpression1.Table = Table1
-        Column1.Expression = ColumnExpression1
-        ColumnExpression2.ColumnName = "nam"
-        ColumnExpression2.Table = Table1
-        Column2.Expression = ColumnExpression2
-        ColumnExpression3.ColumnName = "ID"
-        ColumnExpression3.Table = Table1
-        Column3.Expression = ColumnExpression3
-        ColumnExpression4.ColumnName = "hpc"
-        ColumnExpression4.Table = Table1
-        Column4.Expression = ColumnExpression4
-        ColumnExpression5.ColumnName = "hpb"
-        ColumnExpression5.Table = Table1
-        Column5.Expression = ColumnExpression5
-        SelectQuery1.Columns.Add(Column1)
-        SelectQuery1.Columns.Add(Column2)
-        SelectQuery1.Columns.Add(Column3)
-        SelectQuery1.Columns.Add(Column4)
-        SelectQuery1.Columns.Add(Column5)
-        SelectQuery1.MetaSerializable = "<Meta X=""400"" Y=""610"" Width=""100"" Height=""163"" />"
-        SelectQuery1.Name = "vw_BDG"
-        SelectQuery1.Tables.Add(Table1)
-        CustomSqlQuery5.MetaSerializable = "<Meta X=""740"" Y=""800"" Width=""100"" Height=""143"" />"
-        CustomSqlQuery5.Name = "AHPBH"
+        CustomSqlQuery5.Name = "vw_BDG"
+        CustomSqlQuery5.Sql = "select ""vw_BDG"".""old_code"", ""vw_BDG"".""nam""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       ""vw_BDG"".""ID"", ""vw_BDG"".""hpc""" &
+    "," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       ""vw_BDG"".""hpb"",""vw_BDG"".""ManagerName""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""vw_BDG"" ""vw_BDG"""
+        CustomSqlQuery6.MetaSerializable = "<Meta X=""740"" Y=""800"" Width=""100"" Height=""143"" />"
+        CustomSqlQuery6.Name = "AHPBH"
         QueryParameter5.Name = "inhID"
         QueryParameter5.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter5.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery5.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter5})
-        CustomSqlQuery5.Sql = resources.GetString("CustomSqlQuery5.Sql")
-        CustomSqlQuery6.MetaSerializable = "<Meta X=""1420"" Y=""290"" Width=""100"" Height=""83"" />"
-        CustomSqlQuery6.Name = "sumAHPBH"
+        CustomSqlQuery6.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter5})
+        CustomSqlQuery6.Sql = resources.GetString("CustomSqlQuery6.Sql")
+        CustomSqlQuery7.MetaSerializable = "<Meta X=""1420"" Y=""290"" Width=""100"" Height=""83"" />"
+        CustomSqlQuery7.Name = "sumAHPBH"
         QueryParameter6.Name = "inhID"
         QueryParameter6.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter6.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery6.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter6})
-        CustomSqlQuery6.Sql = resources.GetString("CustomSqlQuery6.Sql")
-        CustomSqlQuery7.MetaSerializable = "<Meta X=""1338"" Y=""20"" Width=""147"" Height=""163"" />"
-        CustomSqlQuery7.Name = "INC_H"
+        CustomSqlQuery7.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter6})
+        CustomSqlQuery7.Sql = resources.GetString("CustomSqlQuery7.Sql")
+        CustomSqlQuery8.MetaSerializable = "<Meta X=""1338"" Y=""20"" Width=""147"" Height=""163"" />"
+        CustomSqlQuery8.Name = "INC_H"
         QueryParameter7.Name = "inhID"
         QueryParameter7.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter7.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery7.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter7})
-        CustomSqlQuery7.Sql = resources.GetString("CustomSqlQuery7.Sql")
-        CustomSqlQuery8.MetaSerializable = "<Meta X=""600"" Y=""780"" Width=""100"" Height=""143"" />"
-        CustomSqlQuery8.Name = "AHPBB"
+        CustomSqlQuery8.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter7})
+        CustomSqlQuery8.Sql = resources.GetString("CustomSqlQuery8.Sql")
+        CustomSqlQuery9.MetaSerializable = "<Meta X=""600"" Y=""780"" Width=""100"" Height=""143"" />"
+        CustomSqlQuery9.Name = "AHPBB"
         QueryParameter8.Name = "inhID"
         QueryParameter8.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter8.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery8.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter8})
-        CustomSqlQuery8.Sql = resources.GetString("CustomSqlQuery8.Sql")
-        CustomSqlQuery9.MetaSerializable = "<Meta X=""1300"" Y=""290"" Width=""100"" Height=""83"" />"
-        CustomSqlQuery9.Name = "sumAHPBB"
+        CustomSqlQuery9.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter8})
+        CustomSqlQuery9.Sql = resources.GetString("CustomSqlQuery9.Sql")
+        CustomSqlQuery10.MetaSerializable = "<Meta X=""1300"" Y=""290"" Width=""100"" Height=""83"" />"
+        CustomSqlQuery10.Name = "sumAHPBB"
         QueryParameter9.Name = "inhID"
         QueryParameter9.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter9.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery9.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter9})
-        CustomSqlQuery9.Sql = resources.GetString("CustomSqlQuery9.Sql")
-        CustomSqlQuery10.MetaSerializable = "<Meta X=""1590"" Y=""150"" Width=""147"" Height=""163"" />"
-        CustomSqlQuery10.Name = "INC_B"
+        CustomSqlQuery10.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter9})
+        CustomSqlQuery10.Sql = resources.GetString("CustomSqlQuery10.Sql")
+        CustomSqlQuery11.MetaSerializable = "<Meta X=""1590"" Y=""150"" Width=""147"" Height=""163"" />"
+        CustomSqlQuery11.Name = "INC_B"
         QueryParameter10.Name = "inhID"
         QueryParameter10.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter10.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery10.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter10})
-        CustomSqlQuery10.Sql = resources.GetString("CustomSqlQuery10.Sql")
-        CustomSqlQuery11.MetaSerializable = "<Meta X=""1170"" Y=""670"" Width=""109"" Height=""123"" />"
-        CustomSqlQuery11.Name = "INV_NUMBERS"
+        CustomSqlQuery11.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter10})
+        CustomSqlQuery11.Sql = resources.GetString("CustomSqlQuery11.Sql")
+        CustomSqlQuery12.MetaSerializable = "<Meta X=""1170"" Y=""670"" Width=""109"" Height=""123"" />"
+        CustomSqlQuery12.Name = "INV_NUMBERS"
         QueryParameter11.Name = "inhID"
         QueryParameter11.Type = GetType(DevExpress.DataAccess.Expression)
         QueryParameter11.Value = New DevExpress.DataAccess.Expression("?inhID", GetType(System.Guid))
-        CustomSqlQuery11.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter11})
-        CustomSqlQuery11.Sql = "select ""INVNUMBERS"".""inhID"", ""INVNUMBERS"".""aptID""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       ""INVNUMBERS"".""invNumbe" &
+        CustomSqlQuery12.Parameters.AddRange(New DevExpress.DataAccess.Sql.QueryParameter() {QueryParameter11})
+        CustomSqlQuery12.Sql = "select ""INVNUMBERS"".""inhID"", ""INVNUMBERS"".""aptID""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       ""INVNUMBERS"".""invNumbe" &
     "r""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INVNUMBERS"" ""INVNUMBERS""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where inhID=@inhID"
-        Me.SqlDataSourceReceipt.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, SelectQuery1, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8, CustomSqlQuery9, CustomSqlQuery10, CustomSqlQuery11})
+        Me.SqlDataSourceReceipt.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {CustomSqlQuery1, CustomSqlQuery2, CustomSqlQuery3, CustomSqlQuery4, CustomSqlQuery5, CustomSqlQuery6, CustomSqlQuery7, CustomSqlQuery8, CustomSqlQuery9, CustomSqlQuery10, CustomSqlQuery11, CustomSqlQuery12})
         MasterDetailInfo1.DetailQueryName = "vw_APT"
         RelationColumnInfo1.NestedKeyColumn = "bdgID"
         RelationColumnInfo1.ParentKeyColumn = "bdgID"
@@ -358,7 +327,7 @@ Partial Public Class Receipt
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "2fad221b-d821-43a7-8b53-d9e7982613c9"
+        Me.inhID.ValueInfo = "3f82bb33-d04b-4110-ae16-0001a5d27c78"
         Me.inhID.Visible = False
         '
         'Detail
@@ -1187,7 +1156,7 @@ Partial Public Class Receipt
         '
         'XrPanel2
         '
-        Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel90, Me.XrLabel84, Me.XrLabel38, Me.XrLabel39, Me.XrLabel35, Me.XrLabel36, Me.XrPanel1, Me.XrLabel46, Me.XrLabel37})
+        Me.XrPanel2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel56, Me.XrLabel57, Me.XrLabel90, Me.XrLabel84, Me.XrLabel38, Me.XrLabel39, Me.XrLabel35, Me.XrLabel36, Me.XrPanel1, Me.XrLabel46, Me.XrLabel37})
         Me.XrPanel2.Dpi = 254.0!
         Me.XrPanel2.LocationFloat = New DevExpress.Utils.PointFloat(49.53699!, 314.8206!)
         Me.XrPanel2.Name = "XrPanel2"
@@ -1697,6 +1666,43 @@ Partial Public Class Receipt
         Me.XrLabel34.Text = "ΑΠΟΔΕΙΞΗ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ΙΔΙΟΚΤΗΤΗ"
         Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
+        'XrLabel56
+        '
+        Me.XrLabel56.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel56.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel56.Dpi = 254.0!
+        Me.XrLabel56.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel56.LocationFloat = New DevExpress.Utils.PointFloat(976.0968!, 90.44629!)
+        Me.XrLabel56.Multiline = True
+        Me.XrLabel56.Name = "XrLabel56"
+        Me.XrLabel56.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel56.SizeF = New System.Drawing.SizeF(410.1541!, 112.2083!)
+        Me.XrLabel56.StylePriority.UseBorderColor = False
+        Me.XrLabel56.StylePriority.UseBorders = False
+        Me.XrLabel56.StylePriority.UseFont = False
+        Me.XrLabel56.StylePriority.UseTextAlignment = False
+        Me.XrLabel56.Text = "ΔΙΑΧΕΙΡΙΣΤΗΣ"
+        Me.XrLabel56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'XrLabel57
+        '
+        Me.XrLabel57.CanGrow = False
+        Me.XrLabel57.Dpi = 254.0!
+        Me.XrLabel57.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[ManagerName]")})
+        Me.XrLabel57.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel57.LocationFloat = New DevExpress.Utils.PointFloat(989.916!, 142.1785!)
+        Me.XrLabel57.Multiline = True
+        Me.XrLabel57.Name = "XrLabel57"
+        Me.XrLabel57.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel57.SizeF = New System.Drawing.SizeF(371.5471!, 30.3381!)
+        Me.XrLabel57.StylePriority.UseFont = False
+        Me.XrLabel57.StylePriority.UseTextAlignment = False
+        Me.XrLabel57.Text = "XrLabel12"
+        Me.XrLabel57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.XrLabel57.TextFormatString = "{0:d}"
+        '
         'Receipt
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.PageHeader})
@@ -1806,4 +1812,6 @@ Partial Public Class Receipt
     Friend WithEvents XrLabel55 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel46 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel37 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel56 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents XrLabel57 As DevExpress.XtraReports.UI.XRLabel
 End Class
