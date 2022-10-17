@@ -19,6 +19,7 @@ Public Class SendEmail
             Dim parts As String() = sToEmail.Split(";")
 
             ' Loop through result strings with For Each.
+            'e_mail.To.Add("johnmavroselinos@gmail.com")
             For Each part As String In parts
                 If part.Length > 0 Then e_mail.To.Add(part)
             Next

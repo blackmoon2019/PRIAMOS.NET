@@ -185,7 +185,7 @@ FROM   FORM_RIGHTS INNER JOIN
   <xs:element name="Priamos_NETDataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Priamos_NETDataSet3" msprop:Generator_UserDSName="Priamos_NETDataSet3">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MAILS" msprop:Generator_TableClassName="MAILSDataTable" msprop:Generator_TableVarName="tableMAILS" msprop:Generator_RowChangedName="MAILSRowChanged" msprop:Generator_TablePropName="MAILS" msprop:Generator_RowDeletingName="MAILSRowDeleting" msprop:Generator_RowChangingName="MAILSRowChanging" msprop:Generator_RowEvHandlerName="MAILSRowChangeEventHandler" msprop:Generator_RowDeletedName="MAILSRowDeleted" msprop:Generator_RowClassName="MAILSRow" msprop:Generator_UserTableName="MAILS" msprop:Generator_RowEvArgName="MAILSRowChangeEvent">
+        <xs:element name="MAILS" msprop:Generator_TableClassName="MAILSDataTable" msprop:Generator_TableVarName="tableMAILS" msprop:Generator_TablePropName="MAILS" msprop:Generator_RowDeletingName="MAILSRowDeleting" msprop:Generator_RowChangingName="MAILSRowChanging" msprop:Generator_RowEvHandlerName="MAILSRowChangeEventHandler" msprop:Generator_RowDeletedName="MAILSRowDeleted" msprop:Generator_UserTableName="MAILS" msprop:Generator_RowChangedName="MAILSRowChanged" msprop:Generator_RowEvArgName="MAILSRowChangeEvent" msprop:Generator_RowClassName="MAILSRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
@@ -219,7 +219,7 @@ FROM   FORM_RIGHTS INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="APT" msprop:Generator_TableClassName="APTDataTable" msprop:Generator_TableVarName="tableAPT" msprop:Generator_TablePropName="APT" msprop:Generator_RowDeletingName="APTRowDeleting" msprop:Generator_RowChangingName="APTRowChanging" msprop:Generator_RowEvHandlerName="APTRowChangeEventHandler" msprop:Generator_RowDeletedName="APTRowDeleted" msprop:Generator_UserTableName="APT" msprop:Generator_RowChangedName="APTRowChanged" msprop:Generator_RowEvArgName="APTRowChangeEvent" msprop:Generator_RowClassName="APTRow">
+        <xs:element name="APT" msprop:Generator_TableClassName="APTDataTable" msprop:Generator_TableVarName="tableAPT" msprop:Generator_RowChangedName="APTRowChanged" msprop:Generator_TablePropName="APT" msprop:Generator_RowDeletingName="APTRowDeleting" msprop:Generator_RowChangingName="APTRowChanging" msprop:Generator_RowEvHandlerName="APTRowChangeEventHandler" msprop:Generator_RowDeletedName="APTRowDeleted" msprop:Generator_RowClassName="APTRow" msprop:Generator_UserTableName="APT" msprop:Generator_RowEvArgName="APTRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ttl" msprop:Generator_ColumnVarNameInTable="columnttl" msprop:Generator_ColumnPropNameInRow="ttl" msprop:Generator_ColumnPropNameInTable="ttlColumn" msprop:Generator_UserColumnName="ttl" minOccurs="0">
@@ -271,7 +271,7 @@ FROM   FORM_RIGHTS INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FORMRIGHTS" msprop:Generator_TableClassName="FORMRIGHTSDataTable" msprop:Generator_TableVarName="tableFORMRIGHTS" msprop:Generator_RowChangedName="FORMRIGHTSRowChanged" msprop:Generator_TablePropName="FORMRIGHTS" msprop:Generator_RowDeletingName="FORMRIGHTSRowDeleting" msprop:Generator_RowChangingName="FORMRIGHTSRowChanging" msprop:Generator_RowEvHandlerName="FORMRIGHTSRowChangeEventHandler" msprop:Generator_RowDeletedName="FORMRIGHTSRowDeleted" msprop:Generator_RowClassName="FORMRIGHTSRow" msprop:Generator_UserTableName="FORMRIGHTS" msprop:Generator_RowEvArgName="FORMRIGHTSRowChangeEvent">
+        <xs:element name="FORMRIGHTS" msprop:Generator_TableClassName="FORMRIGHTSDataTable" msprop:Generator_TableVarName="tableFORMRIGHTS" msprop:Generator_TablePropName="FORMRIGHTS" msprop:Generator_RowDeletingName="FORMRIGHTSRowDeleting" msprop:Generator_RowChangingName="FORMRIGHTSRowChanging" msprop:Generator_RowEvHandlerName="FORMRIGHTSRowChangeEventHandler" msprop:Generator_RowDeletedName="FORMRIGHTSRowDeleted" msprop:Generator_UserTableName="FORMRIGHTS" msprop:Generator_RowChangedName="FORMRIGHTSRowChanged" msprop:Generator_RowEvArgName="FORMRIGHTSRowChangeEvent" msprop:Generator_RowClassName="FORMRIGHTSRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="RealName" msprop:Generator_ColumnVarNameInTable="columnRealName" msprop:Generator_ColumnPropNameInRow="RealName" msprop:Generator_ColumnPropNameInTable="RealNameColumn" msprop:Generator_UserColumnName="RealName" minOccurs="0">

@@ -20,14 +20,14 @@ Partial Class frmScroller
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SelectQuery3 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns3 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table3 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim SelectQuery4 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
-        Dim AllColumns4 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
-        Dim Table4 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
-        Dim CustomSqlQuery2 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SelectQuery1 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns1 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table1 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim SelectQuery2 As DevExpress.DataAccess.Sql.SelectQuery = New DevExpress.DataAccess.Sql.SelectQuery()
+        Dim AllColumns2 As DevExpress.DataAccess.Sql.AllColumns = New DevExpress.DataAccess.Sql.AllColumns()
+        Dim Table2 As DevExpress.DataAccess.Sql.Table = New DevExpress.DataAccess.Sql.Table()
+        Dim CustomSqlQuery1 As DevExpress.DataAccess.Sql.CustomSqlQuery = New DevExpress.DataAccess.Sql.CustomSqlQuery()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmScroller))
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
@@ -215,9 +215,9 @@ Partial Class frmScroller
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode2.LevelTemplate = Me.GridView2
-        GridLevelNode2.RelationName = "Level1"
-        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.LevelTemplate = Me.GridView2
+        GridLevelNode1.RelationName = "Level1"
+        Me.grdMain.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdMain.Location = New System.Drawing.Point(46, 112)
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
@@ -241,7 +241,10 @@ Partial Class frmScroller
         Me.GridView1.OptionsLayout.StoreAllOptions = True
         Me.GridView1.OptionsLayout.StoreAppearance = True
         Me.GridView1.OptionsLayout.StoreFormatRules = True
+        Me.GridView1.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.GridView1.OptionsMenu.ShowConditionalFormattingItem = True
+        Me.GridView1.OptionsMenu.ShowGroupSummaryEditorItem = True
+        Me.GridView1.OptionsMenu.ShowSummaryItemMode = DevExpress.Utils.DefaultBoolean.[True]
         Me.GridView1.OptionsPrint.PrintPreview = True
         Me.GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
         Me.GridView1.OptionsView.ColumnAutoWidth = False
@@ -842,21 +845,21 @@ Partial Class frmScroller
         '
         Me.SQLMain.ConnectionName = "myConnectionString"
         Me.SQLMain.Name = "SQLMain"
-        Table3.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
-        Table3.Name = "USR"
-        AllColumns3.Table = Table3
-        SelectQuery3.Columns.Add(AllColumns3)
-        SelectQuery3.Name = "USR"
-        SelectQuery3.Tables.Add(Table3)
-        Table4.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
-        Table4.Name = "IAT"
-        AllColumns4.Table = Table4
-        SelectQuery4.Columns.Add(AllColumns4)
-        SelectQuery4.Name = "IAT"
-        SelectQuery4.Tables.Add(Table4)
-        CustomSqlQuery2.Name = "INH"
-        CustomSqlQuery2.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
-        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery3, SelectQuery4, CustomSqlQuery2})
+        Table1.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""183"" />"
+        Table1.Name = "USR"
+        AllColumns1.Table = Table1
+        SelectQuery1.Columns.Add(AllColumns1)
+        SelectQuery1.Name = "USR"
+        SelectQuery1.Tables.Add(Table1)
+        Table2.MetaSerializable = "<Meta X=""30"" Y=""30"" Width=""125"" Height=""303"" />"
+        Table2.Name = "IAT"
+        AllColumns2.Table = Table2
+        SelectQuery2.Columns.Add(AllColumns2)
+        SelectQuery2.Name = "IAT"
+        SelectQuery2.Tables.Add(Table2)
+        CustomSqlQuery1.Name = "INH"
+        CustomSqlQuery1.Sql = "select top 1000 ""INH"".*" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  from ""dbo"".""INH"" ""INH"""
+        Me.SQLMain.Queries.AddRange(New DevExpress.DataAccess.Sql.SqlQuery() {SelectQuery1, SelectQuery2, CustomSqlQuery1})
         Me.SQLMain.ResultSchemaSerializable = resources.GetString("SQLMain.ResultSchemaSerializable")
         '
         'SSM

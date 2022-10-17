@@ -7372,8 +7372,6 @@ Partial Public Class Priamos_NETDataSet
         
         Private columnID As Global.System.Data.DataColumn
         
-        Private columncode As Global.System.Data.DataColumn
-        
         Private columnbdgID As Global.System.Data.DataColumn
         
         Private columnfDate As Global.System.Data.DataColumn
@@ -7413,6 +7411,44 @@ Partial Public Class Priamos_NETDataSet
         Private columnhpb As Global.System.Data.DataColumn
         
         Private columnETOS As Global.System.Data.DataColumn
+        
+        Private columnDateOfPrintEidop As Global.System.Data.DataColumn
+        
+        Private columnDateOfPrintEisp As Global.System.Data.DataColumn
+        
+        Private columnmdtBoiler As Global.System.Data.DataColumn
+        
+        Private columnisPrintedEidop As Global.System.Data.DataColumn
+        
+        Private columnisPrintedEisp As Global.System.Data.DataColumn
+        
+        Private columnFromMonth As Global.System.Data.DataColumn
+        
+        Private columnToMonth As Global.System.Data.DataColumn
+        
+        Private columnreserveAPT As Global.System.Data.DataColumn
+        
+        Private columncanceled As Global.System.Data.DataColumn
+        
+        Private columnDateOfCancel As Global.System.Data.DataColumn
+        
+        Private columnisManaged As Global.System.Data.DataColumn
+        
+        Private columnemail As Global.System.Data.DataColumn
+        
+        Private columnDateOfemail As Global.System.Data.DataColumn
+        
+        Private columnCalorimetric As Global.System.Data.DataColumn
+        
+        Private columnGroupName As Global.System.Data.DataColumn
+        
+        Private columnDebitCollectorName As Global.System.Data.DataColumn
+        
+        Private columncolannouncement As Global.System.Data.DataColumn
+        
+        Private columnDateOfCalculate As Global.System.Data.DataColumn
+        
+        Private columncode As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -7454,14 +7490,6 @@ Partial Public Class Priamos_NETDataSet
         Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property codeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columncode
             End Get
         End Property
         
@@ -7626,6 +7654,158 @@ Partial Public Class Priamos_NETDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateOfPrintEidopColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateOfPrintEidop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateOfPrintEispColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateOfPrintEisp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property mdtBoilerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmdtBoiler
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property isPrintedEidopColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisPrintedEidop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property isPrintedEispColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisPrintedEisp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FromMonthColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFromMonth
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ToMonthColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnToMonth
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property reserveAPTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnreserveAPT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property canceledColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncanceled
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateOfCancelColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateOfCancel
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property isManagedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisManaged
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property emailColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnemail
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateOfemailColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateOfemail
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CalorimetricColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCalorimetric
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property GroupNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGroupName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DebitCollectorNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDebitCollectorName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property colannouncementColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncolannouncement
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DateOfCalculateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDateOfCalculate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property codeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7664,7 +7844,6 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overloads Function Addvw_INHRow( _
                     ByVal ID As System.Guid,  _
-                    ByVal code As Integer,  _
                     ByVal bdgID As System.Guid,  _
                     ByVal fDate As Date,  _
                     ByVal tDate As Date,  _
@@ -7684,9 +7863,28 @@ Partial Public Class Priamos_NETDataSet
                     ByVal extraordinary As Boolean,  _
                     ByVal hpc As Integer,  _
                     ByVal hpb As Integer,  _
-                    ByVal ETOS As Integer) As vw_INHRow
+                    ByVal ETOS As Integer,  _
+                    ByVal DateOfPrintEidop As Date,  _
+                    ByVal DateOfPrintEisp As Date,  _
+                    ByVal mdtBoiler As Date,  _
+                    ByVal isPrintedEidop As Boolean,  _
+                    ByVal isPrintedEisp As Boolean,  _
+                    ByVal FromMonth As Integer,  _
+                    ByVal ToMonth As Integer,  _
+                    ByVal reserveAPT As Boolean,  _
+                    ByVal canceled As Boolean,  _
+                    ByVal DateOfCancel As Date,  _
+                    ByVal isManaged As Boolean,  _
+                    ByVal email As Boolean,  _
+                    ByVal DateOfemail As Date,  _
+                    ByVal Calorimetric As Boolean,  _
+                    ByVal GroupName As String,  _
+                    ByVal DebitCollectorName As String,  _
+                    ByVal colannouncement As String,  _
+                    ByVal DateOfCalculate As Date,  _
+                    ByVal code As Long) As vw_INHRow
             Dim rowvw_INHRow As vw_INHRow = CType(Me.NewRow,vw_INHRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, fDate, tDate, modifiedBy, modifiedOn, createdOn, nam, cmt, completeDate, Calculated, ahpb_HID, mdt, DateOfPrint, TotalInh, isPrinted, announcement, extraordinary, hpc, hpb, ETOS}
+            Dim columnValuesArray() As Object = New Object() {ID, bdgID, fDate, tDate, modifiedBy, modifiedOn, createdOn, nam, cmt, completeDate, Calculated, ahpb_HID, mdt, DateOfPrint, TotalInh, isPrinted, announcement, extraordinary, hpc, hpb, ETOS, DateOfPrintEidop, DateOfPrintEisp, mdtBoiler, isPrintedEidop, isPrintedEisp, FromMonth, ToMonth, reserveAPT, canceled, DateOfCancel, isManaged, email, DateOfemail, Calorimetric, GroupName, DebitCollectorName, colannouncement, DateOfCalculate, code}
             rowvw_INHRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_INHRow)
             Return rowvw_INHRow
@@ -7716,7 +7914,6 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnID = MyBase.Columns("ID")
-            Me.columncode = MyBase.Columns("code")
             Me.columnbdgID = MyBase.Columns("bdgID")
             Me.columnfDate = MyBase.Columns("fDate")
             Me.columntDate = MyBase.Columns("tDate")
@@ -7737,6 +7934,25 @@ Partial Public Class Priamos_NETDataSet
             Me.columnhpc = MyBase.Columns("hpc")
             Me.columnhpb = MyBase.Columns("hpb")
             Me.columnETOS = MyBase.Columns("ETOS")
+            Me.columnDateOfPrintEidop = MyBase.Columns("DateOfPrintEidop")
+            Me.columnDateOfPrintEisp = MyBase.Columns("DateOfPrintEisp")
+            Me.columnmdtBoiler = MyBase.Columns("mdtBoiler")
+            Me.columnisPrintedEidop = MyBase.Columns("isPrintedEidop")
+            Me.columnisPrintedEisp = MyBase.Columns("isPrintedEisp")
+            Me.columnFromMonth = MyBase.Columns("FromMonth")
+            Me.columnToMonth = MyBase.Columns("ToMonth")
+            Me.columnreserveAPT = MyBase.Columns("reserveAPT")
+            Me.columncanceled = MyBase.Columns("canceled")
+            Me.columnDateOfCancel = MyBase.Columns("DateOfCancel")
+            Me.columnisManaged = MyBase.Columns("isManaged")
+            Me.columnemail = MyBase.Columns("email")
+            Me.columnDateOfemail = MyBase.Columns("DateOfemail")
+            Me.columnCalorimetric = MyBase.Columns("Calorimetric")
+            Me.columnGroupName = MyBase.Columns("GroupName")
+            Me.columnDebitCollectorName = MyBase.Columns("DebitCollectorName")
+            Me.columncolannouncement = MyBase.Columns("colannouncement")
+            Me.columnDateOfCalculate = MyBase.Columns("DateOfCalculate")
+            Me.columncode = MyBase.Columns("code")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7744,8 +7960,6 @@ Partial Public Class Priamos_NETDataSet
         Private Sub InitClass()
             Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID)
-            Me.columncode = New Global.System.Data.DataColumn("code", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncode)
             Me.columnbdgID = New Global.System.Data.DataColumn("bdgID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbdgID)
             Me.columnfDate = New Global.System.Data.DataColumn("fDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
@@ -7786,10 +8000,47 @@ Partial Public Class Priamos_NETDataSet
             MyBase.Columns.Add(Me.columnhpb)
             Me.columnETOS = New Global.System.Data.DataColumn("ETOS", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnETOS)
+            Me.columnDateOfPrintEidop = New Global.System.Data.DataColumn("DateOfPrintEidop", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateOfPrintEidop)
+            Me.columnDateOfPrintEisp = New Global.System.Data.DataColumn("DateOfPrintEisp", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateOfPrintEisp)
+            Me.columnmdtBoiler = New Global.System.Data.DataColumn("mdtBoiler", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmdtBoiler)
+            Me.columnisPrintedEidop = New Global.System.Data.DataColumn("isPrintedEidop", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisPrintedEidop)
+            Me.columnisPrintedEisp = New Global.System.Data.DataColumn("isPrintedEisp", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisPrintedEisp)
+            Me.columnFromMonth = New Global.System.Data.DataColumn("FromMonth", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFromMonth)
+            Me.columnToMonth = New Global.System.Data.DataColumn("ToMonth", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnToMonth)
+            Me.columnreserveAPT = New Global.System.Data.DataColumn("reserveAPT", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnreserveAPT)
+            Me.columncanceled = New Global.System.Data.DataColumn("canceled", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncanceled)
+            Me.columnDateOfCancel = New Global.System.Data.DataColumn("DateOfCancel", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateOfCancel)
+            Me.columnisManaged = New Global.System.Data.DataColumn("isManaged", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisManaged)
+            Me.columnemail = New Global.System.Data.DataColumn("email", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnemail)
+            Me.columnDateOfemail = New Global.System.Data.DataColumn("DateOfemail", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateOfemail)
+            Me.columnCalorimetric = New Global.System.Data.DataColumn("Calorimetric", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCalorimetric)
+            Me.columnGroupName = New Global.System.Data.DataColumn("GroupName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGroupName)
+            Me.columnDebitCollectorName = New Global.System.Data.DataColumn("DebitCollectorName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDebitCollectorName)
+            Me.columncolannouncement = New Global.System.Data.DataColumn("colannouncement", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncolannouncement)
+            Me.columnDateOfCalculate = New Global.System.Data.DataColumn("DateOfCalculate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDateOfCalculate)
+            Me.columncode = New Global.System.Data.DataColumn("code", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncode)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
-            Me.columncode.AllowDBNull = false
             Me.columnbdgID.AllowDBNull = false
             Me.columnfDate.AllowDBNull = false
             Me.columntDate.AllowDBNull = false
@@ -7799,7 +8050,18 @@ Partial Public Class Priamos_NETDataSet
             Me.columnCalculated.AllowDBNull = false
             Me.columnisPrinted.ReadOnly = true
             Me.columnannouncement.MaxLength = 2147483647
+            Me.columnhpc.AllowDBNull = false
+            Me.columnhpb.AllowDBNull = false
             Me.columnETOS.ReadOnly = true
+            Me.columnisPrintedEidop.ReadOnly = true
+            Me.columnisPrintedEisp.ReadOnly = true
+            Me.columnFromMonth.ReadOnly = true
+            Me.columnToMonth.ReadOnly = true
+            Me.columnisManaged.AllowDBNull = false
+            Me.columnGroupName.MaxLength = 150
+            Me.columnDebitCollectorName.MaxLength = 200
+            Me.columncolannouncement.MaxLength = 2147483647
+            Me.columncode.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -22844,17 +23106,6 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property code() As Integer
-            Get
-                Return CType(Me(Me.tablevw_INH.codeColumn),Integer)
-            End Get
-            Set
-                Me(Me.tablevw_INH.codeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property bdgID() As System.Guid
             Get
                 Return CType(Me(Me.tablevw_INH.bdgIDColumn),Global.System.Guid)
@@ -23096,11 +23347,7 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property hpc() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_INH.hpcColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'hpc' in table 'vw_INH' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_INH.hpcColumn),Integer)
             End Get
             Set
                 Me(Me.tablevw_INH.hpcColumn) = value
@@ -23111,11 +23358,7 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property hpb() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_INH.hpbColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'hpb' in table 'vw_INH' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_INH.hpbColumn),Integer)
             End Get
             Set
                 Me(Me.tablevw_INH.hpbColumn) = value
@@ -23134,6 +23377,283 @@ Partial Public Class Priamos_NETDataSet
             End Get
             Set
                 Me(Me.tablevw_INH.ETOSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateOfPrintEidop() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.DateOfPrintEidopColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateOfPrintEidop' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.DateOfPrintEidopColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateOfPrintEisp() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.DateOfPrintEispColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateOfPrintEisp' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.DateOfPrintEispColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property mdtBoiler() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.mdtBoilerColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'mdtBoiler' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.mdtBoilerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property isPrintedEidop() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.isPrintedEidopColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'isPrintedEidop' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.isPrintedEidopColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property isPrintedEisp() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.isPrintedEispColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'isPrintedEisp' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.isPrintedEispColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FromMonth() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.FromMonthColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FromMonth' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.FromMonthColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ToMonth() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.ToMonthColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ToMonth' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.ToMonthColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property reserveAPT() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.reserveAPTColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'reserveAPT' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.reserveAPTColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property canceled() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.canceledColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'canceled' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.canceledColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateOfCancel() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.DateOfCancelColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateOfCancel' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.DateOfCancelColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property isManaged() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_INH.isManagedColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_INH.isManagedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property email() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.emailColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'email' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.emailColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateOfemail() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.DateOfemailColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateOfemail' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.DateOfemailColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Calorimetric() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.CalorimetricColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Calorimetric' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.CalorimetricColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property GroupName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.GroupNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'GroupName' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.GroupNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DebitCollectorName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.DebitCollectorNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DebitCollectorName' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.DebitCollectorNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property colannouncement() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.colannouncementColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'colannouncement' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.colannouncementColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DateOfCalculate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_INH.DateOfCalculateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateOfCalculate' in table 'vw_INH' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_INH.DateOfCalculateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property code() As Long
+            Get
+                Return CType(Me(Me.tablevw_INH.codeColumn),Long)
+            End Get
+            Set
+                Me(Me.tablevw_INH.codeColumn) = value
             End Set
         End Property
         
@@ -23295,30 +23815,6 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IshpcNull() As Boolean
-            Return Me.IsNull(Me.tablevw_INH.hpcColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SethpcNull()
-            Me(Me.tablevw_INH.hpcColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IshpbNull() As Boolean
-            Return Me.IsNull(Me.tablevw_INH.hpbColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SethpbNull()
-            Me(Me.tablevw_INH.hpbColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsETOSNull() As Boolean
             Return Me.IsNull(Me.tablevw_INH.ETOSColumn)
         End Function
@@ -23327,6 +23823,210 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetETOSNull()
             Me(Me.tablevw_INH.ETOSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateOfPrintEidopNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.DateOfPrintEidopColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateOfPrintEidopNull()
+            Me(Me.tablevw_INH.DateOfPrintEidopColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateOfPrintEispNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.DateOfPrintEispColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateOfPrintEispNull()
+            Me(Me.tablevw_INH.DateOfPrintEispColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsmdtBoilerNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.mdtBoilerColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetmdtBoilerNull()
+            Me(Me.tablevw_INH.mdtBoilerColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsisPrintedEidopNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.isPrintedEidopColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetisPrintedEidopNull()
+            Me(Me.tablevw_INH.isPrintedEidopColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsisPrintedEispNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.isPrintedEispColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetisPrintedEispNull()
+            Me(Me.tablevw_INH.isPrintedEispColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFromMonthNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.FromMonthColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFromMonthNull()
+            Me(Me.tablevw_INH.FromMonthColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsToMonthNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.ToMonthColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetToMonthNull()
+            Me(Me.tablevw_INH.ToMonthColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsreserveAPTNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.reserveAPTColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetreserveAPTNull()
+            Me(Me.tablevw_INH.reserveAPTColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IscanceledNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.canceledColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetcanceledNull()
+            Me(Me.tablevw_INH.canceledColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateOfCancelNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.DateOfCancelColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateOfCancelNull()
+            Me(Me.tablevw_INH.DateOfCancelColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsemailNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.emailColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetemailNull()
+            Me(Me.tablevw_INH.emailColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateOfemailNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.DateOfemailColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateOfemailNull()
+            Me(Me.tablevw_INH.DateOfemailColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCalorimetricNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.CalorimetricColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCalorimetricNull()
+            Me(Me.tablevw_INH.CalorimetricColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsGroupNameNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.GroupNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetGroupNameNull()
+            Me(Me.tablevw_INH.GroupNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDebitCollectorNameNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.DebitCollectorNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDebitCollectorNameNull()
+            Me(Me.tablevw_INH.DebitCollectorNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IscolannouncementNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.colannouncementColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetcolannouncementNull()
+            Me(Me.tablevw_INH.colannouncementColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDateOfCalculateNull() As Boolean
+            Return Me.IsNull(Me.tablevw_INH.DateOfCalculateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDateOfCalculateNull()
+            Me(Me.tablevw_INH.DateOfCalculateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -35687,7 +36387,6 @@ Namespace Priamos_NETDataSetTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "vw_INH"
             tableMapping.ColumnMappings.Add("ID", "ID")
-            tableMapping.ColumnMappings.Add("code", "code")
             tableMapping.ColumnMappings.Add("bdgID", "bdgID")
             tableMapping.ColumnMappings.Add("fDate", "fDate")
             tableMapping.ColumnMappings.Add("tDate", "tDate")
@@ -35708,6 +36407,25 @@ Namespace Priamos_NETDataSetTableAdapters
             tableMapping.ColumnMappings.Add("hpc", "hpc")
             tableMapping.ColumnMappings.Add("hpb", "hpb")
             tableMapping.ColumnMappings.Add("ETOS", "ETOS")
+            tableMapping.ColumnMappings.Add("DateOfPrintEidop", "DateOfPrintEidop")
+            tableMapping.ColumnMappings.Add("DateOfPrintEisp", "DateOfPrintEisp")
+            tableMapping.ColumnMappings.Add("mdtBoiler", "mdtBoiler")
+            tableMapping.ColumnMappings.Add("isPrintedEidop", "isPrintedEidop")
+            tableMapping.ColumnMappings.Add("isPrintedEisp", "isPrintedEisp")
+            tableMapping.ColumnMappings.Add("FromMonth", "FromMonth")
+            tableMapping.ColumnMappings.Add("ToMonth", "ToMonth")
+            tableMapping.ColumnMappings.Add("reserveAPT", "reserveAPT")
+            tableMapping.ColumnMappings.Add("canceled", "canceled")
+            tableMapping.ColumnMappings.Add("DateOfCancel", "DateOfCancel")
+            tableMapping.ColumnMappings.Add("isManaged", "isManaged")
+            tableMapping.ColumnMappings.Add("email", "email")
+            tableMapping.ColumnMappings.Add("DateOfemail", "DateOfemail")
+            tableMapping.ColumnMappings.Add("Calorimetric", "Calorimetric")
+            tableMapping.ColumnMappings.Add("GroupName", "GroupName")
+            tableMapping.ColumnMappings.Add("DebitCollectorName", "DebitCollectorName")
+            tableMapping.ColumnMappings.Add("colannouncement", "colannouncement")
+            tableMapping.ColumnMappings.Add("DateOfCalculate", "DateOfCalculate")
+            tableMapping.ColumnMappings.Add("code", "code")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -35726,7 +36444,11 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, fDate, tDate, modifiedBy, modifiedOn, createdOn, nam, cmt"& _ 
                 ", completeDate, Calculated, ahpb_HID, mdt, DateOfPrint, TotalInh, isPrinted, ann"& _ 
-                "ouncement, extraordinary, hpc, hpb, ETOS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_INH"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY fDate, tDate"
+                "ouncement, extraordinary, hpc, hpb, ETOS, DateOfPrintEidop, DateOfPrintEisp, mdt"& _ 
+                "Boiler, isPrintedEidop, isPrintedEisp, FromMonth, ToMonth, reserveAPT, canceled,"& _ 
+                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           DateOfCancel, isManaged, email, DateOfemail, Calorimetric, GroupNa"& _ 
+                "me, DebitCollectorName, colannouncement, DateOfCalculate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_INH"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ("& _ 
+                "bdgID = @bdgID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY fDate, tDate"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -35743,18 +36465,6 @@ Namespace Priamos_NETDataSetTableAdapters
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal bdgID As System.Guid) As Priamos_NETDataSet.vw_INHDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID,System.Guid)
-            Dim dataTable As Priamos_NETDataSet.vw_INHDataTable = New Priamos_NETDataSet.vw_INHDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
         End Function
     End Class
     

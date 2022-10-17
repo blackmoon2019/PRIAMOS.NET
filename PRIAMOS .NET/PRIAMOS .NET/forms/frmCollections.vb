@@ -82,7 +82,7 @@ Public Class frmCollections
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.vw_INH' table. You can move, or remove it, as needed.
         'Me.Vw_INHTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_INH)
 
-        LoaderData()
+        If cboBDG.EditValue <> Nothing Then LoaderData()
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.vw_COLH' table. You can move, or remove it, as needed.
         'Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.vw_COL_BDG' table. You can move, or remove it, as needed.
@@ -1687,7 +1687,9 @@ Public Class frmCollections
     Private Sub cboBDG1_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG1.ButtonPressed
         Select Case e.Button.Index
             Case 1 : If cboBDG1.EditValue <> Nothing Then ManageBDG(cboBDG1)
-            Case 2 : cboBDG1.EditValue = Nothing
+            Case 2
+                cboBDG1.EditValue = Nothing
+                Me.Vw_COL_DTableAdapter.FillByNotAgreedALL(Me.Priamos_NETDataSet2.vw_COL_D)
             Case 3
         End Select
     End Sub

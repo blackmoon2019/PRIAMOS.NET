@@ -2,6 +2,7 @@
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmEmailAPT
     Private sbdgID As String
@@ -20,6 +21,10 @@ Public Class frmEmailAPT
     Private Sub frmEmailAPT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Priamos_NETDataSet3.APT' table. You can move, or remove it, as needed.
         Me.APTTableAdapter.Fill(Me.Priamos_NETDataSet3.APT, System.Guid.Parse(sbdgID))
+        GridView1.OptionsSelection.EnableAppearanceFocusedCell = False
+        GridView1.OptionsSelection.MultiSelect = True
+        GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect
+        GridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown
         Me.CenterToScreen()
     End Sub
 
@@ -28,45 +33,58 @@ Public Class frmEmailAPT
     End Sub
 
     Private Sub RepSendEmail_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepSendEmail.ButtonClick
+        Dim sRow As Integer = GridView1.FocusedRowHandle
+        Dim ErrorInProc As String = ""
+        If XtraMessageBox.Show("Θέλετε να αποσταλεί email?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then SendEmail(sRow, ErrorInProc)
+        If ErrorInProc.Length = 0 Then
+            XtraMessageBox.Show("Η αποστολή ολοκληρώθηκε επιτυχώς!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            XtraMessageBox.Show("Παρουσιάστηκαν προβλήματα στα διαμερίσματα " & ErrorInProc, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+    Private Sub SendEmail(ByVal sRow As Integer, ByRef ErrorInProc As String)
+        Dim sAptTTL As String = GridView1.GetRowCellValue(sRow, "ttl").ToString
         Try
             Dim sSQL As String
             Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
-            Dim sAptID As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
-            Dim sAptTTL As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ttl").ToString
-            Dim OwnerID As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "OwnerID").ToString
-            Dim TenantID As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "TenantID").ToString
-            Dim RepresentativeID As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "RepresentativeID").ToString
-            Dim sendEmailOwner As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "sendEmailOwner") = True, 1, 0)
-            Dim sendEmailTenant As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "sendEmailTenant") = True, 1, 0)
-            Dim sendEmailRepresentative As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "sendEmailRepresentative") = True, 1, 0)
-            Dim EmailRepresentative As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctRepresentativeEmail").ToString
-            Dim EmailOwner As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctOwnerEmail").ToString
-            Dim EmailTenant As String = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "cctTenantEmail").ToString
-            Dim receipt As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "receipt") = True, 1, 0)
-            Dim syg As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "syg") = True, 1, 0)
-            Dim Eidop As Integer = IIf(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "eidop") = True, 1, 0)
-            Dim BalAdm As Double = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal_adm")
+            Dim sAptID As String = GridView1.GetRowCellValue(sRow, "ID").ToString
+            Dim OwnerID As String = GridView1.GetRowCellValue(sRow, "OwnerID").ToString
+            Dim TenantID As String = GridView1.GetRowCellValue(sRow, "TenantID").ToString
+            Dim RepresentativeID As String = GridView1.GetRowCellValue(sRow, "RepresentativeID").ToString
+            Dim sendEmailOwner As Integer = IIf(GridView1.GetRowCellValue(sRow, "sendEmailOwner") = True, 1, 0)
+            Dim sendEmailTenant As Integer = IIf(GridView1.GetRowCellValue(sRow, "sendEmailTenant") = True, 1, 0)
+            Dim sendEmailRepresentative As Integer = IIf(GridView1.GetRowCellValue(sRow, "sendEmailRepresentative") = True, 1, 0)
+            Dim EmailRepresentative As String = GridView1.GetRowCellValue(sRow, "cctRepresentativeEmail").ToString
+            Dim EmailOwner As String = GridView1.GetRowCellValue(sRow, "cctOwnerEmail").ToString
+            Dim EmailTenant As String = GridView1.GetRowCellValue(sRow, "cctTenantEmail").ToString
+            Dim receipt As Integer = IIf(GridView1.GetRowCellValue(sRow, "receipt") = True, 1, 0)
+            Dim syg As Integer = IIf(GridView1.GetRowCellValue(sRow, "syg") = True, 1, 0)
+            Dim Eidop As Integer = IIf(GridView1.GetRowCellValue(sRow, "eidop") = True, 1, 0)
+            Dim BalAdm As Double = GridView1.GetRowCellValue(sRow, "bal_adm")
 
             If receipt = 0 And Eidop = 0 And syg = 0 Then
-                XtraMessageBox.Show("Δεν έχετε επιλέξει εκτύπωση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                XtraMessageBox.Show("Δεν έχετε επιλέξει εκτύπωση για το διαμέρισμα " & sAptTTL, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + sAptTTL
+                Exit Sub
             End If
 
-            If XtraMessageBox.Show("Θέλετε να αποσταλεί email?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                For Each kvp As KeyValuePair(Of Integer, String) In sInhIDS
-                    If ExportReport(1, sAptID, kvp.Value, sAptTTL, BalAdm, IIf(sendEmailRepresentative, EmailRepresentative, ""), IIf(sendEmailOwner, EmailOwner, ""), IIf(sendEmailTenant, EmailTenant, "")) = True Then
-                        sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,owner,tenant,Representative,OwnerID,TenantID,RepresentativeID,syg,eidop,receipt)
+
+            For Each kvp As KeyValuePair(Of Integer, String) In sInhIDS
+                If ExportReport(1, sAptID, kvp.Value, sAptTTL, BalAdm, IIf(sendEmailRepresentative, EmailRepresentative, ""), IIf(sendEmailOwner, EmailOwner, ""), IIf(sendEmailTenant, EmailTenant, "")) = True Then
+                    sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,owner,tenant,Representative,OwnerID,TenantID,RepresentativeID,syg,eidop,receipt)
                         SELECT " & toSQLValueS(kvp.Value) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",NULL,GETDATE(),NULL," &
                             sendEmailOwner & "," & sendEmailTenant & "," & sendEmailRepresentative & "," & toSQLValueS(OwnerID) & "," & toSQLValueS(TenantID) & "," & toSQLValueS(RepresentativeID) & "," &
                             syg & "," & Eidop & "," & receipt
-                        Using oCmd As New SqlCommand(sSQL, CNDB)
-                            oCmd.ExecuteNonQuery()
-                        End Using
-                    End If
-                Next
-                XtraMessageBox.Show("Η αποστολή ολοκληρώθηκε επιτυχώς!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Else
+                    ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + sAptTTL
+                End If
+            Next
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + sAptTTL
         End Try
     End Sub
     Private Function ExportReport(ByVal sWichReport As Integer, ByVal sAptID As String, ByVal sInhId As String, ByVal sAtptTTL As String, ByVal BalADM As Double,
@@ -82,7 +100,7 @@ Public Class frmEmailAPT
                     SSM.ShowWaitForm()
                     SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
 
-                    Dim sSQL As String = "select INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,
+                    Dim sSQL As String = "select INH.email,INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,
                                             (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                             where vw_INC.inhID=INH.ID
                                             and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -104,7 +122,12 @@ Public Class frmEmailAPT
 
                         report.FilterString = "[ID] = {" & sAptID & "}"
                         sFName = sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString + sAtptTTL
-                        sBody = ProgProps.InvoicesBody
+                        If sdr.GetBoolean(sdr.GetOrdinal("email")) = True Then
+                            sBody = ProgProps.InvoicesBodyResend
+                        Else
+                            sBody = ProgProps.InvoicesBody
+                        End If
+
                         sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
@@ -146,4 +169,21 @@ Public Class frmEmailAPT
         End Try
 
     End Function
+
+    Private Sub cmdBatchSend_Click(sender As Object, e As EventArgs) Handles cmdBatchSend.Click
+        Dim ErrorInProc As String = ""
+        If XtraMessageBox.Show("Θέλετε να αποσταλουν email στα επιλεγμένα διαμερίσματα?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                SendEmail(selectedRowHandle, ErrorInProc)
+            Next
+        End If
+        If ErrorInProc.Length = 0 Then
+            XtraMessageBox.Show("Η αποστολή ολοκληρώθηκε επιτυχώς!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            XtraMessageBox.Show("Παρουσιάστηκαν προβλήματα στα διαμερίσματα " & ErrorInProc, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+    End Sub
 End Class

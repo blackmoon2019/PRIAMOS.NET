@@ -1543,6 +1543,9 @@ Public Class frmBDG
             Next
             'GridView5.Columns("AptNam").OptionsColumn.ReadOnly = True
             'GridView5.Columns("AptNam").OptionsColumn.AllowEdit = False
+            'GridView5.Columns("ttl").Fixed = FixedStyle.Left
+            'GridView5.Columns("ord").Fixed = FixedStyle.Left
+            'GridView5.Columns("AptNam").Fixed = FixedStyle.Left
             ApmilFieldsToBeUpdate.Add("ΠΟΣΟΣΤΟ ΚΛΕΙΣΤΟΥ")
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -2092,19 +2095,19 @@ Public Class frmBDG
     Private Sub NavINH_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavINH.ElementClick
         Maintab.SelectedTabPage = tabINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
-        LoadForms.RestoreLayoutFromXml(GridView10, "INH_BDG_def.xml")
+        LoadForms.RestoreLayoutFromXml(GridView_INH, "INH_BDG_def.xml")
 
 
     End Sub
 
-    Private Sub GridView10_DoubleClick(sender As Object, e As EventArgs) Handles GridView10.DoubleClick
-        If GridView10.IsGroupRow(GridView10.FocusedRowHandle) Then Exit Sub
+    Private Sub GridView10_DoubleClick(sender As Object, e As EventArgs) Handles GridView_INH.DoubleClick
+        If GridView_INH.IsGroupRow(GridView_INH.FocusedRowHandle) Then Exit Sub
         Dim fINH As frmINH = New frmINH()
         fINH.Text = "Παραστατικό"
-        fINH.ID = GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString
+        fINH.ID = GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString
         fINH.MdiParent = frmMain
         fINH.Mode = FormMode.EditRecord
-        fINH.Scroller = GridView10
+        fINH.Scroller = GridView_INH
         fINH.FormScroller = Me
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
         fINH.Show()
@@ -2125,10 +2128,10 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdEditINH_Click(sender As Object, e As EventArgs) Handles cmdEditINH.Click
-        If GridView10.IsGroupRow(GridView10.FocusedRowHandle) Then Exit Sub
+        If GridView_INH.IsGroupRow(GridView_INH.FocusedRowHandle) Then Exit Sub
         Dim fINH As frmINH = New frmINH()
         fINH.Text = "Κοινόχρηστα"
-        fINH.ID = GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString
+        fINH.ID = GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString
         'fINH.MdiParent = frmMain
         fINH.Mode = FormMode.EditRecord
         'fINH.Scroller = GridView10
@@ -2148,7 +2151,7 @@ Public Class frmBDG
         XtraSaveFileDialog1.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
         XtraSaveFileDialog1.FileName = "Παραστατικά_" & bdgName
         If XtraSaveFileDialog1.ShowDialog() = DialogResult.OK Then
-            GridView10.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
+            GridView_INH.GridControl.ExportToXlsx(XtraSaveFileDialog1.FileName, options)
             Process.Start(XtraSaveFileDialog1.FileName)
         End If
     End Sub
@@ -2156,10 +2159,10 @@ Public Class frmBDG
     Private Sub cmdDelINH_Click(sender As Object, e As EventArgs) Handles cmdDelINH.Click
         Dim sSQL As String
         Try
-            If GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID") = Nothing Then Exit Sub
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
 
-                sSQL = "DELETE FROM INH WHERE ID = '" & GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString & "'"
+                sSQL = "DELETE FROM INH WHERE ID = '" & GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString & "'"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
@@ -2172,9 +2175,9 @@ Public Class frmBDG
         End Try
     End Sub
 
-    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
+    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_INH.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView10, "INH_BDG_def.xml")
+            LoadForms.PopupMenuShow(e, GridView_INH, "INH_BDG_def.xml",, "Select top 1 * from vw_INH")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -2488,10 +2491,10 @@ Public Class frmBDG
     Private Sub cmdINHEmail_Click(sender As Object, e As EventArgs) Handles cmdINHEmail.Click
         Dim form As frmEmailAPT = New frmEmailAPT()
         Dim sInhIDS As New Dictionary(Of Integer, String)
-        Dim selectedRowHandles As Integer() = GridView10.GetSelectedRows()
+        Dim selectedRowHandles As Integer() = GridView_INH.GetSelectedRows()
         If selectedRowHandles.Length = 0 Then XtraMessageBox.Show("Δεν έχετε επιλέξει παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
-        For I = 0 To GridView10.SelectedRowsCount - 1
-            sInhIDS.Add(selectedRowHandles(I), GridView10.GetRowCellValue(selectedRowHandles(I), "ID").ToString)
+        For I = 0 To GridView_INH.SelectedRowsCount - 1
+            sInhIDS.Add(selectedRowHandles(I), GridView_INH.GetRowCellValue(selectedRowHandles(I), "ID").ToString)
         Next
         form.Text = "Αποστολή Email"
         form.InhIDS = sInhIDS

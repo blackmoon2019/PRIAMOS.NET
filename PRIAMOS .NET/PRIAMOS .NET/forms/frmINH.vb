@@ -60,8 +60,6 @@ Public Class frmINH
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
 
-
-
         Select Case Mode
             Case FormMode.NewRecord
                 txtCode.Text = DBQ.GetNextId("INH")

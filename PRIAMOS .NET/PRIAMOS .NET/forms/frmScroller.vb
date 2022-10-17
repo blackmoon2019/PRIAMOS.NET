@@ -1300,7 +1300,7 @@ Public Class frmScroller
             If sVal <> 4 And BarRecords.EditValue <> Nothing Then
                 sSQL = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
             Else
-                sSQL = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
+                sSQL = "SELECT   * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
             End If
             sSQL = sSQL & " order by code desc "
             If sDataDetail <> "" Then sSQL2 = "SELECT  * FROM " & sDataDetail
@@ -1826,14 +1826,14 @@ Public Class frmScroller
         RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
         RepositoryItemProgressBar1.Minimum = 0
         For I As Integer = 0 To selectedRowHandles.Length - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True And
-               GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrint").ToString <> "" And
-               GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEidop").ToString <> "" And
-               GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEisp").ToString <> "" Then
+            'If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True And
+            '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrint").ToString <> "" And
+            '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEidop").ToString <> "" And
+            '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEisp").ToString <> "" Then
 
-                ExportReport(1, selectedRowHandles(I), sIDS)
+            ExportReport(1, selectedRowHandles(I), sIDS)
                 RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
-            End If
+            'End If
 
         Next
         RepositoryItemProgressBar1.Step = 0
@@ -1892,7 +1892,12 @@ Public Class frmScroller
                             report.FilterString = "[ID] = {" & sAptID & "}"
                             sFName = sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString +
                                      sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString
-                            sBody = ProgProps.InvoicesBody
+                            If GridView1.GetRowCellValue(Row, "email") = True Then
+                                sBody = ProgProps.InvoicesBodyRecreate
+                            Else
+                                sBody = ProgProps.InvoicesBody
+                            End If
+
                             sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                             sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                             sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
@@ -1918,12 +1923,12 @@ Public Class frmScroller
                                 Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                                 sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
-                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
+                                    SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
                                 oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             Else
                                 Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                                 sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
-                                        SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
+                                    SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
                                 oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             End If
                             If sIDS.Length > 0 Then sIDS.Append(",")
@@ -1931,10 +1936,10 @@ Public Class frmScroller
                         End If
                     End While
                     sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
-                                from EMAIL_LOG 
-                                inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
-                                left join APT  on APT.id=EMAIL_LOG.aptID 
-                                where EMAIL_LOG.id in( " & sIDS.ToString & ")"
+                            from EMAIL_LOG 
+                            inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
+                            left join APT  on APT.id=EMAIL_LOG.aptID 
+                            where EMAIL_LOG.id in( " & sIDS.ToString & ")"
                     LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
                     LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
                     sdr.Close()

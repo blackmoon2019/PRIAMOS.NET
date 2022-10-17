@@ -84,6 +84,8 @@ Partial Public Class Eidop
         Me.XrLabel15 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPictureBox1 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrPanel4 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLabel85 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.XrLabel86 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
@@ -207,8 +209,6 @@ Partial Public Class Eidop
         Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel16 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel85 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel86 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -268,6 +268,42 @@ Partial Public Class Eidop
         Me.XrPanel4.SizeF = New System.Drawing.SizeF(1976.999!, 212.7695!)
         Me.XrPanel4.StylePriority.UseBorderColor = False
         Me.XrPanel4.StylePriority.UseBorders = False
+        '
+        'XrLabel85
+        '
+        Me.XrLabel85.CanGrow = False
+        Me.XrLabel85.Dpi = 254.0!
+        Me.XrLabel85.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[Fullname]")})
+        Me.XrLabel85.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel85.LocationFloat = New DevExpress.Utils.PointFloat(1515.578!, 147.0428!)
+        Me.XrLabel85.Multiline = True
+        Me.XrLabel85.Name = "XrLabel85"
+        Me.XrLabel85.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel85.SizeF = New System.Drawing.SizeF(302.4829!, 30.33807!)
+        Me.XrLabel85.StylePriority.UseFont = False
+        Me.XrLabel85.StylePriority.UseTextAlignment = False
+        Me.XrLabel85.Text = "XrLabel12"
+        Me.XrLabel85.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        Me.XrLabel85.TextFormatString = "{0:d}"
+        '
+        'XrLabel86
+        '
+        Me.XrLabel86.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel86.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.XrLabel86.Dpi = 254.0!
+        Me.XrLabel86.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel86.LocationFloat = New DevExpress.Utils.PointFloat(1499.578!, 106.4464!)
+        Me.XrLabel86.Multiline = True
+        Me.XrLabel86.Name = "XrLabel86"
+        Me.XrLabel86.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
+        Me.XrLabel86.SizeF = New System.Drawing.SizeF(337.2571!, 92.33319!)
+        Me.XrLabel86.StylePriority.UseBorderColor = False
+        Me.XrLabel86.StylePriority.UseBorders = False
+        Me.XrLabel86.StylePriority.UseFont = False
+        Me.XrLabel86.StylePriority.UseTextAlignment = False
+        Me.XrLabel86.Text = "ΔΙΑΧΕΙΡΙΣΤΗΣ"
+        Me.XrLabel86.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'XrLabel14
         '
@@ -342,13 +378,13 @@ Partial Public Class Eidop
         '
         Me.XrLabel13.CanGrow = False
         Me.XrLabel13.Dpi = 254.0!
-        Me.XrLabel13.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[completeDate]")})
+        Me.XrLabel13.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[completeDate] + iif([vw_INH].[extraordinary]=true,'-EKTAKTH','')")})
         Me.XrLabel13.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(141.3102!, 139.996!)
         Me.XrLabel13.Multiline = True
         Me.XrLabel13.Name = "XrLabel13"
         Me.XrLabel13.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel13.SizeF = New System.Drawing.SizeF(412.5711!, 37.38495!)
+        Me.XrLabel13.SizeF = New System.Drawing.SizeF(437.5229!, 37.38495!)
         Me.XrLabel13.StylePriority.UseFont = False
         Me.XrLabel13.StylePriority.UseTextAlignment = False
         Me.XrLabel13.Text = "XrLabel13"
@@ -530,7 +566,7 @@ Partial Public Class Eidop
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "08cd5ef6-8a3f-4d55-9e10-22f4ff3e783e"
+        Me.inhID.ValueInfo = "c7d30c02-5d03-4341-b0a5-244be48def4f"
         Me.inhID.Visible = False
         '
         'SqlDataSource1
@@ -2473,42 +2509,6 @@ Partial Public Class Eidop
         Me.XrLabel17.StylePriority.UseTextAlignment = False
         Me.XrLabel17.Text = "ΠΟΣΟ"
         Me.XrLabel17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'XrLabel85
-        '
-        Me.XrLabel85.CanGrow = False
-        Me.XrLabel85.Dpi = 254.0!
-        Me.XrLabel85.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[Fullname]")})
-        Me.XrLabel85.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel85.LocationFloat = New DevExpress.Utils.PointFloat(1515.578!, 147.0428!)
-        Me.XrLabel85.Multiline = True
-        Me.XrLabel85.Name = "XrLabel85"
-        Me.XrLabel85.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel85.SizeF = New System.Drawing.SizeF(302.4829!, 30.33807!)
-        Me.XrLabel85.StylePriority.UseFont = False
-        Me.XrLabel85.StylePriority.UseTextAlignment = False
-        Me.XrLabel85.Text = "XrLabel12"
-        Me.XrLabel85.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        Me.XrLabel85.TextFormatString = "{0:d}"
-        '
-        'XrLabel86
-        '
-        Me.XrLabel86.BorderColor = System.Drawing.Color.Black
-        Me.XrLabel86.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
-            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.XrLabel86.Dpi = 254.0!
-        Me.XrLabel86.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel86.LocationFloat = New DevExpress.Utils.PointFloat(1499.578!, 106.4464!)
-        Me.XrLabel86.Multiline = True
-        Me.XrLabel86.Name = "XrLabel86"
-        Me.XrLabel86.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel86.SizeF = New System.Drawing.SizeF(337.2571!, 92.33319!)
-        Me.XrLabel86.StylePriority.UseBorderColor = False
-        Me.XrLabel86.StylePriority.UseBorders = False
-        Me.XrLabel86.StylePriority.UseFont = False
-        Me.XrLabel86.StylePriority.UseTextAlignment = False
-        Me.XrLabel86.Text = "ΔΙΑΧΕΙΡΙΣΤΗΣ"
-        Me.XrLabel86.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
         'Eidop
         '

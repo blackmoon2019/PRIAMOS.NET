@@ -410,7 +410,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "23764476-d7f9-48fa-b4ed-a817a58a1978"
+        Me.inhID.ValueInfo = "86c11590-928a-45a2-ab4b-2b27601eddc7"
         DynamicListLookUpSettings1.DataMember = "vw_INH"
         DynamicListLookUpSettings1.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings1.DisplayMember = "ID"
@@ -672,7 +672,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel24.BorderColor = System.Drawing.Color.Black
         Me.XrLabel24.Dpi = 254.0!
-        Me.XrLabel24.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[completeDate]")})
+        Me.XrLabel24.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[completeDate] + iif([vw_INH].[extraordinary]=true,'-EKTAKTH','')" & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(1148.24!, 36.51245!)
         Me.XrLabel24.Multiline = True
         Me.XrLabel24.Name = "XrLabel24"
@@ -2323,7 +2323,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.bdgID.Description = "bdgID"
         Me.bdgID.Name = "bdgID"
         Me.bdgID.Type = GetType(System.Guid)
-        Me.bdgID.ValueInfo = "5e5084ec-99ab-4c7d-a811-bc46238fff12"
+        Me.bdgID.ValueInfo = "e96902d9-e615-4f30-b5b2-806a4b68da4d"
         DynamicListLookUpSettings2.DataMember = "vw_BDG"
         DynamicListLookUpSettings2.DataSource = Me.SqlDataSource1
         DynamicListLookUpSettings2.DisplayMember = "ID"

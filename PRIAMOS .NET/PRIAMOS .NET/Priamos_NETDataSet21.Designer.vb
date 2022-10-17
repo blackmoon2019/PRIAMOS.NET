@@ -7835,7 +7835,7 @@ Namespace Priamos_NETDataSet2TableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, cr"& _ 
@@ -7890,6 +7890,13 @@ Namespace Priamos_NETDataSet2TableAdapters
                 "RDER BY bdgNam, ttl"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgid", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "SELECT Bal, Credit, ETOS, ID, agreed, aptID, aptNam, bdgID, bdgNam, code, colID, "& _ 
+                "completeDate, createdOn, creditUser, debit, debitUser, debitusrID, fDate, inhID,"& _ 
+                " modifiedBy, modifiedOn, old_code, ord, tDate, tenant, ttl, modifiedByRealName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "FROM   vw_COL_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (reserveAPT = 0) AND (agreed = 0) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY bdgNam, ttl"
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8124,6 +8131,19 @@ Namespace Priamos_NETDataSet2TableAdapters
             Dim dataTable As Priamos_NETDataSet2.vw_COL_DDataTable = New Priamos_NETDataSet2.vw_COL_DDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByNotAgreedALL(ByVal dataTable As Priamos_NETDataSet2.vw_COL_DDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(6)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
         End Function
     End Class
     
@@ -8481,7 +8501,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT Calculated, DateOfPrint, ETOS, ID, TotalInh, ahpb_HID, announcement, bdgID"& _ 
                 ", cmt, code, completeDate, createdOn, extraordinary, fDate, hpb, hpc, isPrinted,"& _ 
-                " mdt, modifiedBy, modifiedOn, nam, tDate FROM vw_INH WHERE (bdgID = @bdgID) "
+                " mdt, modifiedBy, modifiedOn, nam, tDate FROM vw_INH WHERE (bdgID = @bdgID) "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"or"& _ 
+                "der by fdate desc"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
