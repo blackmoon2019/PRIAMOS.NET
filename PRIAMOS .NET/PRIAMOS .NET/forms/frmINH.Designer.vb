@@ -92,7 +92,7 @@ Partial Class frmINH
         Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
         Me.cmdSaveINH = New DevExpress.XtraEditors.SimpleButton()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
-        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
+        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtAmt = New DevExpress.XtraEditors.TextEdit()
         Me.chkCALC_CAT = New DevExpress.XtraEditors.CheckedListBoxControl()
         Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
@@ -175,7 +175,7 @@ Partial Class frmINH
         Me.LcmdCancelCalculate = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem37 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwEXCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -195,6 +195,8 @@ Partial Class frmINH
         Me.AHPB_H1TableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter()
         Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AHPB_Β = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter()
+        Me.lblAHPB = New DevExpress.XtraEditors.LabelControl()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -228,7 +230,7 @@ Partial Class frmINH
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkCALC_CAT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -311,11 +313,12 @@ Partial Class frmINH
         CType(Me.LcmdCancelCalculate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView7
@@ -573,6 +576,7 @@ Partial Class frmINH
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.lblAHPB)
         Me.LayoutControl1.Controls.Add(Me.TextEdit1)
         Me.LayoutControl1.Controls.Add(Me.chkreserveAPT)
         Me.LayoutControl1.Controls.Add(Me.chkEmail)
@@ -652,7 +656,7 @@ Partial Class frmINH
         'chkreserveAPT
         '
         Me.chkreserveAPT.EditValue = CType(0, Byte)
-        Me.chkreserveAPT.Location = New System.Drawing.Point(688, 129)
+        Me.chkreserveAPT.Location = New System.Drawing.Point(609, 129)
         Me.chkreserveAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.chkreserveAPT.MenuManager = Me.BarManager1
         Me.chkreserveAPT.Name = "chkreserveAPT"
@@ -660,7 +664,7 @@ Partial Class frmINH
         Me.chkreserveAPT.Properties.ReadOnly = True
         Me.chkreserveAPT.Properties.ValueChecked = CType(1, Byte)
         Me.chkreserveAPT.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkreserveAPT.Size = New System.Drawing.Size(220, 32)
+        Me.chkreserveAPT.Size = New System.Drawing.Size(299, 32)
         Me.chkreserveAPT.StyleController = Me.LayoutControl1
         Me.chkreserveAPT.TabIndex = 75
         Me.chkreserveAPT.Tag = "reserveAPT,0,1,2"
@@ -732,7 +736,7 @@ Partial Class frmINH
         'chkEmail
         '
         Me.chkEmail.EditValue = CType(0, Byte)
-        Me.chkEmail.Location = New System.Drawing.Point(812, 12)
+        Me.chkEmail.Location = New System.Drawing.Point(743, 12)
         Me.chkEmail.Margin = New System.Windows.Forms.Padding(5)
         Me.chkEmail.MenuManager = Me.BarManager1
         Me.chkEmail.Name = "chkEmail"
@@ -744,7 +748,7 @@ Partial Class frmINH
         Me.chkEmail.Properties.ReadOnly = True
         Me.chkEmail.Properties.ValueChecked = CType(1, Byte)
         Me.chkEmail.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkEmail.Size = New System.Drawing.Size(109, 32)
+        Me.chkEmail.Size = New System.Drawing.Size(178, 32)
         Me.chkEmail.StyleController = Me.LayoutControl1
         Me.chkEmail.TabIndex = 73
         Me.chkEmail.Tag = "email,0"
@@ -762,7 +766,7 @@ Partial Class frmINH
         'chkCalorimetric
         '
         Me.chkCalorimetric.EditValue = CType(0, Byte)
-        Me.chkCalorimetric.Location = New System.Drawing.Point(508, 129)
+        Me.chkCalorimetric.Location = New System.Drawing.Point(429, 129)
         Me.chkCalorimetric.Margin = New System.Windows.Forms.Padding(5)
         Me.chkCalorimetric.MenuManager = Me.BarManager1
         Me.chkCalorimetric.Name = "chkCalorimetric"
@@ -777,10 +781,10 @@ Partial Class frmINH
         'cmdCancelCalculate
         '
         Me.cmdCancelCalculate.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cancel_subscription_24
-        Me.cmdCancelCalculate.Location = New System.Drawing.Point(497, 748)
+        Me.cmdCancelCalculate.Location = New System.Drawing.Point(464, 748)
         Me.cmdCancelCalculate.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCancelCalculate.Name = "cmdCancelCalculate"
-        Me.cmdCancelCalculate.Size = New System.Drawing.Size(257, 39)
+        Me.cmdCancelCalculate.Size = New System.Drawing.Size(228, 39)
         Me.cmdCancelCalculate.StyleController = Me.LayoutControl1
         Me.cmdCancelCalculate.TabIndex = 73
         Me.cmdCancelCalculate.Text = "Ακύρωση υπολογισμού"
@@ -788,7 +792,7 @@ Partial Class frmINH
         'chkPrintReceipt
         '
         Me.chkPrintReceipt.EditValue = CType(0, Byte)
-        Me.chkPrintReceipt.Location = New System.Drawing.Point(651, 12)
+        Me.chkPrintReceipt.Location = New System.Drawing.Point(598, 12)
         Me.chkPrintReceipt.Margin = New System.Windows.Forms.Padding(5)
         Me.chkPrintReceipt.MenuManager = Me.BarManager1
         Me.chkPrintReceipt.Name = "chkPrintReceipt"
@@ -800,7 +804,7 @@ Partial Class frmINH
         Me.chkPrintReceipt.Properties.ReadOnly = True
         Me.chkPrintReceipt.Properties.ValueChecked = CType(1, Byte)
         Me.chkPrintReceipt.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkPrintReceipt.Size = New System.Drawing.Size(157, 32)
+        Me.chkPrintReceipt.Size = New System.Drawing.Size(141, 32)
         Me.chkPrintReceipt.StyleController = Me.LayoutControl1
         Me.chkPrintReceipt.TabIndex = 72
         Me.chkPrintReceipt.Tag = "isPrintedEisp,0"
@@ -809,7 +813,7 @@ Partial Class frmINH
         'chkPrintEidop
         '
         Me.chkPrintEidop.EditValue = CType(0, Byte)
-        Me.chkPrintEidop.Location = New System.Drawing.Point(463, 12)
+        Me.chkPrintEidop.Location = New System.Drawing.Point(427, 12)
         Me.chkPrintEidop.Margin = New System.Windows.Forms.Padding(5)
         Me.chkPrintEidop.MenuManager = Me.BarManager1
         Me.chkPrintEidop.Name = "chkPrintEidop"
@@ -821,7 +825,7 @@ Partial Class frmINH
         Me.chkPrintEidop.Properties.ReadOnly = True
         Me.chkPrintEidop.Properties.ValueChecked = CType(1, Byte)
         Me.chkPrintEidop.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkPrintEidop.Size = New System.Drawing.Size(184, 32)
+        Me.chkPrintEidop.Size = New System.Drawing.Size(167, 32)
         Me.chkPrintEidop.StyleController = Me.LayoutControl1
         Me.chkPrintEidop.TabIndex = 71
         Me.chkPrintEidop.Tag = "isPrintedEidop,0"
@@ -830,7 +834,7 @@ Partial Class frmINH
         'chkPrintSyg
         '
         Me.chkPrintSyg.EditValue = CType(0, Byte)
-        Me.chkPrintSyg.Location = New System.Drawing.Point(236, 12)
+        Me.chkPrintSyg.Location = New System.Drawing.Point(222, 12)
         Me.chkPrintSyg.Margin = New System.Windows.Forms.Padding(5)
         Me.chkPrintSyg.MenuManager = Me.BarManager1
         Me.chkPrintSyg.Name = "chkPrintSyg"
@@ -842,7 +846,7 @@ Partial Class frmINH
         Me.chkPrintSyg.Properties.ReadOnly = True
         Me.chkPrintSyg.Properties.ValueChecked = CType(1, Byte)
         Me.chkPrintSyg.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkPrintSyg.Size = New System.Drawing.Size(223, 32)
+        Me.chkPrintSyg.Size = New System.Drawing.Size(201, 32)
         Me.chkPrintSyg.StyleController = Me.LayoutControl1
         Me.chkPrintSyg.TabIndex = 70
         Me.chkPrintSyg.Tag = "isPrinted,0"
@@ -863,7 +867,7 @@ Partial Class frmINH
         Me.chkCalculated.Properties.ReadOnly = True
         Me.chkCalculated.Properties.ValueChecked = CType(1, Byte)
         Me.chkCalculated.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkCalculated.Size = New System.Drawing.Size(220, 32)
+        Me.chkCalculated.Size = New System.Drawing.Size(206, 32)
         Me.chkCalculated.StyleController = Me.LayoutControl1
         Me.chkCalculated.TabIndex = 69
         Me.chkCalculated.Tag = "Calculated,0"
@@ -873,10 +877,10 @@ Partial Class frmINH
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(763, 1301)
+        Me.cmdExit.Location = New System.Drawing.Point(744, 1301)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(158, 39)
+        Me.cmdExit.Size = New System.Drawing.Size(177, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
         Me.cmdExit.TabIndex = 58
         Me.cmdExit.Text = "Έξοδος"
@@ -941,10 +945,10 @@ Partial Class frmINH
         '
         Me.cmdCancelInvoice.Enabled = False
         Me.cmdCancelInvoice.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cancel_subscription_24
-        Me.cmdCancelInvoice.Location = New System.Drawing.Point(223, 748)
+        Me.cmdCancelInvoice.Location = New System.Drawing.Point(220, 748)
         Me.cmdCancelInvoice.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCancelInvoice.Name = "cmdCancelInvoice"
-        Me.cmdCancelInvoice.Size = New System.Drawing.Size(270, 39)
+        Me.cmdCancelInvoice.Size = New System.Drawing.Size(240, 39)
         Me.cmdCancelInvoice.StyleController = Me.LayoutControl1
         Me.cmdCancelInvoice.TabIndex = 58
         Me.cmdCancelInvoice.Text = "Ακύρωση Παραστατικού"
@@ -979,7 +983,7 @@ Partial Class frmINH
         'chkExtraordinary
         '
         Me.chkExtraordinary.EditValue = CType(0, Byte)
-        Me.chkExtraordinary.Location = New System.Drawing.Point(396, 129)
+        Me.chkExtraordinary.Location = New System.Drawing.Point(317, 129)
         Me.chkExtraordinary.Margin = New System.Windows.Forms.Padding(5)
         Me.chkExtraordinary.MenuManager = Me.BarManager1
         Me.chkExtraordinary.Name = "chkExtraordinary"
@@ -997,7 +1001,7 @@ Partial Class frmINH
         Me.cmdNewInh.Location = New System.Drawing.Point(12, 748)
         Me.cmdNewInh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdNewInh.Name = "cmdNewInh"
-        Me.cmdNewInh.Size = New System.Drawing.Size(207, 39)
+        Me.cmdNewInh.Size = New System.Drawing.Size(204, 39)
         Me.cmdNewInh.StyleController = Me.LayoutControl1
         Me.cmdNewInh.TabIndex = 63
         Me.cmdNewInh.Text = "Νέο Παραστατικό"
@@ -1053,7 +1057,7 @@ Partial Class frmINH
         Me.cmdCalculate.Location = New System.Drawing.Point(530, 1301)
         Me.cmdCalculate.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCalculate.Name = "cmdCalculate"
-        Me.cmdCalculate.Size = New System.Drawing.Size(229, 39)
+        Me.cmdCalculate.Size = New System.Drawing.Size(210, 39)
         Me.cmdCalculate.StyleController = Me.LayoutControl1
         Me.cmdCalculate.TabIndex = 53
         Me.cmdCalculate.Text = "Υπολογισμός"
@@ -1116,7 +1120,7 @@ Partial Class frmINH
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(166, 38)
+        Me.txtCode.Size = New System.Drawing.Size(87, 38)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 47
         Me.txtCode.Tag = "code,0"
@@ -1134,10 +1138,10 @@ Partial Class frmINH
         'cmdSaveINH
         '
         Me.cmdSaveINH.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveINH.Location = New System.Drawing.Point(758, 748)
+        Me.cmdSaveINH.Location = New System.Drawing.Point(696, 748)
         Me.cmdSaveINH.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveINH.Name = "cmdSaveINH"
-        Me.cmdSaveINH.Size = New System.Drawing.Size(163, 39)
+        Me.cmdSaveINH.Size = New System.Drawing.Size(225, 39)
         Me.cmdSaveINH.StyleController = Me.LayoutControl1
         Me.cmdSaveINH.TabIndex = 45
         Me.cmdSaveINH.Text = "Καταχώρηση"
@@ -1162,10 +1166,10 @@ Partial Class frmINH
         Me.cboBDG.TabIndex = 44
         Me.cboBDG.Tag = "bdgid,0,1,2"
         '
-        'Priamos_NETDataSet3
+        'VwBDGBindingSource
         '
-        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'txtAmt
         '
@@ -1564,7 +1568,7 @@ Partial Class frmINH
         '
         'LayoutControlGroup1
         '
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem9, Me.LayoutControlItem1, Me.LayoutControlItem15, Me.LayoutControlItem19, Me.LayoutControlItem8, Me.LayoutControlItem20, Me.LayoutControlItem22, Me.LayoutControlItem24, Me.lCanceled, Me.LayoutControlItem27, Me.LayoutControlItem28, Me.LayoutControlItem30, Me.LayoutControlItem36, Me.EmptySpaceItem2, Me.LayoutControlItem38, Me.LayoutControlItem14, Me.LayoutControlItem39, Me.EmptySpaceItem6, Me.LayoutControlItem25, Me.EmptySpaceItem8, Me.LayoutControlItem40})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem9, Me.LayoutControlItem1, Me.LayoutControlItem15, Me.LayoutControlItem19, Me.LayoutControlItem8, Me.LayoutControlItem20, Me.LayoutControlItem22, Me.LayoutControlItem24, Me.lCanceled, Me.LayoutControlItem27, Me.LayoutControlItem28, Me.LayoutControlItem30, Me.LayoutControlItem36, Me.EmptySpaceItem2, Me.LayoutControlItem38, Me.LayoutControlItem14, Me.LayoutControlItem39, Me.EmptySpaceItem6, Me.LayoutControlItem25, Me.EmptySpaceItem8, Me.LayoutControlItem40, Me.LayoutControlItem7})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 36)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(913, 700)
@@ -1618,7 +1622,7 @@ Partial Class frmINH
         Me.LayoutControlItem9.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 32)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(371, 42)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(292, 42)
         Me.LayoutControlItem9.Text = "Κωδικός"
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(189, 23)
         '
@@ -1702,7 +1706,7 @@ Partial Class frmINH
         'LayoutControlItem24
         '
         Me.LayoutControlItem24.Control = Me.chkExtraordinary
-        Me.LayoutControlItem24.Location = New System.Drawing.Point(371, 32)
+        Me.LayoutControlItem24.Location = New System.Drawing.Point(292, 32)
         Me.LayoutControlItem24.Name = "LayoutControlItem24"
         Me.LayoutControlItem24.Size = New System.Drawing.Size(112, 42)
         Me.LayoutControlItem24.TextSize = New System.Drawing.Size(0, 0)
@@ -1757,7 +1761,7 @@ Partial Class frmINH
         'LayoutControlItem36
         '
         Me.LayoutControlItem36.Control = Me.chkCalorimetric
-        Me.LayoutControlItem36.Location = New System.Drawing.Point(483, 32)
+        Me.LayoutControlItem36.Location = New System.Drawing.Point(404, 32)
         Me.LayoutControlItem36.Name = "LayoutControlItem36"
         Me.LayoutControlItem36.Size = New System.Drawing.Size(180, 42)
         Me.LayoutControlItem36.TextSize = New System.Drawing.Size(0, 0)
@@ -1774,9 +1778,9 @@ Partial Class frmINH
         'LayoutControlItem38
         '
         Me.LayoutControlItem38.Control = Me.chkreserveAPT
-        Me.LayoutControlItem38.Location = New System.Drawing.Point(663, 32)
+        Me.LayoutControlItem38.Location = New System.Drawing.Point(584, 32)
         Me.LayoutControlItem38.Name = "LayoutControlItem38"
-        Me.LayoutControlItem38.Size = New System.Drawing.Size(224, 42)
+        Me.LayoutControlItem38.Size = New System.Drawing.Size(303, 42)
         Me.LayoutControlItem38.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem38.TextVisible = False
         '
@@ -1818,9 +1822,9 @@ Partial Class frmINH
         'EmptySpaceItem8
         '
         Me.EmptySpaceItem8.AllowHotTrack = False
-        Me.EmptySpaceItem8.Location = New System.Drawing.Point(0, 605)
+        Me.EmptySpaceItem8.Location = New System.Drawing.Point(138, 605)
         Me.EmptySpaceItem8.Name = "EmptySpaceItem8"
-        Me.EmptySpaceItem8.Size = New System.Drawing.Size(471, 33)
+        Me.EmptySpaceItem8.Size = New System.Drawing.Size(333, 33)
         Me.EmptySpaceItem8.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem40
@@ -1934,7 +1938,7 @@ Partial Class frmINH
         Me.LcmdCalculate.Control = Me.cmdCalculate
         Me.LcmdCalculate.Location = New System.Drawing.Point(518, 1289)
         Me.LcmdCalculate.Name = "LcmdCalculate"
-        Me.LcmdCalculate.Size = New System.Drawing.Size(233, 43)
+        Me.LcmdCalculate.Size = New System.Drawing.Size(214, 43)
         Me.LcmdCalculate.TextSize = New System.Drawing.Size(0, 0)
         Me.LcmdCalculate.TextVisible = False
         '
@@ -1976,9 +1980,9 @@ Partial Class frmINH
         'LayoutControlItem29
         '
         Me.LayoutControlItem29.Control = Me.cmdExit
-        Me.LayoutControlItem29.Location = New System.Drawing.Point(751, 1289)
+        Me.LayoutControlItem29.Location = New System.Drawing.Point(732, 1289)
         Me.LayoutControlItem29.Name = "LayoutControlItem29"
-        Me.LayoutControlItem29.Size = New System.Drawing.Size(162, 43)
+        Me.LayoutControlItem29.Size = New System.Drawing.Size(181, 43)
         Me.LayoutControlItem29.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem29.TextVisible = False
         '
@@ -1987,34 +1991,34 @@ Partial Class frmINH
         Me.LayoutControlItem31.Control = Me.chkCalculated
         Me.LayoutControlItem31.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem31.Name = "LayoutControlItem31"
-        Me.LayoutControlItem31.Size = New System.Drawing.Size(224, 36)
+        Me.LayoutControlItem31.Size = New System.Drawing.Size(210, 36)
         Me.LayoutControlItem31.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem31.TextVisible = False
         '
         'LayoutControlItem32
         '
         Me.LayoutControlItem32.Control = Me.chkPrintSyg
-        Me.LayoutControlItem32.Location = New System.Drawing.Point(224, 0)
+        Me.LayoutControlItem32.Location = New System.Drawing.Point(210, 0)
         Me.LayoutControlItem32.Name = "LayoutControlItem32"
-        Me.LayoutControlItem32.Size = New System.Drawing.Size(227, 36)
+        Me.LayoutControlItem32.Size = New System.Drawing.Size(205, 36)
         Me.LayoutControlItem32.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem32.TextVisible = False
         '
         'LayoutControlItem33
         '
         Me.LayoutControlItem33.Control = Me.chkPrintEidop
-        Me.LayoutControlItem33.Location = New System.Drawing.Point(451, 0)
+        Me.LayoutControlItem33.Location = New System.Drawing.Point(415, 0)
         Me.LayoutControlItem33.Name = "LayoutControlItem33"
-        Me.LayoutControlItem33.Size = New System.Drawing.Size(188, 36)
+        Me.LayoutControlItem33.Size = New System.Drawing.Size(171, 36)
         Me.LayoutControlItem33.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem33.TextVisible = False
         '
         'LayoutControlItem34
         '
         Me.LayoutControlItem34.Control = Me.chkPrintReceipt
-        Me.LayoutControlItem34.Location = New System.Drawing.Point(639, 0)
+        Me.LayoutControlItem34.Location = New System.Drawing.Point(586, 0)
         Me.LayoutControlItem34.Name = "LayoutControlItem34"
-        Me.LayoutControlItem34.Size = New System.Drawing.Size(161, 36)
+        Me.LayoutControlItem34.Size = New System.Drawing.Size(145, 36)
         Me.LayoutControlItem34.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem34.TextVisible = False
         '
@@ -2023,34 +2027,34 @@ Partial Class frmINH
         Me.LcmdNewInh.Control = Me.cmdNewInh
         Me.LcmdNewInh.Location = New System.Drawing.Point(0, 736)
         Me.LcmdNewInh.Name = "LcmdNewInh"
-        Me.LcmdNewInh.Size = New System.Drawing.Size(211, 43)
+        Me.LcmdNewInh.Size = New System.Drawing.Size(208, 43)
         Me.LcmdNewInh.TextSize = New System.Drawing.Size(0, 0)
         Me.LcmdNewInh.TextVisible = False
         '
         'LcmdCancelInvoice
         '
         Me.LcmdCancelInvoice.Control = Me.cmdCancelInvoice
-        Me.LcmdCancelInvoice.Location = New System.Drawing.Point(211, 736)
+        Me.LcmdCancelInvoice.Location = New System.Drawing.Point(208, 736)
         Me.LcmdCancelInvoice.Name = "LcmdCancelInvoice"
-        Me.LcmdCancelInvoice.Size = New System.Drawing.Size(274, 43)
+        Me.LcmdCancelInvoice.Size = New System.Drawing.Size(244, 43)
         Me.LcmdCancelInvoice.TextSize = New System.Drawing.Size(0, 0)
         Me.LcmdCancelInvoice.TextVisible = False
         '
         'LcmdSaveINH
         '
         Me.LcmdSaveINH.Control = Me.cmdSaveINH
-        Me.LcmdSaveINH.Location = New System.Drawing.Point(746, 736)
+        Me.LcmdSaveINH.Location = New System.Drawing.Point(684, 736)
         Me.LcmdSaveINH.Name = "LcmdSaveINH"
-        Me.LcmdSaveINH.Size = New System.Drawing.Size(167, 43)
+        Me.LcmdSaveINH.Size = New System.Drawing.Size(229, 43)
         Me.LcmdSaveINH.TextSize = New System.Drawing.Size(0, 0)
         Me.LcmdSaveINH.TextVisible = False
         '
         'LcmdCancelCalculate
         '
         Me.LcmdCancelCalculate.Control = Me.cmdCancelCalculate
-        Me.LcmdCancelCalculate.Location = New System.Drawing.Point(485, 736)
+        Me.LcmdCancelCalculate.Location = New System.Drawing.Point(452, 736)
         Me.LcmdCancelCalculate.Name = "LcmdCancelCalculate"
-        Me.LcmdCancelCalculate.Size = New System.Drawing.Size(261, 43)
+        Me.LcmdCancelCalculate.Size = New System.Drawing.Size(232, 43)
         Me.LcmdCancelCalculate.TextSize = New System.Drawing.Size(0, 0)
         Me.LcmdCancelCalculate.TextVisible = False
         '
@@ -2065,16 +2069,16 @@ Partial Class frmINH
         'LayoutControlItem37
         '
         Me.LayoutControlItem37.Control = Me.chkEmail
-        Me.LayoutControlItem37.Location = New System.Drawing.Point(800, 0)
+        Me.LayoutControlItem37.Location = New System.Drawing.Point(731, 0)
         Me.LayoutControlItem37.Name = "LayoutControlItem37"
-        Me.LayoutControlItem37.Size = New System.Drawing.Size(113, 36)
+        Me.LayoutControlItem37.Size = New System.Drawing.Size(182, 36)
         Me.LayoutControlItem37.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem37.TextVisible = False
         '
-        'VwBDGBindingSource
+        'Priamos_NETDataSet3
         '
-        Me.VwBDGBindingSource.DataMember = "vw_BDG"
-        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'AHPBHBindingSource
         '
@@ -2164,6 +2168,28 @@ Partial Class frmINH
         '
         Me.AHPB_Β.ClearBeforeFill = True
         '
+        'lblAHPB
+        '
+        Me.lblAHPB.Appearance.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.lblAHPB.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lblAHPB.Appearance.Options.UseFont = True
+        Me.lblAHPB.Appearance.Options.UseForeColor = True
+        Me.lblAHPB.Location = New System.Drawing.Point(25, 702)
+        Me.lblAHPB.Name = "lblAHPB"
+        Me.lblAHPB.Size = New System.Drawing.Size(134, 23)
+        Me.lblAHPB.StyleController = Me.LayoutControl1
+        Me.lblAHPB.TabIndex = 78
+        Me.lblAHPB.Text = "LabelControl3"
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.lblAHPB
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 605)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(138, 33)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
+        '
         'frmINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -2212,7 +2238,7 @@ Partial Class frmINH
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkCALC_CAT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2296,11 +2322,12 @@ Partial Class frmINH
         CType(Me.LcmdCancelCalculate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2479,4 +2506,6 @@ Partial Class frmINH
     Friend WithEvents txtColAnnouncement As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem40 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents Priamos_NETDataSet3 As Priamos_NETDataSet3
+    Friend WithEvents lblAHPB As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
 End Class

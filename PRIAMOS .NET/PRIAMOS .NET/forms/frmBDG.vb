@@ -444,6 +444,7 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM APT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
 
@@ -871,7 +872,7 @@ Public Class frmBDG
 	                ,CUR.aptID
 	                ,case when CUR.mes<>0 then cur.mdt else  (select MAX(mdt) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler =  " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + "	and AHPB.aptID = CUR.aptID) end AS mdt	
 	                ,CUR.mes
-	                ,(select TOP 1 SUM(mesB) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler = " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + " and AHPB.aptID = CUR.aptID GROUP BY MDT ORDER BY MDT DESC ) AS mesB
+	                ,(select TOP 1 SUM(mes) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler = " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + " and AHPB.aptID = CUR.aptID GROUP BY MDT ORDER BY MDT DESC ) AS mesB
 	                ,CUR.mesDif
 	                ,CUR.boiler
 	                ,CUR.RealName
@@ -1028,6 +1029,7 @@ Public Class frmBDG
         Dim sBoiler As String
         Try
             If RGTypeHeating.SelectedIndex = 0 Then sBoiler = "Θέρμανσης" Else sBoiler = "Boiler"
+            If GridView2.SelectedRowsCount = 0 Then XtraMessageBox.Show("Δεν έχετε επιλέξει εγγραφές προς διαγραφή", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             If XtraMessageBox.Show("Θέλετε να διαγραφούν οι ώρες " & sBoiler & " για την ημερομηνία " & cboBefMes.Text & " ?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 'sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
                 '        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &

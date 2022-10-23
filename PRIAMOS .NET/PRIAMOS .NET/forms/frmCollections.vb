@@ -1344,6 +1344,9 @@ Public Class frmCollections
             Select Case e.Column.FieldName
                 '******  TO BE DELETED  *********
                 Case "debit"
+
+                    XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Exit Sub
                     If e.Value Is DBNull.Value Then debit = 0 Else debit = e.Value
                     If sender.GetRowCellValue(sender.FocusedRowHandle, "credit") Is DBNull.Value Then
                         credit = 0
@@ -1768,6 +1771,8 @@ Public Class frmCollections
     '********* TO BE DELETED*********
     Private Sub Rep_FixAptBalance_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_FixAptBalance.ButtonPressed
         UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+        XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Exit Sub
         Dim sSQL As String
         If XtraMessageBox.Show("Θέλετε να ενημερώσετε το υπόλοιπο του διαμερίσματος?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             sSQL = "UPDATE APT SET BAL_ADM = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal").ToString, True) &

@@ -160,19 +160,19 @@ Public Class Rep_Sygentrotiki
                 i = i + 1
             End If
             If bHasFIBoiler = True Then
-                i = i + 1
                 XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[Exodavw_APMIL].[fiboiler]"))
                 XrTable5.Rows(0).Cells(i).Visible = True
                 XrTable7.Rows(0).Cells(i).Summary = summary
                 XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "Sum([Exodavw_APMIL].[fiboiler])"))
                 XrTable7.Rows(0).Cells(i).Visible = True
+                i = i + 1
             End If
             If bHasHoursBoiler Then
-                i = i + 1
                 XrTable5.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[ExodaahpbB].[mesDif]"))
                 XrTable5.Rows(0).Cells(i).Visible = True
                 XrTable7.Rows(0).Cells(i).ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHahpbBTOT].[TotAhpbMesDifBoiler]"))
                 XrTable7.Rows(0).Cells(i).Visible = True
+                i = i + 1
             End If
 
 

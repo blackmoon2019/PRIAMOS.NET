@@ -1293,17 +1293,44 @@ Public Class frmScroller
             Dim sSQL2 As String
             Dim sVal As Integer
             Dim sActiveFilter As String
-
+            Dim sFieldsH As New StringBuilder
+            Dim sFieldsD As New StringBuilder
+            sActiveFilter = GridView1.ActiveFilterString
+            sVal = RepositoryBarRecords.Items.IndexOf(BarRecords.EditValue)
             sActiveFilter = GridView1.ActiveFilterString
             sVal = RepositoryBarRecords.Items.IndexOf(BarRecords.EditValue)
 
             If sVal <> 4 And BarRecords.EditValue <> Nothing Then
                 sSQL = "SELECT top " & BarRecords.EditValue & " * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
             Else
-                sSQL = "SELECT   * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
+                sSQL = "SELECT  * FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
             End If
             sSQL = sSQL & " order by code desc "
             If sDataDetail <> "" Then sSQL2 = "SELECT  * FROM " & sDataDetail
+            'myCmd = CNDB.CreateCommand
+            'myCmd.CommandText = sSQL
+            'GridView1.Columns.Clear()
+            'myReader = myCmd.ExecuteReader()
+
+            'LoadViews()
+            'sFieldsH.Clear()
+            'For Each column As DevExpress.XtraGrid.Columns.GridColumn In GridView1.Columns
+            '    If column.Visible = True Or column.FieldName.Contains("ID") Then If sFieldsH.Length = 0 Then sFieldsH.Append("[" & column.FieldName & "]") Else sFieldsH.Append("," & "[" & column.FieldName & "]")
+            'Next
+            'If sVal <> 4 And BarRecords.EditValue <> Nothing Then
+            '    sSQL = "SELECT top " & BarRecords.EditValue & " " & sFieldsH.ToString & "  FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
+            'Else
+            '    sSQL = "SELECT   " & sFieldsH.ToString & " FROM " & IIf(sDataTable = "", sDataTable2, sDataTable) & " " & sWhereCondition
+            'End If
+            ''       sSQL = sSQL & " order by code desc "
+            'If sDataDetail <> "" Then
+            '    sFieldsD.Clear()
+            '    For Each column As DevExpress.XtraGrid.Columns.GridColumn In GridView2.Columns
+            '        If column.Visible = True Then If sFieldsD.Length = 0 Then sFieldsD.Append("[" & column.FieldName & "]") Else sFieldsD.Append("," & "[" & column.FieldName & "]")
+            '    Next
+
+            '    sSQL2 = "Select  " & sFieldsD.ToString & " FROM " & sDataDetail
+            'End If
             myCmd = CNDB.CreateCommand
             myCmd.CommandText = sSQL
             GridView1.Columns.Clear()
@@ -1385,7 +1412,7 @@ Public Class frmScroller
                 BarPrint.Visibility = BarItemVisibility.Never
             End If
         Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         'If grdMain.DefaultView.DataRowCount <> 0 Then myReader.Close() 'myReader.Close()
     End Sub

@@ -83,6 +83,10 @@ Public Class frmINH
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
                 If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
                 If cboAhpbHB.EditValue IsNot Nothing Then cboAhpbB.EditValue = cboAhpbHB.EditValue
+                If InhFieldAndValues.Item("mdt") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & InhFieldAndValues.Item("mdt") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID"))
+                If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & InhFieldAndValues.Item("mdtBoiler") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB"))
+
+
                 'lbldate.Text = TranslateDates(dtFDate, dtTDate)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
                 DataNavigator1.Position = SetNavigatorPosition()
