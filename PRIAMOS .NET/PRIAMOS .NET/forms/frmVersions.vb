@@ -81,7 +81,7 @@ Public Class frmVersions
         Dim myValue As String = InputBox("Πληκτρολογήστε την Έκδοση", "Έκδοση", "")
         Try
             If myValue = "" Then Exit Sub
-            sSQL = "Update ver set ExeVer = " & toSQLValueS(myValue) & ",DbVer = " & toSQLValueS(myValue) & ", UpdatePath='\\192.168.1.51\priamos.net\Updates\" & myValue & "\'"
+            sSQL = "Update ver set ExeVer = " & toSQLValueS(myValue) & ",DbVer = " & toSQLValueS(myValue) & ", UpdatePath='\\192.168.1.52\priamos.net\Updates\" & myValue & "\'"
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
@@ -97,10 +97,10 @@ Public Class frmVersions
                 oCmd.ExecuteNonQuery()
             End Using
 
-            If My.Computer.FileSystem.DirectoryExists("\\192.168.1.51\priamos.net\Updates\" & myValue) = False Then
-                My.Computer.FileSystem.CreateDirectory("\\192.168.1.51\priamos.net\Updates\" & myValue)
+            If My.Computer.FileSystem.DirectoryExists("\\192.168.1.52\priamos.net\Updates\" & myValue) = False Then
+                My.Computer.FileSystem.CreateDirectory("\\192.168.1.52\priamos.net\Updates\" & myValue)
                 Dim exePath As String = Application.ExecutablePath()
-                My.Computer.FileSystem.CopyFile(Application.ExecutablePath().Replace("Debug", "Release"), "\\192.168.1.51\priamos.net\Updates\" & myValue & "\PRIAMOS.NET.exe")
+                My.Computer.FileSystem.CopyFile(Application.ExecutablePath().Replace("Debug", "Release"), "\\192.168.1.52\priamos.net\Updates\" & myValue & "\PRIAMOS.NET.exe")
             End If
             XtraMessageBox.Show("Η έκδοση δημιουργήθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception

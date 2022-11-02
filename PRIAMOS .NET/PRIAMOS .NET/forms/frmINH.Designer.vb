@@ -51,6 +51,7 @@ Partial Class frmINH
         Me.colpaid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.lblAHPB = New DevExpress.XtraEditors.LabelControl()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.chkreserveAPT = New DevExpress.XtraEditors.CheckEdit()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
@@ -149,6 +150,7 @@ Partial Class frmINH
         Me.LayoutControlItem25 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem8 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem40 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -195,8 +197,6 @@ Partial Class frmINH
         Me.AHPB_H1TableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter()
         Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AHPB_Β = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter()
-        Me.lblAHPB = New DevExpress.XtraEditors.LabelControl()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -287,6 +287,7 @@ Partial Class frmINH
         CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -318,7 +319,6 @@ Partial Class frmINH
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView7
@@ -629,6 +629,19 @@ Partial Class frmINH
         Me.LayoutControl1.Size = New System.Drawing.Size(2533, 1352)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'lblAHPB
+        '
+        Me.lblAHPB.Appearance.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.lblAHPB.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lblAHPB.Appearance.Options.UseFont = True
+        Me.lblAHPB.Appearance.Options.UseForeColor = True
+        Me.lblAHPB.Location = New System.Drawing.Point(25, 702)
+        Me.lblAHPB.Name = "lblAHPB"
+        Me.lblAHPB.Size = New System.Drawing.Size(134, 23)
+        Me.lblAHPB.StyleController = Me.LayoutControl1
+        Me.lblAHPB.TabIndex = 78
+        Me.lblAHPB.Text = "LabelControl3"
         '
         'TextEdit1
         '
@@ -1837,6 +1850,15 @@ Partial Class frmINH
         Me.LayoutControlItem40.Text = "Ανακοίνωση είσπραξης"
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(189, 23)
         '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.lblAHPB
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 605)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(138, 33)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
+        '
         'LayoutControlGroup2
         '
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem13, Me.LcmdSaveInd})
@@ -2168,28 +2190,6 @@ Partial Class frmINH
         '
         Me.AHPB_Β.ClearBeforeFill = True
         '
-        'lblAHPB
-        '
-        Me.lblAHPB.Appearance.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.lblAHPB.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lblAHPB.Appearance.Options.UseFont = True
-        Me.lblAHPB.Appearance.Options.UseForeColor = True
-        Me.lblAHPB.Location = New System.Drawing.Point(25, 702)
-        Me.lblAHPB.Name = "lblAHPB"
-        Me.lblAHPB.Size = New System.Drawing.Size(134, 23)
-        Me.lblAHPB.StyleController = Me.LayoutControl1
-        Me.lblAHPB.TabIndex = 78
-        Me.lblAHPB.Text = "LabelControl3"
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.lblAHPB
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 605)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(138, 33)
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem7.TextVisible = False
-        '
         'frmINH
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -2296,6 +2296,7 @@ Partial Class frmINH
         CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2327,7 +2328,6 @@ Partial Class frmINH
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

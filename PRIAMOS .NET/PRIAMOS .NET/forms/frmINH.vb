@@ -778,7 +778,7 @@ Public Class frmINH
             chkCalculated.CheckState = CheckState.Checked
             chkCalculated.Checked = True
             LcmdCancelCalculate.Enabled = True
-            LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+            LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False
             Frm.Refresh()
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
@@ -1106,10 +1106,6 @@ Public Class frmINH
         End If
     End Sub
 
-    Private Sub DataNavigator1_Click(sender As Object, e As EventArgs) Handles DataNavigator1.Click
-
-    End Sub
-
     Private Sub DataNavigator1_ButtonClick(sender As Object, e As NavigatorButtonClickEventArgs) Handles DataNavigator1.ButtonClick
         Select Case e.Button.ButtonType
             Case e.Button.ButtonType.Next : LoadINH(e.Button.ButtonType.Next)
@@ -1135,7 +1131,11 @@ Public Class frmINH
             sdr.Close()
 
             'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
-            LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
+            InhFieldAndValues = New Dictionary(Of String, String)
+            LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
+            If InhFieldAndValues.Item("mdt") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & InhFieldAndValues.Item("mdt") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPB.Text = ""
+            If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & InhFieldAndValues.Item("mdtBoiler") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPB.Text = ""
+
             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
             If lblCancel.Text = "True" Then
@@ -1148,9 +1148,9 @@ Public Class frmINH
                 'cmdCancelInvoice.Enabled = True 
             End If
             If chkCalculated.Checked = True Then
-                LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
+                LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False
             Else
-                LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
+                LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdSaveInd.Enabled = True
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1353,6 +1353,8 @@ Public Class frmINH
             LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
             chkCalculated.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
             cmdSaveInd.Enabled = True : cmdDel.Enabled = True : cmdSaveINH.Enabled = True
+            Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+            Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
         End If
     End Sub
 

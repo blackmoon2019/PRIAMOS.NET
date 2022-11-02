@@ -66,7 +66,7 @@
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="SERVERVIEWS" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\192.168.1.51\priamos.net\CrmViews\</Value>
+      <Value Profile="(Default)">\\192.168.1.52\priamos.net\CrmViews\</Value>
     </Setting>
     <Setting Name="frmCollections" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>

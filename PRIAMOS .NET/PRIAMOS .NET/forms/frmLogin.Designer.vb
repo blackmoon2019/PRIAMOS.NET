@@ -34,7 +34,7 @@ Partial Class frmLogin
         'LabelControl1
         '
         Me.LabelControl1.Location = New System.Drawing.Point(22, 39)
-        Me.LabelControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.LabelControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(125, 23)
         Me.LabelControl1.TabIndex = 1
@@ -43,7 +43,7 @@ Partial Class frmLogin
         'LabelControl2
         '
         Me.LabelControl2.Location = New System.Drawing.Point(23, 142)
-        Me.LabelControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.LabelControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(67, 23)
         Me.LabelControl2.TabIndex = 3
@@ -52,7 +52,7 @@ Partial Class frmLogin
         'cmdLogin
         '
         Me.cmdLogin.Location = New System.Drawing.Point(23, 304)
-        Me.cmdLogin.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.cmdLogin.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdLogin.Name = "cmdLogin"
         Me.cmdLogin.Size = New System.Drawing.Size(348, 41)
         Me.cmdLogin.TabIndex = 4
@@ -63,15 +63,16 @@ Partial Class frmLogin
         Me.cmdConnect.BackgroundImage = Global.PRIAMOS.NET.My.Resources.Resources.icons8_database_administrator_40
         Me.cmdConnect.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_database_administrator_24
         Me.cmdConnect.Location = New System.Drawing.Point(382, 304)
-        Me.cmdConnect.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.cmdConnect.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdConnect.Name = "cmdConnect"
         Me.cmdConnect.Size = New System.Drawing.Size(50, 48)
         Me.cmdConnect.TabIndex = 6
+        Me.cmdConnect.Visible = False
         '
         'chkRememberUN
         '
         Me.chkRememberUN.Location = New System.Drawing.Point(23, 241)
-        Me.chkRememberUN.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.chkRememberUN.Margin = New System.Windows.Forms.Padding(5)
         Me.chkRememberUN.Name = "chkRememberUN"
         Me.chkRememberUN.Properties.Caption = "Απομνημόνευση ""Όνομα Χρήστη"""
         Me.chkRememberUN.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.[Default]
@@ -81,7 +82,7 @@ Partial Class frmLogin
         'txtPWD
         '
         Me.txtPWD.Location = New System.Drawing.Point(22, 177)
-        Me.txtPWD.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtPWD.Margin = New System.Windows.Forms.Padding(5)
         Me.txtPWD.Name = "txtPWD"
         Me.txtPWD.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtPWD.Properties.AppearanceFocused.Options.UseBackColor = True
@@ -92,7 +93,7 @@ Partial Class frmLogin
         'txtUN
         '
         Me.txtUN.Location = New System.Drawing.Point(20, 73)
-        Me.txtUN.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtUN.Margin = New System.Windows.Forms.Padding(5)
         Me.txtUN.Name = "txtUN"
         Me.txtUN.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
         Me.txtUN.Properties.AppearanceFocused.Options.UseBackColor = True
@@ -114,10 +115,9 @@ Partial Class frmLogin
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.txtPWD)
         Me.Controls.Add(Me.LabelControl1)
-        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = ProgProps.ProgTitle
         CType(Me.chkRememberUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()

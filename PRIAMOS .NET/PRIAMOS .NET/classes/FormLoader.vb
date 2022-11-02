@@ -8,13 +8,16 @@ Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.Utils
+Imports DevExpress.XtraPrinting
+Imports DevExpress.Export
+Imports DevExpress.XtraBars
 
 Public Class FormLoader
     Private GRDview As GridView
     Private XMLName As String
     Private DbTblName As String
     Private DbQuery As String
-    Public Function LoadFormNew(ByVal controls As List(Of Control), ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
+    Public Function LoadFormNew(ByVal controls As List(Of System.Windows.Forms.Control), ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False) As Boolean
 
         Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
         Dim sdr As SqlDataReader = cmd.ExecuteReader()
@@ -348,7 +351,7 @@ NextItem:
     End Function
     Private Sub SetValueToControl(ByVal LItem As LayoutControlItem, ByVal sValue As String)
         Try
-            Dim Ctrl As Control = LItem.Control
+            Dim Ctrl As System.Windows.Forms.Control = LItem.Control
             If TypeOf Ctrl Is DevExpress.XtraEditors.LookUpEdit Then
                 Dim cbo As DevExpress.XtraEditors.LookUpEdit
                 Dim stestGuid As Guid
@@ -627,10 +630,18 @@ NextItem:
                     '7nd Custom Menu Item
                     menu.Items.Add(New DXMenuItem("Ενημέρωση πεδίων όψης από Βάση", AddressOf OnUpdateViewFromDB, Nothing, Nothing, Nothing, Nothing))
                 End If
+                '8nd Custom Menu Item
+                menu.Items.Add(New DXMenuItem("Εξαγωγή όψης σε Excel", AddressOf ExportToExcel, Nothing, Nothing, Nothing, Nothing))
+
             End If
+        Else
+
+
+
         End If
 
     End Sub
+
     Private Sub OnUpdateViewFromDB(ByVal sender As System.Object, ByVal e As EventArgs)
         'ReadXml.UpdateXMLFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
         'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
@@ -647,7 +658,7 @@ NextItem:
                 sSQL = DbQuery
             End If
             myCmd = CNDB.CreateCommand
-                myCmd.CommandText = sSQL
+            myCmd.CommandText = sSQL
             myReader = myCmd.ExecuteReader()
 
 
@@ -769,6 +780,26 @@ NextItem:
             '    My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml", Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", True)
             '    '        GridView7.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
             'End If
+
+        End If
+    End Sub
+    'Εξαγωγή όψης σε Excel
+    Private Sub ExportToExcel(ByVal sender As System.Object, ByVal e As EventArgs)
+        Dim Xsd As New XtraSaveFileDialog
+
+        If XtraMessageBox.Show("Θέλετε να γίνει εξαγωγή όψης?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            Dim options = New XlsxExportOptionsEx()
+            options.UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula
+            'GRDview.OptionsPrint.PrintDetails = True
+            'GRDview.OptionsPrint.ExpandAllDetails = True
+            options.ExportType = ExportType.Default ' ExportType.WYSIWYG
+            Xsd.Filter = "XLSX Files (*.xlsx*)|*.xlsx"
+            Xsd.FileName = "Excel_"
+            If Xsd.ShowDialog() = DialogResult.OK Then
+                GRDview.GridControl.ExportToXlsx(Xsd.FileName, options)
+                Process.Start(Xsd.FileName)
+            End If
+
 
         End If
     End Sub

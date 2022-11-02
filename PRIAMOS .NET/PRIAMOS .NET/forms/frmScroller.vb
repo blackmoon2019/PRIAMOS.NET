@@ -506,6 +506,9 @@ Public Class frmScroller
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
+
+
+
     'Προσθήκη επιλογών στο Standar Detail Menu
     Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
@@ -1884,9 +1887,16 @@ Public Class frmScroller
                     Dim sInhID As String = GridView1.GetRowCellValue(Row, "ID").ToString
                     Dim sSQL As String =
                                     "select APT.ID as AptID,
-                                    CONCAT(CCT_OWNER.email + ';',CCT_OWNER.email2 +';',CCT_OWNER.email3 +
-                                    ';',CCT_TENANT.email +';',CCT_TENANT.email2 +';',CCT_TENANT.email3 + 
-                                    ';' ,CCT_REP.email + ';',CCT_REP.email2 +';',CCT_REP.email3  ) AS EMAIL,
+                                    CONCAT(
+									case when sendEmailOwner=1 then  CCT_OWNER.email + ';' else '' end,
+									case when sendEmailOwner=1 then  CCT_OWNER.email2 +';' else '' end,
+									case when sendEmailOwner=1 then  CCT_OWNER.email3 +';' else '' end, 
+									case when sendEmailTenant=1 then  CCT_TENANT.email  +';' else '' end, 
+									case when sendEmailTenant=1 then  CCT_TENANT.email2  +';' else '' end, 
+									case when sendEmailTenant=1 then  CCT_TENANT.email3  +';' else '' end, 
+									case when sendEmailRepresentative=1 then  CCT_REP.email   +';' else '' end, 
+									case when sendEmailRepresentative=1 then  CCT_REP.email2   +';' else '' end,
+									case when sendEmailRepresentative=1 then  CCT_REP.email3   +';' else '' end) AS EMAIL,
                                     INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
                                     (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID

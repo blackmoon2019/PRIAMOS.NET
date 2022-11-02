@@ -217,8 +217,6 @@ Public Class frmCollections
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-
     Private Sub frmCollections_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
@@ -320,10 +318,17 @@ Public Class frmCollections
 
         Try
             UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+
             Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
             Dim debitUsrID As String
             debitUsrID = toSQLValueS(editor.GetColumnValue("ID").ToString)
+            If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And debitUsrID.ToUpper.Replace("'", "") = "2E273281-B2C5-451C-BC84-8E855EE1C2B6" Then
+                XtraMessageBox.Show("Δεν έχετε το δικαίωμα να ορίσετε τον χρήστη 'Ταμία'", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
             UpdateCOLS(0, debitUsrID)
+            '      End If
+
 
             'Select Case grdBDG.FocusedView.Name
             '    Case "GridView1", "grdVBDG"
@@ -987,7 +992,7 @@ Public Class frmCollections
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVBDG, "COL_BDG_def.xml")
     End Sub
     Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVAPT.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVAPT, "COL_APT_def.xml")
+        LoadForms.PopupMenuShow(e, grdVAPT, "COL_APT_def.xml")
     End Sub
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVINH.PopupMenuShowing
         Dim strSql As String = "SELECT TOP 1 S.aptID, S.bdgID, S.inhID, S.completeDate, 
@@ -1344,9 +1349,10 @@ Public Class frmCollections
             Select Case e.Column.FieldName
                 '******  TO BE DELETED  *********
                 Case "debit"
-
-                    XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    Exit Sub
+                    If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then
+                        XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Exit Sub
+                    End If
                     If e.Value Is DBNull.Value Then debit = 0 Else debit = e.Value
                     If sender.GetRowCellValue(sender.FocusedRowHandle, "credit") Is DBNull.Value Then
                         credit = 0
@@ -1357,7 +1363,7 @@ Public Class frmCollections
 
                     'sSQL = "UPDATE [COL] SET debit = " & toSQLValueS(debit, True) & " , bal =  " & toSQLValueS(bal, True) &
                     '    " WHERE ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
-                    sSQL = "UPDATE [COL] SET bal =  " & toSQLValueS(bal, True) & ",  debit= " & toSQLValueS(bal, True) &
+                    sSQL = "UPDATE [COL] SET bal =  " & toSQLValueS(bal, True) & ",  debit= " & toSQLValueS(bal, True) & ", debitusrID = '2E273281-B2C5-451C-BC84-8E855EE1C2B6'" & 'Χρήστης Ταμίας
                         " WHERE ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
 
                     Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -1372,44 +1378,44 @@ Public Class frmCollections
                         oCmd.ExecuteNonQuery()
                     End Using
 
-                    sSQL = "INSERT INTO COL_D(colID,aptID,bdgid,inhid,debitusrID,Credit,debit,Bal,modifiedBy,modifiedOn,createdOn,tenant,Agreed)" &
-                           "SELECT " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString) &
-                           ",col_p.aptid,col_p.bdgid,col_p.inhid, '26521B58-5590-4880-A31E-4E91A6CF964D' ,0, " &
-                             toSQLValueS(bal, True) & "," & toSQLValueS(bal, True) & ", '26521B58-5590-4880-A31E-4E91A6CF964D' " &
-                           ",getdate(),getdate(), " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & ",1" &
-                           " From col " &
-                            "inner Join col_p On col_p.bdgID = col.bdgID And col_p.aptID = col.aptID And col_p.inhID = col.inhID  " &
-                            "WHERE COL_P.TENANT = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & " and COL.ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
+                    'sSQL = "INSERT INTO COL_D(colID,aptID,bdgid,inhid,debitusrID,Credit,debit,Bal,modifiedBy,modifiedOn,createdOn,tenant,Agreed)" &
+                    '       "SELECT " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString) &
+                    '       ",col_p.aptid,col_p.bdgid,col_p.inhid, '26521B58-5590-4880-A31E-4E91A6CF964D' ,0, " &
+                    '         toSQLValueS(bal, True) & "," & toSQLValueS(bal, True) & ", '26521B58-5590-4880-A31E-4E91A6CF964D' " &
+                    '       ",getdate(),getdate(), " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & ",1" &
+                    '       " From col " &
+                    '        "inner Join col_p On col_p.bdgID = col.bdgID And col_p.aptID = col.aptID And col_p.inhID = col.inhID  " &
+                    '        "WHERE COL_P.TENANT = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant").ToString) & " and COL.ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
 
-                    Using oCmd As New SqlCommand(sSQL, CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
+                    'Using oCmd As New SqlCommand(sSQL, CNDB)
+                    '    oCmd.ExecuteNonQuery()
+                    'End Using
 
-                    sSQL = "UPDATE apt
-                        set apt.bal_adm = d.bal
-                        from apt 
-                        inner join(
+                    'sSQL = "UPDATE apt
+                    '    set apt.bal_adm = d.bal
+                    '    from apt 
+                    '    inner join(
 
-                        SELECT S.aptID, S.bal
-                        FROM COL
-                        INNER JOIN
-                        (
-                        SELECT  C.bdgID, aptID, a.ttl,a.ord, 
-                        sum(debit) as debit , 
-                        sum(credit) as credit , sum(C.bal) as bal,A.Bal as Aptbal  
-                        From COL C 
-                        INNER Join INH I ON I.ID=C.inhID 
-                        INNER Join APT A ON C.aptID = A.ID 
-                        where C.reserveAPT = 0 and Completed=0  
-                        group by C.bdgID, aptID, ttl,a.bal,a.ord
+                    '    SELECT S.aptID, S.bal
+                    '    FROM COL
+                    '    INNER JOIN
+                    '    (
+                    '    SELECT  C.bdgID, aptID, a.ttl,a.ord, 
+                    '    sum(debit) as debit , 
+                    '    sum(credit) as credit , sum(C.bal) as bal,A.Bal as Aptbal  
+                    '    From COL C 
+                    '    INNER Join INH I ON I.ID=C.inhID 
+                    '    INNER Join APT A ON C.aptID = A.ID 
+                    '    where C.reserveAPT = 0 and Completed=0  
+                    '    group by C.bdgID, aptID, ttl,a.bal,a.ord
 
-                        ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
-                        where COL.reserveAPT = 0 and Completed=0  and COL.id = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString) &
-                        " GROUP BY S.bdgID,S.aptID ,S.BAL) as d on d.aptID = apt.id "
+                    '    ) AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID 
+                    '    where COL.reserveAPT = 0 and Completed=0  and COL.id = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString) &
+                    '    " GROUP BY S.bdgID,S.aptID ,S.BAL) as d on d.aptID = apt.id "
 
-                    Using oCmd As New SqlCommand(sSQL, CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
+                    'Using oCmd As New SqlCommand(sSQL, CNDB)
+                    '    oCmd.ExecuteNonQuery()
+                    'End Using
                     sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
                     'sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
                     LoaderData()
@@ -1770,12 +1776,14 @@ Public Class frmCollections
     End Sub
     '********* TO BE DELETED*********
     Private Sub Rep_FixAptBalance_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_FixAptBalance.ButtonPressed
-        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
-        XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        Exit Sub
+        If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then
+            UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+            XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
         Dim sSQL As String
         If XtraMessageBox.Show("Θέλετε να ενημερώσετε το υπόλοιπο του διαμερίσματος?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-            sSQL = "UPDATE APT SET BAL_ADM = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal").ToString, True) &
+            sSQL = "UPDATE APT SET modifiedby = '2E273281-B2C5-451C-BC84-8E855EE1C2B6', BAL_ADM = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal").ToString, True) &
                            " where id = " & toSQLValueS(APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString)
             Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
             APTView.SetRowCellValue(APTView.FocusedRowHandle, "Aptbal", APTView.GetRowCellValue(APTView.FocusedRowHandle, "bal"))
@@ -1799,5 +1807,21 @@ Public Class frmCollections
             End If
             sdr.Close()
         End If
+    End Sub
+
+    Private Sub grdVO_T_KeyDown(sender As Object, e As KeyEventArgs) Handles grdVO_T.KeyDown
+        Select Case e.KeyCode
+            Case Keys.Delete
+                If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then
+                    XtraMessageBox.Show("Η δυνατότητα διαγραφής έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Exit Sub
+                End If
+                Dim sSQL As String = "DELETE FROM COL WHERE ID = " & toSQLValueS(sender.GetRowCellValue(sender.FocusedRowHandle, "ID").ToString)
+                Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+                LoaderData(sbdgID)
+                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sbdgID))
+                Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
+        End Select
+
     End Sub
 End Class

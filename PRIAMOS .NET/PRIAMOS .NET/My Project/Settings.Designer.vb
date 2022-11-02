@@ -306,7 +306,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.51\priamos.net\CrmViews\")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.52\priamos.net\CrmViews\")>  _
         Public Property SERVERVIEWS() As String
             Get
                 Return CType(Me("SERVERVIEWS"),String)
