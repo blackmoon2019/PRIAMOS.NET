@@ -497,6 +497,15 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBAPT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBAPT.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Διαμερίσαμτα Πολυκατοικιών"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "REPORT_6"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
 
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()

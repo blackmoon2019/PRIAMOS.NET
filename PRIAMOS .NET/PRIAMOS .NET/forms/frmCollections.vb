@@ -1534,6 +1534,10 @@ Public Class frmCollections
         If chkShowAgree.IsOn = True Then
             If XtraMessageBox.Show("Θέλετε να επιβεβαιωθούν οι επιλεγμένες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         Else
+            If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And UserProps.ID.ToString.ToUpper <> "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
+                XtraMessageBox.Show("Δεν έχετε τα απαραίτητα δικαιώματα γιαυτην την λειτουργία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+                Exit Sub
+            End If
             If XtraMessageBox.Show("Θέλετε να επαναφέρετε τις επιλεγμένες εγγραφές?Προσοχή οι εγγραφές αυτές θα διαγραφούν.", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
         End If
         Dim selectedRowHandles As Int32() = GridView6.GetSelectedRows()
@@ -1740,6 +1744,10 @@ Public Class frmCollections
     End Sub
 
     Private Sub cmdRestore_Click(sender As Object, e As EventArgs) Handles cmdRestore.Click
+        If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And UserProps.ID.ToString.ToUpper <> "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
+            XtraMessageBox.Show("Δεν έχετε τα απαραίτητα δικαιώματα γιαυτην την λειτουργία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+            Exit Sub
+        End If
         UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Dim sSQL As String
         Dim Credit As Decimal
