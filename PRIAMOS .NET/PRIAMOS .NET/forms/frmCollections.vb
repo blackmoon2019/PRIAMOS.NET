@@ -679,7 +679,7 @@ Public Class frmCollections
             UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
-            Dim debitusrID As String, sBdgID As String, sAptID As String
+            Dim debitusrID As String, sBdgID As String, sAptID As String, ssInhID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
             If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString().ToUpper = "26521B58-5590-4880-A31E-4E91A6CF964D" Then
@@ -755,15 +755,16 @@ Public Class frmCollections
                 End If
                 bal = Math.Abs(bal) - credit
                 sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
-                sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString
-                sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString
+                sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper
+                sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper
+                ssInhID = sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString.ToUpper
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@debitusrID", sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID.ToUpper)
+                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
                     oCmd.Parameters.AddWithValue("@aptID", sAptID)
-                    oCmd.Parameters.AddWithValue("@inhID", sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@inhID", ssInhID)
                     oCmd.Parameters.AddWithValue("@Givencredit", credit)
                     oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
                     oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ 
