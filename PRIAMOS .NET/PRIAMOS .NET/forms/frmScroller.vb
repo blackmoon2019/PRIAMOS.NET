@@ -132,8 +132,8 @@ Public Class frmScroller
         CType(BarRecords.Edit, RepositoryItemComboBox).Items.Add("200")
         CType(BarRecords.Edit, RepositoryItemComboBox).Items.Add("1000")
         CType(BarRecords.Edit, RepositoryItemComboBox).Items.Add("10000")
-        CType(BarRecords.Edit, RepositoryItemComboBox).Items.Add("ALL")
-        BarRecords.EditValue = My.Settings.Records
+        CType(BarRecords.Edit, RepositoryItemComboBox).Items.Add("1000000")
+        BarRecords.EditValue = ProgProps.Records
     End Sub
     'Φόρτωση όψεων Per User στο Combo
     Private Sub LoadViews()
@@ -467,7 +467,8 @@ Public Class frmScroller
     End Sub
 
     Private Sub RepositoryBarRecords_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RepositoryBarRecords.SelectedIndexChanged
-        My.Settings.Records = BarRecords.EditValue
+        ProgProps.Records = BarRecords.EditValue
+        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "Records", BarRecords.EditValue)
         My.Settings.Save()
         LoadRecords()
     End Sub
@@ -965,9 +966,12 @@ Public Class frmScroller
                 fGen.FormScroller = Me
                 fGen.L1.Text = "Κωδικός"
                 fGen.L2.Text = "Τράπεζα"
+                fGen.L7.Text = "IBAN"
+                fGen.L7.Control.Tag = "iban,0,1,2"
                 fGen.L9.Text = "Διαδρομή φακέλλου"
                 fGen.L9.Control.Tag = "folderPath,0,1,2"
                 fGen.L9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -1252,9 +1256,12 @@ Public Class frmScroller
                 fGen.FormScroller = Me
                 fGen.L1.Text = "Κωδικός"
                 fGen.L2.Text = "Τράπεζα"
+                fGen.L7.Text = "IBAN"
+                fGen.L7.Control.Tag = "iban,0,1,2"
                 fGen.L9.Text = "Διαδρομή φακέλλου"
                 fGen.L9.Control.Tag = "folderPath,0,1,2"
                 fGen.L9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
@@ -1490,8 +1497,8 @@ Public Class frmScroller
            UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
-                GridView1.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
+                If My.Computer.FileSystem.FileExists(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
+                GridView1.SaveLayoutToXml(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
             End If
         End If
 
@@ -1652,8 +1659,8 @@ Public Class frmScroller
     Private Sub BBUpdateViewFileFromServer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdateViewFileFromServer.ItemClick
         If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
-            If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = True Then
-                My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", True)
+            If System.IO.File.Exists(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = True Then
+                My.Computer.FileSystem.CopyFile(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", True)
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
 
             End If

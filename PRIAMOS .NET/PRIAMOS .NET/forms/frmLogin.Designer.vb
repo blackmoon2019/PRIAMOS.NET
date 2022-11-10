@@ -25,10 +25,10 @@ Partial Class frmLogin
         Me.cmdConnect = New DevExpress.XtraEditors.SimpleButton()
         Me.chkRememberUN = New DevExpress.XtraEditors.CheckEdit()
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
-        Me.txtUN = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cboUN = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.chkRememberUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl1
@@ -90,17 +90,17 @@ Partial Class frmLogin
         Me.txtPWD.Size = New System.Drawing.Size(395, 38)
         Me.txtPWD.TabIndex = 2
         '
-        'txtUN
+        'cboUN
         '
-        Me.txtUN.Location = New System.Drawing.Point(20, 73)
-        Me.txtUN.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtUN.Name = "txtUN"
-        Me.txtUN.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.txtUN.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.txtUN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtUN.Properties.NullText = ""
-        Me.txtUN.Size = New System.Drawing.Size(397, 38)
-        Me.txtUN.TabIndex = 7
+        Me.cboUN.Location = New System.Drawing.Point(20, 73)
+        Me.cboUN.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboUN.Name = "cboUN"
+        Me.cboUN.Properties.AppearanceFocused.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.cboUN.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.cboUN.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboUN.Properties.NullText = ""
+        Me.cboUN.Size = New System.Drawing.Size(397, 38)
+        Me.cboUN.TabIndex = 7
         '
         'frmLogin
         '
@@ -108,7 +108,7 @@ Partial Class frmLogin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(437, 363)
-        Me.Controls.Add(Me.txtUN)
+        Me.Controls.Add(Me.cboUN)
         Me.Controls.Add(Me.cmdConnect)
         Me.Controls.Add(Me.chkRememberUN)
         Me.Controls.Add(Me.cmdLogin)
@@ -120,7 +120,7 @@ Partial Class frmLogin
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.chkRememberUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -131,5 +131,5 @@ Partial Class frmLogin
     Friend WithEvents cmdLogin As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents chkRememberUN As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents cmdConnect As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents txtUN As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents cboUN As DevExpress.XtraEditors.LookUpEdit
 End Class

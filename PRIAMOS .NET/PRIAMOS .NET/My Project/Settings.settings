@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="Records" Type="System.String" Scope="User">
-      <Value Profile="(Default)">30</Value>
-    </Setting>
     <Setting Name="CurrentView" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -16,12 +13,6 @@
     </Setting>
     <Setting Name="frmPermissions" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
-    </Setting>
-    <Setting Name="UNSave" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="UN" Type="System.Guid" Scope="User">
-      <Value Profile="(Default)">00000000-0000-0000-0000-000000000000</Value>
     </Setting>
     <Setting Name="frmBDG" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
@@ -53,9 +44,6 @@
     <Setting Name="ConStringServers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="SERVER_PATH" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\192.168.1.52\TempFiles\</Value>
-    </Setting>
     <Setting Name="frmEXP" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
@@ -64,9 +52,6 @@
     </Setting>
     <Setting Name="frmINH" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
-    </Setting>
-    <Setting Name="SERVERVIEWS" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\192.168.1.52\priamos.net\CrmViews\</Value>
     </Setting>
     <Setting Name="frmCollections" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>

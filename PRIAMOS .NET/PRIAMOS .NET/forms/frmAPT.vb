@@ -91,7 +91,7 @@ Public Class frmAPT
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APT where id ='" + sID + "'")
                 Ord = txtOrd.EditValue
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        '  Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmAPT = Me.Location
         My.Settings.Save()

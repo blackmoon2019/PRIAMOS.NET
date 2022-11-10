@@ -13,9 +13,9 @@ Public Class frmLogin
         Dim CN As New CN
         'MultipleActiveResultSets=True
         ProgProps.ProgTitle = "PRIAMOS .NET"
-        My.Settings.Upgrade()
-        My.Settings.Save()
-        chkRememberUN.EditValue = My.Settings.UNSave
+        UserProps.UNSave = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "UNSave", "2")
+
+        chkRememberUN.Checked = UserProps.UNSave
         If CNDB.ConnectionString.ToString = "" Then
             If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             'Έλεγχος νέας έκδοσης
@@ -23,11 +23,12 @@ Public Class frmLogin
 
             End If
         End If
-        FillCbo.USR(txtUN)
-        If My.Settings.UNSave = True Then txtUN.EditValue = System.Guid.Parse(My.Settings.UN.ToString)
+        FillCbo.USR(cboUN)
+        UserProps.UN = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "UN", System.Guid.Empty.ToString)
+        If UserProps.UNSave = "1" Then cboUN.EditValue = System.Guid.Parse(UserProps.UN)
         If Debugger.IsAttached Then
             'txtUN.Text = "blackmoon"
-            txtUN.EditValue = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B")
+            cboUN.EditValue = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B")
             txtPWD.Text = "mavros1!"
             cmdLogin.Select()
         Else
@@ -44,7 +45,7 @@ Public Class frmLogin
         Try
 
             sSQL = "select Realname,code,ID,M_UN,M_pwd,server,port,ssl from vw_USR 
-                where UN= '" & txtUN.Text & "' and pwd = '" & txtPWD.Text & "'"
+                where UN= '" & cboUN.Text & "' and pwd = '" & txtPWD.Text & "'"
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then
@@ -68,12 +69,34 @@ Public Class frmLogin
                     Prog_Prop.GetProgInvoicesEmail()
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+
+                    'Δημιουργία Κλειδιών
+
+                    If Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\\Priamos.NET") Is Nothing Then My.Computer.Registry.CurrentUser.CreateSubKey("SOFTWARE\\Priamos.NET")
+                    ProgProps.ServerViewsPath = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "SERVERVIEWS", "")
+                    ProgProps.ServerPath = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "SERVER_PATH", "")
+                    ProgProps.Records = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "Records", 0)
+                    UserProps.UNSave = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "UNSave", "2")
+
+
+                    If ProgProps.ServerPath = "" Then My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "SERVER_PATH", "\\192.168.1.52\TempFiles\")
+                    If ProgProps.ServerViewsPath = "" Then My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "SERVERVIEWS", "\\192.168.1.52\priamos.net\CrmViews\")
+                    If ProgProps.Records = 0 Then My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "Records", "30")
+                    If chkRememberUN.CheckState = CheckState.Checked Then
+                        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "UNSave", "1")
+                    Else
+                        My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "UNSave", "0")
+                    End If
+
+                    My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "UN", cboUN.EditValue.ToString) : UserProps.UN = cboUN.EditValue.ToString
+
                     XtraMessageBox.Show("Καλως ήρθατε στο PRIAMOS .NET " & UserProps.RealName, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    If My.Settings.UNSave = True Then My.Settings.UN = txtUN.EditValue : My.Settings.Save()
+
 
                 End If
-                UserProps.ServerViewsPath = My.Settings.SERVERVIEWS
-                frmMain.Show()
+
+                    'Progprops.ServerViewsPath = My.Settings.SERVERVIEWS
+                    frmMain.Show()
                 Me.Close()
             Else
                 XtraMessageBox.Show("Πληκτρολογήσατε λάθος στοιχεία. Παρακαλώ προσπαθήστε ξανά.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -92,11 +115,14 @@ Public Class frmLogin
     End Sub
 
     Private Sub chkRememberUN_CheckedChanged(sender As Object, e As EventArgs) Handles chkRememberUN.CheckedChanged
-        My.Settings.UNSave = chkRememberUN.EditValue
-        If My.Settings.UNSave = False Then
-            My.Settings.UN = System.Guid.Parse("00000000-0000-0000-0000-000000000000")
-            My.Settings.Save()
+        If chkRememberUN.Checked = False Then
+            My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "UNSave", "0")
+            UserProps.UNSave = "0"
+        Else
+            My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Priamos.NET", "UNSave", "1")
+            UserProps.UNSave = "1"
         End If
+
     End Sub
 
     Private Sub cmdConnect_Click(sender As Object, e As EventArgs) Handles cmdConnect.Click

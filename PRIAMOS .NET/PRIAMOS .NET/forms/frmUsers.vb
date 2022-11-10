@@ -74,7 +74,7 @@ Public Class frmUsers
                 Case FormMode.NewRecord
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
-            Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+            '       Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()

@@ -55,7 +55,7 @@ Public Class frmPermissions
                     'FillCbo.FillCheckedListForms(chkLstUsers, FormMode.NewRecord)
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
-            Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+            '        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             If System.IO.File.Exists(Application.StartupPath & "\DSGNS\DEF\RIGHTS_def.xml") = True Then
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\RIGHTS_def.xml", OptionsLayoutBase.FullLayout)
             End If

@@ -47,7 +47,7 @@ Public Class frmIEP
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_IEP where id ='" + sID + "'")
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmEXP = Me.Location
         My.Settings.Save()

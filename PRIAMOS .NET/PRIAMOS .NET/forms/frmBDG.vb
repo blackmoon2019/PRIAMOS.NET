@@ -36,6 +36,7 @@ Public Class frmBDG
     Private ModeBCCT As Byte
 
     '------C L A S S E S------
+    Private ManageCbo As New CombosManager
     Private UserPermissions As New CheckPermissions
     Private Valid As New ValidateControls
     Private Log As New Transactions
@@ -147,7 +148,7 @@ Public Class frmBDG
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
                 Me.Text = "Πολυκατοικία: " & txtNam.Text
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         'Me.CenterToScreen()
         'Me.Size = New Size(2244, 1444)
 
@@ -564,11 +565,11 @@ Public Class frmBDG
         Else
             LoadForms.LoadForm(LayoutControl3Heating, "Select * from BDG where id ='" + sID + "'", True)
         End If
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl3Heating)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
+        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
 
         'cboFtypes.Enabled = False
         'cmdCboManageFtypes.Enabled = False
@@ -619,11 +620,11 @@ Public Class frmBDG
         ExcludeControls.Add(cmdGInvRefresh.Name)
         EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
         cmdGInvAdd.Checked = False : cmdGInvEdit.Checked = False
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
+        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
     End Sub
     Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
         Dim sSQL As String
@@ -639,11 +640,11 @@ Public Class frmBDG
             sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
             BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
         End If
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl2BManage)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
+        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
     End Sub
 
     Private Sub NavGeneral_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavGeneral.ElementClick
@@ -655,11 +656,11 @@ Public Class frmBDG
             End If
         End If
         Maintab.SelectedTabPage = tabBDG
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
+        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
     End Sub
 
     Private Sub ManageBtypes()
@@ -1701,11 +1702,11 @@ Public Class frmBDG
         End If
         Maintab.SelectedTabPage = tabFixedCosts
         LoadIEP()
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
-        Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
+        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
+        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
     End Sub
     Public Sub LoadIEP()
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_IEP' table. You can move, or remove it, as needed.
@@ -1989,24 +1990,7 @@ Public Class frmBDG
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.ShowDialog()
     End Sub
-    Private Sub ManageManager()
-        Dim form1 As frmCustomers = New frmCustomers()
-        form1.Text = "Διαχειριστής"
-        'form1.MdiParent = frmMain
-        form1.CallerControl = cboManager
-        form1.CalledFromControl = True
-        If cboManager.EditValue <> Nothing Then
-            form1.ID = cboManager.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-            form1.chkWorkshop.Checked = False
-            form1.chkPrivate.Checked = True
-        End If
 
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.ShowDialog()
-    End Sub
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
             Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
@@ -2086,8 +2070,8 @@ Public Class frmBDG
 
     Private Sub cboManager_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboManager.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboManager.EditValue = Nothing : ManageManager()
-            Case 2 : If cboManager.EditValue <> Nothing Then ManageManager()
+            Case 1 : ManageCbo.ManageManager(cboManager, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageManager(cboManager, FormMode.EditRecord)
             Case 3 : cboManager.EditValue = Nothing
         End Select
 
@@ -2406,9 +2390,11 @@ Public Class frmBDG
             Exit Sub
         End If
         For I = 0 To selectedRowHandles.Length - 1
-            Dim sFilename = GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "filename")
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            Dim sFilename = GridView12.GetRowCellValue(selectedRowHandle, "filename")
+            If File.Exists(Application.StartupPath & "\" & sFilename) Then File.Delete(Application.StartupPath & "\" & sFilename)
             Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
-            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString, "BDG_F")
+            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
             fs.Write(b, 0, b.Length)
             fs.Close()
 

@@ -17,9 +17,9 @@ Module Main
         Public RealName As String
         Public UN As String
         Public PWD As String
+        Public UNSave As String
         Public DataTable As String
         Public CurrentView As String
-        Public ServerViewsPath As String
         Public AllowView As Boolean
         Public AllowInsert As Boolean
         Public AllowEdit As Boolean
@@ -48,6 +48,9 @@ Module Main
         Public ADM As String
         Public ANNMENT As String
         Public ProgTitle As String
+        Public ServerViewsPath As String
+        Public ServerPath As String
+        Public Records As Integer
     End Structure
     Public ProgProps As PROG_PROPS
 

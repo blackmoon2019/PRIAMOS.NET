@@ -52,7 +52,7 @@ Public Class frmINH_pivot
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
                 PivotColumns()
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        '     Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         ' My.Settings.frmINH_pivot = Me.Location
         My.Settings.Save()

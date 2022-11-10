@@ -70,7 +70,7 @@ Public Class DBQueries
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
                 Dim FileName As String = Path.GetFileName(control.FileNames(i))
-                My.Computer.FileSystem.CopyFile(control.FileNames(i), My.Settings.SERVER_PATH & FileName, True)
+                My.Computer.FileSystem.CopyFile(control.FileNames(i), ProgProps.ServerPath & FileName, True)
 
                 sSQL.AppendLine("Select ")
                 If ExtraValues.Length > 0 Then sSQL.AppendLine(ExtraValues & ",")
@@ -80,7 +80,7 @@ Public Class DBQueries
                 sSQL.AppendLine(toSQLValueS(extension) & ",")
 
                 sSQL.Append(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
-                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(My.Settings.SERVER_PATH & FileName) & ", SINGLE_BLOB) files")
+                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(ProgProps.ServerPath & FileName) & ", SINGLE_BLOB) files")
 
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -111,14 +111,14 @@ Public Class DBQueries
                 Dim extension As String = Path.GetExtension(item.Value)
                 Dim FilePath As String = sFilesPath
                 Dim FileName As String = item.Value
-                My.Computer.FileSystem.CopyFile(sFilesPath & "\" & FileName, My.Settings.SERVER_PATH & FileName, True)
+                My.Computer.FileSystem.CopyFile(sFilesPath & "\" & FileName, ProgProps.ServerPath & FileName, True)
 
                 sSQL.AppendLine("Select " & toSQLValueS(ID) & ",")
                 sSQL.AppendLine(toSQLValueS(sFilesPath & "\" & FileName) & ",")
                 sSQL.AppendLine(toSQLValueS(sFilesPath) & ",")
                 sSQL.AppendLine(toSQLValueS(extension) & ",")
                 sSQL.Append(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
-                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(My.Settings.SERVER_PATH & FileName) & ", SINGLE_BLOB) files")
+                sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(ProgProps.ServerPath & FileName) & ", SINGLE_BLOB) files")
                 sFullFilenames.AppendLine(sFilesPath & "\" & FileName & IIf(sFullFilenames.Length > 0, ";", ""))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)

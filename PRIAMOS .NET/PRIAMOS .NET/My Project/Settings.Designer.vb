@@ -56,18 +56,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("30")>  _
-        Public Property Records() As String
-            Get
-                Return CType(Me("Records"),String)
-            End Get
-            Set
-                Me("Records") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property CurrentView() As String
             Get
@@ -111,30 +99,6 @@ Namespace My
             End Get
             Set
                 Me("frmPermissions") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property UNSave() As Boolean
-            Get
-                Return CType(Me("UNSave"),Boolean)
-            End Get
-            Set
-                Me("UNSave") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")>  _
-        Public Property UN() As Global.System.Guid
-            Get
-                Return CType(Me("UN"),Global.System.Guid)
-            End Get
-            Set
-                Me("UN") = value
             End Set
         End Property
         
@@ -258,18 +222,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.52\TempFiles\")>  _
-        Public Property SERVER_PATH() As String
-            Get
-                Return CType(Me("SERVER_PATH"),String)
-            End Get
-            Set
-                Me("SERVER_PATH") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
         Public Property frmEXP() As Global.System.Drawing.Point
             Get
@@ -301,18 +253,6 @@ Namespace My
             End Get
             Set
                 Me("frmINH") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("\\192.168.1.52\priamos.net\CrmViews\")>  _
-        Public Property SERVERVIEWS() As String
-            Get
-                Return CType(Me("SERVERVIEWS"),String)
-            End Get
-            Set
-                Me("SERVERVIEWS") = value
             End Set
         End Property
         

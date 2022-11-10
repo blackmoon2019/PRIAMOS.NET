@@ -61,7 +61,7 @@ Public Class frmTasks
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_TASKS where id ='" + sID + "'")
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        '      Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmTASKS = Me.Location
         My.Settings.Save()

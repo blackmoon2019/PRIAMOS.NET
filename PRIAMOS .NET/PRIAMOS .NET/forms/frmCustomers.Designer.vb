@@ -93,6 +93,8 @@ Partial Class frmCustomers
         Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
+        Me.chkEmployer = New DevExpress.XtraEditors.CheckEdit()
+        Me.LayoutControlItem32 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.chkPRF, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -164,12 +166,15 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkEmployer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
         Me.LayoutControl1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.chkEmployer)
         Me.LayoutControl1.Controls.Add(Me.cmdExit)
         Me.LayoutControl1.Controls.Add(Me.cmdSave)
         Me.LayoutControl1.Controls.Add(Me.chkPRF)
@@ -242,7 +247,7 @@ Partial Class frmCustomers
         Me.chkPRF.Location = New System.Drawing.Point(25, 639)
         Me.chkPRF.Margin = New System.Windows.Forms.Padding(5)
         Me.chkPRF.Name = "chkPRF"
-        Me.chkPRF.Size = New System.Drawing.Size(562, 204)
+        Me.chkPRF.Size = New System.Drawing.Size(562, 189)
         Me.chkPRF.SortOrder = System.Windows.Forms.SortOrder.Ascending
         Me.chkPRF.StyleController = Me.LayoutControl1
         Me.chkPRF.TabIndex = 40
@@ -271,7 +276,7 @@ Partial Class frmCustomers
         Me.chkSupplier.Properties.Caption = "Προμηθευτής"
         Me.chkSupplier.Properties.ValueChecked = CType(1, Byte)
         Me.chkSupplier.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkSupplier.Size = New System.Drawing.Size(646, 32)
+        Me.chkSupplier.Size = New System.Drawing.Size(163, 32)
         Me.chkSupplier.StyleController = Me.LayoutControl1
         Me.chkSupplier.TabIndex = 38
         Me.chkSupplier.Tag = "IsSupplier,0,1,2"
@@ -317,11 +322,11 @@ Partial Class frmCustomers
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        Me.GridControl1.Location = New System.Drawing.Point(12, 902)
+        Me.GridControl1.Location = New System.Drawing.Point(12, 887)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1249, 490)
+        Me.GridControl1.Size = New System.Drawing.Size(1249, 505)
         Me.GridControl1.TabIndex = 14
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -432,7 +437,7 @@ Partial Class frmCustomers
         Me.txtComments.Location = New System.Drawing.Point(604, 490)
         Me.txtComments.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(657, 366)
+        Me.txtComments.Size = New System.Drawing.Size(657, 351)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 17
         Me.txtComments.Tag = "cmt,0,1,2"
@@ -529,7 +534,7 @@ Partial Class frmCustomers
         '
         'txtFileNames
         '
-        Me.txtFileNames.Location = New System.Drawing.Point(117, 860)
+        Me.txtFileNames.Location = New System.Drawing.Point(117, 845)
         Me.txtFileNames.Margin = New System.Windows.Forms.Padding(5)
         Me.txtFileNames.Name = "txtFileNames"
         Me.txtFileNames.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
@@ -597,7 +602,7 @@ Partial Class frmCustomers
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem27, Me.LayoutControlItem25, Me.LayoutControlGroup1, Me.LayoutControlGroup2, Me.LayoutControlGroup3, Me.LayoutControlItem14, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem10, Me.EmptySpaceItem1, Me.LayoutControlItem22, Me.LayoutControlItem23, Me.LayoutControlItem26, Me.EmptySpaceItem2})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem27, Me.LayoutControlItem25, Me.LayoutControlGroup1, Me.LayoutControlGroup2, Me.LayoutControlGroup3, Me.LayoutControlItem14, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem10, Me.EmptySpaceItem1, Me.LayoutControlItem22, Me.LayoutControlItem23, Me.LayoutControlItem26, Me.EmptySpaceItem2, Me.LayoutControlItem32})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(1273, 1447)
         Me.Root.TextVisible = False
@@ -617,9 +622,9 @@ Partial Class frmCustomers
         'LayoutControlItem27
         '
         Me.LayoutControlItem27.Control = Me.GridControl1
-        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 890)
+        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 875)
         Me.LayoutControlItem27.Name = "LayoutControlItem27"
-        Me.LayoutControlItem27.Size = New System.Drawing.Size(1253, 494)
+        Me.LayoutControlItem27.Size = New System.Drawing.Size(1253, 509)
         Me.LayoutControlItem27.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem27.TextVisible = False
         '
@@ -627,7 +632,7 @@ Partial Class frmCustomers
         '
         Me.LayoutControlItem25.Control = Me.txtFileNames
         Me.LayoutControlItem25.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 848)
+        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 833)
         Me.LayoutControlItem25.Name = "LayoutControlItem25"
         Me.LayoutControlItem25.Size = New System.Drawing.Size(1253, 42)
         Me.LayoutControlItem25.Text = "Αρχεία"
@@ -638,7 +643,7 @@ Partial Class frmCustomers
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem19, Me.LayoutControlItem20, Me.LayoutControlItem24, Me.LayoutControlItem21})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 452)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(592, 396)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(592, 381)
         Me.LayoutControlGroup1.Text = "Επαγγελματικά Στοιχεία"
         '
         'LayoutControlItem19
@@ -668,7 +673,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem24.Control = Me.chkPRF
         Me.LayoutControlItem24.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem24.Name = "LayoutControlItem24"
-        Me.LayoutControlItem24.Size = New System.Drawing.Size(566, 208)
+        Me.LayoutControlItem24.Size = New System.Drawing.Size(566, 193)
         Me.LayoutControlItem24.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem24.TextVisible = False
         '
@@ -925,7 +930,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem14.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem14.Location = New System.Drawing.Point(592, 452)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(661, 396)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(661, 381)
         Me.LayoutControlItem14.Text = "Σχόλια"
         Me.LayoutControlItem14.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(93, 23)
@@ -954,7 +959,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem10.Control = Me.chkSupplier
         Me.LayoutControlItem10.Location = New System.Drawing.Point(603, 0)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(650, 42)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(167, 42)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
@@ -1005,6 +1010,29 @@ Partial Class frmCustomers
         '
         Me.XtraOpenFileDialog1.Multiselect = True
         Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
+        '
+        'chkEmployer
+        '
+        Me.chkEmployer.EditValue = CType(0, Byte)
+        Me.chkEmployer.Location = New System.Drawing.Point(782, 12)
+        Me.chkEmployer.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkEmployer.Name = "chkEmployer"
+        Me.chkEmployer.Properties.Caption = "Προσωπικό(Priamos)"
+        Me.chkEmployer.Properties.ValueChecked = CType(1, Byte)
+        Me.chkEmployer.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkEmployer.Size = New System.Drawing.Size(479, 32)
+        Me.chkEmployer.StyleController = Me.LayoutControl1
+        Me.chkEmployer.TabIndex = 41
+        Me.chkEmployer.Tag = "IsEmployer,0,1,2"
+        '
+        'LayoutControlItem32
+        '
+        Me.LayoutControlItem32.Control = Me.chkEmployer
+        Me.LayoutControlItem32.Location = New System.Drawing.Point(770, 0)
+        Me.LayoutControlItem32.Name = "LayoutControlItem32"
+        Me.LayoutControlItem32.Size = New System.Drawing.Size(483, 42)
+        Me.LayoutControlItem32.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem32.TextVisible = False
         '
         'frmCustomers
         '
@@ -1088,6 +1116,8 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkEmployer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1165,4 +1195,6 @@ Partial Class frmCustomers
     Friend WithEvents TextEdit32 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem30 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem31 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents chkEmployer As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem32 As DevExpress.XtraLayout.LayoutControlItem
 End Class

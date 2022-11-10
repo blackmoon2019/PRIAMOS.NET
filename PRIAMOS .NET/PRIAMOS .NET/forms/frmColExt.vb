@@ -57,7 +57,7 @@ Public Class frmColExt
                     cboApt.ReadOnly = True
                 End If
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub

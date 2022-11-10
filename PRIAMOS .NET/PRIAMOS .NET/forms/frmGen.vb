@@ -74,7 +74,7 @@ Public Class frmGen
 
     Private Sub frmGen_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadGen()
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        '   Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmGen = Me.Location
         My.Settings.Save()

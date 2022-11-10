@@ -27,6 +27,7 @@ Public Class frmCustomers
     Private Cls As New ClearControls
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
+    Private UserPermissions As New CheckPermissions
 
 
     Public WriteOnly Property ID As String
@@ -90,10 +91,11 @@ Public Class frmCustomers
                 GridView1.Columns.Add(C)
 
         End Select
-        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmCustomers = Me.Location
         My.Settings.Save()
+        UserPermissions.GetUserPermissions(Me.Text)
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
 
     End Sub
@@ -428,8 +430,8 @@ Public Class frmCustomers
            UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                If My.Computer.FileSystem.FileExists(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
-                GridView1.SaveLayoutToXml(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
+                If My.Computer.FileSystem.FileExists(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
+                GridView1.SaveLayoutToXml(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
             End If
         End If
 
@@ -438,8 +440,8 @@ Public Class frmCustomers
     Private Sub OnSyncView(ByVal sender As System.Object, ByVal e As EventArgs)
         If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
-            If System.IO.File.Exists(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = True Then
-                My.Computer.FileSystem.CopyFile(UserProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", True)
+            If System.IO.File.Exists(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = True Then
+                My.Computer.FileSystem.CopyFile(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", True)
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
             End If
         End If
