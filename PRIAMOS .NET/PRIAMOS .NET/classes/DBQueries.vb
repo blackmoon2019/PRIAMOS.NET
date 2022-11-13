@@ -308,8 +308,10 @@ NextItem:
                     End If
                 End If
             Next
-            sSQLF.Append(", [modifiedBy],[createdOn]) ")
-            sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )")
+            sSQLF.Append(", [modifiedBy],[createdOn] ")
+            sSQLF.Append(", [MachineName],[createdBy]) ")
+            sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() ")
+            sSQLV.Append("," & toSQLValueS(UserProps.MachineName) & "," & toSQLValueS(UserProps.ID.ToString) & ")")
             sSQLF.AppendLine(sSQLV.ToString)
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQLF.ToString, CNDB)
@@ -339,6 +341,8 @@ NextItem:
         Dim sSQLV As New System.Text.StringBuilder ' Το 2ο StringField αφορά τις τιμές
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
+        Dim FormHasPic(5) As Boolean
+        Dim pic(5) As DevExpress.XtraEditors.PictureEdit
         'Tag Value = 0 For Load
         'Tag Value = 1 For Insert
         'Tag Value = 2 For Update
@@ -408,14 +412,32 @@ NextItem:
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                         End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.PictureEdit Then
+                                        For I As Integer = 0 To UBound(FormHasPic)
+                                            If FormHasPic(I) = False Then
+                                                FormHasPic(I) = True
+                                                pic(I) = Ctrl
+                                                If pic(I).Text <> "" Then
+                                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & "@Photo" & I)
+                                                Else
+                                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                                End If
+                                                Exit For
+                                            End If
+                                        Next
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
                                         Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
                                         cbo = Ctrl
+                                        Debug.Print(cbo.Name)
                                         If cbo.EditValue <> Nothing Then
-                                            If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
+                                            If cbo.EditValue = "False" Or cbo.EditValue = "True" Or cbo.Properties.Tag = "0" Then
                                                 sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
                                             Else
-                                                sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                                If cbo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                                Else
+                                                    sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(cbo.EditValue.ToString))
+                                                End If
                                             End If
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
@@ -440,10 +462,31 @@ NextItem:
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
                                         End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
+                                        Dim cpk As DevExpress.XtraEditors.ColorPickEdit
+                                        cpk = Ctrl
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & cpk.Text)
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                        Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                        cbo = Ctrl
+                                        If cbo.EditValue <> Nothing Then
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
                                         If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
+                                        End If
+                                        '*******DevExpress.XtraEditors.ButtonEdit******
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
+                                        Dim txt As DevExpress.XtraEditors.ButtonEdit
+                                        txt = Ctrl
+                                        If txt.Properties.Tag = True Then
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.EditValue, True))
                                         Else
                                             sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(txt.Text))
@@ -462,11 +505,22 @@ NextItem:
                     End If
                 Next
             Next
-            sSQLF.Append(", [modifiedBy],[createdOn]) ")
-            sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )")
+            sSQLF.Append(", [modifiedBy],[createdOn] ")
+            sSQLF.Append(", [MachineName],[createdBy]) ")
+            sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() ")
+            sSQLV.Append("," & toSQLValueS(UserProps.MachineName) & "," & toSQLValueS(UserProps.ID.ToString) & ")")
             sSQLF.AppendLine(sSQLV.ToString)
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQLF.ToString, CNDB)
+                For I As Integer = 0 To UBound(FormHasPic)
+                    If FormHasPic(I) = True Then
+                        If pic(I).Text = "" Then
+                            oCmd.Parameters.AddWithValue("@Photo" & I, "NULL")
+                        Else
+                            oCmd.Parameters.AddWithValue("@Photo" & I, pic(I).EditValue)
+                        End If
+                    End If
+                Next
                 oCmd.ExecuteNonQuery()
             End Using
             Return True
@@ -611,8 +665,13 @@ NextItem:
                     End If
                 End If
             Next
-            sSQLF.Append(", [modifiedBy],[createdOn]) ")
-            sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() )")
+            sSQLF.Append(", [modifiedBy],[createdOn] ")
+            sSQLF.Append(", [MachineName],[createdBy]) ")
+            sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() ")
+            sSQLV.Append("," & toSQLValueS(UserProps.MachineName) & "," & toSQLValueS(UserProps.ID.ToString) & ")")
+            sSQLF.AppendLine(sSQLV.ToString)
+
+
             sSQLF.AppendLine(sSQLV.ToString)
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQLF.ToString, CNDB)
@@ -794,6 +853,8 @@ NextItem:
                 End If
             Next
             sSQL.Append(", [modifiedBy] = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append(", [MachineName]= " & toSQLValueS(UserProps.MachineName))
+
             sSQL.Append("WHERE ID = " & toSQLValueS(sID))
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -958,6 +1019,7 @@ NextItem:
                 End If
             Next
             sSQL.Append(", [modifiedBy] = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append(", [MachineName]= " & toSQLValueS(UserProps.MachineName))
             sSQL.Append("WHERE ID = " & toSQLValueS(sID))
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -985,6 +1047,8 @@ NextItem:
         Dim sSQL As New System.Text.StringBuilder ' Το 1ο StringField αφορά τα πεδία
         Dim IsFirstField As Boolean = True
         Dim TagValue As String()
+        Dim FormHasPic(5) As Boolean
+        Dim pic(5) As DevExpress.XtraEditors.PictureEdit
         'Tag Value = 0 For Load
         'Tag Value = 1 For Insert
         'Tag Value = 2 For Update
@@ -1045,6 +1109,35 @@ NextItem:
                                         Else
                                             sSQL.Append("NULL")
                                         End If
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.PictureEdit Then
+                                        For I As Integer = 0 To UBound(FormHasPic)
+                                            If FormHasPic(I) = False Then
+                                                FormHasPic(I) = True
+                                                pic(I) = Ctrl
+                                                If pic(I).Text <> "" Then
+                                                    sSQL.Append("@Photo" & I)
+                                                Else
+                                                    sSQL.Append("NULL")
+                                                End If
+                                                Exit For
+                                            End If
+                                        Next
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                        Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                        cbo = Ctrl
+                                        If cbo.EditValue <> Nothing Then
+                                            If cbo.EditValue = "False" Or cbo.EditValue = "True" Then
+                                                sSQL.Append(cbo.SelectedIndex)
+                                            Else
+                                                If cbo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
+                                                    sSQL.Append(cbo.SelectedIndex)
+                                                Else
+                                                    sSQL.Append(toSQLValueS(cbo.EditValue.ToString))
+                                                End If
+                                            End If
+                                        Else
+                                            sSQL.Append("NULL")
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                         Dim dt As DevExpress.XtraEditors.DateEdit
                                         dt = Ctrl
@@ -1057,6 +1150,14 @@ NextItem:
                                         Dim spn As DevExpress.XtraEditors.SpinEdit
                                         spn = Ctrl
                                         sSQL.Append(toSQLValueS(spn.Text))
+                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ColorPickEdit Then
+                                        Dim cpk As DevExpress.XtraEditors.ColorPickEdit
+                                        cpk = Ctrl
+                                        If cpk.Text = "0" Then
+                                            sSQL.Append("NULL")
+                                        Else
+                                            sSQL.Append(cpk.Text)
+                                        End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.MemoEdit Then
                                         Dim txt As DevExpress.XtraEditors.MemoEdit
                                         txt = Ctrl
@@ -1065,14 +1166,13 @@ NextItem:
                                         Else
                                             sSQL.Append(toSQLValueS(txt.Text))
                                         End If
-
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl
                                         If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Or txt.Properties.Mask.MaskType = Mask.MaskType.Numeric Or txt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric Then
                                             sSQL.Append(toSQLValueS(txt.EditValue, True))
                                         Else
-                                            sSQL.Append(toSQLValueS(txt.Text))
+                                            sSQL.Append(toSQLValueS(txt.Text.Replace("%", "")))
                                         End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                                         Dim chk As DevExpress.XtraEditors.CheckEdit
@@ -1084,14 +1184,26 @@ NextItem:
                                 'End If
 NextItem:
                             End If
+
                         End If
                     End If
                 Next
             Next
             sSQL.Append(", [modifiedBy] = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append(", [MachineName]= " & toSQLValueS(UserProps.MachineName))
             sSQL.Append("WHERE ID = " & toSQLValueS(sID))
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+
+                For I As Integer = 0 To UBound(FormHasPic)
+                    If FormHasPic(I) = True Then
+                        If pic(I).Text = "" Then
+                            oCmd.Parameters.AddWithValue("@Photo" & I, "NULL")
+                        Else
+                            oCmd.Parameters.AddWithValue("@Photo" & I, pic(I).EditValue)
+                        End If
+                    End If
+                Next
                 oCmd.ExecuteNonQuery()
             End Using
             Return True
@@ -1235,6 +1347,7 @@ NextItem:
                 End If
             Next
             sSQL.Append(", [modifiedBy] = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append(", [MachineName]= " & toSQLValueS(UserProps.MachineName))
             sSQL.Append("WHERE ID = " & toSQLValueS(sID))
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -1328,6 +1441,7 @@ NextItem:
                 End If
             Next
             sSQL.Append(" [modifiedBy] = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append(", [MachineName]= " & toSQLValueS(UserProps.MachineName))
             sSQL.Append("WHERE ID = " & toSQLValueS(sID))
             'Εκτέλεση QUERY
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)

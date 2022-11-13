@@ -102,6 +102,7 @@ Public Class frmBDG
         'Me.Vw_CCT_PFTableAdapter.Fill(Me.Priamos_NETDataSet1.vw_CCT_PF)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PRF' table. You can move, or remove it, as needed.
         Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
+        Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Parse(IIf(sID.Length = 0, System.Guid.Empty, sID)))
         Dim sSQL As New System.Text.StringBuilder
         'txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         'txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -139,10 +140,11 @@ Public Class frmBDG
                 FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
-                'Dim myLayoutControls As New List(Of Control)
-                'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl2BManage)
-                'LoadForms.LoadFormNew(myLayoutControls, "Select * from vw_BDG where id ='" + sID + "'", True)
-                LoadForms.LoadForm(LayoutControl1BDG, "Select * from vw_BDG where id ='" + sID + "'", True)
+                Dim myLayoutControls As New List(Of System.Windows.Forms.Control)
+                myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl2BDG_1)
+                myLayoutControls.Add(LayoutControl2BDG_2) : myLayoutControls.Add(LayoutControl2BDG_3) : myLayoutControls.Add(LayoutControl2BDG_4)
+                LoadForms.LoadFormNew(myLayoutControls, "Select * from vw_BDG where id ='" + sID + "'", False)
+                'LoadForms.LoadForm(LayoutControl1BDG, "Select * from vw_BDG where id ='" + sID + "'", True)
                 Iam = txtIam.EditValue
                 Aam = txtAam.EditValue
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
@@ -277,12 +279,17 @@ Public Class frmBDG
             If Valid.ValidateForm(LayoutControl1BDG) Then
                 'Dim myLayoutControls As New List(Of Control)
                 'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
+                Dim myLayoutControls As New List(Of System.Windows.Forms.Control)
+                myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl2BDG_1)
+                myLayoutControls.Add(LayoutControl2BDG_2) : myLayoutControls.Add(LayoutControl2BDG_3) : myLayoutControls.Add(LayoutControl2BDG_4)
                 Select Case Mode
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl1BDG,,, sGuid, True)
+                        'sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl1BDG,,, sGuid, True)
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.MultipleLayoutControls, "BDG", , myLayoutControls,, sGuid)
                     Case FormMode.EditRecord
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl1BDG,,, sID, True)
+                        'sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "BDG", LayoutControl1BDG,,, sID, True)
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.MultipleLayoutControls, "BDG",, myLayoutControls,, sID)
                 End Select
                 If sResult Then
                     'Ενεργοποίηση Μπάρας
@@ -376,11 +383,11 @@ Public Class frmBDG
 
     Private Sub cmdAam_Click(sender As Object, e As EventArgs) Handles cmdAam.Click
         FillAAM_H()
-        FlyoutPanel1.OwnerControl = cmdAam
-        FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
-        FlyoutPanel1.Options.CloseOnOuterClick = True
-        FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
-        FlyoutPanel1.ShowPopup()
+        'FlyoutPanel1.OwnerControl = cmdAam
+        'FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
+        'FlyoutPanel1.Options.CloseOnOuterClick = True
+        'FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
+        'FlyoutPanel1.ShowPopup()
     End Sub
     Private Sub FillIAM_H()
         Try
@@ -423,11 +430,11 @@ Public Class frmBDG
 
     Private Sub cmdIam_Click(sender As Object, e As EventArgs) Handles cmdIam.Click
         FillIAM_H()
-        FlyoutPanel1.OwnerControl = cmdIam
-        FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
-        FlyoutPanel1.Options.CloseOnOuterClick = True
-        FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
-        FlyoutPanel1.ShowPopup()
+        'FlyoutPanel1.OwnerControl = cmdIam
+        'FlyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade
+        'FlyoutPanel1.Options.CloseOnOuterClick = True
+        'FlyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual
+        'FlyoutPanel1.ShowPopup()
     End Sub
 
     Private Sub cmdAPTAdd_Click(sender As Object, e As EventArgs) Handles cmdAPTAdd.Click
@@ -2074,7 +2081,6 @@ Public Class frmBDG
             Case 2 : ManageCbo.ManageManager(cboManager, FormMode.EditRecord)
             Case 3 : cboManager.EditValue = Nothing
         End Select
-
     End Sub
 
 
@@ -2524,6 +2530,15 @@ Public Class frmBDG
         form.BDGID = sID
         form.MdiParent = frmMain
         form.Show()
+
+    End Sub
+
+    Private Sub cboKeysManager_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboKeysManager.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.KeysManager(cboKeysManager, FormMode.NewRecord)
+            Case 2 : ManageCbo.KeysManager(cboKeysManager, FormMode.EditRecord)
+            Case 3 : cboKeysManager.EditValue = Nothing
+        End Select
 
     End Sub
 

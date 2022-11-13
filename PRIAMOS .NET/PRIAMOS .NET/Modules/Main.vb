@@ -18,6 +18,7 @@ Module Main
         Public UN As String
         Public PWD As String
         Public UNSave As String
+        Public MachineName As String
         Public DataTable As String
         Public CurrentView As String
         Public AllowView As Boolean

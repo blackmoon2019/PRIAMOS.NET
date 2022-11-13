@@ -79,9 +79,12 @@ Public Class FormLoader
                                     If value <> Nothing Then
                                         TagV = TagValue(0).Replace("[", "").Replace("]", "")
                                         Console.WriteLine(TagV)
+                                        'Function που ελέγχει αν υπάρχει ενα πεδίο μέσα στον SQLDataReader
+                                        If ColumnExistToDataReader(sdr, TagV) = False Then GoTo NextItem
                                         sdr.GetDataTypeName(sdr.GetOrdinal(TagV))
                                         Dim index = sdr.GetOrdinal(TagV)
                                         Console.WriteLine(sdr.GetDataTypeName(index))
+                                        'If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetBoolean(sdr.GetOrdinal(TagV)))
                                         Select Case sdr.GetDataTypeName(index)
                                             Case "nvarchar"
                                                 If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetString(sdr.GetOrdinal(TagV)))
@@ -97,10 +100,19 @@ Public Class FormLoader
                                                 If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDecimal(sdr.GetOrdinal(TagV)))
                                             Case "datetime"
                                                 If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
+                                            Case "date"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then SetValueToControl(LItem, sdr.GetDateTime(sdr.GetOrdinal(TagV)))
+                                            Case "varbinary"
+                                                If sdr.IsDBNull(sdr.GetOrdinal(TagV)) = False Then
+                                                    Dim pic As DevExpress.XtraEditors.PictureEdit
+                                                    Dim bytes As Byte()
+                                                    pic = LItem.Control
+                                                    bytes = DirectCast(sdr(TagV), Byte())
+                                                    pic.EditValue = bytes
+                                                End If
                                         End Select
                                     End If
 NextItem:
-                                    'End If
                                 End If
                             End If
                         End If

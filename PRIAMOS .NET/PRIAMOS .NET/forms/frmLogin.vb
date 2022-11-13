@@ -14,6 +14,7 @@ Public Class frmLogin
         'MultipleActiveResultSets=True
         ProgProps.ProgTitle = "PRIAMOS .NET"
         UserProps.UNSave = My.Computer.Registry.GetValue("HKEY_CURRENT_USER\Software\Priamos.NET", "UNSave", "2")
+        UserProps.MachineName = Environment.MachineName
 
         chkRememberUN.Checked = UserProps.UNSave
         If CNDB.ConnectionString.ToString = "" Then
