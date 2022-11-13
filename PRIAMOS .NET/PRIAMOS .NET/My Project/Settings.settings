@@ -12,13 +12,13 @@
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="frmPermissions" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
+      <Value Profile="(Default)">0, 1</Value>
     </Setting>
     <Setting Name="frmBDG" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="frmGen" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
+      <Value Profile="(Default)">0, 1</Value>
     </Setting>
     <Setting Name="frmCustomers" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>

@@ -1819,6 +1819,8 @@ Partial Public Class Priamos_NETDataSet
         
         Private columnmanagerID As Global.System.Data.DataColumn
         
+        Private columnKeysManager As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2359,6 +2361,14 @@ Partial Public Class Priamos_NETDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property KeysManagerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnKeysManager
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2458,9 +2468,10 @@ Partial Public Class Priamos_NETDataSet
                     ByVal fDeposit As Decimal,  _
                     ByVal isManaged As Boolean,  _
                     ByVal ManagerName As String,  _
-                    ByVal managerID As System.Guid) As vw_BDGRow
+                    ByVal managerID As System.Guid,  _
+                    ByVal KeysManager As String) As vw_BDGRow
             Dim rowvw_BDGRow As vw_BDGRow = CType(Me.NewRow,vw_BDGRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID}
+            Dim columnValuesArray() As Object = New Object() {ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID, KeysManager}
             rowvw_BDGRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_BDGRow)
             Return rowvw_BDGRow
@@ -2546,6 +2557,7 @@ Partial Public Class Priamos_NETDataSet
             Me.columnisManaged = MyBase.Columns("isManaged")
             Me.columnManagerName = MyBase.Columns("ManagerName")
             Me.columnmanagerID = MyBase.Columns("managerID")
+            Me.columnKeysManager = MyBase.Columns("KeysManager")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2677,6 +2689,8 @@ Partial Public Class Priamos_NETDataSet
             MyBase.Columns.Add(Me.columnManagerName)
             Me.columnmanagerID = New Global.System.Data.DataColumn("managerID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmanagerID)
+            Me.columnKeysManager = New Global.System.Data.DataColumn("KeysManager", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnKeysManager)
             Me.columnID.AllowDBNull = false
             Me.columncode.AllowDBNull = false
             Me.columnnam.MaxLength = 250
@@ -2692,6 +2706,8 @@ Partial Public Class Priamos_NETDataSet
             Me.columnHTYPE_Name.MaxLength = 150
             Me.columnBTYPE_Name.MaxLength = 150
             Me.columnFBTYPE_Name.MaxLength = 150
+            Me.columnhpc.AllowDBNull = false
+            Me.columnhpb.AllowDBNull = false
             Me.columneName.MaxLength = 200
             Me.columneCounter.MaxLength = 100
             Me.columnePaymentCode.MaxLength = 100
@@ -2709,6 +2725,8 @@ Partial Public Class Priamos_NETDataSet
             Me.columnfHkasp.MaxLength = 50
             Me.columnisManaged.AllowDBNull = false
             Me.columnManagerName.MaxLength = 200
+            Me.columnKeysManager.ReadOnly = true
+            Me.columnKeysManager.MaxLength = 200
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5239,6 +5257,16 @@ Partial Public Class Priamos_NETDataSet
         
         Private columnafm As Global.System.Data.DataColumn
         
+        Private columnIsprivate As Global.System.Data.DataColumn
+        
+        Private columnIsPartner As Global.System.Data.DataColumn
+        
+        Private columnIsworkshop As Global.System.Data.DataColumn
+        
+        Private columnIssupplier As Global.System.Data.DataColumn
+        
+        Private columnIsEmployer As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -5331,6 +5359,46 @@ Partial Public Class Priamos_NETDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IsprivateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIsprivate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IsPartnerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIsPartner
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IsworkshopColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIsworkshop
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IssupplierColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIssupplier
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IsEmployerColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIsEmployer
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5367,9 +5435,9 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addvw_CCTRow(ByVal ID As System.Guid, ByVal Fullname As String, ByVal PrfID As System.Guid, ByVal phn As String, ByVal mob As String, ByVal email As String, ByVal afm As String) As vw_CCTRow
+        Public Overloads Function Addvw_CCTRow(ByVal ID As System.Guid, ByVal Fullname As String, ByVal PrfID As System.Guid, ByVal phn As String, ByVal mob As String, ByVal email As String, ByVal afm As String, ByVal Isprivate As Boolean, ByVal IsPartner As Boolean, ByVal Isworkshop As Boolean, ByVal Issupplier As Boolean, ByVal IsEmployer As Boolean) As vw_CCTRow
             Dim rowvw_CCTRow As vw_CCTRow = CType(Me.NewRow,vw_CCTRow)
-            Dim columnValuesArray() As Object = New Object() {ID, Fullname, PrfID, phn, mob, email, afm}
+            Dim columnValuesArray() As Object = New Object() {ID, Fullname, PrfID, phn, mob, email, afm, Isprivate, IsPartner, Isworkshop, Issupplier, IsEmployer}
             rowvw_CCTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_CCTRow)
             Return rowvw_CCTRow
@@ -5405,6 +5473,11 @@ Partial Public Class Priamos_NETDataSet
             Me.columnmob = MyBase.Columns("mob")
             Me.columnemail = MyBase.Columns("email")
             Me.columnafm = MyBase.Columns("afm")
+            Me.columnIsprivate = MyBase.Columns("Isprivate")
+            Me.columnIsPartner = MyBase.Columns("IsPartner")
+            Me.columnIsworkshop = MyBase.Columns("Isworkshop")
+            Me.columnIssupplier = MyBase.Columns("Issupplier")
+            Me.columnIsEmployer = MyBase.Columns("IsEmployer")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5424,6 +5497,16 @@ Partial Public Class Priamos_NETDataSet
             MyBase.Columns.Add(Me.columnemail)
             Me.columnafm = New Global.System.Data.DataColumn("afm", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnafm)
+            Me.columnIsprivate = New Global.System.Data.DataColumn("Isprivate", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIsprivate)
+            Me.columnIsPartner = New Global.System.Data.DataColumn("IsPartner", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIsPartner)
+            Me.columnIsworkshop = New Global.System.Data.DataColumn("Isworkshop", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIsworkshop)
+            Me.columnIssupplier = New Global.System.Data.DataColumn("Issupplier", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIssupplier)
+            Me.columnIsEmployer = New Global.System.Data.DataColumn("IsEmployer", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIsEmployer)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -20196,11 +20279,7 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property hpc() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_BDG.hpcColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'hpc' in table 'vw_BDG' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_BDG.hpcColumn),Integer)
             End Get
             Set
                 Me(Me.tablevw_BDG.hpcColumn) = value
@@ -20211,11 +20290,7 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property hpb() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_BDG.hpbColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'hpb' in table 'vw_BDG' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_BDG.hpbColumn),Integer)
             End Get
             Set
                 Me(Me.tablevw_BDG.hpbColumn) = value
@@ -20640,6 +20715,21 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property KeysManager() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_BDG.KeysManagerColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KeysManager' in table 'vw_BDG' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_BDG.KeysManagerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isold_codeNull() As Boolean
             Return Me.IsNull(Me.tablevw_BDG.old_codeColumn)
         End Function
@@ -20976,30 +21066,6 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IshpcNull() As Boolean
-            Return Me.IsNull(Me.tablevw_BDG.hpcColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SethpcNull()
-            Me(Me.tablevw_BDG.hpcColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IshpbNull() As Boolean
-            Return Me.IsNull(Me.tablevw_BDG.hpbColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SethpbNull()
-            Me(Me.tablevw_BDG.hpbColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IscalHNull() As Boolean
             Return Me.IsNull(Me.tablevw_BDG.calHColumn)
         End Function
@@ -21320,6 +21386,18 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetmanagerIDNull()
             Me(Me.tablevw_BDG.managerIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsKeysManagerNull() As Boolean
+            Return Me.IsNull(Me.tablevw_BDG.KeysManagerColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetKeysManagerNull()
+            Me(Me.tablevw_BDG.KeysManagerColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -22908,6 +22986,81 @@ Partial Public Class Priamos_NETDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Isprivate() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_CCT.IsprivateColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Isprivate' in table 'vw_CCT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_CCT.IsprivateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IsPartner() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_CCT.IsPartnerColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IsPartner' in table 'vw_CCT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_CCT.IsPartnerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Isworkshop() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_CCT.IsworkshopColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Isworkshop' in table 'vw_CCT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_CCT.IsworkshopColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Issupplier() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_CCT.IssupplierColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Issupplier' in table 'vw_CCT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_CCT.IssupplierColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IsEmployer() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_CCT.IsEmployerColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IsEmployer' in table 'vw_CCT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_CCT.IsEmployerColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsPrfIDNull() As Boolean
             Return Me.IsNull(Me.tablevw_CCT.PrfIDColumn)
         End Function
@@ -22964,6 +23117,66 @@ Partial Public Class Priamos_NETDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetafmNull()
             Me(Me.tablevw_CCT.afmColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIsprivateNull() As Boolean
+            Return Me.IsNull(Me.tablevw_CCT.IsprivateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIsprivateNull()
+            Me(Me.tablevw_CCT.IsprivateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIsPartnerNull() As Boolean
+            Return Me.IsNull(Me.tablevw_CCT.IsPartnerColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIsPartnerNull()
+            Me(Me.tablevw_CCT.IsPartnerColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIsworkshopNull() As Boolean
+            Return Me.IsNull(Me.tablevw_CCT.IsworkshopColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIsworkshopNull()
+            Me(Me.tablevw_CCT.IsworkshopColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIssupplierNull() As Boolean
+            Return Me.IsNull(Me.tablevw_CCT.IssupplierColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIssupplierNull()
+            Me(Me.tablevw_CCT.IssupplierColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIsEmployerNull() As Boolean
+            Return Me.IsNull(Me.tablevw_CCT.IsEmployerColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIsEmployerNull()
+            Me(Me.tablevw_CCT.IsEmployerColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -34199,6 +34412,7 @@ Namespace Priamos_NETDataSetTableAdapters
             tableMapping.ColumnMappings.Add("isManaged", "isManaged")
             tableMapping.ColumnMappings.Add("ManagerName", "ManagerName")
             tableMapping.ColumnMappings.Add("managerID", "managerID")
+            tableMapping.ColumnMappings.Add("KeysManager", "KeysManager")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -34215,39 +34429,36 @@ Namespace Priamos_NETDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, mod"& _ 
-                "ifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area"& _ 
-                "_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "         prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hp"& _ 
-                "c, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName"& _ 
-                ", eCounter, ePaymentCode, eServiceNum, fName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         fCounte"& _ 
-                "r, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode"& _ 
-                ", fHkasp, fDeposit, isManaged, ManagerName, managerID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_BDG"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"o"& _ 
-                "rder by nam"
+            Me._commandCollection(0).CommandText = "SELECT ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn"& _ 
+                ", createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, "& _ 
+                "Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HT"& _ 
+                "YPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "     tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentC"& _ 
+                "ode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, w"& _ 
+                "RegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, mana"& _ 
+                "gerID, KeysManager"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_BDG"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY nam"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, mod"& _ 
-                "ifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area"& _ 
-                "_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "         prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hp"& _ 
-                "c, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName"& _ 
-                ", eCounter, ePaymentCode, eServiceNum, fName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         fCounte"& _ 
-                "r, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode"& _ 
-                ", fHkasp, fDeposit, isManaged, ManagerName, managerID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_BDG wh"& _ 
-                "ere isManaged=1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by nam"
+            Me._commandCollection(1).CommandText = "SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID,"& _ 
+                " Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name,"& _ 
+                " FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, b"& _ 
+                "ManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, eCounter, eName, ePa"& _ 
+                "ymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName, fPWD, fPaym"& _ 
+                "entCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, managerID, modi"& _ 
+                "fiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wName, wRegist"& _ 
+                "erNum FROM vw_BDG WHERE (isManaged = 1) ORDER BY nam"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, mod"& _ 
-                "ifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area"& _ 
-                "_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "         prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hp"& _ 
-                "c, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName"& _ 
-                ", eCounter, ePaymentCode, eServiceNum, fName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         fCounte"& _ 
-                "r, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode"& _ 
-                ", fHkasp, fDeposit, isManaged, ManagerName, managerID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vw_BDG wh"& _ 
-                "ere isnull(isManaged,0)=0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by nam"
+            Me._commandCollection(2).CommandText = "SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID,"& _ 
+                " Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name,"& _ 
+                " FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, b"& _ 
+                "ManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, eCounter, eName, ePa"& _ 
+                "ymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName, fPWD, fPaym"& _ 
+                "entCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, managerID, modi"& _ 
+                "fiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wName, wRegist"& _ 
+                "erNum FROM vw_BDG WHERE (ISNULL(isManaged, 0) = 0) ORDER BY nam"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -35457,6 +35668,11 @@ Namespace Priamos_NETDataSetTableAdapters
             tableMapping.ColumnMappings.Add("mob", "mob")
             tableMapping.ColumnMappings.Add("email", "email")
             tableMapping.ColumnMappings.Add("afm", "afm")
+            tableMapping.ColumnMappings.Add("Isprivate", "Isprivate")
+            tableMapping.ColumnMappings.Add("IsPartner", "IsPartner")
+            tableMapping.ColumnMappings.Add("Isworkshop", "Isworkshop")
+            tableMapping.ColumnMappings.Add("Issupplier", "Issupplier")
+            tableMapping.ColumnMappings.Add("IsEmployer", "IsEmployer")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -35470,13 +35686,18 @@ Namespace Priamos_NETDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, Fullname, PrfID, phn, mob, email, afm"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_CCT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (PrfID = @"& _ 
-                "PrfID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by Fullname "
+            Me._commandCollection(0).CommandText = "SELECT ID, Fullname, PrfID, phn, mob, email, afm,Isprivate,IsPartner,Isworkshop,I"& _ 
+                "ssupplier,IsEmployer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_CCT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (PrfID = @PrfID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by Fullname "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrfID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "PrfID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT Fullname, ID, IsEmployer, IsPartner, Isprivate, Issupplier, Isworkshop, Pr"& _ 
+                "fID, afm, email, mob, phn FROM vw_CCT ORDER BY Fullname"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -35511,6 +35732,19 @@ Namespace Priamos_NETDataSetTableAdapters
             Dim dataTable As Priamos_NETDataSet.vw_CCTDataTable = New Priamos_NETDataSet.vw_CCTDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByAll(ByVal dataTable As Priamos_NETDataSet.vw_CCTDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
         End Function
     End Class
     

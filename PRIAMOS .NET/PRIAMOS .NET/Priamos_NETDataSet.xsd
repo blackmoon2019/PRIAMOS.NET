@@ -12,11 +12,10 @@
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, 
-                         prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, 
-                         fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID
-FROM            vw_BDG
-order by nam</CommandText>
+                    <CommandText>SELECT ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, 
+           tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID, KeysManager
+FROM   vw_BDG
+ORDER BY nam</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -86,16 +85,13 @@ order by nam</CommandText>
               <Mapping SourceColumn="isManaged" DataSetColumn="isManaged" />
               <Mapping SourceColumn="ManagerName" DataSetColumn="ManagerName" />
               <Mapping SourceColumn="managerID" DataSetColumn="managerID" />
+              <Mapping SourceColumn="KeysManager" DataSetColumn="KeysManager" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByIsManaged" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByIsManaged" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByIsManaged">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, 
-                         prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, 
-                         fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID
-FROM            vw_BDG where isManaged=1
-order by nam</CommandText>
+                    <CommandText>SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID, Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name, FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, eCounter, eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName, fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, managerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wName, wRegisterNum FROM vw_BDG WHERE (isManaged = 1) ORDER BY nam</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -103,11 +99,7 @@ order by nam</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByIsNotManaged" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByIsNotManaged" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByIsNotManaged">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, 
-                         prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, 
-                         fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID
-FROM            vw_BDG where isnull(isManaged,0)=0
-order by nam</CommandText>
+                    <CommandText>SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID, Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name, FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, eCounter, eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName, fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, managerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wName, wRegisterNum FROM vw_BDG WHERE (ISNULL(isManaged, 0) = 0) ORDER BY nam</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -313,10 +305,11 @@ WHERE        (vw_BCCT.bdgID = @bdgID)</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CCT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, Fullname, PrfID, phn, mob, email, afm
+                    <CommandText>SELECT ID, Fullname, PrfID, phn, mob, email, afm,Isprivate,IsPartner,Isworkshop,Issupplier,IsEmployer
 FROM   vw_CCT
 WHERE (PrfID = @PrfID)
-order by Fullname </CommandText>
+order by Fullname 
+</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="PrfID" ColumnName="PrfID" DataSourceName="Priamos_NET.dbo.vw_CCT" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@PrfID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumn="PrfID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -332,8 +325,22 @@ order by Fullname </CommandText>
               <Mapping SourceColumn="mob" DataSetColumn="mob" />
               <Mapping SourceColumn="email" DataSetColumn="email" />
               <Mapping SourceColumn="afm" DataSetColumn="afm" />
+              <Mapping SourceColumn="Isprivate" DataSetColumn="Isprivate" />
+              <Mapping SourceColumn="IsPartner" DataSetColumn="IsPartner" />
+              <Mapping SourceColumn="Isworkshop" DataSetColumn="Isworkshop" />
+              <Mapping SourceColumn="Issupplier" DataSetColumn="Issupplier" />
+              <Mapping SourceColumn="IsEmployer" DataSetColumn="IsEmployer" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CCT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByAll" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByAll" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByAll">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Fullname, ID, IsEmployer, IsPartner, Isprivate, Issupplier, Isworkshop, PrfID, afm, email, mob, phn FROM vw_CCT ORDER BY Fullname</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_PRFTableAdapter" GeneratorDataComponentClassName="vw_PRFTableAdapter" Name="vw_PRF" UserDataComponentName="vw_PRFTableAdapter">
             <MainSource>
@@ -1810,8 +1817,8 @@ order by skey ,Fullname
                 </xs:simpleType>
               </xs:element>
               <xs:element name="FTypeID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnFTypeID" msprop:Generator_ColumnPropNameInRow="FTypeID" msprop:Generator_ColumnPropNameInTable="FTypeIDColumn" msprop:Generator_UserColumnName="FTypeID" type="xs:string" minOccurs="0" />
-              <xs:element name="hpc" msprop:Generator_ColumnVarNameInTable="columnhpc" msprop:Generator_ColumnPropNameInRow="hpc" msprop:Generator_ColumnPropNameInTable="hpcColumn" msprop:Generator_UserColumnName="hpc" type="xs:int" minOccurs="0" />
-              <xs:element name="hpb" msprop:Generator_ColumnVarNameInTable="columnhpb" msprop:Generator_ColumnPropNameInRow="hpb" msprop:Generator_ColumnPropNameInTable="hpbColumn" msprop:Generator_UserColumnName="hpb" type="xs:int" minOccurs="0" />
+              <xs:element name="hpc" msprop:Generator_ColumnVarNameInTable="columnhpc" msprop:Generator_ColumnPropNameInRow="hpc" msprop:Generator_ColumnPropNameInTable="hpcColumn" msprop:Generator_UserColumnName="hpc" type="xs:int" />
+              <xs:element name="hpb" msprop:Generator_ColumnVarNameInTable="columnhpb" msprop:Generator_ColumnPropNameInRow="hpb" msprop:Generator_ColumnPropNameInTable="hpbColumn" msprop:Generator_UserColumnName="hpb" type="xs:int" />
               <xs:element name="calH" msprop:Generator_ColumnVarNameInTable="columncalH" msprop:Generator_ColumnPropNameInRow="calH" msprop:Generator_ColumnPropNameInTable="calHColumn" msprop:Generator_UserColumnName="calH" type="xs:int" minOccurs="0" />
               <xs:element name="calB" msprop:Generator_ColumnVarNameInTable="columncalB" msprop:Generator_ColumnPropNameInRow="calB" msprop:Generator_ColumnPropNameInTable="calBColumn" msprop:Generator_UserColumnName="calB" type="xs:int" minOccurs="0" />
               <xs:element name="tacH" msprop:Generator_ColumnVarNameInTable="columntacH" msprop:Generator_ColumnPropNameInRow="tacH" msprop:Generator_ColumnPropNameInTable="tacHColumn" msprop:Generator_UserColumnName="tacH" type="xs:int" minOccurs="0" />
@@ -1936,6 +1943,13 @@ order by skey ,Fullname
                 </xs:simpleType>
               </xs:element>
               <xs:element name="managerID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnmanagerID" msprop:Generator_ColumnPropNameInRow="managerID" msprop:Generator_ColumnPropNameInTable="managerIDColumn" msprop:Generator_UserColumnName="managerID" type="xs:string" minOccurs="0" />
+              <xs:element name="KeysManager" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnKeysManager" msprop:Generator_ColumnPropNameInRow="KeysManager" msprop:Generator_ColumnPropNameInTable="KeysManagerColumn" msprop:Generator_UserColumnName="KeysManager" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2224,6 +2238,11 @@ order by skey ,Fullname
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Isprivate" msprop:Generator_ColumnVarNameInTable="columnIsprivate" msprop:Generator_ColumnPropNameInRow="Isprivate" msprop:Generator_ColumnPropNameInTable="IsprivateColumn" msprop:Generator_UserColumnName="Isprivate" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsPartner" msprop:Generator_ColumnVarNameInTable="columnIsPartner" msprop:Generator_ColumnPropNameInRow="IsPartner" msprop:Generator_ColumnPropNameInTable="IsPartnerColumn" msprop:Generator_UserColumnName="IsPartner" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Isworkshop" msprop:Generator_ColumnVarNameInTable="columnIsworkshop" msprop:Generator_ColumnPropNameInRow="Isworkshop" msprop:Generator_ColumnPropNameInTable="IsworkshopColumn" msprop:Generator_UserColumnName="Isworkshop" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Issupplier" msprop:Generator_ColumnVarNameInTable="columnIssupplier" msprop:Generator_ColumnPropNameInRow="Issupplier" msprop:Generator_ColumnPropNameInTable="IssupplierColumn" msprop:Generator_UserColumnName="Issupplier" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsEmployer" msprop:Generator_ColumnVarNameInTable="columnIsEmployer" msprop:Generator_ColumnPropNameInRow="IsEmployer" msprop:Generator_ColumnPropNameInTable="IsEmployerColumn" msprop:Generator_UserColumnName="IsEmployer" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

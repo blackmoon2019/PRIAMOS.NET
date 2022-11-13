@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 1")>  _
         Public Property frmPermissions() As Global.System.Drawing.Point
             Get
                 Return CType(Me("frmPermissions"),Global.System.Drawing.Point)
@@ -116,7 +116,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0, 0")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0, 1")>  _
         Public Property frmGen() As Global.System.Drawing.Point
             Get
                 Return CType(Me("frmGen"),Global.System.Drawing.Point)
