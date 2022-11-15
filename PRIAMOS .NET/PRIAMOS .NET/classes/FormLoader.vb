@@ -383,6 +383,10 @@ NextItem:
                 Dim dt As DevExpress.XtraEditors.DateEdit
                 dt = Ctrl
                 dt.EditValue = CDate(sValue)
+            ElseIf TypeOf Ctrl Is DevExpress.XtraScheduler.DateNavigator Then
+                Dim dt As DevExpress.XtraScheduler.DateNavigator
+                dt = Ctrl
+                dt.EditValue = CDate(sValue)
             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TimeEdit Then
                 Dim tm As DevExpress.XtraEditors.TimeEdit
                 tm = Ctrl
@@ -764,7 +768,7 @@ NextItem:
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
-           UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
+           UserProps.ID.ToString.ToUpper = "E2BF15AC-19E3-498F-9459-1821B3898C76" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\" & XMLName) = False Then GRDview.OptionsLayout.LayoutVersion = "v1"

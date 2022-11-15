@@ -71,4 +71,8 @@ Public Class frmKeysManager
     Private Sub cmdRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BDG)
     End Sub
+
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
+        Me.Close()
+    End Sub
 End Class

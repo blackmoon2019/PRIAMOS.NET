@@ -254,6 +254,14 @@ Public Class DBQueries
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraScheduler.DateNavigator Then
+                                    Dim dt As DevExpress.XtraScheduler.DateNavigator
+                                    dt = Ctrl
+                                    If dt.EditValue.ToString <> "" Then
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CDate(dt.EditValue.ToString).ToString("yyyyMMdd")))
+                                    Else
+                                        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                    End If
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.SpinEdit Then
                                     Dim spn As DevExpress.XtraEditors.SpinEdit
                                     spn = Ctrl
@@ -669,8 +677,6 @@ NextItem:
             sSQLF.Append(", [MachineName],[createdBy]) ")
             sSQLV.Append("," & toSQLValueS(UserProps.ID.ToString) & ", getdate() ")
             sSQLV.Append("," & toSQLValueS(UserProps.MachineName) & "," & toSQLValueS(UserProps.ID.ToString) & ")")
-            sSQLF.AppendLine(sSQLV.ToString)
-
 
             sSQLF.AppendLine(sSQLV.ToString)
             'Εκτέλεση QUERY
@@ -808,6 +814,14 @@ NextItem:
                                     dt = Ctrl
                                     If dt.Text <> "" Then
                                         sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                    Else
+                                        sSQL.Append("NULL")
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraScheduler.DateNavigator Then
+                                    Dim dt As DevExpress.XtraScheduler.DateNavigator
+                                    dt = Ctrl
+                                    If dt.EditValue.ToString <> "" Then
+                                        sSQL.Append(toSQLValueS(CDate(dt.EditValue.ToString).ToString("yyyyMMdd")))
                                     Else
                                         sSQL.Append("NULL")
                                     End If
@@ -974,6 +988,14 @@ NextItem:
                                     dt = Ctrl
                                     If dt.Text <> "" Then
                                         sSQL.Append(toSQLValueS(CDate(dt.Text).ToString("yyyyMMdd")))
+                                    Else
+                                        sSQL.Append("NULL")
+                                    End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraScheduler.DateNavigator Then
+                                    Dim dt As DevExpress.XtraScheduler.DateNavigator
+                                    dt = Ctrl
+                                    If dt.EditValue.ToString <> "" Then
+                                        sSQL.Append(toSQLValueS(CDate(dt.EditValue.ToString).ToString("yyyyMMdd")))
                                     Else
                                         sSQL.Append("NULL")
                                     End If

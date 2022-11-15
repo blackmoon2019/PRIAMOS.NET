@@ -433,6 +433,12 @@
     <Compile Include="forms\frmCollectionsDet.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmContacts.Designer.vb">
+      <DependentUpon>frmContacts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmContacts.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmCustomers.designer.vb">
       <DependentUpon>frmCustomers.vb</DependentUpon>
     </Compile>
@@ -732,6 +738,9 @@
     <EmbeddedResource Include="forms\frmCollectionsDet.resx">
       <DependentUpon>frmCollectionsDet.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmContacts.resx">
+      <DependentUpon>frmContacts.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmCustomers.resx">
       <DependentUpon>frmCustomers.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -888,6 +897,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-phone-contact-40.png" />
     <None Include="Resources\icons-notes-40.png" />
     <None Include="Resources\icons8-sent-24.png" />
     <None Include="Resources\icons8-sent-32.png" />

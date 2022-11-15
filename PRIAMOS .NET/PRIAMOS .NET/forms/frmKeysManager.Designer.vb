@@ -21,6 +21,7 @@ Partial Class frmKeysManager
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdRefresh = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.grdKeysM = New DevExpress.XtraGrid.GridControl()
@@ -98,10 +99,9 @@ Partial Class frmKeysManager
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.Vw_CCTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CCTTableAdapter()
-        Me.cmdRefresh = New DevExpress.XtraEditors.SimpleButton()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.grdKeysM, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,6 +134,19 @@ Partial Class frmKeysManager
         Me.LayoutControl1.Size = New System.Drawing.Size(1619, 1022)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'cmdRefresh
+        '
+        Me.cmdRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Refresh
+        Me.cmdRefresh.Location = New System.Drawing.Point(12, 970)
+        Me.cmdRefresh.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdRefresh.Name = "cmdRefresh"
+        Me.cmdRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdRefresh.Size = New System.Drawing.Size(47, 40)
+        Me.cmdRefresh.StyleController = Me.LayoutControl1
+        Me.cmdRefresh.TabIndex = 34
+        Me.cmdRefresh.ToolTip = "Ανανέωση"
+        Me.cmdRefresh.Visible = False
         '
         'cmdExit
         '
@@ -847,27 +860,6 @@ Partial Class frmKeysManager
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(1055, 44)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
-        'Vw_BDGTableAdapter
-        '
-        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_CCTTableAdapter
-        '
-        Me.Vw_CCTTableAdapter.ClearBeforeFill = True
-        '
-        'cmdRefresh
-        '
-        Me.cmdRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Refresh
-        Me.cmdRefresh.Location = New System.Drawing.Point(12, 970)
-        Me.cmdRefresh.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdRefresh.Name = "cmdRefresh"
-        Me.cmdRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdRefresh.Size = New System.Drawing.Size(47, 40)
-        Me.cmdRefresh.StyleController = Me.LayoutControl1
-        Me.cmdRefresh.TabIndex = 34
-        Me.cmdRefresh.ToolTip = "Ανανέωση"
-        Me.cmdRefresh.Visible = False
-        '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.cmdRefresh
@@ -876,6 +868,14 @@ Partial Class frmKeysManager
         Me.LayoutControlItem4.Size = New System.Drawing.Size(51, 44)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_CCTTableAdapter
+        '
+        Me.Vw_CCTTableAdapter.ClearBeforeFill = True
         '
         'frmKeysManager
         '

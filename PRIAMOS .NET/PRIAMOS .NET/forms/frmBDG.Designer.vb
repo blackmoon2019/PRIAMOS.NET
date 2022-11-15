@@ -1688,6 +1688,7 @@ Partial Class frmBDG
         Me.TabPane1.Location = New System.Drawing.Point(12, 384)
         Me.TabPane1.Name = "TabPane1"
         Me.TabPane1.PageProperties.AppearanceCaption.BackColor = System.Drawing.Color.White
+        Me.TabPane1.PageProperties.AppearanceCaption.Options.UseBackColor = True
         Me.TabPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText
         Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2, Me.TabNavigationPage3, Me.TabNavigationPage4})
         Me.TabPane1.RegularSize = New System.Drawing.Size(914, 892)

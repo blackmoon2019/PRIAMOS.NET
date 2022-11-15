@@ -26,6 +26,7 @@ Public Class frmINH
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
+    Private ManageCbo As New CombosManager
     Private Valid As New ValidateControls
     Private LoadForms As New FormLoader
     Private FillCbo As New FillCombos
@@ -319,7 +320,12 @@ Public Class frmINH
     End Sub
     Private Function CheckIfINHMonthExists() As Boolean
 
-        Dim sSQL As String = "select count(id) as CountINH from inh where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+        Dim sSQL As String
+        If chkExtraordinary.Checked = False Then
+            sSQL = "select count(id) as CountINH from inh where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+        Else
+            sSQL = "select count(id) as CountINH from inh where extraordinary = 1 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+        End If
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim CountINH As Integer
@@ -558,25 +564,10 @@ Public Class frmINH
 
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboBDG.EditValue = Nothing : ManageBDG(cboBDG)
-            Case 2 : If cboBDG.EditValue <> Nothing Then ManageBDG(cboBDG)
+            Case 1 : cboBDG.EditValue = Nothing : ManageCbo.ManageBDG(cboBDG, FormMode.NewRecord)
+            Case 2 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
             Case 3 : cboBDG.EditValue = Nothing : chkCALC_CAT.DataSource = Nothing : chkCALC_CAT.Items.Clear()
         End Select
-    End Sub
-    Private Sub ManageBDG(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmBDG = New frmBDG()
-        form1.Text = "Πολυκατοικία"
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
     End Sub
 
     Private Sub cmdCalculate_Click(sender As Object, e As EventArgs) Handles cmdCalculate.Click
@@ -828,33 +819,13 @@ Public Class frmINH
     End Sub
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboAnnouncements.EditValue = Nothing : ManageAnnouncements()
-            Case 2 : If cboAnnouncements.EditValue <> Nothing Then ManageAnnouncements()
+            Case 1 : ManageCbo.ManageAnnouncements(cboAnnouncements, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageAnnouncements(cboAnnouncements, FormMode.EditRecord)
             Case 3 : cboAnnouncements.EditValue = Nothing
         End Select
     End Sub
 
-    Private Sub ManageAnnouncements()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Ανακοινώσεις"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Ανακοίνωση"
-        form1.DataTable = "ANN_MENTS"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboAnnouncements
-        form1.CallerForm = Me
-        form1.MdiParent = frmMain
-        If cboAnnouncements.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            If cboAnnouncements.GetColumnValue("ID") Is Nothing Then Exit Sub
-            form1.ID = cboAnnouncements.GetColumnValue("ID").ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
 
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub ' ...
 
     Private Sub ToolTipController1_GetActiveObjectInfo(sender As Object, e As ToolTipControllerGetActiveObjectInfoEventArgs) Handles ToolTipController1.GetActiveObjectInfo
         Try
@@ -1041,7 +1012,7 @@ Public Class frmINH
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
-           UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
+           UserProps.ID.ToString.ToUpper = "E2BF15AC-19E3-498F-9459-1821B3898C76" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\APMIL_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"

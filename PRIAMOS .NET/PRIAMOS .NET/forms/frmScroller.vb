@@ -217,6 +217,7 @@ Public Class frmScroller
                     Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_CONTACTS" : sSQL = "DELETE FROM CONTACTS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -305,6 +306,7 @@ Public Class frmScroller
                     Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_CONTACTS" : sSQL = "DELETE FROM CONTACTS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -694,6 +696,17 @@ Public Class frmScroller
     Private Sub EditRecord()
         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") Is Nothing Then Exit Sub
         Select Case sDataTable
+            Case "vw_CONTACTS"
+                Dim frmContacts As frmContacts = New frmContacts()
+                frmContacts.Text = "Επικοινωνίες"
+                frmContacts.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                frmContacts.MdiParent = frmMain
+                frmContacts.Mode = FormMode.EditRecord
+                frmContacts.Scroller = GridView1
+                frmContacts.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmContacts), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                frmContacts.Show()
+
             Case "vw_PRIAMOSVER"
                 Dim frmVersions As frmVersions = New frmVersions()
                 frmVersions.Text = "Εκδόσεις"
@@ -1009,6 +1022,16 @@ Public Class frmScroller
     'Νέα Εγγραφή
     Private Sub NewRecord()
         Select Case sDataTable
+            Case "vw_CONTACTS"
+                Dim frmContacts As frmContacts = New frmContacts()
+                frmContacts.Text = "Επικοινωνίες"
+                frmContacts.MdiParent = frmMain
+                frmContacts.Mode = FormMode.NewRecord
+                frmContacts.Scroller = GridView1
+                frmContacts.FormScroller = Me
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmContacts), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                frmContacts.Show()
+
             Case "vw_PRIAMOSVER"
                 Dim frmVersions As frmVersions = New frmVersions()
                 frmVersions.Text = "Εκδόσεις"
@@ -1494,11 +1517,11 @@ Public Class frmScroller
         If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
-           UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
+           UserProps.ID.ToString.ToUpper = "E2BF15AC-19E3-498F-9459-1821B3898C76" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                If My.Computer.FileSystem.FileExists(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
-                GridView1.SaveLayoutToXml(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
+                If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
+                GridView1.SaveLayoutToXml(ProgProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
             End If
         End If
 

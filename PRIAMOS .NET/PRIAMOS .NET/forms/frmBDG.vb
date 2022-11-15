@@ -162,6 +162,36 @@ Public Class frmBDG
 
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
+    Private Sub ManageCCT(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "")
+        Dim form1 As frmCustomers = New frmCustomers()
+        form1.Text = "Πελάτες"
+        'form1.MdiParent = frmMain
+        If isFromGrid = False Then
+            form1.CallerControl = cboCCT
+            form1.CalledFromControl = False
+            If cboCCT.EditValue <> Nothing Then
+                form1.ID = cboCCT.EditValue.ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+                form1.chkWorkshop.Checked = True
+                form1.chkPrivate.Checked = False
+            End If
+        Else
+            If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString <> Nothing Then
+                form1.ID = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+                form1.chkWorkshop.Checked = True
+                form1.chkPrivate.Checked = False
+            End If
+        End If
+
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
+    End Sub
+
     Private Sub frmBDG_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
     End Sub
@@ -178,45 +208,7 @@ Public Class frmBDG
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
 
-    Private Sub ManageCOU()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Νομοί"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Νομός"
-        form1.DataTable = "COU"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboCOU
-        form1.MdiParent = frmMain
-        If cboCOU.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboCOU.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
-    Private Sub ManageAREAS()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Περιοχές"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Περιοχή"
-        form1.L3.Text = "Νομός"
-        form1.DataTable = "AREAS"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboAREAS
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        If cboAREAS.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboAREAS.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
     Private Function ADRsSQL() As System.Text.StringBuilder
         Dim sSQL As New System.Text.StringBuilder
         Dim CouID As String = ""
@@ -238,31 +230,7 @@ Public Class frmBDG
         Return sSQL
     End Function
 
-    Private Sub ManageADR()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Διευθύνσεις"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Διεύθυνση"
-        form1.L3.Text = "Νομός"
-        form1.L4.Text = "Περιοχές"
-        form1.L7.Text = "ΤΚ"
-        form1.L7.Control.Tag = "tk,0,1,2"
-        form1.DataTable = "ADR"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboADR
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        If cboADR.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboADR.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
+
 
     Private Sub txtAR_Validated(sender As Object, e As EventArgs) Handles txtAR.Validated
         txtNam.Text = cboADR.Text + " " + txtAR.Text
@@ -670,51 +638,7 @@ Public Class frmBDG
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
     End Sub
 
-    Private Sub ManageBtypes()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τύποι Boiler"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τύπος"
-        form1.DataTable = "BTYPES"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboBtypes
-        form1.MdiParent = frmMain
-        If cboBtypes.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboBtypes.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-    Private Sub ManageCalcTypes(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim fGen As frmGen = New frmGen()
-        fGen.Text = "Τύποι Υπολογισμού"
-        fGen.MdiParent = frmMain
-        fGen.Mode = FormMode.NewRecord
-        fGen.Scroller = GridView1
-        fGen.DataTable = "CALC_TYPES"
-        fGen.L1.Text = "Κωδικός"
-        fGen.L2.Text = "Όνομα"
-        fGen.chk1.Text = "Ενεργό"
-        fGen.L7.Text = "Τύπος"
-        fGen.txtL7.Tag = "type,0,1,2"
-        fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        fGen.CalledFromControl = True
-        fGen.CallerControl = cbo
-        If cbo.EditValue <> Nothing Then
-            fGen.Mode = FormMode.EditRecord
-            fGen.ID = cbo.EditValue.ToString
-        Else
-            fGen.Mode = FormMode.NewRecord
-        End If
 
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(fGen.Parent.ClientRectangle.Width / 2 - fGen.Width / 2), CInt(fGen.Parent.ClientRectangle.Height / 2 - fGen.Height / 2)))
-        fGen.Show()
-
-    End Sub
 
     Private Sub dtMes_DrawItem(sender As Object, e As CustomDrawDayNumberCellEventArgs) Handles dtMes.DrawItem
         ''If (dtMes.EditValue = Nothing) Then
@@ -729,43 +653,7 @@ Public Class frmBDG
         ''End If
     End Sub
 
-    Private Sub ManageHtypes()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τύποι Θέρμανσης"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τύπος"
-        form1.DataTable = "HTYPES"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboHtypes
-        form1.MdiParent = frmMain
-        If cboHtypes.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboHtypes.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
-    Private Sub ManageFtypes()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τύποι Καυσίμων"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τύπος"
-        form1.DataTable = "FTYPES"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboFtypes
-        form1.MdiParent = frmMain
-        If cboFtypes.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboFtypes.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
     Private Sub OilFilesSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
@@ -818,57 +706,43 @@ Public Class frmBDG
             GridView4.OptionsBehavior.Editable = False
         End If
     End Sub
-    Private Sub ManageCUS(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmCustomers = New frmCustomers()
-        form1.Text = "Πελάτες"
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
+
     Private Sub cboOInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboOInvSup.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboOInvSup.EditValue = Nothing : ManageCUS(cboOInvSup)
-            Case 2 : If cboOInvSup.EditValue <> Nothing Then ManageCUS(cboOInvSup)
+            Case 1 : ManageCbo.ManageFtypes(cboOInvSup, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageFtypes(cboOInvSup, FormMode.EditRecord)
             Case 3 : cboOInvSup.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboGInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboGInvSup.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboGInvSup.EditValue = Nothing : ManageCUS(cboGInvSup)
-            Case 2 : If cboGInvSup.EditValue <> Nothing Then ManageCUS(cboGInvSup)
+            Case 1 : ManageCbo.ManageFtypes(cboGInvSup, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageFtypes(cboGInvSup, FormMode.EditRecord)
             Case 3 : cboGInvSup.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboCOU_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboCOU.EditValue = Nothing : ManageCOU()
-            Case 2 : If cboCOU.EditValue <> Nothing Then ManageCOU()
+            Case 1 : ManageCbo.ManageCOU(cboCOU, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageCOU(cboCOU, FormMode.EditRecord)
             Case 3 : cboCOU.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboAREAS_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAREAS.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboAREAS.EditValue = Nothing : ManageAREAS()
-            Case 2 : If cboAREAS.EditValue <> Nothing Then ManageAREAS()
+            Case 1 : ManageCbo.ManageAREAS(cboAREAS, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageAREAS(cboAREAS, FormMode.EditRecord)
             Case 3 : cboAREAS.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboADR_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboADR.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboADR.EditValue = Nothing : ManageADR()
-            Case 2 : If cboADR.EditValue <> Nothing Then ManageADR()
+            Case 1 : ManageCbo.ManageADR(cboADR, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageADR(cboADR, FormMode.EditRecord)
             Case 3 : cboADR.EditValue = Nothing
         End Select
     End Sub
@@ -1098,24 +972,24 @@ Public Class frmBDG
 
     Private Sub cboFtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboFtypes.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboFtypes.EditValue = Nothing : ManageFtypes()
-            Case 2 : If cboFtypes.EditValue <> Nothing Then ManageFtypes()
+            Case 1 : ManageCbo.ManageFtypes(cboFtypes, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageFtypes(cboFtypes, FormMode.EditRecord)
             Case 3 : cboFtypes.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboHtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboHtypes.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboHtypes.EditValue = Nothing : ManageCalcTypes(cboHtypes)
-            Case 2 : If cboHtypes.EditValue <> Nothing Then ManageCalcTypes(cboHtypes)
+            Case 1 : ManageCbo.ManageCalcTypes(cboHtypes, FormMode.NewRecord, GridView1)
+            Case 2 : ManageCbo.ManageCalcTypes(cboHtypes, FormMode.EditRecord, GridView1)
             Case 3 : cboHtypes.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboBtypes_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBtypes.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboBtypes.EditValue = Nothing : ManageCalcTypes(cboBtypes)
-            Case 2 : If cboBtypes.EditValue <> Nothing Then ManageCalcTypes(cboBtypes)
+            Case 1 : ManageCbo.ManageCalcTypes(cboBtypes, FormMode.NewRecord, GridView1)
+            Case 2 : ManageCbo.ManageCalcTypes(cboBtypes, FormMode.NewRecord, GridView1)
             Case 3 : cboBtypes.EditValue = Nothing
         End Select
 
@@ -1932,71 +1806,14 @@ Public Class frmBDG
     End Sub
     Private Sub cboPRF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboPrf.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboPrf.EditValue = Nothing : ManagePRF(False) ' Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, cboPrf.EditValue)
-            Case 2 : If cboPrf.EditValue <> Nothing Then ManagePRF(False)
+            Case 1 : ManageCbo.ManagePRF(cboPrf, FormMode.NewRecord, False) ' Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, cboPrf.EditValue)
+            Case 2 : ManageCbo.ManagePRF(cboPrf, FormMode.EditRecord, False)
             Case 3 : cboPrf.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManagePRF(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "")
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Επαγγέλματα"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Επάγγελμα"
-        form1.DataTable = "PRF"
-        If isFromGrid = False Then
-            form1.CallerControl = cboPrf
-            form1.CalledFromControl = True
-            If cboPrf.EditValue <> Nothing Then
-                form1.ID = cboPrf.EditValue.ToString
-                form1.Mode = FormMode.EditRecord
-            Else
-                form1.Mode = FormMode.NewRecord
-            End If
-        Else
-            If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString <> Nothing Then
-                form1.ID = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString
-                form1.Mode = FormMode.EditRecord
-            Else
-                form1.Mode = FormMode.NewRecord
-            End If
-        End If
 
-        'form1.MdiParent = frmMain
 
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.ShowDialog()
-        RecID = form1.RecID
-    End Sub
 
-    Private Sub ManageCCT(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "")
-        Dim form1 As frmCustomers = New frmCustomers()
-        form1.Text = "Πελάτες"
-        'form1.MdiParent = frmMain
-        If isFromGrid = False Then
-            form1.CallerControl = cboCCT
-            form1.CalledFromControl = False
-            If cboCCT.EditValue <> Nothing Then
-                form1.ID = cboCCT.EditValue.ToString
-                form1.Mode = FormMode.EditRecord
-            Else
-                form1.Mode = FormMode.NewRecord
-                form1.chkWorkshop.Checked = True
-                form1.chkPrivate.Checked = False
-            End If
-        Else
-            If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString <> Nothing Then
-                form1.ID = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString
-                form1.Mode = FormMode.EditRecord
-            Else
-                form1.Mode = FormMode.NewRecord
-                form1.chkWorkshop.Checked = True
-                form1.chkPrivate.Checked = False
-            End If
-        End If
-
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.ShowDialog()
-    End Sub
 
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
@@ -2025,11 +1842,11 @@ Public Class frmBDG
         Dim RecID As String
         Select Case e.Button.Index
             Case 1
-                GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", Nothing) : ManagePRF(True, RecID)
+                GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", Nothing) : ManageCbo.ManagePRF(cboPrf, FormMode.NewRecord, True, RecID, GridView8)
                 Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
                 GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", RecID)
             Case 2
-                If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString <> Nothing Then ManagePRF(True, RecID)
+                If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString <> Nothing Then ManageCbo.ManagePRF(cboPrf, FormMode.EditRecord, True, RecID, GridView8)
             Case 3 : GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "prfID", Nothing)
         End Select
     End Sub
@@ -2241,25 +2058,12 @@ Public Class frmBDG
 
     Private Sub cboDOY_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDOY.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboDOY.EditValue = Nothing : ManageDOY()
-            Case 2 : If cboDOY.EditValue <> Nothing Then ManageDOY()
+            Case 1 : ManageCbo.ManageDOY(cboDOY, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageDOY(cboDOY, FormMode.EditRecord)
             Case 3 : cboDOY.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManageDOY()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "ΔΟΥ"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "ΔΟΥ"
-        form1.DataTable = "DOY"
-        form1.CallerControl = cboDOY
-        form1.CalledFromControl = True
-        If cboDOY.EditValue <> Nothing Then form1.ID = cboDOY.EditValue.ToString
-        form1.MdiParent = frmMain
-        If cboDOY.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
+
 
     Private Sub txtInvoiceFilename_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtBDGFilename.ButtonClick
         If e.Button.Index = 1 Then
@@ -2352,29 +2156,12 @@ Public Class frmBDG
 
     Private Sub cboFolderCat_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboFolderCat.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboFolderCat.EditValue = Nothing : ManageFolderCat()
-            Case 2 : If cboFolderCat.EditValue <> Nothing Then ManageFolderCat()
+            Case 1 : ManageCbo.ManageFolderCat(cboFolderCat, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageFolderCat(cboFolderCat, FormMode.EditRecord)
             Case 3 : cboFolderCat.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManageFolderCat()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Κατηγορίες Φακέλων"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Κατηγορία"
-        form1.DataTable = "FOLDER_CAT"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboFolderCat
-        form1.MdiParent = frmMain
-        If cboFolderCat.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboFolderCat.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
+
 
     Private Sub cmdBDGFPrint_Click(sender As Object, e As EventArgs) Handles cmdBDGFPrint.Click
         Dim sSQL As String
@@ -2498,29 +2285,10 @@ Public Class frmBDG
 
     Private Sub cboDebitUsr_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDebitUsr.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboDebitUsr.EditValue = Nothing : ManageUSR(cboDebitUsr)
-            Case 2 : If cboDebitUsr.EditValue <> Nothing Then ManageUSR(cboDebitUsr)
+            Case 1 : ManageCbo.ManageUSR(cboDebitUsr, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageUSR(cboDebitUsr, FormMode.EditRecord)
             Case 3 : cboDebitUsr.EditValue = Nothing
         End Select
-    End Sub
-    Private Sub ManageUSR(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmUsers = New frmUsers()
-        form1.Text = "Χρήστης"
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
-    Private Sub GridControl10_Click(sender As Object, e As EventArgs) Handles GridControl10.Click
-
     End Sub
 
     Private Sub cmdCol_Click(sender As Object, e As EventArgs) Handles cmdCol.Click

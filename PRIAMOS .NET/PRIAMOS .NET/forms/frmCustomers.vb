@@ -427,11 +427,11 @@ Public Class frmCustomers
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
-           UserProps.ID.ToString.ToUpper = "526EAA73-3B21-4BEE-A575-F19BD2BC5FCF" Or
+           UserProps.ID.ToString.ToUpper = "E2BF15AC-19E3-498F-9459-1821B3898C76" Or
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                If My.Computer.FileSystem.FileExists(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
-                GridView1.SaveLayoutToXml(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
+                If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
+                GridView1.SaveLayoutToXml(ProgProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
             End If
         End If
 
