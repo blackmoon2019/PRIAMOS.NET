@@ -38,6 +38,7 @@ Module Main
         Public SupportEmail As String
         Public InvoicesEmailID As String
         Public InvoicesBody As String
+        Public InvoicesBodySYG As String
         Public InvoicesBodyResend As String
         Public InvoicesBodyRecreate As String
         Public InvoicesEmailServer As String

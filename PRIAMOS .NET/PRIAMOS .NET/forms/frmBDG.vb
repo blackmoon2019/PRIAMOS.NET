@@ -2048,6 +2048,7 @@ Public Class frmBDG
         Try
             Maintab.SelectedTabPage = tabBDG_F
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            LoadForms.RestoreLayoutFromXml(GridView12, "vw_BDG_F.xml")
             GridView12.OptionsBehavior.Editable = False
             txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
             cmdSaveBDGFile.Enabled = True
@@ -2307,6 +2308,15 @@ Public Class frmBDG
             Case 2 : ManageCbo.KeysManager(cboKeysManager, FormMode.EditRecord)
             Case 3 : cboKeysManager.EditValue = Nothing
         End Select
+
+    End Sub
+
+    Private Sub GridView12_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView12.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView12, "vw_BDG_F.xml", "vw_BDG_F")
+        Else
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
 
     End Sub
 

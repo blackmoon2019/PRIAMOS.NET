@@ -77,7 +77,7 @@ Partial Class frmEmailAPT
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(2218, 857)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2282, 857)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -88,7 +88,7 @@ Partial Class frmEmailAPT
         Me.cmdBatchSend.Location = New System.Drawing.Point(12, 806)
         Me.cmdBatchSend.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdBatchSend.Name = "cmdBatchSend"
-        Me.cmdBatchSend.Size = New System.Drawing.Size(239, 39)
+        Me.cmdBatchSend.Size = New System.Drawing.Size(246, 39)
         Me.cmdBatchSend.StyleController = Me.LayoutControl1
         Me.cmdBatchSend.TabIndex = 4
         Me.cmdBatchSend.Text = "Μαζική απόστολή"
@@ -97,10 +97,10 @@ Partial Class frmEmailAPT
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(1947, 806)
+        Me.cmdExit.Location = New System.Drawing.Point(2003, 806)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(259, 39)
+        Me.cmdExit.Size = New System.Drawing.Size(267, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
         Me.cmdExit.TabIndex = 2
         Me.cmdExit.Text = "Έξοδος"
@@ -114,7 +114,7 @@ Partial Class frmEmailAPT
         Me.grdAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPT.Name = "grdAPT"
         Me.grdAPT.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepSendEmail})
-        Me.grdAPT.Size = New System.Drawing.Size(2194, 790)
+        Me.grdAPT.Size = New System.Drawing.Size(2258, 790)
         Me.grdAPT.TabIndex = 0
         Me.grdAPT.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -301,7 +301,7 @@ Partial Class frmEmailAPT
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.EmptySpaceItem1, Me.LayoutControlItem3})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2218, 857)
+        Me.Root.Size = New System.Drawing.Size(2282, 857)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -309,25 +309,25 @@ Partial Class frmEmailAPT
         Me.LayoutControlItem1.Control = Me.grdAPT
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(2198, 794)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(2262, 794)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cmdExit
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1935, 794)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1991, 794)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(263, 43)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(271, 43)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(243, 794)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(250, 794)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1692, 43)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1741, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem3
@@ -335,7 +335,7 @@ Partial Class frmEmailAPT
         Me.LayoutControlItem3.Control = Me.cmdBatchSend
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 794)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(243, 43)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(250, 43)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -351,7 +351,7 @@ Partial Class frmEmailAPT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(2218, 857)
+        Me.ClientSize = New System.Drawing.Size(2282, 857)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmEmailAPT"
         Me.Text = "frmEmailAPT"

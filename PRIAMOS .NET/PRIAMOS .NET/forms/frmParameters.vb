@@ -80,6 +80,7 @@ Public Class frmParameters
                 BODY.EditValue = ProgProps.InvoicesBody
                 BODY_RESEND.EditValue = ProgProps.InvoicesBodyResend
                 BODY_RECREATE.EditValue = ProgProps.InvoicesBodyRecreate
+                BODY_SYG.EditValue = ProgProps.InvoicesBodySYG
 
             Case 2
             Case 3
@@ -114,7 +115,7 @@ Public Class frmParameters
 
     Private Sub cmdSave2_Click(sender As Object, e As EventArgs) Handles cmdSave2.Click
         'Παράμετροι email Έκδοσης Κοινοχρήστων
-        Prog_Prop.SetProgInvoicesEmail(INVOICES_EMAIL.EditValue.ToString, BODY.EditValue, BODY_RESEND.EditValue, BODY_RECREATE.EditValue)
+        Prog_Prop.SetProgInvoicesEmail(INVOICES_EMAIL.EditValue.ToString, BODY.EditValue, BODY_RESEND.EditValue, BODY_RECREATE.EditValue, BODY_SYG.EditValue)
 
     End Sub
 

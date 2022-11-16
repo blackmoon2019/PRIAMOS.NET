@@ -65,6 +65,8 @@ Partial Class frmParameters
         Me.Priamos_NETDataSet32 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
+        Me.BODY_SYG = New DevExpress.XtraEditors.MemoEdit()
+        Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.TabPane2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane2.SuspendLayout()
         Me.TabNavigationPage3.SuspendLayout()
@@ -105,6 +107,8 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BODY_SYG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPane2
@@ -115,9 +119,9 @@ Partial Class frmParameters
         Me.TabPane2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TabPane2.Name = "TabPane2"
         Me.TabPane2.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage3, Me.TabNavigationPage1})
-        Me.TabPane2.RegularSize = New System.Drawing.Size(1478, 1095)
+        Me.TabPane2.RegularSize = New System.Drawing.Size(1478, 1382)
         Me.TabPane2.SelectedPage = Me.TabNavigationPage3
-        Me.TabPane2.Size = New System.Drawing.Size(1478, 1095)
+        Me.TabPane2.Size = New System.Drawing.Size(1478, 1382)
         Me.TabPane2.TabIndex = 3
         Me.TabPane2.Text = "Γενικές"
         '
@@ -150,7 +154,6 @@ Partial Class frmParameters
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = CType(resources.GetObject("SimpleButton1.ImageOptions.Image"), System.Drawing.Image)
         Me.cmdExit.Location = New System.Drawing.Point(1290, 222)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
@@ -366,7 +369,7 @@ Partial Class frmParameters
         Me.TabNavigationPage1.Controls.Add(Me.LayoutControl1)
         Me.TabNavigationPage1.Name = "TabNavigationPage1"
         Me.TabNavigationPage1.PageText = "Παράμετροι Email"
-        Me.TabNavigationPage1.Size = New System.Drawing.Size(1478, 1030)
+        Me.TabNavigationPage1.Size = New System.Drawing.Size(1478, 1317)
         '
         'LayoutControl1
         '
@@ -376,10 +379,11 @@ Partial Class frmParameters
         Me.LayoutControl1.Controls.Add(Me.BODY_RESEND)
         Me.LayoutControl1.Controls.Add(Me.BODY_RECREATE)
         Me.LayoutControl1.Controls.Add(Me.INVOICES_EMAIL)
+        Me.LayoutControl1.Controls.Add(Me.BODY_SYG)
         Me.LayoutControl1.Location = New System.Drawing.Point(3, 3)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(1466, 1002)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1466, 1293)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -387,7 +391,7 @@ Partial Class frmParameters
         '
         Me.cmdExit2.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit2.ImageOptions.Image = CType(resources.GetObject("cmdExit2.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdExit2.Location = New System.Drawing.Point(1291, 951)
+        Me.cmdExit2.Location = New System.Drawing.Point(1291, 1242)
         Me.cmdExit2.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit2.Name = "cmdExit2"
         Me.cmdExit2.Size = New System.Drawing.Size(163, 39)
@@ -398,7 +402,7 @@ Partial Class frmParameters
         'cmdSave2
         '
         Me.cmdSave2.ImageOptions.Image = CType(resources.GetObject("cmdSave2.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdSave2.Location = New System.Drawing.Point(1144, 951)
+        Me.cmdSave2.Location = New System.Drawing.Point(1144, 1242)
         Me.cmdSave2.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave2.Name = "cmdSave2"
         Me.cmdSave2.Size = New System.Drawing.Size(143, 39)
@@ -412,29 +416,29 @@ Partial Class frmParameters
         Me.BODY.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY.Name = "BODY"
         Me.BODY.Properties.UseReadOnlyAppearance = False
-        Me.BODY.Size = New System.Drawing.Size(1166, 275)
+        Me.BODY.Size = New System.Drawing.Size(1166, 348)
         Me.BODY.StyleController = Me.LayoutControl1
         Me.BODY.TabIndex = 7
         Me.BODY.Tag = "answer,0,1,2"
         '
         'BODY_RESEND
         '
-        Me.BODY_RESEND.Location = New System.Drawing.Point(288, 333)
+        Me.BODY_RESEND.Location = New System.Drawing.Point(288, 406)
         Me.BODY_RESEND.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY_RESEND.Name = "BODY_RESEND"
         Me.BODY_RESEND.Properties.UseReadOnlyAppearance = False
-        Me.BODY_RESEND.Size = New System.Drawing.Size(1166, 300)
+        Me.BODY_RESEND.Size = New System.Drawing.Size(1166, 380)
         Me.BODY_RESEND.StyleController = Me.LayoutControl1
         Me.BODY_RESEND.TabIndex = 7
         Me.BODY_RESEND.Tag = "answer,0,1,2"
         '
         'BODY_RECREATE
         '
-        Me.BODY_RECREATE.Location = New System.Drawing.Point(288, 637)
+        Me.BODY_RECREATE.Location = New System.Drawing.Point(288, 790)
         Me.BODY_RECREATE.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY_RECREATE.Name = "BODY_RECREATE"
         Me.BODY_RECREATE.Properties.UseReadOnlyAppearance = False
-        Me.BODY_RECREATE.Size = New System.Drawing.Size(1166, 310)
+        Me.BODY_RECREATE.Size = New System.Drawing.Size(1166, 284)
         Me.BODY_RECREATE.StyleController = Me.LayoutControl1
         Me.BODY_RECREATE.TabIndex = 7
         Me.BODY_RECREATE.Tag = "answer,0,1,2"
@@ -473,9 +477,9 @@ Partial Class frmParameters
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem1})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem1, Me.LayoutControlItem12})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1466, 1002)
+        Me.Root.Size = New System.Drawing.Size(1466, 1293)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem6
@@ -485,7 +489,7 @@ Partial Class frmParameters
         Me.LayoutControlItem6.CustomizationFormText = "Απάντηση"
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 42)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(1446, 279)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(1446, 352)
         Me.LayoutControlItem6.Text = "Κείμενο"
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(264, 23)
         '
@@ -494,9 +498,9 @@ Partial Class frmParameters
         Me.LayoutControlItem5.Control = Me.BODY_RESEND
         Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem5.CustomizationFormText = "Απάντηση"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 321)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 394)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1446, 304)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1446, 384)
         Me.LayoutControlItem5.Text = "Κείμενο Επαναποστολής"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(264, 23)
         '
@@ -505,9 +509,9 @@ Partial Class frmParameters
         Me.LayoutControlItem7.Control = Me.BODY_RECREATE
         Me.LayoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem7.CustomizationFormText = "Απάντηση"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 625)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 778)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(1446, 314)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(1446, 288)
         Me.LayoutControlItem7.Text = "Κείμενο Επανέκδοσης"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(264, 23)
         '
@@ -525,7 +529,7 @@ Partial Class frmParameters
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.cmdExit2
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(1279, 939)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(1279, 1230)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.Size = New System.Drawing.Size(167, 43)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
@@ -534,7 +538,7 @@ Partial Class frmParameters
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.cmdSave2
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(1132, 939)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(1132, 1230)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
         Me.LayoutControlItem9.Size = New System.Drawing.Size(147, 43)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
@@ -543,7 +547,7 @@ Partial Class frmParameters
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 939)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 1230)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(1132, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
@@ -564,6 +568,28 @@ Partial Class frmParameters
         'Vw_ANN_MENTSTableAdapter
         '
         Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
+        '
+        'BODY_SYG
+        '
+        Me.BODY_SYG.Location = New System.Drawing.Point(288, 1078)
+        Me.BODY_SYG.Margin = New System.Windows.Forms.Padding(5)
+        Me.BODY_SYG.Name = "BODY_SYG"
+        Me.BODY_SYG.Properties.UseReadOnlyAppearance = False
+        Me.BODY_SYG.Size = New System.Drawing.Size(1166, 160)
+        Me.BODY_SYG.StyleController = Me.LayoutControl1
+        Me.BODY_SYG.TabIndex = 7
+        Me.BODY_SYG.Tag = "answer,0,1,2"
+        '
+        'LayoutControlItem12
+        '
+        Me.LayoutControlItem12.Control = Me.BODY_SYG
+        Me.LayoutControlItem12.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem12.CustomizationFormText = "Απάντηση"
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 1066)
+        Me.LayoutControlItem12.Name = "LayoutControlItem12"
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(1446, 164)
+        Me.LayoutControlItem12.Text = "Κείμενο Συγκεντρωτικής"
+        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(264, 23)
         '
         'frmParameters
         '
@@ -616,6 +642,8 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BODY_SYG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -664,4 +692,6 @@ Partial Class frmParameters
     Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents VwANNMENTSBindingSource As BindingSource
     Friend WithEvents Vw_ANN_MENTSTableAdapter As Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter
+    Friend WithEvents BODY_SYG As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
 End Class
