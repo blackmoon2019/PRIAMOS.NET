@@ -39,6 +39,7 @@ Module Main
         Public InvoicesEmailID As String
         Public InvoicesBody As String
         Public InvoicesBodySYG As String
+        Public InvoicesBodyRECEIPT As String
         Public InvoicesBodyResend As String
         Public InvoicesBodyRecreate As String
         Public InvoicesEmailServer As String

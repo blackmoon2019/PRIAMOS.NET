@@ -187,9 +187,6 @@
   <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-save-to-grid-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\icons8-save-to-grid-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-invoice-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-invoice-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -198,9 +195,6 @@
   </data>
   <data name="icons8-cancel-subscription-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-cancel-subscription-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-database-administrator-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-database-administrator-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Export_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\Export_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -231,6 +225,9 @@
   </data>
   <data name="ExportRtfLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\ExportRtfLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExportDocxLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\ExportDocxLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-building-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-building-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,14 +277,17 @@
   <data name="ExportCsvLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\ExportCsvLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-print-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-print-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-copy-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-copy-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-server-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-server-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-change-user-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-change-user-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-transfer-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-transfer-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rsz_1rsz_asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_1rsz_asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,8 +307,8 @@
   <data name="icons8-support-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-support-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-transfer-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-transfer-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-database-administrator-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-database-administrator-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-refresh-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-refresh-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -394,6 +394,9 @@
   <data name="rsz_asterisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rsz_asterisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_bank_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-bank-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-payment-method-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-payment-method-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -415,8 +418,8 @@
   <data name="icons8-advertisement-page-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-advertisement-page-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-unchecked-checkbox-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-unchecked-checkbox-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-print-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-print-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-activity-history-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-activity-history-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -451,8 +454,8 @@
   <data name="icons8-save-close-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\icons8-save-close-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-copy-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-copy-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8_phone_contact_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-phone-contact-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icojam-Blue-Bits-Users-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icojam-Blue-Bits-Users-0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -478,6 +481,9 @@
   <data name="icons8-keys-holder-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-keys-holder-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-estimates-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-estimates-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ExportHtmLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Pictures\ExportHtmLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -490,11 +496,11 @@
   <data name="icons8-attach-401" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-attach-401.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ExportDocxLarge" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Pictures\ExportDocxLarge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-unchecked-checkbox-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-unchecked-checkbox-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-estimates-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-estimates-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-save-to-grid-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Pictures\icons8-save-to-grid-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-bank-building-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-bank-building-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -511,7 +517,16 @@
   <data name="icons8-eco-fuel-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-eco-fuel-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_phone_contact_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-phone-contact-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="alpha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alpha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eurobank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eurobank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nbg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nbg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pireos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pireos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

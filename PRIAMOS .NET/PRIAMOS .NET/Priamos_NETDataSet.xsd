@@ -1399,7 +1399,7 @@ order by ord</CommandText>
               <Mapping SourceColumn="RepresentativeFullname" DataSetColumn="RepresentativeFullname" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_APT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByBDGAndBalAdm" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByBDGAndBalAdm" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByBDGAndBalAdm">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_APT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByBDGAndBalAdm" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByBDGAndBalAdm" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByBDGAndBalAdm">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT ID, code, nam, ttl, ord, name, OwnerFullName, TenantFullName, bal, out, closed, cmt, RealName, bdgNam, bdgID, flrID, OwnerID, TenantID, old_code, sameOwnerTenant, bdgCode, AdrID, AdrName, ar, AreaName, RepresentativeID, RepresentativeFullname

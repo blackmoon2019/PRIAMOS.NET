@@ -157,7 +157,7 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
-                        Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
+                        Subject = "Συγκεντρωτική - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
                         'sEmailTo = "johnmavroselinos@gmail.com"
                         report.CreateDocument()
                         report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
@@ -245,7 +245,7 @@ Public Class frmEmailAPT
                     sdr.Close()
                     SSM.CloseWaitForm()
                     Return True
-                Case 2 ' Εισπράξεις
+                Case 2 ' Αποδείξεις
                     SSM.ShowWaitForm()
                     SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
 
@@ -271,11 +271,7 @@ Public Class frmEmailAPT
 
                         report.FilterString = "[ID] = {" & sAptID & "}"
                         sFName = "RECEIPT_" & sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString + sAtptTTL
-                        If sdr.GetBoolean(sdr.GetOrdinal("email")) = True Then
-                            sBody = ProgProps.InvoicesBodyResend
-                        Else
-                            sBody = ProgProps.InvoicesBody
-                        End If
+                        sBody = ProgProps.InvoicesBodyRECEIPT
 
                         sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
@@ -283,7 +279,7 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{APTNAM}", sAtptTTL)
                         sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
                         sBody = sBody.Replace("{BAL_ADM}", BalADM)
-                        Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sAtptTTL & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
+                        Subject = "Απόδειξη - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sAtptTTL & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
                         'sEmailTo = "johnmavroselinos@gmail.com"
                         report.CreateDocument()
                         report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")

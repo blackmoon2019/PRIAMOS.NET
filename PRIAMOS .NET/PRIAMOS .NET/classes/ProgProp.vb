@@ -91,6 +91,7 @@ Public Class ProgProp
                         Case "INVOICES_EMAIL" : ProgProps.InvoicesEmailID = sdr.GetString(sdr.GetOrdinal("VAL"))
                         Case "BODY" : ProgProps.InvoicesBody = sdr.GetString(sdr.GetOrdinal("VAL"))
                         Case "BODY_SYG" : ProgProps.InvoicesBodySYG = sdr.GetString(sdr.GetOrdinal("VAL"))
+                        Case "BODY_RECEIPT" : ProgProps.InvoicesBodyRECEIPT = sdr.GetString(sdr.GetOrdinal("VAL"))
                         Case "BODY_RESEND" : ProgProps.InvoicesBodyResend = sdr.GetString(sdr.GetOrdinal("VAL"))
                         Case "BODY_RECREATE" : ProgProps.InvoicesBodyRecreate = sdr.GetString(sdr.GetOrdinal("VAL"))
                     End Select
@@ -200,7 +201,7 @@ Public Class ProgProp
         End Try
 
     End Sub
-    Public Sub SetProgInvoicesEmail(ByVal sValue As String, ByVal sValue2 As String, ByVal sValue3 As String, ByVal sValue4 As String, ByVal sValue5 As String)
+    Public Sub SetProgInvoicesEmail(ByVal sValue As String, ByVal sValue2 As String, ByVal sValue3 As String, ByVal sValue4 As String, ByVal sValue5 As String, ByVal sValue6 As String)
         Dim sSQL As String
         Dim cmd As SqlCommand
         Try
@@ -219,6 +220,9 @@ Public Class ProgProp
             sSQL = "Update PRM set val = '" & sValue5 & "' where prm= 'BODY_SYG'"
             cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
             ProgProps.InvoicesBodySYG = sValue5
+            sSQL = "Update PRM set val = '" & sValue6 & "' where prm= 'BODY_RECEIPT'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            ProgProps.InvoicesBodyRECEIPT = sValue6
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
