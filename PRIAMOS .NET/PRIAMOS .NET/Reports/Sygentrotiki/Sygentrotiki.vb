@@ -68,8 +68,8 @@ Public Class Rep_Sygentrotiki
         Try
             Dim sSQL As String
             sSQL = "select distinct mlcRepName,calcCatOrd from vw_inc where inhID= " & toSQLValueS(Parameters.Item(0).Value.ToString) &
-                    IIf(bHasFI, " UNION select 'FI ΘΕΡΜ.',10   ", " ") &
-                    IIf(bHasFIBoiler, " UNION select 'FI BOIL.',11   ", " ") &
+                    IIf(bHasFI, " UNION select 'FI ΘΕΡΜ.',13   ", " ") &
+                    IIf(bHasFIBoiler, " UNION select 'FI BOIL.',14   ", " ") &
                     "order by calcCatOrd"
             Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
@@ -108,10 +108,11 @@ Public Class Rep_Sygentrotiki
             Dim TotalSumofIdiok As New System.Text.StringBuilder
             Dim SumofAll As New System.Text.StringBuilder
             Dim GenTot As New System.Text.StringBuilder
+            'Dim FiRow As Integer, fiBoilerRow As Integer
 
             sSQL = "select distinct apmilNam,calcCatRepName,calcCatOrd from vw_inc where inhID= " & toSQLValueS(Parameters.Item(0).Value.ToString) &
-                    IIf(bHasFI, " UNION select 'fi','fi',10    ", " ") &
-                    IIf(bHasFIBoiler, " UNION select 'fiBoiler','fiBoiler',11 ", " ") &
+                    IIf(bHasFI, " UNION select 'fi','fi',13    ", " ") &
+                    IIf(bHasFIBoiler, " UNION select 'fiBoiler','fiBoiler',14 ", " ") &
                     "order by calcCatOrd"
 
             Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
@@ -141,6 +142,8 @@ Public Class Rep_Sygentrotiki
                         XrTable7.Rows(0).Cells(i).Visible = True
                         i = i + 1
                     Else
+                        'If sdr.GetString(sdr.GetOrdinal("calcCatRepName")) = "fi" Then FiRow = i
+                        'If sdr.GetString(sdr.GetOrdinal("calcCatRepName")) = "fiBoiler" Then fiBoilerRow = i
                     End If
                 End If
             End While

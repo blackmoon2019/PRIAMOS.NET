@@ -754,7 +754,7 @@ Public Class frmBDG
 	                ,CUR.aptID
 	                ,case when CUR.mes<>0 then cur.mdt else  (select MAX(mdt) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler =  " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + "	and AHPB.aptID = CUR.aptID) end AS mdt	
 	                ,CUR.mes
-	                ,(select TOP 1 SUM(mes) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler = " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + " and AHPB.aptID = CUR.aptID GROUP BY MDT ORDER BY MDT DESC ) AS mesB
+	                ,isnull((select TOP 1 SUM(mes) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler = " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + " and AHPB.aptID = CUR.aptID GROUP BY MDT ORDER BY MDT DESC ),0) AS mesB
 	                ,CUR.mesDif
 	                ,CUR.boiler
 	                ,CUR.RealName
