@@ -55,17 +55,17 @@ Public Class DBQueries
                 sSQL.Clear()
                 Select Case sTable
                     Case "CCT_F"
-                        sSQL.AppendLine("INSERT INTO CCT_F ( ") : If ExtraFields.Length > 0 Then sSQL.AppendLine(ExtraFields & ",cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                        sSQL.AppendLine("INSERT INTO CCT_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                         'sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "INV_GASF"
                         'sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
-                        sSQL.AppendLine("INSERT INTO INV_GASF ( ") : If ExtraFields.Length > 0 Then sSQL.AppendLine(ExtraFields & ",invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                        sSQL.AppendLine("INSERT INTO INV_GASF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "INV_OILF"
                         'sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
-                        sSQL.AppendLine("INSERT INTO INV_OILF ( ") : If ExtraFields.Length > 0 Then sSQL.AppendLine(ExtraFields & ",invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                        sSQL.AppendLine("INSERT INTO INV_OILF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "BDG_F"
                         'sSQL.AppendLine("INSERT INTO BDG_F (bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
-                        sSQL.AppendLine("INSERT INTO BDG_F ( ") : If ExtraFields.Length > 0 Then sSQL.AppendLine(ExtraFields & ",bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                        sSQL.AppendLine("INSERT INTO BDG_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                 End Select
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
@@ -79,7 +79,7 @@ Public Class DBQueries
                 sSQL.AppendLine(toSQLValueS(FilePath) & ",")
                 sSQL.AppendLine(toSQLValueS(extension) & ",")
 
-                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
+                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
                 sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(ProgProps.ServerPath & FileName) & ", SINGLE_BLOB) files")
 
                 'Εκτέλεση QUERY
@@ -93,6 +93,7 @@ Public Class DBQueries
             Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+
             Return False
         End Try
     End Function
@@ -117,7 +118,7 @@ Public Class DBQueries
                 sSQL.AppendLine(toSQLValueS(sFilesPath & "\" & FileName) & ",")
                 sSQL.AppendLine(toSQLValueS(sFilesPath) & ",")
                 sSQL.AppendLine(toSQLValueS(extension) & ",")
-                sSQL.Append(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
+                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), files.* ")
                 sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(ProgProps.ServerPath & FileName) & ", SINGLE_BLOB) files")
                 sFullFilenames.AppendLine(sFilesPath & "\" & FileName & IIf(sFullFilenames.Length > 0, ";", ""))
                 'Εκτέλεση QUERY

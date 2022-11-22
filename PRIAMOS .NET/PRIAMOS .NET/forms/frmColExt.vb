@@ -12,6 +12,7 @@ Public Class frmColExt
     Private LoadForms As New FormLoader
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
+    Private UserPermissions As New CheckPermissions
     Dim sGuid As String
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -59,6 +60,8 @@ Public Class frmColExt
         End Select
         ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
+        UserPermissions.GetUserPermissions(Me.Text)
+
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
 
