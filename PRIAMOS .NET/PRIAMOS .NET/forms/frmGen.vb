@@ -23,6 +23,7 @@ Public Class frmGen
     Private S As New System.Text.StringBuilder
     Private Cls As New ClearControls
     Private LoadForms As New FormLoader
+    Private UserPermissions As New CheckPermissions
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -78,6 +79,7 @@ Public Class frmGen
         Me.CenterToScreen()
         My.Settings.frmGen = Me.Location
         My.Settings.Save()
+        UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowInsert = False Then cmdSave.Enabled = False
     End Sub
 
     Private Sub cmdNew_Click(sender As Object, e As EventArgs) Handles cmdNew.Click

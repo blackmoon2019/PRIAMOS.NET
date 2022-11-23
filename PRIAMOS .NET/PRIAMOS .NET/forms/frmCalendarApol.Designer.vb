@@ -114,10 +114,11 @@ Partial Class frmCalendarApol
         '
         Me.SchedulerControl1.DataStorage = Me.SchedulerDataStorage1
         Me.SchedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SchedulerControl1.Location = New System.Drawing.Point(0, 27)
+        Me.SchedulerControl1.Location = New System.Drawing.Point(0, 46)
+        Me.SchedulerControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.SchedulerControl1.MenuManager = Me.BarManager1
         Me.SchedulerControl1.Name = "SchedulerControl1"
-        Me.SchedulerControl1.Size = New System.Drawing.Size(1574, 685)
+        Me.SchedulerControl1.Size = New System.Drawing.Size(2623, 1214)
         Me.SchedulerControl1.Start = New Date(2020, 10, 5, 0, 0, 0, 0)
         Me.SchedulerControl1.TabIndex = 11
         Me.SchedulerControl1.Text = "SchedulerControl1"
@@ -407,31 +408,35 @@ Partial Class frmCalendarApol
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1574, 27)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlTop.Size = New System.Drawing.Size(2623, 46)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 712)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1260)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1574, 0)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(2623, 0)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 27)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 46)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 685)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 1214)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1574, 27)
+        Me.barDockControlRight.Location = New System.Drawing.Point(2623, 46)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 685)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 1214)
         '
         'BarHeaderItem1
         '
@@ -496,14 +501,15 @@ Partial Class frmCalendarApol
         '
         'frmCalendarApol
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1574, 712)
+        Me.ClientSize = New System.Drawing.Size(2623, 1260)
         Me.Controls.Add(Me.SchedulerControl1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
+        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Name = "frmCalendarApol"
         Me.Text = "frmCalendarDecontaminatin"
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()

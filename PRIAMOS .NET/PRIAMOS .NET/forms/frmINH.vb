@@ -819,8 +819,8 @@ Public Class frmINH
     End Sub
     Private Sub cboAnnouncements_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAnnouncements.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageCbo.ManageAnnouncements(cboAnnouncements, FormMode.NewRecord)
-            Case 2 : ManageCbo.ManageAnnouncements(cboAnnouncements, FormMode.EditRecord)
+            Case 1 : ManageCbo.ManageAnnouncements(cboAnnouncements, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManageAnnouncements(cboAnnouncements, FormMode.EditRecord, Me)
             Case 3 : cboAnnouncements.EditValue = Nothing
         End Select
     End Sub

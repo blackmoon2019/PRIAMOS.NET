@@ -21,6 +21,7 @@ Public Class InitializeCalendar
         Dim sID As String
         Dim StartTime As String
         Dim EndTime As String
+        Dim cmt As String
         Dim sCompleted As Boolean
         'Color.FromArgb(e.CellValue)
         'Αλλαγή όψης
@@ -39,6 +40,7 @@ Public Class InitializeCalendar
                 If sdr.IsDBNull(sdr.GetOrdinal("WorkshopName")) = False Then sWorkshopName = sdr.GetString(sdr.GetOrdinal("WorkshopName"))
                 If sdr.IsDBNull(sdr.GetOrdinal("tmIn")) = False Then StartTime = sdr.GetString(sdr.GetOrdinal("tmIn"))
                 If sdr.IsDBNull(sdr.GetOrdinal("tmOut")) = False Then EndTime = sdr.GetString(sdr.GetOrdinal("tmOut"))
+                If sdr.IsDBNull(sdr.GetOrdinal("cmt")) = False Then cmt = sdr.GetString(sdr.GetOrdinal("cmt"))
                 sRemValues = ""
                 If sdr.IsDBNull(sdr.GetOrdinal("apolTypeName")) = False Then apolTypeName = sdr.GetString(sdr.GetOrdinal("apolTypeName"))
                 If sdr.IsDBNull(sdr.GetOrdinal("code")) = False Then SalersCode = sdr.GetInt32(sdr.GetOrdinal("code"))
@@ -59,7 +61,7 @@ Public Class InitializeCalendar
                                       ByVal Completed As Boolean, ByVal sWorkshopName As String, Optional ByVal EnableReminder As Boolean = False
                                       )
         Dim apt As Appointment = SCH_Storage.CreateAppointment(AppointmentType.Normal, CDate(AptDate), CDate(AptDate),
-                                                               "Πολυκατοικία: " & sBdgName & vbCrLf & "Εργασία: " & Cmt)
+                                                               "Πολυκατοικία: " & sBdgName & vbCrLf & "Εργασία: " & Cmt )
         Try
 
             Dim Field As New DevExpress.XtraScheduler.Native.CustomField("StatusColor", sColor)

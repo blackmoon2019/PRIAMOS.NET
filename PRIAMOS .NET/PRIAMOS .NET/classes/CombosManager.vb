@@ -37,7 +37,7 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
-    Public Sub ManageAnnouncements(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
+    Public Sub ManageAnnouncements(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
         Dim form1 As frmGen = New frmGen()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
         form1.Text = "Ανακοινώσεις"
@@ -46,10 +46,11 @@ Public Class CombosManager
         form1.DataTable = "ANN_MENTS"
         form1.CalledFromControl = True
         form1.CallerControl = CallerControl
-        'form1.CallerForm = Me
+        form1.CallerForm = FrmCaller
         form1.MdiParent = frmMain
         If CallerControl.EditValue <> Nothing Then
             form1.Mode = FormMode.EditRecord
+
             If CallerControl.GetColumnValue("ID") Is Nothing Then Exit Sub
             form1.ID = CallerControl.GetColumnValue("ID").ToString
         Else

@@ -454,22 +454,35 @@ Public Class frmBankCollectionInsert
     End Sub
 
     Private Sub ColInh()
-        'sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper
-        'sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper
-        'ssInhID = sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString.ToUpper
-        'dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
-        'Using oCmd As New SqlCommand("col_Calculate", CNDB)
-        '    oCmd.CommandType = CommandType.StoredProcedure
-        '    oCmd.Parameters.AddWithValue("@debitusrID", sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString.ToUpper)
-        '    oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
-        '    oCmd.Parameters.AddWithValue("@aptID", sAptID)
-        '    oCmd.Parameters.AddWithValue("@inhID", ssInhID)
-        '    oCmd.Parameters.AddWithValue("@Givencredit", credit)
-        '    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
-        '    oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ 
-        '    oCmd.Parameters.AddWithValue("@TenantOwner", 2)
-        '    oCmd.Parameters.AddWithValue("@Agreed", 0)
-        '    oCmd.ExecuteNonQuery()
-        'End Using
+        Dim sBdgID As String, sAptID As String, sInhID As String, dtcredit As String
+        Dim credit As Decimal
+        sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+        sAptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper
+        sInhID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper
+        credit = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "credit")
+        dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
+        If sInhID = "" Or sBdgID = "" Or sAptID = "" Then
+            XtraMessageBox.Show("Δεν έχουν συμπληρωθεί όλα τα στοιχεία για να κάνετε είσπραξη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Else
+            Using oCmd As New SqlCommand("col_Calculate", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@debitusrID", "CC93EEFB-B8B6-470F-983D-3604E67C6E1C") ' ΧΡΗΣΤΗΣ ΤΡΑΠΕΖΕΣ
+                oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
+                oCmd.Parameters.AddWithValue("@aptID", sAptID)
+                oCmd.Parameters.AddWithValue("@inhID", sInhID)
+                oCmd.Parameters.AddWithValue("@Givencredit", credit)
+                oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
+                oCmd.Parameters.AddWithValue("@ColMethodID", "F34B402C-ADD8-48E7-85A9-FFDF7DAED582") ' ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ ΤΡΑΠΕΖΑ
+                oCmd.Parameters.AddWithValue("@TenantOwner", 2)
+                oCmd.Parameters.AddWithValue("@Agreed", 0)
+                oCmd.ExecuteNonQuery()
+                XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End Using
+        End If
+    End Sub
+
+    Private Sub RepColBtn_Click(sender As Object, e As EventArgs) Handles RepColBtn.Click
+        ColInh()
     End Sub
 End Class
