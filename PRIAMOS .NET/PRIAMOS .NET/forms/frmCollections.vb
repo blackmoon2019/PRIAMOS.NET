@@ -1023,7 +1023,7 @@ Public Class frmCollections
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView5, "COL_APTCREDE_def.xml")
     End Sub
     Private Sub GridView6_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView6, "COL_D_CREDE_def.xml",, "SELECT top 1 old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate,ord,modifiedByRealName FROM   vw_COL_D")
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView6, "COL_D_CREDE_def.xml",, "SELECT top 1 old_code, bdgNam, aptNam, completeDate, Credit, debit, Bal, modifiedOn, createdOn, modifiedBy, creditUser, debitUser, ID, code, colID, bdgID, aptID, inhID, debitusrID, ttl, tenant, agreed, ETOS, fDate, tDate,ord,modifiedByRealName,CmFrom,BankName,bankFileName,bankDepositDate FROM   vw_COL_D")
     End Sub
     Private Sub cmdCol_Refresh_Click(sender As Object, e As EventArgs) Handles cmdCol_Refresh.Click
         Select Case TabbedControlGroup1.SelectedTabPageIndex

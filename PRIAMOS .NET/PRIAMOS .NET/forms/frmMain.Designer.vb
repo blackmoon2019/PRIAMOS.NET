@@ -114,6 +114,7 @@ Partial Class frmMain
         Me.XtraTabbedMdiManager1 = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.BBReport7 = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCalcEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,10 +135,10 @@ Partial Class frmMain
         Me.RibbonControl1.ApplicationButtonDropDownControl = Me.ApplicationMenu1
         Me.RibbonControl1.EmptyAreaImageOptions.ImagePadding = New System.Windows.Forms.Padding(50, 53, 50, 53)
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BBAbout, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks, Me.BBatchCollectionInsert, Me.BBTechSup, Me.BBCT, Me.BBCol2, Me.BBFolderCat, Me.BBVer, Me.BBatchInsertINH, Me.BBatchInsertAnnment, Me.BBGrps, Me.BCCT, Me.BBBdgAptTrans, Me.BBBalReport, Me.BBAPT, Me.BBKeysmanager, Me.BBContacts, Me.BBanksCol})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BBAbout, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks, Me.BBatchCollectionInsert, Me.BBTechSup, Me.BBCT, Me.BBCol2, Me.BBFolderCat, Me.BBVer, Me.BBatchInsertINH, Me.BBatchInsertAnnment, Me.BBGrps, Me.BCCT, Me.BBBdgAptTrans, Me.BBBalReport, Me.BBAPT, Me.BBKeysmanager, Me.BBContacts, Me.BBanksCol, Me.BBReport7})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.Margin = New System.Windows.Forms.Padding(5)
-        Me.RibbonControl1.MaxItemId = 80
+        Me.RibbonControl1.MaxItemId = 81
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.OptionsMenuMinWidth = 550
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2, Me.RibbonPage5, Me.RibbonPage6, Me.RibbonPage3, Me.RibbonPage4})
@@ -794,6 +795,7 @@ Partial Class frmMain
         Me.RibbonPageGroup8.ItemLinks.Add(Me.BBBalReport)
         Me.RibbonPageGroup8.ItemLinks.Add(Me.BBApolList)
         Me.RibbonPageGroup8.ItemLinks.Add(Me.BBAPT)
+        Me.RibbonPageGroup8.ItemLinks.Add(Me.BBReport7)
         Me.RibbonPageGroup8.Name = "RibbonPageGroup8"
         Me.RibbonPageGroup8.Text = "Reports"
         '
@@ -897,6 +899,14 @@ Partial Class frmMain
         '
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 1000
+        '
+        'BBReport7
+        '
+        Me.BBReport7.Caption = "Ανεξόφλητα Παραστατικά"
+        Me.BBReport7.Id = 80
+        Me.BBReport7.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cashbook_48
+        Me.BBReport7.Name = "BBReport7"
+        Me.BBReport7.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'frmMain
         '
@@ -1023,4 +1033,5 @@ Partial Class frmMain
     Friend WithEvents BBContacts As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BBanksCol As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents BBReport7 As DevExpress.XtraBars.BarButtonItem
 End Class

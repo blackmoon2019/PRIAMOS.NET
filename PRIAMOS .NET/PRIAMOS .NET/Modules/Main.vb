@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Text
 Imports DevExpress.XtraGrid.Columns
 
 Module Main
@@ -130,6 +131,49 @@ Module Main
         Return TranslateDates
     End Function
 
+    Public Function ConvertCharToENGR(ByVal sWord As String) As String
+        Dim convertEngToGr As Boolean = False
+        ' En to GR
+        If sWord.ToUpper.Contains("A") Then sWord = sWord.Replace("A", "Α") : convertEngToGr = True
+        If sWord.ToUpper.Contains("B") Then sWord = sWord.Replace("B", "Β") : convertEngToGr = True
+        If sWord.ToUpper.Contains("E") Then sWord = sWord.Replace("E", "Ε") : convertEngToGr = True
+        If sWord.ToUpper.Contains("H") Then sWord = sWord.Replace("H", "Η") : convertEngToGr = True
+        If sWord.ToUpper.Contains("I") Then sWord = sWord.Replace("I", "Ι") : convertEngToGr = True
+        If sWord.ToUpper.Contains("K") Then sWord = sWord.Replace("K", "Κ") : convertEngToGr = True
+        If sWord.ToUpper.Contains("M") Then sWord = sWord.Replace("M", "Μ") : convertEngToGr = True
+        If sWord.ToUpper.Contains("N") Then sWord = sWord.Replace("N", "Ν") : convertEngToGr = True
+        If sWord.ToUpper.Contains("O") Then sWord = sWord.Replace("O", "Ο") : convertEngToGr = True
+        If sWord.ToUpper.Contains("P") Then sWord = sWord.Replace("P", "Ρ") : convertEngToGr = True
+        If sWord.ToUpper.Contains("T") Then sWord = sWord.Replace("T", "Τ") : convertEngToGr = True
+        If sWord.ToUpper.Contains("Y") Then sWord = sWord.Replace("Y", "Υ") : convertEngToGr = True
+        If sWord.ToUpper.Contains("Z") Then sWord = sWord.Replace("Z", "Ζ") : convertEngToGr = True
+        If convertEngToGr = True Then Return sWord
+        ' Gr to EN                  
+        If sWord.ToUpper.Contains("Α") Then sWord = sWord.Replace("Α", "A")
+        If sWord.ToUpper.Contains("Β") Then sWord = sWord.Replace("Β", "B")
+        If sWord.ToUpper.Contains("Ε") Then sWord = sWord.Replace("Ε", "E")
+        If sWord.ToUpper.Contains("Η") Then sWord = sWord.Replace("Η", "H")
+        If sWord.ToUpper.Contains("Ι") Then sWord = sWord.Replace("Ι", "I")
+        If sWord.ToUpper.Contains("Κ") Then sWord = sWord.Replace("Κ", "K")
+        If sWord.ToUpper.Contains("Μ") Then sWord = sWord.Replace("Μ", "M")
+        If sWord.ToUpper.Contains("Ν") Then sWord = sWord.Replace("Ν", "N")
+        If sWord.ToUpper.Contains("Ο") Then sWord = sWord.Replace("Ο", "O")
+        If sWord.ToUpper.Contains("Ρ") Then sWord = sWord.Replace("Ρ", "P")
+        If sWord.ToUpper.Contains("Τ") Then sWord = sWord.Replace("Τ", "T")
+        If sWord.ToUpper.Contains("Υ") Then sWord = sWord.Replace("Υ", "Y")
+        If sWord.ToUpper.Contains("Ζ") Then sWord = sWord.Replace("Ζ", "Z")
+
+        Return sWord
+
+    End Function
+    Public Sub ShellExecute(ByVal File As String)
+        Dim myProcess As New Process
+        myProcess.StartInfo.FileName = File
+        myProcess.StartInfo.UseShellExecute = True
+        myProcess.StartInfo.RedirectStandardOutput = False
+        myProcess.Start()
+        myProcess.Dispose()
+    End Sub
     'Public Function FindItemByValChkListBox(ByVal sValue As String, ByVal chkList As DevExpress.XtraEditors.CheckedListBoxControl) As DevExpress.XtraEditors.Controls.CheckedListBoxItem
     '    For Each item As DevExpress.XtraEditors.Controls.CheckedListBoxItem In chkList
 
@@ -137,6 +181,7 @@ Module Main
     'End Function
 
 End Module
+
 'Private Sub SetUserSettings()
 '    Dim cf As New XML_Serialization.User_Settings
 '    cf.user = New XML_Serialization.User() With {.ID = sUserCode}

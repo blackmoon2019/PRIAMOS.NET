@@ -690,14 +690,7 @@ Public Class frmBDG
         End If
     End Sub
 
-    Private Sub ShellExecute(ByVal File As String)
-        Dim myProcess As New Process
-        myProcess.StartInfo.FileName = File
-        myProcess.StartInfo.UseShellExecute = True
-        myProcess.StartInfo.RedirectStandardOutput = False
-        myProcess.Start()
-        myProcess.Dispose()
-    End Sub
+
     Private Sub CheckButton2_CheckedChanged(sender As Object, e As EventArgs)
         Dim btn As CheckButton = TryCast(sender, CheckButton)
         If btn.Checked = True Then

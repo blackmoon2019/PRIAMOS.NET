@@ -100,6 +100,7 @@ Public Class frmScroller
             GridView1.OptionsSelection.MultiSelect = True
             GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect
             GridView1.OptionsView.HeaderFilterButtonShowMode = FilterButtonShowMode.Button
+            GridView1.OptionsView.ShowGroupedColumns = False
             If sDataTable = "vw_INH" Or sDataTable = "REPORT_4" Then
                 GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect
                 BarPrint.Visibility = BarItemVisibility.Always
