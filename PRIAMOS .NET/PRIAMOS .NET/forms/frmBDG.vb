@@ -34,6 +34,7 @@ Public Class frmBDG
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
     Private ModeBCCT As Byte
+    Private ModePROFACTD As Byte
 
     '------C L A S S E S------
     Private ManageCbo As New CombosManager
@@ -128,7 +129,7 @@ Public Class frmBDG
                 NavHeating.Enabled = False
                 NavMaintenance.Enabled = False
                 NavFixedCosts.Enabled = False
-                NavTasks.Enabled = False
+                NavProfActD.Enabled = False
                 NavHeatingInvoices.Enabled = False
                 NavDecontamination.Enabled = False
                 NavConsumption.Enabled = False
@@ -265,7 +266,7 @@ Public Class frmBDG
                     NavHeating.Enabled = True
                     NavMaintenance.Enabled = True
                     NavFixedCosts.Enabled = True
-                    NavTasks.Enabled = True
+                    NavProfActD.Enabled = True
                     NavHeatingInvoices.Enabled = True
                     NavDecontamination.Enabled = True
                     NavConsumption.Enabled = True
@@ -1806,8 +1807,6 @@ Public Class frmBDG
     End Sub
 
 
-
-
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
             Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
@@ -1975,14 +1974,6 @@ Public Class frmBDG
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_INH.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView_INH, "INH_BDG_def.xml",, "Select top 1 * from vw_INH")
-        Else
-            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
-        End If
     End Sub
 
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
@@ -2312,7 +2303,111 @@ Public Class frmBDG
         End If
 
     End Sub
+    Private Sub cmdSaveProfActD_Click(sender As Object, e As EventArgs) Handles cmdSaveProfActD.Click
+        Dim sResult As Boolean
+        Try
+            If Valid.ValidateFormGRP(LayoutControlGroup21) Then
 
+                Select Case ModePROFACTD
+                    Case FormMode.NewRecord
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT_D", LayoutControl6Jobs,,, , True, "bdgID", toSQLValueS(sID))
+                    Case FormMode.EditRecord
+                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT_D", LayoutControl6Jobs,,, sID, True)
+                End Select
+
+
+                If sResult Then
+                    Cls.ClearGroupCtrls(LayoutControlGroup21)
+                    txtCodeProfActD.Text = DBQ.GetNextId("PROF_ACT_D")
+                    Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+                    LayoutControlGroup15.Enabled = False
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
+                End If
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub NavProfActD_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavProfActD.ElementClick
+        Try
+            Maintab.SelectedTabPage = tabProfActD
+            'TODO: This line of code loads data into the 'Priamos_NETDataSet4.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
+            Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet4.vw_PARTNER_AND_WORKSHOP)
+            'TODO: This line of code loads data into the 'Priamos_NETDataSet3.vw_PROF_ACT' table. You can move, or remove it, as needed.
+            Me.Vw_PROF_ACTTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_PROF_ACT)
+            Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
+            LoadForms.RestoreLayoutFromXml(GridView10, "vw_PROF_ACT_D.xml")
+            GridView10.OptionsBehavior.Editable = False
+            txtCodeProfActD.Text = DBQ.GetNextId("PROF_ACT_D")
+            cmdSaveProfActD.Enabled = True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub cboProfAct_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboProfAct.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManagePROFACT(cboProfAct, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManagePROFACT(cboProfAct, FormMode.EditRecord, Me)
+            Case 3 : cboProfAct.EditValue = Nothing : txtProfActDAmt.EditValue = Nothing : txtProfActDAmt.Text = "0"
+        End Select
+    End Sub
+
+    Private Sub cboWorkshop_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboWorkshop.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageCUS(cboWorkshop, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageCUS(cboWorkshop, FormMode.EditRecord)
+            Case 3 : cboWorkshop.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboProfAct_EditValueChanged(sender As Object, e As EventArgs) Handles cboProfAct.EditValueChanged
+        If cboProfAct.EditValue Is Nothing Then Exit Sub
+        txtProfActDAmt.EditValue = cboProfAct.GetColumnValue("amt")
+    End Sub
+
+    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView_INH, "INH_BDG_def.xml",, "Select top 1 * from vw_INH")
+        Else
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+    End Sub
+
+    Private Sub cmdNewProfActD_Click(sender As Object, e As EventArgs) Handles cmdNewProfActD.Click
+        LayoutControlGroup21.Enabled = True
+        Cls.ClearGroupCtrls(LayoutControlGroup21)
+        txtCodeBcct.Text = DBQ.GetNextId("PROF_ACT_D")
+        ModePROFACTD = FormMode.NewRecord
+
+    End Sub
+
+    Private Sub DeleteRecordPROFACTD()
+        Dim sSQL As String
+        Try
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM PROF_ACT_D WHERE ID = '" & GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString & "'"
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmdDeleteProfActD_Click(sender As Object, e As EventArgs) Handles cmdDeleteProfActD.Click
+        DeleteRecordPROFACTD()
+    End Sub
+
+    Private Sub cmdRefreshProfActD_Click(sender As Object, e As EventArgs) Handles cmdRefreshProfActD.Click
+        Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
+    End Sub
 
 
 

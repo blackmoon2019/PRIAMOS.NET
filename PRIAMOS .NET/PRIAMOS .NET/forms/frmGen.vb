@@ -3,9 +3,13 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading
 Imports DevExpress.CodeParser
+Imports DevExpress.Xpo.Metadata.Helpers
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraExport.Xls
+Imports DevExpress.XtraPrinting.Shape.Native
+Imports DevExpress.XtraSpreadsheet.Model
+
 Public Class frmGen
     Private sID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
@@ -96,6 +100,21 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "PROF_ACT"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.PROF_ACT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("PROF_ACT")
+
                             Case "ANN_GRPS"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "ANN_GRPS", LayoutControl1,,, sGuid, True)
@@ -411,6 +430,15 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "PROF_ACT"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.PROF_ACT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
                             Case "ANN_GRPS"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "ANN_GRPS", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -631,6 +659,14 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
+
+                Case "PROF_ACT"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("PROF_ACT")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_PROF_ACT where id ='" + sID + "'")
+                    End If
+
                 Case "ANN_GRPS"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("ANN_GRPS")
@@ -782,6 +818,15 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+
+                    Case "PROF_ACT"
+                        If CalledFromCtrl Then
+                            FillCbo.PROF_ACT(CtrlCombo)
+                        Else
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_TASKS_CAT")
+                        End If
+
                     Case "ANN_GRPS"
                         If CalledFromCtrl Then
                             FillCbo.ANN_GRPS(CtrlCombo)

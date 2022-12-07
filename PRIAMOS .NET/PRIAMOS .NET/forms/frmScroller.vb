@@ -221,6 +221,7 @@ Public Class frmScroller
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CONTACTS" : sSQL = "DELETE FROM CONTACTS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_PROF_ACT" : sSQL = "DELETE FROM PROF_ACT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -310,6 +311,7 @@ Public Class frmScroller
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_CONTACTS" : sSQL = "DELETE FROM CONTACTS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_PROF_ACT" : sSQL = "DELETE FROM PROF_ACT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_INH"
 
                         ' Επαναφέρουμε σε διαθέσιμη την ώρα μέτρησης που επιλέχθηκε στο συγκεκριμένο παραστατικό
@@ -992,6 +994,37 @@ Public Class frmScroller
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+            Case "vw_PROF_ACT"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Επαγγελματικές Δραστηριότητες"
+                fGen.DataTable = "PROF_ACT"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.FormScroller = Me
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Περιγραφή"
+                fGen.chk1.Text = "Αυτόματη Καταχώρηση Είσπραξης"
+                fGen.L8.Text = "Ποσό"
+                fGen.L10.Text = "Ημερομηνία Έναρξης"
+                fGen.chk1.Tag = "autoCreateCol,0,1,2"
+                fGen.txtNum.Tag = "amt,0,1,2"
+                fGen.txtNum.Properties.MaskSettings.MaskExpression = "c2"
+                fGen.txtNum.Properties.DisplayFormat.FormatType = FormatType.Numeric
+                fGen.txtNum.Properties.DisplayFormat.FormatString = "c"
+                fGen.txtNum.Properties.EditFormat.FormatType = FormatType.Numeric
+                fGen.txtNum.Properties.EditFormat.FormatString = "n2"
+                fGen.txtNum.Text = "0,00€"
+                fGen.L10.Control.Tag = "dtEvery,0,1,2"
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT",
                  "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS"
                 Dim fGen As frmGen = New frmGen()
@@ -1292,7 +1325,35 @@ Public Class frmScroller
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
-
+            Case "vw_PROF_ACT"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Επαγγελματικές Δραστηριότητες"
+                fGen.DataTable = "PROF_ACT"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.FormScroller = Me
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Περιγραφή"
+                fGen.chk1.Text = "Αυτόματη Καταχώρηση Είσπραξης"
+                fGen.L8.Text = "Ποσό"
+                fGen.L10.Text = "Ημερομηνία Έναρξης"
+                fGen.chk1.Tag = "autoCreateCol,0,1,2"
+                fGen.txtNum.Tag = "amt,0,1,2"
+                fGen.txtNum.Properties.MaskSettings.MaskExpression = "c2"
+                fGen.txtNum.Properties.DisplayFormat.FormatType = FormatType.Numeric
+                fGen.txtNum.Properties.DisplayFormat.FormatString = "c"
+                fGen.txtNum.Properties.EditFormat.FormatType = FormatType.Numeric
+                fGen.txtNum.Properties.EditFormat.FormatString = "n2"
+                fGen.txtNum.Text = "0,00€"
+                fGen.L10.Control.Tag = "dtEvery,0,1,2"
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL",
                  "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS"
                 Dim fGen As frmGen = New frmGen()

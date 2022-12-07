@@ -49,7 +49,7 @@ Partial Class frmBDG
         Me.NavMaintenance = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavHeating = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavFixedCosts = New DevExpress.XtraBars.Navigation.NavButton()
-        Me.NavTasks = New DevExpress.XtraBars.Navigation.NavButton()
+        Me.NavProfActD = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavHeatingInvoices = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavDecontamination = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavBoiler = New DevExpress.XtraBars.Navigation.NavButton()
@@ -427,7 +427,63 @@ Partial Class frmBDG
         Me.LayoutControlItem101 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem103 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem104 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.XtraTabPage17 = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabProfActD = New DevExpress.XtraTab.XtraTabPage()
+        Me.LayoutControl6Jobs = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdRefreshProfActD = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdDeleteProfActD = New DevExpress.XtraEditors.SimpleButton()
+        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
+        Me.VwPROFACTDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
+        Me.GridView10 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colprofActID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemProfAct = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.VwPROFACTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.colProfActNam = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colprofDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcctID1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemWorkShop = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet4 = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.colcctName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colamt1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcmt1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colautoCreateCol = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colbdgID3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcode3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreatedBy = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreatedOn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colCreateUSR = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colID3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMachineName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedBy3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedOn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colModifiedUSR = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colnam1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmdSaveProfActD = New DevExpress.XtraEditors.SimpleButton()
+        Me.cboProfAct = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cboWorkshop = New DevExpress.XtraEditors.LookUpEdit()
+        Me.MemoEdit1 = New DevExpress.XtraEditors.MemoEdit()
+        Me.txtProfActDAmt = New DevExpress.XtraEditors.TextEdit()
+        Me.dtProfActD = New DevExpress.XtraEditors.DateEdit()
+        Me.txtCodeProfActD = New DevExpress.XtraEditors.TextEdit()
+        Me.cmdNewProfActD = New DevExpress.XtraEditors.SimpleButton()
+        Me.LayoutControlGroup21 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem153 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlGroup24 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem151 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem149 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem148 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem147 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem7 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem154 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem155 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem152 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem8 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem30 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem29 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem156 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem157 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem158 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabHeatingInvoices = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl4InvHeatGas = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdGInvEdit = New DevExpress.XtraEditors.CheckButton()
@@ -609,417 +665,456 @@ Partial Class frmBDG
         Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
         Me.ANN_GRPSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.ANN_GRPSTableAdapter()
         Me.BDGKeysManagerTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.BDGKeysManagerTableAdapter()
-        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBCCTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCCTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPRFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Maintab, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Maintab.SuspendLayout()
-        Me.tabBDG.SuspendLayout()
-        CType(Me.LayoutControl1BDG, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl1BDG.SuspendLayout()
-        CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPane1.SuspendLayout()
-        Me.TabNavigationPage1.SuspendLayout()
-        CType(Me.LayoutControl2BDG_1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2BDG_1.SuspendLayout()
-        CType(Me.lstData, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtAFM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboDOY.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwDOYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboManager.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtAam.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtIam1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtIam.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboKeysManager.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BDGKeysManagerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem96, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem124, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem125, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem114, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem132, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem145, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem146, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabNavigationPage2.SuspendLayout()
-        CType(Me.LayoutControl2BDG_2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2BDG_2.SuspendLayout()
-        CType(Me.cboDebitUsr.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tmIN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tmOUT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbogrp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup22, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem139, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem140, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem141, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem143, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabNavigationPage3.SuspendLayout()
-        CType(Me.LayoutControl2BDG_3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2BDG_3.SuspendLayout()
-        CType(Me.chkMLC, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabNavigationPage4.SuspendLayout()
-        CType(Me.LayoutControl2BDG_4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2BDG_4.SuspendLayout()
-        CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MemoEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup19, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTK.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtNam.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboAREAS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboADR.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtAR.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboCOU.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkPRD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtDTS.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtDTS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOldCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem75, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem33, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem97, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem137, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem142, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem144, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabManage.SuspendLayout()
-        CType(Me.LayoutControl2BManage, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2BManage.SuspendLayout()
-        CType(Me.txtPayDEI.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkCertified.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkElevator.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtwRegisterNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtwCounter.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtwName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfServiceNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfPaymentCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfCounter.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ePaymentCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txteName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txteCounter.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txteServiceNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfCusCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfHkasp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtcheckcarrier.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtcheckcarrier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtcertifiedEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtcertifiedEndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtfDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtContractNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem90, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem67, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem87, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem79, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem106, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem99, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem78, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem73, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem100, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem80, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem82, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem88, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem105, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem83, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem81, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem84, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem85, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem86, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem89, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem94, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem115, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem116, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem120, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem25, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabHeating.SuspendLayout()
-        CType(Me.LayoutControl3Heating, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl3Heating.SuspendLayout()
-        CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RGTypeHeating.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdAPTAHPB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtMes.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtLpcH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtLpcB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCalH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCalB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RGBolier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboBefMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtLpcH1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtLpcH11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem38, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem92, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem131, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem36, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem33, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem136, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabMaintenance.SuspendLayout()
-        CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl4Maintenance.SuspendLayout()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemLookUpEditCCT, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCCTPFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemLookUpEditPRF, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboPrf.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtComments1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtCodeBcct.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem108, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem110, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem111, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem109, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem36, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem112, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem117, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem118, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem119, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem113, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem39, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabFixedCosts.SuspendLayout()
-        CType(Me.LayoutControl5FixedCosts, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl5FixedCosts.SuspendLayout()
-        CType(Me.grdIEP, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwIEPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem98, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem102, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem101, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem103, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem104, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabHeatingInvoices.SuspendLayout()
-        CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl4InvHeatGas.SuspendLayout()
-        CType(Me.grdGas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonGas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtGInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtGInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtGInvDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtGInvNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtGInvCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboGInvSup.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvBefMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvLiters.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.grdOil, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonOil, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtOInvCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboOInvSup.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtGInvFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem51, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem54, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem50, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem48, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem47, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem19, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem24, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem69, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem71, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem65, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem77, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem64, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem62, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem60, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem59, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem63, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem21, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem22, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem27, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem72, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem74, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem66, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem70, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem76, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabAPM.SuspendLayout()
-        CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl11APM.SuspendLayout()
-        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem93, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem107, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem95, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabINH.SuspendLayout()
-        CType(Me.LayoutControl12INH, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl12INH.SuspendLayout()
-        CType(Me.GridControl10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView_INH, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem242, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem243, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem244, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem245, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem246, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem247, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem138, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabBDG_F.SuspendLayout()
-        CType(Me.LayoutControl13BDG_F, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl13BDG_F.SuspendLayout()
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl1.SuspendLayout()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBDGFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemButtonEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem128, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem133, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem134, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem135, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem123, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem122, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem129, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem130, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem150, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitContainerControl1.Panel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainerControl1.Panel1.SuspendLayout()
-        CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainerControl1.Panel2.SuspendLayout()
-        Me.SplitContainerControl1.SuspendLayout()
-        Me.SuspendLayout()
+        Me.Vw_PROF_ACT_DTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_PROF_ACT_DTableAdapter()
+        Me.Vw_PROF_ACTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_PROF_ACTTableAdapter()
+        Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
+        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwBCCTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwCCTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwPRFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Maintab, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.Maintab.SuspendLayout
+        Me.tabBDG.SuspendLayout
+        CType(Me.LayoutControl1BDG, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl1BDG.SuspendLayout
+        CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPane1.SuspendLayout
+        Me.TabNavigationPage1.SuspendLayout
+        CType(Me.LayoutControl2BDG_1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2BDG_1.SuspendLayout
+        CType(Me.lstData, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtAFM.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboDOY.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwDOYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboManager.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtAam.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtIam1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtIam.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboKeysManager.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BDGKeysManagerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem96, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem124, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem125, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem114, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem132, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem145, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem146, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabNavigationPage2.SuspendLayout
+        CType(Me.LayoutControl2BDG_2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2BDG_2.SuspendLayout
+        CType(Me.cboDebitUsr.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tmIN.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tmOUT.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cbogrp.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup22, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem139, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem140, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem141, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem143, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabNavigationPage3.SuspendLayout
+        CType(Me.LayoutControl2BDG_3, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2BDG_3.SuspendLayout
+        CType(Me.chkMLC, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup23, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabNavigationPage4.SuspendLayout
+        CType(Me.LayoutControl2BDG_4, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2BDG_4.SuspendLayout
+        CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.MemoEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup19, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTK.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtNam.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboAREAS.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboADR.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtAR.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboCOU.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkPRD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtDTS.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtDTS.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOldCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem75, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem33, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem97, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem137, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem142, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem144, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabManage.SuspendLayout
+        CType(Me.LayoutControl2BManage, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2BManage.SuspendLayout
+        CType(Me.txtPayDEI.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkCertified.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.chkElevator.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtwRegisterNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtwCounter.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtwName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfServiceNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfPaymentCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfCounter.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ePaymentCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txteName.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txteCounter.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txteServiceNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfCusCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfHkasp.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtcheckcarrier.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtcheckcarrier.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtcertifiedEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtcertifiedEndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtfDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtContractNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem90, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem67, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem87, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem79, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem106, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem99, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem78, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem73, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem100, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem80, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem82, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem88, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem105, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem83, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem81, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem84, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem85, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem86, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem89, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup14, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem94, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem115, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem116, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem120, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem25, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabHeating.SuspendLayout
+        CType(Me.LayoutControl3Heating, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl3Heating.SuspendLayout
+        CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RGTypeHeating.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdAPTAHPB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtMes.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtLpcH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtLpcB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCalH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCalB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RGBolier.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboBefMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtLpcH1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtLpcH11.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem38, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem92, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem131, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem36, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem33, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem136, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabMaintenance.SuspendLayout
+        CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl4Maintenance.SuspendLayout
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemLookUpEditCCT, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwCCTPFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Priamos_NETDataSet1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemLookUpEditPRF, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboPrf.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtComments1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCodeBcct.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem108, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem110, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem111, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem109, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem36, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem37, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem112, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem117, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem118, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem119, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem113, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem39, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabFixedCosts.SuspendLayout
+        CType(Me.LayoutControl5FixedCosts, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl5FixedCosts.SuspendLayout
+        CType(Me.grdIEP, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwIEPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem98, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem102, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem101, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem103, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem104, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabProfActD.SuspendLayout
+        CType(Me.LayoutControl6Jobs, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl6Jobs.SuspendLayout
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwPROFACTDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemProfAct, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwPROFACTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemWorkShop, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Priamos_NETDataSet4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboProfAct.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboWorkshop.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtProfActDAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtProfActD.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtProfActD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCodeProfActD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup21, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem153, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup24, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem151, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem149, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem148, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem147, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem154, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem155, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem152, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem30, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem29, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem156, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem157, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem158, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabHeatingInvoices.SuspendLayout
+        CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl4InvHeatGas.SuspendLayout
+        CType(Me.grdGas, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemButtonGas, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboGInvSup.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvBefMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvLiters.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.grdOil, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemButtonOil, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboOInvSup.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem51, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem54, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem50, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem48, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem47, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem19, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem24, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem69, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem71, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem65, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem77, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem64, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem62, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem60, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem59, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem63, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem21, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem22, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem23, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem27, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem72, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem74, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem66, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem70, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem76, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabAPM.SuspendLayout
+        CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl11APM.SuspendLayout
+        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem93, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem107, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem95, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabINH.SuspendLayout
+        CType(Me.LayoutControl12INH, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl12INH.SuspendLayout
+        CType(Me.GridControl10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView_INH, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup31, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem242, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem243, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem244, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem245, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem246, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem247, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem138, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabBDG_F.SuspendLayout
+        CType(Me.LayoutControl13BDG_F, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl13BDG_F.SuspendLayout
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl1.SuspendLayout
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwBDGFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemButtonEdit4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem128, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem26, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem133, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem134, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem135, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem123, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem122, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem129, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem130, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup16, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem150, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem28, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitContainerControl1.Panel1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SplitContainerControl1.Panel1.SuspendLayout
+        CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SplitContainerControl1.Panel2.SuspendLayout
+        Me.SplitContainerControl1.SuspendLayout
+        Me.SuspendLayout
         '
         'GridView7
         '
@@ -1039,7 +1134,7 @@ Partial Class frmBDG
         Me.grdAPM.MainView = Me.GridView5
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPM.Name = "grdAPM"
-        Me.grdAPM.Size = New System.Drawing.Size(2177, 1307)
+        Me.grdAPM.Size = New System.Drawing.Size(2177, 1270)
         Me.grdAPM.TabIndex = 22
         Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5, Me.GridView7})
         '
@@ -1084,7 +1179,7 @@ Partial Class frmBDG
         Me.TileNavPane1.Buttons.Add(Me.NavMaintenance)
         Me.TileNavPane1.Buttons.Add(Me.NavHeating)
         Me.TileNavPane1.Buttons.Add(Me.NavFixedCosts)
-        Me.TileNavPane1.Buttons.Add(Me.NavTasks)
+        Me.TileNavPane1.Buttons.Add(Me.NavProfActD)
         Me.TileNavPane1.Buttons.Add(Me.NavHeatingInvoices)
         Me.TileNavPane1.Buttons.Add(Me.NavDecontamination)
         Me.TileNavPane1.Buttons.Add(Me.NavBoiler)
@@ -1137,11 +1232,11 @@ Partial Class frmBDG
         Me.NavFixedCosts.Caption = "Πάγια Έξοδα"
         Me.NavFixedCosts.Name = "NavFixedCosts"
         '
-        'NavTasks
+        'NavProfActD
         '
-        Me.NavTasks.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
-        Me.NavTasks.Caption = "Εργασίες"
-        Me.NavTasks.Name = "NavTasks"
+        Me.NavProfActD.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
+        Me.NavProfActD.Caption = "Εργασίες"
+        Me.NavProfActD.Name = "NavProfActD"
         '
         'NavHeatingInvoices
         '
@@ -1635,17 +1730,17 @@ Partial Class frmBDG
         Me.Maintab.Margin = New System.Windows.Forms.Padding(5)
         Me.Maintab.Name = "Maintab"
         Me.Maintab.SelectedTabPage = Me.tabBDG
-        Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[False]
+        Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[True]
         Me.Maintab.Size = New System.Drawing.Size(2235, 1335)
         Me.Maintab.TabIndex = 1
-        Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.XtraTabPage17, Me.tabHeatingInvoices, Me.XtraTabPage19, Me.XtraTabPage20, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
+        Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.tabProfActD, Me.tabHeatingInvoices, Me.XtraTabPage19, Me.XtraTabPage20, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
         '
         'tabBDG
         '
         Me.tabBDG.Controls.Add(Me.LayoutControl1BDG)
         Me.tabBDG.Margin = New System.Windows.Forms.Padding(5)
         Me.tabBDG.Name = "tabBDG"
-        Me.tabBDG.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabBDG.Size = New System.Drawing.Size(2231, 1294)
         Me.tabBDG.Text = "Στοιχεία"
         '
         'LayoutControl1BDG
@@ -1675,7 +1770,7 @@ Partial Class frmBDG
         Me.LayoutControl1BDG.Name = "LayoutControl1BDG"
         Me.LayoutControl1BDG.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1840, 507, 936, 964)
         Me.LayoutControl1BDG.Root = Me.Root
-        Me.LayoutControl1BDG.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl1BDG.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl1BDG.TabIndex = 25
         Me.LayoutControl1BDG.Text = "LayoutControl1"
         '
@@ -1691,9 +1786,9 @@ Partial Class frmBDG
         Me.TabPane1.PageProperties.AppearanceCaption.Options.UseBackColor = True
         Me.TabPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText
         Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2, Me.TabNavigationPage3, Me.TabNavigationPage4})
-        Me.TabPane1.RegularSize = New System.Drawing.Size(914, 892)
+        Me.TabPane1.RegularSize = New System.Drawing.Size(914, 855)
         Me.TabPane1.SelectedPage = Me.TabNavigationPage1
-        Me.TabPane1.Size = New System.Drawing.Size(914, 892)
+        Me.TabPane1.Size = New System.Drawing.Size(914, 855)
         Me.TabPane1.TabIndex = 61
         Me.TabPane1.Text = "TabPane1"
         '
@@ -1704,7 +1799,7 @@ Partial Class frmBDG
         Me.TabNavigationPage1.Name = "TabNavigationPage1"
         Me.TabNavigationPage1.Properties.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
         Me.TabNavigationPage1.Properties.AppearanceCaption.Options.UseBorderColor = True
-        Me.TabNavigationPage1.Size = New System.Drawing.Size(914, 827)
+        Me.TabNavigationPage1.Size = New System.Drawing.Size(914, 790)
         '
         'LayoutControl2BDG_1
         '
@@ -1724,7 +1819,7 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_1.Name = "LayoutControl2BDG_1"
         Me.LayoutControl2BDG_1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1018, 907, 1137, 700)
         Me.LayoutControl2BDG_1.Root = Me.LayoutControlGroup20
-        Me.LayoutControl2BDG_1.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControl2BDG_1.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControl2BDG_1.TabIndex = 0
         Me.LayoutControl2BDG_1.Text = "LayoutControl2"
         '
@@ -1735,7 +1830,7 @@ Partial Class frmBDG
         Me.lstData.Location = New System.Drawing.Point(12, 259)
         Me.lstData.Margin = New System.Windows.Forms.Padding(5)
         Me.lstData.Name = "lstData"
-        Me.lstData.Size = New System.Drawing.Size(890, 64)
+        Me.lstData.Size = New System.Drawing.Size(890, 51)
         Me.lstData.StyleController = Me.LayoutControl2BDG_1
         Me.lstData.TabIndex = 45
         Me.lstData.Visible = False
@@ -1915,7 +2010,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup20.GroupBordersVisible = False
         Me.LayoutControlGroup20.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem96, Me.LayoutControlItem124, Me.LayoutControlItem125, Me.LayoutControlItem114, Me.LayoutControlItem41, Me.LayoutControlItem17, Me.LayoutControlItem12, Me.LayoutControlItem16, Me.LayoutControlItem132, Me.LayoutControlItem145, Me.EmptySpaceItem3, Me.EmptySpaceItem6, Me.LayoutControlItem146})
         Me.LayoutControlGroup20.Name = "Root"
-        Me.LayoutControlGroup20.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControlGroup20.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControlGroup20.TextVisible = False
         '
         'LayoutControlItem96
@@ -2041,9 +2136,9 @@ Partial Class frmBDG
         'EmptySpaceItem6
         '
         Me.EmptySpaceItem6.AllowHotTrack = False
-        Me.EmptySpaceItem6.Location = New System.Drawing.Point(0, 315)
+        Me.EmptySpaceItem6.Location = New System.Drawing.Point(0, 302)
         Me.EmptySpaceItem6.Name = "EmptySpaceItem6"
-        Me.EmptySpaceItem6.Size = New System.Drawing.Size(894, 492)
+        Me.EmptySpaceItem6.Size = New System.Drawing.Size(894, 468)
         Me.EmptySpaceItem6.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem146
@@ -2051,7 +2146,7 @@ Partial Class frmBDG
         Me.LayoutControlItem146.Control = Me.lstData
         Me.LayoutControlItem146.Location = New System.Drawing.Point(0, 247)
         Me.LayoutControlItem146.Name = "LayoutControlItem146"
-        Me.LayoutControlItem146.Size = New System.Drawing.Size(894, 68)
+        Me.LayoutControlItem146.Size = New System.Drawing.Size(894, 55)
         Me.LayoutControlItem146.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem146.TextVisible = False
         Me.LayoutControlItem146.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -2063,7 +2158,7 @@ Partial Class frmBDG
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
         Me.TabNavigationPage2.Properties.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question
         Me.TabNavigationPage2.Properties.AppearanceCaption.Options.UseBorderColor = True
-        Me.TabNavigationPage2.Size = New System.Drawing.Size(914, 827)
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(914, 790)
         '
         'LayoutControl2BDG_2
         '
@@ -2076,7 +2171,7 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_2.Name = "LayoutControl2BDG_2"
         Me.LayoutControl2BDG_2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1018, 907, 1137, 700)
         Me.LayoutControl2BDG_2.Root = Me.LayoutControlGroup22
-        Me.LayoutControl2BDG_2.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControl2BDG_2.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControl2BDG_2.TabIndex = 0
         Me.LayoutControl2BDG_2.Text = "LayoutControl3"
         '
@@ -2169,7 +2264,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup22.GroupBordersVisible = False
         Me.LayoutControlGroup22.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem139, Me.LayoutControlItem140, Me.LayoutControlItem141, Me.LayoutControlItem143})
         Me.LayoutControlGroup22.Name = "Root"
-        Me.LayoutControlGroup22.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControlGroup22.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControlGroup22.TextVisible = False
         '
         'LayoutControlItem139
@@ -2216,7 +2311,7 @@ Partial Class frmBDG
         Me.LayoutControlItem143.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem143.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem143.Name = "LayoutControlItem143"
-        Me.LayoutControlItem143.Size = New System.Drawing.Size(894, 723)
+        Me.LayoutControlItem143.Size = New System.Drawing.Size(894, 686)
         Me.LayoutControlItem143.Text = "Κατηγορίες Ανακοινώσεων"
         Me.LayoutControlItem143.TextSize = New System.Drawing.Size(218, 23)
         '
@@ -2227,7 +2322,7 @@ Partial Class frmBDG
         Me.TabNavigationPage3.Name = "TabNavigationPage3"
         Me.TabNavigationPage3.Properties.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
         Me.TabNavigationPage3.Properties.AppearanceCaption.Options.UseBorderColor = True
-        Me.TabNavigationPage3.Size = New System.Drawing.Size(914, 827)
+        Me.TabNavigationPage3.Size = New System.Drawing.Size(914, 790)
         '
         'LayoutControl2BDG_3
         '
@@ -2237,7 +2332,7 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_3.Name = "LayoutControl2BDG_3"
         Me.LayoutControl2BDG_3.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1018, 907, 1137, 700)
         Me.LayoutControl2BDG_3.Root = Me.LayoutControlGroup23
-        Me.LayoutControl2BDG_3.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControl2BDG_3.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControl2BDG_3.TabIndex = 0
         Me.LayoutControl2BDG_3.Text = "LayoutControl4"
         '
@@ -2248,7 +2343,7 @@ Partial Class frmBDG
         Me.chkMLC.Location = New System.Drawing.Point(12, 12)
         Me.chkMLC.Margin = New System.Windows.Forms.Padding(5)
         Me.chkMLC.Name = "chkMLC"
-        Me.chkMLC.Size = New System.Drawing.Size(890, 803)
+        Me.chkMLC.Size = New System.Drawing.Size(890, 766)
         Me.chkMLC.SortOrder = System.Windows.Forms.SortOrder.Ascending
         Me.chkMLC.StyleController = Me.LayoutControl2BDG_3
         Me.chkMLC.TabIndex = 28
@@ -2260,7 +2355,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup23.GroupBordersVisible = False
         Me.LayoutControlGroup23.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem28})
         Me.LayoutControlGroup23.Name = "Root"
-        Me.LayoutControlGroup23.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControlGroup23.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControlGroup23.TextVisible = False
         '
         'LayoutControlItem28
@@ -2268,7 +2363,7 @@ Partial Class frmBDG
         Me.LayoutControlItem28.Control = Me.chkMLC
         Me.LayoutControlItem28.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem28.Name = "LayoutControlItem28"
-        Me.LayoutControlItem28.Size = New System.Drawing.Size(894, 807)
+        Me.LayoutControlItem28.Size = New System.Drawing.Size(894, 770)
         Me.LayoutControlItem28.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem28.TextVisible = False
         '
@@ -2279,7 +2374,7 @@ Partial Class frmBDG
         Me.TabNavigationPage4.Name = "TabNavigationPage4"
         Me.TabNavigationPage4.Properties.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Warning
         Me.TabNavigationPage4.Properties.AppearanceCaption.Options.UseBorderColor = True
-        Me.TabNavigationPage4.Size = New System.Drawing.Size(914, 827)
+        Me.TabNavigationPage4.Size = New System.Drawing.Size(914, 790)
         '
         'LayoutControl2BDG_4
         '
@@ -2289,7 +2384,7 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl2BDG_4.Name = "LayoutControl2BDG_4"
         Me.LayoutControl2BDG_4.Root = Me.LayoutControlGroup19
-        Me.LayoutControl2BDG_4.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControl2BDG_4.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControl2BDG_4.TabIndex = 0
         Me.LayoutControl2BDG_4.Text = "LayoutControl2"
         '
@@ -2298,17 +2393,17 @@ Partial Class frmBDG
         Me.txtComments.Location = New System.Drawing.Point(12, 36)
         Me.txtComments.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(890, 371)
+        Me.txtComments.Size = New System.Drawing.Size(890, 353)
         Me.txtComments.StyleController = Me.LayoutControl2BDG_4
         Me.txtComments.TabIndex = 17
         Me.txtComments.Tag = "cmt,0,1,2"
         '
         'MemoEdit11
         '
-        Me.MemoEdit11.Location = New System.Drawing.Point(12, 437)
+        Me.MemoEdit11.Location = New System.Drawing.Point(12, 419)
         Me.MemoEdit11.Margin = New System.Windows.Forms.Padding(5)
         Me.MemoEdit11.Name = "MemoEdit11"
-        Me.MemoEdit11.Size = New System.Drawing.Size(890, 378)
+        Me.MemoEdit11.Size = New System.Drawing.Size(890, 359)
         Me.MemoEdit11.StyleController = Me.LayoutControl2BDG_4
         Me.MemoEdit11.TabIndex = 44
         Me.MemoEdit11.Tag = "notes,0,1,2"
@@ -2319,7 +2414,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup19.GroupBordersVisible = False
         Me.LayoutControlGroup19.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem14, Me.LayoutControlItem13})
         Me.LayoutControlGroup19.Name = "LayoutControlGroup19"
-        Me.LayoutControlGroup19.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControlGroup19.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControlGroup19.TextVisible = False
         '
         'LayoutControlItem14
@@ -2330,7 +2425,7 @@ Partial Class frmBDG
         Me.LayoutControlItem14.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(894, 399)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(894, 381)
         Me.LayoutControlItem14.Text = "Γενικά Σχόλια Πολυκατοικίας"
         Me.LayoutControlItem14.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem14.TextLocation = DevExpress.Utils.Locations.Top
@@ -2342,9 +2437,9 @@ Partial Class frmBDG
         Me.LayoutControlItem13.Control = Me.MemoEdit11
         Me.LayoutControlItem13.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem13.CustomizationFormText = "Σημειώσεις"
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 399)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 381)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(894, 408)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(894, 389)
         Me.LayoutControlItem13.Text = "Σημειώσεις"
         Me.LayoutControlItem13.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(93, 23)
@@ -2364,7 +2459,7 @@ Partial Class frmBDG
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(12, 1280)
+        Me.cmdSave.Location = New System.Drawing.Point(12, 1243)
         Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(914, 39)
@@ -2379,7 +2474,7 @@ Partial Class frmBDG
         Me.grdAPT.MainView = Me.GridView1
         Me.grdAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPT.Name = "grdAPT"
-        Me.grdAPT.Size = New System.Drawing.Size(1259, 1278)
+        Me.grdAPT.Size = New System.Drawing.Size(1259, 1241)
         Me.grdAPT.TabIndex = 21
         Me.grdAPT.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -2602,7 +2697,7 @@ Partial Class frmBDG
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem3, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.EmptySpaceItem2, Me.LayoutControlItem7, Me.EmptySpaceItem4, Me.EmptySpaceItem5, Me.LayoutControlItem18, Me.SimpleLabelItem1, Me.LayoutControlItem2, Me.LayoutControlItem11, Me.LayoutControlItem20, Me.LayoutControlItem21, Me.LayoutControlItem22, Me.LayoutControlItem23, Me.EmptySpaceItem1, Me.LayoutControlItem75, Me.LayoutControlItem4, Me.EmptySpaceItem33, Me.LayoutControlItem97, Me.LayoutControlItem137, Me.LayoutControlItem142, Me.LayoutControlItem144, Me.LayoutControlItem15})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2231, 1331)
+        Me.Root.Size = New System.Drawing.Size(2231, 1294)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -2687,7 +2782,7 @@ Partial Class frmBDG
         Me.LayoutControlItem18.Control = Me.grdAPT
         Me.LayoutControlItem18.Location = New System.Drawing.Point(948, 29)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(1263, 1282)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(1263, 1245)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
         '
@@ -2767,13 +2862,13 @@ Partial Class frmBDG
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(918, 258)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(30, 28)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(30, 27)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem75
         '
         Me.LayoutControlItem75.Control = Me.cmdSave
-        Me.LayoutControlItem75.Location = New System.Drawing.Point(0, 1268)
+        Me.LayoutControlItem75.Location = New System.Drawing.Point(0, 1231)
         Me.LayoutControlItem75.Name = "LayoutControlItem75"
         Me.LayoutControlItem75.Size = New System.Drawing.Size(918, 43)
         Me.LayoutControlItem75.TextSize = New System.Drawing.Size(0, 0)
@@ -2794,9 +2889,9 @@ Partial Class frmBDG
         'EmptySpaceItem33
         '
         Me.EmptySpaceItem33.AllowHotTrack = False
-        Me.EmptySpaceItem33.Location = New System.Drawing.Point(918, 286)
+        Me.EmptySpaceItem33.Location = New System.Drawing.Point(918, 285)
         Me.EmptySpaceItem33.Name = "EmptySpaceItem33"
-        Me.EmptySpaceItem33.Size = New System.Drawing.Size(30, 1025)
+        Me.EmptySpaceItem33.Size = New System.Drawing.Size(30, 989)
         Me.EmptySpaceItem33.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem97
@@ -2836,7 +2931,7 @@ Partial Class frmBDG
         Me.LayoutControlItem144.Control = Me.TabPane1
         Me.LayoutControlItem144.Location = New System.Drawing.Point(0, 372)
         Me.LayoutControlItem144.Name = "LayoutControlItem144"
-        Me.LayoutControlItem144.Size = New System.Drawing.Size(918, 896)
+        Me.LayoutControlItem144.Size = New System.Drawing.Size(918, 859)
         Me.LayoutControlItem144.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem144.TextVisible = False
         '
@@ -2854,7 +2949,7 @@ Partial Class frmBDG
         Me.tabManage.Controls.Add(Me.LayoutControl2BManage)
         Me.tabManage.Margin = New System.Windows.Forms.Padding(5)
         Me.tabManage.Name = "tabManage"
-        Me.tabManage.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabManage.Size = New System.Drawing.Size(2231, 1294)
         Me.tabManage.Text = "Διαχείριση"
         '
         'LayoutControl2BManage
@@ -2893,7 +2988,7 @@ Partial Class frmBDG
         Me.LayoutControl2BManage.Name = "LayoutControl2BManage"
         Me.LayoutControl2BManage.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1660, 338, 922, 768)
         Me.LayoutControl2BManage.Root = Me.LayoutControlGroup7
-        Me.LayoutControl2BManage.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl2BManage.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl2BManage.TabIndex = 4
         Me.LayoutControl2BManage.Text = "LayoutControl4"
         '
@@ -3218,7 +3313,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup7.GroupBordersVisible = False
         Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem90, Me.LayoutControlGroup8, Me.LayoutControlGroup9, Me.LayoutControlGroup10, Me.LayoutControlGroup14, Me.EmptySpaceItem25})
         Me.LayoutControlGroup7.Name = "Root"
-        Me.LayoutControlGroup7.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup7.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup7.TextVisible = False
         '
         'LayoutControlItem90
@@ -3226,7 +3321,7 @@ Partial Class frmBDG
         Me.LayoutControlItem90.Control = Me.cmdSaveManage
         Me.LayoutControlItem90.Location = New System.Drawing.Point(1861, 1096)
         Me.LayoutControlItem90.Name = "LayoutControlItem90"
-        Me.LayoutControlItem90.Size = New System.Drawing.Size(350, 215)
+        Me.LayoutControlItem90.Size = New System.Drawing.Size(350, 178)
         Me.LayoutControlItem90.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem90.TextVisible = False
         '
@@ -3566,7 +3661,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem25.AllowHotTrack = False
         Me.EmptySpaceItem25.Location = New System.Drawing.Point(0, 1096)
         Me.EmptySpaceItem25.Name = "EmptySpaceItem25"
-        Me.EmptySpaceItem25.Size = New System.Drawing.Size(1861, 215)
+        Me.EmptySpaceItem25.Size = New System.Drawing.Size(1861, 178)
         Me.EmptySpaceItem25.TextSize = New System.Drawing.Size(0, 0)
         '
         'tabHeating
@@ -3574,7 +3669,7 @@ Partial Class frmBDG
         Me.tabHeating.Controls.Add(Me.LayoutControl3Heating)
         Me.tabHeating.Margin = New System.Windows.Forms.Padding(5)
         Me.tabHeating.Name = "tabHeating"
-        Me.tabHeating.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabHeating.Size = New System.Drawing.Size(2231, 1294)
         Me.tabHeating.Text = "Θέρμανση"
         '
         'LayoutControl3Heating
@@ -3610,7 +3705,7 @@ Partial Class frmBDG
         Me.LayoutControl3Heating.Name = "LayoutControl3Heating"
         Me.LayoutControl3Heating.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(989, 583, 805, 1019)
         Me.LayoutControl3Heating.Root = Me.LayoutControlGroup1
-        Me.LayoutControl3Heating.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl3Heating.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl3Heating.TabIndex = 11
         Me.LayoutControl3Heating.Text = "LayoutControl2"
         '
@@ -3628,7 +3723,7 @@ Partial Class frmBDG
         'txtHpb
         '
         Me.txtHpb.EditValue = "0"
-        Me.txtHpb.Location = New System.Drawing.Point(444, 534)
+        Me.txtHpb.Location = New System.Drawing.Point(444, 531)
         Me.txtHpb.Margin = New System.Windows.Forms.Padding(5)
         Me.txtHpb.Name = "txtHpb"
         Me.txtHpb.Properties.DisplayFormat.FormatString = "p0"
@@ -3645,7 +3740,7 @@ Partial Class frmBDG
         'cmdSaveHB
         '
         Me.cmdSaveHB.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveHB.Location = New System.Drawing.Point(12, 1280)
+        Me.cmdSaveHB.Location = New System.Drawing.Point(12, 1243)
         Me.cmdSaveHB.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveHB.Name = "cmdSaveHB"
         Me.cmdSaveHB.Size = New System.Drawing.Size(311, 39)
@@ -3667,7 +3762,7 @@ Partial Class frmBDG
         '
         'cboBtypes
         '
-        Me.cboBtypes.Location = New System.Drawing.Point(76, 492)
+        Me.cboBtypes.Location = New System.Drawing.Point(76, 489)
         Me.cboBtypes.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBtypes.Name = "cboBtypes"
         Me.cboBtypes.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -3688,7 +3783,7 @@ Partial Class frmBDG
         Me.grdAPTAHPB.MainView = Me.GridView2
         Me.grdAPTAHPB.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPTAHPB.Name = "grdAPTAHPB"
-        Me.grdAPTAHPB.Size = New System.Drawing.Size(1547, 1215)
+        Me.grdAPTAHPB.Size = New System.Drawing.Size(1547, 1178)
         Me.grdAPTAHPB.TabIndex = 21
         Me.grdAPTAHPB.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -3838,7 +3933,7 @@ Partial Class frmBDG
         'txtTacB
         '
         Me.txtTacB.EditValue = "0"
-        Me.txtTacB.Location = New System.Drawing.Point(444, 618)
+        Me.txtTacB.Location = New System.Drawing.Point(444, 615)
         Me.txtTacB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtTacB.Name = "txtTacB"
         Me.txtTacB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -3869,7 +3964,7 @@ Partial Class frmBDG
         'txtLpcB
         '
         Me.txtLpcB.EditValue = "0,00"
-        Me.txtLpcB.Location = New System.Drawing.Point(444, 660)
+        Me.txtLpcB.Location = New System.Drawing.Point(444, 657)
         Me.txtLpcB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtLpcB.Name = "txtLpcB"
         Me.txtLpcB.Properties.DisplayFormat.FormatString = "n2"
@@ -3903,7 +3998,7 @@ Partial Class frmBDG
         'txtCalB
         '
         Me.txtCalB.EditValue = "0"
-        Me.txtCalB.Location = New System.Drawing.Point(444, 576)
+        Me.txtCalB.Location = New System.Drawing.Point(444, 573)
         Me.txtCalB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtCalB.Name = "txtCalB"
         Me.txtCalB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -3923,13 +4018,13 @@ Partial Class frmBDG
         Me.RGBolier.Name = "RGBolier"
         Me.RGBolier.Properties.Columns = 2
         Me.RGBolier.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Κοινός", True, "bCommon,0,1,2"), New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Ξεχωριστός", True, "bSeperate,0,1,2")})
-        Me.RGBolier.Size = New System.Drawing.Size(550, 71)
+        Me.RGBolier.Size = New System.Drawing.Size(550, 68)
         Me.RGBolier.StyleController = Me.LayoutControl3Heating
         Me.RGBolier.TabIndex = 33
         '
         'cmdCheckTank
         '
-        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 811)
+        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 808)
         Me.cmdCheckTank.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCheckTank.Name = "cmdCheckTank"
         Me.cmdCheckTank.Size = New System.Drawing.Size(626, 39)
@@ -3970,7 +4065,7 @@ Partial Class frmBDG
         'txtLpcH11
         '
         Me.txtLpcH11.EditValue = "0,0"
-        Me.txtLpcH11.Location = New System.Drawing.Point(444, 702)
+        Me.txtLpcH11.Location = New System.Drawing.Point(444, 699)
         Me.txtLpcH11.Margin = New System.Windows.Forms.Padding(5)
         Me.txtLpcH11.Name = "txtLpcH11"
         Me.txtLpcH11.Properties.DisplayFormat.FormatString = "n1"
@@ -3990,7 +4085,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem31, Me.SimpleLabelItem2, Me.LayoutControlItem43, Me.LayoutControlItem45, Me.LayoutControlItem46, Me.EmptySpaceItem16, Me.LayoutControlItem24, Me.LayoutControlGroup3, Me.LayoutControlGroup2, Me.LayoutControlItem40, Me.LCheckTank, Me.SimpleLabelItem3, Me.SimpleLabelItem4, Me.EmptySpaceItem11, Me.LayoutControlItem33, Me.LayoutControlItem44, Me.LayoutControlItem91, Me.EmptySpaceItem35, Me.LayoutControlItem42, Me.LayoutControlItem136})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem31
@@ -3998,7 +4093,7 @@ Partial Class frmBDG
         Me.LayoutControlItem31.Control = Me.grdAPTAHPB
         Me.LayoutControlItem31.Location = New System.Drawing.Point(660, 92)
         Me.LayoutControlItem31.Name = "LayoutControlItem18"
-        Me.LayoutControlItem31.Size = New System.Drawing.Size(1551, 1219)
+        Me.LayoutControlItem31.Size = New System.Drawing.Size(1551, 1182)
         Me.LayoutControlItem31.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem31.TextVisible = False
         '
@@ -4049,7 +4144,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem16.AllowHotTrack = False
         Me.EmptySpaceItem16.Location = New System.Drawing.Point(630, 215)
         Me.EmptySpaceItem16.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem16.Size = New System.Drawing.Size(30, 1096)
+        Me.EmptySpaceItem16.Size = New System.Drawing.Size(30, 1059)
         Me.EmptySpaceItem16.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem24
@@ -4068,7 +4163,7 @@ Partial Class frmBDG
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem26, Me.LayoutControlItem35, Me.LayoutControlItem37, Me.LayoutControlItem38, Me.LayoutControlItem92, Me.LayoutControlItem131})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 431)
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 428)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(630, 314)
         Me.LayoutControlGroup3.Text = "Boiler"
@@ -4241,7 +4336,7 @@ Partial Class frmBDG
         Me.LayoutControlItem40.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 356)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
-        Me.LayoutControlItem40.Size = New System.Drawing.Size(630, 75)
+        Me.LayoutControlItem40.Size = New System.Drawing.Size(630, 72)
         Me.LayoutControlItem40.Text = "Λέβητας"
         Me.LayoutControlItem40.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(71, 23)
@@ -4250,7 +4345,7 @@ Partial Class frmBDG
         'LCheckTank
         '
         Me.LCheckTank.Control = Me.cmdCheckTank
-        Me.LCheckTank.Location = New System.Drawing.Point(0, 799)
+        Me.LCheckTank.Location = New System.Drawing.Point(0, 796)
         Me.LCheckTank.Name = "LCheckTank"
         Me.LCheckTank.Size = New System.Drawing.Size(630, 43)
         Me.LCheckTank.TextSize = New System.Drawing.Size(0, 0)
@@ -4260,7 +4355,7 @@ Partial Class frmBDG
         '
         Me.SimpleLabelItem3.AllowHotTrack = False
         Me.SimpleLabelItem3.CustomizationFormText = "Τελευταίος Έλεγχος Δεξαμενής στις: "
-        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 745)
+        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 742)
         Me.SimpleLabelItem3.Name = "SimpleLabelItem3"
         Me.SimpleLabelItem3.Size = New System.Drawing.Size(630, 27)
         Me.SimpleLabelItem3.Text = "Τελευταίος Έλεγχος Δεξαμενής στις: "
@@ -4269,7 +4364,7 @@ Partial Class frmBDG
         'SimpleLabelItem4
         '
         Me.SimpleLabelItem4.AllowHotTrack = False
-        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 772)
+        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 769)
         Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
         Me.SimpleLabelItem4.Size = New System.Drawing.Size(630, 27)
         Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
@@ -4278,9 +4373,9 @@ Partial Class frmBDG
         'EmptySpaceItem11
         '
         Me.EmptySpaceItem11.AllowHotTrack = False
-        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 842)
+        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 839)
         Me.EmptySpaceItem11.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem11.Size = New System.Drawing.Size(630, 426)
+        Me.EmptySpaceItem11.Size = New System.Drawing.Size(630, 392)
         Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem33
@@ -4311,7 +4406,7 @@ Partial Class frmBDG
         'LayoutControlItem91
         '
         Me.LayoutControlItem91.Control = Me.cmdSaveHB
-        Me.LayoutControlItem91.Location = New System.Drawing.Point(0, 1268)
+        Me.LayoutControlItem91.Location = New System.Drawing.Point(0, 1231)
         Me.LayoutControlItem91.Name = "LayoutControlItem91"
         Me.LayoutControlItem91.Size = New System.Drawing.Size(315, 43)
         Me.LayoutControlItem91.TextSize = New System.Drawing.Size(0, 0)
@@ -4320,7 +4415,7 @@ Partial Class frmBDG
         'EmptySpaceItem35
         '
         Me.EmptySpaceItem35.AllowHotTrack = False
-        Me.EmptySpaceItem35.Location = New System.Drawing.Point(315, 1268)
+        Me.EmptySpaceItem35.Location = New System.Drawing.Point(315, 1231)
         Me.EmptySpaceItem35.Name = "EmptySpaceItem35"
         Me.EmptySpaceItem35.Size = New System.Drawing.Size(315, 43)
         Me.EmptySpaceItem35.TextSize = New System.Drawing.Size(0, 0)
@@ -4348,7 +4443,7 @@ Partial Class frmBDG
         Me.tabMaintenance.Controls.Add(Me.LayoutControl4Maintenance)
         Me.tabMaintenance.Margin = New System.Windows.Forms.Padding(5)
         Me.tabMaintenance.Name = "tabMaintenance"
-        Me.tabMaintenance.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabMaintenance.Size = New System.Drawing.Size(2231, 1294)
         Me.tabMaintenance.Text = "Συντήρηση"
         '
         'LayoutControl4Maintenance
@@ -4367,14 +4462,14 @@ Partial Class frmBDG
         Me.LayoutControl4Maintenance.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl4Maintenance.Name = "LayoutControl4Maintenance"
         Me.LayoutControl4Maintenance.Root = Me.LayoutControlGroup13
-        Me.LayoutControl4Maintenance.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl4Maintenance.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl4Maintenance.TabIndex = 1
         Me.LayoutControl4Maintenance.Text = "LayoutControl1"
         '
         'cmdSaveBCCT
         '
         Me.cmdSaveBCCT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveBCCT.Location = New System.Drawing.Point(55, 1267)
+        Me.cmdSaveBCCT.Location = New System.Drawing.Point(55, 1230)
         Me.cmdSaveBCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveBCCT.Name = "cmdSaveBCCT"
         Me.cmdSaveBCCT.Size = New System.Drawing.Size(665, 39)
@@ -4385,7 +4480,7 @@ Partial Class frmBDG
         'cmdNewBCCT
         '
         Me.cmdNewBCCT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdNewBCCT.Location = New System.Drawing.Point(12, 94)
+        Me.cmdNewBCCT.Location = New System.Drawing.Point(12, 92)
         Me.cmdNewBCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdNewBCCT.Name = "cmdNewBCCT"
         Me.cmdNewBCCT.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -4396,7 +4491,7 @@ Partial Class frmBDG
         'cmdBCCTRefresh
         '
         Me.cmdBCCTRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdBCCTRefresh.Location = New System.Drawing.Point(12, 180)
+        Me.cmdBCCTRefresh.Location = New System.Drawing.Point(12, 178)
         Me.cmdBCCTRefresh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdBCCTRefresh.Name = "cmdBCCTRefresh"
         Me.cmdBCCTRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -4407,7 +4502,7 @@ Partial Class frmBDG
         'cmddelBCCT
         '
         Me.cmddelBCCT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmddelBCCT.Location = New System.Drawing.Point(12, 137)
+        Me.cmddelBCCT.Location = New System.Drawing.Point(12, 135)
         Me.cmddelBCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cmddelBCCT.Name = "cmddelBCCT"
         Me.cmddelBCCT.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -4424,7 +4519,7 @@ Partial Class frmBDG
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEditCCT, Me.RepositoryItemLookUpEditPRF})
-        Me.GridControl1.Size = New System.Drawing.Size(1482, 1307)
+        Me.GridControl1.Size = New System.Drawing.Size(1482, 1270)
         Me.GridControl1.TabIndex = 54
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView8})
         '
@@ -4657,7 +4752,7 @@ Partial Class frmBDG
         Me.txtComments1.Location = New System.Drawing.Point(55, 211)
         Me.txtComments1.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments1.Name = "txtComments1"
-        Me.txtComments1.Size = New System.Drawing.Size(665, 290)
+        Me.txtComments1.Size = New System.Drawing.Size(665, 276)
         Me.txtComments1.StyleController = Me.LayoutControl4Maintenance
         Me.txtComments1.TabIndex = 17
         Me.txtComments1.Tag = "cmt,0,1,2"
@@ -4682,8 +4777,8 @@ Partial Class frmBDG
         Me.LayoutControlGroup13.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup13.GroupBordersVisible = False
         Me.LayoutControlGroup13.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem108, Me.LayoutControlItem110, Me.LayoutControlItem111, Me.LayoutControlItem109, Me.EmptySpaceItem36, Me.EmptySpaceItem37, Me.LayoutControlGroup15})
-        Me.LayoutControlGroup13.Name = "LayoutControlGroup13"
-        Me.LayoutControlGroup13.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup13.Name = "Root"
+        Me.LayoutControlGroup13.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup13.TextVisible = False
         '
         'LayoutControlItem108
@@ -4691,14 +4786,14 @@ Partial Class frmBDG
         Me.LayoutControlItem108.Control = Me.GridControl1
         Me.LayoutControlItem108.Location = New System.Drawing.Point(725, 0)
         Me.LayoutControlItem108.Name = "LayoutControlItem108"
-        Me.LayoutControlItem108.Size = New System.Drawing.Size(1486, 1311)
+        Me.LayoutControlItem108.Size = New System.Drawing.Size(1486, 1274)
         Me.LayoutControlItem108.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem108.TextVisible = False
         '
         'LayoutControlItem110
         '
         Me.LayoutControlItem110.Control = Me.cmdBCCTRefresh
-        Me.LayoutControlItem110.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem110.Location = New System.Drawing.Point(0, 166)
         Me.LayoutControlItem110.Name = "LayoutControlItem110"
         Me.LayoutControlItem110.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem110.TextSize = New System.Drawing.Size(0, 0)
@@ -4707,7 +4802,7 @@ Partial Class frmBDG
         'LayoutControlItem111
         '
         Me.LayoutControlItem111.Control = Me.cmdNewBCCT
-        Me.LayoutControlItem111.Location = New System.Drawing.Point(0, 82)
+        Me.LayoutControlItem111.Location = New System.Drawing.Point(0, 80)
         Me.LayoutControlItem111.Name = "LayoutControlItem111"
         Me.LayoutControlItem111.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem111.TextSize = New System.Drawing.Size(0, 0)
@@ -4716,7 +4811,7 @@ Partial Class frmBDG
         'LayoutControlItem109
         '
         Me.LayoutControlItem109.Control = Me.cmddelBCCT
-        Me.LayoutControlItem109.Location = New System.Drawing.Point(0, 125)
+        Me.LayoutControlItem109.Location = New System.Drawing.Point(0, 123)
         Me.LayoutControlItem109.Name = "LayoutControlItem109"
         Me.LayoutControlItem109.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem109.TextSize = New System.Drawing.Size(0, 0)
@@ -4727,15 +4822,15 @@ Partial Class frmBDG
         Me.EmptySpaceItem36.AllowHotTrack = False
         Me.EmptySpaceItem36.Location = New System.Drawing.Point(0, 0)
         Me.EmptySpaceItem36.Name = "EmptySpaceItem36"
-        Me.EmptySpaceItem36.Size = New System.Drawing.Size(30, 82)
+        Me.EmptySpaceItem36.Size = New System.Drawing.Size(30, 80)
         Me.EmptySpaceItem36.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem37
         '
         Me.EmptySpaceItem37.AllowHotTrack = False
-        Me.EmptySpaceItem37.Location = New System.Drawing.Point(0, 211)
+        Me.EmptySpaceItem37.Location = New System.Drawing.Point(0, 209)
         Me.EmptySpaceItem37.Name = "EmptySpaceItem37"
-        Me.EmptySpaceItem37.Size = New System.Drawing.Size(30, 1100)
+        Me.EmptySpaceItem37.Size = New System.Drawing.Size(30, 1065)
         Me.EmptySpaceItem37.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlGroup15
@@ -4745,7 +4840,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup15.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlGroup15.Name = "LayoutControlGroup15"
         Me.LayoutControlGroup15.OptionsItemText.TextToControlDistance = 3
-        Me.LayoutControlGroup15.Size = New System.Drawing.Size(695, 1311)
+        Me.LayoutControlGroup15.Size = New System.Drawing.Size(695, 1274)
         Me.LayoutControlGroup15.Text = "Επαφή"
         '
         'LayoutControlItem112
@@ -4784,7 +4879,7 @@ Partial Class frmBDG
         Me.LayoutControlItem118.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem118.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem118.Name = "LayoutControlItem118"
-        Me.LayoutControlItem118.Size = New System.Drawing.Size(669, 318)
+        Me.LayoutControlItem118.Size = New System.Drawing.Size(669, 304)
         Me.LayoutControlItem118.Text = "Σχόλια Πολυκατοικίας"
         Me.LayoutControlItem118.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem118.TextLocation = DevExpress.Utils.Locations.Top
@@ -4794,7 +4889,7 @@ Partial Class frmBDG
         'LayoutControlItem119
         '
         Me.LayoutControlItem119.Control = Me.cmdSaveBCCT
-        Me.LayoutControlItem119.Location = New System.Drawing.Point(0, 1206)
+        Me.LayoutControlItem119.Location = New System.Drawing.Point(0, 1169)
         Me.LayoutControlItem119.Name = "LayoutControlItem119"
         Me.LayoutControlItem119.Size = New System.Drawing.Size(669, 43)
         Me.LayoutControlItem119.TextSize = New System.Drawing.Size(0, 0)
@@ -4803,9 +4898,9 @@ Partial Class frmBDG
         'EmptySpaceItem38
         '
         Me.EmptySpaceItem38.AllowHotTrack = False
-        Me.EmptySpaceItem38.Location = New System.Drawing.Point(0, 444)
+        Me.EmptySpaceItem38.Location = New System.Drawing.Point(0, 430)
         Me.EmptySpaceItem38.Name = "EmptySpaceItem38"
-        Me.EmptySpaceItem38.Size = New System.Drawing.Size(669, 762)
+        Me.EmptySpaceItem38.Size = New System.Drawing.Size(669, 739)
         Me.EmptySpaceItem38.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem113
@@ -4833,7 +4928,7 @@ Partial Class frmBDG
         Me.tabFixedCosts.Controls.Add(Me.LayoutControl5FixedCosts)
         Me.tabFixedCosts.Margin = New System.Windows.Forms.Padding(5)
         Me.tabFixedCosts.Name = "tabFixedCosts"
-        Me.tabFixedCosts.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabFixedCosts.Size = New System.Drawing.Size(2231, 1294)
         Me.tabFixedCosts.Text = "Πάγια Έξοδα"
         '
         'LayoutControl5FixedCosts
@@ -4848,7 +4943,7 @@ Partial Class frmBDG
         Me.LayoutControl5FixedCosts.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl5FixedCosts.Name = "LayoutControl5FixedCosts"
         Me.LayoutControl5FixedCosts.Root = Me.LayoutControlGroup12
-        Me.LayoutControl5FixedCosts.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl5FixedCosts.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl5FixedCosts.TabIndex = 1
         Me.LayoutControl5FixedCosts.Text = "LayoutControl1"
         '
@@ -4904,7 +4999,7 @@ Partial Class frmBDG
         Me.grdIEP.MainView = Me.GridView6
         Me.grdIEP.Margin = New System.Windows.Forms.Padding(5)
         Me.grdIEP.Name = "grdIEP"
-        Me.grdIEP.Size = New System.Drawing.Size(2177, 1307)
+        Me.grdIEP.Size = New System.Drawing.Size(2177, 1270)
         Me.grdIEP.TabIndex = 22
         Me.grdIEP.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView6})
         '
@@ -5058,7 +5153,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup12.GroupBordersVisible = False
         Me.LayoutControlGroup12.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem98, Me.LayoutControlItem102, Me.LayoutControlItem101, Me.LayoutControlItem103, Me.LayoutControlItem104})
         Me.LayoutControlGroup12.Name = "LayoutControlGroup12"
-        Me.LayoutControlGroup12.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup12.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup12.TextVisible = False
         '
         'LayoutControlItem98
@@ -5066,7 +5161,7 @@ Partial Class frmBDG
         Me.LayoutControlItem98.Control = Me.grdIEP
         Me.LayoutControlItem98.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlItem98.Name = "LayoutControlItem98"
-        Me.LayoutControlItem98.Size = New System.Drawing.Size(2181, 1311)
+        Me.LayoutControlItem98.Size = New System.Drawing.Size(2181, 1274)
         Me.LayoutControlItem98.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem98.TextVisible = False
         '
@@ -5075,7 +5170,7 @@ Partial Class frmBDG
         Me.LayoutControlItem102.Control = Me.cmdIEPRefresh
         Me.LayoutControlItem102.Location = New System.Drawing.Point(0, 129)
         Me.LayoutControlItem102.Name = "LayoutControlItem102"
-        Me.LayoutControlItem102.Size = New System.Drawing.Size(30, 1182)
+        Me.LayoutControlItem102.Size = New System.Drawing.Size(30, 1145)
         Me.LayoutControlItem102.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem102.TextVisible = False
         '
@@ -5106,19 +5201,578 @@ Partial Class frmBDG
         Me.LayoutControlItem104.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem104.TextVisible = False
         '
-        'XtraTabPage17
+        'tabProfActD
         '
-        Me.XtraTabPage17.Margin = New System.Windows.Forms.Padding(5)
-        Me.XtraTabPage17.Name = "XtraTabPage17"
-        Me.XtraTabPage17.Size = New System.Drawing.Size(2231, 1331)
-        Me.XtraTabPage17.Text = "XtraTabPage6"
+        Me.tabProfActD.Controls.Add(Me.LayoutControl6Jobs)
+        Me.tabProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.tabProfActD.Name = "tabProfActD"
+        Me.tabProfActD.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabProfActD.Text = "Εργασίες"
+        '
+        'LayoutControl6Jobs
+        '
+        Me.LayoutControl6Jobs.Controls.Add(Me.cmdRefreshProfActD)
+        Me.LayoutControl6Jobs.Controls.Add(Me.cmdDeleteProfActD)
+        Me.LayoutControl6Jobs.Controls.Add(Me.GridControl2)
+        Me.LayoutControl6Jobs.Controls.Add(Me.cmdSaveProfActD)
+        Me.LayoutControl6Jobs.Controls.Add(Me.cboProfAct)
+        Me.LayoutControl6Jobs.Controls.Add(Me.cboWorkshop)
+        Me.LayoutControl6Jobs.Controls.Add(Me.MemoEdit1)
+        Me.LayoutControl6Jobs.Controls.Add(Me.txtProfActDAmt)
+        Me.LayoutControl6Jobs.Controls.Add(Me.dtProfActD)
+        Me.LayoutControl6Jobs.Controls.Add(Me.txtCodeProfActD)
+        Me.LayoutControl6Jobs.Controls.Add(Me.cmdNewProfActD)
+        Me.LayoutControl6Jobs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl6Jobs.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl6Jobs.Name = "LayoutControl6Jobs"
+        Me.LayoutControl6Jobs.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2323, 962, 1137, 700)
+        Me.LayoutControl6Jobs.Root = Me.LayoutControlGroup21
+        Me.LayoutControl6Jobs.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl6Jobs.TabIndex = 0
+        Me.LayoutControl6Jobs.Text = "LayoutControl2"
+        '
+        'cmdRefreshProfActD
+        '
+        Me.cmdRefreshProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
+        Me.cmdRefreshProfActD.Location = New System.Drawing.Point(12, 149)
+        Me.cmdRefreshProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdRefreshProfActD.Name = "cmdRefreshProfActD"
+        Me.cmdRefreshProfActD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdRefreshProfActD.Size = New System.Drawing.Size(27, 39)
+        Me.cmdRefreshProfActD.StyleController = Me.LayoutControl6Jobs
+        Me.cmdRefreshProfActD.TabIndex = 66
+        '
+        'cmdDeleteProfActD
+        '
+        Me.cmdDeleteProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.cmdDeleteProfActD.Location = New System.Drawing.Point(12, 106)
+        Me.cmdDeleteProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdDeleteProfActD.Name = "cmdDeleteProfActD"
+        Me.cmdDeleteProfActD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdDeleteProfActD.Size = New System.Drawing.Size(27, 39)
+        Me.cmdDeleteProfActD.StyleController = Me.LayoutControl6Jobs
+        Me.cmdDeleteProfActD.TabIndex = 65
+        '
+        'GridControl2
+        '
+        Me.GridControl2.DataSource = Me.VwPROFACTDBindingSource
+        Me.GridControl2.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
+        Me.GridControl2.Location = New System.Drawing.Point(792, 12)
+        Me.GridControl2.MainView = Me.GridView10
+        Me.GridControl2.Margin = New System.Windows.Forms.Padding(5)
+        Me.GridControl2.Name = "GridControl2"
+        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemProfAct, Me.RepositoryItemWorkShop})
+        Me.GridControl2.Size = New System.Drawing.Size(1427, 1270)
+        Me.GridControl2.TabIndex = 64
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView10})
+        '
+        'VwPROFACTDBindingSource
+        '
+        Me.VwPROFACTDBindingSource.DataMember = "vw_PROF_ACT_D"
+        Me.VwPROFACTDBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'Priamos_NETDataSet3
+        '
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'GridView10
+        '
+        Me.GridView10.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colprofActID, Me.colProfActNam, Me.colprofDate, Me.colcctID1, Me.colcctName, Me.colamt1, Me.colcmt1, Me.colautoCreateCol, Me.colbdgID3, Me.colcode3, Me.colcreatedBy, Me.colcreatedOn3, Me.colCreateUSR, Me.colID3, Me.colMachineName, Me.colmodifiedBy3, Me.colmodifiedOn3, Me.colModifiedUSR, Me.colnam1})
+        Me.GridView10.DetailHeight = 619
+        Me.GridView10.GridControl = Me.GridControl2
+        Me.GridView10.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "prfName", Nothing, "")})
+        Me.GridView10.LevelIndent = 0
+        Me.GridView10.Name = "GridView10"
+        Me.GridView10.OptionsBehavior.AutoExpandAllGroups = True
+        Me.GridView10.OptionsPrint.PrintPreview = True
+        Me.GridView10.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView10.OptionsView.ColumnAutoWidth = False
+        Me.GridView10.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView10.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
+        Me.GridView10.OptionsView.ShowFooter = True
+        Me.GridView10.OptionsView.ShowGroupedColumns = True
+        Me.GridView10.PreviewIndent = 0
+        '
+        'colprofActID
+        '
+        Me.colprofActID.Caption = "Εργασία"
+        Me.colprofActID.ColumnEdit = Me.RepositoryItemProfAct
+        Me.colprofActID.FieldName = "profActID"
+        Me.colprofActID.MinWidth = 35
+        Me.colprofActID.Name = "colprofActID"
+        Me.colprofActID.Visible = True
+        Me.colprofActID.VisibleIndex = 0
+        Me.colprofActID.Width = 335
+        '
+        'RepositoryItemProfAct
+        '
+        Me.RepositoryItemProfAct.AutoHeight = False
+        Me.RepositoryItemProfAct.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepositoryItemProfAct.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Εργασία", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("amt", "Ποσό", 47, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("autoCreateCol", "auto Create Col", 143, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineName", "Machine Name", 140, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CreatedUsrName", "Created Usr Name", 168, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ModifiedUsrName", "Modified Usr Name", 174, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtEvery", "dt Every", 84, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Fullname", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 64, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 59, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cctID", "cct ID", 65, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemProfAct.DataSource = Me.VwPROFACTBindingSource
+        Me.RepositoryItemProfAct.DisplayMember = "name"
+        Me.RepositoryItemProfAct.Name = "RepositoryItemProfAct"
+        Me.RepositoryItemProfAct.NullText = ""
+        Me.RepositoryItemProfAct.PopupWidth = 250
+        Me.RepositoryItemProfAct.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
+        Me.RepositoryItemProfAct.ValueMember = "ID"
+        '
+        'VwPROFACTBindingSource
+        '
+        Me.VwPROFACTBindingSource.DataMember = "vw_PROF_ACT"
+        Me.VwPROFACTBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'colProfActNam
+        '
+        Me.colProfActNam.Caption = "Εργασία"
+        Me.colProfActNam.FieldName = "ProfActNam"
+        Me.colProfActNam.MinWidth = 35
+        Me.colProfActNam.Name = "colProfActNam"
+        Me.colProfActNam.Width = 131
+        '
+        'colprofDate
+        '
+        Me.colprofDate.Caption = "Ημερομηνία"
+        Me.colprofDate.FieldName = "profDate"
+        Me.colprofDate.MinWidth = 35
+        Me.colprofDate.Name = "colprofDate"
+        Me.colprofDate.Visible = True
+        Me.colprofDate.VisibleIndex = 2
+        Me.colprofDate.Width = 168
+        '
+        'colcctID1
+        '
+        Me.colcctID1.Caption = "Συνεργείο"
+        Me.colcctID1.ColumnEdit = Me.RepositoryItemWorkShop
+        Me.colcctID1.FieldName = "cctID"
+        Me.colcctID1.MinWidth = 35
+        Me.colcctID1.Name = "colcctID1"
+        Me.colcctID1.Visible = True
+        Me.colcctID1.VisibleIndex = 1
+        Me.colcctID1.Width = 258
+        '
+        'RepositoryItemWorkShop
+        '
+        Me.RepositoryItemWorkShop.AutoHeight = False
+        Me.RepositoryItemWorkShop.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepositoryItemWorkShop.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Συνεργείο", 91, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fax", "fax", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 59, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email2", "email2", 69, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email3", "email3", 69, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("website", "website", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AREAS_Name", "AREAS_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PRF_Name", "PRF_Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 79, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DoyID", "Doy ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 64, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ar", "Ar", 33, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("company", "company", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isprivate", "Isprivate", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isworkshop", "Isworkshop", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Issupplier", "Issupplier", 96, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsPartner", "Is Partner", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrAr", "Adr Ar", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("color", "color", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemWorkShop.DataSource = Me.VwPARTNERANDWORKSHOPBindingSource
+        Me.RepositoryItemWorkShop.DisplayMember = "Fullname"
+        Me.RepositoryItemWorkShop.Name = "RepositoryItemWorkShop"
+        Me.RepositoryItemWorkShop.NullText = ""
+        Me.RepositoryItemWorkShop.ValueMember = "ID"
+        '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet4
+        '
+        'Priamos_NETDataSet4
+        '
+        Me.Priamos_NETDataSet4.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'colcctName
+        '
+        Me.colcctName.Caption = "Συνεργείο"
+        Me.colcctName.FieldName = "cctName"
+        Me.colcctName.MinWidth = 35
+        Me.colcctName.Name = "colcctName"
+        Me.colcctName.Width = 131
+        '
+        'colamt1
+        '
+        Me.colamt1.Caption = "Ποσό"
+        Me.colamt1.FieldName = "amt"
+        Me.colamt1.MinWidth = 35
+        Me.colamt1.Name = "colamt1"
+        Me.colamt1.Visible = True
+        Me.colamt1.VisibleIndex = 3
+        Me.colamt1.Width = 131
+        '
+        'colcmt1
+        '
+        Me.colcmt1.Caption = "Σχόλια"
+        Me.colcmt1.FieldName = "cmt"
+        Me.colcmt1.MinWidth = 35
+        Me.colcmt1.Name = "colcmt1"
+        Me.colcmt1.Visible = True
+        Me.colcmt1.VisibleIndex = 4
+        Me.colcmt1.Width = 537
+        '
+        'colautoCreateCol
+        '
+        Me.colautoCreateCol.FieldName = "autoCreateCol"
+        Me.colautoCreateCol.MinWidth = 35
+        Me.colautoCreateCol.Name = "colautoCreateCol"
+        Me.colautoCreateCol.Width = 131
+        '
+        'colbdgID3
+        '
+        Me.colbdgID3.FieldName = "bdgID"
+        Me.colbdgID3.MinWidth = 35
+        Me.colbdgID3.Name = "colbdgID3"
+        Me.colbdgID3.Width = 131
+        '
+        'colcode3
+        '
+        Me.colcode3.FieldName = "code"
+        Me.colcode3.MinWidth = 35
+        Me.colcode3.Name = "colcode3"
+        Me.colcode3.Width = 131
+        '
+        'colcreatedBy
+        '
+        Me.colcreatedBy.FieldName = "createdBy"
+        Me.colcreatedBy.MinWidth = 35
+        Me.colcreatedBy.Name = "colcreatedBy"
+        Me.colcreatedBy.Width = 131
+        '
+        'colcreatedOn3
+        '
+        Me.colcreatedOn3.FieldName = "createdOn"
+        Me.colcreatedOn3.MinWidth = 35
+        Me.colcreatedOn3.Name = "colcreatedOn3"
+        Me.colcreatedOn3.Width = 131
+        '
+        'colCreateUSR
+        '
+        Me.colCreateUSR.FieldName = "CreateUSR"
+        Me.colCreateUSR.MinWidth = 35
+        Me.colCreateUSR.Name = "colCreateUSR"
+        Me.colCreateUSR.Width = 131
+        '
+        'colID3
+        '
+        Me.colID3.FieldName = "ID"
+        Me.colID3.MinWidth = 35
+        Me.colID3.Name = "colID3"
+        Me.colID3.Width = 131
+        '
+        'colMachineName
+        '
+        Me.colMachineName.FieldName = "MachineName"
+        Me.colMachineName.MinWidth = 35
+        Me.colMachineName.Name = "colMachineName"
+        Me.colMachineName.Width = 131
+        '
+        'colmodifiedBy3
+        '
+        Me.colmodifiedBy3.FieldName = "modifiedBy"
+        Me.colmodifiedBy3.MinWidth = 35
+        Me.colmodifiedBy3.Name = "colmodifiedBy3"
+        Me.colmodifiedBy3.Width = 131
+        '
+        'colmodifiedOn3
+        '
+        Me.colmodifiedOn3.FieldName = "modifiedOn"
+        Me.colmodifiedOn3.MinWidth = 35
+        Me.colmodifiedOn3.Name = "colmodifiedOn3"
+        Me.colmodifiedOn3.Width = 131
+        '
+        'colModifiedUSR
+        '
+        Me.colModifiedUSR.FieldName = "ModifiedUSR"
+        Me.colModifiedUSR.MinWidth = 35
+        Me.colModifiedUSR.Name = "colModifiedUSR"
+        Me.colModifiedUSR.Width = 131
+        '
+        'colnam1
+        '
+        Me.colnam1.FieldName = "nam"
+        Me.colnam1.MinWidth = 35
+        Me.colnam1.Name = "colnam1"
+        Me.colnam1.Width = 131
+        '
+        'cmdSaveProfActD
+        '
+        Me.cmdSaveProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSaveProfActD.Location = New System.Drawing.Point(56, 1230)
+        Me.cmdSaveProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdSaveProfActD.Name = "cmdSaveProfActD"
+        Me.cmdSaveProfActD.Size = New System.Drawing.Size(719, 39)
+        Me.cmdSaveProfActD.StyleController = Me.LayoutControl6Jobs
+        Me.cmdSaveProfActD.TabIndex = 63
+        Me.cmdSaveProfActD.Text = "Αποθήκευση Εργασίας"
+        '
+        'cboProfAct
+        '
+        Me.cboProfAct.Location = New System.Drawing.Point(260, 103)
+        Me.cboProfAct.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboProfAct.Name = "cboProfAct"
+        Me.cboProfAct.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboProfAct.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboProfAct.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Εργασία", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("amt", "Ποσό", 47, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("autoCreateCol", "auto Create Col", 143, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineName", "Machine Name", 140, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CreatedUsrName", "Created Usr Name", 168, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ModifiedUsrName", "Modified Usr Name", 174, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtEvery", "dt Every", 84, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboProfAct.Properties.DataSource = Me.VwPROFACTBindingSource
+        Me.cboProfAct.Properties.DisplayMember = "name"
+        Me.cboProfAct.Properties.NullText = ""
+        Me.cboProfAct.Properties.PopupSizeable = False
+        Me.cboProfAct.Properties.ValueMember = "ID"
+        Me.cboProfAct.Size = New System.Drawing.Size(515, 38)
+        Me.cboProfAct.StyleController = Me.LayoutControl6Jobs
+        Me.cboProfAct.TabIndex = 60
+        Me.cboProfAct.Tag = "profActID,0,1,2"
+        '
+        'cboWorkshop
+        '
+        Me.cboWorkshop.Location = New System.Drawing.Point(260, 145)
+        Me.cboWorkshop.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboWorkshop.Name = "cboWorkshop"
+        Me.cboWorkshop.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboWorkshop.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboWorkshop.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Συνεργείο", 91, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fax", "fax", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 59, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email2", "email2", 69, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email3", "email3", 69, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("website", "website", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AREAS_Name", "AREAS_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PRF_Name", "PRF_Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 79, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DoyID", "Doy ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 64, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ar", "Ar", 33, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("company", "company", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isprivate", "Isprivate", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isworkshop", "Isworkshop", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Issupplier", "Issupplier", 96, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsPartner", "Is Partner", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrAr", "Adr Ar", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("color", "color", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboWorkshop.Properties.DataSource = Me.VwPARTNERANDWORKSHOPBindingSource
+        Me.cboWorkshop.Properties.DisplayMember = "Fullname"
+        Me.cboWorkshop.Properties.NullText = ""
+        Me.cboWorkshop.Properties.PopupSizeable = False
+        Me.cboWorkshop.Properties.ValueMember = "ID"
+        Me.cboWorkshop.Size = New System.Drawing.Size(515, 38)
+        Me.cboWorkshop.StyleController = Me.LayoutControl6Jobs
+        Me.cboWorkshop.TabIndex = 62
+        Me.cboWorkshop.Tag = "cctID,0,1,2"
+        '
+        'MemoEdit1
+        '
+        Me.MemoEdit1.Location = New System.Drawing.Point(56, 297)
+        Me.MemoEdit1.Margin = New System.Windows.Forms.Padding(5)
+        Me.MemoEdit1.Name = "MemoEdit1"
+        Me.MemoEdit1.Size = New System.Drawing.Size(719, 289)
+        Me.MemoEdit1.StyleController = Me.LayoutControl6Jobs
+        Me.MemoEdit1.TabIndex = 61
+        Me.MemoEdit1.Tag = "cmt,0,1,2"
+        '
+        'txtProfActDAmt
+        '
+        Me.txtProfActDAmt.EditValue = "0,00 €"
+        Me.txtProfActDAmt.Location = New System.Drawing.Point(260, 229)
+        Me.txtProfActDAmt.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtProfActDAmt.Name = "txtProfActDAmt"
+        Me.txtProfActDAmt.Properties.DisplayFormat.FormatString = "c"
+        Me.txtProfActDAmt.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtProfActDAmt.Properties.EditFormat.FormatString = "n2"
+        Me.txtProfActDAmt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtProfActDAmt.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtProfActDAmt.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtProfActDAmt.Properties.MaskSettings.Set("mask", "c2")
+        Me.txtProfActDAmt.Properties.Tag = "BenchExtraPrice"
+        Me.txtProfActDAmt.Size = New System.Drawing.Size(515, 38)
+        Me.txtProfActDAmt.StyleController = Me.LayoutControl6Jobs
+        Me.txtProfActDAmt.TabIndex = 43
+        Me.txtProfActDAmt.Tag = "amt,0,1,2"
+        Me.txtProfActDAmt.Visible = False
+        '
+        'dtProfActD
+        '
+        Me.dtProfActD.EditValue = Nothing
+        Me.dtProfActD.Location = New System.Drawing.Point(260, 187)
+        Me.dtProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.dtProfActD.Name = "dtProfActD"
+        Me.dtProfActD.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtProfActD.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtProfActD.Size = New System.Drawing.Size(515, 38)
+        Me.dtProfActD.StyleController = Me.LayoutControl6Jobs
+        Me.dtProfActD.TabIndex = 38
+        Me.dtProfActD.Tag = "profDate,0,1,2"
+        '
+        'txtCodeProfActD
+        '
+        Me.txtCodeProfActD.Location = New System.Drawing.Point(260, 61)
+        Me.txtCodeProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtCodeProfActD.Name = "txtCodeProfActD"
+        Me.txtCodeProfActD.Properties.Appearance.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.txtCodeProfActD.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.txtCodeProfActD.Properties.Appearance.Options.UseBackColor = True
+        Me.txtCodeProfActD.Properties.Appearance.Options.UseFont = True
+        Me.txtCodeProfActD.Properties.ReadOnly = True
+        Me.txtCodeProfActD.Size = New System.Drawing.Size(154, 38)
+        Me.txtCodeProfActD.StyleController = Me.LayoutControl6Jobs
+        Me.txtCodeProfActD.TabIndex = 4
+        Me.txtCodeProfActD.Tag = "code,0"
+        '
+        'cmdNewProfActD
+        '
+        Me.cmdNewProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.cmdNewProfActD.Location = New System.Drawing.Point(12, 63)
+        Me.cmdNewProfActD.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdNewProfActD.Name = "cmdNewProfActD"
+        Me.cmdNewProfActD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdNewProfActD.Size = New System.Drawing.Size(27, 39)
+        Me.cmdNewProfActD.StyleController = Me.LayoutControl6Jobs
+        Me.cmdNewProfActD.TabIndex = 57
+        '
+        'LayoutControlGroup21
+        '
+        Me.LayoutControlGroup21.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup21.GroupBordersVisible = False
+        Me.LayoutControlGroup21.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem153, Me.LayoutControlGroup24, Me.EmptySpaceItem30, Me.EmptySpaceItem29, Me.LayoutControlItem156, Me.LayoutControlItem157, Me.LayoutControlItem158})
+        Me.LayoutControlGroup21.Name = "Root"
+        Me.LayoutControlGroup21.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup21.TextVisible = False
+        '
+        'LayoutControlItem153
+        '
+        Me.LayoutControlItem153.Control = Me.GridControl2
+        Me.LayoutControlItem153.Location = New System.Drawing.Point(780, 0)
+        Me.LayoutControlItem153.Name = "LayoutControlItem153"
+        Me.LayoutControlItem153.Size = New System.Drawing.Size(1431, 1274)
+        Me.LayoutControlItem153.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem153.TextVisible = False
+        '
+        'LayoutControlGroup24
+        '
+        Me.LayoutControlGroup24.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem151, Me.LayoutControlItem149, Me.LayoutControlItem148, Me.LayoutControlItem147, Me.EmptySpaceItem7, Me.LayoutControlItem154, Me.LayoutControlItem155, Me.LayoutControlItem152, Me.EmptySpaceItem8})
+        Me.LayoutControlGroup24.Location = New System.Drawing.Point(31, 0)
+        Me.LayoutControlGroup24.Name = "LayoutControlGroup24"
+        Me.LayoutControlGroup24.Size = New System.Drawing.Size(749, 1274)
+        Me.LayoutControlGroup24.Text = "Εργασίες"
+        '
+        'LayoutControlItem151
+        '
+        Me.LayoutControlItem151.Control = Me.MemoEdit1
+        Me.LayoutControlItem151.Location = New System.Drawing.Point(0, 210)
+        Me.LayoutControlItem151.Name = "LayoutControlItem151"
+        Me.LayoutControlItem151.Size = New System.Drawing.Size(723, 319)
+        Me.LayoutControlItem151.Text = "Σχόλια"
+        Me.LayoutControlItem151.TextLocation = DevExpress.Utils.Locations.Top
+        Me.LayoutControlItem151.TextSize = New System.Drawing.Size(192, 23)
+        '
+        'LayoutControlItem149
+        '
+        Me.LayoutControlItem149.Control = Me.cboWorkshop
+        Me.LayoutControlItem149.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem149.Location = New System.Drawing.Point(0, 84)
+        Me.LayoutControlItem149.Name = "LayoutControlItem149"
+        Me.LayoutControlItem149.Size = New System.Drawing.Size(723, 42)
+        Me.LayoutControlItem149.Tag = "1"
+        Me.LayoutControlItem149.Text = "Συνεργείο"
+        Me.LayoutControlItem149.TextSize = New System.Drawing.Size(192, 23)
+        '
+        'LayoutControlItem148
+        '
+        Me.LayoutControlItem148.Control = Me.cboProfAct
+        Me.LayoutControlItem148.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem148.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem148.Name = "LayoutControlItem148"
+        Me.LayoutControlItem148.Size = New System.Drawing.Size(723, 42)
+        Me.LayoutControlItem148.Tag = "1"
+        Me.LayoutControlItem148.Text = "Εργασία"
+        Me.LayoutControlItem148.TextSize = New System.Drawing.Size(192, 23)
+        '
+        'LayoutControlItem147
+        '
+        Me.LayoutControlItem147.Control = Me.cmdSaveProfActD
+        Me.LayoutControlItem147.Location = New System.Drawing.Point(0, 1169)
+        Me.LayoutControlItem147.Name = "LayoutControlItem147"
+        Me.LayoutControlItem147.Size = New System.Drawing.Size(723, 43)
+        Me.LayoutControlItem147.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem147.TextVisible = False
+        '
+        'EmptySpaceItem7
+        '
+        Me.EmptySpaceItem7.AllowHotTrack = False
+        Me.EmptySpaceItem7.Location = New System.Drawing.Point(0, 529)
+        Me.EmptySpaceItem7.Name = "EmptySpaceItem7"
+        Me.EmptySpaceItem7.Size = New System.Drawing.Size(723, 640)
+        Me.EmptySpaceItem7.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem154
+        '
+        Me.LayoutControlItem154.Control = Me.txtProfActDAmt
+        Me.LayoutControlItem154.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem154.CustomizationFormText = "Ποσό Πληρωμής"
+        Me.LayoutControlItem154.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem154.Name = "LayoutControlItem154"
+        Me.LayoutControlItem154.Size = New System.Drawing.Size(723, 42)
+        Me.LayoutControlItem154.Text = "Αμοιβή"
+        Me.LayoutControlItem154.TextSize = New System.Drawing.Size(192, 23)
+        '
+        'LayoutControlItem155
+        '
+        Me.LayoutControlItem155.Control = Me.dtProfActD
+        Me.LayoutControlItem155.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem155.CustomizationFormText = "Ημερομηνία Τιμ."
+        Me.LayoutControlItem155.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem155.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem155.ImageOptions.Image"), System.Drawing.Image)
+        Me.LayoutControlItem155.Location = New System.Drawing.Point(0, 126)
+        Me.LayoutControlItem155.Name = "LayoutControlItem155"
+        Me.LayoutControlItem155.Size = New System.Drawing.Size(723, 42)
+        Me.LayoutControlItem155.Tag = "1"
+        Me.LayoutControlItem155.Text = "Ημερομηνία Εργασίας"
+        Me.LayoutControlItem155.TextSize = New System.Drawing.Size(192, 23)
+        '
+        'LayoutControlItem152
+        '
+        Me.LayoutControlItem152.Control = Me.txtCodeProfActD
+        Me.LayoutControlItem152.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem152.CustomizationFormText = "ID"
+        Me.LayoutControlItem152.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem152.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem152.Name = "LayoutControlItem152"
+        Me.LayoutControlItem152.Size = New System.Drawing.Size(362, 42)
+        Me.LayoutControlItem152.Text = "ID"
+        Me.LayoutControlItem152.TextSize = New System.Drawing.Size(192, 23)
+        '
+        'EmptySpaceItem8
+        '
+        Me.EmptySpaceItem8.AllowHotTrack = False
+        Me.EmptySpaceItem8.Location = New System.Drawing.Point(362, 0)
+        Me.EmptySpaceItem8.Name = "EmptySpaceItem8"
+        Me.EmptySpaceItem8.Size = New System.Drawing.Size(361, 42)
+        Me.EmptySpaceItem8.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem30
+        '
+        Me.EmptySpaceItem30.AllowHotTrack = False
+        Me.EmptySpaceItem30.Location = New System.Drawing.Point(0, 180)
+        Me.EmptySpaceItem30.Name = "EmptySpaceItem30"
+        Me.EmptySpaceItem30.Size = New System.Drawing.Size(31, 1094)
+        Me.EmptySpaceItem30.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem29
+        '
+        Me.EmptySpaceItem29.AllowHotTrack = False
+        Me.EmptySpaceItem29.Location = New System.Drawing.Point(0, 0)
+        Me.EmptySpaceItem29.Name = "EmptySpaceItem29"
+        Me.EmptySpaceItem29.Size = New System.Drawing.Size(31, 51)
+        Me.EmptySpaceItem29.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem156
+        '
+        Me.LayoutControlItem156.Control = Me.cmdNewProfActD
+        Me.LayoutControlItem156.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem156.CustomizationFormText = "LayoutControlItem111"
+        Me.LayoutControlItem156.Location = New System.Drawing.Point(0, 51)
+        Me.LayoutControlItem156.Name = "LayoutControlItem156"
+        Me.LayoutControlItem156.Size = New System.Drawing.Size(31, 43)
+        Me.LayoutControlItem156.Text = "LayoutControlItem111"
+        Me.LayoutControlItem156.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem156.TextVisible = False
+        '
+        'LayoutControlItem157
+        '
+        Me.LayoutControlItem157.Control = Me.cmdDeleteProfActD
+        Me.LayoutControlItem157.Location = New System.Drawing.Point(0, 94)
+        Me.LayoutControlItem157.Name = "LayoutControlItem157"
+        Me.LayoutControlItem157.Size = New System.Drawing.Size(31, 43)
+        Me.LayoutControlItem157.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem157.TextVisible = False
+        '
+        'LayoutControlItem158
+        '
+        Me.LayoutControlItem158.Control = Me.cmdRefreshProfActD
+        Me.LayoutControlItem158.Location = New System.Drawing.Point(0, 137)
+        Me.LayoutControlItem158.Name = "LayoutControlItem158"
+        Me.LayoutControlItem158.Size = New System.Drawing.Size(31, 43)
+        Me.LayoutControlItem158.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem158.TextVisible = False
         '
         'tabHeatingInvoices
         '
         Me.tabHeatingInvoices.Controls.Add(Me.LayoutControl4InvHeatGas)
         Me.tabHeatingInvoices.Margin = New System.Windows.Forms.Padding(5)
         Me.tabHeatingInvoices.Name = "tabHeatingInvoices"
-        Me.tabHeatingInvoices.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabHeatingInvoices.Size = New System.Drawing.Size(2231, 1294)
         Me.tabHeatingInvoices.Text = "Τιμολόγια Καυσίμων"
         '
         'LayoutControl4InvHeatGas
@@ -5157,7 +5811,7 @@ Partial Class frmBDG
         Me.LayoutControl4InvHeatGas.Name = "LayoutControl4InvHeatGas"
         Me.LayoutControl4InvHeatGas.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(744, 475, 650, 400)
         Me.LayoutControl4InvHeatGas.Root = Me.LayoutControlGroup4
-        Me.LayoutControl4InvHeatGas.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl4InvHeatGas.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl4InvHeatGas.TabIndex = 9
         Me.LayoutControl4InvHeatGas.Text = "LayoutControl3"
         '
@@ -5279,7 +5933,7 @@ Partial Class frmBDG
         Me.grdGas.Margin = New System.Windows.Forms.Padding(5)
         Me.grdGas.Name = "grdGas"
         Me.grdGas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonGas})
-        Me.grdGas.Size = New System.Drawing.Size(1017, 950)
+        Me.grdGas.Size = New System.Drawing.Size(1017, 913)
         Me.grdGas.TabIndex = 50
         Me.grdGas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView4})
         '
@@ -5518,7 +6172,7 @@ Partial Class frmBDG
         Me.grdOil.Margin = New System.Windows.Forms.Padding(5)
         Me.grdOil.Name = "grdOil"
         Me.grdOil.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonOil})
-        Me.grdOil.Size = New System.Drawing.Size(1054, 950)
+        Me.grdOil.Size = New System.Drawing.Size(1054, 913)
         Me.grdOil.TabIndex = 36
         Me.grdOil.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -5587,7 +6241,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup5, Me.LayoutControlGroup6})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup4.TextVisible = False
         '
         'LayoutControlGroup5
@@ -5597,7 +6251,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem57, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.LayoutControlItem53, Me.LayoutControlItem58, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.EmptySpaceItem13, Me.EmptySpaceItem17, Me.EmptySpaceItem18, Me.EmptySpaceItem19, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem68})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1124, 1311)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1124, 1274)
         Me.LayoutControlGroup5.Text = "Τιμολόγια Πετρέλαιου"
         '
         'LayoutControlItem51
@@ -5675,7 +6329,7 @@ Partial Class frmBDG
         Me.LayoutControlItem47.Control = Me.grdOil
         Me.LayoutControlItem47.Location = New System.Drawing.Point(40, 295)
         Me.LayoutControlItem47.Name = "LayoutControlItem47"
-        Me.LayoutControlItem47.Size = New System.Drawing.Size(1058, 954)
+        Me.LayoutControlItem47.Size = New System.Drawing.Size(1058, 917)
         Me.LayoutControlItem47.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem47.TextVisible = False
         '
@@ -5765,7 +6419,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem24.AllowHotTrack = False
         Me.EmptySpaceItem24.Location = New System.Drawing.Point(0, 467)
         Me.EmptySpaceItem24.Name = "EmptySpaceItem24"
-        Me.EmptySpaceItem24.Size = New System.Drawing.Size(40, 782)
+        Me.EmptySpaceItem24.Size = New System.Drawing.Size(40, 745)
         Me.EmptySpaceItem24.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem69
@@ -5818,7 +6472,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem49, Me.LayoutControlItem61, Me.LayoutControlItem64, Me.LayoutControlItem62, Me.LayoutControlItem60, Me.LayoutControlItem59, Me.LayoutControlItem63, Me.EmptySpaceItem14, Me.EmptySpaceItem20, Me.EmptySpaceItem21, Me.EmptySpaceItem22, Me.EmptySpaceItem23, Me.EmptySpaceItem27, Me.LayoutControlItem72, Me.LayoutControlItem74, Me.LayoutControlItem66, Me.LayoutControlItem70, Me.LayoutControlItem76})
         Me.LayoutControlGroup6.Location = New System.Drawing.Point(1124, 0)
         Me.LayoutControlGroup6.Name = "LayoutControlGroup6"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1087, 1311)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1087, 1274)
         Me.LayoutControlGroup6.Text = "Τιμολόγια Φυσικού Αερίου"
         '
         'LayoutControlItem49
@@ -5894,7 +6548,7 @@ Partial Class frmBDG
         Me.LayoutControlItem63.Control = Me.grdGas
         Me.LayoutControlItem63.Location = New System.Drawing.Point(40, 295)
         Me.LayoutControlItem63.Name = "LayoutControlItem63"
-        Me.LayoutControlItem63.Size = New System.Drawing.Size(1021, 954)
+        Me.LayoutControlItem63.Size = New System.Drawing.Size(1021, 917)
         Me.LayoutControlItem63.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem63.TextVisible = False
         '
@@ -5943,7 +6597,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem27.AllowHotTrack = False
         Me.EmptySpaceItem27.Location = New System.Drawing.Point(0, 467)
         Me.EmptySpaceItem27.Name = "EmptySpaceItem27"
-        Me.EmptySpaceItem27.Size = New System.Drawing.Size(40, 782)
+        Me.EmptySpaceItem27.Size = New System.Drawing.Size(40, 745)
         Me.EmptySpaceItem27.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem72
@@ -5995,21 +6649,21 @@ Partial Class frmBDG
         '
         Me.XtraTabPage19.Margin = New System.Windows.Forms.Padding(5)
         Me.XtraTabPage19.Name = "XtraTabPage19"
-        Me.XtraTabPage19.Size = New System.Drawing.Size(2231, 1331)
+        Me.XtraTabPage19.Size = New System.Drawing.Size(2231, 1294)
         Me.XtraTabPage19.Text = "XtraTabPage8"
         '
         'XtraTabPage20
         '
         Me.XtraTabPage20.Margin = New System.Windows.Forms.Padding(5)
         Me.XtraTabPage20.Name = "XtraTabPage20"
-        Me.XtraTabPage20.Size = New System.Drawing.Size(2231, 1331)
+        Me.XtraTabPage20.Size = New System.Drawing.Size(2231, 1294)
         Me.XtraTabPage20.Text = "XtraTabPage9"
         '
         'XtraTabPage21
         '
         Me.XtraTabPage21.Margin = New System.Windows.Forms.Padding(5)
         Me.XtraTabPage21.Name = "XtraTabPage21"
-        Me.XtraTabPage21.Size = New System.Drawing.Size(2231, 1331)
+        Me.XtraTabPage21.Size = New System.Drawing.Size(2231, 1294)
         Me.XtraTabPage21.Text = "XtraTabPage10"
         '
         'tabAPM
@@ -6017,7 +6671,7 @@ Partial Class frmBDG
         Me.tabAPM.Controls.Add(Me.LayoutControl11APM)
         Me.tabAPM.Margin = New System.Windows.Forms.Padding(5)
         Me.tabAPM.Name = "tabAPM"
-        Me.tabAPM.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabAPM.Size = New System.Drawing.Size(2231, 1294)
         Me.tabAPM.Text = "Χιλιοστά"
         '
         'LayoutControl11APM
@@ -6033,7 +6687,7 @@ Partial Class frmBDG
         Me.LayoutControl11APM.Name = "LayoutControl11APM"
         Me.LayoutControl11APM.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(704, 399, 650, 400)
         Me.LayoutControl11APM.Root = Me.LayoutControlGroup11
-        Me.LayoutControl11APM.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl11APM.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl11APM.TabIndex = 2
         Me.LayoutControl11APM.Text = "LayoutControl1"
         '
@@ -6087,7 +6741,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup11.GroupBordersVisible = False
         Me.LayoutControlGroup11.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem39, Me.LayoutControlItem29, Me.LayoutControlItem93, Me.LayoutControlItem107, Me.LayoutControlItem95})
         Me.LayoutControlGroup11.Name = "Root"
-        Me.LayoutControlGroup11.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup11.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup11.TextVisible = False
         '
         'LayoutControlItem39
@@ -6095,7 +6749,7 @@ Partial Class frmBDG
         Me.LayoutControlItem39.Control = Me.grdAPM
         Me.LayoutControlItem39.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
-        Me.LayoutControlItem39.Size = New System.Drawing.Size(2181, 1311)
+        Me.LayoutControlItem39.Size = New System.Drawing.Size(2181, 1274)
         Me.LayoutControlItem39.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem39.TextVisible = False
         '
@@ -6122,7 +6776,7 @@ Partial Class frmBDG
         Me.LayoutControlItem107.Control = Me.cmdApmExport
         Me.LayoutControlItem107.Location = New System.Drawing.Point(0, 129)
         Me.LayoutControlItem107.Name = "LayoutControlItem107"
-        Me.LayoutControlItem107.Size = New System.Drawing.Size(30, 1182)
+        Me.LayoutControlItem107.Size = New System.Drawing.Size(30, 1145)
         Me.LayoutControlItem107.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem107.TextVisible = False
         '
@@ -6140,7 +6794,7 @@ Partial Class frmBDG
         Me.tabINH.Controls.Add(Me.LayoutControl12INH)
         Me.tabINH.Margin = New System.Windows.Forms.Padding(5)
         Me.tabINH.Name = "tabINH"
-        Me.tabINH.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabINH.Size = New System.Drawing.Size(2231, 1294)
         Me.tabINH.Text = "Παραστατικά"
         '
         'LayoutControl12INH
@@ -6158,7 +6812,7 @@ Partial Class frmBDG
         Me.LayoutControl12INH.Name = "LayoutControl12INH"
         Me.LayoutControl12INH.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(704, 399, 650, 400)
         Me.LayoutControl12INH.Root = Me.LayoutControlGroup31
-        Me.LayoutControl12INH.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl12INH.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl12INH.TabIndex = 3
         Me.LayoutControl12INH.Text = "LayoutControl1"
         '
@@ -6236,7 +6890,7 @@ Partial Class frmBDG
         Me.GridControl10.MainView = Me.GridView_INH
         Me.GridControl10.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl10.Name = "GridControl10"
-        Me.GridControl10.Size = New System.Drawing.Size(2173, 1307)
+        Me.GridControl10.Size = New System.Drawing.Size(2173, 1270)
         Me.GridControl10.TabIndex = 22
         Me.GridControl10.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView_INH})
         '
@@ -6464,7 +7118,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup31.GroupBordersVisible = False
         Me.LayoutControlGroup31.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem242, Me.LayoutControlItem243, Me.LayoutControlItem244, Me.LayoutControlItem245, Me.LayoutControlItem246, Me.LayoutControlItem247, Me.LayoutControlItem138})
         Me.LayoutControlGroup31.Name = "Root"
-        Me.LayoutControlGroup31.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup31.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup31.TextVisible = False
         '
         'LayoutControlItem242
@@ -6472,7 +7126,7 @@ Partial Class frmBDG
         Me.LayoutControlItem242.Control = Me.GridControl10
         Me.LayoutControlItem242.Location = New System.Drawing.Point(34, 0)
         Me.LayoutControlItem242.Name = "LayoutControlItem39"
-        Me.LayoutControlItem242.Size = New System.Drawing.Size(2177, 1311)
+        Me.LayoutControlItem242.Size = New System.Drawing.Size(2177, 1274)
         Me.LayoutControlItem242.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem242.TextVisible = False
         '
@@ -6508,7 +7162,7 @@ Partial Class frmBDG
         Me.LayoutControlItem246.Control = Me.cmdExportINH
         Me.LayoutControlItem246.Location = New System.Drawing.Point(0, 215)
         Me.LayoutControlItem246.Name = "LayoutControlItem107"
-        Me.LayoutControlItem246.Size = New System.Drawing.Size(34, 1096)
+        Me.LayoutControlItem246.Size = New System.Drawing.Size(34, 1059)
         Me.LayoutControlItem246.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem246.TextVisible = False
         '
@@ -6535,7 +7189,7 @@ Partial Class frmBDG
         Me.tabBDG_F.Controls.Add(Me.LayoutControl13BDG_F)
         Me.tabBDG_F.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.tabBDG_F.Name = "tabBDG_F"
-        Me.tabBDG_F.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabBDG_F.Size = New System.Drawing.Size(2231, 1294)
         Me.tabBDG_F.Text = "Αρχεία"
         '
         'LayoutControl13BDG_F
@@ -6546,7 +7200,7 @@ Partial Class frmBDG
         Me.LayoutControl13BDG_F.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl13BDG_F.Name = "LayoutControl13BDG_F"
         Me.LayoutControl13BDG_F.Root = Me.LayoutControlGroup16
-        Me.LayoutControl13BDG_F.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl13BDG_F.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl13BDG_F.TabIndex = 0
         Me.LayoutControl13BDG_F.Text = "LayoutControl1"
         '
@@ -6569,7 +7223,7 @@ Partial Class frmBDG
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(744, 475, 650, 400)
         Me.LayoutControl1.Root = Me.LayoutControlGroup17
-        Me.LayoutControl1.Size = New System.Drawing.Size(2207, 1307)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2207, 1270)
         Me.LayoutControl1.TabIndex = 10
         Me.LayoutControl1.Text = "LayoutControl3"
         '
@@ -6640,7 +7294,7 @@ Partial Class frmBDG
         Me.GridControl3.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl3.Name = "GridControl3"
         Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonEdit4})
-        Me.GridControl3.Size = New System.Drawing.Size(2127, 1094)
+        Me.GridControl3.Size = New System.Drawing.Size(2127, 1057)
         Me.GridControl3.TabIndex = 36
         Me.GridControl3.UseEmbeddedNavigator = True
         Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView12})
@@ -6804,7 +7458,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup17.GroupBordersVisible = False
         Me.LayoutControlGroup17.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup18})
         Me.LayoutControlGroup17.Name = "Root"
-        Me.LayoutControlGroup17.Size = New System.Drawing.Size(2207, 1307)
+        Me.LayoutControlGroup17.Size = New System.Drawing.Size(2207, 1270)
         Me.LayoutControlGroup17.TextVisible = False
         '
         'LayoutControlGroup18
@@ -6814,7 +7468,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup18.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem127, Me.LayoutControlItem128, Me.EmptySpaceItem26, Me.LayoutControlItem133, Me.LayoutControlItem134, Me.LayoutControlItem135, Me.LayoutControlItem123, Me.LayoutControlItem122, Me.LayoutControlItem129, Me.LayoutControlItem130})
         Me.LayoutControlGroup18.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup18.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup18.Size = New System.Drawing.Size(2187, 1287)
+        Me.LayoutControlGroup18.Size = New System.Drawing.Size(2187, 1250)
         Me.LayoutControlGroup18.Text = "Αρχεία Πολυκατοικίας"
         '
         'LayoutControlItem127
@@ -6833,7 +7487,7 @@ Partial Class frmBDG
         Me.LayoutControlItem128.Control = Me.GridControl3
         Me.LayoutControlItem128.Location = New System.Drawing.Point(30, 127)
         Me.LayoutControlItem128.Name = "LayoutControlItem47"
-        Me.LayoutControlItem128.Size = New System.Drawing.Size(2131, 1098)
+        Me.LayoutControlItem128.Size = New System.Drawing.Size(2131, 1061)
         Me.LayoutControlItem128.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem128.TextVisible = False
         '
@@ -6842,7 +7496,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem26.AllowHotTrack = False
         Me.EmptySpaceItem26.Location = New System.Drawing.Point(0, 256)
         Me.EmptySpaceItem26.Name = "EmptySpaceItem24"
-        Me.EmptySpaceItem26.Size = New System.Drawing.Size(30, 969)
+        Me.EmptySpaceItem26.Size = New System.Drawing.Size(30, 932)
         Me.EmptySpaceItem26.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem133
@@ -6922,7 +7576,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup16.GroupBordersVisible = False
         Me.LayoutControlGroup16.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem150})
         Me.LayoutControlGroup16.Name = "LayoutControlGroup16"
-        Me.LayoutControlGroup16.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControlGroup16.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup16.TextVisible = False
         '
         'LayoutControlItem150
@@ -6930,7 +7584,7 @@ Partial Class frmBDG
         Me.LayoutControlItem150.Control = Me.LayoutControl1
         Me.LayoutControlItem150.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem150.Name = "LayoutControlItem150"
-        Me.LayoutControlItem150.Size = New System.Drawing.Size(2211, 1311)
+        Me.LayoutControlItem150.Size = New System.Drawing.Size(2211, 1274)
         Me.LayoutControlItem150.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem150.TextVisible = False
         '
@@ -7000,6 +7654,18 @@ Partial Class frmBDG
         '
         Me.BDGKeysManagerTableAdapter.ClearBeforeFill = True
         '
+        'Vw_PROF_ACT_DTableAdapter
+        '
+        Me.Vw_PROF_ACT_DTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_PROF_ACTTableAdapter
+        '
+        Me.Vw_PROF_ACTTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_PARTNER_AND_WORKSHOPTableAdapter
+        '
+        Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.ClearBeforeFill = True
+        '
         'frmBDG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -7016,418 +7682,454 @@ Partial Class frmBDG
         Me.Name = "frmBDG"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Πολυκατοικία"
-        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBCCTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCCTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPRFBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Maintab, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryBarRecords, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryBarViews, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryPopSaveAsView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemBreadCrumbEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemButtonEdit2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryPopRenameView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwBCCTBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwCCTBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwPRFBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Maintab, System.ComponentModel.ISupportInitialize).EndInit
         Me.Maintab.ResumeLayout(False)
         Me.tabBDG.ResumeLayout(False)
-        CType(Me.LayoutControl1BDG, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl1BDG, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl1BDG.ResumeLayout(False)
-        CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit
         Me.TabPane1.ResumeLayout(False)
         Me.TabNavigationPage1.ResumeLayout(False)
-        CType(Me.LayoutControl2BDG_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl2BDG_1, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl2BDG_1.ResumeLayout(False)
-        CType(Me.lstData, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtAFM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboDOY.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwDOYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboManager.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtAam.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtIam1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtIam.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboKeysManager.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BDGKeysManagerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem96, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem124, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem125, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem114, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem132, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem145, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem146, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lstData, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtAFM.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboDOY.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwDOYBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboManager.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtAam.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtIam1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtIam.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboKeysManager.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BDGKeysManagerBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem96, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem124, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem125, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem114, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem132, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem145, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem146, System.ComponentModel.ISupportInitialize).EndInit
         Me.TabNavigationPage2.ResumeLayout(False)
-        CType(Me.LayoutControl2BDG_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl2BDG_2, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl2BDG_2.ResumeLayout(False)
-        CType(Me.cboDebitUsr.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tmIN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tmOUT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbogrp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup22, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem139, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem140, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem141, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem143, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboDebitUsr.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tmIN.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tmOUT.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cbogrp.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ANNGRPSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup22, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem139, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem140, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem141, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem143, System.ComponentModel.ISupportInitialize).EndInit
         Me.TabNavigationPage3.ResumeLayout(False)
-        CType(Me.LayoutControl2BDG_3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl2BDG_3, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl2BDG_3.ResumeLayout(False)
-        CType(Me.chkMLC, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkMLC, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup23, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit
         Me.TabNavigationPage4.ResumeLayout(False)
-        CType(Me.LayoutControl2BDG_4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl2BDG_4, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl2BDG_4.ResumeLayout(False)
-        CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MemoEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup19, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTK.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtNam.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboAREAS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboADR.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtAR.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboCOU.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkPRD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtDTS.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtDTS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOldCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem75, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem33, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem97, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem137, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem142, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem144, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtComments.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.MemoEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup19, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdAPT, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTK.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtNam.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboAREAS.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboADR.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtAR.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboCOU.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkPRD.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtDTS.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtDTS.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOldCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem75, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem33, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem97, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem137, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem142, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem144, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabManage.ResumeLayout(False)
-        CType(Me.LayoutControl2BManage, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl2BManage, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl2BManage.ResumeLayout(False)
-        CType(Me.txtPayDEI.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkCertified.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkElevator.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtwRegisterNum.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtwCounter.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtwName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfServiceNum.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfPaymentCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfCounter.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ePaymentCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txteName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txteCounter.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txteServiceNum.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfCusCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfHkasp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtcheckcarrier.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtcheckcarrier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtcertifiedEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtcertifiedEndDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtfDeposit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtContractNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem90, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem67, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem87, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem79, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem106, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem99, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem78, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem73, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem100, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem80, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem82, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem88, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem105, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem83, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem81, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem84, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem85, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem86, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem89, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem94, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem115, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem116, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem120, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtPayDEI.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkCertified.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.chkElevator.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtwRegisterNum.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtwCounter.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtwName.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfServiceNum.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfPaymentCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfCounter.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfName.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ePaymentCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txteName.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txteCounter.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txteServiceNum.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfCusCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfUN.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfHkasp.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtcheckcarrier.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtcheckcarrier.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtcertifiedEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtcertifiedEndDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtfDeposit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtContractNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem90, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem67, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem87, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem79, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem106, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem99, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem78, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem121, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem73, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem100, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem80, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem82, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem88, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem105, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem83, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem81, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem84, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem85, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem86, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem89, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup14, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem94, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem115, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem116, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem120, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem25, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabHeating.ResumeLayout(False)
-        CType(Me.LayoutControl3Heating, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl3Heating, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl3Heating.ResumeLayout(False)
-        CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RGTypeHeating.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdAPTAHPB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtMes.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtMes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtLpcH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtLpcB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCalH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCalB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RGBolier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboBefMes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtLpcH1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtLpcH11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem38, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem92, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem131, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem36, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem33, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem136, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RGTypeHeating.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboBtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdAPTAHPB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtMes.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtMes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtLpcH.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtLpcB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCalH.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCalB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RGBolier.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboBefMes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtLpcH1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtLpcH11.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SimpleLabelItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem46, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem38, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem92, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem131, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem34, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem36, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem33, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem35, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem42, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem136, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabMaintenance.ResumeLayout(False)
-        CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl4Maintenance.ResumeLayout(False)
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemLookUpEditCCT, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCCTPFBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemLookUpEditPRF, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboPrf.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtComments1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtCodeBcct.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem108, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem110, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem111, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem109, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem36, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem112, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem117, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem118, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem119, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem113, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem39, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemLookUpEditCCT, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwCCTPFBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Priamos_NETDataSet1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemLookUpEditPRF, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboPrf.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtComments1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCodeBcct.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem108, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem110, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem111, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem109, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem36, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem37, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem112, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem117, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem118, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem119, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem113, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem39, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabFixedCosts.ResumeLayout(False)
-        CType(Me.LayoutControl5FixedCosts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl5FixedCosts, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl5FixedCosts.ResumeLayout(False)
-        CType(Me.grdIEP, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwIEPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem98, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem102, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem101, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem103, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem104, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdIEP, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwIEPBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem98, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem102, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem101, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem103, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem104, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabProfActD.ResumeLayout(False)
+        CType(Me.LayoutControl6Jobs, System.ComponentModel.ISupportInitialize).EndInit
+        Me.LayoutControl6Jobs.ResumeLayout(False)
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwPROFACTDBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemProfAct, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwPROFACTBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemWorkShop, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Priamos_NETDataSet4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboProfAct.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboWorkshop.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtProfActDAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtProfActD.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtProfActD.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCodeProfActD.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup21, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem153, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup24, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem151, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem149, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem148, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem147, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem154, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem155, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem152, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem30, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem29, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem156, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem157, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem158, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabHeatingInvoices.ResumeLayout(False)
-        CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl4InvHeatGas.ResumeLayout(False)
-        CType(Me.grdGas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonGas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtGInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtGInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtGInvDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtGInvNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtGInvCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboGInvSup.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvMes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvBefMes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvLiters.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvFileNames.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.grdOil, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonOil, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtOInvCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboOInvSup.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtGInvFileNames.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem51, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem54, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem50, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem48, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem47, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem19, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem24, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem69, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem71, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem65, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem77, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem64, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem62, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem60, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem59, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem63, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem21, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem22, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem27, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem72, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem74, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem66, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem70, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem76, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdGas, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemButtonGas, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtGInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtGInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtGInvDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtGInvNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtGInvCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboGInvSup.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvMes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvBefMes.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvLiters.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvFileNames.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.grdOil, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemButtonOil, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOInvCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboOInvSup.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtGInvFileNames.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem51, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem54, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem50, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem48, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem47, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem19, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem24, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem69, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem71, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem65, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem77, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem64, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem62, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem60, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem59, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem63, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem21, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem22, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem23, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem27, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem72, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem74, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem66, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem70, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem76, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabAPM.ResumeLayout(False)
-        CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl11APM.ResumeLayout(False)
-        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem93, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem107, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem95, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem39, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem93, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem107, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem95, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabINH.ResumeLayout(False)
-        CType(Me.LayoutControl12INH, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl12INH, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl12INH.ResumeLayout(False)
-        CType(Me.GridControl10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView_INH, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem242, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem243, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem244, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem245, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem246, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem247, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem138, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView_INH, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup31, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem242, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem243, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem244, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem245, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem246, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem247, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem138, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabBDG_F.ResumeLayout(False)
-        CType(Me.LayoutControl13BDG_F, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl13BDG_F, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl13BDG_F.ResumeLayout(False)
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBDGFBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemButtonEdit4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem128, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem133, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem134, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem135, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem123, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem122, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem129, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem130, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem150, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SplitContainerControl1.Panel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwBDGFBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemButtonEdit4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem128, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem26, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem133, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem134, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem135, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem123, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem122, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem129, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem130, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup16, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem150, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem28, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SplitContainerControl1.Panel1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.Panel1.ResumeLayout(False)
-        CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
-        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.PerformLayout
 
     End Sub
 
@@ -7437,7 +8139,7 @@ Partial Class frmBDG
     Friend WithEvents NavHeating As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavMaintenance As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavFixedCosts As DevExpress.XtraBars.Navigation.NavButton
-    Friend WithEvents NavTasks As DevExpress.XtraBars.Navigation.NavButton
+    Friend WithEvents NavProfActD As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavHeatingInvoices As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavDecontamination As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavBoiler As DevExpress.XtraBars.Navigation.NavButton
@@ -7515,7 +8217,7 @@ Partial Class frmBDG
     Friend WithEvents tabHeating As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabMaintenance As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabFixedCosts As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents XtraTabPage17 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabProfActD As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabHeatingInvoices As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage19 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage20 As DevExpress.XtraTab.XtraTabPage
@@ -8003,4 +8705,63 @@ Partial Class frmBDG
     Friend WithEvents EmptySpaceItem6 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents BDGKeysManagerBindingSource As BindingSource
     Friend WithEvents BDGKeysManagerTableAdapter As Priamos_NETDataSetTableAdapters.BDGKeysManagerTableAdapter
+    Friend WithEvents LayoutControl6Jobs As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents LayoutControlGroup21 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView10 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents RepositoryItemProfAct As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents RepositoryItemWorkShop As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents cmdSaveProfActD As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cboProfAct As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents cboWorkshop As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents MemoEdit1 As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents LayoutControlItem153 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlGroup24 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem151 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem149 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem148 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem147 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem7 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents txtProfActDAmt As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem154 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents dtProfActD As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents LayoutControlItem155 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwPROFACTDBindingSource As BindingSource
+    Friend WithEvents Priamos_NETDataSet3 As Priamos_NETDataSet3
+    Friend WithEvents colProfActNam As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colprofDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Vw_PROF_ACT_DTableAdapter As Priamos_NETDataSet3TableAdapters.vw_PROF_ACT_DTableAdapter
+    Friend WithEvents colcctName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colamt1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcmt1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colautoCreateCol As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colbdgID3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcctID1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcode3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcreatedBy As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcreatedOn3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colCreateUSR As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colID3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMachineName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmodifiedBy3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmodifiedOn3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colModifiedUSR As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colnam1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents VwPROFACTBindingSource As BindingSource
+    Friend WithEvents Vw_PROF_ACTTableAdapter As Priamos_NETDataSet3TableAdapters.vw_PROF_ACTTableAdapter
+    Friend WithEvents Priamos_NETDataSet4 As Priamos_NETDataSet
+    Friend WithEvents VwPARTNERANDWORKSHOPBindingSource As BindingSource
+    Friend WithEvents Vw_PARTNER_AND_WORKSHOPTableAdapter As Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter
+    Friend WithEvents txtCodeProfActD As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem152 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem8 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents colprofActID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdRefreshProfActD As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdDeleteProfActD As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdNewProfActD As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents EmptySpaceItem30 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem29 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LayoutControlItem156 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem157 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem158 As DevExpress.XtraLayout.LayoutControlItem
 End Class

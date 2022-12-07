@@ -1,4 +1,7 @@
-﻿Imports DevExpress.XtraEditors
+﻿Imports DevExpress.Utils
+Imports DevExpress.Utils.Extensions
+Imports DevExpress.XtraEditors
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class CombosManager
@@ -21,6 +24,42 @@ Public Class CombosManager
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.ShowDialog()
     End Sub
+    Public Sub ManagePROFACT(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
+        Dim fGen As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        fGen.Text = "Επαγγελματικές Δραστηριότητες"
+        fGen.CallerControl = CallerControl
+        fGen.CalledFromControl = True
+        fGen.CallerForm = FrmCaller
+        fGen.MdiParent = frmMain
+        fGen.DataTable = "PROF_ACT"
+        fGen.L1.Text = "Κωδικός"
+        fGen.L2.Text = "Περιγραφή"
+        fGen.chk1.Text = "Αυτόματη Καταχώρηση Είσπραξης"
+        fGen.L8.Text = "Ποσό"
+        fGen.L10.Text = "Ημερομηνία Έναρξης"
+        fGen.chk1.Tag = "autoCreateCol,0,1,2"
+        fGen.txtNum.Tag = "amt,0,1,2"
+        fGen.txtNum.Properties.MaskSettings.MaskExpression = "c2"
+        fGen.txtNum.Properties.DisplayFormat.FormatType = FormatType.Numeric
+        fGen.txtNum.Properties.DisplayFormat.FormatString = "c"
+        fGen.txtNum.Properties.EditFormat.FormatType = FormatType.Numeric
+        fGen.txtNum.Properties.EditFormat.FormatString = "n2"
+        fGen.txtNum.Text = "0,00€"
+        fGen.L10.Control.Tag = "dtEvery,0,1,2"
+        fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.L10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        If CallerControl.EditValue <> Nothing Then
+            fGen.ID = CallerControl.EditValue.ToString
+            fGen.Mode = FormMode.EditRecord
+        Else
+            fGen.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(fGen.Parent.ClientRectangle.Width / 2 - fGen.Width / 2), CInt(fGen.Parent.ClientRectangle.Height / 2 - fGen.Height / 2)))
+        fGen.Show()
+    End Sub
+
     Public Sub ManageBDG(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmBDG = New frmBDG()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing

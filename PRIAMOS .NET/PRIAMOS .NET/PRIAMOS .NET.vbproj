@@ -897,6 +897,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-calculate-40.png" />
+    <None Include="Resources\icons8-surface-40.png" />
+    <None Include="Resources\icons8-folder-40.png" />
+    <None Include="Resources\icons8-announcement-40.png" />
+    <None Include="Resources\icons8-formula-40.png" />
+    <None Include="Resources\icons8-insecticide-40.png" />
+    <None Include="Resources\icons8-layout-40.png" />
+    <Content Include="Sql Scripts\col_Calculate.sql" />
+    <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <None Include="Resources\icons-notes-40.png" />
     <None Include="Resources\icons8-sent-24.png" />
     <None Include="Resources\icons8-sent-32.png" />
