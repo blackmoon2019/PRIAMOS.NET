@@ -1,8 +1,10 @@
 ﻿Imports DevExpress.Utils
 Imports DevExpress.Utils.Extensions
+Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Grid
+Imports PRIAMOS.NET.Main
 
 Public Class CombosManager
     Public Sub ManageManager(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
@@ -24,7 +26,7 @@ Public Class CombosManager
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.ShowDialog()
     End Sub
-    Public Sub ManagePROFACT(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
+    Public Sub ManagePROFACT(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm, Optional ByVal isFromGrid As Boolean = False, Optional ByVal grdView As GridView = Nothing)
         Dim fGen As frmGen = New frmGen()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
         fGen.Text = "Επαγγελματικές Δραστηριότητες"
@@ -50,11 +52,20 @@ Public Class CombosManager
         fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         fGen.L10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        If CallerControl.EditValue <> Nothing Then
-            fGen.ID = CallerControl.EditValue.ToString
-            fGen.Mode = FormMode.EditRecord
+        If isFromGrid = False Then
+            If CallerControl.EditValue <> Nothing Then
+                fGen.ID = CallerControl.EditValue.ToString
+                fGen.Mode = FormMode.EditRecord
+            Else
+                fGen.Mode = FormMode.NewRecord
+            End If
         Else
-            fGen.Mode = FormMode.NewRecord
+            If grdView.GetRowCellValue(grdView.FocusedRowHandle, "profActID").ToString <> Nothing Then
+                fGen.ID = grdView.GetRowCellValue(grdView.FocusedRowHandle, "profActID").ToString
+                fGen.Mode = FormMode.EditRecord
+            Else
+                fGen.Mode = FormMode.NewRecord
+            End If
         End If
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(fGen.Parent.ClientRectangle.Width / 2 - fGen.Width / 2), CInt(fGen.Parent.ClientRectangle.Height / 2 - fGen.Height / 2)))
         fGen.Show()
@@ -319,6 +330,36 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
+    Public Sub ManageCCT(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "", Optional ByVal CallerControl As LookUpEdit = Nothing, Optional ByVal grdView As GridView = Nothing)
+        Dim form1 As frmCustomers = New frmCustomers()
+        form1.Text = "Πελάτες"
+        'form1.MdiParent = frmMain
+        If isFromGrid = False Then
+            form1.CallerControl = CallerControl
+            form1.CalledFromControl = False
+            If CallerControl.EditValue <> Nothing Then
+                form1.ID = CallerControl.EditValue.ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+                form1.chkWorkshop.Checked = True
+                form1.chkPrivate.Checked = False
+            End If
+        Else
+            If grdView.GetRowCellValue(grdView.FocusedRowHandle, "cctID").ToString <> Nothing Then
+                form1.ID = grdView.GetRowCellValue(grdView.FocusedRowHandle, "cctID").ToString
+                form1.Mode = FormMode.EditRecord
+            Else
+                form1.Mode = FormMode.NewRecord
+                form1.chkWorkshop.Checked = True
+                form1.chkPrivate.Checked = False
+            End If
+        End If
+
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.ShowDialog()
+    End Sub
+
     Public Sub ManageDOY(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmGen = New frmGen()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
@@ -383,6 +424,48 @@ Public Class CombosManager
         Else
             form1.Mode = FormMode.NewRecord
         End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+    Public Sub ManageBANK(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
+        Dim form1 As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Τράπεζες"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τράπεζα"
+        form1.DataTable = "BANK"
+        form1.CalledFromControl = True
+        form1.CallerControl = CallerControl
+        form1.CallerForm = FrmCaller
+        form1.MdiParent = frmMain
+        If CallerControl.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = CallerControl.GetColumnValue("ID").ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
+    Public Sub ManageColMethod(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
+        Dim form1 As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Τρόποι Πληρωμής"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Τρόπος Πληρωμής"
+        form1.DataTable = "COL_METHOD"
+        form1.CalledFromControl = True
+        form1.CallerControl = CallerControl
+        form1.CallerForm = FrmCaller
+        form1.MdiParent = frmMain
+        If CallerControl.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = CallerControl.GetColumnValue("ID").ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub

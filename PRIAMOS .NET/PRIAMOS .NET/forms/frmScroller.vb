@@ -217,7 +217,16 @@ Public Class frmScroller
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_FOLDER_CAT" : sSQL = "DELETE FROM FOLDER_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
-                    Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL_EXT"
+                        sSQL = "Update PROF_ACT_D 
+                                SET colCreated=0
+                                From PROF_ACT_D
+                                WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "profActDID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
+                        sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CONTACTS" : sSQL = "DELETE FROM CONTACTS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
@@ -307,7 +316,16 @@ Public Class frmScroller
                     Case "vw_TASKS_CAT" : sSQL = "DELETE FROM TASKS_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
-                    Case "vw_COL_EXT" : sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_COL_EXT"
+                        sSQL = "Update PROF_ACT_D 
+                                SET colCreated=0
+                                From PROF_ACT_D
+                                WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "profActDID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
+                        sSQL = "DELETE FROM COL_EXT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_PRIAMOSVER" : sSQL = "DELETE FROM PRIAMOS_VER WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_ANN_GRPS" : sSQL = "DELETE FROM ANN_GRPS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_CONTACTS" : sSQL = "DELETE FROM CONTACTS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"

@@ -13,6 +13,7 @@ Public Class frmColExt
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
     Private UserPermissions As New CheckPermissions
+    Private ManageCbo As New CombosManager
     Dim sGuid As String
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -39,6 +40,8 @@ Public Class frmColExt
     End Sub
 
     Private Sub frmColExt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet3.vw_PROF_ACT' table. You can move, or remove it, as needed.
+        Me.Vw_PROF_ACTTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_PROF_ACT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
         Me.Vw_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BANKS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
@@ -114,141 +117,57 @@ Public Class frmColExt
             End If
         End If
     End Sub
-    Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
+    Private Sub cboProfAct_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboProfAct.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboBDG.EditValue = Nothing : ManageBDG(cboBDG)
-            Case 2 : If cboBDG.EditValue <> Nothing Then ManageBDG(cboBDG)
-            Case 3 : cboBDG.EditValue = Nothing
+            Case 1 : ManageCbo.ManagePROFACT(cboProfAct, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManagePROFACT(cboProfAct, FormMode.EditRecord, Me)
+            Case 3 : cboProfAct.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManageBDG(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmBDG = New frmBDG()
-        form1.Text = "Πολυκατοικία"
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
+    Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageBDG(cboBDG, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
+            Case 3 : cboBDG.EditValue = Nothing
+        End Select
     End Sub
 
     Private Sub cboCollector_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCollector.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboCollector.EditValue = Nothing : ManageUSR(cboCollector)
-            Case 2 : If cboCollector.EditValue <> Nothing Then ManageUSR(cboCollector)
+            Case 1 : ManageCbo.ManageUSR(cboCollector, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageUSR(cboCollector, FormMode.EditRecord)
             Case 3 : cboCollector.EditValue = Nothing
         End Select
 
     End Sub
-    Private Sub ManageUSR(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmUsers = New frmUsers()
-        form1.Text = "Χρήστης"
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
     Private Sub cboColMethod_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboColMethod.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboColMethod.EditValue = Nothing : ManageColMethod(cboColMethod)
-            Case 2 : If cboColMethod.EditValue <> Nothing Then ManageColMethod(cboColMethod)
+            Case 1 : ManageCbo.ManageColMethod(cboColMethod, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManageColMethod(cboColMethod, FormMode.EditRecord, Me)
             Case 3 : cboColMethod.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManageColMethod(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τρόποι Πληρωμής"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τρόπος Πληρωμής"
-        form1.DataTable = "COL_METHOD"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboColMethod
-        form1.CallerForm = Me
-        form1.MdiParent = frmMain
-        If cboColMethod.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboColMethod.GetColumnValue("ID").ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
 
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
-    Private Sub cboApt_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboApt.ButtonPressed
+    Private Sub cboAPT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboApt.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboApt.EditValue = Nothing : ManageAPT(cboApt)
-            Case 2 : If cboApt.EditValue <> Nothing Then ManageAPT(cboApt)
+            Case 1 : ManageCbo.ManageAPT(cboApt, FormMode.NewRecord, cboBDG.EditValue.ToString)
+            Case 2 : ManageCbo.ManageAPT(cboApt, FormMode.EditRecord, cboBDG.EditValue.ToString)
             Case 3 : cboApt.EditValue = Nothing
         End Select
-    End Sub
-    Private Sub ManageAPT(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmAPT = New frmAPT()
-        form1.Text = "Διαμέρισμα"
-        form1.BDGID = cboBDG.EditValue.ToString
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
     End Sub
 
     Private Sub cboBank_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBank.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboBank.EditValue = Nothing : ManageBANK(cboBank)
-            Case 2 : If cboBank.EditValue <> Nothing Then ManageBANK(cboBank)
+            Case 1 : ManageCbo.ManageBANK(cboBank, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManageBANK(cboBank, FormMode.EditRecord, Me)
             Case 3 : cboBank.EditValue = Nothing
         End Select
-    End Sub
-    Private Sub ManageBANK(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Τράπεζες"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Τράπεζα"
-        form1.DataTable = "BANK"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboColMethod
-        form1.CallerForm = Me
-        form1.MdiParent = frmMain
-        If cboColMethod.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboColMethod.GetColumnValue("ID").ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
     End Sub
 
 
     Private Sub cboColMethod_EditValueChanged(sender As Object, e As EventArgs) Handles cboColMethod.EditValueChanged
         If cboColMethod.EditValue Is Nothing Then Exit Sub
         If cboColMethod.EditValue.ToString.ToUpper = "F34B402C-ADD8-48E7-85A9-FFDF7DAED582" Then cboBank.ReadOnly = False Else cboBank.ReadOnly = True : cboBank.EditValue = Nothing
-    End Sub
-
-    Private Sub cboBDG_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles cboBDG.EditValueChanging
-        '    If XtraMessageBox.Show("Είστε σίγουρός/η ότι θέλετε να αλλάξετε πολυκατοκία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then e.Cancel = True
-
     End Sub
 End Class

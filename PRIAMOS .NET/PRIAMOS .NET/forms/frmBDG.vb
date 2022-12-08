@@ -17,6 +17,8 @@ Imports System.ComponentModel
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
+Imports DevExpress.DataAccess
+Imports DevExpress.Utils.VisualEffects
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -162,35 +164,6 @@ Public Class frmBDG
         GridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True
 
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
-    End Sub
-    Private Sub ManageCCT(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "")
-        Dim form1 As frmCustomers = New frmCustomers()
-        form1.Text = "Πελάτες"
-        'form1.MdiParent = frmMain
-        If isFromGrid = False Then
-            form1.CallerControl = cboCCT
-            form1.CalledFromControl = False
-            If cboCCT.EditValue <> Nothing Then
-                form1.ID = cboCCT.EditValue.ToString
-                form1.Mode = FormMode.EditRecord
-            Else
-                form1.Mode = FormMode.NewRecord
-                form1.chkWorkshop.Checked = True
-                form1.chkPrivate.Checked = False
-            End If
-        Else
-            If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString <> Nothing Then
-                form1.ID = GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString
-                form1.Mode = FormMode.EditRecord
-            Else
-                form1.Mode = FormMode.NewRecord
-                form1.chkWorkshop.Checked = True
-                form1.chkPrivate.Checked = False
-            End If
-        End If
-
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.ShowDialog()
     End Sub
 
     Private Sub frmBDG_Resize(sender As Object, e As EventArgs) Handles Me.Resize
@@ -1809,8 +1782,8 @@ Public Class frmBDG
 
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboCCT.EditValue = Nothing : ManageCCT(False) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
-            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCCT(False) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 1 : cboCCT.EditValue = Nothing : ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
             Case 3 : cboCCT.EditValue = Nothing
         End Select
     End Sub
@@ -1820,11 +1793,11 @@ Public Class frmBDG
         Select Case e.Button.Index
             Case 1
                 GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "cctID", Nothing)
-                ManageCCT(True, RecID)
+                ManageCbo.ManageCCT(True, RecID, cboCCT, GridView8)
                 GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "cctID", RecID)
             Case 2
                 If GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString <> Nothing Then
-                    ManageCCT(True, RecID)
+                    ManageCbo.ManageCCT(True, RecID, cboCCT, GridView8)
                 End If
             Case 3 : GridView8.SetRowCellValue(GridView8.FocusedRowHandle, "cctID", Nothing)
         End Select
@@ -2306,25 +2279,48 @@ Public Class frmBDG
     Private Sub cmdSaveProfActD_Click(sender As Object, e As EventArgs) Handles cmdSaveProfActD.Click
         Dim sResult As Boolean
         Try
-            If Valid.ValidateFormGRP(LayoutControlGroup21) Then
-
+            If Valid.ValidateFormGRP(LayoutControlGroup24) Then
+                Dim sGuid As String = System.Guid.NewGuid.ToString
                 Select Case ModePROFACTD
                     Case FormMode.NewRecord
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT_D", LayoutControl6Jobs,,, , True, "bdgID", toSQLValueS(sID))
-                    Case FormMode.EditRecord
-                        sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT_D", LayoutControl6Jobs,,, sID, True)
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT_D", LayoutControl6Jobs,,, sGuid, True, "bdgID", toSQLValueS(sID))
+                        'Case FormMode.EditRecord
+                        '    sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT_D", LayoutControl6Jobs,,, sID, True)
                 End Select
 
 
                 If sResult Then
-                    Cls.ClearGroupCtrls(LayoutControlGroup21)
                     txtCodeProfActD.Text = DBQ.GetNextId("PROF_ACT_D")
-                    Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
-                    LayoutControlGroup15.Enabled = False
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Valid.SChanged = False
+                    If ModePROFACTD = FormMode.NewRecord Then
+                        'Δημιουργία εγγραφής είσπραξης 
+                        If XtraMessageBox.Show("Θέλετε να δημιουργηθεί είσπραξη για την εργασία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                            Dim sSQL As New System.Text.StringBuilder
+
+                            sSQL.AppendLine("INSERT INTO COL_EXT(bdgid,profActDID,credit,debit,bal,ColMethodID,dtcredit)")
+                            sSQL.AppendLine("VALUES( " & toSQLValueS(sID) & "," & toSQLValueS(sGuid) & ",0," &
+                                            toSQLValue(txtProfActDAmt, True) & "," & toSQLValue(txtProfActDAmt, True) & "," & toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & "," &
+                                            toSQLValueS(CDate(dtProfActD.Text).ToString("yyyyMMdd")) & ")")
+                            'Εκτέλεση QUERY
+                            Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                                oCmd.ExecuteNonQuery()
+                            End Using
+
+                            'Ενημέρωση εγγραφής ότι δημιουργήθηκε είσπραξη πάνω της
+                            Using oCmd As New SqlCommand("UPDATE PROF_ACT_D SET ColCreated = 1 where ID = " & toSQLValueS(sGuid), CNDB)
+                                oCmd.ExecuteNonQuery()
+                            End Using
+
+
+                        End If
+                        Cls.ClearGroupCtrls(LayoutControlGroup24)
+                        Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
+                    End If
+
                 End If
+                Valid.SChanged = False
             End If
+
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -2334,13 +2330,13 @@ Public Class frmBDG
     Private Sub NavProfActD_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavProfActD.ElementClick
         Try
             Maintab.SelectedTabPage = tabProfActD
+            ModePROFACTD = FormMode.NewRecord
             'TODO: This line of code loads data into the 'Priamos_NETDataSet4.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
             Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet4.vw_PARTNER_AND_WORKSHOP)
             'TODO: This line of code loads data into the 'Priamos_NETDataSet3.vw_PROF_ACT' table. You can move, or remove it, as needed.
             Me.Vw_PROF_ACTTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_PROF_ACT)
             Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
             LoadForms.RestoreLayoutFromXml(GridView10, "vw_PROF_ACT_D.xml")
-            GridView10.OptionsBehavior.Editable = False
             txtCodeProfActD.Text = DBQ.GetNextId("PROF_ACT_D")
             cmdSaveProfActD.Enabled = True
         Catch ex As Exception
@@ -2379,16 +2375,33 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdNewProfActD_Click(sender As Object, e As EventArgs) Handles cmdNewProfActD.Click
-        LayoutControlGroup21.Enabled = True
         Cls.ClearGroupCtrls(LayoutControlGroup21)
-        txtCodeBcct.Text = DBQ.GetNextId("PROF_ACT_D")
+        txtCodeProfActD.Text = DBQ.GetNextId("PROF_ACT_D")
         ModePROFACTD = FormMode.NewRecord
 
     End Sub
 
     Private Sub DeleteRecordPROFACTD()
         Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+
         Try
+            sSQL = "select top 1 completed from COL_EXT where profActDID =  " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString)
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+
+            If sdr.Read() = True Then
+                XtraMessageBox.Show("Δεν μπορείτε να διαγράψετε εργασία όταν υπάρχει είσπραξη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                sdr.Close()
+                sdr = Nothing
+
+                Exit Sub
+            End If
+            sdr.Close()
+            sdr = Nothing
+
+
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 sSQL = "DELETE FROM PROF_ACT_D WHERE ID = '" & GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString & "'"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -2409,6 +2422,88 @@ Public Class frmBDG
         Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
     End Sub
 
+    Private Sub RepositoryItemWorkShop_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemWorkShop.ButtonClick
+        Dim RecID As String
+        Select Case e.Button.Index
+            Case 1
+                GridView10.SetRowCellValue(GridView10.FocusedRowHandle, "cctID", Nothing)
+                ManageCbo.ManageCCT(True, RecID, cboWorkshop, GridView10)
+                GridView10.SetRowCellValue(GridView10.FocusedRowHandle, "cctID", RecID)
+            Case 2
+                If GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "cctID").ToString <> Nothing Then
+                    ManageCbo.ManageCCT(True, RecID, cboWorkshop, GridView10)
+                End If
+            Case 3 : GridView10.SetRowCellValue(GridView10.FocusedRowHandle, "cctID", Nothing)
+        End Select
+    End Sub
+    Private Sub RepositoryItemProfAct_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemProfAct.ButtonClick
+        Dim RecID As String
+        Select Case e.Button.Index
+            Case 1
+                GridView10.SetRowCellValue(GridView10.FocusedRowHandle, "profActID", Nothing)
+                ManageCbo.ManagePROFACT(cboProfAct, FormMode.NewRecord, Me, True, GridView10)
+                GridView10.SetRowCellValue(GridView10.FocusedRowHandle, "profActID", RecID)
+            Case 2
+                If GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profActID").ToString <> Nothing Then
+                    ManageCbo.ManagePROFACT(cboProfAct, FormMode.EditRecord, Me, True, GridView10)
+                End If
+            Case 3 : GridView10.SetRowCellValue(GridView10.FocusedRowHandle, "profActID", Nothing)
+        End Select
+    End Sub
+    Private Sub GridView10_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles GridView10.CustomDrawCell
+        Dim GRD10 As GridView = sender
+        If e.Column.FieldName = "cctID" Then e.DisplayText = GRD10.GetRowCellValue(e.RowHandle, "cctName").ToString()
+
+    End Sub
+    Private Sub GridView10_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView10.RowUpdated
+
+    End Sub
+
+    Private Sub GridView10_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView10.KeyDown
+        If e.KeyCode = Keys.Delete Then DeleteRecordPROFACTD()
+
+
+    End Sub
+
+    Private Sub GridView10_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView10.CellValueChanged
+        Try
+            Dim sSQL As String
+
+            sSQL = "UPDATE [PROF_ACT_D] SET cctID  = " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "cctID").ToString) &
+                ",profActID = " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profActID").ToString) &
+                ",amt = " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) &
+                ",colCreated = " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "colCreated").ToString) &
+                ",cmt = " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "cmt").ToString) &
+        " WHERE ID = " & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString)
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            If e.Column.FieldName = "colCreated" And e.Value = "1" Then
+                'Δημιουργία εγγραφής είσπραξης 
+                If XtraMessageBox.Show("Θέλετε να δημιουργηθεί είσπραξη για την εργασία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    Dim sSQLs As New System.Text.StringBuilder
+
+                    sSQLs.AppendLine("INSERT INTO COL_EXT(bdgid,profActDID,credit,debit,bal,ColMethodID,dtcredit)")
+                    sSQLs.AppendLine("VALUES( " & toSQLValueS(sID) & "," & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString) & ",0," &
+                                    toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) & "," &
+                                    toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) & "," &
+                                    toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & "," &
+                                    toSQLValueS(CDate(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profDate").ToString).ToString("yyyyMMdd")) & ")")
+                    'Εκτέλεση QUERY
+                    Using oCmd As New SqlCommand(sSQLs.ToString, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+
+
+                End If
+            End If
+
+            Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
 
 

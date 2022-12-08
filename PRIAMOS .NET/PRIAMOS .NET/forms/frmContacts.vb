@@ -83,7 +83,7 @@ Public Class frmContacts
         Select Case e.Button.Index
             Case 1 : ManageCbo.ManageAPT(cboAPT, FormMode.NewRecord, cboBDG.EditValue.ToString)
             Case 2 : ManageCbo.ManageAPT(cboAPT, FormMode.EditRecord, cboBDG.EditValue.ToString)
-            Case 3 : cboBDG.EditValue = Nothing
+            Case 3 : cboAPT.EditValue = Nothing
         End Select
     End Sub
 

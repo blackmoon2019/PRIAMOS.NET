@@ -135,6 +135,22 @@
   <metadata name="VwBANKSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>2694, 17</value>
   </metadata>
+  <metadata name="VwPROFACTBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>593, 69</value>
+  </metadata>
+  <metadata name="Priamos_NETDataSet3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>316, 69</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LayoutControlItem148.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5AkWETM3aFGQfgAAAIZJREFU
+        GFdjOKJjJ3S9qvXQhYzSOhAGsUFiDBUMDNxXq9r23G6b8BOEQWyQGMPx5Pxj5zJKnjzKrf4PwiA2SIxh
+        b3jy0UNxWU/OWHv/B2EQe294ylGGJB0j7hX23nuWGTn+Wmbs+AvI3hurbsTDcDgkQWiWscORyfrWDVOB
+        eJaJw5G9QfFCAE0iSJ9A5bowAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="Vw_APTTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1692, 17</value>
   </metadata>
@@ -149,5 +165,8 @@
   </metadata>
   <metadata name="Vw_BANKSTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 69</value>
+  </metadata>
+  <metadata name="Vw_PROF_ACTTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>917, 69</value>
   </metadata>
 </root>

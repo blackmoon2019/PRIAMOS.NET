@@ -4684,6 +4684,8 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columncctName As Global.System.Data.DataColumn
         
+        Private columncolCreated As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -4872,6 +4874,14 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property colCreatedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncolCreated
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4927,9 +4937,10 @@ Partial Public Class Priamos_NETDataSet3
                     ByVal nam As String,  _
                     ByVal ProfActNam As String,  _
                     ByVal autoCreateCol As Boolean,  _
-                    ByVal cctName As String) As vw_PROF_ACT_DRow
+                    ByVal cctName As String,  _
+                    ByVal colCreated As Boolean) As vw_PROF_ACT_DRow
             Dim rowvw_PROF_ACT_DRow As vw_PROF_ACT_DRow = CType(Me.NewRow,vw_PROF_ACT_DRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, profActID, cctID, bdgID, profDate, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, CreateUSR, ModifiedUSR, nam, ProfActNam, autoCreateCol, cctName}
+            Dim columnValuesArray() As Object = New Object() {ID, code, profActID, cctID, bdgID, profDate, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, CreateUSR, ModifiedUSR, nam, ProfActNam, autoCreateCol, cctName, colCreated}
             rowvw_PROF_ACT_DRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_PROF_ACT_DRow)
             Return rowvw_PROF_ACT_DRow
@@ -4977,6 +4988,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnProfActNam = MyBase.Columns("ProfActNam")
             Me.columnautoCreateCol = MyBase.Columns("autoCreateCol")
             Me.columncctName = MyBase.Columns("cctName")
+            Me.columncolCreated = MyBase.Columns("colCreated")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5020,6 +5032,8 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columnautoCreateCol)
             Me.columncctName = New Global.System.Data.DataColumn("cctName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncctName)
+            Me.columncolCreated = New Global.System.Data.DataColumn("colCreated", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncolCreated)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -5039,6 +5053,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnautoCreateCol.AllowDBNull = false
             Me.columncctName.AllowDBNull = false
             Me.columncctName.MaxLength = 200
+            Me.columncolCreated.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8882,6 +8897,17 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property colCreated() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_PROF_ACT_D.colCreatedColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_PROF_ACT_D.colCreatedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscmtNull() As Boolean
             Return Me.IsNull(Me.tablevw_PROF_ACT_D.cmtColumn)
         End Function
@@ -12110,6 +12136,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("ProfActNam", "ProfActNam")
             tableMapping.ColumnMappings.Add("autoCreateCol", "autoCreateCol")
             tableMapping.ColumnMappings.Add("cctName", "cctName")
+            tableMapping.ColumnMappings.Add("colCreated", "colCreated")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -12126,9 +12153,10 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, code, profActID, cctID, bdgID, profDate, amt, cmt, modifiedBy, modifie"& _ 
-                "dOn, createdOn, createdBy, MachineName, CreateUSR, ModifiedUSR, nam, ProfActNam,"& _ 
-                " autoCreateCol, cctName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_PROF_ACT_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"
+            Me._commandCollection(0).CommandText = "SELECT ID, code, profActID, cctID, bdgID, profDate, amt, cmt, modifiedOn, created"& _ 
+                "On, createdBy, MachineName, CreateUSR, ModifiedUSR, nam, ProfActNam, autoCreateC"& _ 
+                "ol, cctName, colCreated, modifiedBy"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_PROF_ACT_D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID"& _ 
+                ")"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
