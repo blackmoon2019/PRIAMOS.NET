@@ -559,6 +559,15 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BarButtonItem4_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBColExtTypes.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Είδη Είσπραξης"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "vw_COL_EXT_TYPES"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
 
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()

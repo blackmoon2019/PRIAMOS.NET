@@ -110,7 +110,29 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub ' ...
+    Public Sub ManageColExtTypes(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
+        Dim form1 As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Είδη Είσπραξης"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Είδος"
+        form1.DataTable = "COL_EXT_TYPES"
+        form1.CalledFromControl = True
+        form1.CallerControl = CallerControl
+        form1.CallerForm = FrmCaller
+        form1.MdiParent = frmMain
+        If CallerControl.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
 
+            If CallerControl.GetColumnValue("ID") Is Nothing Then Exit Sub
+            form1.ID = CallerControl.GetColumnValue("ID").ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub ' .
     Public Sub KeysManager(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmCustomers = New frmCustomers()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing

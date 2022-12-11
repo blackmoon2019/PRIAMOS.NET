@@ -19,10 +19,12 @@ Imports DevExpress.Export
 Imports System.Drawing.Printing
 Imports DevExpress.DataAccess
 Imports DevExpress.Utils.VisualEffects
+Imports DevExpress.Xpo.DB.DataStoreLongrunnersWatch
+Imports DevExpress.XtraGrid.Views
 
 Public Class frmBDG
     '------Private Variables Declaration------
-    Private sID As String
+    Private sID As String = ""
     Private sManageID As String
     Private sAHPBID As String
     Private Iam As String
@@ -105,7 +107,12 @@ Public Class frmBDG
         'Me.Vw_CCT_PFTableAdapter.Fill(Me.Priamos_NETDataSet1.vw_CCT_PF)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PRF' table. You can move, or remove it, as needed.
         Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
-        Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Parse(IIf(sID.Length = 0, System.Guid.Empty, sID)))
+        If sID.Length = 0 Then
+            Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Empty)
+        Else
+            Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Parse(sID))
+        End If
+
         Dim sSQL As New System.Text.StringBuilder
         'txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         'txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -492,13 +499,13 @@ Public Class frmBDG
 
     Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
         Dim sSQL As New System.Text.StringBuilder
-        If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Valid.SChanged = False
-            Else
-                Exit Sub
-            End If
-        End If
+        'If Valid.SChanged Then
+        '    If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+        '        Valid.SChanged = False
+        '    Else
+        '        Exit Sub
+        '    End If
+        'End If
         Maintab.SelectedTabPage = tabHeating
         'Τύποι Υπολογισμού
         FillCbo.CALC_TYPES(cboHtypes)
@@ -716,7 +723,7 @@ Public Class frmBDG
     Private Sub LoadMefMes(ByVal sDate As String)
         Dim sSQL As String
         If cboBefMes.EditValue <> Nothing Then
-            sSQL = "Select CUR.ID
+            sSQL = "Select CUR.ahpbHID,CUR.ID
 	                ,CUR.code
 	                ,CUR.aptID
 	                ,case when CUR.mes<>0 then cur.mdt else  (select MAX(mdt) FROM AHPB	WHERE bdgid = '" + sID + "' AND boiler =  " + RGTypeHeating.SelectedIndex.ToString + "	AND mdt < " + toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) + "	and AHPB.aptID = CUR.aptID) end AS mdt	
@@ -977,7 +984,7 @@ Public Class frmBDG
 
     Private Sub GridView2_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView2, "AHPB_def.xml")
+            LoadForms.PopupMenuShow(e, GridView2, "AHPB_def.xml",, "Select top 1 * from vw_AHPB")
         Else
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
@@ -1513,6 +1520,14 @@ Public Class frmBDG
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
+
+            'Ενημέρωση συνόλου ωρών
+            sSQL = "UPDATE  AHPB_H SET totalBdgMesDif = (select sum(mesdif) from AHPB where ahpbHID=ahpb_h.id) where id = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.FocusedRowHandle, "ahpbHID").ToString)
+
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -2499,6 +2514,89 @@ Public Class frmBDG
             End If
 
             Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub NavConsumption_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavConsumption.ElementClick
+        Maintab.SelectedTabPage = tabConsumptions
+        Me.AHPB_H_HCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_HCONSUMPTION, System.Guid.Parse(sID))
+        Me.AHPB_H_BCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_BCONSUMPTION, System.Guid.Parse(sID))
+        Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
+    End Sub
+
+    Private Sub cboMesH_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesH.EditValueChanged
+        Dim calH As Integer, TotalMesH As Integer, CalHCons As Integer, CalBCons As Integer
+        If cboMesH.EditValue Is Nothing Then Exit Sub
+        TotalMesH = cboMesH.GetColumnValue("totalBdgMesDif") : txtTotalMesH.EditValue = TotalMesH
+        calH = cboMesH.GetColumnValue("calH")
+        CalHCons = TotalMesH * calH : txtCalHCons.EditValue = CalHCons
+        CalBCons = txtCalBCons.EditValue
+        txtCalTotalCons.EditValue = CalHCons + CalBCons
+    End Sub
+
+    Private Sub cboMesB_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesB.EditValueChanged
+        Dim calB As Integer, TotalMesB As Integer, CalBCons As Integer, CalHCons As Integer
+        If cboMesB.EditValue Is Nothing Then Exit Sub
+        TotalMesB = cboMesB.GetColumnValue("totalBdgMesDif") : txtTotalMesB.EditValue = TotalMesB
+        calB = cboMesB.GetColumnValue("calB")
+        CalBCons = TotalMesB * calB : txtCalBCons.EditValue = CalBCons
+        CalHCons = txtCalHCons.EditValue
+        txtCalTotalCons.EditValue = CalHCons + CalBCons
+    End Sub
+    Private Sub txtTotalConsumption_Validated(sender As Object, e As EventArgs) Handles txtTotalConsumption.Validated
+        Try
+            Dim totalConsumption As Decimal, CalTotalCons As Integer, CalHCons As Integer, CalBCons As Integer
+            Dim ConsumptionH As Decimal, ConsumptionB As Decimal
+            totalConsumption = txtTotalConsumption.EditValue.ToString.Replace(".", ",")
+            CalTotalCons = txtCalTotalCons.EditValue
+            CalHCons = txtCalHCons.EditValue
+            CalBCons = txtCalBCons.EditValue
+            If CalTotalCons = 0 Then Exit Sub
+            ConsumptionH = totalConsumption / CalTotalCons
+            ConsumptionH = ConsumptionH * CalHCons
+            ConsumptionB = totalConsumption / CalTotalCons
+            ConsumptionB = ConsumptionB * CalBCons
+            txtConsumptionH.EditValue = ConsumptionH
+            txtConsumptionB.EditValue = ConsumptionB
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
+    Private Sub cboMesH_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesH.ButtonClick
+        cboMesH.EditValue = Nothing
+        Cls.ClearCtrls(LayoutControl7Consumptions)
+    End Sub
+
+    Private Sub cboMesB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesB.ButtonClick
+        cboMesB.EditValue = Nothing
+        Cls.ClearCtrls(LayoutControl7Consumptions)
+    End Sub
+
+    Private Sub cmdSaveConsumptions_Click(sender As Object, e As EventArgs) Handles cmdSaveConsumptions.Click
+        Dim sResult As Boolean
+        Try
+            If Valid.ValidateFormGRP(LayoutControlGroup25) Then
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "CONSUMPTIONS",,, LayoutControlGroup25,, True, "bdgID", toSQLValueS(sID))
+                If sResult Then
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    'Ενημέρωση εγγραφής ότι δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
+                    Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 1 where ID = " & toSQLValueS(cboMesH.EditValue.ToString), CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    'Ενημέρωση εγγραφής ότι δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
+                    Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 1 where ID = " & toSQLValueS(cboMesB.EditValue.ToString), CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    Cls.ClearGroupCtrls(LayoutControlGroup25)
+                    Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
+                End If
+            End If
+
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

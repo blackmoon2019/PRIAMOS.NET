@@ -100,6 +100,21 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "COL_EXT_TYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT_TYPES", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.COL_EXT_TYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("COL_EXT_TYPES")
+
                             Case "PROF_ACT"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT", LayoutControl1,,, sGuid, True)
@@ -430,6 +445,15 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "COL_EXT_TYPES"
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT_TYPES", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.COL_EXT_TYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sID)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
                             Case "PROF_ACT"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PROF_ACT", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -660,6 +684,13 @@ Public Class frmGen
         Try
             Select Case sDataTable
 
+                Case "COL_EXT_TYPES"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("COL_EXT_TYPES")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_COL_EXT_TYPES where id ='" + sID + "'")
+                    End If
+
                 Case "PROF_ACT"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("PROF_ACT")
@@ -818,6 +849,13 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+                    Case "COL_EXT_TYPES"
+                        If CalledFromCtrl Then
+                            FillCbo.COL_EXT_TYPES(CtrlCombo)
+                        Else
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_TASKS_CAT")
+                        End If
 
                     Case "PROF_ACT"
                         If CalledFromCtrl Then

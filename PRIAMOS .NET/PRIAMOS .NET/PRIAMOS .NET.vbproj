@@ -817,6 +817,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\Eidop.resx">
       <DependentUpon>Eidop.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\EXODA_PER_APT.resx">
       <DependentUpon>EXODA_PER_APT.vb</DependentUpon>

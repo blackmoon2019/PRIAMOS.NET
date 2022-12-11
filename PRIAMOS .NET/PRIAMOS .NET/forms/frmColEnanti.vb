@@ -118,7 +118,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine("0,")
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("0,1,")
+                sSQL.AppendLine("1,1,")
                 sSQL.AppendLine("GETDATE(),1,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
                 'Εκτέλεση QUERY

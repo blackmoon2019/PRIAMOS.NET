@@ -40,6 +40,8 @@ Public Class frmColExt
     End Sub
 
     Private Sub frmColExt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet31.vw_COL_EXT_TYPES' table. You can move, or remove it, as needed.
+        Me.Vw_COL_EXT_TYPESTableAdapter.Fill(Me.Priamos_NETDataSet31.vw_COL_EXT_TYPES)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet3.vw_PROF_ACT' table. You can move, or remove it, as needed.
         Me.Vw_PROF_ACTTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_PROF_ACT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
@@ -124,7 +126,7 @@ Public Class frmColExt
             Case 3 : cboProfAct.EditValue = Nothing
         End Select
     End Sub
-    Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
+    Private Sub cboBDG_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonClick
         Select Case e.Button.Index
             Case 1 : ManageCbo.ManageBDG(cboBDG, FormMode.NewRecord)
             Case 2 : ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
@@ -132,7 +134,7 @@ Public Class frmColExt
         End Select
     End Sub
 
-    Private Sub cboCollector_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCollector.ButtonPressed
+    Private Sub cboCollector_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCollector.ButtonClick
         Select Case e.Button.Index
             Case 1 : ManageCbo.ManageUSR(cboCollector, FormMode.NewRecord)
             Case 2 : ManageCbo.ManageUSR(cboCollector, FormMode.EditRecord)
@@ -140,7 +142,7 @@ Public Class frmColExt
         End Select
 
     End Sub
-    Private Sub cboColMethod_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboColMethod.ButtonPressed
+    Private Sub cboColMethod_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboColMethod.ButtonClick
         Select Case e.Button.Index
             Case 1 : ManageCbo.ManageColMethod(cboColMethod, FormMode.NewRecord, Me)
             Case 2 : ManageCbo.ManageColMethod(cboColMethod, FormMode.EditRecord, Me)
@@ -157,7 +159,7 @@ Public Class frmColExt
         End Select
     End Sub
 
-    Private Sub cboBank_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBank.ButtonPressed
+    Private Sub cboBank_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboBank.ButtonClick
         Select Case e.Button.Index
             Case 1 : ManageCbo.ManageBANK(cboBank, FormMode.NewRecord, Me)
             Case 2 : ManageCbo.ManageBANK(cboBank, FormMode.EditRecord, Me)
@@ -169,5 +171,14 @@ Public Class frmColExt
     Private Sub cboColMethod_EditValueChanged(sender As Object, e As EventArgs) Handles cboColMethod.EditValueChanged
         If cboColMethod.EditValue Is Nothing Then Exit Sub
         If cboColMethod.EditValue.ToString.ToUpper = "F34B402C-ADD8-48E7-85A9-FFDF7DAED582" Then cboBank.ReadOnly = False Else cboBank.ReadOnly = True : cboBank.EditValue = Nothing
+    End Sub
+
+
+    Private Sub cboColExtType_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboColExtType.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageColExtTypes(cboColExtType, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManageColExtTypes(cboColExtType, FormMode.EditRecord, Me)
+            Case 3 : cboColExtType.EditValue = Nothing
+        End Select
     End Sub
 End Class

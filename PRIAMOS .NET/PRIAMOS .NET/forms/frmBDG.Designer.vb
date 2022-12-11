@@ -22,21 +22,21 @@ Partial Class frmBDG
         Me.components = New System.ComponentModel.Container()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBDG))
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions7 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject25 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject26 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject27 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject28 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions8 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject29 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject30 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject31 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject32 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions9 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject33 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject34 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject35 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject36 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -561,7 +561,63 @@ Partial Class frmBDG
         Me.LayoutControlItem66 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem70 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem76 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.XtraTabPage19 = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabConsumptions = New DevExpress.XtraTab.XtraTabPage()
+        Me.LayoutControl7Consumptions = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdSaveConsumptions = New DevExpress.XtraEditors.SimpleButton()
+        Me.GridControl4 = New DevExpress.XtraGrid.GridControl()
+        Me.VwCONSUMPTIONSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GridView11 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colID4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcode4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colbdgID4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colahpbHIDH = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colahpbHIDB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcalH = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcalB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltotalCal = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colconsumptionH = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colconsumptionB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltotConsumption = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedBy4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmodifiedOn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreatedOn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcreatedBy1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMachineName1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colbdgNam = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colUsrCreatedBy = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colUsrModifiedBy = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmdtH = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmdtB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltotalBdgMesDifH = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coltotalBdgMesDifB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.RepositoryItemLookUpEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.cboMesB = New DevExpress.XtraEditors.LookUpEdit()
+        Me.AHPBHBCONSUMPTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.cboMesH = New DevExpress.XtraEditors.LookUpEdit()
+        Me.AHPBHHCONSUMPTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.txtConsumptionH = New DevExpress.XtraEditors.TextEdit()
+        Me.txtConsumptionB = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTotalMesH = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTotalMesB = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCalHCons = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCalBCons = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTotalConsumption = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCalTotalCons = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlGroup25 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem159 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem160 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem161 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem162 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem163 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem164 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem165 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem166 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem167 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem168 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem170 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem169 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem32 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.XtraTabPage20 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabPage21 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabAPM = New DevExpress.XtraTab.XtraTabPage()
@@ -669,6 +725,9 @@ Partial Class frmBDG
         Me.Vw_PROF_ACT_DTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_PROF_ACT_DTableAdapter()
         Me.Vw_PROF_ACTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_PROF_ACTTableAdapter()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
+        Me.AHPB_H_HCONSUMPTIONTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.AHPB_H_HCONSUMPTIONTableAdapter()
+        Me.AHPB_H_BCONSUMPTIONTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.AHPB_H_BCONSUMPTIONTableAdapter()
+        Me.Vw_CONSUMPTIONSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_CONSUMPTIONSTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1058,6 +1117,40 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem66, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem70, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem76, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabConsumptions.SuspendLayout
+        CType(Me.LayoutControl7Consumptions, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl7Consumptions.SuspendLayout
+        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwCONSUMPTIONSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMesB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AHPBHBCONSUMPTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMesH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AHPBHHCONSUMPTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtConsumptionH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtConsumptionB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTotalMesH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTotalMesB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCalHCons.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCalBCons.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTotalConsumption.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCalTotalCons.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup25, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem159, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem160, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem161, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem162, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem163, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem164, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem165, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem166, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem167, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem168, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem170, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem169, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem32, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabAPM.SuspendLayout
         CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl11APM.SuspendLayout
@@ -1256,6 +1349,7 @@ Partial Class frmBDG
         Me.NavBoiler.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
         Me.NavBoiler.Caption = "Καυστήρας"
         Me.NavBoiler.Name = "NavBoiler"
+        Me.NavBoiler.Visible = False
         '
         'NavConsumption
         '
@@ -1731,17 +1825,17 @@ Partial Class frmBDG
         Me.Maintab.Margin = New System.Windows.Forms.Padding(5)
         Me.Maintab.Name = "Maintab"
         Me.Maintab.SelectedTabPage = Me.tabBDG
-        Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[False]
+        Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[True]
         Me.Maintab.Size = New System.Drawing.Size(2235, 1335)
         Me.Maintab.TabIndex = 1
-        Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.tabProfActD, Me.tabHeatingInvoices, Me.XtraTabPage19, Me.XtraTabPage20, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
+        Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.tabProfActD, Me.tabHeatingInvoices, Me.tabConsumptions, Me.XtraTabPage20, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
         '
         'tabBDG
         '
         Me.tabBDG.Controls.Add(Me.LayoutControl1BDG)
         Me.tabBDG.Margin = New System.Windows.Forms.Padding(5)
         Me.tabBDG.Name = "tabBDG"
-        Me.tabBDG.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabBDG.Size = New System.Drawing.Size(2231, 1294)
         Me.tabBDG.Text = "Στοιχεία"
         '
         'LayoutControl1BDG
@@ -1771,7 +1865,7 @@ Partial Class frmBDG
         Me.LayoutControl1BDG.Name = "LayoutControl1BDG"
         Me.LayoutControl1BDG.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1840, 507, 936, 964)
         Me.LayoutControl1BDG.Root = Me.Root
-        Me.LayoutControl1BDG.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl1BDG.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl1BDG.TabIndex = 25
         Me.LayoutControl1BDG.Text = "LayoutControl1"
         '
@@ -1787,9 +1881,9 @@ Partial Class frmBDG
         Me.TabPane1.PageProperties.AppearanceCaption.Options.UseBackColor = True
         Me.TabPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText
         Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2, Me.TabNavigationPage3, Me.TabNavigationPage4})
-        Me.TabPane1.RegularSize = New System.Drawing.Size(914, 892)
+        Me.TabPane1.RegularSize = New System.Drawing.Size(914, 855)
         Me.TabPane1.SelectedPage = Me.TabNavigationPage1
-        Me.TabPane1.Size = New System.Drawing.Size(914, 892)
+        Me.TabPane1.Size = New System.Drawing.Size(914, 855)
         Me.TabPane1.TabIndex = 61
         Me.TabPane1.Text = "TabPane1"
         '
@@ -1800,7 +1894,7 @@ Partial Class frmBDG
         Me.TabNavigationPage1.Name = "TabNavigationPage1"
         Me.TabNavigationPage1.Properties.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
         Me.TabNavigationPage1.Properties.AppearanceCaption.Options.UseBorderColor = True
-        Me.TabNavigationPage1.Size = New System.Drawing.Size(914, 827)
+        Me.TabNavigationPage1.Size = New System.Drawing.Size(914, 790)
         '
         'LayoutControl2BDG_1
         '
@@ -1820,7 +1914,7 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_1.Name = "LayoutControl2BDG_1"
         Me.LayoutControl2BDG_1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1018, 907, 1137, 700)
         Me.LayoutControl2BDG_1.Root = Me.LayoutControlGroup20
-        Me.LayoutControl2BDG_1.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControl2BDG_1.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControl2BDG_1.TabIndex = 0
         Me.LayoutControl2BDG_1.Text = "LayoutControl2"
         '
@@ -1831,7 +1925,7 @@ Partial Class frmBDG
         Me.lstData.Location = New System.Drawing.Point(12, 259)
         Me.lstData.Margin = New System.Windows.Forms.Padding(5)
         Me.lstData.Name = "lstData"
-        Me.lstData.Size = New System.Drawing.Size(890, 64)
+        Me.lstData.Size = New System.Drawing.Size(890, 51)
         Me.lstData.StyleController = Me.LayoutControl2BDG_1
         Me.lstData.TabIndex = 45
         Me.lstData.Visible = False
@@ -2011,7 +2105,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup20.GroupBordersVisible = False
         Me.LayoutControlGroup20.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem96, Me.LayoutControlItem124, Me.LayoutControlItem125, Me.LayoutControlItem114, Me.LayoutControlItem41, Me.LayoutControlItem17, Me.LayoutControlItem12, Me.LayoutControlItem16, Me.LayoutControlItem132, Me.LayoutControlItem145, Me.EmptySpaceItem3, Me.EmptySpaceItem6, Me.LayoutControlItem146})
         Me.LayoutControlGroup20.Name = "Root"
-        Me.LayoutControlGroup20.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControlGroup20.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControlGroup20.TextVisible = False
         '
         'LayoutControlItem96
@@ -2137,9 +2231,9 @@ Partial Class frmBDG
         'EmptySpaceItem6
         '
         Me.EmptySpaceItem6.AllowHotTrack = False
-        Me.EmptySpaceItem6.Location = New System.Drawing.Point(0, 315)
+        Me.EmptySpaceItem6.Location = New System.Drawing.Point(0, 302)
         Me.EmptySpaceItem6.Name = "EmptySpaceItem6"
-        Me.EmptySpaceItem6.Size = New System.Drawing.Size(894, 492)
+        Me.EmptySpaceItem6.Size = New System.Drawing.Size(894, 468)
         Me.EmptySpaceItem6.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem146
@@ -2147,7 +2241,7 @@ Partial Class frmBDG
         Me.LayoutControlItem146.Control = Me.lstData
         Me.LayoutControlItem146.Location = New System.Drawing.Point(0, 247)
         Me.LayoutControlItem146.Name = "LayoutControlItem146"
-        Me.LayoutControlItem146.Size = New System.Drawing.Size(894, 68)
+        Me.LayoutControlItem146.Size = New System.Drawing.Size(894, 55)
         Me.LayoutControlItem146.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem146.TextVisible = False
         Me.LayoutControlItem146.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -2460,7 +2554,7 @@ Partial Class frmBDG
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(12, 1280)
+        Me.cmdSave.Location = New System.Drawing.Point(12, 1243)
         Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(914, 39)
@@ -2475,7 +2569,7 @@ Partial Class frmBDG
         Me.grdAPT.MainView = Me.GridView1
         Me.grdAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPT.Name = "grdAPT"
-        Me.grdAPT.Size = New System.Drawing.Size(1259, 1278)
+        Me.grdAPT.Size = New System.Drawing.Size(1259, 1241)
         Me.grdAPT.TabIndex = 21
         Me.grdAPT.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -2698,7 +2792,7 @@ Partial Class frmBDG
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem3, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.EmptySpaceItem2, Me.LayoutControlItem7, Me.EmptySpaceItem4, Me.EmptySpaceItem5, Me.LayoutControlItem18, Me.SimpleLabelItem1, Me.LayoutControlItem2, Me.LayoutControlItem11, Me.LayoutControlItem20, Me.LayoutControlItem21, Me.LayoutControlItem22, Me.LayoutControlItem23, Me.EmptySpaceItem1, Me.LayoutControlItem75, Me.LayoutControlItem4, Me.EmptySpaceItem33, Me.LayoutControlItem97, Me.LayoutControlItem137, Me.LayoutControlItem142, Me.LayoutControlItem144, Me.LayoutControlItem15})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2231, 1331)
+        Me.Root.Size = New System.Drawing.Size(2231, 1294)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -2783,7 +2877,7 @@ Partial Class frmBDG
         Me.LayoutControlItem18.Control = Me.grdAPT
         Me.LayoutControlItem18.Location = New System.Drawing.Point(948, 29)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(1263, 1282)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(1263, 1245)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
         '
@@ -2863,13 +2957,13 @@ Partial Class frmBDG
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(918, 258)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(30, 28)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(30, 27)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem75
         '
         Me.LayoutControlItem75.Control = Me.cmdSave
-        Me.LayoutControlItem75.Location = New System.Drawing.Point(0, 1268)
+        Me.LayoutControlItem75.Location = New System.Drawing.Point(0, 1231)
         Me.LayoutControlItem75.Name = "LayoutControlItem75"
         Me.LayoutControlItem75.Size = New System.Drawing.Size(918, 43)
         Me.LayoutControlItem75.TextSize = New System.Drawing.Size(0, 0)
@@ -2890,9 +2984,9 @@ Partial Class frmBDG
         'EmptySpaceItem33
         '
         Me.EmptySpaceItem33.AllowHotTrack = False
-        Me.EmptySpaceItem33.Location = New System.Drawing.Point(918, 286)
+        Me.EmptySpaceItem33.Location = New System.Drawing.Point(918, 285)
         Me.EmptySpaceItem33.Name = "EmptySpaceItem33"
-        Me.EmptySpaceItem33.Size = New System.Drawing.Size(30, 1025)
+        Me.EmptySpaceItem33.Size = New System.Drawing.Size(30, 989)
         Me.EmptySpaceItem33.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem97
@@ -2932,7 +3026,7 @@ Partial Class frmBDG
         Me.LayoutControlItem144.Control = Me.TabPane1
         Me.LayoutControlItem144.Location = New System.Drawing.Point(0, 372)
         Me.LayoutControlItem144.Name = "LayoutControlItem144"
-        Me.LayoutControlItem144.Size = New System.Drawing.Size(918, 896)
+        Me.LayoutControlItem144.Size = New System.Drawing.Size(918, 859)
         Me.LayoutControlItem144.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem144.TextVisible = False
         '
@@ -5967,8 +6061,8 @@ Partial Class frmBDG
         'RepositoryItemButtonGas
         '
         Me.RepositoryItemButtonGas.AutoHeight = False
-        EditorButtonImageOptions1.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions7.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions7, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject25, SerializableAppearanceObject26, SerializableAppearanceObject27, SerializableAppearanceObject28, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonGas.Name = "RepositoryItemButtonGas"
         '
         'txtGInvTotalPrice
@@ -6206,8 +6300,8 @@ Partial Class frmBDG
         'RepositoryItemButtonOil
         '
         Me.RepositoryItemButtonOil.AutoHeight = False
-        EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions8.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions8, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject29, SerializableAppearanceObject30, SerializableAppearanceObject31, SerializableAppearanceObject32, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonOil.Name = "RepositoryItemButtonOil"
         '
         'txtOInvCode
@@ -6661,12 +6755,655 @@ Partial Class frmBDG
         Me.LayoutControlItem76.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem76.TextVisible = False
         '
-        'XtraTabPage19
+        'tabConsumptions
         '
-        Me.XtraTabPage19.Margin = New System.Windows.Forms.Padding(5)
-        Me.XtraTabPage19.Name = "XtraTabPage19"
-        Me.XtraTabPage19.Size = New System.Drawing.Size(2231, 1294)
-        Me.XtraTabPage19.Text = "XtraTabPage8"
+        Me.tabConsumptions.Controls.Add(Me.LayoutControl7Consumptions)
+        Me.tabConsumptions.Margin = New System.Windows.Forms.Padding(5)
+        Me.tabConsumptions.Name = "tabConsumptions"
+        Me.tabConsumptions.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabConsumptions.Text = "Καταναλώσεις"
+        '
+        'LayoutControl7Consumptions
+        '
+        Me.LayoutControl7Consumptions.Controls.Add(Me.cmdSaveConsumptions)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.GridControl4)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.cboMesB)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.cboMesH)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtConsumptionH)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtConsumptionB)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtTotalMesH)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtTotalMesB)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtCalHCons)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtCalBCons)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtTotalConsumption)
+        Me.LayoutControl7Consumptions.Controls.Add(Me.txtCalTotalCons)
+        Me.LayoutControl7Consumptions.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl7Consumptions.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl7Consumptions.Name = "LayoutControl7Consumptions"
+        Me.LayoutControl7Consumptions.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2151, 938, 1137, 700)
+        Me.LayoutControl7Consumptions.Root = Me.LayoutControlGroup25
+        Me.LayoutControl7Consumptions.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl7Consumptions.TabIndex = 0
+        Me.LayoutControl7Consumptions.Text = "LayoutControl"
+        '
+        'cmdSaveConsumptions
+        '
+        Me.cmdSaveConsumptions.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSaveConsumptions.Location = New System.Drawing.Point(12, 138)
+        Me.cmdSaveConsumptions.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdSaveConsumptions.Name = "cmdSaveConsumptions"
+        Me.cmdSaveConsumptions.Size = New System.Drawing.Size(2207, 39)
+        Me.cmdSaveConsumptions.StyleController = Me.LayoutControl7Consumptions
+        Me.cmdSaveConsumptions.TabIndex = 66
+        Me.cmdSaveConsumptions.Text = "Αποθήκευση Κατανάλωσης"
+        '
+        'GridControl4
+        '
+        Me.GridControl4.DataSource = Me.VwCONSUMPTIONSBindingSource
+        Me.GridControl4.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
+        Me.GridControl4.Location = New System.Drawing.Point(12, 181)
+        Me.GridControl4.MainView = Me.GridView11
+        Me.GridControl4.Margin = New System.Windows.Forms.Padding(5)
+        Me.GridControl4.Name = "GridControl4"
+        Me.GridControl4.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1, Me.RepositoryItemLookUpEdit2})
+        Me.GridControl4.Size = New System.Drawing.Size(2207, 1101)
+        Me.GridControl4.TabIndex = 65
+        Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView11})
+        '
+        'VwCONSUMPTIONSBindingSource
+        '
+        Me.VwCONSUMPTIONSBindingSource.DataMember = "vw_CONSUMPTIONS"
+        Me.VwCONSUMPTIONSBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'GridView11
+        '
+        Me.GridView11.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID4, Me.colcode4, Me.colbdgID4, Me.colahpbHIDH, Me.colahpbHIDB, Me.colcalH, Me.colcalB, Me.coltotalCal, Me.colconsumptionH, Me.colconsumptionB, Me.coltotConsumption, Me.colmodifiedBy4, Me.colmodifiedOn4, Me.colcreatedOn4, Me.colcreatedBy1, Me.colMachineName1, Me.colbdgNam, Me.colUsrCreatedBy, Me.colUsrModifiedBy, Me.colmdtH, Me.colmdtB, Me.coltotalBdgMesDifH, Me.coltotalBdgMesDifB})
+        Me.GridView11.DetailHeight = 619
+        Me.GridView11.GridControl = Me.GridControl4
+        Me.GridView11.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "prfName", Nothing, "")})
+        Me.GridView11.LevelIndent = 0
+        Me.GridView11.Name = "GridView11"
+        Me.GridView11.OptionsBehavior.AutoExpandAllGroups = True
+        Me.GridView11.OptionsPrint.PrintPreview = True
+        Me.GridView11.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView11.OptionsView.ColumnAutoWidth = False
+        Me.GridView11.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView11.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
+        Me.GridView11.OptionsView.ShowFooter = True
+        Me.GridView11.OptionsView.ShowGroupedColumns = True
+        Me.GridView11.PreviewIndent = 0
+        '
+        'colID4
+        '
+        Me.colID4.FieldName = "ID"
+        Me.colID4.MinWidth = 35
+        Me.colID4.Name = "colID4"
+        Me.colID4.Width = 131
+        '
+        'colcode4
+        '
+        Me.colcode4.Caption = "Κωδικός"
+        Me.colcode4.FieldName = "code"
+        Me.colcode4.MinWidth = 35
+        Me.colcode4.Name = "colcode4"
+        Me.colcode4.Visible = True
+        Me.colcode4.VisibleIndex = 0
+        Me.colcode4.Width = 131
+        '
+        'colbdgID4
+        '
+        Me.colbdgID4.FieldName = "bdgID"
+        Me.colbdgID4.MinWidth = 35
+        Me.colbdgID4.Name = "colbdgID4"
+        Me.colbdgID4.Width = 131
+        '
+        'colahpbHIDH
+        '
+        Me.colahpbHIDH.FieldName = "ahpbHIDH"
+        Me.colahpbHIDH.MinWidth = 35
+        Me.colahpbHIDH.Name = "colahpbHIDH"
+        Me.colahpbHIDH.Width = 131
+        '
+        'colahpbHIDB
+        '
+        Me.colahpbHIDB.FieldName = "ahpbHIDB"
+        Me.colahpbHIDB.MinWidth = 35
+        Me.colahpbHIDB.Name = "colahpbHIDB"
+        Me.colahpbHIDB.Width = 131
+        '
+        'colcalH
+        '
+        Me.colcalH.Caption = "Καταν. σε Θερμίδες Θέρμ."
+        Me.colcalH.FieldName = "calH"
+        Me.colcalH.MinWidth = 35
+        Me.colcalH.Name = "colcalH"
+        Me.colcalH.Visible = True
+        Me.colcalH.VisibleIndex = 3
+        Me.colcalH.Width = 270
+        '
+        'colcalB
+        '
+        Me.colcalB.Caption = "Καταν. σε Θερμίδες Boiler"
+        Me.colcalB.FieldName = "calB"
+        Me.colcalB.MinWidth = 35
+        Me.colcalB.Name = "colcalB"
+        Me.colcalB.Visible = True
+        Me.colcalB.VisibleIndex = 7
+        Me.colcalB.Width = 246
+        '
+        'coltotalCal
+        '
+        Me.coltotalCal.Caption = "Σύνολο Θερμίδων Κατανάλωσης"
+        Me.coltotalCal.FieldName = "totalCal"
+        Me.coltotalCal.MinWidth = 35
+        Me.coltotalCal.Name = "coltotalCal"
+        Me.coltotalCal.Visible = True
+        Me.coltotalCal.VisibleIndex = 8
+        Me.coltotalCal.Width = 311
+        '
+        'colconsumptionH
+        '
+        Me.colconsumptionH.Caption = "Ποσό θέρμανσης"
+        Me.colconsumptionH.FieldName = "consumptionH"
+        Me.colconsumptionH.MinWidth = 35
+        Me.colconsumptionH.Name = "colconsumptionH"
+        Me.colconsumptionH.Visible = True
+        Me.colconsumptionH.VisibleIndex = 4
+        Me.colconsumptionH.Width = 187
+        '
+        'colconsumptionB
+        '
+        Me.colconsumptionB.Caption = "Ποσό Boiler"
+        Me.colconsumptionB.FieldName = "consumptionB"
+        Me.colconsumptionB.MinWidth = 35
+        Me.colconsumptionB.Name = "colconsumptionB"
+        Me.colconsumptionB.Visible = True
+        Me.colconsumptionB.VisibleIndex = 9
+        Me.colconsumptionB.Width = 202
+        '
+        'coltotConsumption
+        '
+        Me.coltotConsumption.Caption = "Συνολικό Ποσό Κατανάλωσης"
+        Me.coltotConsumption.FieldName = "totConsumption"
+        Me.coltotConsumption.MinWidth = 35
+        Me.coltotConsumption.Name = "coltotConsumption"
+        Me.coltotConsumption.Visible = True
+        Me.coltotConsumption.VisibleIndex = 10
+        Me.coltotConsumption.Width = 259
+        '
+        'colmodifiedBy4
+        '
+        Me.colmodifiedBy4.FieldName = "modifiedBy"
+        Me.colmodifiedBy4.MinWidth = 35
+        Me.colmodifiedBy4.Name = "colmodifiedBy4"
+        Me.colmodifiedBy4.Width = 131
+        '
+        'colmodifiedOn4
+        '
+        Me.colmodifiedOn4.FieldName = "modifiedOn"
+        Me.colmodifiedOn4.MinWidth = 35
+        Me.colmodifiedOn4.Name = "colmodifiedOn4"
+        Me.colmodifiedOn4.Width = 131
+        '
+        'colcreatedOn4
+        '
+        Me.colcreatedOn4.FieldName = "createdOn"
+        Me.colcreatedOn4.MinWidth = 35
+        Me.colcreatedOn4.Name = "colcreatedOn4"
+        Me.colcreatedOn4.Width = 131
+        '
+        'colcreatedBy1
+        '
+        Me.colcreatedBy1.FieldName = "createdBy"
+        Me.colcreatedBy1.MinWidth = 35
+        Me.colcreatedBy1.Name = "colcreatedBy1"
+        Me.colcreatedBy1.Width = 131
+        '
+        'colMachineName1
+        '
+        Me.colMachineName1.FieldName = "MachineName"
+        Me.colMachineName1.MinWidth = 35
+        Me.colMachineName1.Name = "colMachineName1"
+        Me.colMachineName1.Width = 131
+        '
+        'colbdgNam
+        '
+        Me.colbdgNam.Caption = "Πολυκατοικία"
+        Me.colbdgNam.FieldName = "bdgNam"
+        Me.colbdgNam.MinWidth = 35
+        Me.colbdgNam.Name = "colbdgNam"
+        Me.colbdgNam.Width = 131
+        '
+        'colUsrCreatedBy
+        '
+        Me.colUsrCreatedBy.FieldName = "UsrCreatedBy"
+        Me.colUsrCreatedBy.MinWidth = 35
+        Me.colUsrCreatedBy.Name = "colUsrCreatedBy"
+        Me.colUsrCreatedBy.Width = 131
+        '
+        'colUsrModifiedBy
+        '
+        Me.colUsrModifiedBy.FieldName = "UsrModifiedBy"
+        Me.colUsrModifiedBy.MinWidth = 35
+        Me.colUsrModifiedBy.Name = "colUsrModifiedBy"
+        Me.colUsrModifiedBy.Width = 131
+        '
+        'colmdtH
+        '
+        Me.colmdtH.Caption = "Ώρες Μέτρησης Θέρμανσης"
+        Me.colmdtH.FieldName = "mdtH"
+        Me.colmdtH.MinWidth = 35
+        Me.colmdtH.Name = "colmdtH"
+        Me.colmdtH.Visible = True
+        Me.colmdtH.VisibleIndex = 1
+        Me.colmdtH.Width = 298
+        '
+        'colmdtB
+        '
+        Me.colmdtB.Caption = "Ώρες Μέτρησης Bolier"
+        Me.colmdtB.FieldName = "mdtB"
+        Me.colmdtB.MinWidth = 35
+        Me.colmdtB.Name = "colmdtB"
+        Me.colmdtB.Visible = True
+        Me.colmdtB.VisibleIndex = 5
+        Me.colmdtB.Width = 202
+        '
+        'coltotalBdgMesDifH
+        '
+        Me.coltotalBdgMesDifH.Caption = "Σύνολο ωρών Θέρμανσης"
+        Me.coltotalBdgMesDifH.FieldName = "totalBdgMesDifH"
+        Me.coltotalBdgMesDifH.MinWidth = 35
+        Me.coltotalBdgMesDifH.Name = "coltotalBdgMesDifH"
+        Me.coltotalBdgMesDifH.Visible = True
+        Me.coltotalBdgMesDifH.VisibleIndex = 2
+        Me.coltotalBdgMesDifH.Width = 247
+        '
+        'coltotalBdgMesDifB
+        '
+        Me.coltotalBdgMesDifB.Caption = "Σύνολο ωρών Boiler"
+        Me.coltotalBdgMesDifB.FieldName = "totalBdgMesDifB"
+        Me.coltotalBdgMesDifB.MinWidth = 35
+        Me.coltotalBdgMesDifB.Name = "coltotalBdgMesDifB"
+        Me.coltotalBdgMesDifB.Visible = True
+        Me.coltotalBdgMesDifB.VisibleIndex = 6
+        Me.coltotalBdgMesDifB.Width = 186
+        '
+        'RepositoryItemLookUpEdit1
+        '
+        Me.RepositoryItemLookUpEdit1.AutoHeight = False
+        Me.RepositoryItemLookUpEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepositoryItemLookUpEdit1.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Εργασία", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("amt", "Ποσό", 47, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("autoCreateCol", "auto Create Col", 143, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineName", "Machine Name", 140, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CreatedUsrName", "Created Usr Name", 168, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ModifiedUsrName", "Modified Usr Name", 174, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtEvery", "dt Every", 84, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Fullname", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 64, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 59, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cctID", "cct ID", 65, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemLookUpEdit1.DataSource = Me.VwPROFACTBindingSource
+        Me.RepositoryItemLookUpEdit1.DisplayMember = "name"
+        Me.RepositoryItemLookUpEdit1.Name = "RepositoryItemLookUpEdit1"
+        Me.RepositoryItemLookUpEdit1.NullText = ""
+        Me.RepositoryItemLookUpEdit1.PopupWidth = 250
+        Me.RepositoryItemLookUpEdit1.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
+        Me.RepositoryItemLookUpEdit1.ValueMember = "ID"
+        '
+        'RepositoryItemLookUpEdit2
+        '
+        Me.RepositoryItemLookUpEdit2.AutoHeight = False
+        Me.RepositoryItemLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepositoryItemLookUpEdit2.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Συνεργείο", 91, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fax", "fax", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 59, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email2", "email2", 69, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email3", "email3", 69, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("website", "website", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AREAS_Name", "AREAS_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PRF_Name", "PRF_Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 79, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("DoyID", "Doy ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 64, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Ar", "Ar", 33, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("company", "company", 91, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isprivate", "Isprivate", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isworkshop", "Isworkshop", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Issupplier", "Issupplier", 96, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsPartner", "Is Partner", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrAr", "Adr Ar", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("color", "color", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepositoryItemLookUpEdit2.DataSource = Me.VwPARTNERANDWORKSHOPBindingSource
+        Me.RepositoryItemLookUpEdit2.DisplayMember = "Fullname"
+        Me.RepositoryItemLookUpEdit2.Name = "RepositoryItemLookUpEdit2"
+        Me.RepositoryItemLookUpEdit2.NullText = ""
+        Me.RepositoryItemLookUpEdit2.ValueMember = "ID"
+        '
+        'cboMesB
+        '
+        Me.cboMesB.Location = New System.Drawing.Point(292, 54)
+        Me.cboMesB.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboMesB.Name = "cboMesB"
+        Me.cboMesB.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboMesB.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("boiler", "boiler", 61, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("totalBdgMesDif", "total Bdg Mes Dif", 159, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "Ημερ/νία μέτρησης", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("finalized", "finalized", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hasConsumption", "has Consumption", 159, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calB", "cal B", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboMesB.Properties.DataSource = Me.AHPBHBCONSUMPTIONBindingSource
+        Me.cboMesB.Properties.DisplayMember = "mdt"
+        Me.cboMesB.Properties.NullText = ""
+        Me.cboMesB.Properties.PopupSizeable = False
+        Me.cboMesB.Properties.ValueMember = "ID"
+        Me.cboMesB.Size = New System.Drawing.Size(214, 38)
+        Me.cboMesB.StyleController = Me.LayoutControl7Consumptions
+        Me.cboMesB.TabIndex = 37
+        Me.cboMesB.Tag = "ahpbHIDB,0,1,2"
+        '
+        'AHPBHBCONSUMPTIONBindingSource
+        '
+        Me.AHPBHBCONSUMPTIONBindingSource.DataMember = "AHPB_H_BCONSUMPTION"
+        Me.AHPBHBCONSUMPTIONBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'cboMesH
+        '
+        Me.cboMesH.Location = New System.Drawing.Point(292, 12)
+        Me.cboMesH.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboMesH.Name = "cboMesH"
+        Me.cboMesH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboMesH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("boiler", "boiler", 61, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("totalBdgMesDif", "total Bdg Mes Dif", 159, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "Ημερ/νία μέτρησης", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("finalized", "finalized", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hasConsumption", "has Consumption", 159, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calH", "cal H", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboMesH.Properties.DataSource = Me.AHPBHHCONSUMPTIONBindingSource
+        Me.cboMesH.Properties.DisplayMember = "mdt"
+        Me.cboMesH.Properties.NullText = ""
+        Me.cboMesH.Properties.PopupSizeable = False
+        Me.cboMesH.Properties.ValueMember = "ID"
+        Me.cboMesH.Size = New System.Drawing.Size(214, 38)
+        Me.cboMesH.StyleController = Me.LayoutControl7Consumptions
+        Me.cboMesH.TabIndex = 36
+        Me.cboMesH.Tag = "ahpbHIDH,0,1,2"
+        '
+        'AHPBHHCONSUMPTIONBindingSource
+        '
+        Me.AHPBHHCONSUMPTIONBindingSource.DataMember = "AHPB_H_HCONSUMPTION"
+        Me.AHPBHHCONSUMPTIONBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'txtConsumptionH
+        '
+        Me.txtConsumptionH.EditValue = "0,00 €"
+        Me.txtConsumptionH.Location = New System.Drawing.Point(1672, 12)
+        Me.txtConsumptionH.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtConsumptionH.Name = "txtConsumptionH"
+        Me.txtConsumptionH.Properties.DisplayFormat.FormatString = "c"
+        Me.txtConsumptionH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtConsumptionH.Properties.EditFormat.FormatString = "n2"
+        Me.txtConsumptionH.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtConsumptionH.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtConsumptionH.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtConsumptionH.Properties.MaskSettings.Set("mask", "c2")
+        Me.txtConsumptionH.Properties.ReadOnly = True
+        Me.txtConsumptionH.Properties.Tag = "BenchExtraPrice"
+        Me.txtConsumptionH.Size = New System.Drawing.Size(547, 38)
+        Me.txtConsumptionH.StyleController = Me.LayoutControl7Consumptions
+        Me.txtConsumptionH.TabIndex = 43
+        Me.txtConsumptionH.Tag = "consumptionH,0,1,2"
+        Me.txtConsumptionH.Visible = False
+        '
+        'txtConsumptionB
+        '
+        Me.txtConsumptionB.EditValue = "0,00 €"
+        Me.txtConsumptionB.Location = New System.Drawing.Point(1672, 54)
+        Me.txtConsumptionB.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtConsumptionB.Name = "txtConsumptionB"
+        Me.txtConsumptionB.Properties.DisplayFormat.FormatString = "c"
+        Me.txtConsumptionB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtConsumptionB.Properties.EditFormat.FormatString = "n2"
+        Me.txtConsumptionB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtConsumptionB.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtConsumptionB.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtConsumptionB.Properties.MaskSettings.Set("mask", "c2")
+        Me.txtConsumptionB.Properties.ReadOnly = True
+        Me.txtConsumptionB.Properties.Tag = "BenchExtraPrice"
+        Me.txtConsumptionB.Size = New System.Drawing.Size(547, 38)
+        Me.txtConsumptionB.StyleController = Me.LayoutControl7Consumptions
+        Me.txtConsumptionB.TabIndex = 43
+        Me.txtConsumptionB.Tag = "consumptionB,0,1,2"
+        Me.txtConsumptionB.Visible = False
+        '
+        'txtTotalMesH
+        '
+        Me.txtTotalMesH.EditValue = "0"
+        Me.txtTotalMesH.Location = New System.Drawing.Point(790, 12)
+        Me.txtTotalMesH.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtTotalMesH.Name = "txtTotalMesH"
+        Me.txtTotalMesH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalMesH.Properties.EditFormat.FormatString = "n0"
+        Me.txtTotalMesH.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalMesH.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTotalMesH.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtTotalMesH.Properties.MaskSettings.Set("mask", "n0")
+        Me.txtTotalMesH.Properties.ReadOnly = True
+        Me.txtTotalMesH.Size = New System.Drawing.Size(130, 38)
+        Me.txtTotalMesH.StyleController = Me.LayoutControl7Consumptions
+        Me.txtTotalMesH.TabIndex = 8
+        Me.txtTotalMesH.Tag = ""
+        '
+        'txtTotalMesB
+        '
+        Me.txtTotalMesB.EditValue = "0"
+        Me.txtTotalMesB.Location = New System.Drawing.Point(790, 54)
+        Me.txtTotalMesB.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtTotalMesB.Name = "txtTotalMesB"
+        Me.txtTotalMesB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalMesB.Properties.EditFormat.FormatString = "n0"
+        Me.txtTotalMesB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalMesB.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTotalMesB.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtTotalMesB.Properties.MaskSettings.Set("mask", "n0")
+        Me.txtTotalMesB.Properties.ReadOnly = True
+        Me.txtTotalMesB.Size = New System.Drawing.Size(130, 38)
+        Me.txtTotalMesB.StyleController = Me.LayoutControl7Consumptions
+        Me.txtTotalMesB.TabIndex = 8
+        Me.txtTotalMesB.Tag = ""
+        '
+        'txtCalHCons
+        '
+        Me.txtCalHCons.EditValue = "0"
+        Me.txtCalHCons.Location = New System.Drawing.Point(1204, 12)
+        Me.txtCalHCons.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtCalHCons.Name = "txtCalHCons"
+        Me.txtCalHCons.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalHCons.Properties.EditFormat.FormatString = "n0"
+        Me.txtCalHCons.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalHCons.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtCalHCons.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtCalHCons.Properties.MaskSettings.Set("mask", "n0")
+        Me.txtCalHCons.Properties.NullText = "0"
+        Me.txtCalHCons.Properties.ReadOnly = True
+        Me.txtCalHCons.Size = New System.Drawing.Size(184, 38)
+        Me.txtCalHCons.StyleController = Me.LayoutControl7Consumptions
+        Me.txtCalHCons.TabIndex = 8
+        Me.txtCalHCons.Tag = "calh,0,1,2"
+        '
+        'txtCalBCons
+        '
+        Me.txtCalBCons.EditValue = "0"
+        Me.txtCalBCons.Location = New System.Drawing.Point(1204, 54)
+        Me.txtCalBCons.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtCalBCons.Name = "txtCalBCons"
+        Me.txtCalBCons.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalBCons.Properties.EditFormat.FormatString = "n0"
+        Me.txtCalBCons.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalBCons.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtCalBCons.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtCalBCons.Properties.MaskSettings.Set("mask", "n0")
+        Me.txtCalBCons.Properties.NullText = "0"
+        Me.txtCalBCons.Properties.ReadOnly = True
+        Me.txtCalBCons.Size = New System.Drawing.Size(184, 38)
+        Me.txtCalBCons.StyleController = Me.LayoutControl7Consumptions
+        Me.txtCalBCons.TabIndex = 8
+        Me.txtCalBCons.Tag = "calb,0,1,2"
+        '
+        'txtTotalConsumption
+        '
+        Me.txtTotalConsumption.EditValue = "0,00 €"
+        Me.txtTotalConsumption.Location = New System.Drawing.Point(1672, 96)
+        Me.txtTotalConsumption.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtTotalConsumption.Name = "txtTotalConsumption"
+        Me.txtTotalConsumption.Properties.DisplayFormat.FormatString = "c"
+        Me.txtTotalConsumption.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalConsumption.Properties.EditFormat.FormatString = "n2"
+        Me.txtTotalConsumption.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalConsumption.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTotalConsumption.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtTotalConsumption.Properties.MaskSettings.Set("mask", "c2")
+        Me.txtTotalConsumption.Properties.Tag = "BenchExtraPrice"
+        Me.txtTotalConsumption.Size = New System.Drawing.Size(547, 38)
+        Me.txtTotalConsumption.StyleController = Me.LayoutControl7Consumptions
+        Me.txtTotalConsumption.TabIndex = 43
+        Me.txtTotalConsumption.Tag = "totConsumption,0,1,2"
+        Me.txtTotalConsumption.Visible = False
+        '
+        'txtCalTotalCons
+        '
+        Me.txtCalTotalCons.EditValue = "0"
+        Me.txtCalTotalCons.Location = New System.Drawing.Point(1204, 96)
+        Me.txtCalTotalCons.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtCalTotalCons.Name = "txtCalTotalCons"
+        Me.txtCalTotalCons.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalTotalCons.Properties.EditFormat.FormatString = "n0"
+        Me.txtCalTotalCons.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtCalTotalCons.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtCalTotalCons.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtCalTotalCons.Properties.MaskSettings.Set("mask", "n0")
+        Me.txtCalTotalCons.Properties.ReadOnly = True
+        Me.txtCalTotalCons.Size = New System.Drawing.Size(184, 38)
+        Me.txtCalTotalCons.StyleController = Me.LayoutControl7Consumptions
+        Me.txtCalTotalCons.TabIndex = 8
+        Me.txtCalTotalCons.Tag = "totalCal,0,1,2"
+        '
+        'LayoutControlGroup25
+        '
+        Me.LayoutControlGroup25.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup25.GroupBordersVisible = False
+        Me.LayoutControlGroup25.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem159, Me.LayoutControlItem160, Me.LayoutControlItem161, Me.LayoutControlItem162, Me.LayoutControlItem163, Me.LayoutControlItem164, Me.LayoutControlItem165, Me.LayoutControlItem166, Me.LayoutControlItem167, Me.LayoutControlItem168, Me.LayoutControlItem170, Me.LayoutControlItem169, Me.EmptySpaceItem32})
+        Me.LayoutControlGroup25.Name = "Root"
+        Me.LayoutControlGroup25.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup25.TextVisible = False
+        '
+        'LayoutControlItem159
+        '
+        Me.LayoutControlItem159.Control = Me.cboMesH
+        Me.LayoutControlItem159.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem159.CustomizationFormText = "Προηγ. Μετρήσεις Θέρμανσης"
+        Me.LayoutControlItem159.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem159.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem159.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem159.Name = "LayoutControlItem159"
+        Me.LayoutControlItem159.Size = New System.Drawing.Size(498, 42)
+        Me.LayoutControlItem159.Tag = "1"
+        Me.LayoutControlItem159.Text = "Μετρήσεις Θέρμανσης"
+        Me.LayoutControlItem159.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem160
+        '
+        Me.LayoutControlItem160.Control = Me.cboMesB
+        Me.LayoutControlItem160.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem160.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem160.Name = "LayoutControlItem160"
+        Me.LayoutControlItem160.Size = New System.Drawing.Size(498, 42)
+        Me.LayoutControlItem160.Tag = "1"
+        Me.LayoutControlItem160.Text = "Μετρήσεις Boiler"
+        Me.LayoutControlItem160.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem161
+        '
+        Me.LayoutControlItem161.Control = Me.txtConsumptionH
+        Me.LayoutControlItem161.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem161.CustomizationFormText = "Ποσό Πληρωμής"
+        Me.LayoutControlItem161.Location = New System.Drawing.Point(1380, 0)
+        Me.LayoutControlItem161.Name = "LayoutControlItem161"
+        Me.LayoutControlItem161.Size = New System.Drawing.Size(831, 42)
+        Me.LayoutControlItem161.Text = "Ποσό Κατανάλωσης"
+        Me.LayoutControlItem161.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem162
+        '
+        Me.LayoutControlItem162.Control = Me.txtConsumptionB
+        Me.LayoutControlItem162.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem162.CustomizationFormText = "Ποσό Πληρωμής"
+        Me.LayoutControlItem162.Location = New System.Drawing.Point(1380, 42)
+        Me.LayoutControlItem162.Name = "LayoutControlItem162"
+        Me.LayoutControlItem162.Size = New System.Drawing.Size(831, 42)
+        Me.LayoutControlItem162.Text = "Ποσό Κατανάλωσης"
+        Me.LayoutControlItem162.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem163
+        '
+        Me.LayoutControlItem163.Control = Me.txtTotalMesH
+        Me.LayoutControlItem163.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem163.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem163.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem163.Location = New System.Drawing.Point(498, 0)
+        Me.LayoutControlItem163.Name = "LayoutControlItem163"
+        Me.LayoutControlItem163.Size = New System.Drawing.Size(414, 42)
+        Me.LayoutControlItem163.Text = "Σύνολο Ωρών"
+        Me.LayoutControlItem163.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem164
+        '
+        Me.LayoutControlItem164.Control = Me.txtTotalMesB
+        Me.LayoutControlItem164.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem164.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem164.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem164.Location = New System.Drawing.Point(498, 42)
+        Me.LayoutControlItem164.Name = "LayoutControlItem164"
+        Me.LayoutControlItem164.Size = New System.Drawing.Size(414, 42)
+        Me.LayoutControlItem164.Text = "Σύνολο Ωρών"
+        Me.LayoutControlItem164.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem165
+        '
+        Me.LayoutControlItem165.Control = Me.GridControl4
+        Me.LayoutControlItem165.Location = New System.Drawing.Point(0, 169)
+        Me.LayoutControlItem165.Name = "LayoutControlItem165"
+        Me.LayoutControlItem165.Size = New System.Drawing.Size(2211, 1105)
+        Me.LayoutControlItem165.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem165.TextVisible = False
+        '
+        'LayoutControlItem166
+        '
+        Me.LayoutControlItem166.Control = Me.cmdSaveConsumptions
+        Me.LayoutControlItem166.Location = New System.Drawing.Point(0, 126)
+        Me.LayoutControlItem166.Name = "LayoutControlItem166"
+        Me.LayoutControlItem166.Size = New System.Drawing.Size(2211, 43)
+        Me.LayoutControlItem166.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem166.TextVisible = False
+        '
+        'LayoutControlItem167
+        '
+        Me.LayoutControlItem167.Control = Me.txtCalHCons
+        Me.LayoutControlItem167.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem167.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem167.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem167.Location = New System.Drawing.Point(912, 0)
+        Me.LayoutControlItem167.Name = "LayoutControlItem167"
+        Me.LayoutControlItem167.Size = New System.Drawing.Size(468, 42)
+        Me.LayoutControlItem167.Text = "Κατανάλωση σε Θερμίδες"
+        Me.LayoutControlItem167.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem168
+        '
+        Me.LayoutControlItem168.Control = Me.txtCalBCons
+        Me.LayoutControlItem168.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem168.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem168.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem168.Location = New System.Drawing.Point(912, 42)
+        Me.LayoutControlItem168.Name = "LayoutControlItem168"
+        Me.LayoutControlItem168.Size = New System.Drawing.Size(468, 42)
+        Me.LayoutControlItem168.Text = "Κατανάλωση σε Θερμίδες"
+        Me.LayoutControlItem168.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem170
+        '
+        Me.LayoutControlItem170.Control = Me.txtCalTotalCons
+        Me.LayoutControlItem170.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem170.CustomizationFormText = "Πάγιο Θέρμανσης"
+        Me.LayoutControlItem170.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem170.Location = New System.Drawing.Point(912, 84)
+        Me.LayoutControlItem170.Name = "LayoutControlItem170"
+        Me.LayoutControlItem170.Size = New System.Drawing.Size(468, 42)
+        Me.LayoutControlItem170.Text = "Σύνολο Θερμίδων Κατανάλωσης"
+        Me.LayoutControlItem170.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem169
+        '
+        Me.LayoutControlItem169.Control = Me.txtTotalConsumption
+        Me.LayoutControlItem169.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem169.CustomizationFormText = "Ποσό Πληρωμής"
+        Me.LayoutControlItem169.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem169.Location = New System.Drawing.Point(1380, 84)
+        Me.LayoutControlItem169.Name = "LayoutControlItem169"
+        Me.LayoutControlItem169.Size = New System.Drawing.Size(831, 42)
+        Me.LayoutControlItem169.Tag = "1"
+        Me.LayoutControlItem169.Text = "Συνολικό Ποσό Κατανάλωσης"
+        Me.LayoutControlItem169.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'EmptySpaceItem32
+        '
+        Me.EmptySpaceItem32.AllowHotTrack = False
+        Me.EmptySpaceItem32.Location = New System.Drawing.Point(0, 84)
+        Me.EmptySpaceItem32.Name = "EmptySpaceItem32"
+        Me.EmptySpaceItem32.Size = New System.Drawing.Size(912, 42)
+        Me.EmptySpaceItem32.TextSize = New System.Drawing.Size(0, 0)
         '
         'XtraTabPage20
         '
@@ -7413,8 +8150,8 @@ Partial Class frmBDG
         'RepositoryItemButtonEdit4
         '
         Me.RepositoryItemButtonEdit4.AutoHeight = False
-        EditorButtonImageOptions3.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions9.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions9, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject33, SerializableAppearanceObject34, SerializableAppearanceObject35, SerializableAppearanceObject36, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonEdit4.Name = "RepositoryItemButtonEdit4"
         '
         'txtBDGFCode
@@ -7681,6 +8418,18 @@ Partial Class frmBDG
         'Vw_PARTNER_AND_WORKSHOPTableAdapter
         '
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.ClearBeforeFill = True
+        '
+        'AHPB_H_HCONSUMPTIONTableAdapter
+        '
+        Me.AHPB_H_HCONSUMPTIONTableAdapter.ClearBeforeFill = True
+        '
+        'AHPB_H_BCONSUMPTIONTableAdapter
+        '
+        Me.AHPB_H_BCONSUMPTIONTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_CONSUMPTIONSTableAdapter
+        '
+        Me.Vw_CONSUMPTIONSTableAdapter.ClearBeforeFill = True
         '
         'frmBDG
         '
@@ -8087,6 +8836,40 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem66, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem70, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem76, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabConsumptions.ResumeLayout(False)
+        CType(Me.LayoutControl7Consumptions, System.ComponentModel.ISupportInitialize).EndInit
+        Me.LayoutControl7Consumptions.ResumeLayout(False)
+        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwCONSUMPTIONSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMesB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AHPBHBCONSUMPTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMesH.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AHPBHHCONSUMPTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtConsumptionH.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtConsumptionB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTotalMesH.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTotalMesB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCalHCons.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCalBCons.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTotalConsumption.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCalTotalCons.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup25, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem159, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem160, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem161, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem162, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem163, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem164, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem165, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem166, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem167, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem168, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem170, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem169, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem32, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabAPM.ResumeLayout(False)
         CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl11APM.ResumeLayout(False)
@@ -8235,7 +9018,7 @@ Partial Class frmBDG
     Friend WithEvents tabFixedCosts As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabProfActD As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabHeatingInvoices As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents XtraTabPage19 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabConsumptions As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage20 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage21 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabAPM As DevExpress.XtraTab.XtraTabPage
@@ -8781,4 +9564,63 @@ Partial Class frmBDG
     Friend WithEvents EmptySpaceItem7 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem31 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents colcolCreated As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LayoutControl7Consumptions As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents LayoutControlGroup25 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents cboMesB As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents cboMesH As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem159 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem160 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtConsumptionH As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtConsumptionB As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem161 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem162 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdSaveConsumptions As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents GridControl4 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView11 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents RepositoryItemLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents RepositoryItemLookUpEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
+    Friend WithEvents txtTotalMesH As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtTotalMesB As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem163 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem164 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem165 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem166 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtCalHCons As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtCalBCons As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem167 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem168 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents AHPBHBCONSUMPTIONBindingSource As BindingSource
+    Friend WithEvents AHPBHHCONSUMPTIONBindingSource As BindingSource
+    Friend WithEvents AHPB_H_HCONSUMPTIONTableAdapter As Priamos_NETDataSet3TableAdapters.AHPB_H_HCONSUMPTIONTableAdapter
+    Friend WithEvents AHPB_H_BCONSUMPTIONTableAdapter As Priamos_NETDataSet3TableAdapters.AHPB_H_BCONSUMPTIONTableAdapter
+    Friend WithEvents txtTotalConsumption As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem169 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem32 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents txtCalTotalCons As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem170 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwCONSUMPTIONSBindingSource As BindingSource
+    Friend WithEvents Vw_CONSUMPTIONSTableAdapter As Priamos_NETDataSet3TableAdapters.vw_CONSUMPTIONSTableAdapter
+    Friend WithEvents colID4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcode4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colbdgID4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colahpbHIDH As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colahpbHIDB As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcalH As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcalB As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coltotalCal As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colconsumptionH As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colconsumptionB As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coltotConsumption As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmodifiedBy4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmodifiedOn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcreatedOn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcreatedBy1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colMachineName1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colbdgNam As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colUsrCreatedBy As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colUsrModifiedBy As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmdtH As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmdtB As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coltotalBdgMesDifH As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coltotalBdgMesDifB As DevExpress.XtraGrid.Columns.GridColumn
 End Class
