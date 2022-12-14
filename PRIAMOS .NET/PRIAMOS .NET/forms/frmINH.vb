@@ -276,6 +276,20 @@ Public Class frmINH
                                     oCmd.ExecuteNonQuery()
                                 End Using
                             End If
+                            If cboAhpbH.EditValue IsNot Nothing Or cboAhpbB.EditValue IsNot Nothing Then
+                                ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',consumptionH,'1' FROM CONSUMPTIONS where ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString)
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                                sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',consumptionB,'1' FROM CONSUMPTIONS where ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString)
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                            End If
+
                             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sGuid))
                             grdIND.DataSource = VwINDBindingSource
                         End If

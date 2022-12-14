@@ -905,6 +905,9 @@
     <None Include="Resources\icons8-formula-40.png" />
     <None Include="Resources\icons8-insecticide-40.png" />
     <None Include="Resources\icons8-layout-40.png" />
+    <None Include="Resources\Pireos_50x50.png" />
+    <None Include="Resources\Pireos_1_32x32.png" />
+    <None Include="Resources\Alpha20Bank_32x32.jpg" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <None Include="Resources\icons-notes-40.png" />

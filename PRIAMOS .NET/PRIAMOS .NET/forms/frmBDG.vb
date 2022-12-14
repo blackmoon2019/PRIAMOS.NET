@@ -1885,11 +1885,9 @@ Public Class frmBDG
         Maintab.SelectedTabPage = tabINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
         LoadForms.RestoreLayoutFromXml(GridView_INH, "INH_BDG_def.xml")
-
-
     End Sub
 
-    Private Sub GridView10_DoubleClick(sender As Object, e As EventArgs) Handles GridView_INH.DoubleClick
+    Private Sub GridView_INH_DoubleClick(sender As Object, e As EventArgs) Handles GridView_INH.DoubleClick
         If GridView_INH.IsGroupRow(GridView_INH.FocusedRowHandle) Then Exit Sub
         Dim fINH As frmINH = New frmINH()
         fINH.Text = "Παραστατικό"
@@ -1946,6 +1944,9 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdDelINH_Click(sender As Object, e As EventArgs) Handles cmdDelINH.Click
+        DelINH()
+    End Sub
+    Private Sub DelINH()
         Dim sSQL As String
         Try
             If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID") = Nothing Then Exit Sub
@@ -1963,7 +1964,6 @@ Public Class frmBDG
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
         LoadMefMes(cboBefMes.Text)
         cmdRefreshAHPB.Enabled = True
@@ -2381,7 +2381,7 @@ Public Class frmBDG
         txtProfActDAmt.EditValue = cboProfAct.GetColumnValue("amt")
     End Sub
 
-    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
+    Private Sub GridView_INH_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_INH.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView_INH, "INH_BDG_def.xml",, "Select top 1 * from vw_INH")
         Else
@@ -2476,8 +2476,6 @@ Public Class frmBDG
 
     Private Sub GridView10_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView10.KeyDown
         If e.KeyCode = Keys.Delete Then DeleteRecordPROFACTD()
-
-
     End Sub
 
     Private Sub GridView10_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView10.CellValueChanged
@@ -2525,11 +2523,16 @@ Public Class frmBDG
         Me.AHPB_H_HCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_HCONSUMPTION, System.Guid.Parse(sID))
         Me.AHPB_H_BCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_BCONSUMPTION, System.Guid.Parse(sID))
         Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
+        LoadForms.RestoreLayoutFromXml(GridView1, "vw_CONSUMPTIONS.xml")
     End Sub
 
     Private Sub cboMesH_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesH.EditValueChanged
         Dim calH As Integer, TotalMesH As Integer, CalHCons As Integer, CalBCons As Integer
-        If cboMesH.EditValue Is Nothing Then Exit Sub
+        If cboMesH.EditValue Is Nothing Then
+            txtTotalMesH.EditValue = Nothing : txtTotalMesB.EditValue = Nothing
+            txtTotalMesH.EditValue = 0 : txtTotalMesB.EditValue = 0
+            Exit Sub
+        End If
         TotalMesH = cboMesH.GetColumnValue("totalBdgMesDif") : txtTotalMesH.EditValue = TotalMesH
         calH = cboMesH.GetColumnValue("calH")
         CalHCons = TotalMesH * calH : txtCalHCons.EditValue = CalHCons
@@ -2539,7 +2542,11 @@ Public Class frmBDG
 
     Private Sub cboMesB_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesB.EditValueChanged
         Dim calB As Integer, TotalMesB As Integer, CalBCons As Integer, CalHCons As Integer
-        If cboMesB.EditValue Is Nothing Then Exit Sub
+        If cboMesB.EditValue Is Nothing Then
+            txtTotalMesH.EditValue = Nothing : txtTotalMesB.EditValue = Nothing
+            txtTotalMesH.EditValue = 0 : txtTotalMesB.EditValue = 0
+            Exit Sub
+        End If
         TotalMesB = cboMesB.GetColumnValue("totalBdgMesDif") : txtTotalMesB.EditValue = TotalMesB
         calB = cboMesB.GetColumnValue("calB")
         CalBCons = TotalMesB * calB : txtCalBCons.EditValue = CalBCons
@@ -2585,15 +2592,11 @@ Public Class frmBDG
                 If sResult Then
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'Ενημέρωση εγγραφής ότι δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
-                    Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 1 where ID = " & toSQLValueS(cboMesH.EditValue.ToString), CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
-                    'Ενημέρωση εγγραφής ότι δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
-                    Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 1 where ID = " & toSQLValueS(cboMesB.EditValue.ToString), CNDB)
+                    Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 1 where ID in( " & toSQLValueS(cboMesH.EditValue.ToString) & "," & toSQLValueS(cboMesB.EditValue.ToString) & ")", CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
                     Cls.ClearGroupCtrls(LayoutControlGroup25)
-                    Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
+                    RefreshConsumption()
                 End If
             End If
 
@@ -2603,111 +2606,75 @@ Public Class frmBDG
         End Try
     End Sub
 
+    Private Sub cmdRefreshConsumption_Click(sender As Object, e As EventArgs) Handles cmdRefreshConsumption.Click
+        RefreshConsumption()
+    End Sub
+
+    Private Sub cmdAddConsumption_Click(sender As Object, e As EventArgs) Handles cmdAddConsumption.Click
+        Cls.ClearGroupCtrls(LayoutControlGroup25)
+    End Sub
+
+    Private Sub cmdDeleteConsumption_Click(sender As Object, e As EventArgs) Handles cmdDeleteConsumption.Click
+        DeleteConsumption()
+    End Sub
+    Private Sub RefreshConsumption()
+        Me.AHPB_H_HCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_HCONSUMPTION, System.Guid.Parse(sID))
+        Me.AHPB_H_BCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_BCONSUMPTION, System.Guid.Parse(sID))
+        Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
+    End Sub
+    Private Sub DeleteConsumption()
+        Dim sSQL As String
+        Try
+            If GridView1.GetRowCellValue(GridView11.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM CONSUMPTIONS WHERE ID = '" & GridView11.GetRowCellValue(GridView11.FocusedRowHandle, "ID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                'Ενημέρωση εγγραφής ότι δεν δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
+                Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 0 where ID in( " & toSQLValueS(GridView11.GetRowCellValue(GridView11.FocusedRowHandle, "ahpbHIDH").ToString) & "," & toSQLValueS(GridView11.GetRowCellValue(GridView11.FocusedRowHandle, "ahpbHIDB").ToString) & ")", CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
 
 
+                RefreshConsumption()
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
+    Private Sub GridView11_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView11.KeyDown
+        Select Case e.KeyCode
+            Case Keys.F2 : If UserProps.AllowInsert = True Then Cls.ClearGroupCtrls(LayoutControlGroup25)
+            Case Keys.F3
+            Case Keys.F5 : RefreshConsumption()
+            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteConsumption()
+        End Select
 
+    End Sub
 
+    Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView1, "vw_PROF_ACT_D.xml", "vw_PROF_ACT_D")
+        Else
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
 
+    End Sub
 
+    Private Sub GridView_INH_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView_INH.KeyDown
+        If e.KeyCode = Keys.Delete Then DelINH()
+    End Sub
 
-
-
-
-
-    'ΘΕΡΜΑΝΣΗ
-    '    Private Sub cboHtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboHtypes.EditValueChanged
-
-    '        Select Case cboHtypes.EditValue
-    '            'Αυτονομία με σταθερό πάγιο
-    '            Case System.Guid.Parse("9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE")
-    '                cboBtypes.Enabled = True
-    '                cmdCboManageBtypes.Enabled = True
-    '                cboFtypes.Enabled = True
-    '                txtHpc.Enabled = True
-    '                RGBolier.Enabled = True
-    '            'Αυτονομία με χρήση Fi
-    '            Case System.Guid.Parse("11F7A89C-F64D-4596-A5AF-005290C5FA49")
-    '                cboBtypes.Enabled = True
-    '                cmdCboManageBtypes.Enabled = True
-    '                cboFtypes.Enabled = True
-    '                txtHpc.Enabled = False
-    '                RGBolier.Enabled = False
-    '            'Κεντρική Θέρμανση
-    '            Case System.Guid.Parse("D29BAB0F-F94C-428F-A699-102EE9EF0BC2")
-    '                cboFtypes.Enabled = True
-    '                txtHpc.Enabled = False
-    '                RGBolier.Enabled = False
-    '            Case Else
-    '                cboBtypes.Enabled = False
-    '                cboBtypes.EditValue = Nothing
-    '                cboBtypes.EditValue = ""
-    '                cboBtypes.Text = ""
-    '                cmdCboManageBtypes.Enabled = False
-    '                cboFtypes.Enabled = False
-    '                txtHpc.Enabled = False
-    '                RGBolier.Enabled = False
-    '        End Select
-    '    End Sub
-    '    'BOILER
-    '    Private Sub cboBtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBtypes.EditValueChanged
-    '        Select Case cboBtypes.EditValue
-    '            'Με Σταθερό Πάγιο
-    '            Case System.Guid.Parse("9E155093-4E5E-42AB-AFEB-57239B8E25F0")
-    '                txtHpb.Enabled = True
-    '                RGBolier.Enabled = True
-    '            'Με Χρήση Fi
-    '            Case System.Guid.Parse("19E83D91-E350-47DA-9BE0-80AEF55AC70A")
-    '                RGBolier.Enabled = True
-    '            Case Else
-    '                txtHpb.Enabled = False
-    '                RGBolier.Enabled = False
-    '        End Select
-    '    End Sub
-    '    'ΤΥΠΟΣ ΚΑΥΣΙΜΟΥ
-    '    Private Sub cboFtypes_EditValueChanged(sender As Object, e As EventArgs) Handles cboFtypes.EditValueChanged
-    '        Select Case cboFtypes.EditValue
-    '            'Πετρέλαιο
-    '            Case System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB")
-    '                If cboHtypes.EditValue = System.Guid.Parse("D29BAB0F-F94C-428F-A699-102EE9EF0BC2") Or
-    '                   cboHtypes.EditValue = System.Guid.Parse("9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Or
-    '                   cboHtypes.EditValue = System.Guid.Parse("11F7A89C-F64D-4596-A5AF-005290C5FA49") Then
-    '                    txtTacH.Enabled = True
-    '                    txtLpcH.Enabled = True
-    '                Else
-    '                    txtTacH.Enabled = False
-    '                    txtLpcH.Enabled = False
-    '                End If
-    '            Case Else
-    '                txtTacH.Enabled = False
-    '        End Select
-    '    End Sub
-
-    '    Private Sub RGBolier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles RGBolier.SelectedIndexChanged
-    '        'Ξεχωριστός
-    '        If RGBolier.SelectedIndex = 1 Then
-    '            If cboFtypes.EditValue = System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB") Then
-    '                If cboBtypes.EditValue = System.Guid.Parse("9E155093-4E5E-42AB-AFEB-57239B8E25F0") Or cboBtypes.EditValue = System.Guid.Parse("19E83D91-E350-47DA-9BE0-80AEF55AC70A") Then
-    '                    txtLpcH.Enabled = True
-    '                Else
-    '                    txtLpcH.Enabled = False
-    '                End If
-    '            End If
-    '            'Boiler
-    '            Select Case cboBtypes.EditValue
-    '            'Με Σταθερό Πάγιο - 'Με Χρήση Fi
-    '                    Case System.Guid.Parse("9E155093-4E5E-42AB-AFEB-57239B8E25F0"), System.Guid.Parse("19E83D91-E350-47DA-9BE0-80AEF55AC70A")
-    '                        If cboFtypes.EditValue = System.Guid.Parse("AA662AEB-2B3B-4189-8253-A904669E7BCB") Then
-    '                            txtTacB.Enabled = True
-    '                        End If
-    '                    Case Else
-    '                        txtHpb.Enabled = False
-    '                        RGBolier.Enabled = False
-    '                        txtTacB.Enabled = False
-    '                End Select
-    '            Else
-    '                txtTacB.Enabled = False
-    '        End If
-    '    End Sub
-
+    Private Sub GridView11_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView11.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView12, "vw_CONSUMPTIONS.xml", "vw_CONSUMPTIONS")
+        Else
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+    End Sub
 End Class

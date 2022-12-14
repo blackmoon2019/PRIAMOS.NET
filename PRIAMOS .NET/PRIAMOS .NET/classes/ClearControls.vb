@@ -56,7 +56,7 @@ Public Class ClearControls
                             Dim Ctrl As Control = LItem.Control
                             If TypeOf Ctrl Is DevExpress.XtraEditors.LookUpEdit Then
                                 Dim cbo As DevExpress.XtraEditors.LookUpEdit
-                                cbo = Ctrl : cbo.Text = "" : cbo.EditValue = ""
+                                cbo = Ctrl : cbo.EditValue = Nothing : cbo.Text = "" : cbo.EditValue = ""
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.DateEdit Then
                                 Dim dt As DevExpress.XtraEditors.DateEdit
                                 dt = Ctrl

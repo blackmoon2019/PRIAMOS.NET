@@ -529,7 +529,9 @@ Public Class frmMain
         form.Text = "Πιστώσεις Τραπεζών"
         UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
+        'Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
         form.Show()
+        'form.ShowDialog()
     End Sub
 
     Private Sub BBReport7_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBReport7.ItemClick
