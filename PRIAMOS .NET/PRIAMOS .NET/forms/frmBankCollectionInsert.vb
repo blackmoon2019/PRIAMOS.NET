@@ -4,8 +4,10 @@
 Imports System.ComponentModel
 Imports System.Data.SqlClient
 Imports System.ServiceModel
+Imports System.Text
 Imports System.Text.RegularExpressions
 Imports System.util.zlib
+Imports DevExpress.PivotGrid.QueryMode
 Imports DevExpress.Utils
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
@@ -58,7 +60,13 @@ Public Class frmBankCollectionInsert
             End Select
             XtraOpenFileDialog1.FilterIndex = 1
             XtraOpenFileDialog1.InitialDirectory = Application.ExecutablePath
-            XtraOpenFileDialog1.Title = "Open File"
+            Select Case BankMode
+                Case 1 : XtraOpenFileDialog1.Title = "Άνοιγμα αρχείου ΠΕΙΡΑΙΩΣ"
+                Case 2 : XtraOpenFileDialog1.Title = "Άνοιγμα αρχείου ALPHA"
+                Case 3 : XtraOpenFileDialog1.Title = "Άνοιγμα αρχείου EUROBANK"
+                Case 4 : XtraOpenFileDialog1.Title = "Άνοιγμα αρχείου ΕΘΝΙΚΗΣ"
+            End Select
+            XtraOpenFileDialog1.FileName = ""
             XtraOpenFileDialog1.CheckFileExists = False
             XtraOpenFileDialog1.Multiselect = False
             XtraOpenFileDialog1.RestoreDirectory = True
@@ -73,6 +81,7 @@ Public Class frmBankCollectionInsert
                         GridView5.Columns(0).Caption = "Αιτιολογία"
                         GridView5.Columns(1).Caption = "Ημερ/νία Καταχώρησης"
                         GridView5.Columns(2).Caption = "Ποσό"
+                        PIREOS.Dispose()
                         PIREOS_TRANS()
                        ' HyperlinkLabelControl1.Text = "Αρχείο ΠΕΙΡΑΙΩΣ: " & XtraOpenFileDialog1.FileName
                     Case 2
@@ -83,6 +92,7 @@ Public Class frmBankCollectionInsert
                         GridView5.Columns(0).Caption = "Ημερ/νία Καταχώρησης"
                         GridView5.Columns(1).Caption = "Αιτιολογία"
                         GridView5.Columns(2).Caption = "Ποσό"
+                        ALPHA.Dispose()
                         ALPHA_TRANS()
                        ' HyperlinkLabelControl1.Text = "Αρχείο ALPHA: " & XtraOpenFileDialog1.FileName
                     Case 3
@@ -93,6 +103,7 @@ Public Class frmBankCollectionInsert
                         GridView5.Columns(0).Caption = "Ημερ/νία Καταχώρησης"
                         GridView5.Columns(1).Caption = "Αιτιολογία"
                         GridView5.Columns(2).Caption = "Ποσό"
+                        EUROBANK.Dispose()
                         EUROBANK_TRANS()
                       '  HyperlinkLabelControl1.Text = "Αρχείο EUROBANK: " & XtraOpenFileDialog1.FileName
                     Case 4
@@ -103,6 +114,7 @@ Public Class frmBankCollectionInsert
                         GridView5.Columns(0).Caption = "Ημερ/νία Καταχώρησης"
                         GridView5.Columns(1).Caption = "Ποσό"
                         GridView5.Columns(2).Caption = "Αιτιολογία"
+                        NBG.Dispose()
                         NBG_TRANS()
                         '  HyperlinkLabelControl1.Text = "Αρχείο ΕΘΝΙΚΗΣ: " & XtraOpenFileDialog1.FileName
                 End Select
@@ -132,6 +144,7 @@ Public Class frmBankCollectionInsert
         Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
         Dim sPireosID As String, sPireosFileID As String
         Try
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             ProgressBarControl1.EditValue = 0
             ProgressBarControl1.Properties.Step = 1
             ProgressBarControl1.Properties.PercentView = True
@@ -202,16 +215,19 @@ Public Class frmBankCollectionInsert
             Me.PIREOSTableAdapter.Fill(Me.Priamos_NETDataSet3.PIREOS)
             grdBANKS.DataSource = Me.Priamos_NETDataSet3.PIREOS
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
-            GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\PIREOS.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
             GridView5.BestFitColumns()
+
             lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sPireosFileID)
+                If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         End Try
 
     End Sub
@@ -226,6 +242,7 @@ Public Class frmBankCollectionInsert
         Dim sAlphabankID As String, sAlphabankFileID As String
 
         Try
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             ProgressBarControl1.EditValue = 0
             ProgressBarControl1.Properties.Step = 1
             ProgressBarControl1.Properties.PercentView = True
@@ -301,16 +318,18 @@ Public Class frmBankCollectionInsert
             Me.ALPHATableAdapter.Fill(Me.Priamos_NETDataSet3.ALPHA)
             grdBANKS.DataSource = Me.Priamos_NETDataSet3.ALPHA
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
-            GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\ALPHA.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView5, "ALPHA.xml")
             GridView5.BestFitColumns()
             lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sAlphabankFileID)
+                If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         End Try
 
     End Sub
@@ -323,6 +342,7 @@ Public Class frmBankCollectionInsert
         Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
         Dim sEurobankID As String, sEurobankFileID As String
         Try
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             ProgressBarControl1.EditValue = 0
             ProgressBarControl1.Properties.Step = 1
             ProgressBarControl1.Properties.PercentView = True
@@ -394,16 +414,18 @@ Public Class frmBankCollectionInsert
             Me.EUROBANKTableAdapter.Fill(Me.Priamos_NETDataSet3.EUROBANK)
             grdBANKS.DataSource = Me.Priamos_NETDataSet3.EUROBANK
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
-            GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\EUROBANK.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView5, "EUROBANK.xml")
             GridView5.BestFitColumns()
             lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sEurobankFileID)
+                If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         End Try
 
     End Sub
@@ -416,6 +438,7 @@ Public Class frmBankCollectionInsert
         Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
         Dim sNbgID As String, sNbgFileID As String
         Try
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             ProgressBarControl1.EditValue = 0
             ProgressBarControl1.Properties.Step = 1
             ProgressBarControl1.Properties.PercentView = True
@@ -486,16 +509,18 @@ Public Class frmBankCollectionInsert
             Me.NBGTableAdapter.Fill(Me.Priamos_NETDataSet3.NBG)
             grdBANKS.DataSource = Me.Priamos_NETDataSet3.NBG
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
-            GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\NBG.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView5, "NBG.xml")
             GridView5.BestFitColumns()
             lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sNbgFileID)
+                If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         End Try
 
     End Sub
@@ -518,6 +543,8 @@ Public Class frmBankCollectionInsert
 
     Private Sub GridView5_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles GridView5.CustomDrawCell
         Dim GRD5 As GridView = sender
+        If GRD5 Is Nothing Then Exit Sub
+        If e.CellValue Is Nothing Then Exit Sub
         If e.Column.FieldName = "aptID" Then e.DisplayText = GRD5.GetRowCellValue(e.RowHandle, "ttl").ToString()
         If e.Column.FieldName = "inhID" Then e.DisplayText = GRD5.GetRowCellValue(e.RowHandle, "completeDate").ToString()
     End Sub
@@ -574,43 +601,48 @@ Public Class frmBankCollectionInsert
     End Sub
 
     Private Sub ColInh()
-        Dim sBdgID As String, sAptID As String, sInhID As String, dtcredit As String, sBankID As String
-        Dim credit As Decimal, sBankDepositDate As Date
-        sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
-        sAptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper
-        sInhID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper
-        credit = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "credit")
-        sBankDepositDate = Date.Parse(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "dtCreate").ToString)
-        dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
-        Select Case BankMode
-            Case 1 : sBankID = "92B4B01C-0F8C-4A02-982A-149C02F42C32"
-            Case 2 : sBankID = "019A838C-4411-48B7-A6D0-D4F33B78E619"
-            Case 3 : sBankID = "5875B070-AFBC-4773-9267-AF4EDF8150D4"
-            Case 4 : sBankID = "D390AC98-CCAC-416C-B406-A6B4C67BAF0B"
-        End Select
-        If sInhID = "" Or sBdgID = "" Or sAptID = "" Then
-            XtraMessageBox.Show("Δεν έχουν συμπληρωθεί όλα τα στοιχεία για να κάνετε είσπραξη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        Else
-            Using oCmd As New SqlCommand("col_Calculate", CNDB)
-                oCmd.CommandType = CommandType.StoredProcedure
-                oCmd.Parameters.AddWithValue("@debitusrID", "CC93EEFB-B8B6-470F-983D-3604E67C6E1C") ' ΧΡΗΣΤΗΣ ΤΡΑΠΕΖΕΣ
-                oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
-                oCmd.Parameters.AddWithValue("@aptID", sAptID)
-                oCmd.Parameters.AddWithValue("@inhID", sInhID)
-                oCmd.Parameters.AddWithValue("@Givencredit", credit)
-                oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
-                oCmd.Parameters.AddWithValue("@ColMethodID", "F34B402C-ADD8-48E7-85A9-FFDF7DAED582") ' ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ ΤΡΑΠΕΖΑ
-                oCmd.Parameters.AddWithValue("@TenantOwner", 2)
-                oCmd.Parameters.AddWithValue("@Agreed", 0)
-                oCmd.Parameters.AddWithValue("@ComeFrom", 1)
-                oCmd.Parameters.AddWithValue("@BankID", sBankID)
-                oCmd.Parameters.AddWithValue("@BankFileName", sFileName)
-                oCmd.Parameters.AddWithValue("@BankDepositDate", sBankDepositDate)
-                oCmd.ExecuteNonQuery()
-                XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End Using
-        End If
+        Try
+            Dim sBdgID As String, sAptID As String, sInhID As String, dtcredit As String, sBankID As String
+            Dim credit As Decimal, sBankDepositDate As Date
+            sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+            sAptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper
+            sInhID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper
+            credit = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "credit")
+            sBankDepositDate = Date.Parse(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "dtCreate").ToString)
+            dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
+            Select Case BankMode
+                Case 1 : sBankID = "92B4B01C-0F8C-4A02-982A-149C02F42C32"
+                Case 2 : sBankID = "019A838C-4411-48B7-A6D0-D4F33B78E619"
+                Case 3 : sBankID = "5875B070-AFBC-4773-9267-AF4EDF8150D4"
+                Case 4 : sBankID = "D390AC98-CCAC-416C-B406-A6B4C67BAF0B"
+            End Select
+            If sInhID = "" Or sBdgID = "" Or sAptID = "" Then
+                XtraMessageBox.Show("Δεν έχουν συμπληρωθεί όλα τα στοιχεία για να κάνετε είσπραξη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            Else
+                Using oCmd As New SqlCommand("col_Calculate", CNDB)
+                    oCmd.CommandType = CommandType.StoredProcedure
+                    oCmd.Parameters.AddWithValue("@debitusrID", "CC93EEFB-B8B6-470F-983D-3604E67C6E1C") ' ΧΡΗΣΤΗΣ ΤΡΑΠΕΖΕΣ
+                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
+                    oCmd.Parameters.AddWithValue("@aptID", sAptID)
+                    oCmd.Parameters.AddWithValue("@inhID", sInhID)
+                    oCmd.Parameters.AddWithValue("@Givencredit", credit)
+                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@ColMethodID", "F34B402C-ADD8-48E7-85A9-FFDF7DAED582") ' ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ ΤΡΑΠΕΖΑ
+                    oCmd.Parameters.AddWithValue("@TenantOwner", 2)
+                    oCmd.Parameters.AddWithValue("@Agreed", 0)
+                    oCmd.Parameters.AddWithValue("@ComeFrom", 1)
+                    oCmd.Parameters.AddWithValue("@BankID", sBankID)
+                    oCmd.Parameters.AddWithValue("@BankFileName", sFileName)
+                    oCmd.Parameters.AddWithValue("@BankDepositDate", sBankDepositDate)
+                    oCmd.ExecuteNonQuery()
+                    GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
+                    XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub RepColBtn_Click(sender As Object, e As EventArgs) Handles RepColBtn.Click
@@ -633,14 +665,7 @@ Public Class frmBankCollectionInsert
         End If
     End Sub
 
-    Private Sub HyperlinkLabelControl1_Click(sender As Object, e As EventArgs)
-        'Dim sFile As String = HyperlinkLabelControl1.Text
-        'sFile = sFile.Replace("Αρχείο ΠΕΙΡΑΙΩΣ: ", "")
-        'sFile = sFile.Replace("Αρχείο ALPHA: ", "")
-        'sFile = sFile.Replace("Αρχείο EUROBANK: ", "")
-        'sFile = sFile.Replace("Αρχείο ΕΘΝΙΚΗΣ: ", "")
-        'ShellExecute(sFile)
-    End Sub
+
 
     Private Sub lstLog_DoubleClick(sender As Object, e As EventArgs) Handles lstLog.DoubleClick
         GridView5.ActiveFilterString = "[ID] = {" & lstLog.Items(lstLog.SelectedIndex).Tag & "}"
@@ -699,6 +724,7 @@ Public Class frmBankCollectionInsert
         myProcess.StartInfo.RedirectStandardOutput = False
         myProcess.Start()
         myProcess.Dispose()
+        myProcess.Close()
     End Sub
 
     Private Sub NavAllBanks_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavAllBanks.ElementClick
@@ -707,7 +733,146 @@ Public Class frmBankCollectionInsert
         Me.Vw_COL_ALL_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS)
         grdBANKS.DataSource = Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS
         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
-        GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\ALLBANKS.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView5, "ALLBANKS.xml")
         GridView5.BestFitColumns()
+    End Sub
+    Private Sub DeleteBatchRecords()
+        Dim sSQL As String
+        Dim selectedRowHandles As Int32() = GridView5.GetSelectedRows()
+        Dim I As Integer
+        Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
+        Try
+            If selectedRowHandles.Length = 0 Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+            ProgressBarControl1.EditValue = 0
+            ProgressBarControl1.Properties.Step = 1
+            ProgressBarControl1.Properties.PercentView = True
+            ProgressBarControl1.Properties.Maximum = selectedRowHandles.Length - 1
+            ProgressBarControl1.Properties.Minimum = 0
+            lstLog.Items.Clear()
+
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+
+                'If GridView5.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
+                If GridView5.GetRowCellValue(selectedRowHandle, "Completed") = "False" Then
+
+                    Select Case BankMode
+                        Case 1 : sSQL = "DELETE FROM PIREOS WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Case 2 : sSQL = "DELETE FROM ALPHA WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Case 3 : sSQL = "DELETE FROM EUROBANK WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Case 4 : sSQL = "DELETE FROM NBG WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Case 5
+                            Select Case GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "BankName")
+                                Case "ΠΕΙΡΑΙΩΣ" : sSQL = "DELETE FROM PIREOS WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                                Case "ALPHA BANK" : sSQL = "DELETE FROM ALPHA WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                                Case "EUROBANK" : sSQL = "DELETE FROM EUROBANK WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                                Case "ΕΘΝΙΚΗ" : sSQL = "DELETE FROM NBG WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                            End Select
+                    End Select
+                    Try
+
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+
+                        lstLog.Items.Add("Η εγγραφή Διαγράφηκε με επιτυχία!-->" & GridView5.GetRowCellValue(selectedRowHandle, "reason").ToString)
+                        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
+                        ItemsCorrect = ItemsCorrect + 1
+                    Catch ex As Exception
+                        lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
+                        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                        ItemsWrong = ItemsWrong + 1
+                    End Try
+                Else
+                    ItemsWrong = ItemsWrong + 1
+                    lstLog.Items.Add("Η εγγραφή είναι ολοκληρωμένη. Δεν μπορεί να γίνει διαγραφή!-->" & GridView5.GetRowCellValue(selectedRowHandle, "reason").ToString)
+                    lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                End If
+                ProgressBarControl1.PerformStep()
+                ProgressBarControl1.Update()
+            Next I
+            grdBANKS.DataSource = Nothing
+            Select Case BankMode
+                Case 1
+                    Me.PIREOSTableAdapter.Fill(Me.Priamos_NETDataSet3.PIREOS)
+                    grdBANKS.DataSource = Me.Priamos_NETDataSet3.PIREOS
+                    grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
+                    LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
+                Case 2
+                    Me.ALPHATableAdapter.Fill(Me.Priamos_NETDataSet3.ALPHA)
+                    grdBANKS.DataSource = Me.Priamos_NETDataSet3.ALPHA
+                    grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
+                    LoadForms.RestoreLayoutFromXml(GridView5, "ALPHA.xml")
+                Case 3
+                    Me.EUROBANKTableAdapter.Fill(Me.Priamos_NETDataSet3.EUROBANK)
+                    grdBANKS.DataSource = Me.Priamos_NETDataSet3.EUROBANK
+                    grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
+                    LoadForms.RestoreLayoutFromXml(GridView5, "EUROBANK.xml")
+                Case 4
+                    Me.NBGTableAdapter.Fill(Me.Priamos_NETDataSet3.NBG)
+                    grdBANKS.DataSource = Me.Priamos_NETDataSet3.NBG
+                    grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
+                    LoadForms.RestoreLayoutFromXml(GridView5, "NBG.xml")
+            End Select
+            GridView5.BestFitColumns()
+            lstLog.Items.Add("Διαγράφηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
+            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        End Try
+    End Sub
+
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+        DeleteBatchRecords()
+    End Sub
+
+
+    Private Sub GridView5_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView5.CellValueChanged
+        Dim sSQL As New StringBuilder
+        Try
+            If e.Value Is Nothing Then Exit Sub
+            'If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And e.Column.FieldName = "Completed" Then
+            '    XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            '    Exit Sub
+            'End If
+
+
+            sSQL.Clear()
+            Select Case BankMode
+                Case 1 : sSQL.AppendLine("UPDATE PIREOS SET ")
+                Case 2 : sSQL.AppendLine("UPDATE ALPHA SET ")
+                Case 3 : sSQL.AppendLine("UPDATE EUROBANK SET ")
+                Case 4 : sSQL.AppendLine("UPDATE NBG SET ")
+                Case 5
+                    Select Case GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "BankName")
+                        Case "ΠΕΙΡΑΙΩΣ" : sSQL.AppendLine("UPDATE PIREOS SET ")
+                        Case "ALPHA BANK" : sSQL.AppendLine("UPDATE ALPHA SET ")
+                        Case "EUROBANK" : sSQL.AppendLine("UPDATE EUROBANK SET ")
+                        Case "ΕΘΝΙΚΗ" : sSQL.AppendLine("UPDATE NBG SET ")
+                    End Select
+            End Select
+
+            sSQL.AppendLine("bdgID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString) & ",")
+            sSQL.AppendLine("bdgCode = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgCode").ToString) & ",")
+            sSQL.AppendLine("aptID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString) & ",")
+            sSQL.AppendLine("ttl= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ttl").ToString) & ",")
+            sSQL.AppendLine("inhID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString) & ",")
+            sSQL.AppendLine("Completed= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString))
+            sSQL.AppendLine("WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString))
+            Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            lstLog.Items.Add("Η εγγραφή Ενημερώθηκε Επιτυχώς!")
+            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            lstLog.Items.Add("Η εγγραφή δεν ενημερώθηκε: " & ex.Message)
+            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+        End Try
     End Sub
 End Class

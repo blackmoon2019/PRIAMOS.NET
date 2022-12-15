@@ -20,74 +20,75 @@ Partial Class frmBankCollectionInsert
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression2 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression1 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBankCollectionInsert))
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim FieldInfo48 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo49 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo50 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo51 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo52 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo53 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim ExcelWorksheetSettings3 As DevExpress.DataAccess.Excel.ExcelWorksheetSettings = New DevExpress.DataAccess.Excel.ExcelWorksheetSettings()
-        Dim ExcelSourceOptions3 As DevExpress.DataAccess.Excel.ExcelSourceOptions = New DevExpress.DataAccess.Excel.ExcelSourceOptions(ExcelWorksheetSettings3)
-        Dim FieldInfo54 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo55 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo56 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo57 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo58 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo59 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo60 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo61 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim CsvSourceOptions3 As DevExpress.DataAccess.Excel.CsvSourceOptions = New DevExpress.DataAccess.Excel.CsvSourceOptions()
-        Dim FieldInfo62 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo63 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo64 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo65 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo66 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim CsvSourceOptions4 As DevExpress.DataAccess.Excel.CsvSourceOptions = New DevExpress.DataAccess.Excel.CsvSourceOptions()
-        Dim FieldInfo67 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo68 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo69 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo70 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo71 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo72 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo73 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo74 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo75 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo76 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo77 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo78 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo79 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo80 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo81 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo82 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo83 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo84 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo85 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo86 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo87 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo88 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo89 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo90 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo91 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo92 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo93 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim FieldInfo94 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
-        Dim ExcelWorksheetSettings4 As DevExpress.DataAccess.Excel.ExcelWorksheetSettings = New DevExpress.DataAccess.Excel.ExcelWorksheetSettings()
-        Dim ExcelSourceOptions4 As DevExpress.DataAccess.Excel.ExcelSourceOptions = New DevExpress.DataAccess.Excel.ExcelSourceOptions(ExcelWorksheetSettings4)
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim FieldInfo1 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo2 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo3 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo4 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo5 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo6 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim ExcelWorksheetSettings1 As DevExpress.DataAccess.Excel.ExcelWorksheetSettings = New DevExpress.DataAccess.Excel.ExcelWorksheetSettings()
+        Dim ExcelSourceOptions1 As DevExpress.DataAccess.Excel.ExcelSourceOptions = New DevExpress.DataAccess.Excel.ExcelSourceOptions(ExcelWorksheetSettings1)
+        Dim FieldInfo7 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo8 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo9 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo10 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo11 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo12 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo13 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo14 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim CsvSourceOptions1 As DevExpress.DataAccess.Excel.CsvSourceOptions = New DevExpress.DataAccess.Excel.CsvSourceOptions()
+        Dim FieldInfo15 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo16 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo17 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo18 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo19 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim CsvSourceOptions2 As DevExpress.DataAccess.Excel.CsvSourceOptions = New DevExpress.DataAccess.Excel.CsvSourceOptions()
+        Dim FieldInfo20 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo21 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo22 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo23 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo24 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo25 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo26 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo27 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo28 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo29 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo30 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo31 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo32 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo33 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo34 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo35 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo36 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo37 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo38 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo39 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo40 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo41 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo42 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo43 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo44 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo45 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo46 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim FieldInfo47 As DevExpress.DataAccess.Excel.FieldInfo = New DevExpress.DataAccess.Excel.FieldInfo()
+        Dim ExcelWorksheetSettings2 As DevExpress.DataAccess.Excel.ExcelWorksheetSettings = New DevExpress.DataAccess.Excel.ExcelWorksheetSettings()
+        Dim ExcelSourceOptions2 As DevExpress.DataAccess.Excel.ExcelSourceOptions = New DevExpress.DataAccess.Excel.ExcelSourceOptions(ExcelWorksheetSettings2)
         Me.colbdgNam = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.ProgressBarControl1 = New DevExpress.XtraEditors.ProgressBarControl()
         Me.grdBANKS = New DevExpress.XtraGrid.GridControl()
         Me.PIREOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -122,8 +123,11 @@ Partial Class frmBankCollectionInsert
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PIREOS = New DevExpress.DataAccess.Excel.ExcelDataSource()
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
         Me.ALPHA = New DevExpress.DataAccess.Excel.ExcelDataSource()
@@ -162,6 +166,7 @@ Partial Class frmBankCollectionInsert
         Me.NavEurobank = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavButton4 = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavNbg = New DevExpress.XtraBars.Navigation.NavButton()
+        Me.NavButton6 = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavAllBanks = New DevExpress.XtraBars.Navigation.NavButton()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -188,8 +193,11 @@ Partial Class frmBankCollectionInsert
         CType(Me.txtImageError, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet31, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ALPHABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EUROBANKBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -227,6 +235,7 @@ Partial Class frmBankCollectionInsert
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.cmdDelete)
         Me.LayoutControl1.Controls.Add(Me.ProgressBarControl1)
         Me.LayoutControl1.Controls.Add(Me.grdBANKS)
         Me.LayoutControl1.Controls.Add(Me.cmdExit)
@@ -235,16 +244,28 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1926, 867, 1137, 700)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(2269, 920)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2384, 947)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'cmdDelete
+        '
+        Me.cmdDelete.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_delete_24
+        Me.cmdDelete.Location = New System.Drawing.Point(12, 866)
+        Me.cmdDelete.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(119, 39)
+        Me.cmdDelete.StyleController = Me.LayoutControl1
+        Me.cmdDelete.TabIndex = 30
+        Me.cmdDelete.Text = "Διαγραφή"
+        '
         'ProgressBarControl1
         '
-        Me.ProgressBarControl1.Location = New System.Drawing.Point(12, 869)
+        Me.ProgressBarControl1.Location = New System.Drawing.Point(12, 909)
         Me.ProgressBarControl1.Name = "ProgressBarControl1"
         Me.ProgressBarControl1.Properties.ShowTitle = True
-        Me.ProgressBarControl1.Size = New System.Drawing.Size(2007, 26)
+        Me.ProgressBarControl1.Size = New System.Drawing.Size(2170, 26)
         Me.ProgressBarControl1.StyleController = Me.LayoutControl1
         Me.ProgressBarControl1.TabIndex = 29
         Me.ProgressBarControl1.Visible = False
@@ -260,7 +281,7 @@ Partial Class frmBankCollectionInsert
         Me.grdBANKS.Margin = New System.Windows.Forms.Padding(5)
         Me.grdBANKS.Name = "grdBANKS"
         Me.grdBANKS.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1, Me.txtImageCorrect, Me.txtImageError, Me.RepColPerBdgApt, Me.RepColBtn, Me.RepBdg, Me.RepColExcel})
-        Me.grdBANKS.Size = New System.Drawing.Size(2245, 853)
+        Me.grdBANKS.Size = New System.Drawing.Size(2360, 850)
         Me.grdBANKS.TabIndex = 24
         Me.grdBANKS.UseEmbeddedNavigator = True
         Me.grdBANKS.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
@@ -279,19 +300,20 @@ Partial Class frmBankCollectionInsert
         '
         Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colreason, Me.colaptID, Me.coldtCreate, Me.colbdgID, Me.colbdgNam, Me.colbdgCode, Me.colttl, Me.colcredit, Me.GridColumn1, Me.colinhID, Me.colcompleteDate, Me.GridColumn2, Me.GridColumn3, Me.colcolBanksFID, Me.colCompleted})
         Me.GridView5.FixedLineWidth = 3
-        GridFormatRule2.ApplyToRow = True
-        GridFormatRule2.Column = Me.colbdgNam
-        GridFormatRule2.Name = "Format0"
-        FormatConditionRuleExpression2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression2.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression2.Expression = "[credit] < 0.0m"
-        GridFormatRule2.Rule = FormatConditionRuleExpression2
-        Me.GridView5.FormatRules.Add(GridFormatRule2)
+        GridFormatRule1.ApplyToRow = True
+        GridFormatRule1.Column = Me.colbdgNam
+        GridFormatRule1.Name = "Format0"
+        FormatConditionRuleExpression1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression1.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression1.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression1.Expression = "[credit] < 0.0m"
+        GridFormatRule1.Rule = FormatConditionRuleExpression1
+        Me.GridView5.FormatRules.Add(GridFormatRule1)
         Me.GridView5.GridControl = Me.grdBANKS
         Me.GridView5.LevelIndent = 0
         Me.GridView5.Name = "GridView5"
+        Me.GridView5.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown
         Me.GridView5.OptionsLayout.StoreAllOptions = True
         Me.GridView5.OptionsLayout.StoreAppearance = True
         Me.GridView5.OptionsLayout.StoreFormatRules = True
@@ -466,7 +488,7 @@ Partial Class frmBankCollectionInsert
         '
         Me.RepColPerBdgApt.AutoHeight = False
         Me.RepColPerBdgApt.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepColPerBdgApt.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aptID", "apt ID", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("inhID", "inh ID", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("completeDate", "Παραστατικά", 136, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "debit", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 62, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "bal", 40, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 109, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 82, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 87, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Etos", "Etos", 50, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FromMonth", "From Month", 117, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ToMonth", "To Month", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDate", "f Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tDate", "t Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.RepColPerBdgApt.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aptID", "apt ID", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("inhID", "inh ID", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("completeDate", "Παραστατικά", 100, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "Ποσό Παραστατικών", 100, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 62, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "Νέο Υπόλοιπο", 100, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 109, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 82, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 87, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Etos", "Etos", 50, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FromMonth", "From Month", 117, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ToMonth", "To Month", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDate", "f Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tDate", "t Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.RepColPerBdgApt.DataSource = Me.COLPERBDGAPTBindingSource
         Me.RepColPerBdgApt.DisplayMember = "completeDate"
         Me.RepColPerBdgApt.Name = "RepColPerBdgApt"
@@ -501,8 +523,8 @@ Partial Class frmBankCollectionInsert
         'RepColBtn
         '
         Me.RepColBtn.AutoHeight = False
-        EditorButtonImageOptions3.SvgImage = CType(resources.GetObject("EditorButtonImageOptions3.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.RepColBtn.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.SvgImage = CType(resources.GetObject("EditorButtonImageOptions1.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.RepColBtn.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepColBtn.Name = "RepColBtn"
         Me.RepColBtn.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -520,8 +542,8 @@ Partial Class frmBankCollectionInsert
         'RepColExcel
         '
         Me.RepColExcel.AutoHeight = False
-        EditorButtonImageOptions4.SvgImage = CType(resources.GetObject("EditorButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.RepColExcel.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.SvgImage = CType(resources.GetObject("EditorButtonImageOptions2.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.RepColExcel.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepColExcel.Name = "RepColExcel"
         Me.RepColExcel.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -560,10 +582,10 @@ Partial Class frmBankCollectionInsert
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = CType(resources.GetObject("cmdExit.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdExit.Location = New System.Drawing.Point(2023, 869)
+        Me.cmdExit.Location = New System.Drawing.Point(2186, 866)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(234, 39)
+        Me.cmdExit.Size = New System.Drawing.Size(186, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
         Me.cmdExit.TabIndex = 6
         Me.cmdExit.Text = "Έξοδος"
@@ -572,37 +594,63 @@ Partial Class frmBankCollectionInsert
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem8, Me.LayoutControlItem2})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem8, Me.EmptySpaceItem1, Me.EmptySpaceItem2, Me.LayoutControlItem1})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2269, 920)
+        Me.Root.Size = New System.Drawing.Size(2384, 947)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.cmdExit
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(2011, 857)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(2174, 854)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(238, 43)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(190, 43)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
-        '
-        'LayoutControlItem8
-        '
-        Me.LayoutControlItem8.Control = Me.ProgressBarControl1
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 857)
-        Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(2011, 43)
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem8.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.grdBANKS
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(2249, 857)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(2364, 854)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
+        '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.ProgressBarControl1
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 897)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(2174, 30)
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem8.TextVisible = False
+        Me.LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(123, 854)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(2051, 43)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(2174, 897)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(190, 30)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.cmdDelete
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 854)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(123, 43)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
         '
         'PIREOS
         '
@@ -612,34 +660,34 @@ Partial Class frmBankCollectionInsert
         Me.PIREOS.ResultSchemaSerializable = "PFZpZXc+PEZpZWxkIE5hbWU9IkNvbHVtbjIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ29sd" &
     "W1uMyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDb2x1bW41IiBUeXBlPSJEZWNpbWFsIiAvP" &
     "jwvVmlldz4="
-        FieldInfo48.Name = "Column1"
-        FieldInfo48.OriginalName = "Column1"
-        FieldInfo48.Selected = False
-        FieldInfo48.Type = GetType(String)
-        FieldInfo49.Name = "Column2"
-        FieldInfo49.OriginalName = "Column2"
-        FieldInfo49.Type = GetType(String)
-        FieldInfo50.Name = "Column3"
-        FieldInfo50.OriginalName = "Column3"
-        FieldInfo50.Type = GetType(String)
-        FieldInfo51.Name = "Column4"
-        FieldInfo51.OriginalName = "Column4"
-        FieldInfo51.Selected = False
-        FieldInfo51.Type = GetType(String)
-        FieldInfo52.Name = "Column5"
-        FieldInfo52.OriginalName = "Column5"
-        FieldInfo52.Type = GetType(Decimal)
-        FieldInfo53.Name = "Column6"
-        FieldInfo53.OriginalName = "Column6"
-        FieldInfo53.Selected = False
-        FieldInfo53.Type = GetType(String)
-        Me.PIREOS.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo48, FieldInfo49, FieldInfo50, FieldInfo51, FieldInfo52, FieldInfo53})
-        ExcelWorksheetSettings3.CellRange = Nothing
-        ExcelWorksheetSettings3.WorksheetIndex = Nothing
-        ExcelWorksheetSettings3.WorksheetName = "Λίστα Ενοποιημένων Συναλλαγών"
-        ExcelSourceOptions3.ImportSettings = ExcelWorksheetSettings3
-        ExcelSourceOptions3.UseFirstRowAsHeader = False
-        Me.PIREOS.SourceOptions = ExcelSourceOptions3
+        FieldInfo1.Name = "Column1"
+        FieldInfo1.OriginalName = "Column1"
+        FieldInfo1.Selected = False
+        FieldInfo1.Type = GetType(String)
+        FieldInfo2.Name = "Column2"
+        FieldInfo2.OriginalName = "Column2"
+        FieldInfo2.Type = GetType(String)
+        FieldInfo3.Name = "Column3"
+        FieldInfo3.OriginalName = "Column3"
+        FieldInfo3.Type = GetType(String)
+        FieldInfo4.Name = "Column4"
+        FieldInfo4.OriginalName = "Column4"
+        FieldInfo4.Selected = False
+        FieldInfo4.Type = GetType(String)
+        FieldInfo5.Name = "Column5"
+        FieldInfo5.OriginalName = "Column5"
+        FieldInfo5.Type = GetType(Decimal)
+        FieldInfo6.Name = "Column6"
+        FieldInfo6.OriginalName = "Column6"
+        FieldInfo6.Selected = False
+        FieldInfo6.Type = GetType(String)
+        Me.PIREOS.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo1, FieldInfo2, FieldInfo3, FieldInfo4, FieldInfo5, FieldInfo6})
+        ExcelWorksheetSettings1.CellRange = Nothing
+        ExcelWorksheetSettings1.WorksheetIndex = Nothing
+        ExcelWorksheetSettings1.WorksheetName = "Λίστα Ενοποιημένων Συναλλαγών"
+        ExcelSourceOptions1.ImportSettings = ExcelWorksheetSettings1
+        ExcelSourceOptions1.UseFirstRowAsHeader = False
+        Me.PIREOS.SourceOptions = ExcelSourceOptions1
         '
         'XtraOpenFileDialog1
         '
@@ -651,42 +699,42 @@ Partial Class frmBankCollectionInsert
     ""
         Me.ALPHA.Name = "ALPHA"
         Me.ALPHA.ResultSchemaSerializable = resources.GetString("ALPHA.ResultSchemaSerializable")
-        FieldInfo54.Name = "Column1"
-        FieldInfo54.OriginalName = "Column1"
-        FieldInfo54.Selected = False
-        FieldInfo54.Type = GetType(String)
-        FieldInfo55.Name = "Column2"
-        FieldInfo55.OriginalName = "Column2"
-        FieldInfo55.Type = GetType(String)
-        FieldInfo56.Name = "Column3"
-        FieldInfo56.OriginalName = "Column3"
-        FieldInfo56.Type = GetType(String)
-        FieldInfo57.Name = "Column4"
-        FieldInfo57.OriginalName = "Column4"
-        FieldInfo57.Selected = False
-        FieldInfo57.Type = GetType(String)
-        FieldInfo58.Name = "Column5"
-        FieldInfo58.OriginalName = "Column5"
-        FieldInfo58.Selected = False
-        FieldInfo58.Type = GetType(String)
-        FieldInfo59.Name = "Column6"
-        FieldInfo59.OriginalName = "Column6"
-        FieldInfo59.Type = GetType(String)
-        FieldInfo60.Name = "Column7"
-        FieldInfo60.OriginalName = "Column7"
-        FieldInfo60.Type = GetType(Decimal)
-        FieldInfo61.Name = "Column8"
-        FieldInfo61.OriginalName = "Column8"
-        FieldInfo61.Selected = False
-        FieldInfo61.Type = GetType(String)
-        Me.ALPHA.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo54, FieldInfo55, FieldInfo56, FieldInfo57, FieldInfo58, FieldInfo59, FieldInfo60, FieldInfo61})
-        CsvSourceOptions3.Culture = New System.Globalization.CultureInfo("el-GR")
-        CsvSourceOptions3.DetectNewlineType = True
-        CsvSourceOptions3.DetectValueSeparator = True
-        CsvSourceOptions3.Encoding = CType(resources.GetObject("CsvSourceOptions3.Encoding"), System.Text.Encoding)
-        CsvSourceOptions3.UseFirstRowAsHeader = False
-        CsvSourceOptions3.ValueSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.ALPHA.SourceOptions = CsvSourceOptions3
+        FieldInfo7.Name = "Column1"
+        FieldInfo7.OriginalName = "Column1"
+        FieldInfo7.Selected = False
+        FieldInfo7.Type = GetType(String)
+        FieldInfo8.Name = "Column2"
+        FieldInfo8.OriginalName = "Column2"
+        FieldInfo8.Type = GetType(String)
+        FieldInfo9.Name = "Column3"
+        FieldInfo9.OriginalName = "Column3"
+        FieldInfo9.Type = GetType(String)
+        FieldInfo10.Name = "Column4"
+        FieldInfo10.OriginalName = "Column4"
+        FieldInfo10.Selected = False
+        FieldInfo10.Type = GetType(String)
+        FieldInfo11.Name = "Column5"
+        FieldInfo11.OriginalName = "Column5"
+        FieldInfo11.Selected = False
+        FieldInfo11.Type = GetType(String)
+        FieldInfo12.Name = "Column6"
+        FieldInfo12.OriginalName = "Column6"
+        FieldInfo12.Type = GetType(String)
+        FieldInfo13.Name = "Column7"
+        FieldInfo13.OriginalName = "Column7"
+        FieldInfo13.Type = GetType(Decimal)
+        FieldInfo14.Name = "Column8"
+        FieldInfo14.OriginalName = "Column8"
+        FieldInfo14.Selected = False
+        FieldInfo14.Type = GetType(String)
+        Me.ALPHA.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo7, FieldInfo8, FieldInfo9, FieldInfo10, FieldInfo11, FieldInfo12, FieldInfo13, FieldInfo14})
+        CsvSourceOptions1.Culture = New System.Globalization.CultureInfo("el-GR")
+        CsvSourceOptions1.DetectNewlineType = True
+        CsvSourceOptions1.DetectValueSeparator = True
+        CsvSourceOptions1.Encoding = CType(resources.GetObject("CsvSourceOptions1.Encoding"), System.Text.Encoding)
+        CsvSourceOptions1.UseFirstRowAsHeader = False
+        CsvSourceOptions1.ValueSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.ALPHA.SourceOptions = CsvSourceOptions1
         '
         'EUROBANK
         '
@@ -696,152 +744,152 @@ Partial Class frmBankCollectionInsert
         Me.EUROBANK.ResultSchemaSerializable = "PFZpZXc+PEZpZWxkIE5hbWU9IkNvbHVtbjEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ29sd" &
     "W1uMyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDb2x1bW40IiBUeXBlPSJEZWNpbWFsIiAvP" &
     "jwvVmlldz4="
-        FieldInfo62.Name = "Column1"
-        FieldInfo62.OriginalName = "Column1"
-        FieldInfo62.Type = GetType(String)
-        FieldInfo63.Name = "Column2"
-        FieldInfo63.OriginalName = "Column2"
-        FieldInfo63.Selected = False
-        FieldInfo63.Type = GetType(String)
-        FieldInfo64.Name = "Column3"
-        FieldInfo64.OriginalName = "Column3"
-        FieldInfo64.Type = GetType(String)
-        FieldInfo65.Name = "Column4"
-        FieldInfo65.OriginalName = "Column4"
-        FieldInfo65.Type = GetType(Decimal)
-        FieldInfo66.Name = "Column5"
-        FieldInfo66.OriginalName = "Column5"
-        FieldInfo66.Selected = False
-        FieldInfo66.Type = GetType(String)
-        Me.EUROBANK.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo62, FieldInfo63, FieldInfo64, FieldInfo65, FieldInfo66})
-        CsvSourceOptions4.Culture = New System.Globalization.CultureInfo("el")
-        CsvSourceOptions4.DetectNewlineType = True
-        CsvSourceOptions4.DetectValueSeparator = True
-        CsvSourceOptions4.Encoding = CType(resources.GetObject("CsvSourceOptions4.Encoding"), System.Text.Encoding)
-        CsvSourceOptions4.UseFirstRowAsHeader = False
-        CsvSourceOptions4.ValueSeparator = Global.Microsoft.VisualBasic.ChrW(59)
-        Me.EUROBANK.SourceOptions = CsvSourceOptions4
+        FieldInfo15.Name = "Column1"
+        FieldInfo15.OriginalName = "Column1"
+        FieldInfo15.Type = GetType(String)
+        FieldInfo16.Name = "Column2"
+        FieldInfo16.OriginalName = "Column2"
+        FieldInfo16.Selected = False
+        FieldInfo16.Type = GetType(String)
+        FieldInfo17.Name = "Column3"
+        FieldInfo17.OriginalName = "Column3"
+        FieldInfo17.Type = GetType(String)
+        FieldInfo18.Name = "Column4"
+        FieldInfo18.OriginalName = "Column4"
+        FieldInfo18.Type = GetType(Decimal)
+        FieldInfo19.Name = "Column5"
+        FieldInfo19.OriginalName = "Column5"
+        FieldInfo19.Selected = False
+        FieldInfo19.Type = GetType(String)
+        Me.EUROBANK.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo15, FieldInfo16, FieldInfo17, FieldInfo18, FieldInfo19})
+        CsvSourceOptions2.Culture = New System.Globalization.CultureInfo("el")
+        CsvSourceOptions2.DetectNewlineType = True
+        CsvSourceOptions2.DetectValueSeparator = True
+        CsvSourceOptions2.Encoding = CType(resources.GetObject("CsvSourceOptions2.Encoding"), System.Text.Encoding)
+        CsvSourceOptions2.UseFirstRowAsHeader = False
+        CsvSourceOptions2.ValueSeparator = Global.Microsoft.VisualBasic.ChrW(59)
+        Me.EUROBANK.SourceOptions = CsvSourceOptions2
         '
         'NBG
         '
         Me.NBG.FileName = "C:\Users\USER\source\repos\PRIAMOS .NET\PRIAMOS .NET\PRIAMOS .NET\Excel\nbg.xlsx"
         Me.NBG.Name = "NBG"
         Me.NBG.ResultSchemaSerializable = resources.GetString("NBG.ResultSchemaSerializable")
-        FieldInfo67.Name = "Column1"
-        FieldInfo67.OriginalName = "Column1"
-        FieldInfo67.Selected = False
-        FieldInfo67.Type = GetType(String)
-        FieldInfo68.Name = "Column2"
-        FieldInfo68.OriginalName = "Column2"
-        FieldInfo68.Type = GetType(String)
-        FieldInfo69.Name = "Column3"
-        FieldInfo69.OriginalName = "Column3"
-        FieldInfo69.Selected = False
-        FieldInfo69.Type = GetType(String)
-        FieldInfo70.Name = "Column4"
-        FieldInfo70.OriginalName = "Column4"
-        FieldInfo70.Selected = False
-        FieldInfo70.Type = GetType(String)
-        FieldInfo71.Name = "Column5"
-        FieldInfo71.OriginalName = "Column5"
-        FieldInfo71.Selected = False
-        FieldInfo71.Type = GetType(String)
-        FieldInfo72.Name = "Column6"
-        FieldInfo72.OriginalName = "Column6"
-        FieldInfo72.Selected = False
-        FieldInfo72.Type = GetType(String)
-        FieldInfo73.Name = "Column7"
-        FieldInfo73.OriginalName = "Column7"
-        FieldInfo73.Selected = False
-        FieldInfo73.Type = GetType(String)
-        FieldInfo74.Name = "Column8"
-        FieldInfo74.OriginalName = "Column8"
-        FieldInfo74.Type = GetType(Decimal)
-        FieldInfo75.Name = "Column9"
-        FieldInfo75.OriginalName = "Column9"
-        FieldInfo75.Selected = False
-        FieldInfo75.Type = GetType(String)
-        FieldInfo76.Name = "Column10"
-        FieldInfo76.OriginalName = "Column10"
-        FieldInfo76.Selected = False
-        FieldInfo76.Type = GetType(String)
-        FieldInfo77.Name = "Column11"
-        FieldInfo77.OriginalName = "Column11"
-        FieldInfo77.Selected = False
-        FieldInfo77.Type = GetType(String)
-        FieldInfo78.Name = "Column12"
-        FieldInfo78.OriginalName = "Column12"
-        FieldInfo78.Selected = False
-        FieldInfo78.Type = GetType(String)
-        FieldInfo79.Name = "Column13"
-        FieldInfo79.OriginalName = "Column13"
-        FieldInfo79.Type = GetType(String)
-        FieldInfo80.Name = "Column14"
-        FieldInfo80.OriginalName = "Column14"
-        FieldInfo80.Selected = False
-        FieldInfo80.Type = GetType(String)
-        FieldInfo81.Name = "Column15"
-        FieldInfo81.OriginalName = "Column15"
-        FieldInfo81.Selected = False
-        FieldInfo81.Type = GetType(String)
-        FieldInfo82.Name = "Column16"
-        FieldInfo82.OriginalName = "Column16"
-        FieldInfo82.Selected = False
-        FieldInfo82.Type = GetType(String)
-        FieldInfo83.Name = "Column17"
-        FieldInfo83.OriginalName = "Column17"
-        FieldInfo83.Selected = False
-        FieldInfo83.Type = GetType(String)
-        FieldInfo84.Name = "Column18"
-        FieldInfo84.OriginalName = "Column18"
-        FieldInfo84.Selected = False
-        FieldInfo84.Type = GetType(String)
-        FieldInfo85.Name = "Column19"
-        FieldInfo85.OriginalName = "Column19"
-        FieldInfo85.Selected = False
-        FieldInfo85.Type = GetType(String)
-        FieldInfo86.Name = "Column20"
-        FieldInfo86.OriginalName = "Column20"
-        FieldInfo86.Type = GetType(String)
-        FieldInfo87.Name = "Column21"
-        FieldInfo87.OriginalName = "Column21"
-        FieldInfo87.Selected = False
-        FieldInfo87.Type = GetType(String)
-        FieldInfo88.Name = "Column22"
-        FieldInfo88.OriginalName = "Column22"
-        FieldInfo88.Selected = False
-        FieldInfo88.Type = GetType(String)
-        FieldInfo89.Name = "Column23"
-        FieldInfo89.OriginalName = "Column23"
-        FieldInfo89.Selected = False
-        FieldInfo89.Type = GetType(String)
-        FieldInfo90.Name = "Column24"
-        FieldInfo90.OriginalName = "Column24"
-        FieldInfo90.Selected = False
-        FieldInfo90.Type = GetType(String)
-        FieldInfo91.Name = "Column25"
-        FieldInfo91.OriginalName = "Column25"
-        FieldInfo91.Selected = False
-        FieldInfo91.Type = GetType(String)
-        FieldInfo92.Name = "Column26"
-        FieldInfo92.OriginalName = "Column26"
-        FieldInfo92.Selected = False
-        FieldInfo92.Type = GetType(String)
-        FieldInfo93.Name = "Column27"
-        FieldInfo93.OriginalName = "Column27"
-        FieldInfo93.Selected = False
-        FieldInfo93.Type = GetType(String)
-        FieldInfo94.Name = "Column28"
-        FieldInfo94.OriginalName = "Column28"
-        FieldInfo94.Selected = False
-        FieldInfo94.Type = GetType(String)
-        Me.NBG.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo67, FieldInfo68, FieldInfo69, FieldInfo70, FieldInfo71, FieldInfo72, FieldInfo73, FieldInfo74, FieldInfo75, FieldInfo76, FieldInfo77, FieldInfo78, FieldInfo79, FieldInfo80, FieldInfo81, FieldInfo82, FieldInfo83, FieldInfo84, FieldInfo85, FieldInfo86, FieldInfo87, FieldInfo88, FieldInfo89, FieldInfo90, FieldInfo91, FieldInfo92, FieldInfo93, FieldInfo94})
-        ExcelWorksheetSettings4.CellRange = Nothing
-        ExcelWorksheetSettings4.WorksheetIndex = Nothing
-        ExcelWorksheetSettings4.WorksheetName = "data"
-        ExcelSourceOptions4.ImportSettings = ExcelWorksheetSettings4
-        ExcelSourceOptions4.UseFirstRowAsHeader = False
-        Me.NBG.SourceOptions = ExcelSourceOptions4
+        FieldInfo20.Name = "Column1"
+        FieldInfo20.OriginalName = "Column1"
+        FieldInfo20.Selected = False
+        FieldInfo20.Type = GetType(String)
+        FieldInfo21.Name = "Column2"
+        FieldInfo21.OriginalName = "Column2"
+        FieldInfo21.Type = GetType(String)
+        FieldInfo22.Name = "Column3"
+        FieldInfo22.OriginalName = "Column3"
+        FieldInfo22.Selected = False
+        FieldInfo22.Type = GetType(String)
+        FieldInfo23.Name = "Column4"
+        FieldInfo23.OriginalName = "Column4"
+        FieldInfo23.Selected = False
+        FieldInfo23.Type = GetType(String)
+        FieldInfo24.Name = "Column5"
+        FieldInfo24.OriginalName = "Column5"
+        FieldInfo24.Selected = False
+        FieldInfo24.Type = GetType(String)
+        FieldInfo25.Name = "Column6"
+        FieldInfo25.OriginalName = "Column6"
+        FieldInfo25.Selected = False
+        FieldInfo25.Type = GetType(String)
+        FieldInfo26.Name = "Column7"
+        FieldInfo26.OriginalName = "Column7"
+        FieldInfo26.Selected = False
+        FieldInfo26.Type = GetType(String)
+        FieldInfo27.Name = "Column8"
+        FieldInfo27.OriginalName = "Column8"
+        FieldInfo27.Type = GetType(Decimal)
+        FieldInfo28.Name = "Column9"
+        FieldInfo28.OriginalName = "Column9"
+        FieldInfo28.Selected = False
+        FieldInfo28.Type = GetType(String)
+        FieldInfo29.Name = "Column10"
+        FieldInfo29.OriginalName = "Column10"
+        FieldInfo29.Selected = False
+        FieldInfo29.Type = GetType(String)
+        FieldInfo30.Name = "Column11"
+        FieldInfo30.OriginalName = "Column11"
+        FieldInfo30.Selected = False
+        FieldInfo30.Type = GetType(String)
+        FieldInfo31.Name = "Column12"
+        FieldInfo31.OriginalName = "Column12"
+        FieldInfo31.Selected = False
+        FieldInfo31.Type = GetType(String)
+        FieldInfo32.Name = "Column13"
+        FieldInfo32.OriginalName = "Column13"
+        FieldInfo32.Type = GetType(String)
+        FieldInfo33.Name = "Column14"
+        FieldInfo33.OriginalName = "Column14"
+        FieldInfo33.Selected = False
+        FieldInfo33.Type = GetType(String)
+        FieldInfo34.Name = "Column15"
+        FieldInfo34.OriginalName = "Column15"
+        FieldInfo34.Selected = False
+        FieldInfo34.Type = GetType(String)
+        FieldInfo35.Name = "Column16"
+        FieldInfo35.OriginalName = "Column16"
+        FieldInfo35.Selected = False
+        FieldInfo35.Type = GetType(String)
+        FieldInfo36.Name = "Column17"
+        FieldInfo36.OriginalName = "Column17"
+        FieldInfo36.Selected = False
+        FieldInfo36.Type = GetType(String)
+        FieldInfo37.Name = "Column18"
+        FieldInfo37.OriginalName = "Column18"
+        FieldInfo37.Selected = False
+        FieldInfo37.Type = GetType(String)
+        FieldInfo38.Name = "Column19"
+        FieldInfo38.OriginalName = "Column19"
+        FieldInfo38.Selected = False
+        FieldInfo38.Type = GetType(String)
+        FieldInfo39.Name = "Column20"
+        FieldInfo39.OriginalName = "Column20"
+        FieldInfo39.Type = GetType(String)
+        FieldInfo40.Name = "Column21"
+        FieldInfo40.OriginalName = "Column21"
+        FieldInfo40.Selected = False
+        FieldInfo40.Type = GetType(String)
+        FieldInfo41.Name = "Column22"
+        FieldInfo41.OriginalName = "Column22"
+        FieldInfo41.Selected = False
+        FieldInfo41.Type = GetType(String)
+        FieldInfo42.Name = "Column23"
+        FieldInfo42.OriginalName = "Column23"
+        FieldInfo42.Selected = False
+        FieldInfo42.Type = GetType(String)
+        FieldInfo43.Name = "Column24"
+        FieldInfo43.OriginalName = "Column24"
+        FieldInfo43.Selected = False
+        FieldInfo43.Type = GetType(String)
+        FieldInfo44.Name = "Column25"
+        FieldInfo44.OriginalName = "Column25"
+        FieldInfo44.Selected = False
+        FieldInfo44.Type = GetType(String)
+        FieldInfo45.Name = "Column26"
+        FieldInfo45.OriginalName = "Column26"
+        FieldInfo45.Selected = False
+        FieldInfo45.Type = GetType(String)
+        FieldInfo46.Name = "Column27"
+        FieldInfo46.OriginalName = "Column27"
+        FieldInfo46.Selected = False
+        FieldInfo46.Type = GetType(String)
+        FieldInfo47.Name = "Column28"
+        FieldInfo47.OriginalName = "Column28"
+        FieldInfo47.Selected = False
+        FieldInfo47.Type = GetType(String)
+        Me.NBG.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo20, FieldInfo21, FieldInfo22, FieldInfo23, FieldInfo24, FieldInfo25, FieldInfo26, FieldInfo27, FieldInfo28, FieldInfo29, FieldInfo30, FieldInfo31, FieldInfo32, FieldInfo33, FieldInfo34, FieldInfo35, FieldInfo36, FieldInfo37, FieldInfo38, FieldInfo39, FieldInfo40, FieldInfo41, FieldInfo42, FieldInfo43, FieldInfo44, FieldInfo45, FieldInfo46, FieldInfo47})
+        ExcelWorksheetSettings2.CellRange = Nothing
+        ExcelWorksheetSettings2.WorksheetIndex = Nothing
+        ExcelWorksheetSettings2.WorksheetName = "data"
+        ExcelSourceOptions2.ImportSettings = ExcelWorksheetSettings2
+        ExcelSourceOptions2.UseFirstRowAsHeader = False
+        Me.NBG.SourceOptions = ExcelSourceOptions2
         '
         'PIREOSTableAdapter
         '
@@ -926,11 +974,11 @@ Partial Class frmBankCollectionInsert
         Me.DockPanel1.Controls.Add(Me.DockPanel1_Container)
         Me.DockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom
         Me.DockPanel1.ID = New System.Guid("420592ba-7d4d-47a6-a0e8-678f00b39fc1")
-        Me.DockPanel1.Location = New System.Drawing.Point(0, 1100)
+        Me.DockPanel1.Location = New System.Drawing.Point(0, 1127)
         Me.DockPanel1.Name = "DockPanel1"
         Me.DockPanel1.Options.ShowCloseButton = False
         Me.DockPanel1.OriginalSize = New System.Drawing.Size(200, 263)
-        Me.DockPanel1.Size = New System.Drawing.Size(2269, 263)
+        Me.DockPanel1.Size = New System.Drawing.Size(2384, 263)
         Me.DockPanel1.Text = "Αρχείο Καταγραφής"
         '
         'DockPanel1_Container
@@ -938,7 +986,7 @@ Partial Class frmBankCollectionInsert
         Me.DockPanel1_Container.Controls.Add(Me.LayoutControl3)
         Me.DockPanel1_Container.Location = New System.Drawing.Point(5, 83)
         Me.DockPanel1_Container.Name = "DockPanel1_Container"
-        Me.DockPanel1_Container.Size = New System.Drawing.Size(2259, 175)
+        Me.DockPanel1_Container.Size = New System.Drawing.Size(2374, 175)
         Me.DockPanel1_Container.TabIndex = 0
         '
         'LayoutControl3
@@ -948,7 +996,7 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControl3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.Root = Me.LayoutControlGroup2
-        Me.LayoutControl3.Size = New System.Drawing.Size(2259, 175)
+        Me.LayoutControl3.Size = New System.Drawing.Size(2374, 175)
         Me.LayoutControl3.TabIndex = 0
         Me.LayoutControl3.Text = "LayoutControl3"
         '
@@ -957,7 +1005,7 @@ Partial Class frmBankCollectionInsert
         Me.lstLog.ImageList = Me.ImageCollection1
         Me.lstLog.Location = New System.Drawing.Point(12, 12)
         Me.lstLog.Name = "lstLog"
-        Me.lstLog.Size = New System.Drawing.Size(2235, 151)
+        Me.lstLog.Size = New System.Drawing.Size(2350, 151)
         Me.lstLog.StyleController = Me.LayoutControl3
         Me.lstLog.TabIndex = 4
         '
@@ -975,7 +1023,7 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7})
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(2259, 175)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(2374, 175)
         Me.LayoutControlGroup2.TextVisible = False
         '
         'LayoutControlItem7
@@ -983,7 +1031,7 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControlItem7.Control = Me.lstLog
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(2239, 155)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(2354, 155)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -996,7 +1044,7 @@ Partial Class frmBankCollectionInsert
         Me.DockPanel3.Name = "DockPanel3"
         Me.DockPanel3.Options.ShowCloseButton = False
         Me.DockPanel3.OriginalSize = New System.Drawing.Size(200, 180)
-        Me.DockPanel3.Size = New System.Drawing.Size(2269, 180)
+        Me.DockPanel3.Size = New System.Drawing.Size(2384, 180)
         Me.DockPanel3.Text = "Τράπεζες"
         '
         'DockPanel3_Container
@@ -1004,7 +1052,7 @@ Partial Class frmBankCollectionInsert
         Me.DockPanel3_Container.Controls.Add(Me.LayoutControl2)
         Me.DockPanel3_Container.Location = New System.Drawing.Point(5, 79)
         Me.DockPanel3_Container.Name = "DockPanel3_Container"
-        Me.DockPanel3_Container.Size = New System.Drawing.Size(2259, 92)
+        Me.DockPanel3_Container.Size = New System.Drawing.Size(2374, 92)
         Me.DockPanel3_Container.TabIndex = 0
         '
         'LayoutControl2
@@ -1015,7 +1063,7 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2065, 383, 1137, 700)
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
-        Me.LayoutControl2.Size = New System.Drawing.Size(2259, 92)
+        Me.LayoutControl2.Size = New System.Drawing.Size(2374, 92)
         Me.LayoutControl2.TabIndex = 0
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -1031,6 +1079,7 @@ Partial Class frmBankCollectionInsert
         Me.TileNavPane11.Buttons.Add(Me.NavEurobank)
         Me.TileNavPane11.Buttons.Add(Me.NavButton4)
         Me.TileNavPane11.Buttons.Add(Me.NavNbg)
+        Me.TileNavPane11.Buttons.Add(Me.NavButton6)
         Me.TileNavPane11.Buttons.Add(Me.NavAllBanks)
         '
         'TileNavCategory1
@@ -1043,7 +1092,7 @@ Partial Class frmBankCollectionInsert
         Me.TileNavPane11.Location = New System.Drawing.Point(12, 12)
         Me.TileNavPane11.Margin = New System.Windows.Forms.Padding(5)
         Me.TileNavPane11.Name = "TileNavPane11"
-        Me.TileNavPane11.Size = New System.Drawing.Size(2235, 68)
+        Me.TileNavPane11.Size = New System.Drawing.Size(2350, 68)
         Me.TileNavPane11.TabIndex = 30
         Me.TileNavPane11.Text = "TileNavPane1"
         '
@@ -1107,9 +1156,18 @@ Partial Class frmBankCollectionInsert
         Me.NavNbg.Caption = "ΕΘΝΙΚΗ"
         Me.NavNbg.Name = "NavNbg"
         '
+        'NavButton6
+        '
+        Me.NavButton6.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
+        Me.NavButton6.AppearanceDisabled.BackColor = System.Drawing.Color.Transparent
+        Me.NavButton6.AppearanceDisabled.Options.UseBackColor = True
+        Me.NavButton6.Caption = "                                          "
+        Me.NavButton6.Enabled = False
+        Me.NavButton6.Name = "NavButton6"
+        '
         'NavAllBanks
         '
-        Me.NavAllBanks.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Right
+        Me.NavAllBanks.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
         Me.NavAllBanks.Caption = "ΟΛΕΣ"
         Me.NavAllBanks.Name = "NavAllBanks"
         '
@@ -1119,7 +1177,7 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem9})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2259, 92)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2374, 92)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem9
@@ -1129,7 +1187,7 @@ Partial Class frmBankCollectionInsert
         Me.LayoutControlItem9.CustomizationFormText = "LayoutControlItem9"
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(2239, 72)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(2354, 72)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
         '
@@ -1151,7 +1209,7 @@ Partial Class frmBankCollectionInsert
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(2269, 1363)
+        Me.ClientSize = New System.Drawing.Size(2384, 1390)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.DockPanel3)
         Me.Controls.Add(Me.DockPanel1)
@@ -1178,8 +1236,11 @@ Partial Class frmBankCollectionInsert
         CType(Me.txtImageError, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet31, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ALPHABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EUROBANKBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1289,4 +1350,9 @@ Partial Class frmBankCollectionInsert
     Friend WithEvents NavAllBanks As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents VwCOLALLBANKSBindingSource As BindingSource
     Friend WithEvents Vw_COL_ALL_BANKSTableAdapter As Priamos_NETDataSet3TableAdapters.vw_COL_ALL_BANKSTableAdapter
+    Friend WithEvents NavButton6 As DevExpress.XtraBars.Navigation.NavButton
+    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents cmdDelete As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
 End Class

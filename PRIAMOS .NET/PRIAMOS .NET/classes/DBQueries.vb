@@ -72,6 +72,7 @@ Public Class DBQueries
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
                 Dim FileName As String = Path.GetFileName(control.FileNames(i))
+                'If File.Exists(ProgProps.ServerPath & FileName) Then File.Delete(ProgProps.ServerPath & FileName)
                 My.Computer.FileSystem.CopyFile(control.FileNames(i), ProgProps.ServerPath & FileName, True)
 
                 sSQL.AppendLine("Select ")
