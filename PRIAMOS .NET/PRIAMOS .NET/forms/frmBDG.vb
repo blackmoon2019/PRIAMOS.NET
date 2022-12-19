@@ -17,10 +17,6 @@ Imports System.ComponentModel
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
-Imports DevExpress.DataAccess
-Imports DevExpress.Utils.VisualEffects
-Imports DevExpress.Xpo.DB.DataStoreLongrunnersWatch
-Imports DevExpress.XtraGrid.Views
 
 Public Class frmBDG
     '------Private Variables Declaration------

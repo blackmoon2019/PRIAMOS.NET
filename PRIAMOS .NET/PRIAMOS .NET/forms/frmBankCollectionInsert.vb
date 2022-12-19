@@ -1,21 +1,14 @@
 ﻿
-
-
-Imports System.ComponentModel
 Imports System.Data.SqlClient
-Imports System.ServiceModel
+
 Imports System.Text
 Imports System.Text.RegularExpressions
-Imports System.util.zlib
-Imports DevExpress.PivotGrid.QueryMode
-Imports DevExpress.Utils
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraExport.Helpers
-Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
+
 
 Public Class frmBankCollectionInsert
     Private DBQ As New DBQueries
@@ -44,6 +37,8 @@ Public Class frmBankCollectionInsert
         ' Φορτώνω ένα απόλα τα XML. Δεν με ενδιαφέρει ποιο. Για να έχω την μορφοποίηση
         ' LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
         grdBANKS.DataSource = Nothing
+        AddHandler RepApt.EditValueChanged, AddressOf RepApt_Changed
+        AddHandler RepColPerBdgApt.EditValueChanged, AddressOf RepColPerBdgApt_Changed
         Me.CenterToScreen()
 
     End Sub
@@ -268,6 +263,7 @@ Public Class frmBankCollectionInsert
 
                             If sCredit <> 0 Then
                                 If sbdgCode.Length > 0 Then
+
                                     Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
                                     sdr = Cmd.ExecuteReader()
                                     If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
@@ -526,19 +522,23 @@ Public Class frmBankCollectionInsert
     End Sub
     Private Sub GridView5_ShownEditor(sender As Object, e As EventArgs) Handles GridView5.ShownEditor
         Dim view As ColumnView = DirectCast(sender, ColumnView)
-        If view.FocusedColumn.FieldName = "aptID" Then
+        Dim bdgID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString()
+        Try
 
-            Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
-            Dim bdgID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString()
-            If bdgID.Length > 0 Then editor.Properties.DataSource = Me.Vw_APTTableAdapter.GetDataByBDGID(System.Guid.Parse(bdgID))
+            If view.FocusedColumn.FieldName = "aptID" And bdgID.Length > 0 Then
+                Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
 
-        ElseIf view.FocusedColumn.FieldName = "inhID" Then
-            Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
-            Dim bdgID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString()
-            Dim aptID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString()
-            If bdgID.Length > 0 And aptID.Length > 0 Then editor.Properties.DataSource = Me.COL_PER_BDG_APTTableAdapter.GetData(System.Guid.Parse(bdgID), System.Guid.Parse(aptID))
+                If bdgID.Length > 0 Then editor.Properties.DataSource = Me.Vw_APTTableAdapter.GetDataByBDGID(System.Guid.Parse(bdgID))
 
-        End If
+            ElseIf view.FocusedColumn.FieldName = "inhID" Then
+                Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
+
+                Dim aptID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString()
+                If bdgID.Length > 0 And aptID.Length > 0 Then editor.Properties.DataSource = Me.COL_PER_BDG_APTTableAdapter.GetData(System.Guid.Parse(bdgID), System.Guid.Parse(aptID))
+            End If
+        Catch ex As Exception
+            'XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub GridView5_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles GridView5.CustomDrawCell
@@ -549,7 +549,7 @@ Public Class frmBankCollectionInsert
         If e.Column.FieldName = "inhID" Then e.DisplayText = GRD5.GetRowCellValue(e.RowHandle, "completeDate").ToString()
     End Sub
 
-    Private Sub RepositoryItemLookUpEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemLookUpEdit1.EditValueChanged
+    Private Sub RepositoryItemLookUpEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles RepApt.EditValueChanged
         Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
         Dim ttl As String
         ttl = editor.GetColumnValue("ttl").ToString
@@ -603,11 +603,12 @@ Public Class frmBankCollectionInsert
     Private Sub ColInh()
         Try
             Dim sBdgID As String, sAptID As String, sInhID As String, dtcredit As String, sBankID As String
-            Dim credit As Decimal, sBankDepositDate As Date
+            Dim credit As Decimal, sBankDepositDate As Date, ColBanksID As String
             sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
             sAptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper
             sInhID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper
             credit = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "credit")
+            ColBanksID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString.ToUpper
             sBankDepositDate = Date.Parse(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "dtCreate").ToString)
             dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
             Select Case BankMode
@@ -635,6 +636,7 @@ Public Class frmBankCollectionInsert
                     oCmd.Parameters.AddWithValue("@BankID", sBankID)
                     oCmd.Parameters.AddWithValue("@BankFileName", sFileName)
                     oCmd.Parameters.AddWithValue("@BankDepositDate", sBankDepositDate)
+                    oCmd.Parameters.AddWithValue("@ColBanksID", ColBanksID)
                     oCmd.ExecuteNonQuery()
                     GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
                     XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -764,7 +766,7 @@ Public Class frmBankCollectionInsert
                         Case 3 : sSQL = "DELETE FROM EUROBANK WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                         Case 4 : sSQL = "DELETE FROM NBG WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                         Case 5
-                            Select Case GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "BankName")
+                            Select Case GridView5.GetRowCellValue(selectedRowHandle, "BankName")
                                 Case "ΠΕΙΡΑΙΩΣ" : sSQL = "DELETE FROM PIREOS WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                                 Case "ALPHA BANK" : sSQL = "DELETE FROM ALPHA WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                                 Case "EUROBANK" : sSQL = "DELETE FROM EUROBANK WHERE ID = '" & GridView5.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
@@ -833,9 +835,23 @@ Public Class frmBankCollectionInsert
 
 
     Private Sub GridView5_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView5.CellValueChanged
+
+        If e.Value Is Nothing Then Exit Sub
+        If e.Column.Name = "colCompleted" Then Exit Sub
+
+
+        UpdateColBanks()
+        'If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And e.Column.FieldName = "Completed" Then
+        '    XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        '    Exit Sub
+        'End If
+
+
+    End Sub
+    Private Sub UpdateColBanks()
         Dim sSQL As New StringBuilder
         Try
-            If e.Value Is Nothing Then Exit Sub
+
             'If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And e.Column.FieldName = "Completed" Then
             '    XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
             '    Exit Sub
@@ -861,6 +877,7 @@ Public Class frmBankCollectionInsert
             sSQL.AppendLine("bdgCode = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgCode").ToString) & ",")
             sSQL.AppendLine("aptID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString) & ",")
             sSQL.AppendLine("ttl= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ttl").ToString) & ",")
+            sSQL.AppendLine("completeDate= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "completeDate").ToString) & ",")
             sSQL.AppendLine("inhID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString) & ",")
             sSQL.AppendLine("Completed= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString))
             sSQL.AppendLine("WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString))
@@ -874,5 +891,49 @@ Public Class frmBankCollectionInsert
             lstLog.Items.Add("Η εγγραφή δεν ενημερώθηκε: " & ex.Message)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
         End Try
+
+    End Sub
+
+    Friend Sub RepApt_Changed(sender As Object, e As EventArgs)
+        UpdateColBanks()
+    End Sub
+    Friend Sub RepColPerBdgApt_Changed(sender As Object, e As EventArgs)
+        UpdateColBanks()
+    End Sub
+    Private Sub RepBdg_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepBdg.ButtonClick
+        If e.Button.Index = 1 Then
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgID", "")
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", "")
+        End If
+    End Sub
+
+    Private Sub RepColPerBdgApt_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepColPerBdgApt.ButtonClick
+        If e.Button.Index = 1 Then
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "inhID", "")
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "completeDate", "")
+        End If
+    End Sub
+
+    Private Sub RepositoryItemLookUpEdit1_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepApt.ButtonClick
+        If e.Button.Index = 1 Then
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "aptID", "")
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "ttl", "")
+        End If
+    End Sub
+
+    Private Sub GridView5_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView5.ValidatingEditor
+        Dim Cmd As SqlCommand, sdr As SqlDataReader
+        If sender.FocusedColumn.FieldName <> "Completed" Then Exit Sub
+        Cmd = New SqlCommand("SELECT top 1 colBanksID FROM COL_D WHERE colBanksID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString), CNDB)
+        sdr = Cmd.ExecuteReader()
+        Dim sColBankID As String
+        If (sdr.Read() = True) Then sColBankID = sdr.GetGuid(sdr.GetOrdinal("ColBanksID")).ToString
+        sdr.Close()
+        If sColBankID.Length > 0 Then
+            e.ErrorText = "Δεν μπορείτε την είσπραξη να την κάνετε μη Ολοκληρωμένη γιατί έχουν γίνει εξοφλήσεις"
+            e.Valid = False
+        Else
+            UpdateColBanks()
+        End If
     End Sub
 End Class
