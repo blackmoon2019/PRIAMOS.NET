@@ -1,6 +1,4 @@
-﻿
-Imports System.Data.SqlClient
-
+﻿Imports System.Data.SqlClient
 Imports System.Text
 Imports System.Text.RegularExpressions
 Imports DevExpress.XtraBars.Navigation
@@ -522,9 +520,9 @@ Public Class frmBankCollectionInsert
     End Sub
     Private Sub GridView5_ShownEditor(sender As Object, e As EventArgs) Handles GridView5.ShownEditor
         Dim view As ColumnView = DirectCast(sender, ColumnView)
-        Dim bdgID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString()
         Try
-
+            If GridView5.FocusedRowHandle < 0 Then Exit Sub
+            Dim bdgID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString()
             If view.FocusedColumn.FieldName = "aptID" And bdgID.Length > 0 Then
                 Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
 
@@ -603,7 +601,12 @@ Public Class frmBankCollectionInsert
     Private Sub ColInh()
         Try
             Dim sBdgID As String, sAptID As String, sInhID As String, dtcredit As String, sBankID As String
-            Dim credit As Decimal, sBankDepositDate As Date, ColBanksID As String
+            Dim credit As Decimal, sBankDepositDate As Date, ColBanksID As String, completed As Boolean
+            completed = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed")
+            If completed = True Then
+                XtraMessageBox.Show("Η είσπραξη είναι ήδη ολοκληρωμένη.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
             sAptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper
             sInhID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper
@@ -616,6 +619,14 @@ Public Class frmBankCollectionInsert
                 Case 2 : sBankID = "019A838C-4411-48B7-A6D0-D4F33B78E619"
                 Case 3 : sBankID = "5875B070-AFBC-4773-9267-AF4EDF8150D4"
                 Case 4 : sBankID = "D390AC98-CCAC-416C-B406-A6B4C67BAF0B"
+                Case 5
+                    Select Case GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "BankName")
+                        Case "ΠΕΙΡΑΙΩΣ" : sBankID = "92B4B01C-0F8C-4A02-982A-149C02F42C32"
+                        Case "ALPHA BANK" : sBankID = "019A838C-4411-48B7-A6D0-D4F33B78E619"
+                        Case "EUROBANK" : sBankID = "5875B070-AFBC-4773-9267-AF4EDF8150D4"
+                        Case "ΕΘΝΙΚΗ" : sBankID = "D390AC98-CCAC-416C-B406-A6B4C67BAF0B"
+                    End Select
+                    sFileName = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "filename").ToString
             End Select
             If sInhID = "" Or sBdgID = "" Or sAptID = "" Then
                 XtraMessageBox.Show("Δεν έχουν συμπληρωθεί όλα τα στοιχεία για να κάνετε είσπραξη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -639,6 +650,7 @@ Public Class frmBankCollectionInsert
                     oCmd.Parameters.AddWithValue("@ColBanksID", ColBanksID)
                     oCmd.ExecuteNonQuery()
                     GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
+                    UpdateColBanks()
                     XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End Using
             End If
@@ -698,7 +710,7 @@ Public Class frmBankCollectionInsert
             Dim fs As IO.FileStream = New IO.FileStream(ProgProps.ServerPath & sFName, IO.FileMode.Create)
             fs.Write(b, 0, b.Length)
             fs.Close()
-            ShellExecute(ProgProps.ServerPath & sFileName)
+            ShellExecute(ProgProps.ServerPath & sFName)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -901,10 +913,35 @@ Public Class frmBankCollectionInsert
         UpdateColBanks()
     End Sub
     Private Sub RepBdg_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepBdg.ButtonClick
-        If e.Button.Index = 1 Then
-            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgID", "")
-            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", "")
-        End If
+        Select Case e.Button.Index
+            Case 1
+                GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgID", "")
+                GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", "")
+            Case 2
+                Dim sBdgID As String
+                sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+                If sBdgID <> "" Then
+                    Dim fBDG As frmBDG = New frmBDG()
+                    fBDG.Text = "Πολυκατοικίες"
+                    fBDG.ID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString
+                    fBDG.MdiParent = frmMain
+                    fBDG.Mode = FormMode.EditRecord
+                    fBDG.Scroller = GridView5
+                    fBDG.FormScroller = Me
+                    fBDG.Show()
+                End If
+            Case 3
+                Dim form As frmCollections = New frmCollections()
+                Dim sBdgID As String
+                sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+                If sBdgID <> "" Then
+                    form.Text = "Είσπραξεις Κοινοχρήστων"
+                    form.BDGID = sBdgID
+                    form.MdiParent = frmMain
+                    form.Show()
+                End If
+
+        End Select
     End Sub
 
     Private Sub RepColPerBdgApt_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepColPerBdgApt.ButtonClick
@@ -926,7 +963,7 @@ Public Class frmBankCollectionInsert
         If sender.FocusedColumn.FieldName <> "Completed" Then Exit Sub
         Cmd = New SqlCommand("SELECT top 1 colBanksID FROM COL_D WHERE colBanksID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString), CNDB)
         sdr = Cmd.ExecuteReader()
-        Dim sColBankID As String
+        Dim sColBankID As String = ""
         If (sdr.Read() = True) Then sColBankID = sdr.GetGuid(sdr.GetOrdinal("ColBanksID")).ToString
         sdr.Close()
         If sColBankID.Length > 0 Then

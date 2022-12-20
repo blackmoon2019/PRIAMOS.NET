@@ -165,13 +165,6 @@
     <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Janus.Data.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.CalendarCombo.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.Common.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.FilterEditor.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
-    <Reference Include="Janus.Windows.GridEX.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
-    <Reference Include="Janus.Windows.Ribbon.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL" />
-    <Reference Include="Janus.Windows.UI.v4, Version=4.0.51.0, Culture=neutral, PublicKeyToken=21d5517571b185bf" />
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -900,6 +893,8 @@
     <None Include="Resources\Pireos_50x50.png" />
     <None Include="Resources\Pireos_1_32x32.png" />
     <None Include="Resources\Alpha20Bank_32x32.jpg" />
+    <None Include="Resources\icons8-building-16.png" />
+    <None Include="Resources\icons8-receipt-16.png" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <None Include="Resources\icons-notes-40.png" />

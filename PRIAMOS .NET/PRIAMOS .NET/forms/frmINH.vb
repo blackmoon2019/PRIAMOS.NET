@@ -336,7 +336,7 @@ Public Class frmINH
 
         Dim sSQL As String
         If chkExtraordinary.Checked = False Then
-            sSQL = "select count(id) as CountINH from inh where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+            sSQL = "select count(id) as CountINH from inh where extraordinary = 0 and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
         Else
             sSQL = "select count(id) as CountINH from inh where extraordinary = 1 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
         End If
