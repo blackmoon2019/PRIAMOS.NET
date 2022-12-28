@@ -913,6 +913,7 @@ Public Class frmCollections
                             frmCollectionsDet.BDGID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString.ToUpper
                             frmCollectionsDet.APTID = APTView.GetRowCellValue(APTView.FocusedRowHandle, "aptID").ToString.ToUpper
                             frmCollectionsDet.INHID = ""
+                            frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = False
                             frmCollectionsDet.ShowDialog()
                             LoaderData(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString)
@@ -938,6 +939,7 @@ Public Class frmCollections
                             frmCollectionsDet.BDGID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString.ToUpper
                             frmCollectionsDet.APTID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString.ToUpper
                             frmCollectionsDet.INHID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString.ToUpper
+                            frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = False
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
@@ -964,6 +966,7 @@ Public Class frmCollections
                             frmCollectionsDet.APTID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "aptID").ToString.ToUpper
                             frmCollectionsDet.INHID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "inhID").ToString.ToUpper
                             frmCollectionsDet.TENANT = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "tenant")
+                            frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = True
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)

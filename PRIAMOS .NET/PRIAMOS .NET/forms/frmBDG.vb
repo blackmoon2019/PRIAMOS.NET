@@ -22,7 +22,7 @@ Public Class frmBDG
     '------Private Variables Declaration------
     Private sID As String = ""
     Private sManageID As String
-    Private sAHPBID As String
+
     Private Iam As String
     Private Aam As String
     Public Mode As Byte
@@ -66,6 +66,8 @@ Public Class frmBDG
             sManageID = value
         End Set
     End Property
+
+
     Public WriteOnly Property Scroller As DevExpress.XtraGrid.Views.Grid.GridView
         Set(value As DevExpress.XtraGrid.Views.Grid.GridView)
             Ctrl = value
@@ -494,14 +496,10 @@ Public Class frmBDG
     End Sub
 
     Private Sub NavHeating_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeating.ElementClick
+        HeatingSelected()
+    End Sub
+    Public Sub HeatingSelected()
         Dim sSQL As New System.Text.StringBuilder
-        'If Valid.SChanged Then
-        '    If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-        '        Valid.SChanged = False
-        '    Else
-        '        Exit Sub
-        '    End If
-        'End If
         Maintab.SelectedTabPage = tabHeating
         'Τύποι Υπολογισμού
         FillCbo.CALC_TYPES(cboHtypes)
@@ -517,27 +515,8 @@ Public Class frmBDG
         Else
             LoadForms.LoadForm(LayoutControl3Heating, "Select * from BDG where id ='" + sID + "'", True)
         End If
-        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl3Heating)
-        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
-        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
-        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
-        'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
-
-        'cboFtypes.Enabled = False
-        'cmdCboManageFtypes.Enabled = False
-        'cmdCboManageBtypes.Enabled = False
-        'cboBtypes.Enabled = False
-        'txtHpc.Enabled = False
-        'txtHpb.Enabled = False
-        'txtCalH.Enabled = False
-        'txtTacH.Enabled = False
-        'txtTacB.Enabled = False
-        'txtLpcH.Enabled = False
-        'txtLpcB.Enabled = False
-        'RGBolier.Enabled = False
-        'txtCalB.Enabled = False
-        'End If
     End Sub
+
     Private Sub NavHeatingInvoices_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeatingInvoices.ElementClick
         If Valid.SChanged Then
             If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then

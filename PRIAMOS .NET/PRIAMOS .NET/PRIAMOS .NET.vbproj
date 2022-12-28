@@ -895,6 +895,7 @@
     <None Include="Resources\Alpha20Bank_32x32.jpg" />
     <None Include="Resources\icons8-building-16.png" />
     <None Include="Resources\icons8-receipt-16.png" />
+    <None Include="Resources\icons8-available-updates-12.png" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <None Include="Resources\icons-notes-40.png" />

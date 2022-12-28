@@ -184,6 +184,8 @@ Partial Class frmBankCollectionInsert
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.VwCOLALLBANKSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_COL_ALL_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_COL_ALL_BANKSTableAdapter()
+        Me.COLPERBDGAPTWithNoTenantBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.COL_PER_BDG_APT_WithNoTenantTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.COL_PER_BDG_APT_WithNoTenantTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.ProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -232,6 +234,7 @@ Partial Class frmBankCollectionInsert
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCOLALLBANKSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.COLPERBDGAPTWithNoTenantBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colbdgNam
@@ -504,12 +507,14 @@ Partial Class frmBankCollectionInsert
         'RepColPerBdgApt
         '
         Me.RepColPerBdgApt.AutoHeight = False
-        Me.RepColPerBdgApt.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepColPerBdgApt.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.RepColPerBdgApt.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aptID", "apt ID", 68, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("inhID", "inh ID", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("completeDate", "Παραστατικά", 100, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "Ποσό Παραστατικών", 100, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 62, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "Νέο Υπόλοιπο", 100, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 109, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 82, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 87, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Etos", "Etos", 50, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FromMonth", "From Month", 117, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ToMonth", "To Month", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDate", "f Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tDate", "t Date", 66, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.RepColPerBdgApt.DataSource = Me.COLPERBDGAPTBindingSource
         Me.RepColPerBdgApt.DisplayMember = "completeDate"
         Me.RepColPerBdgApt.Name = "RepColPerBdgApt"
         Me.RepColPerBdgApt.NullText = ""
+        Me.RepColPerBdgApt.PopupWidth = 250
+        Me.RepColPerBdgApt.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
         Me.RepColPerBdgApt.ValueMember = "inhID"
         '
         'COLPERBDGAPTBindingSource
@@ -749,7 +754,6 @@ Partial Class frmBankCollectionInsert
         FieldInfo13.Type = GetType(Decimal)
         FieldInfo14.Name = "Column8"
         FieldInfo14.OriginalName = "Column8"
-        FieldInfo14.Selected = False
         FieldInfo14.Type = GetType(String)
         Me.ALPHA.Schema.AddRange(New DevExpress.DataAccess.Excel.FieldInfo() {FieldInfo7, FieldInfo8, FieldInfo9, FieldInfo10, FieldInfo11, FieldInfo12, FieldInfo13, FieldInfo14})
         CsvSourceOptions1.Culture = New System.Globalization.CultureInfo("el-GR")
@@ -839,7 +843,6 @@ Partial Class frmBankCollectionInsert
         FieldInfo29.Type = GetType(String)
         FieldInfo30.Name = "Column11"
         FieldInfo30.OriginalName = "Column11"
-        FieldInfo30.Selected = False
         FieldInfo30.Type = GetType(String)
         FieldInfo31.Name = "Column12"
         FieldInfo31.OriginalName = "Column12"
@@ -1228,6 +1231,15 @@ Partial Class frmBankCollectionInsert
         '
         Me.Vw_COL_ALL_BANKSTableAdapter.ClearBeforeFill = True
         '
+        'COLPERBDGAPTWithNoTenantBindingSource
+        '
+        Me.COLPERBDGAPTWithNoTenantBindingSource.DataMember = "COL_PER_BDG_APT_WithNoTenant"
+        Me.COLPERBDGAPTWithNoTenantBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'COL_PER_BDG_APT_WithNoTenantTableAdapter
+        '
+        Me.COL_PER_BDG_APT_WithNoTenantTableAdapter.ClearBeforeFill = True
+        '
         'frmBankCollectionInsert
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -1288,6 +1300,7 @@ Partial Class frmBankCollectionInsert
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCOLALLBANKSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.COLPERBDGAPTWithNoTenantBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1380,4 +1393,6 @@ Partial Class frmBankCollectionInsert
     Friend WithEvents cmdDelete As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colfilename As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents COLPERBDGAPTWithNoTenantBindingSource As BindingSource
+    Friend WithEvents COL_PER_BDG_APT_WithNoTenantTableAdapter As Priamos_NETDataSet3TableAdapters.COL_PER_BDG_APT_WithNoTenantTableAdapter
 End Class

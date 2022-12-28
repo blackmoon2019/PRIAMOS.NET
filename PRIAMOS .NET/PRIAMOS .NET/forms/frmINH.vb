@@ -84,8 +84,16 @@ Public Class frmINH
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
                 If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
                 If cboAhpbHB.EditValue IsNot Nothing Then cboAhpbB.EditValue = cboAhpbHB.EditValue
-                If InhFieldAndValues.Item("mdt") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & InhFieldAndValues.Item("mdt") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID"))
-                If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & InhFieldAndValues.Item("mdtBoiler") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB"))
+                If InhFieldAndValues.Item("mdt") <> "" Then
+                    lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy")
+                    cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID"))
+                    If cboAhpbH.Text = "" Then cboAhpbH.EditValue = Nothing
+                End If
+                    If InhFieldAndValues.Item("mdtBoiler") <> "" Then
+                    lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy")
+                    cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB"))
+                    If cboAhpbHB.Text = "" Then cboAhpbHB.EditValue = Nothing
+                End If
 
 
                 'lbldate.Text = TranslateDates(dtFDate, dtTDate)
@@ -309,6 +317,24 @@ Public Class frmINH
                         Else
                             Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                             sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
+                            If sResult Then
+                                If cboAhpbH.EditValue IsNot Nothing Or cboAhpbB.EditValue IsNot Nothing Then
+                                    ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                    sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',consumptionH,'1' FROM CONSUMPTIONS where ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString) &
+                                   "'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                                        oCmd.ExecuteNonQuery()
+                                    End Using
+                                    sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',consumptionB,'1' FROM CONSUMPTIONS where ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &
+                                   "'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+
+                                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                                        oCmd.ExecuteNonQuery()
+                                    End Using
+                                End If
+                            End If
                         End If
                 End Select
                 If sResult Then
@@ -1118,8 +1144,8 @@ Public Class frmINH
             'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
             InhFieldAndValues = New Dictionary(Of String, String)
             LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
-            If InhFieldAndValues.Item("mdt") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & InhFieldAndValues.Item("mdt") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPB.Text = ""
-            If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & InhFieldAndValues.Item("mdtBoiler") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPB.Text = ""
+            If InhFieldAndValues.Item("mdt") <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPBH.Text = ""
+            If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPBB.Text = ""
 
             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
@@ -1214,17 +1240,21 @@ Public Class frmINH
     End Function
     Private Sub cboAhpbH_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbH.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboAhpbH.EditValue = Nothing
-            Case 2
-            Case 3
+            Case 1 : ManageCbo.ManageAHPB(cboAhpbH, FormMode.EditRecord, cboAhpbH.Text, False, cboBDG.EditValue.ToString)
+            Case 2 : If cboAhpbH.EditValue = Nothing Then Exit Sub
+                ManageCbo.ManageAHPB(cboAhpbH, FormMode.EditRecord, cboAhpbH.Text, False, cboBDG.EditValue.ToString)
+            Case 3 : Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+            Case 4 : cboAhpbH.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboAhpbHB_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbHB.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboAhpbHB.EditValue = Nothing
-            Case 2
-            Case 3
+            Case 1 : ManageCbo.ManageAHPB(cboAhpbHB, FormMode.EditRecord, cboAhpbHB.Text, True, cboBDG.EditValue.ToString)
+            Case 2 : If cboAhpbHB.EditValue = Nothing Then Exit Sub
+                ManageCbo.ManageAHPB(cboAhpbHB, FormMode.EditRecord, cboAhpbHB.Text, True, cboBDG.EditValue.ToString)
+            Case 3 : Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
+            Case 4 : cboAhpbHB.EditValue = Nothing
         End Select
     End Sub
 
