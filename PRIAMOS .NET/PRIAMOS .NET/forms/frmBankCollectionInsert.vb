@@ -127,21 +127,25 @@ Public Class frmBankCollectionInsert
                 grdBANKS.DataSource = Nothing
                 Select Case BankMode
                     Case 1
+                        GridView5.ActiveFilterString = ""
                         Me.PIREOSTableAdapter.Fill(Me.Priamos_NETDataSet3.PIREOS)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.PIREOS
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
                     Case 2
+                        GridView5.ActiveFilterString = ""
                         Me.ALPHATableAdapter.Fill(Me.Priamos_NETDataSet3.ALPHA)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.ALPHA
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "ALPHA.xml")
                     Case 3
+                        GridView5.ActiveFilterString = ""
                         Me.EUROBANKTableAdapter.Fill(Me.Priamos_NETDataSet3.EUROBANK)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.EUROBANK
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "EUROBANK.xml")
                     Case 4
+                        GridView5.ActiveFilterString = ""
                         Me.NBGTableAdapter.Fill(Me.Priamos_NETDataSet3.NBG)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.NBG
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
@@ -291,10 +295,13 @@ Public Class frmBankCollectionInsert
                             If GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName) IsNot Nothing Then sDate = GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName).ToString()
                             sCredit = GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName)
                             sbdgCode = regex.Match(sValRow).ToString
-                            Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
                             sValRow = sValRow.Replace("=", "")
                             sValRow = sValRow.Replace("""", "")
-                            sApt = sValRow.Substring(Pos + sbdgCode.Length - 1, sValRow.Length - Pos - (sbdgCode.Length - 1)).Replace(" ", "").Trim
+                            Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
+                            Dim startindex As Integer = Pos + sbdgCode.Length - 1
+                            Dim length As Integer = sValRow.Length - Pos
+                            length = length - (sbdgCode.Length - 1)
+                            sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
                             sAptAlternative = ConvertCharToENGR(sApt)
                             sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(2).FieldName)
                             sTransactionID = sTransactionID.Replace("=", "")
@@ -498,7 +505,10 @@ Public Class frmBankCollectionInsert
                     If x = "Πίστωση" Then
                         sbdgCode = regex.Match(sValRow).ToString
                         Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
-                        sApt = sValRow.Substring(Pos + sbdgCode.Length - 1, sValRow.Length - Pos - (sbdgCode.Length - 1)).Replace(" ", "").Trim
+                        Dim startindex As Integer = Pos + sbdgCode.Length - 1
+                        Dim length As Integer = sValRow.Length - Pos
+                        length = length - (sbdgCode.Length - 1)
+                        sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
                         sAptAlternative = ConvertCharToENGR(sApt)
                         sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(4).FieldName)
 
@@ -672,10 +682,10 @@ Public Class frmBankCollectionInsert
             ' Πίστωση
             credit = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "credit")
             If sInhIDS2.Count = 0 Then
-                If credit > repBal Then
-                    XtraMessageBox.Show("Το σύνολο του επιλεγμένου παραστατικού πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End If
+                'If credit > repBal Then
+                '    XtraMessageBox.Show("Το σύνολο του επιλεγμένου παραστατικού πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    Exit Sub
+                'End If
                 If GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper.Length > 0 Then sInhIDS2.Add(Guid.NewGuid.ToString, GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString.ToUpper)
             End If
             If sInhIDS2.Count > 0 Then
@@ -820,6 +830,7 @@ Public Class frmBankCollectionInsert
         If GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "colBanksFID") Is DBNull.Value Then Exit Sub
 
         Dim b() As Byte = GetFile(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "colBanksFID").ToString, sFName)
+        If b Is Nothing Then XtraMessageBox.Show("Δεν έχει αντιστοιχηθεί αρχείο με την εγγραφή", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         Try
             Dim fs As IO.FileStream = New IO.FileStream(ProgProps.ServerPath & sFName, IO.FileMode.Create)
             fs.Write(b, 0, b.Length)
@@ -959,8 +970,9 @@ Public Class frmBankCollectionInsert
         DeleteBatchRecords()
     End Sub
 
-    Private Sub UpdateColBanks()
+    Private Sub UpdateColBanks(Optional ByVal Completed As String = "")
         Dim sSQL As New StringBuilder
+        Dim CompletedCell As String = Completed
         Try
 
             'If GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString = "True" Then Exit Sub
@@ -985,7 +997,8 @@ Public Class frmBankCollectionInsert
             sSQL.AppendLine("ttl= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ttl").ToString) & ",")
             sSQL.AppendLine("completeDate= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "completeDate").ToString) & ",")
             sSQL.AppendLine("inhID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString) & ",")
-            sSQL.AppendLine("Completed= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString))
+            If CompletedCell = "" Then CompletedCell = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString
+            sSQL.AppendLine("Completed= " & toSQLValueS(CompletedCell))
             sSQL.AppendLine("WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString))
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                 oCmd.ExecuteNonQuery()
@@ -1097,7 +1110,7 @@ Public Class frmBankCollectionInsert
                 e.ErrorText = "Δεν μπορείτε την είσπραξη να την κάνετε μη Ολοκληρωμένη γιατί έχουν γίνει εξοφλήσεις"
                 e.Valid = False
             Else
-                UpdateColBanks()
+                UpdateColBanks(e.Value.ToString)
             End If
         Else
             Dim completed As Boolean
@@ -1116,6 +1129,5 @@ Public Class frmBankCollectionInsert
             End If
         End If
     End Sub
-
 
 End Class

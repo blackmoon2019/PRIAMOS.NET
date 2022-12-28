@@ -2504,8 +2504,7 @@ Public Class frmBDG
     Private Sub cboMesH_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesH.EditValueChanged
         Dim calH As Integer, TotalMesH As Integer, CalHCons As Integer, CalBCons As Integer
         If cboMesH.EditValue Is Nothing Then
-            txtTotalMesH.EditValue = Nothing : txtTotalMesB.EditValue = Nothing
-            txtTotalMesH.EditValue = 0 : txtTotalMesB.EditValue = 0
+            txtTotalMesH.EditValue = Nothing : txtTotalMesH.EditValue = 0
             Exit Sub
         End If
         TotalMesH = cboMesH.GetColumnValue("totalBdgMesDif") : txtTotalMesH.EditValue = TotalMesH
@@ -2518,8 +2517,7 @@ Public Class frmBDG
     Private Sub cboMesB_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesB.EditValueChanged
         Dim calB As Integer, TotalMesB As Integer, CalBCons As Integer, CalHCons As Integer
         If cboMesB.EditValue Is Nothing Then
-            txtTotalMesH.EditValue = Nothing : txtTotalMesB.EditValue = Nothing
-            txtTotalMesH.EditValue = 0 : txtTotalMesB.EditValue = 0
+            txtTotalMesB.EditValue = Nothing : txtTotalMesB.EditValue = 0
             Exit Sub
         End If
         TotalMesB = cboMesB.GetColumnValue("totalBdgMesDif") : txtTotalMesB.EditValue = TotalMesB
@@ -2550,13 +2548,13 @@ Public Class frmBDG
     End Sub
 
     Private Sub cboMesH_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesH.ButtonClick
-        cboMesH.EditValue = Nothing
-        Cls.ClearCtrls(LayoutControl7Consumptions)
+        cboMesH.EditValue = Nothing : txtTotalMesH.EditValue = Nothing : txtTotalMesH.EditValue = 0 : txtCalHCons.EditValue = 0 : txtCalTotalCons.EditValue = txtCalHCons.EditValue + +txtCalBCons.EditValue
+        txtConsumptionH.EditValue = 0 : txtTotalConsumption.EditValue = txtConsumptionH.EditValue + txtConsumptionB.EditValue
     End Sub
 
     Private Sub cboMesB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesB.ButtonClick
-        cboMesB.EditValue = Nothing
-        Cls.ClearCtrls(LayoutControl7Consumptions)
+        cboMesB.EditValue = Nothing : txtTotalMesB.EditValue = Nothing : txtTotalMesB.EditValue = 0 : txtCalBCons.EditValue = 0 : txtCalTotalCons.EditValue = txtCalHCons.EditValue + +txtCalBCons.EditValue
+        txtConsumptionB.EditValue = 0 : txtTotalConsumption.EditValue = txtConsumptionH.EditValue + txtConsumptionB.EditValue
     End Sub
 
     Private Sub cmdSaveConsumptions_Click(sender As Object, e As EventArgs) Handles cmdSaveConsumptions.Click

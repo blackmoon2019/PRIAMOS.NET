@@ -89,12 +89,12 @@ Public Class frmCollectionsDet
                 TotDebit = TotDebit + GridView1.GetRowCellValue(selectedRowHandle, "debit")
             End If
         Next
-        If sDeposit > TotDebit Then
-            XtraMessageBox.Show("Το σύνολο των επιλεγμένων παραστατικών πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        Else
-            Me.Close()
-        End If
+        'If sDeposit > TotDebit Then
+        '    XtraMessageBox.Show("Το σύνολο των επιλεγμένων παραστατικών πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    Exit Sub
+        'Else
+        Me.Close()
+        'End If
     End Sub
 
 
