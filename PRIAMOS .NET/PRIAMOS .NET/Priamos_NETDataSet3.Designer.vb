@@ -19938,8 +19938,8 @@ Namespace Priamos_NETDataSet3TableAdapters
                 " S.aptID = COL.aptID AND S.inhID = COL.inhID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (COL.reserveAPT = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP "& _ 
                 "BY S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S."& _ 
                 "Etos, S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORD"& _ 
-                "ER BY S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos"& _ 
-                ", S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate"
+                "ER BY S.fDate,S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit"& _ 
+                ", S.Etos, S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit,  S.tDate"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))

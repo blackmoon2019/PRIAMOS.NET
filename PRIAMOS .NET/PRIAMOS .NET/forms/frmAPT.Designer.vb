@@ -24,6 +24,8 @@ Partial Class frmAPT
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.cmdContacts = New DevExpress.XtraEditors.SimpleButton()
         Me.chkTenantSendEmail = New DevExpress.XtraEditors.CheckEdit()
         Me.chkRepresentantSendEmail = New DevExpress.XtraEditors.CheckEdit()
         Me.chkOwnerSendEmail = New DevExpress.XtraEditors.CheckEdit()
@@ -62,11 +64,13 @@ Partial Class frmAPT
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkTenantSendEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkRepresentantSendEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkOwnerSendEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,10 +107,12 @@ Partial Class frmAPT
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.cmdContacts)
         Me.LayoutControl1.Controls.Add(Me.chkTenantSendEmail)
         Me.LayoutControl1.Controls.Add(Me.chkRepresentantSendEmail)
         Me.LayoutControl1.Controls.Add(Me.chkOwnerSendEmail)
@@ -140,7 +146,7 @@ Partial Class frmAPT
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem3, Me.LayoutControlItem18, Me.LayoutControlItem5, Me.LayoutControlItem4, Me.EmptySpaceItem5, Me.LayoutControlItem15, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem20, Me.LayoutControlItem19, Me.LayoutControlItem2, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem6, Me.LayoutControlItem11, Me.LayoutControlItem10, Me.LayoutControlItem12, Me.LayoutControlItem13, Me.LayoutControlItem16})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem14, Me.LayoutControlItem3, Me.LayoutControlItem18, Me.LayoutControlItem5, Me.LayoutControlItem4, Me.EmptySpaceItem5, Me.LayoutControlItem15, Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem20, Me.LayoutControlItem19, Me.LayoutControlItem2, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem6, Me.LayoutControlItem11, Me.LayoutControlItem10, Me.LayoutControlItem12, Me.LayoutControlItem13, Me.LayoutControlItem16, Me.LayoutControlItem17, Me.EmptySpaceItem1})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(937, 779)
         Me.Root.TextVisible = False
@@ -160,6 +166,25 @@ Partial Class frmAPT
         Me.EmptySpaceItem5.Name = "EmptySpaceItem5"
         Me.EmptySpaceItem5.Size = New System.Drawing.Size(502, 42)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(261, 716)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(297, 43)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'cmdContacts
+        '
+        Me.cmdContacts.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_phone_contact_24
+        Me.cmdContacts.Location = New System.Drawing.Point(12, 728)
+        Me.cmdContacts.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdContacts.Name = "cmdContacts"
+        Me.cmdContacts.Size = New System.Drawing.Size(257, 39)
+        Me.cmdContacts.StyleController = Me.LayoutControl1
+        Me.cmdContacts.TabIndex = 29
+        Me.cmdContacts.Text = "Καταχώρηση Επικοινωνίας"
         '
         'chkTenantSendEmail
         '
@@ -207,10 +232,10 @@ Partial Class frmAPT
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(470, 728)
+        Me.cmdExit.Location = New System.Drawing.Point(763, 728)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(455, 39)
+        Me.cmdExit.Size = New System.Drawing.Size(162, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
         Me.cmdExit.TabIndex = 12
         Me.cmdExit.Text = "Έξοδος"
@@ -218,10 +243,10 @@ Partial Class frmAPT
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(12, 728)
+        Me.cmdSave.Location = New System.Drawing.Point(570, 728)
         Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(454, 39)
+        Me.cmdSave.Size = New System.Drawing.Size(189, 39)
         Me.cmdSave.StyleController = Me.LayoutControl1
         Me.cmdSave.TabIndex = 13
         Me.cmdSave.Text = "Αποθήκευση"
@@ -575,18 +600,18 @@ Partial Class frmAPT
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.cmdSave
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 716)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(558, 716)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(458, 43)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(193, 43)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
         'LayoutControlItem10
         '
         Me.LayoutControlItem10.Control = Me.cmdExit
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(458, 716)
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(751, 716)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(459, 43)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(166, 43)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
@@ -617,6 +642,15 @@ Partial Class frmAPT
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
         '
+        'LayoutControlItem17
+        '
+        Me.LayoutControlItem17.Control = Me.cmdContacts
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 716)
+        Me.LayoutControlItem17.Name = "LayoutControlItem17"
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(261, 43)
+        Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem17.TextVisible = False
+        '
         'frmAPT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -632,6 +666,7 @@ Partial Class frmAPT
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkTenantSendEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkRepresentantSendEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkOwnerSendEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -668,6 +703,7 @@ Partial Class frmAPT
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -713,4 +749,7 @@ Partial Class frmAPT
     Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem13 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdContacts As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem17 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
 End Class

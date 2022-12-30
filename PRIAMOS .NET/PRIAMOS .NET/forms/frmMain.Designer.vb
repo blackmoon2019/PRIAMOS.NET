@@ -807,7 +807,6 @@ Partial Class frmMain
         '
         Me.RibbonPageGroup7.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_attach_40
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBBatchFileEX)
-        Me.RibbonPageGroup7.ItemLinks.Add(Me.BBatchCollectionInsert)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBatchInsertINH)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBatchInsertAnnment)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBKeysmanager)

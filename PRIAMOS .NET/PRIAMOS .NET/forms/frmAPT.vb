@@ -268,6 +268,19 @@ Public Class frmAPT
         form1.Show()
     End Sub
 
+    Private Sub cmdContacts_Click(sender As Object, e As EventArgs) Handles cmdContacts.Click
+        Dim frmContacts As frmContacts = New frmContacts()
+        frmContacts.Text = "Επικοινωνίες"
+        frmContacts.MdiParent = frmMain
+        frmContacts.APTID = IIf(sID Is Nothing, "", sID)
+        frmContacts.BDGID = cboBDG.EditValue.ToString
+        frmContacts.Mode = FormMode.NewRecord
+        frmContacts.FormScroller = Me
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmContacts), New Point(CInt(frmContacts.Parent.ClientRectangle.Width / 2 - frmContacts.Width / 2), CInt(frmContacts.Parent.ClientRectangle.Height / 2 - frmContacts.Height / 2)))
+        frmContacts.Show()
+
+    End Sub
+
 
 
     'Private Sub LoadAPT()

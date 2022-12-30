@@ -21,6 +21,7 @@ Public Class frmBankCollectionInsert
     Private BankMode As Integer
     Private sFileName As String
     Private repaptID As String = ""
+    Private repbdgID As String = ""
     Private sInhIDS2 As New Dictionary(Of String, String)
     Private repBal As Decimal
     Private ClearMode As Integer = 0 ' 0 Clear Nothing, 1 Clear BDG, 2 Clear APT, 3 Clear INH
@@ -47,6 +48,7 @@ Public Class frmBankCollectionInsert
         ' LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
         grdBANKS.DataSource = Nothing
         AddHandler RepApt.EditValueChanged, AddressOf RepApt_Changed
+        AddHandler RepBdg.EditValueChanged, AddressOf RepBdg_Changed
         AddHandler RepColPerBdgApt.EditValueChanged, AddressOf RepColPerBdgApt_Changed
 
         Me.CenterToScreen()
@@ -630,6 +632,7 @@ Public Class frmBankCollectionInsert
         Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
         Dim bdgCode As String = ""
         If editor.EditValue Is Nothing Then GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", "") : Exit Sub
+        repbdgID = editor.EditValue.ToString
         bdgCode = editor.GetColumnValue("old_code").ToString
         If bdgCode.Length = 0 Then editor.GetColumnValue("code").ToString()
         GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", bdgCode)
@@ -990,8 +993,9 @@ Public Class frmBankCollectionInsert
                         Case "ΕΘΝΙΚΗ" : sSQL.AppendLine("UPDATE NBG SET ")
                     End Select
             End Select
-            If repaptID.Length = 0 Then repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString
-            sSQL.AppendLine("bdgID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString) & ",")
+            'If repaptID.Length = 0 Then repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString
+            'If repbdgID.Length = 0 Then repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString
+            sSQL.AppendLine("bdgID = " & toSQLValueS(repbdgID) & ",")
             sSQL.AppendLine("bdgCode = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgCode").ToString) & ",")
             sSQL.AppendLine("aptID = " & toSQLValueS(repaptID) & ",")
             sSQL.AppendLine("ttl= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ttl").ToString) & ",")
@@ -1035,18 +1039,22 @@ Public Class frmBankCollectionInsert
     Friend Sub RepColPerBdgApt_Changed(sender As Object, e As EventArgs)
         UpdateColBanks()
     End Sub
+    Friend Sub RepBDG_Changed(sender As Object, e As EventArgs)
+        UpdateColBanks()
+    End Sub
 
 
     Private Sub RepBdg_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepBdg.ButtonClick
         Select Case e.Button.Index
-            Case 1 : GridView5.ActiveEditor.EditValue = Nothing : ClearMode = 1 : GridView5.ValidateEditor()
+            Case 1 : repbdgID = "" : GridView5.ActiveEditor.EditValue = Nothing : ClearMode = 1 : GridView5.ValidateEditor()
             Case 2
                 Dim sBdgID As String
                 sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+                If sBdgID = "" Then sBdgID = repbdgID
                 If sBdgID <> "" Then
                     Dim fBDG As frmBDG = New frmBDG()
                     fBDG.Text = "Πολυκατοικίες"
-                    fBDG.ID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString
+                    fBDG.ID = sBdgID
                     fBDG.MdiParent = frmMain
                     fBDG.Mode = FormMode.EditRecord
                     fBDG.Scroller = GridView5
@@ -1057,6 +1065,7 @@ Public Class frmBankCollectionInsert
                 Dim form As frmCollections = New frmCollections()
                 Dim sBdgID As String
                 sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+                If sBdgID = "" Then sBdgID = repbdgID
                 If sBdgID <> "" Then
                     form.Text = "Είσπραξεις Κοινοχρήστων"
                     form.BDGID = sBdgID
@@ -1095,7 +1104,7 @@ Public Class frmBankCollectionInsert
     End Sub
 
     Private Sub RepApt_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepApt.ButtonClick
-        If e.Button.Index = 1 Then GridView5.ActiveEditor.EditValue = Nothing : ClearMode = 2 : GridView5.ValidateEditor()
+        If e.Button.Index = 1 Then repaptID = "" : GridView5.ActiveEditor.EditValue = Nothing : ClearMode = 2 : GridView5.ValidateEditor()
     End Sub
 
     Private Sub GridView5_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView5.ValidatingEditor

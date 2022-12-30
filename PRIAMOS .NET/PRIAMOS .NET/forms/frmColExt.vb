@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports DevExpress.Xpo
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 
@@ -86,15 +87,15 @@ Public Class frmColExt
                 Select Case Mode
                     Case FormMode.NewRecord
                         sGuid = System.Guid.NewGuid.ToString
-                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT", LayoutControl1,,, sGuid,, "credit,bal,creditusrID,dtDebit",
-                                    toSQLValue(txtDebit, True) & "," & toSQLValue(txtDebit, True) & "," & toSQLValueS(UserProps.ID.ToString) & ",getdate()")
+                        sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT", LayoutControl1,,, sGuid,, "credit,bal,creditusrID,dtDebit,dtCompleted",
+                                    toSQLValue(txtDebit, True) & "," & toSQLValue(txtDebit, True) & "," & toSQLValueS(UserProps.ID.ToString) & ",getdate()," & IIf(chkCompleted.CheckState = CheckState.Checked, "getdate()", "NULL"))
                     Case FormMode.EditRecord
                         If sApolID = Nothing Then
                             sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT", LayoutControl1,,, sID,,,,,
-                                "credit=" & toSQLValue(txtDebit, True) & ",bal=" & toSQLValue(txtDebit, True) & ",creditusrID=" & toSQLValueS(UserProps.ID.ToString) & ",dtDebit=getdate()")
+                                "credit=" & toSQLValue(txtDebit, True) & ",bal=" & toSQLValue(txtDebit, True) & ",creditusrID=" & toSQLValueS(UserProps.ID.ToString) & ",dtDebit=getdate(),dtCompleted=" & IIf(chkCompleted.CheckState = CheckState.Checked, "getdate()", "NULL"))
                         Else
                             sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT", LayoutControl1,,, sID,,,,,
-                                "bal=bal - " & toSQLValue(txtDebit, True) & ",creditusrID=" & toSQLValueS(UserProps.ID.ToString) & ",dtDebit=getdate()")
+                                "bal=bal - " & toSQLValue(txtDebit, True) & ",creditusrID=" & toSQLValueS(UserProps.ID.ToString) & ",dtDebit=getdate(),dtCompleted=" & IIf(chkCompleted.CheckState = CheckState.Checked, "getdate()", "NULL"))
                         End If
                 End Select
                 If sResult Then

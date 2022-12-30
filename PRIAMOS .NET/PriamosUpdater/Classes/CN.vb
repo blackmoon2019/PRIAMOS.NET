@@ -4,8 +4,8 @@ Imports System.Data.SqlClient
 Public Class CN
 
     Dim s As String = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
-    Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
-    'Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionStringRem").ConnectionString
+    'Private connStr As String = ConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
+    Private connStr As String = ConfigurationManager.ConnectionStrings("Priamos_NETConnectionStringRemote").ConnectionString
 
     Public Function OpenConnection() As Boolean
         Dim DBConnection As New SqlConnection()

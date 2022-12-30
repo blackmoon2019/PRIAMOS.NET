@@ -5,6 +5,7 @@ Public Class frmContacts
     Private ManageCbo As New CombosManager
     Private sID As String
     Public Mode As Byte
+    Private sbdgID As String = "", saptID As String = ""
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
     Private Valid As New ValidateControls
@@ -23,6 +24,16 @@ Public Class frmContacts
     Public WriteOnly Property FormScroller As DevExpress.XtraEditors.XtraForm
         Set(value As DevExpress.XtraEditors.XtraForm)
             Frm = value
+        End Set
+    End Property
+    Public WriteOnly Property BDGID As String
+        Set(value As String)
+            sbdgID = value
+        End Set
+    End Property
+    Public WriteOnly Property APTID As String
+        Set(value As String)
+            saptID = value
         End Set
     End Property
 
@@ -45,6 +56,9 @@ Public Class frmContacts
         Me.Vw_USRTableAdapter.Fill(Me.Priamos_NETDataSet.vw_USR)
         Select Case Mode
             Case FormMode.NewRecord
+                If sbdgID.Length > 0 Then cboBDG.EditValue = System.Guid.Parse(sbdgID)
+                If saptID.Length > 0 Then cboAPT.EditValue = System.Guid.Parse(saptID)
+                cboUSR.EditValue = UserProps.ID
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from CONTACTS where id ='" + sID + "'", True)
         End Select

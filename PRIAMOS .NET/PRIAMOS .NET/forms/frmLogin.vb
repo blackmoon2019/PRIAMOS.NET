@@ -18,10 +18,12 @@ Public Class frmLogin
 
         chkRememberUN.Checked = UserProps.UNSave
         If CNDB.ConnectionString.ToString = "" Then
-            If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            'Έλεγχος νέας έκδοσης
-            If CheckFUpdate.FindNewVersion Then
+            If CN.OpenConnection = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την σύνδεση στο PRIAMOS .NET", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+            If Debugger.IsAttached = False Then
+                'Έλεγχος νέας έκδοσης
+                If CheckFUpdate.FindNewVersion Then
 
+                End If
             End If
         End If
         FillCbo.USR(cboUN)

@@ -321,18 +321,21 @@ Public Class frmINH
                                 If cboAhpbH.EditValue IsNot Nothing Or cboAhpbB.EditValue IsNot Nothing Then
                                     ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
                                     sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',consumptionH,'1' FROM CONSUMPTIONS where ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString) &
-                                   "'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                                   "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',consumptionH,'1' FROM CONSUMPTIONS where ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString) &
+                                   " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
                                     Using oCmd As New SqlCommand(sSQL, CNDB)
                                         oCmd.ExecuteNonQuery()
                                     End Using
                                     sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',consumptionB,'1' FROM CONSUMPTIONS where ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &
-                                   "'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                                   "Select " & toSQLValueS(sID) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',consumptionB,'1' FROM CONSUMPTIONS where ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &
+                                   " and  '2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
 
                                     Using oCmd As New SqlCommand(sSQL, CNDB)
                                         oCmd.ExecuteNonQuery()
                                     End Using
+                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                                    grdIND.DataSource = VwINDBindingSource
+
                                 End If
                             End If
                         End If
@@ -533,7 +536,7 @@ Public Class frmINH
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
 
             If Priamos_NETDataSet.AHPB_H.Rows.Count > 0 Then
-                cboAhpb.ItemIndex = 0
+                'cboAhpb.ItemIndex = 0
                 cboAhpb.Properties.ReadOnly = False
 
             ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
@@ -547,7 +550,7 @@ Public Class frmINH
             txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
             txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
             If Priamos_NETDataSet.AHPB_Β.Rows.Count > 0 Then
-                cboAhpbHB.ItemIndex = 0
+                '  cboAhpbHB.ItemIndex = 0
                 cboAhpbHB.Properties.ReadOnly = False
 
             ElseIf cboAhpbHB.Properties.DataSource.Count = 0 Then
