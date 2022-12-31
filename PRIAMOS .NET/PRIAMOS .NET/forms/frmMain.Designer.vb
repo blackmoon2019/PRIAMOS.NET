@@ -954,7 +954,7 @@ Partial Class frmMain
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 15000
+        Me.Timer1.Interval = 60000
         '
         'Timer2
         '

@@ -16,6 +16,7 @@ Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
 Imports DevExpress.XtraReports.UI
 Imports System.Text
+Imports DevExpress.XtraExport.Helpers
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -165,12 +166,10 @@ Public Class frmScroller
             Next
             BarViews.EditValue = CurrentView
             If CurrentView = "" Then
-                'grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
-                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
+                LoadForms.RestoreLayoutFromXml(GridView1, sDataTable & "_def.xml")
                 GridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True
-                If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml", OptionsLayoutBase.FullLayout)
+                If sDataDetail <> "" Then LoadForms.RestoreLayoutFromXml(GridView2, sDataDetail & "_def.xml")
             Else
-                'grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
                 GridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True
                 If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
@@ -391,7 +390,6 @@ Public Class frmScroller
         Try
             popSaveAsView.EditValue = BarViews.EditValue
             If BarViews.EditValue <> "" Then
-                'grdMain.DefaultView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
                 If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
                 CurrentView = BarViews.EditValue
@@ -454,7 +452,6 @@ Public Class frmScroller
                         GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
                     End If
                 End If
-                'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue & "_" & UserProps.Code & ".xml")
                 CurrentView = BarViews.EditValue
             End If
 
@@ -465,7 +462,6 @@ Public Class frmScroller
     'Αποθήκευση όψης
     Private Sub popSaveView_ItemClick(sender As Object, e As ItemClickEventArgs) Handles popSaveView.ItemClick
         If BarViews.EditValue <> "" Then
-            'grdMain.DefaultView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
             My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
             If GridView1.OptionsLayout.LayoutVersion <> "" Then
                 Dim sVer As Integer = GridView1.OptionsLayout.LayoutVersion.Replace("v", "")
@@ -478,7 +474,6 @@ Public Class frmScroller
                 My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue)
                 GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
             End If
-            'GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue)
             XtraMessageBox.Show("Η όψη αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
@@ -1606,11 +1601,7 @@ Public Class frmScroller
         GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
         GridView2.OptionsView.EnableAppearanceEvenRow = True
         If CurrentView = "" Then
-            If sDataDetail <> "" Then
-                If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml") = False Then
-                    If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml", OptionsLayoutBase.FullLayout)
-                End If
-            End If
+            If sDataDetail <> "" Then LoadForms.RestoreLayoutFromXml(GridView2, sDataDetail & "_def.xml")
         Else
             If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "\" & BarViews.EditValue) = False Then
                 If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
@@ -1794,8 +1785,8 @@ Public Class frmScroller
     Private Sub BBUpdateViewFileFromServer_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBUpdateViewFileFromServer.ItemClick
         If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
-            If System.IO.File.Exists(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = True Then
-                My.Computer.FileSystem.CopyFile(Progprops.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", True)
+            If System.IO.File.Exists(ProgProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml") = True Then
+                My.Computer.FileSystem.CopyFile(ProgProps.ServerViewsPath & "DSGNS\DEF\" & sDataTable & "_def.xml", Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", True)
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
 
             End If

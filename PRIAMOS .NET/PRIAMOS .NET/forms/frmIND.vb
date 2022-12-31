@@ -3,6 +3,7 @@ Imports DevExpress.Utils
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraGrid.Views.Grid
@@ -10,6 +11,7 @@ Imports DevExpress.XtraPrinting
 
 Public Class frmIND
     Private sID As String
+    Private LoadForms As New FormLoader
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -21,10 +23,7 @@ Public Class frmIND
         Else
             Me.Vw_INDTableAdapter.FillByBDG(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
         End If
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\IND_BDG_def.xml") = False Then
-            GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\IND_BDG_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\IND_BDG_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView5, "IND_BDG_def.xml")
     End Sub
 
     Private Sub GridView5_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing

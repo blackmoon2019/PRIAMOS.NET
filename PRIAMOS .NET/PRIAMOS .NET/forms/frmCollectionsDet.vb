@@ -111,10 +111,7 @@ Public Class frmCollectionsDet
             GridControl1.DataSource = VwCOLDBindingSource
             GridControl1.ForceInitialize()
             GridControl1.DefaultView.PopulateColumns()
-            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_D_def.xml") = False Then
-                GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_D_def.xml", OptionsLayoutBase.FullLayout)
-            End If
-            GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_def.xml", OptionsLayoutBase.FullLayout)
+            LoadForms.RestoreLayoutFromXml(GridView1, "COL_D_def.xml")
             cmdCol_D_Del.Enabled = UserProps.AllowDelete
             LayoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -125,7 +122,7 @@ Public Class frmCollectionsDet
                 GridControl1.DataSource = COLPERBDGAPTBindingSource
                 GridControl1.ForceInitialize()
                 GridControl1.DefaultView.PopulateColumns()
-                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_BANKS_DET_def.xml", OptionsLayoutBase.FullLayout)
+                LoadForms.RestoreLayoutFromXml(GridView1, "COL_BANKS_DET_def.xml")
                 'Dim i As Integer
                 'Dim sFilter As String = ""
                 'For i = 0 To sInhIDS.Count - 1
@@ -141,7 +138,7 @@ Public Class frmCollectionsDet
                 GridControl1.DataSource = COLBanksCompletedBindingSource
                 GridControl1.ForceInitialize()
                 GridControl1.DefaultView.PopulateColumns()
-                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_BANKS_DET_COMPLETED_def.xml", OptionsLayoutBase.FullLayout)
+                LoadForms.RestoreLayoutFromXml(GridView1, "COL_BANKS_DET_COMPLETED_def.xml")
                 LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
             End If
 

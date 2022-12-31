@@ -1,7 +1,9 @@
 ﻿
 Imports System.Data.SqlClient
+Imports DevExpress.CodeParser
+Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Columns
-
+Imports iTextSharp.text.pdf.parser
 
 Module Main
     Public CNDB As New SqlConnection
@@ -180,8 +182,24 @@ Module Main
 
     '    Next
     'End Function
+    Public Sub GetNewestFileFromServer(ByVal sFile As String)
+        Dim LastModifiedF1 As Date, LastModifiedF2 As Date
+        Dim ServerFile As String = ProgProps.ServerViewsPath & "DSGNS\DEF\" & System.IO.Path.GetFileName(sFile)
+        LastModifiedF1 = System.IO.File.GetLastWriteTime(sFile)
+        LastModifiedF2 = System.IO.File.GetLastWriteTime(ServerFile)
+        Dim result As Integer = DateTime.Compare(LastModifiedF1, LastModifiedF2)
+        If result < 0 Then
+            If XtraMessageBox.Show("Βρέθηκε νεώτερη προεπιλεγμένη όψη στον Server. Να μεταφερθεί?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                My.Computer.FileSystem.CopyFile(ServerFile, sFile, True)
+                LastModifiedF1 = System.IO.File.GetLastWriteTime(sFile)
+            End If
+            Do
 
+            Loop Until LastModifiedF1 = LastModifiedF2
+        End If
+    End Sub
 End Module
+
 
 'Private Sub SetUserSettings()
 '    Dim cf As New XML_Serialization.User_Settings

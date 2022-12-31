@@ -17,6 +17,8 @@ Imports System.ComponentModel
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
+Imports DevExpress.Xpo.Helpers.AssociatedCollectionCriteriaHelper
+Imports DevExpress.XtraSplashScreen
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -2110,7 +2112,66 @@ Public Class frmBDG
         End Select
     End Sub
 
+    Private Sub cmdBDGFDownload_Click(sender As Object, e As EventArgs) Handles cmdBDGFDownload.Click
+        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        Dim SelectedPath As String
+        Dim result As DialogResult = XtraFolderBrowserDialog1.ShowDialog()
+        If result = DialogResult.OK Then
+            SelectedPath = XtraFolderBrowserDialog1.SelectedPath
+        Else
+            Exit Sub
+        End If
 
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            Dim sFilename = GridView12.GetRowCellValue(selectedRowHandle, "filename")
+            If File.Exists(Application.StartupPath & "\" & sFilename) Then File.Delete(Application.StartupPath & "\" & sFilename)
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
+            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+            My.Computer.FileSystem.CopyFile(Application.StartupPath & "\" & sFilename, SelectedPath & "\" & sFilename, True)
+        Next
+        SplashScreenManager1.CloseWaitForm()
+    End Sub
+    Private Sub cmdBDGFEdit_Click(sender As Object, e As EventArgs) Handles cmdBDGFEdit.Click
+        Dim sSQL As String
+        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+
+        Dim lkup As New DevExpress.XtraEditors.LookUpEdit
+        lkup.Properties.DataSource = VwFOLDERCATBindingSource
+        lkup.Properties.ForceInitialize()
+        lkup.Properties.PopulateColumns()
+        lkup.Properties.DisplayMember = "name"
+        lkup.Properties.ValueMember = "ID"
+        lkup.Properties.Columns.Item(0).Visible = False
+        lkup.Properties.Columns.Item(1).Caption = "Κατηγορία"
+        lkup.Properties.NullText = ""
+        Dim args = New XtraInputBoxArgs()
+        args.Caption = "Επιλογή Κατηγορίας"
+        args.Prompt = "Επιλέξτε Κατηγορία"
+        args.DefaultButtonIndex = 0
+        args.Editor = lkup
+        Dim Result = XtraInputBox.Show(args)
+        If Result Is Nothing Then
+            lkup = Nothing
+            Exit Sub
+        Else
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                sSQL = "update BDG_F set folderCatID = " & toSQLValueS(lkup.EditValue.ToString) & " where ID = " & toSQLValueS(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Next I
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+        End If
+        lkup = Nothing
+    End Sub
     Private Sub cmdBDGFPrint_Click(sender As Object, e As EventArgs) Handles cmdBDGFPrint.Click
         Dim sSQL As String
         Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
@@ -2650,4 +2711,6 @@ Public Class frmBDG
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
+
+
 End Class

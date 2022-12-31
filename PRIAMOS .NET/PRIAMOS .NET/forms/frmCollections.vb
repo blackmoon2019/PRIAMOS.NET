@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Public Event DetailTabStyle As EventHandler(Of DetailTabStyleEventArgs)
@@ -104,30 +105,13 @@ Public Class frmCollections
         My.Settings.Save()
 
 
+        LoadForms.RestoreLayoutFromXml(GridView5, "COL_APTCREDE_def.xml")
+        LoadForms.RestoreLayoutFromXml(GridView6, "COL_D_CREDE_def.xml")
+        LoadForms.RestoreLayoutFromXml(grdVBDG, "COL_BDG_def.xml")
+        LoadForms.RestoreLayoutFromXml(grdVAPT, "COL_APT_def.xml")
+        LoadForms.RestoreLayoutFromXml(grdVINH, "COL_INH_def.xml")
+        LoadForms.RestoreLayoutFromXml(grdVO_T, "COL_OW_TEN_def.xml")
 
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml") = False Then
-            grdVBDG.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-
-
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml") = False Then
-            GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml") Then
-            GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APTCREDE_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml") Then
-            GridView6.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_D_CREDE_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml") Then
-            grdVBDG.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_BDG_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml") Then
-            grdVAPT.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        grdVINH.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
-        grdVO_T.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
 
         grdVAPT.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
         grdVINH.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
@@ -537,10 +521,7 @@ Public Class frmCollections
         APTView = APTView2.GetDetailView(e.RowHandle, e.RelationIndex)
         APTLastRowExpanded = e.RowHandle
         'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml") = False Then
-            APTView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        APTView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_APT_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(APTView, "COL_APT_def.xml")
         APTView.DataController.CollapseDetailRowsOnReset = False
 
     End Sub
@@ -549,12 +530,7 @@ Public Class frmCollections
         If INHLastRowExpanded <> 0 And INHLastRowExpanded <> e.RowHandle Then sender.SetMasterRowExpanded(INHLastRowExpanded, False)
         INHView = INHView2.GetDetailView(e.RowHandle, e.RelationIndex)
         INHLastRowExpanded = e.RowHandle
-        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml") = False Then
-            INHView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-
-        INHView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_INH_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(INHView, "COL_INH_def.xml")
         INHView.DataController.CollapseDetailRowsOnReset = False
         INHView.OptionsLayout.StoreAllOptions = True
         INHView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
@@ -565,11 +541,7 @@ Public Class frmCollections
         If OwnerTenantLastRowExpanded <> 0 And OwnerTenantLastRowExpanded <> e.RowHandle Then sender.SetMasterRowExpanded(OwnerTenantLastRowExpanded, False)
         OwnerTenantView = OwnerTenantView2.GetDetailView(e.RowHandle, e.RelationIndex)
         OwnerTenantLastRowExpanded = e.RowHandle
-        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml") = False Then
-            OwnerTenantView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        OwnerTenantView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\COL_OW_TEN_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(OwnerTenantView, "COL_OW_TEN_def.xml")
         OwnerTenantView.DataController.CollapseDetailRowsOnReset = False
         OwnerTenantView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
     End Sub

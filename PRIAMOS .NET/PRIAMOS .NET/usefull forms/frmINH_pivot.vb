@@ -63,7 +63,7 @@ Public Class frmINH_pivot
         dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
         lbldate.Text = TranslateDates(dtFDate, dtTDate)
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") Then GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView5, "INHDET_def.xml")
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
     End Sub
     Private Sub PivotColumns()

@@ -122,11 +122,7 @@ Public Class frmINH
         dtTDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtTDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
 
-        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml") = False Then
-            GridView5.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-        GridView5.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INHDET_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView5, "INHDET_def.xml")
         If chkCalculated.Checked = True Then
             LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
         Else

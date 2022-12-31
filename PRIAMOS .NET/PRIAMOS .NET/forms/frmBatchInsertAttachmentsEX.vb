@@ -12,15 +12,12 @@ Public Class frmBatchInsertAttachmentsEX
     Private DBQ As New DBQueries
     Public Shared ReadOnly MaxEntitiesCount As Integer = 80
     Private _currentPath As String
+    Private LoadForms As New FormLoader
     Private Sub frmBatchInsertAttachmentsEX_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
         Initialize()
-        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INDF_BATCH.xml") = False Then
-            GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INDF_BATCH.xml", OptionsLayoutBase.FullLayout)
-        End If
-        GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INDF_BATCH.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView1, "INDF_BATCH.xml")
     End Sub
     Private Sub Initialize()
         Me._currentPath = ProgProps.EXFolderPath

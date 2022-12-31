@@ -598,9 +598,17 @@ NextItem:
     End Function
 
     Public Sub RestoreLayoutFromXml(ByVal GridView As GridView, ByVal sXMLName As String)
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sXMLName) Then GridView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sXMLName, OptionsLayoutBase.FullLayout)
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sXMLName) = False Then
+            GridView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sXMLName, OptionsLayoutBase.FullLayout)
+        End If
+
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\" & sXMLName) Then
+            GetNewestFileFromServer(Application.StartupPath & "\DSGNS\DEF\" & sXMLName)
+            GridView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sXMLName, OptionsLayoutBase.FullLayout)
+        End If
         GridView.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True
     End Sub
+
     Public Sub PopupMenuShow(ByVal e As Views.Grid.PopupMenuShowingEventArgs, ByVal GridView As GridView, ByVal sXMLName As String, Optional ByVal sTableName As String = "",
                              Optional ByVal sQuery As String = "")
         If e.MenuType = GridMenuType.Column Then
@@ -765,7 +773,6 @@ NextItem:
         grdVer = IIf(GRDview.OptionsLayout.LayoutVersion.Replace("v", "") = "", 0.5, GRDview.OptionsLayout.LayoutVersion.Replace("v", ""))
         grdVer = grdVer + 0.5 : GRDview.OptionsLayout.LayoutVersion = grdVer
         GRDview.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & XMLName, OptionsLayoutBase.FullLayout)
-        '  GridView7.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
         XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
@@ -773,9 +780,7 @@ NextItem:
            UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\" & XMLName) = False Then GRDview.OptionsLayout.LayoutVersion = "v1"
-                '    If My.Computer.FileSystem.FileExists(Progprops.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml") = False Then GridView7.OptionsLayout.LayoutVersion = "v1"
                 GRDview.SaveLayoutToXml(ProgProps.ServerViewsPath & "DSGNS\DEF\" & XMLName, OptionsLayoutBase.FullLayout)
-                '        GridView7.SaveLayoutToXml(Progprops.ServerViewsPath & "DSGNS\DEF\APMIL_D_def.xml", OptionsLayoutBase.FullLayout)
             End If
         End If
     End Sub

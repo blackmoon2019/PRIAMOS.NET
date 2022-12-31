@@ -2,6 +2,7 @@
 Imports System.Data.SqlClient
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 
@@ -56,9 +57,7 @@ Public Class frmPermissions
                     cmdSave.Enabled = UserProps.AllowInsert
             End Select
             '        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
-            If System.IO.File.Exists(Application.StartupPath & "\DSGNS\DEF\RIGHTS_def.xml") = True Then
-                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\RIGHTS_def.xml", OptionsLayoutBase.FullLayout)
-            End If
+            LoadForms.RestoreLayoutFromXml(GridView1, "RIGHTS_def.xml")
             Me.CenterToScreen()
             My.Settings.frmUsers = Me.Location
             My.Settings.Save()

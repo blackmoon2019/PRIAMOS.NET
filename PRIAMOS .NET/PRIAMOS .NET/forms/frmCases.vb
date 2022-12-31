@@ -5,6 +5,7 @@ Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraGrid.Views.Base
@@ -77,7 +78,7 @@ Public Class frmCases
         End Select
         cboCCT.EditValue = System.Guid.Parse(ProgProps.ADM)
         dtVisitDate.EditValue = Date.Now
-        If System.IO.File.Exists(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml") = True Then GridView3.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
+        LoadForms.RestoreLayoutFromXml(GridView3, "TASKS_def.xml")
         'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         My.Settings.frmCASES = Me.Location

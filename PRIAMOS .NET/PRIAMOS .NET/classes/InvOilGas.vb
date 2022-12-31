@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports DevExpress.PivotGrid.QueryMode
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors
 
@@ -29,23 +30,11 @@ Public Class InvOilGas
 
     Public Sub LoadOilRecords(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
         LoadForms.LoadDataToGrid(GRDControl, GRDView, sSQL, True)
-        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INV_OIL_def.xml") = False Then
-            GRDView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INV_OIL_def.xml", OptionsLayoutBase.FullLayout)
-        Else
-            GRDView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INV_OIL_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-
+        LoadForms.RestoreLayoutFromXml(GRDView, "INV_OIL_def.xml")
     End Sub
     Public Sub LoadGasRecords(ByRef GRDControl As DevExpress.XtraGrid.GridControl, ByRef GRDView As DevExpress.XtraGrid.Views.Grid.GridView, ByVal sSQL As String)
         LoadForms.LoadDataToGrid(GRDControl, GRDView, sSQL, True)
-        'Εαν δεν υπάρχει Default Σχέδιο δημιουργεί
-        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\DEF\INV_GAS_def.xml") = False Then
-            GRDView.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INV_GAS_def.xml", OptionsLayoutBase.FullLayout)
-        Else
-            GRDView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\INV_GAS_def.xml", OptionsLayoutBase.FullLayout)
-        End If
-
+        LoadForms.RestoreLayoutFromXml(GRDView, "INV_GAS_def.xml")
     End Sub
     Public Sub DeleteRecord(ByVal sID As String, ByVal sTable As String)
         Dim sSQL As String
