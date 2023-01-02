@@ -192,6 +192,8 @@ Module Main
             If XtraMessageBox.Show("Βρέθηκε νεώτερη προεπιλεγμένη όψη στον Server. Να μεταφερθεί?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 My.Computer.FileSystem.CopyFile(ServerFile, sFile, True)
                 LastModifiedF1 = System.IO.File.GetLastWriteTime(sFile)
+            Else
+                Exit Sub
             End If
             Do
 

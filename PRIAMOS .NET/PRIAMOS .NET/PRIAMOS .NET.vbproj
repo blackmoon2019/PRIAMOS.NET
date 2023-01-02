@@ -883,6 +883,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <Content Include="Sql Scripts\col_Calculate.sql" />
+    <Content Include="Sql Scripts\INV_CALCULATE.sql" />
+    <Content Include="Sql Scripts\inv_cancelCalculate.sql" />
     <None Include="Resources\icons8-calculate-40.png" />
     <None Include="Resources\icons8-surface-40.png" />
     <None Include="Resources\icons8-folder-40.png" />
@@ -897,8 +900,6 @@
     <None Include="Resources\icons8-receipt-16.png" />
     <None Include="Resources\icons8-available-updates-12.png" />
     <None Include="Resources\icons8-phone-contact-24.png" />
-    <Content Include="Sql Scripts\col_Calculate.sql" />
-    <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <None Include="Resources\icons-notes-40.png" />
     <None Include="Resources\icons8-sent-24.png" />
     <None Include="Resources\icons8-sent-32.png" />
