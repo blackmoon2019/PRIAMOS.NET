@@ -81,8 +81,6 @@ Public Class frmGen
         LoadGen()
         '   Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
-        My.Settings.frmGen = Me.Location
-        My.Settings.Save()
         UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowInsert = False Then cmdSave.Enabled = False
     End Sub
 

@@ -114,8 +114,6 @@ Public Class frmINH
         End Select
         '  Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
-        My.Settings.frmINH = Me.Location
-        My.Settings.Save()
         dtFDate.Properties.Mask.EditMask = "Y"
         dtFDate.Properties.Mask.UseMaskAsDisplayFormat = True
         dtFDate.Properties.VistaCalendarViewStyle = DevExpress.XtraEditors.VistaCalendarViewStyle.YearView
@@ -1273,8 +1271,11 @@ Public Class frmINH
         ' Εαν έχει FI Boiler
         If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
 
-        If cboAhpbH.EditValue IsNot Nothing Then report.HasHoursH = True Else report.HasHoursH = False
-        If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+
+        'If cboAhpbH.EditValue IsNot Nothing Then report.HasHoursH = True Else report.HasHoursH = False
+        'If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+        If lblAHPBH.Text.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
+        If lblAHPBB.Text.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
         report.Parameters.Item(0).Value = sID
         report.Parameters.Item(1).Value = cboBDG.EditValue
         report.INHForm = Me

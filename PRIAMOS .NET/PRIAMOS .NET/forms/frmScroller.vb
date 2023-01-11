@@ -1542,6 +1542,7 @@ Public Class frmScroller
             LoadViews()
             'If CurrentView Is Nothing Then CurrentView = ""
             'If CurrentView = "" And GridView1.ActiveFilterString.Length = 0 Then GridView1.ActiveFilterString = sActiveFilter
+
             If Me.IsActive = True Then GridView1.ActiveFilterString = sActiveFilter
             myCmd.Dispose()
             If CloseReader = True Then myReader.Close() : myReader = Nothing

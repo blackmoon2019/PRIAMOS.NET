@@ -536,7 +536,7 @@ Public Class frmMain
 
     Private Sub BBReport7_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBReport7.ItemClick
         Dim form As frmScroller = New frmScroller()
-        form.Text = "Ανεξόφλητα ΠΑραστατικά"
+        form.Text = "Ανεξόφλητα Παραστατικά"
         UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.DataTable = "REPORT_7"
         form.MdiParent = Me

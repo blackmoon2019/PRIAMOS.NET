@@ -33,18 +33,14 @@ Public Class CheckForUpdates
                         XtraMessageBox.Show("Βρέθηκε νέα έκδοση του προγράμματος " & sExeVer & "." & vbCrLf &
                                             "Θα πραγματοποιηθεί έξοδος του προγράμματος και έναρξη της αναβάθμισης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                         sdr.Close()
-                        ' Shell(Application.StartupPath & "\Updater\PriamosUpdate.exe")
                         Dim pHelp As New ProcessStartInfo
                         pHelp.WorkingDirectory = Application.StartupPath & "\Updater"
                         pHelp.FileName = "PriamosUpdater.exe"
-                        pHelp.Arguments = My.Settings.ExeVer & "," & UpdatePath & "," & Application.StartupPath & "," & sExeVer
+                        pHelp.Arguments = version1.ToString & "," & UpdatePath & "," & Application.StartupPath & "," & sExeVer
                         pHelp.UseShellExecute = True
                         pHelp.WindowStyle = ProcessWindowStyle.Normal
                         Dim proc As Process = Process.Start(pHelp)
                         End
-                    Else
-                        My.Settings.ExeVer = sExeVer
-                        My.Settings.DbVer = sExeVer
                     End If
                 End If
             End If
@@ -86,9 +82,6 @@ Public Class CheckForUpdates
                     If version1.CompareTo(version2) < 0 Then
                         sdr.Close()
                         Return True
-                    Else
-                        My.Settings.ExeVer = sExeVer
-                        My.Settings.DbVer = sExeVer
                     End If
                 End If
             End If

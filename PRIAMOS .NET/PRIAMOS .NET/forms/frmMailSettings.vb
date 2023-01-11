@@ -41,8 +41,6 @@ Public Class frmMailSettings
             End Select
             '   Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             Me.CenterToScreen()
-            My.Settings.frmUsers = Me.Location
-            My.Settings.Save()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

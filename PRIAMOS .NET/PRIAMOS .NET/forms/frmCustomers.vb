@@ -93,8 +93,6 @@ Public Class frmCustomers
         End Select
         'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
-        My.Settings.frmCustomers = Me.Location
-        My.Settings.Save()
         UserPermissions.GetUserPermissions(Me.Text)
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
 

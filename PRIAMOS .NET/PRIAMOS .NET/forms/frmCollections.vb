@@ -101,8 +101,6 @@ Public Class frmCollections
             If sinhID <> Nothing Then cboINH.EditValue = System.Guid.Parse(sinhID)
         End If
         Me.CenterToScreen()
-        My.Settings.frmCollections = Me.Location
-        My.Settings.Save()
 
 
         LoadForms.RestoreLayoutFromXml(GridView5, "COL_APTCREDE_def.xml")

@@ -81,8 +81,6 @@ Public Class frmCases
         LoadForms.RestoreLayoutFromXml(GridView3, "TASKS_def.xml")
         'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
-        My.Settings.frmCASES = Me.Location
-        My.Settings.Save()
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
 
     End Sub

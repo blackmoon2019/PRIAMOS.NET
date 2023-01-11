@@ -11,6 +11,7 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraEditors.ViewInfo
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
@@ -48,7 +49,7 @@ Public Class frmBankCollectionInsert
         ' LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
         grdBANKS.DataSource = Nothing
         AddHandler RepApt.EditValueChanged, AddressOf RepApt_Changed
-        AddHandler RepBdg.EditValueChanged, AddressOf RepBdg_Changed
+        AddHandler RepBdg.EditValueChanged, AddressOf RepBDG_Changed
         AddHandler RepColPerBdgApt.EditValueChanged, AddressOf RepColPerBdgApt_Changed
 
         Me.CenterToScreen()
@@ -129,29 +130,47 @@ Public Class frmBankCollectionInsert
                 grdBANKS.DataSource = Nothing
                 Select Case BankMode
                     Case 1
+                        Dim sActiveFilter As String
+                        sActiveFilter = GridView5.ActiveFilterString
                         GridView5.ActiveFilterString = ""
                         Me.PIREOSTableAdapter.Fill(Me.Priamos_NETDataSet3.PIREOS)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.PIREOS
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
+                        GridView5.ActiveFilterString = sActiveFilter
+
                     Case 2
+                        Dim sActiveFilter As String
+                        sActiveFilter = GridView5.ActiveFilterString
                         GridView5.ActiveFilterString = ""
                         Me.ALPHATableAdapter.Fill(Me.Priamos_NETDataSet3.ALPHA)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.ALPHA
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "ALPHA.xml")
+                        GridView5.ActiveFilterString = sActiveFilter
+
                     Case 3
+                        Dim sActiveFilter As String
+                        sActiveFilter = GridView5.ActiveFilterString
+
                         GridView5.ActiveFilterString = ""
                         Me.EUROBANKTableAdapter.Fill(Me.Priamos_NETDataSet3.EUROBANK)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.EUROBANK
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "EUROBANK.xml")
+                        GridView5.ActiveFilterString = sActiveFilter
+
                     Case 4
+                        Dim sActiveFilter As String
+                        sActiveFilter = GridView5.ActiveFilterString
+
                         GridView5.ActiveFilterString = ""
                         Me.NBGTableAdapter.Fill(Me.Priamos_NETDataSet3.NBG)
                         grdBANKS.DataSource = Me.Priamos_NETDataSet3.NBG
                         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
                         LoadForms.RestoreLayoutFromXml(GridView5, "NBG.xml")
+                        GridView5.ActiveFilterString = sActiveFilter
+
                 End Select
             End If
             GridView5.BestFitColumns()
@@ -293,75 +312,106 @@ Public Class frmBankCollectionInsert
                     If sValRow <> "Αιτιολογία" Then
                         ' Στήλη Χ/Π - Αν είναι Χ τότε η εγγραφή πρεπει να αγνοείται
                         x = GridView5.GetRowCellValue(i, GridView5.Columns(4).FieldName)
-                        If x = "Π" Then
-                            If GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName) IsNot Nothing Then sDate = GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName).ToString()
-                            sCredit = GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName)
-                            sbdgCode = regex.Match(sValRow).ToString
-                            sValRow = sValRow.Replace("=", "")
-                            sValRow = sValRow.Replace("""", "")
-                            Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
-                            Dim startindex As Integer = Pos + sbdgCode.Length - 1
-                            Dim length As Integer = sValRow.Length - Pos
-                            length = length - (sbdgCode.Length - 1)
-                            sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
-                            sAptAlternative = ConvertCharToENGR(sApt)
-                            sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(2).FieldName)
-                            sTransactionID = sTransactionID.Replace("=", "")
-                            sTransactionID = sTransactionID.Replace("""", "")
+                        ' If x = "Π" Then
+                        If GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName) IsNot Nothing Then sDate = GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName).ToString()
+                        sCredit = GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName)
+                        sbdgCode = regex.Match(sValRow).ToString
+                        sValRow = sValRow.Replace("=", "")
+                        sValRow = sValRow.Replace("""", "")
+                        Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
+                        Dim startindex As Integer = Pos + sbdgCode.Length - 1
+                        Dim length As Integer = sValRow.Length - Pos
+                        length = length - (sbdgCode.Length - 1)
+                        sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
+                        sAptAlternative = ConvertCharToENGR(sApt)
+                        sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(2).FieldName)
+                        sTransactionID = sTransactionID.Replace("=", "")
+                        sTransactionID = sTransactionID.Replace("""", "")
 
-                            If sCredit <> 0 Then
-                                If sbdgCode.Length > 0 Then
+                        If sCredit <> 0 Then
+                            If sbdgCode.Length > 0 Then
 
-                                    Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
-                                    sdr = Cmd.ExecuteReader()
-                                    If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
-                                    sdr.Close()
-                                    Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
-                                    sdr = Cmd.ExecuteReader()
-                                    If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
-                                    sdr.Close()
-                                End If
-                                Try
-                                    sAlphabankID = System.Guid.NewGuid.ToString
-                                    'Εισαγωγή εγγραφών από Ecxel sthn Βάση
-                                    sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
-                                    sSQL.AppendLine(toSQLValueS(sAlphabankID) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sValRow) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sAptID) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sAptTTL) & ",")
-                                    If sDate.Length > 0 Then sSQL.AppendLine(toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) & ",") Else sSQL.AppendLine("NULL,")
-                                    sSQL.AppendLine(toSQLValueS(sbdgID) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sbdgNam) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
-                                    sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
-                                    sSQL.AppendLine(toSQLValueS("019A838C-4411-48B7-A6D0-D4F33B78E619") & ",")
-                                    sSQL.AppendLine(toSQLValueS(sAlphabankFileID) & ")")
-                                    Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                                        oCmd.ExecuteNonQuery()
-                                    End Using
-                                    lstLog.Items.Add("Η εγγραφή Καταχωρήθηκε με επιτυχία!-->" & sValRow)
-                                    lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
-                                    lstLog.Items(lstLog.Items.Count - 1).Tag = sAlphabankID
-                                    ItemsCorrect = ItemsCorrect + 1
-                                Catch ex As Exception
-                                    lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
-                                    lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
-                                    ItemsWrong = ItemsWrong + 1
-                                End Try
-                                sSQL.Clear()
-                                sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
+                                Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
+                                sdr = Cmd.ExecuteReader()
+                                If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                                sdr.Close()
+                                Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
+                                sdr = Cmd.ExecuteReader()
+                                If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                                sdr.Close()
                             End If
-                        Else
-                            If x IsNot Nothing Then
-                                sCredit = GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName)
-                                lstLog.Items.Add("Βρέθηκε κίνηση Χρέωσης με αιτιολογία: " & sValRow & " και ποσό " & sCredit & " . Η κίνηση αγνοείται")
+                            Try
+                                sAlphabankID = System.Guid.NewGuid.ToString
+                                'Εισαγωγή εγγραφών από Ecxel sthn Βάση
+                                sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                                sSQL.AppendLine(toSQLValueS(sAlphabankID) & ",")
+                                sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
+                                sSQL.AppendLine(toSQLValueS(sValRow) & ",")
+                                sSQL.AppendLine(toSQLValueS(sAptID) & ",")
+                                sSQL.AppendLine(toSQLValueS(sAptTTL) & ",")
+                                If sDate.Length > 0 Then sSQL.AppendLine(toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) & ",") Else sSQL.AppendLine("NULL,")
+                                sSQL.AppendLine(toSQLValueS(sbdgID) & ",")
+                                sSQL.AppendLine(toSQLValueS(sbdgNam) & ",")
+                                sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
+                                sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
+                                sSQL.AppendLine(toSQLValueS("019A838C-4411-48B7-A6D0-D4F33B78E619") & ",")
+                                sSQL.AppendLine(toSQLValueS(sAlphabankFileID) & ")")
+                                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                                lstLog.Items.Add("Η εγγραφή Καταχωρήθηκε με επιτυχία!-->" & sValRow)
+                                lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
+                                lstLog.Items(lstLog.Items.Count - 1).Tag = sAlphabankID
+                                ItemsCorrect = ItemsCorrect + 1
+                            Catch ex As Exception
+                                lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                                 lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                                 ItemsWrong = ItemsWrong + 1
-                            End If
+                            End Try
+                            sSQL.Clear()
+                            sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
                         End If
+                        Try
+                            sAlphabankID = System.Guid.NewGuid.ToString
+                            'Εισαγωγή εγγραφών από Ecxel sthn Βάση
+                            sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                            sSQL.AppendLine(toSQLValueS(sAlphabankID) & ",")
+                            sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
+                            sSQL.AppendLine(toSQLValueS(sValRow) & ",")
+                            sSQL.AppendLine(toSQLValueS(sAptID) & ",")
+                            sSQL.AppendLine(toSQLValueS(sAptTTL) & ",")
+                            If sDate.Length > 0 Then sSQL.AppendLine(toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) & ",") Else sSQL.AppendLine("NULL,")
+                            sSQL.AppendLine(toSQLValueS(sbdgID) & ",")
+                            sSQL.AppendLine(toSQLValueS(sbdgNam) & ",")
+                            sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
+                            sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
+                            sSQL.AppendLine(toSQLValueS("019A838C-4411-48B7-A6D0-D4F33B78E619") & ",")
+                            sSQL.AppendLine(toSQLValueS(sAlphabankFileID) & ")")
+                            Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                                oCmd.ExecuteNonQuery()
+                            End Using
+                            lstLog.Items.Add("Η εγγραφή Καταχωρήθηκε με επιτυχία!-->" & sValRow)
+                            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
+                            lstLog.Items(lstLog.Items.Count - 1).Tag = sAlphabankID
+                            ItemsCorrect = ItemsCorrect + 1
+                        Catch ex As Exception
+                            lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
+                            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                            ItemsWrong = ItemsWrong + 1
+                        End Try
+                        sSQL.Clear()
+                        sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
                     End If
+                    'Else
+                    '    If x IsNot Nothing Then
+                    '        sCredit = GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName)
+                    '        lstLog.Items.Add("Βρέθηκε κίνηση Χρέωσης με αιτιολογία: " & sValRow & " και ποσό " & sCredit & " . Η κίνηση αγνοείται")
+                    '        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                    '        ItemsWrong = ItemsWrong + 1
+                    '    End If
+                    'End If
                 End If
+
                 ProgressBarControl1.PerformStep()
                 ProgressBarControl1.Update()
             Next i
@@ -497,48 +547,46 @@ Public Class frmBankCollectionInsert
             Dim sSQL As New System.Text.StringBuilder
             'Cmd = New SqlCommand("TRUNCATE TABLE NBG", CNDB) : Cmd.ExecuteNonQuery()
             sNbgFileID = System.Guid.NewGuid.ToString
-
             For i As Integer = 0 To GridView5.DataRowCount - 1
                 If GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName) IsNot Nothing Then
                     If GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName) IsNot Nothing Then sValRow = GridView5.GetRowCellValue(i, GridView5.Columns(3).FieldName).ToString() Else sValRow = "XXXXX"
                     If GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName) IsNot Nothing Then sDate = GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName).ToString()
                     x = GridView5.GetRowCellValue(i, GridView5.Columns(2).FieldName)
                     sCredit = GridView5.GetRowCellValue(i, GridView5.Columns(1).FieldName)
-                    If x = "Πίστωση" Then
-                        sbdgCode = regex.Match(sValRow).ToString
-                        Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
-                        Dim startindex As Integer = Pos + sbdgCode.Length - 1
-                        Dim length As Integer = sValRow.Length - Pos
-                        length = length - (sbdgCode.Length - 1)
-                        sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
-                        sAptAlternative = ConvertCharToENGR(sApt)
-                        sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(4).FieldName)
-
-                        If sbdgCode.Length > 0 Then
-                            Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
-                            sdr = Cmd.ExecuteReader()
-                            If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
-                            sdr.Close()
-                            Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
-                            sdr = Cmd.ExecuteReader()
-                            If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
-                            sdr.Close()
-                        End If
-                        Try
-                            sNbgID = System.Guid.NewGuid.ToString
-                            'Εισαγωγή εγγραφών από Ecxel sthn Βάση
-                            sSQL.AppendLine("INSERT INTO NBG (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
-                            sSQL.AppendLine(toSQLValueS(sNbgID) & ",")
-                            sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
-                            sSQL.AppendLine(toSQLValueS(sValRow) & ",")
-                            sSQL.AppendLine(toSQLValueS(sAptID) & ",")
-                            sSQL.AppendLine(toSQLValueS(sAptTTL) & ",")
-                            If sDate.Length > 0 Then sSQL.AppendLine(toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) & ",") Else sSQL.AppendLine("NULL,")
-                            sSQL.AppendLine(toSQLValueS(sbdgID) & ",")
-                            sSQL.AppendLine(toSQLValueS(sbdgNam) & ",")
-                            sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
-                            sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
-                            sSQL.AppendLine(toSQLValueS("D390AC98-CCAC-416C-B406-A6B4C67BAF0B") & ",")
+                    ' If x = "Πίστωση" Then
+                    sbdgCode = regex.Match(sValRow).ToString
+                    Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
+                    Dim startindex As Integer = Pos + sbdgCode.Length - 1
+                    Dim length As Integer = sValRow.Length - Pos
+                    length = length - (sbdgCode.Length - 1)
+                    sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
+                    sAptAlternative = ConvertCharToENGR(sApt)
+                    sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(4).FieldName)
+                    If sbdgCode.Length > 0 Then
+                        Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
+                        sdr = Cmd.ExecuteReader()
+                        If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                        sdr.Close()
+                        Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
+                        sdr = Cmd.ExecuteReader()
+                        If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                        sdr.Close()
+                    End If
+                    Try
+                        sNbgID = System.Guid.NewGuid.ToString
+                        'Εισαγωγή εγγραφών από Ecxel sthn Βάση
+                        sSQL.AppendLine("INSERT INTO NBG (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                        sSQL.AppendLine(toSQLValueS(sNbgID) & ",")
+                        sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
+                        sSQL.AppendLine(toSQLValueS(sValRow) & ",")
+                        sSQL.AppendLine(toSQLValueS(sAptID) & ",")
+                        sSQL.AppendLine(toSQLValueS(sAptTTL) & ",")
+                        If sDate.Length > 0 Then sSQL.AppendLine(toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) & ",") Else sSQL.AppendLine("NULL,")
+                        sSQL.AppendLine(toSQLValueS(sbdgID) & ",")
+                        sSQL.AppendLine(toSQLValueS(sbdgNam) & ",")
+                        sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
+                        sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
+                        sSQL.AppendLine(toSQLValueS("D390AC98-CCAC-416C-B406-A6B4C67BAF0B") & ",")
                             sSQL.AppendLine(toSQLValueS(sNbgFileID) & ")")
                             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                                 oCmd.ExecuteNonQuery()
@@ -554,13 +602,13 @@ Public Class frmBankCollectionInsert
                         End Try
                         sSQL.Clear()
                         sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
-                    Else
-                        If x IsNot Nothing Then
-                            lstLog.Items.Add("Βρέθηκε κίνηση Χρέωσης με αιτιολογία: " & sValRow & " και ποσό " & sCredit & " . Η κίνηση αγνοείται")
-                            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
-                            ItemsWrong = ItemsWrong + 1
-                        End If
-                    End If
+                    'Else
+                    '    If x IsNot Nothing Then
+                    '        lstLog.Items.Add("Βρέθηκε κίνηση Χρέωσης με αιτιολογία: " & sValRow & " και ποσό " & sCredit & " . Η κίνηση αγνοείται")
+                    '        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                    '        ItemsWrong = ItemsWrong + 1
+                    '    End If
+                    'End If
                 End If
                 ProgressBarControl1.PerformStep()
                 ProgressBarControl1.Update()
@@ -811,7 +859,21 @@ Public Class frmBankCollectionInsert
     Private Sub lstLog_DoubleClick(sender As Object, e As EventArgs) Handles lstLog.DoubleClick
         GridView5.ActiveFilterString = "[ID] = {" & lstLog.Items(lstLog.SelectedIndex).Tag & "}"
     End Sub
+    Private Sub NavAllBanks_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavAllBanks.ElementClick
+        BankMode = 5
+        Dim sActiveFilter As String
+        sActiveFilter = GridView5.ActiveFilterString
+        GridView5.ActiveFilterString = ""
 
+        grdBANKS.DataSource = Nothing
+        Me.Vw_COL_ALL_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS)
+        grdBANKS.DataSource = Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS
+        grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
+        LoadForms.RestoreLayoutFromXml(GridView5, "ALLBANKS.xml")
+        GridView5.BestFitColumns()
+        GridView5.ActiveFilterString = sActiveFilter
+
+    End Sub
     Private Sub NavPireos_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavPireos.ElementClick
         BankMode = 1 : FilesSelection()
     End Sub
@@ -869,15 +931,6 @@ Public Class frmBankCollectionInsert
         myProcess.Close()
     End Sub
 
-    Private Sub NavAllBanks_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavAllBanks.ElementClick
-        BankMode = 5
-        grdBANKS.DataSource = Nothing
-        Me.Vw_COL_ALL_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS)
-        grdBANKS.DataSource = Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS
-        grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
-        LoadForms.RestoreLayoutFromXml(GridView5, "ALLBANKS.xml")
-        GridView5.BestFitColumns()
-    End Sub
     Private Sub DeleteBatchRecords()
         Dim sSQL As String
         Dim selectedRowHandles As Int32() = GridView5.GetSelectedRows()

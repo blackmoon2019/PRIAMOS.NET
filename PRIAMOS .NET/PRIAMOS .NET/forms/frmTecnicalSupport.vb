@@ -73,8 +73,6 @@ Public Class frmTecnicalSupport
                 End If
         End Select
         Me.CenterToScreen()
-        My.Settings.frmTecnicalSupport = Me.Location
-        My.Settings.Save()
     End Sub
 
     Private Sub frmTecnicalSupport_Resize(sender As Object, e As EventArgs) Handles Me.Resize

@@ -59,9 +59,6 @@ Public Class frmPermissions
             '        Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
             LoadForms.RestoreLayoutFromXml(GridView1, "RIGHTS_def.xml")
             Me.CenterToScreen()
-            My.Settings.frmUsers = Me.Location
-            My.Settings.Save()
-
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
