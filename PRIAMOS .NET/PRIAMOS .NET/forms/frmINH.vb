@@ -363,11 +363,16 @@ Public Class frmINH
     Private Function CheckIfINHMonthExists() As Boolean
 
         Dim sSQL As String
-        If chkExtraordinary.Checked = False Then
-            sSQL = "select count(id) as CountINH from inh where extraordinary = 0 and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
-        Else
+        If chkExtraordinary.Checked = True Then
             sSQL = "select count(id) as CountINH from inh where extraordinary = 1 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
         End If
+        If chkCalorimetric.Checked = True Then
+            sSQL = "select count(id) as CountINH from inh where Calorimetric = 1 and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+        End If
+        If chkExtraordinary.Checked = False And chkCalorimetric.Checked = False Then
+            sSQL = "select count(id) as CountINH from inh where extraordinary = 0 and Calorimetric = 0 and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+        End If
+
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim CountINH As Integer
