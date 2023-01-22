@@ -169,21 +169,21 @@ Public Class frmCollections
             '         "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate) "
             strSql = "SELECT S.aptID, S.bdgID, S.inhID, S.completeDate, 
 		                    SUM(COL.debit) As debit, S.credit, S.bal, S.debitusrID, S.dtDebit, 
-		                    S.dtCredit,S.Etos,S.FromMonth,S.ToMonth,s.fDate,s.tDate    
+		                    S.dtCredit,S.Etos,S.FromMonth,S.ToMonth,s.fDate,s.tDate  ,s.Calorimetric
                     FROM COL
                     INNER JOIN
                     (
                     Select   aptID, c.bdgID, inhID, completeDate, 
 		                    SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
-		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth,fDate,tDate 
+		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth,fDate,tDate,I.Calorimetric 
                     From COL C 
 	                    INNER Join INH I ON I.ID=C.inhID 
 	                    INNER Join APT A ON C.aptID = A.ID where C.reserveAPT = 0 and completed=0    " & IIf(bdgID.Length > 0, " And C.bdgID = " & toSQLValueS(bdgID), "") &
-                        "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate  )
+                        "Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate,Calorimetric  )
 	                    AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
                         where COL.reserveAPT = 0 
-                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate   
-                    order by S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate   "
+                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric    
+                    order by S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric    "
 
             Tbl = New SqlDataAdapter(strSql, CNDB)
             Priamos_NETDataSet2.COL_INH.Clear()
@@ -967,20 +967,20 @@ Public Class frmCollections
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVINH.PopupMenuShowing
         Dim strSql As String = "SELECT TOP 1 S.aptID, S.bdgID, S.inhID, S.completeDate, 
 		                        SUM(COL.debit) As debit, S.credit, S.bal, S.debitusrID, S.dtDebit, 
-		                        S.dtCredit,S.Etos,S.FromMonth,S.ToMonth ,s.fDate,s.tDate   
+		                        S.dtCredit,S.Etos,S.FromMonth,S.ToMonth ,s.fDate,s.tDate , s.Calorimetric     
                                 FROM COL
                                 INNER JOIN
                                 (
                                 Select   aptID, c.bdgID, inhID, completeDate, 
 		                                SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
-		                                max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth  ,fDate,tDate  
+		                                max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth  ,fDate,tDate ,I.Calorimetric    
                                 From COL C 
 	                                INNER Join INH I ON I.ID=C.inhID 
 	                                INNER Join APT A ON C.aptID = A.ID where C.reserveAPT = 0 and completed=0    
-                                    Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate   )
+                                    Group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate,I.Calorimetric      )
 	                                AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
                                     where COL.reserveAPT = 0 
-                                GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate    "
+                                GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric       "
 
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVINH, "COL_INH_def.xml",, strSql)
     End Sub

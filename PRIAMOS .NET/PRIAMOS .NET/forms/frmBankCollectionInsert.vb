@@ -5,6 +5,8 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports DevExpress.CodeParser
 Imports DevExpress.DataAccess
+Imports DevExpress.DataAccess.Native
+Imports DevExpress.DataAccess.UI
 Imports DevExpress.Xpo
 Imports DevExpress.Xpo.DB
 Imports DevExpress.XtraBars.Navigation
@@ -196,7 +198,7 @@ Public Class frmBankCollectionInsert
         Dim sAptID As String, sAptTTL As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
-        Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
+        Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
         Dim sPireosID As String, sPireosFileID As String
         Try
             LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -253,13 +255,27 @@ Public Class frmBankCollectionInsert
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
                         lstLog.Items(lstLog.Items.Count - 1).Tag = sPireosID
                         ItemsCorrect = ItemsCorrect + 1
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
+                    Catch dbException As System.Data.SqlClient.SqlException
+                        If dbException.ErrorCode = "-2146232060" Then
+                            lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                        Else
+                            lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                        End If
+                        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
+                        ItemsWrong = ItemsWrong + 1
                     Catch ex As Exception
                         lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                         ItemsWrong = ItemsWrong + 1
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
                     End Try
                     sSQL.Clear()
-                    sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
+                    sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = "" : sbdgCode = ""
 
                 End If
                 ProgressBarControl1.PerformStep()
@@ -272,8 +288,10 @@ Public Class frmBankCollectionInsert
             LoadForms.RestoreLayoutFromXml(GridView5, "PIREOS.xml")
             GridView5.BestFitColumns()
 
-            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
+            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι από διπλές εγγραφές: " & ItemsWrongDB & " Άλλα σφάλματα που πρέπει να προσέξετε: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+            lstLog.SelectedIndex = lstLog.ItemCount + 1
+            lstLog.Refresh()
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sPireosFileID)
                 If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -292,7 +310,7 @@ Public Class frmBankCollectionInsert
         Dim sAptID As String, sAptTTL As String, sTransactionID As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
-        Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
+        Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
         Dim sAlphabankID As String, sAlphabankFileID As String
 
         Try
@@ -332,20 +350,22 @@ Public Class frmBankCollectionInsert
 
                             If sCredit <> 0 Then
                                 If sbdgCode.Length > 0 Then
-
-                                    Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
-                                    sdr = Cmd.ExecuteReader()
-                                    If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
-                                    sdr.Close()
-                                    Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
-                                    sdr = Cmd.ExecuteReader()
-                                    If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
-                                    sdr.Close()
+                                    'Αυτό το έβαλα γιατί ο καταθέτης δεν έχει περάσει αιτιολογία συνεπώς η τράπεζα βάζει κάτι δικό της που ξεκινάει με ΕΝΤ.
+                                    If sValRow.StartsWith("ΕΝΤ.") = False Then
+                                        Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
+                                        sdr = Cmd.ExecuteReader()
+                                        If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                                        sdr.Close()
+                                        Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
+                                        sdr = Cmd.ExecuteReader()
+                                        If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                                        sdr.Close()
+                                    End If
                                 End If
                                 Try
                                     sAlphabankID = System.Guid.NewGuid.ToString
                                     'Εισαγωγή εγγραφών από Ecxel sthn Βάση
-                                    sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                                    sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,createdOn,createdBy,MachineName,colBanksFID) VALUES( ")
                                     sSQL.AppendLine(toSQLValueS(sAlphabankID) & ",")
                                     sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
                                     sSQL.AppendLine(toSQLValueS(sValRow) & ",")
@@ -357,6 +377,9 @@ Public Class frmBankCollectionInsert
                                     sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
                                     sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
                                     sSQL.AppendLine(toSQLValueS("019A838C-4411-48B7-A6D0-D4F33B78E619") & ",")
+                                    sSQL.AppendLine("getdate() ,")
+                                    sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                                    sSQL.AppendLine(toSQLValueS(UserProps.MachineName) & ",")
                                     sSQL.AppendLine(toSQLValueS(sAlphabankFileID) & ")")
                                     Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                                         oCmd.ExecuteNonQuery()
@@ -364,14 +387,28 @@ Public Class frmBankCollectionInsert
                                     lstLog.Items.Add("Η εγγραφή Καταχωρήθηκε με επιτυχία!-->" & sValRow)
                                     lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
                                     lstLog.Items(lstLog.Items.Count - 1).Tag = sAlphabankID
+                                    lstLog.SelectedIndex = lstLog.ItemCount + 1
+                                    lstLog.Refresh()
                                     ItemsCorrect = ItemsCorrect + 1
+                                Catch dbException As System.Data.SqlClient.SqlException
+                                    If dbException.ErrorCode = "-2146232060" Then
+                                        lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                                    Else
+                                        lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                                    End If
+                                    lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                                    lstLog.SelectedIndex = lstLog.ItemCount + 1
+                                    lstLog.Refresh()
+                                    ItemsWrongDB = ItemsWrongDB + 1
                                 Catch ex As Exception
                                     lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                                     lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                                    lstLog.SelectedIndex = lstLog.ItemCount + 1
+                                    lstLog.Refresh()
                                     ItemsWrong = ItemsWrong + 1
                                 End Try
                                 sSQL.Clear()
-                                sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
+                                sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = "" : sbdgCode = ""
                             End If
                             Try
                                 sAlphabankID = System.Guid.NewGuid.ToString
@@ -395,14 +432,29 @@ Public Class frmBankCollectionInsert
                                 lstLog.Items.Add("Η εγγραφή Καταχωρήθηκε με επιτυχία!-->" & sValRow)
                                 lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
                                 lstLog.Items(lstLog.Items.Count - 1).Tag = sAlphabankID
+                                lstLog.SelectedIndex = lstLog.ItemCount + 1
+                                lstLog.Refresh()
                                 ItemsCorrect = ItemsCorrect + 1
+                            Catch dbException As System.Data.SqlClient.SqlException
+                                If dbException.ErrorCode = "-2146232060" Then
+                                    lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                                Else
+                                    lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                                End If
+
+                                lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                                lstLog.SelectedIndex = lstLog.ItemCount + 1
+                                lstLog.Refresh()
+                                ItemsWrongDB = ItemsWrongDB + 1
                             Catch ex As Exception
                                 lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                                 lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                                lstLog.SelectedIndex = lstLog.ItemCount + 1
+                                lstLog.Refresh()
                                 ItemsWrong = ItemsWrong + 1
                             End Try
                             sSQL.Clear()
-                            sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
+                            sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = "" : sbdgCode = ""
                         End If
                         'Else
                         '    If x IsNot Nothing Then
@@ -423,8 +475,10 @@ Public Class frmBankCollectionInsert
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
             LoadForms.RestoreLayoutFromXml(GridView5, "ALPHA.xml")
             GridView5.BestFitColumns()
-            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
+            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι από διπλές εγγραφές: " & ItemsWrongDB & " Άλλα σφάλματα που πρέπει να προσέξετε: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+            lstLog.SelectedIndex = lstLog.ItemCount + 1
+            lstLog.Refresh()
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sAlphabankFileID)
                 If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -442,7 +496,7 @@ Public Class frmBankCollectionInsert
         Dim sAptID As String, sAptTTL As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
-        Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
+        Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
         Dim sEurobankID As String, sEurobankFileID As String
         Try
             LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -500,13 +554,27 @@ Public Class frmBankCollectionInsert
                             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
                             lstLog.Items(lstLog.Items.Count - 1).Tag = sEurobankID
                             ItemsCorrect = ItemsCorrect + 1
+                            lstLog.SelectedIndex = lstLog.ItemCount + 1
+                            lstLog.Refresh()
+                        Catch dbException As System.Data.SqlClient.SqlException
+                            If dbException.ErrorCode = "-2146232060" Then
+                                lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                            Else
+                                lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                            End If
+                            lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                            lstLog.SelectedIndex = lstLog.ItemCount + 1
+                            lstLog.Refresh()
+                            ItemsWrong = ItemsWrong + 1
                         Catch ex As Exception
                             lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                             ItemsWrong = ItemsWrong + 1
+                            lstLog.SelectedIndex = lstLog.ItemCount + 1
+                            lstLog.Refresh()
                         End Try
                         sSQL.Clear()
-                        sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
+                        sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = "" : sbdgCode = ""
                     End If
                 End If
                 ProgressBarControl1.PerformStep()
@@ -518,8 +586,10 @@ Public Class frmBankCollectionInsert
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
             LoadForms.RestoreLayoutFromXml(GridView5, "EUROBANK.xml")
             GridView5.BestFitColumns()
-            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
+            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι από διπλές εγγραφές: " & ItemsWrongDB & " Άλλα σφάλματα που πρέπει να προσέξετε: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+            lstLog.SelectedIndex = lstLog.ItemCount + 1
+            lstLog.Refresh()
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sEurobankFileID)
                 If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -537,7 +607,7 @@ Public Class frmBankCollectionInsert
         Dim sAptID As String, sAptTTL As String, sTransactionID As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
-        Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
+        Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
         Dim sNbgID As String, sNbgFileID As String
         Try
             LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -598,13 +668,27 @@ Public Class frmBankCollectionInsert
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
                         lstLog.Items(lstLog.Items.Count - 1).Tag = sNbgID
                         ItemsCorrect = ItemsCorrect + 1
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
+                    Catch dbException As System.Data.SqlClient.SqlException
+                        If dbException.ErrorCode = "-2146232060" Then
+                            lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                        Else
+                            lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                        End If
+                        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
+                        ItemsWrong = ItemsWrong + 1
                     Catch ex As Exception
                         lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                         ItemsWrong = ItemsWrong + 1
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
                     End Try
                     sSQL.Clear()
-                        sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = ""
+                    sbdgID = "" : sbdgNam = "" : sAptID = "" : sAptTTL = "" : sbdgCode = ""
                     'Else
                     '    If x IsNot Nothing Then
                     '        lstLog.Items.Add("Βρέθηκε κίνηση Χρέωσης με αιτιολογία: " & sValRow & " και ποσό " & sCredit & " . Η κίνηση αγνοείται")
@@ -622,8 +706,10 @@ Public Class frmBankCollectionInsert
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
             LoadForms.RestoreLayoutFromXml(GridView5, "NBG.xml")
             GridView5.BestFitColumns()
-            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
+            lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι από διπλές εγγραφές: " & ItemsWrongDB & " Άλλα σφάλματα που πρέπει να προσέξετε: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+            lstLog.SelectedIndex = lstLog.ItemCount + 1
+            lstLog.Refresh()
             If ItemsCorrect > 0 Then
                 Dim sResult As Boolean = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "COL_BANKS_F", sNbgFileID)
                 If sResult = False Then XtraMessageBox.Show("Προσοχή το αρχείο Excel δεν αποθηκεύθηκε στην βάση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -682,11 +768,16 @@ Public Class frmBankCollectionInsert
     Private Sub RepBdg_EditValueChanged(sender As Object, e As EventArgs) Handles RepBdg.EditValueChanged
         Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
         Dim bdgCode As String = ""
-        If editor.EditValue Is Nothing Then GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", "") : Exit Sub
+        If editor.EditValue Is Nothing Then
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", "")
+            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgNam", "")
+            Exit Sub
+        End If
         repbdgID = editor.EditValue.ToString
         bdgCode = editor.GetColumnValue("old_code").ToString
         If bdgCode.Length = 0 Then editor.GetColumnValue("code").ToString()
         GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgCode", bdgCode)
+        GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "bdgNam", editor.Text)
     End Sub
     Private Sub GridView5_CustomRowCellEdit(sender As Object, e As CustomRowCellEditEventArgs) Handles GridView5.CustomRowCellEdit
         If e.RowHandle <> grdBANKS.NewItemRowHandle AndAlso e.Column.FieldName = "imageCell" Then
@@ -857,8 +948,6 @@ Public Class frmBankCollectionInsert
         End If
     End Sub
 
-
-
     Private Sub lstLog_DoubleClick(sender As Object, e As EventArgs) Handles lstLog.DoubleClick
         GridView5.ActiveFilterString = "[ID] = {" & lstLog.Items(lstLog.SelectedIndex).Tag & "}"
     End Sub
@@ -943,7 +1032,7 @@ Public Class frmBankCollectionInsert
         Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
         Try
             If selectedRowHandles.Length = 0 Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             ProgressBarControl1.EditValue = 0
             ProgressBarControl1.Properties.Step = 1
@@ -980,15 +1069,27 @@ Public Class frmBankCollectionInsert
                         lstLog.Items.Add("Η εγγραφή Διαγράφηκε με επιτυχία!-->" & GridView5.GetRowCellValue(selectedRowHandle, "reason").ToString)
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(0)
                         ItemsCorrect = ItemsCorrect + 1
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
+                    Catch dbException As System.Data.SqlClient.SqlException
+                        lstLog.Items.Add(dbException.Message.ToString.Replace(vbCrLf, ""))
+                        lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
+                        ItemsWrong = ItemsWrong + 1
                     Catch ex As Exception
                         lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                         ItemsWrong = ItemsWrong + 1
+                        lstLog.SelectedIndex = lstLog.ItemCount + 1
+                        lstLog.Refresh()
                     End Try
                 Else
                     ItemsWrong = ItemsWrong + 1
                     lstLog.Items.Add("Η εγγραφή είναι ολοκληρωμένη. Δεν μπορεί να γίνει διαγραφή!-->" & GridView5.GetRowCellValue(selectedRowHandle, "reason").ToString)
                     lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
+                    lstLog.SelectedIndex = lstLog.ItemCount + 1
+                    lstLog.Refresh()
                 End If
                 ProgressBarControl1.PerformStep()
                 ProgressBarControl1.Update()
@@ -1019,6 +1120,8 @@ Public Class frmBankCollectionInsert
             GridView5.BestFitColumns()
             lstLog.Items.Add("Διαγράφηκαν: " & ItemsCorrect & " Λάθοι: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
+            lstLog.SelectedIndex = lstLog.ItemCount + 1
+            lstLog.Refresh()
             LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
 
         Catch ex As Exception
@@ -1055,12 +1158,17 @@ Public Class frmBankCollectionInsert
             'If repbdgID.Length = 0 Then repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString
             sSQL.AppendLine("bdgID = " & toSQLValueS(repbdgID) & ",")
             sSQL.AppendLine("bdgCode = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgCode").ToString) & ",")
+            sSQL.AppendLine("bdgNam = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgNam").ToString) & ",")
             sSQL.AppendLine("aptID = " & toSQLValueS(repaptID) & ",")
             sSQL.AppendLine("ttl= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ttl").ToString) & ",")
             sSQL.AppendLine("completeDate= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "completeDate").ToString) & ",")
             sSQL.AppendLine("inhID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString) & ",")
             If CompletedCell = "" Then CompletedCell = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString
-            sSQL.AppendLine("Completed= " & toSQLValueS(CompletedCell))
+            sSQL.AppendLine("Completed= " & toSQLValueS(CompletedCell) & ",")
+            sSQL.AppendLine("modifiedBy= " & toSQLValueS(UserProps.ID.ToString) & ",")
+            sSQL.AppendLine("modifiedOn=  getdate() ,")
+            sSQL.AppendLine("MachineName= " & toSQLValueS(UserProps.MachineName))
+
             sSQL.AppendLine("WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString))
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                 oCmd.ExecuteNonQuery()

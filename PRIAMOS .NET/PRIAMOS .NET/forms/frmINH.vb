@@ -786,8 +786,9 @@ Public Class frmINH
 
     Private Sub Calculate()
         Try
-            Dim sAhpbID As String
-            Dim sAhpbBID As String
+            Dim sAhpbID As String, sAhpbText As String
+            Dim sAhpbBID As String, sAhpbBtext As String
+
             Using oCmd As New SqlCommand("inv_Calculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
@@ -795,17 +796,17 @@ Public Class frmINH
                 ' Εαν είναι νέα εγγραφή τότε παίρνω την τιμή της ώρας από το Combo στο FlyoutPanel
                 If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
                     cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbH.EditValue Is Nothing Then
-                    If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper
+                    If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper : sAhpbText = cboAhpb.Text
                 Else
                     ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
-                    If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper
+                    If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
                 End If
                 If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
                     cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbHB.EditValue Is Nothing Then
-                    If cboAhpbB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbB.EditValue.ToString.ToUpper
+                    If cboAhpbB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbB.Text
                 Else
                     ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
-                    If cboAhpbHB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper
+                    If cboAhpbHB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
                 End If
 
                 oCmd.Parameters.AddWithValue("@ahpbHID", System.Guid.Parse(sAhpbID))
@@ -813,6 +814,11 @@ Public Class frmINH
                 oCmd.ExecuteNonQuery()
             End Using
             XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If sAhpbText <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & sAhpbText : Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+            If sAhpbBtext <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & sAhpbBtext : Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
+
+
+
             chkCalculated.CheckState = CheckState.Checked
             chkCalculated.Checked = True
             LcmdCancelCalculate.Enabled = True

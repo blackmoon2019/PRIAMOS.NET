@@ -333,4 +333,43 @@ Public Class frmTecnicalSupport
     Private Sub PictureEdit13_EditValueChanged(sender As Object, e As EventArgs) Handles PictureEdit13.EditValueChanged
 
     End Sub
+
+    Private Sub File1_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File1.ButtonClick
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then File1.EditValue = XtraOpenFileDialog1.SafeFileName
+    End Sub
+
+    Private Sub File2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File2.ButtonClick
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then File2.EditValue = XtraOpenFileDialog1.SafeFileName
+    End Sub
+    Private Sub File3_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File3.ButtonClick
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then File3.EditValue = XtraOpenFileDialog1.SafeFileName
+    End Sub
+    Private Sub File4_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File4.ButtonClick
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then File4.EditValue = XtraOpenFileDialog1.SafeFileName
+    End Sub
+
 End Class
