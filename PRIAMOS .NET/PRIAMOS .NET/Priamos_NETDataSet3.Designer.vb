@@ -18288,11 +18288,11 @@ Namespace Priamos_NETDataSet3TableAdapters
                 " A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, C.debitusrID, C.dtDebit, YEAR"& _ 
                 "(I.fDate), MONTH(I.fDate), MONTH(I.tDate), I.fDate, I.tDate) AS S ON S.bdgID = C"& _ 
                 "OL.bdgID AND S.aptID = COL.aptID AND S.inhID = COL.inhID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (COL.reserveAPT "& _ 
-                "= 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S"& _ 
-                ".dtDebit, S.Etos, S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, "& _ 
-                "S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY S.aptID, S.bdgID, S.inhID, S.completeDate, S.debit"& _ 
-                "usrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S"& _ 
-                ".fDate, S.tDate, COL.tenant"
+                "= 0) AND (COL.completed = 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY S.ttl, S.aptID, S.bdgID, S.inhID, S.compl"& _ 
+                "eteDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, S.credit, S.ba"& _ 
+                "l, S.dtCredit, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY S.aptID, S.bdgID, S.inhID,"& _ 
+                " S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, S.cred"& _ 
+                "it, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -19568,7 +19568,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, complete"& _ 
                 "Date, inhID, colBanksFID, bankID, Completed, BankName, filename"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL_A"& _ 
-                "LL_BANKS"
+                "LL_BANKS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

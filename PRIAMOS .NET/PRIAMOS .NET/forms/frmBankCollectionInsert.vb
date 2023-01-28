@@ -7,6 +7,7 @@ Imports DevExpress.CodeParser
 Imports DevExpress.DataAccess
 Imports DevExpress.DataAccess.Native
 Imports DevExpress.DataAccess.UI
+Imports DevExpress.Utils.Gesture
 Imports DevExpress.Xpo
 Imports DevExpress.Xpo.DB
 Imports DevExpress.XtraBars.Navigation
@@ -18,6 +19,7 @@ Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
+Imports DevExpress.XtraPrinting.BarCode
 
 Public Class frmBankCollectionInsert
     Private DBQ As New DBQueries
@@ -338,6 +340,7 @@ Public Class frmBankCollectionInsert
                             sbdgCode = regex.Match(sValRow).ToString
                             sValRow = sValRow.Replace("=", "")
                             sValRow = sValRow.Replace("""", "")
+                            sValRow = sValRow.Replace("'", "")
                             Dim Pos As Integer = InStr(sValRow.Trim, sbdgCode)
                             Dim startindex As Integer = Pos + sbdgCode.Length - 1
                             Dim length As Integer = sValRow.Length - Pos
@@ -347,6 +350,7 @@ Public Class frmBankCollectionInsert
                             sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(2).FieldName)
                             sTransactionID = sTransactionID.Replace("=", "")
                             sTransactionID = sTransactionID.Replace("""", "")
+                            sTransactionID = sTransactionID.Replace("'", "")
 
                             If sCredit <> 0 Then
                                 If sbdgCode.Length > 0 Then
@@ -726,6 +730,7 @@ Public Class frmBankCollectionInsert
         Try
             If GridView5.FocusedRowHandle < 0 Then Exit Sub
             Dim bdgID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString()
+
             If view.FocusedColumn.FieldName = "aptID" And bdgID.Length > 0 Then
                 Dim editor As LookUpEdit = CType(view.ActiveEditor, LookUpEdit)
                 If bdgID.Length > 0 Then editor.Properties.DataSource = Me.Vw_APTTableAdapter.GetDataByBDGID(System.Guid.Parse(bdgID))
@@ -746,6 +751,7 @@ Public Class frmBankCollectionInsert
         If e.CellValue Is Nothing Then Exit Sub
         If e.Column.FieldName = "aptID" Then e.DisplayText = GRD5.GetRowCellValue(e.RowHandle, "ttl").ToString()
         If e.Column.FieldName = "inhID" Then e.DisplayText = GRD5.GetRowCellValue(e.RowHandle, "completeDate").ToString()
+        If e.Column.FieldName = "bdgID" Then e.DisplayText = GRD5.GetRowCellValue(e.RowHandle, "bdgNam").ToString()
     End Sub
 
     Private Sub RepApt_EditValueChanged(sender As Object, e As EventArgs) Handles RepApt.EditValueChanged
@@ -962,7 +968,7 @@ Public Class frmBankCollectionInsert
         grdBANKS.DataSource = Me.Priamos_NETDataSet3.vw_COL_ALL_BANKS
         grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
         LoadForms.RestoreLayoutFromXml(GridView5, "ALLBANKS.xml")
-        GridView5.BestFitColumns()
+        ' GridView5.BestFitColumns()
         'GridView5.ActiveFilterString = sActiveFilter
 
     End Sub
@@ -1154,8 +1160,8 @@ Public Class frmBankCollectionInsert
                         Case "ΕΘΝΙΚΗ" : sSQL.AppendLine("UPDATE NBG SET ")
                     End Select
             End Select
-            'If repaptID.Length = 0 Then repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString
-            'If repbdgID.Length = 0 Then repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString
+            'repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString
+            'repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString
             sSQL.AppendLine("bdgID = " & toSQLValueS(repbdgID) & ",")
             sSQL.AppendLine("bdgCode = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgCode").ToString) & ",")
             sSQL.AppendLine("bdgNam = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgNam").ToString) & ",")
@@ -1200,13 +1206,29 @@ Public Class frmBankCollectionInsert
     End Sub
 
     Friend Sub RepApt_Changed(sender As Object, e As EventArgs)
-        UpdateColBanks()
+        Dim completed As Boolean
+        completed = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed")
+        If completed = False Then
+            repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+            UpdateColBanks()
+        End If
     End Sub
     Friend Sub RepColPerBdgApt_Changed(sender As Object, e As EventArgs)
-        UpdateColBanks()
+        Dim completed As Boolean
+        completed = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed")
+        If completed = False Then
+            repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
+            repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString
+            UpdateColBanks()
+        End If
     End Sub
     Friend Sub RepBDG_Changed(sender As Object, e As EventArgs)
-        UpdateColBanks()
+        Dim completed As Boolean
+        completed = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed")
+        If completed = False Then
+            repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString
+            UpdateColBanks()
+        End If
     End Sub
 
 
@@ -1215,6 +1237,7 @@ Public Class frmBankCollectionInsert
             Case 1 : repbdgID = "" : GridView5.ActiveEditor.EditValue = Nothing : ClearMode = 1 : GridView5.ValidateEditor()
             Case 2
                 Dim sBdgID As String
+                Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
                 sBdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
                 If sBdgID = "" Then sBdgID = repbdgID
                 If sBdgID <> "" Then

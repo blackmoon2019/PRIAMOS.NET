@@ -104,10 +104,10 @@ Public Class CombosManager
         Else
             form1.RGTypeHeating.SelectedIndex = 1
         End If
-        form1.HeatingSelected()
         If CallerControl.EditValue <> Nothing Then form1.cboBefMes.EditValue = CDate(sMDT)
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
+        form1.HeatingSelected()
     End Sub
     Public Sub ManageAnnouncements(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal FrmCaller As DevExpress.XtraEditors.XtraForm)
         Dim form1 As frmGen = New frmGen()
