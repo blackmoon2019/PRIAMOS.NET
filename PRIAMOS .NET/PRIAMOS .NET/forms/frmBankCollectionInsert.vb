@@ -197,7 +197,7 @@ Public Class frmBankCollectionInsert
     Private Sub PIREOS_TRANS()
         Dim sValRow As String, sDate As String, sCredit As Double
         Dim sbdgCode As String, sbdgID As String, sbdgNam As String, sApt As String, sAptAlternative As String
-        Dim sAptID As String, sAptTTL As String
+        Dim sAptID As String = "", sAptTTL As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
         Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
@@ -229,16 +229,18 @@ Public Class frmBankCollectionInsert
                         Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
                         sdr = Cmd.ExecuteReader()
                         If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                        If sbdgID = "" Then sbdgCode = "" : sbdgNam = ""
                         sdr.Close()
                         Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
                         sdr = Cmd.ExecuteReader()
                         If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                        If sAptID = "" Then sAptTTL = ""
                         sdr.Close()
                     End If
                     Try
                         sPireosID = System.Guid.NewGuid.ToString
                         'Εισαγωγή εγγραφών από Ecxel sthn Βάση
-                        sSQL.AppendLine("INSERT INTO PIREOS (ID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                        sSQL.AppendLine("INSERT INTO PIREOS (ID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,createdOn,createdBy,MachineName,colBanksFID) VALUES( ")
                         sSQL.AppendLine(toSQLValueS(sPireosID) & ",")
                         sSQL.AppendLine(toSQLValueS(sValRow) & ",")
                         sSQL.AppendLine(toSQLValueS(sAptID) & ",")
@@ -249,6 +251,9 @@ Public Class frmBankCollectionInsert
                         sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
                         sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
                         sSQL.AppendLine(toSQLValueS("92B4B01C-0F8C-4A02-982A-149C02F42C32") & ",")
+                        sSQL.AppendLine("getdate() ,")
+                        sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                        sSQL.AppendLine(toSQLValueS(UserProps.MachineName) & ",")
                         sSQL.AppendLine(toSQLValueS(sPireosFileID) & ")")
                         Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                             oCmd.ExecuteNonQuery()
@@ -308,8 +313,8 @@ Public Class frmBankCollectionInsert
 
     Private Sub ALPHA_TRANS()
         Dim sValRow As String, sDate As String, sCredit As Double
-        Dim sbdgCode As String, sbdgID As String, sbdgNam As String, sApt As String, sAptAlternative As String, x As String = ""
-        Dim sAptID As String, sAptTTL As String, sTransactionID As String
+        Dim sbdgCode As String, sbdgID As String = "", sbdgNam As String, sApt As String, sAptAlternative As String, x As String = ""
+        Dim sAptID As String = "", sAptTTL As String, sTransactionID As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
         Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
@@ -359,10 +364,12 @@ Public Class frmBankCollectionInsert
                                         Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
                                         sdr = Cmd.ExecuteReader()
                                         If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                                        If sbdgID = "" Then sbdgCode = "" : sbdgNam = ""
                                         sdr.Close()
                                         Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
                                         sdr = Cmd.ExecuteReader()
                                         If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                                        If sAptID = "" Then sAptTTL = ""
                                         sdr.Close()
                                     End If
                                 End If
@@ -417,7 +424,7 @@ Public Class frmBankCollectionInsert
                             Try
                                 sAlphabankID = System.Guid.NewGuid.ToString
                                 'Εισαγωγή εγγραφών από Ecxel sthn Βάση
-                                sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                                sSQL.AppendLine("INSERT INTO ALPHA (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,createdOn,createdBy,MachineName,colBanksFID) VALUES( ")
                                 sSQL.AppendLine(toSQLValueS(sAlphabankID) & ",")
                                 sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
                                 sSQL.AppendLine(toSQLValueS(sValRow) & ",")
@@ -429,6 +436,9 @@ Public Class frmBankCollectionInsert
                                 sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
                                 sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
                                 sSQL.AppendLine(toSQLValueS("019A838C-4411-48B7-A6D0-D4F33B78E619") & ",")
+                                sSQL.AppendLine("getdate() ,")
+                                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                                sSQL.AppendLine(toSQLValueS(UserProps.MachineName) & ",")
                                 sSQL.AppendLine(toSQLValueS(sAlphabankFileID) & ")")
                                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                                     oCmd.ExecuteNonQuery()
@@ -496,8 +506,8 @@ Public Class frmBankCollectionInsert
     End Sub
     Private Sub EUROBANK_TRANS()
         Dim sValRow As String, sDate As String, sCredit As Double
-        Dim sbdgCode As String, sbdgID As String, sbdgNam As String, sApt As String, sAptAlternative As String
-        Dim sAptID As String, sAptTTL As String
+        Dim sbdgCode As String, sbdgID As String = "", sbdgNam As String, sApt As String, sAptAlternative As String
+        Dim sAptID As String = "", sAptTTL As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
         Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
@@ -530,16 +540,18 @@ Public Class frmBankCollectionInsert
                             Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
                             sdr = Cmd.ExecuteReader()
                             If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                            If sbdgID = "" Then sbdgCode = "" : sbdgNam = ""
                             sdr.Close()
                             Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
                             sdr = Cmd.ExecuteReader()
                             If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                            If sAptID = "" Then sAptTTL = ""
                             sdr.Close()
                         End If
                         Try
                             'Εισαγωγή εγγραφών από Ecxel sthn Βάση
                             sEurobankID = System.Guid.NewGuid.ToString
-                            sSQL.AppendLine("INSERT INTO EUROBANK (ID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                            sSQL.AppendLine("INSERT INTO EUROBANK (ID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,createdOn,createdBy,MachineName,colBanksFID) VALUES( ")
                             sSQL.AppendLine(toSQLValueS(sEurobankID) & ",")
                             sSQL.AppendLine(toSQLValueS(sValRow) & ",")
                             sSQL.AppendLine(toSQLValueS(sAptID) & ",")
@@ -550,6 +562,9 @@ Public Class frmBankCollectionInsert
                             sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
                             sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
                             sSQL.AppendLine(toSQLValueS("5875B070-AFBC-4773-9267-AF4EDF8150D4") & ",")
+                            sSQL.AppendLine("getdate() ,")
+                            sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                            sSQL.AppendLine(toSQLValueS(UserProps.MachineName) & ",")
                             sSQL.AppendLine(toSQLValueS(sEurobankFileID) & ")")
                             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                                 oCmd.ExecuteNonQuery()
@@ -607,8 +622,8 @@ Public Class frmBankCollectionInsert
     End Sub
     Private Sub NBG_TRANS()
         Dim sValRow As String, sDate As String, sCredit As Double
-        Dim sbdgCode As String, sbdgID As String, sbdgNam As String, sApt As String, sAptAlternative As String, x As String = ""
-        Dim sAptID As String, sAptTTL As String, sTransactionID As String
+        Dim sbdgCode As String, sbdgID As String = "", sbdgNam As String, sApt As String, sAptAlternative As String, x As String = ""
+        Dim sAptID As String = "", sAptTTL As String, sTransactionID As String
         Dim regex As New Regex("(\d{5})")
         Dim Cmd As SqlCommand, sdr As SqlDataReader
         Dim ItemsCorrect As Integer = 0, ItemsWrongDB As Integer = 0, ItemsWrong = 0
@@ -643,16 +658,18 @@ Public Class frmBankCollectionInsert
                         Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
                         sdr = Cmd.ExecuteReader()
                         If (sdr.Read() = True) Then sbdgID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString : sbdgNam = sdr.GetString(sdr.GetOrdinal("Nam"))
+                        If sbdgID = "" Then sbdgCode = "" : sbdgNam = ""
                         sdr.Close()
                         Cmd = New SqlCommand("SELECT top 1 id,ttl FROM vw_APT WHERE coalesce(bdgoldCode,bdgcode)= " & toSQLValueS(sbdgCode) & " and (ttl = " & toSQLValueS(sApt) & " OR ttl = " & toSQLValueS(sAptAlternative) & ")", CNDB)
                         sdr = Cmd.ExecuteReader()
                         If (sdr.Read() = True) Then sAptID = sdr.GetGuid(sdr.GetOrdinal("id")).ToString : sAptTTL = sdr.GetString(sdr.GetOrdinal("ttl"))
+                        If sAptID = "" Then sAptTTL = ""
                         sdr.Close()
                     End If
                     Try
                         sNbgID = System.Guid.NewGuid.ToString
                         'Εισαγωγή εγγραφών από Ecxel sthn Βάση
-                        sSQL.AppendLine("INSERT INTO NBG (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,colBanksFID) VALUES( ")
+                        sSQL.AppendLine("INSERT INTO NBG (ID,TransactionID,reason,aptID,TTL,dtCreate,bdgID, bdgNam,bdgCode,credit,BankID,createdOn,createdBy,MachineName,colBanksFID) VALUES( ")
                         sSQL.AppendLine(toSQLValueS(sNbgID) & ",")
                         sSQL.AppendLine(toSQLValueS(sTransactionID) & ",")
                         sSQL.AppendLine(toSQLValueS(sValRow) & ",")
@@ -664,6 +681,9 @@ Public Class frmBankCollectionInsert
                         sSQL.AppendLine(toSQLValueS(sbdgCode) & ",")
                         sSQL.AppendLine(toSQLValueS(sCredit, True) & ",")
                         sSQL.AppendLine(toSQLValueS("D390AC98-CCAC-416C-B406-A6B4C67BAF0B") & ",")
+                        sSQL.AppendLine("getdate() ,")
+                        sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                        sSQL.AppendLine(toSQLValueS(UserProps.MachineName) & ",")
                         sSQL.AppendLine(toSQLValueS(sNbgFileID) & ")")
                         Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                             oCmd.ExecuteNonQuery()
@@ -895,6 +915,7 @@ Public Class frmBankCollectionInsert
                         oCmd.Parameters.AddWithValue("@ExecuteForColBanks", 1)
                         oCmd.ExecuteNonQuery()
                         GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
+                        repaptID = sAptID : repbdgID = sBdgID
                         UpdateColBanks()
                         XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End Using
@@ -923,6 +944,7 @@ Public Class frmBankCollectionInsert
                         oCmd.Parameters.AddWithValue("@ExecuteForColBanks", 0)
                         oCmd.ExecuteNonQuery()
                         GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
+                        repaptID = sAptID : repbdgID = sBdgID
                         UpdateColBanks()
                         XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End Using
@@ -1308,6 +1330,8 @@ Public Class frmBankCollectionInsert
                 e.ErrorText = "Δεν μπορείτε την είσπραξη να την κάνετε μη Ολοκληρωμένη γιατί έχουν γίνει εξοφλήσεις"
                 e.Valid = False
             Else
+                repaptID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper
+                repbdgID = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgID").ToString.ToUpper
                 UpdateColBanks(e.Value.ToString)
             End If
         Else

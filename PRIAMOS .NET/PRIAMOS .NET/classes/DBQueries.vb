@@ -68,6 +68,8 @@ Public Class DBQueries
                         sSQL.AppendLine("INSERT INTO BDG_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "COL_BANKS_F"
                         sSQL.AppendLine("INSERT INTO COL_BANKS_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " ID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                    Case "TECH_SUP_F"
+                        sSQL.AppendLine("INSERT INTO TECH_SUP_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " techSupID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
                 End Select
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))

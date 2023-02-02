@@ -2,8 +2,15 @@
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Net.Mail
+Imports DevExpress.DataAccess
+Imports DevExpress.DataAccess.Native
+Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraExport.Helpers
+Imports DevExpress.XtraGrid.Menu
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmTecnicalSupport
     Private sID As String
@@ -65,6 +72,7 @@ Public Class frmTecnicalSupport
             Case FormMode.EditRecord
                 'LoadForms.LoadForm(LayoutControl1, "Select * from vw_TECH_SUP where id ='" + sID + "'")
                 LoadForms.LoadForm(LayoutControl1, "Select IMAGE,imageAns,IMAGE1,IMAGE2,IMAGE3, vw_TECH_SUP.*  from vw_TECH_SUP INNER JOIN TECH_SUP ON vw_TECH_SUP.ID = TECH_SUP.ID where vw_TECH_SUP.ID ='" + sID + "'")
+                LoadForms.LoadDataToGrid(GridControl1, GridView1, "select ID,techSUPID,files,filename,comefrom,createdon,realname From vw_TECH_SUP_F where techSupID = '" & sID & "'")
 
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
                     chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True : txtAnswer.ReadOnly = False
@@ -72,6 +80,7 @@ Public Class frmTecnicalSupport
                     cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True
                 End If
         End Select
+        LoadForms.RestoreLayoutFromXml(GridView1, "TECH_SUP_F_def.xml")
         Me.CenterToScreen()
     End Sub
 
@@ -95,11 +104,13 @@ Public Class frmTecnicalSupport
                 End Select
                 If sResult Then
                     SaveTech = True
-                    'Καθαρισμός Controls
-                    'If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
-                    'txtCode.Text = DBQ.GetNextId("TECH_SUP")
-                    'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    'cmdEmail.Enabled = True
+                    'Εκτέλεση QUERY
+                    If txtFileNames.Text <> "" Then
+                        sResult = DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "TECH_SUP_F", IIf(Mode = FormMode.NewRecord, sGuid, sID))
+                        LoadForms.LoadDataToGrid(GridControl1, GridView1, "select ID,techSupID,files,filename,comefrom,createdon,realname From vw_TECH_SUP_F where techSupID = " & toSQLValueS(IIf(Mode = FormMode.NewRecord, sGuid, sID)))
+                        LoadForms.RestoreLayoutFromXml(GridView1, "TECH_SUP_F_def.xml")
+                    End If
+
                     Dim form As New frmScroller
                     form.LoadRecords("vw_TECH_SUP")
                 Else
@@ -112,7 +123,6 @@ Public Class frmTecnicalSupport
             SaveTech = False
         End Try
     End Function
-
 
     Private Sub cmdEmail_Click(sender As Object, e As EventArgs) Handles cmdEmail.Click
         Dim sSQL As String
@@ -329,47 +339,74 @@ Public Class frmTecnicalSupport
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         If SaveTech(True) Then XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
-
-    Private Sub PictureEdit13_EditValueChanged(sender As Object, e As EventArgs) Handles PictureEdit13.EditValueChanged
-
+    Private Sub txtFileNames_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtFileNames.ButtonClick
+        If e.Button.Index = 0 Then
+            FilesSelection()
+        Else
+            txtFileNames.EditValue = Nothing
+        End If
     End Sub
 
-    Private Sub File1_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File1.ButtonClick
+    Private Sub FilesSelection()
+
+        'XtraOpenFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
         XtraOpenFileDialog1.FilterIndex = 1
         XtraOpenFileDialog1.InitialDirectory = "C:\"
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
-        XtraOpenFileDialog1.Multiselect = False
+        XtraOpenFileDialog1.Multiselect = True
         Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
-        If result = DialogResult.OK Then File1.EditValue = XtraOpenFileDialog1.SafeFileName
+        If result = DialogResult.OK Then
+            txtFileNames.EditValue = ""
+            For I = 0 To XtraOpenFileDialog1.FileNames.Count - 1
+                txtFileNames.EditValue = txtFileNames.EditValue & IIf(txtFileNames.EditValue <> "", ";", "") & XtraOpenFileDialog1.SafeFileNames(I)
+            Next I
+
+
+        End If
+    End Sub
+    Private Sub GridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView1.KeyDown
+        Select Case e.KeyCode
+            'Case Keys.F2 : If UserProps.AllowInsert = True Then NewRecord()
+            'Case Keys.F3 : If UserProps.AllowEdit = True Then EditRecord()
+            'Case Keys.F5 : LoadRecords()
+            Case Keys.Delete : DeleteRecord() 'If UserProps.AllowDelete = True Then DeleteRecord()
+        End Select
+
     End Sub
 
-    Private Sub File2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File2.ButtonClick
-        XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
-        XtraOpenFileDialog1.Title = "Open File"
-        XtraOpenFileDialog1.CheckFileExists = False
-        XtraOpenFileDialog1.Multiselect = False
-        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
-        If result = DialogResult.OK Then File2.EditValue = XtraOpenFileDialog1.SafeFileName
-    End Sub
-    Private Sub File3_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File3.ButtonClick
-        XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
-        XtraOpenFileDialog1.Title = "Open File"
-        XtraOpenFileDialog1.CheckFileExists = False
-        XtraOpenFileDialog1.Multiselect = False
-        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
-        If result = DialogResult.OK Then File3.EditValue = XtraOpenFileDialog1.SafeFileName
-    End Sub
-    Private Sub File4_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles File4.ButtonClick
-        XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
-        XtraOpenFileDialog1.Title = "Open File"
-        XtraOpenFileDialog1.CheckFileExists = False
-        XtraOpenFileDialog1.Multiselect = False
-        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
-        If result = DialogResult.OK Then File4.EditValue = XtraOpenFileDialog1.SafeFileName
-    End Sub
 
+    Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
+        If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
+        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"), IO.FileMode.Create)
+        Dim b() As Byte = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "files")
+        Try
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+            ShellExecute("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"))
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub DeleteRecord()
+        Dim sSQL As String
+        Try
+            If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM TECH_SUP_F WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                LoadForms.LoadDataToGrid(GridControl1, GridView1, "select ID,techsupID,filename,comefrom,createdon,realname From vw_TECH_SUP_F where techsupID = '" & sID & "'")
+                LoadForms.RestoreLayoutFromXml(GridView1, "TECH_SUP_F_def.xml")
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView1, "TECH_SUP_F_def.xml", "TECH_SUP_F")
+    End Sub
 End Class

@@ -21,6 +21,7 @@ Partial Class frmCustomers
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkEmployer = New DevExpress.XtraEditors.CheckEdit()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.chkPRF = New DevExpress.XtraEditors.CheckedListBoxControl()
@@ -92,11 +93,11 @@ Partial Class frmCustomers
         Me.LayoutControlItem23 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
-        Me.chkEmployer = New DevExpress.XtraEditors.CheckEdit()
         Me.LayoutControlItem32 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkEmployer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPRF, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,7 +167,6 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkEmployer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -214,6 +214,20 @@ Partial Class frmCustomers
         Me.LayoutControl1.Size = New System.Drawing.Size(1273, 1447)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'chkEmployer
+        '
+        Me.chkEmployer.EditValue = CType(0, Byte)
+        Me.chkEmployer.Location = New System.Drawing.Point(782, 12)
+        Me.chkEmployer.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkEmployer.Name = "chkEmployer"
+        Me.chkEmployer.Properties.Caption = "Προσωπικό(Priamos)"
+        Me.chkEmployer.Properties.ValueChecked = CType(1, Byte)
+        Me.chkEmployer.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkEmployer.Size = New System.Drawing.Size(479, 32)
+        Me.chkEmployer.StyleController = Me.LayoutControl1
+        Me.chkEmployer.TabIndex = 41
+        Me.chkEmployer.Tag = "IsEmployer,0,1,2"
         '
         'cmdExit
         '
@@ -1006,25 +1020,6 @@ Partial Class frmCustomers
         Me.EmptySpaceItem2.Size = New System.Drawing.Size(840, 43)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
-        'XtraOpenFileDialog1
-        '
-        Me.XtraOpenFileDialog1.Multiselect = True
-        Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
-        '
-        'chkEmployer
-        '
-        Me.chkEmployer.EditValue = CType(0, Byte)
-        Me.chkEmployer.Location = New System.Drawing.Point(782, 12)
-        Me.chkEmployer.Margin = New System.Windows.Forms.Padding(5)
-        Me.chkEmployer.Name = "chkEmployer"
-        Me.chkEmployer.Properties.Caption = "Προσωπικό(Priamos)"
-        Me.chkEmployer.Properties.ValueChecked = CType(1, Byte)
-        Me.chkEmployer.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkEmployer.Size = New System.Drawing.Size(479, 32)
-        Me.chkEmployer.StyleController = Me.LayoutControl1
-        Me.chkEmployer.TabIndex = 41
-        Me.chkEmployer.Tag = "IsEmployer,0,1,2"
-        '
         'LayoutControlItem32
         '
         Me.LayoutControlItem32.Control = Me.chkEmployer
@@ -1033,6 +1028,11 @@ Partial Class frmCustomers
         Me.LayoutControlItem32.Size = New System.Drawing.Size(483, 42)
         Me.LayoutControlItem32.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem32.TextVisible = False
+        '
+        'XtraOpenFileDialog1
+        '
+        Me.XtraOpenFileDialog1.Multiselect = True
+        Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
         '
         'frmCustomers
         '
@@ -1047,6 +1047,7 @@ Partial Class frmCustomers
         Me.Text = "Επαφές"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkEmployer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPRF, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkPartner.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkSupplier.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1116,7 +1117,6 @@ Partial Class frmCustomers
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkEmployer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem32, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
