@@ -606,7 +606,7 @@ NextItem:
             GetNewestFileFromServer(Application.StartupPath & "\DSGNS\DEF\" & sXMLName)
             GridView.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\" & sXMLName, OptionsLayoutBase.FullLayout)
         End If
-        GridView.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True
+        GridView.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False
     End Sub
 
     Public Sub PopupMenuShow(ByVal e As Views.Grid.PopupMenuShowingEventArgs, ByVal GridView As GridView, ByVal sXMLName As String, Optional ByVal sTableName As String = "",

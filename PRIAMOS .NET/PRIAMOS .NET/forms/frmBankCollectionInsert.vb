@@ -336,7 +336,7 @@ Public Class frmBankCollectionInsert
                 If GridView5.GetRowCellValue(i, GridView5.Columns(0).FieldName) IsNot Nothing Then
                     If GridView5.GetRowCellValue(i, GridView5.Columns(1).FieldName) IsNot Nothing Then sValRow = GridView5.GetRowCellValue(i, GridView5.Columns(1).FieldName).ToString().Trim Else sValRow = "XXXXX"
                     If sValRow <> "Αιτιολογία" Then
-                        ' Στήλη Χ/Π - Αν είναι Χ τότε η εγγραφή πρεπει να αγνοείται
+                        ' Στήλη Χ/Π - Αν είναι Χ τότε η εγγραφή πρεπει να αλλάζεται το κλειδί
                         x = GridView5.GetRowCellValue(i, GridView5.Columns(4).FieldName)
                         ' If x = "Π" Then
                         If x IsNot Nothing Then
@@ -356,7 +356,8 @@ Public Class frmBankCollectionInsert
                             sTransactionID = sTransactionID.Replace("=", "")
                             sTransactionID = sTransactionID.Replace("""", "")
                             sTransactionID = sTransactionID.Replace("'", "")
-
+                            ' Για την περίπτωση που η κίνηση είναι χρέωσης πρέπει να αλλάξουμε το κλειδί γιατί έχει ίδιο transactionid στην Alpha η Χρέωση και η πίστωση
+                            If x = "Χ" Then sTransactionID = sTransactionID & "-X"
                             If sCredit <> 0 Then
                                 If sbdgCode.Length > 0 Then
                                     'Αυτό το έβαλα γιατί ο καταθέτης δεν έχει περάσει αιτιολογία συνεπώς η τράπεζα βάζει κάτι δικό της που ξεκινάει με ΕΝΤ.

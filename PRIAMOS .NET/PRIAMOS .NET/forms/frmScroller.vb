@@ -167,11 +167,11 @@ Public Class frmScroller
             BarViews.EditValue = CurrentView
             If CurrentView = "" Then
                 LoadForms.RestoreLayoutFromXml(GridView1, sDataTable & "_def.xml")
-                GridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True
-                If sDataDetail <> "" Then LoadForms.RestoreLayoutFromXml(GridView2, sDataDetail & "_def.xml")
+                GridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False
+                If sDataDetail <> "" Then LoadForms.RestoreLayoutFromXml(GridView2, "D_" & sDataDetail & "_def.xml")
             Else
                 GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
-                GridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True
+                GridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False
                 If sDataDetail <> "" Then GridView2.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & BarViews.EditValue, OptionsLayoutBase.FullLayout)
             End If
         Catch ex As Exception
