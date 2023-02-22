@@ -16,6 +16,8 @@ Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraEditors.ViewInfo
 Imports DevExpress.XtraExport.Helpers
+Imports DevExpress.XtraGrid
+Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
@@ -56,6 +58,7 @@ Public Class frmBankCollectionInsert
         AddHandler RepApt.EditValueChanged, AddressOf RepApt_Changed
         AddHandler RepBdg.EditValueChanged, AddressOf RepBDG_Changed
         AddHandler RepColPerBdgApt.EditValueChanged, AddressOf RepColPerBdgApt_Changed
+
 
         Me.CenterToScreen()
 
@@ -489,6 +492,7 @@ Public Class frmBankCollectionInsert
             grdBANKS.DataSource = Me.Priamos_NETDataSet3.ALPHA
             grdBANKS.ForceInitialize() : grdBANKS.DefaultView.PopulateColumns()
             LoadForms.RestoreLayoutFromXml(GridView5, "ALPHA.xml")
+
             GridView5.BestFitColumns()
             lstLog.Items.Add("Καταχωρήθηκαν: " & ItemsCorrect & " Λάθοι από διπλές εγγραφές: " & ItemsWrongDB & " Άλλα σφάλματα που πρέπει να προσέξετε: " & ItemsWrong)
             lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(2)
@@ -1165,6 +1169,7 @@ Public Class frmBankCollectionInsert
 
     Private Sub UpdateColBanks(Optional ByVal Completed As String = "")
         Dim sSQL As New StringBuilder
+        Dim creditTransaction As String = "", Comission As Double
         Dim CompletedCell As String = Completed
         Try
 
@@ -1202,6 +1207,52 @@ Public Class frmBankCollectionInsert
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
+            'Αυτό ισχύει μόνο για την Alpha
+            If BankMode = 2 Or GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "BankName") = "ALPHA BANK" Then
+                Dim Cmd As SqlCommand, sdr As SqlDataReader
+                Cmd = New SqlCommand("SELECT top 1 ID,credit FROM ALPHA (nolock) WHERE transactionID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "transactionID").ToString & "-X"), CNDB)
+                sdr = Cmd.ExecuteReader()
+                If (sdr.Read() = True) Then
+                    creditTransaction = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+                    Comission = sdr.GetDecimal(sdr.GetOrdinal("credit"))
+                End If
+                sdr.Close()
+                If creditTransaction.Length > 0 Then
+                    sSQL.Clear()
+                    ' Ενημερώνει την εγγραφή της πίστωσης με την προμήθεια
+                    sSQL.AppendLine("UPDATE ALPHA SET ")
+                    sSQL.AppendLine("comission = " & toSQLValueS(Comission, True))
+                    sSQL.AppendLine("WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString))
+                    Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "comission", Comission)
+                    lstLog.Items.Add("Έγινε ενημέρωση της πρόμήθειας για την εγγραφή με αριθμό Συναλλαγής :" & GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "transactionID").ToString)
+
+                    ' Ενημερώνει την εγγραφή της χρέωσης με την προμήθεια
+                    sSQL.Clear()
+                    sSQL.AppendLine("UPDATE ALPHA SET ")
+                    sSQL.AppendLine("bdgID = " & toSQLValueS(repbdgID) & ",")
+                    sSQL.AppendLine("bdgCode = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgCode").ToString) & ",")
+                    sSQL.AppendLine("bdgNam = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "bdgNam").ToString) & ",")
+                    sSQL.AppendLine("aptID = " & toSQLValueS(repaptID) & ",")
+                    sSQL.AppendLine("ttl= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ttl").ToString) & ",")
+                    sSQL.AppendLine("completeDate= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "completeDate").ToString) & ",")
+                    sSQL.AppendLine("inhID= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString) & ",")
+                    If CompletedCell = "" Then CompletedCell = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed").ToString
+                    sSQL.AppendLine("Completed= " & toSQLValueS(CompletedCell) & ",")
+                    sSQL.AppendLine("modifiedBy= " & toSQLValueS(UserProps.ID.ToString) & ",")
+                    sSQL.AppendLine("modifiedOn=  getdate() ,")
+                    sSQL.AppendLine("MachineName= " & toSQLValueS(UserProps.MachineName))
+                    sSQL.AppendLine("WHERE ID = " & toSQLValueS(creditTransaction))
+                    Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    lstLog.Items.Add("Βρέθηκε αντίστοιχη εγγραφή και έγινε ενημέρωση! Αριθμός Συναλλαγής :" & GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "transactionID").ToString & "-X")
+                End If
+            End If
+
+
             If repaptID.Length > 0 Then
                 ' Πίνακας που αποθηκέυει ανα κατάθεση ποια παραστατικά ξόφλησε
                 sSQL.Clear()
@@ -1353,4 +1404,7 @@ Public Class frmBankCollectionInsert
         End If
     End Sub
 
+    Private Sub GridView5_CustomColumnSort(sender As Object, e As CustomColumnSortEventArgs) Handles GridView5.CustomColumnSort
+
+    End Sub
 End Class

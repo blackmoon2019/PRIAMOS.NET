@@ -1862,6 +1862,7 @@ Public Class frmBDG
         Maintab.SelectedTabPage = tabINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
         LoadForms.RestoreLayoutFromXml(GridView_INH, "INH_BDG_def.xml")
+        cmdDelINH.Enabled = UserProps.AllowDelete
     End Sub
 
     Private Sub GridView_INH_DoubleClick(sender As Object, e As EventArgs) Handles GridView_INH.DoubleClick
@@ -1927,8 +1928,20 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-
+            ' Διαφραφή επιτρέπεται μόνο όταν ειναι έναντι διαμέρισματος
+            If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "reserveAPT").ToString = "True" Then
+                If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? Προσοχή θα επηρεάσει το υπόλοιπο του διαμερίσματος", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    ' Ενημέρωση υπολοίπου διαμερίσματος
+                    sSQL = "UPDATE APT " &
+                       "SET BAL_ADM = BAL_ADM + CASE WHEN BAL_ADM<0 THEN  ABS(CREDIT) ELSE CREDIT END  " &
+                       "FROM COL " &
+                       "INNER JOIN APT ON APT.ID=COL.aptID " &
+                       "WHERE reserveAPT = 1 and inhID =  " & toSQLValueS(GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                End If
+                ' Διαγραφή παραστατικού
                 sSQL = "DELETE FROM INH WHERE ID = '" & GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString & "'"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)

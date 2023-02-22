@@ -559,7 +559,7 @@ Public Class frmCollections
             UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
-            Dim debitusrID As String, sAptID As String
+            Dim debitusrID As String, sAptID As String, sBdgID As String
             'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
             sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
 
@@ -592,6 +592,12 @@ Public Class frmCollections
                 e.Valid = False
                 Exit Sub
             End If
+            ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
+            If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
+                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
+                e.Valid = False
+                Exit Sub
+            End If
 
             ' Εαν η πίστωση είναι 0 τότε να μην κάνεις τίποτα
             debit = sender.GetRowCellValue(sender.FocusedRowHandle, "debit")
@@ -615,11 +621,12 @@ Public Class frmCollections
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
 
                 sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper
+                sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper
                 'Ενημέρωση Header είσπραξης
                 Using oCmd As New SqlCommand("col_Calculate", CNDB)
                     oCmd.CommandType = CommandType.StoredProcedure
                     oCmd.Parameters.AddWithValue("@debitusrID", debitusrID.ToUpper)
-                    oCmd.Parameters.AddWithValue("@bdgID", sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper)
+                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
                     oCmd.Parameters.AddWithValue("@aptID", sAptID)
                     oCmd.Parameters.AddWithValue("@inhID", Guid.Empty)
                     oCmd.Parameters.AddWithValue("@Givencredit", credit)
@@ -631,9 +638,10 @@ Public Class frmCollections
                 End Using
 
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
-                LoaderData(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString)
-                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString))
-                Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
+                LoaderData(sBdgID)
+                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sBdgID))
+
+                Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(sBdgID))
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -984,7 +992,23 @@ Public Class frmCollections
 
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVINH, "COL_INH_def.xml",, strSql)
     End Sub
+    Private Function CheckIfExistNegativeInvoice(ByVal sAptID As String) As Boolean
+        Dim sID As String
+        Dim sSQL As String = "select top 1 ID from COL where completed = 0 and debitusrID is not null and debit<0 and aptID =  " & toSQLValueS(sAptID)
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
 
+    End Function
     Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles grdVO_T.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, grdVO_T, "COL_OW_TEN_def.xml")
     End Sub
@@ -1002,8 +1026,10 @@ Public Class frmCollections
                     Me.Vw_COLTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL)
                 Else
                     LoaderData(cboBDG.EditValue.ToString)
+                    Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
                     Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(cboBDG.EditValue.ToString))
                     Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+
                 End If
 
                 'Me.Vw_COL_BDGTableAdapter.Fill(Me.Priamos_NETDataSet2.vw_COL_BDG)

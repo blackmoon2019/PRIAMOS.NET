@@ -666,7 +666,6 @@ NextItem:
         End If
 
     End Sub
-
     Private Sub OnUpdateViewFromDB(ByVal sender As System.Object, ByVal e As EventArgs)
         'ReadXml.UpdateXMLFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")
         'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml")

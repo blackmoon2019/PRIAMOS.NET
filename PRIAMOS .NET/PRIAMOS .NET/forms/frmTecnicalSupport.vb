@@ -409,4 +409,8 @@ Public Class frmTecnicalSupport
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView1, "TECH_SUP_F_def.xml", "TECH_SUP_F")
     End Sub
+
+    Private Sub txtFileNames_EditValueChanged(sender As Object, e As EventArgs) Handles txtFileNames.EditValueChanged
+
+    End Sub
 End Class

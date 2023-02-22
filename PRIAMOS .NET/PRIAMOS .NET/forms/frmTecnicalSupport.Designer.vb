@@ -22,7 +22,11 @@ Partial Class frmTecnicalSupport
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.VwTECHSUPFBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colfilename = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colextension = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.chkBuilded = New DevExpress.XtraEditors.CheckEdit()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
@@ -48,6 +52,7 @@ Partial Class frmTecnicalSupport
         Me.PictureEdit14 = New DevExpress.XtraEditors.PictureEdit()
         Me.txtBuildVersion = New DevExpress.XtraEditors.TextEdit()
         Me.txtFrom1 = New DevExpress.XtraEditors.TextEdit()
+        Me.txtFileNames = New DevExpress.XtraEditors.ButtonEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.lCode = New DevExpress.XtraLayout.LayoutControlItem()
@@ -77,17 +82,14 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem22 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem23 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem28 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
-        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
-        Me.VwTECHSUPFBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Vw_TECH_SUP_FTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_TECH_SUP_FTableAdapter()
-        Me.txtFileNames = New DevExpress.XtraEditors.ButtonEdit()
         Me.LayoutControlItem25 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.colfilename = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colextension = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
+        Me.Vw_TECH_SUP_FTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_TECH_SUP_FTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwTECHSUPFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +112,7 @@ Partial Class frmTecnicalSupport
         CType(Me.PictureEdit14.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBuildVersion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFrom1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lCode, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -139,9 +142,6 @@ Partial Class frmTecnicalSupport
         CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwTECHSUPFBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -196,6 +196,16 @@ Partial Class frmTecnicalSupport
         Me.GridControl1.TabIndex = 57
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
+        'VwTECHSUPFBindingSource
+        '
+        Me.VwTECHSUPFBindingSource.DataMember = "vw_TECH_SUP_F"
+        Me.VwTECHSUPFBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'Priamos_NETDataSet3
+        '
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'GridView1
         '
         Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colfilename, Me.colextension})
@@ -209,6 +219,24 @@ Partial Class frmTecnicalSupport
         Me.GridView1.OptionsView.ShowGroupPanel = False
         Me.GridView1.PreviewIndent = 0
         '
+        'colfilename
+        '
+        Me.colfilename.FieldName = "filename"
+        Me.colfilename.MinWidth = 35
+        Me.colfilename.Name = "colfilename"
+        Me.colfilename.Visible = True
+        Me.colfilename.VisibleIndex = 0
+        Me.colfilename.Width = 131
+        '
+        'colextension
+        '
+        Me.colextension.FieldName = "extension"
+        Me.colextension.MinWidth = 35
+        Me.colextension.Name = "colextension"
+        Me.colextension.Visible = True
+        Me.colextension.VisibleIndex = 1
+        Me.colextension.Width = 131
+        '
         'DateEdit1
         '
         Me.DateEdit1.EditValue = Nothing
@@ -217,7 +245,7 @@ Partial Class frmTecnicalSupport
         Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.DateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.DateEdit1.Properties.ReadOnly = True
-        Me.DateEdit1.Size = New System.Drawing.Size(87, 38)
+        Me.DateEdit1.Size = New System.Drawing.Size(180, 38)
         Me.DateEdit1.StyleController = Me.LayoutControl1
         Me.DateEdit1.TabIndex = 55
         Me.DateEdit1.Tag = "createdOn,0"
@@ -402,7 +430,7 @@ Partial Class frmTecnicalSupport
         Me.txtCode.Location = New System.Drawing.Point(123, 12)
         Me.txtCode.Margin = New System.Windows.Forms.Padding(5)
         Me.txtCode.Name = "txtCode"
-        Me.txtCode.Size = New System.Drawing.Size(87, 38)
+        Me.txtCode.Size = New System.Drawing.Size(180, 38)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 5
         Me.txtCode.Tag = "code,0"
@@ -527,14 +555,25 @@ Partial Class frmTecnicalSupport
         '
         'txtFrom1
         '
-        Me.txtFrom1.Location = New System.Drawing.Point(325, 54)
+        Me.txtFrom1.Location = New System.Drawing.Point(418, 54)
         Me.txtFrom1.Margin = New System.Windows.Forms.Padding(5)
         Me.txtFrom1.Name = "txtFrom1"
         Me.txtFrom1.Properties.ReadOnly = True
-        Me.txtFrom1.Size = New System.Drawing.Size(985, 38)
+        Me.txtFrom1.Size = New System.Drawing.Size(892, 38)
         Me.txtFrom1.StyleController = Me.LayoutControl1
         Me.txtFrom1.TabIndex = 16
         Me.txtFrom1.Tag = "CreatedByUserName,0"
+        '
+        'txtFileNames
+        '
+        Me.txtFileNames.Location = New System.Drawing.Point(123, 917)
+        Me.txtFileNames.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtFileNames.Name = "txtFileNames"
+        Me.txtFileNames.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.txtFileNames.Size = New System.Drawing.Size(1187, 38)
+        Me.txtFileNames.StyleController = Me.LayoutControl1
+        Me.txtFileNames.TabIndex = 30
+        Me.txtFileNames.Tag = ""
         '
         'Root
         '
@@ -548,9 +587,9 @@ Partial Class frmTecnicalSupport
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(202, 0)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(295, 0)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1100, 42)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1007, 42)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'lCode
@@ -558,7 +597,7 @@ Partial Class frmTecnicalSupport
         Me.lCode.Control = Me.txtCode
         Me.lCode.Location = New System.Drawing.Point(0, 0)
         Me.lCode.Name = "lCode"
-        Me.lCode.Size = New System.Drawing.Size(202, 42)
+        Me.lCode.Size = New System.Drawing.Size(295, 42)
         Me.lCode.Text = "TechnicalID"
         Me.lCode.TextSize = New System.Drawing.Size(99, 23)
         '
@@ -792,7 +831,7 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem22.Control = Me.DateEdit1
         Me.LayoutControlItem22.Location = New System.Drawing.Point(0, 42)
         Me.LayoutControlItem22.Name = "LayoutControlItem22"
-        Me.LayoutControlItem22.Size = New System.Drawing.Size(202, 42)
+        Me.LayoutControlItem22.Size = New System.Drawing.Size(295, 42)
         Me.LayoutControlItem22.Text = "Ημερομηνία"
         Me.LayoutControlItem22.TextSize = New System.Drawing.Size(99, 23)
         '
@@ -801,9 +840,9 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem23.Control = Me.txtFrom1
         Me.LayoutControlItem23.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem23.CustomizationFormText = "Από"
-        Me.LayoutControlItem23.Location = New System.Drawing.Point(202, 42)
+        Me.LayoutControlItem23.Location = New System.Drawing.Point(295, 42)
         Me.LayoutControlItem23.Name = "LayoutControlItem23"
-        Me.LayoutControlItem23.Size = New System.Drawing.Size(1100, 42)
+        Me.LayoutControlItem23.Size = New System.Drawing.Size(1007, 42)
         Me.LayoutControlItem23.Text = "Χρήστης"
         Me.LayoutControlItem23.TextSize = New System.Drawing.Size(99, 23)
         '
@@ -815,31 +854,6 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem28.Size = New System.Drawing.Size(1302, 290)
         Me.LayoutControlItem28.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem28.TextVisible = False
-        '
-        'Priamos_NETDataSet3
-        '
-        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VwTECHSUPFBindingSource
-        '
-        Me.VwTECHSUPFBindingSource.DataMember = "vw_TECH_SUP_F"
-        Me.VwTECHSUPFBindingSource.DataSource = Me.Priamos_NETDataSet3
-        '
-        'Vw_TECH_SUP_FTableAdapter
-        '
-        Me.Vw_TECH_SUP_FTableAdapter.ClearBeforeFill = True
-        '
-        'txtFileNames
-        '
-        Me.txtFileNames.Location = New System.Drawing.Point(123, 917)
-        Me.txtFileNames.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtFileNames.Name = "txtFileNames"
-        Me.txtFileNames.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.txtFileNames.Size = New System.Drawing.Size(1187, 38)
-        Me.txtFileNames.StyleController = Me.LayoutControl1
-        Me.txtFileNames.TabIndex = 30
-        Me.txtFileNames.Tag = ""
         '
         'LayoutControlItem25
         '
@@ -853,23 +867,9 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem25.Text = "Αρχεία"
         Me.LayoutControlItem25.TextSize = New System.Drawing.Size(99, 23)
         '
-        'colfilename
+        'Vw_TECH_SUP_FTableAdapter
         '
-        Me.colfilename.FieldName = "filename"
-        Me.colfilename.MinWidth = 35
-        Me.colfilename.Name = "colfilename"
-        Me.colfilename.Visible = True
-        Me.colfilename.VisibleIndex = 0
-        Me.colfilename.Width = 131
-        '
-        'colextension
-        '
-        Me.colextension.FieldName = "extension"
-        Me.colextension.MinWidth = 35
-        Me.colextension.Name = "colextension"
-        Me.colextension.Visible = True
-        Me.colextension.VisibleIndex = 1
-        Me.colextension.Width = 131
+        Me.Vw_TECH_SUP_FTableAdapter.ClearBeforeFill = True
         '
         'frmTecnicalSupport
         '
@@ -884,6 +884,8 @@ Partial Class frmTecnicalSupport
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwTECHSUPFBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -906,6 +908,7 @@ Partial Class frmTecnicalSupport
         CType(Me.PictureEdit14.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBuildVersion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtFrom1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtFileNames.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lCode, System.ComponentModel.ISupportInitialize).EndInit()
@@ -935,9 +938,6 @@ Partial Class frmTecnicalSupport
         CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwTECHSUPFBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtFileNames.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

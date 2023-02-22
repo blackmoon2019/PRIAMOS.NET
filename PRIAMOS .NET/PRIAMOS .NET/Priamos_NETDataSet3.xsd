@@ -179,10 +179,10 @@ FROM   FORM_RIGHTS INNER JOIN
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PIREOSTableAdapter" GeneratorDataComponentClassName="PIREOSTableAdapter" Name="PIREOS" UserDataComponentName="PIREOSTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT PIREOS.ID, PIREOS.reason, PIREOS.aptID, PIREOS.ttl, PIREOS.dtCreate, PIREOS.bdgID, PIREOS.bdgNam, PIREOS.bdgCode, PIREOS.credit, PIREOS.inhID, PIREOS.completeDate, PIREOS.colBanksFID, PIREOS.bankID, PIREOS.Completed, COL_BANKS_F.filename
+                    <CommandText>SELECT PIREOS.ID, PIREOS.reason, PIREOS.aptID, PIREOS.ttl, PIREOS.dtCreate, PIREOS.bdgID, PIREOS.bdgNam, PIREOS.bdgCode, PIREOS.credit, PIREOS.inhID, PIREOS.completeDate, PIREOS.colBanksFID, PIREOS.bankID, PIREOS.Completed, COL_BANKS_F.filename, PIREOS.comission
 FROM   PIREOS LEFT OUTER JOIN
            COL_BANKS_F ON PIREOS.ID = COL_BANKS_F.ID</CommandText>
                     <Parameters />
@@ -206,6 +206,7 @@ FROM   PIREOS LEFT OUTER JOIN
               <Mapping SourceColumn="bankID" DataSetColumn="bankID" />
               <Mapping SourceColumn="Completed" DataSetColumn="Completed" />
               <Mapping SourceColumn="filename" DataSetColumn="filename" />
+              <Mapping SourceColumn="comission" DataSetColumn="comission" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -266,7 +267,7 @@ WHERE bdgID=@bdgID</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.ALPHA" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [ALPHA] WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)))</CommandText>
+                    <CommandText>DELETE FROM [ALPHA] WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comission)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_reason" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -296,13 +297,15 @@ WHERE bdgID=@bdgID</CommandText>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Completed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comission" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comission" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [ALPHA] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam], [bdgCode], [credit], [inhID], [completeDate], [transactionID], [colBanksFID], [bankID], [Completed]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @colBanksFID, @bankID, @Completed);
-SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed FROM ALPHA WHERE (ID = @ID)</CommandText>
+                    <CommandText>INSERT INTO [ALPHA] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam], [bdgCode], [credit], [inhID], [completeDate], [transactionID], [colBanksFID], [bankID], [Completed], [comission]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @colBanksFID, @bankID, @Completed, @comission);
+SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission FROM ALPHA WHERE (ID = @ID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -319,20 +322,21 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@colBanksFID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="colBanksFID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed
+                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission
 FROM   ALPHA</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [ALPHA] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [transactionID] = @transactionID, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)));
-SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed FROM ALPHA WHERE (ID = @ID)</CommandText>
+                    <CommandText>UPDATE [ALPHA] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [transactionID] = @transactionID, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed, [comission] = @comission WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comission)));
+SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission FROM ALPHA WHERE (ID = @ID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -349,6 +353,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@colBanksFID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="colBanksFID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_reason" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -377,6 +382,8 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Completed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comission" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comission" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -398,6 +405,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
               <Mapping SourceColumn="colBanksFID" DataSetColumn="colBanksFID" />
               <Mapping SourceColumn="bankID" DataSetColumn="bankID" />
               <Mapping SourceColumn="Completed" DataSetColumn="Completed" />
+              <Mapping SourceColumn="comission" DataSetColumn="comission" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -406,7 +414,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.EUROBANK" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [EUROBANK] WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)))</CommandText>
+                    <CommandText>DELETE FROM [EUROBANK] WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comission)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_reason" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -435,13 +443,15 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Completed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comission" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comission" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [EUROBANK] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam], [bdgCode], [credit], [inhID], [completeDate], [colBanksFID], [bankID], [Completed]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @colBanksFID, @bankID, @Completed);
-SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Completed FROM EUROBANK WHERE (ID = @ID)</CommandText>
+                    <CommandText>INSERT INTO [EUROBANK] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam], [bdgCode], [credit], [inhID], [completeDate], [colBanksFID], [bankID], [Completed], [comission]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @colBanksFID, @bankID, @Completed, @comission);
+SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Completed, comission FROM EUROBANK WHERE (ID = @ID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -457,20 +467,21 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@colBanksFID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="colBanksFID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Completed
+                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Completed, comission
 FROM   EUROBANK</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [EUROBANK] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)));
-SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Completed FROM EUROBANK WHERE (ID = @ID)</CommandText>
+                    <CommandText>UPDATE [EUROBANK] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed, [comission] = @comission WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comission)));
+SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Completed, comission FROM EUROBANK WHERE (ID = @ID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -486,6 +497,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@colBanksFID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="colBanksFID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_reason" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -513,6 +525,8 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Completed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comission" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comission" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -533,6 +547,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
               <Mapping SourceColumn="colBanksFID" DataSetColumn="colBanksFID" />
               <Mapping SourceColumn="bankID" DataSetColumn="bankID" />
               <Mapping SourceColumn="Completed" DataSetColumn="Completed" />
+              <Mapping SourceColumn="comission" DataSetColumn="comission" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -541,7 +556,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.NBG" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [NBG] WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)))</CommandText>
+                    <CommandText>DELETE FROM [NBG] WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comission)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_reason" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -571,13 +586,15 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Completed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comission" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comission" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [NBG] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam], [bdgCode], [credit], [inhID], [completeDate], [transactionID], [colBanksFID], [bankID], [Completed]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @colBanksFID, @bankID, @Completed);
-SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed FROM NBG WHERE (ID = @ID)</CommandText>
+                    <CommandText>INSERT INTO [NBG] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam], [bdgCode], [credit], [inhID], [completeDate], [transactionID], [colBanksFID], [bankID], [Completed], [comission]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @colBanksFID, @bankID, @Completed, @comission);
+SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission FROM NBG WHERE (ID = @ID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -594,20 +611,21 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@colBanksFID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="colBanksFID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed
+                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission
 FROM   NBG</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [NBG] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [transactionID] = @transactionID, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)));
-SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed FROM NBG WHERE (ID = @ID)</CommandText>
+                    <CommandText>UPDATE [NBG] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [transactionID] = @transactionID, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed, [comission] = @comission WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comission)));
+SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission FROM NBG WHERE (ID = @ID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -624,6 +642,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@colBanksFID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="colBanksFID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_ID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="ID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_reason" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_reason" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="reason" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -652,6 +671,8 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Guid" Direction="Input" ParameterName="@Original_bankID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="0" SourceColumn="bankID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Completed" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="true" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Boolean" Direction="Input" ParameterName="@Original_Completed" Precision="0" ProviderType="Bit" Scale="0" Size="0" SourceColumn="Completed" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_comission" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="comission" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_comission" Precision="18" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="comission" SourceColumnNullMapping="false" SourceVersion="Original" />
                     </Parameters>
                   </DbCommand>
                 </UpdateCommand>
@@ -673,6 +694,7 @@ SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, 
               <Mapping SourceColumn="colBanksFID" DataSetColumn="colBanksFID" />
               <Mapping SourceColumn="bankID" DataSetColumn="bankID" />
               <Mapping SourceColumn="Completed" DataSetColumn="Completed" />
+              <Mapping SourceColumn="comission" DataSetColumn="comission" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -928,9 +950,8 @@ WHERE (bdgID = @bdgID)</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_COL_ALL_BANKS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, completeDate, inhID, colBanksFID, bankID, Completed, BankName, filename
-FROM   vw_COL_ALL_BANKS
-</CommandText>
+                    <CommandText>SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, completeDate, inhID, colBanksFID, bankID, Completed, BankName, filename, transactionID, comission
+FROM   vw_COL_ALL_BANKS</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -953,6 +974,8 @@ FROM   vw_COL_ALL_BANKS
               <Mapping SourceColumn="Completed" DataSetColumn="Completed" />
               <Mapping SourceColumn="BankName" DataSetColumn="BankName" />
               <Mapping SourceColumn="filename" DataSetColumn="filename" />
+              <Mapping SourceColumn="transactionID" DataSetColumn="transactionID" />
+              <Mapping SourceColumn="comission" DataSetColumn="comission" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1231,6 +1254,7 @@ WHERE (techSupID = @techSupID)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="comission" msprop:Generator_ColumnPropNameInRow="comission" msprop:Generator_ColumnPropNameInTable="comissionColumn" msprop:Generator_ColumnVarNameInTable="columncomission" msprop:Generator_UserColumnName="comission" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1393,6 +1417,7 @@ WHERE (techSupID = @techSupID)</CommandText>
               <xs:element name="colBanksFID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="colBanksFIDColumn" msprop:Generator_ColumnPropNameInRow="colBanksFID" msprop:Generator_UserColumnName="colBanksFID" msprop:Generator_ColumnVarNameInTable="columncolBanksFID" type="xs:string" minOccurs="0" />
               <xs:element name="bankID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="bankIDColumn" msprop:Generator_ColumnPropNameInRow="bankID" msprop:Generator_UserColumnName="bankID" msprop:Generator_ColumnVarNameInTable="columnbankID" type="xs:string" minOccurs="0" />
               <xs:element name="Completed" msprop:Generator_ColumnPropNameInTable="CompletedColumn" msprop:Generator_ColumnPropNameInRow="Completed" msprop:Generator_UserColumnName="Completed" msprop:Generator_ColumnVarNameInTable="columnCompleted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="comission" msprop:Generator_ColumnPropNameInRow="comission" msprop:Generator_ColumnPropNameInTable="comissionColumn" msprop:Generator_ColumnVarNameInTable="columncomission" msprop:Generator_UserColumnName="comission" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1437,6 +1462,7 @@ WHERE (techSupID = @techSupID)</CommandText>
               <xs:element name="colBanksFID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="colBanksFIDColumn" msprop:Generator_ColumnPropNameInRow="colBanksFID" msprop:Generator_UserColumnName="colBanksFID" msprop:Generator_ColumnVarNameInTable="columncolBanksFID" type="xs:string" minOccurs="0" />
               <xs:element name="bankID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="bankIDColumn" msprop:Generator_ColumnPropNameInRow="bankID" msprop:Generator_UserColumnName="bankID" msprop:Generator_ColumnVarNameInTable="columnbankID" type="xs:string" minOccurs="0" />
               <xs:element name="Completed" msprop:Generator_ColumnPropNameInTable="CompletedColumn" msprop:Generator_ColumnPropNameInRow="Completed" msprop:Generator_UserColumnName="Completed" msprop:Generator_ColumnVarNameInTable="columnCompleted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="comission" msprop:Generator_ColumnPropNameInRow="comission" msprop:Generator_ColumnPropNameInTable="comissionColumn" msprop:Generator_ColumnVarNameInTable="columncomission" msprop:Generator_UserColumnName="comission" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1488,6 +1514,7 @@ WHERE (techSupID = @techSupID)</CommandText>
               <xs:element name="colBanksFID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="colBanksFIDColumn" msprop:Generator_ColumnPropNameInRow="colBanksFID" msprop:Generator_UserColumnName="colBanksFID" msprop:Generator_ColumnVarNameInTable="columncolBanksFID" type="xs:string" minOccurs="0" />
               <xs:element name="bankID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="bankIDColumn" msprop:Generator_ColumnPropNameInRow="bankID" msprop:Generator_UserColumnName="bankID" msprop:Generator_ColumnVarNameInTable="columnbankID" type="xs:string" minOccurs="0" />
               <xs:element name="Completed" msprop:Generator_ColumnPropNameInTable="CompletedColumn" msprop:Generator_ColumnPropNameInRow="Completed" msprop:Generator_UserColumnName="Completed" msprop:Generator_ColumnVarNameInTable="columnCompleted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="comission" msprop:Generator_ColumnPropNameInRow="comission" msprop:Generator_ColumnPropNameInTable="comissionColumn" msprop:Generator_ColumnVarNameInTable="columncomission" msprop:Generator_UserColumnName="comission" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1821,6 +1848,14 @@ WHERE (techSupID = @techSupID)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="transactionID" msprop:Generator_UserColumnName="transactionID" msprop:Generator_ColumnPropNameInTable="transactionIDColumn" msprop:Generator_ColumnPropNameInRow="transactionID" msprop:Generator_ColumnVarNameInTable="columntransactionID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="comission" msprop:Generator_ColumnPropNameInRow="comission" msprop:Generator_ColumnPropNameInTable="comissionColumn" msprop:Generator_ColumnVarNameInTable="columncomission" msprop:Generator_UserColumnName="comission" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1897,43 +1932,43 @@ WHERE (techSupID = @techSupID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_TECH_SUP_F" msprop:Generator_RowClassName="vw_TECH_SUP_FRow" msprop:Generator_RowEvHandlerName="vw_TECH_SUP_FRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_TECH_SUP_FRowDeleted" msprop:Generator_RowDeletingName="vw_TECH_SUP_FRowDeleting" msprop:Generator_RowEvArgName="vw_TECH_SUP_FRowChangeEvent" msprop:Generator_TablePropName="vw_TECH_SUP_F" msprop:Generator_RowChangedName="vw_TECH_SUP_FRowChanged" msprop:Generator_UserTableName="vw_TECH_SUP_F" msprop:Generator_RowChangingName="vw_TECH_SUP_FRowChanging" msprop:Generator_TableClassName="vw_TECH_SUP_FDataTable" msprop:Generator_TableVarName="tablevw_TECH_SUP_F">
+        <xs:element name="vw_TECH_SUP_F" msprop:Generator_RowEvHandlerName="vw_TECH_SUP_FRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_TECH_SUP_FRowDeleted" msprop:Generator_RowDeletingName="vw_TECH_SUP_FRowDeleting" msprop:Generator_RowEvArgName="vw_TECH_SUP_FRowChangeEvent" msprop:Generator_TablePropName="vw_TECH_SUP_F" msprop:Generator_RowChangedName="vw_TECH_SUP_FRowChanged" msprop:Generator_UserTableName="vw_TECH_SUP_F" msprop:Generator_RowChangingName="vw_TECH_SUP_FRowChanging" msprop:Generator_RowClassName="vw_TECH_SUP_FRow" msprop:Generator_TableClassName="vw_TECH_SUP_FDataTable" msprop:Generator_TableVarName="tablevw_TECH_SUP_F">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
-              <xs:element name="code" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnVarNameInTable="columncode" type="xs:int" />
-              <xs:element name="techSupID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="techSupID" msprop:Generator_ColumnPropNameInTable="techSupIDColumn" msprop:Generator_ColumnPropNameInRow="techSupID" msprop:Generator_ColumnVarNameInTable="columntechSupID" type="xs:string" minOccurs="0" />
-              <xs:element name="filename" msprop:Generator_UserColumnName="filename" msprop:Generator_ColumnPropNameInTable="filenameColumn" msprop:Generator_ColumnPropNameInRow="filename" msprop:Generator_ColumnVarNameInTable="columnfilename" minOccurs="0">
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
+              <xs:element name="code" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_UserColumnName="code" msprop:Generator_ColumnVarNameInTable="columncode" type="xs:int" />
+              <xs:element name="techSupID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="techSupIDColumn" msprop:Generator_ColumnPropNameInRow="techSupID" msprop:Generator_UserColumnName="techSupID" msprop:Generator_ColumnVarNameInTable="columntechSupID" type="xs:string" minOccurs="0" />
+              <xs:element name="filename" msprop:Generator_ColumnPropNameInTable="filenameColumn" msprop:Generator_ColumnPropNameInRow="filename" msprop:Generator_UserColumnName="filename" msprop:Generator_ColumnVarNameInTable="columnfilename" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="comefrom" msprop:Generator_UserColumnName="comefrom" msprop:Generator_ColumnPropNameInTable="comefromColumn" msprop:Generator_ColumnPropNameInRow="comefrom" msprop:Generator_ColumnVarNameInTable="columncomefrom" minOccurs="0">
+              <xs:element name="comefrom" msprop:Generator_ColumnPropNameInTable="comefromColumn" msprop:Generator_ColumnPropNameInRow="comefrom" msprop:Generator_UserColumnName="comefrom" msprop:Generator_ColumnVarNameInTable="columncomefrom" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="400" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="extension" msprop:Generator_UserColumnName="extension" msprop:Generator_ColumnPropNameInTable="extensionColumn" msprop:Generator_ColumnPropNameInRow="extension" msprop:Generator_ColumnVarNameInTable="columnextension" minOccurs="0">
+              <xs:element name="extension" msprop:Generator_ColumnPropNameInTable="extensionColumn" msprop:Generator_ColumnPropNameInRow="extension" msprop:Generator_UserColumnName="extension" msprop:Generator_ColumnVarNameInTable="columnextension" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="modifiedOn" msprop:Generator_UserColumnName="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="createdOn" msprop:Generator_UserColumnName="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="RealName" msprop:Generator_ColumnPropNameInRow="RealName" msprop:Generator_ColumnPropNameInTable="RealNameColumn" msprop:Generator_ColumnVarNameInTable="columnRealName" msprop:Generator_UserColumnName="RealName" minOccurs="0">
+              <xs:element name="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_UserColumnName="modifiedOn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_UserColumnName="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RealName" msprop:Generator_ColumnPropNameInTable="RealNameColumn" msprop:Generator_ColumnPropNameInRow="RealName" msprop:Generator_UserColumnName="RealName" msprop:Generator_ColumnVarNameInTable="columnRealName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="files" msprop:Generator_ColumnPropNameInRow="files" msprop:Generator_ColumnPropNameInTable="filesColumn" msprop:Generator_ColumnVarNameInTable="columnfiles" msprop:Generator_UserColumnName="files" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="files" msprop:Generator_ColumnPropNameInTable="filesColumn" msprop:Generator_ColumnPropNameInRow="files" msprop:Generator_UserColumnName="files" msprop:Generator_ColumnVarNameInTable="columnfiles" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

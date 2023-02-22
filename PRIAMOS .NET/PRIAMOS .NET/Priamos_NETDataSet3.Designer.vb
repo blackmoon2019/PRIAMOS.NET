@@ -2182,6 +2182,8 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columnfilename As Global.System.Data.DataColumn
         
+        Private columncomission As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -2338,6 +2340,14 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property comissionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncomission
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2374,9 +2384,25 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddPIREOSRow(ByVal ID As System.Guid, ByVal reason As String, ByVal parentAPTRowByFK_PIREOS_APT As APTRow, ByVal dtCreate As Date, ByVal bdgID As System.Guid, ByVal bdgNam As String, ByVal bdgCode As Integer, ByVal ttl As String, ByVal credit As Decimal, ByVal inhID As System.Guid, ByVal completeDate As String, ByVal colBanksFID As System.Guid, ByVal bankID As System.Guid, ByVal Completed As Boolean, ByVal filename As String) As PIREOSRow
+        Public Overloads Function AddPIREOSRow( _
+                    ByVal ID As System.Guid,  _
+                    ByVal reason As String,  _
+                    ByVal parentAPTRowByFK_PIREOS_APT As APTRow,  _
+                    ByVal dtCreate As Date,  _
+                    ByVal bdgID As System.Guid,  _
+                    ByVal bdgNam As String,  _
+                    ByVal bdgCode As Integer,  _
+                    ByVal ttl As String,  _
+                    ByVal credit As Decimal,  _
+                    ByVal inhID As System.Guid,  _
+                    ByVal completeDate As String,  _
+                    ByVal colBanksFID As System.Guid,  _
+                    ByVal bankID As System.Guid,  _
+                    ByVal Completed As Boolean,  _
+                    ByVal filename As String,  _
+                    ByVal comission As Decimal) As PIREOSRow
             Dim rowPIREOSRow As PIREOSRow = CType(Me.NewRow,PIREOSRow)
-            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, colBanksFID, bankID, Completed, filename}
+            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, colBanksFID, bankID, Completed, filename, comission}
             If (Not (parentAPTRowByFK_PIREOS_APT) Is Nothing) Then
                 columnValuesArray(2) = parentAPTRowByFK_PIREOS_APT(5)
             End If
@@ -2423,6 +2449,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnbankID = MyBase.Columns("bankID")
             Me.columnCompleted = MyBase.Columns("Completed")
             Me.columnfilename = MyBase.Columns("filename")
+            Me.columncomission = MyBase.Columns("comission")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2458,6 +2485,8 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columnCompleted)
             Me.columnfilename = New Global.System.Data.DataColumn("filename", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnfilename)
+            Me.columncomission = New Global.System.Data.DataColumn("comission", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncomission)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -3370,6 +3399,8 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columnCompleted As Global.System.Data.DataColumn
         
+        Private columncomission As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -3526,6 +3557,14 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property comissionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncomission
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3562,9 +3601,25 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddALPHARow(ByVal ID As System.Guid, ByVal reason As String, ByVal parentAPTRowByFK_PIREOS_APT1 As APTRow, ByVal dtCreate As Date, ByVal bdgID As System.Guid, ByVal bdgNam As String, ByVal bdgCode As Integer, ByVal ttl As String, ByVal credit As Decimal, ByVal inhID As System.Guid, ByVal completeDate As String, ByVal transactionID As String, ByVal colBanksFID As System.Guid, ByVal bankID As System.Guid, ByVal Completed As Boolean) As ALPHARow
+        Public Overloads Function AddALPHARow( _
+                    ByVal ID As System.Guid,  _
+                    ByVal reason As String,  _
+                    ByVal parentAPTRowByFK_PIREOS_APT1 As APTRow,  _
+                    ByVal dtCreate As Date,  _
+                    ByVal bdgID As System.Guid,  _
+                    ByVal bdgNam As String,  _
+                    ByVal bdgCode As Integer,  _
+                    ByVal ttl As String,  _
+                    ByVal credit As Decimal,  _
+                    ByVal inhID As System.Guid,  _
+                    ByVal completeDate As String,  _
+                    ByVal transactionID As String,  _
+                    ByVal colBanksFID As System.Guid,  _
+                    ByVal bankID As System.Guid,  _
+                    ByVal Completed As Boolean,  _
+                    ByVal comission As Decimal) As ALPHARow
             Dim rowALPHARow As ALPHARow = CType(Me.NewRow,ALPHARow)
-            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed}
+            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission}
             If (Not (parentAPTRowByFK_PIREOS_APT1) Is Nothing) Then
                 columnValuesArray(2) = parentAPTRowByFK_PIREOS_APT1(5)
             End If
@@ -3611,6 +3666,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columncolBanksFID = MyBase.Columns("colBanksFID")
             Me.columnbankID = MyBase.Columns("bankID")
             Me.columnCompleted = MyBase.Columns("Completed")
+            Me.columncomission = MyBase.Columns("comission")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3646,6 +3702,8 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columnbankID)
             Me.columnCompleted = New Global.System.Data.DataColumn("Completed", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCompleted)
+            Me.columncomission = New Global.System.Data.DataColumn("comission", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncomission)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -3820,6 +3878,8 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columnCompleted As Global.System.Data.DataColumn
         
+        Private columncomission As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -3968,6 +4028,14 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property comissionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncomission
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4004,9 +4072,9 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddEUROBANKRow(ByVal ID As System.Guid, ByVal reason As String, ByVal parentAPTRowByFK_ALPHA_APT As APTRow, ByVal dtCreate As Date, ByVal bdgID As System.Guid, ByVal bdgNam As String, ByVal bdgCode As Integer, ByVal ttl As String, ByVal credit As Decimal, ByVal inhID As System.Guid, ByVal completeDate As String, ByVal colBanksFID As System.Guid, ByVal bankID As System.Guid, ByVal Completed As Boolean) As EUROBANKRow
+        Public Overloads Function AddEUROBANKRow(ByVal ID As System.Guid, ByVal reason As String, ByVal parentAPTRowByFK_ALPHA_APT As APTRow, ByVal dtCreate As Date, ByVal bdgID As System.Guid, ByVal bdgNam As String, ByVal bdgCode As Integer, ByVal ttl As String, ByVal credit As Decimal, ByVal inhID As System.Guid, ByVal completeDate As String, ByVal colBanksFID As System.Guid, ByVal bankID As System.Guid, ByVal Completed As Boolean, ByVal comission As Decimal) As EUROBANKRow
             Dim rowEUROBANKRow As EUROBANKRow = CType(Me.NewRow,EUROBANKRow)
-            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, colBanksFID, bankID, Completed}
+            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, colBanksFID, bankID, Completed, comission}
             If (Not (parentAPTRowByFK_ALPHA_APT) Is Nothing) Then
                 columnValuesArray(2) = parentAPTRowByFK_ALPHA_APT(5)
             End If
@@ -4052,6 +4120,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columncolBanksFID = MyBase.Columns("colBanksFID")
             Me.columnbankID = MyBase.Columns("bankID")
             Me.columnCompleted = MyBase.Columns("Completed")
+            Me.columncomission = MyBase.Columns("comission")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4085,6 +4154,8 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columnbankID)
             Me.columnCompleted = New Global.System.Data.DataColumn("Completed", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCompleted)
+            Me.columncomission = New Global.System.Data.DataColumn("comission", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncomission)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -4259,6 +4330,8 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columnCompleted As Global.System.Data.DataColumn
         
+        Private columncomission As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -4415,6 +4488,14 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property comissionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncomission
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4451,9 +4532,25 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddNBGRow(ByVal ID As System.Guid, ByVal reason As String, ByVal parentAPTRowByFK_ALPHA_APT1 As APTRow, ByVal dtCreate As Date, ByVal bdgID As System.Guid, ByVal bdgNam As String, ByVal bdgCode As Integer, ByVal ttl As String, ByVal credit As Decimal, ByVal inhID As System.Guid, ByVal completeDate As String, ByVal transactionID As String, ByVal colBanksFID As System.Guid, ByVal bankID As System.Guid, ByVal Completed As Boolean) As NBGRow
+        Public Overloads Function AddNBGRow( _
+                    ByVal ID As System.Guid,  _
+                    ByVal reason As String,  _
+                    ByVal parentAPTRowByFK_ALPHA_APT1 As APTRow,  _
+                    ByVal dtCreate As Date,  _
+                    ByVal bdgID As System.Guid,  _
+                    ByVal bdgNam As String,  _
+                    ByVal bdgCode As Integer,  _
+                    ByVal ttl As String,  _
+                    ByVal credit As Decimal,  _
+                    ByVal inhID As System.Guid,  _
+                    ByVal completeDate As String,  _
+                    ByVal transactionID As String,  _
+                    ByVal colBanksFID As System.Guid,  _
+                    ByVal bankID As System.Guid,  _
+                    ByVal Completed As Boolean,  _
+                    ByVal comission As Decimal) As NBGRow
             Dim rowNBGRow As NBGRow = CType(Me.NewRow,NBGRow)
-            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed}
+            Dim columnValuesArray() As Object = New Object() {ID, reason, Nothing, dtCreate, bdgID, bdgNam, bdgCode, ttl, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed, comission}
             If (Not (parentAPTRowByFK_ALPHA_APT1) Is Nothing) Then
                 columnValuesArray(2) = parentAPTRowByFK_ALPHA_APT1(5)
             End If
@@ -4500,6 +4597,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columncolBanksFID = MyBase.Columns("colBanksFID")
             Me.columnbankID = MyBase.Columns("bankID")
             Me.columnCompleted = MyBase.Columns("Completed")
+            Me.columncomission = MyBase.Columns("comission")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4535,6 +4633,8 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columnbankID)
             Me.columnCompleted = New Global.System.Data.DataColumn("Completed", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCompleted)
+            Me.columncomission = New Global.System.Data.DataColumn("comission", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncomission)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -7977,6 +8077,10 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columnfilename As Global.System.Data.DataColumn
         
+        Private columntransactionID As Global.System.Data.DataColumn
+        
+        Private columncomission As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -8141,6 +8245,22 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property transactionIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntransactionID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property comissionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncomission
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8193,9 +8313,11 @@ Partial Public Class Priamos_NETDataSet3
                     ByVal bankID As System.Guid,  _
                     ByVal Completed As Boolean,  _
                     ByVal BankName As String,  _
-                    ByVal filename As String) As vw_COL_ALL_BANKSRow
+                    ByVal filename As String,  _
+                    ByVal transactionID As String,  _
+                    ByVal comission As Decimal) As vw_COL_ALL_BANKSRow
             Dim rowvw_COL_ALL_BANKSRow As vw_COL_ALL_BANKSRow = CType(Me.NewRow,vw_COL_ALL_BANKSRow)
-            Dim columnValuesArray() As Object = New Object() {ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, completeDate, inhID, colBanksFID, bankID, Completed, BankName, filename}
+            Dim columnValuesArray() As Object = New Object() {ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, completeDate, inhID, colBanksFID, bankID, Completed, BankName, filename, transactionID, comission}
             rowvw_COL_ALL_BANKSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_COL_ALL_BANKSRow)
             Return rowvw_COL_ALL_BANKSRow
@@ -8234,6 +8356,8 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnCompleted = MyBase.Columns("Completed")
             Me.columnBankName = MyBase.Columns("BankName")
             Me.columnfilename = MyBase.Columns("filename")
+            Me.columntransactionID = MyBase.Columns("transactionID")
+            Me.columncomission = MyBase.Columns("comission")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8271,6 +8395,10 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columnBankName)
             Me.columnfilename = New Global.System.Data.DataColumn("filename", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnfilename)
+            Me.columntransactionID = New Global.System.Data.DataColumn("transactionID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntransactionID)
+            Me.columncomission = New Global.System.Data.DataColumn("comission", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncomission)
             Me.columnID.AllowDBNull = false
             Me.columnreason.MaxLength = 500
             Me.columnttl.MaxLength = 250
@@ -8279,6 +8407,7 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnCompleted.AllowDBNull = false
             Me.columnBankName.MaxLength = 150
             Me.columnfilename.MaxLength = 200
+            Me.columntransactionID.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10636,6 +10765,21 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property comission() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIREOS.comissionColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'comission' in table 'PIREOS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIREOS.comissionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property APTRow() As APTRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_PIREOS_APT")),APTRow)
@@ -10799,6 +10943,18 @@ Partial Public Class Priamos_NETDataSet3
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetfilenameNull()
             Me(Me.tablePIREOS.filenameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IscomissionNull() As Boolean
+            Return Me.IsNull(Me.tablePIREOS.comissionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetcomissionNull()
+            Me(Me.tablePIREOS.comissionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -11703,6 +11859,21 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property comission() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableALPHA.comissionColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'comission' in table 'ALPHA' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableALPHA.comissionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property APTRow() As APTRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_PIREOS_APT1")),APTRow)
@@ -11866,6 +12037,18 @@ Partial Public Class Priamos_NETDataSet3
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetCompletedNull()
             Me(Me.tableALPHA.CompletedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IscomissionNull() As Boolean
+            Return Me.IsNull(Me.tableALPHA.comissionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetcomissionNull()
+            Me(Me.tableALPHA.comissionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -12092,6 +12275,21 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property comission() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableEUROBANK.comissionColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'comission' in table 'EUROBANK' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEUROBANK.comissionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property APTRow() As APTRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_ALPHA_APT")),APTRow)
@@ -12255,6 +12453,18 @@ Partial Public Class Priamos_NETDataSet3
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetCompletedNull()
             Me(Me.tableEUROBANK.CompletedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IscomissionNull() As Boolean
+            Return Me.IsNull(Me.tableEUROBANK.comissionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetcomissionNull()
+            Me(Me.tableEUROBANK.comissionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -12492,6 +12702,21 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property comission() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableNBG.comissionColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'comission' in table 'NBG' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableNBG.comissionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property APTRow() As APTRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_ALPHA_APT1")),APTRow)
@@ -12655,6 +12880,18 @@ Partial Public Class Priamos_NETDataSet3
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetCompletedNull()
             Me(Me.tableNBG.CompletedColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IscomissionNull() As Boolean
+            Return Me.IsNull(Me.tableNBG.comissionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetcomissionNull()
+            Me(Me.tableNBG.comissionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -15012,6 +15249,36 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property transactionID() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_COL_ALL_BANKS.transactionIDColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'transactionID' in table 'vw_COL_ALL_BANKS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_COL_ALL_BANKS.transactionIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property comission() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_COL_ALL_BANKS.comissionColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'comission' in table 'vw_COL_ALL_BANKS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_COL_ALL_BANKS.comissionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsreasonNull() As Boolean
             Return Me.IsNull(Me.tablevw_COL_ALL_BANKS.reasonColumn)
         End Function
@@ -15176,6 +15443,30 @@ Partial Public Class Priamos_NETDataSet3
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetfilenameNull()
             Me(Me.tablevw_COL_ALL_BANKS.filenameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IstransactionIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_COL_ALL_BANKS.transactionIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SettransactionIDNull()
+            Me(Me.tablevw_COL_ALL_BANKS.transactionIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IscomissionNull() As Boolean
+            Return Me.IsNull(Me.tablevw_COL_ALL_BANKS.comissionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetcomissionNull()
+            Me(Me.tablevw_COL_ALL_BANKS.comissionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -17557,6 +17848,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("bankID", "bankID")
             tableMapping.ColumnMappings.Add("Completed", "Completed")
             tableMapping.ColumnMappings.Add("filename", "filename")
+            tableMapping.ColumnMappings.Add("comission", "comission")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -17576,8 +17868,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0).CommandText = "SELECT PIREOS.ID, PIREOS.reason, PIREOS.aptID, PIREOS.ttl, PIREOS.dtCreate, PIREO"& _ 
                 "S.bdgID, PIREOS.bdgNam, PIREOS.bdgCode, PIREOS.credit, PIREOS.inhID, PIREOS.comp"& _ 
                 "leteDate, PIREOS.colBanksFID, PIREOS.bankID, PIREOS.Completed, COL_BANKS_F.filen"& _ 
-                "ame"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   PIREOS LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           COL_BANKS_F ON PIREOS.ID = COL_BA"& _ 
-                "NKS_F.ID"
+                "ame, PIREOS.comission"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   PIREOS LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           COL_BANKS_F ON "& _ 
+                "PIREOS.ID = COL_BANKS_F.ID"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -17945,6 +18237,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("colBanksFID", "colBanksFID")
             tableMapping.ColumnMappings.Add("bankID", "bankID")
             tableMapping.ColumnMappings.Add("Completed", "Completed")
+            tableMapping.ColumnMappings.Add("comission", "comission")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -17962,7 +18255,9 @@ Namespace Priamos_NETDataSet3TableAdapters
                 "sactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBank"& _ 
                 "sFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID "& _ 
                 "= 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Comple"& _ 
-                "ted = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)))"
+                "ted = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@"& _ 
+                "IsNull_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comiss"& _ 
+                "ion)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -17992,15 +18287,17 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Completed", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_comission", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "comission", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [ALPHA] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam"& _ 
                 "], [bdgCode], [credit], [inhID], [completeDate], [transactionID], [colBanksFID],"& _ 
-                " [bankID], [Completed]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @"& _ 
-                "bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @colBanksFID, "& _ 
-                "@bankID, @Completed);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, b"& _ 
-                "dgCode, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Complet"& _ 
-                "ed FROM ALPHA WHERE (ID = @ID)"
+                " [bankID], [Completed], [comission]) VALUES (@ID, @reason, @aptID, @ttl, @dtCrea"& _ 
+                "te, @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @"& _ 
+                "colBanksFID, @bankID, @Completed, @comission);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, d"& _ 
+                "tCreate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, col"& _ 
+                "BanksFID, bankID, Completed, comission FROM ALPHA WHERE (ID = @ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18017,30 +18314,32 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@colBanksFID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "colBanksFID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [ALPHA] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl"& _ 
                 ", [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdg"& _ 
                 "Code, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [tra"& _ 
                 "nsactionID] = @transactionID, [colBanksFID] = @colBanksFID, [bankID] = @bankID, "& _ 
-                "[Completed] = @Completed WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 A"& _ 
-                "ND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 A"& _ 
-                "ND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [t"& _ 
-                "tl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreat"& _ 
-                "e] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [b"& _ 
-                "dgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdg"& _ 
-                "Nam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [b"& _ 
-                "dgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AN"& _ 
-                "D [credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AN"& _ 
-                "D [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = "& _ 
-                "1 AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND "& _ 
-                "([transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [c"& _ 
-                "olBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_b"& _ 
-                "ankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_"& _ 
-                "Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)));"& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID"& _ 
-                ", completeDate, transactionID, colBanksFID, bankID, Completed FROM ALPHA WHERE ("& _ 
-                "ID = @ID)"
+                "[Completed] = @Completed, [comission] = @comission WHERE (([ID] = @Original_ID) "& _ 
+                "AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason))"& _ 
+                " AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AN"& _ 
+                "D ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull"& _ 
+                "_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND "& _ 
+                "((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@"& _ 
+                "IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND (("& _ 
+                "@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) A"& _ 
+                "ND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) "& _ 
+                "AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND"& _ 
+                " ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Or"& _ 
+                "iginal_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsN"& _ 
+                "ull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_col"& _ 
+                "BanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Origin"& _ 
+                "al_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed]"& _ 
+                " = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR"& _ 
+                " ([comission] = @Original_comission)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate"& _ 
+                ", bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFI"& _ 
+                "D, bankID, Completed, comission FROM ALPHA WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18057,6 +18356,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@colBanksFID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "colBanksFID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -18085,6 +18385,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Completed", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_comission", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "comission", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18101,7 +18403,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, c"& _ 
-                "ompleteDate, transactionID, colBanksFID, bankID, Completed"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   ALPHA"
+                "ompleteDate, transactionID, colBanksFID, bankID, Completed, comission"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   AL"& _ 
+                "PHA"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -18288,6 +18591,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("colBanksFID", "colBanksFID")
             tableMapping.ColumnMappings.Add("bankID", "bankID")
             tableMapping.ColumnMappings.Add("Completed", "Completed")
+            tableMapping.ColumnMappings.Add("comission", "comission")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -18305,7 +18609,8 @@ Namespace Priamos_NETDataSet3TableAdapters
                 "IsNull_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_"& _ 
                 "colBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Ori"& _ 
                 "ginal_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Complet"& _ 
-                "ed] = @Original_Completed)))"
+                "ed] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL)"& _ 
+                " OR ([comission] = @Original_comission)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -18334,14 +18639,17 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Completed", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_comission", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "comission", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [EUROBANK] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdg"& _ 
                 "Nam], [bdgCode], [credit], [inhID], [completeDate], [colBanksFID], [bankID], [Co"& _ 
-                "mpleted]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bdgNam, @bdgCo"& _ 
-                "de, @credit, @inhID, @completeDate, @colBanksFID, @bankID, @Completed);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
-                "ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, complet"& _ 
-                "eDate, colBanksFID, bankID, Completed FROM EUROBANK WHERE (ID = @ID)"
+                "mpleted], [comission]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @b"& _ 
+                "dgNam, @bdgCode, @credit, @inhID, @completeDate, @colBanksFID, @bankID, @Complet"& _ 
+                "ed, @comission);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCod"& _ 
+                "e, credit, inhID, completeDate, colBanksFID, bankID, Completed, comission FROM E"& _ 
+                "UROBANK WHERE (ID = @ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18357,28 +18665,31 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@colBanksFID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "colBanksFID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [EUROBANK] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @"& _ 
                 "ttl, [dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @"& _ 
                 "bdgCode, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, ["& _ 
-                "colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed WHERE "& _ 
-                "(([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reaso"& _ 
-                "n] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID]"& _ 
-                " = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Origi"& _ 
-                "nal_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @O"& _ 
-                "riginal_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @O"& _ 
-                "riginal_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @O"& _ 
-                "riginal_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] "& _ 
-                "= @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit"& _ 
-                "] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] "& _ 
-                "= @Original_inhID)) AND ((@IsNull_completeDate = 1 AND [completeDate] IS NULL) O"& _ 
-                "R ([completeDate] = @Original_completeDate)) AND ((@IsNull_colBanksFID = 1 AND ["& _ 
-                "colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_"& _ 
-                "bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull"& _ 
-                "_Completed = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)))"& _ 
-                ";"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhI"& _ 
-                "D, completeDate, colBanksFID, bankID, Completed FROM EUROBANK WHERE (ID = @ID)"
+                "colBanksFID] = @colBanksFID, [bankID] = @bankID, [Completed] = @Completed, [comi"& _ 
+                "ssion] = @comission WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND [r"& _ 
+                "eason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND [a"& _ 
+                "ptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl] I"& _ 
+                "S NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate] IS"& _ 
+                " NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdgID]"& _ 
+                " IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNam] "& _ 
+                "IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdgCod"& _ 
+                "e] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND [cr"& _ 
+                "edit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND [in"& _ 
+                "hID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 AND"& _ 
+                " [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND ((@Is"& _ 
+                "Null_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_co"& _ 
+                "lBanksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Origi"& _ 
+                "nal_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed"& _ 
+                "] = @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) O"& _ 
+                "R ([comission] = @Original_comission)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreat"& _ 
+                "e, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, colBanksFID, bankID, Com"& _ 
+                "pleted, comission FROM EUROBANK WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18394,6 +18705,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@colBanksFID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "colBanksFID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -18421,6 +18733,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Completed", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_comission", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "comission", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18437,7 +18751,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, c"& _ 
-                "ompleteDate, colBanksFID, bankID, Completed"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   EUROBANK"
+                "ompleteDate, colBanksFID, bankID, Completed, comission"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   EUROBANK"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -18625,6 +18939,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("colBanksFID", "colBanksFID")
             tableMapping.ColumnMappings.Add("bankID", "bankID")
             tableMapping.ColumnMappings.Add("Completed", "Completed")
+            tableMapping.ColumnMappings.Add("comission", "comission")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -18642,7 +18957,9 @@ Namespace Priamos_NETDataSet3TableAdapters
                 "ctionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [colBanksF"& _ 
                 "ID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_bankID = "& _ 
                 "1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Complete"& _ 
-                "d = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)))"
+                "d = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)) AND ((@Is"& _ 
+                "Null_comission = 1 AND [comission] IS NULL) OR ([comission] = @Original_comissio"& _ 
+                "n)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -18672,15 +18989,17 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Completed", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_comission", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "comission", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [NBG] ([ID], [reason], [aptID], [ttl], [dtCreate], [bdgID], [bdgNam],"& _ 
                 " [bdgCode], [credit], [inhID], [completeDate], [transactionID], [colBanksFID], ["& _ 
-                "bankID], [Completed]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate, @bdgID, @bd"& _ 
-                "gNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @colBanksFID, @b"& _ 
-                "ankID, @Completed);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdg"& _ 
-                "Code, credit, inhID, completeDate, transactionID, colBanksFID, bankID, Completed"& _ 
-                " FROM NBG WHERE (ID = @ID)"
+                "bankID], [Completed], [comission]) VALUES (@ID, @reason, @aptID, @ttl, @dtCreate"& _ 
+                ", @bdgID, @bdgNam, @bdgCode, @credit, @inhID, @completeDate, @transactionID, @co"& _ 
+                "lBanksFID, @bankID, @Completed, @comission);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtC"& _ 
+                "reate, bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBa"& _ 
+                "nksFID, bankID, Completed, comission FROM NBG WHERE (ID = @ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18697,30 +19016,32 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@colBanksFID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "colBanksFID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [NBG] SET [ID] = @ID, [reason] = @reason, [aptID] = @aptID, [ttl] = @ttl, "& _ 
                 "[dtCreate] = @dtCreate, [bdgID] = @bdgID, [bdgNam] = @bdgNam, [bdgCode] = @bdgCo"& _ 
                 "de, [credit] = @credit, [inhID] = @inhID, [completeDate] = @completeDate, [trans"& _ 
                 "actionID] = @transactionID, [colBanksFID] = @colBanksFID, [bankID] = @bankID, [C"& _ 
-                "ompleted] = @Completed WHERE (([ID] = @Original_ID) AND ((@IsNull_reason = 1 AND"& _ 
-                " [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_aptID = 1 AND"& _ 
-                " [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND ((@IsNull_ttl = 1 AND [ttl"& _ 
-                "] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_dtCreate = 1 AND [dtCreate]"& _ 
-                " IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND ((@IsNull_bdgID = 1 AND [bdg"& _ 
-                "ID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@IsNull_bdgNam = 1 AND [bdgNa"& _ 
-                "m] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@IsNull_bdgCode = 1 AND [bdg"& _ 
-                "Code] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND ((@IsNull_credit = 1 AND "& _ 
-                "[credit] IS NULL) OR ([credit] = @Original_credit)) AND ((@IsNull_inhID = 1 AND "& _ 
-                "[inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ((@IsNull_completeDate = 1 "& _ 
-                "AND [completeDate] IS NULL) OR ([completeDate] = @Original_completeDate)) AND (["& _ 
-                "transactionID] = @Original_transactionID) AND ((@IsNull_colBanksFID = 1 AND [col"& _ 
-                "BanksFID] IS NULL) OR ([colBanksFID] = @Original_colBanksFID)) AND ((@IsNull_ban"& _ 
-                "kID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original_bankID)) AND ((@IsNull_Co"& _ 
-                "mpleted = 1 AND [Completed] IS NULL) OR ([Completed] = @Original_Completed)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, "& _ 
-                "completeDate, transactionID, colBanksFID, bankID, Completed FROM NBG WHERE (ID ="& _ 
-                " @ID)"
+                "ompleted] = @Completed, [comission] = @comission WHERE (([ID] = @Original_ID) AN"& _ 
+                "D ((@IsNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) A"& _ 
+                "ND ((@IsNull_aptID = 1 AND [aptID] IS NULL) OR ([aptID] = @Original_aptID)) AND "& _ 
+                "((@IsNull_ttl = 1 AND [ttl] IS NULL) OR ([ttl] = @Original_ttl)) AND ((@IsNull_d"& _ 
+                "tCreate = 1 AND [dtCreate] IS NULL) OR ([dtCreate] = @Original_dtCreate)) AND (("& _ 
+                "@IsNull_bdgID = 1 AND [bdgID] IS NULL) OR ([bdgID] = @Original_bdgID)) AND ((@Is"& _ 
+                "Null_bdgNam = 1 AND [bdgNam] IS NULL) OR ([bdgNam] = @Original_bdgNam)) AND ((@I"& _ 
+                "sNull_bdgCode = 1 AND [bdgCode] IS NULL) OR ([bdgCode] = @Original_bdgCode)) AND"& _ 
+                " ((@IsNull_credit = 1 AND [credit] IS NULL) OR ([credit] = @Original_credit)) AN"& _ 
+                "D ((@IsNull_inhID = 1 AND [inhID] IS NULL) OR ([inhID] = @Original_inhID)) AND ("& _ 
+                "(@IsNull_completeDate = 1 AND [completeDate] IS NULL) OR ([completeDate] = @Orig"& _ 
+                "inal_completeDate)) AND ([transactionID] = @Original_transactionID) AND ((@IsNul"& _ 
+                "l_colBanksFID = 1 AND [colBanksFID] IS NULL) OR ([colBanksFID] = @Original_colBa"& _ 
+                "nksFID)) AND ((@IsNull_bankID = 1 AND [bankID] IS NULL) OR ([bankID] = @Original"& _ 
+                "_bankID)) AND ((@IsNull_Completed = 1 AND [Completed] IS NULL) OR ([Completed] ="& _ 
+                " @Original_Completed)) AND ((@IsNull_comission = 1 AND [comission] IS NULL) OR ("& _ 
+                "[comission] = @Original_comission)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, reason, aptID, ttl, dtCreate, "& _ 
+                "bdgID, bdgNam, bdgCode, credit, inhID, completeDate, transactionID, colBanksFID,"& _ 
+                " bankID, Completed, comission FROM NBG WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -18737,6 +19058,7 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@colBanksFID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "colBanksFID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_reason", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -18765,6 +19087,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bankID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bankID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Completed", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Completed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Completed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_comission", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "comission", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_comission", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "comission", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18781,7 +19105,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, inhID, c"& _ 
-                "ompleteDate, transactionID, colBanksFID, bankID, Completed"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   NBG"
+                "ompleteDate, transactionID, colBanksFID, bankID, Completed, comission"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   NB"& _ 
+                "G"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -20262,6 +20587,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("Completed", "Completed")
             tableMapping.ColumnMappings.Add("BankName", "BankName")
             tableMapping.ColumnMappings.Add("filename", "filename")
+            tableMapping.ColumnMappings.Add("transactionID", "transactionID")
+            tableMapping.ColumnMappings.Add("comission", "comission")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -20279,8 +20606,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, reason, aptID, ttl, dtCreate, bdgID, bdgNam, bdgCode, credit, complete"& _ 
-                "Date, inhID, colBanksFID, bankID, Completed, BankName, filename"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL_A"& _ 
-                "LL_BANKS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)
+                "Date, inhID, colBanksFID, bankID, Completed, BankName, filename, transactionID, "& _ 
+                "comission"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_COL_ALL_BANKS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

@@ -20,14 +20,14 @@ Partial Class frmCollections
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode6 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCollections))
         Me.grdVAPT = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colord = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -334,10 +334,10 @@ Partial Class frmCollections
         'Rep_FixAptBalance
         '
         Me.Rep_FixAptBalance.AutoHeight = False
-        EditorButtonImageOptions3.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.[True]
-        EditorButtonImageOptions3.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_balance_16_1_
-        SerializableAppearanceObject9.Options.UseImage = True
-        Me.Rep_FixAptBalance.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.[True]
+        EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_balance_16_1_
+        SerializableAppearanceObject5.Options.UseImage = True
+        Me.Rep_FixAptBalance.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.OK, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.Rep_FixAptBalance.ContextImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_balance_16_1_
         Me.Rep_FixAptBalance.Name = "Rep_FixAptBalance"
         Me.Rep_FixAptBalance.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -530,15 +530,15 @@ Partial Class frmCollections
         Me.grdBDG.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.grdBDG.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.grdBDG.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        GridLevelNode1.LevelTemplate = Me.grdVAPT
-        GridLevelNode2.LevelTemplate = Me.grdVINH
-        GridLevelNode3.LevelTemplate = Me.grdVO_T
-        GridLevelNode3.RelationName = "vw_COL_INH_vw_COL"
-        GridLevelNode2.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
-        GridLevelNode2.RelationName = "vw_COL_APT_vw_COL_INH"
-        GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
-        GridLevelNode1.RelationName = "vw_COL_BDG_vw_COL_APT"
-        Me.grdBDG.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode4.LevelTemplate = Me.grdVAPT
+        GridLevelNode5.LevelTemplate = Me.grdVINH
+        GridLevelNode6.LevelTemplate = Me.grdVO_T
+        GridLevelNode6.RelationName = "vw_COL_INH_vw_COL"
+        GridLevelNode5.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode6})
+        GridLevelNode5.RelationName = "vw_COL_APT_vw_COL_INH"
+        GridLevelNode4.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode5})
+        GridLevelNode4.RelationName = "vw_COL_BDG_vw_COL_APT"
+        Me.grdBDG.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4})
         Me.grdBDG.Location = New System.Drawing.Point(25, 132)
         Me.grdBDG.MainView = Me.grdVBDG
         Me.grdBDG.Margin = New System.Windows.Forms.Padding(5)

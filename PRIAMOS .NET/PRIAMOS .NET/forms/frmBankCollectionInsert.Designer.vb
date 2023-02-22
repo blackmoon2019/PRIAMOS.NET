@@ -206,6 +206,7 @@ Partial Class frmBankCollectionInsert
         Me.colCompleted = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colBankName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colfilename = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcomission = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtImageCorrect = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.txtImageError = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
@@ -439,7 +440,7 @@ Partial Class frmBankCollectionInsert
         '
         'GridView5
         '
-        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colreason, Me.colaptID, Me.coldtCreate, Me.colbdgID, Me.colbdgNam, Me.colbdgCode, Me.colttl, Me.colcredit, Me.GridColumn1, Me.colinhID, Me.colcompleteDate, Me.GridColumn2, Me.GridColumn3, Me.colcolBanksFID, Me.colCompleted, Me.colBankName, Me.colfilename})
+        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colreason, Me.colaptID, Me.coldtCreate, Me.colbdgID, Me.colbdgNam, Me.colbdgCode, Me.colttl, Me.colcredit, Me.GridColumn1, Me.colinhID, Me.colcompleteDate, Me.GridColumn2, Me.GridColumn3, Me.colcolBanksFID, Me.colCompleted, Me.colBankName, Me.colfilename, Me.colcomission})
         Me.GridView5.FixedLineWidth = 3
         GridFormatRule1.ApplyToRow = True
         GridFormatRule1.Column = Me.colbdgID
@@ -448,7 +449,6 @@ Partial Class frmBankCollectionInsert
         FormatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(108, Byte), Integer), CType(CType(9, Byte), Integer))
         FormatConditionRuleExpression1.Appearance.Options.UseFont = True
         FormatConditionRuleExpression1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression1.Expression = resources.GetString("FormatConditionRuleExpression1.Expression")
         GridFormatRule1.Rule = FormatConditionRuleExpression1
         GridFormatRule2.ApplyToRow = True
         GridFormatRule2.Column = Me.colbdgID
@@ -457,7 +457,6 @@ Partial Class frmBankCollectionInsert
         FormatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(108, Byte), Integer), CType(CType(9, Byte), Integer))
         FormatConditionRuleExpression2.Appearance.Options.UseFont = True
         FormatConditionRuleExpression2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression2.Expression = resources.GetString("FormatConditionRuleExpression2.Expression")
         GridFormatRule2.Rule = FormatConditionRuleExpression2
         GridFormatRule3.ApplyToRow = True
         GridFormatRule3.Column = Me.colreason
@@ -1004,7 +1003,7 @@ Partial Class frmBankCollectionInsert
         'RepColBtn
         '
         Me.RepColBtn.AutoHeight = False
-        EditorButtonImageOptions3.SvgImage = CType(resources.GetObject("EditorButtonImageOptions3.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
         Me.RepColBtn.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepColBtn.Name = "RepColBtn"
         Me.RepColBtn.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -1025,7 +1024,7 @@ Partial Class frmBankCollectionInsert
         'RepColExcel
         '
         Me.RepColExcel.AutoHeight = False
-        EditorButtonImageOptions4.SvgImage = CType(resources.GetObject("EditorButtonImageOptions4.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
         Me.RepColExcel.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepColExcel.Name = "RepColExcel"
         Me.RepColExcel.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -1069,6 +1068,21 @@ Partial Class frmBankCollectionInsert
         Me.colfilename.MinWidth = 33
         Me.colfilename.Name = "colfilename"
         Me.colfilename.Width = 480
+        '
+        'colcomission
+        '
+        Me.colcomission.Caption = "Προμήθεια"
+        Me.colcomission.DisplayFormat.FormatString = "c2"
+        Me.colcomission.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colcomission.FieldName = "comission"
+        Me.colcomission.MinWidth = 35
+        Me.colcomission.Name = "colcomission"
+        Me.colcomission.OptionsColumn.AllowEdit = False
+        Me.colcomission.OptionsColumn.ReadOnly = True
+        Me.colcomission.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "comission", "SUM={0:c2}")})
+        Me.colcomission.Visible = True
+        Me.colcomission.VisibleIndex = 13
+        Me.colcomission.Width = 131
         '
         'txtImageCorrect
         '
@@ -1236,7 +1250,6 @@ Partial Class frmBankCollectionInsert
         CsvSourceOptions1.Culture = New System.Globalization.CultureInfo("el-GR")
         CsvSourceOptions1.DetectNewlineType = True
         CsvSourceOptions1.DetectValueSeparator = True
-        CsvSourceOptions1.Encoding = CType(resources.GetObject("CsvSourceOptions1.Encoding"), System.Text.Encoding)
         CsvSourceOptions1.UseFirstRowAsHeader = False
         CsvSourceOptions1.ValueSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.ALPHA.SourceOptions = CsvSourceOptions1
@@ -1270,7 +1283,6 @@ Partial Class frmBankCollectionInsert
         CsvSourceOptions2.Culture = New System.Globalization.CultureInfo("el")
         CsvSourceOptions2.DetectNewlineType = True
         CsvSourceOptions2.DetectValueSeparator = True
-        CsvSourceOptions2.Encoding = CType(resources.GetObject("CsvSourceOptions2.Encoding"), System.Text.Encoding)
         CsvSourceOptions2.UseFirstRowAsHeader = False
         CsvSourceOptions2.ValueSeparator = Global.Microsoft.VisualBasic.ChrW(59)
         Me.EUROBANK.SourceOptions = CsvSourceOptions2
@@ -1873,4 +1885,5 @@ Partial Class frmBankCollectionInsert
     Friend WithEvents COLPERBDGAPTWithNoTenantBindingSource As BindingSource
     Friend WithEvents COL_PER_BDG_APT_WithNoTenantTableAdapter As Priamos_NETDataSet3TableAdapters.COL_PER_BDG_APT_WithNoTenantTableAdapter
     Friend WithEvents colBankName As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcomission As DevExpress.XtraGrid.Columns.GridColumn
 End Class
