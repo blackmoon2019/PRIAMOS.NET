@@ -2,9 +2,11 @@
 Imports System.Data.SqlClient
 Imports System.Text
 Imports DevExpress.CodeParser
+Imports DevExpress.Data
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraExport.Helpers
+Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmCollectionsDet
@@ -13,7 +15,9 @@ Public Class frmCollectionsDet
     Private sCalledFromCollBanks As Boolean = False
     Private sGetCompletedCols As Boolean = False
     Private sDeposit As Decimal = 0
+    Dim TotDebit As Decimal
     Private sInhIDS2 As New Dictionary(Of String, String)
+    Private sInhIDSSelected As New Dictionary(Of String, String)
     Private LoadForms As New FormLoader
     Private UserPermissions As New CheckPermissions
     Public WriteOnly Property ID As String
@@ -78,7 +82,7 @@ Public Class frmCollectionsDet
 
     Private Sub cmdSaveSelected_Click(sender As Object, e As EventArgs) Handles cmdSaveSelected.Click
 
-        Dim TotDebit As Decimal
+        'Dim TotDebit As Decimal
         Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
         If selectedRowHandles.Length - 1 = -1 Then XtraMessageBox.Show("Δεν έχετε επιλέξει κάποια εγγραφή", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
         sInhIDS2.Clear()
@@ -86,15 +90,15 @@ Public Class frmCollectionsDet
             Dim selectedRowHandle As Int32 = selectedRowHandles(I)
             If GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString <> "" Then
                 sInhIDS2.Add(Guid.NewGuid.ToString, GridView1.GetRowCellValue(selectedRowHandle, "tenant").ToString & "," & GridView1.GetRowCellValue(selectedRowHandle, "inhID").ToString)
-                TotDebit = TotDebit + GridView1.GetRowCellValue(selectedRowHandle, "debit")
+                '    TotDebit = TotDebit + GridView1.GetRowCellValue(selectedRowHandle, "debit")
             End If
         Next
-        'If sDeposit > TotDebit Then
-        '    XtraMessageBox.Show("Το σύνολο των επιλεγμένων παραστατικών πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '    Exit Sub
-        'Else
-        Me.Close()
-        'End If
+        If sDeposit > TotDebit Then
+            XtraMessageBox.Show("Το σύνολο των επιλεγμένων παραστατικών πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Else
+            Me.Close()
+        End If
     End Sub
 
 
@@ -123,6 +127,7 @@ Public Class frmCollectionsDet
                 GridControl1.ForceInitialize()
                 GridControl1.DefaultView.PopulateColumns()
                 LoadForms.RestoreLayoutFromXml(GridView1, "COL_BANKS_DET_def.xml")
+                GridView1.Columns.Item("bal").SummaryItem.SummaryType = SummaryItemType.Custom
                 'Dim i As Integer
                 'Dim sFilter As String = ""
                 'For i = 0 To sInhIDS.Count - 1
@@ -133,6 +138,8 @@ Public Class frmCollectionsDet
                 '    GridView1.SelectAll()
                 'End If
                 LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                TotDebit = 0
+                GridView1.UpdateTotalSummary()
             Else
                 COLBanksCompletedTableAdapter.Fill(Me.Priamos_NETDataSet3.COLBanksCompleted, System.Guid.Parse(sColBanksID))
                 GridControl1.DataSource = COLBanksCompletedBindingSource
@@ -226,10 +233,38 @@ Public Class frmCollectionsDet
                     LoadForms.PopupMenuShow(e, GridView1, "COL_BANKS_DET_COMPLETED_def.xml")
                 End If
             End If
-            End If
+        End If
     End Sub
 
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         sInhIDS2.Clear() : Me.Close()
+    End Sub
+
+    Private Sub GridView1_CustomSummaryCalculate(sender As Object, e As CustomSummaryEventArgs) Handles GridView1.CustomSummaryCalculate
+        e.TotalValue = TotDebit
+    End Sub
+
+    Private Sub GridView1_CellValueChanging(sender As Object, e As CellValueChangedEventArgs) Handles GridView1.CellValueChanging
+
+    End Sub
+
+    Private Sub GridView1_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GridView1.SelectionChanged
+        If Me.IsActive = False Then Exit Sub
+        If e.Action = System.ComponentModel.CollectionChangeAction.Add Then
+            If sInhIDSSelected.ContainsKey(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString) = False Then
+                sInhIDSSelected.Add(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString, GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal"))
+                TotDebit = TotDebit + GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal")
+            End If
+        Else
+            If sInhIDSSelected.ContainsKey(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString) = True Then
+                sInhIDSSelected.Remove(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString)
+                TotDebit = TotDebit - GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal")
+            End If
+        End If
+        GridView1.UpdateTotalSummary()
+    End Sub
+
+    Private Sub frmCollectionsDet_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        sInhIDSSelected.Clear()
     End Sub
 End Class

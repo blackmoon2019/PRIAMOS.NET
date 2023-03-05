@@ -659,6 +659,7 @@ Public Class frmBankCollectionInsert
                     sApt = sValRow.Substring(startindex, length).Replace(" ", "").Trim
                     sAptAlternative = ConvertCharToENGR(sApt)
                     sTransactionID = GridView5.GetRowCellValue(i, GridView5.Columns(4).FieldName)
+                    sTransactionID = sTransactionID.Replace("EMB-PMN-- ", "")
                     If sbdgCode.Length > 0 Then
                         Cmd = New SqlCommand("SELECT top 1 ID,Nam FROM BDG WHERE coalesce(old_Code,code)= " & toSQLValueS(sbdgCode), CNDB)
                         sdr = Cmd.ExecuteReader()

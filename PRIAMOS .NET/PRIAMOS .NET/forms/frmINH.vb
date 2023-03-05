@@ -36,6 +36,8 @@ Public Class frmINH
     Private InhFieldAndValues As Dictionary(Of String, String)
     Dim sGuid As String
     Private Sfilenames As String = ""
+    Private fdate As Date
+    Private Tdate As Date
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -73,6 +75,7 @@ Public Class frmINH
                 LcmdCancelInvoice.Enabled = False
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 lbldate.Text = ""
+                cmdPrintAll.Enabled = False
             Case FormMode.EditRecord
                 'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 InhFieldAndValues = New Dictionary(Of String, String)
@@ -111,6 +114,7 @@ Public Class frmINH
                 End If
                 Me.Text = "Παραστατικό-" & cboBDG.Text
                 If chkCalculated.CheckState = CheckState.Checked Then cmdSaveInd.Enabled = False : cmdDel.Enabled = False : cmdSaveINH.Enabled = False
+                fdate = Date.Parse(dtFDate.EditValue.ToString) : Tdate = Date.Parse(dtTDate.EditValue.ToString)
         End Select
         '  Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -125,7 +129,7 @@ Public Class frmINH
         If chkCalculated.Checked = True Then
             LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
         Else
-            LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True
+            LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = IIf(FormMode.NewRecord, False, True) : GridView5.OptionsBehavior.Editable = True
         End If
 
         LoadConditionalFormatting()
@@ -253,21 +257,21 @@ Public Class frmINH
         Dim sResult As Boolean
         Dim sGuid As String
         Dim sSQL As String
+        Dim Months As Long
         Try
             If Valid.ValidateFormGRP(LayoutControlGroup1) Then
                 'Dim myLayoutControls As New List(Of Control)
                 'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
+                'Ελεγχος αν είναι valid το διάστημα
+                If CheckIfDateIsValid(Months) = False Then Exit Sub
+
                 Select Case Mode
                     Case FormMode.NewRecord
                         'Ελεγχος αν υπάρχει παρασττικό στο δίάστημα
                         If CheckIfINHMonthExists() Then Exit Sub
-                        Dim date1 As Date = Date.Parse(dtFDate.EditValue.ToString)
-                        Dim date2 As Date = Date.Parse(dtTDate.EditValue.ToString)
-                        Dim Months As Long = DateDiff(DateInterval.Month, date1, date2) + 1
-                        dtTDate.EditValue = date2.AddMonths(1).AddDays(-1)
+
                         sGuid = System.Guid.NewGuid.ToString
                         Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
-
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sGuid, True, "completeDate", toSQLValueS(sCompleteDate))
                         If sResult Then
                             ' Αν είναι θερμιδομέτρηση δεν καταχωρούντε πάγια έξοδα
@@ -360,9 +364,28 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Function CheckIfDateIsValid(ByRef Months As Long) As Boolean
+        Dim date1 As Date = Date.Parse(dtFDate.EditValue.ToString)
+        Dim date2 As Date = Date.Parse(dtTDate.EditValue.ToString)
+        Dim LastDayInMonthDate As Date = New Date(date2.Year, date2.Month, Date.DaysInMonth(date2.Year, date2.Month))
+        Months = DateDiff(DateInterval.Month, date1, date2) + 1
+
+        dtTDate.EditValue = LastDayInMonthDate
+        If DateDiff(DateInterval.Month, date1, date2) < 0 Then
+            XtraMessageBox.Show("Δεν μπορεί η ""ΑΠΟ"" ημερομηνία να είναι μεγαλύτερη από την ""ΕΩΣ""", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        Else
+            Return True
+        End If
+
+    End Function
+
     Private Function CheckIfINHMonthExists() As Boolean
 
         Dim sSQL As String
+        Dim DateChanged As Boolean = False
+        If fdate <> dtFDate.EditValue Or Tdate <> dtTDate.EditValue Then DateChanged = True
+
         If chkExtraordinary.Checked = True Then
             sSQL = "select count(id) as CountINH from inh where extraordinary = 1 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
         End If
@@ -370,7 +393,7 @@ Public Class frmINH
             sSQL = "select count(id) as CountINH from inh where Calorimetric = 1 and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
         End If
         If chkExtraordinary.Checked = False And chkCalorimetric.Checked = False Then
-            sSQL = "select count(id) as CountINH from inh where extraordinary = 0 and Calorimetric = 0 and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
+            sSQL = "select count(id) as CountINH from inh where extraordinary = 0 and Calorimetric = 0   and  bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) & " and " & toSQLValueS(CDate(dtFDate.Text).ToString("yyyyMMdd")) & " between fDate and TDate"
         End If
 
         Dim cmd As SqlCommand
@@ -386,7 +409,7 @@ Public Class frmINH
             End If
             sdr.Close()
             If CountINH > 0 Then
-                XtraMessageBox.Show("Υπάρχει ήδη καταχωρημένο παραστατικό στο δίαστημα.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                XtraMessageBox.Show("Υπάρχει ήδη καταχωρημένο παραστατικό στο δίαστημα.Θέλετε να συνεχίσετε στην καταχώρηση?", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return True
             End If
         End If
