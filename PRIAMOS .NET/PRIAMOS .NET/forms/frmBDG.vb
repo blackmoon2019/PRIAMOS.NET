@@ -308,8 +308,11 @@ Public Class frmBDG
                     Bmlc.Clear()
                     FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
 
-                    If Mode = FormMode.NewRecord Then dtDTS.EditValue = DateTime.Now
-                    txtCode.Text = DBQ.GetNextId("BDG")
+                    If Mode = FormMode.NewRecord Then
+                        dtDTS.EditValue = DateTime.Now
+                        txtCode.EditValue = DBQ.GetNextId("BDG")
+                    End If
+
                     'Dim form As New frmScroller
                     'form.LoadRecords("vw_BDG", sID)
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1955,7 +1958,7 @@ Public Class frmBDG
         End Try
     End Sub
     Private Sub cboBefMes_EditValueChanged(sender As Object, e As EventArgs) Handles cboBefMes.EditValueChanged
-        LoadMefMes(cboBefMes.Text)
+        LoadMefMes(cboBefMes.EditValue)
         cmdRefreshAHPB.Enabled = True
     End Sub
 
@@ -2726,4 +2729,8 @@ Public Class frmBDG
     End Sub
 
 
+
+    Private Sub GridView2_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView2.ValidatingEditor
+        If e.Value = "" Then e.ErrorText = "Παρακαλώ εισάγετε αριθμό" : e.Valid = False
+    End Sub
 End Class

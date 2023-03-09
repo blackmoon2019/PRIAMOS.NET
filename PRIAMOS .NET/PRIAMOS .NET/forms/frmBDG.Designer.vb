@@ -297,6 +297,26 @@ Partial Class frmBDG
         Me.cboBtypes = New DevExpress.XtraEditors.LookUpEdit()
         Me.grdAPTAHPB = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colaptID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmdt = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmes = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmesB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmesDif = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colboiler = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colttl = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colord = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFloor = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colflrID = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmdt1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colfinalized = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colahpbHID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.txtHpc = New DevExpress.XtraEditors.TextEdit()
         Me.cboHtypes = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmdAddAHPB = New DevExpress.XtraEditors.SimpleButton()
@@ -3909,10 +3929,11 @@ Partial Class frmBDG
         '
         'GridView2
         '
-        Me.GridView2.DetailHeight = 619
+        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.colaptID, Me.colmdt, Me.colmes, Me.colmesB, Me.colmesDif, Me.colboiler, Me.GridColumn3, Me.GridColumn4, Me.colttl, Me.colord, Me.colFloor, Me.colflrID, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.colmdt1, Me.colfinalized, Me.colahpbHID})
         Me.GridView2.GridControl = Me.grdAPTAHPB
         Me.GridView2.LevelIndent = 0
         Me.GridView2.Name = "GridView2"
+        Me.GridView2.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.[True]
         Me.GridView2.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
         Me.GridView2.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.GridView2.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Save
@@ -3920,6 +3941,7 @@ Partial Class frmBDG
         Me.GridView2.OptionsLayout.StoreAllOptions = True
         Me.GridView2.OptionsLayout.StoreAppearance = True
         Me.GridView2.OptionsLayout.StoreFormatRules = True
+        Me.GridView2.OptionsMenu.ShowConditionalFormattingItem = True
         Me.GridView2.OptionsPrint.PrintPreview = True
         Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
         Me.GridView2.OptionsSelection.MultiSelect = True
@@ -3930,6 +3952,154 @@ Partial Class frmBDG
         Me.GridView2.OptionsView.ShowFooter = True
         Me.GridView2.OptionsView.ShowGroupPanel = False
         Me.GridView2.PreviewIndent = 0
+        '
+        'GridColumn1
+        '
+        Me.GridColumn1.FieldName = "ID"
+        Me.GridColumn1.Name = "GridColumn1"
+        '
+        'GridColumn2
+        '
+        Me.GridColumn2.FieldName = "code"
+        Me.GridColumn2.Name = "GridColumn2"
+        '
+        'colaptID
+        '
+        Me.colaptID.FieldName = "aptID"
+        Me.colaptID.Name = "colaptID"
+        '
+        'colmdt
+        '
+        Me.colmdt.Caption = "ΗΜΕΡ/ΝΙΑ ΜΕΤΡΗΣΗΣ"
+        Me.colmdt.FieldName = "mdt"
+        Me.colmdt.Name = "colmdt"
+        Me.colmdt.Visible = True
+        Me.colmdt.VisibleIndex = 4
+        Me.colmdt.Width = 210
+        '
+        'colmes
+        '
+        Me.colmes.Caption = "ΜΕΤΡΗΣΗ"
+        Me.colmes.FieldName = "mes"
+        Me.colmes.Name = "colmes"
+        Me.colmes.Visible = True
+        Me.colmes.VisibleIndex = 5
+        Me.colmes.Width = 113
+        '
+        'colmesB
+        '
+        Me.colmesB.Caption = "ΠΡΟΗΓ. ΜΕΤΡΗΣΗ"
+        Me.colmesB.FieldName = "mesB"
+        Me.colmesB.Name = "colmesB"
+        Me.colmesB.OptionsColumn.AllowEdit = False
+        Me.colmesB.OptionsColumn.ReadOnly = True
+        Me.colmesB.Visible = True
+        Me.colmesB.VisibleIndex = 6
+        Me.colmesB.Width = 182
+        '
+        'colmesDif
+        '
+        Me.colmesDif.Caption = "ΔΙΑΦΟΡΑ"
+        Me.colmesDif.FieldName = "mesDif"
+        Me.colmesDif.Name = "colmesDif"
+        Me.colmesDif.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "mesDif", "Σύνολο {0:#,0.00}")})
+        Me.colmesDif.Visible = True
+        Me.colmesDif.VisibleIndex = 7
+        Me.colmesDif.Width = 153
+        '
+        'colboiler
+        '
+        Me.colboiler.Caption = "BOILER"
+        Me.colboiler.FieldName = "boiler"
+        Me.colboiler.Name = "colboiler"
+        Me.colboiler.OptionsColumn.ReadOnly = True
+        Me.colboiler.Visible = True
+        Me.colboiler.VisibleIndex = 8
+        Me.colboiler.Width = 97
+        '
+        'GridColumn3
+        '
+        Me.GridColumn3.FieldName = "RealName"
+        Me.GridColumn3.Name = "GridColumn3"
+        '
+        'GridColumn4
+        '
+        Me.GridColumn4.Caption = "Διαμέρισμα"
+        Me.GridColumn4.FieldName = "nam"
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.OptionsColumn.AllowEdit = False
+        Me.GridColumn4.Visible = True
+        Me.GridColumn4.VisibleIndex = 1
+        Me.GridColumn4.Width = 235
+        '
+        'colttl
+        '
+        Me.colttl.Caption = "Τίτλος Εκτ."
+        Me.colttl.FieldName = "ttl"
+        Me.colttl.Name = "colttl"
+        Me.colttl.Visible = True
+        Me.colttl.VisibleIndex = 2
+        Me.colttl.Width = 127
+        '
+        'colord
+        '
+        Me.colord.Caption = "Α/Α"
+        Me.colord.FieldName = "ord"
+        Me.colord.Name = "colord"
+        Me.colord.OptionsColumn.AllowEdit = False
+        Me.colord.Visible = True
+        Me.colord.VisibleIndex = 3
+        Me.colord.Width = 67
+        '
+        'colFloor
+        '
+        Me.colFloor.FieldName = "Floor"
+        Me.colFloor.Name = "colFloor"
+        '
+        'colflrID
+        '
+        Me.colflrID.FieldName = "flrID"
+        Me.colflrID.Name = "colflrID"
+        '
+        'GridColumn5
+        '
+        Me.GridColumn5.FieldName = "cmt"
+        Me.GridColumn5.Name = "GridColumn5"
+        '
+        'GridColumn6
+        '
+        Me.GridColumn6.FieldName = "bdgID"
+        Me.GridColumn6.Name = "GridColumn6"
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.FieldName = "bdgNam"
+        Me.GridColumn7.Name = "GridColumn7"
+        '
+        'colmdt1
+        '
+        Me.colmdt1.FieldName = "mdt1"
+        Me.colmdt1.MinWidth = 33
+        Me.colmdt1.Name = "colmdt1"
+        '
+        'colfinalized
+        '
+        Me.colfinalized.Caption = "ΣΥΜΜ. ΣΕ ΠΑΡΑΣΤΑΤΙΚΟ"
+        Me.colfinalized.FieldName = "finalized"
+        Me.colfinalized.MinWidth = 33
+        Me.colfinalized.Name = "colfinalized"
+        Me.colfinalized.OptionsColumn.AllowEdit = False
+        Me.colfinalized.Visible = True
+        Me.colfinalized.VisibleIndex = 9
+        Me.colfinalized.Width = 127
+        '
+        'colahpbHID
+        '
+        Me.colahpbHID.AppearanceCell.BackColor = System.Drawing.Color.Bisque
+        Me.colahpbHID.AppearanceCell.Options.UseBackColor = True
+        Me.colahpbHID.FieldName = "ahpbHID"
+        Me.colahpbHID.MinWidth = 33
+        Me.colahpbHID.Name = "colahpbHID"
         '
         'txtHpc
         '
@@ -9850,4 +10020,24 @@ Partial Class frmBDG
     Friend WithEvents SplashScreenManager1 As DevExpress.XtraSplashScreen.SplashScreenManager
     Friend WithEvents cmdBDGFEdit As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem175 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colaptID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmdt As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmes As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmesB As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmesDif As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colboiler As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colttl As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colord As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFloor As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colflrID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colmdt1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colfinalized As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colahpbHID As DevExpress.XtraGrid.Columns.GridColumn
 End Class

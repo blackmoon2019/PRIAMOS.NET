@@ -104,17 +104,6 @@ Namespace My
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=T"& _ 
             "rue;User ID=sa;Password=12pri2020#$;MultipleActiveResultSets=True")>  _
-        Public ReadOnly Property PriamosCN() As String
-            Get
-                Return CType(Me("PriamosCN"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.52,1433;Initial Catalog=Priamos_NET;Persist Security Info=T"& _ 
-            "rue;User ID=sa;Password=12pri2020#$;MultipleActiveResultSets=True")>  _
         Public ReadOnly Property Priamos_NETConnectionStringRemote() As String
             Get
                 Return CType(Me("Priamos_NETConnectionStringRemote"),String)

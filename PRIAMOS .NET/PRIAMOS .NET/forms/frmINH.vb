@@ -129,7 +129,7 @@ Public Class frmINH
         If chkCalculated.Checked = True Then
             LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False
         Else
-            LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = IIf(FormMode.NewRecord, False, True) : GridView5.OptionsBehavior.Editable = True
+            LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = IIf(Mode = FormMode.NewRecord, False, True) : GridView5.OptionsBehavior.Editable = True
         End If
 
         LoadConditionalFormatting()
@@ -846,7 +846,7 @@ Public Class frmINH
             chkCalculated.Checked = True
             LcmdCancelCalculate.Enabled = True
             LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False
-            Frm.Refresh()
+            '  Frm.Refresh()
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
         Catch SQLex As SqlException
@@ -1180,8 +1180,8 @@ Public Class frmINH
             'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
             InhFieldAndValues = New Dictionary(Of String, String)
             LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
-            If InhFieldAndValues.Item("mdt") <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPBH.Text = ""
-            If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPBB.Text = ""
+            If InhFieldAndValues.Item("mdt") <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPBH.Text = "" : cboAhpbH.EditValue = Nothing
+            If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPBB.Text = "" : cboAhpbHB.EditValue = Nothing
 
             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
