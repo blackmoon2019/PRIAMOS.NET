@@ -148,7 +148,7 @@ Public Class frmCollectionsDet
                 LoadForms.RestoreLayoutFromXml(GridView1, "COL_BANKS_DET_COMPLETED_def.xml")
                 LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
             End If
-
+            GridView1.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DefaultBoolean.False
             LayoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
 
             LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always

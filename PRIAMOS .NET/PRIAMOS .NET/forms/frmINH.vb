@@ -680,6 +680,7 @@ Public Class frmINH
                 'End If
                 Calculate()
                 TabNavigationPage2.Enabled = True
+                cmdPrintAll.Enabled = True
 
             End If
         Catch ex As Exception
@@ -1406,7 +1407,7 @@ Public Class frmINH
             End Using
             LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
             chkCalculated.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
-            cmdSaveInd.Enabled = True : cmdDel.Enabled = True : cmdSaveINH.Enabled = True
+            cmdSaveInd.Enabled = True : cmdDel.Enabled = True : cmdSaveINH.Enabled = True : cmdPrintAll.Enabled = False
             Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
             Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
             lblAHPBB.Text = "" : lblAHPBH.Text = ""
