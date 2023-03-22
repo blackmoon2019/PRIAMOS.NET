@@ -703,7 +703,16 @@ Public Class frmCollections
                 Exit Sub
             End If
 
+
+            ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
+            If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
+                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
+                e.Valid = False
+                Exit Sub
+            End If
             If debit = 0 Or (debit = 0 And credit = 0) Then Exit Sub
+
+
 
 
             If sender.FocusedColumn.FieldName = "credit" Or sender.FocusedColumn.FieldName = "ColMethodID" Or sender.FocusedColumn.FieldName = "bankID" Then
@@ -814,6 +823,13 @@ Public Class frmCollections
                     Exit Sub
                 End If
             End If
+            ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
+            If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
+                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
+                e.Valid = False
+                Exit Sub
+            End If
+
 
             If debit = 0 And credit = 0 Then Exit Sub
 
@@ -893,6 +909,7 @@ Public Class frmCollections
                             frmCollectionsDet.INHID = ""
                             frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = False
+                            frmCollectionsDet.CalledForNegatives = False
                             frmCollectionsDet.ShowDialog()
                             LoaderData(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(APTView.GetRowCellValue(APTView.FocusedRowHandle, "bdgID").ToString))
@@ -913,12 +930,16 @@ Public Class frmCollections
                         Case 1 : INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
                         Case 2
                             If INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID") = Nothing Then Exit Sub
+                            Dim sBal As Decimal = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal")
                             Dim frm As New frmCollectionsDet
                             frmCollectionsDet.BDGID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString.ToUpper
                             frmCollectionsDet.APTID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString.ToUpper
                             frmCollectionsDet.INHID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString.ToUpper
                             frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = False
+                            If sBal < 0 Then frmCollectionsDet.CalledForNegatives = True : frmCollectionsDet.Deposit = sBal Else frmCollectionsDet.CalledForNegatives = False
+
+
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))
@@ -946,6 +967,7 @@ Public Class frmCollections
                             frmCollectionsDet.TENANT = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "tenant")
                             frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = True
+                            frmCollectionsDet.CalledForNegatives = False
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))

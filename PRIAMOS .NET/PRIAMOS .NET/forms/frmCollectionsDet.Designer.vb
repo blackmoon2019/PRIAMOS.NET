@@ -53,6 +53,7 @@ Partial Class frmCollectionsDet
         Me.coltenant = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colagreed = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colETOS = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Rep_Credit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -74,6 +75,7 @@ Partial Class frmCollectionsDet
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,7 +130,7 @@ Partial Class frmCollectionsDet
         Me.cmdSaveSelected.Name = "cmdSaveSelected"
         Me.cmdSaveSelected.Size = New System.Drawing.Size(250, 39)
         Me.cmdSaveSelected.StyleController = Me.LayoutControl1
-        Me.cmdSaveSelected.TabIndex = 28
+        Me.cmdSaveSelected.TabIndex = 3
         Me.cmdSaveSelected.Text = "Αποθήκευση Επιλογών"
         '
         'lblDeposit
@@ -141,7 +143,7 @@ Partial Class frmCollectionsDet
         Me.lblDeposit.Name = "lblDeposit"
         Me.lblDeposit.Size = New System.Drawing.Size(177, 25)
         Me.lblDeposit.StyleController = Me.LayoutControl1
-        Me.lblDeposit.TabIndex = 27
+        Me.lblDeposit.TabIndex = 1
         Me.lblDeposit.Text = "Ποσό Κατάθεσης"
         '
         'cmdCol_D_Del
@@ -153,7 +155,7 @@ Partial Class frmCollectionsDet
         Me.cmdCol_D_Del.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdCol_D_Del.Size = New System.Drawing.Size(26, 39)
         Me.cmdCol_D_Del.StyleController = Me.LayoutControl1
-        Me.cmdCol_D_Del.TabIndex = 25
+        Me.cmdCol_D_Del.TabIndex = 2
         '
         'cmdExit
         '
@@ -165,7 +167,7 @@ Partial Class frmCollectionsDet
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(253, 39)
         Me.cmdExit.StyleController = Me.LayoutControl1
-        Me.cmdExit.TabIndex = 17
+        Me.cmdExit.TabIndex = 4
         Me.cmdExit.Text = "Έξοδος"
         '
         'GridControl1
@@ -176,8 +178,9 @@ Partial Class frmCollectionsDet
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Rep_Credit})
         Me.GridControl1.Size = New System.Drawing.Size(1754, 708)
-        Me.GridControl1.TabIndex = 16
+        Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
         'GridView1
@@ -406,6 +409,12 @@ Partial Class frmCollectionsDet
         Me.colETOS.VisibleIndex = 11
         Me.colETOS.Width = 131
         '
+        'Rep_Credit
+        '
+        Me.Rep_Credit.AutoHeight = False
+        Me.Rep_Credit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Left), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.Rep_Credit.Name = "Rep_Credit"
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -536,6 +545,7 @@ Partial Class frmCollectionsDet
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rep_Credit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -599,4 +609,5 @@ Partial Class frmCollectionsDet
     Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents COLBanksCompletedBindingSource As BindingSource
     Friend WithEvents COLBanksCompletedTableAdapter As Priamos_NETDataSet3TableAdapters.COLBanksCompletedTableAdapter
+    Friend WithEvents Rep_Credit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
 End Class

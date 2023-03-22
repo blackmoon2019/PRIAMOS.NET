@@ -1353,6 +1353,7 @@ Public Class frmBankCollectionInsert
                     frmCollectionsDet.Deposit = Deposit
                     frmCollectionsDet.CalledFromCollBanks = True
                     frmCollectionsDet.GetCompletedCols = False
+                    frmCollectionsDet.CalledForNegatives = False
                     Dim completed As Boolean
                     completed = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Completed")
                     If completed = True Then

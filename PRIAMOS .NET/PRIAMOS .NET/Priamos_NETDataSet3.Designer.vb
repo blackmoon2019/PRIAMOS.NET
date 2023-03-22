@@ -5125,7 +5125,6 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnbdgID.AllowDBNull = false
             Me.columncompleteDate.MaxLength = 150
             Me.columndebit.ReadOnly = true
-            Me.columncredit.ReadOnly = true
             Me.columnbal.ReadOnly = true
             Me.columndtCredit.ReadOnly = true
             Me.columnEtos.ReadOnly = true
@@ -19309,7 +19308,7 @@ Namespace Priamos_NETDataSet3TableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, SUM(COL.debit) AS debit,"& _ 
@@ -19333,6 +19332,29 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, SUM(COL.debit) AS debit,"& _ 
+                " S.credit, S.bal, S.debitusrID, S.dtDebit, S.dtCredit, S.Etos, S.FromMonth, S.To"& _ 
+                "Month, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   COL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               (SELE"& _ 
+                "CT A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, SUM(C.debit) AS debit, SUM("& _ 
+                "C.credit) AS credit, SUM(C.bal) AS bal, C.debitusrID, C.dtDebit, MAX(C.dtCredit)"& _ 
+                " AS dtCredit, YEAR(I.fDate) AS Etos, MONTH(I.fDate) AS FromMonth, MONTH(I.tDate)"& _ 
+                " AS ToMonth, I.fDate, I.tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              FROM   COL AS C INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  INH AS I ON I.ID = C.inhID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  APT AS A ON C.aptID = A.ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              WHERE (C.reserveAPT = 0) AND (C.comp"& _ 
+                "leted = 0) AND (C.bdgID = @bdgID) AND (C.aptID = @aptID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              GROUP BY"& _ 
+                " A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, C.debitusrID, C.dtDebit, YEAR"& _ 
+                "(I.fDate), MONTH(I.fDate), MONTH(I.tDate), I.fDate, I.tDate) AS S ON S.bdgID = C"& _ 
+                "OL.bdgID AND S.aptID = COL.aptID AND S.inhID = COL.inhID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (COL.reserveAPT "& _ 
+                "= 0) AND (COL.completed = 0) and s.bal>0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY S.ttl, S.aptID, S.bdgID, S.in"& _ 
+                "hID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, S."& _ 
+                "credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY S.aptID, S.bdg"& _ 
+                "ID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToM"& _ 
+                "onth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19361,6 +19383,21 @@ Namespace Priamos_NETDataSet3TableAdapters
             Dim dataTable As Priamos_NETDataSet3.COL_PER_BDG_APTDataTable = New Priamos_NETDataSet3.COL_PER_BDG_APTDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillForNegatives(ByVal dataTable As Priamos_NETDataSet3.COL_PER_BDG_APTDataTable, ByVal bdgID As System.Guid, ByVal aptID As System.Guid) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID,System.Guid)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(aptID,System.Guid)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
         End Function
     End Class
     
