@@ -594,7 +594,7 @@ Public Class frmCollections
             End If
             ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
             If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
-                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
+                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά. Πηγαίντε στο αρνητικό παραστατικό και πατήστε τις 3 τελίτσες στην στήλη ""Είσπραξη"" στο τελευταίο επίπεδο."
                 e.Valid = False
                 Exit Sub
             End If
@@ -706,7 +706,7 @@ Public Class frmCollections
 
             ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
             If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
-                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
+                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά. Πηγαίντε στο αρνητικό παραστατικό και πατήστε τις 3 τελίτσες στην στήλη ""Είσπραξη"" στο τελευταίο επίπεδο."
                 e.Valid = False
                 Exit Sub
             End If
@@ -825,7 +825,7 @@ Public Class frmCollections
             End If
             ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
             If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
-                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
+                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά. Πηγαίντε στο αρνητικό παραστατικό και πατήστε τις 3 τελίτσες στην στήλη ""Είσπραξη""."
                 e.Valid = False
                 Exit Sub
             End If
@@ -930,16 +930,14 @@ Public Class frmCollections
                         Case 1 : INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
                         Case 2
                             If INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID") = Nothing Then Exit Sub
-                            Dim sBal As Decimal = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bal")
+
                             Dim frm As New frmCollectionsDet
                             frmCollectionsDet.BDGID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString.ToUpper
                             frmCollectionsDet.APTID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "aptID").ToString.ToUpper
                             frmCollectionsDet.INHID = INHView.GetRowCellValue(INHView.FocusedRowHandle, "inhID").ToString.ToUpper
                             frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.CheckForTenant = False
-                            If sBal < 0 Then frmCollectionsDet.CalledForNegatives = True : frmCollectionsDet.Deposit = sBal Else frmCollectionsDet.CalledForNegatives = False
-
-
+                            frmCollectionsDet.CalledForNegatives = False
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))
@@ -961,13 +959,14 @@ Public Class frmCollections
                         Case 1 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "credit", 0)
                         Case 2
                             Dim frm As New frmCollectionsDet
+                            Dim sBal As Decimal = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bal")
                             frmCollectionsDet.BDGID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bdgID").ToString.ToUpper
                             frmCollectionsDet.APTID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "aptID").ToString.ToUpper
                             frmCollectionsDet.INHID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "inhID").ToString.ToUpper
                             frmCollectionsDet.TENANT = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "tenant")
-                            frmCollectionsDet.CalledFromCollBanks = False
+                            If sBal < 0 Then frmCollectionsDet.CalledForNegatives = True : frmCollectionsDet.Deposit = sBal Else frmCollectionsDet.CalledForNegatives = False
                             frmCollectionsDet.CheckForTenant = True
-                            frmCollectionsDet.CalledForNegatives = False
+                            frmCollectionsDet.CalledFromCollBanks = False
                             frmCollectionsDet.ShowDialog()
                             LoaderData(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString)
                             Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(INHView.GetRowCellValue(INHView.FocusedRowHandle, "bdgID").ToString))

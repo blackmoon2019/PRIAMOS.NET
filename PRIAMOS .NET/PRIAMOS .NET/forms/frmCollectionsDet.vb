@@ -3,6 +3,7 @@ Imports System.Data.SqlClient
 Imports System.Text
 Imports DevExpress.CodeParser
 Imports DevExpress.Data
+Imports DevExpress.DataAccess
 Imports DevExpress.Utils
 Imports DevExpress.Xpo
 Imports DevExpress.XtraEditors
@@ -295,7 +296,7 @@ Public Class frmCollectionsDet
                     GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
                     Exit Sub
                 End If
-                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "debit"))  'APTView.ValidateEditor()
+                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "debit")) : GridView1.ValidateEditor()
             Case 1 : GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
 
         End Select
@@ -303,16 +304,18 @@ Public Class frmCollectionsDet
 
     Private Sub GridView1_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView1.ValidatingEditor
         Try
+            '**********************************************************************************
+            ' Ο παρακάτω κώδικας ισχύει για τις περιπτώσεις που υπάρχουν αρνητικά παραστατικά *
+            '**********************************************************************************
+            If sCalledForNegatives = False Then Exit Sub
+
             UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim sSQL As String, dtcredit As String
             Dim credit As Decimal, debit As Decimal, bal As Decimal
-            Dim debitusrID As String, sBdgID As String, sInhID As String, sAptID As String
+            Dim debitusrID As String
             If sender.FocusedColumn.FieldName = "debit" Then Exit Sub
-            'Κολπάκι ώστε να πάρουμε το view των παραστατικών. Ανοιγοκλείνουμε χωρις να το παίρνει χαμπάρι ο χρήστης το Detail
-            sender.SetMasterRowExpanded(sender.FocusedRowHandle, True)
             If sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString().ToUpper = "26521B58-5590-4880-A31E-4E91A6CF964D" Then
                 e.ErrorText = "Ο System User δεν έχει δικαίωμα είσπραξης. "
-                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
                 e.Valid = False
                 Exit Sub
@@ -321,16 +324,12 @@ Public Class frmCollectionsDet
             If sender.FocusedColumn.FieldName = "credit" And IsDebitUserUnique(sender, debitusrID) = False Then
                 'XtraMessageBox.Show("Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Υπάρχουν διαφορετικοί Χρήστες Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
-                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
             ElseIf sender.FocusedColumn.FieldName = "credit" And IsDebitUserEmpty(sender) = True Then
                 'XtraMessageBox.Show("Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 e.ErrorText = "Δεν υπάρχει κανένας Χρήστης Χρέωσης στα παραστατικά. Δεν μπορείτε να αλλάξετε την πίστωση στο διαμέρισμα. "
                 sender.SetRowCellValue(sender.FocusedRowHandle, "credit", 0)
-                APTView.SetRowCellValue(APTView.FocusedRowHandle, "credit", 0)
-                INHView.SetRowCellValue(INHView.FocusedRowHandle, "credit", 0)
-                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 e.Valid = False
                 Exit Sub
             ElseIf sender.FocusedColumn.FieldName = "credit" Then
@@ -355,18 +354,17 @@ Public Class frmCollectionsDet
                     e.ErrorText = "Δεν μπορεί η είσπραξη να είναι μηδενική."
                     Exit Sub
                 End If
-            End If
-            ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
-            If CheckIfExistNegativeInvoice(sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
-                e.ErrorText = "Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά "
-                e.Valid = False
-                Exit Sub
+                If credit > sDeposit * (-1) Then
+                    e.ErrorText = "Η πίστωση δεν μπορεί να ξεπερνάει το ποσό των: " & sDeposit * -1 & "€"
+                    e.Valid = False
+                    Exit Sub
+                End If
             End If
 
 
             If debit = 0 And credit = 0 Then Exit Sub
 
-            If sender.FocusedColumn.FieldName = "credit" Or sender.FocusedColumn.FieldName = "ColMethodID" Or sender.FocusedColumn.FieldName = "bankID" Then
+            If sender.FocusedColumn.FieldName = "credit" Then 'Or sender.FocusedColumn.FieldName = "ColMethodID" Or sender.FocusedColumn.FieldName = "bankID" 
                 If sender.GetRowCellValue(sender.FocusedRowHandle, "debit") Is DBNull.Value Then
                     debit = 0
                 Else
@@ -389,35 +387,102 @@ Public Class frmCollectionsDet
                 End If
                 bal = Math.Abs(bal) - credit
                 dtcredit = toSQLValueS(Date.Now.ToString("yyyyMMdd"))
-                sBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString
-                sInhID = sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString
-                sAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString
+
+                Dim sNegInhID As String, sNegBdgID As String, sNegAptID As String, sdebitusrID As String, sNegTenant As Boolean
+                sNegBdgID = sender.GetRowCellValue(sender.FocusedRowHandle, "bdgID").ToString.ToUpper
+                sNegInhID = sender.GetRowCellValue(sender.FocusedRowHandle, "inhID").ToString.ToUpper
+                sNegAptID = sender.GetRowCellValue(sender.FocusedRowHandle, "aptID").ToString.ToUpper
+                sdebitusrID = sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString.ToUpper
+                sNegTenant = IIf(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant") = False, 0, 1)
                 sender.SetRowCellValue(sender.FocusedRowHandle, "bal", bal)
-                Using oCmd As New SqlCommand("col_Calculate", CNDB)
-                    oCmd.CommandType = CommandType.StoredProcedure
-                    oCmd.Parameters.AddWithValue("@debitusrID", sender.GetRowCellValue(sender.FocusedRowHandle, "debitusrID").ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@bdgID", sBdgID.ToUpper)
-                    oCmd.Parameters.AddWithValue("@aptID", sAptID.ToUpper)
-                    oCmd.Parameters.AddWithValue("@inhID", sInhID.ToUpper)
-                    oCmd.Parameters.AddWithValue("@Givencredit", credit)
-                    oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
-                    oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ
-                    oCmd.Parameters.AddWithValue("@TenantOwner", IIf(sender.GetRowCellValue(sender.FocusedRowHandle, "tenant") = False, 0, 1))
-                    oCmd.Parameters.AddWithValue("@Agreed", 0)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                ' Ενημέρωση υπολοίπου διαμερίσματος
-                'sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
-                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
-                sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
-                LoaderData(sBdgID)
-                Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sBdgID))
-                'If bal = 0 Then grdVO_T.DeleteRow(sender.FocusedRowHandle)
-                'Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NETDataSet2.vw_INH, System.Guid.Parse(sBdgID))
-                Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
+                ' Υπολογισμός Είσπραξης
+                If ColCalculate(credit, sNegInhID, sNegBdgID, sNegAptID, sdebitusrID, sNegTenant, 0) Then
+                    ColCalculate(credit * -1, sinhID, sbdgID, saptID, sdebitusrID, sTenant, 3)
+                    ' Ενημέρωση αρνητικού Παραστατικου 
+                    COL_PER_BDG_APTTableAdapter.FillForNegatives(Me.Priamos_NETDataSet3.COL_PER_BDG_APT, System.Guid.Parse(sbdgID), System.Guid.Parse(saptID))
+                    sDeposit = sDeposit + credit : lblDeposit.Text = "Ποσό Κατάθεσης : " & sDeposit
+                End If
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Function ColCalculate(ByVal credit As Decimal,
+                                  ByVal sNegInhID As String, ByVal sNegBdgID As String, ByVal sNegAptID As String,
+                                  ByVal debitusrID As String, ByVal tenant As Boolean, ByVal ComeFrom As Integer) As Boolean
+        Try
+
+
+            Using oCmd As New SqlCommand("col_Calculate", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@debitusrID", debitusrID)
+                oCmd.Parameters.AddWithValue("@bdgID", sNegBdgID)
+                oCmd.Parameters.AddWithValue("@aptID", sNegAptID)
+                oCmd.Parameters.AddWithValue("@inhID", sNegInhID)
+                oCmd.Parameters.AddWithValue("@Givencredit", credit)
+                oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
+                oCmd.Parameters.AddWithValue("@ComeFrom", ComeFrom)
+                oCmd.Parameters.AddWithValue("@ColMethodID", "75E3251D-077D-42B0-B79A-9F2886381A97") ' ΜΕΤΡΗΤΑ
+                oCmd.Parameters.AddWithValue("@TenantOwner", tenant)
+                oCmd.Parameters.AddWithValue("@Agreed", 0)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+    Private Function UpdateNegativeInvoice(ByVal credit As Decimal, ByVal sInhID As String, ByVal sAptID As String) As Boolean
+        Try
+            Dim sSQL As String
+            sSQL = "UPDATE COL SET credit= " & toSQLValueS(credit, True) & " ,bal=bal + " & toSQLValueS(credit.ToString, True) & " where inhid = " & toSQLValueS(sInhID) & " and aptID = " & toSQLValueS(sAptID)
+            sDeposit = sDeposit + credit
+            lblDeposit.Text = "Ποσό Κατάθεσης : " & sDeposit
+            Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
+            sSQL = "UPDATE COL SET credit= " & toSQLValueS(credit, True) & " ,bal=bal + " & toSQLValueS(credit.ToString, True) & " where inhid = " & toSQLValueS(sInhID) & " and aptID = " & toSQLValueS(sAptID)
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
+    End Function
+    'Function που ελέγχει αν ο χρήστης χρέωσης στα παραστατικά είναι μοναδικός
+    Private Function IsDebitUserUnique(ByVal GrdView As GridView, Optional ByRef dbusrID As String = "") As Boolean
+        Dim i As Integer
+        Dim Row As DataRow
+        Dim debitusrID As String, tmpdebitusrID As String
+        Try
+            For i = 0 To GrdView.DataRowCount - 1
+                Row = GrdView.GetDataRow(i)
+                tmpdebitusrID = Row.Item("debitusrID").ToString
+                If tmpdebitusrID = "" Then Return False
+                If tmpdebitusrID <> debitusrID Then
+                    If debitusrID <> "" Then Return False Else debitusrID = tmpdebitusrID
+                End If
+            Next
+            dbusrID = debitusrID
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
+    'Function που ελέγχει αν δεν υπάρχει κανένας χρήστης χρέωσης στα παραστατικά
+    Private Function IsDebitUserEmpty(ByVal GrdView As GridView) As Boolean
+        Dim i As Integer
+        Dim Row As DataRow
+        Dim debitusrID As String
+        Try
+            For i = 0 To GrdView.DataRowCount - 1
+                Row = GrdView.GetDataRow(i)
+                debitusrID = Row.Item("debitusrID").ToString
+                If debitusrID <> "" Then Return False
+            Next
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
+
 End Class

@@ -2041,7 +2041,7 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnttl.MaxLength = 150
             Me.columnETOS.ReadOnly = true
             Me.columnCmFrom.ReadOnly = true
-            Me.columnCmFrom.MaxLength = 15
+            Me.columnCmFrom.MaxLength = 50
             Me.columnBankName.MaxLength = 150
             Me.columnbankFileName.MaxLength = 200
         End Sub

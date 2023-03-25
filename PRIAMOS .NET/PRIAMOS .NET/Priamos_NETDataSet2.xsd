@@ -559,25 +559,25 @@ order by fdate desc</CommandText>
               <xs:element name="CmFrom" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="CmFromColumn" msprop:Generator_ColumnPropNameInRow="CmFrom" msprop:Generator_UserColumnName="CmFrom" msprop:Generator_ColumnVarNameInTable="columnCmFrom" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="BankName" msprop:Generator_UserColumnName="BankName" msprop:Generator_ColumnPropNameInTable="BankNameColumn" msprop:Generator_ColumnPropNameInRow="BankName" msprop:Generator_ColumnVarNameInTable="columnBankName" minOccurs="0">
+              <xs:element name="BankName" msprop:Generator_ColumnPropNameInTable="BankNameColumn" msprop:Generator_ColumnPropNameInRow="BankName" msprop:Generator_UserColumnName="BankName" msprop:Generator_ColumnVarNameInTable="columnBankName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="bankFileName" msprop:Generator_ColumnPropNameInRow="bankFileName" msprop:Generator_ColumnPropNameInTable="bankFileNameColumn" msprop:Generator_ColumnVarNameInTable="columnbankFileName" msprop:Generator_UserColumnName="bankFileName" minOccurs="0">
+              <xs:element name="bankFileName" msprop:Generator_UserColumnName="bankFileName" msprop:Generator_ColumnPropNameInTable="bankFileNameColumn" msprop:Generator_ColumnPropNameInRow="bankFileName" msprop:Generator_ColumnVarNameInTable="columnbankFileName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="bankDepositDate" msprop:Generator_ColumnPropNameInRow="bankDepositDate" msprop:Generator_ColumnPropNameInTable="bankDepositDateColumn" msprop:Generator_ColumnVarNameInTable="columnbankDepositDate" msprop:Generator_UserColumnName="bankDepositDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="bankDepositDate" msprop:Generator_UserColumnName="bankDepositDate" msprop:Generator_ColumnPropNameInTable="bankDepositDateColumn" msprop:Generator_ColumnPropNameInRow="bankDepositDate" msprop:Generator_ColumnVarNameInTable="columnbankDepositDate" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -694,9 +694,9 @@ order by fdate desc</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="vw_COL_BDG_vw_COL_APT" msdata:parent="vw_COL_BDG" msdata:child="COL_APT" msdata:parentkey="bdgID" msdata:childkey="bdgID" msprop:Generator_UserParentTable="vw_COL_BDG" msprop:Generator_UserChildTable="COL_APT" msprop:Generator_RelationVarName="relationvw_COL_BDG_vw_COL_APT" msprop:Generator_ChildPropName="GetCOL_APTRows" msprop:Generator_ParentPropName="vw_COL_BDGRow" msprop:Generator_UserRelationName="vw_COL_BDG_vw_COL_APT" />
-      <msdata:Relationship name="vw_COL_INH_vw_COL" msdata:parent="COL_INH" msdata:child="vw_COL" msdata:parentkey="bdgID aptID inhID" msdata:childkey="bdgID aptID inhID" msprop:Generator_UserParentTable="COL_INH" msprop:Generator_UserChildTable="vw_COL" msprop:Generator_RelationVarName="relationvw_COL_INH_vw_COL" msprop:Generator_ChildPropName="Getvw_COLRows" msprop:Generator_ParentPropName="COL_INHRowParent" msprop:Generator_UserRelationName="vw_COL_INH_vw_COL" />
-      <msdata:Relationship name="vw_COL_APT_vw_COL_INH" msdata:parent="COL_APT" msdata:child="COL_INH" msdata:parentkey="bdgID aptID" msdata:childkey="bdgID aptID" msprop:Generator_UserParentTable="COL_APT" msprop:Generator_UserChildTable="COL_INH" msprop:Generator_RelationVarName="relationvw_COL_APT_vw_COL_INH" msprop:Generator_ChildPropName="GetCOL_INHRows" msprop:Generator_UserRelationName="vw_COL_APT_vw_COL_INH" msprop:Generator_ParentPropName="COL_APTRowParent" />
+      <msdata:Relationship name="vw_COL_BDG_vw_COL_APT" msdata:parent="vw_COL_BDG" msdata:child="COL_APT" msdata:parentkey="bdgID" msdata:childkey="bdgID" msprop:Generator_UserParentTable="vw_COL_BDG" msprop:Generator_UserChildTable="COL_APT" msprop:Generator_RelationVarName="relationvw_COL_BDG_vw_COL_APT" msprop:Generator_ChildPropName="GetCOL_APTRows" msprop:Generator_UserRelationName="vw_COL_BDG_vw_COL_APT" msprop:Generator_ParentPropName="vw_COL_BDGRow" />
+      <msdata:Relationship name="vw_COL_INH_vw_COL" msdata:parent="COL_INH" msdata:child="vw_COL" msdata:parentkey="bdgID aptID inhID" msdata:childkey="bdgID aptID inhID" msprop:Generator_UserParentTable="COL_INH" msprop:Generator_UserChildTable="vw_COL" msprop:Generator_RelationVarName="relationvw_COL_INH_vw_COL" msprop:Generator_ChildPropName="Getvw_COLRows" msprop:Generator_UserRelationName="vw_COL_INH_vw_COL" msprop:Generator_ParentPropName="COL_INHRowParent" />
+      <msdata:Relationship name="vw_COL_APT_vw_COL_INH" msdata:parent="COL_APT" msdata:child="COL_INH" msdata:parentkey="bdgID aptID" msdata:childkey="bdgID aptID" msprop:Generator_UserParentTable="COL_APT" msprop:Generator_UserChildTable="COL_INH" msprop:Generator_RelationVarName="relationvw_COL_APT_vw_COL_INH" msprop:Generator_ChildPropName="GetCOL_INHRows" msprop:Generator_ParentPropName="COL_APTRowParent" msprop:Generator_UserRelationName="vw_COL_APT_vw_COL_INH" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
