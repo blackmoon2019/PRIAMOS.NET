@@ -796,7 +796,26 @@ Public Class frmBankCollectionInsert
         repBal = editor.GetColumnValue("bal")
         GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "completeDate", completeDate)
         sInhIDS2.Clear()
+
     End Sub
+    Private Function CheckIfExistNegativeInvoice(ByVal sAptID As String) As Boolean
+        Dim sID As String
+        Dim sSQL As String = "select top 1 ID from COL where completed = 0 and debitusrID is not null and debit<0 and aptID =  " & toSQLValueS(sAptID)
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
+
+    End Function
+
     Private Sub RepBdg_EditValueChanged(sender As Object, e As EventArgs) Handles RepBdg.EditValueChanged
         Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
         Dim bdgCode As String = ""
@@ -852,6 +871,11 @@ Public Class frmBankCollectionInsert
                 XtraMessageBox.Show("Η είσπραξη είναι ήδη ολοκληρωμένη.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
+            ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
+            If CheckIfExistNegativeInvoice(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
+                XtraMessageBox.Show("Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά. Πηγαίντε στο κύκλωμα των εισπράξεων", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             Dim i As Integer
             Dim Cmd As SqlCommand
             ' Πίνακας που αποθηκεύει προσωρινα τα επιλεγμένα παραστατικά προς εξόφληση
@@ -900,7 +924,7 @@ Public Class frmBankCollectionInsert
             Else
                 Dim sInhDet() As String = sInhIDS2.ElementAt(0).Value.Split(",")
                 ' Όταν δεν βρει κόμμα σημαίνει ότι δεν έχω στείλει παραστατικό με ένοικο ή ιδιοκτήτη οπότε θα πάει με τον αυτόματο τρόπο
-                If (sInhIDS2.Count > 1) Or (sInhIDS2.Count >= 1 And sInhDet.Length = 1) Then
+                If sInhDet.Length = 1 Then
 
                     Using oCmd As New SqlCommand("col_Calculate", CNDB)
                         oCmd.CommandType = CommandType.StoredProcedure
@@ -926,34 +950,37 @@ Public Class frmBankCollectionInsert
                         XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End Using
                 Else
-                    ' Όταν έχουμε ένα Παραστατικό
-                    'Dim sInhDet() As String = sInhIDS2.ElementAt(0).Value.Split(",")
-                    sInhID = sInhDet(1)
-                    Dim sTenant As String = sInhDet(0)
+                    For i = 0 To sInhIDS2.Count - 1
 
-                    Using oCmd As New SqlCommand("col_Calculate", CNDB)
-                        oCmd.CommandType = CommandType.StoredProcedure
-                        oCmd.Parameters.AddWithValue("@debitusrID", "CC93EEFB-B8B6-470F-983D-3604E67C6E1C") ' ΧΡΗΣΤΗΣ ΤΡΑΠΕΖΕΣ
-                        oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
-                        oCmd.Parameters.AddWithValue("@aptID", sAptID)
-                        oCmd.Parameters.AddWithValue("@inhID", sInhID)
-                        oCmd.Parameters.AddWithValue("@Givencredit", credit)
-                        oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
-                        oCmd.Parameters.AddWithValue("@ColMethodID", "F34B402C-ADD8-48E7-85A9-FFDF7DAED582") ' ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ ΤΡΑΠΕΖΑ
-                        oCmd.Parameters.AddWithValue("@TenantOwner", IIf(sTenant = "True", 1, 0))
-                        oCmd.Parameters.AddWithValue("@Agreed", 0)
-                        oCmd.Parameters.AddWithValue("@ComeFrom", 1)
-                        oCmd.Parameters.AddWithValue("@BankID", sBankID)
-                        oCmd.Parameters.AddWithValue("@BankFileName", sFileName)
-                        oCmd.Parameters.AddWithValue("@BankDepositDate", sBankDepositDate)
-                        oCmd.Parameters.AddWithValue("@ColBanksID", ColBanksID)
-                        oCmd.Parameters.AddWithValue("@ExecuteForColBanks", 0)
-                        oCmd.ExecuteNonQuery()
-                        GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
-                        repaptID = sAptID : repbdgID = sBdgID
-                        UpdateColBanks()
-                        XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    End Using
+                        sInhDet = sInhIDS2.ElementAt(i).Value.Split(",")
+                        sInhID = sInhDet(1)
+                        Dim sTenant As String = sInhDet(0)
+                        credit = sInhDet(2).ToString.Replace(".", ",")
+
+                        Using oCmd As New SqlCommand("col_Calculate", CNDB)
+                            oCmd.CommandType = CommandType.StoredProcedure
+                            oCmd.Parameters.AddWithValue("@debitusrID", "CC93EEFB-B8B6-470F-983D-3604E67C6E1C") ' ΧΡΗΣΤΗΣ ΤΡΑΠΕΖΕΣ
+                            oCmd.Parameters.AddWithValue("@bdgID", sBdgID)
+                            oCmd.Parameters.AddWithValue("@aptID", sAptID)
+                            oCmd.Parameters.AddWithValue("@inhID", sInhID)
+                            oCmd.Parameters.AddWithValue("@Givencredit", credit)
+                            oCmd.Parameters.AddWithValue("@modifiedBy", UserProps.ID.ToString.ToUpper)
+                            oCmd.Parameters.AddWithValue("@ColMethodID", "F34B402C-ADD8-48E7-85A9-FFDF7DAED582") ' ΤΡΟΠΟΣ ΠΛΗΡΩΜΗΣ ΤΡΑΠΕΖΑ
+                            oCmd.Parameters.AddWithValue("@TenantOwner", IIf(sTenant = "True", 1, 0))
+                            oCmd.Parameters.AddWithValue("@Agreed", 0)
+                            oCmd.Parameters.AddWithValue("@ComeFrom", 1)
+                            oCmd.Parameters.AddWithValue("@BankID", sBankID)
+                            oCmd.Parameters.AddWithValue("@BankFileName", sFileName)
+                            oCmd.Parameters.AddWithValue("@BankDepositDate", sBankDepositDate)
+                            oCmd.Parameters.AddWithValue("@ColBanksID", ColBanksID)
+                            oCmd.Parameters.AddWithValue("@ExecuteForColBanks", 0)
+                            oCmd.ExecuteNonQuery()
+                            GridView5.SetRowCellValue(GridView5.FocusedRowHandle, "Completed", "True")
+                            repaptID = sAptID : repbdgID = sBdgID
+                            UpdateColBanks()
+                        End Using
+                    Next i
+                    XtraMessageBox.Show("Η Είσπραξη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
                 sInhIDS2.Clear()
             End If
@@ -1347,6 +1374,11 @@ Public Class frmBankCollectionInsert
                 Dim aptID As String = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString()
                 Dim Deposit As Decimal = GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "credit")
                 If bdgID.Length > 0 And aptID.Length > 0 Then
+                    ' Έλεγχος αν υπάρχουν παραστατικά μη ολοκληρωμένα με αρνητικό ποσό
+                    If CheckIfExistNegativeInvoice(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "aptID").ToString.ToUpper) = True Then
+                        XtraMessageBox.Show("Πρέπει πρώτα να εξοφλήσετε τα αρνητικά παραστατικά. Πηγαίντε στο κύκλωμα των εισπράξεων", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Sub
+                    End If
                     Dim frm As New frmCollectionsDet
                     frmCollectionsDet.BDGID = bdgID.ToUpper
                     frmCollectionsDet.APTID = aptID.ToUpper

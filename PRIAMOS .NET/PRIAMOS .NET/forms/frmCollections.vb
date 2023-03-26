@@ -688,9 +688,14 @@ Public Class frmCollections
                 Else
                     debit = sender.GetRowCellValue(sender.FocusedRowHandle, "debit")
                 End If
+                If sender.GetRowCellValue(sender.FocusedRowHandle, "bal") Is DBNull.Value Then
+                    bal = 0
+                Else
+                    bal = sender.GetRowCellValue(sender.FocusedRowHandle, "bal")
+                End If
                 credit = e.Value
-                If credit > debit Then
-                    e.ErrorText = "Δεν μπορεί η πίστωση να είναι μεγαλύτερη από την χρέωση σε ενα παραστατικό."
+                If credit > debit Or credit > bal Then
+                    e.ErrorText = "Δεν μπορεί η πίστωση να είναι μεγαλύτερη από την χρέωση σε ενα παραστατικό. Το μέγιστο επιτρεπόμενο ποσό είναι : " & bal & "€"
                     e.Valid = False
                     Exit Sub
                 End If
@@ -811,9 +816,14 @@ Public Class frmCollections
                 Else
                     debit = sender.GetRowCellValue(sender.FocusedRowHandle, "debit")
                 End If
+                If sender.GetRowCellValue(sender.FocusedRowHandle, "bal") Is DBNull.Value Then
+                    bal = 0
+                Else
+                    bal = sender.GetRowCellValue(sender.FocusedRowHandle, "bal")
+                End If
                 credit = e.Value
-                If credit > debit Then
-                    e.ErrorText = "Δεν μπορεί η πίστωση να είναι μεγαλύτερη από την χρέωση σε ενα παραστατικό."
+                If credit > debit Or credit > bal Then
+                    e.ErrorText = "Δεν μπορεί η πίστωση να είναι μεγαλύτερη από την χρέωση σε ενα παραστατικό. Το μέγιστο επιτρεπόμενο ποσό είναι : " & bal & "€"
                     e.Valid = False
                     Exit Sub
                 End If
