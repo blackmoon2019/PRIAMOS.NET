@@ -1,4 +1,5 @@
 ﻿Imports System.Collections.Specialized
+Imports System.ComponentModel.DataAnnotations
 Imports System.Data.SqlClient
 Imports System.Text
 Imports DevExpress.CodeParser
@@ -12,6 +13,7 @@ Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
+Imports PRIAMOS.NET.Priamos_NETDataSetTableAdapters
 
 Public Class frmCollectionsDet
     Private sID As String, sbdgID As String, saptID As String, sinhID As String, sColBanksID As String
@@ -20,8 +22,8 @@ Public Class frmCollectionsDet
     Private sCalledForNegatives As Boolean = False
     Private sGetCompletedCols As Boolean = False
     Private sDeposit As Decimal = 0
-    Dim TotBal As Decimal
-    Dim TotCredit As Decimal
+    Private TotBal As Decimal
+    Private TotCredit As Decimal
     Private sInhIDS2 As New Dictionary(Of String, String)
     Private sInhIDSSelected As New Dictionary(Of String, String)
     Private LoadForms As New FormLoader
@@ -105,7 +107,7 @@ Public Class frmCollectionsDet
                 '    TotDebit = TotDebit + GridView1.GetRowCellValue(selectedRowHandle, "debit")
             End If
         Next
-        If sDeposit > TotCredit Then
+        If TotCredit < sDeposit Then
             XtraMessageBox.Show("Το σύνολο των επιλεγμένων παραστατικών πρέπει να είναι είναι μεγαλύτερο ή ίσο της κατάθεσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         Else
@@ -277,7 +279,8 @@ Public Class frmCollectionsDet
         If Me.IsActive = False Then Exit Sub
         If e.Action = System.ComponentModel.CollectionChangeAction.Add Then
             If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "credit") = 0 Then
-                XtraMessageBox.Show("Δεν μπορείτε να επιλέξετε παραστατικό με μηδέν ποσό είσπραξης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'XtraMessageBox.Show("Δεν μπορείτε να επιλέξετε παραστατικό με μηδέν ποσό είσπραξης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                GridView1.UnselectRow(GridView1.FocusedRowHandle)
             End If
             If sInhIDSSelected.ContainsKey(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString) = False Then
                 sInhIDSSelected.Add(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "inhID").ToString, GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal"))
@@ -290,6 +293,7 @@ Public Class frmCollectionsDet
                 TotBal = TotBal - GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal")
             End If
             TotCredit = TotCredit - GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "credit")
+            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
         End If
         GridView1.UpdateTotalSummary()
     End Sub
@@ -308,8 +312,10 @@ Public Class frmCollectionsDet
                     Exit Sub
                 End If
                 GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal")) : GridView1.ValidateEditor()
-            Case 1 : GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
-
+                GridView1.SelectRow(GridView1.FocusedRowHandle)
+            Case 1
+                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
+                GridView1.UnselectRow(GridView1.FocusedRowHandle)
         End Select
     End Sub
 
@@ -339,11 +345,12 @@ Public Class frmCollectionsDet
                         e.Valid = False
                         Exit Sub
                     End If
-                    If credit = 0 Then
-                        e.Valid = False
-                        e.ErrorText = "Δεν μπορεί η είσπραξη να είναι μηδενική."
-                        Exit Sub
-                    End If
+                    'If credit = 0 Then
+                    'e.Valid = False
+                    'e.ErrorText = "Δεν μπορεί η είσπραξη να είναι μηδενική."
+                    'GridView1.UnselectRow(GridView1.FocusedRowHandle)
+                    'Exit Sub
+                    'End If
                     If sender.GetRowCellValue(sender.FocusedRowHandle, "bal") Is DBNull.Value Then
                         bal = 0
                     Else
@@ -469,6 +476,15 @@ Public Class frmCollectionsDet
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub GridView1_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView1.CellValueChanged
+        If e.Column.FieldName = "credit" And e.Value > 0 Then
+            GridView1.SelectRow(e.RowHandle)
+        ElseIf e.Column.FieldName = "credit" And e.Value = 0 Then
+            GridView1.UnselectRow(e.RowHandle)
+        End If
+    End Sub
+
     Private Function ColCalculate(ByVal credit As Decimal,
                                   ByVal sNegInhID As String, ByVal sNegBdgID As String, ByVal sNegAptID As String,
                                   ByVal debitusrID As String, ByVal tenant As Boolean, ByVal ComeFrom As Integer) As Boolean

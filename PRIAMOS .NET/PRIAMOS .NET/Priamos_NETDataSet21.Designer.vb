@@ -8030,8 +8030,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(2).CommandText = "SELECT Bal, BankName, CmFrom, Credit, ETOS, ID, agreed, aptID, aptNam, bankDeposi"& _ 
                 "tDate, bankFileName, bdgID, bdgNam, code, colID, completeDate, createdOn, credit"& _ 
                 "User, debit, debitUser, debitusrID, fDate, inhID, modifiedBy, modifiedOn, old_co"& _ 
-                "de, ord, tDate, tenant, ttl FROM vw_COL_D WHERE (reserveAPT = 0) AND (bdgID = @b"& _ 
-                "dgID) ORDER BY createdOn"
+                "de, ord, tDate, tenant, ttl FROM vw_COL_D WHERE   (bdgID = @bdgID) ORDER BY crea"& _ 
+                "tedOn"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
@@ -8060,8 +8060,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(5).CommandText = "SELECT Bal, BankName, CmFrom, Credit, ETOS, ID, agreed, aptID, aptNam, bankDeposi"& _ 
                 "tDate, bankFileName, bdgID, bdgNam, code, colID, completeDate, createdOn, credit"& _ 
                 "User, debit, debitUser, debitusrID, fDate, inhID, modifiedBy, modifiedOn, old_co"& _ 
-                "de, ord, tDate, tenant, ttl FROM vw_COL_D WHERE (reserveAPT = 0) AND (agreed = 0"& _ 
-                ") AND (bdgID = @bdgid) ORDER BY bdgNam, ttl"
+                "de, ord, tDate, tenant, ttl FROM vw_COL_D WHERE  (agreed = 0) AND (bdgID = @bdgi"& _ 
+                "d) ORDER BY bdgNam, ttl"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgid", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()

@@ -1936,7 +1936,7 @@ Public Class frmBDG
                 If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? Προσοχή θα επηρεάσει το υπόλοιπο του διαμερίσματος", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     ' Ενημέρωση υπολοίπου διαμερίσματος
                     sSQL = "UPDATE APT " &
-                       "SET BAL_ADM = BAL_ADM + CASE WHEN BAL_ADM<0 THEN  ABS(CREDIT) ELSE CREDIT END  " &
+                       "SET BAL_ADM = BAL_ADM - CREDIT  " &
                        "FROM COL " &
                        "INNER JOIN APT ON APT.ID=COL.aptID " &
                        "WHERE reserveAPT = 1 and inhID =  " & toSQLValueS(GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString)
