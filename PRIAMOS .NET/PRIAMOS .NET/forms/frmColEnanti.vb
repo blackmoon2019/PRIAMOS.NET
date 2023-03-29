@@ -110,7 +110,7 @@ Public Class frmColEnanti
                 End Using
                 'Καταχώρηση Επιμέρους είσπραξης
                 sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,reserveAPT,modifiedBY)")
+                sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,reserveAPT,ComeFrom,modifiedBY)")
                 sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
                 sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
                 sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
@@ -121,7 +121,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
                 sSQL.AppendLine("0,")
                 sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",")
-                sSQL.AppendLine("GETDATE(),1,")
+                sSQL.AppendLine("GETDATE(),1,4,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
