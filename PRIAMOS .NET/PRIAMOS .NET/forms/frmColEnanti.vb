@@ -108,25 +108,25 @@ Public Class frmColEnanti
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                'Καταχώρηση Επιμέρους είσπραξης
-                sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,reserveAPT,ComeFrom,modifiedBY)")
-                sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
-                sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValueS(sINHID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboDebitUsr.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("0,")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("0,")
-                sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",")
-                sSQL.AppendLine("GETDATE(),1,4,")
-                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
-                'Εκτέλεση QUERY
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
+                ''Καταχώρηση Επιμέρους είσπραξης
+                'sSQL.Clear()
+                'sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,reserveAPT,ComeFrom,modifiedBY)")
+                'sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
+                'sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
+                'sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
+                'sSQL.AppendLine(toSQLValueS(sINHID) & ",")
+                'sSQL.AppendLine(toSQLValueS(cboDebitUsr.EditValue.ToString) & ",")
+                'sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                'sSQL.AppendLine("0,")
+                'sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                'sSQL.AppendLine("0,")
+                'sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",")
+                'sSQL.AppendLine("GETDATE(),1,4,")
+                'sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
+                ''Εκτέλεση QUERY
+                'Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                '    oCmd.ExecuteNonQuery()
+                'End Using
                 'Ενημέρωση Υπολοίπου διαμερίσματος
                 sSQL.Clear()
                 sSQL.AppendLine("UPDATE APT set bal_adm = bal_adm + " & toSQLValue(txtDebit, True) & "*(-1) WHERE ID = " & toSQLValueS(cboApt.EditValue.ToString))

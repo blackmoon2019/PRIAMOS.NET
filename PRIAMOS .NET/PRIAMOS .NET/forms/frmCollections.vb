@@ -1728,7 +1728,12 @@ Public Class frmCollections
             Case 1 : If cboBDG1.EditValue <> Nothing Then ManageBDG(cboBDG1)
             Case 2
                 cboBDG1.EditValue = Nothing
-                Me.Vw_COL_DTableAdapter.FillByNotAgreedALL(Me.Priamos_NETDataSet2.vw_COL_D)
+                If chkShowAgree.IsOn Then
+                    Me.Vw_COL_DTableAdapter.FillByNotAgreedALL(Me.Priamos_NETDataSet2.vw_COL_D)
+                Else
+                    Me.Vw_COL_DTableAdapter.FillByAll(Me.Priamos_NETDataSet2.vw_COL_D)
+                End If
+
             Case 3
         End Select
     End Sub
@@ -1810,7 +1815,7 @@ Public Class frmCollections
     End Sub
     '********* TO BE DELETED*********
     Private Sub Rep_FixAptBalance_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_FixAptBalance.ButtonPressed
-        If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then
+        If UserProps.ID.ToString.ToUpper <> "E2BF15AC-19E3-498F-9459-1821B3898C76" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" And UserProps.ID.ToString.ToUpper <> "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
             UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             XtraMessageBox.Show("Η δυνατότητα ενημέρωσης έχει απενεργοποιηθεί", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
