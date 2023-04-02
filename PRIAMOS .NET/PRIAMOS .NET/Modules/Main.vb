@@ -72,9 +72,10 @@ Module Main
                 sValue = sValue.Replace(",", ".")
                 sValue = sValue.Replace(" €", "")
                 sValue = sValue.Replace("%", "")
+                If sValue.Contains(".") Then sValue = t.EditValue
                 Return sValue
+                End If
             End If
-        End If
     End Function
     Public Sub HideColumns(GridView1 As DevExpress.XtraGrid.Views.Grid.GridView, sExclude As String)
         Dim col As GridColumn

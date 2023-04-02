@@ -566,7 +566,7 @@ Partial Public Class Eidop
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "c7d30c02-5d03-4341-b0a5-244be48def4f"
+        Me.inhID.ValueInfo = "dab01687-1263-48aa-8852-eb95871be89d"
         Me.inhID.Visible = False
         '
         'SqlDataSource1
@@ -1466,7 +1466,7 @@ Partial Public Class Eidop
         Me.XrLabel84.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel84.CanGrow = False
         Me.XrLabel84.Dpi = 254.0!
-        Me.XrLabel84.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Concat([vw_INH].[vw_INHvw_BDG].[old_code], [ttl])")})
+        Me.XrLabel84.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Concat([vw_INH].[vw_INHvw_BDG].[old_code], [ttl])"), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "iif([vw_INH].[vw_INHvw_BDG].[isManaged]=True,True,False)" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel84.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel84.LocationFloat = New DevExpress.Utils.PointFloat(702.6932!, 795.4917!)
         Me.XrLabel84.Multiline = True
@@ -1528,6 +1528,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel74.CanGrow = False
         Me.XrLabel74.Dpi = 254.0!
+        Me.XrLabel74.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "iif([vw_INH].[vw_INHvw_BDG].[isManaged]=True,True,False)" & Global.Microsoft.VisualBasic.ChrW(10))})
         Me.XrLabel74.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel74.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 789.9883!)
         Me.XrLabel74.Multiline = True

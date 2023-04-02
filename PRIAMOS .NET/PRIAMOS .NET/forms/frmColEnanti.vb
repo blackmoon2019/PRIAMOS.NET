@@ -4,6 +4,7 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 
 Public Class frmColEnanti
+    Private ManageCbo As New CombosManager
     Private sBdgID As String
     Private sBdgNam As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
@@ -41,6 +42,8 @@ Public Class frmColEnanti
     End Sub
 
     Private Sub frmColEnanti_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
+        Me.Vw_COL_METHODTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COL_METHOD)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
         Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NETDataSet.vw_BDG)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_USR' table. You can move, or remove it, as needed.
@@ -87,7 +90,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
                 sSQL.AppendLine("GETDATE(),")
                 sSQL.AppendLine(toSQLValue(txtComments) & ",")
-                sSQL.AppendLine("'75E3251D-077D-42B0-B79A-9F2886381A97',")
+                sSQL.AppendLine(toSQLValueS(cboColMethodID.EditValue.ToString) & ",")
                 sSQL.AppendLine("GETDATE(),0,")
                 sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",1,")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
@@ -146,48 +149,17 @@ Public Class frmColEnanti
     End Sub
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : If cboBDG.EditValue <> Nothing Then ManageBDG(cboBDG)
-            Case 2 : cboBDG.EditValue = Nothing
-            Case 3
+            Case 1 : ManageCbo.ManageBDG(cboBDG, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
+            Case 3 : cboBDG.EditValue = Nothing
         End Select
-    End Sub
-    Private Sub ManageBDG(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmBDG = New frmBDG()
-        form1.Text = "Πολυκατοικία"
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
     End Sub
     Private Sub cboApt_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboApt.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboApt.EditValue = Nothing : ManageAPT(cboApt)
-            Case 2 : If cboApt.EditValue <> Nothing Then ManageAPT(cboApt)
+            Case 1 : ManageCbo.ManageAPT(cboApt, FormMode.NewRecord, cboBDG.EditValue.ToString)
+            Case 2 : ManageCbo.ManageAPT(cboApt, FormMode.EditRecord, cboBDG.EditValue.ToString)
             Case 3 : cboApt.EditValue = Nothing
         End Select
-    End Sub
-    Private Sub ManageAPT(ByVal cbo As DevExpress.XtraEditors.LookUpEdit)
-        Dim form1 As frmAPT = New frmAPT()
-        form1.Text = "Διαμέρισμα"
-        form1.BDGID = cboBDG.EditValue.ToString
-        form1.CallerControl = cbo
-        form1.CalledFromControl = True
-        form1.MdiParent = frmMain
-        If cbo.EditValue <> Nothing Then
-            form1.ID = cbo.EditValue.ToString
-            form1.Mode = FormMode.EditRecord
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
     End Sub
 
     Private Sub cboApt_EditValueChanged(sender As Object, e As EventArgs) Handles cboApt.EditValueChanged
@@ -198,5 +170,13 @@ Public Class frmColEnanti
         If cboBDG.EditValue = Nothing Then Exit Sub
         sBdgID = cboBDG.EditValue.ToString
         Me.Vw_APTTableAdapter.FillByBDGAndBalAdm(Me.Priamos_NETDataSet.vw_APT, System.Guid.Parse(cboBDG.EditValue.ToString))
+    End Sub
+
+    Private Sub cboColMethodID_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboColMethodID.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageColMethod(cboColMethodID, FormMode.NewRecord, Me)
+            Case 2 : ManageCbo.ManageColMethod(cboColMethodID, FormMode.EditRecord, Me)
+            Case 3 : cboColMethodID.EditValue = Nothing
+        End Select
     End Sub
 End Class

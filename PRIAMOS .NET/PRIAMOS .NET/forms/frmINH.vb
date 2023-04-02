@@ -1179,6 +1179,7 @@ Public Class frmINH
             sdr.Close()
 
             'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
+            txtColAnnouncement.EditValue = Nothing
             InhFieldAndValues = New Dictionary(Of String, String)
             LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
             If InhFieldAndValues.Item("mdt") <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPBH.Text = "" : cboAhpbH.EditValue = Nothing
@@ -1393,6 +1394,12 @@ Public Class frmINH
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim Credit As Decimal
+
+        If CheckIfisLastINH() = False Then
+            XtraMessageBox.Show("Δεν μπορείτε να ακυρώσετε το παραστατικό όταν υπάρχουν μεταγενέστερα.Ακύρωση επιτρέπεται μόνο στο τελευταίο παραστατικό.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         If XtraMessageBox.Show("Θέλετε να ακυρώσετε τον υπολογισμό του παραστατικού?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
             sSQL = "Select   sum(isnull(credit,0)) As credit  from col_d where inhID = " & toSQLValueS(sID)
             cmd = New SqlCommand(sSQL, CNDB)
@@ -1415,6 +1422,32 @@ Public Class frmINH
             cboAhpbHB.EditValue = Nothing
         End If
     End Sub
+    Private Function CheckIfisLastINH() As Boolean
+        Dim sinhID As String
+        Dim sSQL As String = "select ID from inh (nolock) 
+                            where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & "  and calculated =1 and Calorimetric=0 and  reserveAPT=0 and  extraordinary=0 
+                            and tdate=(select max(tdate) from inh (nolock) where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & " and calculated =1 and Calorimetric=0 and  reserveAPT=0 and  extraordinary=0 )"
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sinhID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            If sinhID.ToUpper = sID.ToUpper Then
+                sdr.Close()
+                Return True
+            Else
+                sdr.Close()
+                Return False
+            End If
+        Else
+            sdr.Close()
+            Return False
+        End If
+
+
+    End Function
+
 
     Private Sub chkCalorimetric_CheckStateChanged(sender As Object, e As EventArgs) Handles chkCalorimetric.CheckStateChanged
         If chkCalorimetric.Checked = True Then

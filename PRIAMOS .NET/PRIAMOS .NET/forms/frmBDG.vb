@@ -37,6 +37,7 @@ Public Class frmBDG
     Private CalledFromCtrl As Boolean
     Private ModeBCCT As Byte
     Private ModePROFACTD As Byte
+    Private ActiveGrid As GridView
 
     '------C L A S S E S------
     Private ManageCbo As New CombosManager
@@ -460,6 +461,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView1, "APT_def.xml", "vw_APT")
         Else
+            ActiveGrid = GridView1
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -477,9 +479,8 @@ Public Class frmBDG
 
     ' Copy Cell
     Private Sub BarCopyCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyCell.ItemClick
-        Dim view As GridView = CType(GridView1, GridView)
-        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
-            Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
+        If ActiveGrid.GetRowCellValue(ActiveGrid.FocusedRowHandle, ActiveGrid.FocusedColumn) IsNot Nothing AndAlso ActiveGrid.GetRowCellValue(ActiveGrid.FocusedRowHandle, ActiveGrid.FocusedColumn).ToString() <> [String].Empty Then
+            Clipboard.SetText(ActiveGrid.GetRowCellValue(ActiveGrid.FocusedRowHandle, ActiveGrid.FocusedColumn).ToString())
         End If
     End Sub
     'Copy All
@@ -812,6 +813,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView5, "APMIL_def.xml")
         Else
+            ActiveGrid = GridView5
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -870,7 +872,7 @@ Public Class frmBDG
                 'sSQL = "DELETE FROM AHPB WHERE bdgID = '" & sID & "' " &
                 '        " and  mdt = " + toSQLValueS(CDate(cboBefMes.Text).ToString("yyyyMMdd")) &
                 '        " and boiler = " & RGTypeHeating.SelectedIndex
-                DeleteSelectedRows()
+                If DeleteSelectedRows() = False Then Exit Sub
                 LoadMefMes(cboBefMes.Text)
                 If GridView2.RowCount > 0 Then
                     cmdDelAHPB.Enabled = True
@@ -886,11 +888,15 @@ Public Class frmBDG
         End Try
 
     End Sub
-    Private Sub DeleteSelectedRows()
+    Private Function DeleteSelectedRows() As Boolean
         Dim sSQL As String
         Dim I As Integer
         Try
             For I = 0 To GridView2.SelectedRowsCount - 1
+                If CheckIfAHPBisFinalized(GridView2.GetRowCellValue(GridView2.GetSelectedRows(I), "ahpbHID").ToString) = True Then
+                    XtraMessageBox.Show("Δεν μπορείτε να διαγράψετε ώρες που συμμετέχουν σε παραστατικό!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End If
                 sSQL = "DELETE FROM AHPB WHERE ID = " & toSQLValueS(GridView2.GetRowCellValue(GridView2.GetSelectedRows(I), "ID").ToString)
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -915,11 +921,30 @@ Public Class frmBDG
             End If
             cboBefMes.EditValue = Nothing
             Cls.ClearGrid(grdAPTAHPB)
+            Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End Try
 
-    End Sub
+    End Function
+    Private Function CheckIfAHPBisFinalized(ByVal sahpbHID As String) As Boolean
+        Dim sID As String
+        Dim sSQL As String = "select top 1 ID from AHPB_H where finalized=1 and ID =  " & toSQLValueS(sahpbHID)
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
+
+    End Function
     Private Sub cboBefMes_ButtonClick(sender As Object, e As ButtonPressedEventArgs)
         If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
     End Sub
@@ -966,6 +991,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView2, "AHPB_def.xml",, "Select top 1 * from vw_AHPB")
         Else
+            ActiveGrid = GridView2
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -1106,6 +1132,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView4, "INV_GAS_def.xml")
         Else
+            ActiveGrid = GridView4
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -1188,6 +1215,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView3, "INV_OIL_def.xml")
         Else
+            ActiveGrid = GridView3
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -1568,6 +1596,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView6, "IEP_def.xml")
         Else
+            ActiveGrid = GridView6
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -1936,7 +1965,7 @@ Public Class frmBDG
                 If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? Προσοχή θα επηρεάσει το υπόλοιπο του διαμερίσματος", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     ' Ενημέρωση υπολοίπου διαμερίσματος
                     sSQL = "UPDATE APT " &
-                       "SET BAL_ADM = BAL_ADM - CREDIT  " &
+                       "SET BAL_ADM = BAL_ADM - debit  " &
                        "FROM COL " &
                        "INNER JOIN APT ON APT.ID=COL.aptID " &
                        "WHERE reserveAPT = 1 and inhID =  " & toSQLValueS(GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString)
@@ -2339,6 +2368,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView12, "vw_BDG_F.xml", "vw_BDG_F")
         Else
+            ActiveGrid = GridView12
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
 
@@ -2437,6 +2467,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView_INH, "INH_BDG_def.xml",, "Select top 1 * from vw_INH")
         Else
+            ActiveGrid = GridView_INH
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
@@ -2711,6 +2742,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView1, "vw_PROF_ACT_D.xml", "vw_PROF_ACT_D")
         Else
+            ActiveGrid = GridView10
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
 
@@ -2724,6 +2756,7 @@ Public Class frmBDG
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView12, "vw_CONSUMPTIONS.xml", "vw_CONSUMPTIONS")
         Else
+            ActiveGrid = GridView11
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub

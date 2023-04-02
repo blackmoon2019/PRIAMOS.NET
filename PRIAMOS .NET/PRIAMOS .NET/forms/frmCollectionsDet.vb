@@ -22,6 +22,7 @@ Public Class frmCollectionsDet
     Private sCalledForNegatives As Boolean = False
     Private sGetCompletedCols As Boolean = False
     Private sDeposit As Decimal = 0
+    Private GivenCredit As Decimal = 0
     Private TotBal As Decimal
     Private TotCredit As Decimal
     Private sInhIDS2 As New Dictionary(Of String, String)
@@ -152,6 +153,7 @@ Public Class frmCollectionsDet
             LayoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
             LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             lblDeposit.Text = "Ποσό Κατάθεσης : " & sDeposit
+            GivenCredit = sDeposit
             Exit Sub
         End If
         'Default Άνοιγμα
@@ -480,8 +482,13 @@ Public Class frmCollectionsDet
     Private Sub GridView1_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView1.CellValueChanged
         If e.Column.FieldName = "credit" And e.Value > 0 Then
             GridView1.SelectRow(e.RowHandle)
+            GivenCredit = sDeposit : GivenCredit = GivenCredit - GridView1.Columns.Item("credit").SummaryItem.SummaryValue
+            lblDeposit.Text = "Ποσό Κατάθεσης : " & GivenCredit
         ElseIf e.Column.FieldName = "credit" And e.Value = 0 Then
             GridView1.UnselectRow(e.RowHandle)
+            GivenCredit = sDeposit : GivenCredit = GivenCredit - GridView1.Columns.Item("credit").SummaryItem.SummaryValue
+            lblDeposit.Text = "Ποσό Κατάθεσης : " & GivenCredit
+
         End If
     End Sub
 

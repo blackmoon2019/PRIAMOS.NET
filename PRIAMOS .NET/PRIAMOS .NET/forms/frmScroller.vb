@@ -2088,30 +2088,28 @@ Public Class frmScroller
                             report.Dispose()
                             report = Nothing
                             sEmailID = System.Guid.NewGuid.ToString
-                            If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg) = True Then
-                                sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
-                                'sSQL = "select '1'='2'"
-                                Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            ' Αποστολή Email
+                            Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg)
 
-                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
+                            sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
+                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+
+                            sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
                                     SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
-                                oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            Else
-                                Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                                sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
-                                    SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
-                                oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            End If
+                            oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+
                             If sIDS.Length > 0 Then sIDS.Append(",")
                             sIDS.Append(toSQLValueS(sEmailID))
                         End If
                     End While
-                    sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
+                    If sIDS.ToString.Length > 0 Then
+                        sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
                             from EMAIL_LOG 
                             inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
                             left join APT  on APT.id=EMAIL_LOG.aptID 
                             where EMAIL_LOG.id in( " & sIDS.ToString & ")"
-                    LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
+                        LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
+                    End If
                     LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
                     sdr.Close()
                     SSM.CloseWaitForm()
