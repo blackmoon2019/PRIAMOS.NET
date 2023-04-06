@@ -742,7 +742,7 @@ ORDER BY S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.E
               <Mapping SourceColumn="tenant" DataSetColumn="tenant" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillDifferentBal" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillDifferentBal" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillDifferentBal">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillDifferentBal" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillDifferentBal" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillDifferentBal">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, SUM(COL.debit) AS debit, S.credit, SUM(COL.bal) as bal, S.debitusrID, S.dtDebit, S.dtCredit, S.Etos, S.FromMonth, S.ToMonth, S.fDate, S.tDate, COL.tenant
@@ -763,10 +763,10 @@ ORDER BY S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.E
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillForNegatives" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillForNegatives" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillForNegatives">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillForNegatives" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillForNegatives" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillForNegatives">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, SUM(COL.debit) AS debit, S.credit, S.bal, S.debitusrID, S.dtDebit, S.dtCredit, S.Etos, S.FromMonth, S.ToMonth, S.fDate, S.tDate, COL.tenant
+                    <CommandText>SELECT S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, SUM(COL.debit) AS debit, S.credit, SUM(COL.bal) as bal, S.debitusrID, S.dtDebit, S.dtCredit, S.Etos, S.FromMonth, S.ToMonth, S.fDate, S.tDate, COL.tenant
 FROM   COL INNER JOIN
                (SELECT A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, SUM(C.debit) AS debit, SUM(C.credit) AS credit, SUM(C.bal) AS bal, C.debitusrID, C.dtDebit, MAX(C.dtCredit) AS dtCredit, YEAR(I.fDate) AS Etos, MONTH(I.fDate) AS FromMonth, MONTH(I.tDate) AS ToMonth, I.fDate, I.tDate
               FROM   COL AS C INNER JOIN
@@ -775,7 +775,7 @@ FROM   COL INNER JOIN
               WHERE (C.reserveAPT = 0) AND (C.completed = 0) AND (C.bdgID = @bdgID) AND (C.aptID = @aptID)
 
               GROUP BY A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, C.debitusrID, C.dtDebit, YEAR(I.fDate), MONTH(I.fDate), MONTH(I.tDate), I.fDate, I.tDate) AS S ON S.bdgID = COL.bdgID AND S.aptID = COL.aptID AND S.inhID = COL.inhID
-WHERE (COL.reserveAPT = 0) AND (COL.completed = 0) and s.bal&gt;0
+WHERE (COL.reserveAPT = 0) AND (COL.completed = 0) and COL.bal&gt;0
 GROUP BY S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant
 ORDER BY S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant</CommandText>
                     <Parameters>

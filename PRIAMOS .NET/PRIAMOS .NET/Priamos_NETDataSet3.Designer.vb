@@ -19358,23 +19358,24 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT S.ttl, S.aptID, S.bdgID, S.inhID, S.completeDate, SUM(COL.debit) AS debit,"& _ 
-                " S.credit, S.bal, S.debitusrID, S.dtDebit, S.dtCredit, S.Etos, S.FromMonth, S.To"& _ 
-                "Month, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   COL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               (SELE"& _ 
-                "CT A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, SUM(C.debit) AS debit, SUM("& _ 
-                "C.credit) AS credit, SUM(C.bal) AS bal, C.debitusrID, C.dtDebit, MAX(C.dtCredit)"& _ 
-                " AS dtCredit, YEAR(I.fDate) AS Etos, MONTH(I.fDate) AS FromMonth, MONTH(I.tDate)"& _ 
-                " AS ToMonth, I.fDate, I.tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              FROM   COL AS C INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                  INH AS I ON I.ID = C.inhID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-                "  APT AS A ON C.aptID = A.ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              WHERE (C.reserveAPT = 0) AND (C.comp"& _ 
-                "leted = 0) AND (C.bdgID = @bdgID) AND (C.aptID = @aptID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              GROUP "& _ 
-                "BY A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, C.debitusrID, C.dtDebit, YE"& _ 
-                "AR(I.fDate), MONTH(I.fDate), MONTH(I.tDate), I.fDate, I.tDate) AS S ON S.bdgID ="& _ 
-                " COL.bdgID AND S.aptID = COL.aptID AND S.inhID = COL.inhID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (COL.reserveAP"& _ 
-                "T = 0) AND (COL.completed = 0) and s.bal>0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY S.ttl, S.aptID, S.bdgID, S."& _ 
-                "inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.ToMonth, "& _ 
-                "S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY S.aptID, S.b"& _ 
-                "dgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMonth, S.T"& _ 
-                "oMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant"
+                " S.credit, SUM(COL.bal) as bal, S.debitusrID, S.dtDebit, S.dtCredit, S.Etos, S.F"& _ 
+                "romMonth, S.ToMonth, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   COL INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "         (SELECT A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, SUM(C.debit) "& _ 
+                "AS debit, SUM(C.credit) AS credit, SUM(C.bal) AS bal, C.debitusrID, C.dtDebit, M"& _ 
+                "AX(C.dtCredit) AS dtCredit, YEAR(I.fDate) AS Etos, MONTH(I.fDate) AS FromMonth, "& _ 
+                "MONTH(I.tDate) AS ToMonth, I.fDate, I.tDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              FROM   COL AS C INNER"& _ 
+                " JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         INH AS I ON I.ID = C.inhID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
+                "                APT AS A ON C.aptID = A.ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              WHERE (C.reserveAPT = "& _ 
+                "0) AND (C.completed = 0) AND (C.bdgID = @bdgID) AND (C.aptID = @aptID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                "        GROUP BY A.ttl, C.aptID, C.bdgID, C.inhID, I.completeDate, C.debitusrID,"& _ 
+                " C.dtDebit, YEAR(I.fDate), MONTH(I.fDate), MONTH(I.tDate), I.fDate, I.tDate) AS "& _ 
+                "S ON S.bdgID = COL.bdgID AND S.aptID = COL.aptID AND S.inhID = COL.inhID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "(COL.reserveAPT = 0) AND (COL.completed = 0) and COL.bal>0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"GROUP BY S.ttl, S.ap"& _ 
+                "tID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, S.FromMo"& _ 
+                "nth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenant"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER"& _ 
+                " BY S.aptID, S.bdgID, S.inhID, S.completeDate, S.debitusrID, S.dtDebit, S.Etos, "& _ 
+                "S.FromMonth, S.ToMonth, S.credit, S.bal, S.dtCredit, S.fDate, S.tDate, COL.tenan"& _ 
+                "t"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
