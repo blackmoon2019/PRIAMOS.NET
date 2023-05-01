@@ -446,10 +446,16 @@ Public Class frmScroller
                 End If
 
                 If sDataDetail <> "" Then
-                    If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\" & sDataTable & "\" & sender.EditValue) = True Then
+                    If GridView2.OptionsLayout.LayoutVersion <> "" Then
+                        Dim sVer As Integer = GridView2.OptionsLayout.LayoutVersion.Replace("v", "")
+                        GridView2.OptionsLayout.LayoutVersion = "v" & sVer + 1
+                    Else
+                        GridView2.OptionsLayout.LayoutVersion = "v1"
+                    End If
+                    If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue) = True Then
                         GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue, OptionsLayoutBase.FullLayout)
                     Else
-                        GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue & "_" & UserProps.Code & ".xml", OptionsLayoutBase.FullLayout)
+                        GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\D_" & sDataDetail & "\" & sender.EditValue, OptionsLayoutBase.FullLayout)
                     End If
                 End If
                 CurrentView = BarViews.EditValue
@@ -1951,6 +1957,8 @@ Public Class frmScroller
                 report.Parameters.Item(1).Value = GridView1.GetRowCellValue(Row, "bdgID").ToString
                 report.CreateDocument()
                 report.PrintingSystem.Document.ScaleFactor = 0.99
+
+
                 Dim tool As New PrintToolBase(report.PrintingSystem)
                 tool.Print()
             Case 1
@@ -2042,9 +2050,10 @@ Public Class frmScroller
 								LEFT JOIN CCT CCT_TENANT ON CCT_TENANT.ID =APT.TenantID
                                 LEFT JOIN CCT CCT_REP ON CCT_REP.ID =APT.RepresentativeID
                                 WHERE INH.ID= " & toSQLValueS(sInhID) &
-                                    " AND (COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL OR
-								COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) IS NOT NULL OR 
-                                COALESCE(CCT_REP.email,CCT_REP.EMAIL2,CCT_REP.EMAIL3) IS NOT NULL ) "
+                                    " AND 
+								((COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL and sendEmailOwner =1)    OR
+								(COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) IS NOT NULL and sendEmailTenant =1) OR 
+                                (COALESCE(CCT_REP.email,CCT_REP.EMAIL2,CCT_REP.EMAIL3) IS NOT NULL and sendEmailRepresentative =1)  )  "
                     Cmd = New SqlCommand(sSQL, CNDB)
                     sdr = Cmd.ExecuteReader()
                     Dim sEmailTo As String

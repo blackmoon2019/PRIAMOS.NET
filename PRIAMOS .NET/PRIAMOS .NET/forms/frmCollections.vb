@@ -541,6 +541,9 @@ Public Class frmCollections
         LoadForms.RestoreLayoutFromXml(OwnerTenantView, "COL_OW_TEN_def.xml")
         OwnerTenantView.DataController.CollapseDetailRowsOnReset = False
         OwnerTenantView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        If Debugger.IsAttached Then
+            grdVO_T.Columns.Item("debit").OptionsColumn.AllowEdit = True
+        End If
     End Sub
     Private Sub grdVO_T_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles grdVO_T.MasterRowExpanded
 
