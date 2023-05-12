@@ -2394,10 +2394,10 @@ Public Class frmBDG
                         If XtraMessageBox.Show("Θέλετε να δημιουργηθεί είσπραξη για την εργασία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                             Dim sSQL As New System.Text.StringBuilder
 
-                            sSQL.AppendLine("INSERT INTO COL_EXT(bdgid,profActDID,credit,debit,bal,ColMethodID,dtcredit)")
+                            sSQL.AppendLine("INSERT INTO COL_EXT(bdgid,profActDID,credit,debit,bal,ColMethodID,dtcredit,createdOn)")
                             sSQL.AppendLine("VALUES( " & toSQLValueS(sID) & "," & toSQLValueS(sGuid) & ",0," &
                                             toSQLValue(txtProfActDAmt, True) & "," & toSQLValue(txtProfActDAmt, True) & "," & toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & "," &
-                                            toSQLValueS(CDate(dtProfActD.Text).ToString("yyyyMMdd")) & ")")
+                                            toSQLValueS(CDate(dtProfActD.Text).ToString("yyyyMMdd")) & ",getdate())")
                             'Εκτέλεση QUERY
                             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                                 oCmd.ExecuteNonQuery()
@@ -2579,12 +2579,12 @@ Public Class frmBDG
                 If XtraMessageBox.Show("Θέλετε να δημιουργηθεί είσπραξη για την εργασία?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     Dim sSQLs As New System.Text.StringBuilder
 
-                    sSQLs.AppendLine("INSERT INTO COL_EXT(bdgid,profActDID,credit,debit,bal,ColMethodID,dtcredit)")
+                    sSQLs.AppendLine("INSERT INTO COL_EXT(bdgid,profActDID,credit,debit,bal,ColMethodID,dtcredit,createdOn)")
                     sSQLs.AppendLine("VALUES( " & toSQLValueS(sID) & "," & toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "ID").ToString) & ",0," &
                                     toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) & "," &
                                     toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) & "," &
                                     toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & "," &
-                                    toSQLValueS(CDate(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profDate").ToString).ToString("yyyyMMdd")) & ")")
+                                    toSQLValueS(CDate(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profDate").ToString).ToString("yyyyMMdd")) & ",getadate())")
                     'Εκτέλεση QUERY
                     Using oCmd As New SqlCommand(sSQLs.ToString, CNDB)
                         oCmd.ExecuteNonQuery()

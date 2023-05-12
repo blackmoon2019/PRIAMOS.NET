@@ -75,9 +75,9 @@ Public Class frmApol
                     Case FormMode.NewRecord
                         Dim sGuid As String = System.Guid.NewGuid.ToString
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "APOL", LayoutControl1,,, sGuid)
-                        sSQL.AppendLine("INSERT INTO COL_EXT(bdgid,apolID,credit,debit,bal,ColMethodID,dtdebit)")
+                        sSQL.AppendLine("INSERT INTO COL_EXT(bdgid,apolID,credit,debit,bal,ColMethodID,dtdebit,createdOn)")
                         sSQL.AppendLine("VALUES( " & toSQLValueS(cboBDG.EditValue.ToString) & "," & toSQLValueS(sGuid) & ",0," &
-                                        toSQLValue(txtAmt, True) & "," & toSQLValue(txtAmt, True) & "," & toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & ",getdate())")
+                                        toSQLValue(txtAmt, True) & "," & toSQLValue(txtAmt, True) & "," & toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & ",getdate(),getdate())")
                         'Εκτέλεση QUERY
                         Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                             oCmd.ExecuteNonQuery()
