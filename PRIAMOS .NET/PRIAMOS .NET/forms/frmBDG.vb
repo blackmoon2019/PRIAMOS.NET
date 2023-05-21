@@ -2740,7 +2740,7 @@ Public Class frmBDG
 
     Private Sub GridView10_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView10.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView1, "vw_PROF_ACT_D.xml", "vw_PROF_ACT_D")
+            LoadForms.PopupMenuShow(e, GridView10, "vw_PROF_ACT_D.xml", "vw_PROF_ACT_D")
         Else
             ActiveGrid = GridView10
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -2765,5 +2765,13 @@ Public Class frmBDG
 
     Private Sub GridView2_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView2.ValidatingEditor
         If e.Value = "" Then e.ErrorText = "Παρακαλώ εισάγετε αριθμό" : e.Valid = False
+    End Sub
+
+    Private Sub cbogrp_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cbogrp.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageANN_GRPS(cbogrp, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageANN_GRPS(cbogrp, FormMode.EditRecord)
+            Case 3 : cbogrp.EditValue = Nothing
+        End Select
     End Sub
 End Class

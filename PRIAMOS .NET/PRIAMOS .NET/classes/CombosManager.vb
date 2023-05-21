@@ -219,6 +219,25 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
+    Public Sub ManageANN_GRPS(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
+        Dim form1 As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Κατηγορίες Ανακοινώσεων"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Κατηγορία"
+        form1.DataTable = "ANN_GRPS"
+        form1.CalledFromControl = True
+        form1.CallerControl = CallerControl
+        form1.MdiParent = frmMain
+        If CallerControl.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = CallerControl.EditValue.ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
 
     Public Sub ManageAREAS(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmGen = New frmGen()
