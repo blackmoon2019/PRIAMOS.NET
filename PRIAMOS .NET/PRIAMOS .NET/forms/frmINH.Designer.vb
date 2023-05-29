@@ -878,7 +878,7 @@ Partial Class frmINH
         Me.chkPrintSyg.Properties.Appearance.ForeColor = System.Drawing.Color.Green
         Me.chkPrintSyg.Properties.Appearance.Options.UseFont = True
         Me.chkPrintSyg.Properties.Appearance.Options.UseForeColor = True
-        Me.chkPrintSyg.Properties.Caption = "ΣΥΓΕΚΝΤΡΩΤΙΚΗ"
+        Me.chkPrintSyg.Properties.Caption = "ΣΥΓΚΕΝΤΡΩΤΙΚΗ"
         Me.chkPrintSyg.Properties.ReadOnly = True
         Me.chkPrintSyg.Properties.ValueChecked = CType(1, Byte)
         Me.chkPrintSyg.Properties.ValueUnchecked = CType(0, Byte)

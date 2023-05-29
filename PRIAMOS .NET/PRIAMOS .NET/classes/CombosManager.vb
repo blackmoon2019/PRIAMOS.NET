@@ -307,6 +307,45 @@ Public Class CombosManager
         fGen.Show()
 
     End Sub
+    Public Sub ManageCalcCat(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, Optional ByVal GRD As GridView = Nothing)
+        Dim fGen As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        fGen.Text = "Κατηγορίες Υπολογισμών"
+        fGen.MdiParent = frmMain
+        fGen.Mode = FormMode.EditRecord
+        fGen.Scroller = GRD
+        fGen.DataTable = "CALC_CAT"
+        fGen.L1.Text = "Κωδικός"
+        fGen.L2.Text = "Όνομα"
+        fGen.L3.Text = "Τύπος Υπολογισμού"
+        fGen.L3.Control.Tag = "calcTypeID,0,1,2"
+        fGen.L3.Tag = ""
+        fGen.L3.ImageOptions.Image = Nothing
+        fGen.L4.Text = "Κατηγορία Χιλιοστών"
+        fGen.L4.Control.Tag = "mlcID,0,1,2"
+        fGen.L4.Tag = ""
+        fGen.L4.ImageOptions.Image = Nothing
+        fGen.L7.Text = "Λεκτικό Εκτύπωσης"
+        fGen.L7.Control.Tag = "repName,0,1,2"
+        fGen.L7.Tag = ""
+        fGen.L7.ImageOptions.Image = Nothing
+        fGen.L8.Text = "Θέση Ταξινόμησης"
+        fGen.txtNum.Tag = "ord,0,1,2"
+        fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        fGen.CalledFromControl = False
+        If CallerControl.EditValue <> Nothing Then
+            fGen.Mode = FormMode.EditRecord
+            fGen.ID = CallerControl.EditValue.ToString
+        Else
+            fGen.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(fGen.Parent.ClientRectangle.Width / 2 - fGen.Width / 2), CInt(fGen.Parent.ClientRectangle.Height / 2 - fGen.Height / 2)))
+        fGen.Show()
+
+    End Sub
     Public Sub ManageHtypes(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmGen = New frmGen()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing

@@ -1,14 +1,15 @@
 ﻿Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 
 Public Class frmIEP
     Private sID As String
     Private sBDGID As String
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
+    Private ManageCbo As New CombosManager
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private LoadForms As New FormLoader
-    Private Log As New Transactions
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
@@ -39,6 +40,7 @@ Public Class frmIEP
 
     Private Sub frmIEP_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim sSQL As New System.Text.StringBuilder
+        Me.Vw_APTTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_BDG.vw_APT, System.Guid.Parse(sBDGID))
         'Τυύποι υπολογισμών
         FillCbo.CALC_CAT(cboCaclCat)
         Select Case Mode
@@ -81,4 +83,19 @@ Public Class frmIEP
         End Try
     End Sub
 
+    Private Sub cboApt_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboApt.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageAPT(cboApt, FormMode.NewRecord, sBDGID)
+            Case 2 : ManageCbo.ManageAPT(cboApt, FormMode.EditRecord, sBDGID)
+            Case 3 : cboApt.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cboCaclCat_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCaclCat.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManageCalcCat(cboApt, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageCalcCat(cboApt, FormMode.NewRecord)
+            Case 3 : cboApt.EditValue = Nothing
+        End Select
+    End Sub
 End Class

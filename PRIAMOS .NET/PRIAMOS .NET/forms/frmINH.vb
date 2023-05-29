@@ -135,7 +135,18 @@ Public Class frmINH
         LoadConditionalFormatting()
         cboOwnerTenant.SelectedIndex = 1  'If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
         cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
-        If chkreserveAPT.Checked = True Then LayoutControl1.Enabled = False
+        If chkreserveAPT.Checked = True Then
+            LayoutControlGroup1.Enabled = False
+            LayoutControlGroup2.Enabled = False
+            LcmdNewInh.Enabled = False
+            LcmdCalculate.Enabled = False
+            LcmdCancelCalculate.Enabled = False
+            LcmdCancelInvoice.Enabled = False
+            LayoutControlItem17.Enabled = False
+            LcmdSaveINH.Enabled = False
+            BarSygentrotiki.Enabled = False
+            BarEidop.Enabled = False
+        End If
     End Sub
 
     Private Sub EditRecord()
@@ -267,7 +278,7 @@ Public Class frmINH
 
                 Select Case Mode
                     Case FormMode.NewRecord
-                        'Ελεγχος αν υπάρχει παρασττικό στο δίάστημα
+                        'Ελεγχος αν υπάρχει παραστατικό στο δίάστημα
                         If CheckIfINHMonthExists() Then Exit Sub
 
                         sGuid = System.Guid.NewGuid.ToString
@@ -277,8 +288,14 @@ Public Class frmINH
                             ' Αν είναι θερμιδομέτρηση δεν καταχωρούντε πάγια έξοδα
                             If chkCalorimetric.CheckState = CheckState.Unchecked Then
                                 ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
+                                ' Όταν έχει οριστεί διαμέρισμα στα πάγια έξοδα τότε αυτόματα παίρνει τα υπολογισμένα του τελευταίου παραστατικού γιαυτό το διαμέρισμα και τα μεταφέρει στο επόμενο
                                 sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt else (amt " & "*" & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
+                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,
+                                   case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt 
+                                        when aptID is not null then (select amt  from vw_inc where inhid = 
+                                   (select top 1 ID from INH (nolock) where bdgid = vw_inc.bdgID  and extraordinary=0 and Calorimetric=0 and reserveAPT=0 and fdate< " & toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")) & "  order by fDate desc)
+                                        and aptID=IEP.aptID  and calcCatID=IEP.calcCatID ) *  " & Months &
+                                   " else (amt * " & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
                                 Using oCmd As New SqlCommand(sSQL, CNDB)
                                     oCmd.ExecuteNonQuery()
                                 End Using

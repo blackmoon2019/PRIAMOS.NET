@@ -554,6 +554,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Priamos_NETDataSet3.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -567,6 +568,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Priamos_NET_DataSet_BDG.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\Eidop\ClosedAPTSmall.Designer.vb">
       <DependentUpon>ClosedAPTSmall.vb</DependentUpon>
@@ -883,9 +889,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\information-16.png" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <Content Include="Sql Scripts\inv_cancelCalculate.sql" />
+    <None Include="Priamos_NET_DataSet_BDG.xsc">
+      <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
+    </None>
+    <None Include="Priamos_NET_DataSet_BDG.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Priamos_NET_DataSet_BDG.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Priamos_NET_DataSet_BDG.xss">
+      <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
+    </None>
     <None Include="Resources\icons8-calculate-40.png" />
     <None Include="Resources\icons8-surface-40.png" />
     <None Include="Resources\icons8-folder-40.png" />
@@ -975,7 +993,7 @@
     <None Include="Priamos_NETDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Priamos_NETDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>Priamos_NETDataSet1.Designer.vb</LastGenOutput>
     </None>
     <None Include="Priamos_NETDataSet.xss">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
@@ -2515,24 +2533,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>RD /S /Q "$(TargetDir)cs\"
-RD /S /Q "$(TargetDir)da\"
-RD /S /Q "$(TargetDir)de\"
-RD /S /Q "$(TargetDir)es\"
-RD /S /Q "$(TargetDir)fa\"
-RD /S /Q "$(TargetDir)fi\"
-RD /S /Q "$(TargetDir)fr\"
-RD /S /Q "$(TargetDir)it\"
-RD /S /Q "$(TargetDir)ko\"
-RD /S /Q "$(TargetDir)mk\"
-RD /S /Q "$(TargetDir)nl\"
-RD /S /Q "$(TargetDir)pl\"
-RD /S /Q "$(TargetDir)pt\"
-RD /S /Q "$(TargetDir)ru\"
-RD /S /Q "$(TargetDir)sv\"
-RD /S /Q "$(TargetDir)tr\"
-RD /S /Q "$(TargetDir)ja\"
-RD /S /Q "$(TargetDir)zh-CN\"</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+
+  xcopy "$(ProjectDir)\bin\Debug\PRIAMOS.NET.exe" "\\192.168.1.52\priamos.net\PRIAMOS_DEV\" /Y /I
+) ELSE (
+  echo "ConfigurationName= Debug".
+)</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

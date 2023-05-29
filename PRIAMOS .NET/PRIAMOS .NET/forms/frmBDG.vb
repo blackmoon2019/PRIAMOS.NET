@@ -96,10 +96,12 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_IEP' table. You can move, or remove it, as needed.
+        Me.Vw_IEPTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_IEP)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
         Me.ANN_GRPSTableAdapter.Fill(Me.Priamos_NETDataSet.ANN_GRPS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.Collectors' table. You can move, or remove it, as needed.
-        Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet2.Collectors)
+        Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
         Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_FOLDER_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
@@ -1581,7 +1583,7 @@ Public Class frmBDG
     End Sub
     Public Sub LoadIEP()
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_IEP' table. You can move, or remove it, as needed.
-        Me.Vw_IEPTableAdapter.FillByBDG(Me.Priamos_NETDataSet.vw_IEP, System.Guid.Parse(sID))
+        Me.Vw_IEPTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_BDG.vw_IEP, System.Guid.Parse(sID))
 
         'Dim sSQL As String
         'sSQL = "SELECT * FROM vw_IEP WHERE BDGID = '" & sID & "' ORDER BY code"
@@ -1594,7 +1596,7 @@ Public Class frmBDG
     End Sub
     Private Sub GridView6_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView6, "IEP_def.xml")
+            LoadForms.PopupMenuShow(e, GridView6, "IEP_def.xml", "VW_IEP")
         Else
             ActiveGrid = GridView6
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -1806,8 +1808,8 @@ Public Class frmBDG
 
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboCCT.EditValue = Nothing : ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
-            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 1 : cboCCT.EditValue = Nothing : ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
             Case 3 : cboCCT.EditValue = Nothing
         End Select
     End Sub
@@ -2007,7 +2009,7 @@ Public Class frmBDG
 
     Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
         If cboPrf.EditValue Is Nothing Then Exit Sub
-        Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet1.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+        Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
 
     End Sub
 
@@ -2429,7 +2431,7 @@ Public Class frmBDG
             Maintab.SelectedTabPage = tabProfActD
             ModePROFACTD = FormMode.NewRecord
             'TODO: This line of code loads data into the 'Priamos_NETDataSet4.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
-            Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet4.vw_PARTNER_AND_WORKSHOP)
+            Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP)
             'TODO: This line of code loads data into the 'Priamos_NETDataSet3.vw_PROF_ACT' table. You can move, or remove it, as needed.
             Me.Vw_PROF_ACTTableAdapter.Fill(Me.Priamos_NETDataSet3.vw_PROF_ACT)
             Me.Vw_PROF_ACT_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet3.vw_PROF_ACT_D, System.Guid.Parse(sID))

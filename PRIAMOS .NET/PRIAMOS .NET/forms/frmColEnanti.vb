@@ -2,6 +2,9 @@
 Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraPrinting
+Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraSplashScreen
 
 Public Class frmColEnanti
     Private ManageCbo As New CombosManager
@@ -58,11 +61,13 @@ Public Class frmColEnanti
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sSQL As New System.Text.StringBuilder
         Dim sINHID As String
+        Dim sINDID As String
         Dim sCOLID As String
         Try
             If Valid.ValidateForm(LayoutControl1) Then
                 sINHID = System.Guid.NewGuid.ToString
                 sCOLID = System.Guid.NewGuid.ToString
+                sINDID = System.Guid.NewGuid.ToString
                 'Καταχώρηση Παραστατικού
                 sSQL.AppendLine("INSERT INTO INH (id,bdgID,CMT,FDATE,TDATE,TotalInh,extraordinary,createdOn,modifiedBY,completeDate,reserveAPT)")
                 sSQL.AppendLine("select " & toSQLValueS(sINHID) & ",")
@@ -77,6 +82,28 @@ Public Class frmColEnanti
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
+                'Καταχώρηση Πάγιου εξόδου
+                sSQL.Clear()
+                sSQL.AppendLine("INSERT INTO IND (id,inhID, calcCatID, repName, amt, owner_tenant)")
+                sSQL.AppendLine("select " & toSQLValueS(sINDID) & "," & toSQLValueS(sINHID) & ",'3FE81416-EF7C-4D3B-B1EA-E4CC40350FDE',")
+                sSQL.AppendLine(toSQLValue(txtComments) & ",")
+                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex))
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                'Καταχώρηση Υπολογισμένης εγγραφής
+                sSQL.Clear()
+                sSQL.AppendLine("INSERT INTO INC (ID,inhID,indID,bdgID,aptID, monomers1,tot_monomers1,createdby)")
+                sSQL.AppendLine("select newid()," & toSQLValueS(sINHID) & "," & toSQLValueS(sINDID) & "," & toSQLValueS(sBdgID) & ",")
+                sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
+                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+
                 'Καταχώρηση Είσπραξης
                 sSQL.Clear()
                 sSQL.AppendLine("INSERT INTO COL (ID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,dtdebit,cmt,ColMethodID,createdOn,completed,tenant,reserveAPT,modifiedBY)")
@@ -111,25 +138,7 @@ Public Class frmColEnanti
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                ''Καταχώρηση Επιμέρους είσπραξης
-                'sSQL.Clear()
-                'sSQL.AppendLine("INSERT INTO COL_D (colID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,agreed,tenant,createdOn,reserveAPT,ComeFrom,modifiedBY)")
-                'sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
-                'sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
-                'sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
-                'sSQL.AppendLine(toSQLValueS(sINHID) & ",")
-                'sSQL.AppendLine(toSQLValueS(cboDebitUsr.EditValue.ToString) & ",")
-                'sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                'sSQL.AppendLine("0,")
-                'sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                'sSQL.AppendLine("0,")
-                'sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",")
-                'sSQL.AppendLine("GETDATE(),1,4,")
-                'sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
-                ''Εκτέλεση QUERY
-                'Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                '    oCmd.ExecuteNonQuery()
-                'End Using
+
                 'Ενημέρωση Υπολοίπου διαμερίσματος
                 sSQL.Clear()
                 sSQL.AppendLine("UPDATE APT set bal_adm = bal_adm + " & toSQLValue(txtDebit, True) & "*(-1) WHERE ID = " & toSQLValueS(cboApt.EditValue.ToString))
@@ -141,6 +150,26 @@ Public Class frmColEnanti
                 'Καθαρισμός Controls
                 Cls.ClearCtrls(LayoutControl1)
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If XtraMessageBox.Show("Θέλετε να εκτυπώσετε την απόδειξη του διαμερίσματος?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                    Dim report As New Receipt
+                    Dim sMargins As New System.Drawing.Printing.Margins
+                    report.Parameters.Item(0).Value = sINHID
+                    report.PrintingSystem.Document.ScaleFactor = 0.92
+                    report.DefaultPrinterSettingsUsing.UsePaperKind = False
+                    report.DefaultPrinterSettingsUsing.UseMargins = False
+                    sMargins.Bottom = 50 : sMargins.Top = 90 : sMargins.Left = 100 : sMargins.Right = 50
+                    report.Margins = sMargins
+                    report.CreateDocument()
+                    Dim printTool As New ReportPrintTool(report)
+                    Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
+                    printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
+                        PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
+                        PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
+                        PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
+                        PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
+                        PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
+                    printTool.ShowRibbonPreview()
+                End If
                 Valid.SChanged = False
             End If
         Catch ex As Exception
