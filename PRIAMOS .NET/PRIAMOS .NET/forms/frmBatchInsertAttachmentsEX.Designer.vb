@@ -22,18 +22,18 @@ Partial Class frmBatchInsertAttachmentsEX
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim BreadCrumbNode1 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
-        Dim BreadCrumbNode2 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim BreadCrumbNode3 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
+        Dim BreadCrumbNode4 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
         Me.PopupMenuDeleteButton = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.BarDockControl2 = New DevExpress.XtraBars.BarDockControl()
@@ -79,11 +79,12 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.PdfBarController1 = New DevExpress.XtraPdfViewer.Bars.PdfBarController(Me.components)
         Me.ImageListBoxControl1 = New DevExpress.XtraEditors.ImageListBoxControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkPaid = New DevExpress.XtraEditors.CheckEdit()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.PdfViewer1 = New DevExpress.XtraPdfViewer.PdfViewer()
         Me.grdMain = New DevExpress.XtraGrid.GridControl()
-        Me.VwINDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.Vw_INDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet2 = New PRIAMOS.NET.Priamos_NETDataSet2()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colinhID = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -104,6 +105,9 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl1 = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -111,6 +115,8 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -128,9 +134,10 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INDTableAdapter()
         Me.SplashScreenManager1 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), True, True)
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_INDTableAdapter()
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
         CType(Me.PopupMenuDeleteButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.images, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,11 +147,15 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.ImageListBoxControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkPaid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Vw_INDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.editBreadCrumb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -152,6 +163,8 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,7 +197,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl2.Dock = System.Windows.Forms.DockStyle.Top
         Me.BarDockControl2.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl2.Manager = Me.BarManager1
-        Me.BarDockControl2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl2.Size = New System.Drawing.Size(2410, 0)
         '
         'BarDockControl3
@@ -193,7 +206,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BarDockControl3.Location = New System.Drawing.Point(0, 1465)
         Me.BarDockControl3.Manager = Me.BarManager1
-        Me.BarDockControl3.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl3.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl3.Size = New System.Drawing.Size(2410, 0)
         '
         'BarDockControl4
@@ -202,7 +215,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl4.Dock = System.Windows.Forms.DockStyle.Left
         Me.BarDockControl4.Location = New System.Drawing.Point(0, 0)
         Me.BarDockControl4.Manager = Me.BarManager1
-        Me.BarDockControl4.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl4.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl4.Size = New System.Drawing.Size(0, 1465)
         '
         'BarDockControl5
@@ -211,7 +224,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl5.Dock = System.Windows.Forms.DockStyle.Right
         Me.BarDockControl5.Location = New System.Drawing.Point(2410, 0)
         Me.BarDockControl5.Manager = Me.BarManager1
-        Me.BarDockControl5.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl5.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl5.Size = New System.Drawing.Size(0, 1465)
         '
         'BBOpenInh
@@ -245,7 +258,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(2410, 0)
         Me.barDockControlRight.Manager = Nothing
-        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 1465)
         '
         'PdfFileOpenBarItem1
@@ -484,17 +497,18 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         Me.ImageListBoxControl1.HorizontalScrollbar = True
         Me.ImageListBoxControl1.ImageList = Me.images
-        Me.ImageListBoxControl1.Location = New System.Drawing.Point(20, 70)
-        Me.ImageListBoxControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.ImageListBoxControl1.Location = New System.Drawing.Point(12, 98)
+        Me.ImageListBoxControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.ImageListBoxControl1.MultiColumn = True
         Me.ImageListBoxControl1.Name = "ImageListBoxControl1"
         Me.ImageListBoxControl1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.ImageListBoxControl1.Size = New System.Drawing.Size(1006, 446)
+        Me.ImageListBoxControl1.Size = New System.Drawing.Size(1142, 410)
         Me.ImageListBoxControl1.StyleController = Me.LayoutControl1
         Me.ImageListBoxControl1.TabIndex = 7
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.chkPaid)
         Me.LayoutControl1.Controls.Add(Me.cmdSave)
         Me.LayoutControl1.Controls.Add(Me.PdfViewer1)
         Me.LayoutControl1.Controls.Add(Me.grdMain)
@@ -504,23 +518,40 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControl1.Controls.Add(Me.BarDockControl1)
         Me.LayoutControl1.Controls.Add(Me.barDockControlBottom)
         Me.LayoutControl1.Controls.Add(Me.barDockControlTop)
-        Me.LayoutControl1.Location = New System.Drawing.Point(13, 5)
-        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.LayoutControl1.Controls.Add(Me.cboBDG)
+        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(850, 565, 650, 400)
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(2407, 1456)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2410, 1465)
         Me.LayoutControl1.TabIndex = 6
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'chkPaid
+        '
+        Me.chkPaid.EditValue = CType(0, Byte)
+        Me.chkPaid.Location = New System.Drawing.Point(1158, 56)
+        Me.chkPaid.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkPaid.MenuManager = Me.BarManager1
+        Me.chkPaid.Name = "chkPaid"
+        Me.chkPaid.Properties.Caption = "Πληρωμένο"
+        Me.chkPaid.Properties.ValueChecked = CType(1, Byte)
+        Me.chkPaid.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkPaid.Size = New System.Drawing.Size(1240, 32)
+        Me.chkPaid.StyleController = Me.LayoutControl1
+        Me.chkPaid.TabIndex = 57
+        Me.chkPaid.Tag = ""
         '
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_as_16
-        Me.cmdSave.Location = New System.Drawing.Point(882, 524)
-        Me.cmdSave.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.cmdSave.Location = New System.Drawing.Point(968, 512)
+        Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdSave.Size = New System.Drawing.Size(144, 39)
+        Me.cmdSave.Size = New System.Drawing.Size(186, 39)
         Me.cmdSave.StyleController = Me.LayoutControl1
         Me.cmdSave.TabIndex = 51
         Me.cmdSave.Text = "Αποθήκευση"
@@ -532,11 +563,11 @@ Partial Class frmBatchInsertAttachmentsEX
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PdfViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.PdfViewer1.DetachStreamAfterLoadComplete = True
-        Me.PdfViewer1.Location = New System.Drawing.Point(20, 571)
-        Me.PdfViewer1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.PdfViewer1.Location = New System.Drawing.Point(12, 555)
+        Me.PdfViewer1.Margin = New System.Windows.Forms.Padding(5)
         Me.PdfViewer1.MenuManager = Me.BarManager1
         Me.PdfViewer1.Name = "PdfViewer1"
-        Me.PdfViewer1.Size = New System.Drawing.Size(1006, 863)
+        Me.PdfViewer1.Size = New System.Drawing.Size(1142, 898)
         Me.PdfViewer1.TabIndex = 16
         Me.PdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible
         '
@@ -545,26 +576,26 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.grdMain.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
-        Me.grdMain.DataSource = Me.VwINDBindingSource
+        Me.grdMain.DataSource = Me.Vw_INDBindingSource
         Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        Me.grdMain.Location = New System.Drawing.Point(1032, 70)
+        Me.grdMain.Location = New System.Drawing.Point(1158, 98)
         Me.grdMain.MainView = Me.GridView1
-        Me.grdMain.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(1355, 1364)
+        Me.grdMain.Size = New System.Drawing.Size(1240, 1355)
         Me.grdMain.TabIndex = 10
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
-        'VwINDBindingSource
+        'Vw_INDBindingSource
         '
-        Me.VwINDBindingSource.DataMember = "vw_IND"
-        Me.VwINDBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.Vw_INDBindingSource.DataMember = "vw_IND"
+        Me.Vw_INDBindingSource.DataSource = Me.Priamos_NETDataSet2
         '
-        'Priamos_NETDataSet
+        'Priamos_NETDataSet2
         '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Priamos_NETDataSet2.DataSetName = "Priamos_NETDataSet2"
+        Me.Priamos_NETDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GridView1
         '
@@ -702,27 +733,27 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         'editBreadCrumb
         '
-        Me.editBreadCrumb.Location = New System.Drawing.Point(20, 22)
-        Me.editBreadCrumb.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.editBreadCrumb.Location = New System.Drawing.Point(12, 12)
+        Me.editBreadCrumb.Margin = New System.Windows.Forms.Padding(5)
         Me.editBreadCrumb.Name = "editBreadCrumb"
         Me.editBreadCrumb.Properties.AutoHeight = False
-        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(8, 8)
-        Me.editBreadCrumb.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinDown, "", 18, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Redo, "", 15, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.SvgImageSize = New System.Drawing.Size(8, 8)
+        Me.editBreadCrumb.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinDown, "", 18, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Redo, "", 15, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.editBreadCrumb.Properties.DropDownRows = 12
         Me.editBreadCrumb.Properties.ImageIndex = 0
-        BreadCrumbNode1.Caption = "Root"
-        BreadCrumbNode1.Persistent = True
-        BreadCrumbNode1.PopulateOnDemand = True
-        BreadCrumbNode1.ShowCaption = False
-        BreadCrumbNode1.Value = "Root"
-        BreadCrumbNode2.Caption = "Computer"
-        BreadCrumbNode2.Persistent = True
-        BreadCrumbNode2.PopulateOnDemand = True
-        BreadCrumbNode2.Value = "Computer"
-        Me.editBreadCrumb.Properties.Nodes.AddRange(New DevExpress.XtraEditors.BreadCrumbNode() {BreadCrumbNode1, BreadCrumbNode2})
+        BreadCrumbNode3.Caption = "Root"
+        BreadCrumbNode3.Persistent = True
+        BreadCrumbNode3.PopulateOnDemand = True
+        BreadCrumbNode3.ShowCaption = False
+        BreadCrumbNode3.Value = "Root"
+        BreadCrumbNode4.Caption = "Computer"
+        BreadCrumbNode4.Persistent = True
+        BreadCrumbNode4.PopulateOnDemand = True
+        BreadCrumbNode4.Value = "Computer"
+        Me.editBreadCrumb.Properties.Nodes.AddRange(New DevExpress.XtraEditors.BreadCrumbNode() {BreadCrumbNode3, BreadCrumbNode4})
         Me.editBreadCrumb.Properties.RootImageIndex = 0
         Me.editBreadCrumb.Properties.SortNodesByCaption = True
-        Me.editBreadCrumb.Size = New System.Drawing.Size(2367, 40)
+        Me.editBreadCrumb.Size = New System.Drawing.Size(2386, 40)
         Me.editBreadCrumb.StyleController = Me.LayoutControl1
         Me.editBreadCrumb.TabIndex = 8
         '
@@ -731,7 +762,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Location = New System.Drawing.Point(200, 1194)
         Me.barDockControlLeft.Manager = Nothing
-        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlLeft.Size = New System.Drawing.Size(2038, 241)
         '
         'BarDockControl1
@@ -739,7 +770,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl1.CausesValidation = False
         Me.BarDockControl1.Location = New System.Drawing.Point(200, 1315)
         Me.BarDockControl1.Manager = Nothing
-        Me.BarDockControl1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.BarDockControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.BarDockControl1.Size = New System.Drawing.Size(2038, 120)
         '
         'barDockControlBottom
@@ -747,7 +778,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Location = New System.Drawing.Point(200, 1357)
         Me.barDockControlBottom.Manager = Nothing
-        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlBottom.Size = New System.Drawing.Size(2038, 78)
         '
         'barDockControlTop
@@ -755,24 +786,52 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Location = New System.Drawing.Point(210, 1399)
         Me.barDockControlTop.Manager = Nothing
-        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlTop.Size = New System.Drawing.Size(2028, 35)
+        '
+        'cboBDG
+        '
+        Me.cboBDG.Location = New System.Drawing.Point(127, 56)
+        Me.cboBDG.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboBDG.Name = "cboBDG"
+        Me.cboBDG.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboBDG.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboBDG.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "Πολυκατοκία", 52, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("aam", "aam", 51, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("iam", "iam", 45, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dts", "dts", 40, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_ID", "ADR_ID", 81, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Code", "ADR_Code", 103, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ADR_Name", "ADR_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tk", "tk", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaID", "Area ID", 79, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CouID", "Cou ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_ID", "Area_ID", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_Code", "Area_Code", 105, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_CouID", "Area_Cou ID", 121, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Area_Name", "Area_Name", 112, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_ID", "COU_ID", 81, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Code", "COU_Code", 103, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("COU_Name", "COU_Name", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ar", "ar", 32, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("prd", "prd", 44, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("HTypeID", "HType ID", 95, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BTypeID", "BType ID", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("HTYPE_Name", "HTYPE_Name", 130, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BTYPE_Name", "BTYPE_Name", 128, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FBTYPE_Name", "FBTYPE_Name", 138, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FTypeID", "FType ID", 92, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpc", "hpc", 46, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("hpb", "hpb", 48, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calH", "cal H", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("calB", "cal B", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tacH", "tac H", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("tacB", "tac B", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lpcH", "lpc H", 58, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lpcB", "lpc B", 56, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bCommon", "b Common", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bSeperate", "b Seperate", 107, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bManageID", "b Manage ID", 125, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eName", "e Name", 80, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eCounter", "e Counter", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ePaymentCode", "e Payment Code", 151, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("eServiceNum", "e Service Num", 137, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fName", "f Name", 76, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fCounter", "f Counter", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fPaymentCode", "f Payment Code", 147, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fServiceNum", "f Service Num", 133, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wName", "w Name", 84, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wCounter", "w Counter", 101, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("wRegisterNum", "w Register Num", 149, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fUN", "f UN", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fPWD", "f PWD", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fCusCode", "f Cus Code", 105, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fHkasp", "f Hkasp", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("fDeposit", "f Deposit", 89, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("isManaged", "Διαχείριση", 111, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ManagerName", "Manager Name", 144, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("managerID", "manager ID", 116, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("KeysManager", "Keys Manager", 133, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BdgNam", "Bdg Nam", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debit", "debit", 57, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("credit", "credit", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "bal", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("debitusrID", "debitusr ID", 109, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtDebit", "dt Debit", 82, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("dtCredit", "dt Credit", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboBDG.Properties.DataSource = Me.VwBDGBindingSource
+        Me.cboBDG.Properties.DisplayMember = "nam"
+        Me.cboBDG.Properties.NullText = ""
+        Me.cboBDG.Properties.PopupSizeable = False
+        Me.cboBDG.Properties.ValueMember = "ID"
+        Me.cboBDG.Size = New System.Drawing.Size(1027, 38)
+        Me.cboBDG.StyleController = Me.LayoutControl1
+        Me.cboBDG.TabIndex = 3
+        Me.cboBDG.Tag = ""
+        '
+        'VwBDGBindingSource
+        '
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'Priamos_NET_DataSet_BDG
+        '
+        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
+        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem11, Me.EmptySpaceItem1})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem11, Me.EmptySpaceItem1, Me.LayoutControlItem12, Me.LayoutControlItem13})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2407, 1456)
+        Me.Root.Size = New System.Drawing.Size(2410, 1465)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.ImageListBoxControl1
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 86)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1012, 454)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1146, 414)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -781,44 +840,67 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem2.Control = Me.editBreadCrumb
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(2373, 48)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(2390, 44)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.grdMain
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(1012, 48)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(1146, 86)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1361, 1372)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1244, 1359)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.PdfViewer1
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 549)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 543)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1012, 871)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1146, 902)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.cmdSave
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(862, 502)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(956, 500)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(150, 47)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(190, 43)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 502)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 500)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(862, 47)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(956, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem12
+        '
+        Me.LayoutControlItem12.Control = Me.cboBDG
+        Me.LayoutControlItem12.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem12.CustomizationFormText = "Κατηγορία"
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 44)
+        Me.LayoutControlItem12.Name = "LayoutControlItem12"
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(1146, 42)
+        Me.LayoutControlItem12.Text = "Πολυκατοικία"
+        Me.LayoutControlItem12.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem12.TextLocation = DevExpress.Utils.Locations.Left
+        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(110, 23)
+        Me.LayoutControlItem12.TextToControlDistance = 5
+        '
+        'LayoutControlItem13
+        '
+        Me.LayoutControlItem13.Control = Me.chkPaid
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(1146, 44)
+        Me.LayoutControlItem13.Name = "LayoutControlItem13"
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(1244, 42)
+        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem13.TextVisible = False
         '
         'GridControl1
         '
@@ -923,10 +1005,6 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem10.Size = New System.Drawing.Size(1335, 25)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(50, 20)
         '
-        'Vw_INDTableAdapter
-        '
-        Me.Vw_INDTableAdapter.ClearBeforeFill = True
-        '
         'SplashScreenManager1
         '
         Me.SplashScreenManager1.ClosingDelay = 500
@@ -936,6 +1014,14 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenInh), New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenBdg)})
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
+        '
+        'Vw_INDTableAdapter
+        '
+        Me.Vw_INDTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
         '
         'frmBatchInsertAttachmentsEX
         '
@@ -949,7 +1035,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.Controls.Add(Me.BarDockControl5)
         Me.Controls.Add(Me.BarDockControl3)
         Me.Controls.Add(Me.BarDockControl2)
-        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmBatchInsertAttachmentsEX"
         Me.Text = "frmBatchInsertAttachmentsEX"
         CType(Me.PopupMenuDeleteButton, System.ComponentModel.ISupportInitialize).EndInit()
@@ -962,11 +1048,15 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         Me.LayoutControl1.PerformLayout()
+        CType(Me.chkPaid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Vw_INDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.editBreadCrumb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -974,6 +1064,8 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1055,8 +1147,6 @@ Partial Class frmBatchInsertAttachmentsEX
     Friend WithEvents LayoutControlItem10 As XtraLayout.LayoutControlItem
     Friend WithEvents PdfViewer1 As XtraPdfViewer.PdfViewer
     Friend WithEvents LayoutControlItem3 As XtraLayout.LayoutControlItem
-    Friend WithEvents VwINDBindingSource As BindingSource
-    Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
     Friend WithEvents colID As XtraGrid.Columns.GridColumn
     Friend WithEvents colinhID As XtraGrid.Columns.GridColumn
     Friend WithEvents colrepName As XtraGrid.Columns.GridColumn
@@ -1067,7 +1157,6 @@ Partial Class frmBatchInsertAttachmentsEX
     Friend WithEvents colcalcCatID As XtraGrid.Columns.GridColumn
     Friend WithEvents colSelectedFiles As XtraGrid.Columns.GridColumn
     Friend WithEvents colpaid As XtraGrid.Columns.GridColumn
-    Friend WithEvents Vw_INDTableAdapter As Priamos_NETDataSetTableAdapters.vw_INDTableAdapter
     Friend WithEvents colcompleteDate As XtraGrid.Columns.GridColumn
     Friend WithEvents colETOS As XtraGrid.Columns.GridColumn
     Friend WithEvents cmdSave As XtraEditors.SimpleButton
@@ -1084,4 +1173,14 @@ Partial Class frmBatchInsertAttachmentsEX
     Friend WithEvents colbdgID As XtraGrid.Columns.GridColumn
     Friend WithEvents BBOpenBdg As XtraBars.BarButtonItem
     Friend WithEvents colbManageID As XtraGrid.Columns.GridColumn
+    Friend WithEvents cboBDG As XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem12 As XtraLayout.LayoutControlItem
+    Friend WithEvents chkPaid As XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem13 As XtraLayout.LayoutControlItem
+    Friend WithEvents Priamos_NETDataSet2 As Priamos_NETDataSet2
+    Friend WithEvents Vw_INDBindingSource As BindingSource
+    Friend WithEvents Vw_INDTableAdapter As Priamos_NETDataSet2TableAdapters.vw_INDTableAdapter
+    Friend WithEvents Priamos_NET_DataSet_BDG As Priamos_NET_DataSet_BDG
+    Friend WithEvents VwBDGBindingSource As BindingSource
+    Friend WithEvents Vw_BDGTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter
 End Class

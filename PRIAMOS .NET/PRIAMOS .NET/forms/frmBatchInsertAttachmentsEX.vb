@@ -14,8 +14,9 @@ Public Class frmBatchInsertAttachmentsEX
     Private _currentPath As String
     Private LoadForms As New FormLoader
     Private Sub frmBatchInsertAttachmentsEX_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-        Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG' table. You can move, or remove it, as needed.
+        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
+        'Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
         Initialize()
         LoadForms.RestoreLayoutFromXml(GridView1, "INDF_BATCH.xml")
     End Sub
@@ -195,7 +196,7 @@ Public Class frmBatchInsertAttachmentsEX
                 End If
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
+
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -323,5 +324,13 @@ Public Class frmBatchInsertAttachmentsEX
         End Sub
         Public Column As GridColumn
     End Class
+
+    Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
+        Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+    End Sub
+
+    Private Sub chkPaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaid.CheckedChanged
+        Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+    End Sub
 End Class
 

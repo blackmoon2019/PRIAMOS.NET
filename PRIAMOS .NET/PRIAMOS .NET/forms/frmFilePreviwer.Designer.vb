@@ -90,12 +90,12 @@ Partial Class frmFilePreviwer
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.grdMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.grdMain.DataSource = Me.VwINDFBindingSource
-        Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.grdMain.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
         Me.grdMain.Location = New System.Drawing.Point(13, 58)
         Me.grdMain.MainView = Me.GridView1
-        Me.grdMain.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(947, 1299)
+        Me.grdMain.Size = New System.Drawing.Size(947, 1287)
         Me.grdMain.TabIndex = 6
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -195,16 +195,13 @@ Partial Class frmFilePreviwer
         '
         'PdfViewer1
         '
-        Me.PdfViewer1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PdfViewer1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.PdfViewer1.DetachStreamAfterLoadComplete = True
         Me.PdfViewer1.Location = New System.Drawing.Point(970, 58)
-        Me.PdfViewer1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.PdfViewer1.Margin = New System.Windows.Forms.Padding(5)
         Me.PdfViewer1.MenuManager = Me.BarManager1
         Me.PdfViewer1.Name = "PdfViewer1"
-        Me.PdfViewer1.Size = New System.Drawing.Size(1087, 1299)
+        Me.PdfViewer1.Size = New System.Drawing.Size(1087, 1287)
         Me.PdfViewer1.TabIndex = 0
         Me.PdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible
         '
@@ -411,7 +408,7 @@ Partial Class frmFilePreviwer
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlTop.Size = New System.Drawing.Size(2067, 46)
         '
         'barDockControlBottom
@@ -420,7 +417,7 @@ Partial Class frmFilePreviwer
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1359)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlBottom.Size = New System.Drawing.Size(2067, 0)
         '
         'barDockControlLeft
@@ -429,7 +426,7 @@ Partial Class frmFilePreviwer
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 46)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlLeft.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 1313)
         '
         'barDockControlRight
@@ -438,7 +435,7 @@ Partial Class frmFilePreviwer
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(2067, 46)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 1313)
         '
         'Vw_IND_FTableAdapter
@@ -491,7 +488,7 @@ Partial Class frmFilePreviwer
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "frmFilePreviwer"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmFilePreviwer"

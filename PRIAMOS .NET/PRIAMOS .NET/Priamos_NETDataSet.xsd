@@ -3753,8 +3753,8 @@ order by skey ,Fullname
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="vw_COL_ΤΕΝΑΝΤ_vw_COLH" msdata:parent="vw_COLH" msdata:child="vw_COL_ΤΕΝΑΝΤ" msdata:parentkey="ID" msdata:childkey="colHID" msprop:Generator_UserParentTable="vw_COLH" msprop:Generator_UserChildTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_RelationVarName="relationvw_COL_ΤΕΝΑΝΤ_vw_COLH" msprop:Generator_ChildPropName="Getvw_COL_ΤΕΝΑΝΤRows" msprop:Generator_UserRelationName="vw_COL_ΤΕΝΑΝΤ_vw_COLH" msprop:Generator_ParentPropName="vw_COLHRow" />
-      <msdata:Relationship name="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msdata:parent="vw_COL_ΤΕΝΑΝΤ" msdata:child="vw_COL_OWNERS" msdata:parentkey="colHID aptID" msdata:childkey="colHID aptID" msprop:Generator_UserParentTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_UserChildTable="vw_COL_OWNERS" msprop:Generator_RelationVarName="relationvw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msprop:Generator_ChildPropName="Getvw_COL_OWNERSRows" msprop:Generator_ParentPropName="vw_COL_ΤΕΝΑΝΤRowParent" msprop:Generator_UserRelationName="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" />
+      <msdata:Relationship name="vw_COL_ΤΕΝΑΝΤ_vw_COLH" msdata:parent="vw_COLH" msdata:child="vw_COL_ΤΕΝΑΝΤ" msdata:parentkey="ID" msdata:childkey="colHID" msprop:Generator_UserParentTable="vw_COLH" msprop:Generator_UserChildTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_RelationVarName="relationvw_COL_ΤΕΝΑΝΤ_vw_COLH" msprop:Generator_ChildPropName="Getvw_COL_ΤΕΝΑΝΤRows" msprop:Generator_ParentPropName="vw_COLHRow" msprop:Generator_UserRelationName="vw_COL_ΤΕΝΑΝΤ_vw_COLH" />
+      <msdata:Relationship name="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msdata:parent="vw_COL_ΤΕΝΑΝΤ" msdata:child="vw_COL_OWNERS" msdata:parentkey="colHID aptID" msdata:childkey="colHID aptID" msprop:Generator_UserParentTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_UserChildTable="vw_COL_OWNERS" msprop:Generator_RelationVarName="relationvw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msprop:Generator_ChildPropName="Getvw_COL_OWNERSRows" msprop:Generator_UserRelationName="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msprop:Generator_ParentPropName="vw_COL_ΤΕΝΑΝΤRowParent" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
