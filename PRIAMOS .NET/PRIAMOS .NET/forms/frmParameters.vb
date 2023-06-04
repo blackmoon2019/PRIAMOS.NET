@@ -45,6 +45,7 @@ Public Class frmParameters
         'Ανακοίνωση
         Prog_Prop.SetProgANNMENT(ANN_MENT.EditValue.ToString)
 
+        XtraMessageBox.Show("Οι παράμετροι αποθηκεύτηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub frmParameters_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -82,7 +83,7 @@ Public Class frmParameters
                 BODY_RECREATE.EditValue = ProgProps.InvoicesBodyRecreate
                 BODY_SYG.EditValue = ProgProps.InvoicesBodySYG
                 BODY_RECEIPT.EditValue = ProgProps.InvoicesBodyRECEIPT
-
+                UNPAID_INVOICES.EditValue = ProgProps.InvoicesUnpaidTable
             Case 2
             Case 3
             Case Else
@@ -116,8 +117,8 @@ Public Class frmParameters
 
     Private Sub cmdSave2_Click(sender As Object, e As EventArgs) Handles cmdSave2.Click
         'Παράμετροι email Έκδοσης Κοινοχρήστων
-        Prog_Prop.SetProgInvoicesEmail(INVOICES_EMAIL.EditValue.ToString, BODY.EditValue, BODY_RESEND.EditValue, BODY_RECREATE.EditValue, BODY_SYG.EditValue, BODY_RECEIPT.EditValue)
-
+        Prog_Prop.SetProgInvoicesEmail(INVOICES_EMAIL.EditValue.ToString, BODY.EditValue, BODY_RESEND.EditValue, BODY_RECREATE.EditValue, BODY_SYG.EditValue, BODY_RECEIPT.EditValue, UNPAID_INVOICES.EditValue)
+        XtraMessageBox.Show("Οι παράμετροι αποθηκεύτηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub cmdExit2_Click(sender As Object, e As EventArgs) Handles cmdExit2.Click

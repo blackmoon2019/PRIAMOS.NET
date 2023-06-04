@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Text
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Base
@@ -158,7 +159,8 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
                         Subject = "Συγκεντρωτική - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
-                        'sEmailTo = "johnmavroselinos@gmail.com"
+                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+                        If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
                         report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
                         report.Dispose()
@@ -186,7 +188,7 @@ Public Class frmEmailAPT
                     SSM.ShowWaitForm()
                     SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
 
-                    Dim sSQL As String = "select INH.email,INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,
+                    Dim sSQL As String = "select INH.email,INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,BDG.old_code as BDGCode,
                                             (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                             where vw_INC.inhID=INH.ID
                                             and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -220,8 +222,12 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{APTNAM}", sAtptTTL)
                         sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
                         sBody = sBody.Replace("{BAL_ADM}", BalADM)
+                        Dim UnpaidInvoiceTable As String = ""
+                        UnpaidInvoiceTable = ProgProps.InvoicesUnpaidTable.Replace("-----ΓΡΑΜΜΕΣ ΠΙΝΑΚΑ------", CreateHtmlTableRows(sbdgID, sAptID))
+                        sBody = sBody.Replace("{UNPAID_INVOICES_TABLE}", UnpaidInvoiceTable)
                         Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sAtptTTL & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
-                        'sEmailTo = "johnmavroselinos@gmail.com"
+                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+                        If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
                         report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
                         report.Dispose()
@@ -280,7 +286,8 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
                         sBody = sBody.Replace("{BAL_ADM}", BalADM)
                         Subject = "Απόδειξη - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sAtptTTL & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
-                        'sEmailTo = "johnmavroselinos@gmail.com"
+                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+                        If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
                         report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
                         report.Dispose()
@@ -312,7 +319,52 @@ Public Class frmEmailAPT
         End Try
 
     End Function
-
+    Function CreateHtmlTableRows(ByVal bdgID As String, ByVal AptID As String) As String
+        Dim sHTMLTableRow As String, sHTMLTable As String
+        Dim sHTMLTableRows As New StringBuilder
+        Dim sHtmlConstRow =
+            "<tr><td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)</td>
+             <td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)</td></tr>"
+        Try
+            Dim Cmd As SqlCommand, sdr As SqlDataReader
+            sHTMLTable = ProgProps.InvoicesUnpaidTable
+            Dim sSQL As String =
+            "SELECT S.completeDate, S.bal  
+                    FROM COL
+                    INNER JOIN
+                    (
+                    Select   aptID, c.bdgID, inhID, completeDate, 
+		                    SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
+		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth,fDate,tDate,I.Calorimetric,I.reserveAPT 
+                    From COL C 
+	                    INNER Join INH I ON I.ID=C.inhID 
+	                    INNER Join APT A ON C.aptID = A.ID where completed=0     And C.bdgID =" & toSQLValueS(bdgID) & " and c.aptID= " & toSQLValueS(AptID) &
+                   "group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate,Calorimetric,I.reserveAPT  )
+	                    AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
+                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric,s.reserveAPT    
+                    order by S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric,s.reserveAPT "
+            Cmd = New SqlCommand(sSQL, CNDB)
+            sdr = Cmd.ExecuteReader()
+            Dim i As Integer = 1
+            While sdr.Read()
+                sHTMLTableRow = sHtmlConstRow
+                sHTMLTableRow = sHTMLTableRow.Replace("tg-pht1", "tg-pht" & i)
+                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
+                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)", sdr.GetDecimal(sdr.GetOrdinal("bal").ToString).ToString)
+                sHTMLTableRows.AppendLine(sHTMLTableRow)
+                i = i + 1
+            End While
+            sdr.Close()
+            CreateHtmlTableRows = sHTMLTableRows.ToString
+            If CreateHtmlTableRows.EndsWith(vbCrLf) Then
+                Dim oTrim() As Char = {vbCr, vbLf}
+                CreateHtmlTableRows = CreateHtmlTableRows.TrimEnd(oTrim)
+            End If
+            Return CreateHtmlTableRows
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
     Private Sub cmdBatchSend_Click(sender As Object, e As EventArgs) Handles cmdBatchSend.Click
         Dim ErrorInProc As String = ""
         If XtraMessageBox.Show("Θέλετε να αποσταλουν email στα επιλεγμένα διαμερίσματα?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then

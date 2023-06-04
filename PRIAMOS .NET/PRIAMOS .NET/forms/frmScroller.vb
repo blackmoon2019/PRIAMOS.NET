@@ -17,6 +17,8 @@ Imports DevExpress.XtraGrid.Localization
 Imports DevExpress.XtraReports.UI
 Imports System.Text
 Imports DevExpress.XtraExport.Helpers
+Imports System.Runtime.InteropServices
+Imports DevExpress.XtraScheduler.Native
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -2004,7 +2006,7 @@ Public Class frmScroller
             '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEisp").ToString <> "" Then
 
             ExportReport(1, selectedRowHandles(I), sIDS)
-                RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
+            RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
             'End If
 
         Next
@@ -2039,7 +2041,7 @@ Public Class frmScroller
 									case when sendEmailRepresentative=1 then  CCT_REP.email   +';' else '' end, 
 									case when sendEmailRepresentative=1 then  CCT_REP.email2   +';' else '' end,
 									case when sendEmailRepresentative=1 then  CCT_REP.email3   +';' else '' end) AS EMAIL,
-                                    INH.completeDate,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
+                                    INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
                                     (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
                                     where vw_INC.inhID=INH.ID
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
@@ -2059,7 +2061,7 @@ Public Class frmScroller
                     Dim sEmailTo As String
                     While sdr.Read()
                         Dim sAptID As String
-
+                        Dim sBdgID As String
                         Dim sFName As String
                         Dim sBody As String
                         Dim Subject As String = ""
@@ -2067,6 +2069,7 @@ Public Class frmScroller
                         report.Parameters.Item(0).Value = sInhID
                         If sdr.IsDBNull(sdr.GetOrdinal("AptID")) = False Then
                             sAptID = sdr.GetGuid(sdr.GetOrdinal("AptID").ToString).ToString
+                            sBdgID = sdr.GetGuid(sdr.GetOrdinal("BdgID").ToString).ToString
                             sEmailTo = sdr.GetString(sdr.GetOrdinal("EMAIL").ToString).ToString
                             If sEmailTo.Last = ";" Then sEmailTo = sEmailTo.Substring(0, sEmailTo.Length - 1)
                             report.FilterString = "[ID] = {" & sAptID & "}"
@@ -2084,14 +2087,14 @@ Public Class frmScroller
                             sBody = sBody.Replace("{APTNAM}", sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString)
                             sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
                             sBody = sBody.Replace("{BAL_ADM}", sdr.GetDecimal(sdr.GetOrdinal("BAL_ADM").ToString).ToString)
+                            Dim UnpaidInvoiceTable As String = ""
+                            UnpaidInvoiceTable = ProgProps.InvoicesUnpaidTable.Replace("-----ΓΡΑΜΜΕΣ ΠΙΝΑΚΑ------", CreateHtmlTableRows(sBdgID, sAptID))
+                            sBody = sBody.Replace("{UNPAID_INVOICES_TABLE}", UnpaidInvoiceTable)
                             Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
 
-
-                            'sEmailTo = "johnmavroselinos@gmail.com"
+                            ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+                            If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                             report.CreateDocument()
-                            'Dim xr As XRLabel = report.Bands(2).SubBands.Item(0).Controls(2).Controls(2)
-                            'Debug.Print(report.XrLabel76.Value)
-
 
                             report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
                             report.Dispose()
@@ -2132,11 +2135,56 @@ Public Class frmScroller
         End Try
 
     End Sub
+    Function CreateHtmlTableRows(ByVal bdgID As String, ByVal AptID As String) As String
+        Dim sHTMLTableRow As String, sHTMLTable As String
+        Dim sHTMLTableRows As New StringBuilder
+        Dim sHtmlConstRow =
+            "<tr><td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)</td>
+             <td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)</td></tr>"
+        Try
+            Dim Cmd As SqlCommand, sdr As SqlDataReader
+            sHTMLTable = ProgProps.InvoicesUnpaidTable
+            Dim sSQL As String =
+            "SELECT S.completeDate, S.bal  
+                    FROM COL
+                    INNER JOIN
+                    (
+                    Select   aptID, c.bdgID, inhID, completeDate, 
+		                    SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
+		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth,fDate,tDate,I.Calorimetric,I.reserveAPT 
+                    From COL C 
+	                    INNER Join INH I ON I.ID=C.inhID 
+	                    INNER Join APT A ON C.aptID = A.ID where completed=0     And C.bdgID =" & toSQLValueS(bdgID) & " and c.aptID= " & toSQLValueS(AptID) &
+                   "group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate,Calorimetric,I.reserveAPT  )
+	                    AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
+                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric,s.reserveAPT    
+                    order by S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric,s.reserveAPT "
+            Cmd = New SqlCommand(sSQL, CNDB)
+            sdr = Cmd.ExecuteReader()
+            Dim i As Integer = 1
+            While sdr.Read()
+                sHTMLTableRow = sHtmlConstRow
+                sHTMLTableRow = sHTMLTableRow.Replace("tg-pht1", "tg-pht" & i)
+                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
+                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)", sdr.GetDecimal(sdr.GetOrdinal("bal").ToString).ToString)
+                sHTMLTableRows.AppendLine(sHTMLTableRow)
+                i = i + 1
+            End While
+            sdr.Close()
+            CreateHtmlTableRows = sHTMLTableRows.ToString
+            If CreateHtmlTableRows.EndsWith(vbCrLf) Then
+                Dim oTrim() As Char = {vbCr, vbLf}
+                CreateHtmlTableRows = CreateHtmlTableRows.TrimEnd(oTrim)
+            End If
+            Return CreateHtmlTableRows
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "EMAIL_LOGS.xml")
-
     End Sub
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
-        PanelResults.Visible = False
-    End Sub
+                                                PanelResults.Visible = False
+                                            End Sub
 End Class
