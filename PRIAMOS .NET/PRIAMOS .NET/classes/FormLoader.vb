@@ -703,6 +703,12 @@ NextItem:
                         col1 = GRDview.Columns.AddField(myReader.GetName(i))
                         col1.FieldName = myReader.GetName(i)
                         col1.Visible = True
+                        If myReader.GetFieldType(i) Is GetType(Boolean) Then
+                            Dim chk As New RepositoryItemCheckEdit()
+                            col1.ColumnEdit = chk
+                            chk.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Standard
+                            chk.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked
+                        End If
                         col1.VisibleIndex = 0
                         col1.AppearanceCell.BackColor = Color.Bisque
                     End If

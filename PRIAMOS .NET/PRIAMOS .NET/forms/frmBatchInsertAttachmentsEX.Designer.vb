@@ -22,18 +22,18 @@ Partial Class frmBatchInsertAttachmentsEX
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim BreadCrumbNode3 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
-        Dim BreadCrumbNode4 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim BreadCrumbNode1 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
+        Dim BreadCrumbNode2 As DevExpress.XtraEditors.BreadCrumbNode = New DevExpress.XtraEditors.BreadCrumbNode()
         Me.PopupMenuDeleteButton = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.BarDockControl2 = New DevExpress.XtraBars.BarDockControl()
@@ -138,6 +138,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_INDTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
+        Me.BBDeleteFiles = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.PopupMenuDeleteButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.images, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -188,8 +189,8 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarManager1.DockControls.Add(Me.BarDockControl4)
         Me.BarManager1.DockControls.Add(Me.BarDockControl5)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BBOpenInh, Me.BBOpenBdg})
-        Me.BarManager1.MaxItemId = 2
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BBOpenInh, Me.BBOpenBdg, Me.BBDeleteFiles})
+        Me.BarManager1.MaxItemId = 3
         '
         'BarDockControl2
         '
@@ -737,20 +738,20 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.editBreadCrumb.Margin = New System.Windows.Forms.Padding(5)
         Me.editBreadCrumb.Name = "editBreadCrumb"
         Me.editBreadCrumb.Properties.AutoHeight = False
-        EditorButtonImageOptions3.SvgImageSize = New System.Drawing.Size(8, 8)
-        Me.editBreadCrumb.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinDown, "", 18, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Redo, "", 15, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.SvgImageSize = New System.Drawing.Size(8, 8)
+        Me.editBreadCrumb.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.SpinDown, "", 18, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Redo, "", 15, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.editBreadCrumb.Properties.DropDownRows = 12
         Me.editBreadCrumb.Properties.ImageIndex = 0
-        BreadCrumbNode3.Caption = "Root"
-        BreadCrumbNode3.Persistent = True
-        BreadCrumbNode3.PopulateOnDemand = True
-        BreadCrumbNode3.ShowCaption = False
-        BreadCrumbNode3.Value = "Root"
-        BreadCrumbNode4.Caption = "Computer"
-        BreadCrumbNode4.Persistent = True
-        BreadCrumbNode4.PopulateOnDemand = True
-        BreadCrumbNode4.Value = "Computer"
-        Me.editBreadCrumb.Properties.Nodes.AddRange(New DevExpress.XtraEditors.BreadCrumbNode() {BreadCrumbNode3, BreadCrumbNode4})
+        BreadCrumbNode1.Caption = "Root"
+        BreadCrumbNode1.Persistent = True
+        BreadCrumbNode1.PopulateOnDemand = True
+        BreadCrumbNode1.ShowCaption = False
+        BreadCrumbNode1.Value = "Root"
+        BreadCrumbNode2.Caption = "Computer"
+        BreadCrumbNode2.Persistent = True
+        BreadCrumbNode2.PopulateOnDemand = True
+        BreadCrumbNode2.Value = "Computer"
+        Me.editBreadCrumb.Properties.Nodes.AddRange(New DevExpress.XtraEditors.BreadCrumbNode() {BreadCrumbNode1, BreadCrumbNode2})
         Me.editBreadCrumb.Properties.RootImageIndex = 0
         Me.editBreadCrumb.Properties.SortNodesByCaption = True
         Me.editBreadCrumb.Size = New System.Drawing.Size(2386, 40)
@@ -1011,7 +1012,7 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         'PopupMenuRows
         '
-        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenInh), New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenBdg)})
+        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenInh), New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenBdg), New DevExpress.XtraBars.LinkPersistInfo(Me.BBDeleteFiles)})
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
         '
@@ -1022,6 +1023,14 @@ Partial Class frmBatchInsertAttachmentsEX
         'Vw_BDGTableAdapter
         '
         Me.Vw_BDGTableAdapter.ClearBeforeFill = True
+        '
+        'BBDeleteFiles
+        '
+        Me.BBDeleteFiles.Caption = "Διαγραφή Αρχείων"
+        Me.BBDeleteFiles.Id = 2
+        Me.BBDeleteFiles.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Red
+        Me.BBDeleteFiles.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.BBDeleteFiles.Name = "BBDeleteFiles"
         '
         'frmBatchInsertAttachmentsEX
         '
@@ -1183,4 +1192,5 @@ Partial Class frmBatchInsertAttachmentsEX
     Friend WithEvents Priamos_NET_DataSet_BDG As Priamos_NET_DataSet_BDG
     Friend WithEvents VwBDGBindingSource As BindingSource
     Friend WithEvents Vw_BDGTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter
+    Friend WithEvents BBDeleteFiles As XtraBars.BarButtonItem
 End Class

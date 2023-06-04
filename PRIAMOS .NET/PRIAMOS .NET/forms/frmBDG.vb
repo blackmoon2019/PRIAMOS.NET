@@ -2763,8 +2763,6 @@ Public Class frmBDG
         End If
     End Sub
 
-
-
     Private Sub GridView2_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView2.ValidatingEditor
         If e.Value = "" Then e.ErrorText = "Παρακαλώ εισάγετε αριθμό" : e.Valid = False
     End Sub

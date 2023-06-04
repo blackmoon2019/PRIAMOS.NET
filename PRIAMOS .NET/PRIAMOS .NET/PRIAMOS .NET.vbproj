@@ -556,17 +556,17 @@
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Priamos_NETDataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Priamos_NETDataSet3.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NETDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="Priamos_NETDataSet2.vb">
-      <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Priamos_NETDataSet21.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="Priamos_NET_DataSet_BDG.Designer.vb">
@@ -961,7 +961,7 @@
     <None Include="Priamos_NETDataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Priamos_NETDataSet21.Designer.vb</LastGenOutput>
+      <LastGenOutput>Priamos_NETDataSet2.Designer.vb</LastGenOutput>
     </None>
     <None Include="Priamos_NETDataSet2.xss">
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>

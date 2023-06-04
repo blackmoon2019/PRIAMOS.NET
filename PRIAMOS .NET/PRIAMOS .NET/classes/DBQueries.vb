@@ -132,12 +132,12 @@ Public Class DBQueries
                 End Using
             Next
             sSQL.Clear()
-            If sTable = "IND_F" Then
-                sSQL.AppendLine("UPDATE [IND] SET SelectedFiles = " & toSQLValueS(sFullFilenames.ToString) & " WHERE ID = " & toSQLValueS(ID))
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-            End If
+            'If sTable = "IND_F" Then
+            '    sSQL.AppendLine("UPDATE [IND] SET SelectedFiles = " & toSQLValueS(sFullFilenames.ToString) & " WHERE ID = " & toSQLValueS(ID))
+            '    Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+            '        oCmd.ExecuteNonQuery()
+            '    End Using
+            'End If
             'ReadBlobFile()
             Return True
         Catch ex As Exception

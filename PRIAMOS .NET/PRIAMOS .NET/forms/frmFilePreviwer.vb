@@ -4,11 +4,11 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Views.Grid
 
 
-
-
 Public Class frmFilePreviwer
     Private sID As String
     Private Splash As DevExpress.XtraSplashScreen.SplashScreenManager
+    Private UserPermissions As New CheckPermissions
+
     Public WriteOnly Property ID As String
         Set(value As String)
             sID = value
@@ -24,6 +24,7 @@ Public Class frmFilePreviwer
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_IND_F' table. You can move, or remove it, as needed.
         Me.Vw_IND_FTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND_F, System.Guid.Parse(sID))
         Splash.CloseWaitForm()
+        UserPermissions.GetUserPermissions(Me.Text)
     End Sub
 
     Private Sub GridView1_RowClick(sender As Object, e As RowClickEventArgs) Handles GridView1.RowClick
