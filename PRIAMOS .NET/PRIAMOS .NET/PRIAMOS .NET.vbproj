@@ -741,6 +741,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmEmailAPT.resx">
       <DependentUpon>frmEmailAPT.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmEXP.resx">
       <DependentUpon>frmEXP.vb</DependentUpon>

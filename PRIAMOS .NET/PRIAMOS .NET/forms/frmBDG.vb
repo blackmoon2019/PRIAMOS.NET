@@ -17,8 +17,6 @@ Imports System.ComponentModel
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
-Imports DevExpress.Xpo.Helpers.AssociatedCollectionCriteriaHelper
-Imports DevExpress.XtraSplashScreen
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -2044,8 +2042,8 @@ Public Class frmBDG
         Try
             Maintab.SelectedTabPage = tabBDG_F
             Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
-            LoadForms.RestoreLayoutFromXml(GridView12, "vw_BDG_F.xml")
-            GridView12.OptionsBehavior.Editable = False
+            LoadForms.RestoreLayoutFromXml(GridView_BDGF, "vw_BDG_F.xml")
+            GridView_BDGF.OptionsBehavior.Editable = False
             txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
             cmdSaveBDGFile.Enabled = True
         Catch ex As Exception
@@ -2078,8 +2076,8 @@ Public Class frmBDG
         Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
         If result = DialogResult.OK Then
             If ValueToGrid Then
-                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
-                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "comefrom", System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
+                GridView_BDGF.SetRowCellValue(GridView_BDGF.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
+                GridView_BDGF.SetRowCellValue(GridView_BDGF.FocusedRowHandle, "comefrom", System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName))
             Else
                 txtBDGFilename.EditValue = ""
                 txtBDGFilename.EditValue = XtraOpenFileDialog1.SafeFileName
@@ -2111,10 +2109,10 @@ Public Class frmBDG
     End Sub
     Private Sub GridControl3_DoubleClick(sender As Object, e As EventArgs) Handles GridControl3.DoubleClick
         Try
-            Dim sFilename = GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "filename")
+            Dim sFilename = GridView_BDGF.GetRowCellValue(GridView_BDGF.FocusedRowHandle, "filename")
             'My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\" & sFilename)
             Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
-            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString, "BDG_F")
+            Dim b() As Byte = LoadForms.GetFile(GridView_BDGF.GetRowCellValue(GridView_BDGF.FocusedRowHandle, "ID").ToString, "BDG_F")
             fs.Write(b, 0, b.Length)
             fs.Close()
             ShellExecute(Application.StartupPath & "\" & sFilename)
@@ -2127,11 +2125,11 @@ Public Class frmBDG
 
     Private Sub cmdBDGFDelete_Click(sender As Object, e As EventArgs) Handles cmdBDGFDelete.Click
         Dim sSQL As String
-        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        Dim selectedRowHandles As Int32() = GridView_BDGF.GetSelectedRows()
         For I = 0 To selectedRowHandles.Length - 1
             Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-            If GridView12.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
-            sSQL = "DELETE FROM BDG_F WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString)
+            If GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID") = Nothing Then Exit Sub
+            sSQL = "DELETE FROM BDG_F WHERE ID = " & toSQLValueS(GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID").ToString)
 
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
@@ -2160,7 +2158,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdBDGFDownload_Click(sender As Object, e As EventArgs) Handles cmdBDGFDownload.Click
-        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        Dim selectedRowHandles As Int32() = GridView_BDGF.GetSelectedRows()
         Dim SelectedPath As String
         Dim result As DialogResult = XtraFolderBrowserDialog1.ShowDialog()
         If result = DialogResult.OK Then
@@ -2174,10 +2172,10 @@ Public Class frmBDG
 
         For I = 0 To selectedRowHandles.Length - 1
             Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-            Dim sFilename = GridView12.GetRowCellValue(selectedRowHandle, "filename")
+            Dim sFilename = GridView_BDGF.GetRowCellValue(selectedRowHandle, "filename")
             If File.Exists(Application.StartupPath & "\" & sFilename) Then File.Delete(Application.StartupPath & "\" & sFilename)
             Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
-            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
+            Dim b() As Byte = LoadForms.GetFile(GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
             fs.Write(b, 0, b.Length)
             fs.Close()
             My.Computer.FileSystem.CopyFile(Application.StartupPath & "\" & sFilename, SelectedPath & "\" & sFilename, True)
@@ -2186,7 +2184,7 @@ Public Class frmBDG
     End Sub
     Private Sub cmdBDGFEdit_Click(sender As Object, e As EventArgs) Handles cmdBDGFEdit.Click
         Dim sSQL As String
-        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        Dim selectedRowHandles As Int32() = GridView_BDGF.GetSelectedRows()
 
         Dim lkup As New DevExpress.XtraEditors.LookUpEdit
         lkup.Properties.DataSource = VwFOLDERCATBindingSource
@@ -2209,7 +2207,7 @@ Public Class frmBDG
         Else
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-                sSQL = "update BDG_F set folderCatID = " & toSQLValueS(lkup.EditValue.ToString) & " where ID = " & toSQLValueS(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString)
+                sSQL = "update BDG_F set folderCatID = " & toSQLValueS(lkup.EditValue.ToString) & " where ID = " & toSQLValueS(GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID").ToString)
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
@@ -2221,7 +2219,7 @@ Public Class frmBDG
     End Sub
     Private Sub cmdBDGFPrint_Click(sender As Object, e As EventArgs) Handles cmdBDGFPrint.Click
         Dim sSQL As String
-        Dim selectedRowHandles As Int32() = GridView12.GetSelectedRows()
+        Dim selectedRowHandles As Int32() = GridView_BDGF.GetSelectedRows()
         Dim cbo As New DevExpress.XtraEditors.ComboBoxEdit
         cbo.Properties.TextEditStyle = TextEditStyles.DisableTextEditor
         For Each printer As String In PrinterSettings.InstalledPrinters
@@ -2240,10 +2238,10 @@ Public Class frmBDG
         End If
         For I = 0 To selectedRowHandles.Length - 1
             Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-            Dim sFilename = GridView12.GetRowCellValue(selectedRowHandle, "filename")
+            Dim sFilename = GridView_BDGF.GetRowCellValue(selectedRowHandle, "filename")
             If File.Exists(Application.StartupPath & "\" & sFilename) Then File.Delete(Application.StartupPath & "\" & sFilename)
             Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
-            Dim b() As Byte = LoadForms.GetFile(GridView12.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
+            Dim b() As Byte = LoadForms.GetFile(GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
             fs.Write(b, 0, b.Length)
             fs.Close()
 
@@ -2333,8 +2331,9 @@ Public Class frmBDG
         For I = 0 To GridView_INH.SelectedRowsCount - 1
             sInhIDS.Add(selectedRowHandles(I), GridView_INH.GetRowCellValue(selectedRowHandles(I), "ID").ToString)
         Next
+        form.Mode = 0
         form.Text = "Αποστολή Email"
-        form.InhIDS = sInhIDS
+        form.IDS = sInhIDS
         form.bdgID = sID
         form.ShowDialog()
     End Sub
@@ -2366,11 +2365,11 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub GridView12_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView12.PopupMenuShowing
+    Private Sub GridView12_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_BDGF.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView12, "vw_BDG_F.xml", "vw_BDG_F")
+            LoadForms.PopupMenuShow(e, GridView_BDGF, "vw_BDG_F.xml", "vw_BDG_F")
         Else
-            ActiveGrid = GridView12
+            ActiveGrid = GridView_BDGF
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
 
@@ -2756,7 +2755,7 @@ Public Class frmBDG
 
     Private Sub GridView11_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView11.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView12, "vw_CONSUMPTIONS.xml", "vw_CONSUMPTIONS")
+            LoadForms.PopupMenuShow(e, GridView_BDGF, "vw_CONSUMPTIONS.xml", "vw_CONSUMPTIONS")
         Else
             ActiveGrid = GridView11
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -2773,5 +2772,20 @@ Public Class frmBDG
             Case 2 : ManageCbo.ManageANN_GRPS(cbogrp, FormMode.EditRecord)
             Case 3 : cbogrp.EditValue = Nothing
         End Select
+    End Sub
+
+    Private Sub cmdBDGFEmail_Click(sender As Object, e As EventArgs) Handles cmdBDGFEmail.Click
+        Dim form As frmEmailAPT = New frmEmailAPT()
+        Dim sIDS As New Dictionary(Of Integer, String)
+        Dim selectedRowHandles As Integer() = GridView_BDGF.GetSelectedRows()
+        If selectedRowHandles.Length = 0 Then XtraMessageBox.Show("Δεν έχετε επιλέξει αρχείο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+        For I = 0 To GridView_BDGF.SelectedRowsCount - 1
+            sIDS.Add(selectedRowHandles(I), GridView_BDGF.GetRowCellValue(selectedRowHandles(I), "ID").ToString)
+        Next
+        form.IDS = sIDS
+        form.Mode = 1
+        form.Text = "Αποστολή Email"
+        form.bdgID = sID
+        form.ShowDialog()
     End Sub
 End Class

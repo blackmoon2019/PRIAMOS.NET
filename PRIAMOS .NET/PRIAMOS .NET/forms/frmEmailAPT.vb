@@ -1,5 +1,8 @@
 ﻿Imports System.Data.SqlClient
+Imports System.IO
 Imports System.Text
+Imports DevExpress.DataAccess
+Imports DevExpress.Xpo.DB
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Base
@@ -7,11 +10,12 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmEmailAPT
     Private sbdgID As String
-    Private sInhIDS As New Dictionary(Of Integer, String)
+    Private sMode As Integer
+    Private sIDS As New Dictionary(Of Integer, String)
     Private LoadForms As New FormLoader
-    Public WriteOnly Property InhIDS As Dictionary(Of Integer, String)
+    Public WriteOnly Property IDS As Dictionary(Of Integer, String)
         Set(value As Dictionary(Of Integer, String))
-            sInhIDS = value
+            sIDS = value
         End Set
     End Property
     Public WriteOnly Property bdgID As String
@@ -19,6 +23,12 @@ Public Class frmEmailAPT
             sbdgID = value
         End Set
     End Property
+    Public WriteOnly Property Mode As Integer
+        Set(value As Integer)
+            sMode = value
+        End Set
+    End Property
+
     Private Sub frmEmailAPT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Priamos_NETDataSet3.APT' table. You can move, or remove it, as needed.
         Me.APTTableAdapter.Fill(Me.Priamos_NETDataSet3.APT, System.Guid.Parse(sbdgID))
@@ -26,6 +36,13 @@ Public Class frmEmailAPT
         GridView1.OptionsSelection.MultiSelect = True
         GridView1.OptionsSelection.MultiSelectMode = GridMultiSelectMode.CheckBoxRowSelect
         GridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDown
+        Select Case sMode
+            Case 0 ' EMAIL Reports
+                LBody.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+                LSubject.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+            Case 1 ' Email Files
+                colnam.Visible = False : colsyg.Visible = False : colreceipt.Visible = False : coleidop1.Visible = False
+        End Select
         Me.CenterToScreen()
     End Sub
 
@@ -36,14 +53,22 @@ Public Class frmEmailAPT
     Private Sub RepSendEmail_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepSendEmail.ButtonClick
         Dim sRow As Integer = GridView1.FocusedRowHandle
         Dim ErrorInProc As String = ""
-        If XtraMessageBox.Show("Θέλετε να αποσταλεί email?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then SendEmail(sRow, ErrorInProc)
+        If XtraMessageBox.Show("Θέλετε να αποσταλεί email?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            Select Case sMode
+                Case 0 ' EMAIL Reports
+                    SendEmailReport(sRow, ErrorInProc)
+                Case 1 ' Email Files
+                    If txtSubject.EditValue = Nothing Or txtBody.EditValue = Nothing Then ErrorInProc = "Δεν έχουν συμπληρωθεί υποχρεωτικά πεδία" Else SendEmailFiles(sRow, ErrorInProc)
+            End Select
+
+        End If
         If ErrorInProc.Length = 0 Then
             XtraMessageBox.Show("Η αποστολή ολοκληρώθηκε επιτυχώς!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             XtraMessageBox.Show("Παρουσιάστηκαν προβλήματα στα διαμερίσματα " & ErrorInProc, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
-    Private Sub SendEmail(ByVal sRow As Integer, ByRef ErrorInProc As String)
+    Private Sub SendEmailReport(ByVal sRow As Integer, ByRef ErrorInProc As String)
         Dim sAptTTL As String = GridView1.GetRowCellValue(sRow, "ttl").ToString
         Try
             Dim sSQL As String
@@ -73,7 +98,7 @@ Public Class frmEmailAPT
                 Exit Sub
             End If
 
-            For Each kvp As KeyValuePair(Of Integer, String) In sInhIDS
+            For Each kvp As KeyValuePair(Of Integer, String) In sIDS
                 If Eidop = 1 Then
                     If EmailOwner <> "" Or EmailTenant <> "" Or EmailRepresentative <> "" Then
                         If ExportReport(1, sAptID, kvp.Value, sAptTTL, BalAdm, IIf(sendEmailRepresentative, EmailRepresentative, ""), IIf(sendEmailOwner, EmailOwner, ""), IIf(sendEmailTenant, EmailTenant, "")) = True Then
@@ -120,6 +145,39 @@ Public Class frmEmailAPT
                     End If
                 End If
             Next
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + sAptTTL
+        End Try
+    End Sub
+    Private Sub SendEmailFiles(ByVal sRow As Integer, ByRef ErrorInProc As String)
+        Dim sAptTTL As String = GridView1.GetRowCellValue(sRow, "ttl").ToString
+        Dim sfIds As String
+        Try
+            Dim sSQL As String
+            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
+            Dim sAptID As String = GridView1.GetRowCellValue(sRow, "ID").ToString
+            Dim OwnerID As String = GridView1.GetRowCellValue(sRow, "OwnerID").ToString
+            Dim TenantID As String = GridView1.GetRowCellValue(sRow, "TenantID").ToString
+            Dim RepresentativeID As String = GridView1.GetRowCellValue(sRow, "RepresentativeID").ToString
+            Dim sendEmailOwner As Integer = IIf(GridView1.GetRowCellValue(sRow, "sendEmailOwner") = True, 1, 0)
+            Dim sendEmailTenant As Integer = IIf(GridView1.GetRowCellValue(sRow, "sendEmailTenant") = True, 1, 0)
+            Dim sendEmailRepresentative As Integer = IIf(GridView1.GetRowCellValue(sRow, "sendEmailRepresentative") = True, 1, 0)
+            Dim EmailRepresentative As String = GridView1.GetRowCellValue(sRow, "cctRepresentativeEmail").ToString
+            Dim EmailOwner As String = GridView1.GetRowCellValue(sRow, "cctOwnerEmail").ToString
+            Dim EmailTenant As String = GridView1.GetRowCellValue(sRow, "cctTenantEmail").ToString
+            If EmailRepresentative = "" And EmailTenant = "" And EmailOwner = "" Then
+                ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + "Δεν υπάρχει κανένα καταχωρημένο Email στο διαμέρισμα " & sAptTTL
+                Exit Sub
+            End If
+            ' Μαζεύω τα κλειδιά των εγγραφών των αρχείων
+            For Each kvp As KeyValuePair(Of Integer, String) In sIDS
+                If EmailOwner <> "" Or EmailTenant <> "" Or EmailRepresentative <> "" Then sfIds = sfIds & kvp.Value & ";"
+            Next
+            ' Για να μπορεί να στείλει πολλά Attachment σε ενα email
+            If DownloadFile(sAptID, sfIds, IIf(sendEmailRepresentative, EmailRepresentative, ""), IIf(sendEmailOwner, EmailOwner, ""), IIf(sendEmailTenant, EmailTenant, "")) = False Then
+                ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + sAptTTL
+            End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             ErrorInProc = ErrorInProc + IIf(ErrorInProc.Length = 0, "", ", ") + sAptTTL
@@ -172,11 +230,12 @@ Public Class frmEmailAPT
                             sSQL = "insert into EMAIL_LOG(inhID,usrID,sendDate,statusMsg,syg)
                                         SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-
                         Else
-                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             sSQL = "insert into EMAIL_LOG(inhID,usrID,sendDate,statusMsg,syg)
                                         SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
+                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            SSM.CloseWaitForm()
+                            sdr.Close()
                             Return False
                         End If
                     End While
@@ -241,10 +300,11 @@ Public Class frmEmailAPT
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                         Else
-                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
                                         SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
-                            oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            SSM.CloseWaitForm()
+                            sdr.Close()
                             Return False
                         End If
                     End While
@@ -301,10 +361,11 @@ Public Class frmEmailAPT
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                         Else
-                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
                                         SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
-                            oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                            sdr.Close()
+                            SSM.CloseWaitForm()
                             Return False
                         End If
                     End While
@@ -312,6 +373,63 @@ Public Class frmEmailAPT
                     SSM.CloseWaitForm()
                     Return True
             End Select
+        Catch ex As Exception
+            SSM.CloseWaitForm()
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+
+    End Function
+    Private Function DownloadFile(ByVal sAptID As String, ByVal sfID As String, ByVal EmailRepresentative As String, ByVal EmailOwner As String, ByVal EmailTenant As String) As Boolean
+        Dim Emails As New SendEmail
+        Dim statusMsg As String
+        Dim sSQL As String
+        Dim sFileIDs As String()
+        Dim sFileNames As String()
+        Dim sFNames As String
+        Try
+
+
+            Dim sEmailTo As String
+            Dim sFName As String
+            Dim sBody As String = txtBody.EditValue
+            Dim Subject As String = txtSubject.EditValue
+            sEmailTo = String.Concat(EmailTenant, IIf(EmailTenant.Length > 0 And EmailOwner.Length > 0, ";", "") & EmailOwner, IIf((EmailOwner.Length > 0 Or EmailTenant.Length > 0) And EmailRepresentative.Length > 0, ";", "") & EmailRepresentative)
+
+            ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+            If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
+            sFileIDs = sfID.Split(";")
+            If sFileIDs.Length > 0 Then
+                SSM.ShowWaitForm()
+                SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                For Each sFileID As String In sFileIDs
+                    If sFileID = "" Then Exit For
+                    Dim b() As Byte = LoadForms.GetFile(sFileID, "BDG_F", sFName)
+                    If File.Exists(Path.GetTempPath & sFName) Then File.Delete(Path.GetTempPath & sFName)
+                    Dim fs As System.IO.FileStream = New System.IO.FileStream(Path.GetTempPath & sFName, System.IO.FileMode.Create)
+                    fs.Write(b, 0, b.Length)
+                    fs.Close()
+                    sFNames = sFNames & Path.GetTempPath & sFName & ";"
+                Next
+                sFileNames = sFNames.Split(";")
+                If Emails.SendFilesEmail(Subject, sBody, 0, sEmailTo, sFileNames, statusMsg) = True Then
+                    sSQL = "insert into EMAIL_LOG(aptID,bdgFID,usrID,sendDate,statusMsg,files,subject,body)
+                                    SELECT " & toSQLValueS(sfID) & "," & toSQLValueS(sfID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1, " &
+                                    toSQLValueS(Subject) & "," & toSQLValueS(sBody)
+                    Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+
+                Else
+                    sSQL = "insert into EMAIL_LOG(aptID,bdgFID,usrID,sendDate,statusMsg,files,subject,body)
+                                    SELECT " & toSQLValueS(sfID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1, " &
+                                    toSQLValueS(Subject) & "," & toSQLValueS(sBody)
+                    Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
+                    SSM.CloseWaitForm()
+                    Return False
+                End If
+
+            End If
+            SSM.CloseWaitForm()
+            Return True
         Catch ex As Exception
             SSM.CloseWaitForm()
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -371,14 +489,24 @@ Public Class frmEmailAPT
             Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-                SendEmail(selectedRowHandle, ErrorInProc)
+                Select Case sMode
+                    Case 0 : SendEmailReport(selectedRowHandle, ErrorInProc)
+                    Case 1
+                        If txtSubject.EditValue = Nothing Or txtBody.EditValue = Nothing Then ErrorInProc = "Δεν έχουν συμπληρωθεί υποχρεωτικά πεδία" Else SendEmailFiles(selectedRowHandle, ErrorInProc)
+                End Select
             Next
+        Else
+            Exit Sub
         End If
         If ErrorInProc.Length = 0 Then
             XtraMessageBox.Show("Η αποστολή ολοκληρώθηκε επιτυχώς!", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             XtraMessageBox.Show("Παρουσιάστηκαν προβλήματα στα διαμερίσματα " & ErrorInProc, ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
+
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
 
     End Sub
 End Class

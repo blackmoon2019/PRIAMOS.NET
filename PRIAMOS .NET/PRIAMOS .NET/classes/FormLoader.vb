@@ -580,16 +580,17 @@ NextItem:
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Public Function GetFile(ByVal sRowID As String, ByVal sTable As String) As Byte()
+    Public Function GetFile(ByVal sRowID As String, ByVal sTable As String, Optional ByRef sFileName As String = "") As Byte()
         Dim sSQL As String
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim bytes As Byte()
 
-        sSQL = "Select  files From " & sTable & " WHERE ID = " & toSQLValueS(sRowID)
+        sSQL = "Select filename, files From " & sTable & " WHERE ID = " & toSQLValueS(sRowID)
         cmd = New SqlCommand(sSQL, CNDB) : sdr = cmd.ExecuteReader()
         If sdr.Read() = True Then
             bytes = DirectCast(sdr("files"), Byte())
+            sFileName = sdr.GetString(sdr.GetOrdinal("filename").ToString).ToString
             sdr.Close()
             Return bytes
         End If
