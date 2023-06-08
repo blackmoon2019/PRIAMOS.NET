@@ -348,20 +348,20 @@ group by AHPB.ahpbHID</value>
 [Exodavw_INC_OWNER].[special_costs]</value>
   </data>
   <data name="XrTableCell39.ExpressionBindings" xml:space="preserve">
-    <value>[Exodavw_INC_TENANT.billing] + 
-[Exodavw_INC_TENANT].[boiler_consumption]+
-[Exodavw_INC_TENANT.elevator] + 
-[Exodavw_INC_TENANT].[fi]+
-[Exodavw_INC_TENANT].[fiBoiler]+
-[Exodavw_INC_TENANT].[garage]+
-[Exodavw_INC_TENANT].[heating]+
-[Exodavw_INC_TENANT.heating_consumption] + 
-[Exodavw_INC_TENANT].[monomers1]+
-[Exodavw_INC_TENANT].[monomers2]+
-[Exodavw_INC_TENANT].[monomers3]+
-[Exodavw_INC_TENANT.shared] +
-[Exodavw_INC_TENANT].[special_costs]+
-[Exodavw_INC_TENANT].[owners]+
+    <value>ISNULL([Exodavw_INC_TENANT.billing],0) + 
+ISNULL([Exodavw_INC_TENANT].[boiler_consumption],0)+
+ISNULL([Exodavw_INC_TENANT.elevator],0) + 
+ISNULL([Exodavw_INC_TENANT].[fi],0)+
+ISNULL([Exodavw_INC_TENANT].[fiBoiler],0)+
+ISNULL([Exodavw_INC_TENANT].[garage],0)+
+ISNULL([Exodavw_INC_TENANT].[heating],0)+
+ISNULL([Exodavw_INC_TENANT.heating_consumption],0) + 
+ISNULL([Exodavw_INC_TENANT].[monomers1],0)+
+ISNULL([Exodavw_INC_TENANT].[monomers2],0)+
+ISNULL([Exodavw_INC_TENANT].[monomers3],0)+
+ISNULL([Exodavw_INC_TENANT.shared],0) +
+ISNULL([Exodavw_INC_TENANT].[special_costs],0)+
+ISNULL([Exodavw_INC_TENANT].[owners],0)+
 
 ISNULL([Exodavw_INC_OWNER].[billing],0) + 
 ISNULL([Exodavw_INC_OWNER].[boiler_consumption],0)+
@@ -377,6 +377,7 @@ ISNULL([Exodavw_INC_OWNER].[monomers3],0)+
 ISNULL([Exodavw_INC_OWNER].[shared],0) +
 ISNULL([Exodavw_INC_OWNER].[special_costs],0)+
 ISNULL([Exodavw_INC_OWNER].[owners],0)
+
 
 
 
@@ -420,7 +421,8 @@ ISNULL([Exodavw_INC_OWNER].[special_costs],0))
 </value>
   </data>
   <data name="XrTableCell59.ExpressionBindings" xml:space="preserve">
-    <value>Sum(
+    <value>IIF([ReportItems.XrTableCell57].[Text]='',0,
+Sum(
 ISNULL([Exodavw_INC_TENANT.billing] ,0) +  
 ISNULL([Exodavw_INC_TENANT].[boiler_consumption],0) + 
 ISNULL([Exodavw_INC_TENANT.elevator] ,0) +  
@@ -435,8 +437,10 @@ ISNULL([Exodavw_INC_TENANT].[monomers3],0) +
 ISNULL([Exodavw_INC_TENANT.shared] ,0) + 
 ISNULL([Exodavw_INC_TENANT.owners] ,0) +
 ISNULL([Exodavw_INC_TENANT].[special_costs],0)
-) 
+) )
+
   +  
+
 IIF([ReportItems.XrTableCell58].[Text]='',0,
 
 Sum(
@@ -455,9 +459,6 @@ ISNULL([Exodavw_INC_OWNER].[monomers3],0) +
 ISNULL([Exodavw_INC_OWNER].[shared] ,0) + 
 ISNULL([Exodavw_INC_OWNER].[special_costs],0)
 ) )
-
-
-
 </value>
   </data>
 </root>
