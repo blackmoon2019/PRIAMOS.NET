@@ -1388,7 +1388,8 @@ Public Class frmINH
         report.Margins = sMargins
         report.CreateDocument()
         Dim printTool As New ReportPrintTool(report)
-        If chkPrintEidop.Checked = False Then
+        ' Αν δεν έχει εκτυπωθεί ειδοποίηση μόνο τότε μπορεί να εκτυπωθεί απόδειξη
+        If chkPrintEidop.Checked = False And chkreserveAPT.Checked = False Then
             Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
             printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
             PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,

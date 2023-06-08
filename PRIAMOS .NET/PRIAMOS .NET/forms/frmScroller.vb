@@ -1987,31 +1987,7 @@ Public Class frmScroller
     End Sub
 
     Private Sub BarEmail_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmail.ItemClick
-        Dim sIDS As New StringBuilder
-        Dim sSQL As String
-        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
-        BarPB.Visibility = BarItemVisibility.Always
-        PanelResults.Visible = True
-        LoadForms.LoadDataToGrid(GridControl1, GridView3, "select '1'='2'")
-        LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
-        RepositoryItemProgressBar1.PercentView = True
-        RepositoryItemProgressBar1.Step = 1
-        RepositoryItemProgressBar1.PercentView = True
-        RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
-        RepositoryItemProgressBar1.Minimum = 0
-        For I As Integer = 0 To selectedRowHandles.Length - 1
-            'If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True And
-            '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrint").ToString <> "" And
-            '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEidop").ToString <> "" And
-            '   GridView1.GetRowCellValue(selectedRowHandles(I), "DateOfPrintEisp").ToString <> "" Then
 
-            ExportReport(1, selectedRowHandles(I), sIDS)
-            RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
-            'End If
-
-        Next
-        RepositoryItemProgressBar1.Step = 0
-        BarPB.Visibility = BarItemVisibility.Never
     End Sub
     Private Sub ExportReport(ByVal sWichReport As Integer, ByVal Row As Integer, ByRef sIDS As StringBuilder)
         Dim Cmd As SqlCommand, sdr As SqlDataReader
@@ -2187,4 +2163,69 @@ Public Class frmScroller
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
                                                 PanelResults.Visible = False
                                             End Sub
+
+    Private Sub BarEmailSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmailSYG.ItemClick
+        Dim sIDS As New StringBuilder
+        Dim sSQL As String
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
+        BarPB.Visibility = BarItemVisibility.Always
+        PanelResults.Visible = True
+        LoadForms.LoadDataToGrid(GridControl1, GridView3, "select '1'='2'")
+        LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Step = 1
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
+        RepositoryItemProgressBar1.Minimum = 0
+        For I As Integer = 0 To selectedRowHandles.Length - 1
+            ExportReport(0, selectedRowHandles(I), sIDS)
+            RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
+        Next
+        RepositoryItemProgressBar1.Step = 0
+        BarPB.Visibility = BarItemVisibility.Never
+
+    End Sub
+
+    Private Sub BarEmailEIDOP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmailEIDOP.ItemClick
+        Dim sIDS As New StringBuilder
+        Dim sSQL As String
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
+        BarPB.Visibility = BarItemVisibility.Always
+        PanelResults.Visible = True
+        LoadForms.LoadDataToGrid(GridControl1, GridView3, "select '1'='2'")
+        LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Step = 1
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
+        RepositoryItemProgressBar1.Minimum = 0
+        For I As Integer = 0 To selectedRowHandles.Length - 1
+            ExportReport(1, selectedRowHandles(I), sIDS)
+            RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
+        Next
+        RepositoryItemProgressBar1.Step = 0
+        BarPB.Visibility = BarItemVisibility.Never
+    End Sub
+
+    Private Sub BarEmailRECEIPTS_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmailRECEIPTS.ItemClick
+        Dim sIDS As New StringBuilder
+        Dim sSQL As String
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
+        BarPB.Visibility = BarItemVisibility.Always
+        PanelResults.Visible = True
+        LoadForms.LoadDataToGrid(GridControl1, GridView3, "select '1'='2'")
+        LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Step = 1
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
+        RepositoryItemProgressBar1.Minimum = 0
+        For I As Integer = 0 To selectedRowHandles.Length - 1
+            ExportReport(2, selectedRowHandles(I), sIDS)
+            RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
+        Next
+        RepositoryItemProgressBar1.Step = 0
+        BarPB.Visibility = BarItemVisibility.Never
+
+    End Sub
 End Class
