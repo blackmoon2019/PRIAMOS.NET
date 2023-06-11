@@ -458,7 +458,6 @@ ISNULL([Exodavw_INC_OWNER].[monomers2],0) +
 ISNULL([Exodavw_INC_OWNER].[monomers3],0) + 
 ISNULL([Exodavw_INC_OWNER].[shared] ,0) + 
 ISNULL([Exodavw_INC_OWNER].[special_costs],0)
-) )
-</value>
+) )</value>
   </data>
 </root>

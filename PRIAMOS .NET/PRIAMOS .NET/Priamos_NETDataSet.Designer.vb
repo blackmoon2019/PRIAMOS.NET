@@ -33786,7 +33786,7 @@ Partial Public Class Priamos_NETDataSet
             End Get
         End Property
     End Class
-    
+
     '''<summary>
     '''Row event argument class
     '''</summary>

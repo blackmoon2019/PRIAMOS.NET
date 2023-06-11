@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
+Imports DevExpress.DataAccess
 Imports DevExpress.Utils
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraEditors
@@ -14,8 +15,9 @@ Public Class frmBatchInsertAttachmentsEX
     Private _currentPath As String
     Private LoadForms As New FormLoader
     Private Sub frmBatchInsertAttachmentsEX_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-        Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG' table. You can move, or remove it, as needed.
+        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
+        'Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
         Initialize()
         LoadForms.RestoreLayoutFromXml(GridView1, "INDF_BATCH.xml")
     End Sub
@@ -195,7 +197,7 @@ Public Class frmBatchInsertAttachmentsEX
                 End If
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
+            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -205,77 +207,12 @@ Public Class frmBatchInsertAttachmentsEX
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
-
-            End If
+            LoadForms.PopupMenuShow(e, GridView1, "INDF_BATCH.xml", "vw_IND")
         ElseIf e.MenuType = GridMenuType.Row Then
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
         End If
     End Sub
 
-    'Μετονομασία Στήλης Master
-    Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView1.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
-        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
-        item.Tag = New MenuColumnInfo(column)
-        Return item
-    End Function
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView1.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    'Κλείδωμα Στήλης Master
-    Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
-        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
-        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
-        If info Is Nothing Then
-            Return
-        End If
-        info.Column.OptionsColumn.AllowMove = Not item.Checked
-    End Sub
-    'Αποθήκευση όψης 
-    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\INDF_BATCH.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
     Private Sub OpenPreviwer()
         Dim frmFilePreviwer As New frmFilePreviwer
         frmFilePreviwer.Text = "Προβολή Αρχείων"
@@ -286,8 +223,7 @@ Public Class frmBatchInsertAttachmentsEX
 
     Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
         If GridView1.IsGroupRow(GridView1.FocusedRowHandle) = False Then
-
-            If IsDBNull(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "SelectedFiles")) = False Then
+            If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "HasFiles") = "True" Then
                 SplashScreenManager1.ShowWaitForm()
                 SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
                 OpenPreviwer()
@@ -317,11 +253,38 @@ Public Class frmBatchInsertAttachmentsEX
         fBDG.Show()
     End Sub
 
-    Friend Class MenuColumnInfo
-        Public Sub New(ByVal column As GridColumn)
-            Me.Column = column
-        End Sub
-        Public Column As GridColumn
-    End Class
+    Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
+        Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+    End Sub
+
+    Private Sub chkPaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaid.CheckedChanged
+        Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+    End Sub
+
+    Private Sub BBDeleteFiles_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBDeleteFiles.ItemClick
+        Dim sSQL As String
+        Try
+            If GridView1.SelectedRowsCount = 0 Then
+                XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν τα αρχεία από τα επιλεγμένα έξοδα?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                For I = 0 To GridView1.SelectedRowsCount - 1
+                    sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next
+            Else
+                Exit Sub
+            End If
+
+            XtraMessageBox.Show("Η διαγραφή ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
 End Class
 

@@ -292,9 +292,9 @@ Public Class frmINH
                                 sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
                                    "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,
                                    case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt 
-                                        when aptID is not null then (select amt  from vw_inc where inhid = 
+                                        when aptID is not null then (select sum(AmtPerCalc)  from vw_inc where inhid = 
                                    (select top 1 ID from INH (nolock) where bdgid = vw_inc.bdgID  and extraordinary=0 and Calorimetric=0 and reserveAPT=0 and fdate< " & toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")) & "  order by fDate desc)
-                                        and aptID=IEP.aptID  and calcCatID=IEP.calcCatID ) *  " & Months &
+                                        and aptID=IEP.aptID    )   " &
                                    " else (amt * " & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
                                 Using oCmd As New SqlCommand(sSQL, CNDB)
                                     oCmd.ExecuteNonQuery()
@@ -1318,36 +1318,41 @@ Public Class frmINH
         LayoutControl1.Enabled = True
     End Sub
     Private Sub BarSygentrotiki_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSygentrotiki.ItemClick
-        Dim report As New Rep_Sygentrotiki()
-        ' Εαν έχει FI
-        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
-        ' Εαν έχει FI Boiler
-        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
+        Try
+            Dim report As New Rep_Sygentrotiki()
+            ' Εαν έχει FI
+            If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+            ' Εαν έχει FI Boiler
+            If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
 
 
-        'If cboAhpbH.EditValue IsNot Nothing Then report.HasHoursH = True Else report.HasHoursH = False
-        'If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
-        If lblAHPBH.Text.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
-        If lblAHPBB.Text.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
-        report.Parameters.Item(0).Value = sID
-        report.Parameters.Item(1).Value = cboBDG.EditValue
-        report.INHForm = Me
-        SplashScreenManager1.ShowWaitForm()
-        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
-        report.CreateDocument()
-        report.PrintingSystem.Document.ScaleFactor = 0.99
-        Dim printTool As New ReportPrintTool(report)
-        If chkCalculated.Checked = False Then
-            Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
-            printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
+            'If cboAhpbH.EditValue IsNot Nothing Then report.HasHoursH = True Else report.HasHoursH = False
+            'If cboAhpbB.EditValue IsNot Nothing Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+            If lblAHPBH.Text.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
+            If lblAHPBB.Text.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+            report.Parameters.Item(0).Value = sID
+            report.Parameters.Item(1).Value = cboBDG.EditValue.ToString
+            report.INHForm = Me
+            SplashScreenManager1.ShowWaitForm()
+            SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+            report.CreateDocument()
+            report.PrintingSystem.Document.ScaleFactor = 0.99
+            Dim printTool As New ReportPrintTool(report)
+            If chkCalculated.Checked = False Then
+                Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
+                printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
             PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
             PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
             PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
             PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
             PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
-        End If
-        printTool.ShowRibbonPreview()
-        SplashScreenManager1.CloseWaitForm()
+            End If
+            printTool.ShowRibbonPreview()
+            SplashScreenManager1.CloseWaitForm()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub BarEidop_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEidop.ItemClick
@@ -1388,7 +1393,8 @@ Public Class frmINH
         report.Margins = sMargins
         report.CreateDocument()
         Dim printTool As New ReportPrintTool(report)
-        If chkPrintEidop.Checked = False Then
+        ' Αν δεν έχει εκτυπωθεί ειδοποίηση μόνο τότε μπορεί να εκτυπωθεί απόδειξη
+        If chkPrintEidop.Checked = False And chkreserveAPT.Checked = False Then
             Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
             printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
             PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,

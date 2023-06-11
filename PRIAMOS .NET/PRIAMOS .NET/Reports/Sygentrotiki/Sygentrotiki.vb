@@ -250,206 +250,405 @@ Public Class Rep_Sygentrotiki
 
     End Sub
     Private Sub XrTableCell18_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell18.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub XrTableCell19_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell19.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell20_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell20.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell21_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell21.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell22_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell22.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell23_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell23.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell24_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell24.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell25_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell25.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell28_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell28.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub XrTableCell29_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell29.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub XrTableCell30_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell30.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell31_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell31.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell32_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell32.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell33_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell33.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell34_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell34.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell35_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell35.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell36_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell36.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell37_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell37.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell38_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell38.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell39_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell39.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell40_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell40.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell41_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell41.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell42_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell42.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell43_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell43.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell44_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell44.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell45_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell45.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell46_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell46.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell47_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell47.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell48_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell48.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell49_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell49.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell50_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell50.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell51_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell51.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell52_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell52.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell53_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell53.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell54_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell54.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell55_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell55.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell56_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell56.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
         Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell57_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell57.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
         Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell58_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell58.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
         Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub XrTableCell59_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell59.BeforePrint
-        Dim c As XRTableCell = CType(sender, XRTableCell)
-        Dim CVAL As Double = Convert.ToDouble(c.Value)
-        If CVAL = 0 Then c.Text = ""
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub Rep_Sygentrotiki_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint

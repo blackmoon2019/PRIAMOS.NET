@@ -118,10 +118,8 @@ Partial Public Class Receipt
         Me.XrLabel63 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel64 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.EXODA_PER_APT2 = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrLabel9 = New DevExpress.XtraReports.UI.XRLabel()
         Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
-        Me.EXODA_PER_APT_OWNERS2 = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel2 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel56 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel57 = New DevExpress.XtraReports.UI.XRLabel()
@@ -153,6 +151,8 @@ Partial Public Class Receipt
         Me.XrLabel52 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPictureBox2 = New DevExpress.XtraReports.UI.XRPictureBox()
         Me.XrLabel34 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_PER_APT2 = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.EXODA_PER_APT_OWNERS2 = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -327,7 +327,7 @@ Partial Public Class Receipt
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "4290f5d7-e996-4546-b155-5d995703e0e6"
+        Me.inhID.ValueInfo = "099accd3-d159-43b6-8a5a-bbdf6ba57edf"
         Me.inhID.Visible = False
         '
         'Detail
@@ -1107,16 +1107,6 @@ Partial Public Class Receipt
         Me.XrLabel1.Text = "ΠΕΡΙΟΔΟΣ"
         Me.XrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'EXODA_PER_APT2
-        '
-        Me.EXODA_PER_APT2.Dpi = 254.0!
-        Me.EXODA_PER_APT2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 378.508!)
-        Me.EXODA_PER_APT2.Name = "EXODA_PER_APT2"
-        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
-        Me.EXODA_PER_APT2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46179!)
-        '
         'XrLabel9
         '
         Me.XrLabel9.BorderColor = System.Drawing.Color.Black
@@ -1142,17 +1132,6 @@ Partial Public Class Receipt
         Me.SubBand1.Dpi = 254.0!
         Me.SubBand1.HeightF = 874.906!
         Me.SubBand1.Name = "SubBand1"
-        '
-        'EXODA_PER_APT_OWNERS2
-        '
-        Me.EXODA_PER_APT_OWNERS2.CanShrink = True
-        Me.EXODA_PER_APT_OWNERS2.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 365.8051!)
-        Me.EXODA_PER_APT_OWNERS2.Name = "EXODA_PER_APT_OWNERS2"
-        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT_OWNERS2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
-        Me.EXODA_PER_APT_OWNERS2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46176!)
         '
         'XrPanel2
         '
@@ -1269,8 +1248,8 @@ Partial Public Class Receipt
         Me.XrLabel39.BorderWidth = 2.0!
         Me.XrLabel39.CanGrow = False
         Me.XrLabel39.Dpi = 254.0!
-        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTSUM_VW_INC_TENANT].[TotAmtPerCalc] + IsNull([vw_APTSUM_VW_INC_OWNERS].[Tot" &
-                    "AmtPerCalc],0)")})
+        Me.XrLabel39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "IsNull([vw_APTSUM_VW_INC_TENANT].[TotAmtPerCalc],0) + IsNull([vw_APTSUM_VW_INC_OW" &
+                    "NERS].[TotAmtPerCalc],0)")})
         Me.XrLabel39.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
         Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(1158.207!, 517.7456!)
         Me.XrLabel39.Multiline = True
@@ -1702,6 +1681,27 @@ Partial Public Class Receipt
         Me.XrLabel34.StylePriority.UseTextAlignment = False
         Me.XrLabel34.Text = "ΑΠΟΔΕΙΞΗ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ΙΔΙΟΚΤΗΤΗ"
         Me.XrLabel34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        '
+        'EXODA_PER_APT2
+        '
+        Me.EXODA_PER_APT2.Dpi = 254.0!
+        Me.EXODA_PER_APT2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 378.508!)
+        Me.EXODA_PER_APT2.Name = "EXODA_PER_APT2"
+        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
+        Me.EXODA_PER_APT2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46179!)
+        '
+        'EXODA_PER_APT_OWNERS2
+        '
+        Me.EXODA_PER_APT_OWNERS2.CanShrink = True
+        Me.EXODA_PER_APT_OWNERS2.Dpi = 254.0!
+        Me.EXODA_PER_APT_OWNERS2.LocationFloat = New DevExpress.Utils.PointFloat(55.53699!, 365.8051!)
+        Me.EXODA_PER_APT_OWNERS2.Name = "EXODA_PER_APT_OWNERS2"
+        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT_OWNERS2.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT_OWNERS2.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
+        Me.EXODA_PER_APT_OWNERS2.SizeF = New System.Drawing.SizeF(955.1008!, 41.46176!)
         '
         'Receipt
         '

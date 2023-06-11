@@ -77,7 +77,7 @@ Public Class frmColEnanti
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
                 sSQL.AppendLine("0,GETDATE(),")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
-                sSQL.AppendLine("dbo.ConvertMonthToGR(GETDATE()) + ' ' + cast( year(getdate()) as nvarchar(4)),1")
+                sSQL.AppendLine("dbo.ConvertMonthToGR(GETDATE()) + ' ' + cast( year(getdate()) as nvarchar(4)) + ' -  Έναντι',1")
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
@@ -161,13 +161,6 @@ Public Class frmColEnanti
                     report.Margins = sMargins
                     report.CreateDocument()
                     Dim printTool As New ReportPrintTool(report)
-                    Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
-                    printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
-                        PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
-                        PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
-                        PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
-                        PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
-                        PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
                     printTool.ShowRibbonPreview()
                 End If
                 Valid.SChanged = False

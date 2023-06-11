@@ -51,6 +51,9 @@ Module Main
         Public InvoicesEmailPassword As String
         Public InvoicesEmailPort As Integer
         Public InvoicesEmailSSL As Boolean
+        Public InvoicesUnpaidTable As String
+        Public InvoicesBodyNotManaged As String
+        Public InvoicesSubjectNotManaged As String
         Public EXFolderPath As String
         Public ADM As String
         Public ANNMENT As String
