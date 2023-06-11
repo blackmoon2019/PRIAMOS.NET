@@ -204,7 +204,7 @@ Public Class frmEmailAPT
                     While sdr.Read()
                         Dim sEmailTo As String
                         Dim sFName As String
-                        Dim sBody As String
+                        Dim sBody As String = ""
                         Dim Subject As String = ""
                         Dim report As New Rep_Sygentrotiki()
                         report.Parameters.Item(0).Value = sInhId
@@ -213,6 +213,7 @@ Public Class frmEmailAPT
 
                         sFName = "SYG_" & sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString
                         sBody = ProgProps.InvoicesBodySYG
+                        If sBody = Nothing Then sBody = ""
                         sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
@@ -220,19 +221,19 @@ Public Class frmEmailAPT
                         ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
                         If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
-                        report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
+                        report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
                         report = Nothing
 
-                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg) = True Then
+                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Path.GetTempPath & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            sSQL = "insert into EMAIL_LOG(inhID,usrID,sendDate,statusMsg,syg)
-                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,syg,inhID,usrID,sendDate,statusMsg,syg)
+                                        SELECT 1,1," & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                         Else
-                            sSQL = "insert into EMAIL_LOG(inhID,usrID,sendDate,statusMsg,syg)
-                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,syg,inhID,usrID,sendDate,statusMsg,syg)
+                                        SELECT 0,1," & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             SSM.CloseWaitForm()
                             sdr.Close()
@@ -261,7 +262,7 @@ Public Class frmEmailAPT
                     While sdr.Read()
                         Dim sEmailTo As String
                         Dim sFName As String
-                        Dim sBody As String
+                        Dim sBody As String = ""
                         Dim Subject As String = ""
                         Dim report As New Eidop()
                         report.Parameters.Item(0).Value = sInhId
@@ -274,7 +275,7 @@ Public Class frmEmailAPT
                         Else
                             sBody = ProgProps.InvoicesBody
                         End If
-
+                        If sBody = Nothing Then sBody = ""
                         sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
@@ -288,20 +289,20 @@ Public Class frmEmailAPT
                         ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
                         If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
-                        report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
+                        report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
                         report = Nothing
 
-                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg) = True Then
+                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Path.GetTempPath & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
-                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,eidop,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
+                                        SELECT 1,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                         Else
-                            sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
-                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,eidop,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
+                                        SELECT 0,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             SSM.CloseWaitForm()
                             sdr.Close()
@@ -329,7 +330,7 @@ Public Class frmEmailAPT
                     While sdr.Read()
                         Dim sEmailTo As String
                         Dim sFName As String
-                        Dim sBody As String
+                        Dim sBody As String = ""
                         Dim Subject As String = ""
                         Dim report As New Receipt()
                         report.Parameters.Item(0).Value = sInhId
@@ -338,7 +339,7 @@ Public Class frmEmailAPT
                         report.FilterString = "[ID] = {" & sAptID & "}"
                         sFName = "RECEIPT_" & sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString + sAtptTTL
                         sBody = ProgProps.InvoicesBodyRECEIPT
-
+                        If sBody = Nothing Then sBody = ""
                         sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
                         sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
@@ -349,20 +350,20 @@ Public Class frmEmailAPT
                         ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
                         If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
-                        report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
+                        report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
                         report = Nothing
 
-                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg) = True Then
+                        If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Path.GetTempPath & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
-                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,receipt,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
+                                        SELECT 1,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                         Else
-                            sSQL = "insert into EMAIL_LOG(inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
-                                        SELECT " & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,receipt,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
+                                        SELECT 0,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             sdr.Close()
                             SSM.CloseWaitForm()

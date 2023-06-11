@@ -292,9 +292,9 @@ Public Class frmINH
                                 sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
                                    "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,
                                    case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt 
-                                        when aptID is not null then (select amt  from vw_inc where inhid = 
+                                        when aptID is not null then (select sum(AmtPerCalc)  from vw_inc where inhid = 
                                    (select top 1 ID from INH (nolock) where bdgid = vw_inc.bdgID  and extraordinary=0 and Calorimetric=0 and reserveAPT=0 and fdate< " & toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")) & "  order by fDate desc)
-                                        and aptID=IEP.aptID  and calcCatID=IEP.calcCatID ) *  " & Months &
+                                        and aptID=IEP.aptID    )   " &
                                    " else (amt * " & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
                                 Using oCmd As New SqlCommand(sSQL, CNDB)
                                     oCmd.ExecuteNonQuery()

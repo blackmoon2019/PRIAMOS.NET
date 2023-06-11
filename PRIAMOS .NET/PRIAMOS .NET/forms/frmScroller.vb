@@ -19,6 +19,9 @@ Imports System.Text
 Imports DevExpress.XtraExport.Helpers
 Imports System.Runtime.InteropServices
 Imports DevExpress.XtraScheduler.Native
+Imports DevExpress.XtraSpreadsheet.DocumentFormats
+Imports System.IO
+Imports DevExpress.DataAccess
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -30,6 +33,7 @@ Public Class frmScroller
     Private CurrentView As String
     Private ReadXml As New XmlUpdateFromDB
     Private LoadForms As New FormLoader
+    Private PriamosReports As New Reports
     Private bankID As String
     Private colMethodID As String
     Private debitUsrID As String
@@ -1985,184 +1989,65 @@ Public Class frmScroller
         End Select
 
     End Sub
-
-    Private Sub BarEmail_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmail.ItemClick
-
-    End Sub
     Private Sub ExportReport(ByVal sWichReport As Integer, ByVal Row As Integer, ByRef sIDS As StringBuilder)
-        Dim Cmd As SqlCommand, sdr As SqlDataReader
-        Dim Emails As New SendEmail
-        Dim sEmailID As String
-        Dim statusMsg As String
-        Try
 
+        Try
+            Dim sSQL As String
             Select Case sWichReport
                 Case 0 ' Συγκεντρωτική
-                Case 1 ' Ειδοποιήσεις
-                    SSM.ShowWaitForm()
-                    SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
-
-
-
-                    Dim sInhID As String = GridView1.GetRowCellValue(Row, "ID").ToString
-                    Dim sSQL As String =
-                                    "select APT.ID as AptID,
-                                    CONCAT(
-									case when sendEmailOwner=1 then  CCT_OWNER.email + ';' else '' end,
-									case when sendEmailOwner=1 then  CCT_OWNER.email2 +';' else '' end,
-									case when sendEmailOwner=1 then  CCT_OWNER.email3 +';' else '' end, 
-									case when sendEmailTenant=1 then  CCT_TENANT.email  +';' else '' end, 
-									case when sendEmailTenant=1 then  CCT_TENANT.email2  +';' else '' end, 
-									case when sendEmailTenant=1 then  CCT_TENANT.email3  +';' else '' end, 
-									case when sendEmailRepresentative=1 then  CCT_REP.email   +';' else '' end, 
-									case when sendEmailRepresentative=1 then  CCT_REP.email2   +';' else '' end,
-									case when sendEmailRepresentative=1 then  CCT_REP.email3   +';' else '' end) AS EMAIL,
-                                    INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,BDG.old_code as BDGCode,APT.ttl as APTNAM,APT.bal_adm,
-                                    (select isnull(sum(vw_INC.AmtPerCalc),0) as AMOUNT  from dbo.vw_INC vw_INC
-                                    where vw_INC.inhID=INH.ID
-                                    and vw_INC.aptID=APT.ID) as AMOUNT 
-                                from INH 
-                                INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                                INNER JOIN APT ON APT.bdgID =INH.bdgID 
-                                LEFT JOIN CCT CCT_OWNER ON CCT_OWNER.ID =APT.OwnerID 
-								LEFT JOIN CCT CCT_TENANT ON CCT_TENANT.ID =APT.TenantID
-                                LEFT JOIN CCT CCT_REP ON CCT_REP.ID =APT.RepresentativeID
-                                WHERE INH.ID= " & toSQLValueS(sInhID) &
-                                    " AND 
-								((COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL and sendEmailOwner =1)    OR
-								(COALESCE(CCT_TENANT.email,CCT_TENANT.EMAIL2,CCT_TENANT.EMAIL3) IS NOT NULL and sendEmailTenant =1) OR 
-                                (COALESCE(CCT_REP.email,CCT_REP.EMAIL2,CCT_REP.EMAIL3) IS NOT NULL and sendEmailRepresentative =1)  )  "
-                    Cmd = New SqlCommand(sSQL, CNDB)
-                    sdr = Cmd.ExecuteReader()
-                    Dim sEmailTo As String
-                    While sdr.Read()
-                        Dim sAptID As String
-                        Dim sBdgID As String
-                        Dim sFName As String
-                        Dim sBody As String
-                        Dim Subject As String = ""
-                        Dim report As New Eidop()
-                        report.Parameters.Item(0).Value = sInhID
-                        If sdr.IsDBNull(sdr.GetOrdinal("AptID")) = False Then
-                            sAptID = sdr.GetGuid(sdr.GetOrdinal("AptID").ToString).ToString
-                            sBdgID = sdr.GetGuid(sdr.GetOrdinal("BdgID").ToString).ToString
-                            sEmailTo = sdr.GetString(sdr.GetOrdinal("EMAIL").ToString).ToString
-                            If sEmailTo.Last = ";" Then sEmailTo = sEmailTo.Substring(0, sEmailTo.Length - 1)
-                            report.FilterString = "[ID] = {" & sAptID & "}"
-                            sFName = sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString +
-                                     sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString
-                            If GridView1.GetRowCellValue(Row, "email") = True Then
-                                sBody = ProgProps.InvoicesBodyRecreate
-                            Else
-                                sBody = ProgProps.InvoicesBody
-                            End If
-
-                            sBody = sBody.Replace("{PRD}", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
-                            sBody = sBody.Replace("{BDGNAM}", sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString)
-                            sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
-                            sBody = sBody.Replace("{APTNAM}", sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString)
-                            sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
-                            sBody = sBody.Replace("{BAL_ADM}", sdr.GetDecimal(sdr.GetOrdinal("BAL_ADM").ToString).ToString)
-                            Dim UnpaidInvoiceTable As String = ""
-                            UnpaidInvoiceTable = ProgProps.InvoicesUnpaidTable.Replace("-----ΓΡΑΜΜΕΣ ΠΙΝΑΚΑ------", CreateHtmlTableRows(sBdgID, sAptID))
-                            sBody = sBody.Replace("{UNPAID_INVOICES_TABLE}", UnpaidInvoiceTable)
-                            Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("APTNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
-
-                            ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-                            If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
-                            report.CreateDocument()
-
-                            report.ExportToPdf(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf")
-                            report.Dispose()
-                            report = Nothing
-                            sEmailID = System.Guid.NewGuid.ToString
-                            ' Αποστολή Email
-                            Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) & "\Downloads\" & sFName & ".pdf", statusMsg)
-
-                            sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
-                            Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-
-                            sSQL = "insert into EMAIL_LOG(ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
-                                    SELECT " & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
-                            oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-
-                            If sIDS.Length > 0 Then sIDS.Append(",")
-                            sIDS.Append(toSQLValueS(sEmailID))
-                        End If
-                    End While
-                    If sIDS.ToString.Length > 0 Then
-                        sSQL = "select vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
+                    SSM.ShowWaitForm() : SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                    If PriamosReports.SYGReport(Row, sIDS, GridView1) = False Then BarPB.Visibility = BarItemVisibility.Never
+                    SSM.CloseWaitForm()
+                    sSQL = "select syg,vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
                             from EMAIL_LOG 
                             inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
                             left join APT  on APT.id=EMAIL_LOG.aptID 
                             where EMAIL_LOG.id in( " & sIDS.ToString & ")"
-                        LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
-                    End If
-                    LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
-                    sdr.Close()
+                Case 1 ' Ειδοποιήσεις
+                    SSM.ShowWaitForm() : SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                    If PriamosReports.EidopReport(Row, sIDS, GridView1) = False Then BarPB.Visibility = BarItemVisibility.Never
                     SSM.CloseWaitForm()
+                    sSQL = "select eidop,vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
+                            from EMAIL_LOG 
+                            inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
+                            left join APT  on APT.id=EMAIL_LOG.aptID 
+                            where EMAIL_LOG.id in( " & sIDS.ToString & ")"
                 Case 2 ' Εισπράξεις
+                    SSM.ShowWaitForm() : SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                    If PriamosReports.ReceiptReport(Row, sIDS, GridView1) = False Then BarPB.Visibility = BarItemVisibility.Never
+                    SSM.CloseWaitForm()
+                    sSQL = "select receipt,vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
+                            from EMAIL_LOG 
+                            inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
+                            left join APT  on APT.id=EMAIL_LOG.aptID 
+                            where EMAIL_LOG.id in( " & sIDS.ToString & ")"
+                Case 3 ' ΟΛΑ
+                    SSM.ShowWaitForm() : SSM.SetWaitFormCaption("Παρακαλώ περιμένετε")
+                    If PriamosReports.AllReports(Row, sIDS, GridView1) = False Then BarPB.Visibility = BarItemVisibility.Never
+                    SSM.CloseWaitForm()
+                    sSQL = "select syg,eidop,receipt,vw_inh.nam AS BDGnam,vw_inh.completeDate, TTL,APT.nam as AptNam,senddate,statusMsg, toEmail  as ToEmail
+                            from EMAIL_LOG 
+                            inner join vw_inh on vw_inh.id=EMAIL_LOG.inhID 
+                            left join APT  on APT.id=EMAIL_LOG.aptID 
+                            where EMAIL_LOG.id in( " & sIDS.ToString & ")"
 
             End Select
+            If sIDS.ToString.Length > 0 Then
+
+                LoadForms.LoadDataToGrid(GridControl1, GridView3, sSQL)
+            End If
+            LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            SSM.CloseWaitForm()
-            BarPB.Visibility = BarItemVisibility.Never
         End Try
 
     End Sub
-    Function CreateHtmlTableRows(ByVal bdgID As String, ByVal AptID As String) As String
-        Dim sHTMLTableRow As String, sHTMLTable As String
-        Dim sHTMLTableRows As New StringBuilder
-        Dim sHtmlConstRow =
-            "<tr><td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)</td>
-             <td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)</td></tr>"
-        Try
-            Dim Cmd As SqlCommand, sdr As SqlDataReader
-            sHTMLTable = ProgProps.InvoicesUnpaidTable
-            Dim sSQL As String =
-            "SELECT S.completeDate, S.bal  
-                    FROM COL
-                    INNER JOIN
-                    (
-                    Select   aptID, c.bdgID, inhID, completeDate, 
-		                    SUM(debit) As debit, SUM(credit) As credit, SUM(c.bal) As bal, debitusrID, dtDebit, 
-		                    max(dtCredit) As dtCredit,YEAR(FDATE) AS Etos,MONTH(fDate) as  FromMonth,MONTH(tDate) as  ToMonth,fDate,tDate,I.Calorimetric,I.reserveAPT 
-                    From COL C 
-	                    INNER Join INH I ON I.ID=C.inhID 
-	                    INNER Join APT A ON C.aptID = A.ID where completed=0     And C.bdgID =" & toSQLValueS(bdgID) & " and c.aptID= " & toSQLValueS(AptID) &
-                   "group By aptID, c.BDGID, INHID, completeDate, debitusrID, dtDebit,YEAR(FDATE),MONTH(fDate),MONTH(tDate),fDate,tDate,Calorimetric,I.reserveAPT  )
-	                    AS S ON S.bdgID =COL.bdgID AND S.aptID =COL.aptID and S.inhID = COL.inhID 
-                    GROUP BY S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric,s.reserveAPT    
-                    order by S.aptID, S.BDGID, S.INHID, S.completeDate, S.debitusrID, S.dtDebit,S.Etos,S.FromMonth ,S.ToMonth ,S.credit,S.bal,S.dtCredit,s.fDate,s.tDate,s.Calorimetric,s.reserveAPT "
-            Cmd = New SqlCommand(sSQL, CNDB)
-            sdr = Cmd.ExecuteReader()
-            Dim i As Integer = 1
-            While sdr.Read()
-                sHTMLTableRow = sHtmlConstRow
-                sHTMLTableRow = sHTMLTableRow.Replace("tg-pht1", "tg-pht" & i)
-                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
-                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)", sdr.GetDecimal(sdr.GetOrdinal("bal").ToString).ToString)
-                sHTMLTableRows.AppendLine(sHTMLTableRow)
-                i = i + 1
-            End While
-            sdr.Close()
-            CreateHtmlTableRows = sHTMLTableRows.ToString
-            If CreateHtmlTableRows.EndsWith(vbCrLf) Then
-                Dim oTrim() As Char = {vbCr, vbLf}
-                CreateHtmlTableRows = CreateHtmlTableRows.TrimEnd(oTrim)
-            End If
-            Return CreateHtmlTableRows
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Function
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "EMAIL_LOGS.xml")
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "EMAIL_LOGS.xml", "EMAIL_LOG")
     End Sub
     Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
-                                                PanelResults.Visible = False
-                                            End Sub
+        PanelResults.Visible = False
+    End Sub
 
     Private Sub BarEmailSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmailSYG.ItemClick
         Dim sIDS As New StringBuilder
@@ -2178,7 +2063,7 @@ Public Class frmScroller
         RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
         RepositoryItemProgressBar1.Minimum = 0
         For I As Integer = 0 To selectedRowHandles.Length - 1
-            ExportReport(0, selectedRowHandles(I), sIDS)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then ExportReport(0, selectedRowHandles(I), sIDS)
             RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
         Next
         RepositoryItemProgressBar1.Step = 0
@@ -2200,7 +2085,7 @@ Public Class frmScroller
         RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
         RepositoryItemProgressBar1.Minimum = 0
         For I As Integer = 0 To selectedRowHandles.Length - 1
-            ExportReport(1, selectedRowHandles(I), sIDS)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then ExportReport(1, selectedRowHandles(I), sIDS)
             RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
         Next
         RepositoryItemProgressBar1.Step = 0
@@ -2221,11 +2106,32 @@ Public Class frmScroller
         RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
         RepositoryItemProgressBar1.Minimum = 0
         For I As Integer = 0 To selectedRowHandles.Length - 1
-            ExportReport(2, selectedRowHandles(I), sIDS)
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then ExportReport(2, selectedRowHandles(I), sIDS)
             RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
         Next
         RepositoryItemProgressBar1.Step = 0
         BarPB.Visibility = BarItemVisibility.Never
 
+    End Sub
+
+    Private Sub BarEmailAll_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEmailAll.ItemClick
+        Dim sIDS As New StringBuilder
+        Dim sSQL As String
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
+        BarPB.Visibility = BarItemVisibility.Always
+        PanelResults.Visible = True
+        LoadForms.LoadDataToGrid(GridControl1, GridView3, "select '1'='2'")
+        LoadForms.RestoreLayoutFromXml(GridView3, "EMAIL_LOGS.xml")
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Step = 1
+        RepositoryItemProgressBar1.PercentView = True
+        RepositoryItemProgressBar1.Maximum = selectedRowHandles.Length
+        RepositoryItemProgressBar1.Minimum = 0
+        For I As Integer = 0 To selectedRowHandles.Length - 1
+            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then ExportReport(3, selectedRowHandles(I), sIDS)
+            RepositoryItemProgressBar1.Step = RepositoryItemProgressBar1.Step + 1
+        Next
+        RepositoryItemProgressBar1.Step = 0
+        BarPB.Visibility = BarItemVisibility.Never
     End Sub
 End Class

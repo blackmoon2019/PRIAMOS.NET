@@ -103,6 +103,7 @@ Public Class SendEmail
                     End If
                 End If
             Next
+            Smtp_Server.Timeout = 120
             Smtp_Server.Send(e_mail)
             If statusMsg.Length > 0 Then
                 e_mail.Dispose()

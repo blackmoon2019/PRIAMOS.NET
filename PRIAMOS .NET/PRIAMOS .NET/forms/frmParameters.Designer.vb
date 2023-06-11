@@ -30,10 +30,7 @@ Partial Class frmParameters
         Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
         Me.txtVAT = New DevExpress.XtraEditors.TextEdit()
         Me.ADM = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.ANN_MENT = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -51,10 +48,9 @@ Partial Class frmParameters
         Me.BODY_RESEND = New DevExpress.XtraEditors.MemoEdit()
         Me.BODY_RECREATE = New DevExpress.XtraEditors.MemoEdit()
         Me.INVOICES_EMAIL = New DevExpress.XtraEditors.LookUpEdit()
-        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.BODY_SYG = New DevExpress.XtraEditors.MemoEdit()
         Me.BODY_RECEIPT = New DevExpress.XtraEditors.MemoEdit()
+        Me.UNPAID_INVOICES = New DevExpress.XtraEditors.MemoEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -65,12 +61,22 @@ Partial Class frmParameters
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.BODY_NOT_MANAGED = New DevExpress.XtraEditors.MemoEdit()
+        Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.SUBJECT_NOT_MANAGED = New DevExpress.XtraEditors.TextEdit()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.MAILSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.MAILSTableAdapter()
         Me.Priamos_NETDataSet32 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
-        Me.UNPAID_INVOICES = New DevExpress.XtraEditors.MemoEdit()
-        Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.TabPane2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane2.SuspendLayout()
         Me.TabNavigationPage3.SuspendLayout()
@@ -80,10 +86,7 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ANN_MENT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,10 +103,9 @@ Partial Class frmParameters
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_SYG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RECEIPT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UNPAID_INVOICES.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,9 +116,19 @@ Partial Class frmParameters
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.UNPAID_INVOICES.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BODY_NOT_MANAGED.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SUBJECT_NOT_MANAGED.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPane2
@@ -246,16 +258,6 @@ Partial Class frmParameters
         Me.ADM.TabIndex = 45
         Me.ADM.Tag = "ADM"
         '
-        'VwPARTNERANDWORKSHOPBindingSource
-        '
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ANN_MENT
         '
         Me.ANN_MENT.Location = New System.Drawing.Point(552, 180)
@@ -275,11 +277,6 @@ Partial Class frmParameters
         Me.ANN_MENT.StyleController = Me.LayoutControl2
         Me.ANN_MENT.TabIndex = 45
         Me.ANN_MENT.Tag = "ANN_MENT"
-        '
-        'VwANNMENTSBindingSource
-        '
-        Me.VwANNMENTSBindingSource.DataMember = "vw_ANN_MENTS"
-        Me.VwANNMENTSBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'LayoutControlGroup1
         '
@@ -383,6 +380,7 @@ Partial Class frmParameters
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.BODY_NOT_MANAGED)
         Me.LayoutControl1.Controls.Add(Me.cmdExit2)
         Me.LayoutControl1.Controls.Add(Me.cmdSave2)
         Me.LayoutControl1.Controls.Add(Me.BODY)
@@ -392,10 +390,11 @@ Partial Class frmParameters
         Me.LayoutControl1.Controls.Add(Me.BODY_SYG)
         Me.LayoutControl1.Controls.Add(Me.BODY_RECEIPT)
         Me.LayoutControl1.Controls.Add(Me.UNPAID_INVOICES)
+        Me.LayoutControl1.Controls.Add(Me.SUBJECT_NOT_MANAGED)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1603, 934, 1137, 700)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1603, 410, 1137, 1224)
         Me.LayoutControl1.Root = Me.Root
         Me.LayoutControl1.Size = New System.Drawing.Size(1535, 1363)
         Me.LayoutControl1.TabIndex = 0
@@ -426,40 +425,40 @@ Partial Class frmParameters
         '
         'BODY
         '
-        Me.BODY.Location = New System.Drawing.Point(12, 89)
+        Me.BODY.Location = New System.Drawing.Point(25, 351)
         Me.BODY.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY.Name = "BODY"
         Me.BODY.Properties.UseReadOnlyAppearance = False
-        Me.BODY.Size = New System.Drawing.Size(733, 221)
+        Me.BODY.Size = New System.Drawing.Size(720, 203)
         Me.BODY.StyleController = Me.LayoutControl1
         Me.BODY.TabIndex = 7
         Me.BODY.Tag = ""
         '
         'BODY_RESEND
         '
-        Me.BODY_RESEND.Location = New System.Drawing.Point(12, 349)
+        Me.BODY_RESEND.Location = New System.Drawing.Point(25, 584)
         Me.BODY_RESEND.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY_RESEND.Name = "BODY_RESEND"
         Me.BODY_RESEND.Properties.UseReadOnlyAppearance = False
-        Me.BODY_RESEND.Size = New System.Drawing.Size(1511, 223)
+        Me.BODY_RESEND.Size = New System.Drawing.Size(1485, 156)
         Me.BODY_RESEND.StyleController = Me.LayoutControl1
         Me.BODY_RESEND.TabIndex = 7
         Me.BODY_RESEND.Tag = ""
         '
         'BODY_RECREATE
         '
-        Me.BODY_RECREATE.Location = New System.Drawing.Point(12, 611)
+        Me.BODY_RECREATE.Location = New System.Drawing.Point(25, 770)
         Me.BODY_RECREATE.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY_RECREATE.Name = "BODY_RECREATE"
         Me.BODY_RECREATE.Properties.UseReadOnlyAppearance = False
-        Me.BODY_RECREATE.Size = New System.Drawing.Size(1511, 217)
+        Me.BODY_RECREATE.Size = New System.Drawing.Size(1485, 164)
         Me.BODY_RECREATE.StyleController = Me.LayoutControl1
         Me.BODY_RECREATE.TabIndex = 7
         Me.BODY_RECREATE.Tag = ""
         '
         'INVOICES_EMAIL
         '
-        Me.INVOICES_EMAIL.Location = New System.Drawing.Point(334, 12)
+        Me.INVOICES_EMAIL.Location = New System.Drawing.Point(345, 12)
         Me.INVOICES_EMAIL.Margin = New System.Windows.Forms.Padding(5)
         Me.INVOICES_EMAIL.Name = "INVOICES_EMAIL"
         Me.INVOICES_EMAIL.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -472,48 +471,49 @@ Partial Class frmParameters
         Me.INVOICES_EMAIL.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.INVOICES_EMAIL.Properties.PopupSizeable = False
         Me.INVOICES_EMAIL.Properties.ValueMember = "ID"
-        Me.INVOICES_EMAIL.Size = New System.Drawing.Size(1189, 38)
+        Me.INVOICES_EMAIL.Size = New System.Drawing.Size(1178, 38)
         Me.INVOICES_EMAIL.StyleController = Me.LayoutControl1
         Me.INVOICES_EMAIL.TabIndex = 45
         Me.INVOICES_EMAIL.Tag = "INVOICES_EMAIL"
         '
-        'MAILSBindingSource
-        '
-        Me.MAILSBindingSource.DataMember = "MAILS"
-        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
-        '
-        'Priamos_NETDataSet3
-        '
-        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'BODY_SYG
         '
-        Me.BODY_SYG.Location = New System.Drawing.Point(12, 867)
+        Me.BODY_SYG.Location = New System.Drawing.Point(25, 964)
         Me.BODY_SYG.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY_SYG.Name = "BODY_SYG"
         Me.BODY_SYG.Properties.UseReadOnlyAppearance = False
-        Me.BODY_SYG.Size = New System.Drawing.Size(1511, 171)
+        Me.BODY_SYG.Size = New System.Drawing.Size(1485, 162)
         Me.BODY_SYG.StyleController = Me.LayoutControl1
         Me.BODY_SYG.TabIndex = 7
         Me.BODY_SYG.Tag = ""
         '
         'BODY_RECEIPT
         '
-        Me.BODY_RECEIPT.Location = New System.Drawing.Point(12, 1077)
+        Me.BODY_RECEIPT.Location = New System.Drawing.Point(25, 1156)
         Me.BODY_RECEIPT.Margin = New System.Windows.Forms.Padding(5)
         Me.BODY_RECEIPT.Name = "BODY_RECEIPT"
         Me.BODY_RECEIPT.Properties.UseReadOnlyAppearance = False
-        Me.BODY_RECEIPT.Size = New System.Drawing.Size(1511, 231)
+        Me.BODY_RECEIPT.Size = New System.Drawing.Size(1485, 139)
         Me.BODY_RECEIPT.StyleController = Me.LayoutControl1
         Me.BODY_RECEIPT.TabIndex = 7
         Me.BODY_RECEIPT.Tag = ""
+        '
+        'UNPAID_INVOICES
+        '
+        Me.UNPAID_INVOICES.Location = New System.Drawing.Point(749, 351)
+        Me.UNPAID_INVOICES.Margin = New System.Windows.Forms.Padding(5)
+        Me.UNPAID_INVOICES.Name = "UNPAID_INVOICES"
+        Me.UNPAID_INVOICES.Properties.UseReadOnlyAppearance = False
+        Me.UNPAID_INVOICES.Size = New System.Drawing.Size(761, 203)
+        Me.UNPAID_INVOICES.StyleController = Me.LayoutControl1
+        Me.UNPAID_INVOICES.TabIndex = 7
+        Me.UNPAID_INVOICES.Tag = ""
         '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem1, Me.LayoutControlItem12, Me.LayoutControlItem14, Me.LayoutControlItem15})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem1, Me.LayoutControlGroup2, Me.LayoutControlGroup3})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(1535, 1363)
         Me.Root.TextVisible = False
@@ -523,36 +523,36 @@ Partial Class frmParameters
         Me.LayoutControlItem6.Control = Me.BODY
         Me.LayoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem6.CustomizationFormText = "Κείμενο"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(737, 260)
-        Me.LayoutControlItem6.Text = "Κείμενο"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(724, 233)
+        Me.LayoutControlItem6.Text = "Κείμενο Ειδοποιήσεων"
         Me.LayoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(310, 23)
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(321, 23)
         '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.BODY_RESEND
         Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem5.CustomizationFormText = "Κείμενο Επαναποστολής"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 302)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 233)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1515, 262)
-        Me.LayoutControlItem5.Text = "Κείμενο Επαναποστολής"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1489, 186)
+        Me.LayoutControlItem5.Text = "Κείμενο Επαναποστολής Ειδοποιήσεων"
         Me.LayoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(310, 23)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(321, 23)
         '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.BODY_RECREATE
         Me.LayoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem7.CustomizationFormText = "Κείμενο Επανέκδοσης"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 564)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 419)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(1515, 256)
-        Me.LayoutControlItem7.Text = "Κείμενο Επανέκδοσης"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(1489, 194)
+        Me.LayoutControlItem7.Text = "Κείμενο Επανέκδοσης Ειδοποιήσεων"
         Me.LayoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(310, 23)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(321, 23)
         '
         'LayoutControlItem4
         '
@@ -563,7 +563,7 @@ Partial Class frmParameters
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Size = New System.Drawing.Size(1515, 42)
         Me.LayoutControlItem4.Text = "Email Αποστολής Κοινοχρήστων"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(310, 23)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(321, 23)
         '
         'LayoutControlItem8
         '
@@ -596,24 +596,123 @@ Partial Class frmParameters
         Me.LayoutControlItem12.Control = Me.BODY_SYG
         Me.LayoutControlItem12.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem12.CustomizationFormText = "Κείμενο Συγκεντρωτικής"
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 820)
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 613)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(1515, 210)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(1489, 192)
         Me.LayoutControlItem12.Text = "Κείμενο Συγκεντρωτικής"
         Me.LayoutControlItem12.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(310, 23)
+        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(321, 23)
         '
         'LayoutControlItem14
         '
         Me.LayoutControlItem14.Control = Me.BODY_RECEIPT
         Me.LayoutControlItem14.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem14.CustomizationFormText = "Κείμενο Απόδειξης"
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 1030)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 805)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(1515, 270)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(1489, 169)
         Me.LayoutControlItem14.Text = "Κείμενο Απόδειξης"
         Me.LayoutControlItem14.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(310, 23)
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(321, 23)
+        '
+        'LayoutControlItem15
+        '
+        Me.LayoutControlItem15.Control = Me.UNPAID_INVOICES
+        Me.LayoutControlItem15.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem15.CustomizationFormText = "Πίνακας Ανεξόφλητων Παραστατικών"
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(724, 0)
+        Me.LayoutControlItem15.Name = "LayoutControlItem15"
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(765, 233)
+        Me.LayoutControlItem15.Text = "Πίνακας Ανεξόφλητων Παραστατικών"
+        Me.LayoutControlItem15.TextLocation = DevExpress.Utils.Locations.Top
+        Me.LayoutControlItem15.TextSize = New System.Drawing.Size(321, 23)
+        '
+        'BODY_NOT_MANAGED
+        '
+        Me.BODY_NOT_MANAGED.Location = New System.Drawing.Point(25, 197)
+        Me.BODY_NOT_MANAGED.Margin = New System.Windows.Forms.Padding(5)
+        Me.BODY_NOT_MANAGED.Name = "BODY_NOT_MANAGED"
+        Me.BODY_NOT_MANAGED.Properties.UseReadOnlyAppearance = False
+        Me.BODY_NOT_MANAGED.Size = New System.Drawing.Size(1485, 62)
+        Me.BODY_NOT_MANAGED.StyleController = Me.LayoutControl1
+        Me.BODY_NOT_MANAGED.TabIndex = 46
+        Me.BODY_NOT_MANAGED.Tag = ""
+        '
+        'LayoutControlItem16
+        '
+        Me.LayoutControlItem16.Control = Me.BODY_NOT_MANAGED
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 68)
+        Me.LayoutControlItem16.Name = "LayoutControlItem16"
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(1489, 92)
+        Me.LayoutControlItem16.Text = "Κείμενο Αποστολής ΜΗ Διαχειρίσεων"
+        Me.LayoutControlItem16.TextLocation = DevExpress.Utils.Locations.Top
+        Me.LayoutControlItem16.TextSize = New System.Drawing.Size(321, 23)
+        '
+        'LayoutControlGroup2
+        '
+        Me.LayoutControlGroup2.AppearanceGroup.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success
+        Me.LayoutControlGroup2.AppearanceGroup.Options.UseBorderColor = True
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem15, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem12, Me.LayoutControlItem14})
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 264)
+        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1515, 1036)
+        Me.LayoutControlGroup2.Text = "Διαχειρίσεις"
+        '
+        'LayoutControlItem17
+        '
+        Me.LayoutControlItem17.Control = Me.SUBJECT_NOT_MANAGED
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem17.Name = "LayoutControlItem17"
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(1489, 68)
+        Me.LayoutControlItem17.Text = "Θέμα Αποστολής ΜΗ Διαχειρίσεων"
+        Me.LayoutControlItem17.TextLocation = DevExpress.Utils.Locations.Top
+        Me.LayoutControlItem17.TextSize = New System.Drawing.Size(321, 23)
+        '
+        'LayoutControlGroup3
+        '
+        Me.LayoutControlGroup3.AppearanceGroup.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Warning
+        Me.LayoutControlGroup3.AppearanceGroup.Options.UseBorderColor = True
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem17, Me.LayoutControlItem16})
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 42)
+        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1515, 222)
+        Me.LayoutControlGroup3.Text = "ΜΗ Διαχειρίσεις"
+        '
+        'SUBJECT_NOT_MANAGED
+        '
+        Me.SUBJECT_NOT_MANAGED.Location = New System.Drawing.Point(25, 129)
+        Me.SUBJECT_NOT_MANAGED.Margin = New System.Windows.Forms.Padding(5)
+        Me.SUBJECT_NOT_MANAGED.Name = "SUBJECT_NOT_MANAGED"
+        Me.SUBJECT_NOT_MANAGED.Properties.UseReadOnlyAppearance = False
+        Me.SUBJECT_NOT_MANAGED.Size = New System.Drawing.Size(1485, 38)
+        Me.SUBJECT_NOT_MANAGED.StyleController = Me.LayoutControl1
+        Me.SUBJECT_NOT_MANAGED.TabIndex = 47
+        Me.SUBJECT_NOT_MANAGED.Tag = ""
+        '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwANNMENTSBindingSource
+        '
+        Me.VwANNMENTSBindingSource.DataMember = "vw_ANN_MENTS"
+        Me.VwANNMENTSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'MAILSBindingSource
+        '
+        Me.MAILSBindingSource.DataMember = "MAILS"
+        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'Priamos_NETDataSet3
+        '
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'MAILSTableAdapter
         '
@@ -631,29 +730,6 @@ Partial Class frmParameters
         'Vw_ANN_MENTSTableAdapter
         '
         Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
-        '
-        'UNPAID_INVOICES
-        '
-        Me.UNPAID_INVOICES.Location = New System.Drawing.Point(749, 89)
-        Me.UNPAID_INVOICES.Margin = New System.Windows.Forms.Padding(5)
-        Me.UNPAID_INVOICES.Name = "UNPAID_INVOICES"
-        Me.UNPAID_INVOICES.Properties.UseReadOnlyAppearance = False
-        Me.UNPAID_INVOICES.Size = New System.Drawing.Size(774, 221)
-        Me.UNPAID_INVOICES.StyleController = Me.LayoutControl1
-        Me.UNPAID_INVOICES.TabIndex = 7
-        Me.UNPAID_INVOICES.Tag = ""
-        '
-        'LayoutControlItem15
-        '
-        Me.LayoutControlItem15.Control = Me.UNPAID_INVOICES
-        Me.LayoutControlItem15.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem15.CustomizationFormText = "Πίνακας Ανεξόφλητων Παραστατικών"
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(737, 42)
-        Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(778, 260)
-        Me.LayoutControlItem15.Text = "Πίνακας Ανεξόφλητων Παραστατικών"
-        Me.LayoutControlItem15.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem15.TextSize = New System.Drawing.Size(310, 23)
         '
         'frmParameters
         '
@@ -675,10 +751,7 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ANN_MENT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -695,10 +768,9 @@ Partial Class frmParameters
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_SYG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RECEIPT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UNPAID_INVOICES.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
@@ -709,9 +781,19 @@ Partial Class frmParameters
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.UNPAID_INVOICES.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BODY_NOT_MANAGED.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SUBJECT_NOT_MANAGED.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -766,4 +848,10 @@ Partial Class frmParameters
     Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents UNPAID_INVOICES As DevExpress.XtraEditors.MemoEdit
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents BODY_NOT_MANAGED As DevExpress.XtraEditors.MemoEdit
+    Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem17 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents SUBJECT_NOT_MANAGED As DevExpress.XtraEditors.TextEdit
 End Class

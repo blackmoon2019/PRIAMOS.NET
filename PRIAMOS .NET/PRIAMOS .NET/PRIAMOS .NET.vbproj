@@ -322,6 +322,7 @@
     <Compile Include="classes\Localization.vb" />
     <Compile Include="classes\Notification.vb" />
     <Compile Include="classes\ProgProp.vb" />
+    <Compile Include="classes\Reports.vb" />
     <Compile Include="classes\ScanToPDF.vb" />
     <Compile Include="classes\SendEmail.vb" />
     <Compile Include="classes\Transactions.vb" />

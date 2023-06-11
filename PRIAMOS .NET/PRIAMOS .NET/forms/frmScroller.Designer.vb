@@ -77,6 +77,11 @@ Partial Class frmScroller
         Me.BarEIDOP = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRECEIPTS = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEmail = New DevExpress.XtraBars.BarButtonItem()
+        Me.PopupMenuEmail = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarEmailSYG = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEmailEIDOP = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEmailRECEIPTS = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEmailAll = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar4 = New DevExpress.XtraBars.Bar()
         Me.cboDebitUsr = New DevExpress.XtraBars.BarEditItem()
         Me.Rep_DEBITUSR = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
@@ -161,10 +166,6 @@ Partial Class frmScroller
         Me.colCusSaler = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcreatedby_Realname = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colphn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.PopupMenuEmail = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.BarEmailSYG = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarEmailEIDOP = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarEmailRECEIPTS = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -176,6 +177,7 @@ Partial Class frmScroller
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemProgressBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupMenuEmail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -194,7 +196,6 @@ Partial Class frmScroller
         Me.PanelResults.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PopupMenuEmail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView2
@@ -227,7 +228,7 @@ Partial Class frmScroller
         Me.grdMain.MainView = Me.GridView1
         Me.grdMain.Margin = New System.Windows.Forms.Padding(5)
         Me.grdMain.Name = "grdMain"
-        Me.grdMain.Size = New System.Drawing.Size(1719, 1055)
+        Me.grdMain.Size = New System.Drawing.Size(1980, 1055)
         Me.grdMain.TabIndex = 5
         Me.grdMain.UseEmbeddedNavigator = True
         Me.grdMain.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView2})
@@ -264,9 +265,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS, Me.BarEmail, Me.BarPB, Me.BarEmailSYG, Me.BarEmailEIDOP, Me.BarEmailRECEIPTS})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS, Me.BarEmail, Me.BarPB, Me.BarEmailSYG, Me.BarEmailEIDOP, Me.BarEmailRECEIPTS, Me.BarEmailAll})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 69
+        Me.BarManager1.MaxItemId = 70
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ, Me.RepositoryItemMarqueeProgressBar1, Me.RepositoryItemProgressBar1})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -609,6 +610,39 @@ Partial Class frmScroller
         Me.BarEmail.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_email_16
         Me.BarEmail.Name = "BarEmail"
         '
+        'PopupMenuEmail
+        '
+        Me.PopupMenuEmail.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailSYG), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailEIDOP), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailRECEIPTS), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailAll)})
+        Me.PopupMenuEmail.Manager = Me.BarManager1
+        Me.PopupMenuEmail.Name = "PopupMenuEmail"
+        '
+        'BarEmailSYG
+        '
+        Me.BarEmailSYG.Caption = "Συγκεντρωτική"
+        Me.BarEmailSYG.Id = 66
+        Me.BarEmailSYG.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_aggregator_16
+        Me.BarEmailSYG.Name = "BarEmailSYG"
+        '
+        'BarEmailEIDOP
+        '
+        Me.BarEmailEIDOP.Caption = "Ειδοποιήσεις"
+        Me.BarEmailEIDOP.Id = 67
+        Me.BarEmailEIDOP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_documents_16
+        Me.BarEmailEIDOP.Name = "BarEmailEIDOP"
+        '
+        'BarEmailRECEIPTS
+        '
+        Me.BarEmailRECEIPTS.Caption = "Αποδείξεις"
+        Me.BarEmailRECEIPTS.Id = 68
+        Me.BarEmailRECEIPTS.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_approved_16
+        Me.BarEmailRECEIPTS.Name = "BarEmailRECEIPTS"
+        '
+        'BarEmailAll
+        '
+        Me.BarEmailAll.Caption = "Όλα"
+        Me.BarEmailAll.Id = 69
+        Me.BarEmailAll.Name = "BarEmailAll"
+        '
         'Bar4
         '
         Me.Bar4.BarName = "COL_EXT"
@@ -718,7 +752,7 @@ Partial Class frmScroller
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Margin = New System.Windows.Forms.Padding(5)
-        Me.barDockControlTop.Size = New System.Drawing.Size(1765, 112)
+        Me.barDockControlTop.Size = New System.Drawing.Size(2026, 112)
         '
         'barDockControlBottom
         '
@@ -727,7 +761,7 @@ Partial Class frmScroller
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 1167)
         Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Margin = New System.Windows.Forms.Padding(5)
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1765, 49)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(2026, 49)
         '
         'barDockControlLeft
         '
@@ -742,7 +776,7 @@ Partial Class frmScroller
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1765, 112)
+        Me.barDockControlRight.Location = New System.Drawing.Point(2026, 112)
         Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Margin = New System.Windows.Forms.Padding(5)
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 1055)
@@ -914,18 +948,19 @@ Partial Class frmScroller
         '
         'PanelResults
         '
+        Me.PanelResults.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.PanelResults.Controls.Add(Me.cmdExit)
         Me.PanelResults.Controls.Add(Me.GridControl1)
         Me.PanelResults.Location = New System.Drawing.Point(131, 213)
         Me.PanelResults.Margin = New System.Windows.Forms.Padding(5)
         Me.PanelResults.Name = "PanelResults"
-        Me.PanelResults.Size = New System.Drawing.Size(1585, 775)
+        Me.PanelResults.Size = New System.Drawing.Size(1881, 775)
         Me.PanelResults.TabIndex = 11
         '
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.Location = New System.Drawing.Point(1428, 709)
+        Me.cmdExit.Location = New System.Drawing.Point(1725, 709)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(148, 50)
@@ -940,7 +975,7 @@ Partial Class frmScroller
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.MenuManager = Me.BarManager1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1568, 694)
+        Me.GridControl1.Size = New System.Drawing.Size(1865, 694)
         Me.GridControl1.TabIndex = 7
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -949,9 +984,11 @@ Partial Class frmScroller
         Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colFullname, Me.colmob, Me.colemail, Me.colcct_cmt, Me.colcode, Me.colSTATUS_Name, Me.colallowschedule, Me.colSALERS_Name, Me.colcolor, Me.colADR_Name, Me.colAr, Me.coltk, Me.colRealName, Me.colAREAS_Name, Me.colstatusID, Me.colcusID, Me.colsch, Me.colcompleted, Me.coldtcompleted, Me.colcmt, Me.colcreatedOn, Me.colmodifiedOn, Me.colsalersID, Me.colSALERS_Code, Me.coldtReminderDate, Me.colREM_VALUES_name, Me.colremValueID, Me.colReminder, Me.colS_CCT_M_Code, Me.colS_CCT_M_Color, Me.colS_CCT_M_name, Me.coltmReminder, Me.coldtReceiveDate, Me.coldtDeliverDate, Me.colCusSaler, Me.colcreatedby_Realname, Me.colphn})
         Me.GridView3.DetailHeight = 619
         Me.GridView3.GridControl = Me.GridControl1
+        Me.GridView3.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.GridView3.Name = "GridView3"
         Me.GridView3.OptionsBehavior.Editable = False
         Me.GridView3.OptionsBehavior.ReadOnly = True
+        Me.GridView3.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         '
         'colID
         '
@@ -1237,39 +1274,12 @@ Partial Class frmScroller
         Me.colphn.VisibleIndex = 4
         Me.colphn.Width = 125
         '
-        'PopupMenuEmail
-        '
-        Me.PopupMenuEmail.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailSYG), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailEIDOP), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmailRECEIPTS), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSYG), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEIDOP), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRECEIPTS)})
-        Me.PopupMenuEmail.Manager = Me.BarManager1
-        Me.PopupMenuEmail.Name = "PopupMenuEmail"
-        '
-        'BarEmailSYG
-        '
-        Me.BarEmailSYG.Caption = "Συγκεντρωτική"
-        Me.BarEmailSYG.Id = 66
-        Me.BarEmailSYG.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_aggregator_16
-        Me.BarEmailSYG.Name = "BarEmailSYG"
-        '
-        'BarEmailEIDOP
-        '
-        Me.BarEmailEIDOP.Caption = "Ειδοποιήσεις"
-        Me.BarEmailEIDOP.Id = 67
-        Me.BarEmailEIDOP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_documents_16
-        Me.BarEmailEIDOP.Name = "BarEmailEIDOP"
-        '
-        'BarEmailRECEIPTS
-        '
-        Me.BarEmailRECEIPTS.Caption = "Αποδείξεις"
-        Me.BarEmailRECEIPTS.Id = 68
-        Me.BarEmailRECEIPTS.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_approved_16
-        Me.BarEmailRECEIPTS.Name = "BarEmailRECEIPTS"
-        '
         'frmScroller
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1765, 1216)
+        Me.ClientSize = New System.Drawing.Size(2026, 1216)
         Me.Controls.Add(Me.PanelResults)
         Me.Controls.Add(Me.grdMain)
         Me.Controls.Add(Me.barDockControlLeft)
@@ -1291,6 +1301,7 @@ Partial Class frmScroller
         CType(Me.PopupMenuExport, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemProgressBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupMenuEmail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Rep_DEBITUSR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1309,7 +1320,6 @@ Partial Class frmScroller
         Me.PanelResults.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PopupMenuEmail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1451,4 +1461,5 @@ Partial Class frmScroller
     Friend WithEvents BarEmailSYG As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarEmailEIDOP As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarEmailRECEIPTS As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarEmailAll As DevExpress.XtraBars.BarButtonItem
 End Class
