@@ -228,12 +228,12 @@ Public Class frmEmailAPT
                         If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Path.GetTempPath & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            sSQL = "insert into EMAIL_LOG(EmailSend,syg,inhID,usrID,sendDate,statusMsg,syg)
-                                        SELECT 1,1," & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,inhID,usrID,sendDate,statusMsg,syg)
+                                        SELECT 1," & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                         Else
-                            sSQL = "insert into EMAIL_LOG(EmailSend,syg,inhID,usrID,sendDate,statusMsg,syg)
-                                        SELECT 0,1," & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,inhID,usrID,sendDate,statusMsg,syg)
+                                        SELECT 0," & toSQLValueS(sInhId) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1"
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             SSM.CloseWaitForm()
                             sdr.Close()
@@ -296,13 +296,13 @@ Public Class frmEmailAPT
                         If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Path.GetTempPath & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            sSQL = "insert into EMAIL_LOG(EmailSend,eidop,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
-                                        SELECT 1,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
+                                        SELECT 1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                         Else
-                            sSQL = "insert into EMAIL_LOG(EmailSend,eidop,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
-                                        SELECT 0,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,eidop)
+                                        SELECT 0," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             SSM.CloseWaitForm()
                             sdr.Close()
@@ -357,13 +357,13 @@ Public Class frmEmailAPT
                         If Emails.SendInvoiceEmail(Subject, sBody, 0, sEmailTo, Path.GetTempPath & sFName & ".pdf", statusMsg) = True Then
                             sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhId)
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                            sSQL = "insert into EMAIL_LOG(EmailSend,receipt,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
-                                        SELECT 1,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
+                                        SELECT 1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                         Else
-                            sSQL = "insert into EMAIL_LOG(EmailSend,receipt,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
-                                        SELECT 0,1," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
+                            sSQL = "insert into EMAIL_LOG(EmailSend,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,receipt)
+                                        SELECT 0," & toSQLValueS(sInhId) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & ",1"
                             Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                             sdr.Close()
                             SSM.CloseWaitForm()
