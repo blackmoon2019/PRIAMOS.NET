@@ -1,28 +1,11 @@
-﻿Imports System.Collections.Specialized
-Imports System.Data.SqlClient
-Imports System.Reflection
+﻿Imports System.Data.SqlClient
 Imports System.Text
 Imports System.Text.RegularExpressions
-Imports DevExpress.CodeParser
-Imports DevExpress.DataAccess
-Imports DevExpress.DataAccess.Native
-Imports DevExpress.DataAccess.UI
-Imports DevExpress.Utils.Gesture
-Imports DevExpress.Xpo
-Imports DevExpress.Xpo.DB
 Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraEditors.ViewInfo
-Imports DevExpress.XtraExport.Helpers
-Imports DevExpress.XtraGrid
-Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
-Imports DevExpress.XtraPrinting.BarCode
-
 Public Class frmBankCollectionInsert
     Private DBQ As New DBQueries
     Private LoadForms As New FormLoader
@@ -1093,7 +1076,7 @@ Public Class frmBankCollectionInsert
         Dim ItemsCorrect As Integer = 0, ItemsWrong As Integer = 0
         Try
             If selectedRowHandles.Length = 0 Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν οι τρέχουσες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
             ProgressBarControl1.EditValue = 0
             ProgressBarControl1.Properties.Step = 1

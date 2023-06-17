@@ -12,7 +12,7 @@ Public Class frmCalendarApol
     Private Calendar As New InitializeCalendar
     Private Sub frmCalendarDecontaminatin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            SchedulerLocalizer.Active = New MySchedulerLocalizer()
+            SchedulerLocalizer.Active = New ScheduleGreekLocalizer()
             'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_WORKSHOPS' table. You can move, or remove it, as needed.
             Me.Vw_WORKSHOPSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_WORKSHOPS)
             Dim sSQL As String
@@ -236,16 +236,4 @@ Public Class frmCalendarApol
         If DeleteApol() = False Then e.Cancel = True
     End Sub
 
-    Public Class MySchedulerLocalizer
-        Inherits SchedulerLocalizer
-        Public Overrides Function GetLocalizedString(ByVal id As SchedulerStringId) As String
-            Select Case id
-                Case SchedulerStringId.FlyoutCaption_Location : Return "Συνεργείο:"
-                Case SchedulerStringId.FlyoutCaption_Start : Return "Από:"
-                Case SchedulerStringId.FlyoutCaption_End : Return "Έως:"
-                Case SchedulerStringId.FlyoutCaption_Reminder : Return "Υπενθύμιση:"
-            End Select
-            Return MyBase.GetLocalizedString(id)
-        End Function
-    End Class
 End Class

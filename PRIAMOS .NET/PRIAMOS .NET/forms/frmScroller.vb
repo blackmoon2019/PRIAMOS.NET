@@ -1,6 +1,4 @@
-﻿Imports System.Windows.Forms
-Imports System.Data.SqlClient
-Imports DevExpress.XtraSplashScreen
+﻿Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraBars
@@ -14,14 +12,7 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.Utils
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
-Imports DevExpress.XtraReports.UI
 Imports System.Text
-Imports DevExpress.XtraExport.Helpers
-Imports System.Runtime.InteropServices
-Imports DevExpress.XtraScheduler.Native
-Imports DevExpress.XtraSpreadsheet.DocumentFormats
-Imports System.IO
-Imports DevExpress.DataAccess
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -86,8 +77,7 @@ Public Class frmScroller
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
             'LoadForms.LoadColumnDescriptionNames( GridView1, , sDataTable)
 
-            GridLocalizer.Active = New GreekGridLocalizer()
-            'Localizer.Active = New GermanEditorsLocalizer()
+            GridLocalizer.Active = New GridGreekLocalizer ()
 
             'Κρύψιμο Στηλών
             'HideColumns(GridView1, "ID")
@@ -288,7 +278,7 @@ Public Class frmScroller
         Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
         Dim I As Integer
         Try
-            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", "Dreamy Kitchen CRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
+            If XtraMessageBox.Show("Θέλετε να διαγραφούν η τρέχουσες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
             For I = 0 To selectedRowHandles.Length - 1
                 Dim selectedRowHandle As Int32 = selectedRowHandles(I)
 

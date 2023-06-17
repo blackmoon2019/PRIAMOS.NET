@@ -94,6 +94,7 @@ Partial Class frmMain
         Me.BBProfActivities = New DevExpress.XtraBars.BarButtonItem()
         Me.BBProfActD = New DevExpress.XtraBars.BarButtonItem()
         Me.BBColExtTypes = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBatchCreateCollections = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup9 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -141,10 +142,10 @@ Partial Class frmMain
         Me.RibbonControl1.ApplicationButtonDropDownControl = Me.ApplicationMenu1
         Me.RibbonControl1.EmptyAreaImageOptions.ImagePadding = New System.Windows.Forms.Padding(50, 53, 50, 53)
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BBAbout, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks, Me.BBatchCollectionInsert, Me.BBTechSup, Me.BBCT, Me.BBCol2, Me.BBFolderCat, Me.BBVer, Me.BBatchInsertINH, Me.BBatchInsertAnnment, Me.BBGrps, Me.BCCT, Me.BBBdgAptTrans, Me.BBBalReport, Me.BBAPT, Me.BBKeysmanager, Me.BBContacts, Me.BBanksCol, Me.BBReport7, Me.BBProfActivities, Me.BBProfActD, Me.BBColExtTypes})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbUsers, Me.bbMailSettings, Me.BarButtonItem1, Me.BarClose, Me.bbRights, Me.SkinDropDownButtonItem1, Me.BarMdiChildrenListItem1, Me.bbDate, Me.BarEditItem1, Me.BarEditItem2, Me.bbUser, Me.bbServer, Me.bbDB, Me.bbLink, Me.bbBDG, Me.bbCOU, Me.bbAreas, Me.bbADR, Me.bbDOY, Me.bbPRF, Me.bbFields, Me.bbCCT, Me.bbFuelType, Me.BarButtonItem2, Me.bbParamaters, Me.bbMLC, Me.bbCalcTypes, Me.BBChangeUsr, Me.BBAbout, Me.bbTechnicalSupport, Me.bbTechCateg, Me.bbCalcCateg, Me.bbParasts, Me.bbTTL, Me.bbVersion, Me.bbAnnouncements, Me.BBBatchFileEX, Me.BBIND, Me.BBcalendarApol, Me.BBApol, Me.BBApolList, Me.BBPriamosVer, Me.BBCol, Me.BarButtonItem3, Me.BBColMethod, Me.BBUpdate, Me.BBTasksCat, Me.BBCases, Me.BBTasks, Me.BBatchCollectionInsert, Me.BBTechSup, Me.BBCT, Me.BBCol2, Me.BBFolderCat, Me.BBVer, Me.BBatchInsertINH, Me.BBatchInsertAnnment, Me.BBGrps, Me.BCCT, Me.BBBdgAptTrans, Me.BBBalReport, Me.BBAPT, Me.BBKeysmanager, Me.BBContacts, Me.BBanksCol, Me.BBReport7, Me.BBProfActivities, Me.BBProfActD, Me.BBColExtTypes, Me.BBatchCreateCollections})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.Margin = New System.Windows.Forms.Padding(5)
-        Me.RibbonControl1.MaxItemId = 84
+        Me.RibbonControl1.MaxItemId = 85
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.OptionsMenuMinWidth = 550
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage6, Me.RibbonPage5, Me.RibbonPage2, Me.RibbonPage7, Me.RibbonPage3, Me.RibbonPage4})
@@ -745,6 +746,14 @@ Partial Class frmMain
         Me.BBColExtTypes.Name = "BBColExtTypes"
         Me.BBColExtTypes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'BBatchCreateCollections
+        '
+        Me.BBatchCreateCollections.Caption = "Μαζική δημιουργία οφειλών νέας διαχέιρισης"
+        Me.BBatchCreateCollections.Id = 84
+        Me.BBatchCreateCollections.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_initiate_money_transfer_40
+        Me.BBatchCreateCollections.Name = "BBatchCreateCollections"
+        Me.BBatchCreateCollections.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9, Me.RibbonPageGroup1})
@@ -810,6 +819,7 @@ Partial Class frmMain
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBatchInsertINH)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBatchInsertAnnment)
         Me.RibbonPageGroup7.ItemLinks.Add(Me.BBKeysmanager)
+        Me.RibbonPageGroup7.ItemLinks.Add(Me.BBatchCreateCollections)
         Me.RibbonPageGroup7.Name = "RibbonPageGroup7"
         Me.RibbonPageGroup7.Text = "Μαζικές Εργασίες"
         '
@@ -1093,4 +1103,5 @@ Partial Class frmMain
     Friend WithEvents BBProfActivities As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BBProfActD As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BBColExtTypes As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BBatchCreateCollections As DevExpress.XtraBars.BarButtonItem
 End Class
