@@ -574,7 +574,7 @@ Public Class frmMain
         Dim form As frmBatchCollectionInsert = New frmBatchCollectionInsert()
         form.Text = "Μαζική δημιουργία οφειλών νέας διαχείρισης"
         UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
-
+        Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
         form.MdiParent = Me
         form.Show()
     End Sub

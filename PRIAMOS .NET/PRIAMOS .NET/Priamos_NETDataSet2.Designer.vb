@@ -3742,9 +3742,13 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columntDate As Global.System.Data.DataColumn
         
-        Private columnownerAmt As Global.System.Data.DataColumn
+        Private columncompleteDate As Global.System.Data.DataColumn
         
-        Private columntenantAmt As Global.System.Data.DataColumn
+        Private columncreatedBy As Global.System.Data.DataColumn
+        
+        Private columnowner_tenant As Global.System.Data.DataColumn
+        
+        Private columnamt As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -3823,17 +3827,33 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property ownerAmtColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property completeDateColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnownerAmt
+                Return Me.columncompleteDate
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property tenantAmtColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property createdByColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columntenantAmt
+                Return Me.columncreatedBy
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property owner_tenantColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnowner_tenant
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property amtColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnamt
             End Get
         End Property
         
@@ -3874,9 +3894,9 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddtmpBatchCollectionsRow(ByVal ID As System.Guid, ByVal bdgID As System.Guid, ByVal aptID As System.Guid, ByVal fDate As Date, ByVal tDate As Date, ByVal ownerAmt As Decimal, ByVal tenantAmt As Decimal) As tmpBatchCollectionsRow
+        Public Overloads Function AddtmpBatchCollectionsRow(ByVal ID As System.Guid, ByVal bdgID As System.Guid, ByVal aptID As System.Guid, ByVal fDate As Date, ByVal tDate As Date, ByVal completeDate As String, ByVal createdBy As System.Guid, ByVal owner_tenant As Boolean, ByVal amt As Decimal) As tmpBatchCollectionsRow
             Dim rowtmpBatchCollectionsRow As tmpBatchCollectionsRow = CType(Me.NewRow,tmpBatchCollectionsRow)
-            Dim columnValuesArray() As Object = New Object() {ID, bdgID, aptID, fDate, tDate, ownerAmt, tenantAmt}
+            Dim columnValuesArray() As Object = New Object() {ID, bdgID, aptID, fDate, tDate, completeDate, createdBy, owner_tenant, amt}
             rowtmpBatchCollectionsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtmpBatchCollectionsRow)
             Return rowtmpBatchCollectionsRow
@@ -3910,8 +3930,10 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnaptID = MyBase.Columns("aptID")
             Me.columnfDate = MyBase.Columns("fDate")
             Me.columntDate = MyBase.Columns("tDate")
-            Me.columnownerAmt = MyBase.Columns("ownerAmt")
-            Me.columntenantAmt = MyBase.Columns("tenantAmt")
+            Me.columncompleteDate = MyBase.Columns("completeDate")
+            Me.columncreatedBy = MyBase.Columns("createdBy")
+            Me.columnowner_tenant = MyBase.Columns("owner_tenant")
+            Me.columnamt = MyBase.Columns("amt")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3927,10 +3949,14 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columnfDate)
             Me.columntDate = New Global.System.Data.DataColumn("tDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntDate)
-            Me.columnownerAmt = New Global.System.Data.DataColumn("ownerAmt", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnownerAmt)
-            Me.columntenantAmt = New Global.System.Data.DataColumn("tenantAmt", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columntenantAmt)
+            Me.columncompleteDate = New Global.System.Data.DataColumn("completeDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncompleteDate)
+            Me.columncreatedBy = New Global.System.Data.DataColumn("createdBy", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncreatedBy)
+            Me.columnowner_tenant = New Global.System.Data.DataColumn("owner_tenant", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnowner_tenant)
+            Me.columnamt = New Global.System.Data.DataColumn("amt", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnamt)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -3938,8 +3964,11 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnaptID.AllowDBNull = false
             Me.columnfDate.AllowDBNull = false
             Me.columntDate.AllowDBNull = false
-            Me.columnownerAmt.AllowDBNull = false
-            Me.columntenantAmt.AllowDBNull = false
+            Me.columncompleteDate.AllowDBNull = false
+            Me.columncompleteDate.MaxLength = 150
+            Me.columncreatedBy.AllowDBNull = false
+            Me.columnowner_tenant.AllowDBNull = false
+            Me.columnamt.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8163,23 +8192,45 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property ownerAmt() As Decimal
+        Public Property completeDate() As String
             Get
-                Return CType(Me(Me.tabletmpBatchCollections.ownerAmtColumn),Decimal)
+                Return CType(Me(Me.tabletmpBatchCollections.completeDateColumn),String)
             End Get
             Set
-                Me(Me.tabletmpBatchCollections.ownerAmtColumn) = value
+                Me(Me.tabletmpBatchCollections.completeDateColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property tenantAmt() As Decimal
+        Public Property createdBy() As System.Guid
             Get
-                Return CType(Me(Me.tabletmpBatchCollections.tenantAmtColumn),Decimal)
+                Return CType(Me(Me.tabletmpBatchCollections.createdByColumn),Global.System.Guid)
             End Get
             Set
-                Me(Me.tabletmpBatchCollections.tenantAmtColumn) = value
+                Me(Me.tabletmpBatchCollections.createdByColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property owner_tenant() As Boolean
+            Get
+                Return CType(Me(Me.tabletmpBatchCollections.owner_tenantColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tabletmpBatchCollections.owner_tenantColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property amt() As Decimal
+            Get
+                Return CType(Me(Me.tabletmpBatchCollections.amtColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tabletmpBatchCollections.amtColumn) = value
             End Set
         End Property
     End Class
@@ -11315,61 +11366,75 @@ Namespace Priamos_NETDataSet2TableAdapters
             tableMapping.ColumnMappings.Add("aptID", "aptID")
             tableMapping.ColumnMappings.Add("fDate", "fDate")
             tableMapping.ColumnMappings.Add("tDate", "tDate")
-            tableMapping.ColumnMappings.Add("ownerAmt", "ownerAmt")
-            tableMapping.ColumnMappings.Add("tenantAmt", "tenantAmt")
+            tableMapping.ColumnMappings.Add("completeDate", "completeDate")
+            tableMapping.ColumnMappings.Add("createdBy", "createdBy")
+            tableMapping.ColumnMappings.Add("owner_tenant", "owner_tenant")
+            tableMapping.ColumnMappings.Add("amt", "amt")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM [tmpBatchCollections] WHERE (([ID] = @Original_ID) AND ([bdgID] = @Or"& _ 
                 "iginal_bdgID) AND ([aptID] = @Original_aptID) AND ([fDate] = @Original_fDate) AN"& _ 
-                "D ([tDate] = @Original_tDate) AND ([ownerAmt] = @Original_ownerAmt) AND ([tenant"& _ 
-                "Amt] = @Original_tenantAmt))"
+                "D ([tDate] = @Original_tDate) AND ([owner_tenant] = @Original_owner_tenant) AND "& _ 
+                "([amt] = @Original_amt) AND ([completeDate] = @Original_completeDate) AND ([crea"& _ 
+                "tedBy] = @Original_createdBy))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_tDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "tDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ownerAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "ownerAmt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_tenantAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "tenantAmt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_owner_tenant", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner_tenant", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "amt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_completeDate", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "completeDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [tmpBatchCollections] ([ID], [bdgID], [aptID], [fDate], [tDate], [own"& _ 
-                "erAmt], [tenantAmt]) VALUES (@ID, @bdgID, @aptID, @fDate, @tDate, @ownerAmt, @te"& _ 
-                "nantAmt);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, bdgID, aptID, fDate, tDate, ownerAmt, tenantAmt FROM tmpBa"& _ 
-                "tchCollections WHERE (ID = @ID)"
+                "er_tenant], [amt], [completeDate], [createdBy]) VALUES (@ID, @bdgID, @aptID, @fD"& _ 
+                "ate, @tDate, @owner_tenant, @amt, @completeDate, @createdBy);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, bdgID,"& _ 
+                " aptID, fDate, tDate, owner_tenant, amt, completeDate, createdBy FROM tmpBatchCo"& _ 
+                "llections WHERE (ID = @ID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "tDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ownerAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "ownerAmt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tenantAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "tenantAmt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@owner_tenant", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner_tenant", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "amt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@completeDate", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "completeDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [tmpBatchCollections] SET [ID] = @ID, [bdgID] = @bdgID, [aptID] = @aptID, "& _ 
-                "[fDate] = @fDate, [tDate] = @tDate, [ownerAmt] = @ownerAmt, [tenantAmt] = @tenan"& _ 
-                "tAmt WHERE (([ID] = @Original_ID) AND ([bdgID] = @Original_bdgID) AND ([aptID] ="& _ 
-                " @Original_aptID) AND ([fDate] = @Original_fDate) AND ([tDate] = @Original_tDate"& _ 
-                ") AND ([ownerAmt] = @Original_ownerAmt) AND ([tenantAmt] = @Original_tenantAmt))"& _ 
-                ";"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, bdgID, aptID, fDate, tDate, ownerAmt, tenantAmt FROM tmpBatchColle"& _ 
-                "ctions WHERE (ID = @ID)"
+                "[fDate] = @fDate, [tDate] = @tDate, [owner_tenant] = @owner_tenant, [amt] = @amt"& _ 
+                ", [completeDate] = @completeDate, [createdBy] = @createdBy WHERE (([ID] = @Origi"& _ 
+                "nal_ID) AND ([bdgID] = @Original_bdgID) AND ([aptID] = @Original_aptID) AND ([fD"& _ 
+                "ate] = @Original_fDate) AND ([tDate] = @Original_tDate) AND ([owner_tenant] = @O"& _ 
+                "riginal_owner_tenant) AND ([amt] = @Original_amt) AND ([completeDate] = @Origina"& _ 
+                "l_completeDate) AND ([createdBy] = @Original_createdBy));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, bdgID, apt"& _ 
+                "ID, fDate, tDate, owner_tenant, amt, completeDate, createdBy FROM tmpBatchCollec"& _ 
+                "tions WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@fDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "tDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ownerAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "ownerAmt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tenantAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "tenantAmt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@owner_tenant", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner_tenant", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "amt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@completeDate", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "completeDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_aptID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "aptID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_fDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "fDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_tDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "tDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ownerAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "ownerAmt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_tenantAmt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "tenantAmt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_owner_tenant", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner_tenant", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 9, 2, "amt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_completeDate", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "completeDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11385,7 +11450,8 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT tmpBatchCollections.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   tmpBatchCollections"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where bdgID = @bdgID"
+            Me._commandCollection(0).CommandText = "SELECT ID, bdgID, aptID, fDate, tDate, owner_tenant, amt, completeDate, createdBy"& _ 
+                " FROM tmpBatchCollections WHERE (bdgID = @bdgID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

@@ -15,12 +15,8 @@ Imports DevExpress.XtraGrid.Views.BandedGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
-Imports DevExpress.XtraPivotGrid
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraReports.UI
-Imports DevExpress.XtraPrinting.Control
-Imports DevExpress.XtraReports.UI.CrossTab
-Imports System.ComponentModel
 
 Public Class frmINH
     Private sID As String

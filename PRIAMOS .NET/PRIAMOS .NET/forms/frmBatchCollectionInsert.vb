@@ -1,11 +1,15 @@
 ﻿Imports System.Data.SqlClient
+Imports DevExpress.Spreadsheet
 Imports DevExpress.Utils.VisualEffects
 Imports DevExpress.XtraEditors
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
+Imports DevExpress.XtraPrinting.Shape.Native
 
 Public Class frmBatchCollectionInsert
+    Private ManageCbo As New CombosManager
     Sub New()
 
         GridLocalizer.Active = New GridGreekLocalizer()
@@ -19,6 +23,7 @@ Public Class frmBatchCollectionInsert
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
         AddHandler grdCollections.EmbeddedNavigator.ButtonClick, AddressOf Grid_EmbeddedNavigator_ButtonClick
         DevExpress.XtraGrid.Localization.GridLocalizer.Active = New GridGreekLocalizer()
+        Me.CenterToScreen()
     End Sub
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
@@ -28,7 +33,7 @@ Public Class frmBatchCollectionInsert
         End If
     End Sub
     Private Sub GridView1_InvalidRowException(sender As Object, e As InvalidRowExceptionEventArgs) Handles GridView1.InvalidRowException
-        ' e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.NoAction
+        'e.ExceptionMode = ExceptionMode.NoAction
     End Sub
     Private Sub Grid_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
         Select Case e.Button.ButtonType
@@ -51,7 +56,7 @@ Public Class frmBatchCollectionInsert
                     XtraMessageBox.Show("Δεν έχετε επιλέξει πολυκατοικία.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                GridView1.PostEditor() : GridView1.AddNewRow()
+                'grdCollections.EmbeddedNavigator.Buttons.DoClick(grdCollections.EmbeddedNavigator.Buttons.Append)
             End If
         End If
     End Sub
@@ -69,7 +74,7 @@ Public Class frmBatchCollectionInsert
     End Function
     Private Sub GridView1_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles GridView1.ValidateRow
         Dim sSQL As New System.Text.StringBuilder
-        Dim sDate As String
+        Dim sDate As String, fDate As String, tDate As String
         Try
             sSQL.Clear()
             If e.RowHandle = grdCollections.NewItemRowHandle Then
@@ -88,12 +93,7 @@ Public Class frmBatchCollectionInsert
                     e.Valid = False
                     Exit Sub
                 End If
-                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ownerAmt").ToString = "" Then
-                    e.ErrorText = "Παρακαλώ πληκτρολογείστε ποσό"
-                    e.Valid = False
-                    Exit Sub
-                End If
-                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tenantAmt").ToString = "" Then
+                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "amt").ToString = "" Then
                     e.ErrorText = "Παρακαλώ πληκτρολογείστε ποσό"
                     e.Valid = False
                     Exit Sub
@@ -103,11 +103,16 @@ Public Class frmBatchCollectionInsert
                     e.Valid = False
                     Exit Sub
                 End If
+                fDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "fDate").ToString
+                tDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tDate").ToString
+                Dim sCompleteDate As String = TranslateDatesRep(fDate, tDate)
                 Dim sGuid As String = Guid.NewGuid.ToString
                 GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "ID", sGuid)
                 GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "bdgID", cboBDG.EditValue.ToString)
+                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "completeDate", sCompleteDate)
+                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "createdBy", UserProps.ID.ToString)
 
-                sSQL.AppendLine("INSERT INTO tmpBatchCollections (ID,bdgID,aptID,fDate,tDate,ownerAmt,tenantAmt)")
+                sSQL.AppendLine("INSERT INTO tmpBatchCollections (ID,bdgID,aptID,fDate,tDate,Amt,owner_tenant,completeDate,createdBy)")
                 sSQL.AppendLine("Select " & toSQLValueS(sGuid) & ",")
                 sSQL.AppendLine(toSQLValueS(cboBDG.EditValue.ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "aptID").ToString) & ",")
@@ -117,18 +122,44 @@ Public Class frmBatchCollectionInsert
                 sDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tDate").ToString
                 If sDate <> "" Then sDate = toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) Else sDate = "NULL"
                 sSQL.AppendLine(sDate & ",")
-                sSQL.AppendLine(toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ownerAmt").ToString, True) & ",")
-                sSQL.AppendLine(toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tenantAmt").ToString, True))
+                sSQL.AppendLine(toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "amt").ToString, True) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "owner_tenant").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "completeDate").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
             Else
+                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "aptID").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε διαμέρισμα"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "fDate").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε Από Μήνα"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tDate").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε Έως Μήνα"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "amt").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ πληκτρολογείστε ποσό"
+                    e.Valid = False
+                    Exit Sub
+                End If
                 If CheckIfDateIsValid() = False Then
                     e.ErrorText = "Δεν μπορεί η ""ΑΠΟ"" ημερομηνία να είναι μεγαλύτερη από την ""ΕΩΣ"""
                     e.Valid = False
                     Exit Sub
                 End If
+                fDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "fDate").ToString
+                tDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tDate").ToString
+                Dim sCompleteDate As String = TranslateDatesRep(fDate, tDate)
+                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "completeDate", sCompleteDate)
 
                 sSQL.AppendLine("UPDATE tmpBatchCollections	SET bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & ",")
                 sSQL.AppendLine("aptID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "aptID").ToString) & ",")
@@ -138,8 +169,10 @@ Public Class frmBatchCollectionInsert
                 sDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tDate").ToString
                 If sDate <> "" Then sDate = toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) Else sDate = "NULL"
                 sSQL.AppendLine("tDate = " & sDate & ",")
-                sSQL.AppendLine("ownerAmt = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ownerAmt").ToString, True) & ",")
-                sSQL.AppendLine("tenantAmt = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tenantAmt").ToString, True))
+                sSQL.AppendLine("amt = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "amt").ToString, True) & ",")
+                sSQL.AppendLine("owner_tenant= " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "owner_tenant").ToString) & ",")
+                sSQL.AppendLine("completeDate = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "completeDate").ToString) & ",")
+                sSQL.AppendLine("createdBy = " & toSQLValueS(UserProps.ID.ToString) & ",")
                 sSQL.Append("WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
@@ -167,115 +200,48 @@ Public Class frmBatchCollectionInsert
 
     End Function
     Private Sub CreateColInh()
-        Dim sSQL As New System.Text.StringBuilder
-        Dim selectedRowHandles As Int32() = GridView1.GetSelectedRows()
-        Dim I As Integer
-        Dim sINHID As String
-        Dim sINDID As String
-        Dim sCOLID As String
         Try
-            If selectedRowHandles.Length = 0 Then Exit Sub
-            If XtraMessageBox.Show("Θέλετε να καταχωρηθούν οι τρέχουσες εγγραφές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
-            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-            ProgressBarControl1.EditValue = 0
-            ProgressBarControl1.Properties.Step = 1
-            ProgressBarControl1.Properties.PercentView = True
-            ProgressBarControl1.Properties.Maximum = selectedRowHandles.Length - 1
-            ProgressBarControl1.Properties.Minimum = 0
+            Using oCmd As New SqlCommand("inv_CreateFromTransfer", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
+                oCmd.ExecuteNonQuery()
+            End Using
+            XtraMessageBox.Show("Τα παραστατικά και οι οφειλές δημιουργήθηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-
-            For I = 0 To selectedRowHandles.Length - 1
-                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-                sINHID = System.Guid.NewGuid.ToString
-                sCOLID = System.Guid.NewGuid.ToString
-                sINDID = System.Guid.NewGuid.ToString
-
-                'Καταχώρηση Παραστατικού
-                sSQL.AppendLine("INSERT INTO INH (id,bdgID,CMT,FDATE,TDATE,TotalInh,extraordinary,createdOn,modifiedBY,completeDate,reserveAPT)")
-                sSQL.AppendLine("select " & toSQLValueS(sINHID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboBDG.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValueS("Παραστατικό εκ μεταφοράς από πρώην διαχειριστη") & ",")
-                sSQL.AppendLine("GETDATE(),GETDATE(),")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("0,GETDATE(),")
-                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
-                sSQL.AppendLine("dbo.ConvertMonthToGR(GETDATE()) + ' ' + cast( year(getdate()) as nvarchar(4)) + ' -  Έναντι',1")
-                'Εκτέλεση QUERY
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                'Καταχώρηση Πάγιου εξόδου
-                sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO IND (id,inhID, calcCatID, repName, amt, owner_tenant)")
-                sSQL.AppendLine("select " & toSQLValueS(sINDID) & "," & toSQLValueS(sINHID) & ",'3FE81416-EF7C-4D3B-B1EA-E4CC40350FDE',")
-                sSQL.AppendLine(toSQLValue(txtComments) & ",")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex))
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                'Καταχώρηση Υπολογισμένης εγγραφής
-                sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO INC (ID,inhID,indID,bdgID,aptID, monomers1,tot_monomers1,createdby)")
-                sSQL.AppendLine("select newid()," & toSQLValueS(sINHID) & "," & toSQLValueS(sINDID) & "," & toSQLValueS(sBdgID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-
-                'Καταχώρηση Είσπραξης
-                sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL (ID,bdgID,aptID,INHID,debitusrID,debit,CREDIT,BAL,dtdebit,cmt,ColMethodID,createdOn,completed,tenant,reserveAPT,modifiedBY)")
-                sSQL.AppendLine("select " & toSQLValueS(sCOLID) & ",")
-                sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValueS(sINHID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboDebitUsr.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("0,")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("GETDATE(),")
-                sSQL.AppendLine(toSQLValue(txtComments) & ",")
-                sSQL.AppendLine(toSQLValueS(cboColMethodID.EditValue.ToString) & ",")
-                sSQL.AppendLine("GETDATE(),0,")
-                sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",1,")
-                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString))
-                'Εκτέλεση QUERY
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                'Καταχώρηση Προοδευτικής Χρέωσης
-                sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL_P (BDGID,APTID,INHID,debit,tenant)")
-                sSQL.AppendLine("select ")
-                sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
-                sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
-                sSQL.AppendLine(toSQLValueS(sINHID) & ",")
-                sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
-                sSQL.AppendLine("1")
-                'Εκτέλεση QUERY
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-
-                'Ενημέρωση Υπολοίπου διαμερίσματος
-                sSQL.Clear()
-                sSQL.AppendLine("UPDATE APT set bal_adm = bal_adm + " & toSQLValue(txtDebit, True) & "*(-1) WHERE ID = " & toSQLValueS(cboApt.EditValue.ToString))
-                'Εκτέλεση QUERY
-                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-
-
-            Next I
-
+            Me.TmpBatchCollectionsTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.tmpBatchCollections, System.Guid.Parse(cboBDG.EditValue.ToString))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         End Try
     End Sub
+    Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
+            Case 2 : cboBDG.EditValue = Nothing
+        End Select
+    End Sub
 
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        CreateColInh()
+    End Sub
+
+    Private Sub GridView1_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView1.CellValueChanged
+        Dim fDate As String, tDate As String
+        If e.Column.FieldName = "fDate" Or e.Column.FieldName = "tDate" Then
+            fDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "fDate").ToString
+            tDate = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "tDate").ToString
+            If fDate = "" Or tDate = "" Then Exit Sub
+            Dim sCompleteDate As String = TranslateDatesRep(fDate, tDate)
+            GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "completeDate", sCompleteDate)
+        End If
+    End Sub
+
+
+    Private Sub GridView1_InitNewRow(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles GridView1.InitNewRow
+        GridView1.SetRowCellValue(e.RowHandle, "amt", "0.00")
+        GridView1.SetRowCellValue(e.RowHandle, "owner_tenant", False)
+    End Sub
+
+    Private Sub frmBatchCollectionInsert_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
+    End Sub
 End Class
