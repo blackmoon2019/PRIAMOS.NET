@@ -160,6 +160,7 @@ Partial Class frmBatchCollectionInsert
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
         Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_APTTableAdapter()
         Me.TmpBatchCollectionsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.tmpBatchCollectionsTableAdapter()
+        Me.SimpleLabelItem1 = New DevExpress.XtraLayout.SimpleLabelItem()
         CType(Me.RepBdg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -190,6 +191,7 @@ Partial Class frmBatchCollectionInsert
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BatchCOLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RepBdg
@@ -225,7 +227,7 @@ Partial Class frmBatchCollectionInsert
         '
         'cboBDG
         '
-        Me.cboBDG.Location = New System.Drawing.Point(134, 12)
+        Me.cboBDG.Location = New System.Drawing.Point(127, 12)
         Me.cboBDG.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBDG.Name = "cboBDG"
         Me.cboBDG.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -238,7 +240,7 @@ Partial Class frmBatchCollectionInsert
         Me.cboBDG.Properties.PopupSizeable = False
         Me.cboBDG.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest
         Me.cboBDG.Properties.ValueMember = "ID"
-        Me.cboBDG.Size = New System.Drawing.Size(906, 38)
+        Me.cboBDG.Size = New System.Drawing.Size(913, 38)
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 0
         Me.cboBDG.Tag = ""
@@ -662,7 +664,6 @@ Partial Class frmBatchCollectionInsert
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         Me.GridView1.OptionsView.EnableAppearanceEvenRow = True
         Me.GridView1.OptionsView.ShowFooter = True
-        Me.GridView1.OptionsView.ShowGroupPanel = False
         Me.GridView1.PreviewIndent = 0
         Me.GridView1.RowHeight = 1
         '
@@ -865,7 +866,7 @@ Partial Class frmBatchCollectionInsert
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem1, Me.EmptySpaceItem2})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem1, Me.EmptySpaceItem2, Me.SimpleLabelItem1})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(2084, 983)
         Me.Root.TextVisible = False
@@ -904,7 +905,9 @@ Partial Class frmBatchCollectionInsert
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
         Me.LayoutControlItem5.Size = New System.Drawing.Size(1032, 42)
         Me.LayoutControlItem5.Text = "Πολυκατοικία"
+        Me.LayoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(110, 23)
+        Me.LayoutControlItem5.TextToControlDistance = 5
         '
         'EmptySpaceItem1
         '
@@ -917,9 +920,9 @@ Partial Class frmBatchCollectionInsert
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 920)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(837, 920)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1675, 43)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(838, 43)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'BatchCOLBindingSource
@@ -938,6 +941,20 @@ Partial Class frmBatchCollectionInsert
         'TmpBatchCollectionsTableAdapter
         '
         Me.TmpBatchCollectionsTableAdapter.ClearBeforeFill = True
+        '
+        'SimpleLabelItem1
+        '
+        Me.SimpleLabelItem1.AllowHotTrack = False
+        Me.SimpleLabelItem1.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.142858!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.SimpleLabelItem1.AppearanceItemCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.SimpleLabelItem1.AppearanceItemCaption.Options.UseFont = True
+        Me.SimpleLabelItem1.AppearanceItemCaption.Options.UseForeColor = True
+        Me.SimpleLabelItem1.Location = New System.Drawing.Point(0, 920)
+        Me.SimpleLabelItem1.Name = "SimpleLabelItem1"
+        Me.SimpleLabelItem1.Size = New System.Drawing.Size(837, 43)
+        Me.SimpleLabelItem1.Text = "Πλήκτρο INS = Εισαγωγή εγγραφής : Πλήκτρο Delete(Del) = Διαγραφή εγγραφής "
+        Me.SimpleLabelItem1.TextSize = New System.Drawing.Size(790, 23)
         '
         'frmBatchCollectionInsert
         '
@@ -978,6 +995,7 @@ Partial Class frmBatchCollectionInsert
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BatchCOLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1023,4 +1041,5 @@ Partial Class frmBatchCollectionInsert
     Friend WithEvents colcreatedBy As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colowner_tenant As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colAmt As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents SimpleLabelItem1 As DevExpress.XtraLayout.SimpleLabelItem
 End Class

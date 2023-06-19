@@ -73,6 +73,9 @@ Partial Class frmINH
         Me.BarSygentrotiki = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEidop = New DevExpress.XtraBars.BarButtonItem()
         Me.BarReceipt = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarCopyCell = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarCopyRow = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarCopyAll = New DevExpress.XtraBars.BarButtonItem()
         Me.chkEmail = New DevExpress.XtraEditors.CheckEdit()
         Me.ToolTipController1 = New DevExpress.Utils.ToolTipController(Me.components)
         Me.chkCalorimetric = New DevExpress.XtraEditors.CheckEdit()
@@ -189,6 +192,7 @@ Partial Class frmINH
         Me.LcmdCancelCalculate = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem37 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -209,6 +213,7 @@ Partial Class frmINH
         Me.AHPB_H1TableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter()
         Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AHPB_Β = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter()
+        Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -332,6 +337,7 @@ Partial Class frmINH
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView7
@@ -717,8 +723,8 @@ Partial Class frmINH
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarSygentrotiki, Me.BarEidop, Me.BarReceipt})
-        Me.BarManager1.MaxItemId = 3
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarSygentrotiki, Me.BarEidop, Me.BarReceipt, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll})
+        Me.BarManager1.MaxItemId = 9
         '
         'barDockControlTop
         '
@@ -773,6 +779,27 @@ Partial Class frmINH
         Me.BarReceipt.Caption = "Αποδείξεις"
         Me.BarReceipt.Id = 2
         Me.BarReceipt.Name = "BarReceipt"
+        '
+        'BarCopyCell
+        '
+        Me.BarCopyCell.Caption = "Αντιγραφή Κελιού"
+        Me.BarCopyCell.Id = 6
+        Me.BarCopyCell.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_copy_16
+        Me.BarCopyCell.Name = "BarCopyCell"
+        '
+        'BarCopyRow
+        '
+        Me.BarCopyRow.Caption = "Αντιγραφή Γραμμής"
+        Me.BarCopyRow.Id = 7
+        Me.BarCopyRow.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_copy_16
+        Me.BarCopyRow.Name = "BarCopyRow"
+        '
+        'BarCopyAll
+        '
+        Me.BarCopyAll.Caption = "Αντιγραφή όλα"
+        Me.BarCopyAll.Id = 8
+        Me.BarCopyAll.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_copy_16
+        Me.BarCopyAll.Name = "BarCopyAll"
         '
         'chkEmail
         '
@@ -1122,6 +1149,8 @@ Partial Class frmINH
         '
         'cmdDel
         '
+        Me.cmdDel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdDel.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
         Me.cmdDel.Location = New System.Drawing.Point(842, 795)
         Me.cmdDel.Margin = New System.Windows.Forms.Padding(5)
@@ -1172,10 +1201,10 @@ Partial Class frmINH
         '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(249, 365)
+        Me.txtComments.Location = New System.Drawing.Point(249, 345)
         Me.txtComments.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(576, 31)
+        Me.txtComments.Size = New System.Drawing.Size(576, 51)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 46
         Me.txtComments.Tag = "cmt,0,1,2"
@@ -1588,7 +1617,7 @@ Partial Class frmINH
         Me.txtBdgCmt.Margin = New System.Windows.Forms.Padding(5)
         Me.txtBdgCmt.Name = "txtBdgCmt"
         Me.txtBdgCmt.Properties.ReadOnly = True
-        Me.txtBdgCmt.Size = New System.Drawing.Size(576, 102)
+        Me.txtBdgCmt.Size = New System.Drawing.Size(576, 82)
         Me.txtBdgCmt.StyleController = Me.LayoutControl1
         Me.txtBdgCmt.TabIndex = 17
         Me.txtBdgCmt.Tag = ""
@@ -1729,11 +1758,11 @@ Partial Class frmINH
         Me.LayoutControlItem8.AppearanceItemCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
         Me.LayoutControlItem8.Control = Me.txtComments
         Me.LayoutControlItem8.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 268)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 248)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.OptionsPrint.AppearanceItem.Options.UseTextOptions = True
         Me.LayoutControlItem8.OptionsPrint.AppearanceItem.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(804, 35)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(804, 55)
         Me.LayoutControlItem8.Text = "Γεν. σημ. πραστατικού"
         Me.LayoutControlItem8.TextLocation = DevExpress.Utils.Locations.Left
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(212, 23)
@@ -1782,7 +1811,7 @@ Partial Class frmINH
         Me.LayoutControlItem30.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem30.Location = New System.Drawing.Point(0, 162)
         Me.LayoutControlItem30.Name = "LayoutControlItem30"
-        Me.LayoutControlItem30.Size = New System.Drawing.Size(804, 106)
+        Me.LayoutControlItem30.Size = New System.Drawing.Size(804, 86)
         Me.LayoutControlItem30.Text = "Σχόλια Πολυκατοικίας"
         Me.LayoutControlItem30.TextLocation = DevExpress.Utils.Locations.Left
         Me.LayoutControlItem30.TextSize = New System.Drawing.Size(212, 23)
@@ -1793,6 +1822,7 @@ Partial Class frmINH
         Me.LayoutControlItem14.Location = New System.Drawing.Point(660, 120)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
         Me.LayoutControlItem14.Size = New System.Drawing.Size(144, 42)
+        Me.LayoutControlItem14.Text = "Ημερομηνία"
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem14.TextVisible = False
         '
@@ -2071,6 +2101,7 @@ Partial Class frmINH
         Me.LayoutControlItem31.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem31.Name = "LayoutControlItem31"
         Me.LayoutControlItem31.Size = New System.Drawing.Size(203, 36)
+        Me.LayoutControlItem31.Text = "Υπολογισμένο"
         Me.LayoutControlItem31.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem31.TextVisible = False
         '
@@ -2080,6 +2111,7 @@ Partial Class frmINH
         Me.LayoutControlItem32.Location = New System.Drawing.Point(203, 0)
         Me.LayoutControlItem32.Name = "LayoutControlItem32"
         Me.LayoutControlItem32.Size = New System.Drawing.Size(205, 36)
+        Me.LayoutControlItem32.Text = "Συγκεντρωτική"
         Me.LayoutControlItem32.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem32.TextVisible = False
         '
@@ -2089,6 +2121,7 @@ Partial Class frmINH
         Me.LayoutControlItem33.Location = New System.Drawing.Point(408, 0)
         Me.LayoutControlItem33.Name = "LayoutControlItem33"
         Me.LayoutControlItem33.Size = New System.Drawing.Size(171, 36)
+        Me.LayoutControlItem33.Text = "Ειδοποίηση"
         Me.LayoutControlItem33.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem33.TextVisible = False
         '
@@ -2098,6 +2131,7 @@ Partial Class frmINH
         Me.LayoutControlItem34.Location = New System.Drawing.Point(579, 0)
         Me.LayoutControlItem34.Name = "LayoutControlItem34"
         Me.LayoutControlItem34.Size = New System.Drawing.Size(145, 36)
+        Me.LayoutControlItem34.Text = "Απόδειξη"
         Me.LayoutControlItem34.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem34.TextVisible = False
         '
@@ -2155,8 +2189,18 @@ Partial Class frmINH
         Me.LayoutControlItem37.Location = New System.Drawing.Point(724, 0)
         Me.LayoutControlItem37.Name = "LayoutControlItem37"
         Me.LayoutControlItem37.Size = New System.Drawing.Size(106, 36)
+        Me.LayoutControlItem37.Text = "Email"
         Me.LayoutControlItem37.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem37.TextVisible = False
+        '
+        'Bar1
+        '
+        Me.Bar1.BarName = "Exp"
+        Me.Bar1.DockCol = 0
+        Me.Bar1.DockRow = 0
+        Me.Bar1.FloatLocation = New System.Drawing.Point(1099, 1080)
+        Me.Bar1.Offset = 873
+        Me.Bar1.Text = "Custom 2"
         '
         'Priamos_NETDataSet3
         '
@@ -2250,6 +2294,12 @@ Partial Class frmINH
         'AHPB_Β
         '
         Me.AHPB_Β.ClearBeforeFill = True
+        '
+        'PopupMenuRows
+        '
+        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyCell), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyRow), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyAll)})
+        Me.PopupMenuRows.Manager = Me.BarManager1
+        Me.PopupMenuRows.Name = "PopupMenuRows"
         '
         'frmINH
         '
@@ -2390,6 +2440,7 @@ Partial Class frmINH
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2572,4 +2623,9 @@ Partial Class frmINH
     Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents chkFromTransfer As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents Bar1 As DevExpress.XtraBars.Bar
+    Friend WithEvents BarCopyCell As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarCopyRow As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarCopyAll As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents PopupMenuRows As DevExpress.XtraBars.PopupMenu
 End Class

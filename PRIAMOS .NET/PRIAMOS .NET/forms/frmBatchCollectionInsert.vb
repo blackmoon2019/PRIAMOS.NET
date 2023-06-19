@@ -5,11 +5,13 @@ Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
 Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPrinting.Shape.Native
 
 Public Class frmBatchCollectionInsert
     Private ManageCbo As New CombosManager
+    Private LoadForms As New FormLoader
     Sub New()
 
         GridLocalizer.Active = New GridGreekLocalizer()
@@ -23,6 +25,7 @@ Public Class frmBatchCollectionInsert
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
         AddHandler grdCollections.EmbeddedNavigator.ButtonClick, AddressOf Grid_EmbeddedNavigator_ButtonClick
         DevExpress.XtraGrid.Localization.GridLocalizer.Active = New GridGreekLocalizer()
+        LoadForms.RestoreLayoutFromXml(GridView1, "tmpBatchCollections.xml")
         Me.CenterToScreen()
     End Sub
 
@@ -56,7 +59,7 @@ Public Class frmBatchCollectionInsert
                     XtraMessageBox.Show("Δεν έχετε επιλέξει πολυκατοικία.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                'grdCollections.EmbeddedNavigator.Buttons.DoClick(grdCollections.EmbeddedNavigator.Buttons.Append)
+
             End If
         End If
     End Sub
@@ -172,13 +175,16 @@ Public Class frmBatchCollectionInsert
                 sSQL.AppendLine("amt = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "amt").ToString, True) & ",")
                 sSQL.AppendLine("owner_tenant= " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "owner_tenant").ToString) & ",")
                 sSQL.AppendLine("completeDate = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "completeDate").ToString) & ",")
-                sSQL.AppendLine("createdBy = " & toSQLValueS(UserProps.ID.ToString) & ",")
+                sSQL.AppendLine("createdBy = " & toSQLValueS(UserProps.ID.ToString))
                 sSQL.Append("WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString))
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
             End If
+        Catch sqlEx As SqlException When sqlEx.Number = 2601
+            XtraMessageBox.Show("Ύπάρχει ήδη εγγραφή καταχωρημένη με αυτά τα στοιχεία.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Valid = False
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -216,7 +222,9 @@ Public Class frmBatchCollectionInsert
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
         Select Case e.Button.Index
             Case 1 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
-            Case 2 : cboBDG.EditValue = Nothing
+            Case 2
+                If cboBDG.EditValue = Nothing Then Exit Sub
+                Me.TmpBatchCollectionsTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.tmpBatchCollections, System.Guid.Parse(cboBDG.EditValue.ToString)) : cboBDG.EditValue = Nothing
         End Select
     End Sub
 
@@ -243,5 +251,13 @@ Public Class frmBatchCollectionInsert
 
     Private Sub frmBatchCollectionInsert_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         If Me.WindowState = FormWindowState.Maximized Then frmMain.XtraTabbedMdiManager1.Dock(Me, frmMain.XtraTabbedMdiManager1)
+    End Sub
+
+    Private Sub grdCollections_ProcessGridKey(sender As Object, e As KeyEventArgs) Handles grdCollections.ProcessGridKey
+        If e.KeyCode = Keys.Insert Then grdCollections.EmbeddedNavigator.Buttons.DoClick(grdCollections.EmbeddedNavigator.Buttons.Append)
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView1, "tmpBatchCollections.xml", "tmpBatchCollections")
     End Sub
 End Class
