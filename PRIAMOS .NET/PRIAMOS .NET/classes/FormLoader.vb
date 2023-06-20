@@ -142,11 +142,6 @@ NextItem:
             'sTable = sdr.GetSchemaTable()
             If (sdr.Read() = True) Then
 
-                Dim SQL As String = "INSERT INTO LOCKEDRECORDS SELECT " & toSQLValueS(sdr.GetGuid(sdr.GetOrdinal("ID")).ToString) & "," & toSQLValueS(UserProps.ID.ToString)
-                Using oCmd As New SqlCommand(SQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-
                 ' Αυτό μπήκε αγια να φέρει όλα τα πεδία του view μαζί με τιμές 
                 If Not IsNothing(dictionary) Then
                     For index As Integer = 0 To sdr.FieldCount - 1
@@ -303,11 +298,6 @@ NextItem:
         Try
             sTable = sdr.GetSchemaTable()
             If (sdr.Read() = True) Then
-
-                Dim SQL As String = "INSERT INTO LOCKEDRECORDS SELECT " & toSQLValueS(sdr.GetGuid(sdr.GetOrdinal("ID")).ToString) & "," & toSQLValueS(UserProps.ID.ToString)
-                Using oCmd As New SqlCommand(SQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
 
                 For Each item As BaseLayoutItem In GRP.Items
                     If TypeOf item Is LayoutControlItem Then
@@ -853,21 +843,6 @@ NextItem:
         End Sub
         Public Column As GridColumn
     End Class
-    Public Function IsRecordLocked(ByVal sID As String) As Boolean
-        Try
-            Dim SQL As String = "INSERT INTO LOCKEDRECORDS (ID,userID) Select " & toSQLValueS(sID) & "," & toSQLValueS(UserProps.ID.ToString)
 
-            Using oCmd As New SqlCommand(SQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
-
-        Catch sqlEx As SqlException When sqlEx.Number = 2627
-            XtraMessageBox.Show("Η εγγραφή χρησιμοποιείται από άλλον χρήστη αυτήν την στιγμή.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return True
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return True
-        End Try
-    End Function
 End Class
 

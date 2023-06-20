@@ -207,6 +207,7 @@ Public Class frmBatchCollectionInsert
     End Function
     Private Sub CreateColInh()
         Try
+            If GridView1.RowCount = 0 Then Exit Sub
             Using oCmd As New SqlCommand("inv_CreateFromTransfer", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
