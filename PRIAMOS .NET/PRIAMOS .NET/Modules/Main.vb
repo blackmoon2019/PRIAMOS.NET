@@ -137,6 +137,55 @@ Module Main
         TranslateDates = TranslateDates.Replace("Δεκέμβριος", "Δεκ.")
         Return TranslateDates
     End Function
+    Public Function TranslateDatesRep(ByVal fDateS As String, ByVal tDateS As String) As String
+        Try
+            Dim fText As String, tText As String
+            Dim fDate As New DevExpress.XtraEditors.DateEdit : Dim tDate As New DevExpress.XtraEditors.DateEdit
+            fDate.Properties.TextEditStyle = Controls.TextEditStyles.DisableTextEditor
+            fDate.Properties.VistaCalendarInitialViewStyle = VistaCalendarInitialViewStyle.MonthView
+            fDate.Properties.VistaCalendarViewStyle = VistaCalendarViewStyle.YearView
+            fDate.Properties.MaskSettings.MaskExpression = "Y" : fDate.Properties.EditMask = "Y"
+            fDate.Properties.UseMaskAsDisplayFormat = True
+
+            tDate.Properties.TextEditStyle = Controls.TextEditStyles.DisableTextEditor
+            tDate.Properties.VistaCalendarInitialViewStyle = VistaCalendarInitialViewStyle.MonthView
+            tDate.Properties.VistaCalendarViewStyle = VistaCalendarViewStyle.YearView
+            tDate.Properties.MaskSettings.MaskExpression = "Y" : tDate.Properties.EditMask = "Y"
+            tDate.Properties.UseMaskAsDisplayFormat = True
+
+            fDate.EditValue = fDateS : tDate.EditValue = tDateS
+            fText = MonthName(Month(fDateS)) & " " & Year(fDateS)
+            tText = MonthName(Month(tDateS)) & " " & Year(tDateS)
+            If fDate.DateTime.Year = tDate.DateTime.Year Then
+                TranslateDatesRep = fText.ToString.Replace(fDate.DateTime.Year, "") & "-" & tText
+                ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
+                If fText.ToString.Replace(fDate.DateTime.Year, "") = tText.ToString.Replace(tDate.DateTime.Year, "") Then
+                    TranslateDatesRep = fText.ToString.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year
+                End If
+            Else
+                TranslateDatesRep = fText & "-" & tText
+                ' Εαν ο μήνας είναι ο ίδιος τότε αποθηκέυουμε μόνο Μηνας - Ετος
+                If fText.ToString.Replace(fDate.DateTime.Year, "") = tText.ToString.Replace(tDate.DateTime.Year, "") Then
+                    TranslateDatesRep = fText.ToString.Replace(fDate.DateTime.Year, "") & " " & fDate.DateTime.Year & "-" & tText
+                End If
+            End If
+            TranslateDatesRep = TranslateDatesRep.Replace("Ιανουάριος", "Ιαν.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Φεβρουάριος", "Φεβ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Μάρτιος ", "Μαρ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Απρίλιος", "Απρ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Μάϊος", "Μάι.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Ιούνιος ", "Ιούν.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Ιούλιος", "Ιούλ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Αύγουστος", "Αυγ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Σεπτέμβριος", "Σεπ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Οκτώβριος", "Οκτ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Νοέμβριος", "Νοέ.")
+            TranslateDatesRep = TranslateDatesRep.Replace("Δεκέμβριος", "Δεκ.")
+            Return TranslateDatesRep
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Function
 
     Public Function ConvertCharToENGR(ByVal sWord As String) As String
         Dim convertEngToGr As Boolean = False

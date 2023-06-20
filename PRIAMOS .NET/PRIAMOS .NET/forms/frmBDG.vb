@@ -565,17 +565,13 @@ Public Class frmBDG
     End Sub
     Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
         Dim sSQL As String
-        If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Valid.SChanged = False
-            Else
-                Exit Sub
-            End If
-        End If
         Maintab.SelectedTabPage = tabManage
         If sManageID IsNot Nothing Then
-            sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
-            BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
+            If sManageID.Length > 0 Then
+                sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
+                BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
+            End If
+
         End If
         'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl2BManage)
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
@@ -2788,4 +2784,5 @@ Public Class frmBDG
         form.bdgID = sID
         form.ShowDialog()
     End Sub
+
 End Class

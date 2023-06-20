@@ -12,7 +12,11 @@
     Partial Public Class COL_APTDataTable
     End Class
 
-    Partial Public Class DataTable1DataTable
+    Partial Public Class Batch_COLDataTable
+        Private Sub Batch_COLDataTable_Batch_COLRowChanging(sender As Object, e As Batch_COLRowChangeEvent) Handles Me.Batch_COLRowChanging
+
+        End Sub
+
     End Class
 End Class
 

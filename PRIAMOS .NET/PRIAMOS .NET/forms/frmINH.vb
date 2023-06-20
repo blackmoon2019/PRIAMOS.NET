@@ -15,12 +15,8 @@ Imports DevExpress.XtraGrid.Views.BandedGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
-Imports DevExpress.XtraPivotGrid
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraReports.UI
-Imports DevExpress.XtraPrinting.Control
-Imports DevExpress.XtraReports.UI.CrossTab
-Imports System.ComponentModel
 
 Public Class frmINH
     Private sID As String
@@ -1007,7 +1003,11 @@ Public Class frmINH
     End Sub
 
     Private Sub GridView5_PopupMenuShowing(sender As Object, e As Views.Grid.PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView5, "INHDET_def.xml", "VW_IND")
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView5, "INHDET_def.xml", "VW_IND")
+        Else
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
 
     End Sub
 
@@ -1497,8 +1497,29 @@ Public Class frmINH
         End Select
     End Sub
 
-    Private Sub cboAnnouncements_EditValueChanged(sender As Object, e As EventArgs) Handles cboAnnouncements.EditValueChanged
-
+    ' Copy Cell
+    Private Sub BarCopyCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyCell.ItemClick
+        Dim view As GridView = CType(GridView5, GridView)
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+            Clipboard.SetText(view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString())
+        End If
+    End Sub
+    'Copy All
+    Private Sub BarCopyAll_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyAll.ItemClick
+        GridView5.OptionsSelection.MultiSelect = True
+        GridView5.SelectAll()
+        GridView5.CopyToClipboard()
+        GridView5.OptionsSelection.MultiSelect = False
+    End Sub
+    'Copy Row
+    Private Sub BarCopyRow_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyRow.ItemClick
+        Dim view As GridView = CType(GridView5, GridView)
+        If view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn) IsNot Nothing AndAlso view.GetRowCellValue(view.FocusedRowHandle, view.FocusedColumn).ToString() <> [String].Empty Then
+            GridView5.OptionsSelection.MultiSelect = True
+            GridView5.SelectRow(view.FocusedRowHandle)
+            GridView5.CopyToClipboard()
+            GridView5.OptionsSelection.MultiSelect = False
+        End If
     End Sub
 
 End Class
