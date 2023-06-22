@@ -1637,11 +1637,14 @@ Partial Class frmINH
         '
         'chkFromTransfer
         '
+        Me.chkFromTransfer.EditValue = CType(0, Byte)
         Me.chkFromTransfer.Location = New System.Drawing.Point(665, 97)
         Me.chkFromTransfer.MenuManager = Me.BarManager1
         Me.chkFromTransfer.Name = "chkFromTransfer"
         Me.chkFromTransfer.Properties.Caption = "Εκ Μεταφοράς"
         Me.chkFromTransfer.Properties.ReadOnly = True
+        Me.chkFromTransfer.Properties.ValueChecked = CType(1, Byte)
+        Me.chkFromTransfer.Properties.ValueUnchecked = CType(0, Byte)
         Me.chkFromTransfer.Size = New System.Drawing.Size(160, 32)
         Me.chkFromTransfer.StyleController = Me.LayoutControl1
         Me.chkFromTransfer.TabIndex = 80
