@@ -1,4 +1,6 @@
-﻿Imports DevExpress.Utils
+﻿Imports DevExpress.LookAndFeel
+Imports System.Configuration
+Imports DevExpress.Utils
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
@@ -14,6 +16,7 @@ Public Class frmMain
         bbDB.Caption = "Database: " & CNDB.Database.ToString
         bbVersion.Caption = "Ver:" + My.Application.Info.Version.ToString
         Timer2.Stop()
+        LoadCurrentSkin()
         'Η Καταχώριση έκδοσης εμφανίζεται μόνο σε μένα
         If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then BBVer.Visibility = BarItemVisibility.Always
     End Sub
@@ -454,8 +457,8 @@ Public Class frmMain
     Private Sub BBatchInsertAnnment_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBatchInsertAnnment.ItemClick
         Dim form As frmBatchCreateAnnments = New frmBatchCreateAnnments()
         form.Text = "Μαζική Ενημέρωση Ανακοινώσεων"
-        UserPermissions.GetUserPermissions(Form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Form.Dispose() : Exit Sub
-        Form.MdiParent = Me
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.MdiParent = Me
         Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(Form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
         Form.Show()
 
@@ -578,7 +581,28 @@ Public Class frmMain
         form.MdiParent = Me
         form.Show()
     End Sub
+    Private Sub frmMain_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        SaveCurrentSkin()
+    End Sub
 
+    Sub SaveCurrentSkin()
+        Dim config As Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+        If config.AppSettings.Settings("Skin") Is Nothing Then
+            config.AppSettings.Settings.Add("Skin", UserLookAndFeel.Default.ActiveSkinName)
+        Else
+            config.AppSettings.Settings("Skin").Value = UserLookAndFeel.Default.ActiveSkinName
+        End If
+        config.Save()
+
+    End Sub
+    Sub LoadCurrentSkin()
+        Dim config As Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+        If config.AppSettings.Settings("Skin") Is Nothing Then
+            Return
+        Else
+            UserLookAndFeel.Default.ActiveLookAndFeel.SkinName = config.AppSettings.Settings("Skin").Value
+        End If
+    End Sub
 
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()

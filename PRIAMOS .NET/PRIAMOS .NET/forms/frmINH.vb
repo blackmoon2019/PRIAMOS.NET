@@ -1,7 +1,11 @@
 ﻿
 Imports System.Data.SqlClient
+Imports DevExpress.DataAccess
 Imports DevExpress.Export
+Imports DevExpress.LookAndFeel
+Imports DevExpress.Spreadsheet
 Imports DevExpress.Utils
+Imports DevExpress.Utils.Colors
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Navigation
@@ -16,7 +20,9 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPrinting
+Imports DevExpress.XtraPrinting.Shape.Native
 Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraSpreadsheet.DocumentFormats
 
 Public Class frmINH
     Private sID As String
@@ -78,12 +84,13 @@ Public Class frmINH
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+
                 Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
+                Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
                 Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
-                If cboAhpbH.EditValue IsNot Nothing Then cboAhpb.EditValue = cboAhpbH.EditValue
-                If cboAhpbHB.EditValue IsNot Nothing Then cboAhpbB.EditValue = cboAhpbHB.EditValue
                 If InhFieldAndValues.Item("mdt") <> "" Then
                     lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy")
                     cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID"))
@@ -296,7 +303,7 @@ Public Class frmINH
                                     oCmd.ExecuteNonQuery()
                                 End Using
                             End If
-                            If cboAhpbH.EditValue IsNot Nothing Or cboAhpbB.EditValue IsNot Nothing Then
+                            If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                 ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
                                 sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
                                    "Select " & toSQLValueS(sGuid) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',consumptionH,'1' FROM CONSUMPTIONS where ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString)
@@ -330,7 +337,7 @@ Public Class frmINH
                             Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                             sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
                             If sResult Then
-                                If cboAhpbH.EditValue IsNot Nothing Or cboAhpbB.EditValue IsNot Nothing Then
+                                If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                     If cboAhpbH.EditValue IsNot Nothing Then
                                         ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
                                         sSQL = "INSERT INTO IND (inhID, calcCatID,  amt, owner_tenant) " &
@@ -370,6 +377,8 @@ Public Class frmINH
                     cmdRefresh.Enabled = True
                     TabNavigationPage3.Enabled = True
                     chkCALC_CAT.SetItemChecked(0, True)
+                    BarSygentrotiki.Enabled = True : BarReceipt.Enabled = True : BarEidop.Enabled = True
+                    LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Success
                 End If
             End If
 
@@ -571,31 +580,28 @@ Public Class frmINH
     End Sub
     Private Sub cboBDG_Validated(sender As Object, e As EventArgs) Handles cboBDG.Validated
         If cboBDG.EditValue = Nothing Then Exit Sub
-        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+           cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
 
             If Priamos_NETDataSet.AHPB_H.Rows.Count > 0 Then
-                'cboAhpb.ItemIndex = 0
-                cboAhpb.Properties.ReadOnly = False
-
-            ElseIf cboAhpb.Properties.DataSource.Count = 0 Then
+                cboAhpbH.Properties.ReadOnly = False
+            ElseIf cboAhpbH.Properties.DataSource.Count = 0 Then
                 XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Θέρμανσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                'cmdOK.Enabled = False
             End If
         Else
             txtHeatingType.EditValue = Nothing
         End If
-        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+        If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+           cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
             txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
             If Priamos_NETDataSet.AHPB_Β.Rows.Count > 0 Then
-                '  cboAhpbHB.ItemIndex = 0
                 cboAhpbHB.Properties.ReadOnly = False
-
             ElseIf cboAhpbHB.Properties.DataSource.Count = 0 Then
                 XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Boiler", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                'cmdOK.Enabled = False
             End If
         Else
             txtBoilerType.EditValue = Nothing
@@ -640,6 +646,7 @@ Public Class frmINH
             End If
             If cboBDG.GetColumnValue("cmt") Is Nothing Then Exit Sub
             txtBdgCmt.Text = cboBDG.GetColumnValue("cmt").ToString
+            If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -655,47 +662,7 @@ Public Class frmINH
 
     Private Sub cmdCalculate_Click(sender As Object, e As EventArgs) Handles cmdCalculate.Click
         Try
-            If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-                cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbH.EditValue Is Nothing Then
-                LayoutControl1.Enabled = False
-                FlyoutPanel1.OwnerControl = TabPane1
-                FlyoutPanel1.OptionsBeakPanel.AnimationType = Win.PopupToolWindowAnimation.Fade
-                'FlyoutPanel1.Options.CloseOnOuterClick = True
-                FlyoutPanel1.Options.AnchorType = Win.PopupToolWindowAnchor.Center
-                FlyoutPanel1.ShowPopup()
-            ElseIf (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-                cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbHB.EditValue Is Nothing Then
-                LayoutControl1.Enabled = False
-                FlyoutPanel1.OwnerControl = TabPane1
-                FlyoutPanel1.OptionsBeakPanel.AnimationType = Win.PopupToolWindowAnimation.Fade
-                'FlyoutPanel1.Options.CloseOnOuterClick = True
-                FlyoutPanel1.Options.AnchorType = Win.PopupToolWindowAnchor.Center
-                FlyoutPanel1.ShowPopup()
-            Else
-
-                'Dim cmd As SqlCommand
-                'Dim sdr As SqlDataReader
-                'Dim CountUsers As Integer
-                'cmd = New SqlCommand("select count(distinct debitusrid) as CountUsers from col where debitusrID is not null and bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & " And completed = 0", CNDB)
-                'sdr = cmd.ExecuteReader()
-                'If (sdr.Read() = True) Then
-                '    If sdr.IsDBNull(sdr.GetOrdinal("CountUsers")) = True Then
-                '        CountUsers = 0
-                '    Else
-                '        CountUsers = sdr.GetInt32(sdr.GetOrdinal("CountUsers"))
-                '    End If
-                '    sdr.Close()
-                '    If CountUsers > 1 Then
-                '        XtraMessageBox.Show("Υπάρχουν  εισπράξεις σε άλλον χρήστη χρεωμένες. " & vbCrLf &
-                '                        "Πρέπει να αποχρεώσετε τις εισπράξεις αυτές ή να εκδόσετε το παραστατικό με τον ίδιο χρήστη.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                '        Exit Sub
-                '    End If
-                'End If
-                Calculate()
-                TabNavigationPage2.Enabled = True
-                cmdPrintAll.Enabled = True
-
-            End If
+            Calculate() : TabNavigationPage2.Enabled = True : cmdPrintAll.Enabled = True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -703,10 +670,12 @@ Public Class frmINH
 
     Private Sub dtFDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtFDate.EditValueChanged
         lbldate.Text = TranslateDates(dtFDate, dtTDate)
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
     End Sub
 
     Private Sub dtTDate_EditValueChanged(sender As Object, e As EventArgs) Handles dtTDate.EditValueChanged
         lbldate.Text = TranslateDates(dtFDate, dtTDate)
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
     End Sub
 
     Private Sub GridView5_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView5.KeyDown
@@ -823,29 +792,14 @@ Public Class frmINH
 
     Private Sub Calculate()
         Try
-            Dim sAhpbID As String, sAhpbText As String
-            Dim sAhpbBID As String, sAhpbBtext As String
-
+            Dim sAhpbID As String = "00000000-0000-0000-0000-000000000000", sAhpbText As String = ""
+            Dim sAhpbBID As String = "00000000-0000-0000-0000-000000000000", sAhpbBtext As String = ""
+            ' Έλεγχος στην περίπτωση που υπάρχουν καταναλώσεις κι όχι ώρες και το αντίθετο
+            If CheckForSelectedHours(sAhpbID, sAhpbBID, sAhpbText, sAhpbBtext) = False Then Exit Sub
             Using oCmd As New SqlCommand("inv_Calculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
                 oCmd.Parameters.AddWithValue("@bdgid", cboBDG.EditValue.ToString.ToUpper)
-                ' Εαν είναι νέα εγγραφή τότε παίρνω την τιμή της ώρας από το Combo στο FlyoutPanel
-                If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-                    cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbH.EditValue Is Nothing Then
-                    If cboAhpb.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpb.EditValue.ToString.ToUpper : sAhpbText = cboAhpb.Text
-                Else
-                    ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
-                    If cboAhpbH.EditValue Is Nothing Then sAhpbID = "00000000-0000-0000-0000-000000000000" Else sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
-                End If
-                If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-                    cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") And cboAhpbHB.EditValue Is Nothing Then
-                    If cboAhpbB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbB.Text
-                Else
-                    ' Παίρνω την τιμή της ώρας από το Combo των ωρών που έχει φορτωθεί με το παραστατικό
-                    If cboAhpbHB.EditValue Is Nothing Then sAhpbBID = "00000000-0000-0000-0000-000000000000" Else sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
-                End If
-
                 oCmd.Parameters.AddWithValue("@ahpbHID", System.Guid.Parse(sAhpbID))
                 oCmd.Parameters.AddWithValue("@ahpbHIDB", System.Guid.Parse(sAhpbBID))
                 oCmd.ExecuteNonQuery()
@@ -854,13 +808,10 @@ Public Class frmINH
             If sAhpbText <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & sAhpbText : Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
             If sAhpbBtext <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & sAhpbBtext : Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
 
-
-
             chkCalculated.CheckState = CheckState.Checked
             chkCalculated.Checked = True
             LcmdCancelCalculate.Enabled = True
-            LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False
-            '  Frm.Refresh()
+            LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False : cmdSaveINH.Enabled = False
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
         Catch SQLex As SqlException
@@ -869,18 +820,62 @@ Public Class frmINH
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
+    Private Function CheckForSelectedHours(ByRef sAhpbID As String, ByRef sAhpbBID As String, ByRef sAhpbText As String, ByRef sAhpbBtext As String) As Boolean
+        'Έλεγχος αν έχει επιλεχθεί σστα έξοδα Κατανάλωση Θέρμανης ή Κατανάλωση boiler
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim sindHID As String = "", sindBID As String = ""
+        ' Εαν έχει καταχωρήσει κατανάλωση θέρμανσης
+        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then sindHID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+        sdr.Close()
+        ' Εαν έχει καταχωρήσει κατανάλωση Boiler
+        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then sindBID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+        sdr.Close()
 
 
-    Private Sub cmdOK_Click(sender As Object, e As EventArgs) Handles cmdOK.Click
-        FlyoutPanel1.HidePopup()
-        Calculate()
-        Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
-        cboAhpbH.EditValue = cboAhpb.EditValue
-        cboAhpbHB.EditValue = cboAhpbB.EditValue
-        LayoutControl1.Enabled = True
-    End Sub
+        ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
+        If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+            cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+            If sindHID.Length = 0 And cboAhpbH.EditValue IsNot Nothing Then
+                XtraMessageBox.Show("Έχετε επιλέξει ώρες χωρίς να καταχωρήσετε κατανάλωση θέρμανσης.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            ElseIf sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
+                XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση θέρμανσης χωρίς να επιλέξετε ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            Else
+                sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
+            End If
+        Else
+            sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
+        End If
+
+
+        ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
+        If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+           cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+            If sindBID.Length = 0 And cboAhpbHB.EditValue IsNot Nothing Then
+                XtraMessageBox.Show("Έχετε επιλέξει ώρες χωρίς να καταχωρήσετε κατανάλωση Boiler.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            ElseIf sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
+                XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση Boiler χωρίς να επιλέξετε  ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            Else
+                sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
+            End If
+        Else
+            sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
+        End If
+
+        Return True
+    End Function
 
     Private Sub cmdExport_Click(sender As Object, e As EventArgs) Handles cmdExport.Click
         Select Case TabPane1.SelectedPageIndex
@@ -1047,8 +1042,14 @@ Public Class frmINH
         chkCALC_CAT.Items.Clear()
         TabNavigationPage2.Enabled = False
         TabNavigationPage3.Enabled = False
+        txtComments.EditValue = Nothing
+        txtBdgCmt.EditValue = Nothing
         grdIND.DataSource = Nothing
-        lbldate.Text = " "
+        lbldate.Text = " " : lblAHPBB.Text = "" : lblAHPBH.Text = ""
+        chkCalorimetric.Checked = False : chkExtraordinary.Checked = False : chkFromTransfer.Checked = False : chkreserveAPT.Checked = False
+        chkCalculated.Checked = False : chkEmail.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
+        cmdCalculate.Enabled = False : cmdCancelCalculate.Enabled = False
+        BarSygentrotiki.Enabled = False : BarReceipt.Enabled = False : BarEidop.Enabled = False
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.NewGuid)
     End Sub
 
@@ -1313,8 +1314,7 @@ Public Class frmINH
         End Select
     End Sub
 
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdCancelMES.Click
-        FlyoutPanel1.HidePopup()
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs)
         LayoutControl1.Enabled = True
     End Sub
     Private Sub BarSygentrotiki_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSygentrotiki.ItemClick
@@ -1481,22 +1481,6 @@ Public Class frmINH
 
     End Sub
 
-    Private Sub cboAhpb_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpb.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : cboAhpb.EditValue = Nothing
-            Case 2
-            Case 3
-        End Select
-    End Sub
-
-    Private Sub cboAhpbB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAhpbB.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : cboAhpbB.EditValue = Nothing
-            Case 2
-            Case 3
-        End Select
-    End Sub
-
     ' Copy Cell
     Private Sub BarCopyCell_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarCopyCell.ItemClick
         Dim view As GridView = CType(GridView5, GridView)
@@ -1522,4 +1506,31 @@ Public Class frmINH
         End If
     End Sub
 
+    Private Sub cboAhpbH_EditValueChanged(sender As Object, e As EventArgs) Handles cboAhpbH.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub cboAhpbHB_EditValueChanged(sender As Object, e As EventArgs) Handles cboAhpbHB.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub cboAnnouncements_EditValueChanged(sender As Object, e As EventArgs) Handles cboAnnouncements.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub txtComments_EditValueChanged(sender As Object, e As EventArgs) Handles txtComments.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub txtBdgCmt_EditValueChanged(sender As Object, e As EventArgs) Handles txtBdgCmt.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub chkExtraordinary_EditValueChanged(sender As Object, e As EventArgs) Handles chkExtraordinary.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub chkCalorimetric_EditValueChanged(sender As Object, e As EventArgs) Handles chkCalorimetric.EditValueChanged
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
 End Class

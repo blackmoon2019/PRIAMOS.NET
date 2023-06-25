@@ -17,6 +17,7 @@ Imports System.ComponentModel
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
+Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -94,6 +95,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG_M' table. You can move, or remove it, as needed.
         'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_IEP' table. You can move, or remove it, as needed.
         Me.Vw_IEPTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_IEP)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
@@ -104,16 +106,14 @@ Public Class frmBDG
         Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_FOLDER_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
         Me.Vw_DOYTableAdapter.Fill(Me.Priamos_NETDataSet.vw_DOY)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet1.vw_CCT_PF' table. You can move, or remove it, as needed.
-        'Me.Vw_CCT_PFTableAdapter.Fill(Me.Priamos_NETDataSet1.vw_CCT_PF)
-        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PRF' table. You can move, or remove it, as needed.
         Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
+        AddHandler grdBDG_M.EmbeddedNavigator.ButtonClick, AddressOf Grid_EmbeddedNavigator_ButtonClick
         If sID.Length = 0 Then
             Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Empty)
         Else
             Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Parse(sID))
         End If
-
+        DevExpress.XtraGrid.Localization.GridLocalizer.Active = New GridGreekLocalizer()
         Dim sSQL As New System.Text.StringBuilder
         'txtAam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         'txtIam.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
@@ -147,6 +147,7 @@ Public Class frmBDG
                 NavAPM.Enabled = False
                 NavINH.Enabled = False
                 chkPRD.Checked = True
+                grdBDG_M.Enabled = False
             Case FormMode.EditRecord
                 FillCbo.FillCheckedListMLC(chkMLC, FormMode.EditRecord, sID, Bmlc)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
@@ -160,6 +161,8 @@ Public Class frmBDG
                 Aam = txtAam.EditValue
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
                 Me.Text = "Πολυκατοικία: " & txtNam.Text
+                Me.Vw_BDG_MTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_M, System.Guid.Parse(sID))
+                Me.Vw_CCT_BDGTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_CCT_BDG, System.Guid.Parse(sID))
         End Select
         ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         'Me.CenterToScreen()
@@ -254,7 +257,7 @@ Public Class frmBDG
                     NavBoiler.Enabled = True
                     NavAPM.Enabled = True
                     NavINH.Enabled = True
-
+                    grdBDG_M.Enabled = True
                     If Mode = FormMode.NewRecord Then sID = sGuid
                     ' Εαν έχει γίνει αλλαγή στην αμοιβή διαχείρισης
                     If Aam <> txtAam.EditValue Then
@@ -2361,7 +2364,7 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub GridView12_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_BDGF.PopupMenuShowing
+    Private Sub GridView_BDGF_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_BDGF.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             LoadForms.PopupMenuShow(e, GridView_BDGF, "vw_BDG_F.xml", "vw_BDG_F")
         Else
@@ -2785,4 +2788,99 @@ Public Class frmBDG
         form.ShowDialog()
     End Sub
 
+    Private Sub Grid_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+        Select Case e.Button.ButtonType
+            Case e.Button.ButtonType.Remove : If DeleteRecordBDG_M() = vbYes Then e.Handled = False Else e.Handled = True
+            Case e.Button.ButtonType.Append : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "isMain", 0) : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail", 0)
+
+        End Select
+    End Sub
+    Private Function DeleteRecordBDG_M() As MsgBoxResult
+        If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID") = Nothing Then Return vbCancel
+        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            Dim sSQL As String = "DELETE FROM BDG_M WHERE ID = '" & GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString & "'"
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Me.Vw_BDG_MTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_M, System.Guid.Parse(sID))
+            Return vbYes
+
+        Else
+            Return vbNo
+        End If
+    End Function
+    Private Sub GridView12_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles GridView12.ValidateRow
+        Dim sSQL As New System.Text.StringBuilder
+        Try
+            sSQL.Clear()
+            If e.RowHandle = grdBDG_M.NewItemRowHandle Then
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε επαφή"
+                    e.Valid = False
+                    Exit Sub
+                End If
+
+                Dim sGuid As String = Guid.NewGuid.ToString
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "ID", sGuid)
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "bdgID", sID)
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "createdBy", UserProps.ID.ToString)
+
+                sSQL.AppendLine("INSERT INTO BDG_M (ID,bdgID,cctID,isMain,AllowsendEmail,createdBy,MachineName)")
+                sSQL.AppendLine("Select " & toSQLValueS(sGuid) & ",")
+                sSQL.AppendLine(toSQLValueS(sID) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "isMain").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(UserProps.MachineName))
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Else
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε επαφή"
+                    e.Valid = False
+                    Exit Sub
+                End If
+
+                sSQL.AppendLine("UPDATE BDG_M SET  ")
+                sSQL.AppendLine("cctID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString) & ",")
+                sSQL.AppendLine("isMain = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "isMain").ToString) & ",")
+                sSQL.AppendLine("AllowsendEmail = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail").ToString) & ",")
+                sSQL.AppendLine("modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & ",")
+                sSQL.AppendLine("MachineName = " & toSQLValueS(UserProps.MachineName))
+                sSQL.Append("WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString))
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+        Catch sqlEx As SqlException When sqlEx.Number = 2601
+            XtraMessageBox.Show("Έχετε ορίσει παραπάνω από έναν Κύριους διαχιριστές ή προσπαθήσατε να καταχωρήσετε την ίδια επαφή.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Valid = False
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub GridView12_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView12.KeyDown
+        If e.KeyCode = Keys.Delete And UserProps.AllowDelete = True Then DeleteRecordBDG_M()
+        If e.KeyCode = Keys.Down And UserProps.AllowInsert Then
+            If sender.FocusedRowHandle < 0 Then Exit Sub
+            Dim viewInfo As GridViewInfo = TryCast(sender.GetViewInfo(), GridViewInfo)
+            If sender.FocusedRowHandle = viewInfo.RowsInfo.Last().RowHandle Then
+
+            End If
+        End If
+    End Sub
+
+    Private Sub RepCCT_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles RepCCT.ButtonPressed
+        Dim RecID As String
+        Select Case e.Button.Index
+            Case 1
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString <> Nothing Then
+                    ManageCbo.ManageCCT(True, RecID, , GridView12)
+                End If
+        End Select
+    End Sub
 End Class

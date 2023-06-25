@@ -156,11 +156,11 @@ Partial Class frmBatchCollectionInsert
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.SimpleLabelItem1 = New DevExpress.XtraLayout.SimpleLabelItem()
         Me.BatchCOLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
         Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_APTTableAdapter()
         Me.TmpBatchCollectionsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.tmpBatchCollectionsTableAdapter()
-        Me.SimpleLabelItem1 = New DevExpress.XtraLayout.SimpleLabelItem()
         CType(Me.RepBdg, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -190,8 +190,8 @@ Partial Class frmBatchCollectionInsert
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BatchCOLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BatchCOLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RepBdg
@@ -273,6 +273,7 @@ Partial Class frmBatchCollectionInsert
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdCollections.DataSource = Me.TmpBatchCollectionsBindingSource
         Me.grdCollections.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.grdCollections.EmbeddedNavigator.TextStringFormat = "Εγγραφή {0} of {1}"
         Me.grdCollections.Location = New System.Drawing.Point(12, 54)
         Me.grdCollections.MainView = Me.GridView1
         Me.grdCollections.Margin = New System.Windows.Forms.Padding(5)
@@ -925,6 +926,20 @@ Partial Class frmBatchCollectionInsert
         Me.EmptySpaceItem2.Size = New System.Drawing.Size(838, 43)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
+        'SimpleLabelItem1
+        '
+        Me.SimpleLabelItem1.AllowHotTrack = False
+        Me.SimpleLabelItem1.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.142858!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.SimpleLabelItem1.AppearanceItemCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.SimpleLabelItem1.AppearanceItemCaption.Options.UseFont = True
+        Me.SimpleLabelItem1.AppearanceItemCaption.Options.UseForeColor = True
+        Me.SimpleLabelItem1.Location = New System.Drawing.Point(0, 920)
+        Me.SimpleLabelItem1.Name = "SimpleLabelItem1"
+        Me.SimpleLabelItem1.Size = New System.Drawing.Size(837, 43)
+        Me.SimpleLabelItem1.Text = "Πλήκτρο INS = Εισαγωγή εγγραφής : Πλήκτρο Delete(Del) = Διαγραφή εγγραφής "
+        Me.SimpleLabelItem1.TextSize = New System.Drawing.Size(790, 23)
+        '
         'BatchCOLBindingSource
         '
         Me.BatchCOLBindingSource.DataMember = "Batch_COL"
@@ -941,20 +956,6 @@ Partial Class frmBatchCollectionInsert
         'TmpBatchCollectionsTableAdapter
         '
         Me.TmpBatchCollectionsTableAdapter.ClearBeforeFill = True
-        '
-        'SimpleLabelItem1
-        '
-        Me.SimpleLabelItem1.AllowHotTrack = False
-        Me.SimpleLabelItem1.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.142858!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
-                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.SimpleLabelItem1.AppearanceItemCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.SimpleLabelItem1.AppearanceItemCaption.Options.UseFont = True
-        Me.SimpleLabelItem1.AppearanceItemCaption.Options.UseForeColor = True
-        Me.SimpleLabelItem1.Location = New System.Drawing.Point(0, 920)
-        Me.SimpleLabelItem1.Name = "SimpleLabelItem1"
-        Me.SimpleLabelItem1.Size = New System.Drawing.Size(837, 43)
-        Me.SimpleLabelItem1.Text = "Πλήκτρο INS = Εισαγωγή εγγραφής : Πλήκτρο Delete(Del) = Διαγραφή εγγραφής "
-        Me.SimpleLabelItem1.TextSize = New System.Drawing.Size(790, 23)
         '
         'frmBatchCollectionInsert
         '
@@ -994,8 +995,8 @@ Partial Class frmBatchCollectionInsert
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BatchCOLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleLabelItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BatchCOLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

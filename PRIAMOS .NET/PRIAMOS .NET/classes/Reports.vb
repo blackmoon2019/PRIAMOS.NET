@@ -130,15 +130,15 @@ Public Class Reports
             sSQL =
                         "select 
                                     CONCAT(
-									case when sendEmailToManager=1 then  CCT_MANAGER.email   +';' else '' end,
-                                    case when sendEmailToManager=1 then  CCT_MANAGER.email2   +';' else '' end,
-                                    case when sendEmailToManager=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL,
+									case when AllowsendEmail=1 then  CCT_MANAGER.email   +';' else '' end,
+                                    case when AllowsendEmail=1 then  CCT_MANAGER.email2   +';' else '' end,
+                                    case when AllowsendEmail=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL,
                                     INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,BDG.old_code as BDGCode
                                 from INH 
                                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                                LEFT JOIN CCT CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
+                                LEFT JOIN VW_BDG_M CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
                                 WHERE INH.ID= " & toSQLValueS(sInhID) &
-                        " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and sendEmailToManager =1)   "
+                        " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and AllowsendEmail =1)   "
 
             Cmd = New SqlCommand(sSQL, CNDB)
             sdr = Cmd.ExecuteReader()

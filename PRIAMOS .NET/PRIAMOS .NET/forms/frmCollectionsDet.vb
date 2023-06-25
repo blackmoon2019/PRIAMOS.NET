@@ -305,20 +305,25 @@ Public Class frmCollectionsDet
     End Sub
 
     Private Sub Rep_Credit_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_Credit.ButtonPressed
-        Select Case e.Button.Index
-            Case 0
-                UserPermissions.GetUserPermissions(Me.Text)
-                If UserProps.AllowEdit = False Then
-                    XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Try
+            Select Case e.Button.Index
+                Case 0
+                    UserPermissions.GetUserPermissions(Me.Text)
+                    If UserProps.AllowEdit = False Then
+                        XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
+                        Exit Sub
+                    End If
+                    GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal")) : GridView1.ValidateEditor()
+                    GridView1.SelectRow(GridView1.FocusedRowHandle)
+                Case 1
                     GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
-                    Exit Sub
-                End If
-                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bal")) : GridView1.ValidateEditor()
-                GridView1.SelectRow(GridView1.FocusedRowHandle)
-            Case 1
-                GridView1.SetRowCellValue(GridView1.FocusedRowHandle, "credit", 0)
-                GridView1.UnselectRow(GridView1.FocusedRowHandle)
-        End Select
+                    GridView1.UnselectRow(GridView1.FocusedRowHandle)
+            End Select
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
 
     Private Sub GridView1_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView1.ValidatingEditor

@@ -29,8 +29,6 @@ Partial Class frmIEP
         Me.txtAmt = New DevExpress.XtraEditors.TextEdit()
         Me.cboOwnerTenant = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cboApt = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -42,6 +40,8 @@ Partial Class frmIEP
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
+        Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_APTTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -52,8 +52,6 @@ Partial Class frmIEP
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +61,8 @@ Partial Class frmIEP
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -188,16 +188,6 @@ Partial Class frmIEP
         Me.cboApt.StyleController = Me.LayoutControl1
         Me.cboApt.TabIndex = 5
         Me.cboApt.Tag = "aptID,0,1,2"
-        '
-        'VwAPTBindingSource
-        '
-        Me.VwAPTBindingSource.DataMember = "vw_APT"
-        Me.VwAPTBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
-        '
-        'Priamos_NET_DataSet_BDG
-        '
-        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
-        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Root
         '
@@ -330,6 +320,16 @@ Partial Class frmIEP
         Me.cmdSave.TabIndex = 17
         Me.cmdSave.Text = "Αποθήκευση"
         '
+        'VwAPTBindingSource
+        '
+        Me.VwAPTBindingSource.DataMember = "vw_APT"
+        Me.VwAPTBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'Priamos_NET_DataSet_BDG
+        '
+        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
+        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Vw_APTTableAdapter
         '
         Me.Vw_APTTableAdapter.ClearBeforeFill = True
@@ -355,8 +355,6 @@ Partial Class frmIEP
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -366,6 +364,8 @@ Partial Class frmIEP
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
