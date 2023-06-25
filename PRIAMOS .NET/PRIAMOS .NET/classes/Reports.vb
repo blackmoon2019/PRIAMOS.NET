@@ -52,11 +52,10 @@ Public Class Reports
                                     and vw_INC.aptID=APT.ID) as AMOUNT 
                                 from INH 
                                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                                INNER JOIN APT ON APT.bdgID =INH.bdgID 
+                                INNER JOIN APT ON APT.bdgID =INH.bdgID
                                 LEFT JOIN CCT CCT_OWNER ON CCT_OWNER.ID =APT.OwnerID 
 								LEFT JOIN CCT CCT_TENANT ON CCT_TENANT.ID =APT.TenantID
                                 LEFT JOIN CCT CCT_REP ON CCT_REP.ID =APT.RepresentativeID
-                                LEFT JOIN CCT CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
                                 WHERE INH.ID= " & toSQLValueS(sInhID) &
                         " AND 
 								((COALESCE(CCT_OWNER.email,CCT_OWNER.EMAIL2,CCT_OWNER.EMAIL3) IS NOT NULL and sendEmailOwner =1)    OR
@@ -136,7 +135,7 @@ Public Class Reports
                                     INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,BDG.old_code as BDGCode
                                 from INH 
                                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                                LEFT JOIN VW_BDG_M CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
+                                LEFT JOIN VW_BDG_M CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID and isMain =1
                                 WHERE INH.ID= " & toSQLValueS(sInhID) &
                         " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and AllowsendEmail =1)   "
 
@@ -308,14 +307,14 @@ Public Class Reports
             Dim sInhID As String = GRD.GetRowCellValue(Row, "ID").ToString
             sEmailID = System.Guid.NewGuid.ToString
             sSQL = "select INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,INH.completeDate,BDG.old_code as BDGCode, 
-					CONCAT(case when sendEmailToManager=1 then  CCT_MANAGER.email   +';' else '' end,
-                    case when sendEmailToManager=1 then  CCT_MANAGER.email2   +';' else '' end,
-                    case when sendEmailToManager=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL 
+					CONCAT(case when AllowsendEmail=1 then  CCT_MANAGER.email   +';' else '' end,
+                    case when AllowsendEmail=1 then  CCT_MANAGER.email2   +';' else '' end,
+                    case when AllowsendEmail=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL 
                 from INH 
                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                INNER  JOIN CCT CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
+                LEFT JOIN VW_BDG_M CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID and isMain =1
                 WHERE INH.ID= " & toSQLValueS(sInhID) &
-            " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and sendEmailToManager =1)  "
+            " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and AllowsendEmail =1)  "
             Cmd = New SqlCommand(sSQL, CNDB)
             sdr = Cmd.ExecuteReader()
             If sdr.Read() Then
@@ -481,14 +480,14 @@ Public Class Reports
             Dim sInhID As String = GRD.GetRowCellValue(Row, "ID").ToString
             sEmailID = System.Guid.NewGuid.ToString
             sSQL = "select INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,INH.completeDate,BDG.old_code as BDGCode, 
-					CONCAT(case when sendEmailToManager=1 then  CCT_MANAGER.email   +';' else '' end,
-                    case when sendEmailToManager=1 then  CCT_MANAGER.email2   +';' else '' end,
-                    case when sendEmailToManager=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL 
+					CONCAT(case when AllowsendEmail=1 then  CCT_MANAGER.email   +';' else '' end,
+                    case when AllowsendEmail=1 then  CCT_MANAGER.email2   +';' else '' end,
+                    case when AllowsendEmail=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL 
                 from INH 
                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                INNER  JOIN CCT CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
+                LEFT JOIN VW_BDG_M CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID and isMain =1
                 WHERE INH.ID= " & toSQLValueS(sInhID) &
-            " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and sendEmailToManager =1)  "
+            " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and AllowsendEmail =1) "
             Cmd = New SqlCommand(sSQL, CNDB)
             sdr = Cmd.ExecuteReader()
             If sdr.Read() Then
@@ -609,14 +608,14 @@ Public Class Reports
             Dim sInhID As String = GRD.GetRowCellValue(Row, "ID").ToString
             sEmailID = System.Guid.NewGuid.ToString
             sSQL = "select INH.completeDate,BDG.id as BdgID,BDG.nam as BDGNAM,INH.completeDate,BDG.old_code as BDGCode, 
-					CONCAT(case when sendEmailToManager=1 then  CCT_MANAGER.email   +';' else '' end,
-                    case when sendEmailToManager=1 then  CCT_MANAGER.email2   +';' else '' end,
-                    case when sendEmailToManager=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL 
+					CONCAT(case when AllowsendEmail=1 then  CCT_MANAGER.email   +';' else '' end,
+                    case when AllowsendEmail=1 then  CCT_MANAGER.email2   +';' else '' end,
+                    case when AllowsendEmail=1 then  CCT_MANAGER.email3   +';' else '' end) AS EMAIL 
                 from INH 
                 INNER JOIN BDG ON BDG.ID =INH.bdgID 
-                INNER  JOIN CCT CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID
+                LEFT JOIN VW_BDG_M CCT_MANAGER ON CCT_MANAGER.ID =BDG.managerID and isMain =1
                 WHERE INH.ID= " & toSQLValueS(sInhID) &
-            " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and sendEmailToManager =1)  "
+            " AND (COALESCE(CCT_MANAGER.email,CCT_MANAGER.EMAIL2,CCT_MANAGER.EMAIL3) IS NOT NULL and AllowsendEmail =1)  "
             Cmd = New SqlCommand(sSQL, CNDB)
             sdr = Cmd.ExecuteReader()
             If sdr.Read() Then

@@ -79,6 +79,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
+        Me.ClosedAPT = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel7 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel3 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
@@ -86,10 +87,12 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLine5 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel14 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel13 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel6 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLine4 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel4 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel26 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel25 = New DevExpress.XtraReports.UI.XRLabel()
@@ -217,9 +220,6 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell47 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.XrTableCell48 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.bdgID = New DevExpress.XtraReports.Parameters.Parameter()
-        Me.ClosedAPT = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XrTable6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -428,6 +428,16 @@ Partial Public Class Rep_Sygentrotiki
         Me.PageHeader.Name = "PageHeader"
         Me.PageHeader.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand2})
         '
+        'ClosedAPT
+        '
+        Me.ClosedAPT.CanShrink = True
+        Me.ClosedAPT.Dpi = 254.0!
+        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(2842.578!, 411.7253!)
+        Me.ClosedAPT.Name = "ClosedAPT"
+        Me.ClosedAPT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.ClosedAPT.ReportSource = New PRIAMOS.NET.ClosedAPT()
+        Me.ClosedAPT.SizeF = New System.Drawing.SizeF(1307.422!, 58.42004!)
+        '
         'XrPanel7
         '
         Me.XrPanel7.BorderColor = System.Drawing.Color.Blue
@@ -536,6 +546,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel13.Text = "ΣΥΝΟΛΟ ΕΞΟΔΩΝ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ΠΕΡΙΟΔΟΥ"
         Me.XrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
+        'EXODA_OWNERS
+        '
+        Me.EXODA_OWNERS.Dpi = 254.0!
+        Me.EXODA_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1942.58!, 418.1003!)
+        Me.EXODA_OWNERS.Name = "EXODA_OWNERS"
+        Me.EXODA_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_OWNERS()
+        Me.EXODA_OWNERS.SizeF = New System.Drawing.SizeF(870.5852!, 58.42004!)
+        '
         'XrPanel6
         '
         Me.XrPanel6.BorderColor = System.Drawing.Color.Blue
@@ -593,6 +612,15 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel27.StylePriority.UseTextAlignment = False
         Me.XrLabel27.Text = "ΠΟΣΟ"
         Me.XrLabel27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
+        '
+        'EXODA
+        '
+        Me.EXODA.Dpi = 254.0!
+        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(59.0!, 398.1002!)
+        Me.EXODA.Name = "EXODA"
+        Me.EXODA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA.ReportSource = New PRIAMOS.NET.EXODA()
+        Me.EXODA.SizeF = New System.Drawing.SizeF(1851.96!, 41.46179!)
         '
         'XrPanel4
         '
@@ -2304,34 +2332,6 @@ Partial Public Class Rep_Sygentrotiki
         DynamicListLookUpSettings2.ValueMember = "ID"
         Me.bdgID.ValueSourceSettings = DynamicListLookUpSettings2
         Me.bdgID.Visible = False
-        '
-        'ClosedAPT
-        '
-        Me.ClosedAPT.CanShrink = True
-        Me.ClosedAPT.Dpi = 254.0!
-        Me.ClosedAPT.LocationFloat = New DevExpress.Utils.PointFloat(2842.578!, 411.7253!)
-        Me.ClosedAPT.Name = "ClosedAPT"
-        Me.ClosedAPT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.ClosedAPT.ReportSource = New PRIAMOS.NET.ClosedAPT()
-        Me.ClosedAPT.SizeF = New System.Drawing.SizeF(1307.422!, 58.42004!)
-        '
-        'EXODA_OWNERS
-        '
-        Me.EXODA_OWNERS.Dpi = 254.0!
-        Me.EXODA_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1942.58!, 418.1003!)
-        Me.EXODA_OWNERS.Name = "EXODA_OWNERS"
-        Me.EXODA_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_OWNERS()
-        Me.EXODA_OWNERS.SizeF = New System.Drawing.SizeF(870.5852!, 58.42004!)
-        '
-        'EXODA
-        '
-        Me.EXODA.Dpi = 254.0!
-        Me.EXODA.LocationFloat = New DevExpress.Utils.PointFloat(59.0!, 398.1002!)
-        Me.EXODA.Name = "EXODA"
-        Me.EXODA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA.ReportSource = New PRIAMOS.NET.EXODA()
-        Me.EXODA.SizeF = New System.Drawing.SizeF(1851.96!, 41.46179!)
         '
         'Rep_Sygentrotiki
         '

@@ -845,6 +845,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sygentrotiki\Sygentrotiki.resx">
       <DependentUpon>Sygentrotiki.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">

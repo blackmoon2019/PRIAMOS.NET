@@ -170,11 +170,11 @@ group by "vw_INC"."inhID","vw_INC"."aptID","vw_INC"."aptNam"</value>
     <value>select BDG.old_code, BDG.nam,
        BDG.ID, BDG.hpc,
        BDG.HTypeID,
-	 CCT.Fullname,
+	 VW_BDG_M.Fullname,
 BDG.isManaged 
   from dbo.BDG 
 inner join INH ON INH.bdgID =BDG.ID 
-left join CCT ON CCT.ID=BDG.managerID 
+LEFT JOIN VW_BDG_M ON VW_BDG_M.bdgID  =BDG.ID AND isMain=1
 where INH.ID=@inhID</value>
   </data>
   <data name="CustomSqlQuery6.Sql" xml:space="preserve">

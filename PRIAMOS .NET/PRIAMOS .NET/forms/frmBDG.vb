@@ -121,10 +121,6 @@ Public Class frmBDG
         'txtIam.Properties.Mask.EditMask = "c" & ProgProps.Decimals
         'Νομοί
         FillCbo.COU(cboCOU)
-        'Επαφές
-        Dim sSQLcct As New System.Text.StringBuilder
-        sSQLcct.AppendLine(" where isprivate =1")
-        FillCbo.CCT(cboManager, sSQLcct)
 
         Select Case Mode
             Case FormMode.NewRecord
@@ -1879,16 +1875,6 @@ Public Class frmBDG
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub cboManager_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboManager.ButtonClick
-        Select Case e.Button.Index
-            Case 1 : ManageCbo.ManageManager(cboManager, FormMode.NewRecord)
-            Case 2 : ManageCbo.ManageManager(cboManager, FormMode.EditRecord)
-            Case 3 : cboManager.EditValue = Nothing
-        End Select
-    End Sub
-
-
     Private Sub NavINH_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavINH.ElementClick
         Maintab.SelectedTabPage = tabINH
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
@@ -2305,9 +2291,6 @@ Public Class frmBDG
         If CellValue = "True" Then e.Cancel = True
     End Sub
 
-    Private Sub chkManage_CheckedChanged(sender As Object, e As EventArgs) Handles chkManage.CheckedChanged
-        If Me.IsActive = True Then If chkManage.Checked = True Then cboManager.EditValue = System.Guid.Parse("C2ADEEFC-37F1-460B-A40D-A41729371535") Else cboManager.EditValue = Nothing
-    End Sub
 
     Private Sub cmdAptExport_Click(sender As Object, e As EventArgs) Handles cmdAptExport.Click
         Dim options = New XlsxExportOptionsEx()
@@ -2790,7 +2773,7 @@ Public Class frmBDG
 
     Private Sub Grid_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
         Select Case e.Button.ButtonType
-            Case e.Button.ButtonType.Remove : If DeleteRecordBDG_M() = vbYes Then e.Handled = False Else e.Handled = True
+            Case e.Button.ButtonType.Remove : If DeleteRecordBDG_M() = vbYes Then e.Handled = True Else e.Handled = False
             Case e.Button.ButtonType.Append : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "isMain", 0) : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail", 0)
 
         End Select
@@ -2819,7 +2802,11 @@ Public Class frmBDG
                     e.Valid = False
                     Exit Sub
                 End If
-
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "isMain").ToString = "False" And GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail").ToString = "True" Then
+                    e.ErrorText = "Αποστολή Email Επιτρέπεται μόνο στον Κύριο Διαχειριστή"
+                    e.Valid = False
+                    Exit Sub
+                End If
                 Dim sGuid As String = Guid.NewGuid.ToString
                 GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "ID", sGuid)
                 GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "bdgID", sID)
@@ -2843,7 +2830,11 @@ Public Class frmBDG
                     e.Valid = False
                     Exit Sub
                 End If
-
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "isMain").ToString = "False" And GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail").ToString = "True" Then
+                    e.ErrorText = "Αποστολή Email Επιτρέπεται μόνο στον Κύριο Διαχειριστή"
+                    e.Valid = False
+                    Exit Sub
+                End If
                 sSQL.AppendLine("UPDATE BDG_M SET  ")
                 sSQL.AppendLine("cctID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString) & ",")
                 sSQL.AppendLine("isMain = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "isMain").ToString) & ",")
@@ -2857,7 +2848,7 @@ Public Class frmBDG
                 End Using
             End If
         Catch sqlEx As SqlException When sqlEx.Number = 2601
-            XtraMessageBox.Show("Έχετε ορίσει παραπάνω από έναν Κύριους διαχιριστές ή προσπαθήσατε να καταχωρήσετε την ίδια επαφή.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show("Έχετε ορίσει παραπάνω από έναν Κύριους διαχειριστές ή προσπαθήσατε να καταχωρήσετε την ίδια επαφή.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             e.Valid = False
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
