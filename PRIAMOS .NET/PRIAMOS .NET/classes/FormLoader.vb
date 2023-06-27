@@ -419,6 +419,16 @@ NextItem:
                 Dim txt As DevExpress.XtraEditors.LabelControl
                 txt = Ctrl
                 txt.Text = sValue
+            ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ButtonEdit Then
+                Dim txt As DevExpress.XtraEditors.ButtonEdit
+                txt = Ctrl
+                If txt.Properties.Mask.EditMask = "c" & ProgProps.Decimals Then
+                    txt.Text = Math.Round(CDec(sValue), ProgProps.Decimals)
+                ElseIf txt.Properties.Mask.EditMask = "d" Then ' Αφορά το DateEditControl
+                    txt.Text = sValue
+                Else
+                    txt.Text = sValue
+                End If
             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                 Dim txt As DevExpress.XtraEditors.TextEdit
                 txt = Ctrl
@@ -429,6 +439,7 @@ NextItem:
                 Else
                     txt.Text = sValue
                 End If
+
             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                 Dim chk As DevExpress.XtraEditors.CheckEdit
                 chk = Ctrl

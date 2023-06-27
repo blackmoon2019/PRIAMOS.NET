@@ -55,25 +55,27 @@ Public Class DBQueries
                 sSQL.Clear()
                 Select Case sTable
                     Case "CCT_F"
-                        sSQL.AppendLine("INSERT INTO CCT_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                        sSQL.AppendLine("INSERT INTO CCT_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " cctID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                         'sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "INV_GASF"
                         'sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
-                        sSQL.AppendLine("INSERT INTO INV_GASF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                        sSQL.AppendLine("INSERT INTO INV_GASF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invGASID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "INV_OILF"
                         'sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
-                        sSQL.AppendLine("INSERT INTO INV_OILF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                        sSQL.AppendLine("INSERT INTO INV_OILF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invOilID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "BDG_F"
                         'sSQL.AppendLine("INSERT INTO BDG_F (bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
-                        sSQL.AppendLine("INSERT INTO BDG_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                        sSQL.AppendLine("INSERT INTO BDG_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " bdgID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "COL_BANKS_F"
-                        sSQL.AppendLine("INSERT INTO COL_BANKS_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " ID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                        sSQL.AppendLine("INSERT INTO COL_BANKS_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " ID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "TECH_SUP_F"
-                        sSQL.AppendLine("INSERT INTO TECH_SUP_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " techSupID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],[MachineName],files)")
+                        sSQL.AppendLine("INSERT INTO TECH_SUP_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " techSupID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                 End Select
                 Dim extension As String = Path.GetExtension(control.FileNames(i))
                 Dim FilePath As String = Path.GetDirectoryName(control.FileNames(i))
                 Dim FileName As String = Path.GetFileName(control.FileNames(i))
+                Dim fileCreatedDate As DateTime = File.GetCreationTime(control.FileNames(i))
+                Dim fileLastWrite As DateTime = File.GetLastWriteTime(control.FileNames(i))
                 'If File.Exists(ProgProps.ServerPath & FileName) Then File.Delete(ProgProps.ServerPath & FileName)
                 My.Computer.FileSystem.CopyFile(control.FileNames(i), ProgProps.ServerPath & FileName, True)
 
@@ -83,6 +85,9 @@ Public Class DBQueries
                 sSQL.AppendLine(toSQLValueS(control.SafeFileNames(i).ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(FilePath) & ",")
                 sSQL.AppendLine(toSQLValueS(extension) & ",")
+
+                sSQL.AppendLine(toSQLValueS(CDate(fileCreatedDate.ToString).ToString("yyyyMMdd")) & ",")
+                sSQL.AppendLine(toSQLValueS(CDate(fileLastWrite.ToString).ToString("yyyyMMdd")) & ",")
 
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & "," & toSQLValueS(UserProps.ID.ToString) & ", getdate(), " & toSQLValueS(UserProps.MachineName) & ", files.* ")
                 sSQL.AppendLine("FROM OPENROWSET (BULK " & toSQLValueS(ProgProps.ServerPath & FileName) & ", SINGLE_BLOB) files")
@@ -163,6 +168,8 @@ Public Class DBQueries
         Try
             'Εαν η function καλεστεί με sGuid σημαίνει ότι θα πρε΄πει να καταχωρίσουμε εμείς το ID
             If sGuid.Length > 0 Then IsFirstField = False
+            sSQLF.Clear()
+            sSQLV.Clear()
             'FIELDS
             sSQLF.AppendLine("INSERT INTO " & sTable & "(" & IIf(sGuid.Length > 0, "ID", ""))
             If ExtraFields.Length > 0 Then

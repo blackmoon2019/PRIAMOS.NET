@@ -78,6 +78,7 @@ Public Class frmINH
                 lCanceled.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
                 lbldate.Text = ""
                 cmdPrintAll.Enabled = False
+                cmdSaveINH.Enabled = UserProps.AllowInsert
             Case FormMode.EditRecord
                 'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 InhFieldAndValues = New Dictionary(Of String, String)
@@ -137,7 +138,6 @@ Public Class frmINH
 
         LoadConditionalFormatting()
         cboOwnerTenant.SelectedIndex = 1  'If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
-        cmdSaveINH.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
         If chkreserveAPT.Checked = True Then
             LayoutControlGroup1.Enabled = False
             LayoutControlGroup2.Enabled = False
@@ -1195,7 +1195,6 @@ Public Class frmINH
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then sID = sdr.GetGuid(sdr.GetOrdinal("ID").ToString).ToString
             sdr.Close()
-
             'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
             txtColAnnouncement.EditValue = Nothing
             InhFieldAndValues = New Dictionary(Of String, String)
@@ -1219,6 +1218,7 @@ Public Class frmINH
             Else
                 LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdSaveInd.Enabled = True
             End If
+            If TabPane1.SelectedPageIndex = 1 Then EditRecord()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1532,5 +1532,10 @@ Public Class frmINH
 
     Private Sub chkCalorimetric_EditValueChanged(sender As Object, e As EventArgs) Handles chkCalorimetric.EditValueChanged
         If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+    End Sub
+
+    Private Sub txtColAnnouncement_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtColAnnouncement.ButtonClick
+        txtColAnnouncement.Text = "" : txtColAnnouncement.EditValue = Nothing
+
     End Sub
 End Class

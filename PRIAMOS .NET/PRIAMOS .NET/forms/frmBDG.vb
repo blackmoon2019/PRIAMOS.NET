@@ -95,9 +95,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG_M' table. You can move, or remove it, as needed.
-        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_IEP' table. You can move, or remove it, as needed.
-        Me.Vw_IEPTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_IEP)
+
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
         Me.ANN_GRPSTableAdapter.Fill(Me.Priamos_NETDataSet.ANN_GRPS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.Collectors' table. You can move, or remove it, as needed.
@@ -107,6 +105,7 @@ Public Class frmBDG
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
         Me.Vw_DOYTableAdapter.Fill(Me.Priamos_NETDataSet.vw_DOY)
         Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
+        Me.Vw_CCTTableAdapter.FillByAll(Me.Priamos_NETDataSet.vw_CCT)
         AddHandler grdBDG_M.EmbeddedNavigator.ButtonClick, AddressOf Grid_EmbeddedNavigator_ButtonClick
         If sID.Length = 0 Then
             Me.BDGKeysManagerTableAdapter.Fill(Me.Priamos_NETDataSet.BDGKeysManager, System.Guid.Empty)
@@ -158,7 +157,7 @@ Public Class frmBDG
                 LoadForms.LoadDataToGrid(grdAPT, GridView1, "SELECT * FROM VW_APT where bdgid ='" + sID + "' ORDER BY ORD")
                 Me.Text = "Πολυκατοικία: " & txtNam.Text
                 Me.Vw_BDG_MTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_M, System.Guid.Parse(sID))
-                Me.Vw_CCT_BDGTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_CCT_BDG, System.Guid.Parse(sID))
+                Me.Vw_CCTTableAdapter.FillByAll(Me.Priamos_NETDataSet.vw_CCT)
         End Select
         ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         'Me.CenterToScreen()
@@ -168,6 +167,7 @@ Public Class frmBDG
         '  My.Settings.Save()
         bdgName = txtNam.Text
         LoadForms.RestoreLayoutFromXml(GridView1, "APT_def.xml")
+        LoadForms.RestoreLayoutFromXml(GridView12, "BDGManagers_def.xml")
         GridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True
 
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -210,9 +210,6 @@ Public Class frmBDG
         sSQL.AppendLine(" order by name ")
         Return sSQL
     End Function
-
-
-
     Private Sub txtAR_Validated(sender As Object, e As EventArgs) Handles txtAR.Validated
         txtNam.Text = cboADR.Text + " " + txtAR.Text
     End Sub
@@ -2026,7 +2023,7 @@ Public Class frmBDG
     Private Sub NavBDGF_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavBDGF.ElementClick
         Try
             Maintab.SelectedTabPage = tabBDG_F
-            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_F, System.Guid.Parse(sID))
             LoadForms.RestoreLayoutFromXml(GridView_BDGF, "vw_BDG_F.xml")
             GridView_BDGF.OptionsBehavior.Editable = False
             txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
@@ -2086,7 +2083,7 @@ Public Class frmBDG
                     txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
                 End If
             End If
-            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_F, System.Guid.Parse(sID))
             PB.Value = 0
 
         End If
@@ -2123,7 +2120,7 @@ Public Class frmBDG
         Next
         Try
 
-            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_F, System.Guid.Parse(sID))
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -2131,7 +2128,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdBDGFRefresh_Click(sender As Object, e As EventArgs) Handles cmdBDGFRefresh.Click
-        Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+        Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_F, System.Guid.Parse(sID))
     End Sub
 
     Private Sub cboFolderCat_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboFolderCat.ButtonClick
@@ -2198,7 +2195,7 @@ Public Class frmBDG
                     oCmd.ExecuteNonQuery()
                 End Using
             Next I
-            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NETDataSet.vw_BDG_F, System.Guid.Parse(sID))
+            Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_F, System.Guid.Parse(sID))
         End If
         lkup = Nothing
     End Sub
@@ -2873,5 +2870,18 @@ Public Class frmBDG
                     ManageCbo.ManageCCT(True, RecID, , GridView12)
                 End If
         End Select
+    End Sub
+
+    Private Sub GridView12_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView12.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView12, "BDGManagers_def.xml", "vw_CCT")
+        Else
+            ActiveGrid = GridView12
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+    End Sub
+
+    Private Sub txtBDGFilename_EditValueChanged(sender As Object, e As EventArgs) Handles txtBDGFilename.EditValueChanged
+
     End Sub
 End Class

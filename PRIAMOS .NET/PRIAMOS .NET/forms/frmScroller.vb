@@ -1374,6 +1374,7 @@ Public Class frmScroller
                 Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Επαγγελματικές Δραστηριότητες"
                 fGen.DataTable = "PROF_ACT"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord
                 fGen.Scroller = GridView1
