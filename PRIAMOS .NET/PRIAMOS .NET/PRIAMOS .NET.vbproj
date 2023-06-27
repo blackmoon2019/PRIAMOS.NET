@@ -912,9 +912,23 @@
     <None Include="Resources\information-16.png" />
     <None Include="Resources\icons8-initiate-money-transfer-40.png" />
     <None Include="Resources\icons8-cash-24.png" />
-    <Content Include="Sql Scripts\col_Calculate.sql" />
-    <Content Include="Sql Scripts\INV_CALCULATE.sql" />
-    <Content Include="Sql Scripts\inv_cancelCalculate.sql" />
+    <Content Include="Sql Scripts\dbo.AddNewFormRights.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.batch_create_inv.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.ChangeAPTOrder.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.col_AutoCalculate.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.col_Calculate.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.col_H_Calculate.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CreateAHPB.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CreateInvNumbers.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.inv_Calculate.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.inv_cancel.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.inv_cancelCalculate.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.inv_CreateFromTransfer.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.inv_Results.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.inv_SharingDifferences.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.RepClosed.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.SetUserView.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.uspAddUser.StoredProcedure.sql" />
     <None Include="Priamos_NET_DataSet_BDG.xsc">
       <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
     </None>
