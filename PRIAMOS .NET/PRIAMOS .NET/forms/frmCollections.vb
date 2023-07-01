@@ -222,13 +222,13 @@ Public Class frmCollections
     End Sub
     Private Sub RepositoryCOL_METHOD_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_COL_METHOD.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "ColMethodID", "")
+            Case 1 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "ColMethodID", "")
         End Select
     End Sub
 
     Private Sub RepositoryBANK_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles Rep_ΒΑΝΚ.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : APTView.SetRowCellValue(APTView.FocusedRowHandle, "bankID", "")
+            Case 1 : OwnerTenantView.SetRowCellValue(OwnerTenantView.FocusedRowHandle, "bankID", "")
         End Select
     End Sub
 
@@ -340,6 +340,8 @@ Public Class frmCollections
             UserPermissions.GetUserPermissions(Me.Text) : If UserProps.AllowEdit = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
             Dim editor As DevExpress.XtraEditors.LookUpEdit = TryCast(sender, DevExpress.XtraEditors.LookUpEdit)
             Dim colMethodID As String = toSQLValueS(editor.EditValue.ToString)
+            'Τράπεζα 
+            If colMethodID.ToUpper.Replace("'", "") = "F34B402C-ADD8-48E7-85A9-FFDF7DAED582" Then Rep_ΒΑΝΚ.ReadOnly = False
             'debitUsrName = editor.GetColumnValue("RealName").ToString()
             UpdateCOLS(1, colMethodID)
         Catch ex As Exception
@@ -434,8 +436,19 @@ Public Class frmCollections
                         Else
                             dtdebit = toSQLValueS(CDate(Date.Now).ToString("yyyyMMdd"))
                         End If
-                        sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
-                           " WHERE completed=0 and ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
+                        Select Case mode
+                            Case 0
+                                sSQL = "UPDATE [COL] SET debitusrID  = " & sField & ",dtdebit  = " & dtdebit &
+                                       " WHERE completed=0 and ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
+                            Case 1
+                                sSQL = "UPDATE [COL] SET colMethodID  = " & sField &
+                                   " WHERE completed=0 and ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
+                            Case 2
+                                sSQL = "UPDATE [COL] SET bankID  = " & sField &
+                                   " WHERE completed=0 and ID = " & toSQLValueS(OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "ID").ToString)
+                        End Select
+
+
                         bdgID = OwnerTenantView.GetRowCellValue(OwnerTenantView.FocusedRowHandle, "bdgID").ToString
                 End Select
             End If
@@ -541,6 +554,7 @@ Public Class frmCollections
         LoadForms.RestoreLayoutFromXml(OwnerTenantView, "COL_OW_TEN_def.xml")
         OwnerTenantView.DataController.CollapseDetailRowsOnReset = False
         OwnerTenantView.Columns.Item("dtCredit").OptionsColumn.AllowEdit = True
+        Rep_ΒΑΝΚ.ReadOnly = True
         If Debugger.IsAttached Then
             grdVO_T.Columns.Item("debit").OptionsColumn.AllowEdit = True
         End If
@@ -1864,6 +1878,11 @@ Public Class frmCollections
                 Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sbdgID))
                 Me.Vw_COL_BDGTableAdapter.FillBy(Me.Priamos_NETDataSet2.vw_COL_BDG, System.Guid.Parse(cboBDG.EditValue.ToString))
         End Select
+
+    End Sub
+
+    Private Sub Rep_COL_METHOD_EditValueChanged(sender As Object, e As EventArgs) Handles Rep_COL_METHOD.EditValueChanged
+
 
     End Sub
 End Class
