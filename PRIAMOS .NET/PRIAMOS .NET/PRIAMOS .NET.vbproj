@@ -909,9 +909,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
-    <None Include="Resources\information-16.png" />
-    <None Include="Resources\icons8-initiate-money-transfer-40.png" />
-    <None Include="Resources\icons8-cash-24.png" />
+    <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\dbo.AddNewFormRights.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.batch_create_inv.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.ChangeAPTOrder.StoredProcedure.sql" />
@@ -929,6 +927,11 @@
     <Content Include="Sql Scripts\dbo.RepClosed.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.SetUserView.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.uspAddUser.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\INV_CALCULATE.sql" />
+    <Content Include="Sql Scripts\inv_cancelCalculate.sql" />
+    <None Include="Resources\information-16.png" />
+    <None Include="Resources\icons8-initiate-money-transfer-40.png" />
+    <None Include="Resources\icons8-cash-24.png" />
     <None Include="Priamos_NET_DataSet_BDG.xsc">
       <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
     </None>

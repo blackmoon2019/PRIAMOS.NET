@@ -1,5 +1,6 @@
 ﻿
 Imports System.Data.SqlClient
+Imports System.Windows.Automation
 Imports DevExpress.DataAccess
 Imports DevExpress.Export
 Imports DevExpress.LookAndFeel
@@ -23,6 +24,7 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraPrinting.Shape.Native
 Imports DevExpress.XtraReports.UI
 Imports DevExpress.XtraSpreadsheet.DocumentFormats
+Imports PRIAMOS.NET.Priamos_NETDataSetTableAdapters
 
 Public Class frmINH
     Private sID As String
@@ -79,6 +81,7 @@ Public Class frmINH
                 lbldate.Text = ""
                 cmdPrintAll.Enabled = False
                 cmdSaveINH.Enabled = UserProps.AllowInsert
+                cboBDG.Select()
             Case FormMode.EditRecord
                 'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 InhFieldAndValues = New Dictionary(Of String, String)
@@ -149,7 +152,9 @@ Public Class frmINH
             LcmdSaveINH.Enabled = False
             BarSygentrotiki.Enabled = False
             BarEidop.Enabled = False
+            LayoutControlItem25.Enabled = True
         End If
+        cboBDG.Select()
     End Sub
 
     Private Sub EditRecord()
@@ -586,11 +591,11 @@ Public Class frmINH
             txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
             txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
 
-            If Priamos_NETDataSet.AHPB_H.Rows.Count > 0 Then
-                cboAhpbH.Properties.ReadOnly = False
-            ElseIf cboAhpbH.Properties.DataSource.Count = 0 Then
-                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Θέρμανσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If Priamos_NETDataSet.AHPB_H.Rows.Count > 0 Then
+            '    cboAhpbH.Properties.ReadOnly = False
+            'ElseIf cboAhpbH.Properties.DataSource.Count = 0 Then
+            '    XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Θέρμανσης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         Else
             txtHeatingType.EditValue = Nothing
         End If
@@ -598,11 +603,11 @@ Public Class frmINH
            cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
             txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
             txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
-            If Priamos_NETDataSet.AHPB_Β.Rows.Count > 0 Then
-                cboAhpbHB.Properties.ReadOnly = False
-            ElseIf cboAhpbHB.Properties.DataSource.Count = 0 Then
-                XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Boiler", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+            'If Priamos_NETDataSet.AHPB_Β.Rows.Count > 0 Then
+            '    cboAhpbHB.Properties.ReadOnly = False
+            'ElseIf cboAhpbHB.Properties.DataSource.Count = 0 Then
+            '    XtraMessageBox.Show("Δεν υπάρχουν καταχωρημένες ώρες Boiler", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
         Else
             txtBoilerType.EditValue = Nothing
         End If
@@ -804,7 +809,17 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@ahpbHIDB", System.Guid.Parse(sAhpbBID))
                 oCmd.ExecuteNonQuery()
             End Using
-            XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim args As New XtraMessageBoxArgs()
+            args.AutoCloseOptions.Delay = 2000
+            args.AutoCloseOptions.ShowTimerOnDefaultButton = True
+            args.DefaultButtonIndex = 0
+            args.Caption = ProgProps.ProgTitle
+            args.Text = "Ο υπολογισμός ολοκληρώθηκε με επιτυχία"
+            args.Buttons = New DialogResult() {DialogResult.OK}
+            args.Icon = System.Drawing.SystemIcons.Information
+            XtraMessageBox.Show(args).ToString()
+
             If sAhpbText <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & sAhpbText : Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
             If sAhpbBtext <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & sAhpbBtext : Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
 
@@ -851,10 +866,10 @@ Public Class frmINH
                 XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση θέρμανσης χωρίς να επιλέξετε ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             Else
-                sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
+                If cboAhpbH.EditValue IsNot Nothing Then sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
             End If
         Else
-            sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
+            If cboAhpbH.EditValue IsNot Nothing Then sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
         End If
 
 
@@ -868,10 +883,10 @@ Public Class frmINH
                 XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση Boiler χωρίς να επιλέξετε  ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             Else
-                sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
+                If cboAhpbHB.EditValue IsNot Nothing Then sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
             End If
         Else
-            sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
+            If cboAhpbHB.EditValue IsNot Nothing Then sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
         End If
 
         Return True
@@ -1185,11 +1200,12 @@ Public Class frmINH
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Try
+            'If DataNavigator1.Tag = Nothing Then DataNavigator1.Tag = sID
             Select Case ButtonType
-                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) > " & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd")) & " order by tDate "
-                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) < " & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd")) & " order by tDate desc"
-                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by tdate asc "
-                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by tdate desc"
+                Case 4 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and code > " & toSQLValue(txtCode, True) & " order by code"
+                Case 3 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and code < " & toSQLValue(txtCode, True) & " order by code desc"
+                Case 1 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by code asc "
+                Case 6 : sSQL = "select top 1 ID from INH where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " order by code desc"
             End Select
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
@@ -1229,7 +1245,7 @@ Public Class frmINH
         Dim sdr As SqlDataReader
         Dim Code As Integer
         Try
-            sSQL = "select count(id) + 1 as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) < " & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd"))
+            sSQL = "select count(id) + 1  as Position  from inh where bdgID= " & toSQLValueS(cboBDG.EditValue.ToString) & " and   cast(tdate as date) <" & toSQLValueS(CDate(dtTDate.EditValue).ToString("yyyyMMdd"))
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then Code = sdr.GetInt32(sdr.GetOrdinal("Position")) - 1 Else Code = 0
@@ -1277,7 +1293,7 @@ Public Class frmINH
     End Sub
     Private Function CheckRepNameIfExists(ByVal repName As String, Optional ByVal CheckForUpTo1 As Boolean = False) As Boolean
         ' Παίρνει το μεγαλύτερο Α/Α και το αυξάνει κατα 1
-        Dim cmd As SqlCommand = New SqlCommand("Select  count(repName) As CountRep FROM IND WHERE INHID= " & toSQLValueS(sID) & " AND repName =  " & toSQLValueS(repName), CNDB)
+        Dim cmd As SqlCommand = New SqlCommand("Select  count(repName) As CountRep FROM IND WHERE INHID= " & toSQLValueS(sID) & " AND repName =  " & toSQLValueS(repName.Replace("'", "''")), CNDB)
         Dim sdr As SqlDataReader = cmd.ExecuteReader()
         If (sdr.Read() = True) Then
             If CheckForUpTo1 = True Then
@@ -1447,12 +1463,21 @@ Public Class frmINH
     End Sub
     Private Function CheckIfisLastINH() As Boolean
         Dim sinhID As String
-        Dim sSQL As String = "select ID from inh (nolock) 
-                            where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & "  and calculated =1 and Calorimetric=0 and  reserveAPT=0 and  extraordinary=0 
-                            and tdate=(select max(tdate) from inh (nolock) where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & " and calculated =1 and Calorimetric=0 and  reserveAPT=0 and  extraordinary=0 )"
+        Dim sSQL As New System.Text.StringBuilder
+        sSQL.AppendLine("select ID from inh (nolock)  where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString))
+        sSQL.AppendLine("and calorimetric = " & toSQLValueS(chkCalorimetric.EditValue.ToString))
+        sSQL.AppendLine("and reserveAPT = " & toSQLValueS(chkreserveAPT.EditValue.ToString))
+        sSQL.AppendLine("and extraordinary = " & toSQLValueS(chkExtraordinary.EditValue.ToString))
+        sSQL.AppendLine("and fromtransfer = " & toSQLValueS(chkFromTransfer.EditValue.ToString))
+        sSQL.AppendLine("and tdate=(select max(tdate) from inh (nolock) where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString))
+        sSQL.AppendLine("and calorimetric = " & toSQLValueS(chkCalorimetric.EditValue.ToString))
+        sSQL.AppendLine("and reserveAPT = " & toSQLValueS(chkreserveAPT.EditValue.ToString))
+        sSQL.AppendLine("and extraordinary = " & toSQLValueS(chkExtraordinary.EditValue.ToString))
+        sSQL.AppendLine("and fromtransfer = " & toSQLValueS(chkFromTransfer.EditValue.ToString) & ")")
+
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
-        cmd = New SqlCommand(sSQL, CNDB)
+        cmd = New SqlCommand(sSQL.ToString, CNDB)
         sdr = cmd.ExecuteReader()
         If (sdr.Read() = True) Then
             sinhID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
