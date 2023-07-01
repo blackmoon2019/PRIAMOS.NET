@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Reflection
+Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 
@@ -34,6 +36,8 @@ Public Class frmVersions
     End Sub
 
     Private Sub frmVersions_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet_SUPPORT.vw_TECH_SUP' table. You can move, or remove it, as needed.
+        Me.Vw_TECH_SUPTableAdapter.FillWithNew(Me.Priamos_NETDataSet_SUPPORT.vw_TECH_SUP)
         If UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then LayoutControl1.Enabled = False
 
 
@@ -42,10 +46,11 @@ Public Class frmVersions
                 txtCode.Text = DBQ.GetNextId("PRIAMOS_VER")
                 dtFDate.EditValue = Date.Now
                 'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TECH_SUP' table. You can move, or remove it, as needed.
-                Me.Vw_TECH_SUPTableAdapter.FillWithNew(Me.Priamos_NETDataSet.vw_TECH_SUP)
+                Me.Vw_TECH_SUPTableAdapter.FillWithNew(Me.Priamos_NETDataSet_SUPPORT.vw_TECH_SUP)
+                txtNam.EditValue = Assembly.GetExecutingAssembly().GetName().Version.ToString()
             Case FormMode.EditRecord
                 'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TECH_SUP' table. You can move, or remove it, as needed.
-                Me.Vw_TECH_SUPTableAdapter.FillBy(Me.Priamos_NETDataSet.vw_TECH_SUP)
+                Me.Vw_TECH_SUPTableAdapter.FillBy(Me.Priamos_NETDataSet_SUPPORT.vw_TECH_SUP)
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_PRIAMOSVER where id = " & toSQLValueS(sID))
         End Select
         Me.CenterToScreen()
@@ -64,11 +69,13 @@ Public Class frmVersions
                 End Select
                 If sResult Then
                     'Καθαρισμός Controls
-                    If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1)
+                    If Mode = FormMode.NewRecord Then Cls.ClearCtrls(LayoutControl1) : cbotechnical.EditValue = Nothing
                     txtCode.Text = DBQ.GetNextId("PRIAMOS_VER")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     dtFDate.EditValue = Date.Now
                     Valid.SChanged = False
+                    txtNam.EditValue = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+                    Me.Vw_TECH_SUPTableAdapter.FillWithNew(Me.Priamos_NETDataSet_SUPPORT.vw_TECH_SUP)
                 End If
             End If
         Catch ex As Exception
@@ -78,9 +85,22 @@ Public Class frmVersions
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         Dim sSQL As String
-        Dim myValue As String = InputBox("Πληκτρολογήστε την Έκδοση", "Έκδοση", "")
+        Dim args = New XtraInputBoxArgs()
+        Dim TXT As New DevExpress.XtraEditors.TextEdit
+        args.Caption = "Έκδοση"
+        args.Prompt = "Πληκτρολογήστε την Έκδοση"
+        args.DefaultButtonIndex = 0
+        args.Editor = TXT
+        args.DefaultResponse = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+        Dim myValue = XtraInputBox.Show(args)
+        'Dim myValue As String = InputBox("Πληκτρολογήστε την Έκδοση", "Έκδοση", "")
         Try
             If myValue = "" Then Exit Sub
+            If My.Computer.FileSystem.DirectoryExists("\\192.168.1.52\priamos.net\Updates\" & myValue) = False Then
+                My.Computer.FileSystem.CreateDirectory("\\192.168.1.52\priamos.net\Updates\" & myValue)
+                Dim exePath As String = Application.ExecutablePath()
+                My.Computer.FileSystem.CopyFile(Application.ExecutablePath().Replace("Debug", "Release"), "\\192.168.1.52\priamos.net\Updates\" & myValue & "\PRIAMOS.NET.exe")
+            End If
             sSQL = "Update ver set ExeVer = " & toSQLValueS(myValue) & ",DbVer = " & toSQLValueS(myValue) & ", UpdatePath='\\192.168.1.52\priamos.net\Updates\" & myValue & "\'"
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                 oCmd.ExecuteNonQuery()
@@ -97,11 +117,6 @@ Public Class frmVersions
                 oCmd.ExecuteNonQuery()
             End Using
 
-            If My.Computer.FileSystem.DirectoryExists("\\192.168.1.52\priamos.net\Updates\" & myValue) = False Then
-                My.Computer.FileSystem.CreateDirectory("\\192.168.1.52\priamos.net\Updates\" & myValue)
-                Dim exePath As String = Application.ExecutablePath()
-                My.Computer.FileSystem.CopyFile(Application.ExecutablePath().Replace("Debug", "Release"), "\\192.168.1.52\priamos.net\Updates\" & myValue & "\PRIAMOS.NET.exe")
-            End If
             XtraMessageBox.Show("Η έκδοση δημιουργήθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -132,4 +147,8 @@ Public Class frmVersions
         form1.ShowDialog()
     End Sub
 
+    Private Sub cbotechnical_EditValueChanged(sender As Object, e As EventArgs) Handles cbotechnical.EditValueChanged
+        If cbotechnical.GetColumnValue("descr") Is Nothing Then Exit Sub
+        txtComments.EditValue = cbotechnical.GetColumnValue("descr").ToString
+    End Sub
 End Class

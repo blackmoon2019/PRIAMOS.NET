@@ -30,6 +30,7 @@ Partial Class frmVersions
         Me.txtComments = New DevExpress.XtraEditors.MemoEdit()
         Me.cboType = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.dtFDate = New DevExpress.XtraEditors.DateEdit()
+        Me.cbotechnical = New DevExpress.XtraEditors.LookUpEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -40,12 +41,10 @@ Partial Class frmVersions
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.cbotechnical = New DevExpress.XtraEditors.LookUpEdit()
         Me.LayoutControlItem125 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.VwTECHSUPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PriamosNETDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
-        Me.Vw_TECH_SUPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_TECH_SUPTableAdapter()
+        Me.Priamos_NETDataSet_SUPPORT = New PRIAMOS.NET.Priamos_NETDataSet_SUPPORT()
+        Me.Vw_TECH_SUPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet_SUPPORTTableAdapters.vw_TECH_SUPTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,6 +53,7 @@ Partial Class frmVersions
         CType(Me.cboType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbotechnical.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,11 +64,9 @@ Partial Class frmVersions
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbotechnical.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem125, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwTECHSUPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet_SUPPORT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -166,7 +164,7 @@ Partial Class frmVersions
         Me.cboType.Margin = New System.Windows.Forms.Padding(5)
         Me.cboType.Name = "cboType"
         Me.cboType.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboType.Properties.Items.AddRange(New Object() {"ΝΕΑ ΛΕΙΤΟΥΡΓΙΑ", "ΠΡΟΣΘΗΚΗ", "ΔΙΟΡΘΩΣΗ"})
+        Me.cboType.Properties.Items.AddRange(New Object() {"ΝΕΑ ΛΕΙΤΟΥΡΓΙΑ", "ΠΡΟΣΘΗΚΗ", "ΔΙΟΡΘΩΣΗ", "ΕΠΕΚΤΑΣΗ"})
         Me.cboType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.cboType.Size = New System.Drawing.Size(1015, 38)
         Me.cboType.StyleController = Me.LayoutControl1
@@ -188,6 +186,24 @@ Partial Class frmVersions
         Me.dtFDate.StyleController = Me.LayoutControl1
         Me.dtFDate.TabIndex = 38
         Me.dtFDate.Tag = "dtVer,0,1,2"
+        '
+        'cbotechnical
+        '
+        Me.cbotechnical.Location = New System.Drawing.Point(213, 180)
+        Me.cbotechnical.Margin = New System.Windows.Forms.Padding(5)
+        Me.cbotechnical.Name = "cbotechnical"
+        Me.cbotechnical.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cbotechnical.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cbotechnical.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "TechnicalID", 55, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("subject", "Θέμα", 150, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("descr", "Περιγραφή", 150, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cbotechnical.Properties.DataSource = Me.VwTECHSUPBindingSource
+        Me.cbotechnical.Properties.DisplayMember = "subject"
+        Me.cbotechnical.Properties.NullText = ""
+        Me.cbotechnical.Properties.PopupSizeable = False
+        Me.cbotechnical.Properties.ValueMember = "ID"
+        Me.cbotechnical.Size = New System.Drawing.Size(1015, 38)
+        Me.cbotechnical.StyleController = Me.LayoutControl1
+        Me.cbotechnical.TabIndex = 27
+        Me.cbotechnical.Tag = "technicalID,0,1,2"
         '
         'Root
         '
@@ -293,24 +309,6 @@ Partial Class frmVersions
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
-        'cbotechnical
-        '
-        Me.cbotechnical.Location = New System.Drawing.Point(213, 180)
-        Me.cbotechnical.Margin = New System.Windows.Forms.Padding(5)
-        Me.cbotechnical.Name = "cbotechnical"
-        Me.cbotechnical.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cbotechnical.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cbotechnical.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "TechnicalID", 55, DevExpress.Utils.FormatType.Numeric, "", True, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("subject", "Θέμα", 150, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("descr", "Περιγραφή", 150, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cbotechnical.Properties.DataSource = Me.VwTECHSUPBindingSource
-        Me.cbotechnical.Properties.DisplayMember = "subject"
-        Me.cbotechnical.Properties.NullText = ""
-        Me.cbotechnical.Properties.PopupSizeable = False
-        Me.cbotechnical.Properties.ValueMember = "ID"
-        Me.cbotechnical.Size = New System.Drawing.Size(1015, 38)
-        Me.cbotechnical.StyleController = Me.LayoutControl1
-        Me.cbotechnical.TabIndex = 27
-        Me.cbotechnical.Tag = "technicalID,0,1,2"
-        '
         'LayoutControlItem125
         '
         Me.LayoutControlItem125.Control = Me.cbotechnical
@@ -326,17 +324,12 @@ Partial Class frmVersions
         'VwTECHSUPBindingSource
         '
         Me.VwTECHSUPBindingSource.DataMember = "vw_TECH_SUP"
-        Me.VwTECHSUPBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        Me.VwTECHSUPBindingSource.DataSource = Me.Priamos_NETDataSet_SUPPORT
         '
-        'PriamosNETDataSetBindingSource
+        'Priamos_NETDataSet_SUPPORT
         '
-        Me.PriamosNETDataSetBindingSource.DataSource = Me.Priamos_NETDataSet
-        Me.PriamosNETDataSetBindingSource.Position = 0
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Priamos_NETDataSet_SUPPORT.DataSetName = "Priamos_NETDataSet_SUPPORT"
+        Me.Priamos_NETDataSet_SUPPORT.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Vw_TECH_SUPTableAdapter
         '
@@ -358,6 +351,7 @@ Partial Class frmVersions
         CType(Me.cboType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtFDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbotechnical.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
@@ -368,11 +362,9 @@ Partial Class frmVersions
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbotechnical.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem125, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwTECHSUPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet_SUPPORT, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -398,8 +390,7 @@ Partial Class frmVersions
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents cbotechnical As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem125 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents PriamosNETDataSetBindingSource As BindingSource
-    Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
+    Friend WithEvents Priamos_NETDataSet_SUPPORT As Priamos_NETDataSet_SUPPORT
     Friend WithEvents VwTECHSUPBindingSource As BindingSource
-    Friend WithEvents Vw_TECH_SUPTableAdapter As Priamos_NETDataSetTableAdapters.vw_TECH_SUPTableAdapter
+    Friend WithEvents Vw_TECH_SUPTableAdapter As Priamos_NETDataSet_SUPPORTTableAdapters.vw_TECH_SUPTableAdapter
 End Class

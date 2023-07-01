@@ -584,6 +584,11 @@
     <Compile Include="Priamos_NETDataSet2.vb">
       <DependentUpon>Priamos_NETDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Priamos_NETDataSet_SUPPORT.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NETDataSet_SUPPORT.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Priamos_NET_DataSet_BDG.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -929,6 +934,17 @@
     <Content Include="Sql Scripts\dbo.uspAddUser.StoredProcedure.sql" />
     <Content Include="Sql Scripts\INV_CALCULATE.sql" />
     <Content Include="Sql Scripts\inv_cancelCalculate.sql" />
+    <None Include="Priamos_NETDataSet_SUPPORT.xsc">
+      <DependentUpon>Priamos_NETDataSet_SUPPORT.xsd</DependentUpon>
+    </None>
+    <None Include="Priamos_NETDataSet_SUPPORT.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Priamos_NETDataSet_SUPPORT.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Priamos_NETDataSet_SUPPORT.xss">
+      <DependentUpon>Priamos_NETDataSet_SUPPORT.xsd</DependentUpon>
+    </None>
     <None Include="Resources\information-16.png" />
     <None Include="Resources\icons8-initiate-money-transfer-40.png" />
     <None Include="Resources\icons8-cash-24.png" />
@@ -2577,6 +2593,7 @@
   xcopy "$(ProjectDir)\bin\Debug\PRIAMOS.NET.exe" "\\192.168.1.52\priamos.net\PRIAMOS_DEV\" /Y /I
 ) ELSE (
   echo "ConfigurationName= Debug".
+echo $(GitBranch)
 )</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
