@@ -18,6 +18,7 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
+Imports DevExpress.CodeParser
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -2883,5 +2884,86 @@ Public Class frmBDG
 
     Private Sub txtBDGFilename_EditValueChanged(sender As Object, e As EventArgs) Handles txtBDGFilename.EditValueChanged
 
+    End Sub
+
+    Private Sub BarEIDOP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEIDOP.ItemClick
+        Dim selectedRowHandles As Integer() = GridView_INH.GetSelectedRows()
+        For I = 0 To GridView_INH.SelectedRowsCount - 1
+            If GridView_INH.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(1, selectedRowHandles(I))
+        Next
+    End Sub
+
+    Private Sub BarRECEIPT_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRECEIPT.ItemClick
+        Dim selectedRowHandles As Integer() = GridView_INH.GetSelectedRows()
+        For I = 0 To GridView_INH.SelectedRowsCount - 1
+            If GridView_INH.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(2, selectedRowHandles(I))
+        Next
+    End Sub
+
+    Private Sub BarSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSYG.ItemClick
+        Dim selectedRowHandles As Integer() = GridView_INH.GetSelectedRows()
+        For I = 0 To GridView_INH.SelectedRowsCount - 1
+            If GridView_INH.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(0, selectedRowHandles(I))
+        Next
+    End Sub
+    Private Sub PrintReport(ByVal sWichReport As Integer, ByVal Row As Integer)
+        Try
+            Select Case sWichReport
+                Case 0
+                    Dim report As New Rep_Sygentrotiki()
+                    ' Εαν έχει FI
+                    If GridView_INH.GetRowCellValue(Row, "HTypeID") IsNot Nothing Then
+                        If GridView_INH.GetRowCellValue(Row, "HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+                    Else
+                        report.HasFI = False
+                    End If
+                    ' Εαν έχει FI Boiler
+                    If GridView_INH.GetRowCellValue(Row, "BTypeID") IsNot Nothing Then
+                        If GridView_INH.GetRowCellValue(Row, "BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
+                    Else
+                        report.HasFIBoiler = False
+                    End If
+                    If GridView_INH.GetRowCellValue(Row, "ahpb_HID") IsNot Nothing Then
+                        If GridView_INH.GetRowCellValue(Row, "ahpb_HID").ToString.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
+                    Else
+                        report.HasHoursH = False
+                    End If
+                    If GridView_INH.GetRowCellValue(Row, "ahpb_HIDB") IsNot Nothing Then
+                        If GridView_INH.GetRowCellValue(Row, "ahpb_HIDB").ToString.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+                    Else
+                        report.HasHoursBoiler = False
+                    End If
+
+                    report.Parameters.Item(0).Value = GridView_INH.GetRowCellValue(Row, "ID").ToString
+                    report.Parameters.Item(1).Value = GridView_INH.GetRowCellValue(Row, "bdgID").ToString
+                    report.CreateDocument()
+                    report.PrintingSystem.Document.ScaleFactor = 0.99
+
+
+                    Dim tool As New PrintToolBase(report.PrintingSystem)
+                    tool.Print()
+                Case 1
+                    Dim report As New Eidop()
+                    report.Parameters.Item(0).Value = GridView_INH.GetRowCellValue(Row, "ID").ToString
+                    report.CreateDocument()
+                    Dim tool As New PrintToolBase(report.PrintingSystem)
+                    tool.Print()
+                Case 2
+                    Dim report As New Receipt
+                    Dim sMargins As New System.Drawing.Printing.Margins
+                    report.Parameters.Item(0).Value = GridView_INH.GetRowCellValue(Row, "ID").ToString
+                    report.PrintingSystem.Document.ScaleFactor = 0.92
+                    report.DefaultPrinterSettingsUsing.UsePaperKind = False
+                    report.DefaultPrinterSettingsUsing.UseMargins = False
+                    sMargins.Bottom = 50 : sMargins.Top = 90 : sMargins.Left = 100 : sMargins.Right = 50
+                    report.Margins = sMargins
+                    report.CreateDocument()
+                    Dim tool As New PrintToolBase(report.PrintingSystem)
+                    tool.Print()
+
+            End Select
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class

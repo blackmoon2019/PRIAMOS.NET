@@ -1944,13 +1944,27 @@ Public Class frmScroller
         Select Case sWichReport
             Case 0
                 Dim report As New Rep_Sygentrotiki()
-                ' Εαν έχει FI
-                If GridView1.GetRowCellValue(Row, "HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+                If GridView1.GetRowCellValue(Row, "HTypeID") IsNot Nothing Then
+                    If GridView1.GetRowCellValue(Row, "HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFI = True Else report.HasFI = False
+                Else
+                    report.HasFI = False
+                End If
                 ' Εαν έχει FI Boiler
-                If GridView1.GetRowCellValue(Row, "BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
-
-                If GridView1.GetRowCellValue(Row, "ahpb_HID").ToString.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
-                If GridView1.GetRowCellValue(Row, "ahpb_HIDB").ToString.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+                If GridView1.GetRowCellValue(Row, "BTypeID") IsNot Nothing Then
+                    If GridView1.GetRowCellValue(Row, "BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then report.HasFIBoiler = True Else report.HasFIBoiler = False
+                Else
+                    report.HasFIBoiler = False
+                End If
+                If GridView1.GetRowCellValue(Row, "ahpb_HID") IsNot Nothing Then
+                    If GridView1.GetRowCellValue(Row, "ahpb_HID").ToString.Length > 0 Then report.HasHoursH = True Else report.HasHoursH = False
+                Else
+                    report.HasHoursH = False
+                End If
+                If GridView1.GetRowCellValue(Row, "ahpb_HIDB") IsNot Nothing Then
+                    If GridView1.GetRowCellValue(Row, "ahpb_HIDB").ToString.Length > 0 Then report.HasHoursBoiler = True Else report.HasHoursBoiler = False
+                Else
+                    report.HasHoursBoiler = False
+                End If
                 report.Parameters.Item(0).Value = GridView1.GetRowCellValue(Row, "ID").ToString
                 report.Parameters.Item(1).Value = GridView1.GetRowCellValue(Row, "bdgID").ToString
                 report.CreateDocument()

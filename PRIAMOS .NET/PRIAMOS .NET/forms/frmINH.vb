@@ -1357,11 +1357,11 @@ Public Class frmINH
             If chkCalculated.Checked = False Then
                 Dim printingSystem As PrintingSystemBase = printTool.PrintingSystem
                 printingSystem.SetCommandVisibility(New PrintingSystemCommand() {
-            PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
-            PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
-            PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
-            PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
-            PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
+                PrintingSystemCommand.ExportCsv, PrintingSystemCommand.ExportTxt, PrintingSystemCommand.ExportDocx,
+                PrintingSystemCommand.ExportHtm, PrintingSystemCommand.ExportMht, PrintingSystemCommand.ExportPdf,
+                PrintingSystemCommand.ExportRtf, PrintingSystemCommand.ExportXls, PrintingSystemCommand.ExportXlsx,
+                PrintingSystemCommand.ExportGraphic, PrintingSystemCommand.Print, PrintingSystemCommand.PrintDirect,
+                PrintingSystemCommand.PrintSelection}, CommandVisibility.None)
             End If
             printTool.ShowRibbonPreview()
             SplashScreenManager1.CloseWaitForm()

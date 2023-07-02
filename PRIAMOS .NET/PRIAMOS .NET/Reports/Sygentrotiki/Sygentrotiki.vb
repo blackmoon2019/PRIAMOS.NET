@@ -651,7 +651,5 @@ Public Class Rep_Sygentrotiki
 
     End Sub
 
-    Private Sub Rep_Sygentrotiki_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
 
-    End Sub
 End Class

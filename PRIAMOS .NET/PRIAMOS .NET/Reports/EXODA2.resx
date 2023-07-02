@@ -131,7 +131,7 @@
        "vw_IND"."owner_tenant", "vw_IND"."ord"
   from "dbo"."vw_IND" "vw_IND"
 where "vw_IND"."owner_tenant"='1' and "vw_IND"."inhID" = @inhID 
-and row_num &lt;= 10
+and row_num &gt; 10
 order by "vw_IND"."owner_tenant" desc,"vw_IND"."ord"</value>
   </data>
   <data name="SqlDataSource1.ResultSchemaSerializable" xml:space="preserve">

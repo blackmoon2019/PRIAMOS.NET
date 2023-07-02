@@ -630,6 +630,12 @@
     <Compile Include="Reports\Eidop\XILIOSTA.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\EXODA2.Designer.vb">
+      <DependentUpon>EXODA2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EXODA2.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Sygentrotiki\ClosedAPT.Designer.vb">
       <DependentUpon>ClosedAPT.vb</DependentUpon>
     </Compile>
@@ -845,6 +851,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\XILIOSTA.resx">
       <DependentUpon>XILIOSTA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EXODA2.resx">
+      <DependentUpon>EXODA2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sygentrotiki\ClosedAPT.resx">
       <DependentUpon>ClosedAPT.vb</DependentUpon>
