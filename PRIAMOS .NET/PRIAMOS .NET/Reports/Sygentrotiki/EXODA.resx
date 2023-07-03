@@ -132,7 +132,7 @@
   from "dbo"."vw_IND" "vw_IND"
 where "vw_IND"."owner_tenant"='1' and "vw_IND"."inhID" = @inhID 
 and row_num &lt;= 10
-order by "vw_IND"."owner_tenant" desc,"vw_IND"."ord"</value>
+order by "vw_IND"."ord"</value>
   </data>
   <data name="SqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0iU3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9InZ3X0lORCI+PEZpZWxkIE5hbWU9IklEIiBUeXBlPSJHdWlkIiAvPjxGaWVsZCBOYW1lPSJjb2RlIiBUeXBlPSJJbnQ2NCIgLz48RmllbGQgTmFtZT0iaW5oSUQiIFR5cGU9Ikd1aWQiIC8+PEZpZWxkIE5hbWU9ImNhbGNDYXRJRCIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0ibmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJyZXBOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImFtdCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0ibW9kaWZpZWRCeSIgVHlwZT0iR3VpZCIgLz48RmllbGQgTmFtZT0ibW9kaWZpZWRPbiIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9ImNyZWF0ZWRPbiIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9Im5hbSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJmRGF0ZSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9InREYXRlIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0ib3duZXJfdGVuYW50IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJvcmQiIFR5cGU9IkludDMyIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>

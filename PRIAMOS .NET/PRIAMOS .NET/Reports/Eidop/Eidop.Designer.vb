@@ -2059,7 +2059,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrPanel7.CanGrow = False
         Me.XrPanel7.CanShrink = True
-        Me.XrPanel7.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel18, Me.XrLabel39, Me.XrLine6, Me.XrLine7, Me.XrLabel40, Me.XrLabel44})
+        Me.XrPanel7.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine6, Me.XrLine7, Me.XrPanel18, Me.XrLabel39, Me.XrLabel40, Me.XrLabel44})
         Me.XrPanel7.Dpi = 254.0!
         Me.XrPanel7.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrPanel7.Name = "XrPanel7"
@@ -2197,7 +2197,7 @@ Partial Public Class Eidop
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel38, Me.EXODA_PER_APT_OWNERS, Me.XrPanel13, Me.EXODA_PER_APT, Me.XrLabel21, Me.XrPanel5})
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel38, Me.XrPanel13, Me.XrLabel21, Me.XrPanel5, Me.EXODA_PER_APT, Me.EXODA_PER_APT_OWNERS})
         Me.Detail.Dpi = 254.0!
         Me.Detail.HeightF = 1255.927!
         Me.Detail.HierarchyPrintOptions.Indent = 50.8!
@@ -2281,7 +2281,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrPanel5.CanGrow = False
         Me.XrPanel5.CanShrink = True
-        Me.XrPanel5.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPanel12, Me.XrPanel6, Me.XrLine2, Me.XrLine1, Me.XrLabel35, Me.XrLabel16, Me.XrLabel17})
+        Me.XrPanel5.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine2, Me.XrLine1, Me.XrPanel12, Me.XrPanel6, Me.XrLabel35, Me.XrLabel16, Me.XrLabel17})
         Me.XrPanel5.Dpi = 254.0!
         Me.XrPanel5.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 51.75821!)
         Me.XrPanel5.Name = "XrPanel5"

@@ -173,6 +173,7 @@ Partial Public Class EXODA_OWNERS
         'XrLabel5
         '
         Me.XrLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'")})
         Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
@@ -182,6 +183,7 @@ Partial Public Class EXODA_OWNERS
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel5.SizeF = New System.Drawing.SizeF(219.7257!, 38.09998!)
         Me.XrLabel5.StylePriority.UseBackColor = False
+        Me.XrLabel5.StylePriority.UseBorders = False
         Me.XrLabel5.StylePriority.UseFont = False
         Me.XrLabel5.StylePriority.UseTextAlignment = False
         XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
@@ -192,8 +194,8 @@ Partial Public Class EXODA_OWNERS
         'XrLabel3
         '
         Me.XrLabel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.XrLabel3.BorderColor = System.Drawing.Color.White
-        Me.XrLabel3.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel3.BorderColor = System.Drawing.Color.Black
+        Me.XrLabel3.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel3.BorderWidth = 1.0!
         Me.XrLabel3.CanGrow = False
         Me.XrLabel3.Dpi = 254.0!

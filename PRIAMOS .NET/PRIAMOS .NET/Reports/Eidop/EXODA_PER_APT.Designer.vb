@@ -38,13 +38,11 @@ Partial Public Class EXODA_PER_APT
         Me.GroupHeader1 = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.XrLabel4 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel5 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.table1 = New DevExpress.XtraReports.UI.XRTable()
-        Me.tableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
-        Me.tableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
         Me.inhID = New DevExpress.XtraReports.Parameters.Parameter()
         Me.aptID = New DevExpress.XtraReports.Parameters.Parameter()
         Me.CalculatedField1 = New DevExpress.XtraReports.UI.CalculatedField()
-        CType(Me.table1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupFooter1 = New DevExpress.XtraReports.UI.GroupFooterBand()
+        Me.XrLabel6 = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'SqlDataSourceAPT
@@ -134,16 +132,16 @@ Partial Public Class EXODA_PER_APT
         '
         'GroupHeader1
         '
-        Me.GroupHeader1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel4, Me.XrLabel5, Me.table1})
         Me.GroupHeader1.Dpi = 254.0!
         Me.GroupHeader1.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("calcCatNam", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
         Me.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail
-        Me.GroupHeader1.HeightF = 38.09998!
+        Me.GroupHeader1.HeightF = 0!
         Me.GroupHeader1.Name = "GroupHeader1"
         '
         'XrLabel4
         '
         Me.XrLabel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel4.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel4.CanGrow = False
         Me.XrLabel4.Dpi = 254.0!
         Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([AmtPerCalc]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
@@ -154,6 +152,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel4.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
         Me.XrLabel4.SizeF = New System.Drawing.SizeF(198.48!, 38.09998!)
         Me.XrLabel4.StylePriority.UseBackColor = False
+        Me.XrLabel4.StylePriority.UseBorders = False
         Me.XrLabel4.StylePriority.UseFont = False
         Me.XrLabel4.StylePriority.UseTextAlignment = False
         XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
@@ -164,6 +163,7 @@ Partial Public Class EXODA_PER_APT
         'XrLabel5
         '
         Me.XrLabel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel5.CanGrow = False
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
@@ -172,43 +172,15 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
-        Me.XrLabel5.SizeF = New System.Drawing.SizeF(198.48!, 38.09998!)
+        Me.XrLabel5.SizeF = New System.Drawing.SizeF(202.514!, 38.09998!)
         Me.XrLabel5.StylePriority.UseBackColor = False
+        Me.XrLabel5.StylePriority.UseBorders = False
         Me.XrLabel5.StylePriority.UseFont = False
         Me.XrLabel5.StylePriority.UseTextAlignment = False
         XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
         Me.XrLabel5.Summary = XrSummary2
         Me.XrLabel5.Text = "XrLabel5"
         Me.XrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        '
-        'table1
-        '
-        Me.table1.Dpi = 254.0!
-        Me.table1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
-        Me.table1.Name = "table1"
-        Me.table1.Rows.AddRange(New DevExpress.XtraReports.UI.XRTableRow() {Me.tableRow1})
-        Me.table1.SizeF = New System.Drawing.SizeF(554.006!, 38.09998!)
-        '
-        'tableRow1
-        '
-        Me.tableRow1.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.tableCell2})
-        Me.tableRow1.Dpi = 254.0!
-        Me.tableRow1.Name = "tableRow1"
-        Me.tableRow1.Weight = 1.0R
-        '
-        'tableCell2
-        '
-        Me.tableCell2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.tableCell2.CanGrow = False
-        Me.tableCell2.Dpi = 254.0!
-        Me.tableCell2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[calcCatNam]")})
-        Me.tableCell2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.tableCell2.ForeColor = System.Drawing.Color.Black
-        Me.tableCell2.Name = "tableCell2"
-        Me.tableCell2.StylePriority.UseBackColor = False
-        Me.tableCell2.StylePriority.UseFont = False
-        Me.tableCell2.StylePriority.UseForeColor = False
-        Me.tableCell2.Weight = 0.9518129780713297R
         '
         'inhID
         '
@@ -243,9 +215,33 @@ Partial Public Class EXODA_PER_APT
         Me.CalculatedField1.DataMember = "vw_INC"
         Me.CalculatedField1.Name = "CalculatedField1"
         '
+        'GroupFooter1
+        '
+        Me.GroupFooter1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel6, Me.XrLabel5, Me.XrLabel4})
+        Me.GroupFooter1.Dpi = 254.0!
+        Me.GroupFooter1.HeightF = 38.09998!
+        Me.GroupFooter1.Name = "GroupFooter1"
+        '
+        'XrLabel6
+        '
+        Me.XrLabel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.XrLabel6.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
+        Me.XrLabel6.CanGrow = False
+        Me.XrLabel6.Dpi = 254.0!
+        Me.XrLabel6.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[calcCatNam]")})
+        Me.XrLabel6.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel6.ForeColor = System.Drawing.Color.Black
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.XrLabel6.Name = "XrLabel6"
+        Me.XrLabel6.SizeF = New System.Drawing.SizeF(558.006!, 38.09998!)
+        Me.XrLabel6.StylePriority.UseBackColor = False
+        Me.XrLabel6.StylePriority.UseBorders = False
+        Me.XrLabel6.StylePriority.UseFont = False
+        Me.XrLabel6.StylePriority.UseForeColor = False
+        '
         'EXODA_PER_APT
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.GroupHeader1})
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.GroupHeader1, Me.GroupFooter1})
         Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.CalculatedField1})
         Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSourceAPT})
         Me.DataMember = "vw_INC"
@@ -262,7 +258,6 @@ Partial Public Class EXODA_PER_APT
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.SnapGridSize = 25.0!
         Me.Version = "21.2"
-        CType(Me.table1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -280,7 +275,6 @@ Partial Public Class EXODA_PER_APT
     Friend WithEvents CalculatedField1 As DevExpress.XtraReports.UI.CalculatedField
     Friend WithEvents XrLabel3 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel4 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents table1 As DevExpress.XtraReports.UI.XRTable
-    Friend WithEvents tableRow1 As DevExpress.XtraReports.UI.XRTableRow
-    Friend WithEvents tableCell2 As DevExpress.XtraReports.UI.XRTableCell
+    Friend WithEvents GroupFooter1 As DevExpress.XtraReports.UI.GroupFooterBand
+    Friend WithEvents XrLabel6 As DevExpress.XtraReports.UI.XRLabel
 End Class
