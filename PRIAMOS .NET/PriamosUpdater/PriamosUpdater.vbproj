@@ -219,7 +219,9 @@
     <Compile Include="Classes\CN.vb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Forms\frmUpdate.vb" />
+    <Compile Include="Forms\frmUpdate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmUpdate.Designer.vb">
       <DependentUpon>frmUpdate.vb</DependentUpon>
     </Compile>
