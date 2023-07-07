@@ -2144,26 +2144,34 @@ Public Class frmBDG
         Dim selectedRowHandles As Int32() = GridView_BDGF.GetSelectedRows()
         Dim SelectedPath As String
         Dim result As DialogResult = XtraFolderBrowserDialog1.ShowDialog()
-        If result = DialogResult.OK Then
-            SelectedPath = XtraFolderBrowserDialog1.SelectedPath
-        Else
-            Exit Sub
-        End If
+        Try
 
-        SplashScreenManager1.ShowWaitForm()
-        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
 
-        For I = 0 To selectedRowHandles.Length - 1
-            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-            Dim sFilename = GridView_BDGF.GetRowCellValue(selectedRowHandle, "filename")
-            If File.Exists(Application.StartupPath & "\" & sFilename) Then File.Delete(Application.StartupPath & "\" & sFilename)
-            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
-            Dim b() As Byte = LoadForms.GetFile(GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
-            fs.Write(b, 0, b.Length)
-            fs.Close()
-            My.Computer.FileSystem.CopyFile(Application.StartupPath & "\" & sFilename, SelectedPath & "\" & sFilename, True)
-        Next
-        SplashScreenManager1.CloseWaitForm()
+            If result = DialogResult.OK Then
+                SelectedPath = XtraFolderBrowserDialog1.SelectedPath
+            Else
+                Exit Sub
+            End If
+
+            SplashScreenManager1.ShowWaitForm()
+            SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                Dim sFilename = GridView_BDGF.GetRowCellValue(selectedRowHandle, "filename")
+                If File.Exists(Application.StartupPath & "\" & sFilename) Then File.Delete(Application.StartupPath & "\" & sFilename)
+                Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
+                Dim b() As Byte = LoadForms.GetFile(GridView_BDGF.GetRowCellValue(selectedRowHandle, "ID").ToString, "BDG_F")
+                fs.Write(b, 0, b.Length)
+                fs.Close()
+                My.Computer.FileSystem.CopyFile(Application.StartupPath & "\" & sFilename, SelectedPath & "\" & sFilename, True)
+            Next
+            SplashScreenManager1.CloseWaitForm()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            SplashScreenManager1.CloseWaitForm()
+        End Try
+
     End Sub
     Private Sub cmdBDGFEdit_Click(sender As Object, e As EventArgs) Handles cmdBDGFEdit.Click
         Dim sSQL As String
