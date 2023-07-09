@@ -39,6 +39,7 @@ Public Class frmBDG
     Private ModePROFACTD As Byte
     Private ActiveGrid As GridView
 
+
     '------C L A S S E S------
     Private ManageCbo As New CombosManager
     Private UserPermissions As New CheckPermissions
@@ -139,7 +140,7 @@ Public Class frmBDG
                 NavHeatingInvoices.Enabled = False
                 NavDecontamination.Enabled = False
                 NavConsumption.Enabled = False
-                NavBoiler.Enabled = False
+                NavDeposit.Enabled = False
                 NavAPM.Enabled = False
                 NavINH.Enabled = False
                 chkPRD.Checked = True
@@ -248,7 +249,7 @@ Public Class frmBDG
                     NavHeatingInvoices.Enabled = True
                     NavDecontamination.Enabled = True
                     NavConsumption.Enabled = True
-                    NavBoiler.Enabled = True
+                    NavDeposit.Enabled = True
                     NavAPM.Enabled = True
                     NavINH.Enabled = True
                     grdBDG_M.Enabled = True
@@ -2973,5 +2974,231 @@ Public Class frmBDG
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub NavDeposit_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavDeposit.ElementClick
+        Try
+            Maintab.SelectedTabPage = tabDeposit
+            Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.DEPOSIT_A, System.Guid.Parse(sID))
+            LoadForms.RestoreLayoutFromXml(GridView_DepositA, "vw_DEPOSIT_A.xml")
+            ' Σύνολο Λογιστικού Αποθεματικού
+            GettotDepositA()
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub GettotDepositA()
+        Try
+
+            Dim sAmt As Double
+            Dim sSQL As String = "select top 1 totDepositA from BDG where ID =  " & toSQLValueS(sID)
+            Dim cmd As SqlCommand
+            Dim sdr As SqlDataReader
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then
+                sAmt = sdr.GetDecimal(sdr.GetOrdinal("totDepositA")).ToString
+                sdr.Close()
+            Else
+                sdr.Close()
+            End If
+            txtTotalDepositAmt.EditValue = sAmt
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Private Sub cmdSaveAccountantDeposit_Click(sender As Object, e As EventArgs) Handles cmdSaveAccountantDeposit.Click
+        Dim sResult As Boolean
+        Try
+            If Valid.ValidateForm(LDeposit) Then
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DEPOSIT_A", LDeposit,,, , True, "bdgID", toSQLValueS(sID))
+                If sResult Then
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    CalculateDepositA()
+                    ClearDepositA()
+                    RefreshDepositA()
+                End If
+            End If
+
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub RefreshDepositA()
+        Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.DEPOSIT_A, System.Guid.Parse(sID))
+    End Sub
+
+    Private Sub cmdRefreshDepositA_Click(sender As Object, e As EventArgs) Handles cmdRefreshDepositA.Click
+        RefreshDepositA()
+    End Sub
+    Private Sub DeleteDepositA()
+        Dim sSQL As String
+        Try
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM DEPOSIT_A WHERE ID = '" & GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                CalculateDepositA()
+
+
+                RefreshDepositA()
+                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cmdDeleteDepositA_Click(sender As Object, e As EventArgs) Handles cmdDeleteDepositA.Click
+        DeleteDepositA()
+    End Sub
+    Private Sub GridView_DepositA_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView_DepositA.KeyDown
+        Select Case e.KeyCode
+            'Case Keys.F2 : If UserProps.AllowInsert = True Then Cls.ClearGroupCtrls(LayoutControlGroup25)
+            Case Keys.F3
+            Case Keys.F5 : RefreshDepositA()
+            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteDepositA()
+        End Select
+
+    End Sub
+
+    Private Sub GridView_DepositA_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_DepositA.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView_DepositA, "vw_DEPOSIT_A.xml", "DEPOSIT_A")
+        Else
+            ActiveGrid = GridView_DepositA
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+
+    End Sub
+
+    Private Sub GridView_DepositA_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles GridView_DepositA.ValidateRow
+        Dim sSQL As New System.Text.StringBuilder
+        Dim sDate As String, sMultiplier As Integer
+        Try
+            sSQL.Clear()
+
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "dtDeposit").ToString = "" Then
+                e.ErrorText = "Παρακαλώ επιλεξτε Ημερομηνία"
+                e.Valid = False
+                Exit Sub
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ord").ToString = "" Then
+                e.ErrorText = "Παρακαλώ πληκτρολογείστε AA"
+                e.Valid = False
+                Exit Sub
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "multiplierDescr").ToString = "" Then
+                e.ErrorText = "Παρακαλώ επιλεξτε Τύπο Κίνησης"
+                e.Valid = False
+                Exit Sub
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ttl").ToString = "" Then
+                e.ErrorText = "Παρακαλώ πληκτρολογείστε Λεκτικό"
+                e.Valid = False
+                Exit Sub
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "amt").ToString = "" Then
+                e.ErrorText = "Παρακαλώ πληκτρολογείστε ποσό"
+                e.Valid = False
+                Exit Sub
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "multiplierDescr").ToString = "Αύξηση" Then
+                sMultiplier = 0
+            Else
+                sMultiplier = 1
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "amt") > 0 And sMultiplier = 1 Then
+                e.ErrorText = "Δεν μπορείτε να καταχωρήσετε αρνητικό αριθμό με τύπο κίνησης ""Αύξηση"""
+                e.Valid = False
+                Exit Sub
+            End If
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "amt") < 0 And sMultiplier = 0 Then
+                e.ErrorText = "Δεν μπορείτε να καταχωρήσετε θετικό αριθμό με τύπο κίνησης ""Μείωση"""
+                e.Valid = False
+                Exit Sub
+            End If
+
+            sSQL.AppendLine("UPDATE DEPOSIT_A	SET ")
+            sSQL.AppendLine("ord = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ord").ToString, True) & ",")
+            sSQL.AppendLine("multiplier = " & sMultiplier & ",")
+            sSQL.AppendLine("ttl= " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ttl").ToString) & ",")
+            sSQL.AppendLine("amt = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "amt").ToString, True) & ",")
+            sDate = GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "dtDeposit").ToString
+            If sDate <> "" Then sDate = toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) Else sDate = "NULL"
+            sSQL.AppendLine("dtDeposit= " & sDate & ",")
+            sSQL.AppendLine("modifiedBy = " & toSQLValueS(UserProps.ID.ToString))
+            sSQL.Append("WHERE ID = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString))
+            'Εκτέλεση QUERY
+            Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            'Υπολογισμός Λογιστικού Αποθεματικού
+            CalculateDepositA()
+        Catch sqlEx As SqlException When sqlEx.Number = 2601
+            XtraMessageBox.Show("Ύπάρχει ήδη εγγραφή καταχωρημένη με αυτά τα στοιχεία.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Valid = False
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub CalculateDepositA()
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositA", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sID)
+                oCmd.Parameters.Add("@Amt", SqlDbType.Decimal)
+                oCmd.Parameters("@Amt").Direction = ParameterDirection.Output
+                oCmd.ExecuteNonQuery()
+                txtTotalDepositAmt.EditValue = oCmd.Parameters("@Amt").Value
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub ClearDepositA()
+        Dim ExceptFields As New List(Of String)
+        ExceptFields.Add("txtTotalDepositAmt")
+        Cls.ClearCtrls(LDeposit, ExceptFields)
+        txtDepositAmt.ForeColor = Color.Black
+    End Sub
+    Private Sub cboMultiplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMultiplier.SelectedIndexChanged
+        If cboMultiplier.SelectedIndex = 0 Then
+            txtDepositAmt.ForeColor = Color.Green
+        Else
+            txtDepositAmt.ForeColor = Color.Red
+        End If
+        If txtDepositAmt.EditValue IsNot Nothing Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
+
+    End Sub
+
+
+    Private Sub txtDepositAmt_KeyDown(sender As Object, e As KeyEventArgs) Handles txtDepositAmt.KeyDown
+        If e.KeyCode = Keys.Subtract And cboMultiplier.SelectedIndex = 0 Then
+            XtraMessageBox.Show("Δεν μπορείτε να καταχωρήσετε αρνητικό αριθμό με τύπο κίνησης ""Αύξηση""", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtDepositAmt.EditValue = txtDepositAmt.EditValue.ToString.Replace("-", "")
+        End If
+
+    End Sub
+
+    Private Sub cmdAddDepositA_Click(sender As Object, e As EventArgs) Handles cmdAddDepositA.Click
+        ClearDepositA()
+    End Sub
+
+    Private Sub txtDepositAmt_Validated(sender As Object, e As EventArgs) Handles txtDepositAmt.Validated
+        If cboMultiplier.SelectedIndex = 0 Then
+            txtDepositAmt.ForeColor = Color.Green
+        Else
+            txtDepositAmt.ForeColor = Color.Red
+        End If
+        If txtDepositAmt.EditValue IsNot Nothing Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
     End Sub
 End Class

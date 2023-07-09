@@ -130,7 +130,7 @@ Partial Class frmBDG
         Me.NavProfActD = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavHeatingInvoices = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavDecontamination = New DevExpress.XtraBars.Navigation.NavButton()
-        Me.NavBoiler = New DevExpress.XtraBars.Navigation.NavButton()
+        Me.NavDeposit = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavConsumption = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavAPM = New DevExpress.XtraBars.Navigation.NavButton()
         Me.NavINH = New DevExpress.XtraBars.Navigation.NavButton()
@@ -545,6 +545,7 @@ Partial Class frmBDG
         Me.colemail = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.cboPrf = New DevExpress.XtraEditors.LookUpEdit()
         Me.cboCCT = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwCCTPFBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtComments1 = New DevExpress.XtraEditors.MemoEdit()
         Me.txtCodeBcct = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup13 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -801,7 +802,54 @@ Partial Class frmBDG
         Me.LayoutControlItem171 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem34 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem38 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.XtraTabPage20 = New DevExpress.XtraTab.XtraTabPage()
+        Me.tabDeposit = New DevExpress.XtraTab.XtraTabPage()
+        Me.LDeposit = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdRefreshDepositA = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdDeleteDepositA = New DevExpress.XtraEditors.SimpleButton()
+        Me.cmdAddDepositA = New DevExpress.XtraEditors.SimpleButton()
+        Me.grdDepositA = New DevExpress.XtraGrid.GridControl()
+        Me.DEPOSITABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GridView_DepositA = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colord1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colmultiplier = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepCboMultiplier = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
+        Me.colmultiplierDescr = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colttl2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.coldtDeposit = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepDtDeposit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.colamt2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepTxtAmt = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.colcmt2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.cmdSaveAccountantDeposit = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtOrd = New DevExpress.XtraEditors.SpinEdit()
+        Me.dtDeposit = New DevExpress.XtraEditors.DateEdit()
+        Me.txtDepositAmt = New DevExpress.XtraEditors.TextEdit()
+        Me.txtTtl = New DevExpress.XtraEditors.TextEdit()
+        Me.txtCmt = New DevExpress.XtraEditors.TextEdit()
+        Me.cboMultiplier = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtTotalDepositAmt = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlGroup26 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.TabbedControlGroup1 = New DevExpress.XtraLayout.TabbedControlGroup()
+        Me.LayoutControlGroup27 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem114 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem185 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem183 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem186 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem184 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem182 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem187 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem40 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem188 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem189 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem6 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem41 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem190 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem191 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem42 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem192 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem43 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem44 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem45 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.XtraTabPage21 = New DevExpress.XtraTab.XtraTabPage()
         Me.tabAPM = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl11APM = New DevExpress.XtraLayout.LayoutControl()
@@ -890,7 +938,7 @@ Partial Class frmBDG
         Me.Vw_BDG_FTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDG_FTableAdapter()
         Me.BarPrint = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
-        Me.VwCCTPFBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DEPOSIT_ATableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.DEPOSIT_ATableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1171,6 +1219,7 @@ Partial Class frmBDG
         CType(Me.RepositoryItemLookUpEditPRF, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboPrf.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwCCTPFBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtComments1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtCodeBcct.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1346,6 +1395,46 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem171, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.EmptySpaceItem34, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabDeposit.SuspendLayout
+        CType(Me.LDeposit, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LDeposit.SuspendLayout
+        CType(Me.grdDepositA, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DEPOSITABindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView_DepositA, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepCboMultiplier, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepDtDeposit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepDtDeposit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepTxtAmt, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOrd.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtDeposit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtDepositAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTtl.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtCmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.cboMultiplier.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtTotalDepositAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup26, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup27, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem114, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem185, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem183, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem186, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem184, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem182, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem187, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem40, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem188, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem189, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem41, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem190, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem191, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem42, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem192, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem43, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem44, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem45, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabAPM.SuspendLayout
         CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl11APM.SuspendLayout
@@ -1395,7 +1484,6 @@ Partial Class frmBDG
         CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.Panel2.SuspendLayout
         Me.SplitContainerControl1.SuspendLayout
-        CType(Me.VwCCTPFBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'GridView7
@@ -1464,7 +1552,7 @@ Partial Class frmBDG
         Me.TileNavPane1.Buttons.Add(Me.NavProfActD)
         Me.TileNavPane1.Buttons.Add(Me.NavHeatingInvoices)
         Me.TileNavPane1.Buttons.Add(Me.NavDecontamination)
-        Me.TileNavPane1.Buttons.Add(Me.NavBoiler)
+        Me.TileNavPane1.Buttons.Add(Me.NavDeposit)
         Me.TileNavPane1.Buttons.Add(Me.NavConsumption)
         Me.TileNavPane1.Buttons.Add(Me.NavAPM)
         Me.TileNavPane1.Buttons.Add(Me.NavINH)
@@ -1532,12 +1620,11 @@ Partial Class frmBDG
         Me.NavDecontamination.Caption = "Απολυμάνσεις"
         Me.NavDecontamination.Name = "NavDecontamination"
         '
-        'NavBoiler
+        'NavDeposit
         '
-        Me.NavBoiler.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
-        Me.NavBoiler.Caption = "Καυστήρας"
-        Me.NavBoiler.Name = "NavBoiler"
-        Me.NavBoiler.Visible = False
+        Me.NavDeposit.Alignment = DevExpress.XtraBars.Navigation.NavButtonAlignment.Left
+        Me.NavDeposit.Caption = "Αποθεματικά"
+        Me.NavDeposit.Name = "NavDeposit"
         '
         'NavConsumption
         '
@@ -2452,7 +2539,7 @@ Partial Class frmBDG
         Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[False]
         Me.Maintab.Size = New System.Drawing.Size(2235, 1335)
         Me.Maintab.TabIndex = 1
-        Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.tabProfActD, Me.tabHeatingInvoices, Me.tabConsumptions, Me.XtraTabPage20, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
+        Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.tabProfActD, Me.tabHeatingInvoices, Me.tabConsumptions, Me.tabDeposit, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
         '
         'tabBDG
         '
@@ -6212,6 +6299,11 @@ Partial Class frmBDG
         Me.cboCCT.TabIndex = 30
         Me.cboCCT.Tag = "cctID,0,1,2"
         '
+        'VwCCTPFBindingSource1
+        '
+        Me.VwCCTPFBindingSource1.DataMember = "vw_CCT_PF"
+        Me.VwCCTPFBindingSource1.DataSource = Me.Priamos_NETDataSet
+        '
         'txtComments1
         '
         Me.txtComments1.Location = New System.Drawing.Point(55, 211)
@@ -8945,12 +9037,539 @@ Partial Class frmBDG
         Me.EmptySpaceItem38.Size = New System.Drawing.Size(30, 915)
         Me.EmptySpaceItem38.TextSize = New System.Drawing.Size(0, 0)
         '
-        'XtraTabPage20
+        'tabDeposit
         '
-        Me.XtraTabPage20.Margin = New System.Windows.Forms.Padding(5)
-        Me.XtraTabPage20.Name = "XtraTabPage20"
-        Me.XtraTabPage20.Size = New System.Drawing.Size(2231, 1294)
-        Me.XtraTabPage20.Text = "XtraTabPage9"
+        Me.tabDeposit.Controls.Add(Me.LDeposit)
+        Me.tabDeposit.Margin = New System.Windows.Forms.Padding(5)
+        Me.tabDeposit.Name = "tabDeposit"
+        Me.tabDeposit.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabDeposit.Text = "Αποθεματικά"
+        '
+        'LDeposit
+        '
+        Me.LDeposit.Controls.Add(Me.cmdRefreshDepositA)
+        Me.LDeposit.Controls.Add(Me.cmdDeleteDepositA)
+        Me.LDeposit.Controls.Add(Me.cmdAddDepositA)
+        Me.LDeposit.Controls.Add(Me.grdDepositA)
+        Me.LDeposit.Controls.Add(Me.cmdSaveAccountantDeposit)
+        Me.LDeposit.Controls.Add(Me.txtOrd)
+        Me.LDeposit.Controls.Add(Me.dtDeposit)
+        Me.LDeposit.Controls.Add(Me.txtDepositAmt)
+        Me.LDeposit.Controls.Add(Me.txtTtl)
+        Me.LDeposit.Controls.Add(Me.txtCmt)
+        Me.LDeposit.Controls.Add(Me.cboMultiplier)
+        Me.LDeposit.Controls.Add(Me.txtTotalDepositAmt)
+        Me.LDeposit.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LDeposit.Location = New System.Drawing.Point(0, 0)
+        Me.LDeposit.Name = "LDeposit"
+        Me.LDeposit.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2323, 868, 1137, 700)
+        Me.LDeposit.Root = Me.LayoutControlGroup26
+        Me.LDeposit.Size = New System.Drawing.Size(2231, 1294)
+        Me.LDeposit.TabIndex = 0
+        Me.LDeposit.Text = "LayoutControl2"
+        '
+        'cmdRefreshDepositA
+        '
+        Me.cmdRefreshDepositA.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
+        Me.cmdRefreshDepositA.Location = New System.Drawing.Point(25, 443)
+        Me.cmdRefreshDepositA.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdRefreshDepositA.Name = "cmdRefreshDepositA"
+        Me.cmdRefreshDepositA.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdRefreshDepositA.Size = New System.Drawing.Size(26, 39)
+        Me.cmdRefreshDepositA.StyleController = Me.LDeposit
+        Me.cmdRefreshDepositA.TabIndex = 70
+        '
+        'cmdDeleteDepositA
+        '
+        Me.cmdDeleteDepositA.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
+        Me.cmdDeleteDepositA.Location = New System.Drawing.Point(25, 400)
+        Me.cmdDeleteDepositA.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdDeleteDepositA.Name = "cmdDeleteDepositA"
+        Me.cmdDeleteDepositA.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdDeleteDepositA.Size = New System.Drawing.Size(26, 39)
+        Me.cmdDeleteDepositA.StyleController = Me.LDeposit
+        Me.cmdDeleteDepositA.TabIndex = 69
+        '
+        'cmdAddDepositA
+        '
+        Me.cmdAddDepositA.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
+        Me.cmdAddDepositA.Location = New System.Drawing.Point(25, 357)
+        Me.cmdAddDepositA.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdAddDepositA.Name = "cmdAddDepositA"
+        Me.cmdAddDepositA.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
+        Me.cmdAddDepositA.Size = New System.Drawing.Size(26, 39)
+        Me.cmdAddDepositA.StyleController = Me.LDeposit
+        Me.cmdAddDepositA.TabIndex = 68
+        '
+        'grdDepositA
+        '
+        Me.grdDepositA.DataSource = Me.DEPOSITABindingSource
+        Me.grdDepositA.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
+        Me.grdDepositA.Location = New System.Drawing.Point(55, 357)
+        Me.grdDepositA.MainView = Me.GridView_DepositA
+        Me.grdDepositA.Margin = New System.Windows.Forms.Padding(5)
+        Me.grdDepositA.Name = "grdDepositA"
+        Me.grdDepositA.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepDtDeposit, Me.RepCboMultiplier, Me.RepTxtAmt})
+        Me.grdDepositA.Size = New System.Drawing.Size(2151, 912)
+        Me.grdDepositA.TabIndex = 66
+        Me.grdDepositA.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView_DepositA})
+        '
+        'DEPOSITABindingSource
+        '
+        Me.DEPOSITABindingSource.DataMember = "DEPOSIT_A"
+        Me.DEPOSITABindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'GridView_DepositA
+        '
+        Me.GridView_DepositA.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colord1, Me.colmultiplier, Me.colmultiplierDescr, Me.colttl2, Me.coldtDeposit, Me.colamt2, Me.colcmt2})
+        Me.GridView_DepositA.DetailHeight = 619
+        Me.GridView_DepositA.GridControl = Me.grdDepositA
+        Me.GridView_DepositA.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "prfName", Nothing, "")})
+        Me.GridView_DepositA.LevelIndent = 0
+        Me.GridView_DepositA.Name = "GridView_DepositA"
+        Me.GridView_DepositA.OptionsBehavior.AutoExpandAllGroups = True
+        Me.GridView_DepositA.OptionsPrint.PrintPreview = True
+        Me.GridView_DepositA.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView_DepositA.OptionsView.ColumnAutoWidth = False
+        Me.GridView_DepositA.OptionsView.EnableAppearanceEvenRow = True
+        Me.GridView_DepositA.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
+        Me.GridView_DepositA.OptionsView.ShowFooter = True
+        Me.GridView_DepositA.OptionsView.ShowGroupedColumns = True
+        Me.GridView_DepositA.PreviewIndent = 0
+        '
+        'colord1
+        '
+        Me.colord1.Caption = "ΑΑ"
+        Me.colord1.FieldName = "ord"
+        Me.colord1.MinWidth = 35
+        Me.colord1.Name = "colord1"
+        Me.colord1.Visible = True
+        Me.colord1.VisibleIndex = 0
+        Me.colord1.Width = 131
+        '
+        'colmultiplier
+        '
+        Me.colmultiplier.Caption = "Τύπος Κίνησης"
+        Me.colmultiplier.ColumnEdit = Me.RepCboMultiplier
+        Me.colmultiplier.FieldName = "multiplier"
+        Me.colmultiplier.MinWidth = 35
+        Me.colmultiplier.Name = "colmultiplier"
+        Me.colmultiplier.Width = 171
+        '
+        'RepCboMultiplier
+        '
+        Me.RepCboMultiplier.AutoHeight = False
+        Me.RepCboMultiplier.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.RepCboMultiplier.Items.AddRange(New Object() {"Αύξηση", "Μείωση"})
+        Me.RepCboMultiplier.Name = "RepCboMultiplier"
+        Me.RepCboMultiplier.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
+        'colmultiplierDescr
+        '
+        Me.colmultiplierDescr.Caption = "Τύπος Κίνησης"
+        Me.colmultiplierDescr.ColumnEdit = Me.RepCboMultiplier
+        Me.colmultiplierDescr.FieldName = "multiplierDescr"
+        Me.colmultiplierDescr.MinWidth = 35
+        Me.colmultiplierDescr.Name = "colmultiplierDescr"
+        Me.colmultiplierDescr.Visible = True
+        Me.colmultiplierDescr.VisibleIndex = 1
+        Me.colmultiplierDescr.Width = 211
+        '
+        'colttl2
+        '
+        Me.colttl2.Caption = "Περιγραφή"
+        Me.colttl2.FieldName = "ttl"
+        Me.colttl2.MinWidth = 35
+        Me.colttl2.Name = "colttl2"
+        Me.colttl2.Visible = True
+        Me.colttl2.VisibleIndex = 2
+        Me.colttl2.Width = 455
+        '
+        'coldtDeposit
+        '
+        Me.coldtDeposit.Caption = "Ημερρομηνία"
+        Me.coldtDeposit.ColumnEdit = Me.RepDtDeposit
+        Me.coldtDeposit.FieldName = "dtDeposit"
+        Me.coldtDeposit.MinWidth = 35
+        Me.coldtDeposit.Name = "coldtDeposit"
+        Me.coldtDeposit.Visible = True
+        Me.coldtDeposit.VisibleIndex = 3
+        Me.coldtDeposit.Width = 182
+        '
+        'RepDtDeposit
+        '
+        Me.RepDtDeposit.AutoHeight = False
+        Me.RepDtDeposit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepDtDeposit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepDtDeposit.Name = "RepDtDeposit"
+        '
+        'colamt2
+        '
+        Me.colamt2.Caption = "Ποσό"
+        Me.colamt2.ColumnEdit = Me.RepTxtAmt
+        Me.colamt2.FieldName = "amt"
+        Me.colamt2.MinWidth = 35
+        Me.colamt2.Name = "colamt2"
+        Me.colamt2.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "amt", "Σύνολο={0:c2}")})
+        Me.colamt2.Visible = True
+        Me.colamt2.VisibleIndex = 4
+        Me.colamt2.Width = 161
+        '
+        'RepTxtAmt
+        '
+        Me.RepTxtAmt.AutoHeight = False
+        Me.RepTxtAmt.DisplayFormat.FormatString = "c"
+        Me.RepTxtAmt.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepTxtAmt.EditFormat.FormatString = "n2"
+        Me.RepTxtAmt.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepTxtAmt.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.RepTxtAmt.MaskSettings.Set("valueAfterDelete", Nothing)
+        Me.RepTxtAmt.MaskSettings.Set("mask", "c2")
+        Me.RepTxtAmt.Name = "RepTxtAmt"
+        Me.RepTxtAmt.UseMaskAsDisplayFormat = True
+        '
+        'colcmt2
+        '
+        Me.colcmt2.Caption = "Σχόλια"
+        Me.colcmt2.FieldName = "cmt"
+        Me.colcmt2.MinWidth = 35
+        Me.colcmt2.Name = "colcmt2"
+        Me.colcmt2.Visible = True
+        Me.colcmt2.VisibleIndex = 5
+        Me.colcmt2.Width = 298
+        '
+        'cmdSaveAccountantDeposit
+        '
+        Me.cmdSaveAccountantDeposit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
+        Me.cmdSaveAccountantDeposit.Location = New System.Drawing.Point(720, 314)
+        Me.cmdSaveAccountantDeposit.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdSaveAccountantDeposit.Name = "cmdSaveAccountantDeposit"
+        Me.cmdSaveAccountantDeposit.Size = New System.Drawing.Size(143, 39)
+        Me.cmdSaveAccountantDeposit.StyleController = Me.LDeposit
+        Me.cmdSaveAccountantDeposit.TabIndex = 45
+        Me.cmdSaveAccountantDeposit.Text = "Αποθήκευση"
+        '
+        'txtOrd
+        '
+        Me.txtOrd.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtOrd.Location = New System.Drawing.Point(334, 104)
+        Me.txtOrd.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtOrd.Name = "txtOrd"
+        Me.txtOrd.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtOrd.Properties.IsFloatValue = False
+        Me.txtOrd.Properties.MaskSettings.Set("mask", "N00")
+        Me.txtOrd.Size = New System.Drawing.Size(529, 38)
+        Me.txtOrd.StyleController = Me.LDeposit
+        Me.txtOrd.TabIndex = 22
+        Me.txtOrd.Tag = "ord,0,1,2"
+        '
+        'dtDeposit
+        '
+        Me.dtDeposit.EditValue = Nothing
+        Me.dtDeposit.Location = New System.Drawing.Point(334, 146)
+        Me.dtDeposit.Margin = New System.Windows.Forms.Padding(5)
+        Me.dtDeposit.Name = "dtDeposit"
+        Me.dtDeposit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtDeposit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.dtDeposit.Size = New System.Drawing.Size(529, 38)
+        Me.dtDeposit.StyleController = Me.LDeposit
+        Me.dtDeposit.TabIndex = 38
+        Me.dtDeposit.Tag = "dtDeposit,0,1,2"
+        '
+        'txtDepositAmt
+        '
+        Me.txtDepositAmt.EditValue = "0,00 €"
+        Me.txtDepositAmt.Location = New System.Drawing.Point(334, 272)
+        Me.txtDepositAmt.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtDepositAmt.Name = "txtDepositAmt"
+        Me.txtDepositAmt.Properties.DisplayFormat.FormatString = "c"
+        Me.txtDepositAmt.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDepositAmt.Properties.EditFormat.FormatString = "n2"
+        Me.txtDepositAmt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtDepositAmt.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtDepositAmt.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtDepositAmt.Properties.MaskSettings.Set("mask", "c2")
+        Me.txtDepositAmt.Properties.Tag = "BenchExtraPrice"
+        Me.txtDepositAmt.Size = New System.Drawing.Size(529, 38)
+        Me.txtDepositAmt.StyleController = Me.LDeposit
+        Me.txtDepositAmt.TabIndex = 43
+        Me.txtDepositAmt.Tag = "amt,0,1,2"
+        Me.txtDepositAmt.Visible = False
+        '
+        'txtTtl
+        '
+        Me.txtTtl.Location = New System.Drawing.Point(334, 188)
+        Me.txtTtl.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtTtl.Name = "txtTtl"
+        Me.txtTtl.Size = New System.Drawing.Size(529, 38)
+        Me.txtTtl.StyleController = Me.LDeposit
+        Me.txtTtl.TabIndex = 9
+        Me.txtTtl.Tag = "ttl,0,1,2"
+        '
+        'txtCmt
+        '
+        Me.txtCmt.EditValue = ""
+        Me.txtCmt.Location = New System.Drawing.Point(334, 230)
+        Me.txtCmt.MenuManager = Me.BarManager1
+        Me.txtCmt.Name = "txtCmt"
+        Me.txtCmt.Size = New System.Drawing.Size(529, 38)
+        Me.txtCmt.StyleController = Me.LDeposit
+        Me.txtCmt.TabIndex = 44
+        Me.txtCmt.Tag = "cmt,0,1,2"
+        '
+        'cboMultiplier
+        '
+        Me.cboMultiplier.Location = New System.Drawing.Point(334, 62)
+        Me.cboMultiplier.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboMultiplier.Name = "cboMultiplier"
+        Me.cboMultiplier.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboMultiplier.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.cboMultiplier.Properties.Items.AddRange(New Object() {"Αύξηση", "Μείωση"})
+        Me.cboMultiplier.Properties.Tag = 0
+        Me.cboMultiplier.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.cboMultiplier.Size = New System.Drawing.Size(529, 38)
+        Me.cboMultiplier.StyleController = Me.LDeposit
+        Me.cboMultiplier.TabIndex = 23
+        Me.cboMultiplier.Tag = "multiplier,0,1,2"
+        '
+        'txtTotalDepositAmt
+        '
+        Me.txtTotalDepositAmt.EditValue = "0,00 €"
+        Me.txtTotalDepositAmt.Location = New System.Drawing.Point(1214, 205)
+        Me.txtTotalDepositAmt.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtTotalDepositAmt.Name = "txtTotalDepositAmt"
+        Me.txtTotalDepositAmt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.857143!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.txtTotalDepositAmt.Properties.Appearance.Options.UseFont = True
+        Me.txtTotalDepositAmt.Properties.DisplayFormat.FormatString = "c"
+        Me.txtTotalDepositAmt.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalDepositAmt.Properties.EditFormat.FormatString = "n2"
+        Me.txtTotalDepositAmt.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalDepositAmt.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTotalDepositAmt.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtTotalDepositAmt.Properties.MaskSettings.Set("mask", "c2")
+        Me.txtTotalDepositAmt.Properties.ReadOnly = True
+        Me.txtTotalDepositAmt.Properties.Tag = "BenchExtraPrice"
+        Me.txtTotalDepositAmt.Properties.UseReadOnlyAppearance = False
+        Me.txtTotalDepositAmt.Size = New System.Drawing.Size(531, 42)
+        Me.txtTotalDepositAmt.StyleController = Me.LDeposit
+        Me.txtTotalDepositAmt.TabIndex = 43
+        Me.txtTotalDepositAmt.Tag = ""
+        Me.txtTotalDepositAmt.Visible = False
+        '
+        'LayoutControlGroup26
+        '
+        Me.LayoutControlGroup26.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlGroup26.GroupBordersVisible = False
+        Me.LayoutControlGroup26.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1})
+        Me.LayoutControlGroup26.Name = "Root"
+        Me.LayoutControlGroup26.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup26.TextVisible = False
+        '
+        'TabbedControlGroup1
+        '
+        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
+        Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
+        Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup27
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(2211, 1274)
+        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup27})
+        '
+        'LayoutControlGroup27
+        '
+        Me.LayoutControlGroup27.CustomizationFormText = "Λογιστικό"
+        Me.LayoutControlGroup27.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem114, Me.LayoutControlItem185, Me.LayoutControlItem183, Me.LayoutControlItem186, Me.LayoutControlItem184, Me.LayoutControlItem182, Me.LayoutControlItem187, Me.EmptySpaceItem40, Me.LayoutControlItem188, Me.LayoutControlItem189, Me.EmptySpaceItem6, Me.EmptySpaceItem41, Me.LayoutControlItem190, Me.LayoutControlItem191, Me.EmptySpaceItem42, Me.LayoutControlItem192, Me.EmptySpaceItem43, Me.EmptySpaceItem44, Me.EmptySpaceItem45})
+        Me.LayoutControlGroup27.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup27.Name = "LayoutControlGroup27"
+        Me.LayoutControlGroup27.Size = New System.Drawing.Size(2185, 1211)
+        Me.LayoutControlGroup27.Text = "Λογιστικό"
+        '
+        'LayoutControlItem114
+        '
+        Me.LayoutControlItem114.Control = Me.txtOrd
+        Me.LayoutControlItem114.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem114.Location = New System.Drawing.Point(30, 42)
+        Me.LayoutControlItem114.Name = "LayoutControlItem114"
+        Me.LayoutControlItem114.Size = New System.Drawing.Size(812, 42)
+        Me.LayoutControlItem114.Tag = "1"
+        Me.LayoutControlItem114.Text = "AA"
+        Me.LayoutControlItem114.TextSize = New System.Drawing.Size(267, 23)
+        '
+        'LayoutControlItem185
+        '
+        Me.LayoutControlItem185.Control = Me.txtDepositAmt
+        Me.LayoutControlItem185.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem185.CustomizationFormText = "Ποσό"
+        Me.LayoutControlItem185.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem185.Location = New System.Drawing.Point(30, 210)
+        Me.LayoutControlItem185.Name = "LayoutControlItem185"
+        Me.LayoutControlItem185.Size = New System.Drawing.Size(812, 42)
+        Me.LayoutControlItem185.Tag = "1"
+        Me.LayoutControlItem185.Text = "Ποσό"
+        Me.LayoutControlItem185.TextSize = New System.Drawing.Size(267, 23)
+        '
+        'LayoutControlItem183
+        '
+        Me.LayoutControlItem183.Control = Me.txtTtl
+        Me.LayoutControlItem183.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem183.CustomizationFormText = "Επωνυμία"
+        Me.LayoutControlItem183.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem183.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem183.Location = New System.Drawing.Point(30, 126)
+        Me.LayoutControlItem183.Name = "LayoutControlItem183"
+        Me.LayoutControlItem183.Size = New System.Drawing.Size(812, 42)
+        Me.LayoutControlItem183.Tag = "1"
+        Me.LayoutControlItem183.Text = "Λεκτικό"
+        Me.LayoutControlItem183.TextSize = New System.Drawing.Size(267, 23)
+        '
+        'LayoutControlItem186
+        '
+        Me.LayoutControlItem186.Control = Me.txtCmt
+        Me.LayoutControlItem186.Location = New System.Drawing.Point(30, 168)
+        Me.LayoutControlItem186.Name = "LayoutControlItem186"
+        Me.LayoutControlItem186.Size = New System.Drawing.Size(812, 42)
+        Me.LayoutControlItem186.Text = "Σχόλια"
+        Me.LayoutControlItem186.TextSize = New System.Drawing.Size(267, 23)
+        '
+        'LayoutControlItem184
+        '
+        Me.LayoutControlItem184.Control = Me.dtDeposit
+        Me.LayoutControlItem184.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem184.CustomizationFormText = "Ημερομηνία"
+        Me.LayoutControlItem184.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem184.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem184.ImageOptions.Image"), System.Drawing.Image)
+        Me.LayoutControlItem184.Location = New System.Drawing.Point(30, 84)
+        Me.LayoutControlItem184.Name = "LayoutControlItem184"
+        Me.LayoutControlItem184.Size = New System.Drawing.Size(812, 42)
+        Me.LayoutControlItem184.Tag = "1"
+        Me.LayoutControlItem184.Text = "Ημερομηνία"
+        Me.LayoutControlItem184.TextSize = New System.Drawing.Size(267, 23)
+        '
+        'LayoutControlItem182
+        '
+        Me.LayoutControlItem182.Control = Me.cboMultiplier
+        Me.LayoutControlItem182.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem182.Location = New System.Drawing.Point(30, 0)
+        Me.LayoutControlItem182.Name = "LayoutControlItem182"
+        Me.LayoutControlItem182.Size = New System.Drawing.Size(812, 42)
+        Me.LayoutControlItem182.Tag = "1"
+        Me.LayoutControlItem182.Text = "Τύπος κίνησης"
+        Me.LayoutControlItem182.TextSize = New System.Drawing.Size(267, 23)
+        '
+        'LayoutControlItem187
+        '
+        Me.LayoutControlItem187.Control = Me.cmdSaveAccountantDeposit
+        Me.LayoutControlItem187.Location = New System.Drawing.Point(695, 252)
+        Me.LayoutControlItem187.Name = "LayoutControlItem187"
+        Me.LayoutControlItem187.Size = New System.Drawing.Size(147, 43)
+        Me.LayoutControlItem187.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem187.TextVisible = False
+        '
+        'EmptySpaceItem40
+        '
+        Me.EmptySpaceItem40.AllowHotTrack = False
+        Me.EmptySpaceItem40.Location = New System.Drawing.Point(30, 252)
+        Me.EmptySpaceItem40.Name = "EmptySpaceItem40"
+        Me.EmptySpaceItem40.Size = New System.Drawing.Size(665, 43)
+        Me.EmptySpaceItem40.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem188
+        '
+        Me.LayoutControlItem188.Control = Me.grdDepositA
+        Me.LayoutControlItem188.Location = New System.Drawing.Point(30, 295)
+        Me.LayoutControlItem188.Name = "LayoutControlItem188"
+        Me.LayoutControlItem188.Size = New System.Drawing.Size(2155, 916)
+        Me.LayoutControlItem188.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem188.TextVisible = False
+        '
+        'LayoutControlItem189
+        '
+        Me.LayoutControlItem189.Control = Me.cmdAddDepositA
+        Me.LayoutControlItem189.Location = New System.Drawing.Point(0, 295)
+        Me.LayoutControlItem189.Name = "LayoutControlItem189"
+        Me.LayoutControlItem189.Size = New System.Drawing.Size(30, 43)
+        Me.LayoutControlItem189.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem189.TextVisible = False
+        '
+        'EmptySpaceItem6
+        '
+        Me.EmptySpaceItem6.AllowHotTrack = False
+        Me.EmptySpaceItem6.Location = New System.Drawing.Point(0, 0)
+        Me.EmptySpaceItem6.Name = "EmptySpaceItem6"
+        Me.EmptySpaceItem6.Size = New System.Drawing.Size(30, 295)
+        Me.EmptySpaceItem6.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem41
+        '
+        Me.EmptySpaceItem41.AllowHotTrack = False
+        Me.EmptySpaceItem41.Location = New System.Drawing.Point(0, 424)
+        Me.EmptySpaceItem41.Name = "EmptySpaceItem41"
+        Me.EmptySpaceItem41.Size = New System.Drawing.Size(30, 787)
+        Me.EmptySpaceItem41.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem190
+        '
+        Me.LayoutControlItem190.Control = Me.cmdDeleteDepositA
+        Me.LayoutControlItem190.Location = New System.Drawing.Point(0, 338)
+        Me.LayoutControlItem190.Name = "LayoutControlItem190"
+        Me.LayoutControlItem190.Size = New System.Drawing.Size(30, 43)
+        Me.LayoutControlItem190.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem190.TextVisible = False
+        '
+        'LayoutControlItem191
+        '
+        Me.LayoutControlItem191.Control = Me.cmdRefreshDepositA
+        Me.LayoutControlItem191.Location = New System.Drawing.Point(0, 381)
+        Me.LayoutControlItem191.Name = "LayoutControlItem191"
+        Me.LayoutControlItem191.Size = New System.Drawing.Size(30, 43)
+        Me.LayoutControlItem191.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem191.TextVisible = False
+        '
+        'EmptySpaceItem42
+        '
+        Me.EmptySpaceItem42.AllowHotTrack = False
+        Me.EmptySpaceItem42.Location = New System.Drawing.Point(842, 0)
+        Me.EmptySpaceItem42.Name = "EmptySpaceItem42"
+        Me.EmptySpaceItem42.Size = New System.Drawing.Size(1343, 112)
+        Me.EmptySpaceItem42.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem192
+        '
+        Me.LayoutControlItem192.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 9.857143!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.LayoutControlItem192.AppearanceItemCaption.ForeColor = System.Drawing.Color.Green
+        Me.LayoutControlItem192.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem192.AppearanceItemCaption.Options.UseForeColor = True
+        Me.LayoutControlItem192.Control = Me.txtTotalDepositAmt
+        Me.LayoutControlItem192.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem192.CustomizationFormText = "Ποσό"
+        Me.LayoutControlItem192.Location = New System.Drawing.Point(1189, 112)
+        Me.LayoutControlItem192.Name = "LayoutControlItem192"
+        Me.LayoutControlItem192.Size = New System.Drawing.Size(535, 77)
+        Me.LayoutControlItem192.Text = "Λογιστικό Αποθεματικό"
+        Me.LayoutControlItem192.TextLocation = DevExpress.Utils.Locations.Top
+        Me.LayoutControlItem192.TextSize = New System.Drawing.Size(267, 28)
+        '
+        'EmptySpaceItem43
+        '
+        Me.EmptySpaceItem43.AllowHotTrack = False
+        Me.EmptySpaceItem43.Location = New System.Drawing.Point(842, 189)
+        Me.EmptySpaceItem43.Name = "EmptySpaceItem43"
+        Me.EmptySpaceItem43.Size = New System.Drawing.Size(1343, 106)
+        Me.EmptySpaceItem43.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem44
+        '
+        Me.EmptySpaceItem44.AllowHotTrack = False
+        Me.EmptySpaceItem44.Location = New System.Drawing.Point(842, 112)
+        Me.EmptySpaceItem44.Name = "EmptySpaceItem44"
+        Me.EmptySpaceItem44.Size = New System.Drawing.Size(347, 77)
+        Me.EmptySpaceItem44.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem45
+        '
+        Me.EmptySpaceItem45.AllowHotTrack = False
+        Me.EmptySpaceItem45.Location = New System.Drawing.Point(1724, 112)
+        Me.EmptySpaceItem45.Name = "EmptySpaceItem45"
+        Me.EmptySpaceItem45.Size = New System.Drawing.Size(461, 77)
+        Me.EmptySpaceItem45.TextSize = New System.Drawing.Size(0, 0)
         '
         'XtraTabPage21
         '
@@ -9732,10 +10351,9 @@ Partial Class frmBDG
         Me.BarButtonItem2.Name = "BarButtonItem2"
         Me.BarButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
-        'VwCCTPFBindingSource1
+        'DEPOSIT_ATableAdapter
         '
-        Me.VwCCTPFBindingSource1.DataMember = "vw_CCT_PF"
-        Me.VwCCTPFBindingSource1.DataSource = Me.Priamos_NETDataSet
+        Me.DEPOSIT_ATableAdapter.ClearBeforeFill = True
         '
         'frmBDG
         '
@@ -10033,6 +10651,7 @@ Partial Class frmBDG
         CType(Me.RepositoryItemLookUpEditPRF, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboPrf.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwCCTPFBindingSource1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtComments1.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtCodeBcct.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).EndInit
@@ -10208,6 +10827,46 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem171, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.EmptySpaceItem34, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabDeposit.ResumeLayout(False)
+        CType(Me.LDeposit, System.ComponentModel.ISupportInitialize).EndInit
+        Me.LDeposit.ResumeLayout(False)
+        CType(Me.grdDepositA, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DEPOSITABindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView_DepositA, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepCboMultiplier, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepDtDeposit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepDtDeposit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepTxtAmt, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtOrd.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtDeposit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.dtDeposit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtDepositAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTtl.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtCmt.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.cboMultiplier.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtTotalDepositAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup26, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup27, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem114, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem185, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem183, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem186, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem184, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem182, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem187, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem40, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem188, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem189, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem41, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem190, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem191, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem42, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem192, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem43, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem44, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem45, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabAPM.ResumeLayout(False)
         CType(Me.LayoutControl11APM, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl11APM.ResumeLayout(False)
@@ -10257,7 +10916,6 @@ Partial Class frmBDG
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
-        CType(Me.VwCCTPFBindingSource1, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -10272,7 +10930,7 @@ Partial Class frmBDG
     Friend WithEvents NavProfActD As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavHeatingInvoices As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavDecontamination As DevExpress.XtraBars.Navigation.NavButton
-    Friend WithEvents NavBoiler As DevExpress.XtraBars.Navigation.NavButton
+    Friend WithEvents NavDeposit As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents NavConsumption As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
@@ -10350,7 +11008,7 @@ Partial Class frmBDG
     Friend WithEvents tabProfActD As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabHeatingInvoices As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabConsumptions As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents XtraTabPage20 As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents tabDeposit As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage21 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabAPM As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabINH As DevExpress.XtraTab.XtraTabPage
@@ -11039,4 +11697,52 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem177 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents VwPARTNERANDWORKSHOPBindingSource1 As BindingSource
     Friend WithEvents VwCCTPFBindingSource1 As BindingSource
+    Friend WithEvents LDeposit As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents LayoutControlGroup26 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents txtOrd As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents dtDeposit As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents txtDepositAmt As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents TabbedControlGroup1 As DevExpress.XtraLayout.TabbedControlGroup
+    Friend WithEvents LayoutControlGroup27 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem114 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem182 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem184 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem185 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtTtl As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem183 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtCmt As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents cboMultiplier As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LayoutControlItem186 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdSaveAccountantDeposit As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem187 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem40 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents grdDepositA As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView_DepositA As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents LayoutControlItem188 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents DEPOSITABindingSource As BindingSource
+    Friend WithEvents colord1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colttl2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents coldtDeposit As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colamt2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcmt2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepDtDeposit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents RepCboMultiplier As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
+    Friend WithEvents RepTxtAmt As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents DEPOSIT_ATableAdapter As Priamos_NET_DataSet_BDGTableAdapters.DEPOSIT_ATableAdapter
+    Friend WithEvents colmultiplier As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents cmdAddDepositA As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem189 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem6 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem41 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents cmdRefreshDepositA As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cmdDeleteDepositA As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem190 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem191 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem42 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents txtTotalDepositAmt As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem192 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem43 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem44 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents EmptySpaceItem45 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents colmultiplierDescr As DevExpress.XtraGrid.Columns.GridColumn
 End Class

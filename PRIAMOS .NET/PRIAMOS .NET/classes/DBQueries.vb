@@ -487,14 +487,14 @@ NextItem:
                                         Dim cpk As DevExpress.XtraEditors.ColorPickEdit
                                         cpk = Ctrl
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & cpk.Text)
-                                    ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
-                                        Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
-                                        cbo = Ctrl
-                                        If cbo.EditValue <> Nothing Then
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
-                                        Else
-                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
-                                        End If
+                                        'ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.ComboBoxEdit Then
+                                        '    Dim cbo As DevExpress.XtraEditors.ComboBoxEdit
+                                        '    cbo = Ctrl
+                                        '    If cbo.EditValue <> Nothing Then
+                                        '        sSQLV.Append(IIf(IsFirstField = True, "", ",") & cbo.SelectedIndex)
+                                        '    Else
+                                        '        sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                        '    End If
                                     ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                         Dim txt As DevExpress.XtraEditors.TextEdit
                                         txt = Ctrl

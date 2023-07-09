@@ -130,7 +130,7 @@
     <value>306, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>380</value>
+    <value>292</value>
   </metadata>
   <metadata name="VwBDGMBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1130, 277</value>
@@ -227,6 +227,18 @@
   <metadata name="AHPBHHCONSUMPTIONBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>2350, 173</value>
   </metadata>
+  <metadata name="DEPOSITABindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>323, 329</value>
+  </metadata>
+  <data name="LayoutControlItem184.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5AkWETM3aFGQfgAAAIZJREFU
+        GFdjOKJjJ3S9qvXQhYzSOhAGsUFiDBUMDNxXq9r23G6b8BOEQWyQGMPx5Pxj5zJKnjzKrf4PwiA2SIxh
+        b3jy0UNxWU/OWHv/B2EQe294ylGGJB0j7hX23nuWGTn+Wmbs+AvI3hurbsTDcDgkQWiWscORyfrWDVOB
+        eJaJw5G9QfFCAE0iSJ9A5bowAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="cmdApmExport.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAVhJREFUOE9j
@@ -359,5 +371,8 @@
   </metadata>
   <metadata name="Vw_BDG_FTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>2015, 277</value>
+  </metadata>
+  <metadata name="DEPOSIT_ATableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>625, 329</value>
   </metadata>
 </root>
