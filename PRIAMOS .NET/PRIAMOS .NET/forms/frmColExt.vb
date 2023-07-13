@@ -41,6 +41,8 @@ Public Class frmColExt
     End Sub
 
     Private Sub frmColExt_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG' table. You can move, or remove it, as needed.
+        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet31.vw_COL_EXT_TYPES' table. You can move, or remove it, as needed.
         Me.Vw_COL_EXT_TYPESTableAdapter.Fill(Me.Priamos_NETDataSet31.vw_COL_EXT_TYPES)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet3.vw_PROF_ACT' table. You can move, or remove it, as needed.
@@ -50,7 +52,7 @@ Public Class frmColExt
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_COL_METHOD' table. You can move, or remove it, as needed.
         Me.Vw_COL_METHODTableAdapter.Fill(Me.Priamos_NETDataSet.vw_COL_METHOD)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
-        Me.Vw_BDGTableAdapter.FillByIsNotManaged(Me.Priamos_NETDataSet.vw_BDG)
+        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.Collectors' table. You can move, or remove it, as needed.
         Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
         Select Case Mode

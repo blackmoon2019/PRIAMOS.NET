@@ -28,7 +28,6 @@ Partial Class frmColExt
         Me.VwCOLMETHODBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.cboBDG = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
         Me.cboCollector = New DevExpress.XtraEditors.LookUpEdit()
         Me.CollectorsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -43,6 +42,9 @@ Partial Class frmColExt
         Me.cboProfAct = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwPROFACTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
+        Me.cboColExtType = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwCOLEXTTYPESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet31 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -59,17 +61,16 @@ Partial Class frmColExt
         Me.LayoutControlItem148 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_APTTableAdapter()
-        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
         Me.Vw_COL_METHODTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_COL_METHODTableAdapter()
         Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
         Me.Vw_PROF_ACTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_PROF_ACTTableAdapter()
-        Me.cboColExtType = New DevExpress.XtraEditors.LookUpEdit()
-        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.Priamos_NETDataSet31 = New PRIAMOS.NET.Priamos_NETDataSet3()
-        Me.VwCOLEXTTYPESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_COL_EXT_TYPESTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.vw_COL_EXT_TYPESTableAdapter()
+        Me.VwBDGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
+        Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.chkCompleted.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,7 +78,6 @@ Partial Class frmColExt
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCollector.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,6 +93,9 @@ Partial Class frmColExt
         CType(Me.cboProfAct.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwPROFACTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cboColExtType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwCOLEXTTYPESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet31, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,10 +112,9 @@ Partial Class frmColExt
         CType(Me.LayoutControlItem148, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cboColExtType.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwCOLEXTTYPESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -225,11 +227,6 @@ Partial Class frmColExt
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 23
         Me.cboBDG.Tag = "bdgid,0,1,2"
-        '
-        'VwBDGBindingSource
-        '
-        Me.VwBDGBindingSource.DataMember = "vw_BDG"
-        Me.VwBDGBindingSource.DataSource = Me.Priamos_NETDataSet
         '
         'txtCode
         '
@@ -394,6 +391,34 @@ Partial Class frmColExt
         '
         Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
         Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'cboColExtType
+        '
+        Me.cboColExtType.Location = New System.Drawing.Point(178, 180)
+        Me.cboColExtType.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboColExtType.Name = "cboColExtType"
+        Me.cboColExtType.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboColExtType.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboColExtType.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Είδος", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineName", "Machine Name", 140, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CRERealName", "CRE Real Name", 146, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MODRealName", "MOD Real Name", 153, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboColExtType.Properties.DataSource = Me.VwCOLEXTTYPESBindingSource
+        Me.cboColExtType.Properties.DisplayMember = "name"
+        Me.cboColExtType.Properties.NullText = ""
+        Me.cboColExtType.Properties.PopupSizeable = False
+        Me.cboColExtType.Properties.ValueMember = "ID"
+        Me.cboColExtType.Size = New System.Drawing.Size(657, 38)
+        Me.cboColExtType.StyleController = Me.LayoutControl1
+        Me.cboColExtType.TabIndex = 60
+        Me.cboColExtType.Tag = "ColExtTypeID,0,1,2"
+        '
+        'VwCOLEXTTYPESBindingSource
+        '
+        Me.VwCOLEXTTYPESBindingSource.DataMember = "vw_COL_EXT_TYPES"
+        Me.VwCOLEXTTYPESBindingSource.DataSource = Me.Priamos_NETDataSet31
+        '
+        'Priamos_NETDataSet31
+        '
+        Me.Priamos_NETDataSet31.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet31.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Root
         '
@@ -567,13 +592,20 @@ Partial Class frmColExt
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.cboColExtType
+        Me.LayoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem8.CustomizationFormText = "Εργασία"
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(827, 42)
+        Me.LayoutControlItem8.Text = "Είδος Είσπραξης"
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(154, 23)
+        '
         'Vw_APTTableAdapter
         '
         Me.Vw_APTTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_BDGTableAdapter
-        '
-        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
         '
         'CollectorsTableAdapter
         '
@@ -591,48 +623,23 @@ Partial Class frmColExt
         '
         Me.Vw_PROF_ACTTableAdapter.ClearBeforeFill = True
         '
-        'cboColExtType
-        '
-        Me.cboColExtType.Location = New System.Drawing.Point(178, 180)
-        Me.cboColExtType.Margin = New System.Windows.Forms.Padding(5)
-        Me.cboColExtType.Name = "cboColExtType"
-        Me.cboColExtType.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.cboColExtType.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
-        Me.cboColExtType.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Είδος", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedBy", "modified By", 113, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("modifiedOn", "modified On", 117, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdBy", "created By", 104, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineName", "Machine Name", 140, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CRERealName", "CRE Real Name", 146, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MODRealName", "MOD Real Name", 153, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboColExtType.Properties.DataSource = Me.VwCOLEXTTYPESBindingSource
-        Me.cboColExtType.Properties.DisplayMember = "name"
-        Me.cboColExtType.Properties.NullText = ""
-        Me.cboColExtType.Properties.PopupSizeable = False
-        Me.cboColExtType.Properties.ValueMember = "ID"
-        Me.cboColExtType.Size = New System.Drawing.Size(657, 38)
-        Me.cboColExtType.StyleController = Me.LayoutControl1
-        Me.cboColExtType.TabIndex = 60
-        Me.cboColExtType.Tag = "ColExtTypeID,0,1,2"
-        '
-        'LayoutControlItem8
-        '
-        Me.LayoutControlItem8.Control = Me.cboColExtType
-        Me.LayoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem8.CustomizationFormText = "Εργασία"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 168)
-        Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(827, 42)
-        Me.LayoutControlItem8.Text = "Είδος Είσπραξης"
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(154, 23)
-        '
-        'Priamos_NETDataSet31
-        '
-        Me.Priamos_NETDataSet31.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet31.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VwCOLEXTTYPESBindingSource
-        '
-        Me.VwCOLEXTTYPESBindingSource.DataMember = "vw_COL_EXT_TYPES"
-        Me.VwCOLEXTTYPESBindingSource.DataSource = Me.Priamos_NETDataSet31
-        '
         'Vw_COL_EXT_TYPESTableAdapter
         '
         Me.Vw_COL_EXT_TYPESTableAdapter.ClearBeforeFill = True
+        '
+        'VwBDGBindingSource
+        '
+        Me.VwBDGBindingSource.DataMember = "vw_BDG"
+        Me.VwBDGBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'Priamos_NET_DataSet_BDG
+        '
+        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
+        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Vw_BDGTableAdapter
+        '
+        Me.Vw_BDGTableAdapter.ClearBeforeFill = True
         '
         'frmColExt
         '
@@ -649,7 +656,6 @@ Partial Class frmColExt
         CType(Me.VwCOLMETHODBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboCollector.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CollectorsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -665,6 +671,9 @@ Partial Class frmColExt
         CType(Me.cboProfAct.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwPROFACTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cboColExtType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwCOLEXTTYPESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet31, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
@@ -681,10 +690,9 @@ Partial Class frmColExt
         CType(Me.LayoutControlItem148, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cboColExtType.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwCOLEXTTYPESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -709,8 +717,6 @@ Partial Class frmColExt
     Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
     Friend WithEvents CollectorsBindingSource As BindingSource
     Friend WithEvents CollectorsTableAdapter As Priamos_NETDataSetTableAdapters.CollectorsTableAdapter
-    Friend WithEvents VwBDGBindingSource As BindingSource
-    Friend WithEvents Vw_BDGTableAdapter As Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter
     Friend WithEvents VwAPTBindingSource As BindingSource
     Friend WithEvents Vw_APTTableAdapter As Priamos_NETDataSetTableAdapters.vw_APTTableAdapter
     Friend WithEvents cboBank As DevExpress.XtraEditors.LookUpEdit
@@ -739,4 +745,7 @@ Partial Class frmColExt
     Friend WithEvents Priamos_NETDataSet31 As Priamos_NETDataSet3
     Friend WithEvents VwCOLEXTTYPESBindingSource As BindingSource
     Friend WithEvents Vw_COL_EXT_TYPESTableAdapter As Priamos_NETDataSet3TableAdapters.vw_COL_EXT_TYPESTableAdapter
+    Friend WithEvents Priamos_NET_DataSet_BDG As Priamos_NET_DataSet_BDG
+    Friend WithEvents VwBDGBindingSource As BindingSource
+    Friend WithEvents Vw_BDGTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter
 End Class

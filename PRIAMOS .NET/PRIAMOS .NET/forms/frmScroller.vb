@@ -1819,7 +1819,6 @@ Public Class frmScroller
                         "colMethodID = " & toSQLValueS(colMethodID) & " ," &
                         "bankID = " & toSQLValueS(bankID) & " ," &
                         "credit = " & toSQLValueS(credit, True) & " ," &
-                        "dtCredit = getdate() ," &
                         "completed = 1 ," &
                         "bal = 0 " &
                     "WHERE ID = " & toSQLValueS(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)

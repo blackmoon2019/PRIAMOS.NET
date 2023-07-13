@@ -1876,7 +1876,7 @@ Public Class frmBDG
     End Sub
     Private Sub NavINH_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavINH.ElementClick
         Maintab.SelectedTabPage = tabINH
-        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
+        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_INH, System.Guid.Parse(sID))
         LoadForms.RestoreLayoutFromXml(GridView_INH, "INH_BDG_def.xml")
         cmdDelINH.Enabled = UserProps.AllowDelete
     End Sub
@@ -1922,7 +1922,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdRefINH_Click(sender As Object, e As EventArgs) Handles cmdRefINH.Click
-        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
+        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_INH, System.Guid.Parse(sID))
     End Sub
 
     Private Sub cmdExportINH_Click(sender As Object, e As EventArgs) Handles cmdExportINH.Click
@@ -1945,14 +1945,15 @@ Public Class frmBDG
         Try
             If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID") = Nothing Then Exit Sub
             ' Διαφραφή επιτρέπεται μόνο όταν ειναι έναντι διαμέρισματος
-            If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "reserveAPT").ToString = "True" Then
+            If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "reserveAPT").ToString = "True" Or
+                GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "FromTransfer").ToString = "True" Then
                 If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? Προσοχή θα επηρεάσει το υπόλοιπο του διαμερίσματος", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     ' Ενημέρωση υπολοίπου διαμερίσματος
                     sSQL = "UPDATE APT " &
                        "SET BAL_ADM = BAL_ADM - debit  " &
                        "FROM COL " &
                        "INNER JOIN APT ON APT.ID=COL.aptID " &
-                       "WHERE reserveAPT = 1 and inhID =  " & toSQLValueS(GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString)
+                       "WHERE  inhID =  " & toSQLValueS(GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -1964,7 +1965,7 @@ Public Class frmBDG
                     oCmd.ExecuteNonQuery()
                 End Using
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(sID))
+                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_INH, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -2574,7 +2575,7 @@ Public Class frmBDG
                                     toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) & "," &
                                     toSQLValueS(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "amt").ToString, True) & "," &
                                     toSQLValueS("75E3251D-077D-42B0-B79A-9F2886381A97") & "," &
-                                    toSQLValueS(CDate(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profDate").ToString).ToString("yyyyMMdd")) & ",getadate())")
+                                    toSQLValueS(CDate(GridView10.GetRowCellValue(GridView10.FocusedRowHandle, "profDate").ToString).ToString("yyyyMMdd")) & ",getdate())")
                     'Εκτέλεση QUERY
                     Using oCmd As New SqlCommand(sSQLs.ToString, CNDB)
                         oCmd.ExecuteNonQuery()

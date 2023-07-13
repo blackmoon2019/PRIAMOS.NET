@@ -122,6 +122,7 @@ Public Class frmINH
                 Me.Text = "Παραστατικό-" & cboBDG.Text
                 If chkCalculated.CheckState = CheckState.Checked Then cmdSaveInd.Enabled = False : cmdDel.Enabled = False : cmdSaveINH.Enabled = False
                 fdate = Date.Parse(dtFDate.EditValue.ToString) : Tdate = Date.Parse(dtTDate.EditValue.ToString)
+
         End Select
         '  Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
@@ -153,6 +154,10 @@ Public Class frmINH
             BarSygentrotiki.Enabled = False
             BarEidop.Enabled = False
             LayoutControlItem25.Enabled = True
+        End If
+        If chkFromTransfer.Checked = True Then
+            LcmdCalculate.Enabled = False : LcmdCancelCalculate.Enabled = False : LayoutControlItem12.Enabled = False
+            GridView5.OptionsBehavior.Editable = False
         End If
         cboBDG.Select()
     End Sub

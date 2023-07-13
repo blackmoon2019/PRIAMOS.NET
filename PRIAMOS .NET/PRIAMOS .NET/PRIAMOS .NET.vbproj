@@ -923,6 +923,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <Content Include="Sql Scripts\CalculateAndReturnDepositA.sql" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\dbo.AddNewFormRights.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.batch_create_inv.StoredProcedure.sql" />

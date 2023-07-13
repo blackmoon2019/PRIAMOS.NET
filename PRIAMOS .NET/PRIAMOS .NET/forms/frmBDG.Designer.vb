@@ -118,8 +118,6 @@ Partial Class frmBDG
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.VwINHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.PriamosNETDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.TileNavPane1 = New DevExpress.XtraBars.Navigation.TileNavPane()
         Me.NavGeneral = New DevExpress.XtraBars.Navigation.NavButton()
@@ -191,6 +189,8 @@ Partial Class frmBDG
         Me.cmdDelINH = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdNewINH = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl10 = New DevExpress.XtraGrid.GridControl()
+        Me.VwINHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.GridView_INH = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn17 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn18 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -240,7 +240,6 @@ Partial Class frmBDG
         Me.cmdSave1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Vw_PRFTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PRFTableAdapter()
         Me.Vw_CCTTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CCTTableAdapter()
-        Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INHTableAdapter()
         Me.Maintab = New DevExpress.XtraTab.XtraTabControl()
         Me.tabBDG = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl1BDG = New DevExpress.XtraLayout.LayoutControl()
@@ -249,7 +248,6 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_1 = New DevExpress.XtraLayout.LayoutControl()
         Me.grdBDG_M = New DevExpress.XtraGrid.GridControl()
         Me.VwBDGMBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.GridView12 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colbdgID2 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -939,11 +937,10 @@ Partial Class frmBDG
         Me.BarPrint = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.DEPOSIT_ATableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.DEPOSIT_ATableAdapter()
+        Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit
@@ -957,6 +954,8 @@ Partial Class frmBDG
         CType(Me.LayoutControl12INH, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl12INH.SuspendLayout
         CType(Me.GridControl10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView_INH, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup31, System.ComponentModel.ISupportInitialize).BeginInit
@@ -987,7 +986,6 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_1.SuspendLayout
         CType(Me.grdBDG_M, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.VwBDGMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView12, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepCCT, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.lstData, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1524,16 +1522,6 @@ Partial Class frmBDG
         Me.GridView5.OptionsView.EnableAppearanceEvenRow = True
         Me.GridView5.OptionsView.ShowFooter = True
         Me.GridView5.PreviewIndent = 0
-        '
-        'VwINHBindingSource
-        '
-        Me.VwINHBindingSource.DataMember = "vw_INH"
-        Me.VwINHBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
-        'PriamosNETDataSetBindingSource
-        '
-        Me.PriamosNETDataSetBindingSource.DataSource = Me.Priamos_NETDataSet
-        Me.PriamosNETDataSetBindingSource.Position = 0
         '
         'Priamos_NETDataSet
         '
@@ -2103,6 +2091,16 @@ Partial Class frmBDG
         Me.GridControl10.TabIndex = 22
         Me.GridControl10.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView_INH})
         '
+        'VwINHBindingSource
+        '
+        Me.VwINHBindingSource.DataMember = "vw_INH"
+        Me.VwINHBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'Priamos_NET_DataSet_BDG
+        '
+        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
+        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'GridView_INH
         '
         Me.GridView_INH.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20, Me.GridColumn21, Me.GridColumn22, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.GridColumn31, Me.GridColumn32, Me.GridColumn33, Me.GridColumn34, Me.GridColumn35, Me.GridColumn36, Me.GridColumn37})
@@ -2420,21 +2418,6 @@ Partial Class frmBDG
         Me.LayoutControlItem177.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem177.TextVisible = False
         '
-        'VwBCCTBindingSource
-        '
-        Me.VwBCCTBindingSource.DataMember = "vw_BCCT"
-        Me.VwBCCTBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
-        'VwCCTBindingSource
-        '
-        Me.VwCCTBindingSource.DataMember = "vw_CCT"
-        Me.VwCCTBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
-        'VwPRFBindingSource
-        '
-        Me.VwPRFBindingSource.DataMember = "vw_PRF"
-        Me.VwPRFBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
         'Bar1
         '
         Me.Bar1.BarName = "MainMenu"
@@ -2522,10 +2505,6 @@ Partial Class frmBDG
         'Vw_CCTTableAdapter
         '
         Me.Vw_CCTTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_INHTableAdapter
-        '
-        Me.Vw_INHTableAdapter.ClearBeforeFill = True
         '
         'Maintab
         '
@@ -2653,11 +2632,6 @@ Partial Class frmBDG
         '
         Me.VwBDGMBindingSource.DataMember = "vw_BDG_M"
         Me.VwBDGMBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
-        '
-        'Priamos_NET_DataSet_BDG
-        '
-        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
-        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GridView12
         '
@@ -10039,11 +10013,6 @@ Partial Class frmBDG
         Me.cboFolderCat.TabIndex = 5
         Me.cboFolderCat.Tag = "couid,0"
         '
-        'VwFOLDERCATBindingSource
-        '
-        Me.VwFOLDERCATBindingSource.DataMember = "vw_FOLDER_CAT"
-        Me.VwFOLDERCATBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
         'LayoutControlGroup17
         '
         Me.LayoutControlGroup17.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -10355,6 +10324,10 @@ Partial Class frmBDG
         '
         Me.DEPOSIT_ATableAdapter.ClearBeforeFill = True
         '
+        'Vw_INHTableAdapter
+        '
+        Me.Vw_INHTableAdapter.ClearBeforeFill = True
+        '
         'frmBDG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -10374,8 +10347,6 @@ Partial Class frmBDG
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.TileNavPane1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit
@@ -10389,6 +10360,8 @@ Partial Class frmBDG
         CType(Me.LayoutControl12INH, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl12INH.ResumeLayout(False)
         CType(Me.GridControl10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GridView_INH, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PopupMenuPrint, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup31, System.ComponentModel.ISupportInitialize).EndInit
@@ -10419,7 +10392,6 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_1.ResumeLayout(False)
         CType(Me.grdBDG_M, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.VwBDGMBindingSource, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GridView12, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RepCCT, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.lstData, System.ComponentModel.ISupportInitialize).EndInit
@@ -10987,7 +10959,6 @@ Partial Class frmBDG
     Friend WithEvents XtraOpenFileDialog1 As DevExpress.XtraEditors.XtraOpenFileDialog
     Friend WithEvents NavAPM As DevExpress.XtraBars.Navigation.NavButton
     Friend WithEvents XtraSaveFileDialog1 As DevExpress.XtraEditors.XtraSaveFileDialog
-    Friend WithEvents PriamosNETDataSetBindingSource As BindingSource
     Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
     Friend WithEvents VwBCCTBindingSource As BindingSource
     Friend WithEvents Vw_BCCTTableAdapter As Priamos_NETDataSetTableAdapters.vw_BCCTTableAdapter
@@ -10997,8 +10968,6 @@ Partial Class frmBDG
     Friend WithEvents VwCCTBindingSource As BindingSource
     Friend WithEvents Vw_CCTTableAdapter As Priamos_NETDataSetTableAdapters.vw_CCTTableAdapter
     Friend WithEvents NavINH As DevExpress.XtraBars.Navigation.NavButton
-    Friend WithEvents VwINHBindingSource As BindingSource
-    Friend WithEvents Vw_INHTableAdapter As Priamos_NETDataSetTableAdapters.vw_INHTableAdapter
     Friend WithEvents Maintab As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents tabBDG As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents tabManage As DevExpress.XtraTab.XtraTabPage
@@ -11745,4 +11714,6 @@ Partial Class frmBDG
     Friend WithEvents EmptySpaceItem44 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem45 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents colmultiplierDescr As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents VwINHBindingSource As BindingSource
+    Friend WithEvents Vw_INHTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter
 End Class
