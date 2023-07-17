@@ -97,13 +97,15 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
+        Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_FOLDER_CAT)
 
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.ANN_GRPS' table. You can move, or remove it, as needed.
         Me.ANN_GRPSTableAdapter.Fill(Me.Priamos_NETDataSet.ANN_GRPS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet2.Collectors' table. You can move, or remove it, as needed.
         Me.CollectorsTableAdapter.Fill(Me.Priamos_NETDataSet.Collectors)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
-        Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_FOLDER_CAT)
+        Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_FOLDER_CAT)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_DOY' table. You can move, or remove it, as needed.
         Me.Vw_DOYTableAdapter.Fill(Me.Priamos_NETDataSet.vw_DOY)
         Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
@@ -3177,7 +3179,9 @@ Public Class frmBDG
         Else
             txtDepositAmt.ForeColor = Color.Red
         End If
-        If txtDepositAmt.EditValue IsNot Nothing Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
+        If txtDepositAmt.EditValue IsNot Nothing Then
+            If cboMultiplier.SelectedIndex = 1 Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
+        End If
 
     End Sub
 
@@ -3200,6 +3204,8 @@ Public Class frmBDG
         Else
             txtDepositAmt.ForeColor = Color.Red
         End If
-        If txtDepositAmt.EditValue IsNot Nothing Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
+        If txtDepositAmt.EditValue IsNot Nothing Then
+            If cboMultiplier.SelectedIndex = 1 Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
+        End If
     End Sub
 End Class

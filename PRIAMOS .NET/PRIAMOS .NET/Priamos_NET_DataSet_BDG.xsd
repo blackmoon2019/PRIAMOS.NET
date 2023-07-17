@@ -520,6 +520,24 @@ ORDER BY fDate, tDate</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_FOLDER_CATTableAdapter" GeneratorDataComponentClassName="vw_FOLDER_CATTableAdapter" Name="vw_FOLDER_CAT" UserDataComponentName="vw_FOLDER_CATTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_FOLDER_CAT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ID, name
+FROM   vw_FOLDER_CAT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1108,7 +1126,7 @@ ORDER BY fDate, tDate</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="multiplier" msprop:Generator_ColumnPropNameInTable="multiplierColumn" msprop:Generator_ColumnPropNameInRow="multiplier" msprop:Generator_UserColumnName="multiplier" msprop:Generator_ColumnVarNameInTable="columnmultiplier" type="xs:int" />
-              <xs:element name="multiplierDescr" msprop:Generator_UserColumnName="multiplierDescr" msprop:Generator_ColumnPropNameInTable="multiplierDescrColumn" msprop:Generator_ColumnPropNameInRow="multiplierDescr" msprop:Generator_ColumnVarNameInTable="columnmultiplierDescr" minOccurs="0">
+              <xs:element name="multiplierDescr" msprop:Generator_ColumnPropNameInTable="multiplierDescrColumn" msprop:Generator_ColumnPropNameInRow="multiplierDescr" msprop:Generator_UserColumnName="multiplierDescr" msprop:Generator_ColumnVarNameInTable="columnmultiplierDescr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
@@ -1118,92 +1136,106 @@ ORDER BY fDate, tDate</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_INH" msprop:Generator_RowEvHandlerName="vw_INHRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_INHRowDeleted" msprop:Generator_RowDeletingName="vw_INHRowDeleting" msprop:Generator_RowEvArgName="vw_INHRowChangeEvent" msprop:Generator_TablePropName="vw_INH" msprop:Generator_RowChangedName="vw_INHRowChanged" msprop:Generator_RowChangingName="vw_INHRowChanging" msprop:Generator_TableClassName="vw_INHDataTable" msprop:Generator_RowClassName="vw_INHRow" msprop:Generator_TableVarName="tablevw_INH" msprop:Generator_UserTableName="vw_INH">
+        <xs:element name="vw_INH" msprop:Generator_RowClassName="vw_INHRow" msprop:Generator_RowEvHandlerName="vw_INHRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_INHRowDeleted" msprop:Generator_RowDeletingName="vw_INHRowDeleting" msprop:Generator_RowEvArgName="vw_INHRowChangeEvent" msprop:Generator_TablePropName="vw_INH" msprop:Generator_RowChangedName="vw_INHRowChanged" msprop:Generator_UserTableName="vw_INH" msprop:Generator_RowChangingName="vw_INHRowChanging" msprop:Generator_TableClassName="vw_INHDataTable" msprop:Generator_TableVarName="tablevw_INH">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:string" />
-              <xs:element name="bdgID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="bdgID" msprop:Generator_ColumnPropNameInTable="bdgIDColumn" msprop:Generator_ColumnVarNameInTable="columnbdgID" msprop:Generator_UserColumnName="bdgID" type="xs:string" />
-              <xs:element name="fDate" msprop:Generator_ColumnPropNameInRow="fDate" msprop:Generator_ColumnPropNameInTable="fDateColumn" msprop:Generator_ColumnVarNameInTable="columnfDate" msprop:Generator_UserColumnName="fDate" type="xs:dateTime" />
-              <xs:element name="tDate" msprop:Generator_ColumnPropNameInRow="tDate" msprop:Generator_ColumnPropNameInTable="tDateColumn" msprop:Generator_ColumnVarNameInTable="columntDate" msprop:Generator_UserColumnName="tDate" type="xs:dateTime" />
-              <xs:element name="modifiedBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="modifiedBy" msprop:Generator_ColumnPropNameInTable="modifiedByColumn" msprop:Generator_ColumnVarNameInTable="columnmodifiedBy" msprop:Generator_UserColumnName="modifiedBy" type="xs:string" minOccurs="0" />
-              <xs:element name="modifiedOn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" msprop:Generator_UserColumnName="modifiedOn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="createdOn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" msprop:Generator_UserColumnName="createdOn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="nam" msprop:Generator_ColumnPropNameInRow="nam" msprop:Generator_ColumnPropNameInTable="namColumn" msprop:Generator_ColumnVarNameInTable="columnnam" msprop:Generator_UserColumnName="nam" minOccurs="0">
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
+              <xs:element name="bdgID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="bdgID" msprop:Generator_ColumnPropNameInTable="bdgIDColumn" msprop:Generator_ColumnPropNameInRow="bdgID" msprop:Generator_ColumnVarNameInTable="columnbdgID" type="xs:string" />
+              <xs:element name="fDate" msprop:Generator_UserColumnName="fDate" msprop:Generator_ColumnPropNameInTable="fDateColumn" msprop:Generator_ColumnPropNameInRow="fDate" msprop:Generator_ColumnVarNameInTable="columnfDate" type="xs:dateTime" />
+              <xs:element name="tDate" msprop:Generator_UserColumnName="tDate" msprop:Generator_ColumnPropNameInTable="tDateColumn" msprop:Generator_ColumnPropNameInRow="tDate" msprop:Generator_ColumnVarNameInTable="columntDate" type="xs:dateTime" />
+              <xs:element name="modifiedBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="modifiedBy" msprop:Generator_ColumnPropNameInTable="modifiedByColumn" msprop:Generator_ColumnPropNameInRow="modifiedBy" msprop:Generator_ColumnVarNameInTable="columnmodifiedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="modifiedOn" msprop:Generator_UserColumnName="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="createdOn" msprop:Generator_UserColumnName="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nam" msprop:Generator_UserColumnName="nam" msprop:Generator_ColumnPropNameInTable="namColumn" msprop:Generator_ColumnPropNameInRow="nam" msprop:Generator_ColumnVarNameInTable="columnnam" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="250" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="cmt" msprop:Generator_ColumnPropNameInRow="cmt" msprop:Generator_ColumnPropNameInTable="cmtColumn" msprop:Generator_ColumnVarNameInTable="columncmt" msprop:Generator_UserColumnName="cmt" minOccurs="0">
+              <xs:element name="cmt" msprop:Generator_UserColumnName="cmt" msprop:Generator_ColumnPropNameInTable="cmtColumn" msprop:Generator_ColumnPropNameInRow="cmt" msprop:Generator_ColumnVarNameInTable="columncmt" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="completeDate" msprop:Generator_ColumnPropNameInRow="completeDate" msprop:Generator_ColumnPropNameInTable="completeDateColumn" msprop:Generator_ColumnVarNameInTable="columncompleteDate" msprop:Generator_UserColumnName="completeDate" minOccurs="0">
+              <xs:element name="completeDate" msprop:Generator_UserColumnName="completeDate" msprop:Generator_ColumnPropNameInTable="completeDateColumn" msprop:Generator_ColumnPropNameInRow="completeDate" msprop:Generator_ColumnVarNameInTable="columncompleteDate" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Calculated" msprop:Generator_ColumnPropNameInRow="Calculated" msprop:Generator_ColumnPropNameInTable="CalculatedColumn" msprop:Generator_ColumnVarNameInTable="columnCalculated" msprop:Generator_UserColumnName="Calculated" type="xs:boolean" />
-              <xs:element name="ahpb_HID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="ahpb_HID" msprop:Generator_ColumnPropNameInTable="ahpb_HIDColumn" msprop:Generator_ColumnVarNameInTable="columnahpb_HID" msprop:Generator_UserColumnName="ahpb_HID" type="xs:string" minOccurs="0" />
-              <xs:element name="mdt" msprop:Generator_ColumnPropNameInRow="mdt" msprop:Generator_ColumnPropNameInTable="mdtColumn" msprop:Generator_ColumnVarNameInTable="columnmdt" msprop:Generator_UserColumnName="mdt" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="DateOfPrint" msprop:Generator_ColumnPropNameInRow="DateOfPrint" msprop:Generator_ColumnPropNameInTable="DateOfPrintColumn" msprop:Generator_ColumnVarNameInTable="columnDateOfPrint" msprop:Generator_UserColumnName="DateOfPrint" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="TotalInh" msprop:Generator_ColumnPropNameInRow="TotalInh" msprop:Generator_ColumnPropNameInTable="TotalInhColumn" msprop:Generator_ColumnVarNameInTable="columnTotalInh" msprop:Generator_UserColumnName="TotalInh" type="xs:decimal" minOccurs="0" />
-              <xs:element name="isPrinted" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="isPrinted" msprop:Generator_ColumnPropNameInTable="isPrintedColumn" msprop:Generator_ColumnVarNameInTable="columnisPrinted" msprop:Generator_UserColumnName="isPrinted" type="xs:boolean" minOccurs="0" />
-              <xs:element name="announcement" msprop:Generator_ColumnPropNameInRow="announcement" msprop:Generator_ColumnPropNameInTable="announcementColumn" msprop:Generator_ColumnVarNameInTable="columnannouncement" msprop:Generator_UserColumnName="announcement" minOccurs="0">
+              <xs:element name="Calculated" msprop:Generator_UserColumnName="Calculated" msprop:Generator_ColumnPropNameInTable="CalculatedColumn" msprop:Generator_ColumnPropNameInRow="Calculated" msprop:Generator_ColumnVarNameInTable="columnCalculated" type="xs:boolean" />
+              <xs:element name="ahpb_HID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ahpb_HID" msprop:Generator_ColumnPropNameInTable="ahpb_HIDColumn" msprop:Generator_ColumnPropNameInRow="ahpb_HID" msprop:Generator_ColumnVarNameInTable="columnahpb_HID" type="xs:string" minOccurs="0" />
+              <xs:element name="mdt" msprop:Generator_UserColumnName="mdt" msprop:Generator_ColumnPropNameInTable="mdtColumn" msprop:Generator_ColumnPropNameInRow="mdt" msprop:Generator_ColumnVarNameInTable="columnmdt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateOfPrint" msprop:Generator_UserColumnName="DateOfPrint" msprop:Generator_ColumnPropNameInTable="DateOfPrintColumn" msprop:Generator_ColumnPropNameInRow="DateOfPrint" msprop:Generator_ColumnVarNameInTable="columnDateOfPrint" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TotalInh" msprop:Generator_UserColumnName="TotalInh" msprop:Generator_ColumnPropNameInTable="TotalInhColumn" msprop:Generator_ColumnPropNameInRow="TotalInh" msprop:Generator_ColumnVarNameInTable="columnTotalInh" type="xs:decimal" minOccurs="0" />
+              <xs:element name="isPrinted" msdata:ReadOnly="true" msprop:Generator_UserColumnName="isPrinted" msprop:Generator_ColumnPropNameInTable="isPrintedColumn" msprop:Generator_ColumnPropNameInRow="isPrinted" msprop:Generator_ColumnVarNameInTable="columnisPrinted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="announcement" msprop:Generator_UserColumnName="announcement" msprop:Generator_ColumnPropNameInTable="announcementColumn" msprop:Generator_ColumnPropNameInRow="announcement" msprop:Generator_ColumnVarNameInTable="columnannouncement" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="extraordinary" msprop:Generator_ColumnPropNameInRow="extraordinary" msprop:Generator_ColumnPropNameInTable="extraordinaryColumn" msprop:Generator_ColumnVarNameInTable="columnextraordinary" msprop:Generator_UserColumnName="extraordinary" type="xs:boolean" minOccurs="0" />
-              <xs:element name="hpc" msprop:Generator_ColumnPropNameInRow="hpc" msprop:Generator_ColumnPropNameInTable="hpcColumn" msprop:Generator_ColumnVarNameInTable="columnhpc" msprop:Generator_UserColumnName="hpc" type="xs:int" />
-              <xs:element name="hpb" msprop:Generator_ColumnPropNameInRow="hpb" msprop:Generator_ColumnPropNameInTable="hpbColumn" msprop:Generator_ColumnVarNameInTable="columnhpb" msprop:Generator_UserColumnName="hpb" type="xs:int" />
-              <xs:element name="ETOS" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="ETOS" msprop:Generator_ColumnPropNameInTable="ETOSColumn" msprop:Generator_ColumnVarNameInTable="columnETOS" msprop:Generator_UserColumnName="ETOS" type="xs:int" minOccurs="0" />
-              <xs:element name="DateOfPrintEidop" msprop:Generator_ColumnPropNameInRow="DateOfPrintEidop" msprop:Generator_ColumnPropNameInTable="DateOfPrintEidopColumn" msprop:Generator_ColumnVarNameInTable="columnDateOfPrintEidop" msprop:Generator_UserColumnName="DateOfPrintEidop" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="DateOfPrintEisp" msprop:Generator_ColumnPropNameInRow="DateOfPrintEisp" msprop:Generator_ColumnPropNameInTable="DateOfPrintEispColumn" msprop:Generator_ColumnVarNameInTable="columnDateOfPrintEisp" msprop:Generator_UserColumnName="DateOfPrintEisp" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="mdtBoiler" msprop:Generator_ColumnPropNameInRow="mdtBoiler" msprop:Generator_ColumnPropNameInTable="mdtBoilerColumn" msprop:Generator_ColumnVarNameInTable="columnmdtBoiler" msprop:Generator_UserColumnName="mdtBoiler" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="isPrintedEidop" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="isPrintedEidop" msprop:Generator_ColumnPropNameInTable="isPrintedEidopColumn" msprop:Generator_ColumnVarNameInTable="columnisPrintedEidop" msprop:Generator_UserColumnName="isPrintedEidop" type="xs:boolean" minOccurs="0" />
-              <xs:element name="isPrintedEisp" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="isPrintedEisp" msprop:Generator_ColumnPropNameInTable="isPrintedEispColumn" msprop:Generator_ColumnVarNameInTable="columnisPrintedEisp" msprop:Generator_UserColumnName="isPrintedEisp" type="xs:boolean" minOccurs="0" />
-              <xs:element name="FromMonth" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="FromMonth" msprop:Generator_ColumnPropNameInTable="FromMonthColumn" msprop:Generator_ColumnVarNameInTable="columnFromMonth" msprop:Generator_UserColumnName="FromMonth" type="xs:int" minOccurs="0" />
-              <xs:element name="ToMonth" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="ToMonth" msprop:Generator_ColumnPropNameInTable="ToMonthColumn" msprop:Generator_ColumnVarNameInTable="columnToMonth" msprop:Generator_UserColumnName="ToMonth" type="xs:int" minOccurs="0" />
-              <xs:element name="reserveAPT" msprop:Generator_ColumnPropNameInRow="reserveAPT" msprop:Generator_ColumnPropNameInTable="reserveAPTColumn" msprop:Generator_ColumnVarNameInTable="columnreserveAPT" msprop:Generator_UserColumnName="reserveAPT" type="xs:boolean" minOccurs="0" />
-              <xs:element name="canceled" msprop:Generator_ColumnPropNameInRow="canceled" msprop:Generator_ColumnPropNameInTable="canceledColumn" msprop:Generator_ColumnVarNameInTable="columncanceled" msprop:Generator_UserColumnName="canceled" type="xs:boolean" minOccurs="0" />
-              <xs:element name="DateOfCancel" msprop:Generator_ColumnPropNameInRow="DateOfCancel" msprop:Generator_ColumnPropNameInTable="DateOfCancelColumn" msprop:Generator_ColumnVarNameInTable="columnDateOfCancel" msprop:Generator_UserColumnName="DateOfCancel" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="isManaged" msprop:Generator_ColumnPropNameInRow="isManaged" msprop:Generator_ColumnPropNameInTable="isManagedColumn" msprop:Generator_ColumnVarNameInTable="columnisManaged" msprop:Generator_UserColumnName="isManaged" type="xs:boolean" />
-              <xs:element name="email" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_UserColumnName="email" type="xs:boolean" minOccurs="0" />
-              <xs:element name="DateOfemail" msprop:Generator_ColumnPropNameInRow="DateOfemail" msprop:Generator_ColumnPropNameInTable="DateOfemailColumn" msprop:Generator_ColumnVarNameInTable="columnDateOfemail" msprop:Generator_UserColumnName="DateOfemail" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Calorimetric" msprop:Generator_ColumnPropNameInRow="Calorimetric" msprop:Generator_ColumnPropNameInTable="CalorimetricColumn" msprop:Generator_ColumnVarNameInTable="columnCalorimetric" msprop:Generator_UserColumnName="Calorimetric" type="xs:boolean" minOccurs="0" />
-              <xs:element name="GroupName" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_ColumnVarNameInTable="columnGroupName" msprop:Generator_UserColumnName="GroupName" minOccurs="0">
+              <xs:element name="extraordinary" msprop:Generator_UserColumnName="extraordinary" msprop:Generator_ColumnPropNameInTable="extraordinaryColumn" msprop:Generator_ColumnPropNameInRow="extraordinary" msprop:Generator_ColumnVarNameInTable="columnextraordinary" type="xs:boolean" minOccurs="0" />
+              <xs:element name="hpc" msprop:Generator_UserColumnName="hpc" msprop:Generator_ColumnPropNameInTable="hpcColumn" msprop:Generator_ColumnPropNameInRow="hpc" msprop:Generator_ColumnVarNameInTable="columnhpc" type="xs:int" />
+              <xs:element name="hpb" msprop:Generator_UserColumnName="hpb" msprop:Generator_ColumnPropNameInTable="hpbColumn" msprop:Generator_ColumnPropNameInRow="hpb" msprop:Generator_ColumnVarNameInTable="columnhpb" type="xs:int" />
+              <xs:element name="ETOS" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ETOS" msprop:Generator_ColumnPropNameInTable="ETOSColumn" msprop:Generator_ColumnPropNameInRow="ETOS" msprop:Generator_ColumnVarNameInTable="columnETOS" type="xs:int" minOccurs="0" />
+              <xs:element name="DateOfPrintEidop" msprop:Generator_UserColumnName="DateOfPrintEidop" msprop:Generator_ColumnPropNameInTable="DateOfPrintEidopColumn" msprop:Generator_ColumnPropNameInRow="DateOfPrintEidop" msprop:Generator_ColumnVarNameInTable="columnDateOfPrintEidop" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateOfPrintEisp" msprop:Generator_UserColumnName="DateOfPrintEisp" msprop:Generator_ColumnPropNameInTable="DateOfPrintEispColumn" msprop:Generator_ColumnPropNameInRow="DateOfPrintEisp" msprop:Generator_ColumnVarNameInTable="columnDateOfPrintEisp" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="mdtBoiler" msprop:Generator_UserColumnName="mdtBoiler" msprop:Generator_ColumnPropNameInTable="mdtBoilerColumn" msprop:Generator_ColumnPropNameInRow="mdtBoiler" msprop:Generator_ColumnVarNameInTable="columnmdtBoiler" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="isPrintedEidop" msdata:ReadOnly="true" msprop:Generator_UserColumnName="isPrintedEidop" msprop:Generator_ColumnPropNameInTable="isPrintedEidopColumn" msprop:Generator_ColumnPropNameInRow="isPrintedEidop" msprop:Generator_ColumnVarNameInTable="columnisPrintedEidop" type="xs:boolean" minOccurs="0" />
+              <xs:element name="isPrintedEisp" msdata:ReadOnly="true" msprop:Generator_UserColumnName="isPrintedEisp" msprop:Generator_ColumnPropNameInTable="isPrintedEispColumn" msprop:Generator_ColumnPropNameInRow="isPrintedEisp" msprop:Generator_ColumnVarNameInTable="columnisPrintedEisp" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FromMonth" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FromMonth" msprop:Generator_ColumnPropNameInTable="FromMonthColumn" msprop:Generator_ColumnPropNameInRow="FromMonth" msprop:Generator_ColumnVarNameInTable="columnFromMonth" type="xs:int" minOccurs="0" />
+              <xs:element name="ToMonth" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ToMonth" msprop:Generator_ColumnPropNameInTable="ToMonthColumn" msprop:Generator_ColumnPropNameInRow="ToMonth" msprop:Generator_ColumnVarNameInTable="columnToMonth" type="xs:int" minOccurs="0" />
+              <xs:element name="reserveAPT" msprop:Generator_UserColumnName="reserveAPT" msprop:Generator_ColumnPropNameInTable="reserveAPTColumn" msprop:Generator_ColumnPropNameInRow="reserveAPT" msprop:Generator_ColumnVarNameInTable="columnreserveAPT" type="xs:boolean" minOccurs="0" />
+              <xs:element name="canceled" msprop:Generator_UserColumnName="canceled" msprop:Generator_ColumnPropNameInTable="canceledColumn" msprop:Generator_ColumnPropNameInRow="canceled" msprop:Generator_ColumnVarNameInTable="columncanceled" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DateOfCancel" msprop:Generator_UserColumnName="DateOfCancel" msprop:Generator_ColumnPropNameInTable="DateOfCancelColumn" msprop:Generator_ColumnPropNameInRow="DateOfCancel" msprop:Generator_ColumnVarNameInTable="columnDateOfCancel" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="isManaged" msprop:Generator_UserColumnName="isManaged" msprop:Generator_ColumnPropNameInTable="isManagedColumn" msprop:Generator_ColumnPropNameInRow="isManaged" msprop:Generator_ColumnVarNameInTable="columnisManaged" type="xs:boolean" />
+              <xs:element name="email" msprop:Generator_UserColumnName="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnVarNameInTable="columnemail" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DateOfemail" msprop:Generator_UserColumnName="DateOfemail" msprop:Generator_ColumnPropNameInTable="DateOfemailColumn" msprop:Generator_ColumnPropNameInRow="DateOfemail" msprop:Generator_ColumnVarNameInTable="columnDateOfemail" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Calorimetric" msprop:Generator_UserColumnName="Calorimetric" msprop:Generator_ColumnPropNameInTable="CalorimetricColumn" msprop:Generator_ColumnPropNameInRow="Calorimetric" msprop:Generator_ColumnVarNameInTable="columnCalorimetric" type="xs:boolean" minOccurs="0" />
+              <xs:element name="GroupName" msprop:Generator_UserColumnName="GroupName" msprop:Generator_ColumnPropNameInTable="GroupNameColumn" msprop:Generator_ColumnPropNameInRow="GroupName" msprop:Generator_ColumnVarNameInTable="columnGroupName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="DebitCollectorName" msprop:Generator_ColumnPropNameInRow="DebitCollectorName" msprop:Generator_ColumnPropNameInTable="DebitCollectorNameColumn" msprop:Generator_ColumnVarNameInTable="columnDebitCollectorName" msprop:Generator_UserColumnName="DebitCollectorName" minOccurs="0">
+              <xs:element name="DebitCollectorName" msprop:Generator_UserColumnName="DebitCollectorName" msprop:Generator_ColumnPropNameInTable="DebitCollectorNameColumn" msprop:Generator_ColumnPropNameInRow="DebitCollectorName" msprop:Generator_ColumnVarNameInTable="columnDebitCollectorName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="colannouncement" msprop:Generator_ColumnPropNameInRow="colannouncement" msprop:Generator_ColumnPropNameInTable="colannouncementColumn" msprop:Generator_ColumnVarNameInTable="columncolannouncement" msprop:Generator_UserColumnName="colannouncement" minOccurs="0">
+              <xs:element name="colannouncement" msprop:Generator_UserColumnName="colannouncement" msprop:Generator_ColumnPropNameInTable="colannouncementColumn" msprop:Generator_ColumnPropNameInRow="colannouncement" msprop:Generator_ColumnVarNameInTable="columncolannouncement" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="DateOfCalculate" msprop:Generator_ColumnPropNameInRow="DateOfCalculate" msprop:Generator_ColumnPropNameInTable="DateOfCalculateColumn" msprop:Generator_ColumnVarNameInTable="columnDateOfCalculate" msprop:Generator_UserColumnName="DateOfCalculate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="code" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_UserColumnName="code" type="xs:long" />
-              <xs:element name="FromTransfer" msprop:Generator_ColumnPropNameInRow="FromTransfer" msprop:Generator_ColumnPropNameInTable="FromTransferColumn" msprop:Generator_ColumnVarNameInTable="columnFromTransfer" msprop:Generator_UserColumnName="FromTransfer" type="xs:boolean" minOccurs="0" />
+              <xs:element name="DateOfCalculate" msprop:Generator_UserColumnName="DateOfCalculate" msprop:Generator_ColumnPropNameInTable="DateOfCalculateColumn" msprop:Generator_ColumnPropNameInRow="DateOfCalculate" msprop:Generator_ColumnVarNameInTable="columnDateOfCalculate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="code" msprop:Generator_UserColumnName="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnVarNameInTable="columncode" type="xs:long" />
+              <xs:element name="FromTransfer" msprop:Generator_UserColumnName="FromTransfer" msprop:Generator_ColumnPropNameInTable="FromTransferColumn" msprop:Generator_ColumnPropNameInRow="FromTransfer" msprop:Generator_ColumnVarNameInTable="columnFromTransfer" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vw_FOLDER_CAT" msprop:Generator_RowEvHandlerName="vw_FOLDER_CATRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_FOLDER_CATRowDeleted" msprop:Generator_RowDeletingName="vw_FOLDER_CATRowDeleting" msprop:Generator_RowEvArgName="vw_FOLDER_CATRowChangeEvent" msprop:Generator_TablePropName="vw_FOLDER_CAT" msprop:Generator_RowChangedName="vw_FOLDER_CATRowChanged" msprop:Generator_RowChangingName="vw_FOLDER_CATRowChanging" msprop:Generator_TableClassName="vw_FOLDER_CATDataTable" msprop:Generator_RowClassName="vw_FOLDER_CATRow" msprop:Generator_TableVarName="tablevw_FOLDER_CAT" msprop:Generator_UserTableName="vw_FOLDER_CAT">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:string" />
+              <xs:element name="name" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1235,6 +1267,10 @@ ORDER BY fDate, tDate</CommandText>
     </xs:unique>
     <xs:unique name="vw_INH_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:vw_INH" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="vw_FOLDER_CAT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vw_FOLDER_CAT" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
