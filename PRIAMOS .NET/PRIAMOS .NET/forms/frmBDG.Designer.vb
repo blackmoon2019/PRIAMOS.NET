@@ -892,7 +892,6 @@ Partial Class frmBDG
         Me.txtBDGFCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtBDGFilename = New DevExpress.XtraEditors.ButtonEdit()
         Me.cboFolderCat = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwFOLDERCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LayoutControlGroup17 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup18 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem127 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -915,7 +914,6 @@ Partial Class frmBDG
         Me.EmptySpaceItem28 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.Vw_CCT_PFTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CCT_PFTableAdapter()
         Me.Vw_DOYTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_DOYTableAdapter()
-        Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_FOLDER_CATTableAdapter()
         Me.SplitContainerControl1 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.CollectorsTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.CollectorsTableAdapter()
         Me.ANN_GRPSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.ANN_GRPSTableAdapter()
@@ -938,6 +936,8 @@ Partial Class frmBDG
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.DEPOSIT_ATableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.DEPOSIT_ATableAdapter()
         Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter()
+        Me.VwFOLDERCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1455,7 +1455,6 @@ Partial Class frmBDG
         CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1482,6 +1481,7 @@ Partial Class frmBDG
         CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.Panel2.SuspendLayout
         Me.SplitContainerControl1.SuspendLayout
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'GridView7
@@ -10196,10 +10196,6 @@ Partial Class frmBDG
         '
         Me.Vw_DOYTableAdapter.ClearBeforeFill = True
         '
-        'Vw_FOLDER_CATTableAdapter
-        '
-        Me.Vw_FOLDER_CATTableAdapter.ClearBeforeFill = True
-        '
         'SplitContainerControl1
         '
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -10327,6 +10323,15 @@ Partial Class frmBDG
         'Vw_INHTableAdapter
         '
         Me.Vw_INHTableAdapter.ClearBeforeFill = True
+        '
+        'VwFOLDERCATBindingSource
+        '
+        Me.VwFOLDERCATBindingSource.DataMember = "vw_FOLDER_CAT"
+        Me.VwFOLDERCATBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'Vw_FOLDER_CATTableAdapter
+        '
+        Me.Vw_FOLDER_CATTableAdapter.ClearBeforeFill = True
         '
         'frmBDG
         '
@@ -10861,7 +10866,6 @@ Partial Class frmBDG
         CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).EndInit
@@ -10888,6 +10892,7 @@ Partial Class frmBDG
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -11352,8 +11357,6 @@ Partial Class frmBDG
     Friend WithEvents Vw_DOYTableAdapter As Priamos_NETDataSetTableAdapters.vw_DOYTableAdapter
     Friend WithEvents cboFolderCat As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem122 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents VwFOLDERCATBindingSource As BindingSource
-    Friend WithEvents Vw_FOLDER_CATTableAdapter As Priamos_NETDataSetTableAdapters.vw_FOLDER_CATTableAdapter
     Friend WithEvents colrepname As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colamt As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colcalcCatID As DevExpress.XtraGrid.Columns.GridColumn
@@ -11716,4 +11719,6 @@ Partial Class frmBDG
     Friend WithEvents colmultiplierDescr As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents VwINHBindingSource As BindingSource
     Friend WithEvents Vw_INHTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter
+    Friend WithEvents VwFOLDERCATBindingSource As BindingSource
+    Friend WithEvents Vw_FOLDER_CATTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter
 End Class

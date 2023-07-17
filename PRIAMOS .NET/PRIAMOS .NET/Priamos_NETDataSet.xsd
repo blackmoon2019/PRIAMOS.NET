@@ -1257,24 +1257,6 @@ WHERE (bdgID = @bdgID)</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_FOLDER_CATTableAdapter" GeneratorDataComponentClassName="vw_FOLDER_CATTableAdapter" Name="vw_FOLDER_CAT" UserDataComponentName="vw_FOLDER_CATTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_FOLDER_CAT" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, name
-FROM   vw_FOLDER_CAT</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="name" DataSetColumn="name" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CollectorsTableAdapter" GeneratorDataComponentClassName="CollectorsTableAdapter" Name="Collectors" UserDataComponentName="CollectorsTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_USR" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -3243,20 +3225,6 @@ order by skey ,Fullname
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_FOLDER_CAT" msprop:Generator_RowEvHandlerName="vw_FOLDER_CATRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_FOLDER_CATRowDeleted" msprop:Generator_RowDeletingName="vw_FOLDER_CATRowDeleting" msprop:Generator_RowEvArgName="vw_FOLDER_CATRowChangeEvent" msprop:Generator_TablePropName="vw_FOLDER_CAT" msprop:Generator_RowChangedName="vw_FOLDER_CATRowChanged" msprop:Generator_UserTableName="vw_FOLDER_CAT" msprop:Generator_RowChangingName="vw_FOLDER_CATRowChanging" msprop:Generator_RowClassName="vw_FOLDER_CATRow" msprop:Generator_TableClassName="vw_FOLDER_CATDataTable" msprop:Generator_TableVarName="tablevw_FOLDER_CAT">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
-              <xs:element name="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnVarNameInTable="columnname" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="Collectors" msprop:Generator_RowEvHandlerName="CollectorsRowChangeEventHandler" msprop:Generator_RowDeletedName="CollectorsRowDeleted" msprop:Generator_RowDeletingName="CollectorsRowDeleting" msprop:Generator_RowEvArgName="CollectorsRowChangeEvent" msprop:Generator_TablePropName="Collectors" msprop:Generator_RowChangedName="CollectorsRowChanged" msprop:Generator_UserTableName="Collectors" msprop:Generator_RowChangingName="CollectorsRowChanging" msprop:Generator_RowClassName="CollectorsRow" msprop:Generator_TableClassName="CollectorsDataTable" msprop:Generator_TableVarName="tableCollectors">
           <xs:complexType>
             <xs:sequence>
@@ -3581,10 +3549,6 @@ order by skey ,Fullname
       <xs:selector xpath=".//mstns:vw_BDG_F" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
-    <xs:unique name="vw_FOLDER_CAT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:vw_FOLDER_CAT" />
-      <xs:field xpath="mstns:ID" />
-    </xs:unique>
     <xs:unique name="vw_APT_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:vw_APT" />
       <xs:field xpath="mstns:ID" />
@@ -3604,8 +3568,8 @@ order by skey ,Fullname
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="vw_COL_ΤΕΝΑΝΤ_vw_COLH" msdata:parent="vw_COLH" msdata:child="vw_COL_ΤΕΝΑΝΤ" msdata:parentkey="ID" msdata:childkey="colHID" msprop:Generator_UserParentTable="vw_COLH" msprop:Generator_UserChildTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_RelationVarName="relationvw_COL_ΤΕΝΑΝΤ_vw_COLH" msprop:Generator_ChildPropName="Getvw_COL_ΤΕΝΑΝΤRows" msprop:Generator_UserRelationName="vw_COL_ΤΕΝΑΝΤ_vw_COLH" msprop:Generator_ParentPropName="vw_COLHRow" />
-      <msdata:Relationship name="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msdata:parent="vw_COL_ΤΕΝΑΝΤ" msdata:child="vw_COL_OWNERS" msdata:parentkey="colHID aptID" msdata:childkey="colHID aptID" msprop:Generator_UserParentTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_UserChildTable="vw_COL_OWNERS" msprop:Generator_RelationVarName="relationvw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msprop:Generator_ChildPropName="Getvw_COL_OWNERSRows" msprop:Generator_ParentPropName="vw_COL_ΤΕΝΑΝΤRowParent" msprop:Generator_UserRelationName="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" />
+      <msdata:Relationship name="vw_COL_ΤΕΝΑΝΤ_vw_COLH" msdata:parent="vw_COLH" msdata:child="vw_COL_ΤΕΝΑΝΤ" msdata:parentkey="ID" msdata:childkey="colHID" msprop:Generator_UserParentTable="vw_COLH" msprop:Generator_UserChildTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_RelationVarName="relationvw_COL_ΤΕΝΑΝΤ_vw_COLH" msprop:Generator_ChildPropName="Getvw_COL_ΤΕΝΑΝΤRows" msprop:Generator_ParentPropName="vw_COLHRow" msprop:Generator_UserRelationName="vw_COL_ΤΕΝΑΝΤ_vw_COLH" />
+      <msdata:Relationship name="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msdata:parent="vw_COL_ΤΕΝΑΝΤ" msdata:child="vw_COL_OWNERS" msdata:parentkey="colHID aptID" msdata:childkey="colHID aptID" msprop:Generator_UserParentTable="vw_COL_ΤΕΝΑΝΤ" msprop:Generator_UserChildTable="vw_COL_OWNERS" msprop:Generator_RelationVarName="relationvw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msprop:Generator_ChildPropName="Getvw_COL_OWNERSRows" msprop:Generator_UserRelationName="vw_COL_OWNERS_vw_COL_ΤΕΝΑΝΤ" msprop:Generator_ParentPropName="vw_COL_ΤΕΝΑΝΤRowParent" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
