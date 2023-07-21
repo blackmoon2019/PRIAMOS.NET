@@ -1474,11 +1474,12 @@ Public Class frmINH
         sSQL.AppendLine("and reserveAPT = " & toSQLValueS(chkreserveAPT.EditValue.ToString))
         sSQL.AppendLine("and extraordinary = " & toSQLValueS(chkExtraordinary.EditValue.ToString))
         sSQL.AppendLine("and fromtransfer = " & toSQLValueS(chkFromTransfer.EditValue.ToString))
+        sSQL.AppendLine("and calculated = 1 ")
         sSQL.AppendLine("and tdate=(select max(tdate) from inh (nolock) where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString))
         sSQL.AppendLine("and calorimetric = " & toSQLValueS(chkCalorimetric.EditValue.ToString))
         sSQL.AppendLine("and reserveAPT = " & toSQLValueS(chkreserveAPT.EditValue.ToString))
         sSQL.AppendLine("and extraordinary = " & toSQLValueS(chkExtraordinary.EditValue.ToString))
-        sSQL.AppendLine("and fromtransfer = " & toSQLValueS(chkFromTransfer.EditValue.ToString) & ")")
+        sSQL.AppendLine("and fromtransfer = " & toSQLValueS(chkFromTransfer.EditValue.ToString) & " and calculated = 1 )")
 
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader

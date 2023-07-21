@@ -388,7 +388,9 @@
     <Compile Include="forms\frmBDG.Designer.vb">
       <DependentUpon>frmBDG.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmBDG.vb" />
+    <Compile Include="forms\frmBDG.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmCalendar.Designer.vb">
       <DependentUpon>frmCalendar.vb</DependentUpon>
     </Compile>
