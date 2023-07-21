@@ -1,6 +1,7 @@
 ﻿Imports System.Net.Mail
 Imports System.Data.SqlClient
 Imports DevExpress.XtraEditors
+Imports System.Net
 
 Public Class SendEmail
     Public Function SendInvoiceEmail(ByVal Subject As String, ByVal Body As String, ByVal sType As Integer, ByVal sToEmail As String, ByVal sFile As String, ByRef statusMsg As String) As Boolean
@@ -29,7 +30,7 @@ Public Class SendEmail
             e_mail.IsBodyHtml = True
             Body.Replace("\n", "<br />")
             e_mail.Body = Body
-            If CNDB.Database <> "Priamos_NET" Then
+            If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then
                 e_mail.Headers.Add("Disposition-Notification-To", "johnmavroselinos@gmail.com;thv@priamoservice.gr")
             Else
                 e_mail.Headers.Add("Disposition-Notification-To", "admin@priamoservice.gr")
@@ -83,7 +84,7 @@ Public Class SendEmail
             e_mail.IsBodyHtml = True
             Body.Replace("\n", "<br />")
             e_mail.Body = Body
-            If CNDB.Database <> "Priamos_NET" Then
+            If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then
                 e_mail.Headers.Add("Disposition-Notification-To", "johnmavroselinos@gmail.com;thv@priamoservice.gr")
             Else
                 e_mail.Headers.Add("Disposition-Notification-To", "admin@priamoservice.gr")
@@ -103,8 +104,15 @@ Public Class SendEmail
                     End If
                 End If
             Next
-            Smtp_Server.Timeout = 120
-            Smtp_Server.Send(e_mail)
+
+            Smtp_Server.Timeout = 12000
+            Try
+                Smtp_Server.Send(e_mail)
+            Catch ex As Exception
+                statusMsg = String.Format("Error: {0}", ex.Message)
+                e_mail.Dispose()
+                Smtp_Server.Dispose()
+            End Try
             If statusMsg.Length > 0 Then
                 e_mail.Dispose()
                 Smtp_Server.Dispose()

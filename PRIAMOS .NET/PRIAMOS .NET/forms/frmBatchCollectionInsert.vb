@@ -70,6 +70,7 @@ Public Class frmBatchCollectionInsert
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
+            Me.TmpBatchCollectionsTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.tmpBatchCollections, System.Guid.Parse(cboBDG.EditValue.ToString))
             Return vbYes
         Else
             Return vbNo

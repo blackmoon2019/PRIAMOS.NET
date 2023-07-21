@@ -1994,6 +1994,7 @@ Public Class frmBDG
 
     Private Sub cboPrf_EditValueChanged(sender As Object, e As EventArgs) Handles cboPrf.EditValueChanged
         If cboPrf.EditValue Is Nothing Then Exit Sub
+        If cboPrf.EditValue.ToString = "" Then Exit Sub
         Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
 
     End Sub
@@ -2278,6 +2279,7 @@ Public Class frmBDG
 
     Private Sub GridView8_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles GridView8.CustomDrawCell
         Dim GRD8 As GridView = sender
+        If GRD8.GetRowCellValue(e.RowHandle, "Fullname") = Nothing Then Exit Sub
         If e.Column.FieldName = "cctID" Then e.DisplayText = GRD8.GetRowCellValue(e.RowHandle, "Fullname").ToString()
 
     End Sub
@@ -2784,7 +2786,9 @@ Public Class frmBDG
     Private Sub Grid_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
         Select Case e.Button.ButtonType
             Case e.Button.ButtonType.Remove : If DeleteRecordBDG_M() = vbYes Then e.Handled = True Else e.Handled = False
-            Case e.Button.ButtonType.Append : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "isMain", 0) : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail", 0)
+            Case e.Button.ButtonType.Append
+                'GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "isMain", 0) : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail", 0)
+                'GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "cctID", "")
 
         End Select
     End Sub
@@ -2806,6 +2810,7 @@ Public Class frmBDG
         Dim sSQL As New System.Text.StringBuilder
         Try
             sSQL.Clear()
+            If GridView12.RowCount = 0 Then Exit Sub
             If e.RowHandle = grdBDG_M.NewItemRowHandle Then
                 If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cctID").ToString = "" Then
                     e.ErrorText = "Παρακαλώ επιλεξτε επαφή"

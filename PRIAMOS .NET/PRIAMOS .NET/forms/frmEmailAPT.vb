@@ -398,7 +398,7 @@ Public Class frmEmailAPT
             sEmailTo = String.Concat(EmailTenant, IIf(EmailTenant.Length > 0 And EmailOwner.Length > 0, ";", "") & EmailOwner, IIf((EmailOwner.Length > 0 Or EmailTenant.Length > 0) And EmailRepresentative.Length > 0, ";", "") & EmailRepresentative)
 
             ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-            If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
+            If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
             sFileIDs = sfID.Split(";")
             If sFileIDs.Length > 0 Then
                 SSM.ShowWaitForm()
@@ -415,13 +415,13 @@ Public Class frmEmailAPT
                 sFileNames = sFNames.Split(";")
                 If Emails.SendFilesEmail(Subject, sBody, 0, sEmailTo, sFileNames, statusMsg) = True Then
                     sSQL = "insert into EMAIL_LOG(aptID,bdgFID,usrID,sendDate,statusMsg,files,subject,body)
-                                    SELECT " & toSQLValueS(sfID) & "," & toSQLValueS(sfID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1, " &
+                                    SELECT " & toSQLValueS(sAptID.Replace(";", "")) & "," & toSQLValueS(sfID.Replace(";", "")) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1, " &
                                     toSQLValueS(Subject) & "," & toSQLValueS(sBody)
                     Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                 Else
                     sSQL = "insert into EMAIL_LOG(aptID,bdgFID,usrID,sendDate,statusMsg,files,subject,body)
-                                    SELECT " & toSQLValueS(sfID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1, " &
+                                    SELECT " & toSQLValueS(sAptID.Replace(";", "")) & "," & toSQLValueS(sfID.Replace(";", "")) & "," & toSQLValueS(UserProps.ID.ToString.Replace(";", "")) & ",GETDATE()," & toSQLValueS(statusMsg) & ",1, " &
                                     toSQLValueS(Subject) & "," & toSQLValueS(sBody)
                     Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
                     SSM.CloseWaitForm()

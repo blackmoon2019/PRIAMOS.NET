@@ -253,6 +253,7 @@ Partial Class frmBDG
         Me.colbdgID2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcctID2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepCCT = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.VwCCTBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.colisMain = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colmodifiedBy2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colmodifiedOn2 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -892,6 +893,7 @@ Partial Class frmBDG
         Me.txtBDGFCode = New DevExpress.XtraEditors.TextEdit()
         Me.txtBDGFilename = New DevExpress.XtraEditors.ButtonEdit()
         Me.cboFolderCat = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwFOLDERCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LayoutControlGroup17 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup18 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem127 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -936,7 +938,6 @@ Partial Class frmBDG
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.DEPOSIT_ATableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.DEPOSIT_ATableAdapter()
         Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter()
-        Me.VwFOLDERCATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
@@ -988,6 +989,7 @@ Partial Class frmBDG
         CType(Me.VwBDGMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView12, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepCCT, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwCCTBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.lstData, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtAFM.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1455,6 +1457,7 @@ Partial Class frmBDG
         CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1481,7 +1484,6 @@ Partial Class frmBDG
         CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.Panel2.SuspendLayout
         Me.SplitContainerControl1.SuspendLayout
-        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'GridView7
@@ -2418,6 +2420,24 @@ Partial Class frmBDG
         Me.LayoutControlItem177.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem177.TextVisible = False
         '
+        'VwBCCTBindingSource
+        '
+        Me.VwBCCTBindingSource.AllowNew = True
+        Me.VwBCCTBindingSource.DataMember = "vw_BCCT"
+        Me.VwBCCTBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'VwCCTBindingSource
+        '
+        Me.VwCCTBindingSource.AllowNew = True
+        Me.VwCCTBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.VwCCTBindingSource.Position = 0
+        '
+        'VwPRFBindingSource
+        '
+        Me.VwPRFBindingSource.AllowNew = True
+        Me.VwPRFBindingSource.DataMember = "vw_PRF"
+        Me.VwPRFBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
         'Bar1
         '
         Me.Bar1.BarName = "MainMenu"
@@ -3037,13 +3057,18 @@ Partial Class frmBDG
         Me.RepCCT.AutoHeight = False
         Me.RepCCT.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)})
         Me.RepCCT.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Fullname", "Επαφή", 91, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PrfID", "Prf ID", 64, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("phn", "phn", 48, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mob", "mob", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("email", "email", 59, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("afm", "afm", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isprivate", "Ιδιώτης", 87, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsPartner", "Συνεργάτης", 97, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Isworkshop", "Συνεργείο", 110, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Issupplier", "Προμηθευτής", 96, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsEmployer", "Προσωπικό (Priamos)", 114, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("id", "id", 30, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("nam", "nam", 52, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ttl", "ttl", 31, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ord", "ord", 43, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("OwnerFullName", "Owner Full Name", 160, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenantFullName", "Tenant Full Name", 164, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bal", "bal", 40, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("out", "out", 42, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("closed", "closed", 67, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("cmt", "cmt", 46, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Real Name", 106, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgNam", "bdg Nam", 93, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 74, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("flrID", "flr ID", 58, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("OwnerID", "Owner ID", 96, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenantID", "Tenant ID", 100, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("sameOwnerTenant", "same Owner Tenant", 185, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgCode", "bdg Code", 96, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrID", "Adr ID", 70, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AdrName", "Adr Name", 99, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ar", "ar", 32, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AreaName", "Area Name", 108, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RepresentativeID", "Representative ID", 165, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RepresentativeFullname", "Representative Fullname", 221, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.RepCCT.DataSource = Me.VwCCTBindingSource
+        Me.RepCCT.DataSource = Me.VwCCTBindingSource1
         Me.RepCCT.DisplayMember = "Fullname"
         Me.RepCCT.Name = "RepCCT"
         Me.RepCCT.NullText = ""
         Me.RepCCT.PopupFormMinSize = New System.Drawing.Size(300, 500)
         Me.RepCCT.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
         Me.RepCCT.ValueMember = "ID"
+        '
+        'VwCCTBindingSource1
+        '
+        Me.VwCCTBindingSource1.DataMember = "vw_CCT"
+        Me.VwCCTBindingSource1.DataSource = Me.VwCCTBindingSource
         '
         'colisMain
         '
@@ -6118,6 +6143,12 @@ Partial Class frmBDG
         Me.RepositoryItemLookUpEditCCT.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
         Me.RepositoryItemLookUpEditCCT.ValueMember = "cctID"
         '
+        'VwCCTPFBindingSource
+        '
+        Me.VwCCTPFBindingSource.AllowNew = True
+        Me.VwCCTPFBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.VwCCTPFBindingSource.Position = 0
+        '
         'colcmt
         '
         Me.colcmt.Caption = "ΣΧΟΛΙΑ"
@@ -6964,6 +6995,12 @@ Partial Class frmBDG
         Me.RepositoryItemWorkShop.Name = "RepositoryItemWorkShop"
         Me.RepositoryItemWorkShop.NullText = ""
         Me.RepositoryItemWorkShop.ValueMember = "ID"
+        '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.AllowNew = True
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.VwPARTNERANDWORKSHOPBindingSource.Position = 0
         '
         'colcctName
         '
@@ -10013,6 +10050,11 @@ Partial Class frmBDG
         Me.cboFolderCat.TabIndex = 5
         Me.cboFolderCat.Tag = "couid,0"
         '
+        'VwFOLDERCATBindingSource
+        '
+        Me.VwFOLDERCATBindingSource.DataMember = "vw_FOLDER_CAT"
+        Me.VwFOLDERCATBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
         'LayoutControlGroup17
         '
         Me.LayoutControlGroup17.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -10176,6 +10218,12 @@ Partial Class frmBDG
         Me.LayoutControlItem150.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem150.TextVisible = False
         '
+        'CollectorsBindingSource
+        '
+        Me.CollectorsBindingSource.AllowNew = True
+        Me.CollectorsBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.CollectorsBindingSource.Position = 0
+        '
         'GridView9
         '
         Me.GridView9.Name = "GridView9"
@@ -10324,11 +10372,6 @@ Partial Class frmBDG
         '
         Me.Vw_INHTableAdapter.ClearBeforeFill = True
         '
-        'VwFOLDERCATBindingSource
-        '
-        Me.VwFOLDERCATBindingSource.DataMember = "vw_FOLDER_CAT"
-        Me.VwFOLDERCATBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
-        '
         'Vw_FOLDER_CATTableAdapter
         '
         Me.Vw_FOLDER_CATTableAdapter.ClearBeforeFill = True
@@ -10399,6 +10442,7 @@ Partial Class frmBDG
         CType(Me.VwBDGMBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GridView12, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.RepCCT, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwCCTBindingSource1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.lstData, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtAFM.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -10866,6 +10910,7 @@ Partial Class frmBDG
         CType(Me.txtBDGFCode.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.txtBDGFilename.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboFolderCat.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup17, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup18, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem127, System.ComponentModel.ISupportInitialize).EndInit
@@ -10892,7 +10937,6 @@ Partial Class frmBDG
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
-        CType(Me.VwFOLDERCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -11721,4 +11765,5 @@ Partial Class frmBDG
     Friend WithEvents Vw_INHTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter
     Friend WithEvents VwFOLDERCATBindingSource As BindingSource
     Friend WithEvents Vw_FOLDER_CATTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter
+    Friend WithEvents VwCCTBindingSource1 As BindingSource
 End Class
