@@ -2785,7 +2785,7 @@ Public Class frmBDG
 
     Private Sub Grid_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
         Select Case e.Button.ButtonType
-            Case e.Button.ButtonType.Remove : If DeleteRecordBDG_M() = vbYes Then e.Handled = True Else e.Handled = False
+            Case e.Button.ButtonType.Remove : If DeleteRecordBDG_M() = vbYes Then e.Handled = False Else e.Handled = True
             Case e.Button.ButtonType.Append
                 'GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "isMain", 0) : GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "AllowsendEmail", 0)
                 'GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "cctID", "")

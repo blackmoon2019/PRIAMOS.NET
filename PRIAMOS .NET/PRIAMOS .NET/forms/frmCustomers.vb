@@ -1,18 +1,12 @@
-﻿Imports System.CodeDom.Compiler
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
-Imports System.IO
-Imports DevExpress.Utils
-Imports DevExpress.Utils.Menu
-Imports DevExpress.XtraBars.Docking
-Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraExport.Xls
 Imports DevExpress.XtraGrid.Columns
-Imports DevExpress.XtraGrid.Menu
+Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 
 Public Class frmCustomers
     Private sID As String
@@ -28,7 +22,7 @@ Public Class frmCustomers
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
     Private UserPermissions As New CheckPermissions
-
+    Private ManageCbo As New CombosManager
 
     Public WriteOnly Property ID As String
         Set(value As String)
@@ -60,13 +54,15 @@ Public Class frmCustomers
     End Sub
 
     Private Sub frmCustomers_Load(sender As Object, e As EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BANKS' table. You can move, or remove it, as needed.
+        Me.Vw_BANKSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BANKS)
         Dim sSQL As New System.Text.StringBuilder
         'Νομοί
         FillCbo.COU(cboCOU)
         'FillCbo.ADR(cboADR, sSQL)
         'FillCbo.AREAS(cboAREAS, sSQL)
         FillCbo.DOY(cboDOY)
-
+        AddHandler grdCCT_BANKS.EmbeddedNavigator.ButtonClick, AddressOf Grid_EmbeddedNavigator_ButtonClick
 
         Select Case Mode
             Case FormMode.NewRecord
@@ -74,6 +70,7 @@ Public Class frmCustomers
                 txtCode.Text = DBQ.GetNextId("CCT")
                 FillCbo.FillCheckedListPRF(chkPRF, FormMode.NewRecord)
             Case FormMode.EditRecord
+                Me.Vw_CCT_BANKSTableAdapter.FillBycctID(Me.Priamos_NET_DataSet_BDG.vw_CCT_BANKS, System.Guid.Parse(sID))
                 FillCbo.FillCheckedListPRF(chkPRF, FormMode.EditRecord, sID)
                 If cboCOU.EditValue <> Nothing Then sSQL.AppendLine(" where couid = " & toSQLValueS(cboCOU.EditValue.ToString))
                 FillCbo.AREAS(cboAREAS, sSQL)
@@ -91,7 +88,8 @@ Public Class frmCustomers
                 GridView1.Columns.Add(C)
 
         End Select
-        'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        LoadForms.RestoreLayoutFromXml(GridView1, "vw_CCT_F_def.xml")
+        LoadForms.RestoreLayoutFromXml(GridView12, "CCT_BANKS.xml")
         Me.CenterToScreen()
         UserPermissions.GetUserPermissions(Me.Text)
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -131,22 +129,7 @@ Public Class frmCustomers
     Private Sub cboAREAS_EditValueChanged(sender As Object, e As EventArgs) Handles cboAREAS.EditValueChanged
         FillCbo.ADR(cboADR, ADRsSQL)
     End Sub
-    Private Sub ManageAREAS()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Περιοχές"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Περιοχή"
-        form1.L3.Text = "Νομός"
-        form1.DataTable = "AREAS"
-        form1.CallerControl = cboAREAS
-        form1.CalledFromControl = True
-        If cboAREAS.EditValue <> Nothing Then form1.ID = cboAREAS.EditValue.ToString
-        form1.MdiParent = frmMain
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        If cboAREAS.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
+
     Private Function ADRsSQL() As System.Text.StringBuilder
         Dim sSQL As New System.Text.StringBuilder
         Dim CouID As String = ""
@@ -167,29 +150,6 @@ Public Class frmCustomers
         sSQL.AppendLine(" order by name ")
         Return sSQL
     End Function
-
-    Private Sub ManageADR()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Διευθύνσεις"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Διεύθυνση"
-        form1.L3.Text = "Νομός"
-        form1.L4.Text = "Περιοχές"
-        form1.L7.Text = "TK"
-        form1.L7.Control.Tag = "tk,0,1,2"
-        form1.DataTable = "ADR"
-        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        form1.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        form1.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-
-        form1.CallerControl = cboADR
-        If cboADR.EditValue <> Nothing Then form1.ID = cboADR.EditValue.ToString
-        form1.MdiParent = frmMain
-
-        If cboADR.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Dim sResult As Boolean
@@ -252,21 +212,6 @@ Public Class frmCustomers
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-
-    Private Sub ManageCOU()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Νομοί"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Νομός"
-        form1.DataTable = "COU"
-        form1.CallerControl = cboCOU
-        form1.CalledFromControl = True
-        If cboCOU.EditValue <> Nothing Then form1.ID = cboCOU.EditValue.ToString
-        form1.MdiParent = frmMain
-        If cboCOU.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
     Private Sub FilesSelection()
 
         'XtraOpenFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
@@ -321,47 +266,31 @@ Public Class frmCustomers
 
     Private Sub cboDOY_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboDOY.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboDOY.EditValue = Nothing : ManageDOY()
-            Case 2 : If cboDOY.EditValue <> Nothing Then ManageDOY()
+            Case 1 : cboDOY.EditValue = Nothing : ManageCbo.ManageDOY(cboDOY, FormMode.NewRecord)
+            Case 2 : If cboDOY.EditValue <> Nothing Then ManageCbo.ManageDOY(cboDOY, FormMode.EditRecord)
             Case 3 : cboDOY.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManageDOY()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "ΔΟΥ"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "ΔΟΥ"
-        form1.DataTable = "DOY"
-        form1.CallerControl = cboDOY
-        form1.CalledFromControl = True
-        If cboDOY.EditValue <> Nothing Then form1.ID = cboDOY.EditValue.ToString
-        form1.MdiParent = frmMain
-        If cboDOY.EditValue <> Nothing Then form1.Mode = FormMode.EditRecord Else form1.Mode = FormMode.NewRecord
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
-
-
     Private Sub cboCOU_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCOU.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboCOU.EditValue = Nothing : ManageCOU()
-            Case 2 : If cboCOU.EditValue <> Nothing Then ManageCOU()
+            Case 1 : cboCOU.EditValue = Nothing : ManageCbo.ManageCOU(cboCOU, FormMode.NewRecord)
+            Case 2 : If cboCOU.EditValue <> Nothing Then ManageCbo.ManageCOU(cboCOU, FormMode.EditRecord)
             Case 3 : cboCOU.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboAREAS_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboAREAS.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboAREAS.EditValue = Nothing : ManageAREAS()
-            Case 2 : If cboAREAS.EditValue <> Nothing Then ManageAREAS()
+            Case 1 : cboAREAS.EditValue = Nothing : ManageCbo.ManageAREAS(cboAREAS, FormMode.NewRecord)
+            Case 2 : If cboAREAS.EditValue <> Nothing Then ManageCbo.ManageAREAS(cboAREAS, FormMode.EditRecord)
             Case 3 : cboAREAS.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboADR_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboADR.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboADR.EditValue = Nothing : ManageADR()
-            Case 2 : If cboADR.EditValue <> Nothing Then ManageADR()
+            Case 1 : cboADR.EditValue = Nothing : ManageCbo.ManageADR(cboADR, FormMode.NewRecord)
+            Case 2 : If cboADR.EditValue <> Nothing Then ManageCbo.ManageADR(cboADR, FormMode.EditRecord)
             Case 3 : cboADR.EditValue = Nothing
         End Select
     End Sub
@@ -375,8 +304,6 @@ Public Class frmCustomers
         End If
     End Sub
 
-
-
     Private Sub frmCustomers_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Valid.SChanged Then
             If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
@@ -386,130 +313,108 @@ Public Class frmCustomers
             End If
         End If
     End Sub
-
-
-
-    'Μετονομασία Στήλης Master
-    Private Sub OnEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView1.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    Private Function CreateCheckItem(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
-        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClick))
-        item.Tag = New MenuColumnInfo(column)
-        Return item
-    End Function
-    'Αλλαγή Χρώματος Στήλης Master
-    Private Sub OnColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView1.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
-    End Sub
-    'Κλείδωμα Στήλης Master
-    Private Sub OnCanMoveItemClick(ByVal sender As Object, ByVal e As EventArgs)
-        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
-        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
-        If info Is Nothing Then
-            Return
-        End If
-        info.Column.OptionsColumn.AllowMove = Not item.Checked
-    End Sub
-    'Αποθήκευση όψης 
-    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-        If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
-           UserProps.ID.ToString.ToUpper = "E2BF15AC-19E3-498F-9459-1821B3898C76" Or
-           UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
-            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = False Then GridView1.OptionsLayout.LayoutVersion = "v1"
-                GridView1.SaveLayoutToXml(ProgProps.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
-            End If
-        End If
-
-    End Sub
-    'Συγχρονισμός όψης από Server
-    Private Sub OnSyncView(ByVal sender As System.Object, ByVal e As EventArgs)
-        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-            ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
-            If System.IO.File.Exists(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml") = True Then
-                My.Computer.FileSystem.CopyFile(Progprops.ServerViewsPath & "DSGNS\DEF\vw_CCT_F_def.xml", Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", True)
-                GridView1.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\vw_CCT_F_def.xml", OptionsLayoutBase.FullLayout)
-            End If
-        End If
-    End Sub
-
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView1, "vw_CCT_F_def.xml", "vw_CCT_F")
+    End Sub
+    Private Sub Grid_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+        Select Case e.Button.ButtonType
+            Case e.Button.ButtonType.Remove
+                If DeleteRecordCCT_BANKS() = vbYes Then e.Handled = False Else e.Handled = True
+            Case e.Button.ButtonType.Append
+                If sID = Nothing Then XtraMessageBox.Show("Πρέπει πρώτα να καταχωρηθεί πελάτης", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : e.Handled = True
+        End Select
+    End Sub
+    Private Function DeleteRecordCCT_BANKS() As MsgBoxResult
+        If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID") = Nothing Then Return vbCancel
+        If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+            Dim sSQL As String = "DELETE FROM CCT_BANKS WHERE ID = '" & GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString & "'"
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Me.Vw_CCT_BANKSTableAdapter.FillBycctID(Me.Priamos_NET_DataSet_BDG.vw_CCT_BANKS, System.Guid.Parse(sID))
+            Return vbYes
 
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
+        Else
+            Return vbNo
+        End If
+    End Function
+    Private Sub GridView12_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles GridView12.ValidateRow
+        Dim sSQL As New System.Text.StringBuilder
+        Try
+            sSQL.Clear()
+            If GridView12.RowCount = 0 Then Exit Sub
+            If e.RowHandle = grdCCT_BANKS.NewItemRowHandle Then
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "bankID").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε τράπεζα"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "Iban").ToString = "" And GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountNumber").ToString = "" Then
+                    e.ErrorText = "Δεν έχετε συμπληρώσει λογαριασμό"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                Dim sGuid As String = Guid.NewGuid.ToString
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "ID", sGuid)
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "cctID", sID)
+                GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "createdBy", UserProps.ID.ToString)
 
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItem("Κλείδωμα Στήλης", menu.Column, Nothing))
+                sSQL.AppendLine("INSERT INTO CCT_BANKS (ID,cctID,bankID,Iban,AccountNumber,BicNumber,createdBy,MachineName)")
+                sSQL.AppendLine("Select " & toSQLValueS(sGuid) & ",")
+                sSQL.AppendLine(toSQLValueS(sID) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "bankID").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "Iban").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountNumber").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "BicNumber").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(UserProps.MachineName))
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            Else
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "bankID").ToString = "" Then
+                    e.ErrorText = "Παρακαλώ επιλεξτε τράπεζα"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                If GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "Iban").ToString = "" And GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountNumber").ToString = "" Then
+                    e.ErrorText = "Δεν έχετε συμπληρώσει λογαριασμό"
+                    e.Valid = False
+                    Exit Sub
+                End If
+                sSQL.AppendLine("UPDATE CCT_BANKS SET  ")
+                sSQL.AppendLine("bankID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "bankID").ToString) & ",")
+                sSQL.AppendLine("Iban = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "Iban").ToString) & ",")
+                sSQL.AppendLine("AccountNumber = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountNumber").ToString) & ",")
+                sSQL.AppendLine("BicNumber = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "BicNumber").ToString) & ",")
+                sSQL.AppendLine("modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & ",")
+                sSQL.AppendLine("MachineName = " & toSQLValueS(UserProps.MachineName))
+                sSQL.Append("WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString))
+                'Εκτέλεση QUERY
+                Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+        Catch sqlEx As SqlException When sqlEx.Number = 2601
 
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
-
-                '5nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Συγχρονισμός όψης από Server", AddressOf OnSyncView, Nothing, Nothing, Nothing, Nothing))
+            e.Valid = False
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub GridView12_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView12.KeyDown
+        If e.KeyCode = Keys.Delete And UserProps.AllowDelete = True Then DeleteRecordCCT_BANKS()
+        If e.KeyCode = Keys.Down And UserProps.AllowInsert Then
+            If sender.FocusedRowHandle < 0 Then Exit Sub
+            Dim viewInfo As GridViewInfo = TryCast(sender.GetViewInfo(), GridViewInfo)
+            If sender.FocusedRowHandle = viewInfo.RowsInfo.Last().RowHandle Then
 
             End If
         End If
     End Sub
+    Private Sub GridView12_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView12.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView12, "CCT_BANKS.xml", "vw_CCT_BANKS")
+    End Sub
 
-    Friend Class MenuColumnInfo
-        Public Sub New(ByVal column As GridColumn)
-            Me.Column = column
-        End Sub
-        Public Column As GridColumn
-    End Class
-
-
-    'Private Sub SqlBlob2File(ByVal DocName As String)
-
-    '    Dim cn As New SqlConnection(My.Settings.DocStoreConnectionString.ToString())
-    '    Dim cmd As New SqlCommand("Select DocData From Documents WHERE DocName = @DocName", cn)
-
-    '    cmd.Parameters.AddWithValue("@DocName", DocName)
-
-    '    cn.Open()
-
-    '    Using dr As SqlDataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection)
-    '        If dr.Read() Then
-    '            Dim fs As IO.FileStream = New IO.FileStream(IO.Path.Combine(Me.FolderBrowserDial og1.SelectedPath, DocName), IO.FileMode.Create)
-    '            Dim b() As Byte = dr.Item("DocData")
-    '            fs.Write(b, 0, b.Length)
-    '            fs.Close()
-    '        End If
-    '    End Using 'dr
-
-    '    cn.Close()
-    'End Sub
 End Class
