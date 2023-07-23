@@ -19,6 +19,8 @@ Imports DevExpress.Export
 Imports System.Drawing.Printing
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.CodeParser
+Imports DevExpress.DataAccess
+Imports DevExpress.Utils.VisualEffects
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -2048,7 +2050,7 @@ Public Class frmBDG
     End Sub
 
 
-    Private Sub txtInvoiceFilename_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtBDGFilename.ButtonClick
+    Private Sub txtBDGFilename_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtBDGFilename.ButtonClick
         If e.Button.Index = 1 Then
             BDGFileSelection()
         Else
@@ -3006,7 +3008,7 @@ Public Class frmBDG
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then
-                sAmt = sdr.GetDecimal(sdr.GetOrdinal("totDepositA")).ToString
+                If sdr.IsDBNull(sdr.GetOrdinal("totDepositA")) = False Then sAmt = sdr.GetDecimal(sdr.GetOrdinal("totDepositA")).ToString
                 sdr.Close()
             Else
                 sdr.Close()
@@ -3021,10 +3023,16 @@ Public Class frmBDG
         Dim sResult As Boolean
         Try
             If Valid.ValidateForm(LDeposit) Then
-                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DEPOSIT_A", LDeposit,,, , True, "bdgID", toSQLValueS(sID))
+                Dim sGuid As String = System.Guid.NewGuid.ToString
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DEPOSIT_A", LDeposit,,, sGuid, True, "bdgID", toSQLValueS(sID))
                 If sResult Then
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                    If XtraOpenFileDialog1.SafeFileName <> "" Then
+                        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "DEPOSIT_F", sGuid) = False Then
+                            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
+                        XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        XtraOpenFileDialog1.FileName = ""
+                    End If
                     CalculateDepositA()
                     ClearDepositA()
                     RefreshDepositA()
@@ -3055,7 +3063,7 @@ Public Class frmBDG
                     oCmd.ExecuteNonQuery()
                 End Using
                 CalculateDepositA()
-
+                ClearDepositA()
 
                 RefreshDepositA()
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -3167,6 +3175,7 @@ Public Class frmBDG
                 oCmd.Parameters("@Amt").Direction = ParameterDirection.Output
                 oCmd.ExecuteNonQuery()
                 txtTotalDepositAmt.EditValue = oCmd.Parameters("@Amt").Value
+                If txtTotalDepositAmt.Text = "" Then txtTotalDepositAmt.EditValue = "0.00"
             End Using
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -3177,6 +3186,7 @@ Public Class frmBDG
         ExceptFields.Add("txtTotalDepositAmt")
         Cls.ClearCtrls(LDeposit, ExceptFields)
         txtDepositAmt.ForeColor = Color.Black
+        txtDepositFilename.EditValue = ""
     End Sub
     Private Sub cboMultiplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMultiplier.SelectedIndexChanged
         If cboMultiplier.SelectedIndex = 0 Then
@@ -3227,4 +3237,79 @@ Public Class frmBDG
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
         fINH.Show()
     End Sub
+    Private Sub txtDepositFilename_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles txtDepositFilename.ButtonClick
+        If e.Button.Index = 1 Then
+            DepositFileSelection()
+        Else
+            txtDepositFilename.EditValue = Nothing
+        End If
+    End Sub
+    Private Sub DepositFileSelection(Optional ByVal ValueToGrid As Boolean = False)
+        XtraOpenFileDialog1.FilterIndex = 1
+        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        XtraOpenFileDialog1.Title = "Open File"
+        XtraOpenFileDialog1.CheckFileExists = False
+        XtraOpenFileDialog1.Multiselect = False
+        Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
+        If result = DialogResult.OK Then
+            If ValueToGrid Then
+                Using oCmd As New SqlCommand("DELETE FROM DEPOSIT_F where depositAID = '" & GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString & "'", CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "DEPOSIT_F", GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString) = False Then
+                    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+                GridView_DepositA.SetRowCellValue(GridView_DepositA.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)
+                XtraOpenFileDialog1.FileName = ""
+                RefreshDepositA()
+            Else
+                txtDepositFilename.EditValue = "" : txtDepositFilename.EditValue = XtraOpenFileDialog1.SafeFileName
+            End If
+        End If
+
+    End Sub
+
+    Private Sub RepDepositF_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepDepositF.ButtonClick
+        Select Case e.Button.Index
+            Case 0 : OpenFileSelection()
+            Case 1 : DepositFileSelection(True)
+        End Select
+        If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
+    End Sub
+    Private Sub OpenFileSelection()
+        Try
+            Dim sFilename = GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "filename")
+            If sFilename Is DBNull.Value Then Exit Sub
+
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & sFilename, System.IO.FileMode.Create)
+            Dim b() As Byte = LoadForms.GetFile(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "depositFID").ToString, "DEPOSIT_F")
+            fs.Write(b, 0, b.Length)
+            fs.Close()
+            ShellExecute(Application.StartupPath & "\" & sFilename)
+        Catch ex As IOException
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    'Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
+    '    If Valid.ValidateFormGRP(LayoutControlGroup18) Then
+    '        If XtraOpenFileDialog1.SafeFileName <> "" Then
+    '            If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID, "folderCatID", toSQLValueS(cboFolderCat.EditValue.ToString), PB) = False Then
+    '                XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '            Else
+    '                Cls.ClearGroupCtrls(LayoutControlGroup18)
+    '                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '                Valid.SChanged = False
+    '                XtraOpenFileDialog1.FileName = ""
+    '                txtBDGFilename.EditValue = ""
+    '                txtBDGFCode.Text = DBQ.GetNextId("BDG_F")
+    '            End If
+    '        End If
+    '        Me.Vw_BDG_FTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_F, System.Guid.Parse(sID))
+    '        PB.Value = 0
+
+    '    End If
+
+    'End Sub
 End Class

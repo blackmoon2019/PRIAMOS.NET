@@ -21,17 +21,17 @@ Partial Class frmINH
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmINH))
         Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmINH))
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -89,10 +89,10 @@ Partial Class frmINH
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.txtHpb = New DevExpress.XtraEditors.TextEdit()
         Me.cboAhpbHB = New DevExpress.XtraEditors.LookUpEdit()
+        Me.AHPBΒBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblCancel = New DevExpress.XtraEditors.LabelControl()
         Me.cmdCancelInvoice = New DevExpress.XtraEditors.SimpleButton()
         Me.DataNavigator1 = New DevExpress.XtraEditors.DataNavigator()
-        Me.vwINHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.chkExtraordinary = New DevExpress.XtraEditors.CheckEdit()
         Me.cmdNewInh = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdPrintAll = New DevExpress.XtraEditors.DropDownButton()
@@ -118,6 +118,7 @@ Partial Class frmINH
         Me.cboRepname = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwTTLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cboAhpbH = New DevExpress.XtraEditors.LookUpEdit()
+        Me.AHPBHBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPane1 = New DevExpress.XtraBars.Navigation.TabPane()
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.TabNavigationPage2 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
@@ -199,7 +200,6 @@ Partial Class frmINH
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
         Me.SplashScreenManager1 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), True, True)
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
-        Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INHTableAdapter()
         Me.TableAdapterManager = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.TableAdapterManager()
         Me.AHPB_H1TableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter()
         Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -209,10 +209,10 @@ Partial Class frmINH
         Me.Vw_ANN_MENTSTableAdapter1 = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_ANN_MENTSTableAdapter()
         Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_INDTableAdapter()
-        Me.AHPBHBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.AHPB_HTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.AHPB_HTableAdapter()
-        Me.AHPBΒBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AHPB_ΒTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.AHPB_ΒTableAdapter()
+        Me.VwINHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_INHTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -239,7 +239,7 @@ Partial Class frmINH
         CType(Me.chkCalculated.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAhpbHB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.vwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBΒBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkExtraordinary.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -258,6 +258,7 @@ Partial Class frmINH
         CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAhpbH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBHBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane1.SuspendLayout()
         Me.TabNavigationPage1.SuspendLayout()
@@ -333,8 +334,7 @@ Partial Class frmINH
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBHBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBΒBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView7
@@ -991,8 +991,8 @@ Partial Class frmINH
         Me.cboAhpbHB.Margin = New System.Windows.Forms.Padding(5)
         Me.cboAhpbHB.Name = "cboAhpbHB"
         Me.cboAhpbHB.Properties.AllowMouseWheel = False
-        EditorButtonImageOptions1.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_available_updates_12
-        Me.cboAhpbHB.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_available_updates_12
+        Me.cboAhpbHB.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboAhpbHB.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "ΗΜΕΡ/ΝΙΑ ΜΕΤΡΗΣΗΣ", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("finalized", "finalized", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("boiler", "BOILER", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.cboAhpbHB.Properties.DataSource = Me.AHPBΒBindingSource
         Me.cboAhpbHB.Properties.DisplayFormat.FormatString = "dd/MM/yyyy"
@@ -1004,6 +1004,11 @@ Partial Class frmINH
         Me.cboAhpbHB.StyleController = Me.LayoutControl1
         Me.cboAhpbHB.TabIndex = 67
         Me.cboAhpbHB.Tag = "ahpb_HIDB,0,1,2"
+        '
+        'AHPBΒBindingSource
+        '
+        Me.AHPBΒBindingSource.DataMember = "AHPB_Β"
+        Me.AHPBΒBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
         '
         'lblCancel
         '
@@ -1044,7 +1049,7 @@ Partial Class frmINH
         Me.DataNavigator1.Buttons.NextPage.Visible = False
         Me.DataNavigator1.Buttons.PrevPage.Visible = False
         Me.DataNavigator1.Buttons.Remove.Visible = False
-        Me.DataNavigator1.DataSource = Me.vwINHBindingSource
+        Me.DataNavigator1.DataSource = Me.VwINHBindingSource
         Me.DataNavigator1.Location = New System.Drawing.Point(435, 653)
         Me.DataNavigator1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.DataNavigator1.Name = "DataNavigator1"
@@ -1054,11 +1059,6 @@ Partial Class frmINH
         Me.DataNavigator1.Text = "Παραστατικά"
         Me.DataNavigator1.TextLocation = DevExpress.XtraEditors.NavigatorButtonsTextLocation.Center
         Me.DataNavigator1.TextStringFormat = " Παραστατικά {0} of {1}"
-        '
-        'vwINHBindingSource
-        '
-        Me.vwINHBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        Me.vwINHBindingSource.Position = 0
         '
         'chkExtraordinary
         '
@@ -1375,8 +1375,8 @@ Partial Class frmINH
         Me.cboAhpbH.Margin = New System.Windows.Forms.Padding(5)
         Me.cboAhpbH.Name = "cboAhpbH"
         Me.cboAhpbH.Properties.AllowMouseWheel = False
-        EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_available_updates_12
-        Me.cboAhpbH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        EditorButtonImageOptions3.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_available_updates_12
+        Me.cboAhpbH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboAhpbH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "ΗΜΕΡ/ΝΙΑ ΜΕΤΡΗΣΗΣ", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("finalized", "finalized", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("boiler", "BOILER", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.cboAhpbH.Properties.DataSource = Me.AHPBHBindingSource1
         Me.cboAhpbH.Properties.DisplayFormat.FormatString = "dd/MM/yyyy"
@@ -1388,6 +1388,11 @@ Partial Class frmINH
         Me.cboAhpbH.StyleController = Me.LayoutControl1
         Me.cboAhpbH.TabIndex = 46
         Me.cboAhpbH.Tag = "ahpb_HID,0,1,2"
+        '
+        'AHPBHBindingSource1
+        '
+        Me.AHPBHBindingSource1.DataMember = "AHPB_H"
+        Me.AHPBHBindingSource1.DataSource = Me.PriamosNETDataSetBindingSource
         '
         'TabPane1
         '
@@ -2185,10 +2190,6 @@ Partial Class frmINH
         Me.XtraOpenFileDialog1.Multiselect = True
         Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
         '
-        'Vw_INHTableAdapter
-        '
-        Me.Vw_INHTableAdapter.ClearBeforeFill = True
-        '
         'TableAdapterManager
         '
         Me.TableAdapterManager.AHPB_H1TableAdapter = Nothing
@@ -2236,23 +2237,22 @@ Partial Class frmINH
         '
         Me.Vw_INDTableAdapter.ClearBeforeFill = True
         '
-        'AHPBHBindingSource1
-        '
-        Me.AHPBHBindingSource1.DataMember = "AHPB_H"
-        Me.AHPBHBindingSource1.DataSource = Me.PriamosNETDataSetBindingSource
-        '
         'AHPB_HTableAdapter
         '
         Me.AHPB_HTableAdapter.ClearBeforeFill = True
         '
-        'AHPBΒBindingSource
-        '
-        Me.AHPBΒBindingSource.DataMember = "AHPB_Β"
-        Me.AHPBΒBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
-        '
         'AHPB_ΒTableAdapter
         '
         Me.AHPB_ΒTableAdapter.ClearBeforeFill = True
+        '
+        'VwINHBindingSource
+        '
+        Me.VwINHBindingSource.DataMember = "vw_INH"
+        Me.VwINHBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        '
+        'Vw_INHTableAdapter
+        '
+        Me.Vw_INHTableAdapter.ClearBeforeFill = True
         '
         'frmINH
         '
@@ -2295,7 +2295,7 @@ Partial Class frmINH
         CType(Me.chkCalculated.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAhpbHB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.vwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBΒBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkExtraordinary.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2314,6 +2314,7 @@ Partial Class frmINH
         CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAhpbH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBHBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPane1.ResumeLayout(False)
         Me.TabNavigationPage1.ResumeLayout(False)
@@ -2389,8 +2390,7 @@ Partial Class frmINH
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBHBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBΒBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2502,8 +2502,6 @@ Partial Class frmINH
     Friend WithEvents LcmdNewInh As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents RepositoryItemLookUpEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
     Friend WithEvents RepositoryItemLookUpEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
-    Friend WithEvents vwINHBindingSource As BindingSource
-    Friend WithEvents Vw_INHTableAdapter As Priamos_NETDataSetTableAdapters.vw_INHTableAdapter
     Friend WithEvents TableAdapterManager As Priamos_NETDataSetTableAdapters.TableAdapterManager
     Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents AHPB_H1TableAdapter As Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter
@@ -2577,4 +2575,6 @@ Partial Class frmINH
     Friend WithEvents AHPBHBindingSource1 As BindingSource
     Friend WithEvents AHPB_HTableAdapter As Priamos_NET_DataSet_INHTableAdapters.AHPB_HTableAdapter
     Friend WithEvents AHPB_ΒTableAdapter As Priamos_NET_DataSet_INHTableAdapters.AHPB_ΒTableAdapter
+    Friend WithEvents VwINHBindingSource As BindingSource
+    Friend WithEvents Vw_INHTableAdapter As Priamos_NET_DataSet_INHTableAdapters.vw_INHTableAdapter
 End Class

@@ -95,10 +95,10 @@ Public Class frmINH
 
                 Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
                 Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
-                Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
+                ' Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
 
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
-                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
+                Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, cboBDG.EditValue)
                 If InhFieldAndValues.Item("mdt") <> "" Then
                     lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy")
                     cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID"))
@@ -112,7 +112,7 @@ Public Class frmINH
 
 
                 'lbldate.Text = TranslateDates(dtFDate, dtTDate)
-                Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+                Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
                 DataNavigator1.Position = SetNavigatorPosition()
                 If lblCancel.Text = "True" Then
                     lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
@@ -625,7 +625,7 @@ Public Class frmINH
         Try
             If cboBDG.EditValue = Nothing Then Exit Sub
             chkCALC_CAT.DataSource = VwCALCCATBindingSource
-            Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+            Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
             '    If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
             'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
             Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
@@ -1076,7 +1076,7 @@ Public Class frmINH
         chkCalculated.Checked = False : chkEmail.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
         cmdCalculate.Enabled = False : cmdCancelCalculate.Enabled = False
         BarSygentrotiki.Enabled = False : BarReceipt.Enabled = False : BarEidop.Enabled = False
-        Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, System.Guid.NewGuid)
+        Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.NewGuid)
     End Sub
 
     Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick

@@ -56,15 +56,13 @@ Public Class DBQueries
                 Select Case sTable
                     Case "CCT_F"
                         sSQL.AppendLine("INSERT INTO CCT_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " cctID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
-                        'sSQL.AppendLine("INSERT INTO CCT_F (cctID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                    Case "DEPOSIT_F"
+                        sSQL.AppendLine("INSERT INTO DEPOSIT_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " depositAID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "INV_GASF"
-                        'sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                         sSQL.AppendLine("INSERT INTO INV_GASF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invGASID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "INV_OILF"
-                        'sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                         sSQL.AppendLine("INSERT INTO INV_OILF ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " invOilID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "BDG_F"
-                        'sSQL.AppendLine("INSERT INTO BDG_F (bdgID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                         sSQL.AppendLine("INSERT INTO BDG_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " bdgID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
                     Case "COL_BANKS_F"
                         sSQL.AppendLine("INSERT INTO COL_BANKS_F ( ") : sSQL.AppendLine(IIf(ExtraFields.Length > 0, ExtraFields & ",", "") & " ID,filename,comefrom,extension, Created,Modified,[modifiedBy],[createdby],[createdOn],[MachineName],files)")
