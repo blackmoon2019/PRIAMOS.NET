@@ -39,7 +39,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
     
     Private tablevw_BDG_F As vw_BDG_FDataTable
     
-    Private tableDEPOSIT_A As DEPOSIT_ADataTable
+    Private tablevw_DEPOSIT_A As vw_DEPOSIT_ADataTable
     
     Private tablevw_INH As vw_INHDataTable
     
@@ -97,8 +97,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             If (Not (ds.Tables("vw_BDG_F")) Is Nothing) Then
                 MyBase.Tables.Add(New vw_BDG_FDataTable(ds.Tables("vw_BDG_F")))
             End If
-            If (Not (ds.Tables("DEPOSIT_A")) Is Nothing) Then
-                MyBase.Tables.Add(New DEPOSIT_ADataTable(ds.Tables("DEPOSIT_A")))
+            If (Not (ds.Tables("vw_DEPOSIT_A")) Is Nothing) Then
+                MyBase.Tables.Add(New vw_DEPOSIT_ADataTable(ds.Tables("vw_DEPOSIT_A")))
             End If
             If (Not (ds.Tables("vw_INH")) Is Nothing) Then
                 MyBase.Tables.Add(New vw_INHDataTable(ds.Tables("vw_INH")))
@@ -200,9 +200,9 @@ Partial Public Class Priamos_NET_DataSet_BDG
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property DEPOSIT_A() As DEPOSIT_ADataTable
+    Public ReadOnly Property vw_DEPOSIT_A() As vw_DEPOSIT_ADataTable
         Get
-            Return Me.tableDEPOSIT_A
+            Return Me.tablevw_DEPOSIT_A
         End Get
     End Property
     
@@ -324,8 +324,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             If (Not (ds.Tables("vw_BDG_F")) Is Nothing) Then
                 MyBase.Tables.Add(New vw_BDG_FDataTable(ds.Tables("vw_BDG_F")))
             End If
-            If (Not (ds.Tables("DEPOSIT_A")) Is Nothing) Then
-                MyBase.Tables.Add(New DEPOSIT_ADataTable(ds.Tables("DEPOSIT_A")))
+            If (Not (ds.Tables("vw_DEPOSIT_A")) Is Nothing) Then
+                MyBase.Tables.Add(New vw_DEPOSIT_ADataTable(ds.Tables("vw_DEPOSIT_A")))
             End If
             If (Not (ds.Tables("vw_INH")) Is Nothing) Then
                 MyBase.Tables.Add(New vw_INHDataTable(ds.Tables("vw_INH")))
@@ -410,10 +410,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
                 Me.tablevw_BDG_F.InitVars
             End If
         End If
-        Me.tableDEPOSIT_A = CType(MyBase.Tables("DEPOSIT_A"),DEPOSIT_ADataTable)
+        Me.tablevw_DEPOSIT_A = CType(MyBase.Tables("vw_DEPOSIT_A"),vw_DEPOSIT_ADataTable)
         If (initTable = true) Then
-            If (Not (Me.tableDEPOSIT_A) Is Nothing) Then
-                Me.tableDEPOSIT_A.InitVars
+            If (Not (Me.tablevw_DEPOSIT_A) Is Nothing) Then
+                Me.tablevw_DEPOSIT_A.InitVars
             End If
         End If
         Me.tablevw_INH = CType(MyBase.Tables("vw_INH"),vw_INHDataTable)
@@ -458,8 +458,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
         MyBase.Tables.Add(Me.tablevw_CCT)
         Me.tablevw_BDG_F = New vw_BDG_FDataTable()
         MyBase.Tables.Add(Me.tablevw_BDG_F)
-        Me.tableDEPOSIT_A = New DEPOSIT_ADataTable()
-        MyBase.Tables.Add(Me.tableDEPOSIT_A)
+        Me.tablevw_DEPOSIT_A = New vw_DEPOSIT_ADataTable()
+        MyBase.Tables.Add(Me.tablevw_DEPOSIT_A)
         Me.tablevw_INH = New vw_INHDataTable()
         MyBase.Tables.Add(Me.tablevw_INH)
         Me.tablevw_FOLDER_CAT = New vw_FOLDER_CATDataTable()
@@ -512,7 +512,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializeDEPOSIT_A() As Boolean
+    Private Function ShouldSerializevw_DEPOSIT_A() As Boolean
         Return false
     End Function
     
@@ -614,7 +614,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
     Public Delegate Sub vw_BDG_FRowChangeEventHandler(ByVal sender As Object, ByVal e As vw_BDG_FRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub DEPOSIT_ARowChangeEventHandler(ByVal sender As Object, ByVal e As DEPOSIT_ARowChangeEvent)
+    Public Delegate Sub vw_DEPOSIT_ARowChangeEventHandler(ByVal sender As Object, ByVal e As vw_DEPOSIT_ARowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Public Delegate Sub vw_INHRowChangeEventHandler(ByVal sender As Object, ByVal e As vw_INHRowChangeEvent)
@@ -666,6 +666,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Private columnAptID As Global.System.Data.DataColumn
         
         Private columnttl As Global.System.Data.DataColumn
+        
+        Private columnregardingdeposit As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -839,6 +841,14 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property regardingdepositColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnregardingdeposit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -892,9 +902,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal nam As String,  _
                     ByVal isManaged As Boolean,  _
                     ByVal AptID As System.Guid,  _
-                    ByVal ttl As String) As vw_IEPRow
+                    ByVal ttl As String,  _
+                    ByVal regardingdeposit As Boolean) As vw_IEPRow
             Dim rowvw_IEPRow As vw_IEPRow = CType(Me.NewRow,vw_IEPRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, repname, amt, modifiedBy, modifiedOn, createdOn, RealName, calcCatID, name, owner_tenant, createCol, nam, isManaged, AptID, ttl}
+            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, repname, amt, modifiedBy, modifiedOn, createdOn, RealName, calcCatID, name, owner_tenant, createCol, nam, isManaged, AptID, ttl, regardingdeposit}
             rowvw_IEPRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_IEPRow)
             Return rowvw_IEPRow
@@ -940,6 +951,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnisManaged = MyBase.Columns("isManaged")
             Me.columnAptID = MyBase.Columns("AptID")
             Me.columnttl = MyBase.Columns("ttl")
+            Me.columnregardingdeposit = MyBase.Columns("regardingdeposit")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -979,6 +991,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columnAptID)
             Me.columnttl = New Global.System.Data.DataColumn("ttl", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnttl)
+            Me.columnregardingdeposit = New Global.System.Data.DataColumn("regardingdeposit", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnregardingdeposit)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -990,6 +1004,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnnam.MaxLength = 250
             Me.columnisManaged.AllowDBNull = false
             Me.columnttl.MaxLength = 150
+            Me.columnregardingdeposit.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4488,8 +4503,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class DEPOSIT_ADataTable
-        Inherits Global.System.Data.TypedTableBase(Of DEPOSIT_ARow)
+    Partial Public Class vw_DEPOSIT_ADataTable
+        Inherits Global.System.Data.TypedTableBase(Of vw_DEPOSIT_ARow)
         
         Private columnID As Global.System.Data.DataColumn
         
@@ -4521,11 +4536,15 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         Private columnmultiplierDescr As Global.System.Data.DataColumn
         
+        Private columncompleteDate As Global.System.Data.DataColumn
+        
+        Private columninhID As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "DEPOSIT_A"
+            Me.TableName = "vw_DEPOSIT_A"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -4677,6 +4696,22 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property completeDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncompleteDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property inhIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columninhID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4687,50 +4722,66 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As DEPOSIT_ARow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As vw_DEPOSIT_ARow
             Get
-                Return CType(Me.Rows(index),DEPOSIT_ARow)
+                Return CType(Me.Rows(index),vw_DEPOSIT_ARow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event DEPOSIT_ARowChanging As DEPOSIT_ARowChangeEventHandler
+        Public Event vw_DEPOSIT_ARowChanging As vw_DEPOSIT_ARowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event DEPOSIT_ARowChanged As DEPOSIT_ARowChangeEventHandler
+        Public Event vw_DEPOSIT_ARowChanged As vw_DEPOSIT_ARowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event DEPOSIT_ARowDeleting As DEPOSIT_ARowChangeEventHandler
+        Public Event vw_DEPOSIT_ARowDeleting As vw_DEPOSIT_ARowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event DEPOSIT_ARowDeleted As DEPOSIT_ARowChangeEventHandler
+        Public Event vw_DEPOSIT_ARowDeleted As vw_DEPOSIT_ARowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddDEPOSIT_ARow(ByVal row As DEPOSIT_ARow)
+        Public Overloads Sub Addvw_DEPOSIT_ARow(ByVal row As vw_DEPOSIT_ARow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddDEPOSIT_ARow(ByVal ID As System.Guid, ByVal bdgID As System.Guid, ByVal ord As Integer, ByVal dtDeposit As Date, ByVal ttl As String, ByVal amt As Decimal, ByVal cmt As String, ByVal modifiedBy As System.Guid, ByVal modifiedOn As Date, ByVal createdOn As Date, ByVal createdBy As System.Guid, ByVal MachineName As String, ByVal multiplier As Integer, ByVal multiplierDescr As String) As DEPOSIT_ARow
-            Dim rowDEPOSIT_ARow As DEPOSIT_ARow = CType(Me.NewRow,DEPOSIT_ARow)
-            Dim columnValuesArray() As Object = New Object() {ID, Nothing, bdgID, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, multiplier, multiplierDescr}
-            rowDEPOSIT_ARow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowDEPOSIT_ARow)
-            Return rowDEPOSIT_ARow
+        Public Overloads Function Addvw_DEPOSIT_ARow( _
+                    ByVal ID As System.Guid,  _
+                    ByVal bdgID As System.Guid,  _
+                    ByVal ord As Integer,  _
+                    ByVal dtDeposit As Date,  _
+                    ByVal ttl As String,  _
+                    ByVal amt As Decimal,  _
+                    ByVal cmt As String,  _
+                    ByVal modifiedBy As System.Guid,  _
+                    ByVal modifiedOn As Date,  _
+                    ByVal createdOn As Date,  _
+                    ByVal createdBy As System.Guid,  _
+                    ByVal MachineName As String,  _
+                    ByVal multiplier As Integer,  _
+                    ByVal multiplierDescr As String,  _
+                    ByVal completeDate As String,  _
+                    ByVal inhID As System.Guid) As vw_DEPOSIT_ARow
+            Dim rowvw_DEPOSIT_ARow As vw_DEPOSIT_ARow = CType(Me.NewRow,vw_DEPOSIT_ARow)
+            Dim columnValuesArray() As Object = New Object() {ID, Nothing, bdgID, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, multiplier, multiplierDescr, completeDate, inhID}
+            rowvw_DEPOSIT_ARow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowvw_DEPOSIT_ARow)
+            Return rowvw_DEPOSIT_ARow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByID(ByVal ID As System.Guid) As DEPOSIT_ARow
-            Return CType(Me.Rows.Find(New Object() {ID}),DEPOSIT_ARow)
+        Public Function FindByID(ByVal ID As System.Guid) As vw_DEPOSIT_ARow
+            Return CType(Me.Rows.Find(New Object() {ID}),vw_DEPOSIT_ARow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As DEPOSIT_ADataTable = CType(MyBase.Clone,DEPOSIT_ADataTable)
+            Dim cln As vw_DEPOSIT_ADataTable = CType(MyBase.Clone,vw_DEPOSIT_ADataTable)
             cln.InitVars
             Return cln
         End Function
@@ -4738,7 +4789,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New DEPOSIT_ADataTable()
+            Return New vw_DEPOSIT_ADataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4759,6 +4810,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnMachineName = MyBase.Columns("MachineName")
             Me.columnmultiplier = MyBase.Columns("multiplier")
             Me.columnmultiplierDescr = MyBase.Columns("multiplierDescr")
+            Me.columncompleteDate = MyBase.Columns("completeDate")
+            Me.columninhID = MyBase.Columns("inhID")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4794,6 +4847,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columnmultiplier)
             Me.columnmultiplierDescr = New Global.System.Data.DataColumn("multiplierDescr", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmultiplierDescr)
+            Me.columncompleteDate = New Global.System.Data.DataColumn("completeDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncompleteDate)
+            Me.columninhID = New Global.System.Data.DataColumn("inhID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninhID)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -4812,32 +4869,33 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnMachineName.MaxLength = 200
             Me.columnmultiplier.AllowDBNull = false
             Me.columnmultiplierDescr.MaxLength = 6
+            Me.columncompleteDate.MaxLength = 150
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewDEPOSIT_ARow() As DEPOSIT_ARow
-            Return CType(Me.NewRow,DEPOSIT_ARow)
+        Public Function Newvw_DEPOSIT_ARow() As vw_DEPOSIT_ARow
+            Return CType(Me.NewRow,vw_DEPOSIT_ARow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New DEPOSIT_ARow(builder)
+            Return New vw_DEPOSIT_ARow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(DEPOSIT_ARow)
+            Return GetType(vw_DEPOSIT_ARow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.DEPOSIT_ARowChangedEvent) Is Nothing) Then
-                RaiseEvent DEPOSIT_ARowChanged(Me, New DEPOSIT_ARowChangeEvent(CType(e.Row,DEPOSIT_ARow), e.Action))
+            If (Not (Me.vw_DEPOSIT_ARowChangedEvent) Is Nothing) Then
+                RaiseEvent vw_DEPOSIT_ARowChanged(Me, New vw_DEPOSIT_ARowChangeEvent(CType(e.Row,vw_DEPOSIT_ARow), e.Action))
             End If
         End Sub
         
@@ -4845,8 +4903,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.DEPOSIT_ARowChangingEvent) Is Nothing) Then
-                RaiseEvent DEPOSIT_ARowChanging(Me, New DEPOSIT_ARowChangeEvent(CType(e.Row,DEPOSIT_ARow), e.Action))
+            If (Not (Me.vw_DEPOSIT_ARowChangingEvent) Is Nothing) Then
+                RaiseEvent vw_DEPOSIT_ARowChanging(Me, New vw_DEPOSIT_ARowChangeEvent(CType(e.Row,vw_DEPOSIT_ARow), e.Action))
             End If
         End Sub
         
@@ -4854,8 +4912,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.DEPOSIT_ARowDeletedEvent) Is Nothing) Then
-                RaiseEvent DEPOSIT_ARowDeleted(Me, New DEPOSIT_ARowChangeEvent(CType(e.Row,DEPOSIT_ARow), e.Action))
+            If (Not (Me.vw_DEPOSIT_ARowDeletedEvent) Is Nothing) Then
+                RaiseEvent vw_DEPOSIT_ARowDeleted(Me, New vw_DEPOSIT_ARowChangeEvent(CType(e.Row,vw_DEPOSIT_ARow), e.Action))
             End If
         End Sub
         
@@ -4863,14 +4921,14 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.DEPOSIT_ARowDeletingEvent) Is Nothing) Then
-                RaiseEvent DEPOSIT_ARowDeleting(Me, New DEPOSIT_ARowChangeEvent(CType(e.Row,DEPOSIT_ARow), e.Action))
+            If (Not (Me.vw_DEPOSIT_ARowDeletingEvent) Is Nothing) Then
+                RaiseEvent vw_DEPOSIT_ARowDeleting(Me, New vw_DEPOSIT_ARowChangeEvent(CType(e.Row,vw_DEPOSIT_ARow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemoveDEPOSIT_ARow(ByVal row As DEPOSIT_ARow)
+        Public Sub Removevw_DEPOSIT_ARow(ByVal row As vw_DEPOSIT_ARow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -4897,7 +4955,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "DEPOSIT_ADataTable"
+            attribute2.FixedValue = "vw_DEPOSIT_ADataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -6768,6 +6826,17 @@ Partial Public Class Priamos_NET_DataSet_BDG
             End Get
             Set
                 Me(Me.tablevw_IEP.ttlColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property regardingdeposit() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_IEP.regardingdepositColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_IEP.regardingdepositColumn) = value
             End Set
         End Property
         
@@ -10143,26 +10212,26 @@ Partial Public Class Priamos_NET_DataSet_BDG
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class DEPOSIT_ARow
+    Partial Public Class vw_DEPOSIT_ARow
         Inherits Global.System.Data.DataRow
         
-        Private tableDEPOSIT_A As DEPOSIT_ADataTable
+        Private tablevw_DEPOSIT_A As vw_DEPOSIT_ADataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableDEPOSIT_A = CType(Me.Table,DEPOSIT_ADataTable)
+            Me.tablevw_DEPOSIT_A = CType(Me.Table,vw_DEPOSIT_ADataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ID() As System.Guid
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.IDColumn),Global.System.Guid)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.IDColumn),Global.System.Guid)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.IDColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.IDColumn) = value
             End Set
         End Property
         
@@ -10170,10 +10239,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property code() As Integer
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.codeColumn),Integer)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.codeColumn),Integer)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.codeColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.codeColumn) = value
             End Set
         End Property
         
@@ -10181,10 +10250,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property bdgID() As System.Guid
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.bdgIDColumn),Global.System.Guid)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.bdgIDColumn),Global.System.Guid)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.bdgIDColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.bdgIDColumn) = value
             End Set
         End Property
         
@@ -10192,10 +10261,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ord() As Integer
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.ordColumn),Integer)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.ordColumn),Integer)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.ordColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.ordColumn) = value
             End Set
         End Property
         
@@ -10203,10 +10272,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property dtDeposit() As Date
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.dtDepositColumn),Date)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.dtDepositColumn),Date)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.dtDepositColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.dtDepositColumn) = value
             End Set
         End Property
         
@@ -10214,10 +10283,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property ttl() As String
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.ttlColumn),String)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.ttlColumn),String)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.ttlColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.ttlColumn) = value
             End Set
         End Property
         
@@ -10225,10 +10294,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property amt() As Decimal
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.amtColumn),Decimal)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.amtColumn),Decimal)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.amtColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.amtColumn) = value
             End Set
         End Property
         
@@ -10237,13 +10306,13 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property cmt() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.cmtColumn),String)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.cmtColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'cmt' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'cmt' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.cmtColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.cmtColumn) = value
             End Set
         End Property
         
@@ -10252,13 +10321,13 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property modifiedBy() As System.Guid
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.modifiedByColumn),Global.System.Guid)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.modifiedByColumn),Global.System.Guid)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'modifiedBy' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'modifiedBy' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.modifiedByColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.modifiedByColumn) = value
             End Set
         End Property
         
@@ -10267,13 +10336,13 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property modifiedOn() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.modifiedOnColumn),Date)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.modifiedOnColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'modifiedOn' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'modifiedOn' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.modifiedOnColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.modifiedOnColumn) = value
             End Set
         End Property
         
@@ -10282,13 +10351,13 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property createdOn() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.createdOnColumn),Date)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.createdOnColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'createdOn' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'createdOn' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.createdOnColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.createdOnColumn) = value
             End Set
         End Property
         
@@ -10297,13 +10366,13 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property createdBy() As System.Guid
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.createdByColumn),Global.System.Guid)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.createdByColumn),Global.System.Guid)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'createdBy' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'createdBy' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.createdByColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.createdByColumn) = value
             End Set
         End Property
         
@@ -10312,13 +10381,13 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property MachineName() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.MachineNameColumn),String)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.MachineNameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'MachineName' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'MachineName' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.MachineNameColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.MachineNameColumn) = value
             End Set
         End Property
         
@@ -10326,10 +10395,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property multiplier() As Integer
             Get
-                Return CType(Me(Me.tableDEPOSIT_A.multiplierColumn),Integer)
+                Return CType(Me(Me.tablevw_DEPOSIT_A.multiplierColumn),Integer)
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.multiplierColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.multiplierColumn) = value
             End Set
         End Property
         
@@ -10338,98 +10407,152 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Public Property multiplierDescr() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableDEPOSIT_A.multiplierDescrColumn),String)
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.multiplierDescrColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'multiplierDescr' in table 'DEPOSIT_A' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'multiplierDescr' in table 'vw_DEPOSIT_A' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableDEPOSIT_A.multiplierDescrColumn) = value
+                Me(Me.tablevw_DEPOSIT_A.multiplierDescrColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property completeDate() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.completeDateColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'completeDate' in table 'vw_DEPOSIT_A' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_DEPOSIT_A.completeDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property inhID() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.inhIDColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'inhID' in table 'vw_DEPOSIT_A' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_DEPOSIT_A.inhIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscmtNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.cmtColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.cmtColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcmtNull()
-            Me(Me.tableDEPOSIT_A.cmtColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.cmtColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsmodifiedByNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.modifiedByColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.modifiedByColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetmodifiedByNull()
-            Me(Me.tableDEPOSIT_A.modifiedByColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.modifiedByColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsmodifiedOnNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.modifiedOnColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.modifiedOnColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetmodifiedOnNull()
-            Me(Me.tableDEPOSIT_A.modifiedOnColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.modifiedOnColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscreatedOnNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.createdOnColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.createdOnColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcreatedOnNull()
-            Me(Me.tableDEPOSIT_A.createdOnColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.createdOnColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscreatedByNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.createdByColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.createdByColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetcreatedByNull()
-            Me(Me.tableDEPOSIT_A.createdByColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.createdByColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsMachineNameNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.MachineNameColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.MachineNameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetMachineNameNull()
-            Me(Me.tableDEPOSIT_A.MachineNameColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.MachineNameColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsmultiplierDescrNull() As Boolean
-            Return Me.IsNull(Me.tableDEPOSIT_A.multiplierDescrColumn)
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.multiplierDescrColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetmultiplierDescrNull()
-            Me(Me.tableDEPOSIT_A.multiplierDescrColumn) = Global.System.Convert.DBNull
+            Me(Me.tablevw_DEPOSIT_A.multiplierDescrColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IscompleteDateNull() As Boolean
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.completeDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetcompleteDateNull()
+            Me(Me.tablevw_DEPOSIT_A.completeDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsinhIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.inhIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetinhIDNull()
+            Me(Me.tablevw_DEPOSIT_A.inhIDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -12079,16 +12202,16 @@ Partial Public Class Priamos_NET_DataSet_BDG
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class DEPOSIT_ARowChangeEvent
+    Public Class vw_DEPOSIT_ARowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As DEPOSIT_ARow
+        Private eventRow As vw_DEPOSIT_ARow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As DEPOSIT_ARow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As vw_DEPOSIT_ARow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -12096,7 +12219,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As DEPOSIT_ARow
+        Public ReadOnly Property Row() As vw_DEPOSIT_ARow
             Get
                 Return Me.eventRow
             End Get
@@ -12366,6 +12489,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("isManaged", "isManaged")
             tableMapping.ColumnMappings.Add("AptID", "AptID")
             tableMapping.ColumnMappings.Add("ttl", "ttl")
+            tableMapping.ColumnMappings.Add("regardingdeposit", "regardingdeposit")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -12382,13 +12506,15 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT vw_IEP.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IEP"
+            Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, repname, amt, modifiedBy, modifiedOn, createdOn, RealName"& _ 
+                ", calcCatID, name, owner_tenant, createCol, nam, isManaged, AptID, ttl, regardin"& _ 
+                "gdeposit"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IEP"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT AptID, ID, RealName, amt, bdgID, calcCatID, code, createCol, createdOn, is"& _ 
-                "Managed, modifiedBy, modifiedOn, nam, name, owner_tenant, repname, ttl FROM vw_I"& _ 
-                "EP WHERE (bdgID = @bdgID)"
+                "Managed, modifiedBy, modifiedOn, nam, name, owner_tenant, regardingdeposit, repn"& _ 
+                "ame, ttl FROM vw_IEP WHERE (bdgID = @bdgID)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -13645,7 +13771,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class DEPOSIT_ATableAdapter
+    Partial Public Class vw_DEPOSIT_ATableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -13762,7 +13888,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "DEPOSIT_A"
+            tableMapping.DataSetTable = "vw_DEPOSIT_A"
             tableMapping.ColumnMappings.Add("ID", "ID")
             tableMapping.ColumnMappings.Add("code", "code")
             tableMapping.ColumnMappings.Add("bdgID", "bdgID")
@@ -13778,111 +13904,9 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("MachineName", "MachineName")
             tableMapping.ColumnMappings.Add("multiplier", "multiplier")
             tableMapping.ColumnMappings.Add("multiplierDescr", "multiplierDescr")
+            tableMapping.ColumnMappings.Add("completeDate", "completeDate")
+            tableMapping.ColumnMappings.Add("inhID", "inhID")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [DEPOSIT_A] WHERE (([ID] = @Original_ID) AND ([code] = @Original_code"& _ 
-                ") AND ([bdgID] = @Original_bdgID) AND ([multiplier] = @Original_multiplier) AND "& _ 
-                "([ord] = @Original_ord) AND ([dtDeposit] = @Original_dtDeposit) AND ([ttl] = @Or"& _ 
-                "iginal_ttl) AND ([amt] = @Original_amt) AND ((@IsNull_modifiedBy = 1 AND [modifi"& _ 
-                "edBy] IS NULL) OR ([modifiedBy] = @Original_modifiedBy)) AND ((@IsNull_modifiedO"& _ 
-                "n = 1 AND [modifiedOn] IS NULL) OR ([modifiedOn] = @Original_modifiedOn)) AND (("& _ 
-                "@IsNull_createdOn = 1 AND [createdOn] IS NULL) OR ([createdOn] = @Original_creat"& _ 
-                "edOn)) AND ((@IsNull_createdBy = 1 AND [createdBy] IS NULL) OR ([createdBy] = @O"& _ 
-                "riginal_createdBy)) AND ((@IsNull_MachineName = 1 AND [MachineName] IS NULL) OR "& _ 
-                "([MachineName] = @Original_MachineName)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_multiplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "multiplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_dtDeposit", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "dtDeposit", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ttl", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ttl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "amt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_modifiedBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_modifiedBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_modifiedOn", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_modifiedOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_createdOn", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_createdBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MachineName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MachineName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MachineName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MachineName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [DEPOSIT_A] ([ID], [bdgID], [multiplier], [ord], [dtDeposit], [ttl], "& _ 
-                "[amt], [cmt], [modifiedBy], [modifiedOn], [createdOn], [createdBy], [MachineName"& _ 
-                "]) VALUES (@ID, @bdgID, @multiplier, @ord, @dtDeposit, @ttl, @amt, @cmt, @modifi"& _ 
-                "edBy, @modifiedOn, @createdOn, @createdBy, @MachineName);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, code, bdgI"& _ 
-                "D, CASE WHEN multiplier = 0 THEN 'Αύξηση' ELSE 'Μείωση' END AS multiplierDescr, "& _ 
-                "multiplier, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, cr"& _ 
-                "eatedBy, MachineName FROM DEPOSIT_A WHERE (ID = @ID)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@multiplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "multiplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@dtDeposit", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "dtDeposit", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ttl", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ttl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "amt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cmt", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cmt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MachineName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MachineName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [DEPOSIT_A] SET [ID] = @ID, [bdgID] = @bdgID, [multiplier] = @multiplier, "& _ 
-                "[ord] = @ord, [dtDeposit] = @dtDeposit, [ttl] = @ttl, [amt] = @amt, [cmt] = @cmt"& _ 
-                ", [modifiedBy] = @modifiedBy, [modifiedOn] = @modifiedOn, [createdOn] = @created"& _ 
-                "On, [createdBy] = @createdBy, [MachineName] = @MachineName WHERE (([ID] = @Origi"& _ 
-                "nal_ID) AND ([code] = @Original_code) AND ([bdgID] = @Original_bdgID) AND ([mult"& _ 
-                "iplier] = @Original_multiplier) AND ([ord] = @Original_ord) AND ([dtDeposit] = @"& _ 
-                "Original_dtDeposit) AND ([ttl] = @Original_ttl) AND ([amt] = @Original_amt) AND "& _ 
-                "((@IsNull_modifiedBy = 1 AND [modifiedBy] IS NULL) OR ([modifiedBy] = @Original_"& _ 
-                "modifiedBy)) AND ((@IsNull_modifiedOn = 1 AND [modifiedOn] IS NULL) OR ([modifie"& _ 
-                "dOn] = @Original_modifiedOn)) AND ((@IsNull_createdOn = 1 AND [createdOn] IS NUL"& _ 
-                "L) OR ([createdOn] = @Original_createdOn)) AND ((@IsNull_createdBy = 1 AND [crea"& _ 
-                "tedBy] IS NULL) OR ([createdBy] = @Original_createdBy)) AND ((@IsNull_MachineNam"& _ 
-                "e = 1 AND [MachineName] IS NULL) OR ([MachineName] = @Original_MachineName)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "SELECT ID, code, bdgID, CASE WHEN multiplier = 0 THEN 'Αύξηση' ELSE 'Μείωση' END"& _ 
-                " AS multiplierDescr, multiplier, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modi"& _ 
-                "fiedOn, createdOn, createdBy, MachineName FROM DEPOSIT_A WHERE (ID = @ID)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@multiplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "multiplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@dtDeposit", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "dtDeposit", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ttl", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ttl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "amt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cmt", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "cmt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@modifiedOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MachineName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MachineName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_code", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "code", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_multiplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "multiplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ord", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ord", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_dtDeposit", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "dtDeposit", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ttl", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ttl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_amt", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "amt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_modifiedBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_modifiedBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_modifiedOn", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_modifiedOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "modifiedOn", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_createdOn", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdOn", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_createdBy", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_createdBy", Global.System.Data.SqlDbType.UniqueIdentifier, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "createdBy", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MachineName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MachineName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MachineName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MachineName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13898,9 +13922,9 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, CASE WHEN multiplier = 0 THEN 'Αύξηση' ELSE 'Μείωση' END "& _ 
-                "AS multiplierDescr, multiplier, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modif"& _ 
-                "iedOn, createdOn, createdBy, MachineName FROM DEPOSIT_A WHERE (bdgID = @bdgID)"
+            Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, multiplierDescr, multiplier, ord, dtDeposit, ttl, amt, cm"& _ 
+                "t, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, completeDate, inhI"& _ 
+                "D"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_DEPOSIT_A"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -13909,7 +13933,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillbybdgID(ByVal dataTable As Priamos_NET_DataSet_BDG.DEPOSIT_ADataTable, ByVal bdgID As System.Guid) As Integer
+        Public Overloads Overridable Function FillbybdgID(ByVal dataTable As Priamos_NET_DataSet_BDG.vw_DEPOSIT_ADataTable, ByVal bdgID As System.Guid) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID,System.Guid)
             If (Me.ClearBeforeFill = true) Then
@@ -13917,34 +13941,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As Priamos_NET_DataSet_BDG.DEPOSIT_ADataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As Priamos_NET_DataSet_BDG) As Integer
-            Return Me.Adapter.Update(dataSet, "DEPOSIT_A")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
         End Function
     End Class
     
@@ -14512,8 +14508,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
-        Private _dEPOSIT_ATableAdapter As DEPOSIT_ATableAdapter
-        
         Private _backupDataSetBeforeUpdate As Boolean
         
         Private _connection As Global.System.Data.IDbConnection
@@ -14526,20 +14520,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             End Get
             Set
                 Me._updateOrder = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
-            "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property DEPOSIT_ATableAdapter() As DEPOSIT_ATableAdapter
-            Get
-                Return Me._dEPOSIT_ATableAdapter
-            End Get
-            Set
-                Me._dEPOSIT_ATableAdapter = value
             End Set
         End Property
         
@@ -14562,10 +14542,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._dEPOSIT_ATableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._dEPOSIT_ATableAdapter.Connection) Is Nothing)) Then
-                    Return Me._dEPOSIT_ATableAdapter.Connection
-                End If
                 Return Nothing
             End Get
             Set
@@ -14579,9 +14555,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
-                If (Not (Me._dEPOSIT_ATableAdapter) Is Nothing) Then
-                    count = (count + 1)
-                End If
                 Return count
             End Get
         End Property
@@ -14593,15 +14566,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As Priamos_NET_DataSet_BDG, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._dEPOSIT_ATableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.DEPOSIT_A.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._dEPOSIT_ATableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -14612,14 +14576,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As Priamos_NET_DataSet_BDG, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._dEPOSIT_ATableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.DEPOSIT_A.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._dEPOSIT_ATableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -14630,14 +14586,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As Priamos_NET_DataSet_BDG, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._dEPOSIT_ATableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.DEPOSIT_A.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._dEPOSIT_ATableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             Return result
         End Function
         
@@ -14679,11 +14627,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._dEPOSIT_ATableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._dEPOSIT_ATableAdapter.Connection) = false)) Then
-                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
-                        "tring.")
-            End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
             If (workConnection Is Nothing) Then
                 Throw New Global.System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana"& _ 
@@ -14716,15 +14659,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
-                If (Not (Me._dEPOSIT_ATableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._dEPOSIT_ATableAdapter, Me._dEPOSIT_ATableAdapter.Connection)
-                    Me._dEPOSIT_ATableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._dEPOSIT_ATableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._dEPOSIT_ATableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._dEPOSIT_ATableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._dEPOSIT_ATableAdapter.Adapter)
-                    End If
-                End If
                 '
                 '---- Perform updates -----------
                 '
@@ -14784,10 +14718,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Finally
                 If workConnOpened Then
                     workConnection.Close
-                End If
-                If (Not (Me._dEPOSIT_ATableAdapter) Is Nothing) Then
-                    Me._dEPOSIT_ATableAdapter.Connection = CType(revertConnections(Me._dEPOSIT_ATableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._dEPOSIT_ATableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

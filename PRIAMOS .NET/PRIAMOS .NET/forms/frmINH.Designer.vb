@@ -40,7 +40,7 @@ Partial Class frmINH
         Me.grdIND = New DevExpress.XtraGrid.GridControl()
         Me.VwINDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PriamosNETDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.Priamos_NET_DataSet_INH = New PRIAMOS.NET.Priamos_NET_DataSet_INH()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcode = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -59,6 +59,8 @@ Partial Class frmINH
         Me.colname = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colowner_tenant = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colpaid = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colregardingdeposit = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.RepositoryItemLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.lblAHPBH = New DevExpress.XtraEditors.LabelControl()
@@ -87,7 +89,6 @@ Partial Class frmINH
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.txtHpb = New DevExpress.XtraEditors.TextEdit()
         Me.cboAhpbHB = New DevExpress.XtraEditors.LookUpEdit()
-        Me.AHPBB = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblCancel = New DevExpress.XtraEditors.LabelControl()
         Me.cmdCancelInvoice = New DevExpress.XtraEditors.SimpleButton()
         Me.DataNavigator1 = New DevExpress.XtraEditors.DataNavigator()
@@ -117,7 +118,6 @@ Partial Class frmINH
         Me.cboRepname = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwTTLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cboAhpbH = New DevExpress.XtraEditors.LookUpEdit()
-        Me.AHPBH = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPane1 = New DevExpress.XtraBars.Navigation.TabPane()
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.TabNavigationPage2 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
@@ -127,11 +127,13 @@ Partial Class frmINH
         Me.TabNavigationPage3 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.txtHpc = New DevExpress.XtraEditors.TextEdit()
         Me.cboAnnouncements = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwANNMENTSBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.txtBdgCmt = New DevExpress.XtraEditors.MemoEdit()
         Me.chkFromTransfer = New DevExpress.XtraEditors.CheckEdit()
         Me.txtColAnnouncement = New DevExpress.XtraEditors.ButtonEdit()
         Me.ToolTipController11 = New DevExpress.Utils.ToolTipController(Me.components)
+        Me.chkDeposit = New DevExpress.XtraEditors.CheckEdit()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -165,6 +167,7 @@ Partial Class frmINH
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LcmdSaveInd = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem21 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
@@ -187,16 +190,11 @@ Partial Class frmINH
         Me.LayoutControlItem37 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.Bar1 = New DevExpress.XtraBars.Bar()
         Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
-        Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwINCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VwEXCBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BDGTableAdapter()
         Me.Vw_EXCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_EXCTableAdapter()
-        Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INDTableAdapter()
-        Me.Vw_CALC_CATTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter()
         Me.Vw_INCTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_INCTableAdapter()
-        Me.Vw_TTLTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_TTLTableAdapter()
-        Me.AHPB_H = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_HTableAdapter()
         Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
         Me.SplashScreenManager1 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.PRIAMOS.NET.WaitForm), True, True)
@@ -205,8 +203,16 @@ Partial Class frmINH
         Me.TableAdapterManager = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.TableAdapterManager()
         Me.AHPB_H1TableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter()
         Me.AHPBH1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AHPB_Β = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter()
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.Vw_TTLTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_TTLTableAdapter()
+        Me.Vw_CALC_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_CALC_CATTableAdapter()
+        Me.Vw_ANN_MENTSTableAdapter1 = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_ANN_MENTSTableAdapter()
+        Me.AHPBHBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AHPB_Β = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter()
+        Me.AHPBB = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AHPB_H = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.AHPB_HTableAdapter()
+        Me.AHPBH = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_INHTableAdapters.vw_INDTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -214,10 +220,11 @@ Partial Class frmINH
         CType(Me.grdIND, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NET_DataSet_INH, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -232,7 +239,6 @@ Partial Class frmINH
         CType(Me.chkCalculated.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAhpbHB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBB, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.vwINHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkExtraordinary.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -252,7 +258,6 @@ Partial Class frmINH
         CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAhpbH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBH, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane1.SuspendLayout()
         Me.TabNavigationPage1.SuspendLayout()
@@ -262,10 +267,12 @@ Partial Class frmINH
         Me.TabNavigationPage3.SuspendLayout()
         CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboAnnouncements.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwANNMENTSBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBdgCmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chkFromTransfer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtColAnnouncement.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -299,6 +306,7 @@ Partial Class frmINH
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LcmdSaveInd, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -320,11 +328,13 @@ Partial Class frmINH
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AHPBH, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView7
@@ -346,7 +356,7 @@ Partial Class frmINH
         Me.grdAPM.MainView = Me.GridView1
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPM.Name = "grdAPM"
-        Me.grdAPM.Size = New System.Drawing.Size(1742, 1263)
+        Me.grdAPM.Size = New System.Drawing.Size(1652, 1279)
         Me.grdAPM.TabIndex = 23
         Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1, Me.GridView7})
         '
@@ -404,18 +414,18 @@ Partial Class frmINH
         '
         'PriamosNETDataSetBindingSource
         '
-        Me.PriamosNETDataSetBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.PriamosNETDataSetBindingSource.DataSource = Me.Priamos_NET_DataSet_INH
         Me.PriamosNETDataSetBindingSource.Position = 0
         '
-        'Priamos_NETDataSet
+        'Priamos_NET_DataSet_INH
         '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Priamos_NET_DataSet_INH.DataSetName = "Priamos_NET_DataSet_INH"
+        Me.Priamos_NET_DataSet_INH.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GridView5
         '
         Me.GridView5.Appearance.HeaderPanel.Options.UseTextOptions = True
-        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colinhID, Me.colcalcCatID, Me.colrepName, Me.colamt, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colnam, Me.colfDate, Me.coltDate, Me.colname, Me.colowner_tenant, Me.colSelectedFiles, Me.colpaid})
+        Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colinhID, Me.colcalcCatID, Me.colrepName, Me.colamt, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colnam, Me.colfDate, Me.coltDate, Me.colname, Me.colowner_tenant, Me.colSelectedFiles, Me.colpaid, Me.colregardingdeposit})
         Me.GridView5.DetailHeight = 619
         Me.GridView5.GridControl = Me.grdIND
         Me.GridView5.GroupCount = 1
@@ -472,6 +482,7 @@ Partial Class frmINH
         Me.RepositoryItemLookUpEdit3.DataSource = Me.VwCALCCATBindingSource
         Me.RepositoryItemLookUpEdit3.DisplayMember = "name"
         Me.RepositoryItemLookUpEdit3.Name = "RepositoryItemLookUpEdit3"
+        Me.RepositoryItemLookUpEdit3.NullText = ""
         Me.RepositoryItemLookUpEdit3.ValueMember = "ID"
         '
         'VwCALCCATBindingSource
@@ -570,6 +581,21 @@ Partial Class frmINH
         Me.colpaid.VisibleIndex = 3
         Me.colpaid.Width = 125
         '
+        'colregardingdeposit
+        '
+        Me.colregardingdeposit.Caption = "Επηρρεάζει Αποθεματικό"
+        Me.colregardingdeposit.FieldName = "regardingdeposit"
+        Me.colregardingdeposit.MinWidth = 35
+        Me.colregardingdeposit.Name = "colregardingdeposit"
+        Me.colregardingdeposit.Visible = True
+        Me.colregardingdeposit.VisibleIndex = 5
+        Me.colregardingdeposit.Width = 131
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'RepositoryItemLookUpEdit1
         '
         Me.RepositoryItemLookUpEdit1.AutoHeight = False
@@ -627,6 +653,7 @@ Partial Class frmINH
         Me.LayoutControl1.Controls.Add(Me.txtBdgCmt)
         Me.LayoutControl1.Controls.Add(Me.chkFromTransfer)
         Me.LayoutControl1.Controls.Add(Me.txtColAnnouncement)
+        Me.LayoutControl1.Controls.Add(Me.chkDeposit)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
@@ -644,7 +671,7 @@ Partial Class frmINH
         Me.lblAHPBH.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblAHPBH.Appearance.Options.UseFont = True
         Me.lblAHPBH.Appearance.Options.UseForeColor = True
-        Me.lblAHPBH.Location = New System.Drawing.Point(25, 661)
+        Me.lblAHPBH.Location = New System.Drawing.Point(25, 686)
         Me.lblAHPBH.Name = "lblAHPBH"
         Me.lblAHPBH.Size = New System.Drawing.Size(797, 23)
         Me.lblAHPBH.StyleController = Me.LayoutControl1
@@ -656,7 +683,7 @@ Partial Class frmINH
         Me.lblAHPBB.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.lblAHPBB.Appearance.Options.UseFont = True
         Me.lblAHPBB.Appearance.Options.UseForeColor = True
-        Me.lblAHPBB.Location = New System.Drawing.Point(25, 688)
+        Me.lblAHPBB.Location = New System.Drawing.Point(25, 713)
         Me.lblAHPBB.Name = "lblAHPBB"
         Me.lblAHPBB.Size = New System.Drawing.Size(797, 23)
         Me.lblAHPBB.StyleController = Me.LayoutControl1
@@ -665,7 +692,7 @@ Partial Class frmINH
         'TextEdit1
         '
         Me.TextEdit1.EditValue = "0,00 €"
-        Me.TextEdit1.Location = New System.Drawing.Point(509, 570)
+        Me.TextEdit1.Location = New System.Drawing.Point(509, 595)
         Me.TextEdit1.Margin = New System.Windows.Forms.Padding(5)
         Me.TextEdit1.Name = "TextEdit1"
         Me.TextEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
@@ -836,7 +863,7 @@ Partial Class frmINH
         'cmdCancelCalculate
         '
         Me.cmdCancelCalculate.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cancel_subscription_24
-        Me.cmdCancelCalculate.Location = New System.Drawing.Point(456, 728)
+        Me.cmdCancelCalculate.Location = New System.Drawing.Point(456, 753)
         Me.cmdCancelCalculate.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCancelCalculate.Name = "cmdCancelCalculate"
         Me.cmdCancelCalculate.Size = New System.Drawing.Size(228, 39)
@@ -943,7 +970,7 @@ Partial Class frmINH
         'txtHpb
         '
         Me.txtHpb.EditValue = "0"
-        Me.txtHpb.Location = New System.Drawing.Point(733, 502)
+        Me.txtHpb.Location = New System.Drawing.Point(733, 527)
         Me.txtHpb.Margin = New System.Windows.Forms.Padding(5)
         Me.txtHpb.Name = "txtHpb"
         Me.txtHpb.Properties.DisplayFormat.FormatString = "p0"
@@ -960,14 +987,13 @@ Partial Class frmINH
         '
         'cboAhpbHB
         '
-        Me.cboAhpbHB.Location = New System.Drawing.Point(249, 586)
+        Me.cboAhpbHB.Location = New System.Drawing.Point(249, 611)
         Me.cboAhpbHB.Margin = New System.Windows.Forms.Padding(5)
         Me.cboAhpbHB.Name = "cboAhpbHB"
         Me.cboAhpbHB.Properties.AllowMouseWheel = False
         EditorButtonImageOptions1.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_available_updates_12
         Me.cboAhpbHB.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboAhpbHB.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "ΗΜΕΡ/ΝΙΑ ΜΕΤΡΗΣΗΣ", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("finalized", "finalized", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("boiler", "BOILER", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboAhpbHB.Properties.DataSource = Me.AHPBB
         Me.cboAhpbHB.Properties.DisplayFormat.FormatString = "dd/MM/yyyy"
         Me.cboAhpbHB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.cboAhpbHB.Properties.DisplayMember = "mdt"
@@ -977,11 +1003,6 @@ Partial Class frmINH
         Me.cboAhpbHB.StyleController = Me.LayoutControl1
         Me.cboAhpbHB.TabIndex = 67
         Me.cboAhpbHB.Tag = "ahpb_HIDB,0,1,2"
-        '
-        'AHPBB
-        '
-        Me.AHPBB.DataMember = "AHPB_Β"
-        Me.AHPBB.DataSource = Me.PriamosNETDataSetBindingSource
         '
         'lblCancel
         '
@@ -1003,7 +1024,7 @@ Partial Class frmINH
         '
         Me.cmdCancelInvoice.Enabled = False
         Me.cmdCancelInvoice.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cancel_subscription_24
-        Me.cmdCancelInvoice.Location = New System.Drawing.Point(212, 728)
+        Me.cmdCancelInvoice.Location = New System.Drawing.Point(212, 753)
         Me.cmdCancelInvoice.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCancelInvoice.Name = "cmdCancelInvoice"
         Me.cmdCancelInvoice.Size = New System.Drawing.Size(240, 39)
@@ -1023,7 +1044,7 @@ Partial Class frmINH
         Me.DataNavigator1.Buttons.PrevPage.Visible = False
         Me.DataNavigator1.Buttons.Remove.Visible = False
         Me.DataNavigator1.DataSource = Me.vwINHBindingSource
-        Me.DataNavigator1.Location = New System.Drawing.Point(435, 628)
+        Me.DataNavigator1.Location = New System.Drawing.Point(435, 653)
         Me.DataNavigator1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.DataNavigator1.Name = "DataNavigator1"
         Me.DataNavigator1.Size = New System.Drawing.Size(387, 29)
@@ -1035,8 +1056,8 @@ Partial Class frmINH
         '
         'vwINHBindingSource
         '
-        Me.vwINHBindingSource.DataMember = "vw_INH"
         Me.vwINHBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        Me.vwINHBindingSource.Position = 0
         '
         'chkExtraordinary
         '
@@ -1056,7 +1077,7 @@ Partial Class frmINH
         'cmdNewInh
         '
         Me.cmdNewInh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_new_file_24
-        Me.cmdNewInh.Location = New System.Drawing.Point(12, 728)
+        Me.cmdNewInh.Location = New System.Drawing.Point(12, 753)
         Me.cmdNewInh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdNewInh.Name = "cmdNewInh"
         Me.cmdNewInh.Size = New System.Drawing.Size(196, 39)
@@ -1085,7 +1106,7 @@ Partial Class frmINH
         'cmdExport
         '
         Me.cmdExport.ImageOptions.Image = CType(resources.GetObject("cmdExport.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdExport.Location = New System.Drawing.Point(839, 857)
+        Me.cmdExport.Location = New System.Drawing.Point(839, 882)
         Me.cmdExport.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExport.Name = "cmdExport"
         Me.cmdExport.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -1122,7 +1143,7 @@ Partial Class frmINH
         '
         'cboOwnerTenant
         '
-        Me.cboOwnerTenant.Location = New System.Drawing.Point(249, 820)
+        Me.cboOwnerTenant.Location = New System.Drawing.Point(249, 845)
         Me.cboOwnerTenant.Margin = New System.Windows.Forms.Padding(5)
         Me.cboOwnerTenant.Name = "cboOwnerTenant"
         Me.cboOwnerTenant.Properties.AllowMouseWheel = False
@@ -1139,7 +1160,7 @@ Partial Class frmINH
         Me.cmdDel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdDel.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdDel.Location = New System.Drawing.Point(839, 771)
+        Me.cmdDel.Location = New System.Drawing.Point(839, 796)
         Me.cmdDel.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdDel.Name = "cmdDel"
         Me.cmdDel.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -1150,7 +1171,7 @@ Partial Class frmINH
         'cmdRefresh
         '
         Me.cmdRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdRefresh.Location = New System.Drawing.Point(839, 814)
+        Me.cmdRefresh.Location = New System.Drawing.Point(839, 839)
         Me.cmdRefresh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdRefresh.Name = "cmdRefresh"
         Me.cmdRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -1163,7 +1184,7 @@ Partial Class frmINH
         Me.cmdSaveInd.Appearance.Options.UseTextOptions = True
         Me.cmdSaveInd.Appearance.TextOptions.HotkeyPrefix = DevExpress.Utils.HKeyPrefix.Show
         Me.cmdSaveInd.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveInd.Location = New System.Drawing.Point(25, 946)
+        Me.cmdSaveInd.Location = New System.Drawing.Point(25, 971)
         Me.cmdSaveInd.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveInd.Name = "cmdSaveInd"
         Me.cmdSaveInd.Size = New System.Drawing.Size(797, 39)
@@ -1188,10 +1209,10 @@ Partial Class frmINH
         '
         'txtComments
         '
-        Me.txtComments.Location = New System.Drawing.Point(249, 299)
+        Me.txtComments.Location = New System.Drawing.Point(249, 351)
         Me.txtComments.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New System.Drawing.Size(573, 73)
+        Me.txtComments.Size = New System.Drawing.Size(573, 46)
         Me.txtComments.StyleController = Me.LayoutControl1
         Me.txtComments.TabIndex = 46
         Me.txtComments.Tag = "cmt,0,1,2"
@@ -1199,7 +1220,7 @@ Partial Class frmINH
         'cmdSaveINH
         '
         Me.cmdSaveINH.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveINH.Location = New System.Drawing.Point(688, 728)
+        Me.cmdSaveINH.Location = New System.Drawing.Point(688, 753)
         Me.cmdSaveINH.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveINH.Name = "cmdSaveINH"
         Me.cmdSaveINH.Size = New System.Drawing.Size(147, 39)
@@ -1236,7 +1257,7 @@ Partial Class frmINH
         'txtAmt
         '
         Me.txtAmt.EditValue = "0,00 €"
-        Me.txtAmt.Location = New System.Drawing.Point(249, 904)
+        Me.txtAmt.Location = New System.Drawing.Point(249, 929)
         Me.txtAmt.Margin = New System.Windows.Forms.Padding(5)
         Me.txtAmt.Name = "txtAmt"
         Me.txtAmt.Properties.DisplayFormat.FormatString = "c"
@@ -1247,7 +1268,7 @@ Partial Class frmINH
         Me.txtAmt.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtAmt.Properties.MaskSettings.Set("mask", "c2")
         Me.txtAmt.Properties.Tag = "BenchExtraPrice"
-        Me.txtAmt.Size = New System.Drawing.Size(573, 38)
+        Me.txtAmt.Size = New System.Drawing.Size(172, 38)
         Me.txtAmt.StyleController = Me.LayoutControl1
         Me.txtAmt.TabIndex = 43
         Me.txtAmt.Tag = "amt,0,1,2"
@@ -1260,10 +1281,10 @@ Partial Class frmINH
         Me.chkCALC_CAT.DataSource = Me.VwCALCCATBindingSource
         Me.chkCALC_CAT.DisplayMember = "name"
         Me.chkCALC_CAT.HorizontalScrollbar = True
-        Me.chkCALC_CAT.Location = New System.Drawing.Point(25, 989)
+        Me.chkCALC_CAT.Location = New System.Drawing.Point(25, 1014)
         Me.chkCALC_CAT.Margin = New System.Windows.Forms.Padding(5)
         Me.chkCALC_CAT.Name = "chkCALC_CAT"
-        Me.chkCALC_CAT.Size = New System.Drawing.Size(797, 311)
+        Me.chkCALC_CAT.Size = New System.Drawing.Size(797, 286)
         Me.chkCALC_CAT.SortOrder = System.Windows.Forms.SortOrder.Ascending
         Me.chkCALC_CAT.StyleController = Me.LayoutControl1
         Me.chkCALC_CAT.TabIndex = 28
@@ -1302,7 +1323,7 @@ Partial Class frmINH
         '
         'txtHeatingType
         '
-        Me.txtHeatingType.Location = New System.Drawing.Point(249, 460)
+        Me.txtHeatingType.Location = New System.Drawing.Point(249, 485)
         Me.txtHeatingType.Margin = New System.Windows.Forms.Padding(5)
         Me.txtHeatingType.Name = "txtHeatingType"
         Me.txtHeatingType.Properties.ReadOnly = True
@@ -1313,7 +1334,7 @@ Partial Class frmINH
         '
         'txtBoilerType
         '
-        Me.txtBoilerType.Location = New System.Drawing.Point(249, 502)
+        Me.txtBoilerType.Location = New System.Drawing.Point(249, 527)
         Me.txtBoilerType.Margin = New System.Windows.Forms.Padding(5)
         Me.txtBoilerType.Name = "txtBoilerType"
         Me.txtBoilerType.Properties.ReadOnly = True
@@ -1324,7 +1345,7 @@ Partial Class frmINH
         '
         'cboRepname
         '
-        Me.cboRepname.Location = New System.Drawing.Point(249, 862)
+        Me.cboRepname.Location = New System.Drawing.Point(249, 887)
         Me.cboRepname.Margin = New System.Windows.Forms.Padding(5)
         Me.cboRepname.Name = "cboRepname"
         Me.cboRepname.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.[True]
@@ -1349,14 +1370,13 @@ Partial Class frmINH
         '
         'cboAhpbH
         '
-        Me.cboAhpbH.Location = New System.Drawing.Point(249, 544)
+        Me.cboAhpbH.Location = New System.Drawing.Point(249, 569)
         Me.cboAhpbH.Margin = New System.Windows.Forms.Padding(5)
         Me.cboAhpbH.Name = "cboAhpbH"
         Me.cboAhpbH.Properties.AllowMouseWheel = False
         EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_available_updates_12
         Me.cboAhpbH.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboAhpbH.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("bdgID", "bdg ID", 73, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("mdt", "ΗΜΕΡ/ΝΙΑ ΜΕΤΡΗΣΗΣ", 48, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("finalized", "finalized", 83, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("createdOn", "created On", 108, DevExpress.Utils.FormatType.DateTime, "d/M/yyyy", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("old_code", "old_code", 90, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("boiler", "BOILER", 62, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboAhpbH.Properties.DataSource = Me.AHPBH
         Me.cboAhpbH.Properties.DisplayFormat.FormatString = "dd/MM/yyyy"
         Me.cboAhpbH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.cboAhpbH.Properties.DisplayMember = "mdt"
@@ -1366,11 +1386,6 @@ Partial Class frmINH
         Me.cboAhpbH.StyleController = Me.LayoutControl1
         Me.cboAhpbH.TabIndex = 46
         Me.cboAhpbH.Tag = "ahpb_HID,0,1,2"
-        '
-        'AHPBH
-        '
-        Me.AHPBH.DataMember = "AHPB_H"
-        Me.AHPBH.DataSource = Me.PriamosNETDataSetBindingSource
         '
         'TabPane1
         '
@@ -1441,12 +1456,12 @@ Partial Class frmINH
         Me.TabNavigationPage3.Controls.Add(Me.grdAPM)
         Me.TabNavigationPage3.Margin = New System.Windows.Forms.Padding(5)
         Me.TabNavigationPage3.Name = "TabNavigationPage3"
-        Me.TabNavigationPage3.Size = New System.Drawing.Size(1742, 1263)
+        Me.TabNavigationPage3.Size = New System.Drawing.Size(1652, 1279)
         '
         'txtHpc
         '
         Me.txtHpc.EditValue = "0"
-        Me.txtHpc.Location = New System.Drawing.Point(733, 460)
+        Me.txtHpc.Location = New System.Drawing.Point(733, 485)
         Me.txtHpc.Margin = New System.Windows.Forms.Padding(5)
         Me.txtHpc.Name = "txtHpc"
         Me.txtHpc.Properties.DisplayFormat.FormatString = "p0"
@@ -1463,14 +1478,14 @@ Partial Class frmINH
         '
         'cboAnnouncements
         '
-        Me.cboAnnouncements.Location = New System.Drawing.Point(249, 376)
+        Me.cboAnnouncements.Location = New System.Drawing.Point(249, 401)
         Me.cboAnnouncements.Margin = New System.Windows.Forms.Padding(5)
         Me.cboAnnouncements.Name = "cboAnnouncements"
         Me.cboAnnouncements.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.[True]
         Me.cboAnnouncements.Properties.AllowMouseWheel = False
         Me.cboAnnouncements.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboAnnouncements.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 30, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "name", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
-        Me.cboAnnouncements.Properties.DataSource = Me.VwANNMENTSBindingSource
+        Me.cboAnnouncements.Properties.DataSource = Me.VwANNMENTSBindingSource1
         Me.cboAnnouncements.Properties.DisplayMember = "name"
         Me.cboAnnouncements.Properties.NullText = ""
         Me.cboAnnouncements.Properties.PopupSizeable = False
@@ -1482,10 +1497,15 @@ Partial Class frmINH
         Me.cboAnnouncements.Tag = "announcement,0,1,2"
         Me.cboAnnouncements.ToolTipController = Me.ToolTipController1
         '
+        'VwANNMENTSBindingSource1
+        '
+        Me.VwANNMENTSBindingSource1.DataMember = "vw_ANN_MENTS"
+        Me.VwANNMENTSBindingSource1.DataSource = Me.VwANNMENTSBindingSource
+        '
         'VwANNMENTSBindingSource
         '
-        Me.VwANNMENTSBindingSource.DataMember = "vw_ANN_MENTS"
         Me.VwANNMENTSBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        Me.VwANNMENTSBindingSource.Position = 0
         '
         'txtBdgCmt
         '
@@ -1493,7 +1513,7 @@ Partial Class frmINH
         Me.txtBdgCmt.Margin = New System.Windows.Forms.Padding(5)
         Me.txtBdgCmt.Name = "txtBdgCmt"
         Me.txtBdgCmt.Properties.ReadOnly = True
-        Me.txtBdgCmt.Size = New System.Drawing.Size(573, 36)
+        Me.txtBdgCmt.Size = New System.Drawing.Size(573, 88)
         Me.txtBdgCmt.StyleController = Me.LayoutControl1
         Me.txtBdgCmt.TabIndex = 17
         Me.txtBdgCmt.Tag = ""
@@ -1516,7 +1536,7 @@ Partial Class frmINH
         '
         'txtColAnnouncement
         '
-        Me.txtColAnnouncement.Location = New System.Drawing.Point(249, 418)
+        Me.txtColAnnouncement.Location = New System.Drawing.Point(249, 443)
         Me.txtColAnnouncement.Margin = New System.Windows.Forms.Padding(5)
         Me.txtColAnnouncement.Name = "txtColAnnouncement"
         Me.txtColAnnouncement.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
@@ -1535,6 +1555,20 @@ Partial Class frmINH
         Me.ToolTipController11.Rounded = True
         Me.ToolTipController11.ToolTipType = DevExpress.Utils.ToolTipType.Flyout
         '
+        'chkDeposit
+        '
+        Me.chkDeposit.EditValue = CType(0, Byte)
+        Me.chkDeposit.Location = New System.Drawing.Point(425, 929)
+        Me.chkDeposit.MenuManager = Me.BarManager1
+        Me.chkDeposit.Name = "chkDeposit"
+        Me.chkDeposit.Properties.Caption = "Επηρρεάζει Αποθεματικό"
+        Me.chkDeposit.Properties.ValueChecked = CType(1, Byte)
+        Me.chkDeposit.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkDeposit.Size = New System.Drawing.Size(397, 32)
+        Me.chkDeposit.StyleController = Me.LayoutControl1
+        Me.chkDeposit.TabIndex = 81
+        Me.chkDeposit.Tag = "regardingdeposit,0,1,2"
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -1551,7 +1585,7 @@ Partial Class frmINH
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem53, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem9, Me.LayoutControlItem1, Me.LayoutControlItem15, Me.LayoutControlItem19, Me.LayoutControlItem8, Me.LayoutControlItem20, Me.LayoutControlItem22, Me.LayoutControlItem28, Me.LayoutControlItem30, Me.LayoutControlItem14, Me.LayoutControlItem7, Me.LayoutControlItem27, Me.LayoutControlItem39, Me.LayoutControlItem10, Me.LayoutControlItem24, Me.LayoutControlItem36, Me.LayoutControlItem38, Me.lCanceled, Me.EmptySpaceItem2, Me.LayoutControlItem16, Me.LayoutControlItem40, Me.LayoutControlItem25})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 36)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(827, 680)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(827, 705)
         Me.LayoutControlGroup1.Text = "Στοιχεία Παραστατικού"
         '
         'LayoutControlItem53
@@ -1612,7 +1646,7 @@ Partial Class frmINH
         Me.LayoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem1.CustomizationFormText = "Τύπος Θέρμανσης"
         Me.LayoutControlItem1.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 363)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 388)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
         Me.LayoutControlItem1.Size = New System.Drawing.Size(484, 42)
         Me.LayoutControlItem1.Text = "Τύπος Θέρμανσης"
@@ -1624,7 +1658,7 @@ Partial Class frmINH
         Me.LayoutControlItem15.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem15.CustomizationFormText = "Τύπος Boiler"
         Me.LayoutControlItem15.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 405)
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 430)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
         Me.LayoutControlItem15.Size = New System.Drawing.Size(484, 42)
         Me.LayoutControlItem15.Text = "Τύπος Boiler"
@@ -1636,7 +1670,7 @@ Partial Class frmINH
         Me.LayoutControlItem19.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem19.CustomizationFormText = "Ώρες Μετρ."
         Me.LayoutControlItem19.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 447)
+        Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 472)
         Me.LayoutControlItem19.Name = "LayoutControlItem19"
         Me.LayoutControlItem19.Size = New System.Drawing.Size(484, 42)
         Me.LayoutControlItem19.Text = "Ώρες Μετρ."
@@ -1648,11 +1682,11 @@ Partial Class frmINH
         Me.LayoutControlItem8.AppearanceItemCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
         Me.LayoutControlItem8.Control = Me.txtComments
         Me.LayoutControlItem8.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 202)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 254)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.OptionsPrint.AppearanceItem.Options.UseTextOptions = True
         Me.LayoutControlItem8.OptionsPrint.AppearanceItem.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(801, 77)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(801, 50)
         Me.LayoutControlItem8.Text = "Γεν. σημ. πραστατικού"
         Me.LayoutControlItem8.TextLocation = DevExpress.Utils.Locations.Left
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(212, 23)
@@ -1663,7 +1697,7 @@ Partial Class frmINH
         Me.LayoutControlItem20.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem20.CustomizationFormText = "Πάγιο Θέρμανσης"
         Me.LayoutControlItem20.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem20.Location = New System.Drawing.Point(484, 363)
+        Me.LayoutControlItem20.Location = New System.Drawing.Point(484, 388)
         Me.LayoutControlItem20.Name = "LayoutControlItem20"
         Me.LayoutControlItem20.Size = New System.Drawing.Size(317, 42)
         Me.LayoutControlItem20.Text = "Πάγιο Θέρμανσης"
@@ -1675,7 +1709,7 @@ Partial Class frmINH
         Me.LayoutControlItem22.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem22.CustomizationFormText = "Ανακοινώσεις"
         Me.LayoutControlItem22.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem22.Location = New System.Drawing.Point(0, 279)
+        Me.LayoutControlItem22.Location = New System.Drawing.Point(0, 304)
         Me.LayoutControlItem22.Name = "LayoutControlItem22"
         Me.LayoutControlItem22.Size = New System.Drawing.Size(801, 42)
         Me.LayoutControlItem22.Text = "Ανακοινώσεις"
@@ -1685,7 +1719,7 @@ Partial Class frmINH
         '
         Me.LayoutControlItem28.Control = Me.txtHpb
         Me.LayoutControlItem28.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem28.Location = New System.Drawing.Point(484, 405)
+        Me.LayoutControlItem28.Location = New System.Drawing.Point(484, 430)
         Me.LayoutControlItem28.Name = "LayoutControlItem28"
         Me.LayoutControlItem28.Size = New System.Drawing.Size(317, 42)
         Me.LayoutControlItem28.Text = "Πάγιο Boiler"
@@ -1701,7 +1735,7 @@ Partial Class frmINH
         Me.LayoutControlItem30.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem30.Location = New System.Drawing.Point(0, 162)
         Me.LayoutControlItem30.Name = "LayoutControlItem30"
-        Me.LayoutControlItem30.Size = New System.Drawing.Size(801, 40)
+        Me.LayoutControlItem30.Size = New System.Drawing.Size(801, 92)
         Me.LayoutControlItem30.Text = "Σχόλια Πολυκατοικίας"
         Me.LayoutControlItem30.TextLocation = DevExpress.Utils.Locations.Left
         Me.LayoutControlItem30.TextSize = New System.Drawing.Size(212, 23)
@@ -1719,7 +1753,7 @@ Partial Class frmINH
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.lblAHPBB
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 591)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 616)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
         Me.LayoutControlItem7.Size = New System.Drawing.Size(801, 27)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
@@ -1729,7 +1763,7 @@ Partial Class frmINH
         '
         Me.LayoutControlItem27.Control = Me.cboAhpbHB
         Me.LayoutControlItem27.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 489)
+        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 514)
         Me.LayoutControlItem27.Name = "LayoutControlItem27"
         Me.LayoutControlItem27.Size = New System.Drawing.Size(484, 42)
         Me.LayoutControlItem27.Text = "Ώρες Μετρ.Boiler"
@@ -1740,7 +1774,7 @@ Partial Class frmINH
         Me.LayoutControlItem39.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold)
         Me.LayoutControlItem39.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem39.Control = Me.TextEdit1
-        Me.LayoutControlItem39.Location = New System.Drawing.Point(484, 447)
+        Me.LayoutControlItem39.Location = New System.Drawing.Point(484, 472)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
         Me.LayoutControlItem39.Size = New System.Drawing.Size(317, 84)
         Me.LayoutControlItem39.Text = "Σύνολο Παραστατικού"
@@ -1750,7 +1784,7 @@ Partial Class frmINH
         'LayoutControlItem10
         '
         Me.LayoutControlItem10.Control = Me.lblAHPBH
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 564)
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 589)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
         Me.LayoutControlItem10.Size = New System.Drawing.Size(801, 27)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
@@ -1819,7 +1853,7 @@ Partial Class frmINH
         Me.LayoutControlItem40.Control = Me.txtColAnnouncement
         Me.LayoutControlItem40.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem40.CustomizationFormText = "Ανακοίνωση είσπραξης"
-        Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 321)
+        Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 346)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
         Me.LayoutControlItem40.Size = New System.Drawing.Size(801, 42)
         Me.LayoutControlItem40.Text = "Ανακοίνωση είσπραξης"
@@ -1828,7 +1862,7 @@ Partial Class frmINH
         'LayoutControlItem25
         '
         Me.LayoutControlItem25.Control = Me.DataNavigator1
-        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 531)
+        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 556)
         Me.LayoutControlItem25.Name = "LayoutControlItem25"
         Me.LayoutControlItem25.Size = New System.Drawing.Size(801, 33)
         Me.LayoutControlItem25.Spacing = New DevExpress.XtraLayout.Utils.Padding(410, 0, 0, 0)
@@ -1840,10 +1874,10 @@ Partial Class frmINH
         '
         Me.LayoutControlGroup2.AppearanceGroup.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question
         Me.LayoutControlGroup2.AppearanceGroup.Options.UseBorderColor = True
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem13, Me.LcmdSaveInd})
-        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 759)
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem13, Me.LcmdSaveInd, Me.LayoutControlItem21})
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 784)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(827, 546)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(827, 521)
         Me.LayoutControlGroup2.Text = "Στοιχεία Εξόδων"
         '
         'LayoutControlItem4
@@ -1853,7 +1887,7 @@ Partial Class frmINH
         Me.LayoutControlItem4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(801, 42)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(400, 42)
         Me.LayoutControlItem4.Tag = "1"
         Me.LayoutControlItem4.Text = "Ποσό"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(212, 23)
@@ -1874,7 +1908,7 @@ Partial Class frmINH
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 169)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(801, 315)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(801, 290)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
@@ -1901,10 +1935,20 @@ Partial Class frmINH
         Me.LcmdSaveInd.TextSize = New System.Drawing.Size(0, 0)
         Me.LcmdSaveInd.TextVisible = False
         '
+        'LayoutControlItem21
+        '
+        Me.LayoutControlItem21.Control = Me.chkDeposit
+        Me.LayoutControlItem21.Location = New System.Drawing.Point(400, 84)
+        Me.LayoutControlItem21.Name = "LayoutControlItem21"
+        Me.LayoutControlItem21.Size = New System.Drawing.Size(401, 42)
+        Me.LayoutControlItem21.Text = "Επηρρεάζει Αποθεματικό"
+        Me.LayoutControlItem21.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem21.TextVisible = False
+        '
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.cmdRefresh
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(827, 802)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(827, 827)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
@@ -1913,7 +1957,7 @@ Partial Class frmINH
         'LayoutControlItem12
         '
         Me.LayoutControlItem12.Control = Me.cmdDel
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(827, 759)
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(827, 784)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
         Me.LayoutControlItem12.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
@@ -1922,9 +1966,9 @@ Partial Class frmINH
         'EmptySpaceItem3
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(827, 888)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(827, 913)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(30, 460)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(30, 435)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem4
@@ -1932,7 +1976,7 @@ Partial Class frmINH
         Me.EmptySpaceItem4.AllowHotTrack = False
         Me.EmptySpaceItem4.Location = New System.Drawing.Point(827, 36)
         Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(30, 723)
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(30, 748)
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'LcmdCalculate
@@ -1956,7 +2000,7 @@ Partial Class frmINH
         'LayoutControlItem18
         '
         Me.LayoutControlItem18.Control = Me.cmdExport
-        Me.LayoutControlItem18.Location = New System.Drawing.Point(827, 845)
+        Me.LayoutControlItem18.Location = New System.Drawing.Point(827, 870)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
         Me.LayoutControlItem18.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
@@ -2031,7 +2075,7 @@ Partial Class frmINH
         'LcmdNewInh
         '
         Me.LcmdNewInh.Control = Me.cmdNewInh
-        Me.LcmdNewInh.Location = New System.Drawing.Point(0, 716)
+        Me.LcmdNewInh.Location = New System.Drawing.Point(0, 741)
         Me.LcmdNewInh.Name = "LcmdNewInh"
         Me.LcmdNewInh.Size = New System.Drawing.Size(200, 43)
         Me.LcmdNewInh.Text = "Νέο Παραστατικό"
@@ -2041,7 +2085,7 @@ Partial Class frmINH
         'LcmdCancelInvoice
         '
         Me.LcmdCancelInvoice.Control = Me.cmdCancelInvoice
-        Me.LcmdCancelInvoice.Location = New System.Drawing.Point(200, 716)
+        Me.LcmdCancelInvoice.Location = New System.Drawing.Point(200, 741)
         Me.LcmdCancelInvoice.Name = "LcmdCancelInvoice"
         Me.LcmdCancelInvoice.Size = New System.Drawing.Size(244, 43)
         Me.LcmdCancelInvoice.Text = "Ακύρωση Παραστατικού"
@@ -2051,7 +2095,7 @@ Partial Class frmINH
         'LcmdSaveINH
         '
         Me.LcmdSaveINH.Control = Me.cmdSaveINH
-        Me.LcmdSaveINH.Location = New System.Drawing.Point(676, 716)
+        Me.LcmdSaveINH.Location = New System.Drawing.Point(676, 741)
         Me.LcmdSaveINH.Name = "LcmdSaveINH"
         Me.LcmdSaveINH.Size = New System.Drawing.Size(151, 43)
         Me.LcmdSaveINH.Text = "Καταχώρηση"
@@ -2061,7 +2105,7 @@ Partial Class frmINH
         'LcmdCancelCalculate
         '
         Me.LcmdCancelCalculate.Control = Me.cmdCancelCalculate
-        Me.LcmdCancelCalculate.Location = New System.Drawing.Point(444, 716)
+        Me.LcmdCancelCalculate.Location = New System.Drawing.Point(444, 741)
         Me.LcmdCancelCalculate.Name = "LcmdCancelCalculate"
         Me.LcmdCancelCalculate.Size = New System.Drawing.Size(232, 43)
         Me.LcmdCancelCalculate.Text = "Ακύρωση Υπολογισμού"
@@ -2100,11 +2144,6 @@ Partial Class frmINH
         Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
         Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'AHPBHBindingSource
-        '
-        Me.AHPBHBindingSource.DataMember = "AHPB_H"
-        Me.AHPBHBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
         'VwINCBindingSource
         '
         Me.VwINCBindingSource.DataMember = "vw_INC"
@@ -2112,8 +2151,8 @@ Partial Class frmINH
         '
         'VwEXCBindingSource
         '
-        Me.VwEXCBindingSource.DataMember = "vw_EXC"
         Me.VwEXCBindingSource.DataSource = Me.PriamosNETDataSetBindingSource
+        Me.VwEXCBindingSource.Position = 0
         '
         'Vw_BDGTableAdapter
         '
@@ -2123,25 +2162,9 @@ Partial Class frmINH
         '
         Me.Vw_EXCTableAdapter.ClearBeforeFill = True
         '
-        'Vw_INDTableAdapter
-        '
-        Me.Vw_INDTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_CALC_CATTableAdapter
-        '
-        Me.Vw_CALC_CATTableAdapter.ClearBeforeFill = True
-        '
         'Vw_INCTableAdapter
         '
         Me.Vw_INCTableAdapter.ClearBeforeFill = True
-        '
-        'Vw_TTLTableAdapter
-        '
-        Me.Vw_TTLTableAdapter.ClearBeforeFill = True
-        '
-        'AHPB_H
-        '
-        Me.AHPB_H.ClearBeforeFill = True
         '
         'XtraSaveFileDialog1
         '
@@ -2184,15 +2207,50 @@ Partial Class frmINH
         Me.AHPBH1BindingSource.DataMember = "AHPB_H1"
         Me.AHPBH1BindingSource.DataSource = Me.Priamos_NETDataSet
         '
-        'AHPB_Β
-        '
-        Me.AHPB_Β.ClearBeforeFill = True
-        '
         'PopupMenuRows
         '
         Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyCell), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyRow), New DevExpress.XtraBars.LinkPersistInfo(Me.BarCopyAll)})
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
+        '
+        'Vw_TTLTableAdapter
+        '
+        Me.Vw_TTLTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_CALC_CATTableAdapter
+        '
+        Me.Vw_CALC_CATTableAdapter.ClearBeforeFill = True
+        '
+        'Vw_ANN_MENTSTableAdapter1
+        '
+        Me.Vw_ANN_MENTSTableAdapter1.ClearBeforeFill = True
+        '
+        'AHPBHBindingSource
+        '
+        Me.AHPBHBindingSource.DataMember = "AHPB_H"
+        Me.AHPBHBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'AHPB_Β
+        '
+        Me.AHPB_Β.ClearBeforeFill = True
+        '
+        'AHPBB
+        '
+        Me.AHPBB.DataSource = Me.PriamosNETDataSetBindingSource
+        Me.AHPBB.Position = 0
+        '
+        'AHPB_H
+        '
+        Me.AHPB_H.ClearBeforeFill = True
+        '
+        'AHPBH
+        '
+        Me.AHPBH.DataSource = Me.PriamosNETDataSetBindingSource
+        Me.AHPBH.Position = 0
+        '
+        'Vw_INDTableAdapter
+        '
+        Me.Vw_INDTableAdapter.ClearBeforeFill = True
         '
         'frmINH
         '
@@ -2216,10 +2274,11 @@ Partial Class frmINH
         CType(Me.grdIND, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PriamosNETDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NET_DataSet_INH, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEdit3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwCALCCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
@@ -2234,7 +2293,6 @@ Partial Class frmINH
         CType(Me.chkCalculated.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtHpb.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAhpbHB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBB, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.vwINHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkExtraordinary.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2254,7 +2312,6 @@ Partial Class frmINH
         CType(Me.cboRepname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwTTLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAhpbH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBH, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPane1.ResumeLayout(False)
         Me.TabNavigationPage1.ResumeLayout(False)
@@ -2264,10 +2321,12 @@ Partial Class frmINH
         Me.TabNavigationPage3.ResumeLayout(False)
         CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboAnnouncements.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwANNMENTSBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBdgCmt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chkFromTransfer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtColAnnouncement.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkDeposit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2301,6 +2360,7 @@ Partial Class frmINH
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LcmdSaveInd, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2322,11 +2382,13 @@ Partial Class frmINH
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem37, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwINCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwEXCBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AHPBH1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBHBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AHPBH, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2358,8 +2420,6 @@ Partial Class frmINH
     Friend WithEvents Vw_EXCTableAdapter As Priamos_NETDataSetTableAdapters.vw_EXCTableAdapter
     Friend WithEvents txtCode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents VwINDBindingSource As BindingSource
-    Friend WithEvents Vw_INDTableAdapter As Priamos_NETDataSetTableAdapters.vw_INDTableAdapter
     Friend WithEvents cmdSaveInd As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LcmdSaveInd As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
@@ -2371,8 +2431,6 @@ Partial Class frmINH
     Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents cboOwnerTenant As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LayoutControlItem13 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents VwCALCCATBindingSource As BindingSource
-    Friend WithEvents Vw_CALC_CATTableAdapter As Priamos_NETDataSetTableAdapters.vw_CALC_CATTableAdapter
     Friend WithEvents txtHeatingType As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtBoilerType As DevExpress.XtraEditors.TextEdit
@@ -2411,10 +2469,6 @@ Partial Class frmINH
     Friend WithEvents GridView7 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents cboRepname As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents VwTTLBindingSource As BindingSource
-    Friend WithEvents Vw_TTLTableAdapter As Priamos_NETDataSetTableAdapters.vw_TTLTableAdapter
-    Friend WithEvents AHPBHBindingSource As BindingSource
-    Friend WithEvents AHPB_H As Priamos_NETDataSetTableAdapters.AHPB_HTableAdapter
     Friend WithEvents cmdExport As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem18 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents XtraSaveFileDialog1 As DevExpress.XtraEditors.XtraSaveFileDialog
@@ -2452,7 +2506,6 @@ Partial Class frmINH
     Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents AHPB_H1TableAdapter As Priamos_NETDataSetTableAdapters.AHPB_H1TableAdapter
     Friend WithEvents AHPBH1BindingSource As BindingSource
-    Friend WithEvents AHPBH As BindingSource
     Friend WithEvents chkExtraordinary As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents LayoutControlItem24 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents DataNavigator1 As DevExpress.XtraEditors.DataNavigator
@@ -2462,8 +2515,6 @@ Partial Class frmINH
     Friend WithEvents lCanceled As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents cboAhpbHB As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem27 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents AHPBB As BindingSource
-    Friend WithEvents AHPB_Β As Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter
     Friend WithEvents txtHpb As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem28 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents BarReceipt As DevExpress.XtraBars.BarButtonItem
@@ -2507,4 +2558,21 @@ Partial Class frmINH
     Friend WithEvents ToolTipController11 As DevExpress.Utils.ToolTipController
     Friend WithEvents LayoutControlItem40 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem25 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents chkDeposit As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem21 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents Priamos_NET_DataSet_INH As Priamos_NET_DataSet_INH
+    Friend WithEvents colregardingdeposit As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents VwTTLBindingSource As BindingSource
+    Friend WithEvents Vw_TTLTableAdapter As Priamos_NET_DataSet_INHTableAdapters.vw_TTLTableAdapter
+    Friend WithEvents VwCALCCATBindingSource As BindingSource
+    Friend WithEvents Vw_CALC_CATTableAdapter As Priamos_NET_DataSet_INHTableAdapters.vw_CALC_CATTableAdapter
+    Friend WithEvents VwANNMENTSBindingSource1 As BindingSource
+    Friend WithEvents Vw_ANN_MENTSTableAdapter1 As Priamos_NET_DataSet_INHTableAdapters.vw_ANN_MENTSTableAdapter
+    Friend WithEvents AHPBHBindingSource As BindingSource
+    Friend WithEvents AHPB_Β As Priamos_NETDataSetTableAdapters.AHPB_ΒTableAdapter
+    Friend WithEvents AHPBB As BindingSource
+    Friend WithEvents AHPB_H As Priamos_NETDataSetTableAdapters.AHPB_HTableAdapter
+    Friend WithEvents AHPBH As BindingSource
+    Friend WithEvents VwINDBindingSource As BindingSource
+    Friend WithEvents Vw_INDTableAdapter As Priamos_NET_DataSet_INHTableAdapters.vw_INDTableAdapter
 End Class

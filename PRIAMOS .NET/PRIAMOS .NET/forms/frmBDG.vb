@@ -2987,7 +2987,7 @@ Public Class frmBDG
     Private Sub NavDeposit_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavDeposit.ElementClick
         Try
             Maintab.SelectedTabPage = tabDeposit
-            Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.DEPOSIT_A, System.Guid.Parse(sID))
+            Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.vw_DEPOSIT_A, System.Guid.Parse(sID))
             LoadForms.RestoreLayoutFromXml(GridView_DepositA, "vw_DEPOSIT_A.xml")
             ' Σύνολο Λογιστικού Αποθεματικού
             GettotDepositA()
@@ -3037,7 +3037,7 @@ Public Class frmBDG
         End Try
     End Sub
     Private Sub RefreshDepositA()
-        Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.DEPOSIT_A, System.Guid.Parse(sID))
+        Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.vw_DEPOSIT_A, System.Guid.Parse(sID))
     End Sub
 
     Private Sub cmdRefreshDepositA_Click(sender As Object, e As EventArgs) Handles cmdRefreshDepositA.Click
@@ -3080,7 +3080,7 @@ Public Class frmBDG
 
     Private Sub GridView_DepositA_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView_DepositA.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView_DepositA, "vw_DEPOSIT_A.xml", "DEPOSIT_A")
+            LoadForms.PopupMenuShow(e, GridView_DepositA, "vw_DEPOSIT_A.xml", "vw_DEPOSIT_A")
         Else
             ActiveGrid = GridView_DepositA
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -3212,5 +3212,19 @@ Public Class frmBDG
         If txtDepositAmt.EditValue IsNot Nothing Then
             If cboMultiplier.SelectedIndex = 1 Then txtDepositAmt.EditValue = txtDepositAmt.EditValue * -1
         End If
+    End Sub
+
+    Private Sub GridView_DepositA_DoubleClick(sender As Object, e As EventArgs) Handles GridView_DepositA.DoubleClick
+        If GridView_DepositA.IsGroupRow(GridView_DepositA.FocusedRowHandle) Then Exit Sub
+        If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "inhID") = Nothing Then Exit Sub
+        Dim fINH As frmINH = New frmINH()
+        fINH.Text = "Παραστατικό"
+        fINH.ID = GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "inhID").ToString
+        fINH.MdiParent = frmMain
+        fINH.Mode = FormMode.EditRecord
+        fINH.Scroller = GridView_DepositA
+        fINH.FormScroller = Me
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
+        fINH.Show()
     End Sub
 End Class

@@ -216,7 +216,7 @@ Public Class frmGen
                                 If CalledFromCtrl Then
                                     If FrmCaller IsNot Nothing Then
                                         If FrmCaller.Name = "frmINH" Then
-                                            frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_TTL)
+                                            frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NET_DataSet_INH.vw_TTL)
                                             CtrlCombo.Properties.DataSource = frmINH.VwTTLBindingSource
                                             CtrlCombo.EditValue = txtName.Text
                                         End If
@@ -522,7 +522,7 @@ Public Class frmGen
                                 If CalledFromCtrl Then
                                     If FrmCaller IsNot Nothing Then
                                         If FrmCaller.Name = "frmINH" Then
-                                            frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_TTL)
+                                            frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NET_DataSet_INH.vw_TTL)
                                             CtrlCombo.Properties.DataSource = frmINH.VwTTLBindingSource
                                             CtrlCombo.EditValue = txtName.Text
                                         End If
@@ -914,7 +914,7 @@ Public Class frmGen
                         If CalledFromCtrl Then
                             If FrmCaller IsNot Nothing Then
                                 If FrmCaller.Name = "frmINH" Then
-                                    frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NETDataSet.vw_TTL)
+                                    frmINH.Vw_TTLTableAdapter.Fill(frmINH.Priamos_NET_DataSet_INH.vw_TTL)
                                     CtrlCombo.Properties.DataSource = frmINH.VwTTLBindingSource
                                 End If
                             Else

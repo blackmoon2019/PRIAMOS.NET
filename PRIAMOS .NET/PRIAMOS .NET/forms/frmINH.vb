@@ -59,10 +59,14 @@ Public Class frmINH
         End Set
     End Property
     Private Sub frmParast_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_INH.vw_ANN_MENTS' table. You can move, or remove it, as needed.
+        Me.Vw_ANN_MENTSTableAdapter1.Fill(Me.Priamos_NET_DataSet_INH.vw_ANN_MENTS)
+        'TODO: This line of code loads data into the 'Priamos_NET_DataSet_INH.vw_TTL' table. You can move, or remove it, as needed.
+        Me.Vw_TTLTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_TTL)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_ANN_MENTS' table. You can move, or remove it, as needed.
         Me.Vw_ANN_MENTSTableAdapter.Fill(Me.Priamos_NETDataSet.vw_ANN_MENTS)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_TTL' table. You can move, or remove it, as needed.
-        Me.Vw_TTLTableAdapter.Fill(Me.Priamos_NETDataSet.vw_TTL)
+        Me.Vw_TTLTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_TTL)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_EXC' table. You can move, or remove it, as needed.
         'Me.Vw_EXCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_EXC)
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_BDG' table. You can move, or remove it, as needed.
@@ -86,14 +90,14 @@ Public Class frmINH
                 'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 InhFieldAndValues = New Dictionary(Of String, String)
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
 
                 Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
                 Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
                 Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
 
-                Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
+                Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
                 Me.Vw_INHTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INH, cboBDG.EditValue)
                 If InhFieldAndValues.Item("mdt") <> "" Then
                     lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy")
@@ -302,13 +306,13 @@ Public Class frmINH
                             If chkCalorimetric.CheckState = CheckState.Unchecked Then
                                 ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
                                 ' Όταν έχει οριστεί διαμέρισμα στα πάγια έξοδα τότε αυτόματα παίρνει τα υπολογισμένα του τελευταίου παραστατικού γιαυτό το διαμέρισμα και τα μεταφέρει στο επόμενο
-                                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
+                                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant,regardingdeposit) " &
                                    "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,
                                    case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt 
                                         when aptID is not null then (select sum(AmtPerCalc)  from vw_inc where inhid = 
                                    (select top 1 ID from INH (nolock) where bdgid = vw_inc.bdgID  and extraordinary=0 and Calorimetric=0 and reserveAPT=0 and fdate< " & toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")) & "  order by fDate desc)
                                         and aptID=IEP.aptID    )   " &
-                                   " else (amt * " & Months & ") end as amt ,owner_tenant from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
+                                   " else (amt * " & Months & ") end as amt ,owner_tenant,regardingdeposit from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
                                 Using oCmd As New SqlCommand(sSQL, CNDB)
                                     oCmd.ExecuteNonQuery()
                                 End Using
@@ -327,7 +331,7 @@ Public Class frmINH
                                 End Using
                             End If
 
-                            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sGuid))
+                            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sGuid))
                             grdIND.DataSource = VwINDBindingSource
                         End If
                     Case FormMode.EditRecord
@@ -340,7 +344,7 @@ Public Class frmINH
                                 Using oCmd As New SqlCommand(sSQL, CNDB)
                                     oCmd.ExecuteNonQuery()
                                 End Using
-                                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                                 grdIND.DataSource = VwINDBindingSource
                             End If
                         Else
@@ -366,7 +370,7 @@ Public Class frmINH
                                             oCmd.ExecuteNonQuery()
                                         End Using
                                     End If
-                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                                     grdIND.DataSource = VwINDBindingSource
 
                                 End If
@@ -475,7 +479,7 @@ Public Class frmINH
                 sCalcCatID = chkCALC_CAT.SelectedValue.ToString
                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
                 If sResult Then
-                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                     'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Cls.ClearGroupCtrls(LayoutControlGroup2)
                     Valid.SChanged = False
@@ -530,7 +534,7 @@ Public Class frmINH
                 End Using
                 'Διαγραφή αρχείων αν υπάρχουν
                 DeleteIND_F(False)
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -581,7 +585,7 @@ Public Class frmINH
 
     Private Sub cmdINDRefresh_Click(sender As Object, e As EventArgs) Handles cmdRefresh.Click
         Select Case TabPane1.SelectedPageIndex
-            Case 0 : Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+            Case 0 : Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
             Case 1 : EditRecord() : Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
             Case 2 : ApmLoad()
             Case Else
@@ -629,7 +633,7 @@ Public Class frmINH
             Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
 
 
-            Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NETDataSet.vw_CALC_CAT, cboBDG.EditValue)
+            Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
             If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
                 txtHeatingType.EditValue = Nothing
                 txtHpc.EditValue = Nothing
@@ -701,6 +705,7 @@ Public Class frmINH
                 ",repName = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "repName").ToString) &
                 ",amt = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "amt"), True) &
                 ",owner_tenant = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "owner_tenant")) &
+                ",regardingdeposit = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "regardingdeposit")) &
                 ",SelectedFiles = " & toSQLValueS(IIf(IsDBNull(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "SelectedFiles")) = True, "", GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "SelectedFiles"))) &
                 ",paid = " & IIf(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "paid") = True, 1, 0) &
         " WHERE ID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString)
@@ -834,6 +839,7 @@ Public Class frmINH
             LcmdCalculate.Enabled = False : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False : cmdSaveINH.Enabled = False
             EditRecord()
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
+            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
         Catch SQLex As SqlException
             XtraMessageBox.Show(String.Format("Error: {0}", SQLex.Errors.Item(0).ToString), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
@@ -1223,7 +1229,7 @@ Public Class frmINH
             If InhFieldAndValues.Item("mdt") <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPBH.Text = "" : cboAhpbH.EditValue = Nothing
             If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPBB.Text = "" : cboAhpbHB.EditValue = Nothing
 
-            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NETDataSet.vw_IND, System.Guid.Parse(sID))
+            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
             Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
             If lblCancel.Text = "True" Then
                 lblCancel.Text = "ΑΚΥΡΩΜΕΝΟ"
@@ -1461,6 +1467,7 @@ Public Class frmINH
             cmdSaveInd.Enabled = True : cmdDel.Enabled = True : cmdSaveINH.Enabled = True : cmdPrintAll.Enabled = False
             Me.AHPB_H.Fill(Me.Priamos_NETDataSet.AHPB_H, cboBDG.EditValue)
             Me.AHPB_Β.Fill(Me.Priamos_NETDataSet.AHPB_Β, cboBDG.EditValue)
+            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
             lblAHPBB.Text = "" : lblAHPBH.Text = ""
             cboAhpbH.EditValue = Nothing
             cboAhpbHB.EditValue = Nothing

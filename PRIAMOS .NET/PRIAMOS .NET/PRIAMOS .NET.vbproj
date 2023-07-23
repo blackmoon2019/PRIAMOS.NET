@@ -594,6 +594,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Priamos_NET_DataSet_INH.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NET_DataSet_INH.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Eidop\ClosedAPTSmall.Designer.vb">
       <DependentUpon>ClosedAPTSmall.vb</DependentUpon>
     </Compile>
@@ -954,6 +959,17 @@
     </None>
     <None Include="Priamos_NETDataSet_SUPPORT.xss">
       <DependentUpon>Priamos_NETDataSet_SUPPORT.xsd</DependentUpon>
+    </None>
+    <None Include="Priamos_NET_DataSet_INH.xsc">
+      <DependentUpon>Priamos_NET_DataSet_INH.xsd</DependentUpon>
+    </None>
+    <None Include="Priamos_NET_DataSet_INH.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Priamos_NET_DataSet_INH.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Priamos_NET_DataSet_INH.xss">
+      <DependentUpon>Priamos_NET_DataSet_INH.xsd</DependentUpon>
     </None>
     <None Include="Resources\information-16.png" />
     <None Include="Resources\icons8-initiate-money-transfer-40.png" />

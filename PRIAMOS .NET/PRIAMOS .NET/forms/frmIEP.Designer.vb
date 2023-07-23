@@ -29,6 +29,8 @@ Partial Class frmIEP
         Me.txtAmt = New DevExpress.XtraEditors.TextEdit()
         Me.cboOwnerTenant = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.cboApt = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -40,9 +42,9 @@ Partial Class frmIEP
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
-        Me.VwAPTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NET_DataSet_BDG = New PRIAMOS.NET.Priamos_NET_DataSet_BDG()
         Me.Vw_APTTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_APTTableAdapter()
+        Me.chkDeposit = New DevExpress.XtraEditors.CheckEdit()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.chkCreateCol.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,6 +54,8 @@ Partial Class frmIEP
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,12 +65,13 @@ Partial Class frmIEP
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.chkDeposit)
         Me.LayoutControl1.Controls.Add(Me.chkCreateCol)
         Me.LayoutControl1.Controls.Add(Me.txtCode)
         Me.LayoutControl1.Controls.Add(Me.cboCaclCat)
@@ -189,11 +194,21 @@ Partial Class frmIEP
         Me.cboApt.TabIndex = 5
         Me.cboApt.Tag = "aptID,0,1,2"
         '
+        'VwAPTBindingSource
+        '
+        Me.VwAPTBindingSource.DataMember = "vw_APT"
+        Me.VwAPTBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
+        '
+        'Priamos_NET_DataSet_BDG
+        '
+        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
+        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Root
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem9, Me.LayoutControlItem6, Me.EmptySpaceItem2, Me.LayoutControlItem45, Me.LayoutControlItem13, Me.LayoutControlItem1, Me.LayoutControlItem2})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem9, Me.LayoutControlItem6, Me.EmptySpaceItem2, Me.LayoutControlItem45, Me.LayoutControlItem13, Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(697, 382)
         Me.Root.TextVisible = False
@@ -274,7 +289,7 @@ Partial Class frmIEP
         Me.LayoutControlItem1.Control = Me.chkCreateCol
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 252)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(677, 110)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(677, 36)
         Me.LayoutControlItem1.Text = "Δημιουργία Είσπραξης"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -320,19 +335,32 @@ Partial Class frmIEP
         Me.cmdSave.TabIndex = 17
         Me.cmdSave.Text = "Αποθήκευση"
         '
-        'VwAPTBindingSource
-        '
-        Me.VwAPTBindingSource.DataMember = "vw_APT"
-        Me.VwAPTBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
-        '
-        'Priamos_NET_DataSet_BDG
-        '
-        Me.Priamos_NET_DataSet_BDG.DataSetName = "Priamos_NET_DataSet_BDG"
-        Me.Priamos_NET_DataSet_BDG.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Vw_APTTableAdapter
         '
         Me.Vw_APTTableAdapter.ClearBeforeFill = True
+        '
+        'chkDeposit
+        '
+        Me.chkDeposit.EditValue = CType(0, Byte)
+        Me.chkDeposit.Location = New System.Drawing.Point(12, 300)
+        Me.chkDeposit.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkDeposit.Name = "chkDeposit"
+        Me.chkDeposit.Properties.Caption = "Επηρρεάζει Αποθεματικό"
+        Me.chkDeposit.Properties.ValueChecked = CType(1, Byte)
+        Me.chkDeposit.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkDeposit.Size = New System.Drawing.Size(673, 32)
+        Me.chkDeposit.StyleController = Me.LayoutControl1
+        Me.chkDeposit.TabIndex = 53
+        Me.chkDeposit.Tag = "regardingdeposit,0,1,2"
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.chkDeposit
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 288)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(677, 74)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem3.TextVisible = False
         '
         'frmIEP
         '
@@ -355,6 +383,8 @@ Partial Class frmIEP
         CType(Me.txtAmt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboOwnerTenant.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboApt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -364,8 +394,8 @@ Partial Class frmIEP
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwAPTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NET_DataSet_BDG, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkDeposit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -392,4 +422,6 @@ Partial Class frmIEP
     Friend WithEvents Priamos_NET_DataSet_BDG As Priamos_NET_DataSet_BDG
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents Vw_APTTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_APTTableAdapter
+    Friend WithEvents chkDeposit As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
 End Class
