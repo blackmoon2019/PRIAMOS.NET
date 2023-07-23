@@ -253,13 +253,14 @@ Public Class frmBankCollectionInsert
                     Catch dbException As System.Data.SqlClient.SqlException
                         If dbException.ErrorCode = "-2146232060" Then
                             lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                            ItemsWrongDB = ItemsWrongDB + 1
                         Else
                             lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                            ItemsWrong = ItemsWrong + 1
                         End If
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                         lstLog.SelectedIndex = lstLog.ItemCount + 1
                         lstLog.Refresh()
-                        ItemsWrong = ItemsWrong + 1
                     Catch ex As Exception
                         lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
@@ -391,13 +392,14 @@ Public Class frmBankCollectionInsert
                                 Catch dbException As System.Data.SqlClient.SqlException
                                     If dbException.ErrorCode = "-2146232060" Then
                                         lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                                        ItemsWrongDB = ItemsWrongDB + 1
                                     Else
                                         lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                                        ItemsWrong = ItemsWrong + 1
                                     End If
                                     lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                                     lstLog.SelectedIndex = lstLog.ItemCount + 1
                                     lstLog.Refresh()
-                                    ItemsWrongDB = ItemsWrongDB + 1
                                 Catch ex As Exception
                                     lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                                     lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
@@ -686,13 +688,15 @@ Public Class frmBankCollectionInsert
                     Catch dbException As System.Data.SqlClient.SqlException
                         If dbException.ErrorCode = "-2146232060" Then
                             lstLog.Items.Add("Διπλοεγγραφή: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                            ItemsWrongDB = ItemsWrongDB + 1
                         Else
                             lstLog.Items.Add("Αλλο Σφάλμα: " & dbException.Message.ToString.Replace(vbCrLf, ""))
+                            ItemsWrong = ItemsWrong + 1
                         End If
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
                         lstLog.SelectedIndex = lstLog.ItemCount + 1
                         lstLog.Refresh()
-                        ItemsWrong = ItemsWrong + 1
+
                     Catch ex As Exception
                         lstLog.Items.Add(ex.Message.ToString.Replace(vbCrLf, ""))
                         lstLog.Items(lstLog.Items.Count - 1).ImageOptions.Image = ImageCollection1.Images.Item(1)
