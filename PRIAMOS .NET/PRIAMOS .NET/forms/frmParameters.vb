@@ -56,7 +56,8 @@ Public Class frmParameters
         'TODO: This line of code loads data into the 'Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP' table. You can move, or remove it, as needed.
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PARTNER_AND_WORKSHOP)
 
-
+        cmdSaveGen.Enabled = UserProps.AllowEdit
+        cmdSave2.Enabled = UserProps.AllowEdit
         Me.CenterToScreen()
     End Sub
 

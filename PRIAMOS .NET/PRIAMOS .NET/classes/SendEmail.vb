@@ -35,7 +35,7 @@ Public Class SendEmail
             Body.Replace("\n", "<br />")
             e_mail.Body = Body
             If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then
-                e_mail.Headers.Add("Disposition-Notification-To", "johnmavroselinos@gmail.com;thv@priamoservice.gr")
+                e_mail.Headers.Add("Disposition-Notification-To", "johnmavroselinos@gmail.com")
             Else
                 e_mail.Headers.Add("Disposition-Notification-To", "admin@priamoservice.gr")
             End If
@@ -94,7 +94,7 @@ Public Class SendEmail
             Body.Replace("\n", "<br />")
             e_mail.Body = Body
             If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then
-                e_mail.Headers.Add("Disposition-Notification-To", "johnmavroselinos@gmail.com;thv@priamoservice.gr")
+                e_mail.Headers.Add("Disposition-Notification-To", "johnmavroselinos@gmail.com")
             Else
                 e_mail.Headers.Add("Disposition-Notification-To", "admin@priamoservice.gr")
             End If

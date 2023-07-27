@@ -219,7 +219,7 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
                         Subject = "Συγκεντρωτική - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
                         ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-                        If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
+                        If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com"
                         report.CreateDocument()
                         report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
@@ -398,7 +398,7 @@ Public Class frmEmailAPT
             sEmailTo = String.Concat(EmailTenant, IIf(EmailTenant.Length > 0 And EmailOwner.Length > 0, ";", "") & EmailOwner, IIf((EmailOwner.Length > 0 Or EmailTenant.Length > 0) And EmailRepresentative.Length > 0, ";", "") & EmailRepresentative)
 
             ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-            If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
+            If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com"
             sFileIDs = sfID.Split(";")
             If sFileIDs.Length > 0 Then
                 SSM.ShowWaitForm()
@@ -442,8 +442,21 @@ Public Class frmEmailAPT
         Dim sHTMLTableRow As String, sHTMLTable As String
         Dim sHTMLTableRows As New StringBuilder
         Dim sHtmlConstRow =
-            "<tr><td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)</td>
-             <td class=""tg-pht1"" style=""border-color: inherit;border-style: solid;border-width: 1px;font-family: &quot;Times New Roman&quot;, Times, serif !important;font-size: 12px;overflow: hidden;padding: 10px 5px;word-break: normal;text-align: center;vertical-align: top;"">ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)</td></tr>"
+            "<table style=""border-collapse: collapse; width: 27.1464%;"" border=""1"">
+              <tbody>
+                <tr>
+                  <td style=""width: 24.6409%; background-color: #cfc8c8; text-align: center;"" colspan=""2"">
+                    <strong>ΑΝΕΞΟΦΛΗΤΑ ΠΑΡΑΣΤΑΤΙΚΑ</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td style=""width: 18.732%; background-color: #d4aa20; text-align: center;"">
+                    <strong>ΜΗΝΑΣ</strong>
+                  </td>
+                  <td style=""width: 5.90886%; background-color: #d4aa20; text-align: center;"">
+                    <strong>ΠΟΣΟ</strong>
+                  </td>
+                </tr>"
         Try
             Dim Cmd As SqlCommand, sdr As SqlDataReader
             sHTMLTable = ProgProps.InvoicesUnpaidTable
@@ -465,14 +478,27 @@ Public Class frmEmailAPT
             Cmd = New SqlCommand(sSQL, CNDB)
             sdr = Cmd.ExecuteReader()
             Dim i As Integer = 1
+            sHTMLTableRows.Clear()
+            sHTMLTableRow = sHtmlConstRow
             While sdr.Read()
-                sHTMLTableRow = sHtmlConstRow
-                sHTMLTableRow = sHTMLTableRow.Replace("tg-pht1", "tg-pht" & i)
-                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΜΗΝΑΣ)", sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString)
-                sHTMLTableRow = sHTMLTableRow.Replace("ΠΑΡΑΣΤΑΤΙΚΟ (ΠΟΣΟ €)", sdr.GetDecimal(sdr.GetOrdinal("bal").ToString).ToString)
+
+                sHTMLTableRow = sHTMLTableRow & "<tr>"
+                sHTMLTableRow = sHTMLTableRow & "<td style=""width: 18.732%; text-align: center; "">"
+                sHTMLTableRow = sHTMLTableRow & "<strong>" & sdr.GetString(sdr.GetOrdinal("completeDate").ToString) & "</strong>"
+                sHTMLTableRow = sHTMLTableRow & "</td>" & vbCrLf
+
+                sHTMLTableRow = sHTMLTableRow & "<td style=""width: 18.732%; text-align: center; "">"
+                sHTMLTableRow = sHTMLTableRow & "<strong>" & sdr.GetDecimal(sdr.GetOrdinal("bal").ToString) & "</strong>"
+                sHTMLTableRow = sHTMLTableRow & "</td>"
+
+                sHTMLTableRow = sHTMLTableRow & "</tr>"
+
                 sHTMLTableRows.AppendLine(sHTMLTableRow)
+                sHTMLTableRow = ""
                 i = i + 1
             End While
+            sHTMLTableRows.AppendLine("</tbody>")
+            sHTMLTableRows.AppendLine("</table>")
             sdr.Close()
             CreateHtmlTableRows = sHTMLTableRows.ToString
             If CreateHtmlTableRows.EndsWith(vbCrLf) Then

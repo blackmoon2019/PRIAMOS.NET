@@ -2614,13 +2614,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release (
-
-  xcopy "$(ProjectDir)\bin\Debug\PRIAMOS.NET.exe" "\\192.168.1.52\priamos.net\PRIAMOS_DEV\" /Y /I
-) ELSE (
-  echo "ConfigurationName= Debug".
-echo $(GitBranch)
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
