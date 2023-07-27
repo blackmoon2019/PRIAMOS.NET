@@ -1225,6 +1225,7 @@ Public Class frmINH
             'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
             txtColAnnouncement.EditValue = Nothing
             InhFieldAndValues = New Dictionary(Of String, String)
+            cboAnnouncements.EditValue = Nothing
             LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
             If InhFieldAndValues.Item("mdt") <> "" Then lblAHPBH.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblAHPBH.Text = "" : cboAhpbH.EditValue = Nothing
             If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblAHPBB.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblAHPBB.Text = "" : cboAhpbHB.EditValue = Nothing

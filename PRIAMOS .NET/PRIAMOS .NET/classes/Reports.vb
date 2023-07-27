@@ -284,8 +284,9 @@ Public Class Reports
                     ' Ενημέρωση ΠΑραστατικού ότι στάλθηκε Email
                     sSQL = "Update INH SET EMAIL = 1,DateOfEmail=getdate() WHERE ID = " & toSQLValueS(sInhID)
                     Dim oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
-                    sSQL = "insert into EMAIL_LOG(eidop,EmailSend,ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail)
-                                        SELECT 1,1," & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) & ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo)
+                    sSQL = "insert into EMAIL_LOG(eidop,EmailSend,ID,inhID,aptID,usrID,sendDate,resendDate,recreateDate,statusMsg,toEmail,createdBy)
+                            SELECT 1,1," & toSQLValueS(sEmailID) & "," & toSQLValueS(sInhID) & "," & toSQLValueS(sAptID) & "," & toSQLValueS(UserProps.ID.ToString) &
+                            ",GETDATE(),NULL,NULL," & toSQLValueS(statusMsg) & "," & toSQLValueS(sEmailTo) & "," & toSQLValueS(UserProps.ID.ToString)
                     oCmd = New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery()
 
                     If sIDS.Length > 0 Then sIDS.Append(",")

@@ -219,7 +219,7 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{BDGCOD}", sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString)
                         Subject = "Συγκεντρωτική - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
                         ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-                        If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
+                        If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
                         report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
@@ -267,6 +267,8 @@ Public Class frmEmailAPT
                         Dim report As New Eidop()
                         report.Parameters.Item(0).Value = sInhId
                         sEmailTo = String.Concat(EmailTenant, IIf(EmailTenant.Length > 0 And EmailOwner.Length > 0, ";", "") & EmailOwner, IIf((EmailOwner.Length > 0 Or EmailTenant.Length > 0) And EmailRepresentative.Length > 0, ";", "") & EmailRepresentative)
+                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+                        If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com;;thv@priamoservice.gr;"
 
                         report.FilterString = "[ID] = {" & sAptID & "}"
                         sFName = sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString + sAtptTTL
@@ -286,8 +288,6 @@ Public Class frmEmailAPT
                         UnpaidInvoiceTable = ProgProps.InvoicesUnpaidTable.Replace("-----ΓΡΑΜΜΕΣ ΠΙΝΑΚΑ------", CreateHtmlTableRows(sbdgID, sAptID))
                         sBody = sBody.Replace("{UNPAID_INVOICES_TABLE}", UnpaidInvoiceTable)
                         Subject = sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sAtptTTL & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
-                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-                        If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
                         report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
@@ -335,6 +335,8 @@ Public Class frmEmailAPT
                         Dim report As New Receipt()
                         report.Parameters.Item(0).Value = sInhId
                         sEmailTo = String.Concat(EmailTenant, IIf(EmailTenant.Length > 0 And EmailOwner.Length > 0, ";", "") & EmailOwner, IIf((EmailOwner.Length > 0 Or EmailTenant.Length > 0) And EmailRepresentative.Length > 0, ";", "") & EmailRepresentative)
+                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
+                        If CNDB.Database <> "Priamos_NET" Or Debugger.IsAttached = True Then sEmailTo = "johnmavroselinos@gmail.com;;thv@priamoservice.gr;"
 
                         report.FilterString = "[ID] = {" & sAptID & "}"
                         sFName = "RECEIPT_" & sdr.GetInt32(sdr.GetOrdinal("BDGCode").ToString).ToString + sAtptTTL
@@ -347,8 +349,6 @@ Public Class frmEmailAPT
                         sBody = sBody.Replace("{AMOUNT}", sdr.GetDecimal(sdr.GetOrdinal("AMOUNT").ToString).ToString)
                         sBody = sBody.Replace("{BAL_ADM}", BalADM)
                         Subject = "Απόδειξη - " & sdr.GetString(sdr.GetOrdinal("BDGNAM").ToString).ToString & " - " & sAtptTTL & " - " & sdr.GetString(sdr.GetOrdinal("completeDate").ToString).ToString
-                        ' Όταν ήμαστε στο ΤΕΣΤ Περιβάλλον
-                        If CNDB.Database <> "Priamos_NET" Then sEmailTo = "johnmavroselinos@gmail.com;thv@priamoservice.gr"
                         report.CreateDocument()
                         report.ExportToPdf(Path.GetTempPath & sFName & ".pdf")
                         report.Dispose()
