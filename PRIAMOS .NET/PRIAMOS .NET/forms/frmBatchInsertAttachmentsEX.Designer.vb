@@ -42,6 +42,9 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarDockControl5 = New DevExpress.XtraBars.BarDockControl()
         Me.BBOpenInh = New DevExpress.XtraBars.BarButtonItem()
         Me.BBOpenBdg = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBDeleteFiles = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBUpdateEXtoUnpaid = New DevExpress.XtraBars.BarButtonItem()
+        Me.BBUpdateEXtopaid = New DevExpress.XtraBars.BarButtonItem()
         Me.images = New DevExpress.Utils.SvgImageCollection(Me.components)
         Me.itemPopupMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
@@ -138,7 +141,6 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_INDTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
-        Me.BBDeleteFiles = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.PopupMenuDeleteButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.images, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -189,8 +191,8 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.BarManager1.DockControls.Add(Me.BarDockControl4)
         Me.BarManager1.DockControls.Add(Me.BarDockControl5)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BBOpenInh, Me.BBOpenBdg, Me.BBDeleteFiles})
-        Me.BarManager1.MaxItemId = 3
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BBOpenInh, Me.BBOpenBdg, Me.BBDeleteFiles, Me.BBUpdateEXtoUnpaid, Me.BBUpdateEXtopaid})
+        Me.BarManager1.MaxItemId = 5
         '
         'BarDockControl2
         '
@@ -232,13 +234,38 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         Me.BBOpenInh.Caption = "Άνοιγμα Παραστατικού"
         Me.BBOpenInh.Id = 0
+        Me.BBOpenInh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_documents_16
         Me.BBOpenInh.Name = "BBOpenInh"
         '
         'BBOpenBdg
         '
         Me.BBOpenBdg.Caption = "Άνοιγμα Πολυκατοικίας"
         Me.BBOpenBdg.Id = 1
+        Me.BBOpenBdg.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_building_16
         Me.BBOpenBdg.Name = "BBOpenBdg"
+        '
+        'BBDeleteFiles
+        '
+        Me.BBDeleteFiles.Caption = "Διαγραφή Αρχείων"
+        Me.BBDeleteFiles.Id = 2
+        Me.BBDeleteFiles.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_delete_16
+        Me.BBDeleteFiles.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Red
+        Me.BBDeleteFiles.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.BBDeleteFiles.Name = "BBDeleteFiles"
+        '
+        'BBUpdateEXtoUnpaid
+        '
+        Me.BBUpdateEXtoUnpaid.Caption = "Ενημέρωση ως απλήρωτο"
+        Me.BBUpdateEXtoUnpaid.Id = 3
+        Me.BBUpdateEXtoUnpaid.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_indeterminate_checkbox_16
+        Me.BBUpdateEXtoUnpaid.Name = "BBUpdateEXtoUnpaid"
+        '
+        'BBUpdateEXtopaid
+        '
+        Me.BBUpdateEXtopaid.Caption = "Ενημέρωση ως πληρωμένο"
+        Me.BBUpdateEXtopaid.Id = 4
+        Me.BBUpdateEXtopaid.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_check_16
+        Me.BBUpdateEXtopaid.Name = "BBUpdateEXtopaid"
         '
         'images
         '
@@ -1012,7 +1039,7 @@ Partial Class frmBatchInsertAttachmentsEX
         '
         'PopupMenuRows
         '
-        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenInh), New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenBdg), New DevExpress.XtraBars.LinkPersistInfo(Me.BBDeleteFiles)})
+        Me.PopupMenuRows.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenInh), New DevExpress.XtraBars.LinkPersistInfo(Me.BBOpenBdg), New DevExpress.XtraBars.LinkPersistInfo(Me.BBUpdateEXtoUnpaid), New DevExpress.XtraBars.LinkPersistInfo(Me.BBUpdateEXtopaid), New DevExpress.XtraBars.LinkPersistInfo(Me.BBDeleteFiles)})
         Me.PopupMenuRows.Manager = Me.BarManager1
         Me.PopupMenuRows.Name = "PopupMenuRows"
         '
@@ -1023,14 +1050,6 @@ Partial Class frmBatchInsertAttachmentsEX
         'Vw_BDGTableAdapter
         '
         Me.Vw_BDGTableAdapter.ClearBeforeFill = True
-        '
-        'BBDeleteFiles
-        '
-        Me.BBDeleteFiles.Caption = "Διαγραφή Αρχείων"
-        Me.BBDeleteFiles.Id = 2
-        Me.BBDeleteFiles.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Red
-        Me.BBDeleteFiles.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.BBDeleteFiles.Name = "BBDeleteFiles"
         '
         'frmBatchInsertAttachmentsEX
         '
@@ -1193,4 +1212,6 @@ Partial Class frmBatchInsertAttachmentsEX
     Friend WithEvents VwBDGBindingSource As BindingSource
     Friend WithEvents Vw_BDGTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter
     Friend WithEvents BBDeleteFiles As XtraBars.BarButtonItem
+    Friend WithEvents BBUpdateEXtoUnpaid As XtraBars.BarButtonItem
+    Friend WithEvents BBUpdateEXtopaid As XtraBars.BarButtonItem
 End Class
