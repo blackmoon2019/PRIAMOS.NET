@@ -1,12 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
-Imports DevExpress.DataAccess
-Imports DevExpress.Utils
-Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraEditors
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraGrid.Columns
-Imports DevExpress.XtraGrid.Menu
+Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmBatchInsertAttachmentsEX
@@ -14,6 +9,7 @@ Public Class frmBatchInsertAttachmentsEX
     Public Shared ReadOnly MaxEntitiesCount As Integer = 80
     Private _currentPath As String
     Private LoadForms As New FormLoader
+    Private ManageCbo As New CombosManager
     Private Sub frmBatchInsertAttachmentsEX_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG' table. You can move, or remove it, as needed.
         Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
@@ -254,6 +250,7 @@ Public Class frmBatchInsertAttachmentsEX
     End Sub
 
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
+        If cboBDG.EditValue = Nothing Then Exit Sub
         Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
     End Sub
 
@@ -270,7 +267,7 @@ Public Class frmBatchInsertAttachmentsEX
             End If
             If XtraMessageBox.Show("Θέλετε να διαγραφούν τα αρχεία από τα επιλεγμένα έξοδα?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 For I = 0 To GridView1.SelectedRowsCount - 1
-                    sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString & "'"
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -285,6 +282,63 @@ Public Class frmBatchInsertAttachmentsEX
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub BBUpdateEXtoUnpaid_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBUpdateEXtoUnpaid.ItemClick
+        Dim sSQL As String
+        Try
+            If GridView1.SelectedRowsCount = 0 Then
+                XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If XtraMessageBox.Show("Θέλετε να ενημερωθούν τα επιλεγμένα έξοδα ως ""Απλήρωτα""?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                For I = 0 To GridView1.SelectedRowsCount - 1
+                    sSQL = "UPDATE IND SET PAID = 0 WHERE ID = '" & GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString & "'"
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next
+            Else
+                Exit Sub
+            End If
+
+            XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub BBUpdateEXtopaid_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBUpdateEXtopaid.ItemClick
+        Dim sSQL As String
+        Try
+            If GridView1.SelectedRowsCount = 0 Then
+                XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If XtraMessageBox.Show("Θέλετε να ενημερωθούν τα επιλεγμένα έξοδα ως ""Πληρωμένα""?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                For I = 0 To GridView1.SelectedRowsCount - 1
+                    sSQL = "UPDATE IND SET PAID = 1 WHERE ID = '" & GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString & "'"
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                Next
+            Else
+                Exit Sub
+            End If
+
+            XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
+            Case 2 : cboBDG.EditValue = Nothing
+        End Select
     End Sub
 End Class
 

@@ -928,6 +928,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\icons8-check-16.png" />
+    <None Include="Resources\icons8-indeterminate-checkbox-16.png" />
     <Content Include="Sql Scripts\CalculateAndReturnDepositA.sql" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\dbo.AddNewFormRights.StoredProcedure.sql" />
@@ -2614,8 +2616,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Release (
+
+  xcopy "$(ProjectDir)\bin\Debug\PRIAMOS.NET.exe" "\\192.168.1.52\priamos.net\PRIAMOS_DEV\" /Y /I
+) ELSE (
+  echo "ConfigurationName= Debug".
+echo $(GitBranch)
+)</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

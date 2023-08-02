@@ -2991,29 +2991,33 @@ Public Class frmBDG
             Maintab.SelectedTabPage = tabDeposit
             Me.DEPOSIT_ATableAdapter.FillbybdgID(Me.Priamos_NET_DataSet_BDG.vw_DEPOSIT_A, System.Guid.Parse(sID))
             LoadForms.RestoreLayoutFromXml(GridView_DepositA, "vw_DEPOSIT_A.xml")
-            ' Σύνολο Λογιστικού Αποθεματικού
-            GettotDepositA()
+            'Υπολογισμός Διαθέσιμου υπολοίπου
+            CalculateDepositR()
+            ' Σύνολο Λογιστικού και Διαθέσιμου Αποθεματικού 
+            GettotDepositA_R()
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub GettotDepositA()
+    Private Sub GettotDepositA_R()
         Try
 
-            Dim sAmt As Double
-            Dim sSQL As String = "select top 1 totDepositA from BDG where ID =  " & toSQLValueS(sID)
+            Dim sAmtA As Double, sAmtR As Double
+            Dim sSQL As String = "select top 1 totDepositA,totDepositR from BDG where ID =  " & toSQLValueS(sID)
             Dim cmd As SqlCommand
             Dim sdr As SqlDataReader
             cmd = New SqlCommand(sSQL, CNDB)
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then
-                If sdr.IsDBNull(sdr.GetOrdinal("totDepositA")) = False Then sAmt = sdr.GetDecimal(sdr.GetOrdinal("totDepositA")).ToString
+                If sdr.IsDBNull(sdr.GetOrdinal("totDepositA")) = False Then sAmtA = sdr.GetDecimal(sdr.GetOrdinal("totDepositA")).ToString
+                If sdr.IsDBNull(sdr.GetOrdinal("totDepositR")) = False Then sAmtR = sdr.GetDecimal(sdr.GetOrdinal("totDepositR")).ToString
                 sdr.Close()
             Else
                 sdr.Close()
             End If
-            txtTotalDepositAmt.EditValue = sAmt
+            txtTotalDepositAmt.EditValue = sAmtA
+            txtTotalDepositAmtR.EditValue = sAmtR
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -3177,10 +3181,44 @@ Public Class frmBDG
                 txtTotalDepositAmt.EditValue = oCmd.Parameters("@Amt").Value
                 If txtTotalDepositAmt.Text = "" Then txtTotalDepositAmt.EditValue = "0.00"
             End Using
+            'Υπολογισμός Διαθέσιμου υπολοίπου
+            CalculateDepositR()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub CalculateDepositR()
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositR", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sID)
+                oCmd.Parameters.Add("@totDepositR", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnchargableOil", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnpaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@PaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@AptBalAdm", SqlDbType.Decimal)
+                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output
+                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output
+                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output
+                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output
+                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output
+                oCmd.ExecuteNonQuery()
+                txtTotalDepositAmtR.EditValue = oCmd.Parameters("@totDepositR").Value : If txtTotalDepositAmtR.Text = "" Then txtTotalDepositAmtR.EditValue = "0.00"
+                txtUnpaidInd.EditValue = oCmd.Parameters("@UnpaidInd").Value : If txtUnpaidInd.Text = "" Then txtUnpaidInd.EditValue = "0.00"
+                txtPaidInd.EditValue = oCmd.Parameters("@PaidInd").Value : If txtPaidInd.Text = "" Then txtPaidInd.EditValue = "0.00"
+                txtUnchargeOil.EditValue = oCmd.Parameters("@UnchargableOil").Value : If txtUnchargeOil.Text = "" Then txtUnchargeOil.EditValue = "0.00"
+                txtAptBAdm.EditValue = oCmd.Parameters("@AptBalAdm").Value : If txtAptBAdm.Text = "" Then txtAptBAdm.EditValue = "0.00"
+                txtTotalDepositAmtR.ToolTip = "Διαθέσιμο Υπόλοιπο = (Λογιστικό Υπόλοιπο + Απλήρωτα έξοδα υπολογισμένων παραστατικών) " + Environment.NewLine +
+                                              " - " + Environment.NewLine +
+                                              "(Πληρωμένα έξοδα μη υπολογισμένων παραστατικών + Υπόλοιπα διαμερισμάτων(από διαχειρίσεις" + Environment.NewLine +
+                                              " + " + Environment.NewLine +
+                                              "Αχρέωτο πετρέλαιο Δεξαμενής)"
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Private Sub ClearDepositA()
         Dim ExceptFields As New List(Of String)
         ExceptFields.Add("txtTotalDepositAmt")
