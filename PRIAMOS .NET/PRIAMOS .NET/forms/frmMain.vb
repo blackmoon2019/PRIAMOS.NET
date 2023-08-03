@@ -613,6 +613,24 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBServiceType_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBServiceType.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Είδος Υπηρεσίας"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "vw_PUBLIC_S_TYPES"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+    Private Sub BBPublicServices_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBPublicServices.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Υπηρεσίες(Εταιρίες)"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "vw_PUBLIC_S"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick
     '    Dim form As frmScroller = New frmScroller()
     '    form.Text = "Εργασίες υποθέσεων"

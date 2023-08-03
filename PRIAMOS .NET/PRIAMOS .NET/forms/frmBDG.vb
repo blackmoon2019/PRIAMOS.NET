@@ -283,7 +283,7 @@ Public Class frmBDG
                     If Mode = FormMode.NewRecord Then
                         Dim sSQL As String
                         sManageID = System.Guid.NewGuid.ToString
-                        sSQL = "INSERT INTO BMANAGE(ID,bdgID,createdOn) values (" & toSQLValueS(sManageID) & "," & toSQLValueS(sID) & ", getdate() )"
+                        sSQL = "INSERT INTO BMANAGE(ID,bdgID,createdOn) values (" & toSQLValueS(sManageID) & "," & toSQLValueS(sGuid) & ", getdate() )"
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()
                         End Using
@@ -568,12 +568,17 @@ Public Class frmBDG
     Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
         Dim sSQL As String
         Maintab.SelectedTabPage = tabManage
+        FillCbo.PUBLIC_S(cboeService, "where servicetypeID='E073DA5D-C428-4F03-88C3-9ACCC51EF812'")
+        FillCbo.PUBLIC_S(cbofService, "where servicetypeID='F0EE8CF4-2778-4EF8-BCF3-225541551CE6'")
+        FillCbo.PUBLIC_S(cbowService, "where servicetypeID='61407200-4E84-4FC7-9B99-A60FC5F9821B'")
+
         If sManageID IsNot Nothing Then
             If sManageID.Length > 0 Then
                 sSQL = "SELECT * FROM vw_BMANAGE WHERE ID = '" & sManageID & "'"
                 BdgManage.LoadBManageRecords(LayoutControl2BManage, sSQL)
             End If
-
+            'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_PUBLIC_S' table. You can move, or remove it, as needed.
+            ' Me.Vw_PUBLIC_STableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_PUBLIC_S)
         End If
         'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl2BManage)
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
@@ -1718,7 +1723,7 @@ Public Class frmBDG
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = False
         Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
-        If result = DialogResult.OK Then txtPayDEI.EditValue = GetTextFromPDF(XtraOpenFileDialog1.SafeFileName)
+        ' If result = DialogResult.OK Then txtPayDEI.EditValue = GetTextFromPDF(XtraOpenFileDialog1.SafeFileName)
     End Sub
 
     Private Sub cmdIEPRefresh_Click(sender As Object, e As EventArgs) Handles cmdIEPRefresh.Click
@@ -3329,6 +3334,30 @@ Public Class frmBDG
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub cboeService_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboeService.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManagePUBLIC_S(cboeService, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManagePUBLIC_S(cboeService, FormMode.EditRecord)
+            Case 3 : cboeService.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cbofService_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cbofService.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManagePUBLIC_S(cbofService, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManagePUBLIC_S(cbofService, FormMode.EditRecord)
+            Case 3 : cbofService.EditValue = Nothing
+        End Select
+    End Sub
+
+    Private Sub cbowService_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cbowService.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : ManageCbo.ManagePUBLIC_S(cbowService, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManagePUBLIC_S(cbowService, FormMode.EditRecord)
+            Case 3 : cbowService.EditValue = Nothing
+        End Select
     End Sub
     'Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
     '    If Valid.ValidateFormGRP(LayoutControlGroup18) Then

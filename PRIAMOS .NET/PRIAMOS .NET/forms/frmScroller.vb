@@ -212,6 +212,8 @@ Public Class frmScroller
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_FOLDER_CAT" : sSQL = "DELETE FROM FOLDER_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_PUBLIC_S_TYPES" : sSQL = "DELETE FROM PUBLIC_S_TYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_PUBLIC_S" : sSQL = "DELETE FROM PUBLIC_S WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT"
                         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "profActDID").ToString <> "" Then
                             sSQL = "Update PROF_ACT_D 
@@ -313,6 +315,8 @@ Public Class frmScroller
                     Case "vw_TASKS_CAT" : sSQL = "DELETE FROM TASKS_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_TASKS" : sSQL = "DELETE FROM TASKS WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_PUBLIC_S_TYPES" : sSQL = "DELETE FROM PUBLIC_S_TYPES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_PUBLIC_S" : sSQL = "DELETE FROM PUBLIC_S WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT"
                         sSQL = "Update PROF_ACT_D 
                                 SET colCreated=0
@@ -914,6 +918,23 @@ Public Class frmScroller
                 fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+            Case "vw_PUBLIC_S"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Υπηρεσίες(Εταιρίες)"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "PUBLIC_S"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Εταιρία"
+                fGen.L3.Text = "Είδος Υπηρεσίας"
+                fGen.L3.Control.Tag = "servicetypeID,0,1,2"
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
             Case "vw_ADR"
                 Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Διευθύνσεις"
@@ -1058,7 +1079,7 @@ Public Class frmScroller
                 fGen.Show()
 
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT",
-                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS"
+                 "vw_TTL", "vw_APOL_TYPES", "VW_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS", "vw_PUBLIC_S_TYPES"
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_ANN_GRPS" : fGen.Text = "Κατηγορίες Ανακοινώσεων" : fGen.DataTable = "ANN_GRPS" : fGen.L2.Text = "Κατηγορία"
@@ -1074,6 +1095,7 @@ Public Class frmScroller
                     Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                     Case "vw_TASKS_CAT" : fGen.Text = "Εργασίες" : fGen.DataTable = "TASKS_CAT" : fGen.L2.Text = "Εργασίες"
                     Case "vw_FOLDER_CAT" : fGen.Text = "Κατηγορίες Φακέλων" : fGen.DataTable = "FOLDER_CAT" : fGen.L2.Text = "Κατηγορία"
+                    Case "vw_PUBLIC_S_TYPES" : fGen.Text = "Είδος Υπηρεσίας" : fGen.DataTable = "PUBLIC_S_TYPES" : fGen.L2.Text = "Είδος Υπηρεσίας"
                 End Select
                 fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
                 fGen.MdiParent = frmMain
@@ -1090,6 +1112,37 @@ Public Class frmScroller
     'Νέα Εγγραφή
     Private Sub NewRecord()
         Select Case sDataTable
+            Case "vw_CALC_CAT"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Κατηγορίες Υπολογισμών"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "CALC_CAT"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Όνομα"
+                fGen.L3.Text = "Τύπος Υπολογισμού"
+                fGen.L3.Control.Tag = "calcTypeID,0,1,2"
+                fGen.L3.Tag = ""
+                fGen.L3.ImageOptions.Image = Nothing
+                fGen.L4.Text = "Κατηγορία Χιλιοστών"
+                fGen.L4.Control.Tag = "mlcID,0,1,2"
+                fGen.L4.Tag = ""
+                fGen.L4.ImageOptions.Image = Nothing
+                fGen.L7.Text = "Λεκτικό Εκτύπωσης"
+                fGen.L7.Control.Tag = "repName,0,1,2"
+                fGen.L7.Tag = ""
+                fGen.L7.ImageOptions.Image = Nothing
+                fGen.L8.Text = "Θέση Ταξινόμησης"
+                fGen.txtNum.Tag = "ord,0,1,2"
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
             Case "vw_CONTACTS"
                 Dim frmContacts As frmContacts = New frmContacts()
                 frmContacts.Text = "Επικοινωνίες"
@@ -1263,6 +1316,23 @@ Public Class frmScroller
                 fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+            Case "vw_PUBLIC_S"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Υπηρεσίες(Εταιρίες)"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "PUBLIC_S"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Εταιρία"
+                fGen.L3.Text = "Είδος Υπηρεσίας"
+                fGen.L3.Control.Tag = "servicetypeID,0,1,2"
+                fGen.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+
             Case "vw_ADR"
                 Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Διευθύνσεις"
@@ -1401,7 +1471,7 @@ Public Class frmScroller
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
             Case "vw_ANN_MENTS", "vw_COU", "vw_DOY", "vw_PRF", "vw_HTYPES", "vw_BTYPES", "vw_FTYPES", "vw_TECH_CAT", "vw_CALC_CAT", "vw_TTL",
-                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS"
+                 "vw_APOL_TYPES", "vw_COL_METHOD", "vw_TASKS_CAT", "vw_FOLDER_CAT", "vw_ANN_GRPS", "vw_PUBLIC_S_TYPES"
                 Dim fGen As frmGen = New frmGen()
                 Select Case sDataTable
                     Case "vw_ANN_GRPS" : fGen.Text = "Κατηγορίες Ανακοινώσεων" : fGen.DataTable = "ANN_GRPS" : fGen.L2.Text = "Κατηγορία"
@@ -1417,6 +1487,7 @@ Public Class frmScroller
                     Case "vw_COL_METHOD" : fGen.Text = "Τρόποι Είσπραξης" : fGen.DataTable = "COL_METHOD" : fGen.L2.Text = "Τρόπος Είσπραξης"
                     Case "vw_TASKS_CAT" : fGen.Text = "Εργασίες" : fGen.DataTable = "TASKS_CAT" : fGen.L2.Text = "Εργασίες"
                     Case "vw_FOLDER_CAT" : fGen.Text = "Κατηγορίες Φακέλων" : fGen.DataTable = "FOLDER_CAT" : fGen.L2.Text = "Κατηγορία"
+                    Case "vw_PUBLIC_S_TYPES" : fGen.Text = "Είδος Υπηρεσίας" : fGen.DataTable = "PUBLIC_S_TYPES" : fGen.L2.Text = "Είδος Υπηρεσίας"
                 End Select
                 fGen.MdiParent = frmMain
                 fGen.Mode = FormMode.NewRecord

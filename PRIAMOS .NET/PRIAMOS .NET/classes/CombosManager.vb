@@ -200,6 +200,28 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
+    Public Sub ManagePUBLIC_S(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
+        Dim form1 As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Υπηρεσίες(Εταιρίες)"
+        form1.CallerControl = CallerControl
+        form1.CalledFromControl = True
+        form1.MdiParent = frmMain
+        form1.DataTable = "PUBLIC_S"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Εταιρία"
+        form1.L3.Text = "Είδος Υπηρεσίας"
+        form1.L3.Control.Tag = "servicetypeID,0,1,2"
+        form1.L3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        If CallerControl.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = CallerControl.EditValue.ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
     Public Sub ManageCOU(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmGen = New frmGen()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing

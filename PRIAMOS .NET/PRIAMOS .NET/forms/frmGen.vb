@@ -98,6 +98,38 @@ Public Class frmGen
                 Select Case Mode
                     Case FormMode.NewRecord
                         Select Case sDataTable
+                            Case "PUBLIC_S"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PUBLIC_S", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.PUBLIC_S(CtrlCombo, "")
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("PUBLIC_S")
+
+
+                            Case "PUBLIC_S_TYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "PUBLIC_S_TYPES", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.COL_EXT_TYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("PUBLIC_S_TYPES")
+
+
                             Case "COL_EXT_TYPES"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT_TYPES", LayoutControl1,,, sGuid, True)
@@ -443,6 +475,28 @@ Public Class frmGen
                         End Select
                     Case FormMode.EditRecord
                         Select Case sDataTable
+                            Case "PUBLIC_S"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PUBLIC_S", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.PUBLIC_S(CtrlCombo, "")
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
+                            Case "PUBLIC_S_TYPES"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PUBLIC_S_TYPES", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.PUBLIC_S_TYPES(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
+
                             Case "COL_EXT_TYPES"
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "COL_EXT_TYPES", LayoutControl1,,, sID, True)
                                 If CalledFromCtrl Then
@@ -681,7 +735,19 @@ Public Class frmGen
     Private Sub LoadGen()
         Try
             Select Case sDataTable
-
+                Case "PUBLIC_S"
+                    FillCbo.PUBLIC_S_TYPES(cbo1)
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("PUBLIC_S")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_PUBLIC_S where id ='" + sID + "'", True)
+                    End If
+                Case "PUBLIC_S_TYPES"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("PUBLIC_S_TYPES")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_PUBLIC_S_TYPES where id ='" + sID + "'")
+                    End If
                 Case "COL_EXT_TYPES"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("COL_EXT_TYPES")
@@ -847,6 +913,10 @@ Public Class frmGen
                     oCmd.ExecuteNonQuery()
                 End Using
                 Select Case sDataTable
+
+                    Case "PUBLIC_S" : If CalledFromCtrl Then FillCbo.PUBLIC_S(CtrlCombo, "")
+                    Case "PUBLIC_S_TYPES" : If CalledFromCtrl Then FillCbo.PUBLIC_S_TYPES(CtrlCombo)
+
                     Case "COL_EXT_TYPES"
                         If CalledFromCtrl Then
                             FillCbo.COL_EXT_TYPES(CtrlCombo)
