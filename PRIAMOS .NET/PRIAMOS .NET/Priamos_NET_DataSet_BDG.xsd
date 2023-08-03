@@ -462,7 +462,7 @@ FROM   vw_FOLDER_CAT</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_CCT_BANKSTableAdapter" GeneratorDataComponentClassName="vw_CCT_BANKSTableAdapter" Name="vw_CCT_BANKS" UserDataComponentName="vw_CCT_BANKSTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CCT_BANKS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBycctID" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="FillBycctID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="FillBycctID">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_CCT_BANKS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBycctID" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="FillBycctID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="FillBycctID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT vw_CCT_BANKS.*
@@ -491,6 +491,7 @@ where cctID= @cctID</CommandText>
               <Mapping SourceColumn="Iban" DataSetColumn="Iban" />
               <Mapping SourceColumn="AccountNumber" DataSetColumn="AccountNumber" />
               <Mapping SourceColumn="BicNumber" DataSetColumn="BicNumber" />
+              <Mapping SourceColumn="AccountHolder" DataSetColumn="AccountHolder" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -552,7 +553,7 @@ where cctID= @cctID</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="regardingdeposit" msprop:Generator_UserColumnName="regardingdeposit" msprop:Generator_ColumnPropNameInTable="regardingdepositColumn" msprop:Generator_ColumnPropNameInRow="regardingdeposit" msprop:Generator_ColumnVarNameInTable="columnregardingdeposit" type="xs:boolean" />
+              <xs:element name="regardingdeposit" msprop:Generator_ColumnPropNameInTable="regardingdepositColumn" msprop:Generator_ColumnPropNameInRow="regardingdeposit" msprop:Generator_UserColumnName="regardingdeposit" msprop:Generator_ColumnVarNameInTable="columnregardingdeposit" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1098,14 +1099,14 @@ where cctID= @cctID</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="inhID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="inhIDColumn" msprop:Generator_ColumnPropNameInRow="inhID" msprop:Generator_UserColumnName="inhID" msprop:Generator_ColumnVarNameInTable="columninhID" type="xs:string" minOccurs="0" />
-              <xs:element name="filename" msprop:Generator_ColumnPropNameInRow="filename" msprop:Generator_ColumnPropNameInTable="filenameColumn" msprop:Generator_ColumnVarNameInTable="columnfilename" msprop:Generator_UserColumnName="filename" minOccurs="0">
+              <xs:element name="filename" msprop:Generator_ColumnPropNameInTable="filenameColumn" msprop:Generator_ColumnPropNameInRow="filename" msprop:Generator_UserColumnName="filename" msprop:Generator_ColumnVarNameInTable="columnfilename" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="depositFID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="depositFID" msprop:Generator_ColumnPropNameInTable="depositFIDColumn" msprop:Generator_ColumnVarNameInTable="columndepositFID" msprop:Generator_UserColumnName="depositFID" type="xs:string" minOccurs="0" />
+              <xs:element name="depositFID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="depositFIDColumn" msprop:Generator_ColumnPropNameInRow="depositFID" msprop:Generator_UserColumnName="depositFID" msprop:Generator_ColumnVarNameInTable="columndepositFID" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1269,6 +1270,13 @@ where cctID= @cctID</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AccountHolder" msprop:Generator_UserColumnName="AccountHolder" msprop:Generator_ColumnPropNameInTable="AccountHolderColumn" msprop:Generator_ColumnPropNameInRow="AccountHolder" msprop:Generator_ColumnVarNameInTable="columnAccountHolder" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

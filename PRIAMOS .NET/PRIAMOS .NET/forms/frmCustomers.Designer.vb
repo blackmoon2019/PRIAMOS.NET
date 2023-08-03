@@ -207,6 +207,7 @@ Partial Class frmCustomers
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
         Me.Vw_CCT_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_CCT_BANKSTableAdapter()
         Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
+        Me.colAccountHolder = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -492,7 +493,7 @@ Partial Class frmCustomers
         '
         'GridView12
         '
-        Me.GridView12.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colcctID, Me.colbankID, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colcreatedBy, Me.colMachineName, Me.colBankName, Me.colcctFullname, Me.colModifierName, Me.colIban, Me.colAccountNumber, Me.colBicNumber})
+        Me.GridView12.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colcctID, Me.colbankID, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colcreatedBy, Me.colMachineName, Me.colBankName, Me.colcctFullname, Me.colModifierName, Me.colIban, Me.colAccountNumber, Me.colBicNumber, Me.colAccountHolder})
         Me.GridView12.DetailHeight = 150
         Me.GridView12.FixedLineWidth = 3
         GridFormatRule1.ApplyToRow = True
@@ -1818,6 +1819,16 @@ Partial Class frmCustomers
         '
         Me.Vw_BANKSTableAdapter.ClearBeforeFill = True
         '
+        'colAccountHolder
+        '
+        Me.colAccountHolder.Caption = "Δικαιούχος"
+        Me.colAccountHolder.FieldName = "AccountHolder"
+        Me.colAccountHolder.MinWidth = 35
+        Me.colAccountHolder.Name = "colAccountHolder"
+        Me.colAccountHolder.Visible = True
+        Me.colAccountHolder.VisibleIndex = 4
+        Me.colAccountHolder.Width = 131
+        '
         'frmCustomers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -2035,4 +2046,5 @@ Partial Class frmCustomers
     Friend WithEvents Priamos_NETDataSet As Priamos_NETDataSet
     Friend WithEvents VwBANKSBindingSource As BindingSource
     Friend WithEvents Vw_BANKSTableAdapter As Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter
+    Friend WithEvents colAccountHolder As DevExpress.XtraGrid.Columns.GridColumn
 End Class

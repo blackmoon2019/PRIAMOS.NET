@@ -6184,6 +6184,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         Private columnBicNumber As Global.System.Data.DataColumn
         
+        Private columnAccountHolder As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -6340,6 +6342,14 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property AccountHolderColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAccountHolder
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -6376,9 +6386,9 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function Addvw_CCT_BANKSRow(ByVal ID As System.Guid, ByVal cctID As System.Guid, ByVal bankID As System.Guid, ByVal modifiedBy As System.Guid, ByVal modifiedOn As Date, ByVal createdOn As Date, ByVal createdBy As System.Guid, ByVal MachineName As String, ByVal BankName As String, ByVal cctFullname As String, ByVal ModifierName As String, ByVal Iban As String, ByVal AccountNumber As String, ByVal BicNumber As String) As vw_CCT_BANKSRow
+        Public Overloads Function Addvw_CCT_BANKSRow(ByVal ID As System.Guid, ByVal cctID As System.Guid, ByVal bankID As System.Guid, ByVal modifiedBy As System.Guid, ByVal modifiedOn As Date, ByVal createdOn As Date, ByVal createdBy As System.Guid, ByVal MachineName As String, ByVal BankName As String, ByVal cctFullname As String, ByVal ModifierName As String, ByVal Iban As String, ByVal AccountNumber As String, ByVal BicNumber As String, ByVal AccountHolder As String) As vw_CCT_BANKSRow
             Dim rowvw_CCT_BANKSRow As vw_CCT_BANKSRow = CType(Me.NewRow,vw_CCT_BANKSRow)
-            Dim columnValuesArray() As Object = New Object() {ID, Nothing, cctID, bankID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, BankName, cctFullname, ModifierName, Iban, AccountNumber, BicNumber}
+            Dim columnValuesArray() As Object = New Object() {ID, Nothing, cctID, bankID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, BankName, cctFullname, ModifierName, Iban, AccountNumber, BicNumber, AccountHolder}
             rowvw_CCT_BANKSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_CCT_BANKSRow)
             Return rowvw_CCT_BANKSRow
@@ -6422,6 +6432,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnIban = MyBase.Columns("Iban")
             Me.columnAccountNumber = MyBase.Columns("AccountNumber")
             Me.columnBicNumber = MyBase.Columns("BicNumber")
+            Me.columnAccountHolder = MyBase.Columns("AccountHolder")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6457,6 +6468,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columnAccountNumber)
             Me.columnBicNumber = New Global.System.Data.DataColumn("BicNumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBicNumber)
+            Me.columnAccountHolder = New Global.System.Data.DataColumn("AccountHolder", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAccountHolder)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -6475,6 +6488,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnIban.MaxLength = 50
             Me.columnAccountNumber.MaxLength = 50
             Me.columnBicNumber.MaxLength = 50
+            Me.columnAccountHolder.MaxLength = 150
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11898,6 +11912,21 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property AccountHolder() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_CCT_BANKS.AccountHolderColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AccountHolder' in table 'vw_CCT_BANKS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_CCT_BANKS.AccountHolderColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsmodifiedByNull() As Boolean
             Return Me.IsNull(Me.tablevw_CCT_BANKS.modifiedByColumn)
         End Function
@@ -12026,6 +12055,18 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetBicNumberNull()
             Me(Me.tablevw_CCT_BANKS.BicNumberColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsAccountHolderNull() As Boolean
+            Return Me.IsNull(Me.tablevw_CCT_BANKS.AccountHolderColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetAccountHolderNull()
+            Me(Me.tablevw_CCT_BANKS.AccountHolderColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -14544,6 +14585,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("Iban", "Iban")
             tableMapping.ColumnMappings.Add("AccountNumber", "AccountNumber")
             tableMapping.ColumnMappings.Add("BicNumber", "BicNumber")
+            tableMapping.ColumnMappings.Add("AccountHolder", "AccountHolder")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

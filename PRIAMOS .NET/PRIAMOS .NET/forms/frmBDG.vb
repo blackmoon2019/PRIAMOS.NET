@@ -1675,7 +1675,7 @@ Public Class frmBDG
         form1.ShowDialog()
     End Sub
 
-    Private Sub cmdDeiLogin_Click(sender As Object, e As EventArgs) Handles cmdDeiLogin.Click
+    Private Sub cmdDeiLogin_Click(sender As Object, e As EventArgs)
         On Error Resume Next
         'WebBrowser1.Document.GetElementById("ctl00_ctl00_Site_Main_Main_ApartmentBuildingBills_txtCustomerCode").SetAttribute("value", txteCounter.Text)
         'WebBrowser1.Document.GetElementById("ctl00$ctl00$Site_Main$Main$ApartmentBuildingBills$btnFindApartmentBuildingBills").InvokeMember("click")
@@ -1706,7 +1706,7 @@ Public Class frmBDG
         Return value
     End Function
 
-    Private Sub cmdOpenPDF_Click(sender As Object, e As EventArgs) Handles cmdOpenPDF.Click
+    Private Sub cmdOpenPDF_Click(sender As Object, e As EventArgs)
         FilesSelection()
     End Sub
     Private Sub FilesSelection()
