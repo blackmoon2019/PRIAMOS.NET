@@ -1993,20 +1993,23 @@ Public Class frmScroller
 
     Private Sub BarSYG_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarSYG.ItemClick
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
-        For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(0, selectedRowHandles(I))
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView1.GetRowCellValue(selectedRowHandle, "Calculated") = True Then PrintReport(0, selectedRowHandles(I))
         Next
     End Sub
     Private Sub BarEIDOP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEIDOP.ItemClick
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
-        For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(1, selectedRowHandles(I))
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView1.GetRowCellValue(selectedRowHandle, "Calculated") = True Then PrintReport(1, selectedRowHandles(I))
         Next
     End Sub
     Private Sub BarRECEIPTS_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarRECEIPTS.ItemClick
         Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
-        For I = 0 To GridView1.SelectedRowsCount - 1
-            If GridView1.GetRowCellValue(selectedRowHandles(I), "Calculated") = True Then PrintReport(2, selectedRowHandles(I))
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView1.GetRowCellValue(selectedRowHandle, "Calculated") = True Then PrintReport(2, selectedRowHandles(I))
         Next
 
     End Sub

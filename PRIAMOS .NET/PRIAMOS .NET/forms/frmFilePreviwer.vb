@@ -28,13 +28,20 @@ Public Class frmFilePreviwer
     End Sub
 
     Private Sub GridView1_RowClick(sender As Object, e As RowClickEventArgs) Handles GridView1.RowClick
-        If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub
-        Dim sFilename = System.IO.Path.GetTempFileName().ToString().Replace(".tmp", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "extension"))
-        Dim fs As IO.FileStream = New IO.FileStream(sFilename, IO.FileMode.Create)
-        Dim b() As Byte = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "files")
-        fs.Write(b, 0, b.Length)
-        PdfViewer1.LoadDocument(fs)
-        fs.Close()
+        Try
+            If GridView1.IsGroupRow(GridView1.FocusedRowHandle) Then Exit Sub
+            Dim sFilename = System.IO.Path.GetTempFileName().ToString().Replace(".tmp", GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "extension"))
+            If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "extension").ToString.ToUpper <> ".PDF" Then Exit Sub
+            Dim fs As IO.FileStream = New IO.FileStream(sFilename, IO.FileMode.Create)
+            Dim b() As Byte = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "files")
+            fs.Write(b, 0, b.Length)
+            PdfViewer1.LoadDocument(fs)
+            fs.Close()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        End Try
+
     End Sub
     Private Sub grdMain_KeyDown(sender As Object, e As KeyEventArgs) Handles grdMain.KeyDown
         Select Case e.KeyCode

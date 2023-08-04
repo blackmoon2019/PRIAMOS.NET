@@ -127,12 +127,13 @@ Public Class frmColEnanti
                 End Using
                 'Καταχώρηση Προοδευτικής Χρέωσης
                 sSQL.Clear()
-                sSQL.AppendLine("INSERT INTO COL_P (BDGID,APTID,INHID,debit,tenant)")
+                sSQL.AppendLine("INSERT INTO COL_P (BDGID,APTID,INHID,debit,tenant,reserveAPT)")
                 sSQL.AppendLine("select ")
                 sSQL.AppendLine(toSQLValueS(sBdgID) & ",")
                 sSQL.AppendLine(toSQLValueS(cboApt.EditValue.ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(sINHID) & ",")
                 sSQL.AppendLine(toSQLValue(txtDebit, True) & "*(-1),")
+                sSQL.AppendLine(toSQLValueS(cboOwnerTenant.SelectedIndex) & ",")
                 sSQL.AppendLine("1")
                 'Εκτέλεση QUERY
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)

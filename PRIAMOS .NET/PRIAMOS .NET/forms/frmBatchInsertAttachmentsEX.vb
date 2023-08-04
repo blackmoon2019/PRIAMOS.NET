@@ -181,15 +181,18 @@ Public Class frmBatchInsertAttachmentsEX
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
         Try
+            Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
             If GridView1.SelectedRowsCount = 0 Then
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
-            For I = 0 To GridView1.SelectedRowsCount - 1
-                ' Αποθήκευση Αρχείων
-                If DBQ.InsertNewDataFilesFromListBox(ImageListBoxControl1, "IND_F", GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString, BreadCrumb.Path) = True Then
+            For I = 0 To selectedRowHandles.Length - 1
+                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
+                    ' Αποθήκευση Αρχείων
+                    If DBQ.InsertNewDataFilesFromListBox(ImageListBoxControl1, "IND_F", GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString, BreadCrumb.Path) = True Then
 
-
+                    End If
                 End If
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -255,19 +258,22 @@ Public Class frmBatchInsertAttachmentsEX
     End Sub
 
     Private Sub chkPaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaid.CheckedChanged
+        If cboBDG.EditValue = Nothing Then Exit Sub
         Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
     End Sub
 
     Private Sub BBDeleteFiles_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBDeleteFiles.ItemClick
         Dim sSQL As String
         Try
+            Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
             If GridView1.SelectedRowsCount = 0 Then
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
             If XtraMessageBox.Show("Θέλετε να διαγραφούν τα αρχεία από τα επιλεγμένα έξοδα?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                For I = 0 To GridView1.SelectedRowsCount - 1
-                    sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString & "'"
+                For I = 0 To selectedRowHandles.Length - 1
+                    Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                    sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -287,13 +293,15 @@ Public Class frmBatchInsertAttachmentsEX
     Private Sub BBUpdateEXtoUnpaid_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBUpdateEXtoUnpaid.ItemClick
         Dim sSQL As String
         Try
+            Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
             If GridView1.SelectedRowsCount = 0 Then
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
             If XtraMessageBox.Show("Θέλετε να ενημερωθούν τα επιλεγμένα έξοδα ως ""Απλήρωτα""?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                For I = 0 To GridView1.SelectedRowsCount - 1
-                    sSQL = "UPDATE IND SET PAID = 0 WHERE ID = '" & GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString & "'"
+                For I = 0 To selectedRowHandles.Length - 1
+                    Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                    sSQL = "UPDATE IND SET PAID = 0 WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -312,13 +320,15 @@ Public Class frmBatchInsertAttachmentsEX
     Private Sub BBUpdateEXtopaid_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBUpdateEXtopaid.ItemClick
         Dim sSQL As String
         Try
+            Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
             If GridView1.SelectedRowsCount = 0 Then
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
             If XtraMessageBox.Show("Θέλετε να ενημερωθούν τα επιλεγμένα έξοδα ως ""Πληρωμένα""?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                For I = 0 To GridView1.SelectedRowsCount - 1
-                    sSQL = "UPDATE IND SET PAID = 1 WHERE ID = '" & GridView1.GetRowCellValue(GridView1.GetSelectedRows(I), "ID").ToString & "'"
+                For I = 0 To selectedRowHandles.Length - 1
+                    Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                    sSQL = "UPDATE IND SET PAID = 1 WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using

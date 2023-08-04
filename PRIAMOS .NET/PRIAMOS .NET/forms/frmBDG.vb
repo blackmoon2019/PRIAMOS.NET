@@ -40,7 +40,7 @@ Public Class frmBDG
     Private ModeBCCT As Byte
     Private ModePROFACTD As Byte
     Private ActiveGrid As GridView
-
+    Private CommentsChanged As Boolean = False
 
     '------C L A S S E S------
     Private ManageCbo As New CombosManager
@@ -165,6 +165,7 @@ Public Class frmBDG
                 Me.Vw_BDG_MTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_BDG_M, System.Guid.Parse(sID))
                 Me.Vw_CCTTableAdapter.FillByAll(Me.Priamos_NETDataSet.vw_CCT)
         End Select
+        NavDeposit.Enabled = chkKeepDeposit.Checked
         ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         'Me.CenterToScreen()
         'Me.Size = New Size(2244, 1444)
@@ -319,6 +320,7 @@ Public Class frmBDG
                     'Dim form As New frmScroller
                     'form.LoadRecords("vw_BDG", sID)
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    CommentsChanged = False
                     Valid.SChanged = False
                     cmdAPTAdd.Enabled = True
                     cmdAptRefresh.Enabled = True
@@ -3359,6 +3361,26 @@ Public Class frmBDG
             Case 3 : cbowService.EditValue = Nothing
         End Select
     End Sub
+
+    Private Sub chkKeepDeposit_CheckStateChanged(sender As Object, e As EventArgs) Handles chkKeepDeposit.CheckStateChanged
+        NavDeposit.Enabled = chkKeepDeposit.Checked
+    End Sub
+
+    Private Sub chkManage_CheckStateChanged(sender As Object, e As EventArgs) Handles chkManage.CheckStateChanged
+        chkKeepDeposit.Checked = chkManage.Checked
+    End Sub
+
+    Private Sub txtComments_EditValueChanged(sender As Object, e As EventArgs) Handles txtComments.EditValueChanged
+        CommentsChanged = True
+    End Sub
+
+    Private Sub txtComments_LostFocus(sender As Object, e As EventArgs) Handles txtComments.LostFocus
+        If CommentsChanged = True Then
+            CommentsChanged = False
+            XtraMessageBox.Show("Έχετε κάνει αλλαγές στα ""Σχόλια"". Παρακαλώ αποθηκευστε την πολυκατοικία.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
     'Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
     '    If Valid.ValidateFormGRP(LayoutControlGroup18) Then
     '        If XtraOpenFileDialog1.SafeFileName <> "" Then
