@@ -347,7 +347,7 @@ WHERE (bdgID = @bdgID)</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_DEPOSIT_A" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillbybdgID" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="FillbybdgID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="FillbybdgID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, code, bdgID, multiplierDescr, multiplier, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, completeDate, inhID, filename, depositFID
+                    <CommandText>SELECT ID, code, bdgID, multiplierDescr, multiplier, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, completeDate, inhID, filename, depositFID, isPrepayment
 FROM   vw_DEPOSIT_A
 WHERE (bdgID = @bdgID)</CommandText>
                     <Parameters>
@@ -377,6 +377,7 @@ WHERE (bdgID = @bdgID)</CommandText>
               <Mapping SourceColumn="inhID" DataSetColumn="inhID" />
               <Mapping SourceColumn="filename" DataSetColumn="filename" />
               <Mapping SourceColumn="depositFID" DataSetColumn="depositFID" />
+              <Mapping SourceColumn="isPrepayment" DataSetColumn="isPrepayment" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -530,7 +531,7 @@ where servicetypeID='E073DA5D-C428-4F03-88C3-9ACCC51EF812'</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_PUBLIC_S" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByFysiko" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByFysiko" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByFysiko">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_PUBLIC_S" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByFysiko" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByFysiko" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByFysiko">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT vw_PUBLIC_S.*
@@ -540,7 +541,7 @@ where servicetypeID='F0EE8CF4-2778-4EF8-BCF3-225541551CE6'</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_PUBLIC_S" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByWater" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByWater" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByWater">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_PUBLIC_S" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByWater" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByWater" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillByWater">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT vw_PUBLIC_S.*
@@ -1164,6 +1165,7 @@ where servicetypeID='61407200-4E84-4FC7-9B99-A60FC5F9821B'</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="depositFID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="depositFIDColumn" msprop:Generator_ColumnPropNameInRow="depositFID" msprop:Generator_UserColumnName="depositFID" msprop:Generator_ColumnVarNameInTable="columndepositFID" type="xs:string" minOccurs="0" />
+              <xs:element name="isPrepayment" msprop:Generator_ColumnPropNameInRow="isPrepayment" msprop:Generator_ColumnPropNameInTable="isPrepaymentColumn" msprop:Generator_ColumnVarNameInTable="columnisPrepayment" msprop:Generator_UserColumnName="isPrepayment" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1340,31 +1342,31 @@ where servicetypeID='61407200-4E84-4FC7-9B99-A60FC5F9821B'</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_PUBLIC_S" msprop:Generator_RowEvHandlerName="vw_PUBLIC_SRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_PUBLIC_SRowDeleted" msprop:Generator_RowDeletingName="vw_PUBLIC_SRowDeleting" msprop:Generator_RowEvArgName="vw_PUBLIC_SRowChangeEvent" msprop:Generator_TablePropName="vw_PUBLIC_S" msprop:Generator_RowChangedName="vw_PUBLIC_SRowChanged" msprop:Generator_RowChangingName="vw_PUBLIC_SRowChanging" msprop:Generator_TableClassName="vw_PUBLIC_SDataTable" msprop:Generator_RowClassName="vw_PUBLIC_SRow" msprop:Generator_TableVarName="tablevw_PUBLIC_S" msprop:Generator_UserTableName="vw_PUBLIC_S">
+        <xs:element name="vw_PUBLIC_S" msprop:Generator_RowClassName="vw_PUBLIC_SRow" msprop:Generator_RowEvHandlerName="vw_PUBLIC_SRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_PUBLIC_SRowDeleted" msprop:Generator_RowDeletingName="vw_PUBLIC_SRowDeleting" msprop:Generator_RowEvArgName="vw_PUBLIC_SRowChangeEvent" msprop:Generator_TablePropName="vw_PUBLIC_S" msprop:Generator_RowChangedName="vw_PUBLIC_SRowChanged" msprop:Generator_UserTableName="vw_PUBLIC_S" msprop:Generator_RowChangingName="vw_PUBLIC_SRowChanging" msprop:Generator_TableClassName="vw_PUBLIC_SDataTable" msprop:Generator_TableVarName="tablevw_PUBLIC_S">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:string" />
-              <xs:element name="code" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_UserColumnName="code" type="xs:int" />
-              <xs:element name="name" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_UserColumnName="name" minOccurs="0">
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
+              <xs:element name="code" msprop:Generator_UserColumnName="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnVarNameInTable="columncode" type="xs:int" />
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnVarNameInTable="columnname" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="servicetypeID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="servicetypeID" msprop:Generator_ColumnPropNameInTable="servicetypeIDColumn" msprop:Generator_ColumnVarNameInTable="columnservicetypeID" msprop:Generator_UserColumnName="servicetypeID" type="xs:string" />
-              <xs:element name="modifiedBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="modifiedBy" msprop:Generator_ColumnPropNameInTable="modifiedByColumn" msprop:Generator_ColumnVarNameInTable="columnmodifiedBy" msprop:Generator_UserColumnName="modifiedBy" type="xs:string" minOccurs="0" />
-              <xs:element name="modifiedOn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" msprop:Generator_UserColumnName="modifiedOn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="createdOn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" msprop:Generator_UserColumnName="createdOn" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="createdBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="createdBy" msprop:Generator_ColumnPropNameInTable="createdByColumn" msprop:Generator_ColumnVarNameInTable="columncreatedBy" msprop:Generator_UserColumnName="createdBy" type="xs:string" minOccurs="0" />
-              <xs:element name="MachineName" msprop:Generator_ColumnPropNameInRow="MachineName" msprop:Generator_ColumnPropNameInTable="MachineNameColumn" msprop:Generator_ColumnVarNameInTable="columnMachineName" msprop:Generator_UserColumnName="MachineName" minOccurs="0">
+              <xs:element name="servicetypeID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="servicetypeID" msprop:Generator_ColumnPropNameInTable="servicetypeIDColumn" msprop:Generator_ColumnPropNameInRow="servicetypeID" msprop:Generator_ColumnVarNameInTable="columnservicetypeID" type="xs:string" />
+              <xs:element name="modifiedBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="modifiedBy" msprop:Generator_ColumnPropNameInTable="modifiedByColumn" msprop:Generator_ColumnPropNameInRow="modifiedBy" msprop:Generator_ColumnVarNameInTable="columnmodifiedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="modifiedOn" msprop:Generator_UserColumnName="modifiedOn" msprop:Generator_ColumnPropNameInTable="modifiedOnColumn" msprop:Generator_ColumnPropNameInRow="modifiedOn" msprop:Generator_ColumnVarNameInTable="columnmodifiedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="createdOn" msprop:Generator_UserColumnName="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="createdBy" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="createdBy" msprop:Generator_ColumnPropNameInTable="createdByColumn" msprop:Generator_ColumnPropNameInRow="createdBy" msprop:Generator_ColumnVarNameInTable="columncreatedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="MachineName" msprop:Generator_UserColumnName="MachineName" msprop:Generator_ColumnPropNameInTable="MachineNameColumn" msprop:Generator_ColumnPropNameInRow="MachineName" msprop:Generator_ColumnVarNameInTable="columnMachineName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PubicStypeName" msprop:Generator_ColumnPropNameInRow="PubicStypeName" msprop:Generator_ColumnPropNameInTable="PubicStypeNameColumn" msprop:Generator_ColumnVarNameInTable="columnPubicStypeName" msprop:Generator_UserColumnName="PubicStypeName" minOccurs="0">
+              <xs:element name="PubicStypeName" msprop:Generator_UserColumnName="PubicStypeName" msprop:Generator_ColumnPropNameInTable="PubicStypeNameColumn" msprop:Generator_ColumnPropNameInRow="PubicStypeName" msprop:Generator_ColumnVarNameInTable="columnPubicStypeName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />

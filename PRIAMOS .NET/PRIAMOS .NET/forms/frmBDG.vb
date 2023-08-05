@@ -3159,6 +3159,7 @@ Public Class frmBDG
             sSQL.AppendLine("multiplier = " & sMultiplier & ",")
             sSQL.AppendLine("ttl= " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ttl").ToString) & ",")
             sSQL.AppendLine("amt = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "amt").ToString, True) & ",")
+            sSQL.AppendLine("isPrepayment = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "isPrepayment").ToString) & ",")
             sDate = GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "dtDeposit").ToString
             If sDate <> "" Then sDate = toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) Else sDate = "NULL"
             sSQL.AppendLine("dtDeposit= " & sDate & ",")
@@ -3204,17 +3205,23 @@ Public Class frmBDG
                 oCmd.Parameters.Add("@UnpaidInd", SqlDbType.Decimal)
                 oCmd.Parameters.Add("@PaidInd", SqlDbType.Decimal)
                 oCmd.Parameters.Add("@AptBalAdm", SqlDbType.Decimal)
-                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output
-                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output
-                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output
-                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output
-                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output
+                oCmd.Parameters.Add("@totPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totDepositRAndPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositR").Precision = 18 : oCmd.Parameters("@totDepositR").Scale = 2
+                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output : oCmd.Parameters("@UnchargableOil").Precision = 18 : oCmd.Parameters("@UnchargableOil").Scale = 2
+                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@UnpaidInd").Precision = 18 : oCmd.Parameters("@UnpaidInd").Scale = 2
+                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@PaidInd").Precision = 18 : oCmd.Parameters("@PaidInd").Scale = 2
+                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output : oCmd.Parameters("@AptBalAdm").Precision = 18 : oCmd.Parameters("@AptBalAdm").Scale = 2
+                oCmd.Parameters("@totPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totPrepayments").Precision = 18 : oCmd.Parameters("@totPrepayments").Scale = 2
+                oCmd.Parameters("@totDepositRAndPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositRAndPrepayments").Precision = 18 : oCmd.Parameters("@totDepositRAndPrepayments").Scale = 2
                 oCmd.ExecuteNonQuery()
                 txtTotalDepositAmtR.EditValue = oCmd.Parameters("@totDepositR").Value : If txtTotalDepositAmtR.Text = "" Then txtTotalDepositAmtR.EditValue = "0.00"
                 txtUnpaidInd.EditValue = oCmd.Parameters("@UnpaidInd").Value : If txtUnpaidInd.Text = "" Then txtUnpaidInd.EditValue = "0.00"
                 txtPaidInd.EditValue = oCmd.Parameters("@PaidInd").Value : If txtPaidInd.Text = "" Then txtPaidInd.EditValue = "0.00"
                 txtUnchargeOil.EditValue = oCmd.Parameters("@UnchargableOil").Value : If txtUnchargeOil.Text = "" Then txtUnchargeOil.EditValue = "0.00"
                 txtAptBAdm.EditValue = oCmd.Parameters("@AptBalAdm").Value : If txtAptBAdm.Text = "" Then txtAptBAdm.EditValue = "0.00"
+                txtPrepayments.EditValue = oCmd.Parameters("@totPrepayments").Value : If txtPrepayments.Text = "" Then txtPrepayments.EditValue = "0.00"
+                txttotDepositRAndPrepayments.EditValue = oCmd.Parameters("@totDepositRAndPrepayments").Value : If txttotDepositRAndPrepayments.Text = "" Then txttotDepositRAndPrepayments.EditValue = "0.00"
                 txtTotalDepositAmtR.ToolTip = "Διαθέσιμο Υπόλοιπο = (Λογιστικό Υπόλοιπο + Απλήρωτα έξοδα υπολογισμένων παραστατικών) " + Environment.NewLine +
                                               " - " + Environment.NewLine +
                                               "(Πληρωμένα έξοδα μη υπολογισμένων παραστατικών + Υπόλοιπα διαμερισμάτων(από διαχειρίσεις" + Environment.NewLine +

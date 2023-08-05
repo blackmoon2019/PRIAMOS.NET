@@ -4579,6 +4579,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         Private columndepositFID As Global.System.Data.DataColumn
         
+        Private columnisPrepayment As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -4767,6 +4769,14 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property isPrepaymentColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisPrepayment
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4821,9 +4831,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal completeDate As String,  _
                     ByVal inhID As System.Guid,  _
                     ByVal filename As String,  _
-                    ByVal depositFID As System.Guid) As vw_DEPOSIT_ARow
+                    ByVal depositFID As System.Guid,  _
+                    ByVal isPrepayment As Boolean) As vw_DEPOSIT_ARow
             Dim rowvw_DEPOSIT_ARow As vw_DEPOSIT_ARow = CType(Me.NewRow,vw_DEPOSIT_ARow)
-            Dim columnValuesArray() As Object = New Object() {ID, Nothing, bdgID, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, multiplier, multiplierDescr, completeDate, inhID, filename, depositFID}
+            Dim columnValuesArray() As Object = New Object() {ID, Nothing, bdgID, ord, dtDeposit, ttl, amt, cmt, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, multiplier, multiplierDescr, completeDate, inhID, filename, depositFID, isPrepayment}
             rowvw_DEPOSIT_ARow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_DEPOSIT_ARow)
             Return rowvw_DEPOSIT_ARow
@@ -4871,6 +4882,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columninhID = MyBase.Columns("inhID")
             Me.columnfilename = MyBase.Columns("filename")
             Me.columndepositFID = MyBase.Columns("depositFID")
+            Me.columnisPrepayment = MyBase.Columns("isPrepayment")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4914,6 +4926,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columnfilename)
             Me.columndepositFID = New Global.System.Data.DataColumn("depositFID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndepositFID)
+            Me.columnisPrepayment = New Global.System.Data.DataColumn("isPrepayment", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisPrepayment)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -10940,6 +10954,21 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property isPrepayment() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_DEPOSIT_A.isPrepaymentColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'isPrepayment' in table 'vw_DEPOSIT_A' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_DEPOSIT_A.isPrepaymentColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IscmtNull() As Boolean
             Return Me.IsNull(Me.tablevw_DEPOSIT_A.cmtColumn)
         End Function
@@ -11068,6 +11097,18 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetdepositFIDNull()
             Me(Me.tablevw_DEPOSIT_A.depositFIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsisPrepaymentNull() As Boolean
+            Return Me.IsNull(Me.tablevw_DEPOSIT_A.isPrepaymentColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetisPrepaymentNull()
+            Me(Me.tablevw_DEPOSIT_A.isPrepaymentColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -14724,6 +14765,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("inhID", "inhID")
             tableMapping.ColumnMappings.Add("filename", "filename")
             tableMapping.ColumnMappings.Add("depositFID", "depositFID")
+            tableMapping.ColumnMappings.Add("isPrepayment", "isPrepayment")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -14742,7 +14784,8 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, multiplierDescr, multiplier, ord, dtDeposit, ttl, amt, cm"& _ 
                 "t, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, completeDate, inhI"& _ 
-                "D, filename, depositFID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_DEPOSIT_A"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"
+                "D, filename, depositFID, isPrepayment"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_DEPOSIT_A"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgI"& _ 
+                "D)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

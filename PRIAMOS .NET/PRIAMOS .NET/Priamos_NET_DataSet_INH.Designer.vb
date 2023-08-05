@@ -677,6 +677,8 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         Private columnregardingdeposit As Global.System.Data.DataColumn
         
+        Private columnisPrepayment As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -889,6 +891,14 @@ Partial Public Class Priamos_NET_DataSet_INH
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property isPrepaymentColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisPrepayment
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -947,9 +957,10 @@ Partial Public Class Priamos_NET_DataSet_INH
                     ByVal completeDate As String,  _
                     ByVal bdgID As System.Guid,  _
                     ByVal bManageID As System.Guid,  _
-                    ByVal regardingdeposit As Boolean) As vw_INDRow
+                    ByVal regardingdeposit As Boolean,  _
+                    ByVal isPrepayment As Boolean) As vw_INDRow
             Dim rowvw_INDRow As vw_INDRow = CType(Me.NewRow,vw_INDRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, completeDate, bdgID, bManageID, regardingdeposit}
+            Dim columnValuesArray() As Object = New Object() {ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, completeDate, bdgID, bManageID, regardingdeposit, isPrepayment}
             rowvw_INDRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_INDRow)
             Return rowvw_INDRow
@@ -1000,6 +1011,7 @@ Partial Public Class Priamos_NET_DataSet_INH
             Me.columnbdgID = MyBase.Columns("bdgID")
             Me.columnbManageID = MyBase.Columns("bManageID")
             Me.columnregardingdeposit = MyBase.Columns("regardingdeposit")
+            Me.columnisPrepayment = MyBase.Columns("isPrepayment")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1049,6 +1061,8 @@ Partial Public Class Priamos_NET_DataSet_INH
             MyBase.Columns.Add(Me.columnbManageID)
             Me.columnregardingdeposit = New Global.System.Data.DataColumn("regardingdeposit", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnregardingdeposit)
+            Me.columnisPrepayment = New Global.System.Data.DataColumn("isPrepayment", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisPrepayment)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -1067,6 +1081,7 @@ Partial Public Class Priamos_NET_DataSet_INH
             Me.columncompleteDate.MaxLength = 150
             Me.columnbdgID.AllowDBNull = false
             Me.columnregardingdeposit.AllowDBNull = false
+            Me.columnisPrepayment.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5291,6 +5306,17 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property isPrepayment() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_IND.isPrepaymentColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_IND.isPrepaymentColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsrepNameNull() As Boolean
             Return Me.IsNull(Me.tablevw_IND.repNameColumn)
         End Function
@@ -7735,6 +7761,7 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             tableMapping.ColumnMappings.Add("bManageID", "bManageID")
             tableMapping.ColumnMappings.Add("code", "code")
             tableMapping.ColumnMappings.Add("regardingdeposit", "regardingdeposit")
+            tableMapping.ColumnMappings.Add("isPrepayment", "isPrepayment")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -7753,21 +7780,22 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDa"& _ 
                 "te, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, comple"& _ 
-                "teDate, bdgID, bManageID,regardingdeposit"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (inhID = @inhID)"& _ 
-                ""
+                "teDate, bdgID, bManageID, regardingdeposit, isPrepayment"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ("& _ 
+                "inhID = @inhID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT ETOS, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code, completeD"& _ 
                 "ate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, owner_tena"& _ 
-                "nt, paid, regardingdeposit, repName, tDate FROM vw_IND"
+                "nt, paid, regardingdeposit, repName, tDate, isPrepayment"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT ETOS, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code, completeD"& _ 
                 "ate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, owner_tena"& _ 
-                "nt, paid, regardingdeposit, repName, tDate FROM vw_IND WHERE (bdgID = @bdgID)"
+                "nt, paid, regardingdeposit, repName, tDate, isPrepayment"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ("& _ 
+                "bdgID = @bdgID)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

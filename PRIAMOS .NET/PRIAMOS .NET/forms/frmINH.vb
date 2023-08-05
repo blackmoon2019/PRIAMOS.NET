@@ -704,6 +704,7 @@ Public Class frmINH
             sSQL = "UPDATE [IND] SET calcCatID  = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "calcCatID").ToString) &
                 ",repName = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "repName").ToString) &
                 ",amt = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "amt"), True) &
+                ",isPrepayment  = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "isPrepayment")) &
                 ",owner_tenant = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "owner_tenant")) &
                 ",regardingdeposit = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "regardingdeposit")) &
                 ",SelectedFiles = " & toSQLValueS(IIf(IsDBNull(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "SelectedFiles")) = True, "", GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "SelectedFiles"))) &
