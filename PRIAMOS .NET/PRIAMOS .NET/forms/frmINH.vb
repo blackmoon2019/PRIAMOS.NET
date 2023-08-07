@@ -780,31 +780,12 @@ Public Class frmINH
 
     Private Sub cboRepname_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboRepname.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboRepname.EditValue = Nothing : ManageTTL()
-            Case 2 : If cboRepname.EditValue <> Nothing Then ManageTTL()
+            Case 1 : cboRepname.EditValue = Nothing : ManageCbo.ManageTTL(cboRepname, FormMode.NewRecord)
+            Case 2 : If cboRepname.EditValue <> Nothing Then ManageCbo.ManageTTL(cboRepname, FormMode.EditRecord)
             Case 3 : cboRepname.EditValue = Nothing
         End Select
     End Sub
-    Private Sub ManageTTL()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Λεκτικά Εκτυπώσεων"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Λεκτικό"
-        form1.DataTable = "TTL"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboRepname
-        form1.CallerForm = Me
-        form1.MdiParent = frmMain
-        If cboRepname.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboRepname.GetColumnValue("ID").ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
 
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
     Private Sub Calculate()
         Try
@@ -1578,4 +1559,6 @@ Public Class frmINH
         txtColAnnouncement.Text = "" : txtColAnnouncement.EditValue = Nothing
 
     End Sub
+
+
 End Class

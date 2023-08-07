@@ -72,6 +72,26 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(fGen.Parent.ClientRectangle.Width / 2 - fGen.Width / 2), CInt(fGen.Parent.ClientRectangle.Height / 2 - fGen.Height / 2)))
         fGen.Show()
     End Sub
+    Public Sub ManageTTL(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
+        Dim form1 As frmGen = New frmGen()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Λεκτικά Εκτυπώσεων"
+        form1.L1.Text = "Κωδικός"
+        form1.L2.Text = "Λεκτικό"
+        form1.DataTable = "TTL"
+        form1.CalledFromControl = True
+        form1.CallerControl = CallerControl
+        form1.MdiParent = frmMain
+        If CallerControl.EditValue <> Nothing Then
+            form1.Mode = FormMode.EditRecord
+            form1.ID = CallerControl.GetColumnValue("ID").ToString
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
 
     Public Sub ManageBDG(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
         Dim form1 As frmBDG = New frmBDG()

@@ -337,6 +337,12 @@
     <Compile Include="classes\ValidateControls.vb" />
     <Compile Include="classes\XmlUpdateFromDB.vb" />
     <Compile Include="classes\XML_Serialization.vb" />
+    <Compile Include="forms\frmBatchCreateIND.Designer.vb">
+      <DependentUpon>frmBatchCreateIND.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmBatchCreateIND.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmBankCollectionInsert.Designer.vb">
       <DependentUpon>frmBankCollectionInsert.vb</DependentUpon>
     </Compile>
@@ -599,6 +605,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Priamos_NET_DataSet_INH.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Priamos_NET_DataSet_INH.vb">
+      <DependentUpon>Priamos_NET_DataSet_INH.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Eidop\ClosedAPTSmall.Designer.vb">
       <DependentUpon>ClosedAPTSmall.vb</DependentUpon>
     </Compile>
@@ -712,6 +721,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\frmBatchCreateIND.resx">
+      <DependentUpon>frmBatchCreateIND.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmBankCollectionInsert.resx">
       <DependentUpon>frmBankCollectionInsert.vb</DependentUpon>
     </EmbeddedResource>
@@ -930,6 +942,8 @@
     <Content Include="logo.ico" />
     <None Include="Resources\icons8-check-16.png" />
     <None Include="Resources\icons8-indeterminate-checkbox-16.png" />
+    <None Include="Resources\icons8-budget-24.png" />
+    <None Include="Resources\icons8-accounting-40.png" />
     <Content Include="Sql Scripts\CalculateAndReturnDepositA.sql" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\dbo.AddNewFormRights.StoredProcedure.sql" />
