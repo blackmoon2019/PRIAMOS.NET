@@ -5446,6 +5446,7 @@ Partial Public Class Priamos_NET_DataSet_INH
             Me.columnowner_tenant.AllowDBNull = false
             Me.columnIndCreated.AllowDBNull = false
             Me.columnMachineName.MaxLength = 200
+            Me.columnBdgNam.ReadOnly = true
             Me.columnBdgNam.MaxLength = 250
             Me.columnCalcCatName.MaxLength = 100
             Me.columnModifierName.MaxLength = 200
@@ -11889,7 +11890,7 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, bdgID, inhID, calcCatID, repName, amt, owner_tenant, IndCreated, modif"& _ 
                 "iedBy, modifiedOn, createdOn, createdBy, MachineName, BdgNam, CalcCatName, Modif"& _ 
-                "ierName, CreatorName, completeDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND_BATCH"
+                "ierName, CreatorName, completeDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND_BATCH"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where indCreated = 0"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
