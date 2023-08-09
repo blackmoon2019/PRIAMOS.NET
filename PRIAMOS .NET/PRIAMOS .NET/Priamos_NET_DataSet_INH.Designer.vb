@@ -1293,8 +1293,6 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         Private columnindID As Global.System.Data.DataColumn
         
-        Private columnfiles As Global.System.Data.DataColumn
-        
         Private columnfilename As Global.System.Data.DataColumn
         
         Private columncomefrom As Global.System.Data.DataColumn
@@ -1353,14 +1351,6 @@ Partial Public Class Priamos_NET_DataSet_INH
         Public ReadOnly Property indIDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnindID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property filesColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnfiles
             End Get
         End Property
         
@@ -1441,9 +1431,9 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function Addvw_IND_FRow(ByVal ID As System.Guid, ByVal indID As System.Guid, ByVal files() As Byte, ByVal filename As String, ByVal comefrom As String, ByVal extension As String, ByVal code As Integer, ByVal repName As String) As vw_IND_FRow
+        Public Overloads Function Addvw_IND_FRow(ByVal ID As System.Guid, ByVal indID As System.Guid, ByVal filename As String, ByVal comefrom As String, ByVal extension As String, ByVal code As Integer, ByVal repName As String) As vw_IND_FRow
             Dim rowvw_IND_FRow As vw_IND_FRow = CType(Me.NewRow,vw_IND_FRow)
-            Dim columnValuesArray() As Object = New Object() {ID, indID, files, filename, comefrom, extension, code, repName}
+            Dim columnValuesArray() As Object = New Object() {ID, indID, filename, comefrom, extension, code, repName}
             rowvw_IND_FRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_IND_FRow)
             Return rowvw_IND_FRow
@@ -1474,7 +1464,6 @@ Partial Public Class Priamos_NET_DataSet_INH
         Friend Sub InitVars()
             Me.columnID = MyBase.Columns("ID")
             Me.columnindID = MyBase.Columns("indID")
-            Me.columnfiles = MyBase.Columns("files")
             Me.columnfilename = MyBase.Columns("filename")
             Me.columncomefrom = MyBase.Columns("comefrom")
             Me.columnextension = MyBase.Columns("extension")
@@ -1489,8 +1478,6 @@ Partial Public Class Priamos_NET_DataSet_INH
             MyBase.Columns.Add(Me.columnID)
             Me.columnindID = New Global.System.Data.DataColumn("indID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnindID)
-            Me.columnfiles = New Global.System.Data.DataColumn("files", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfiles)
             Me.columnfilename = New Global.System.Data.DataColumn("filename", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnfilename)
             Me.columncomefrom = New Global.System.Data.DataColumn("comefrom", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -6363,21 +6350,6 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property files() As Byte()
-            Get
-                Try 
-                    Return CType(Me(Me.tablevw_IND_F.filesColumn),Byte())
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'files' in table 'vw_IND_F' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevw_IND_F.filesColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property filename() As String
             Get
                 Try 
@@ -6446,18 +6418,6 @@ Partial Public Class Priamos_NET_DataSet_INH
                 Me(Me.tablevw_IND_F.repNameColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsfilesNull() As Boolean
-            Return Me.IsNull(Me.tablevw_IND_F.filesColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetfilesNull()
-            Me(Me.tablevw_IND_F.filesColumn) = Global.System.Convert.DBNull
-        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -9407,7 +9367,6 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             tableMapping.DataSetTable = "vw_IND_F"
             tableMapping.ColumnMappings.Add("ID", "ID")
             tableMapping.ColumnMappings.Add("indID", "indID")
-            tableMapping.ColumnMappings.Add("files", "files")
             tableMapping.ColumnMappings.Add("filename", "filename")
             tableMapping.ColumnMappings.Add("comefrom", "comefrom")
             tableMapping.ColumnMappings.Add("extension", "extension")
@@ -9429,8 +9388,8 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID, indID, files, filename, comefrom, extension, code, repName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FRO"& _ 
-                "M            vw_IND_F"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where indID = @indID"
+            Me._commandCollection(0).CommandText = "SELECT        ID, indID, filename, comefrom, extension, code, repName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+                "      vw_IND_F"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where indID = @indID"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "indID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

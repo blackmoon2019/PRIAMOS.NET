@@ -1,19 +1,10 @@
-﻿Imports System.Collections.Specialized
-Imports System.ComponentModel.DataAnnotations
-Imports System.Data.SqlClient
-Imports System.Text
-Imports DevExpress.CodeParser
+﻿Imports System.Data.SqlClient
 Imports DevExpress.Data
-Imports DevExpress.DataAccess
 Imports DevExpress.Utils
-Imports DevExpress.Xpo
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraExport.Helpers
-Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
-Imports PRIAMOS.NET.Priamos_NETDataSetTableAdapters
 
 Public Class frmCollectionsDet
     Private sID As String, sbdgID As String, saptID As String, sinhID As String, sColBanksID As String

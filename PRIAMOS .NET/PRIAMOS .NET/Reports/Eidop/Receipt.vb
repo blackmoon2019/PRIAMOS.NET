@@ -27,7 +27,7 @@ Public Class Receipt
         End If
     End Sub
 
-    Private Sub Receipt_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
+    Private Sub Receipt_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.BeforePrint
 
     End Sub
 End Class

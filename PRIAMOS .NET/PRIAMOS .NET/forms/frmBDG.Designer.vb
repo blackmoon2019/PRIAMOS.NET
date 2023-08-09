@@ -984,6 +984,7 @@ Partial Class frmBDG
         Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter()
         Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter()
         Me.Vw_PUBLIC_STableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_PUBLIC_STableAdapter()
+        Me.BarEXP = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1102,8 +1103,8 @@ Partial Class frmBDG
         CType(Me.txtAR.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboCOU.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.chkPRD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtDTS.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtDTS.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtDTS.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtOldCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1153,10 +1154,10 @@ Partial Class frmBDG
         CType(Me.txtfUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtfPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtfHkasp.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtcheckcarrier.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtcheckcarrier.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtcertifiedEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtcheckcarrier.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtcertifiedEndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtcertifiedEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtfDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtContractNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.MemoEdit31.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1211,8 +1212,8 @@ Partial Class frmBDG
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtHpc.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboHtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtMes.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtMes.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboFtypes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtTacH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtTacB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1224,10 +1225,10 @@ Partial Class frmBDG
         CType(Me.cboBefMes.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtLpcH1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtLpcH11.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtRadiatorStart.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtRadiatorStart.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtRadiatorEnd.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtRadiatorStart.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtRadiatorEnd.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtRadiatorEnd.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtradiatorDegrees.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1324,8 +1325,8 @@ Partial Class frmBDG
         CType(Me.VwPARTNERANDWORKSHOPBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtProfActDAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtProfActD.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtProfActD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtProfActD.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtCodeProfActD.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup21, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem153, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1351,8 +1352,8 @@ Partial Class frmBDG
         CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepositoryItemButtonGas, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtGInvTotalPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txtGInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtGInvDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtGInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtGInvNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtGInvCode.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboGInvSup.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1362,8 +1363,8 @@ Partial Class frmBDG
         CType(Me.txtOInvPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtOInvLiters.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtOInvFileNames.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txtOInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtOInvDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtOInvDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtOInvNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdOil, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1466,8 +1467,8 @@ Partial Class frmBDG
         CType(Me.RepTxtAmt, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.RepDepositF, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtOrd.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.dtDeposit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.dtDeposit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.dtDeposit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtDepositAmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtTtl.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.txtCmt.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1579,7 +1580,7 @@ Partial Class frmBDG
         Me.grdAPM.MainView = Me.GridView5
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPM.Name = "grdAPM"
-        Me.grdAPM.Size = New System.Drawing.Size(2177, 1270)
+        Me.grdAPM.Size = New System.Drawing.Size(2177, 1307)
         Me.grdAPM.TabIndex = 22
         Me.grdAPM.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5, Me.GridView7})
         '
@@ -1742,8 +1743,8 @@ Partial Class frmBDG
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPT})
-        Me.BarManager1.MaxItemId = 51
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPT, Me.BarEXP})
+        Me.BarManager1.MaxItemId = 52
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView})
         '
         'barDockControlTop
@@ -2430,7 +2431,7 @@ Partial Class frmBDG
         '
         'PopupMenuPrint
         '
-        Me.PopupMenuPrint.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSYG), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEIDOP), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRECEIPT)})
+        Me.PopupMenuPrint.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSYG), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEIDOP), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRECEIPT), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEXP)})
         Me.PopupMenuPrint.Manager = Me.BarManager1
         Me.PopupMenuPrint.Name = "PopupMenuPrint"
         '
@@ -2630,7 +2631,7 @@ Partial Class frmBDG
         Me.Maintab.Margin = New System.Windows.Forms.Padding(5)
         Me.Maintab.Name = "Maintab"
         Me.Maintab.SelectedTabPage = Me.tabBDG
-        Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[False]
+        Me.Maintab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.[True]
         Me.Maintab.Size = New System.Drawing.Size(2235, 1335)
         Me.Maintab.TabIndex = 1
         Me.Maintab.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.tabBDG, Me.tabManage, Me.tabHeating, Me.tabMaintenance, Me.tabFixedCosts, Me.tabProfActD, Me.tabHeatingInvoices, Me.tabConsumptions, Me.tabDeposit, Me.XtraTabPage21, Me.tabAPM, Me.tabINH, Me.tabBDG_F})
@@ -2640,7 +2641,7 @@ Partial Class frmBDG
         Me.tabBDG.Controls.Add(Me.LayoutControl1BDG)
         Me.tabBDG.Margin = New System.Windows.Forms.Padding(5)
         Me.tabBDG.Name = "tabBDG"
-        Me.tabBDG.Size = New System.Drawing.Size(2231, 1331)
+        Me.tabBDG.Size = New System.Drawing.Size(2231, 1294)
         Me.tabBDG.Text = "Στοιχεία"
         '
         'LayoutControl1BDG
@@ -2670,7 +2671,7 @@ Partial Class frmBDG
         Me.LayoutControl1BDG.Name = "LayoutControl1BDG"
         Me.LayoutControl1BDG.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1840, 507, 936, 964)
         Me.LayoutControl1BDG.Root = Me.Root
-        Me.LayoutControl1BDG.Size = New System.Drawing.Size(2231, 1331)
+        Me.LayoutControl1BDG.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl1BDG.TabIndex = 25
         Me.LayoutControl1BDG.Text = "LayoutControl1"
         '
@@ -2686,9 +2687,9 @@ Partial Class frmBDG
         Me.TabPane1.PageProperties.AppearanceCaption.Options.UseBackColor = True
         Me.TabPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText
         Me.TabPane1.Pages.AddRange(New DevExpress.XtraBars.Navigation.NavigationPageBase() {Me.TabNavigationPage1, Me.TabNavigationPage2, Me.TabNavigationPage3, Me.TabNavigationPage4})
-        Me.TabPane1.RegularSize = New System.Drawing.Size(914, 892)
+        Me.TabPane1.RegularSize = New System.Drawing.Size(914, 855)
         Me.TabPane1.SelectedPage = Me.TabNavigationPage1
-        Me.TabPane1.Size = New System.Drawing.Size(914, 892)
+        Me.TabPane1.Size = New System.Drawing.Size(914, 855)
         Me.TabPane1.TabIndex = 61
         Me.TabPane1.Text = "TabPane1"
         '
@@ -2699,7 +2700,7 @@ Partial Class frmBDG
         Me.TabNavigationPage1.Name = "TabNavigationPage1"
         Me.TabNavigationPage1.Properties.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
         Me.TabNavigationPage1.Properties.AppearanceCaption.Options.UseBorderColor = True
-        Me.TabNavigationPage1.Size = New System.Drawing.Size(914, 827)
+        Me.TabNavigationPage1.Size = New System.Drawing.Size(914, 790)
         '
         'LayoutControl2BDG_1
         '
@@ -2721,7 +2722,7 @@ Partial Class frmBDG
         Me.LayoutControl2BDG_1.Name = "LayoutControl2BDG_1"
         Me.LayoutControl2BDG_1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1018, 907, 1137, 700)
         Me.LayoutControl2BDG_1.Root = Me.LayoutControlGroup20
-        Me.LayoutControl2BDG_1.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControl2BDG_1.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControl2BDG_1.TabIndex = 0
         Me.LayoutControl2BDG_1.Text = "LayoutControl2"
         '
@@ -2776,7 +2777,7 @@ Partial Class frmBDG
         Me.grdBDG_M.Margin = New System.Windows.Forms.Padding(5)
         Me.grdBDG_M.Name = "grdBDG_M"
         Me.grdBDG_M.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepCCT})
-        Me.grdBDG_M.Size = New System.Drawing.Size(890, 522)
+        Me.grdBDG_M.Size = New System.Drawing.Size(890, 485)
         Me.grdBDG_M.TabIndex = 47
         Me.grdBDG_M.UseEmbeddedNavigator = True
         Me.grdBDG_M.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView12})
@@ -3461,7 +3462,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup20.GroupBordersVisible = False
         Me.LayoutControlGroup20.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem96, Me.LayoutControlItem124, Me.LayoutControlItem125, Me.LayoutControlItem41, Me.LayoutControlItem17, Me.LayoutControlItem12, Me.LayoutControlItem16, Me.LayoutControlItem132, Me.LayoutControlItem145, Me.EmptySpaceItem3, Me.SimpleSeparator1, Me.LayoutControlItem146, Me.LayoutControlItem181, Me.SimpleLabelItem5, Me.LayoutControlItem194, Me.LayoutControlItem203})
         Me.LayoutControlGroup20.Name = "Root"
-        Me.LayoutControlGroup20.Size = New System.Drawing.Size(914, 827)
+        Me.LayoutControlGroup20.Size = New System.Drawing.Size(914, 790)
         Me.LayoutControlGroup20.TextVisible = False
         '
         'LayoutControlItem96
@@ -3596,7 +3597,7 @@ Partial Class frmBDG
         Me.LayoutControlItem181.Control = Me.grdBDG_M
         Me.LayoutControlItem181.Location = New System.Drawing.Point(0, 281)
         Me.LayoutControlItem181.Name = "LayoutControlItem181"
-        Me.LayoutControlItem181.Size = New System.Drawing.Size(894, 526)
+        Me.LayoutControlItem181.Size = New System.Drawing.Size(894, 489)
         Me.LayoutControlItem181.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem181.TextVisible = False
         '
@@ -3939,7 +3940,7 @@ Partial Class frmBDG
         'cmdSave
         '
         Me.cmdSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSave.Location = New System.Drawing.Point(12, 1280)
+        Me.cmdSave.Location = New System.Drawing.Point(12, 1243)
         Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
         Me.cmdSave.Size = New System.Drawing.Size(914, 39)
@@ -3954,7 +3955,7 @@ Partial Class frmBDG
         Me.grdAPT.MainView = Me.GridView1
         Me.grdAPT.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPT.Name = "grdAPT"
-        Me.grdAPT.Size = New System.Drawing.Size(1259, 1278)
+        Me.grdAPT.Size = New System.Drawing.Size(1259, 1241)
         Me.grdAPT.TabIndex = 21
         Me.grdAPT.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -4177,7 +4178,7 @@ Partial Class frmBDG
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem3, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.EmptySpaceItem2, Me.LayoutControlItem7, Me.EmptySpaceItem4, Me.EmptySpaceItem5, Me.LayoutControlItem18, Me.SimpleLabelItem1, Me.LayoutControlItem2, Me.LayoutControlItem11, Me.LayoutControlItem20, Me.LayoutControlItem21, Me.LayoutControlItem22, Me.LayoutControlItem23, Me.EmptySpaceItem1, Me.LayoutControlItem75, Me.LayoutControlItem4, Me.EmptySpaceItem33, Me.LayoutControlItem97, Me.LayoutControlItem137, Me.LayoutControlItem142, Me.LayoutControlItem144, Me.LayoutControlItem15})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(2231, 1331)
+        Me.Root.Size = New System.Drawing.Size(2231, 1294)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -4262,7 +4263,7 @@ Partial Class frmBDG
         Me.LayoutControlItem18.Control = Me.grdAPT
         Me.LayoutControlItem18.Location = New System.Drawing.Point(948, 29)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(1263, 1282)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(1263, 1245)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
         '
@@ -4342,13 +4343,13 @@ Partial Class frmBDG
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(918, 258)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(30, 28)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(30, 27)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem75
         '
         Me.LayoutControlItem75.Control = Me.cmdSave
-        Me.LayoutControlItem75.Location = New System.Drawing.Point(0, 1268)
+        Me.LayoutControlItem75.Location = New System.Drawing.Point(0, 1231)
         Me.LayoutControlItem75.Name = "LayoutControlItem75"
         Me.LayoutControlItem75.Size = New System.Drawing.Size(918, 43)
         Me.LayoutControlItem75.TextSize = New System.Drawing.Size(0, 0)
@@ -4369,9 +4370,9 @@ Partial Class frmBDG
         'EmptySpaceItem33
         '
         Me.EmptySpaceItem33.AllowHotTrack = False
-        Me.EmptySpaceItem33.Location = New System.Drawing.Point(918, 286)
+        Me.EmptySpaceItem33.Location = New System.Drawing.Point(918, 285)
         Me.EmptySpaceItem33.Name = "EmptySpaceItem33"
-        Me.EmptySpaceItem33.Size = New System.Drawing.Size(30, 1025)
+        Me.EmptySpaceItem33.Size = New System.Drawing.Size(30, 989)
         Me.EmptySpaceItem33.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem97
@@ -4413,7 +4414,7 @@ Partial Class frmBDG
         Me.LayoutControlItem144.Control = Me.TabPane1
         Me.LayoutControlItem144.Location = New System.Drawing.Point(0, 372)
         Me.LayoutControlItem144.Name = "LayoutControlItem144"
-        Me.LayoutControlItem144.Size = New System.Drawing.Size(918, 896)
+        Me.LayoutControlItem144.Size = New System.Drawing.Size(918, 859)
         Me.LayoutControlItem144.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem144.TextVisible = False
         '
@@ -4431,7 +4432,7 @@ Partial Class frmBDG
         Me.tabManage.Controls.Add(Me.LayoutControl2BManage)
         Me.tabManage.Margin = New System.Windows.Forms.Padding(5)
         Me.tabManage.Name = "tabManage"
-        Me.tabManage.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabManage.Size = New System.Drawing.Size(2231, 1331)
         Me.tabManage.Text = "Διαχείριση"
         '
         'LayoutControl2BManage
@@ -4473,16 +4474,16 @@ Partial Class frmBDG
         Me.LayoutControl2BManage.Name = "LayoutControl2BManage"
         Me.LayoutControl2BManage.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2570, 365, 922, 768)
         Me.LayoutControl2BManage.Root = Me.LayoutControlGroup7
-        Me.LayoutControl2BManage.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl2BManage.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl2BManage.TabIndex = 4
         Me.LayoutControl2BManage.Text = "LayoutControl4"
         '
         'MemoEdit3
         '
-        Me.MemoEdit3.Location = New System.Drawing.Point(25, 555)
+        Me.MemoEdit3.Location = New System.Drawing.Point(25, 564)
         Me.MemoEdit3.Margin = New System.Windows.Forms.Padding(5)
         Me.MemoEdit3.Name = "MemoEdit3"
-        Me.MemoEdit3.Size = New System.Drawing.Size(2181, 132)
+        Me.MemoEdit3.Size = New System.Drawing.Size(2181, 144)
         Me.MemoEdit3.StyleController = Me.LayoutControl2BManage
         Me.MemoEdit3.TabIndex = 45
         Me.MemoEdit3.Tag = "fcmt,0,1,2"
@@ -4492,7 +4493,7 @@ Partial Class frmBDG
         Me.MemoEdit2.Location = New System.Drawing.Point(25, 171)
         Me.MemoEdit2.Margin = New System.Windows.Forms.Padding(5)
         Me.MemoEdit2.Name = "MemoEdit2"
-        Me.MemoEdit2.Size = New System.Drawing.Size(2181, 97)
+        Me.MemoEdit2.Size = New System.Drawing.Size(2181, 106)
         Me.MemoEdit2.StyleController = Me.LayoutControl2BManage
         Me.MemoEdit2.TabIndex = 44
         Me.MemoEdit2.Tag = "ecmt,0,1,2"
@@ -4500,7 +4501,7 @@ Partial Class frmBDG
         'chkCertified
         '
         Me.chkCertified.EditValue = CType(0, Byte)
-        Me.chkCertified.Location = New System.Drawing.Point(25, 1188)
+        Me.chkCertified.Location = New System.Drawing.Point(25, 1225)
         Me.chkCertified.Margin = New System.Windows.Forms.Padding(5)
         Me.chkCertified.Name = "chkCertified"
         Me.chkCertified.Properties.Caption = "Πιστοποιημένο"
@@ -4514,7 +4515,7 @@ Partial Class frmBDG
         'chkElevator
         '
         Me.chkElevator.EditValue = CType(0, Byte)
-        Me.chkElevator.Location = New System.Drawing.Point(25, 1146)
+        Me.chkElevator.Location = New System.Drawing.Point(25, 1183)
         Me.chkElevator.Margin = New System.Windows.Forms.Padding(5)
         Me.chkElevator.Name = "chkElevator"
         Me.chkElevator.Properties.Caption = "Ανελκυστήρας"
@@ -4528,7 +4529,7 @@ Partial Class frmBDG
         'cmdSaveManage
         '
         Me.cmdSaveManage.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveManage.Location = New System.Drawing.Point(1988, 1243)
+        Me.cmdSaveManage.Location = New System.Drawing.Point(1988, 1280)
         Me.cmdSaveManage.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveManage.Name = "cmdSaveManage"
         Me.cmdSaveManage.Size = New System.Drawing.Size(231, 39)
@@ -4538,7 +4539,7 @@ Partial Class frmBDG
         '
         'HyperlinkLabelControl1
         '
-        Me.HyperlinkLabelControl1.Location = New System.Drawing.Point(25, 272)
+        Me.HyperlinkLabelControl1.Location = New System.Drawing.Point(25, 281)
         Me.HyperlinkLabelControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.HyperlinkLabelControl1.Name = "HyperlinkLabelControl1"
         Me.HyperlinkLabelControl1.Size = New System.Drawing.Size(158, 23)
@@ -4548,7 +4549,7 @@ Partial Class frmBDG
         '
         'txtwRegisterNum
         '
-        Me.txtwRegisterNum.Location = New System.Drawing.Point(282, 822)
+        Me.txtwRegisterNum.Location = New System.Drawing.Point(282, 843)
         Me.txtwRegisterNum.Margin = New System.Windows.Forms.Padding(5)
         Me.txtwRegisterNum.Name = "txtwRegisterNum"
         Me.txtwRegisterNum.Size = New System.Drawing.Size(1924, 38)
@@ -4558,7 +4559,7 @@ Partial Class frmBDG
         '
         'txtwCounter
         '
-        Me.txtwCounter.Location = New System.Drawing.Point(1602, 780)
+        Me.txtwCounter.Location = New System.Drawing.Point(1602, 801)
         Me.txtwCounter.Margin = New System.Windows.Forms.Padding(5)
         Me.txtwCounter.Name = "txtwCounter"
         Me.txtwCounter.Size = New System.Drawing.Size(604, 38)
@@ -4568,7 +4569,7 @@ Partial Class frmBDG
         '
         'txtwName
         '
-        Me.txtwName.Location = New System.Drawing.Point(959, 780)
+        Me.txtwName.Location = New System.Drawing.Point(959, 801)
         Me.txtwName.Margin = New System.Windows.Forms.Padding(5)
         Me.txtwName.Name = "txtwName"
         Me.txtwName.Size = New System.Drawing.Size(382, 38)
@@ -4578,7 +4579,7 @@ Partial Class frmBDG
         '
         'txtfServiceNum
         '
-        Me.txtfServiceNum.Location = New System.Drawing.Point(948, 403)
+        Me.txtfServiceNum.Location = New System.Drawing.Point(948, 412)
         Me.txtfServiceNum.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfServiceNum.Name = "txtfServiceNum"
         Me.txtfServiceNum.Size = New System.Drawing.Size(391, 38)
@@ -4588,7 +4589,7 @@ Partial Class frmBDG
         '
         'txtfPaymentCode
         '
-        Me.txtfPaymentCode.Location = New System.Drawing.Point(1600, 403)
+        Me.txtfPaymentCode.Location = New System.Drawing.Point(1600, 412)
         Me.txtfPaymentCode.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfPaymentCode.Name = "txtfPaymentCode"
         Me.txtfPaymentCode.Size = New System.Drawing.Size(606, 38)
@@ -4598,7 +4599,7 @@ Partial Class frmBDG
         '
         'txtfCounter
         '
-        Me.txtfCounter.Location = New System.Drawing.Point(1600, 361)
+        Me.txtfCounter.Location = New System.Drawing.Point(1600, 370)
         Me.txtfCounter.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfCounter.Name = "txtfCounter"
         Me.txtfCounter.Size = New System.Drawing.Size(606, 38)
@@ -4608,7 +4609,7 @@ Partial Class frmBDG
         '
         'txtfName
         '
-        Me.txtfName.Location = New System.Drawing.Point(948, 361)
+        Me.txtfName.Location = New System.Drawing.Point(948, 370)
         Me.txtfName.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfName.Name = "txtfName"
         Me.txtfName.Size = New System.Drawing.Size(391, 38)
@@ -4648,7 +4649,7 @@ Partial Class frmBDG
         '
         'HyperlinkLabelControl11
         '
-        Me.HyperlinkLabelControl11.Location = New System.Drawing.Point(25, 691)
+        Me.HyperlinkLabelControl11.Location = New System.Drawing.Point(25, 712)
         Me.HyperlinkLabelControl11.Margin = New System.Windows.Forms.Padding(5)
         Me.HyperlinkLabelControl11.Name = "HyperlinkLabelControl11"
         Me.HyperlinkLabelControl11.Size = New System.Drawing.Size(345, 23)
@@ -4658,7 +4659,7 @@ Partial Class frmBDG
         '
         'HyperlinkLabelControl111
         '
-        Me.HyperlinkLabelControl111.Location = New System.Drawing.Point(25, 1057)
+        Me.HyperlinkLabelControl111.Location = New System.Drawing.Point(25, 1094)
         Me.HyperlinkLabelControl111.Margin = New System.Windows.Forms.Padding(5)
         Me.HyperlinkLabelControl111.Name = "HyperlinkLabelControl111"
         Me.HyperlinkLabelControl111.Size = New System.Drawing.Size(240, 23)
@@ -4678,7 +4679,7 @@ Partial Class frmBDG
         '
         'txtfCusCode
         '
-        Me.txtfCusCode.Location = New System.Drawing.Point(282, 403)
+        Me.txtfCusCode.Location = New System.Drawing.Point(282, 412)
         Me.txtfCusCode.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfCusCode.Name = "txtfCusCode"
         Me.txtfCusCode.Size = New System.Drawing.Size(405, 38)
@@ -4688,7 +4689,7 @@ Partial Class frmBDG
         '
         'txtfUN
         '
-        Me.txtfUN.Location = New System.Drawing.Point(282, 445)
+        Me.txtfUN.Location = New System.Drawing.Point(282, 454)
         Me.txtfUN.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfUN.Name = "txtfUN"
         Me.txtfUN.Size = New System.Drawing.Size(1057, 38)
@@ -4698,7 +4699,7 @@ Partial Class frmBDG
         '
         'txtfPWD
         '
-        Me.txtfPWD.Location = New System.Drawing.Point(1600, 445)
+        Me.txtfPWD.Location = New System.Drawing.Point(1600, 454)
         Me.txtfPWD.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfPWD.Name = "txtfPWD"
         Me.txtfPWD.Size = New System.Drawing.Size(606, 38)
@@ -4708,7 +4709,7 @@ Partial Class frmBDG
         '
         'txtfHkasp
         '
-        Me.txtfHkasp.Location = New System.Drawing.Point(282, 487)
+        Me.txtfHkasp.Location = New System.Drawing.Point(282, 496)
         Me.txtfHkasp.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfHkasp.Name = "txtfHkasp"
         Me.txtfHkasp.Size = New System.Drawing.Size(1057, 38)
@@ -4719,7 +4720,7 @@ Partial Class frmBDG
         'dtcheckcarrier
         '
         Me.dtcheckcarrier.EditValue = Nothing
-        Me.dtcheckcarrier.Location = New System.Drawing.Point(976, 1146)
+        Me.dtcheckcarrier.Location = New System.Drawing.Point(976, 1183)
         Me.dtcheckcarrier.Margin = New System.Windows.Forms.Padding(5)
         Me.dtcheckcarrier.Name = "dtcheckcarrier"
         Me.dtcheckcarrier.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -4732,7 +4733,7 @@ Partial Class frmBDG
         'dtcertifiedEndDate
         '
         Me.dtcertifiedEndDate.EditValue = Nothing
-        Me.dtcertifiedEndDate.Location = New System.Drawing.Point(976, 1188)
+        Me.dtcertifiedEndDate.Location = New System.Drawing.Point(976, 1225)
         Me.dtcertifiedEndDate.Margin = New System.Windows.Forms.Padding(5)
         Me.dtcertifiedEndDate.Name = "dtcertifiedEndDate"
         Me.dtcertifiedEndDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -4745,7 +4746,7 @@ Partial Class frmBDG
         'txtfDeposit
         '
         Me.txtfDeposit.EditValue = "0,00 €"
-        Me.txtfDeposit.Location = New System.Drawing.Point(1600, 487)
+        Me.txtfDeposit.Location = New System.Drawing.Point(1600, 496)
         Me.txtfDeposit.Margin = New System.Windows.Forms.Padding(5)
         Me.txtfDeposit.Name = "txtfDeposit"
         Me.txtfDeposit.Properties.DisplayFormat.FormatString = "c"
@@ -4774,10 +4775,10 @@ Partial Class frmBDG
         '
         'MemoEdit31
         '
-        Me.MemoEdit31.Location = New System.Drawing.Point(25, 890)
+        Me.MemoEdit31.Location = New System.Drawing.Point(25, 911)
         Me.MemoEdit31.Margin = New System.Windows.Forms.Padding(5)
         Me.MemoEdit31.Name = "MemoEdit31"
-        Me.MemoEdit31.Size = New System.Drawing.Size(2181, 163)
+        Me.MemoEdit31.Size = New System.Drawing.Size(2181, 179)
         Me.MemoEdit31.StyleController = Me.LayoutControl2BManage
         Me.MemoEdit31.TabIndex = 45
         Me.MemoEdit31.Tag = "wcmt,0,1,2"
@@ -4807,7 +4808,7 @@ Partial Class frmBDG
         '
         'cbofService
         '
-        Me.cbofService.Location = New System.Drawing.Point(282, 361)
+        Me.cbofService.Location = New System.Drawing.Point(282, 370)
         Me.cbofService.Margin = New System.Windows.Forms.Padding(5)
         Me.cbofService.Name = "cbofService"
         Me.cbofService.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -4825,7 +4826,7 @@ Partial Class frmBDG
         '
         'cbowService
         '
-        Me.cbowService.Location = New System.Drawing.Point(282, 780)
+        Me.cbowService.Location = New System.Drawing.Point(282, 801)
         Me.cbowService.Margin = New System.Windows.Forms.Padding(5)
         Me.cbowService.Name = "cbowService"
         Me.cbowService.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -4847,13 +4848,13 @@ Partial Class frmBDG
         Me.LayoutControlGroup7.GroupBordersVisible = False
         Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem90, Me.LayoutControlGroup8, Me.LayoutControlGroup9, Me.LayoutControlGroup10, Me.LayoutControlGroup14, Me.EmptySpaceItem25})
         Me.LayoutControlGroup7.Name = "Root"
-        Me.LayoutControlGroup7.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup7.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup7.TextVisible = False
         '
         'LayoutControlItem90
         '
         Me.LayoutControlItem90.Control = Me.cmdSaveManage
-        Me.LayoutControlItem90.Location = New System.Drawing.Point(1976, 1231)
+        Me.LayoutControlItem90.Location = New System.Drawing.Point(1976, 1268)
         Me.LayoutControlItem90.Name = "LayoutControlItem90"
         Me.LayoutControlItem90.Size = New System.Drawing.Size(235, 43)
         Me.LayoutControlItem90.Text = "Αποθήκευση"
@@ -4867,7 +4868,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup8.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem67, Me.LayoutControlItem87, Me.LayoutControlItem99, Me.LayoutControlItem73, Me.LayoutControlItem100, Me.LayoutControlItem79, Me.LayoutControlItem200, Me.LayoutControlItem78})
         Me.LayoutControlGroup8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup8.Name = "LayoutControlGroup8"
-        Me.LayoutControlGroup8.Size = New System.Drawing.Size(2211, 300)
+        Me.LayoutControlGroup8.Size = New System.Drawing.Size(2211, 309)
         Me.LayoutControlGroup8.Text = "ΣΤΟΙΧΕΙΑ ΗΛΕΚΤΡΟΔΟΤΗΣΗΣ"
         '
         'LayoutControlItem67
@@ -4883,7 +4884,7 @@ Partial Class frmBDG
         'LayoutControlItem87
         '
         Me.LayoutControlItem87.Control = Me.HyperlinkLabelControl1
-        Me.LayoutControlItem87.Location = New System.Drawing.Point(0, 211)
+        Me.LayoutControlItem87.Location = New System.Drawing.Point(0, 220)
         Me.LayoutControlItem87.Name = "LayoutControlItem87"
         Me.LayoutControlItem87.Size = New System.Drawing.Size(2185, 27)
         Me.LayoutControlItem87.TextSize = New System.Drawing.Size(0, 0)
@@ -4917,7 +4918,7 @@ Partial Class frmBDG
         Me.LayoutControlItem100.Control = Me.MemoEdit2
         Me.LayoutControlItem100.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem100.Name = "LayoutControlItem100"
-        Me.LayoutControlItem100.Size = New System.Drawing.Size(2185, 127)
+        Me.LayoutControlItem100.Size = New System.Drawing.Size(2185, 136)
         Me.LayoutControlItem100.Text = "Σχόλια"
         Me.LayoutControlItem100.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem100.TextSize = New System.Drawing.Size(245, 23)
@@ -4961,9 +4962,9 @@ Partial Class frmBDG
         Me.LayoutControlGroup9.AppearanceGroup.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question
         Me.LayoutControlGroup9.AppearanceGroup.Options.UseBorderColor = True
         Me.LayoutControlGroup9.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem80, Me.LayoutControlItem82, Me.LayoutControlItem88, Me.LayoutControlItem19, Me.LayoutControlItem9, Me.LayoutControlItem81, Me.LayoutControlItem83, Me.LayoutControlItem8, Me.LayoutControlItem106, Me.LayoutControlItem105, Me.LayoutControlItem10, Me.LayoutControlItem201})
-        Me.LayoutControlGroup9.Location = New System.Drawing.Point(0, 300)
+        Me.LayoutControlGroup9.Location = New System.Drawing.Point(0, 309)
         Me.LayoutControlGroup9.Name = "LayoutControlGroup9"
-        Me.LayoutControlGroup9.Size = New System.Drawing.Size(2211, 419)
+        Me.LayoutControlGroup9.Size = New System.Drawing.Size(2211, 431)
         Me.LayoutControlGroup9.Text = "ΣΤΟΙΧΕΙΑ ΦΥΣΙΚΟΥ ΑΕΡΙΟΥ"
         '
         'LayoutControlItem80
@@ -4992,7 +4993,7 @@ Partial Class frmBDG
         Me.LayoutControlItem88.Control = Me.HyperlinkLabelControl11
         Me.LayoutControlItem88.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem88.CustomizationFormText = "LayoutControlItem87"
-        Me.LayoutControlItem88.Location = New System.Drawing.Point(0, 330)
+        Me.LayoutControlItem88.Location = New System.Drawing.Point(0, 342)
         Me.LayoutControlItem88.Name = "LayoutControlItem88"
         Me.LayoutControlItem88.Size = New System.Drawing.Size(2185, 27)
         Me.LayoutControlItem88.TextSize = New System.Drawing.Size(0, 0)
@@ -5060,7 +5061,7 @@ Partial Class frmBDG
         Me.LayoutControlItem106.Control = Me.MemoEdit3
         Me.LayoutControlItem106.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem106.Name = "LayoutControlItem106"
-        Me.LayoutControlItem106.Size = New System.Drawing.Size(2185, 162)
+        Me.LayoutControlItem106.Size = New System.Drawing.Size(2185, 174)
         Me.LayoutControlItem106.Text = "Σχόλια"
         Me.LayoutControlItem106.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem106.TextSize = New System.Drawing.Size(245, 23)
@@ -5105,9 +5106,9 @@ Partial Class frmBDG
         Me.LayoutControlGroup10.AppearanceGroup.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary
         Me.LayoutControlGroup10.AppearanceGroup.Options.UseBorderColor = True
         Me.LayoutControlGroup10.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem84, Me.LayoutControlItem86, Me.LayoutControlItem89, Me.LayoutControlItem121, Me.LayoutControlItem85, Me.LayoutControlItem202})
-        Me.LayoutControlGroup10.Location = New System.Drawing.Point(0, 719)
+        Me.LayoutControlGroup10.Location = New System.Drawing.Point(0, 740)
         Me.LayoutControlGroup10.Name = "LayoutControlGroup10"
-        Me.LayoutControlGroup10.Size = New System.Drawing.Size(2211, 366)
+        Me.LayoutControlGroup10.Size = New System.Drawing.Size(2211, 382)
         Me.LayoutControlGroup10.Text = "ΣΤΟΙΧΕΙΑ ΥΔΡΕΥΣΗΣ"
         '
         'LayoutControlItem84
@@ -5135,7 +5136,7 @@ Partial Class frmBDG
         Me.LayoutControlItem89.Control = Me.HyperlinkLabelControl111
         Me.LayoutControlItem89.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem89.CustomizationFormText = "LayoutControlItem87"
-        Me.LayoutControlItem89.Location = New System.Drawing.Point(0, 277)
+        Me.LayoutControlItem89.Location = New System.Drawing.Point(0, 293)
         Me.LayoutControlItem89.Name = "LayoutControlItem89"
         Me.LayoutControlItem89.Size = New System.Drawing.Size(2185, 27)
         Me.LayoutControlItem89.Text = "LayoutControlItem88"
@@ -5149,7 +5150,7 @@ Partial Class frmBDG
         Me.LayoutControlItem121.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem121.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem121.Name = "LayoutControlItem121"
-        Me.LayoutControlItem121.Size = New System.Drawing.Size(2185, 193)
+        Me.LayoutControlItem121.Size = New System.Drawing.Size(2185, 209)
         Me.LayoutControlItem121.Text = "Σχόλια"
         Me.LayoutControlItem121.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem121.TextSize = New System.Drawing.Size(245, 23)
@@ -5182,7 +5183,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup14.AppearanceGroup.Options.UseBorderColor = True
         Me.LayoutControlGroup14.CustomizationFormText = "ΣΤΟΙΧΕΙΑ ΑΝΕΛΚΥΣΤΗΡΑ"
         Me.LayoutControlGroup14.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem94, Me.LayoutControlItem115, Me.LayoutControlItem116, Me.LayoutControlItem120})
-        Me.LayoutControlGroup14.Location = New System.Drawing.Point(0, 1085)
+        Me.LayoutControlGroup14.Location = New System.Drawing.Point(0, 1122)
         Me.LayoutControlGroup14.Name = "LayoutControlGroup14"
         Me.LayoutControlGroup14.Size = New System.Drawing.Size(2211, 146)
         Me.LayoutControlGroup14.Text = "ΣΤΟΙΧΕΙΑ ΑΝΕΛΚΥΣΤΗΡΑ"
@@ -5236,7 +5237,7 @@ Partial Class frmBDG
         'EmptySpaceItem25
         '
         Me.EmptySpaceItem25.AllowHotTrack = False
-        Me.EmptySpaceItem25.Location = New System.Drawing.Point(0, 1231)
+        Me.EmptySpaceItem25.Location = New System.Drawing.Point(0, 1268)
         Me.EmptySpaceItem25.Name = "EmptySpaceItem25"
         Me.EmptySpaceItem25.Size = New System.Drawing.Size(1976, 43)
         Me.EmptySpaceItem25.TextSize = New System.Drawing.Size(0, 0)
@@ -5246,7 +5247,7 @@ Partial Class frmBDG
         Me.tabHeating.Controls.Add(Me.LayoutControl3Heating)
         Me.tabHeating.Margin = New System.Windows.Forms.Padding(5)
         Me.tabHeating.Name = "tabHeating"
-        Me.tabHeating.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabHeating.Size = New System.Drawing.Size(2231, 1331)
         Me.tabHeating.Text = "Θέρμανση"
         '
         'LayoutControl3Heating
@@ -5285,7 +5286,7 @@ Partial Class frmBDG
         Me.LayoutControl3Heating.Name = "LayoutControl3Heating"
         Me.LayoutControl3Heating.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1262, 706, 1135, 1019)
         Me.LayoutControl3Heating.Root = Me.LayoutControlGroup1
-        Me.LayoutControl3Heating.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl3Heating.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl3Heating.TabIndex = 11
         Me.LayoutControl3Heating.Text = "LayoutControl2"
         '
@@ -5303,7 +5304,7 @@ Partial Class frmBDG
         'txtHpb
         '
         Me.txtHpb.EditValue = "0"
-        Me.txtHpb.Location = New System.Drawing.Point(444, 531)
+        Me.txtHpb.Location = New System.Drawing.Point(444, 534)
         Me.txtHpb.Margin = New System.Windows.Forms.Padding(5)
         Me.txtHpb.Name = "txtHpb"
         Me.txtHpb.Properties.DisplayFormat.FormatString = "p0"
@@ -5320,7 +5321,7 @@ Partial Class frmBDG
         'cmdSaveHB
         '
         Me.cmdSaveHB.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveHB.Location = New System.Drawing.Point(12, 1243)
+        Me.cmdSaveHB.Location = New System.Drawing.Point(12, 1280)
         Me.cmdSaveHB.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveHB.Name = "cmdSaveHB"
         Me.cmdSaveHB.Size = New System.Drawing.Size(311, 39)
@@ -5342,7 +5343,7 @@ Partial Class frmBDG
         '
         'cboBtypes
         '
-        Me.cboBtypes.Location = New System.Drawing.Point(76, 489)
+        Me.cboBtypes.Location = New System.Drawing.Point(76, 492)
         Me.cboBtypes.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBtypes.Name = "cboBtypes"
         Me.cboBtypes.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -5363,7 +5364,7 @@ Partial Class frmBDG
         Me.grdAPTAHPB.MainView = Me.GridView2
         Me.grdAPTAHPB.Margin = New System.Windows.Forms.Padding(5)
         Me.grdAPTAHPB.Name = "grdAPTAHPB"
-        Me.grdAPTAHPB.Size = New System.Drawing.Size(1547, 1178)
+        Me.grdAPTAHPB.Size = New System.Drawing.Size(1547, 1215)
         Me.grdAPTAHPB.TabIndex = 21
         Me.grdAPTAHPB.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -5663,7 +5664,7 @@ Partial Class frmBDG
         'txtTacB
         '
         Me.txtTacB.EditValue = "0"
-        Me.txtTacB.Location = New System.Drawing.Point(444, 615)
+        Me.txtTacB.Location = New System.Drawing.Point(444, 618)
         Me.txtTacB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtTacB.Name = "txtTacB"
         Me.txtTacB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -5694,7 +5695,7 @@ Partial Class frmBDG
         'txtLpcB
         '
         Me.txtLpcB.EditValue = "0,00"
-        Me.txtLpcB.Location = New System.Drawing.Point(444, 657)
+        Me.txtLpcB.Location = New System.Drawing.Point(444, 660)
         Me.txtLpcB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtLpcB.Name = "txtLpcB"
         Me.txtLpcB.Properties.DisplayFormat.FormatString = "n2"
@@ -5728,7 +5729,7 @@ Partial Class frmBDG
         'txtCalB
         '
         Me.txtCalB.EditValue = "0"
-        Me.txtCalB.Location = New System.Drawing.Point(444, 573)
+        Me.txtCalB.Location = New System.Drawing.Point(444, 576)
         Me.txtCalB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtCalB.Name = "txtCalB"
         Me.txtCalB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -5748,13 +5749,13 @@ Partial Class frmBDG
         Me.RGBolier.Name = "RGBolier"
         Me.RGBolier.Properties.Columns = 2
         Me.RGBolier.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Κοινός", True, "bCommon,0,1,2"), New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Ξεχωριστός", True, "bSeperate,0,1,2")})
-        Me.RGBolier.Size = New System.Drawing.Size(550, 68)
+        Me.RGBolier.Size = New System.Drawing.Size(550, 71)
         Me.RGBolier.StyleController = Me.LayoutControl3Heating
         Me.RGBolier.TabIndex = 33
         '
         'cmdCheckTank
         '
-        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 934)
+        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 937)
         Me.cmdCheckTank.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCheckTank.Name = "cmdCheckTank"
         Me.cmdCheckTank.Size = New System.Drawing.Size(626, 39)
@@ -5795,7 +5796,7 @@ Partial Class frmBDG
         'txtLpcH11
         '
         Me.txtLpcH11.EditValue = "0,0"
-        Me.txtLpcH11.Location = New System.Drawing.Point(444, 699)
+        Me.txtLpcH11.Location = New System.Drawing.Point(444, 702)
         Me.txtLpcH11.Margin = New System.Windows.Forms.Padding(5)
         Me.txtLpcH11.Name = "txtLpcH11"
         Me.txtLpcH11.Properties.DisplayFormat.FormatString = "n1"
@@ -5812,7 +5813,7 @@ Partial Class frmBDG
         'dtRadiatorStart
         '
         Me.dtRadiatorStart.EditValue = Nothing
-        Me.dtRadiatorStart.Location = New System.Drawing.Point(431, 754)
+        Me.dtRadiatorStart.Location = New System.Drawing.Point(431, 757)
         Me.dtRadiatorStart.MenuManager = Me.BarManager1
         Me.dtRadiatorStart.Name = "dtRadiatorStart"
         Me.dtRadiatorStart.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -5827,7 +5828,7 @@ Partial Class frmBDG
         'dtRadiatorEnd
         '
         Me.dtRadiatorEnd.EditValue = Nothing
-        Me.dtRadiatorEnd.Location = New System.Drawing.Point(431, 796)
+        Me.dtRadiatorEnd.Location = New System.Drawing.Point(431, 799)
         Me.dtRadiatorEnd.MenuManager = Me.BarManager1
         Me.dtRadiatorEnd.Name = "dtRadiatorEnd"
         Me.dtRadiatorEnd.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -5842,7 +5843,7 @@ Partial Class frmBDG
         'txtradiatorDegrees
         '
         Me.txtradiatorDegrees.EditValue = "0"
-        Me.txtradiatorDegrees.Location = New System.Drawing.Point(431, 838)
+        Me.txtradiatorDegrees.Location = New System.Drawing.Point(431, 841)
         Me.txtradiatorDegrees.MenuManager = Me.BarManager1
         Me.txtradiatorDegrees.Name = "txtradiatorDegrees"
         Me.txtradiatorDegrees.Properties.DisplayFormat.FormatString = "n0"
@@ -5864,7 +5865,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem31, Me.SimpleLabelItem2, Me.LayoutControlItem43, Me.LayoutControlItem45, Me.LayoutControlItem46, Me.EmptySpaceItem16, Me.LayoutControlItem24, Me.LayoutControlGroup3, Me.LayoutControlGroup2, Me.LayoutControlItem40, Me.LCheckTank, Me.SimpleLabelItem4, Me.EmptySpaceItem11, Me.LayoutControlItem33, Me.LayoutControlItem44, Me.LayoutControlItem91, Me.EmptySpaceItem35, Me.LayoutControlItem42, Me.LayoutControlItem136, Me.LayoutControlItem178, Me.LayoutControlItem179, Me.LayoutControlItem180, Me.SimpleLabelItem3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem31
@@ -5872,7 +5873,7 @@ Partial Class frmBDG
         Me.LayoutControlItem31.Control = Me.grdAPTAHPB
         Me.LayoutControlItem31.Location = New System.Drawing.Point(660, 92)
         Me.LayoutControlItem31.Name = "LayoutControlItem18"
-        Me.LayoutControlItem31.Size = New System.Drawing.Size(1551, 1182)
+        Me.LayoutControlItem31.Size = New System.Drawing.Size(1551, 1219)
         Me.LayoutControlItem31.Text = "Grid"
         Me.LayoutControlItem31.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem31.TextVisible = False
@@ -5927,7 +5928,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem16.AllowHotTrack = False
         Me.EmptySpaceItem16.Location = New System.Drawing.Point(630, 215)
         Me.EmptySpaceItem16.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem16.Size = New System.Drawing.Size(30, 1059)
+        Me.EmptySpaceItem16.Size = New System.Drawing.Size(30, 1096)
         Me.EmptySpaceItem16.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem24
@@ -5946,7 +5947,7 @@ Partial Class frmBDG
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem26, Me.LayoutControlItem35, Me.LayoutControlItem37, Me.LayoutControlItem38, Me.LayoutControlItem92, Me.LayoutControlItem131})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 428)
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 431)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(630, 314)
         Me.LayoutControlGroup3.Text = "Boiler"
@@ -6119,7 +6120,7 @@ Partial Class frmBDG
         Me.LayoutControlItem40.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 356)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
-        Me.LayoutControlItem40.Size = New System.Drawing.Size(630, 72)
+        Me.LayoutControlItem40.Size = New System.Drawing.Size(630, 75)
         Me.LayoutControlItem40.Text = "Λέβητας"
         Me.LayoutControlItem40.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(71, 23)
@@ -6128,7 +6129,7 @@ Partial Class frmBDG
         'LCheckTank
         '
         Me.LCheckTank.Control = Me.cmdCheckTank
-        Me.LCheckTank.Location = New System.Drawing.Point(0, 922)
+        Me.LCheckTank.Location = New System.Drawing.Point(0, 925)
         Me.LCheckTank.Name = "LCheckTank"
         Me.LCheckTank.Size = New System.Drawing.Size(630, 43)
         Me.LCheckTank.TextSize = New System.Drawing.Size(0, 0)
@@ -6137,7 +6138,7 @@ Partial Class frmBDG
         'SimpleLabelItem4
         '
         Me.SimpleLabelItem4.AllowHotTrack = False
-        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 895)
+        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 898)
         Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
         Me.SimpleLabelItem4.Size = New System.Drawing.Size(630, 27)
         Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
@@ -6146,9 +6147,9 @@ Partial Class frmBDG
         'EmptySpaceItem11
         '
         Me.EmptySpaceItem11.AllowHotTrack = False
-        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 965)
+        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 968)
         Me.EmptySpaceItem11.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem11.Size = New System.Drawing.Size(630, 266)
+        Me.EmptySpaceItem11.Size = New System.Drawing.Size(630, 300)
         Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem33
@@ -6179,7 +6180,7 @@ Partial Class frmBDG
         'LayoutControlItem91
         '
         Me.LayoutControlItem91.Control = Me.cmdSaveHB
-        Me.LayoutControlItem91.Location = New System.Drawing.Point(0, 1231)
+        Me.LayoutControlItem91.Location = New System.Drawing.Point(0, 1268)
         Me.LayoutControlItem91.Name = "LayoutControlItem91"
         Me.LayoutControlItem91.Size = New System.Drawing.Size(315, 43)
         Me.LayoutControlItem91.Text = "Αποθήκευση Θέρμανσης/Boiler"
@@ -6189,7 +6190,7 @@ Partial Class frmBDG
         'EmptySpaceItem35
         '
         Me.EmptySpaceItem35.AllowHotTrack = False
-        Me.EmptySpaceItem35.Location = New System.Drawing.Point(315, 1231)
+        Me.EmptySpaceItem35.Location = New System.Drawing.Point(315, 1268)
         Me.EmptySpaceItem35.Name = "EmptySpaceItem35"
         Me.EmptySpaceItem35.Size = New System.Drawing.Size(315, 43)
         Me.EmptySpaceItem35.TextSize = New System.Drawing.Size(0, 0)
@@ -6217,7 +6218,7 @@ Partial Class frmBDG
         'LayoutControlItem178
         '
         Me.LayoutControlItem178.Control = Me.dtRadiatorStart
-        Me.LayoutControlItem178.Location = New System.Drawing.Point(0, 742)
+        Me.LayoutControlItem178.Location = New System.Drawing.Point(0, 745)
         Me.LayoutControlItem178.Name = "LayoutControlItem178"
         Me.LayoutControlItem178.Size = New System.Drawing.Size(630, 42)
         Me.LayoutControlItem178.Text = "Ημερ/νία Έναρξης Καλοριφέρ"
@@ -6226,7 +6227,7 @@ Partial Class frmBDG
         'LayoutControlItem179
         '
         Me.LayoutControlItem179.Control = Me.dtRadiatorEnd
-        Me.LayoutControlItem179.Location = New System.Drawing.Point(0, 784)
+        Me.LayoutControlItem179.Location = New System.Drawing.Point(0, 787)
         Me.LayoutControlItem179.Name = "LayoutControlItem179"
         Me.LayoutControlItem179.Size = New System.Drawing.Size(630, 42)
         Me.LayoutControlItem179.Text = "Ημερ/νία Λήξης Καλοριφέρ"
@@ -6235,7 +6236,7 @@ Partial Class frmBDG
         'LayoutControlItem180
         '
         Me.LayoutControlItem180.Control = Me.txtradiatorDegrees
-        Me.LayoutControlItem180.Location = New System.Drawing.Point(0, 826)
+        Me.LayoutControlItem180.Location = New System.Drawing.Point(0, 829)
         Me.LayoutControlItem180.Name = "LayoutControlItem180"
         Me.LayoutControlItem180.Size = New System.Drawing.Size(630, 42)
         Me.LayoutControlItem180.Text = "Λειτουργία Θέρμανσης κατώ των °C"
@@ -6245,7 +6246,7 @@ Partial Class frmBDG
         '
         Me.SimpleLabelItem3.AllowHotTrack = False
         Me.SimpleLabelItem3.CustomizationFormText = "Τελευταίος Έλεγχος Δεξαμενής στις: "
-        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 868)
+        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 871)
         Me.SimpleLabelItem3.Name = "SimpleLabelItem3"
         Me.SimpleLabelItem3.Size = New System.Drawing.Size(630, 27)
         Me.SimpleLabelItem3.Text = "Τελευταίος Έλεγχος Δεξαμενής στις: "
@@ -6256,7 +6257,7 @@ Partial Class frmBDG
         Me.tabMaintenance.Controls.Add(Me.LayoutControl4Maintenance)
         Me.tabMaintenance.Margin = New System.Windows.Forms.Padding(5)
         Me.tabMaintenance.Name = "tabMaintenance"
-        Me.tabMaintenance.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabMaintenance.Size = New System.Drawing.Size(2231, 1331)
         Me.tabMaintenance.Text = "Συντήρηση"
         '
         'LayoutControl4Maintenance
@@ -6275,14 +6276,14 @@ Partial Class frmBDG
         Me.LayoutControl4Maintenance.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl4Maintenance.Name = "LayoutControl4Maintenance"
         Me.LayoutControl4Maintenance.Root = Me.LayoutControlGroup13
-        Me.LayoutControl4Maintenance.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl4Maintenance.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl4Maintenance.TabIndex = 1
         Me.LayoutControl4Maintenance.Text = "LayoutControl1"
         '
         'cmdSaveBCCT
         '
         Me.cmdSaveBCCT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveBCCT.Location = New System.Drawing.Point(55, 531)
+        Me.cmdSaveBCCT.Location = New System.Drawing.Point(55, 547)
         Me.cmdSaveBCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveBCCT.Name = "cmdSaveBCCT"
         Me.cmdSaveBCCT.Size = New System.Drawing.Size(665, 39)
@@ -6293,7 +6294,7 @@ Partial Class frmBDG
         'cmdNewBCCT
         '
         Me.cmdNewBCCT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdNewBCCT.Location = New System.Drawing.Point(12, 92)
+        Me.cmdNewBCCT.Location = New System.Drawing.Point(12, 94)
         Me.cmdNewBCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdNewBCCT.Name = "cmdNewBCCT"
         Me.cmdNewBCCT.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -6304,7 +6305,7 @@ Partial Class frmBDG
         'cmdBCCTRefresh
         '
         Me.cmdBCCTRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdBCCTRefresh.Location = New System.Drawing.Point(12, 178)
+        Me.cmdBCCTRefresh.Location = New System.Drawing.Point(12, 180)
         Me.cmdBCCTRefresh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdBCCTRefresh.Name = "cmdBCCTRefresh"
         Me.cmdBCCTRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -6315,7 +6316,7 @@ Partial Class frmBDG
         'cmddelBCCT
         '
         Me.cmddelBCCT.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmddelBCCT.Location = New System.Drawing.Point(12, 135)
+        Me.cmddelBCCT.Location = New System.Drawing.Point(12, 137)
         Me.cmddelBCCT.Margin = New System.Windows.Forms.Padding(5)
         Me.cmddelBCCT.Name = "cmddelBCCT"
         Me.cmddelBCCT.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -6332,7 +6333,7 @@ Partial Class frmBDG
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEditCCT, Me.RepositoryItemLookUpEditPRF})
-        Me.GridControl1.Size = New System.Drawing.Size(1482, 1270)
+        Me.GridControl1.Size = New System.Drawing.Size(1482, 1307)
         Me.GridControl1.TabIndex = 54
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView8})
         '
@@ -6566,7 +6567,7 @@ Partial Class frmBDG
         Me.txtComments1.Location = New System.Drawing.Point(55, 211)
         Me.txtComments1.Margin = New System.Windows.Forms.Padding(5)
         Me.txtComments1.Name = "txtComments1"
-        Me.txtComments1.Size = New System.Drawing.Size(665, 316)
+        Me.txtComments1.Size = New System.Drawing.Size(665, 332)
         Me.txtComments1.StyleController = Me.LayoutControl4Maintenance
         Me.txtComments1.TabIndex = 17
         Me.txtComments1.Tag = "cmt,0,1,2"
@@ -6592,7 +6593,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup13.GroupBordersVisible = False
         Me.LayoutControlGroup13.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem108, Me.LayoutControlItem110, Me.LayoutControlItem111, Me.LayoutControlItem109, Me.EmptySpaceItem36, Me.EmptySpaceItem37, Me.LayoutControlGroup15})
         Me.LayoutControlGroup13.Name = "Root"
-        Me.LayoutControlGroup13.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup13.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup13.TextVisible = False
         '
         'LayoutControlItem108
@@ -6600,14 +6601,14 @@ Partial Class frmBDG
         Me.LayoutControlItem108.Control = Me.GridControl1
         Me.LayoutControlItem108.Location = New System.Drawing.Point(725, 0)
         Me.LayoutControlItem108.Name = "LayoutControlItem108"
-        Me.LayoutControlItem108.Size = New System.Drawing.Size(1486, 1274)
+        Me.LayoutControlItem108.Size = New System.Drawing.Size(1486, 1311)
         Me.LayoutControlItem108.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem108.TextVisible = False
         '
         'LayoutControlItem110
         '
         Me.LayoutControlItem110.Control = Me.cmdBCCTRefresh
-        Me.LayoutControlItem110.Location = New System.Drawing.Point(0, 166)
+        Me.LayoutControlItem110.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem110.Name = "LayoutControlItem110"
         Me.LayoutControlItem110.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem110.TextSize = New System.Drawing.Size(0, 0)
@@ -6616,7 +6617,7 @@ Partial Class frmBDG
         'LayoutControlItem111
         '
         Me.LayoutControlItem111.Control = Me.cmdNewBCCT
-        Me.LayoutControlItem111.Location = New System.Drawing.Point(0, 80)
+        Me.LayoutControlItem111.Location = New System.Drawing.Point(0, 82)
         Me.LayoutControlItem111.Name = "LayoutControlItem111"
         Me.LayoutControlItem111.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem111.TextSize = New System.Drawing.Size(0, 0)
@@ -6625,7 +6626,7 @@ Partial Class frmBDG
         'LayoutControlItem109
         '
         Me.LayoutControlItem109.Control = Me.cmddelBCCT
-        Me.LayoutControlItem109.Location = New System.Drawing.Point(0, 123)
+        Me.LayoutControlItem109.Location = New System.Drawing.Point(0, 125)
         Me.LayoutControlItem109.Name = "LayoutControlItem109"
         Me.LayoutControlItem109.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem109.TextSize = New System.Drawing.Size(0, 0)
@@ -6636,15 +6637,15 @@ Partial Class frmBDG
         Me.EmptySpaceItem36.AllowHotTrack = False
         Me.EmptySpaceItem36.Location = New System.Drawing.Point(0, 0)
         Me.EmptySpaceItem36.Name = "EmptySpaceItem36"
-        Me.EmptySpaceItem36.Size = New System.Drawing.Size(30, 80)
+        Me.EmptySpaceItem36.Size = New System.Drawing.Size(30, 82)
         Me.EmptySpaceItem36.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem37
         '
         Me.EmptySpaceItem37.AllowHotTrack = False
-        Me.EmptySpaceItem37.Location = New System.Drawing.Point(0, 209)
+        Me.EmptySpaceItem37.Location = New System.Drawing.Point(0, 211)
         Me.EmptySpaceItem37.Name = "EmptySpaceItem37"
-        Me.EmptySpaceItem37.Size = New System.Drawing.Size(30, 1065)
+        Me.EmptySpaceItem37.Size = New System.Drawing.Size(30, 1100)
         Me.EmptySpaceItem37.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlGroup15
@@ -6654,7 +6655,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup15.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlGroup15.Name = "LayoutControlGroup15"
         Me.LayoutControlGroup15.OptionsItemText.TextToControlDistance = 3
-        Me.LayoutControlGroup15.Size = New System.Drawing.Size(695, 1274)
+        Me.LayoutControlGroup15.Size = New System.Drawing.Size(695, 1311)
         Me.LayoutControlGroup15.Text = "Επαφή"
         '
         'LayoutControlItem112
@@ -6693,7 +6694,7 @@ Partial Class frmBDG
         Me.LayoutControlItem118.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem118.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem118.Name = "LayoutControlItem118"
-        Me.LayoutControlItem118.Size = New System.Drawing.Size(669, 344)
+        Me.LayoutControlItem118.Size = New System.Drawing.Size(669, 360)
         Me.LayoutControlItem118.Text = "Σχόλια Πολυκατοικίας"
         Me.LayoutControlItem118.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem118.TextLocation = DevExpress.Utils.Locations.Top
@@ -6703,7 +6704,7 @@ Partial Class frmBDG
         'LayoutControlItem119
         '
         Me.LayoutControlItem119.Control = Me.cmdSaveBCCT
-        Me.LayoutControlItem119.Location = New System.Drawing.Point(0, 470)
+        Me.LayoutControlItem119.Location = New System.Drawing.Point(0, 486)
         Me.LayoutControlItem119.Name = "LayoutControlItem119"
         Me.LayoutControlItem119.Size = New System.Drawing.Size(669, 43)
         Me.LayoutControlItem119.TextSize = New System.Drawing.Size(0, 0)
@@ -6732,9 +6733,9 @@ Partial Class frmBDG
         'EmptySpaceItem7
         '
         Me.EmptySpaceItem7.AllowHotTrack = False
-        Me.EmptySpaceItem7.Location = New System.Drawing.Point(0, 513)
+        Me.EmptySpaceItem7.Location = New System.Drawing.Point(0, 529)
         Me.EmptySpaceItem7.Name = "EmptySpaceItem7"
-        Me.EmptySpaceItem7.Size = New System.Drawing.Size(669, 699)
+        Me.EmptySpaceItem7.Size = New System.Drawing.Size(669, 720)
         Me.EmptySpaceItem7.TextSize = New System.Drawing.Size(0, 0)
         '
         'tabFixedCosts
@@ -6742,7 +6743,7 @@ Partial Class frmBDG
         Me.tabFixedCosts.Controls.Add(Me.LayoutControl5FixedCosts)
         Me.tabFixedCosts.Margin = New System.Windows.Forms.Padding(5)
         Me.tabFixedCosts.Name = "tabFixedCosts"
-        Me.tabFixedCosts.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabFixedCosts.Size = New System.Drawing.Size(2231, 1331)
         Me.tabFixedCosts.Text = "Πάγια Έξοδα"
         '
         'LayoutControl5FixedCosts
@@ -6757,7 +6758,7 @@ Partial Class frmBDG
         Me.LayoutControl5FixedCosts.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl5FixedCosts.Name = "LayoutControl5FixedCosts"
         Me.LayoutControl5FixedCosts.Root = Me.LayoutControlGroup12
-        Me.LayoutControl5FixedCosts.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl5FixedCosts.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl5FixedCosts.TabIndex = 1
         Me.LayoutControl5FixedCosts.Text = "LayoutControl1"
         '
@@ -6814,7 +6815,7 @@ Partial Class frmBDG
         Me.grdIEP.Margin = New System.Windows.Forms.Padding(5)
         Me.grdIEP.Name = "grdIEP"
         Me.grdIEP.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepAPT})
-        Me.grdIEP.Size = New System.Drawing.Size(2177, 1270)
+        Me.grdIEP.Size = New System.Drawing.Size(2177, 1307)
         Me.grdIEP.TabIndex = 22
         Me.grdIEP.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView6})
         '
@@ -7038,7 +7039,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup12.GroupBordersVisible = False
         Me.LayoutControlGroup12.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem98, Me.LayoutControlItem102, Me.LayoutControlItem101, Me.LayoutControlItem103, Me.LayoutControlItem104})
         Me.LayoutControlGroup12.Name = "LayoutControlGroup12"
-        Me.LayoutControlGroup12.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup12.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup12.TextVisible = False
         '
         'LayoutControlItem98
@@ -7046,7 +7047,7 @@ Partial Class frmBDG
         Me.LayoutControlItem98.Control = Me.grdIEP
         Me.LayoutControlItem98.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlItem98.Name = "LayoutControlItem98"
-        Me.LayoutControlItem98.Size = New System.Drawing.Size(2181, 1274)
+        Me.LayoutControlItem98.Size = New System.Drawing.Size(2181, 1311)
         Me.LayoutControlItem98.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem98.TextVisible = False
         '
@@ -7055,7 +7056,7 @@ Partial Class frmBDG
         Me.LayoutControlItem102.Control = Me.cmdIEPRefresh
         Me.LayoutControlItem102.Location = New System.Drawing.Point(0, 129)
         Me.LayoutControlItem102.Name = "LayoutControlItem102"
-        Me.LayoutControlItem102.Size = New System.Drawing.Size(30, 1145)
+        Me.LayoutControlItem102.Size = New System.Drawing.Size(30, 1182)
         Me.LayoutControlItem102.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem102.TextVisible = False
         '
@@ -7091,7 +7092,7 @@ Partial Class frmBDG
         Me.tabProfActD.Controls.Add(Me.LayoutControl6Jobs)
         Me.tabProfActD.Margin = New System.Windows.Forms.Padding(5)
         Me.tabProfActD.Name = "tabProfActD"
-        Me.tabProfActD.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabProfActD.Size = New System.Drawing.Size(2231, 1331)
         Me.tabProfActD.Text = "Εργασίες"
         '
         'LayoutControl6Jobs
@@ -7112,14 +7113,14 @@ Partial Class frmBDG
         Me.LayoutControl6Jobs.Name = "LayoutControl6Jobs"
         Me.LayoutControl6Jobs.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2323, 962, 1137, 700)
         Me.LayoutControl6Jobs.Root = Me.LayoutControlGroup21
-        Me.LayoutControl6Jobs.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl6Jobs.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl6Jobs.TabIndex = 0
         Me.LayoutControl6Jobs.Text = "LayoutControl2"
         '
         'cmdRefreshProfActD
         '
         Me.cmdRefreshProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdRefreshProfActD.Location = New System.Drawing.Point(12, 149)
+        Me.cmdRefreshProfActD.Location = New System.Drawing.Point(12, 150)
         Me.cmdRefreshProfActD.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdRefreshProfActD.Name = "cmdRefreshProfActD"
         Me.cmdRefreshProfActD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -7130,7 +7131,7 @@ Partial Class frmBDG
         'cmdDeleteProfActD
         '
         Me.cmdDeleteProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdDeleteProfActD.Location = New System.Drawing.Point(12, 106)
+        Me.cmdDeleteProfActD.Location = New System.Drawing.Point(12, 107)
         Me.cmdDeleteProfActD.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdDeleteProfActD.Name = "cmdDeleteProfActD"
         Me.cmdDeleteProfActD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -7147,7 +7148,7 @@ Partial Class frmBDG
         Me.GridControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemProfAct, Me.RepositoryItemWorkShop})
-        Me.GridControl2.Size = New System.Drawing.Size(1427, 1270)
+        Me.GridControl2.Size = New System.Drawing.Size(1427, 1307)
         Me.GridControl2.TabIndex = 64
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView10})
         '
@@ -7382,7 +7383,7 @@ Partial Class frmBDG
         'cmdSaveProfActD
         '
         Me.cmdSaveProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveProfActD.Location = New System.Drawing.Point(56, 594)
+        Me.cmdSaveProfActD.Location = New System.Drawing.Point(56, 612)
         Me.cmdSaveProfActD.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveProfActD.Name = "cmdSaveProfActD"
         Me.cmdSaveProfActD.Size = New System.Drawing.Size(719, 39)
@@ -7436,7 +7437,7 @@ Partial Class frmBDG
         Me.MemoEdit1.Location = New System.Drawing.Point(56, 297)
         Me.MemoEdit1.Margin = New System.Windows.Forms.Padding(5)
         Me.MemoEdit1.Name = "MemoEdit1"
-        Me.MemoEdit1.Size = New System.Drawing.Size(719, 293)
+        Me.MemoEdit1.Size = New System.Drawing.Size(719, 311)
         Me.MemoEdit1.StyleController = Me.LayoutControl6Jobs
         Me.MemoEdit1.TabIndex = 61
         Me.MemoEdit1.Tag = "cmt,0,1,2"
@@ -7492,7 +7493,7 @@ Partial Class frmBDG
         'cmdNewProfActD
         '
         Me.cmdNewProfActD.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdNewProfActD.Location = New System.Drawing.Point(12, 63)
+        Me.cmdNewProfActD.Location = New System.Drawing.Point(12, 64)
         Me.cmdNewProfActD.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdNewProfActD.Name = "cmdNewProfActD"
         Me.cmdNewProfActD.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -7506,7 +7507,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup21.GroupBordersVisible = False
         Me.LayoutControlGroup21.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem153, Me.LayoutControlGroup24, Me.EmptySpaceItem30, Me.EmptySpaceItem29, Me.LayoutControlItem156, Me.LayoutControlItem157, Me.LayoutControlItem158})
         Me.LayoutControlGroup21.Name = "Root"
-        Me.LayoutControlGroup21.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup21.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup21.TextVisible = False
         '
         'LayoutControlItem153
@@ -7514,7 +7515,7 @@ Partial Class frmBDG
         Me.LayoutControlItem153.Control = Me.GridControl2
         Me.LayoutControlItem153.Location = New System.Drawing.Point(780, 0)
         Me.LayoutControlItem153.Name = "LayoutControlItem153"
-        Me.LayoutControlItem153.Size = New System.Drawing.Size(1431, 1274)
+        Me.LayoutControlItem153.Size = New System.Drawing.Size(1431, 1311)
         Me.LayoutControlItem153.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem153.TextVisible = False
         '
@@ -7523,7 +7524,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup24.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem151, Me.LayoutControlItem149, Me.LayoutControlItem148, Me.LayoutControlItem147, Me.LayoutControlItem154, Me.LayoutControlItem155, Me.LayoutControlItem152, Me.EmptySpaceItem8, Me.EmptySpaceItem31})
         Me.LayoutControlGroup24.Location = New System.Drawing.Point(31, 0)
         Me.LayoutControlGroup24.Name = "LayoutControlGroup24"
-        Me.LayoutControlGroup24.Size = New System.Drawing.Size(749, 1274)
+        Me.LayoutControlGroup24.Size = New System.Drawing.Size(749, 1311)
         Me.LayoutControlGroup24.Text = "Εργασίες"
         '
         'LayoutControlItem151
@@ -7531,7 +7532,7 @@ Partial Class frmBDG
         Me.LayoutControlItem151.Control = Me.MemoEdit1
         Me.LayoutControlItem151.Location = New System.Drawing.Point(0, 210)
         Me.LayoutControlItem151.Name = "LayoutControlItem151"
-        Me.LayoutControlItem151.Size = New System.Drawing.Size(723, 323)
+        Me.LayoutControlItem151.Size = New System.Drawing.Size(723, 341)
         Me.LayoutControlItem151.Text = "Σχόλια"
         Me.LayoutControlItem151.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem151.TextSize = New System.Drawing.Size(192, 23)
@@ -7561,7 +7562,7 @@ Partial Class frmBDG
         'LayoutControlItem147
         '
         Me.LayoutControlItem147.Control = Me.cmdSaveProfActD
-        Me.LayoutControlItem147.Location = New System.Drawing.Point(0, 533)
+        Me.LayoutControlItem147.Location = New System.Drawing.Point(0, 551)
         Me.LayoutControlItem147.Name = "LayoutControlItem147"
         Me.LayoutControlItem147.Size = New System.Drawing.Size(723, 43)
         Me.LayoutControlItem147.TextSize = New System.Drawing.Size(0, 0)
@@ -7617,17 +7618,17 @@ Partial Class frmBDG
         'EmptySpaceItem31
         '
         Me.EmptySpaceItem31.AllowHotTrack = False
-        Me.EmptySpaceItem31.Location = New System.Drawing.Point(0, 576)
+        Me.EmptySpaceItem31.Location = New System.Drawing.Point(0, 594)
         Me.EmptySpaceItem31.Name = "EmptySpaceItem31"
-        Me.EmptySpaceItem31.Size = New System.Drawing.Size(723, 636)
+        Me.EmptySpaceItem31.Size = New System.Drawing.Size(723, 655)
         Me.EmptySpaceItem31.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem30
         '
         Me.EmptySpaceItem30.AllowHotTrack = False
-        Me.EmptySpaceItem30.Location = New System.Drawing.Point(0, 180)
+        Me.EmptySpaceItem30.Location = New System.Drawing.Point(0, 181)
         Me.EmptySpaceItem30.Name = "EmptySpaceItem30"
-        Me.EmptySpaceItem30.Size = New System.Drawing.Size(31, 1094)
+        Me.EmptySpaceItem30.Size = New System.Drawing.Size(31, 1130)
         Me.EmptySpaceItem30.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem29
@@ -7635,7 +7636,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem29.AllowHotTrack = False
         Me.EmptySpaceItem29.Location = New System.Drawing.Point(0, 0)
         Me.EmptySpaceItem29.Name = "EmptySpaceItem29"
-        Me.EmptySpaceItem29.Size = New System.Drawing.Size(31, 51)
+        Me.EmptySpaceItem29.Size = New System.Drawing.Size(31, 52)
         Me.EmptySpaceItem29.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem156
@@ -7643,7 +7644,7 @@ Partial Class frmBDG
         Me.LayoutControlItem156.Control = Me.cmdNewProfActD
         Me.LayoutControlItem156.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem156.CustomizationFormText = "LayoutControlItem111"
-        Me.LayoutControlItem156.Location = New System.Drawing.Point(0, 51)
+        Me.LayoutControlItem156.Location = New System.Drawing.Point(0, 52)
         Me.LayoutControlItem156.Name = "LayoutControlItem156"
         Me.LayoutControlItem156.Size = New System.Drawing.Size(31, 43)
         Me.LayoutControlItem156.Text = "LayoutControlItem111"
@@ -7653,7 +7654,7 @@ Partial Class frmBDG
         'LayoutControlItem157
         '
         Me.LayoutControlItem157.Control = Me.cmdDeleteProfActD
-        Me.LayoutControlItem157.Location = New System.Drawing.Point(0, 94)
+        Me.LayoutControlItem157.Location = New System.Drawing.Point(0, 95)
         Me.LayoutControlItem157.Name = "LayoutControlItem157"
         Me.LayoutControlItem157.Size = New System.Drawing.Size(31, 43)
         Me.LayoutControlItem157.TextSize = New System.Drawing.Size(0, 0)
@@ -7662,7 +7663,7 @@ Partial Class frmBDG
         'LayoutControlItem158
         '
         Me.LayoutControlItem158.Control = Me.cmdRefreshProfActD
-        Me.LayoutControlItem158.Location = New System.Drawing.Point(0, 137)
+        Me.LayoutControlItem158.Location = New System.Drawing.Point(0, 138)
         Me.LayoutControlItem158.Name = "LayoutControlItem158"
         Me.LayoutControlItem158.Size = New System.Drawing.Size(31, 43)
         Me.LayoutControlItem158.TextSize = New System.Drawing.Size(0, 0)
@@ -7673,7 +7674,7 @@ Partial Class frmBDG
         Me.tabHeatingInvoices.Controls.Add(Me.LayoutControl4InvHeatGas)
         Me.tabHeatingInvoices.Margin = New System.Windows.Forms.Padding(5)
         Me.tabHeatingInvoices.Name = "tabHeatingInvoices"
-        Me.tabHeatingInvoices.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabHeatingInvoices.Size = New System.Drawing.Size(2231, 1331)
         Me.tabHeatingInvoices.Text = "Τιμολόγια Καυσίμων"
         '
         'LayoutControl4InvHeatGas
@@ -7712,7 +7713,7 @@ Partial Class frmBDG
         Me.LayoutControl4InvHeatGas.Name = "LayoutControl4InvHeatGas"
         Me.LayoutControl4InvHeatGas.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(744, 475, 650, 400)
         Me.LayoutControl4InvHeatGas.Root = Me.LayoutControlGroup4
-        Me.LayoutControl4InvHeatGas.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl4InvHeatGas.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl4InvHeatGas.TabIndex = 9
         Me.LayoutControl4InvHeatGas.Text = "LayoutControl3"
         '
@@ -7834,7 +7835,7 @@ Partial Class frmBDG
         Me.grdGas.Margin = New System.Windows.Forms.Padding(5)
         Me.grdGas.Name = "grdGas"
         Me.grdGas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonGas})
-        Me.grdGas.Size = New System.Drawing.Size(1017, 913)
+        Me.grdGas.Size = New System.Drawing.Size(1017, 950)
         Me.grdGas.TabIndex = 50
         Me.grdGas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView4})
         '
@@ -8073,7 +8074,7 @@ Partial Class frmBDG
         Me.grdOil.Margin = New System.Windows.Forms.Padding(5)
         Me.grdOil.Name = "grdOil"
         Me.grdOil.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonOil})
-        Me.grdOil.Size = New System.Drawing.Size(1054, 913)
+        Me.grdOil.Size = New System.Drawing.Size(1054, 950)
         Me.grdOil.TabIndex = 36
         Me.grdOil.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -8142,7 +8143,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup5, Me.LayoutControlGroup6})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup4.TextVisible = False
         '
         'LayoutControlGroup5
@@ -8152,7 +8153,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem57, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.LayoutControlItem53, Me.LayoutControlItem58, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.EmptySpaceItem13, Me.EmptySpaceItem17, Me.EmptySpaceItem18, Me.EmptySpaceItem19, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem68})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1124, 1274)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1124, 1311)
         Me.LayoutControlGroup5.Text = "Τιμολόγια Πετρέλαιου"
         '
         'LayoutControlItem51
@@ -8230,7 +8231,7 @@ Partial Class frmBDG
         Me.LayoutControlItem47.Control = Me.grdOil
         Me.LayoutControlItem47.Location = New System.Drawing.Point(40, 295)
         Me.LayoutControlItem47.Name = "LayoutControlItem47"
-        Me.LayoutControlItem47.Size = New System.Drawing.Size(1058, 917)
+        Me.LayoutControlItem47.Size = New System.Drawing.Size(1058, 954)
         Me.LayoutControlItem47.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem47.TextVisible = False
         '
@@ -8320,7 +8321,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem24.AllowHotTrack = False
         Me.EmptySpaceItem24.Location = New System.Drawing.Point(0, 467)
         Me.EmptySpaceItem24.Name = "EmptySpaceItem24"
-        Me.EmptySpaceItem24.Size = New System.Drawing.Size(40, 745)
+        Me.EmptySpaceItem24.Size = New System.Drawing.Size(40, 782)
         Me.EmptySpaceItem24.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem69
@@ -8373,7 +8374,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem49, Me.LayoutControlItem61, Me.LayoutControlItem64, Me.LayoutControlItem62, Me.LayoutControlItem60, Me.LayoutControlItem59, Me.LayoutControlItem63, Me.EmptySpaceItem14, Me.EmptySpaceItem20, Me.EmptySpaceItem21, Me.EmptySpaceItem22, Me.EmptySpaceItem23, Me.EmptySpaceItem27, Me.LayoutControlItem72, Me.LayoutControlItem74, Me.LayoutControlItem66, Me.LayoutControlItem70, Me.LayoutControlItem76})
         Me.LayoutControlGroup6.Location = New System.Drawing.Point(1124, 0)
         Me.LayoutControlGroup6.Name = "LayoutControlGroup6"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1087, 1274)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1087, 1311)
         Me.LayoutControlGroup6.Text = "Τιμολόγια Φυσικού Αερίου"
         '
         'LayoutControlItem49
@@ -8449,7 +8450,7 @@ Partial Class frmBDG
         Me.LayoutControlItem63.Control = Me.grdGas
         Me.LayoutControlItem63.Location = New System.Drawing.Point(40, 295)
         Me.LayoutControlItem63.Name = "LayoutControlItem63"
-        Me.LayoutControlItem63.Size = New System.Drawing.Size(1021, 917)
+        Me.LayoutControlItem63.Size = New System.Drawing.Size(1021, 954)
         Me.LayoutControlItem63.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem63.TextVisible = False
         '
@@ -8498,7 +8499,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem27.AllowHotTrack = False
         Me.EmptySpaceItem27.Location = New System.Drawing.Point(0, 467)
         Me.EmptySpaceItem27.Name = "EmptySpaceItem27"
-        Me.EmptySpaceItem27.Size = New System.Drawing.Size(40, 745)
+        Me.EmptySpaceItem27.Size = New System.Drawing.Size(40, 782)
         Me.EmptySpaceItem27.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem72
@@ -8551,7 +8552,7 @@ Partial Class frmBDG
         Me.tabConsumptions.Controls.Add(Me.LayoutControl7Consumptions)
         Me.tabConsumptions.Margin = New System.Windows.Forms.Padding(5)
         Me.tabConsumptions.Name = "tabConsumptions"
-        Me.tabConsumptions.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabConsumptions.Size = New System.Drawing.Size(2231, 1331)
         Me.tabConsumptions.Text = "Καταναλώσεις"
         '
         'LayoutControl7Consumptions
@@ -8576,14 +8577,14 @@ Partial Class frmBDG
         Me.LayoutControl7Consumptions.Name = "LayoutControl7Consumptions"
         Me.LayoutControl7Consumptions.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2151, 938, 1137, 700)
         Me.LayoutControl7Consumptions.Root = Me.LayoutControlGroup25
-        Me.LayoutControl7Consumptions.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl7Consumptions.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl7Consumptions.TabIndex = 0
         Me.LayoutControl7Consumptions.Text = "LayoutControl"
         '
         'cmdRefreshConsumption
         '
         Me.cmdRefreshConsumption.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdRefreshConsumption.Location = New System.Drawing.Point(12, 328)
+        Me.cmdRefreshConsumption.Location = New System.Drawing.Point(12, 335)
         Me.cmdRefreshConsumption.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdRefreshConsumption.Name = "cmdRefreshConsumption"
         Me.cmdRefreshConsumption.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -8594,7 +8595,7 @@ Partial Class frmBDG
         'cmdAddConsumption
         '
         Me.cmdAddConsumption.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdAddConsumption.Location = New System.Drawing.Point(12, 242)
+        Me.cmdAddConsumption.Location = New System.Drawing.Point(12, 249)
         Me.cmdAddConsumption.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdAddConsumption.Name = "cmdAddConsumption"
         Me.cmdAddConsumption.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -8622,7 +8623,7 @@ Partial Class frmBDG
         Me.GridControl4.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl4.Name = "GridControl4"
         Me.GridControl4.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEdit1, Me.RepositoryItemLookUpEdit2})
-        Me.GridControl4.Size = New System.Drawing.Size(2177, 1101)
+        Me.GridControl4.Size = New System.Drawing.Size(2177, 1138)
         Me.GridControl4.TabIndex = 65
         Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView11})
         '
@@ -9091,7 +9092,7 @@ Partial Class frmBDG
         'cmdDeleteConsumption
         '
         Me.cmdDeleteConsumption.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdDeleteConsumption.Location = New System.Drawing.Point(12, 285)
+        Me.cmdDeleteConsumption.Location = New System.Drawing.Point(12, 292)
         Me.cmdDeleteConsumption.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdDeleteConsumption.Name = "cmdDeleteConsumption"
         Me.cmdDeleteConsumption.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -9105,7 +9106,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup25.GroupBordersVisible = False
         Me.LayoutControlGroup25.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem159, Me.LayoutControlItem160, Me.LayoutControlItem161, Me.LayoutControlItem162, Me.LayoutControlItem163, Me.LayoutControlItem164, Me.LayoutControlItem165, Me.LayoutControlItem166, Me.LayoutControlItem167, Me.LayoutControlItem168, Me.LayoutControlItem170, Me.LayoutControlItem169, Me.EmptySpaceItem32, Me.LayoutControlItem172, Me.LayoutControlItem173, Me.LayoutControlItem171, Me.EmptySpaceItem34, Me.EmptySpaceItem38})
         Me.LayoutControlGroup25.Name = "Root"
-        Me.LayoutControlGroup25.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup25.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup25.TextVisible = False
         '
         'LayoutControlItem159
@@ -9184,7 +9185,7 @@ Partial Class frmBDG
         Me.LayoutControlItem165.Control = Me.GridControl4
         Me.LayoutControlItem165.Location = New System.Drawing.Point(30, 169)
         Me.LayoutControlItem165.Name = "LayoutControlItem165"
-        Me.LayoutControlItem165.Size = New System.Drawing.Size(2181, 1105)
+        Me.LayoutControlItem165.Size = New System.Drawing.Size(2181, 1142)
         Me.LayoutControlItem165.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem165.TextVisible = False
         '
@@ -9257,7 +9258,7 @@ Partial Class frmBDG
         'LayoutControlItem172
         '
         Me.LayoutControlItem172.Control = Me.cmdAddConsumption
-        Me.LayoutControlItem172.Location = New System.Drawing.Point(0, 230)
+        Me.LayoutControlItem172.Location = New System.Drawing.Point(0, 237)
         Me.LayoutControlItem172.Name = "LayoutControlItem172"
         Me.LayoutControlItem172.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem172.TextSize = New System.Drawing.Size(0, 0)
@@ -9266,7 +9267,7 @@ Partial Class frmBDG
         'LayoutControlItem173
         '
         Me.LayoutControlItem173.Control = Me.cmdRefreshConsumption
-        Me.LayoutControlItem173.Location = New System.Drawing.Point(0, 316)
+        Me.LayoutControlItem173.Location = New System.Drawing.Point(0, 323)
         Me.LayoutControlItem173.Name = "LayoutControlItem173"
         Me.LayoutControlItem173.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem173.TextSize = New System.Drawing.Size(0, 0)
@@ -9277,7 +9278,7 @@ Partial Class frmBDG
         Me.LayoutControlItem171.Control = Me.cmdDeleteConsumption
         Me.LayoutControlItem171.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem171.CustomizationFormText = "LayoutControlItem157"
-        Me.LayoutControlItem171.Location = New System.Drawing.Point(0, 273)
+        Me.LayoutControlItem171.Location = New System.Drawing.Point(0, 280)
         Me.LayoutControlItem171.Name = "LayoutControlItem171"
         Me.LayoutControlItem171.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem171.Text = "LayoutControlItem157"
@@ -9289,15 +9290,15 @@ Partial Class frmBDG
         Me.EmptySpaceItem34.AllowHotTrack = False
         Me.EmptySpaceItem34.Location = New System.Drawing.Point(0, 0)
         Me.EmptySpaceItem34.Name = "EmptySpaceItem34"
-        Me.EmptySpaceItem34.Size = New System.Drawing.Size(30, 230)
+        Me.EmptySpaceItem34.Size = New System.Drawing.Size(30, 237)
         Me.EmptySpaceItem34.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem38
         '
         Me.EmptySpaceItem38.AllowHotTrack = False
-        Me.EmptySpaceItem38.Location = New System.Drawing.Point(0, 359)
+        Me.EmptySpaceItem38.Location = New System.Drawing.Point(0, 366)
         Me.EmptySpaceItem38.Name = "EmptySpaceItem38"
-        Me.EmptySpaceItem38.Size = New System.Drawing.Size(30, 915)
+        Me.EmptySpaceItem38.Size = New System.Drawing.Size(30, 945)
         Me.EmptySpaceItem38.TextSize = New System.Drawing.Size(0, 0)
         '
         'tabDeposit
@@ -9305,7 +9306,7 @@ Partial Class frmBDG
         Me.tabDeposit.Controls.Add(Me.LDeposit)
         Me.tabDeposit.Margin = New System.Windows.Forms.Padding(5)
         Me.tabDeposit.Name = "tabDeposit"
-        Me.tabDeposit.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabDeposit.Size = New System.Drawing.Size(2231, 1331)
         Me.tabDeposit.Text = "Αποθεματικά"
         '
         'LDeposit
@@ -9336,7 +9337,7 @@ Partial Class frmBDG
         Me.LDeposit.Name = "LDeposit"
         Me.LDeposit.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2304, 423, 1137, 700)
         Me.LDeposit.Root = Me.LayoutControlGroup26
-        Me.LDeposit.Size = New System.Drawing.Size(2231, 1294)
+        Me.LDeposit.Size = New System.Drawing.Size(2231, 1331)
         Me.LDeposit.TabIndex = 0
         Me.LDeposit.Text = "LayoutControl2"
         '
@@ -9410,7 +9411,7 @@ Partial Class frmBDG
         Me.grdDepositA.Margin = New System.Windows.Forms.Padding(5)
         Me.grdDepositA.Name = "grdDepositA"
         Me.grdDepositA.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepDtDeposit, Me.RepCboMultiplier, Me.RepTxtAmt, Me.RepDepositF})
-        Me.grdDepositA.Size = New System.Drawing.Size(2151, 766)
+        Me.grdDepositA.Size = New System.Drawing.Size(2151, 803)
         Me.grdDepositA.TabIndex = 66
         Me.grdDepositA.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView_DepositA})
         '
@@ -9881,7 +9882,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup26.GroupBordersVisible = False
         Me.LayoutControlGroup26.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1})
         Me.LayoutControlGroup26.Name = "Root"
-        Me.LayoutControlGroup26.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup26.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup26.TextVisible = False
         '
         'TabbedControlGroup1
@@ -9889,7 +9890,7 @@ Partial Class frmBDG
         Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup27
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(2211, 1274)
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(2211, 1311)
         Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup27})
         '
         'LayoutControlGroup27
@@ -9898,7 +9899,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup27.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem114, Me.LayoutControlItem185, Me.LayoutControlItem183, Me.LayoutControlItem186, Me.LayoutControlItem184, Me.LayoutControlItem182, Me.LayoutControlItem187, Me.EmptySpaceItem40, Me.LayoutControlItem188, Me.LayoutControlItem189, Me.EmptySpaceItem6, Me.EmptySpaceItem41, Me.LayoutControlItem190, Me.LayoutControlItem191, Me.LayoutControlItem192, Me.LayoutControlItem193, Me.LayoutControlItem195, Me.LayoutControlItem196, Me.LayoutControlItem197, Me.LayoutControlItem198, Me.LayoutControlItem199, Me.EmptySpaceItem46, Me.EmptySpaceItem45, Me.LayoutControlItem204, Me.LayoutControlItem205, Me.LayoutControlItem206, Me.EmptySpaceItem15})
         Me.LayoutControlGroup27.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup27.Name = "LayoutControlGroup27"
-        Me.LayoutControlGroup27.Size = New System.Drawing.Size(2185, 1211)
+        Me.LayoutControlGroup27.Size = New System.Drawing.Size(2185, 1248)
         Me.LayoutControlGroup27.Text = "Λογιστικό"
         '
         'LayoutControlItem114
@@ -9995,7 +9996,7 @@ Partial Class frmBDG
         Me.LayoutControlItem188.Control = Me.grdDepositA
         Me.LayoutControlItem188.Location = New System.Drawing.Point(30, 441)
         Me.LayoutControlItem188.Name = "LayoutControlItem188"
-        Me.LayoutControlItem188.Size = New System.Drawing.Size(2155, 770)
+        Me.LayoutControlItem188.Size = New System.Drawing.Size(2155, 807)
         Me.LayoutControlItem188.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem188.TextVisible = False
         '
@@ -10021,7 +10022,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem41.AllowHotTrack = False
         Me.EmptySpaceItem41.Location = New System.Drawing.Point(0, 570)
         Me.EmptySpaceItem41.Name = "EmptySpaceItem41"
-        Me.EmptySpaceItem41.Size = New System.Drawing.Size(30, 641)
+        Me.EmptySpaceItem41.Size = New System.Drawing.Size(30, 678)
         Me.EmptySpaceItem41.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem190
@@ -10197,7 +10198,7 @@ Partial Class frmBDG
         '
         Me.XtraTabPage21.Margin = New System.Windows.Forms.Padding(5)
         Me.XtraTabPage21.Name = "XtraTabPage21"
-        Me.XtraTabPage21.Size = New System.Drawing.Size(2231, 1294)
+        Me.XtraTabPage21.Size = New System.Drawing.Size(2231, 1331)
         Me.XtraTabPage21.Text = "XtraTabPage10"
         '
         'tabAPM
@@ -10205,7 +10206,7 @@ Partial Class frmBDG
         Me.tabAPM.Controls.Add(Me.LayoutControl11APM)
         Me.tabAPM.Margin = New System.Windows.Forms.Padding(5)
         Me.tabAPM.Name = "tabAPM"
-        Me.tabAPM.Size = New System.Drawing.Size(2231, 1294)
+        Me.tabAPM.Size = New System.Drawing.Size(2231, 1331)
         Me.tabAPM.Text = "Χιλιοστά"
         '
         'LayoutControl11APM
@@ -10221,7 +10222,7 @@ Partial Class frmBDG
         Me.LayoutControl11APM.Name = "LayoutControl11APM"
         Me.LayoutControl11APM.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(704, 399, 650, 400)
         Me.LayoutControl11APM.Root = Me.LayoutControlGroup11
-        Me.LayoutControl11APM.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControl11APM.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControl11APM.TabIndex = 2
         Me.LayoutControl11APM.Text = "LayoutControl1"
         '
@@ -10275,7 +10276,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup11.GroupBordersVisible = False
         Me.LayoutControlGroup11.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem39, Me.LayoutControlItem29, Me.LayoutControlItem93, Me.LayoutControlItem107, Me.LayoutControlItem95})
         Me.LayoutControlGroup11.Name = "Root"
-        Me.LayoutControlGroup11.Size = New System.Drawing.Size(2231, 1294)
+        Me.LayoutControlGroup11.Size = New System.Drawing.Size(2231, 1331)
         Me.LayoutControlGroup11.TextVisible = False
         '
         'LayoutControlItem39
@@ -10283,7 +10284,7 @@ Partial Class frmBDG
         Me.LayoutControlItem39.Control = Me.grdAPM
         Me.LayoutControlItem39.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlItem39.Name = "LayoutControlItem39"
-        Me.LayoutControlItem39.Size = New System.Drawing.Size(2181, 1274)
+        Me.LayoutControlItem39.Size = New System.Drawing.Size(2181, 1311)
         Me.LayoutControlItem39.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem39.TextVisible = False
         '
@@ -10310,7 +10311,7 @@ Partial Class frmBDG
         Me.LayoutControlItem107.Control = Me.cmdApmExport
         Me.LayoutControlItem107.Location = New System.Drawing.Point(0, 129)
         Me.LayoutControlItem107.Name = "LayoutControlItem107"
-        Me.LayoutControlItem107.Size = New System.Drawing.Size(30, 1145)
+        Me.LayoutControlItem107.Size = New System.Drawing.Size(30, 1182)
         Me.LayoutControlItem107.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem107.TextVisible = False
         '
@@ -10990,6 +10991,13 @@ Partial Class frmBDG
         'Vw_PUBLIC_STableAdapter
         '
         Me.Vw_PUBLIC_STableAdapter.ClearBeforeFill = True
+        '
+        'BarEXP
+        '
+        Me.BarEXP.Caption = "Έξοδα"
+        Me.BarEXP.Id = 51
+        Me.BarEXP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_16_invoice_16
+        Me.BarEXP.Name = "BarEXP"
         '
         'frmBDG
         '
@@ -12445,4 +12453,5 @@ Partial Class frmBDG
     Friend WithEvents txttotDepositRAndPrepayments As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem206 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem15 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents BarEXP As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -3388,6 +3388,21 @@ Public Class frmBDG
         End If
     End Sub
 
+    Private Sub BarEXP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEXP.ItemClick
+        Dim selectedRowHandles As Integer() = GridView_INH.GetSelectedRows()
+        Dim frmFilePreviwer As New frmFilePreviwer
+        frmFilePreviwer.Text = "Προβολή Αρχείων"
+        frmFilePreviwer.PrintAllExp = True
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView_INH.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
+                frmFilePreviwer.sIDs.Add(GridView_INH.GetRowCellValue(selectedRowHandle, "ID").ToString)
+            End If
+        Next
+        frmFilePreviwer.ShowDialog()
+    End Sub
+
+
     'Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
     '    If Valid.ValidateFormGRP(LayoutControlGroup18) Then
     '        If XtraOpenFileDialog1.SafeFileName <> "" Then

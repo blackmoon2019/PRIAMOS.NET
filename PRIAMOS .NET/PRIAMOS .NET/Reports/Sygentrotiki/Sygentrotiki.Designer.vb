@@ -478,7 +478,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel28.CanGrow = False
         Me.XrLabel28.Dpi = 254.0!
         Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[colannouncement] + ' ' +" & Global.Microsoft.VisualBasic.ChrW(10) & "[vw_INH].[announcement]")})
-        Me.XrLabel28.Font = New System.Drawing.Font("Arial", 9.0!)
+        Me.XrLabel28.Font = New DevExpress.Drawing.DXFont("Arial", 9.0!)
         Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(2.999756!, 39.79498!)
         Me.XrLabel28.Multiline = True
         Me.XrLabel28.Name = "XrLabel28"
@@ -493,7 +493,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel29.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel29.CanGrow = False
         Me.XrLabel29.Dpi = 254.0!
-        Me.XrLabel29.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel29.Font = New DevExpress.Drawing.DXFont("Arial", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel29.Multiline = True
         Me.XrLabel29.Name = "XrLabel29"
@@ -525,7 +525,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel14.CanGrow = False
         Me.XrLabel14.Dpi = 254.0!
         Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[TotalInh]")})
-        Me.XrLabel14.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel14.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(23.0!, 475.9797!)
         Me.XrLabel14.Multiline = True
         Me.XrLabel14.Name = "XrLabel14"
@@ -544,7 +544,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel13.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel13.CanGrow = False
         Me.XrLabel13.Dpi = 254.0!
-        Me.XrLabel13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel13.Font = New DevExpress.Drawing.DXFont("Segoe UI", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(3.000244!, 322.7916!)
         Me.XrLabel13.Multiline = True
         Me.XrLabel13.Name = "XrLabel13"
@@ -595,7 +595,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel23.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel23.Dpi = 254.0!
-        Me.XrLabel23.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel23.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(4.0!, 0.00003051758!)
         Me.XrLabel23.Multiline = True
         Me.XrLabel23.Name = "XrLabel23"
@@ -611,7 +611,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel27.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel27.Dpi = 254.0!
-        Me.XrLabel27.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel27.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(637.2056!, 0.00003051758!)
         Me.XrLabel27.Multiline = True
         Me.XrLabel27.Name = "XrLabel27"
@@ -697,7 +697,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel4.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel4.Dpi = 254.0!
-        Me.XrLabel4.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(25.43945!, 36.51245!)
         Me.XrLabel4.Multiline = True
         Me.XrLabel4.Name = "XrLabel4"
@@ -713,7 +713,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel9.Dpi = 254.0!
-        Me.XrLabel9.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel9.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(877.8884!, 111.4825!)
         Me.XrLabel9.Multiline = True
         Me.XrLabel9.Name = "XrLabel9"
@@ -729,7 +729,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel8.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel8.Dpi = 254.0!
-        Me.XrLabel8.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel8.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(877.8884!, 36.51245!)
         Me.XrLabel8.Multiline = True
         Me.XrLabel8.Name = "XrLabel8"
@@ -790,7 +790,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel6.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel6.Dpi = 254.0!
-        Me.XrLabel6.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel6.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(25.43945!, 191.0357!)
         Me.XrLabel6.Multiline = True
         Me.XrLabel6.Name = "XrLabel6"
@@ -806,7 +806,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel5.Dpi = 254.0!
-        Me.XrLabel5.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(25.43945!, 111.4825!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
@@ -822,7 +822,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel7.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel7.Dpi = 254.0!
-        Me.XrLabel7.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel7.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(877.8884!, 191.0357!)
         Me.XrLabel7.Multiline = True
         Me.XrLabel7.Name = "XrLabel7"
@@ -842,7 +842,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel15.CanGrow = False
         Me.XrLabel15.Dpi = 254.0!
-        Me.XrLabel15.Font = New System.Drawing.Font("Bookman Old Style", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel15.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.75!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(2839.577!, 323.1091!)
         Me.XrLabel15.Multiline = True
         Me.XrLabel15.Name = "XrLabel15"
@@ -863,7 +863,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel12.CanGrow = False
         Me.XrLabel12.Dpi = 254.0!
-        Me.XrLabel12.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel12.Font = New DevExpress.Drawing.DXFont("Segoe UI", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(1938.579!, 323.1091!)
         Me.XrLabel12.Multiline = True
         Me.XrLabel12.Name = "XrLabel12"
@@ -884,7 +884,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel1.CanGrow = False
         Me.XrLabel1.Dpi = 254.0!
-        Me.XrLabel1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel1.Font = New DevExpress.Drawing.DXFont("Segoe UI", 10.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(54.99997!, 323.1091!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
@@ -922,7 +922,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel10.CanGrow = False
         Me.XrLabel10.Dpi = 254.0!
-        Me.XrLabel10.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel10.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel10.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(25.4!, 108.6702!)
         Me.XrLabel10.Multiline = True
@@ -942,7 +942,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel11.CanGrow = False
         Me.XrLabel11.Dpi = 254.0!
-        Me.XrLabel11.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel11.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel11.ForeColor = System.Drawing.Color.Red
         Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(252.1059!, 12.7!)
         Me.XrLabel11.Multiline = True
@@ -964,7 +964,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel3.CanGrow = False
         Me.XrLabel3.Dpi = 254.0!
-        Me.XrLabel3.Font = New System.Drawing.Font("Bookman Old Style", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
+        Me.XrLabel3.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 12.0!, CType((DevExpress.Drawing.DXFontStyle.Bold Or DevExpress.Drawing.DXFontStyle.Italic), DevExpress.Drawing.DXFontStyle))
         Me.XrLabel3.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(1887.579!, 29.21011!)
         Me.XrLabel3.Multiline = True
@@ -1042,7 +1042,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel16.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel16.Dpi = 254.0!
-        Me.XrLabel16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel16.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel16.LocationFloat = New DevExpress.Utils.PointFloat(3.999996!, 0.00009155273!)
         Me.XrLabel16.Multiline = True
         Me.XrLabel16.Name = "XrLabel16"
@@ -1058,7 +1058,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel17.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel17.Dpi = 254.0!
-        Me.XrLabel17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel17.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel17.LocationFloat = New DevExpress.Utils.PointFloat(719.186!, 0.0001220703!)
         Me.XrLabel17.Multiline = True
         Me.XrLabel17.Name = "XrLabel17"
@@ -1074,7 +1074,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel18.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel18.Dpi = 254.0!
-        Me.XrLabel18.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel18.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel18.LocationFloat = New DevExpress.Utils.PointFloat(949.8104!, 0.00009155273!)
         Me.XrLabel18.Multiline = True
         Me.XrLabel18.Name = "XrLabel18"
@@ -1090,7 +1090,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrLabel19.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel19.Dpi = 254.0!
-        Me.XrLabel19.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel19.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(1650.975!, 0.00003051758!)
         Me.XrLabel19.Multiline = True
         Me.XrLabel19.Name = "XrLabel19"
@@ -1115,7 +1115,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel30.CanGrow = False
         Me.XrLabel30.Dpi = 254.0!
-        Me.XrLabel30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel30.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
         Me.XrLabel30.Name = "XrLabel30"
         Me.XrLabel30.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1132,7 +1132,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrLabel33.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel33.CanGrow = False
         Me.XrLabel33.Dpi = 254.0!
-        Me.XrLabel33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel33.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(636.7459!, 0!)
         Me.XrLabel33.Name = "XrLabel33"
         Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1151,7 +1151,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel34.CanGrow = False
         Me.XrLabel34.Dpi = 254.0!
-        Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel34.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(2268.887!, 0!)
         Me.XrLabel34.Name = "XrLabel34"
         Me.XrLabel34.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1169,7 +1169,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel37.CanGrow = False
         Me.XrLabel37.Dpi = 254.0!
-        Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel37.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(3652.32!, 0!)
         Me.XrLabel37.Name = "XrLabel37"
         Me.XrLabel37.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1188,7 +1188,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel36.CanGrow = False
         Me.XrLabel36.Dpi = 254.0!
-        Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel36.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(3810.117!, 37.46493!)
         Me.XrLabel36.Name = "XrLabel36"
         Me.XrLabel36.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1207,7 +1207,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel35.CanGrow = False
         Me.XrLabel35.Dpi = 254.0!
-        Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel35.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(3652.676!, 37.46507!)
         Me.XrLabel35.Name = "XrLabel35"
         Me.XrLabel35.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1226,7 +1226,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel38.CanGrow = False
         Me.XrLabel38.Dpi = 254.0!
-        Me.XrLabel38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel38.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(3967.559!, 36.45996!)
         Me.XrLabel38.Name = "XrLabel38"
         Me.XrLabel38.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1245,7 +1245,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel31.CanGrow = False
         Me.XrLabel31.Dpi = 254.0!
-        Me.XrLabel31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel31.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 36.46498!)
         Me.XrLabel31.Multiline = True
         Me.XrLabel31.Name = "XrLabel31"
@@ -1263,7 +1263,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel32.CanGrow = False
         Me.XrLabel32.Dpi = 254.0!
-        Me.XrLabel32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel32.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(183.5456!, 36.46498!)
         Me.XrLabel32.Multiline = True
         Me.XrLabel32.Name = "XrLabel32"
@@ -1297,7 +1297,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell1.CanGrow = False
         Me.XrTableCell1.Dpi = 254.0!
-        Me.XrTableCell1.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell1.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell1.Name = "XrTableCell1"
         Me.XrTableCell1.StylePriority.UseFont = False
         Me.XrTableCell1.Text = "XrTableCell1"
@@ -1309,7 +1309,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell2.CanGrow = False
         Me.XrTableCell2.Dpi = 254.0!
-        Me.XrTableCell2.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell2.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell2.Name = "XrTableCell2"
         Me.XrTableCell2.StylePriority.UseFont = False
         Me.XrTableCell2.Text = "XrTableCell2"
@@ -1321,7 +1321,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell3.CanGrow = False
         Me.XrTableCell3.Dpi = 254.0!
-        Me.XrTableCell3.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell3.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell3.Name = "XrTableCell3"
         Me.XrTableCell3.StylePriority.UseFont = False
         Me.XrTableCell3.Text = "XrTableCell3"
@@ -1333,7 +1333,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell4.CanGrow = False
         Me.XrTableCell4.Dpi = 254.0!
-        Me.XrTableCell4.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell4.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell4.Name = "XrTableCell4"
         Me.XrTableCell4.StylePriority.UseFont = False
         Me.XrTableCell4.Text = "XrTableCell4"
@@ -1345,7 +1345,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell5.CanGrow = False
         Me.XrTableCell5.Dpi = 254.0!
-        Me.XrTableCell5.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell5.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell5.Name = "XrTableCell5"
         Me.XrTableCell5.StylePriority.UseFont = False
         Me.XrTableCell5.Text = "XrTableCell5"
@@ -1357,7 +1357,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell6.CanGrow = False
         Me.XrTableCell6.Dpi = 254.0!
-        Me.XrTableCell6.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell6.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell6.Name = "XrTableCell6"
         Me.XrTableCell6.StylePriority.UseFont = False
         Me.XrTableCell6.Text = "XrTableCell6"
@@ -1369,7 +1369,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell7.CanGrow = False
         Me.XrTableCell7.Dpi = 254.0!
-        Me.XrTableCell7.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell7.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell7.Name = "XrTableCell7"
         Me.XrTableCell7.StylePriority.UseFont = False
         Me.XrTableCell7.Text = "XrTableCell7"
@@ -1381,7 +1381,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell8.CanGrow = False
         Me.XrTableCell8.Dpi = 254.0!
-        Me.XrTableCell8.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell8.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell8.Name = "XrTableCell8"
         Me.XrTableCell8.StylePriority.UseFont = False
         Me.XrTableCell8.Text = "XrTableCell8"
@@ -1393,7 +1393,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell9.CanGrow = False
         Me.XrTableCell9.Dpi = 254.0!
-        Me.XrTableCell9.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell9.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell9.Name = "XrTableCell9"
         Me.XrTableCell9.StylePriority.UseFont = False
         Me.XrTableCell9.Text = "XrTableCell9"
@@ -1424,7 +1424,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell10.CanGrow = False
         Me.XrTableCell10.Dpi = 254.0!
-        Me.XrTableCell10.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell10.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell10.Name = "XrTableCell10"
         Me.XrTableCell10.StylePriority.UseFont = False
         Me.XrTableCell10.Text = "XrTableCell1"
@@ -1436,7 +1436,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell11.CanGrow = False
         Me.XrTableCell11.Dpi = 254.0!
-        Me.XrTableCell11.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell11.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell11.Name = "XrTableCell11"
         Me.XrTableCell11.StylePriority.UseFont = False
         Me.XrTableCell11.Text = "XrTableCell2"
@@ -1448,7 +1448,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell12.CanGrow = False
         Me.XrTableCell12.Dpi = 254.0!
-        Me.XrTableCell12.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell12.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell12.Name = "XrTableCell12"
         Me.XrTableCell12.StylePriority.UseFont = False
         Me.XrTableCell12.Text = "XrTableCell3"
@@ -1460,7 +1460,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell13.CanGrow = False
         Me.XrTableCell13.Dpi = 254.0!
-        Me.XrTableCell13.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell13.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell13.Name = "XrTableCell13"
         Me.XrTableCell13.StylePriority.UseFont = False
         Me.XrTableCell13.Text = "XrTableCell4"
@@ -1472,7 +1472,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell14.CanGrow = False
         Me.XrTableCell14.Dpi = 254.0!
-        Me.XrTableCell14.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell14.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell14.Name = "XrTableCell14"
         Me.XrTableCell14.StylePriority.UseFont = False
         Me.XrTableCell14.Text = "XrTableCell5"
@@ -1484,7 +1484,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell15.CanGrow = False
         Me.XrTableCell15.Dpi = 254.0!
-        Me.XrTableCell15.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell15.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell15.Name = "XrTableCell15"
         Me.XrTableCell15.StylePriority.UseFont = False
         Me.XrTableCell15.Text = "XrTableCell6"
@@ -1496,7 +1496,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell16.CanGrow = False
         Me.XrTableCell16.Dpi = 254.0!
-        Me.XrTableCell16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell16.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell16.Name = "XrTableCell16"
         Me.XrTableCell16.StylePriority.UseFont = False
         Me.XrTableCell16.Text = "XrTableCell7"
@@ -1508,7 +1508,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell17.CanGrow = False
         Me.XrTableCell17.Dpi = 254.0!
-        Me.XrTableCell17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell17.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell17.Name = "XrTableCell17"
         Me.XrTableCell17.StylePriority.UseFont = False
         Me.XrTableCell17.Text = "XrTableCell17"
@@ -1545,7 +1545,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.CrossTabGeneralStyle1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.CrossTabGeneralStyle1.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.CrossTabGeneralStyle1.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
         Me.CrossTabGeneralStyle1.ForeColor = System.Drawing.Color.Black
         Me.CrossTabGeneralStyle1.Name = "CrossTabGeneralStyle1"
         Me.CrossTabGeneralStyle1.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -1583,7 +1583,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell37.CanGrow = False
         Me.XrTableCell37.Dpi = 254.0!
         Me.XrTableCell37.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell37.ExpressionBindings"))})
-        Me.XrTableCell37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell37.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell37.Name = "XrTableCell37"
         Me.XrTableCell37.StylePriority.UseFont = False
         Me.XrTableCell37.StylePriority.UseTextAlignment = False
@@ -1597,7 +1597,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell38.CanGrow = False
         Me.XrTableCell38.Dpi = 254.0!
         Me.XrTableCell38.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell38.ExpressionBindings"))})
-        Me.XrTableCell38.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell38.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell38.Name = "XrTableCell38"
         Me.XrTableCell38.StylePriority.UseFont = False
         Me.XrTableCell38.StylePriority.UseTextAlignment = False
@@ -1611,7 +1611,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell39.CanGrow = False
         Me.XrTableCell39.Dpi = 254.0!
         Me.XrTableCell39.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell39.ExpressionBindings"))})
-        Me.XrTableCell39.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell39.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell39.Name = "XrTableCell39"
         Me.XrTableCell39.StylePriority.UseFont = False
         Me.XrTableCell39.StylePriority.UseTextAlignment = False
@@ -1643,7 +1643,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell28.CanGrow = False
         Me.XrTableCell28.Dpi = 254.0!
         Me.XrTableCell28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", ""), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "")})
-        Me.XrTableCell28.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell28.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell28.Name = "XrTableCell28"
         Me.XrTableCell28.StylePriority.UseFont = False
         Me.XrTableCell28.StylePriority.UseTextAlignment = False
@@ -1658,7 +1658,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell29.CanGrow = False
         Me.XrTableCell29.Dpi = 254.0!
-        Me.XrTableCell29.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell29.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell29.Name = "XrTableCell29"
         Me.XrTableCell29.StylePriority.UseFont = False
         Me.XrTableCell29.StylePriority.UseTextAlignment = False
@@ -1673,7 +1673,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell30.CanGrow = False
         Me.XrTableCell30.Dpi = 254.0!
-        Me.XrTableCell30.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell30.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell30.Name = "XrTableCell30"
         Me.XrTableCell30.StylePriority.UseFont = False
         Me.XrTableCell30.StylePriority.UseTextAlignment = False
@@ -1688,7 +1688,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell31.CanGrow = False
         Me.XrTableCell31.Dpi = 254.0!
-        Me.XrTableCell31.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell31.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell31.Name = "XrTableCell31"
         Me.XrTableCell31.StylePriority.UseFont = False
         Me.XrTableCell31.StylePriority.UseTextAlignment = False
@@ -1703,7 +1703,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell32.CanGrow = False
         Me.XrTableCell32.Dpi = 254.0!
-        Me.XrTableCell32.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell32.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell32.Name = "XrTableCell32"
         Me.XrTableCell32.StylePriority.UseFont = False
         Me.XrTableCell32.StylePriority.UseTextAlignment = False
@@ -1718,7 +1718,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell33.CanGrow = False
         Me.XrTableCell33.Dpi = 254.0!
-        Me.XrTableCell33.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell33.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell33.Name = "XrTableCell33"
         Me.XrTableCell33.StylePriority.UseFont = False
         Me.XrTableCell33.StylePriority.UseTextAlignment = False
@@ -1733,7 +1733,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell34.CanGrow = False
         Me.XrTableCell34.Dpi = 254.0!
-        Me.XrTableCell34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell34.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell34.Name = "XrTableCell34"
         Me.XrTableCell34.StylePriority.UseFont = False
         Me.XrTableCell34.StylePriority.UseTextAlignment = False
@@ -1748,7 +1748,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell35.CanGrow = False
         Me.XrTableCell35.Dpi = 254.0!
-        Me.XrTableCell35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell35.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell35.Name = "XrTableCell35"
         Me.XrTableCell35.StylePriority.UseFont = False
         Me.XrTableCell35.StylePriority.UseTextAlignment = False
@@ -1763,7 +1763,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell36.CanGrow = False
         Me.XrTableCell36.Dpi = 254.0!
-        Me.XrTableCell36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell36.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell36.Name = "XrTableCell36"
         Me.XrTableCell36.StylePriority.UseFont = False
         Me.XrTableCell36.StylePriority.UseTextAlignment = False
@@ -1798,7 +1798,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell26.CanGrow = False
         Me.XrTableCell26.Dpi = 254.0!
         Me.XrTableCell26.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ttl]")})
-        Me.XrTableCell26.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell26.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell26.Name = "XrTableCell26"
         Me.XrTableCell26.StylePriority.UseFont = False
         Me.XrTableCell26.StylePriority.UseTextAlignment = False
@@ -1812,7 +1812,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell27.CanGrow = False
         Me.XrTableCell27.Dpi = 254.0!
         Me.XrTableCell27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[aptNam]")})
-        Me.XrTableCell27.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell27.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell27.Name = "XrTableCell27"
         Me.XrTableCell27.StylePriority.UseFont = False
         Me.XrTableCell27.Text = "XrTableCell2"
@@ -1842,7 +1842,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell18.CanGrow = False
         Me.XrTableCell18.Dpi = 254.0!
-        Me.XrTableCell18.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell18.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell18.Name = "XrTableCell18"
         Me.XrTableCell18.StylePriority.UseFont = False
         Me.XrTableCell18.StylePriority.UseTextAlignment = False
@@ -1856,7 +1856,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell19.CanGrow = False
         Me.XrTableCell19.Dpi = 254.0!
-        Me.XrTableCell19.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell19.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell19.Name = "XrTableCell19"
         Me.XrTableCell19.StylePriority.UseFont = False
         Me.XrTableCell19.StylePriority.UseTextAlignment = False
@@ -1870,7 +1870,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell20.CanGrow = False
         Me.XrTableCell20.Dpi = 254.0!
-        Me.XrTableCell20.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell20.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell20.Name = "XrTableCell20"
         Me.XrTableCell20.StylePriority.UseFont = False
         Me.XrTableCell20.StylePriority.UseTextAlignment = False
@@ -1884,7 +1884,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell21.CanGrow = False
         Me.XrTableCell21.Dpi = 254.0!
-        Me.XrTableCell21.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell21.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell21.Name = "XrTableCell21"
         Me.XrTableCell21.StylePriority.UseFont = False
         Me.XrTableCell21.StylePriority.UseTextAlignment = False
@@ -1898,7 +1898,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell22.CanGrow = False
         Me.XrTableCell22.Dpi = 254.0!
-        Me.XrTableCell22.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell22.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell22.Name = "XrTableCell22"
         Me.XrTableCell22.StylePriority.UseFont = False
         Me.XrTableCell22.StylePriority.UseTextAlignment = False
@@ -1912,7 +1912,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell23.CanGrow = False
         Me.XrTableCell23.Dpi = 254.0!
-        Me.XrTableCell23.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell23.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell23.Name = "XrTableCell23"
         Me.XrTableCell23.StylePriority.UseFont = False
         Me.XrTableCell23.StylePriority.UseTextAlignment = False
@@ -1926,7 +1926,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell24.CanGrow = False
         Me.XrTableCell24.Dpi = 254.0!
-        Me.XrTableCell24.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell24.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell24.Name = "XrTableCell24"
         Me.XrTableCell24.StylePriority.UseFont = False
         Me.XrTableCell24.StylePriority.UseTextAlignment = False
@@ -1940,7 +1940,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell25.CanGrow = False
         Me.XrTableCell25.Dpi = 254.0!
-        Me.XrTableCell25.Font = New System.Drawing.Font("Bookman Old Style", 9.0!)
+        Me.XrTableCell25.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!)
         Me.XrTableCell25.Name = "XrTableCell25"
         Me.XrTableCell25.StylePriority.UseFont = False
         Me.XrTableCell25.StylePriority.UseTextAlignment = False
@@ -1986,7 +1986,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell57.CanGrow = False
         Me.XrTableCell57.Dpi = 254.0!
         Me.XrTableCell57.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell57.ExpressionBindings"))})
-        Me.XrTableCell57.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell57.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell57.Name = "XrTableCell57"
         Me.XrTableCell57.StylePriority.UseFont = False
         Me.XrTableCell57.StylePriority.UseTextAlignment = False
@@ -2000,7 +2000,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell58.CanGrow = False
         Me.XrTableCell58.Dpi = 254.0!
         Me.XrTableCell58.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell58.ExpressionBindings"))})
-        Me.XrTableCell58.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell58.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell58.Name = "XrTableCell58"
         Me.XrTableCell58.StylePriority.UseFont = False
         Me.XrTableCell58.StylePriority.UseTextAlignment = False
@@ -2014,7 +2014,7 @@ Partial Public Class Rep_Sygentrotiki
         Me.XrTableCell59.CanGrow = False
         Me.XrTableCell59.Dpi = 254.0!
         Me.XrTableCell59.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("XrTableCell59.ExpressionBindings"))})
-        Me.XrTableCell59.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell59.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell59.Name = "XrTableCell59"
         Me.XrTableCell59.StylePriority.UseFont = False
         Me.XrTableCell59.StylePriority.UseTextAlignment = False
@@ -2030,7 +2030,7 @@ Partial Public Class Rep_Sygentrotiki
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel39.CanGrow = False
         Me.XrLabel39.Dpi = 254.0!
-        Me.XrLabel39.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel39.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(55.0!, 0!)
         Me.XrLabel39.Name = "XrLabel39"
         Me.XrLabel39.Padding = New DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254.0!)
@@ -2065,7 +2065,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell49.CanGrow = False
         Me.XrTableCell49.Dpi = 254.0!
-        Me.XrTableCell49.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell49.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell49.Name = "XrTableCell49"
         Me.XrTableCell49.StylePriority.UseFont = False
         Me.XrTableCell49.StylePriority.UseTextAlignment = False
@@ -2079,7 +2079,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell50.CanGrow = False
         Me.XrTableCell50.Dpi = 254.0!
-        Me.XrTableCell50.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell50.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell50.Name = "XrTableCell50"
         Me.XrTableCell50.StylePriority.UseFont = False
         Me.XrTableCell50.StylePriority.UseTextAlignment = False
@@ -2093,7 +2093,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell51.CanGrow = False
         Me.XrTableCell51.Dpi = 254.0!
-        Me.XrTableCell51.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell51.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell51.Name = "XrTableCell51"
         Me.XrTableCell51.StylePriority.UseFont = False
         Me.XrTableCell51.StylePriority.UseTextAlignment = False
@@ -2107,7 +2107,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell52.CanGrow = False
         Me.XrTableCell52.Dpi = 254.0!
-        Me.XrTableCell52.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell52.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell52.Name = "XrTableCell52"
         Me.XrTableCell52.StylePriority.UseFont = False
         Me.XrTableCell52.StylePriority.UseTextAlignment = False
@@ -2121,7 +2121,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell53.CanGrow = False
         Me.XrTableCell53.Dpi = 254.0!
-        Me.XrTableCell53.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell53.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell53.Name = "XrTableCell53"
         Me.XrTableCell53.StylePriority.UseFont = False
         Me.XrTableCell53.StylePriority.UseTextAlignment = False
@@ -2135,7 +2135,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell54.CanGrow = False
         Me.XrTableCell54.Dpi = 254.0!
-        Me.XrTableCell54.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell54.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell54.Name = "XrTableCell54"
         Me.XrTableCell54.StylePriority.UseFont = False
         Me.XrTableCell54.StylePriority.UseTextAlignment = False
@@ -2149,7 +2149,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell55.CanGrow = False
         Me.XrTableCell55.Dpi = 254.0!
-        Me.XrTableCell55.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell55.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell55.Name = "XrTableCell55"
         Me.XrTableCell55.StylePriority.UseFont = False
         Me.XrTableCell55.StylePriority.UseTextAlignment = False
@@ -2163,7 +2163,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell56.CanGrow = False
         Me.XrTableCell56.Dpi = 254.0!
-        Me.XrTableCell56.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell56.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell56.Name = "XrTableCell56"
         Me.XrTableCell56.StylePriority.UseFont = False
         Me.XrTableCell56.StylePriority.UseTextAlignment = False
@@ -2177,7 +2177,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTable7.Borders = CType((DevExpress.XtraPrinting.BorderSide.Right Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrTable7.Dpi = 254.0!
-        Me.XrTable7.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.XrTable7.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
         Me.XrTable7.LocationFloat = New DevExpress.Utils.PointFloat(644.9739!, 0!)
         Me.XrTable7.Name = "XrTable7"
         Me.XrTable7.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
@@ -2197,7 +2197,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell40.CanGrow = False
         Me.XrTableCell40.Dpi = 254.0!
-        Me.XrTableCell40.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell40.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell40.Name = "XrTableCell40"
         Me.XrTableCell40.StylePriority.UseFont = False
         Me.XrTableCell40.StylePriority.UseTextAlignment = False
@@ -2212,7 +2212,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell41.CanGrow = False
         Me.XrTableCell41.Dpi = 254.0!
-        Me.XrTableCell41.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell41.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell41.Name = "XrTableCell41"
         Me.XrTableCell41.StylePriority.UseFont = False
         Me.XrTableCell41.StylePriority.UseTextAlignment = False
@@ -2227,7 +2227,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell42.CanGrow = False
         Me.XrTableCell42.Dpi = 254.0!
-        Me.XrTableCell42.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell42.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell42.Name = "XrTableCell42"
         Me.XrTableCell42.StylePriority.UseFont = False
         Me.XrTableCell42.StylePriority.UseTextAlignment = False
@@ -2242,7 +2242,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell43.CanGrow = False
         Me.XrTableCell43.Dpi = 254.0!
-        Me.XrTableCell43.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell43.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell43.Name = "XrTableCell43"
         Me.XrTableCell43.StylePriority.UseFont = False
         Me.XrTableCell43.StylePriority.UseTextAlignment = False
@@ -2257,7 +2257,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell44.CanGrow = False
         Me.XrTableCell44.Dpi = 254.0!
-        Me.XrTableCell44.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell44.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell44.Name = "XrTableCell44"
         Me.XrTableCell44.StylePriority.UseFont = False
         Me.XrTableCell44.StylePriority.UseTextAlignment = False
@@ -2272,7 +2272,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell45.CanGrow = False
         Me.XrTableCell45.Dpi = 254.0!
-        Me.XrTableCell45.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell45.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell45.Name = "XrTableCell45"
         Me.XrTableCell45.StylePriority.UseFont = False
         Me.XrTableCell45.StylePriority.UseTextAlignment = False
@@ -2287,7 +2287,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell46.CanGrow = False
         Me.XrTableCell46.Dpi = 254.0!
-        Me.XrTableCell46.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell46.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell46.Name = "XrTableCell46"
         Me.XrTableCell46.StylePriority.UseFont = False
         Me.XrTableCell46.StylePriority.UseTextAlignment = False
@@ -2302,7 +2302,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell47.CanGrow = False
         Me.XrTableCell47.Dpi = 254.0!
-        Me.XrTableCell47.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell47.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell47.Name = "XrTableCell47"
         Me.XrTableCell47.StylePriority.UseFont = False
         Me.XrTableCell47.StylePriority.UseTextAlignment = False
@@ -2317,7 +2317,7 @@ Partial Public Class Rep_Sygentrotiki
         '
         Me.XrTableCell48.CanGrow = False
         Me.XrTableCell48.Dpi = 254.0!
-        Me.XrTableCell48.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrTableCell48.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrTableCell48.Name = "XrTableCell48"
         Me.XrTableCell48.StylePriority.UseFont = False
         Me.XrTableCell48.StylePriority.UseTextAlignment = False
@@ -2351,12 +2351,12 @@ Partial Public Class Rep_Sygentrotiki
         Me.DataMember = "Exoda"
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
         Me.Landscape = True
-        Me.Margins = New System.Drawing.Printing.Margins(3, 0, 8, 8)
+        Me.Margins = New DevExpress.Drawing.DXMargins(3, 0, 8, 8)
         Me.PageHeight = 2970
         Me.PageWidth = 4200
-        Me.PaperKind = System.Drawing.Printing.PaperKind.A3
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A3
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID, Me.bdgID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic

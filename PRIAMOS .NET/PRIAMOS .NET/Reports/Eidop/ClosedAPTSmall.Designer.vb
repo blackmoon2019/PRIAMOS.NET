@@ -83,7 +83,7 @@ Partial Public Class ClosedAPTSmall
         '
         Me.XrTableCell1.CanShrink = True
         Me.XrTableCell1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Closed]")})
-        Me.XrTableCell1.Font = New System.Drawing.Font("Arial", 8.142858!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.XrTableCell1.Font = New DevExpress.Drawing.DXFont("Arial", 8.142858!, DevExpress.Drawing.DXFontStyle.Regular, DevExpress.Drawing.DXGraphicsUnit.Point, New DevExpress.Drawing.DXFontAdditionalProperty() {New DevExpress.Drawing.DXFontAdditionalProperty("GdiCharSet", CType(161, Byte))})
         Me.XrTableCell1.Multiline = True
         Me.XrTableCell1.Name = "XrTableCell1"
         Me.XrTableCell1.StylePriority.UseFont = False
@@ -109,11 +109,11 @@ Partial Public Class ClosedAPTSmall
         Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSource1})
         Me.DataMember = "RCA"
         Me.DataSource = Me.SqlDataSource1
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(70, 139, 0, 0)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(70, 139, 0, 0)
         Me.PageHeight = 827
         Me.PageWidth = 583
-        Me.PaperKind = System.Drawing.Printing.PaperKind.A5
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A5
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.Version = "21.2"

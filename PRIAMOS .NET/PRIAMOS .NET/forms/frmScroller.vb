@@ -13,6 +13,7 @@ Imports DevExpress.Utils
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Localization
 Imports System.Text
+Imports DevExpress.XtraSplashScreen
 
 Public Class frmScroller
     Private myConn As SqlConnection
@@ -77,7 +78,7 @@ Public Class frmScroller
             'Φορτώνει όλες τις ονομασίες των στηλών από τον SQL. Από το πεδίο Description
             'LoadForms.LoadColumnDescriptionNames( GridView1, , sDataTable)
 
-            GridLocalizer.Active = New GridGreekLocalizer ()
+            GridLocalizer.Active = New GridGreekLocalizer()
 
             'Κρύψιμο Στηλών
             'HideColumns(GridView1, "ID")
@@ -85,6 +86,7 @@ Public Class frmScroller
             BarNewRec.Enabled = UserProps.AllowInsert
             BarDelete.Enabled = UserProps.AllowDelete
             BarEdit.Enabled = UserProps.AllowEdit
+            If sDataTable = "vw_TECH_SUP" And UserProps.ID.ToString <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then BarDelete.Enabled = False
             GridView1.OptionsBehavior.AutoExpandAllGroups = True
             GridView1.OptionsMenu.ShowFooterItem = True
             GridView1.OptionsMenu.EnableFooterMenu = True
@@ -2212,5 +2214,19 @@ Public Class frmScroller
         Next
         RepositoryItemProgressBar1.Step = 0
         BarPB.Visibility = BarItemVisibility.Never
+    End Sub
+
+    Private Sub BarEXP_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarEXP.ItemClick
+        Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
+        Dim frmFilePreviwer As New frmFilePreviwer
+        frmFilePreviwer.Text = "Προβολή Αρχείων"
+        frmFilePreviwer.PrintAllExp = True
+        For I = 0 To selectedRowHandles.Length - 1
+            Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+            If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
+                frmFilePreviwer.sIDs.Add(GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString)
+            End If
+        Next
+        frmFilePreviwer.ShowDialog()
     End Sub
 End Class

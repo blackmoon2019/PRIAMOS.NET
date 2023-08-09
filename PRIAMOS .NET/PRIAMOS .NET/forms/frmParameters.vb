@@ -45,6 +45,9 @@ Public Class frmParameters
         'Ανακοίνωση
         Prog_Prop.SetProgANNMENT(ANN_MENT.EditValue.ToString)
 
+        'Path Εξόδων
+        Prog_Prop.SetProgEX_PATHS(EX_FOLDER_PATH.EditValue.ToString, EX_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue.ToString)
+
         XtraMessageBox.Show("Οι παράμετροι αποθηκεύτηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -74,7 +77,9 @@ Public Class frmParameters
                 ADM.EditValue = Prog_Prop.GetProgADM
                 'Ανακοίνωση
                 ANN_MENT.EditValue = Prog_Prop.GetProgANNMENT
-
+                'Path Εξόδων
+                EX_FOLDER_PATH.EditValue = Prog_Prop.GetProgEXFolderPath
+                EX_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue = Prog_Prop.GetProgEXFolderMoveOnSuccessPath
             Case 1
                 'Email Έκδοσης Κοινοχρήστων
                 Prog_Prop.GetProgInvoicesEmail()

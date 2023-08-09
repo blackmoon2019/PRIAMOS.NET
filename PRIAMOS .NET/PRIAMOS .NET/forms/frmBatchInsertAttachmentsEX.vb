@@ -197,6 +197,7 @@ Public Class frmBatchInsertAttachmentsEX
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            InitializeImageList()
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -273,10 +274,12 @@ Public Class frmBatchInsertAttachmentsEX
             If XtraMessageBox.Show("Θέλετε να διαγραφούν τα αρχεία από τα επιλεγμένα έξοδα?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 For I = 0 To selectedRowHandles.Length - 1
                     Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-                    sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
-                    Using oCmd As New SqlCommand(sSQL, CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
+                    If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
+                        sSQL = "DELETE FROM IND_F WHERE indID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                    End If
                 Next
             Else
                 Exit Sub
@@ -301,10 +304,12 @@ Public Class frmBatchInsertAttachmentsEX
             If XtraMessageBox.Show("Θέλετε να ενημερωθούν τα επιλεγμένα έξοδα ως ""Απλήρωτα""?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 For I = 0 To selectedRowHandles.Length - 1
                     Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-                    sSQL = "UPDATE IND SET PAID = 0 WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
-                    Using oCmd As New SqlCommand(sSQL, CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
+                    If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
+                        sSQL = "UPDATE IND SET PAID = 0 WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                    End If
                 Next
             Else
                 Exit Sub
@@ -328,10 +333,12 @@ Public Class frmBatchInsertAttachmentsEX
             If XtraMessageBox.Show("Θέλετε να ενημερωθούν τα επιλεγμένα έξοδα ως ""Πληρωμένα""?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                 For I = 0 To selectedRowHandles.Length - 1
                     Dim selectedRowHandle As Int32 = selectedRowHandles(I)
-                    sSQL = "UPDATE IND SET PAID = 1 WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
-                    Using oCmd As New SqlCommand(sSQL, CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
+                    If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
+                        sSQL = "UPDATE IND SET PAID = 1 WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                        Using oCmd As New SqlCommand(sSQL, CNDB)
+                            oCmd.ExecuteNonQuery()
+                        End Using
+                    End If
                 Next
             Else
                 Exit Sub

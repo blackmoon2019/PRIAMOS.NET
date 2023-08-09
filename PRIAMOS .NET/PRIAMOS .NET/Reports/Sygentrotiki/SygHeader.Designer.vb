@@ -114,7 +114,7 @@ Partial Public Class SygHeader
         'CrossTabHeaderCell2
         '
         Me.CrossTabHeaderCell2.ColumnIndex = 1
-        Me.CrossTabHeaderCell2.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.CrossTabHeaderCell2.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.CrossTabHeaderCell2.Name = "CrossTabHeaderCell2"
         Me.CrossTabHeaderCell2.RowIndex = 0
         '
@@ -144,7 +144,7 @@ Partial Public Class SygHeader
         Me.CrossTabGeneralStyle1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
-        Me.CrossTabGeneralStyle1.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.CrossTabGeneralStyle1.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
         Me.CrossTabGeneralStyle1.ForeColor = System.Drawing.Color.Black
         Me.CrossTabGeneralStyle1.Name = "CrossTabGeneralStyle1"
         Me.CrossTabGeneralStyle1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -192,11 +192,11 @@ Partial Public Class SygHeader
         Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.SqlDataSource1})
         Me.DataMember = "vw_INC"
         Me.DataSource = Me.SqlDataSource1
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(100, 100, 0, 1)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(100, 100, 0, 1)
         Me.PageHeight = 1654
         Me.PageWidth = 1169
-        Me.PaperKind = System.Drawing.Printing.PaperKind.A3
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A3
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
         Me.StyleSheet.AddRange(New DevExpress.XtraReports.UI.XRControlStyle() {Me.CrossTabGeneralStyle1, Me.CrossTabHeaderStyle1, Me.CrossTabDataStyle1, Me.CrossTabTotalStyle1})

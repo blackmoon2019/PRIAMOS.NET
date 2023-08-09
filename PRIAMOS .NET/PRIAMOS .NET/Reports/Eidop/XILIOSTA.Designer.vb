@@ -81,7 +81,7 @@ Partial Public Class XILIOSTA
         Me.XrLabel3.CanShrink = True
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Apm]")})
-        Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel3.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(808.8958!, 0!)
         Me.XrLabel3.Multiline = True
         Me.XrLabel3.Name = "XrLabel3"
@@ -97,7 +97,7 @@ Partial Public Class XILIOSTA
         Me.XrLabel2.CanShrink = True
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TotApm]")})
-        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel2.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(589.7916!, 0!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
@@ -113,7 +113,7 @@ Partial Public Class XILIOSTA
         Me.XrLabel1.CanShrink = True
         Me.XrLabel1.Dpi = 254.0!
         Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[mlcName]")})
-        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel1.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
@@ -157,8 +157,8 @@ Partial Public Class XILIOSTA
         Me.DataMember = "Query"
         Me.DataSource = Me.SqlDataSourceMIL
         Me.Dpi = 254.0!
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(254, 900, 0, 11)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(254, 900, 0, 11)
         Me.PageHeight = 2794
         Me.PageWidth = 2159
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID, Me.aptID})

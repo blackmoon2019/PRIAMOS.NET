@@ -77,7 +77,7 @@ Public Class frmTecnicalSupport
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
                     chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True : txtAnswer.ReadOnly = False
                     chkMoreInfo.Enabled = True : chkBuilded.Enabled = True : txtBuildVersion.Enabled = True
-                    cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True
+                    cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True : chkIsBilled.Enabled = True
                 End If
         End Select
         LoadForms.RestoreLayoutFromXml(GridView1, "TECH_SUP_F_def.xml")
@@ -411,6 +411,18 @@ Public Class frmTecnicalSupport
     End Sub
 
     Private Sub txtFileNames_EditValueChanged(sender As Object, e As EventArgs) Handles txtFileNames.EditValueChanged
+
+    End Sub
+
+    Private Sub cboCategory_EditValueChanged(sender As Object, e As EventArgs) Handles cboCategory.EditValueChanged
+        If cboCategory.EditValue Is Nothing Then Exit Sub
+        If Mode = FormMode.EditRecord Then
+            XtraMessageBox.Show(String.Format("Κατηγορία μόνο ο Administrator Μπορεί να αλλάξει"), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub cboCategory_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles cboCategory.EditValueChanging
+
 
     End Sub
 End Class

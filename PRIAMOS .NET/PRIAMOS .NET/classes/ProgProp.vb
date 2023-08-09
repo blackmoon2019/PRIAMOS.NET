@@ -76,6 +76,19 @@ Public Class ProgProp
         End Try
 
     End Sub
+    Public Sub SetProgEX_PATHS(ByVal sValue As String, ByVal sValue1 As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'EX_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            sSQL = "Update PRM set val = '" & sValue1 & "' where prm= 'EX_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
 
     Public Sub GetProgInvoicesEmail()
         Dim sSQL As String
@@ -186,6 +199,22 @@ Public Class ProgProp
             If (sdr.Read() = True) Then ProgProps.EXFolderPath = sdr.GetString(sdr.GetOrdinal("VAL"))
             sdr.Close()
             Return ProgProps.EXFolderPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgEXFolderMoveOnSuccessPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'EX_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.EXFolderMoveOnSuccessPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.EXFolderMoveOnSuccessPath
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

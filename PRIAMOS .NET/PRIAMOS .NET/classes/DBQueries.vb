@@ -108,6 +108,8 @@ Public Class DBQueries
     Public Function InsertNewDataFilesFromListBox(ByVal control As DevExpress.XtraEditors.ImageListBoxControl, ByVal sTable As String, ByVal ID As String, ByVal sFilesPath As String) As Boolean
         Dim sSQL As New System.Text.StringBuilder
         Dim sFullFilenames As New System.Text.StringBuilder
+        Dim MoveFiles As Boolean = False
+        Dim MoveFilesPath As String = ""
         Try
             For Each item As DevExpress.XtraEditors.Controls.ImageListBoxItem In control.SelectedItems
                 sSQL.Clear()
@@ -116,6 +118,7 @@ Public Class DBQueries
                     Case "INV_GASF" : sSQL.AppendLine("INSERT INTO INV_GASF (invGASID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "INV_OILF" : sSQL.AppendLine("INSERT INTO INV_OILF (invOilID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
                     Case "IND_F" : sSQL.AppendLine("INSERT INTO IND_F (indID,filename,comefrom,extension, [modifiedBy],[createdby],[createdOn],files)")
+                        If ProgProps.EXFolderMoveOnSuccessPath.Length > 0 Then MoveFiles = True : MoveFilesPath = ProgProps.EXFolderMoveOnSuccessPath
                 End Select
                 Dim extension As String = Path.GetExtension(item.Value)
                 Dim FilePath As String = sFilesPath
@@ -133,6 +136,12 @@ Public Class DBQueries
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
+                Try
+                    If MoveFiles Then My.Computer.FileSystem.MoveFile(sFilesPath & "\" & FileName, MoveFilesPath & "\" & FileName, True)
+                Catch exMove As Exception
+                    XtraMessageBox.Show(String.Format("Error: {0}" & "Η μεταφορά του αρχείου στον φάκελλο " & MoveFilesPath & " Απέτυχε.", exMove.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End Try
             Next
             sSQL.Clear()
             'If sTable = "IND_F" Then

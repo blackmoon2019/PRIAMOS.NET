@@ -55,6 +55,7 @@ Module Main
         Public InvoicesBodyNotManaged As String
         Public InvoicesSubjectNotManaged As String
         Public EXFolderPath As String
+        Public EXFolderMoveOnSuccessPath As String
         Public ADM As String
         Public ANNMENT As String
         Public ProgTitle As String

@@ -65,7 +65,7 @@ Partial Public Class EXODA_OWNERS
         Me.Title.BorderColor = System.Drawing.Color.Black
         Me.Title.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.Title.BorderWidth = 1.0!
-        Me.Title.Font = New System.Drawing.Font("Arial", 14.25!)
+        Me.Title.Font = New DevExpress.Drawing.DXFont("Arial", 14.25!)
         Me.Title.ForeColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.Title.Name = "Title"
         Me.Title.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
@@ -76,7 +76,7 @@ Partial Public Class EXODA_OWNERS
         Me.GroupCaption1.BorderColor = System.Drawing.Color.White
         Me.GroupCaption1.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.GroupCaption1.BorderWidth = 2.0!
-        Me.GroupCaption1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.GroupCaption1.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.GroupCaption1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(228, Byte), Integer))
         Me.GroupCaption1.Name = "GroupCaption1"
         Me.GroupCaption1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 5, 0, 0, 254.0!)
@@ -88,7 +88,7 @@ Partial Public Class EXODA_OWNERS
         Me.GroupData1.BorderColor = System.Drawing.Color.White
         Me.GroupData1.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.GroupData1.BorderWidth = 2.0!
-        Me.GroupData1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.GroupData1.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.GroupData1.ForeColor = System.Drawing.Color.White
         Me.GroupData1.Name = "GroupData1"
         Me.GroupData1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 5, 0, 0, 254.0!)
@@ -100,7 +100,7 @@ Partial Public Class EXODA_OWNERS
         Me.DetailCaption1.BorderColor = System.Drawing.Color.White
         Me.DetailCaption1.Borders = DevExpress.XtraPrinting.BorderSide.Left
         Me.DetailCaption1.BorderWidth = 2.0!
-        Me.DetailCaption1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.DetailCaption1.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.DetailCaption1.ForeColor = System.Drawing.Color.White
         Me.DetailCaption1.Name = "DetailCaption1"
         Me.DetailCaption1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
@@ -111,7 +111,7 @@ Partial Public Class EXODA_OWNERS
         Me.DetailData1.BorderColor = System.Drawing.Color.Transparent
         Me.DetailData1.Borders = DevExpress.XtraPrinting.BorderSide.Left
         Me.DetailData1.BorderWidth = 2.0!
-        Me.DetailData1.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.DetailData1.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!)
         Me.DetailData1.ForeColor = System.Drawing.Color.Black
         Me.DetailData1.Name = "DetailData1"
         Me.DetailData1.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
@@ -123,7 +123,7 @@ Partial Public Class EXODA_OWNERS
         Me.GroupFooterBackground3.BorderColor = System.Drawing.Color.White
         Me.GroupFooterBackground3.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.GroupFooterBackground3.BorderWidth = 2.0!
-        Me.GroupFooterBackground3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.GroupFooterBackground3.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.GroupFooterBackground3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(228, Byte), Integer), CType(CType(228, Byte), Integer), CType(CType(228, Byte), Integer))
         Me.GroupFooterBackground3.Name = "GroupFooterBackground3"
         Me.GroupFooterBackground3.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 5, 0, 0, 254.0!)
@@ -135,7 +135,7 @@ Partial Public Class EXODA_OWNERS
         Me.DetailData3_Odd.BorderColor = System.Drawing.Color.Transparent
         Me.DetailData3_Odd.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.DetailData3_Odd.BorderWidth = 1.0!
-        Me.DetailData3_Odd.Font = New System.Drawing.Font("Arial", 8.25!)
+        Me.DetailData3_Odd.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!)
         Me.DetailData3_Odd.ForeColor = System.Drawing.Color.Black
         Me.DetailData3_Odd.Name = "DetailData3_Odd"
         Me.DetailData3_Odd.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
@@ -143,7 +143,7 @@ Partial Public Class EXODA_OWNERS
         '
         'PageInfo
         '
-        Me.PageInfo.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.PageInfo.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.PageInfo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.PageInfo.Name = "PageInfo"
         Me.PageInfo.Padding = New DevExpress.XtraPrinting.PaddingInfo(15, 15, 0, 0, 254.0!)
@@ -157,7 +157,7 @@ Partial Public Class EXODA_OWNERS
         'BottomMargin
         '
         Me.BottomMargin.Dpi = 254.0!
-        Me.BottomMargin.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.BottomMargin.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.BottomMargin.HeightF = 2.0!
         Me.BottomMargin.Name = "BottomMargin"
         Me.BottomMargin.StylePriority.UseFont = False
@@ -176,7 +176,7 @@ Partial Public Class EXODA_OWNERS
         Me.XrLabel5.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'")})
-        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(649.2744!, 0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
@@ -200,7 +200,7 @@ Partial Public Class EXODA_OWNERS
         Me.XrLabel3.CanGrow = False
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[name]")})
-        Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel3.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel3.ForeColor = System.Drawing.Color.Black
         Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel3.Name = "XrLabel3"
@@ -231,7 +231,7 @@ Partial Public Class EXODA_OWNERS
         '
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
-        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel2.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(649.2744!, 0!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
@@ -247,7 +247,7 @@ Partial Public Class EXODA_OWNERS
         Me.XrLabel1.CanGrow = False
         Me.XrLabel1.Dpi = 254.0!
         Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[repName]")})
-        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel1.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
@@ -284,8 +284,8 @@ Partial Public Class EXODA_OWNERS
         Me.DataMember = "vw_IND"
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(254, 691, 0, 2)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(254, 691, 0, 2)
         Me.PageHeight = 2794
         Me.PageWidth = 2159
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})

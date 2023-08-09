@@ -85,7 +85,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel6.CanGrow = False
         Me.XrLabel6.Dpi = 254.0!
         Me.XrLabel6.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
-        Me.XrLabel6.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel6.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(587.0146!, 0!)
         Me.XrLabel6.Multiline = True
         Me.XrLabel6.Name = "XrLabel6"
@@ -101,7 +101,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel7.CanGrow = False
         Me.XrLabel7.Dpi = 254.0!
         Me.XrLabel7.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[repName]")})
-        Me.XrLabel7.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel7.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel7.Multiline = True
         Me.XrLabel7.Name = "XrLabel7"
@@ -115,7 +115,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel8.CanGrow = False
         Me.XrLabel8.Dpi = 254.0!
         Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[AmtPerCalc]")})
-        Me.XrLabel8.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel8.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(783.2402!, 0!)
         Me.XrLabel8.Multiline = True
         Me.XrLabel8.Name = "XrLabel8"
@@ -141,7 +141,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel5.CanGrow = False
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(558.01!, 0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
@@ -163,7 +163,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel4.CanGrow = False
         Me.XrLabel4.Dpi = 254.0!
         Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([AmtPerCalc]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(760.52!, 0!)
         Me.XrLabel4.Multiline = True
         Me.XrLabel4.Name = "XrLabel4"
@@ -220,7 +220,7 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.XrLabel1.CanGrow = False
         Me.XrLabel1.Dpi = 254.0!
         Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[calcCatNam]")})
-        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel1.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel1.ForeColor = System.Drawing.Color.Black
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0.00004194515!, 0!)
         Me.XrLabel1.Name = "XrLabel1"
@@ -237,11 +237,11 @@ Partial Public Class EXODA_PER_APT_OWNERS
         Me.DataMember = "vw_INC"
         Me.DataSource = Me.SqlDataSourceAPTOWN
         Me.Dpi = 254.0!
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(10, 511, 10, 10)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(10, 511, 10, 10)
         Me.PageHeight = 2100
         Me.PageWidth = 1480
-        Me.PaperKind = System.Drawing.Printing.PaperKind.A5
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A5
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID, Me.aptID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic

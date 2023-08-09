@@ -267,7 +267,7 @@ Public Class frmMain
 
     Private Sub BBBatchFileEX_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBBatchFileEX.ItemClick
         Dim form As frmBatchInsertAttachmentsEX = New frmBatchInsertAttachmentsEX()
-        form.Text = ""
+        form.Text = "Επισύναψη αρχείων εξόδων"
         form.MdiParent = Me
         form.Show()
     End Sub

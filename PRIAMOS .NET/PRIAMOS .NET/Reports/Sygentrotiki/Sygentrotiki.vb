@@ -56,7 +56,7 @@ Public Class Rep_Sygentrotiki
         End If
     End Sub
 
-    Private Sub XrTable1_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTable1.BeforePrint
+    Private Sub XrTable1_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTable1.BeforePrint
         'Τον παρακάτω έλεγχο τον έβαλα γιατί για κάποιο λόγο φορτωνεται 2 φορές το Report
         'If XrTable6.Rows(0).Cells(0).ExpressionBindings.Count = 1 Then Exit Sub
         FillMlcHeader()
@@ -249,7 +249,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell18_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell18.BeforePrint
+    Private Sub XrTableCell18_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell18.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -258,17 +258,7 @@ Public Class Rep_Sygentrotiki
             XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub XrTableCell19_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell19.BeforePrint
-        Try
-            Dim c As XRTableCell = CType(sender, XRTableCell)
-            Dim CVAL As Double = Convert.ToDouble(c.Value)
-            If CVAL = 0 Then c.Text = ""
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
-    Private Sub XrTableCell20_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell20.BeforePrint
+    Private Sub XrTableCell19_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell19.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -278,7 +268,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell21_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell21.BeforePrint
+    Private Sub XrTableCell20_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell20.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -288,7 +278,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell22_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell22.BeforePrint
+    Private Sub XrTableCell21_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell21.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -298,7 +288,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell23_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell23.BeforePrint
+    Private Sub XrTableCell22_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell22.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -308,7 +298,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell24_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell24.BeforePrint
+    Private Sub XrTableCell23_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell23.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -318,7 +308,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell25_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell25.BeforePrint
+    Private Sub XrTableCell24_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell24.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -328,7 +318,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell28_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell28.BeforePrint
+    Private Sub XrTableCell25_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell25.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -338,8 +328,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-
-    Private Sub XrTableCell29_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell29.BeforePrint
+    Private Sub XrTableCell28_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell28.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -350,7 +339,7 @@ Public Class Rep_Sygentrotiki
 
     End Sub
 
-    Private Sub XrTableCell30_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell30.BeforePrint
+    Private Sub XrTableCell29_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell29.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -360,7 +349,8 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell31_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell31.BeforePrint
+
+    Private Sub XrTableCell30_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell30.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -370,7 +360,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell32_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell32.BeforePrint
+    Private Sub XrTableCell31_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell31.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -380,7 +370,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell33_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell33.BeforePrint
+    Private Sub XrTableCell32_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell32.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -390,7 +380,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell34_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell34.BeforePrint
+    Private Sub XrTableCell33_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell33.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -400,7 +390,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell35_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell35.BeforePrint
+    Private Sub XrTableCell34_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell34.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -410,7 +400,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell36_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell36.BeforePrint
+    Private Sub XrTableCell35_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell35.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -420,7 +410,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell37_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell37.BeforePrint
+    Private Sub XrTableCell36_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell36.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -430,7 +420,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell38_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell38.BeforePrint
+    Private Sub XrTableCell37_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell37.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -440,7 +430,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell39_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell39.BeforePrint
+    Private Sub XrTableCell38_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell38.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -450,7 +440,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell40_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell40.BeforePrint
+    Private Sub XrTableCell39_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell39.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -460,7 +450,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell41_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell41.BeforePrint
+    Private Sub XrTableCell40_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell40.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -470,7 +460,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell42_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell42.BeforePrint
+    Private Sub XrTableCell41_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell41.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -480,7 +470,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell43_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell43.BeforePrint
+    Private Sub XrTableCell42_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell42.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -490,7 +480,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell44_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell44.BeforePrint
+    Private Sub XrTableCell43_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell43.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -500,7 +490,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell45_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell45.BeforePrint
+    Private Sub XrTableCell44_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell44.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -510,7 +500,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell46_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell46.BeforePrint
+    Private Sub XrTableCell45_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell45.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -520,7 +510,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell47_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell47.BeforePrint
+    Private Sub XrTableCell46_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell46.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -530,7 +520,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell48_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell48.BeforePrint
+    Private Sub XrTableCell47_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell47.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -540,7 +530,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell49_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell49.BeforePrint
+    Private Sub XrTableCell48_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell48.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -550,7 +540,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell50_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell50.BeforePrint
+    Private Sub XrTableCell49_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell49.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -560,7 +550,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell51_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell51.BeforePrint
+    Private Sub XrTableCell50_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell50.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -570,7 +560,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell52_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell52.BeforePrint
+    Private Sub XrTableCell51_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell51.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -580,7 +570,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell53_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell53.BeforePrint
+    Private Sub XrTableCell52_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell52.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -590,7 +580,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell54_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell54.BeforePrint
+    Private Sub XrTableCell53_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell53.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -600,7 +590,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell55_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell55.BeforePrint
+    Private Sub XrTableCell54_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell54.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -610,7 +600,17 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell56_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell56.BeforePrint
+    Private Sub XrTableCell55_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell55.BeforePrint
+        Try
+            Dim c As XRTableCell = CType(sender, XRTableCell)
+            Dim CVAL As Double = Convert.ToDouble(c.Value)
+            If CVAL = 0 Then c.Text = ""
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Private Sub XrTableCell56_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell56.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
         Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -620,7 +620,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell57_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell57.BeforePrint
+    Private Sub XrTableCell57_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell57.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
         Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -630,7 +630,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell58_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell58.BeforePrint
+    Private Sub XrTableCell58_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell58.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
         Dim CVAL As Double = Convert.ToDouble(c.Value)
@@ -640,7 +640,7 @@ Public Class Rep_Sygentrotiki
         End Try
 
     End Sub
-    Private Sub XrTableCell59_BeforePrint(sender As Object, e As PrintEventArgs) Handles XrTableCell59.BeforePrint
+    Private Sub XrTableCell59_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles XrTableCell59.BeforePrint
         Try
             Dim c As XRTableCell = CType(sender, XRTableCell)
             Dim CVAL As Double = Convert.ToDouble(c.Value)

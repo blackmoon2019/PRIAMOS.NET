@@ -10,7 +10,7 @@ Public Class Eidop
         End Set
     End Property
 
-    Private Sub Detail_BeforePrint(sender As Object, e As PrintEventArgs) Handles Detail.BeforePrint
+    Private Sub Detail_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Detail.BeforePrint
         'Dim sAptID As String
         'sAptID = GetCurrentColumnValue("ID").ToString
 
@@ -35,7 +35,7 @@ Public Class Eidop
 
     End Sub
 
-    Private Sub Eidop_BeforePrint(sender As Object, e As PrintEventArgs) Handles Me.BeforePrint
+    Private Sub Eidop_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.BeforePrint
 
     End Sub
 End Class

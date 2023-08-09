@@ -103,6 +103,7 @@ Partial Class frmContacts
         Me.DateNavigator1.FirstDayOfWeek = System.DayOfWeek.Monday
         Me.DateNavigator1.Location = New System.Drawing.Point(12, 138)
         Me.DateNavigator1.Name = "DateNavigator1"
+        Me.DateNavigator1.CellPadding = New System.Windows.Forms.Padding(2)
         Me.DateNavigator1.Size = New System.Drawing.Size(426, 592)
         Me.DateNavigator1.StyleController = Me.LayoutControl1
         Me.DateNavigator1.TabIndex = 45

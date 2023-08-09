@@ -65,11 +65,13 @@ Public Class frmLogin
                     ProgProps.Decimals = Prog_Prop.GetProgDecimals
                     'Support Email
                     ProgProps.SupportEmail = Prog_Prop.GetProgTechSupportEmail
-                    ProgProps.EXFolderPath = Prog_Prop.GetProgEXFolderPath
                     ProgProps.ADM = Prog_Prop.GetProgADM
                     ProgProps.ANNMENT = Prog_Prop.GetProgANNMENT
                     'Παράμετροι Email Κοινοχρήστων
                     Prog_Prop.GetProgInvoicesEmail()
+                    'Παράμετροι Φακέλλων Εξόδων
+                    ProgProps.EXFolderPath = Prog_Prop.GetProgEXFolderPath
+                    ProgProps.EXFolderMoveOnSuccessPath = Prog_Prop.GetProgEXFolderMoveOnSuccessPath
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
 

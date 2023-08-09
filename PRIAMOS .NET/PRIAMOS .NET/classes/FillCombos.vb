@@ -24,7 +24,7 @@ Public Class FillCombos
     Public Sub TECH_CAT(CtrlCombo As DevExpress.XtraEditors.LookUpEdit)
         Try
 
-            Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_TECH_CAT order by name", CNDB)
+            Dim cmd As SqlCommand = New SqlCommand("Select id,Name,billing from vw_TECH_CAT order by name", CNDB)
             Dim sdr As SqlDataReader = cmd.ExecuteReader()
             CtrlCombo.Properties.DataSource = ""
             CtrlCombo.Properties.Columns.Clear()
@@ -35,6 +35,7 @@ Public Class FillCombos
             CtrlCombo.Properties.PopulateColumns()
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Κατηγορίες Τεχνικής Υποστήριξης"
+            CtrlCombo.Properties.Columns(2).Visible = False
             sdr.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -1,11 +1,11 @@
 ﻿Imports System.Drawing.Printing
 
 Public Class ClosedAPT
-    Private Sub Detail_BeforePrint(sender As Object, e As PrintEventArgs) Handles Detail.BeforePrint
+    Private Sub Detail_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Detail.BeforePrint
 
     End Sub
 
-    Private Sub XrLabel1_BeforePrint(sender As Object, e As PrintEventArgs)
+    Private Sub XrLabel1_BeforePrint(sender As Object, e As System.ComponentModel.CancelEventArgs)
         'XrLabel1.WidthF = 300
     End Sub
 End Class

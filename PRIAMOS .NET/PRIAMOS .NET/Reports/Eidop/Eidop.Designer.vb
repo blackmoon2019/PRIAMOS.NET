@@ -233,7 +233,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel15.BorderWidth = 2.0!
         Me.XrLabel15.Dpi = 254.0!
-        Me.XrLabel15.Font = New System.Drawing.Font("Bookman Old Style", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel15.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 14.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel15.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel15.LocationFloat = New DevExpress.Utils.PointFloat(475.1959!, 282.981!)
         Me.XrLabel15.Name = "XrLabel15"
@@ -274,7 +274,7 @@ Partial Public Class Eidop
         Me.XrLabel85.CanGrow = False
         Me.XrLabel85.Dpi = 254.0!
         Me.XrLabel85.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_BDG].[Fullname]")})
-        Me.XrLabel85.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel85.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel85.LocationFloat = New DevExpress.Utils.PointFloat(1515.578!, 147.0428!)
         Me.XrLabel85.Multiline = True
         Me.XrLabel85.Name = "XrLabel85"
@@ -292,7 +292,7 @@ Partial Public Class Eidop
         Me.XrLabel86.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel86.Dpi = 254.0!
-        Me.XrLabel86.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel86.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel86.LocationFloat = New DevExpress.Utils.PointFloat(1499.578!, 106.4464!)
         Me.XrLabel86.Multiline = True
         Me.XrLabel86.Name = "XrLabel86"
@@ -309,7 +309,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel14.Dpi = 254.0!
         Me.XrLabel14.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINV_NUMBERS].[invNumber]")})
-        Me.XrLabel14.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel14.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel14.LocationFloat = New DevExpress.Utils.PointFloat(595.7564!, 139.996!)
         Me.XrLabel14.Multiline = True
         Me.XrLabel14.Name = "XrLabel14"
@@ -325,7 +325,7 @@ Partial Public Class Eidop
         Me.XrLabel2.BorderColor = System.Drawing.Color.Black
         Me.XrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel2.Dpi = 254.0!
-        Me.XrLabel2.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel2.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(582.1495!, 106.4463!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
@@ -345,7 +345,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel6.Dpi = 254.0!
-        Me.XrLabel6.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel6.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(981.7691!, 14.0!)
         Me.XrLabel6.Multiline = True
         Me.XrLabel6.Name = "XrLabel6"
@@ -363,7 +363,7 @@ Partial Public Class Eidop
         Me.XrLabel10.CanGrow = False
         Me.XrLabel10.Dpi = 254.0!
         Me.XrLabel10.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[nam]")})
-        Me.XrLabel10.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel10.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel10.LocationFloat = New DevExpress.Utils.PointFloat(983.769!, 52.02634!)
         Me.XrLabel10.Multiline = True
         Me.XrLabel10.Name = "XrLabel10"
@@ -379,7 +379,7 @@ Partial Public Class Eidop
         Me.XrLabel13.CanGrow = False
         Me.XrLabel13.Dpi = 254.0!
         Me.XrLabel13.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[completeDate] + iif([vw_INH].[extraordinary]=true,'-EKTAKTH','')")})
-        Me.XrLabel13.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel13.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel13.LocationFloat = New DevExpress.Utils.PointFloat(141.3102!, 139.996!)
         Me.XrLabel13.Multiline = True
         Me.XrLabel13.Name = "XrLabel13"
@@ -395,7 +395,7 @@ Partial Public Class Eidop
         Me.XrLabel12.CanGrow = False
         Me.XrLabel12.Dpi = 254.0!
         Me.XrLabel12.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "IIF(IsNullOrEmpty([vw_INH].[DateOfPrint]),Now(),[vw_INH].[DateOfPrint])")})
-        Me.XrLabel12.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel12.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel12.LocationFloat = New DevExpress.Utils.PointFloat(999.7691!, 147.0428!)
         Me.XrLabel12.Multiline = True
         Me.XrLabel12.Name = "XrLabel12"
@@ -412,7 +412,7 @@ Partial Public Class Eidop
         Me.XrLabel11.CanGrow = False
         Me.XrLabel11.Dpi = 254.0!
         Me.XrLabel11.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_APT].[ttl]")})
-        Me.XrLabel11.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel11.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel11.LocationFloat = New DevExpress.Utils.PointFloat(1502.97!, 51.91312!)
         Me.XrLabel11.Multiline = True
         Me.XrLabel11.Name = "XrLabel11"
@@ -429,7 +429,7 @@ Partial Public Class Eidop
         Me.XrLabel20.CanGrow = False
         Me.XrLabel20.Dpi = 254.0!
         Me.XrLabel20.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[bdgNam]  + ' - ' + [vw_INH].[vw_INHvw_APT].[AreaName]")})
-        Me.XrLabel20.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel20.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel20.LocationFloat = New DevExpress.Utils.PointFloat(296.7558!, 51.54415!)
         Me.XrLabel20.Multiline = True
         Me.XrLabel20.Name = "XrLabel20"
@@ -446,7 +446,7 @@ Partial Public Class Eidop
         Me.XrLabel8.CanGrow = False
         Me.XrLabel8.Dpi = 254.0!
         Me.XrLabel8.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[old_code]")})
-        Me.XrLabel8.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel8.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel8.LocationFloat = New DevExpress.Utils.PointFloat(139.9432!, 54.54415!)
         Me.XrLabel8.Multiline = True
         Me.XrLabel8.Name = "XrLabel8"
@@ -463,7 +463,7 @@ Partial Public Class Eidop
         Me.XrLabel1.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel1.Dpi = 254.0!
-        Me.XrLabel1.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel1.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(130.7032!, 106.4464!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
@@ -482,7 +482,7 @@ Partial Public Class Eidop
         Me.XrLabel9.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel9.Dpi = 254.0!
-        Me.XrLabel9.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel9.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel9.LocationFloat = New DevExpress.Utils.PointFloat(981.769!, 106.4464!)
         Me.XrLabel9.Multiline = True
         Me.XrLabel9.Name = "XrLabel9"
@@ -502,7 +502,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel5.Dpi = 254.0!
-        Me.XrLabel5.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(296.7558!, 14.0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
@@ -522,7 +522,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel7.Dpi = 254.0!
-        Me.XrLabel7.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel7.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel7.LocationFloat = New DevExpress.Utils.PointFloat(1499.578!, 14.0!)
         Me.XrLabel7.Multiline = True
         Me.XrLabel7.Name = "XrLabel7"
@@ -542,7 +542,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel4.Dpi = 254.0!
-        Me.XrLabel4.Font = New System.Drawing.Font("Bookman Old Style", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 8.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(130.7032!, 14.0!)
         Me.XrLabel4.Multiline = True
         Me.XrLabel4.Name = "XrLabel4"
@@ -770,7 +770,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel3.CanGrow = False
         Me.XrLabel3.Dpi = 254.0!
-        Me.XrLabel3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel3.Font = New DevExpress.Drawing.DXFont("Segoe UI", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel3.ForeColor = System.Drawing.Color.Black
         Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(0!, 643.4235!)
         Me.XrLabel3.Multiline = True
@@ -813,7 +813,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel57.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel57.Dpi = 254.0!
-        Me.XrLabel57.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel57.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel57.ForeColor = System.Drawing.Color.Black
         Me.XrLabel57.LocationFloat = New DevExpress.Utils.PointFloat(13.60736!, 131.6823!)
         Me.XrLabel57.Multiline = True
@@ -832,7 +832,7 @@ Partial Public Class Eidop
         Me.XrLabel79.CanGrow = False
         Me.XrLabel79.Dpi = 254.0!
         Me.XrLabel79.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif([INC_ToteiΩ].[ToteiΩ]=0,'',[INC_ToteiΩ].[ToteiΩ])" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel79.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel79.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel79.LocationFloat = New DevExpress.Utils.PointFloat(323.2053!, 131.6823!)
         Me.XrLabel79.Multiline = True
         Me.XrLabel79.Name = "XrLabel79"
@@ -846,7 +846,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel82.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel82.Dpi = 254.0!
-        Me.XrLabel82.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel82.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel82.ForeColor = System.Drawing.Color.Black
         Me.XrLabel82.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 84.72076!)
         Me.XrLabel82.Multiline = True
@@ -865,7 +865,7 @@ Partial Public Class Eidop
         Me.XrLabel83.CanGrow = False
         Me.XrLabel83.Dpi = 254.0!
         Me.XrLabel83.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINCei*Ω].[ei*Ω]")})
-        Me.XrLabel83.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel83.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel83.LocationFloat = New DevExpress.Utils.PointFloat(323.2053!, 84.72079!)
         Me.XrLabel83.Multiline = True
         Me.XrLabel83.Name = "XrLabel83"
@@ -880,7 +880,7 @@ Partial Public Class Eidop
         Me.XrLabel81.CanGrow = False
         Me.XrLabel81.Dpi = 254.0!
         Me.XrLabel81.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif ([INC_Totfiei].[Totfiei]<>0,[INC_Totfiei].[Totfiei],'')")})
-        Me.XrLabel81.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel81.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel81.LocationFloat = New DevExpress.Utils.PointFloat(794.8994!, 131.6823!)
         Me.XrLabel81.Multiline = True
         Me.XrLabel81.Name = "XrLabel81"
@@ -895,7 +895,7 @@ Partial Public Class Eidop
         Me.XrLabel80.CanGrow = False
         Me.XrLabel80.Dpi = 254.0!
         Me.XrLabel80.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[hpc]")})
-        Me.XrLabel80.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel80.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel80.LocationFloat = New DevExpress.Utils.PointFloat(323.2053!, 41.63113!)
         Me.XrLabel80.Multiline = True
         Me.XrLabel80.Name = "XrLabel80"
@@ -911,7 +911,7 @@ Partial Public Class Eidop
         Me.XrLabel78.CanGrow = False
         Me.XrLabel78.Dpi = 254.0!
         Me.XrLabel78.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif ([vw_APTINC_H].[ei*Ω]<>0, [vw_APTINC_H].[ei*Ω],'')")})
-        Me.XrLabel78.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel78.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel78.LocationFloat = New DevExpress.Utils.PointFloat(794.8994!, 84.72079!)
         Me.XrLabel78.Multiline = True
         Me.XrLabel78.Name = "XrLabel78"
@@ -926,7 +926,7 @@ Partial Public Class Eidop
         Me.XrLabel77.CanGrow = False
         Me.XrLabel77.Dpi = 254.0!
         Me.XrLabel77.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "iif([vw_APTINC_H].[fi*ei]=0,'',[vw_APTINC_H].[fi*ei])")})
-        Me.XrLabel77.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel77.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel77.LocationFloat = New DevExpress.Utils.PointFloat(794.2825!, 41.6311!)
         Me.XrLabel77.Multiline = True
         Me.XrLabel77.Name = "XrLabel77"
@@ -942,7 +942,7 @@ Partial Public Class Eidop
         Me.XrLabel62.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel62.CanGrow = False
         Me.XrLabel62.Dpi = 254.0!
-        Me.XrLabel62.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel62.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel62.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel62.LocationFloat = New DevExpress.Utils.PointFloat(508.3784!, 183.1118!)
         Me.XrLabel62.Multiline = True
@@ -961,7 +961,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel61.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel61.Dpi = 254.0!
-        Me.XrLabel61.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel61.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel61.ForeColor = System.Drawing.Color.Black
         Me.XrLabel61.LocationFloat = New DevExpress.Utils.PointFloat(488.6401!, 131.6823!)
         Me.XrLabel61.Multiline = True
@@ -979,7 +979,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel60.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel60.Dpi = 254.0!
-        Me.XrLabel60.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel60.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel60.ForeColor = System.Drawing.Color.Black
         Me.XrLabel60.LocationFloat = New DevExpress.Utils.PointFloat(532.4853!, 84.72078!)
         Me.XrLabel60.Multiline = True
@@ -997,7 +997,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel59.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel59.Dpi = 254.0!
-        Me.XrLabel59.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel59.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel59.ForeColor = System.Drawing.Color.Black
         Me.XrLabel59.LocationFloat = New DevExpress.Utils.PointFloat(532.4852!, 41.6311!)
         Me.XrLabel59.Multiline = True
@@ -1017,7 +1017,7 @@ Partial Public Class Eidop
         Me.XrLabel58.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel58.CanGrow = False
         Me.XrLabel58.Dpi = 254.0!
-        Me.XrLabel58.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel58.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel58.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel58.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 166.3296!)
         Me.XrLabel58.Multiline = True
@@ -1036,7 +1036,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel56.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel56.Dpi = 254.0!
-        Me.XrLabel56.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel56.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel56.ForeColor = System.Drawing.Color.Black
         Me.XrLabel56.LocationFloat = New DevExpress.Utils.PointFloat(84.66669!, 41.6311!)
         Me.XrLabel56.Multiline = True
@@ -1056,7 +1056,7 @@ Partial Public Class Eidop
         Me.XrLabel55.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel55.CanGrow = False
         Me.XrLabel55.Dpi = 254.0!
-        Me.XrLabel55.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel55.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel55.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel55.LocationFloat = New DevExpress.Utils.PointFloat(507.6402!, 4.701679!)
         Me.XrLabel55.Multiline = True
@@ -1077,7 +1077,7 @@ Partial Public Class Eidop
         Me.XrLabel54.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel54.CanGrow = False
         Me.XrLabel54.Dpi = 254.0!
-        Me.XrLabel54.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel54.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel54.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel54.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 4.70166!)
         Me.XrLabel54.Multiline = True
@@ -1097,7 +1097,7 @@ Partial Public Class Eidop
         Me.XrLabel31.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel31.CanGrow = False
         Me.XrLabel31.Dpi = 254.0!
-        Me.XrLabel31.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel31.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel31.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(537.2852!, 294.6988!)
         Me.XrLabel31.Multiline = True
@@ -1116,7 +1116,7 @@ Partial Public Class Eidop
         Me.XrLabel32.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel32.CanGrow = False
         Me.XrLabel32.Dpi = 254.0!
-        Me.XrLabel32.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel32.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel32.ForeColor = System.Drawing.Color.Black
         Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 337.5468!)
         Me.XrLabel32.Multiline = True
@@ -1135,7 +1135,7 @@ Partial Public Class Eidop
         Me.XrLabel33.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel33.CanGrow = False
         Me.XrLabel33.Dpi = 254.0!
-        Me.XrLabel33.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel33.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel33.ForeColor = System.Drawing.Color.Black
         Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 377.1245!)
         Me.XrLabel33.Multiline = True
@@ -1154,7 +1154,7 @@ Partial Public Class Eidop
         Me.XrLabel46.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel46.CanGrow = False
         Me.XrLabel46.Dpi = 254.0!
-        Me.XrLabel46.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel46.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel46.ForeColor = System.Drawing.Color.Black
         Me.XrLabel46.LocationFloat = New DevExpress.Utils.PointFloat(537.2853!, 416.086!)
         Me.XrLabel46.Multiline = True
@@ -1173,7 +1173,7 @@ Partial Public Class Eidop
         Me.XrLabel49.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel49.CanGrow = False
         Me.XrLabel49.Dpi = 254.0!
-        Me.XrLabel49.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel49.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel49.ForeColor = System.Drawing.Color.Black
         Me.XrLabel49.LocationFloat = New DevExpress.Utils.PointFloat(537.2854!, 456.0476!)
         Me.XrLabel49.Multiline = True
@@ -1193,7 +1193,7 @@ Partial Public Class Eidop
         Me.XrLabel51.CanGrow = False
         Me.XrLabel51.Dpi = 254.0!
         Me.XrLabel51.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_B].[boiler_consumption]")})
-        Me.XrLabel51.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel51.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel51.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 456.0476!)
         Me.XrLabel51.Multiline = True
         Me.XrLabel51.Name = "XrLabel51"
@@ -1211,7 +1211,7 @@ Partial Public Class Eidop
         Me.XrLabel50.CanGrow = False
         Me.XrLabel50.Dpi = 254.0!
         Me.XrLabel50.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_B].[fixedAmountB]")})
-        Me.XrLabel50.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel50.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel50.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 416.086!)
         Me.XrLabel50.Multiline = True
         Me.XrLabel50.Name = "XrLabel50"
@@ -1229,7 +1229,7 @@ Partial Public Class Eidop
         Me.XrLabel52.CanGrow = False
         Me.XrLabel52.Dpi = 254.0!
         Me.XrLabel52.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[sumAHPBB].[sumMesDIF]")})
-        Me.XrLabel52.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel52.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel52.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 377.1245!)
         Me.XrLabel52.Multiline = True
         Me.XrLabel52.Name = "XrLabel52"
@@ -1246,7 +1246,7 @@ Partial Public Class Eidop
         Me.XrLabel53.CanGrow = False
         Me.XrLabel53.Dpi = 254.0!
         Me.XrLabel53.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTAHPBB].[mesDIF]")})
-        Me.XrLabel53.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel53.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel53.LocationFloat = New DevExpress.Utils.PointFloat(759.1926!, 337.5468!)
         Me.XrLabel53.Multiline = True
         Me.XrLabel53.Name = "XrLabel53"
@@ -1263,7 +1263,7 @@ Partial Public Class Eidop
         Me.XrLabel29.CanGrow = False
         Me.XrLabel29.Dpi = 254.0!
         Me.XrLabel29.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTAHPBH].[mesDIF]")})
-        Me.XrLabel29.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel29.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel29.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 337.5469!)
         Me.XrLabel29.Multiline = True
         Me.XrLabel29.Name = "XrLabel29"
@@ -1280,7 +1280,7 @@ Partial Public Class Eidop
         Me.XrLabel30.CanGrow = False
         Me.XrLabel30.Dpi = 254.0!
         Me.XrLabel30.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_H].[fixedAmount]")})
-        Me.XrLabel30.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel30.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel30.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 416.086!)
         Me.XrLabel30.Multiline = True
         Me.XrLabel30.Name = "XrLabel30"
@@ -1298,7 +1298,7 @@ Partial Public Class Eidop
         Me.XrLabel22.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel22.CanGrow = False
         Me.XrLabel22.Dpi = 254.0!
-        Me.XrLabel22.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel22.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel22.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel22.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 294.6988!)
         Me.XrLabel22.Multiline = True
@@ -1318,7 +1318,7 @@ Partial Public Class Eidop
         Me.XrLabel23.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel23.CanGrow = False
         Me.XrLabel23.Dpi = 254.0!
-        Me.XrLabel23.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel23.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel23.ForeColor = System.Drawing.Color.Black
         Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 337.5468!)
         Me.XrLabel23.Multiline = True
@@ -1337,7 +1337,7 @@ Partial Public Class Eidop
         Me.XrLabel24.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel24.CanGrow = False
         Me.XrLabel24.Dpi = 254.0!
-        Me.XrLabel24.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel24.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel24.ForeColor = System.Drawing.Color.Black
         Me.XrLabel24.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 377.1245!)
         Me.XrLabel24.Multiline = True
@@ -1356,7 +1356,7 @@ Partial Public Class Eidop
         Me.XrLabel26.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel26.CanGrow = False
         Me.XrLabel26.Dpi = 254.0!
-        Me.XrLabel26.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel26.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel26.ForeColor = System.Drawing.Color.Black
         Me.XrLabel26.LocationFloat = New DevExpress.Utils.PointFloat(13.60718!, 416.0861!)
         Me.XrLabel26.Multiline = True
@@ -1375,7 +1375,7 @@ Partial Public Class Eidop
         Me.XrLabel25.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel25.CanGrow = False
         Me.XrLabel25.Dpi = 254.0!
-        Me.XrLabel25.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel25.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel25.ForeColor = System.Drawing.Color.Black
         Me.XrLabel25.LocationFloat = New DevExpress.Utils.PointFloat(13.6073!, 456.0476!)
         Me.XrLabel25.Multiline = True
@@ -1395,7 +1395,7 @@ Partial Public Class Eidop
         Me.XrLabel27.CanGrow = False
         Me.XrLabel27.Dpi = 254.0!
         Me.XrLabel27.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTINC_H].[heating_consumption]")})
-        Me.XrLabel27.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel27.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel27.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 456.0476!)
         Me.XrLabel27.Multiline = True
         Me.XrLabel27.Name = "XrLabel27"
@@ -1413,7 +1413,7 @@ Partial Public Class Eidop
         Me.XrLabel28.CanGrow = False
         Me.XrLabel28.Dpi = 254.0!
         Me.XrLabel28.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[sumAHPBH].[sumMesDIF]")})
-        Me.XrLabel28.Font = New System.Drawing.Font("Segoe UI", 7.0!)
+        Me.XrLabel28.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel28.LocationFloat = New DevExpress.Utils.PointFloat(235.5146!, 377.1245!)
         Me.XrLabel28.Multiline = True
         Me.XrLabel28.Name = "XrLabel28"
@@ -1467,7 +1467,7 @@ Partial Public Class Eidop
         Me.XrLabel84.CanGrow = False
         Me.XrLabel84.Dpi = 254.0!
         Me.XrLabel84.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Concat([vw_INH].[vw_INHvw_BDG].[old_code], [ttl])"), New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "iif([vw_INH].[vw_INHvw_BDG].[isManaged]=True,True,False)" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel84.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel84.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel84.LocationFloat = New DevExpress.Utils.PointFloat(702.6932!, 795.4917!)
         Me.XrLabel84.Multiline = True
         Me.XrLabel84.Name = "XrLabel84"
@@ -1485,7 +1485,7 @@ Partial Public Class Eidop
         Me.XrLabel75.CanGrow = False
         Me.XrLabel75.CanShrink = True
         Me.XrLabel75.Dpi = 254.0!
-        Me.XrLabel75.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel75.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel75.LocationFloat = New DevExpress.Utils.PointFloat(1385.568!, 782.9883!)
         Me.XrLabel75.Multiline = True
         Me.XrLabel75.Name = "XrLabel75"
@@ -1507,7 +1507,7 @@ Partial Public Class Eidop
         Me.XrLabel76.Dpi = 254.0!
         Me.XrLabel76.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "ISNULL([vw_APTSUM_VW_INC_OWNERS].[TotAmtPerCalc],0) + ISNULL([vw_APTSUM_VW_INC_TE" &
                     "NANT].[TotAmtPerCalc],0)" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel76.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel76.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel76.LocationFloat = New DevExpress.Utils.PointFloat(1743.875!, 782.9883!)
         Me.XrLabel76.Multiline = True
         Me.XrLabel76.Name = "XrLabel76"
@@ -1529,7 +1529,7 @@ Partial Public Class Eidop
         Me.XrLabel74.CanGrow = False
         Me.XrLabel74.Dpi = 254.0!
         Me.XrLabel74.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Visible", "iif([vw_INH].[vw_INHvw_BDG].[isManaged]=True,True,False)" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel74.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel74.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel74.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 789.9883!)
         Me.XrLabel74.Multiline = True
         Me.XrLabel74.Name = "XrLabel74"
@@ -1565,7 +1565,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel68.CanGrow = False
         Me.XrLabel68.Dpi = 254.0!
-        Me.XrLabel68.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel68.Font = New DevExpress.Drawing.DXFont("Segoe UI", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel68.ForeColor = System.Drawing.Color.Black
         Me.XrLabel68.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0.000184536!)
         Me.XrLabel68.Multiline = True
@@ -1597,7 +1597,7 @@ Partial Public Class Eidop
         Me.XrLabel69.CanGrow = False
         Me.XrLabel69.Dpi = 254.0!
         Me.XrLabel69.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTSUM_VW_INC_TENANT].[TotAmtPerCalc]")})
-        Me.XrLabel69.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel69.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel69.LocationFloat = New DevExpress.Utils.PointFloat(762.8163!, 20.00012!)
         Me.XrLabel69.Multiline = True
         Me.XrLabel69.Name = "XrLabel69"
@@ -1616,7 +1616,7 @@ Partial Public Class Eidop
         Me.XrLabel70.CanGrow = False
         Me.XrLabel70.CanShrink = True
         Me.XrLabel70.Dpi = 254.0!
-        Me.XrLabel70.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel70.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel70.LocationFloat = New DevExpress.Utils.PointFloat(361.7867!, 20.00012!)
         Me.XrLabel70.Multiline = True
         Me.XrLabel70.Name = "XrLabel70"
@@ -1649,7 +1649,7 @@ Partial Public Class Eidop
         Me.XrLabel71.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel71.CanGrow = False
         Me.XrLabel71.Dpi = 254.0!
-        Me.XrLabel71.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel71.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel71.LocationFloat = New DevExpress.Utils.PointFloat(799.8997!, 0.000007629395!)
         Me.XrLabel71.Multiline = True
         Me.XrLabel71.Name = "XrLabel71"
@@ -1694,7 +1694,7 @@ Partial Public Class Eidop
         Me.XrLabel72.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel72.CanGrow = False
         Me.XrLabel72.Dpi = 254.0!
-        Me.XrLabel72.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel72.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel72.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
         Me.XrLabel72.Multiline = True
         Me.XrLabel72.Name = "XrLabel72"
@@ -1711,7 +1711,7 @@ Partial Public Class Eidop
         Me.XrLabel73.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel73.CanGrow = False
         Me.XrLabel73.Dpi = 254.0!
-        Me.XrLabel73.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel73.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel73.LocationFloat = New DevExpress.Utils.PointFloat(622.8293!, 0!)
         Me.XrLabel73.Multiline = True
         Me.XrLabel73.Name = "XrLabel73"
@@ -1731,7 +1731,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel67.CanGrow = False
         Me.XrLabel67.Dpi = 254.0!
-        Me.XrLabel67.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel67.Font = New DevExpress.Drawing.DXFont("Segoe UI", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel67.ForeColor = System.Drawing.Color.Black
         Me.XrLabel67.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 5.383485!)
         Me.XrLabel67.Multiline = True
@@ -1779,7 +1779,7 @@ Partial Public Class Eidop
         Me.XrLabel34.CanGrow = False
         Me.XrLabel34.Dpi = 254.0!
         Me.XrLabel34.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTSUM_VW_INC_TENANT].[TotAmtPerCalc]")})
-        Me.XrLabel34.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel34.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel34.LocationFloat = New DevExpress.Utils.PointFloat(762.8163!, 20.00012!)
         Me.XrLabel34.Multiline = True
         Me.XrLabel34.Name = "XrLabel34"
@@ -1798,7 +1798,7 @@ Partial Public Class Eidop
         Me.XrLabel41.CanGrow = False
         Me.XrLabel41.CanShrink = True
         Me.XrLabel41.Dpi = 254.0!
-        Me.XrLabel41.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel41.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel41.LocationFloat = New DevExpress.Utils.PointFloat(361.7867!, 20.00012!)
         Me.XrLabel41.Multiline = True
         Me.XrLabel41.Name = "XrLabel41"
@@ -1831,7 +1831,7 @@ Partial Public Class Eidop
         Me.XrLabel42.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel42.CanGrow = False
         Me.XrLabel42.Dpi = 254.0!
-        Me.XrLabel42.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel42.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel42.LocationFloat = New DevExpress.Utils.PointFloat(799.8997!, 0.000007629395!)
         Me.XrLabel42.Multiline = True
         Me.XrLabel42.Name = "XrLabel42"
@@ -1876,7 +1876,7 @@ Partial Public Class Eidop
         Me.XrLabel43.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel43.CanGrow = False
         Me.XrLabel43.Dpi = 254.0!
-        Me.XrLabel43.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel43.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel43.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
         Me.XrLabel43.Multiline = True
         Me.XrLabel43.Name = "XrLabel43"
@@ -1893,7 +1893,7 @@ Partial Public Class Eidop
         Me.XrLabel63.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel63.CanGrow = False
         Me.XrLabel63.Dpi = 254.0!
-        Me.XrLabel63.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel63.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel63.LocationFloat = New DevExpress.Utils.PointFloat(622.8293!, 0!)
         Me.XrLabel63.Multiline = True
         Me.XrLabel63.Name = "XrLabel63"
@@ -1938,7 +1938,7 @@ Partial Public Class Eidop
         Me.XrLabel64.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel64.CanGrow = False
         Me.XrLabel64.Dpi = 254.0!
-        Me.XrLabel64.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel64.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel64.LocationFloat = New DevExpress.Utils.PointFloat(770.9866!, 0.000007629395!)
         Me.XrLabel64.Multiline = True
         Me.XrLabel64.Name = "XrLabel64"
@@ -1955,7 +1955,7 @@ Partial Public Class Eidop
         Me.XrLabel65.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel65.CanGrow = False
         Me.XrLabel65.Dpi = 254.0!
-        Me.XrLabel65.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel65.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel65.LocationFloat = New DevExpress.Utils.PointFloat(3.999857!, 0.00002288818!)
         Me.XrLabel65.Multiline = True
         Me.XrLabel65.Name = "XrLabel65"
@@ -1972,7 +1972,7 @@ Partial Public Class Eidop
         Me.XrLabel66.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel66.CanGrow = False
         Me.XrLabel66.Dpi = 254.0!
-        Me.XrLabel66.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel66.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel66.LocationFloat = New DevExpress.Utils.PointFloat(481.5904!, 0!)
         Me.XrLabel66.Multiline = True
         Me.XrLabel66.Name = "XrLabel66"
@@ -1989,7 +1989,7 @@ Partial Public Class Eidop
         Me.XrLabel45.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel45.CanGrow = False
         Me.XrLabel45.Dpi = 254.0!
-        Me.XrLabel45.Font = New System.Drawing.Font("Bookman Old Style", 7.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel45.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 7.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel45.ForeColor = System.Drawing.Color.Blue
         Me.XrLabel45.LocationFloat = New DevExpress.Utils.PointFloat(10.99994!, 516.7618!)
         Me.XrLabel45.Multiline = True
@@ -2011,7 +2011,7 @@ Partial Public Class Eidop
         Me.XrLabel48.CanGrow = False
         Me.XrLabel48.Dpi = 254.0!
         Me.XrLabel48.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[Colannouncement] + ' ' +" & Global.Microsoft.VisualBasic.ChrW(10) & "[vw_INH].[announcement]")})
-        Me.XrLabel48.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel48.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel48.LocationFloat = New DevExpress.Utils.PointFloat(9.000368!, 622.783!)
         Me.XrLabel48.Multiline = True
         Me.XrLabel48.Name = "XrLabel48"
@@ -2028,7 +2028,7 @@ Partial Public Class Eidop
         Me.XrLabel47.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel47.CanGrow = False
         Me.XrLabel47.Dpi = 254.0!
-        Me.XrLabel47.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel47.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel47.LocationFloat = New DevExpress.Utils.PointFloat(594.0284!, 582.3179!)
         Me.XrLabel47.Multiline = True
         Me.XrLabel47.Name = "XrLabel47"
@@ -2085,7 +2085,7 @@ Partial Public Class Eidop
         Me.XrLabel95.CanGrow = False
         Me.XrLabel95.Dpi = 254.0!
         Me.XrLabel95.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTSUM_VW_INC_OWNERS].[TotAmtPerCalc]")})
-        Me.XrLabel95.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel95.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel95.LocationFloat = New DevExpress.Utils.PointFloat(762.8161!, 20.00006!)
         Me.XrLabel95.Multiline = True
         Me.XrLabel95.Name = "XrLabel95"
@@ -2104,7 +2104,7 @@ Partial Public Class Eidop
         Me.XrLabel96.CanGrow = False
         Me.XrLabel96.CanShrink = True
         Me.XrLabel96.Dpi = 254.0!
-        Me.XrLabel96.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel96.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel96.LocationFloat = New DevExpress.Utils.PointFloat(361.7867!, 20.00012!)
         Me.XrLabel96.Multiline = True
         Me.XrLabel96.Name = "XrLabel96"
@@ -2121,7 +2121,7 @@ Partial Public Class Eidop
         Me.XrLabel39.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel39.CanGrow = False
         Me.XrLabel39.Dpi = 254.0!
-        Me.XrLabel39.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel39.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel39.LocationFloat = New DevExpress.Utils.PointFloat(799.8997!, 0.000007629395!)
         Me.XrLabel39.Multiline = True
         Me.XrLabel39.Name = "XrLabel39"
@@ -2166,7 +2166,7 @@ Partial Public Class Eidop
         Me.XrLabel40.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel40.CanGrow = False
         Me.XrLabel40.Dpi = 254.0!
-        Me.XrLabel40.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel40.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel40.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
         Me.XrLabel40.Multiline = True
         Me.XrLabel40.Name = "XrLabel40"
@@ -2183,7 +2183,7 @@ Partial Public Class Eidop
         Me.XrLabel44.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel44.CanGrow = False
         Me.XrLabel44.Dpi = 254.0!
-        Me.XrLabel44.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel44.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel44.LocationFloat = New DevExpress.Utils.PointFloat(605.296!, 0!)
         Me.XrLabel44.Multiline = True
         Me.XrLabel44.Name = "XrLabel44"
@@ -2213,7 +2213,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel38.CanGrow = False
         Me.XrLabel38.Dpi = 254.0!
-        Me.XrLabel38.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel38.Font = New DevExpress.Drawing.DXFont("Segoe UI", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel38.ForeColor = System.Drawing.Color.Black
         Me.XrLabel38.LocationFloat = New DevExpress.Utils.PointFloat(1002.592!, 5.383577!)
         Me.XrLabel38.Multiline = True
@@ -2258,7 +2258,7 @@ Partial Public Class Eidop
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel21.CanGrow = False
         Me.XrLabel21.Dpi = 254.0!
-        Me.XrLabel21.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel21.Font = New DevExpress.Drawing.DXFont("Segoe UI", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel21.ForeColor = System.Drawing.Color.Black
         Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 5.383485!)
         Me.XrLabel21.Multiline = True
@@ -2306,7 +2306,7 @@ Partial Public Class Eidop
         Me.XrLabel93.CanGrow = False
         Me.XrLabel93.Dpi = 254.0!
         Me.XrLabel93.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_APTSUM_VW_INC_TENANT].[TotAmtPerCalc]")})
-        Me.XrLabel93.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel93.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel93.LocationFloat = New DevExpress.Utils.PointFloat(762.8163!, 20.00012!)
         Me.XrLabel93.Multiline = True
         Me.XrLabel93.Name = "XrLabel93"
@@ -2325,7 +2325,7 @@ Partial Public Class Eidop
         Me.XrLabel37.CanGrow = False
         Me.XrLabel37.CanShrink = True
         Me.XrLabel37.Dpi = 254.0!
-        Me.XrLabel37.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel37.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel37.LocationFloat = New DevExpress.Utils.PointFloat(361.7867!, 20.00012!)
         Me.XrLabel37.Multiline = True
         Me.XrLabel37.Name = "XrLabel37"
@@ -2358,7 +2358,7 @@ Partial Public Class Eidop
         Me.XrLabel18.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel18.CanGrow = False
         Me.XrLabel18.Dpi = 254.0!
-        Me.XrLabel18.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel18.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel18.LocationFloat = New DevExpress.Utils.PointFloat(799.8997!, 0.000007629395!)
         Me.XrLabel18.Multiline = True
         Me.XrLabel18.Name = "XrLabel18"
@@ -2403,7 +2403,7 @@ Partial Public Class Eidop
         Me.XrLabel19.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel19.CanGrow = False
         Me.XrLabel19.Dpi = 254.0!
-        Me.XrLabel19.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel19.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel19.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
         Me.XrLabel19.Multiline = True
         Me.XrLabel19.Name = "XrLabel19"
@@ -2420,7 +2420,7 @@ Partial Public Class Eidop
         Me.XrLabel36.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel36.CanGrow = False
         Me.XrLabel36.Dpi = 254.0!
-        Me.XrLabel36.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel36.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel36.LocationFloat = New DevExpress.Utils.PointFloat(622.8293!, 0!)
         Me.XrLabel36.Multiline = True
         Me.XrLabel36.Name = "XrLabel36"
@@ -2465,7 +2465,7 @@ Partial Public Class Eidop
         Me.XrLabel35.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel35.CanGrow = False
         Me.XrLabel35.Dpi = 254.0!
-        Me.XrLabel35.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel35.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel35.LocationFloat = New DevExpress.Utils.PointFloat(799.8997!, 0.000007629395!)
         Me.XrLabel35.Multiline = True
         Me.XrLabel35.Name = "XrLabel35"
@@ -2482,7 +2482,7 @@ Partial Public Class Eidop
         Me.XrLabel16.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel16.CanGrow = False
         Me.XrLabel16.Dpi = 254.0!
-        Me.XrLabel16.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel16.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel16.LocationFloat = New DevExpress.Utils.PointFloat(3.999998!, 0!)
         Me.XrLabel16.Multiline = True
         Me.XrLabel16.Name = "XrLabel16"
@@ -2499,7 +2499,7 @@ Partial Public Class Eidop
         Me.XrLabel17.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel17.CanGrow = False
         Me.XrLabel17.Dpi = 254.0!
-        Me.XrLabel17.Font = New System.Drawing.Font("Bookman Old Style", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel17.Font = New DevExpress.Drawing.DXFont("Bookman Old Style", 9.0!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel17.LocationFloat = New DevExpress.Utils.PointFloat(601.83!, 0!)
         Me.XrLabel17.Multiline = True
         Me.XrLabel17.Name = "XrLabel17"
@@ -2518,11 +2518,11 @@ Partial Public Class Eidop
         Me.DataMember = "vw_INH.vw_INHvw_APT"
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(53, 23, 57, 56)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(53, 23, 57, 56)
         Me.PageHeight = 2970
         Me.PageWidth = 2100
-        Me.PaperKind = System.Drawing.Printing.PaperKind.A4
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic

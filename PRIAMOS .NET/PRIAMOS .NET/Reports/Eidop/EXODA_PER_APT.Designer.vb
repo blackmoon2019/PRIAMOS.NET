@@ -88,7 +88,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel3.CanGrow = False
         Me.XrLabel3.Dpi = 254.0!
         Me.XrLabel3.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[AmtPerCalc]")})
-        Me.XrLabel3.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel3.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel3.LocationFloat = New DevExpress.Utils.PointFloat(792.3114!, 0!)
         Me.XrLabel3.Multiline = True
         Me.XrLabel3.Name = "XrLabel3"
@@ -105,7 +105,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel1.CanGrow = False
         Me.XrLabel1.Dpi = 254.0!
         Me.XrLabel1.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[repName]")})
-        Me.XrLabel1.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel1.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel1.Multiline = True
         Me.XrLabel1.Name = "XrLabel1"
@@ -119,7 +119,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel2.CanGrow = False
         Me.XrLabel2.Dpi = 254.0!
         Me.XrLabel2.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[amt]")})
-        Me.XrLabel2.Font = New System.Drawing.Font("Arial", 8.0!)
+        Me.XrLabel2.Font = New DevExpress.Drawing.DXFont("Arial", 8.0!)
         Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(587.0106!, 0!)
         Me.XrLabel2.Multiline = True
         Me.XrLabel2.Name = "XrLabel2"
@@ -145,7 +145,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel4.CanGrow = False
         Me.XrLabel4.Dpi = 254.0!
         Me.XrLabel4.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([AmtPerCalc]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel4.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel4.LocationFloat = New DevExpress.Utils.PointFloat(760.52!, 0!)
         Me.XrLabel4.Multiline = True
         Me.XrLabel4.Name = "XrLabel4"
@@ -167,7 +167,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel5.CanGrow = False
         Me.XrLabel5.Dpi = 254.0!
         Me.XrLabel5.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "'ΣΥΝ:' +Replace(sumSum([amt]),'.',',') + '€'" & Global.Microsoft.VisualBasic.ChrW(10))})
-        Me.XrLabel5.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel5.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(558.006!, 0!)
         Me.XrLabel5.Multiline = True
         Me.XrLabel5.Name = "XrLabel5"
@@ -229,7 +229,7 @@ Partial Public Class EXODA_PER_APT
         Me.XrLabel6.CanGrow = False
         Me.XrLabel6.Dpi = 254.0!
         Me.XrLabel6.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[calcCatNam]")})
-        Me.XrLabel6.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel6.Font = New DevExpress.Drawing.DXFont("Arial", 8.25!, DevExpress.Drawing.DXFontStyle.Bold)
         Me.XrLabel6.ForeColor = System.Drawing.Color.Black
         Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLabel6.Name = "XrLabel6"
@@ -248,11 +248,11 @@ Partial Public Class EXODA_PER_APT
         Me.DataSource = Me.SqlDataSourceAPT
         Me.Dpi = 254.0!
         Me.FilterString = "[aptID] = ?aptID And [inhID] = ?inhID"
-        Me.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Margins = New System.Drawing.Printing.Margins(10, 511, 10, 10)
+        Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
+        Me.Margins = New DevExpress.Drawing.DXMargins(10, 511, 10, 10)
         Me.PageHeight = 2100
         Me.PageWidth = 1480
-        Me.PaperKind = System.Drawing.Printing.PaperKind.A5
+        Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A5
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID, Me.aptID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
