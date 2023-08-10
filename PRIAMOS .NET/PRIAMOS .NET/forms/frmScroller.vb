@@ -86,7 +86,7 @@ Public Class frmScroller
             BarNewRec.Enabled = UserProps.AllowInsert
             BarDelete.Enabled = UserProps.AllowDelete
             BarEdit.Enabled = UserProps.AllowEdit
-            If sDataTable = "vw_TECH_SUP" And UserProps.ID.ToString <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then BarDelete.Enabled = False
+            If sDataTable = "vw_TECH_SUP" And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then BarDelete.Enabled = False
             GridView1.OptionsBehavior.AutoExpandAllGroups = True
             GridView1.OptionsMenu.ShowFooterItem = True
             GridView1.OptionsMenu.EnableFooterMenu = True

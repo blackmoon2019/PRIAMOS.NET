@@ -1,15 +1,9 @@
-﻿Imports System.ComponentModel
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Net.Mail
-Imports DevExpress.DataAccess
-Imports DevExpress.DataAccess.Native
-Imports DevExpress.Utils.Menu
+Imports DevExpress.Utils.DirectXPaint
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
-Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraExport.Helpers
-Imports DevExpress.XtraGrid.Menu
 Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmTecnicalSupport
@@ -25,7 +19,7 @@ Public Class frmTecnicalSupport
     Private Cls As New ClearControls
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
-
+    Private ManageCbo As New CombosManager
     Dim sGuid As String
 
     Public WriteOnly Property ID As String
@@ -264,33 +258,15 @@ Public Class frmTecnicalSupport
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub ManageCategory()
-        Dim form1 As frmGen = New frmGen()
-        form1.Text = "Κατηγορίες Τεχνικής ποστήριξης"
-        form1.L1.Text = "Κωδικός"
-        form1.L2.Text = "Κατηγορία"
-        form1.DataTable = "TECH_CAT"
-        form1.CalledFromControl = True
-        form1.CallerControl = cboCategory
-        form1.CallerForm = Me
-        form1.MdiParent = frmMain
-        If cboCategory.EditValue <> Nothing Then
-            form1.Mode = FormMode.EditRecord
-            form1.ID = cboCategory.EditValue.ToString
-        Else
-            form1.Mode = FormMode.NewRecord
-        End If
 
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
-        form1.Show()
-    End Sub
 
     Private Sub cboCategory_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCategory.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboCategory.EditValue = Nothing : ManageCategory()
-            Case 2 : If cboCategory.EditValue <> Nothing Then ManageCategory()
+            Case 1 : ManageCbo.ManageTechCatCategory(cboCategory, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageTechCatCategory(cboCategory, FormMode.EditRecord)
             Case 3 : cboCategory.EditValue = Nothing
         End Select
+
     End Sub
 
     Private Sub PictureEdit1_DoubleClick(sender As Object, e As EventArgs) Handles PictureEdit1.DoubleClick
@@ -415,14 +391,28 @@ Public Class frmTecnicalSupport
     End Sub
 
     Private Sub cboCategory_EditValueChanged(sender As Object, e As EventArgs) Handles cboCategory.EditValueChanged
-        If cboCategory.EditValue Is Nothing Then Exit Sub
-        If Mode = FormMode.EditRecord Then
-            XtraMessageBox.Show(String.Format("Κατηγορία μόνο ο Administrator Μπορεί να αλλάξει"), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
+
     End Sub
 
     Private Sub cboCategory_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles cboCategory.EditValueChanging
+        If cboCategory.EditValue Is Nothing Then Exit Sub
+        Dim OldRowIndex As Integer = cboCategory.Properties.GetDataSourceRowIndex("id", e.OldValue)
+        Dim OldBillingValue As Object = cboCategory.Properties.GetDataSourceValue("billing", OldRowIndex)
+        Dim NewRowIndex As Integer = cboCategory.Properties.GetDataSourceRowIndex("id", e.NewValue)
+        Dim NewBillingValue As Object = cboCategory.Properties.GetDataSourceValue("billing", NewRowIndex)
+        If Mode = FormMode.EditRecord And OldBillingValue = True And NewBillingValue = False And UserProps.ID.ToString.ToUpper <> "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then
+            XtraMessageBox.Show(String.Format("Προσπαθείτε να αλλάξετε κατηγορία από Χρεώσιμη σε ΜΗ. Παρακαλώ επικοινωνείστε."), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Cancel = True
+            cboCategory.EditValue = e.OldValue
+        End If
 
+
+    End Sub
+
+    Private Sub cboCategory_Validated(sender As Object, e As EventArgs) Handles cboCategory.Validated
+    End Sub
+
+    Private Sub cboCategory_CloseUp(sender As Object, e As CloseUpEventArgs) Handles cboCategory.CloseUp
 
     End Sub
 End Class

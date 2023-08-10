@@ -18,9 +18,6 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
-Imports DevExpress.CodeParser
-Imports DevExpress.DataAccess
-Imports DevExpress.Utils.VisualEffects
 
 Public Class frmBDG
     '------Private Variables Declaration------
