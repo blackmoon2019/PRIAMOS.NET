@@ -12,9 +12,10 @@ Public Class frmBatchInsertAttachmentsEX
     Private ManageCbo As New CombosManager
     Private Sub frmBatchInsertAttachmentsEX_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG' table. You can move, or remove it, as needed.
-        Me.Vw_BDGTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BDG)
+        Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NET_DataSet_BDG.vw_BDG)
         'Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
         Initialize()
+        Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
         LoadForms.RestoreLayoutFromXml(GridView1, "INDF_BATCH.xml")
     End Sub
     Private Sub Initialize()
@@ -196,7 +197,12 @@ Public Class frmBatchInsertAttachmentsEX
                 End If
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            If cboBDG.EditValue = Nothing Then
+                Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            Else
+                Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+            End If
+
             InitializeImageList()
 
         Catch ex As Exception
@@ -259,8 +265,11 @@ Public Class frmBatchInsertAttachmentsEX
     End Sub
 
     Private Sub chkPaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaid.CheckedChanged
-        If cboBDG.EditValue = Nothing Then Exit Sub
-        Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        If cboBDG.EditValue = Nothing Then
+            Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+        Else
+            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        End If
     End Sub
 
     Private Sub BBDeleteFiles_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBDeleteFiles.ItemClick
@@ -286,7 +295,12 @@ Public Class frmBatchInsertAttachmentsEX
             End If
 
             XtraMessageBox.Show("Η διαγραφή ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            If cboBDG.EditValue = Nothing Then
+                Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+            Else
+                Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            End If
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -316,7 +330,12 @@ Public Class frmBatchInsertAttachmentsEX
             End If
 
             XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            If cboBDG.EditValue = Nothing Then
+                Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+            Else
+                Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            End If
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -345,7 +364,12 @@ Public Class frmBatchInsertAttachmentsEX
             End If
 
             XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            If cboBDG.EditValue = Nothing Then
+                Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+            Else
+                Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+            End If
+
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -354,7 +378,7 @@ Public Class frmBatchInsertAttachmentsEX
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
         Select Case e.Button.Index
             Case 1 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
-            Case 2 : cboBDG.EditValue = Nothing
+            Case 2 : cboBDG.EditValue = Nothing : Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
         End Select
     End Sub
 End Class

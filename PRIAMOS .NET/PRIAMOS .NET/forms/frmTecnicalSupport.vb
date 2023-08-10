@@ -71,7 +71,7 @@ Public Class frmTecnicalSupport
                 If UserProps.ID = System.Guid.Parse("E9CEFD11-47C0-4796-A46B-BC41C4C3606B") Then
                     chkFixed.Enabled = True : txtAnswer.Enabled = True : PictureEdit11.Enabled = True : chkRejected.Enabled = True : txtAnswer.ReadOnly = False
                     chkMoreInfo.Enabled = True : chkBuilded.Enabled = True : txtBuildVersion.Enabled = True
-                    cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True : chkIsBilled.Enabled = True
+                    cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True : chkIsBilled.Enabled = True : ChkAdded.Enabled = True
                 End If
         End Select
         LoadForms.RestoreLayoutFromXml(GridView1, "TECH_SUP_F_def.xml")
