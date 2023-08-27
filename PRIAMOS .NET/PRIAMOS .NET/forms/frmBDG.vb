@@ -1808,8 +1808,12 @@ Public Class frmBDG
 
     Private Sub cboCCT_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboCCT.ButtonClick
         Select Case e.Button.Index
-            Case 1 : cboCCT.EditValue = Nothing : ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
-            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCbo.ManageCCT(False,, cboCCT) : Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 1 : cboCCT.EditValue = Nothing : ManageCbo.ManageCCT(False,, cboCCT)
+                If cboPrf.EditValue = Nothing Then Exit Sub
+                Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
+            Case 2 : If cboCCT.EditValue <> Nothing Then ManageCbo.ManageCCT(False,, cboCCT) : 
+                If cboPrf.EditValue = Nothing Then Exit Sub
+                Me.Vw_CCT_PFTableAdapter.FillByPRFid(Me.Priamos_NETDataSet.vw_CCT_PF, System.Guid.Parse(cboPrf.EditValue.ToString))
             Case 3 : cboCCT.EditValue = Nothing
         End Select
     End Sub
@@ -1952,9 +1956,10 @@ Public Class frmBDG
         Dim sSQL As String
         Try
             If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            ' Διαφραφή επιτρέπεται μόνο όταν ειναι έναντι διαμέρισματος
+            ' Διαφραφή επιτρέπεται μόνο όταν ειναι έναντι διαμέρισματος ή από μεταφορά ή ο χρήστης είμαι ΕΓΩ
             If GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "reserveAPT").ToString = "True" Or
-                GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "FromTransfer").ToString = "True" Then
+                GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "FromTransfer").ToString = "True" Or
+                UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Then
                 If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή? Προσοχή θα επηρεάσει το υπόλοιπο του διαμερίσματος", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
                     ' Ενημέρωση υπολοίπου διαμερίσματος
                     sSQL = "UPDATE APT " &

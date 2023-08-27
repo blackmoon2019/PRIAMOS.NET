@@ -351,6 +351,8 @@ Public Class frmINH
                             Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                             sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
                             If sResult Then
+
+
                                 If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                     If cboAhpbH.EditValue IsNot Nothing Then
                                         ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
@@ -370,10 +372,19 @@ Public Class frmINH
                                             oCmd.ExecuteNonQuery()
                                         End Using
                                     End If
-                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
-                                    grdIND.DataSource = VwINDBindingSource
-
                                 End If
+                                ' Ενημέρωση των ποσών όλων των εξόδων ανάλογα με το διάστημα που έχει επιλεχθεί, πλην της έκδοσης
+                                sSQL = "Update IND Set amt=IEP.amt * " & Months & " 
+                                            From IND
+                                            inner Join INH on INH.ID = IND.inhID 
+                                            inner Join IEP on IEP.bdgID  = INH.bdgID And IND.calcCatID = IEP.calcCatID 
+                                            where inhID =" & toSQLValueS(sID) & "  and IEP.calcCatID <>'9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB'"
+
+                                Using oCmd As New SqlCommand(sSQL, CNDB)
+                                    oCmd.ExecuteNonQuery()
+                                End Using
+                                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+                                grdIND.DataSource = VwINDBindingSource
                             End If
                         End If
                 End Select

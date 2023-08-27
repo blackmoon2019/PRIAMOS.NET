@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Net.Mail
+Imports System.Reflection
 Imports DevExpress.Utils.DirectXPaint
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
@@ -74,6 +75,7 @@ Public Class frmTecnicalSupport
                     cmdEmailAnswer.Enabled = True : SimpleButton1.Enabled = True : chkIsBilled.Enabled = True : ChkAdded.Enabled = True
                 End If
         End Select
+        If txtBuildVersion.Text = "" Then txtBuildVersion.EditValue = Assembly.GetExecutingAssembly().GetName().Version.ToString()
         LoadForms.RestoreLayoutFromXml(GridView1, "TECH_SUP_F_def.xml")
         Me.CenterToScreen()
     End Sub

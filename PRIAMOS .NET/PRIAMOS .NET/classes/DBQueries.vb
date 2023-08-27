@@ -136,15 +136,15 @@ Public Class DBQueries
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                Try
-                    If MoveFiles Then
-                        If File.Exists(MoveFilesPath & "\" & FileName) Then FileName = VBMath.Rnd.ToString & "_" & FileName
-                        My.Computer.FileSystem.MoveFile(sFilesPath & "\" & FileName, MoveFilesPath & "\" & FileName, True)
-                    End If
-                Catch exMove As Exception
-                    XtraMessageBox.Show(String.Format("Error: {0}" & "Η μεταφορά του αρχείου στον φάκελλο " & MoveFilesPath & " Απέτυχε.", exMove.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Return False
-                End Try
+                'Try
+                '    If MoveFiles Then
+                '        If File.Exists(MoveFilesPath & "\" & FileName) Then FileName = VBMath.Rnd.ToString & "_" & FileName
+                '        My.Computer.FileSystem.MoveFile(sFilesPath & "\" & FileName, MoveFilesPath & "\" & FileName, True)
+                '    End If
+                'Catch exMove As Exception
+                '    XtraMessageBox.Show(String.Format("Error: {0}" & "Η μεταφορά του αρχείου στον φάκελλο " & MoveFilesPath & " Απέτυχε.", exMove.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    Return False
+                'End Try
             Next
             sSQL.Clear()
             'If sTable = "IND_F" Then

@@ -198,17 +198,36 @@ Public Class frmBatchInsertAttachmentsEX
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             If cboBDG.EditValue = Nothing Then
-                Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
-            Else
                 Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+            Else
+                Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
             End If
-
+            ' Backup αρχείων
+            BackupFiles()
+            ' Ανανέωση αρχείων
             InitializeImageList()
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+    Private Sub BackupFiles()
+        Dim MoveFiles As Boolean = False : Dim MoveFilesPath As String = ""
+        If ProgProps.EXFolderMoveOnSuccessPath.Length > 0 Then MoveFiles = True : MoveFilesPath = ProgProps.EXFolderMoveOnSuccessPath
+        If Debugger.IsAttached Then MoveFilesPath = "\\192.168.1.50\Share\PROOFS\UNFOLDERED\Finished"
+        For Each item As DevExpress.XtraEditors.Controls.ImageListBoxItem In ImageListBoxControl1.SelectedItems
+            Dim FileName As String = item.Value
+            Try
+                If MoveFiles Then
+                    Dim sFilesPath As String = BreadCrumb.Path
+                    If File.Exists(MoveFilesPath & "\" & FileName) Then FileName = VBMath.Rnd.ToString & "_" & FileName
+                    My.Computer.FileSystem.MoveFile(sFilesPath & "\" & FileName, MoveFilesPath & "\" & FileName, True)
+                End If
+            Catch exMove As Exception
+                XtraMessageBox.Show(String.Format("Error: {0}" & "Η μεταφορά του αρχείου " & FileName & " στον φάκελλο " & MoveFilesPath & " Απέτυχε.", exMove.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        Next
     End Sub
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
@@ -238,6 +257,9 @@ Public Class frmBatchInsertAttachmentsEX
     End Sub
 
     Private Sub BBOpenInh_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBOpenInh.ItemClick
+        OpenINH()
+    End Sub
+    Private Sub OpenINH()
         Dim fINH As frmINH = New frmINH
 
         fINH.Text = "Κοινόχρηστα"
@@ -247,8 +269,10 @@ Public Class frmBatchInsertAttachmentsEX
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
         fINH.Show()
     End Sub
-
     Private Sub BBOpenBdg_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBOpenBdg.ItemClick
+        OpenBDG()
+    End Sub
+    Private Sub OpenBDG()
         Dim fBDG As frmBDG = New frmBDG()
         fBDG.Text = "Πολυκατοικίες"
         fBDG.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "bdgID").ToString
@@ -258,10 +282,10 @@ Public Class frmBatchInsertAttachmentsEX
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fBDG), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
         fBDG.Show()
     End Sub
-
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
         Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        txtTotalDepositAmtR.EditValue = cboBDG.GetColumnValue("totDepositR")
     End Sub
 
     Private Sub chkPaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaid.CheckedChanged
@@ -273,6 +297,9 @@ Public Class frmBatchInsertAttachmentsEX
     End Sub
 
     Private Sub BBDeleteFiles_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBDeleteFiles.ItemClick
+        DeleteFiles()
+    End Sub
+    Private Sub DeleteFiles()
         Dim sSQL As String
         Try
             Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
@@ -304,10 +331,11 @@ Public Class frmBatchInsertAttachmentsEX
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
-
     Private Sub BBUpdateEXtoUnpaid_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBUpdateEXtoUnpaid.ItemClick
+        UpdatEXToUnpaid()
+    End Sub
+    Private Sub UpdatEXToUnpaid()
         Dim sSQL As String
         Try
             Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
@@ -324,6 +352,8 @@ Public Class frmBatchInsertAttachmentsEX
                             oCmd.ExecuteNonQuery()
                         End Using
                     End If
+                    ' Ενημέρωση αποθεματικού
+                    CalculateDepositA(GridView1.GetRowCellValue(selectedRowHandle, "bdgID").ToString)
                 Next
             Else
                 Exit Sub
@@ -342,6 +372,9 @@ Public Class frmBatchInsertAttachmentsEX
     End Sub
 
     Private Sub BBUpdateEXtopaid_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BBUpdateEXtopaid.ItemClick
+        UpdateEXToPaid()
+    End Sub
+    Private Sub UpdateEXToPaid()
         Dim sSQL As String
         Try
             Dim selectedRowHandles As Integer() = GridView1.GetSelectedRows()
@@ -358,6 +391,8 @@ Public Class frmBatchInsertAttachmentsEX
                             oCmd.ExecuteNonQuery()
                         End Using
                     End If
+                    ' Ενημέρωση αποθεματικού
+                    CalculateDepositA(GridView1.GetRowCellValue(selectedRowHandle, "bdgID").ToString)
                 Next
             Else
                 Exit Sub
@@ -374,12 +409,78 @@ Public Class frmBatchInsertAttachmentsEX
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub CalculateDepositA(ByVal sbdgID As String)
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositA", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.Add("@Amt", SqlDbType.Decimal)
+                oCmd.Parameters("@Amt").Direction = ParameterDirection.Output
+                oCmd.ExecuteNonQuery()
+            End Using
+            'Υπολογισμός Διαθέσιμου υπολοίπου
+            CalculateDepositR(sbdgID)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub CalculateDepositR(ByVal sbdgID As String)
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositR", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.Add("@totDepositR", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnchargableOil", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnpaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@PaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@AptBalAdm", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totDepositRAndPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositR").Precision = 18 : oCmd.Parameters("@totDepositR").Scale = 2
+                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output : oCmd.Parameters("@UnchargableOil").Precision = 18 : oCmd.Parameters("@UnchargableOil").Scale = 2
+                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@UnpaidInd").Precision = 18 : oCmd.Parameters("@UnpaidInd").Scale = 2
+                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@PaidInd").Precision = 18 : oCmd.Parameters("@PaidInd").Scale = 2
+                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output : oCmd.Parameters("@AptBalAdm").Precision = 18 : oCmd.Parameters("@AptBalAdm").Scale = 2
+                oCmd.Parameters("@totPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totPrepayments").Precision = 18 : oCmd.Parameters("@totPrepayments").Scale = 2
+                oCmd.Parameters("@totDepositRAndPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositRAndPrepayments").Precision = 18 : oCmd.Parameters("@totDepositRAndPrepayments").Scale = 2
+                oCmd.ExecuteNonQuery()
 
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
         Select Case e.Button.Index
             Case 1 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
             Case 2 : cboBDG.EditValue = Nothing : Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+                txtTotalDepositAmtR.Text = "0.00"
         End Select
+    End Sub
+    Private Sub editBreadCrumb_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles editBreadCrumb.ButtonClick
+        Select Case e.Button.Index
+            Case 1 : InitializeImageList()
+        End Select
+    End Sub
+
+    Private Sub cmdDeleteFiles_Click(sender As Object, e As EventArgs) Handles cmdDeleteFiles.Click
+        DeleteFiles()
+    End Sub
+
+    Private Sub cmdOpenBdg_Click(sender As Object, e As EventArgs) Handles cmdOpenBdg.Click
+        OpenBDG()
+    End Sub
+
+    Private Sub cmdOpenInh_Click(sender As Object, e As EventArgs) Handles cmdOpenInh.Click
+        OpenINH()
+    End Sub
+
+    Private Sub cmdUpdateEXtopaid_Click(sender As Object, e As EventArgs) Handles cmdUpdateEXtopaid.Click
+        UpdateEXToPaid()
+    End Sub
+
+    Private Sub cmdUpdateEXtoUnpaid_Click(sender As Object, e As EventArgs) Handles cmdUpdateEXtoUnpaid.Click
+        UpdatEXToUnpaid()
     End Sub
 End Class
 

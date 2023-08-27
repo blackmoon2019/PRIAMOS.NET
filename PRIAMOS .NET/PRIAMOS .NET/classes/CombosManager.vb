@@ -100,6 +100,7 @@ Public Class CombosManager
         form1.CallerControl = CallerControl
         form1.CalledFromControl = True
         form1.MdiParent = frmMain
+        form1.bManageID = CallerControl.GetColumnValue("bManageID").ToString
         If CallerControl.EditValue <> Nothing Then
             form1.ID = CallerControl.EditValue.ToString
             form1.Mode = FormMode.EditRecord

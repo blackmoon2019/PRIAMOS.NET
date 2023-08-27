@@ -114,7 +114,7 @@ Public Class SendEmail
                 End If
             Next
 
-            Smtp_Server.Timeout = 12000
+            'Smtp_Server.Timeout = 12000
             Try
                 Smtp_Server.Send(e_mail)
             Catch ex As Exception
