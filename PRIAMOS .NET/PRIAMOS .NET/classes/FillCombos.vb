@@ -346,7 +346,7 @@ Public Class FillCombos
         End Try
 
     End Sub
-    Public Sub PUBLIC_S(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As String)
+    Public Sub PUBLIC_S(CtrlCombo As DevExpress.XtraEditors.LookUpEdit, ByVal sSQL As String, Optional ByVal SelectFirstItem As Boolean = False)
 
         Try
             Dim cmd As SqlCommand = New SqlCommand("Select id,Name from vw_PUBLIC_S " & sSQL.ToString & " order by name", CNDB)
@@ -363,6 +363,11 @@ Public Class FillCombos
             CtrlCombo.Properties.Columns(0).Visible = False
             CtrlCombo.Properties.Columns(1).Caption = "Υπηρεσίες(Εταιρίες)"
             CtrlCombo.EditValue = Nothing
+            If SelectFirstItem Then
+                If (sdr.Read() = True) Then
+                    If sdr.IsDBNull(sdr.GetOrdinal("id")) = False Then CtrlCombo.EditValue = sdr.GetGuid(sdr.GetOrdinal("id")).ToString
+                End If
+            End If
             sdr.Close()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

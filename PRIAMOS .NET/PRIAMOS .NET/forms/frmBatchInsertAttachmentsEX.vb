@@ -197,6 +197,7 @@ Public Class frmBatchInsertAttachmentsEX
                 End If
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            PdfViewer1.CloseDocument()
             If cboBDG.EditValue = Nothing Then
                 Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
             Else

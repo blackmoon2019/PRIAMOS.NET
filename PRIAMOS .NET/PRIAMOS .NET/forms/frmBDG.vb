@@ -525,18 +525,19 @@ Public Class frmBDG
     End Sub
 
     Private Sub NavHeatingInvoices_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeatingInvoices.ElementClick
-        If Valid.SChanged Then
-            If XtraMessageBox.Show("Έχουν γίνει αλλάγές στην φόρμα που δεν έχετε σώσει.Αν προχωρήσετε οι αλλαγές σας θα χαθούν", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                Valid.SChanged = False
-            Else
-                Exit Sub
-            End If
-        End If
+
         Maintab.SelectedTabPage = tabHeatingInvoices
         'Προμηθευτές για πετρέλαιο
         FillCbo.SUP(cboOInvSup)
         'Προμηθευτές για φυσικό αέριο
         FillCbo.SUP(cboGInvSup)
+        'Πάροχοι
+        'FillCbo.PUBLIC_S(cbofService2, "where servicetypeID='F0EE8CF4-2778-4EF8-BCF3-225541551CE6' and id = ( select top 1 fPublicServiceID from BMANAGE where bdgID = " & toSQLValueS(sID) & ")", True)
+        Me.Vw_PUBLIC_STableAdapter.FillByFysikoBdgID(Me.Priamos_NET_DataSet_BDG.vw_PUBLIC_S, System.Guid.Parse(sID))
+        Dim table As DataTable = Me.Vw_PUBLIC_STableAdapter.GetDataByFysikoBdgID(System.Guid.Parse(sID))
+        If table.Rows.Count > 0 Then cbofService2.EditValue = table.Rows(0).Item(0)
+        table.Dispose()
+
         InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
         GridView3.OptionsBehavior.Editable = False
         'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
@@ -1002,15 +1003,19 @@ Public Class frmBDG
         Dim btn As CheckButton = TryCast(sender, CheckButton)
         If btn.Checked = True Then
             GridView4.OptionsBehavior.Editable = False
-            InvGas.AddNewGasInv(LayoutControlGroup6)
+            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable - Clear
+            Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cbofService2.Name)
+            InvGas.AddNewGasInv(LayoutControlGroup6, ExcludeControls)
             EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup6)
             txtGInvCode.Text = DBQ.GetNextId("INV_GAS")
             cmdGInvSave.Enabled = True
             cmdGInvEdit.Enabled = False
         Else
-            Cls.ClearGroupCtrls(LayoutControlGroup6)
-            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable - Clear
             Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cbofService2.Name)
+            Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
             ExcludeControls.Add(cmdGInvAdd.Name)
             ExcludeControls.Add(cmdGInvDelete.Name)
             ExcludeControls.Add(cmdGInvEdit.Name)
@@ -1132,7 +1137,7 @@ Public Class frmBDG
 
     Private Sub GridView4_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView4.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView4, "INV_GAS_def.xml")
+            LoadForms.PopupMenuShow(e, GridView4, "INV_GAS_def.xml", "vw_INV_GAS")
         Else
             ActiveGrid = GridView4
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -1215,7 +1220,7 @@ Public Class frmBDG
 
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView3, "INV_OIL_def.xml")
+            LoadForms.PopupMenuShow(e, GridView3, "INV_OIL_def.xml", "vw_INV_OIL")
         Else
             ActiveGrid = GridView3
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -1251,7 +1256,10 @@ Public Class frmBDG
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
-                Cls.ClearGroupCtrls(LayoutControlGroup6)
+                'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+                Dim ExcludeControls As New List(Of String)
+                ExcludeControls.Add(cbofService2.Name)
+                Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
                 'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
                 'Dim ExcludeControls As New List(Of String)
                 'ExcludeControls.Add(cmdGInvAdd.Name)

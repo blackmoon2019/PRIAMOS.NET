@@ -8,11 +8,11 @@ Public Class InvOilGas
     Private Cls As New ClearControls
     Private LoadForms As New FormLoader
 
-    Public Sub AddNewOilInv(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup)
-        Cls.ClearGroupCtrls(GRP)
+    Public Sub AddNewOilInv(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, Optional ExceptFields As List(Of String) = Nothing)
+        Cls.ClearGroupCtrls(GRP, ExceptFields)
     End Sub
-    Public Sub AddNewGasInv(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup)
-        Cls.ClearGroupCtrls(GRP)
+    Public Sub AddNewGasInv(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, Optional ExceptFields As List(Of String) = Nothing)
+        Cls.ClearGroupCtrls(GRP, ExceptFields)
     End Sub
     Public Function InsertOilData(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, ByVal sGuid As String, ByVal ExtraFields As String, ByVal ExtraValues As String) As Boolean
         Return DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INV_OIL",,, GRP, sGuid,, ExtraFields, toSQLValueS(ExtraValues))

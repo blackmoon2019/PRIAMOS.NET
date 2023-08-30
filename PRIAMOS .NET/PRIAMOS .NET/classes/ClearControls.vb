@@ -98,10 +98,13 @@ NextItem:
         End If
         Return False
     End Function
-    Public Sub ClearGroupCtrls(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup)
+    Public Sub ClearGroupCtrls(ByVal GRP As DevExpress.XtraLayout.LayoutControlGroup, Optional ExceptFields As List(Of String) = Nothing)
         For Each grpitem As BaseLayoutItem In GRP.Items
             If TypeOf grpitem Is LayoutControlItem Then
                 Dim LItem As LayoutControlItem = CType(grpitem, LayoutControlItem)
+                If ExceptFields IsNot Nothing Then
+                    If ExceptFields.Contains(LItem.ControlName) Then GoTo NextItem
+                End If
                 If LItem.ControlName <> Nothing Then
                     If LItem.Control.Tag <> "" Then
                         If LItem.Control.Visible = True Then
@@ -141,6 +144,7 @@ NextItem:
                     End If
                 End If
             End If
+NextItem:
         Next
     End Sub
     Public Sub ClearGrid(ByVal GRD As DevExpress.XtraGrid.GridControl)
