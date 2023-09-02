@@ -7501,6 +7501,12 @@ Partial Public Class Priamos_NETDataSet3
         
         Private columntotalBdgMesDifB As Global.System.Data.DataColumn
         
+        Private columnconsumptionLiterH As Global.System.Data.DataColumn
+        
+        Private columnconsumptionLiterB As Global.System.Data.DataColumn
+        
+        Private columntotConsumptionLiter As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -7721,6 +7727,30 @@ Partial Public Class Priamos_NETDataSet3
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property consumptionLiterHColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnconsumptionLiterH
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property consumptionLiterBColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnconsumptionLiterB
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property totConsumptionLiterColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntotConsumptionLiter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7780,9 +7810,12 @@ Partial Public Class Priamos_NETDataSet3
                     ByVal mdtH As Date,  _
                     ByVal mdtB As Date,  _
                     ByVal totalBdgMesDifH As Integer,  _
-                    ByVal totalBdgMesDifB As Integer) As vw_CONSUMPTIONSRow
+                    ByVal totalBdgMesDifB As Integer,  _
+                    ByVal consumptionLiterH As Decimal,  _
+                    ByVal consumptionLiterB As Decimal,  _
+                    ByVal totConsumptionLiter As Decimal) As vw_CONSUMPTIONSRow
             Dim rowvw_CONSUMPTIONSRow As vw_CONSUMPTIONSRow = CType(Me.NewRow,vw_CONSUMPTIONSRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, ahpbHIDH, ahpbHIDB, calH, calB, totalCal, consumptionH, consumptionB, totConsumption, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, bdgNam, UsrCreatedBy, UsrModifiedBy, mdtH, mdtB, totalBdgMesDifH, totalBdgMesDifB}
+            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, ahpbHIDH, ahpbHIDB, calH, calB, totalCal, consumptionH, consumptionB, totConsumption, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, bdgNam, UsrCreatedBy, UsrModifiedBy, mdtH, mdtB, totalBdgMesDifH, totalBdgMesDifB, consumptionLiterH, consumptionLiterB, totConsumptionLiter}
             rowvw_CONSUMPTIONSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_CONSUMPTIONSRow)
             Return rowvw_CONSUMPTIONSRow
@@ -7834,6 +7867,9 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnmdtB = MyBase.Columns("mdtB")
             Me.columntotalBdgMesDifH = MyBase.Columns("totalBdgMesDifH")
             Me.columntotalBdgMesDifB = MyBase.Columns("totalBdgMesDifB")
+            Me.columnconsumptionLiterH = MyBase.Columns("consumptionLiterH")
+            Me.columnconsumptionLiterB = MyBase.Columns("consumptionLiterB")
+            Me.columntotConsumptionLiter = MyBase.Columns("totConsumptionLiter")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7885,6 +7921,12 @@ Partial Public Class Priamos_NETDataSet3
             MyBase.Columns.Add(Me.columntotalBdgMesDifH)
             Me.columntotalBdgMesDifB = New Global.System.Data.DataColumn("totalBdgMesDifB", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntotalBdgMesDifB)
+            Me.columnconsumptionLiterH = New Global.System.Data.DataColumn("consumptionLiterH", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnconsumptionLiterH)
+            Me.columnconsumptionLiterB = New Global.System.Data.DataColumn("consumptionLiterB", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnconsumptionLiterB)
+            Me.columntotConsumptionLiter = New Global.System.Data.DataColumn("totConsumptionLiter", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntotConsumptionLiter)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -7907,6 +7949,9 @@ Partial Public Class Priamos_NETDataSet3
             Me.columnmdtB.AllowDBNull = false
             Me.columntotalBdgMesDifH.AllowDBNull = false
             Me.columntotalBdgMesDifB.AllowDBNull = false
+            Me.columnconsumptionLiterH.AllowDBNull = false
+            Me.columnconsumptionLiterB.AllowDBNull = false
+            Me.columntotConsumptionLiter.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14916,6 +14961,39 @@ Partial Public Class Priamos_NETDataSet3
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property consumptionLiterH() As Decimal
+            Get
+                Return CType(Me(Me.tablevw_CONSUMPTIONS.consumptionLiterHColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablevw_CONSUMPTIONS.consumptionLiterHColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property consumptionLiterB() As Decimal
+            Get
+                Return CType(Me(Me.tablevw_CONSUMPTIONS.consumptionLiterBColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablevw_CONSUMPTIONS.consumptionLiterBColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property totConsumptionLiter() As Decimal
+            Get
+                Return CType(Me(Me.tablevw_CONSUMPTIONS.totConsumptionLiterColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablevw_CONSUMPTIONS.totConsumptionLiterColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsmodifiedOnNull() As Boolean
             Return Me.IsNull(Me.tablevw_CONSUMPTIONS.modifiedOnColumn)
         End Function
@@ -20481,6 +20559,9 @@ Namespace Priamos_NETDataSet3TableAdapters
             tableMapping.ColumnMappings.Add("mdtB", "mdtB")
             tableMapping.ColumnMappings.Add("totalBdgMesDifH", "totalBdgMesDifH")
             tableMapping.ColumnMappings.Add("totalBdgMesDifB", "totalBdgMesDifB")
+            tableMapping.ColumnMappings.Add("consumptionLiterH", "consumptionLiterH")
+            tableMapping.ColumnMappings.Add("consumptionLiterB", "consumptionLiterB")
+            tableMapping.ColumnMappings.Add("totConsumptionLiter", "totConsumptionLiter")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -20500,7 +20581,8 @@ Namespace Priamos_NETDataSet3TableAdapters
             Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, ahpbHIDH, ahpbHIDB, calH, calB, totalCal, consumptionH, c"& _ 
                 "onsumptionB, totConsumption, modifiedBy, modifiedOn, createdOn, createdBy, Machi"& _ 
                 "neName, bdgNam, UsrCreatedBy, UsrModifiedBy, mdtH, mdtB, totalBdgMesDifH, totalB"& _ 
-                "dgMesDifB"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_CONSUMPTIONS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"
+                "dgMesDifB, consumptionLiterH, consumptionLiterB, totConsumptionLiter"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_"& _ 
+                "CONSUMPTIONS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub

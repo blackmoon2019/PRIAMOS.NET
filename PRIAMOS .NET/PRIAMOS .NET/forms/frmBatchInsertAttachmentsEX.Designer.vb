@@ -83,6 +83,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.PdfBarController1 = New DevExpress.XtraPdfViewer.Bars.PdfBarController(Me.components)
         Me.ImageListBoxControl1 = New DevExpress.XtraEditors.ImageListBoxControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.PdfViewer1 = New DevExpress.XtraPdfViewer.PdfViewer()
         Me.cmdUpdateEXtopaid = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdUpdateEXtoUnpaid = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdDeleteFiles = New DevExpress.XtraEditors.SimpleButton()
@@ -121,11 +122,8 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -133,6 +131,10 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -154,8 +156,6 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.Vw_INDTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet2TableAdapters.vw_INDTableAdapter()
         Me.Vw_BDGTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_BDGTableAdapter()
         Me.Bar1 = New DevExpress.XtraBars.Bar()
-        Me.PdfViewer1 = New DevExpress.XtraPdfViewer.PdfViewer()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.PopupMenuDeleteButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.images, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,11 +179,8 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -191,6 +188,10 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,7 +201,6 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PopupMenuDeleteButton
@@ -587,6 +587,14 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControl1.TabIndex = 6
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'PdfViewer1
+        '
+        Me.PdfViewer1.Location = New System.Drawing.Point(12, 462)
+        Me.PdfViewer1.MenuManager = Me.BarManager1
+        Me.PdfViewer1.Name = "PdfViewer1"
+        Me.PdfViewer1.Size = New System.Drawing.Size(1110, 991)
+        Me.PdfViewer1.TabIndex = 78
+        '
         'cmdUpdateEXtopaid
         '
         Me.cmdUpdateEXtopaid.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_check_16
@@ -597,7 +605,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.cmdUpdateEXtopaid.Size = New System.Drawing.Size(26, 39)
         Me.cmdUpdateEXtopaid.StyleController = Me.LayoutControl1
         Me.cmdUpdateEXtopaid.TabIndex = 24
-        Me.cmdUpdateEXtopaid.ToolTip = "Νέα Εγγραφή"
+        Me.cmdUpdateEXtopaid.ToolTip = "Ενημέρωση Ως Πληρωμένο"
         '
         'cmdUpdateEXtoUnpaid
         '
@@ -609,7 +617,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.cmdUpdateEXtoUnpaid.Size = New System.Drawing.Size(26, 39)
         Me.cmdUpdateEXtoUnpaid.StyleController = Me.LayoutControl1
         Me.cmdUpdateEXtoUnpaid.TabIndex = 72
-        Me.cmdUpdateEXtoUnpaid.ToolTip = "Νέα Εγγραφή"
+        Me.cmdUpdateEXtoUnpaid.ToolTip = "Ενημέρωση Ως Απλήρωτο"
         '
         'cmdDeleteFiles
         '
@@ -621,7 +629,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.cmdDeleteFiles.Size = New System.Drawing.Size(26, 39)
         Me.cmdDeleteFiles.StyleController = Me.LayoutControl1
         Me.cmdDeleteFiles.TabIndex = 71
-        Me.cmdDeleteFiles.ToolTip = "Νέα Εγγραφή"
+        Me.cmdDeleteFiles.ToolTip = "Διαγραφή Αρχείων"
         '
         'cmdOpenBdg
         '
@@ -633,7 +641,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.cmdOpenBdg.Size = New System.Drawing.Size(26, 39)
         Me.cmdOpenBdg.StyleController = Me.LayoutControl1
         Me.cmdOpenBdg.TabIndex = 70
-        Me.cmdOpenBdg.ToolTip = "Νέα Εγγραφή"
+        Me.cmdOpenBdg.ToolTip = "Άμοιγμα Πολυκατοικίας"
         '
         'cmdOpenInh
         '
@@ -645,7 +653,7 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.cmdOpenInh.Size = New System.Drawing.Size(26, 39)
         Me.cmdOpenInh.StyleController = Me.LayoutControl1
         Me.cmdOpenInh.TabIndex = 69
-        Me.cmdOpenInh.ToolTip = "Νέα Εγγραφή"
+        Me.cmdOpenInh.ToolTip = "Άμοιγμα Παραστατικού"
         '
         'txtTotalDepositAmtR
         '
@@ -981,23 +989,6 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
-        'LayoutControlItem11
-        '
-        Me.LayoutControlItem11.Control = Me.cmdSave
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(956, 404)
-        Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(158, 46)
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem11.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(660, 404)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(296, 46)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
         'LayoutControlItem12
         '
         Me.LayoutControlItem12.Control = Me.cboBDG
@@ -1020,19 +1011,6 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.LayoutControlItem13.Size = New System.Drawing.Size(297, 42)
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem13.TextVisible = False
-        '
-        'LayoutControlItem14
-        '
-        Me.LayoutControlItem14.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold)
-        Me.LayoutControlItem14.AppearanceItemCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.LayoutControlItem14.AppearanceItemCaption.Options.UseFont = True
-        Me.LayoutControlItem14.AppearanceItemCaption.Options.UseForeColor = True
-        Me.LayoutControlItem14.Control = Me.txtTotalDepositAmtR
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 404)
-        Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(660, 46)
-        Me.LayoutControlItem14.Text = "Διαθέσιμο Αποθεματικό(Χωρίς Προεισπράξεις)"
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(442, 23)
         '
         'EmptySpaceItem2
         '
@@ -1094,6 +1072,45 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
         Me.EmptySpaceItem3.Size = New System.Drawing.Size(30, 119)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.PdfViewer1
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 450)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1114, 995)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem3.TextVisible = False
+        '
+        'LayoutControlItem11
+        '
+        Me.LayoutControlItem11.Control = Me.cmdSave
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(956, 404)
+        Me.LayoutControlItem11.Name = "LayoutControlItem11"
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(158, 46)
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem11.TextVisible = False
+        '
+        'LayoutControlItem14
+        '
+        Me.LayoutControlItem14.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.142858!, System.Drawing.FontStyle.Bold)
+        Me.LayoutControlItem14.AppearanceItemCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LayoutControlItem14.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem14.AppearanceItemCaption.Options.UseForeColor = True
+        Me.LayoutControlItem14.Control = Me.txtTotalDepositAmtR
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 404)
+        Me.LayoutControlItem14.Name = "LayoutControlItem14"
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(660, 46)
+        Me.LayoutControlItem14.Text = "Διαθέσιμο Αποθεματικό(Χωρίς Προεισπράξεις)"
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(442, 23)
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(660, 404)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(296, 46)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'GridControl1
         '
@@ -1217,23 +1234,6 @@ Partial Class frmBatchInsertAttachmentsEX
         Me.Bar1.Offset = 445
         Me.Bar1.Text = "Custom 2"
         '
-        'PdfViewer1
-        '
-        Me.PdfViewer1.Location = New System.Drawing.Point(12, 462)
-        Me.PdfViewer1.MenuManager = Me.BarManager1
-        Me.PdfViewer1.Name = "PdfViewer1"
-        Me.PdfViewer1.Size = New System.Drawing.Size(1110, 991)
-        Me.PdfViewer1.TabIndex = 78
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.PdfViewer1
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 450)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1114, 995)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
         'frmBatchInsertAttachmentsEX
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -1273,11 +1273,8 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1285,6 +1282,10 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1294,7 +1295,6 @@ Partial Class frmBatchInsertAttachmentsEX
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -2620,7 +2620,7 @@ Public Class frmBDG
         Me.AHPB_H_HCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_HCONSUMPTION, System.Guid.Parse(sID))
         Me.AHPB_H_BCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_BCONSUMPTION, System.Guid.Parse(sID))
         Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
-        LoadForms.RestoreLayoutFromXml(GridView1, "vw_CONSUMPTIONS.xml")
+        LoadForms.RestoreLayoutFromXml(GridView11, "vw_CONSUMPTIONS.xml")
     End Sub
 
     Private Sub cboMesH_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesH.EditValueChanged
@@ -2668,15 +2668,36 @@ Public Class frmBDG
         End Try
 
     End Sub
+    Private Sub txtTotalLiterConsumption_Validated(sender As Object, e As EventArgs) Handles txtTotalLiterConsumption.Validated
+        Try
+            Dim totalLiterConsumption As Decimal, CalTotalCons As Integer, CalHCons As Integer, CalBCons As Integer
+            Dim LiterConsumptionH As Decimal, LiterConsumptionB As Decimal
+            totalLiterConsumption = txtTotalLiterConsumption.EditValue.ToString.Replace(".", ",")
+            CalTotalCons = txtCalTotalCons.EditValue
+            CalHCons = txtCalHCons.EditValue
+            CalBCons = txtCalBCons.EditValue
+            If CalTotalCons = 0 Then Exit Sub
+            LiterConsumptionH = totalLiterConsumption / CalTotalCons
+            LiterConsumptionH = LiterConsumptionH * CalHCons
+            LiterConsumptionB = totalLiterConsumption / CalTotalCons
+            LiterConsumptionB = LiterConsumptionB * CalBCons
+            txtLiterConsumptionH.EditValue = LiterConsumptionH
+            txtLiterConsumptionB.EditValue = LiterConsumptionB
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
     Private Sub cboMesH_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesH.ButtonClick
         cboMesH.EditValue = Nothing : txtTotalMesH.EditValue = Nothing : txtTotalMesH.EditValue = 0 : txtCalHCons.EditValue = 0 : txtCalTotalCons.EditValue = txtCalHCons.EditValue + +txtCalBCons.EditValue
         txtConsumptionH.EditValue = 0 : txtTotalConsumption.EditValue = txtConsumptionH.EditValue + txtConsumptionB.EditValue
+        txtLiterConsumptionH.EditValue = 0 : txtTotalLiterConsumption.EditValue = txtLiterConsumptionH.EditValue + txtLiterConsumptionB.EditValue
     End Sub
 
     Private Sub cboMesB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesB.ButtonClick
         cboMesB.EditValue = Nothing : txtTotalMesB.EditValue = Nothing : txtTotalMesB.EditValue = 0 : txtCalBCons.EditValue = 0 : txtCalTotalCons.EditValue = txtCalHCons.EditValue + +txtCalBCons.EditValue
         txtConsumptionB.EditValue = 0 : txtTotalConsumption.EditValue = txtConsumptionH.EditValue + txtConsumptionB.EditValue
+        txtLiterConsumptionH.EditValue = 0 : txtTotalLiterConsumption.EditValue = txtLiterConsumptionH.EditValue + txtLiterConsumptionB.EditValue
     End Sub
 
     Private Sub cmdSaveConsumptions_Click(sender As Object, e As EventArgs) Handles cmdSaveConsumptions.Click
@@ -2768,7 +2789,7 @@ Public Class frmBDG
 
     Private Sub GridView11_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView11.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
-            LoadForms.PopupMenuShow(e, GridView_BDGF, "vw_CONSUMPTIONS.xml", "vw_CONSUMPTIONS")
+            LoadForms.PopupMenuShow(e, GridView11, "vw_CONSUMPTIONS.xml", "vw_CONSUMPTIONS")
         Else
             ActiveGrid = GridView11
             PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
@@ -3411,6 +3432,8 @@ Public Class frmBDG
         Next
         frmFilePreviwer.ShowDialog()
     End Sub
+
+
 
 
     'Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
