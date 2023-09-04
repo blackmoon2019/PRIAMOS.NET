@@ -20,112 +20,112 @@ Partial Class frmBDG
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression1 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
         Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression2 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
         Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression3 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule46 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression46 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule47 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression47 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule48 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression48 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule49 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression49 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule50 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression50 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule51 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression51 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule52 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression52 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule53 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression53 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule54 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression54 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule55 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression55 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule56 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression56 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule57 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression57 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule58 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression58 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule59 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression59 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule60 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression60 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule61 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression61 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule62 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression62 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule63 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression63 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule64 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression64 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule65 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression65 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule66 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression66 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule67 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression67 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule68 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression68 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule69 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression69 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule70 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression70 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule71 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression71 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule72 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression72 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule73 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression73 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule74 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression74 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule75 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression75 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule76 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression76 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule77 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression77 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule78 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression78 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule79 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression79 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule80 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression80 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule81 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression81 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBDG))
-        Dim EditorButtonImageOptions13 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject49 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject50 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject51 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject52 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions14 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject53 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject54 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject55 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject56 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression4 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
         Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression5 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
         Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleExpression6 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim EditorButtonImageOptions15 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject57 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject58 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject59 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject60 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions16 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject61 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject62 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject63 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject64 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridFormatRule7 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression7 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule8 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression8 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule9 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression9 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule10 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression10 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule11 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression11 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule12 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression12 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule13 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression13 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule14 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression14 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule15 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression15 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule16 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression16 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule17 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression17 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule18 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression18 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule19 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression19 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule20 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression20 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule21 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression21 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule22 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression22 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule23 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression23 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule24 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression24 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule25 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression25 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule26 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression26 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule27 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression27 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule28 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression28 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule29 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression29 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule30 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression30 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule31 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression31 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule32 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression32 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule33 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression33 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule34 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression34 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule35 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression35 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule36 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression36 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule37 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression37 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule38 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression38 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule39 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression39 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBDG))
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridFormatRule40 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression40 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule41 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression41 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule42 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression42 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.grdAPM = New DevExpress.XtraGrid.GridControl()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -453,6 +453,7 @@ Partial Class frmBDG
         Me.EmptySpaceItem25 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.tabHeating = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl3Heating = New DevExpress.XtraLayout.LayoutControl()
+        Me.cmdCheckTank = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAHPBExport = New DevExpress.XtraEditors.SimpleButton()
         Me.txtHpb = New DevExpress.XtraEditors.TextEdit()
         Me.cmdSaveHB = New DevExpress.XtraEditors.SimpleButton()
@@ -495,7 +496,6 @@ Partial Class frmBDG
         Me.txtCalH = New DevExpress.XtraEditors.TextEdit()
         Me.txtCalB = New DevExpress.XtraEditors.TextEdit()
         Me.RGBolier = New DevExpress.XtraEditors.RadioGroup()
-        Me.cmdCheckTank = New DevExpress.XtraEditors.SimpleButton()
         Me.cboBefMes = New DevExpress.XtraEditors.LookUpEdit()
         Me.txtLpcH1 = New DevExpress.XtraEditors.TextEdit()
         Me.txtLpcH11 = New DevExpress.XtraEditors.TextEdit()
@@ -526,9 +526,6 @@ Partial Class frmBDG
         Me.LayoutControlItem30 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem126 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem40 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LCheckTank = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleLabelItem4 = New DevExpress.XtraLayout.SimpleLabelItem()
-        Me.EmptySpaceItem11 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem33 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem44 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem91 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -538,7 +535,10 @@ Partial Class frmBDG
         Me.LayoutControlItem178 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem179 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem180 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem11 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem215 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleLabelItem3 = New DevExpress.XtraLayout.SimpleLabelItem()
+        Me.SimpleLabelItem4 = New DevExpress.XtraLayout.SimpleLabelItem()
         Me.tabMaintenance = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl4Maintenance = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdSaveBCCT = New DevExpress.XtraEditors.SimpleButton()
@@ -686,11 +686,12 @@ Partial Class frmBDG
         Me.LayoutControlItem158 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabHeatingInvoices = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl4InvHeatGas = New DevExpress.XtraLayout.LayoutControl()
+        Me.cboMeasurementUsr = New DevExpress.XtraEditors.LookUpEdit()
+        Me.VwMEASURERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MemoEdit4 = New DevExpress.XtraEditors.MemoEdit()
         Me.cbofService2 = New DevExpress.XtraEditors.LookUpEdit()
         Me.cmdGInvEdit = New DevExpress.XtraEditors.CheckButton()
         Me.cmdGInvAdd = New DevExpress.XtraEditors.CheckButton()
-        Me.cmdOInvEdit = New DevExpress.XtraEditors.CheckButton()
         Me.cmdOInvAdd = New DevExpress.XtraEditors.CheckButton()
         Me.cmdGInvDelete = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdGInvRefresh = New DevExpress.XtraEditors.SimpleButton()
@@ -737,13 +738,13 @@ Partial Class frmBDG
         Me.LayoutControlItem71 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem65 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem77 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem68 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem211 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem55 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem56 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem58 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem57 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem216 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup6 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem49 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem61 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -765,6 +766,9 @@ Partial Class frmBDG
         Me.LayoutControlItem210 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabConsumptions = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl7Consumptions = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtTotalLiterConsumption = New DevExpress.XtraEditors.TextEdit()
+        Me.txtLiterConsumptionB = New DevExpress.XtraEditors.TextEdit()
+        Me.txtLiterConsumptionH = New DevExpress.XtraEditors.TextEdit()
         Me.cmdRefreshConsumption = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdAddConsumption = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSaveConsumptions = New DevExpress.XtraEditors.SimpleButton()
@@ -828,6 +832,9 @@ Partial Class frmBDG
         Me.LayoutControlItem171 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem34 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem38 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem212 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem213 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem214 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabDeposit = New DevExpress.XtraTab.XtraTabPage()
         Me.LDeposit = New DevExpress.XtraLayout.LayoutControl()
         Me.chkPrepayment = New DevExpress.XtraEditors.CheckEdit()
@@ -988,12 +995,7 @@ Partial Class frmBDG
         Me.Vw_INHTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_INHTableAdapter()
         Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter()
         Me.Vw_PUBLIC_STableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_PUBLIC_STableAdapter()
-        Me.txtLiterConsumptionH = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem212 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.txtLiterConsumptionB = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem213 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.txtTotalLiterConsumption = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem214 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.Vw_MEASURERSTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_MEASURERSTableAdapter()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1263,9 +1265,6 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem33, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1275,7 +1274,10 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem178, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem179, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem180, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem215, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabMaintenance.SuspendLayout
         CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl4Maintenance.SuspendLayout
@@ -1357,6 +1359,8 @@ Partial Class frmBDG
         Me.tabHeatingInvoices.SuspendLayout
         CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl4InvHeatGas.SuspendLayout
+        CType(Me.cboMeasurementUsr.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.VwMEASURERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.MemoEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cbofService2.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdGas, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1402,13 +1406,13 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem71, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem65, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem77, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem211, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem216, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1431,6 +1435,9 @@ Partial Class frmBDG
         Me.tabConsumptions.SuspendLayout
         CType(Me.LayoutControl7Consumptions, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl7Consumptions.SuspendLayout
+        CType(Me.txtTotalLiterConsumption.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtLiterConsumptionB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.txtLiterConsumptionH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.VwCONSUMPTIONSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1467,6 +1474,9 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem171, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.EmptySpaceItem34, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem212, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem213, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem214, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabDeposit.SuspendLayout
         CType(Me.LDeposit, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LDeposit.SuspendLayout
@@ -1574,12 +1584,6 @@ Partial Class frmBDG
         CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.Panel2.SuspendLayout
         Me.SplitContainerControl1.SuspendLayout
-        CType(Me.txtLiterConsumptionH.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem212, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txtLiterConsumptionB.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem213, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.txtTotalLiterConsumption.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem214, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'GridView7
@@ -1593,9 +1597,9 @@ Partial Class frmBDG
         'grdAPM
         '
         Me.grdAPM.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        GridLevelNode2.LevelTemplate = Me.GridView7
-        GridLevelNode2.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
-        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.LevelTemplate = Me.GridView7
+        GridLevelNode1.RelationName = "ΧΙΛΙΟΣΤΑ ΜΕ ΜΕΙΩΣΕΙΣ"
+        Me.grdAPM.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.grdAPM.Location = New System.Drawing.Point(42, 12)
         Me.grdAPM.MainView = Me.GridView5
         Me.grdAPM.Margin = New System.Windows.Forms.Padding(5)
@@ -2841,333 +2845,333 @@ Partial Class frmBDG
         FormatConditionRuleExpression3.Appearance.Options.UseForeColor = True
         FormatConditionRuleExpression3.Expression = "[credit] = 0.0m"
         GridFormatRule3.Rule = FormatConditionRuleExpression3
-        GridFormatRule46.ApplyToRow = True
-        GridFormatRule46.Name = "Format31"
-        FormatConditionRuleExpression46.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression46.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression46.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression46.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression46.Expression = "[Completed] = True And [credit] = 0.0m"
-        GridFormatRule46.Rule = FormatConditionRuleExpression46
-        GridFormatRule47.ApplyToRow = True
-        GridFormatRule47.Name = "Format1"
-        FormatConditionRuleExpression47.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression47.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(212, Byte), Integer))
-        FormatConditionRuleExpression47.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression47.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression47.Expression = "[Completed] = True"
-        GridFormatRule47.Rule = FormatConditionRuleExpression47
-        GridFormatRule48.ApplyToRow = True
-        GridFormatRule48.Name = "Format4"
-        FormatConditionRuleExpression48.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression48.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression48.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression48.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression48.Expression = "Contains([reason], 'ΕΞΟΔΑ ΕΝΤΟΛΗΣ')"
-        GridFormatRule48.Rule = FormatConditionRuleExpression48
-        GridFormatRule49.ApplyToRow = True
-        GridFormatRule49.Name = "Format5"
-        FormatConditionRuleExpression49.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression49.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression49.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression49.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression49.Expression = "[Completed] = True And Contains([reason], 'ΕΞΟΔΑ ΕΝΤΟΛΗΣ')"
-        GridFormatRule49.Rule = FormatConditionRuleExpression49
-        GridFormatRule50.ApplyToRow = True
-        GridFormatRule50.Name = "Format6"
-        FormatConditionRuleExpression50.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression50.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression50.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression50.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression50.Expression = "Contains([reason], 'ΕΞΟΔΑ ΠΛΗΡΩΜΗΣ')"
-        GridFormatRule50.Rule = FormatConditionRuleExpression50
-        GridFormatRule51.ApplyToRow = True
-        GridFormatRule51.Name = "Format7"
-        FormatConditionRuleExpression51.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression51.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression51.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression51.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression51.Expression = "[Completed] = True And Contains([reason], 'ΕΞΟΔΑ ΠΛΗΡΩΜΗΣ')"
-        GridFormatRule51.Rule = FormatConditionRuleExpression51
-        GridFormatRule52.ApplyToRow = True
-        GridFormatRule52.Name = "Format8"
-        FormatConditionRuleExpression52.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression52.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression52.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression52.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression52.Expression = "Contains([reason], 'ΔΟΣΗ ΔΑΝΕΙΟΥ')"
-        GridFormatRule52.Rule = FormatConditionRuleExpression52
-        GridFormatRule53.ApplyToRow = True
-        GridFormatRule53.Name = "Format9"
-        FormatConditionRuleExpression53.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression53.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression53.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression53.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression53.Expression = "[Completed] = True And Contains([reason], 'ΔΟΣΗ ΔΑΝΕΙΟΥ')"
-        GridFormatRule53.Rule = FormatConditionRuleExpression53
-        GridFormatRule54.ApplyToRow = True
-        GridFormatRule54.Name = "Format2"
-        FormatConditionRuleExpression54.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression54.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression54.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression54.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression54.Expression = "Contains([reason], 'DΙΚΙΑ ΜΑS')"
-        GridFormatRule54.Rule = FormatConditionRuleExpression54
-        GridFormatRule55.ApplyToRow = True
-        GridFormatRule55.Name = "Format3"
-        FormatConditionRuleExpression55.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression55.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression55.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression55.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression55.Expression = "[Completed] = True And Contains([reason], 'DΙΚΙΑ ΜΑS')"
-        GridFormatRule55.Rule = FormatConditionRuleExpression55
-        GridFormatRule56.ApplyToRow = True
-        GridFormatRule56.Name = "Format10"
-        FormatConditionRuleExpression56.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression56.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression56.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression56.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression56.Expression = "Contains([reason], 'ΑΒ_ΖΟGRΑFΟU')"
-        GridFormatRule56.Rule = FormatConditionRuleExpression56
-        GridFormatRule57.ApplyToRow = True
-        GridFormatRule57.Name = "Format11"
-        FormatConditionRuleExpression57.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression57.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression57.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression57.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression57.Expression = "[Completed] = True And Contains([reason], 'ΑΒ_ΖΟGRΑFΟU')"
-        GridFormatRule57.Rule = FormatConditionRuleExpression57
-        GridFormatRule58.ApplyToRow = True
-        GridFormatRule58.Name = "Format12"
-        FormatConditionRuleExpression58.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression58.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression58.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression58.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression58.Expression = "Contains([reason], 'ΑΒ VΑSΙLΟΡΟULΟS')"
-        GridFormatRule58.Rule = FormatConditionRuleExpression58
-        GridFormatRule59.ApplyToRow = True
-        GridFormatRule59.Name = "Format13"
-        FormatConditionRuleExpression59.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression59.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression59.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression59.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression59.Expression = "[Completed] = True And Contains([reason], 'ΑΒ VΑSΙLΟΡΟULΟS')"
-        GridFormatRule59.Rule = FormatConditionRuleExpression59
-        GridFormatRule60.ApplyToRow = True
-        GridFormatRule60.Name = "Format14"
-        FormatConditionRuleExpression60.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression60.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression60.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression60.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression60.Expression = "Contains([reason], 'ΕΝΤΠΛ')"
-        GridFormatRule60.Rule = FormatConditionRuleExpression60
-        GridFormatRule61.ApplyToRow = True
-        GridFormatRule61.Name = "Format15"
-        FormatConditionRuleExpression61.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression61.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression61.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression61.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression61.Expression = "[Completed] = True And Contains([reason], 'ΕΝΤΠΛ')"
-        GridFormatRule61.Rule = FormatConditionRuleExpression61
-        GridFormatRule62.ApplyToRow = True
-        GridFormatRule62.Name = "Format16"
-        FormatConditionRuleExpression62.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression62.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression62.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression62.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression62.Expression = "Contains([reason], 'ΤΙΜΟΛΟΓΗΣΗ ΣΥΝ/ΓΩΝ')"
-        GridFormatRule62.Rule = FormatConditionRuleExpression62
-        GridFormatRule63.ApplyToRow = True
-        GridFormatRule63.Name = "Format17"
-        FormatConditionRuleExpression63.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression63.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression63.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression63.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression63.Expression = "[Completed] = True And Contains([reason], 'ΤΙΜΟΛΟΓΗΣΗ ΣΥΝ/ΓΩΝ')"
-        GridFormatRule63.Rule = FormatConditionRuleExpression63
-        GridFormatRule64.ApplyToRow = True
-        GridFormatRule64.Name = "Format18"
-        FormatConditionRuleExpression64.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression64.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression64.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression64.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression64.Expression = "Contains([reason], 'ΕΞΟΔΑ ΙRΙS ΟΝLΙΝΕ')"
-        GridFormatRule64.Rule = FormatConditionRuleExpression64
-        GridFormatRule65.ApplyToRow = True
-        GridFormatRule65.Name = "Format19"
-        FormatConditionRuleExpression65.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression65.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression65.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression65.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression65.Expression = "[Completed] = True And Contains([reason], 'ΕΞΟΔΑ ΙRΙS ΟΝLΙΝΕ')"
-        GridFormatRule65.Rule = FormatConditionRuleExpression65
-        GridFormatRule66.ApplyToRow = True
-        GridFormatRule66.Name = "Format20"
-        FormatConditionRuleExpression66.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression66.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression66.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression66.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression66.Expression = "Contains([reason], 'ΕΦΚΑ ΕΡΓΟΣΗΜΟ')"
-        GridFormatRule66.Rule = FormatConditionRuleExpression66
-        GridFormatRule67.ApplyToRow = True
-        GridFormatRule67.Name = "Format21"
-        FormatConditionRuleExpression67.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression67.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression67.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression67.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression67.Expression = "[Completed] = True And Contains([reason], 'ΕΦΚΑ ΕΡΓΟΣΗΜΟ')"
-        GridFormatRule67.Rule = FormatConditionRuleExpression67
-        GridFormatRule68.ApplyToRow = True
-        GridFormatRule68.Name = "Format22"
-        FormatConditionRuleExpression68.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression68.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression68.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression68.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression68.Expression = "Contains([reason], 'ΑΒ_FΟΟD_ΕRΜΙΟΝΙ')"
-        GridFormatRule68.Rule = FormatConditionRuleExpression68
-        GridFormatRule69.ApplyToRow = True
-        GridFormatRule69.Name = "Format23"
-        FormatConditionRuleExpression69.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression69.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression69.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression69.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression69.Expression = "[Completed] = True And Contains([reason], 'ΑΒ_FΟΟD_ΕRΜΙΟΝΙ')"
-        GridFormatRule69.Rule = FormatConditionRuleExpression69
-        GridFormatRule70.ApplyToRow = True
-        GridFormatRule70.Name = "Format24"
-        FormatConditionRuleExpression70.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression70.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression70.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression70.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression70.Expression = "Contains([reason], 'ΔΙΚΙΑ ΜΑΣ')"
-        GridFormatRule70.Rule = FormatConditionRuleExpression70
-        GridFormatRule71.ApplyToRow = True
-        GridFormatRule71.Name = "Format25"
-        FormatConditionRuleExpression71.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression71.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression71.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression71.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression71.Expression = "[Completed] = True And Contains([reason], 'ΔΙΚΙΑ ΜΑΣ')"
-        GridFormatRule71.Rule = FormatConditionRuleExpression71
-        GridFormatRule72.ApplyToRow = True
-        GridFormatRule72.Name = "Format26"
-        FormatConditionRuleExpression72.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression72.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression72.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression72.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression72.Expression = "Contains([reason], 'DIKIAMAS')"
-        GridFormatRule72.Rule = FormatConditionRuleExpression72
-        GridFormatRule73.ApplyToRow = True
-        GridFormatRule73.Name = "Format27"
-        FormatConditionRuleExpression73.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression73.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression73.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression73.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression73.Expression = "[Completed] = True And Contains([reason], 'DIKIAMAS')"
-        GridFormatRule73.Rule = FormatConditionRuleExpression73
-        GridFormatRule74.ApplyToRow = True
-        GridFormatRule74.Name = "Format28"
-        FormatConditionRuleExpression74.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression74.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression74.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression74.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression74.Expression = "Contains([reason], 'DIKIA MAS')"
-        GridFormatRule74.Rule = FormatConditionRuleExpression74
-        GridFormatRule75.ApplyToRow = True
-        GridFormatRule75.Name = "Format29"
-        FormatConditionRuleExpression75.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression75.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression75.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression75.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression75.Expression = "[Completed] = True And Contains([reason], 'DIKIA MAS')"
-        GridFormatRule75.Rule = FormatConditionRuleExpression75
-        GridFormatRule76.ApplyToRow = True
-        GridFormatRule76.Name = "Format0"
-        FormatConditionRuleExpression76.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression76.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression76.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression76.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression76.Expression = "[credit] < 0.00m"
-        GridFormatRule76.Rule = FormatConditionRuleExpression76
-        GridFormatRule77.ApplyToRow = True
-        GridFormatRule77.Name = "Format32"
-        FormatConditionRuleExpression77.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression77.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        FormatConditionRuleExpression77.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression77.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression77.Expression = "[Completed] = True And [credit] < 0.00m"
-        GridFormatRule77.Rule = FormatConditionRuleExpression77
-        GridFormatRule78.ApplyToRow = True
-        GridFormatRule78.Name = "Format33"
-        FormatConditionRuleExpression78.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression78.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression78.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression78.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression78.Expression = "Contains([reason], 'VΑΜVΟUΚΟS ΝΙΚΟLΑΟS')"
-        GridFormatRule78.Rule = FormatConditionRuleExpression78
-        GridFormatRule79.ApplyToRow = True
-        GridFormatRule79.Name = "Format34"
-        FormatConditionRuleExpression79.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression79.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression79.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression79.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression79.Expression = "[Completed] = True And Contains([reason], 'VΑΜVΟUΚΟS ΝΙΚΟLΑΟS')"
-        GridFormatRule79.Rule = FormatConditionRuleExpression79
-        GridFormatRule80.ApplyToRow = True
-        GridFormatRule80.Name = "Format35"
-        FormatConditionRuleExpression80.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression80.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression80.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression80.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression80.Expression = "Contains([reason], 'Ο ΒRΑΖΙLΙΑΝΟS')"
-        GridFormatRule80.Rule = FormatConditionRuleExpression80
-        GridFormatRule81.ApplyToRow = True
-        GridFormatRule81.Name = "Format36"
-        FormatConditionRuleExpression81.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
-        FormatConditionRuleExpression81.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
-        FormatConditionRuleExpression81.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression81.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression81.Expression = "[Completed] = True And Contains([reason], 'Ο ΒRΑΖΙLΙΑΝΟS')"
-        GridFormatRule81.Rule = FormatConditionRuleExpression81
+        GridFormatRule4.ApplyToRow = True
+        GridFormatRule4.Name = "Format31"
+        FormatConditionRuleExpression4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression4.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression4.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression4.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression4.Expression = "[Completed] = True And [credit] = 0.0m"
+        GridFormatRule4.Rule = FormatConditionRuleExpression4
+        GridFormatRule5.ApplyToRow = True
+        GridFormatRule5.Name = "Format1"
+        FormatConditionRuleExpression5.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression5.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(212, Byte), Integer))
+        FormatConditionRuleExpression5.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression5.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression5.Expression = "[Completed] = True"
+        GridFormatRule5.Rule = FormatConditionRuleExpression5
+        GridFormatRule6.ApplyToRow = True
+        GridFormatRule6.Name = "Format4"
+        FormatConditionRuleExpression6.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression6.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression6.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression6.Expression = "Contains([reason], 'ΕΞΟΔΑ ΕΝΤΟΛΗΣ')"
+        GridFormatRule6.Rule = FormatConditionRuleExpression6
+        GridFormatRule7.ApplyToRow = True
+        GridFormatRule7.Name = "Format5"
+        FormatConditionRuleExpression7.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression7.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression7.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression7.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression7.Expression = "[Completed] = True And Contains([reason], 'ΕΞΟΔΑ ΕΝΤΟΛΗΣ')"
+        GridFormatRule7.Rule = FormatConditionRuleExpression7
+        GridFormatRule8.ApplyToRow = True
+        GridFormatRule8.Name = "Format6"
+        FormatConditionRuleExpression8.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression8.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression8.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression8.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression8.Expression = "Contains([reason], 'ΕΞΟΔΑ ΠΛΗΡΩΜΗΣ')"
+        GridFormatRule8.Rule = FormatConditionRuleExpression8
+        GridFormatRule9.ApplyToRow = True
+        GridFormatRule9.Name = "Format7"
+        FormatConditionRuleExpression9.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression9.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression9.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression9.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression9.Expression = "[Completed] = True And Contains([reason], 'ΕΞΟΔΑ ΠΛΗΡΩΜΗΣ')"
+        GridFormatRule9.Rule = FormatConditionRuleExpression9
+        GridFormatRule10.ApplyToRow = True
+        GridFormatRule10.Name = "Format8"
+        FormatConditionRuleExpression10.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression10.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression10.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression10.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression10.Expression = "Contains([reason], 'ΔΟΣΗ ΔΑΝΕΙΟΥ')"
+        GridFormatRule10.Rule = FormatConditionRuleExpression10
+        GridFormatRule11.ApplyToRow = True
+        GridFormatRule11.Name = "Format9"
+        FormatConditionRuleExpression11.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression11.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression11.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression11.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression11.Expression = "[Completed] = True And Contains([reason], 'ΔΟΣΗ ΔΑΝΕΙΟΥ')"
+        GridFormatRule11.Rule = FormatConditionRuleExpression11
+        GridFormatRule12.ApplyToRow = True
+        GridFormatRule12.Name = "Format2"
+        FormatConditionRuleExpression12.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression12.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression12.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression12.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression12.Expression = "Contains([reason], 'DΙΚΙΑ ΜΑS')"
+        GridFormatRule12.Rule = FormatConditionRuleExpression12
+        GridFormatRule13.ApplyToRow = True
+        GridFormatRule13.Name = "Format3"
+        FormatConditionRuleExpression13.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression13.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression13.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression13.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression13.Expression = "[Completed] = True And Contains([reason], 'DΙΚΙΑ ΜΑS')"
+        GridFormatRule13.Rule = FormatConditionRuleExpression13
+        GridFormatRule14.ApplyToRow = True
+        GridFormatRule14.Name = "Format10"
+        FormatConditionRuleExpression14.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression14.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression14.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression14.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression14.Expression = "Contains([reason], 'ΑΒ_ΖΟGRΑFΟU')"
+        GridFormatRule14.Rule = FormatConditionRuleExpression14
+        GridFormatRule15.ApplyToRow = True
+        GridFormatRule15.Name = "Format11"
+        FormatConditionRuleExpression15.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression15.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression15.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression15.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression15.Expression = "[Completed] = True And Contains([reason], 'ΑΒ_ΖΟGRΑFΟU')"
+        GridFormatRule15.Rule = FormatConditionRuleExpression15
+        GridFormatRule16.ApplyToRow = True
+        GridFormatRule16.Name = "Format12"
+        FormatConditionRuleExpression16.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression16.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression16.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression16.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression16.Expression = "Contains([reason], 'ΑΒ VΑSΙLΟΡΟULΟS')"
+        GridFormatRule16.Rule = FormatConditionRuleExpression16
+        GridFormatRule17.ApplyToRow = True
+        GridFormatRule17.Name = "Format13"
+        FormatConditionRuleExpression17.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression17.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression17.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression17.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression17.Expression = "[Completed] = True And Contains([reason], 'ΑΒ VΑSΙLΟΡΟULΟS')"
+        GridFormatRule17.Rule = FormatConditionRuleExpression17
+        GridFormatRule18.ApplyToRow = True
+        GridFormatRule18.Name = "Format14"
+        FormatConditionRuleExpression18.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression18.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression18.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression18.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression18.Expression = "Contains([reason], 'ΕΝΤΠΛ')"
+        GridFormatRule18.Rule = FormatConditionRuleExpression18
+        GridFormatRule19.ApplyToRow = True
+        GridFormatRule19.Name = "Format15"
+        FormatConditionRuleExpression19.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression19.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression19.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression19.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression19.Expression = "[Completed] = True And Contains([reason], 'ΕΝΤΠΛ')"
+        GridFormatRule19.Rule = FormatConditionRuleExpression19
+        GridFormatRule20.ApplyToRow = True
+        GridFormatRule20.Name = "Format16"
+        FormatConditionRuleExpression20.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression20.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression20.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression20.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression20.Expression = "Contains([reason], 'ΤΙΜΟΛΟΓΗΣΗ ΣΥΝ/ΓΩΝ')"
+        GridFormatRule20.Rule = FormatConditionRuleExpression20
+        GridFormatRule21.ApplyToRow = True
+        GridFormatRule21.Name = "Format17"
+        FormatConditionRuleExpression21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression21.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression21.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression21.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression21.Expression = "[Completed] = True And Contains([reason], 'ΤΙΜΟΛΟΓΗΣΗ ΣΥΝ/ΓΩΝ')"
+        GridFormatRule21.Rule = FormatConditionRuleExpression21
+        GridFormatRule22.ApplyToRow = True
+        GridFormatRule22.Name = "Format18"
+        FormatConditionRuleExpression22.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression22.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression22.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression22.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression22.Expression = "Contains([reason], 'ΕΞΟΔΑ ΙRΙS ΟΝLΙΝΕ')"
+        GridFormatRule22.Rule = FormatConditionRuleExpression22
+        GridFormatRule23.ApplyToRow = True
+        GridFormatRule23.Name = "Format19"
+        FormatConditionRuleExpression23.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression23.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression23.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression23.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression23.Expression = "[Completed] = True And Contains([reason], 'ΕΞΟΔΑ ΙRΙS ΟΝLΙΝΕ')"
+        GridFormatRule23.Rule = FormatConditionRuleExpression23
+        GridFormatRule24.ApplyToRow = True
+        GridFormatRule24.Name = "Format20"
+        FormatConditionRuleExpression24.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression24.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression24.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression24.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression24.Expression = "Contains([reason], 'ΕΦΚΑ ΕΡΓΟΣΗΜΟ')"
+        GridFormatRule24.Rule = FormatConditionRuleExpression24
+        GridFormatRule25.ApplyToRow = True
+        GridFormatRule25.Name = "Format21"
+        FormatConditionRuleExpression25.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression25.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression25.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression25.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression25.Expression = "[Completed] = True And Contains([reason], 'ΕΦΚΑ ΕΡΓΟΣΗΜΟ')"
+        GridFormatRule25.Rule = FormatConditionRuleExpression25
+        GridFormatRule26.ApplyToRow = True
+        GridFormatRule26.Name = "Format22"
+        FormatConditionRuleExpression26.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression26.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression26.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression26.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression26.Expression = "Contains([reason], 'ΑΒ_FΟΟD_ΕRΜΙΟΝΙ')"
+        GridFormatRule26.Rule = FormatConditionRuleExpression26
+        GridFormatRule27.ApplyToRow = True
+        GridFormatRule27.Name = "Format23"
+        FormatConditionRuleExpression27.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression27.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression27.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression27.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression27.Expression = "[Completed] = True And Contains([reason], 'ΑΒ_FΟΟD_ΕRΜΙΟΝΙ')"
+        GridFormatRule27.Rule = FormatConditionRuleExpression27
+        GridFormatRule28.ApplyToRow = True
+        GridFormatRule28.Name = "Format24"
+        FormatConditionRuleExpression28.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression28.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression28.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression28.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression28.Expression = "Contains([reason], 'ΔΙΚΙΑ ΜΑΣ')"
+        GridFormatRule28.Rule = FormatConditionRuleExpression28
+        GridFormatRule29.ApplyToRow = True
+        GridFormatRule29.Name = "Format25"
+        FormatConditionRuleExpression29.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression29.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression29.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression29.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression29.Expression = "[Completed] = True And Contains([reason], 'ΔΙΚΙΑ ΜΑΣ')"
+        GridFormatRule29.Rule = FormatConditionRuleExpression29
+        GridFormatRule30.ApplyToRow = True
+        GridFormatRule30.Name = "Format26"
+        FormatConditionRuleExpression30.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression30.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression30.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression30.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression30.Expression = "Contains([reason], 'DIKIAMAS')"
+        GridFormatRule30.Rule = FormatConditionRuleExpression30
+        GridFormatRule31.ApplyToRow = True
+        GridFormatRule31.Name = "Format27"
+        FormatConditionRuleExpression31.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression31.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression31.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression31.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression31.Expression = "[Completed] = True And Contains([reason], 'DIKIAMAS')"
+        GridFormatRule31.Rule = FormatConditionRuleExpression31
+        GridFormatRule32.ApplyToRow = True
+        GridFormatRule32.Name = "Format28"
+        FormatConditionRuleExpression32.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression32.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression32.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression32.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression32.Expression = "Contains([reason], 'DIKIA MAS')"
+        GridFormatRule32.Rule = FormatConditionRuleExpression32
+        GridFormatRule33.ApplyToRow = True
+        GridFormatRule33.Name = "Format29"
+        FormatConditionRuleExpression33.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression33.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression33.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression33.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression33.Expression = "[Completed] = True And Contains([reason], 'DIKIA MAS')"
+        GridFormatRule33.Rule = FormatConditionRuleExpression33
+        GridFormatRule34.ApplyToRow = True
+        GridFormatRule34.Name = "Format0"
+        FormatConditionRuleExpression34.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression34.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression34.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression34.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression34.Expression = "[credit] < 0.00m"
+        GridFormatRule34.Rule = FormatConditionRuleExpression34
+        GridFormatRule35.ApplyToRow = True
+        GridFormatRule35.Name = "Format32"
+        FormatConditionRuleExpression35.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression35.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        FormatConditionRuleExpression35.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression35.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression35.Expression = "[Completed] = True And [credit] < 0.00m"
+        GridFormatRule35.Rule = FormatConditionRuleExpression35
+        GridFormatRule36.ApplyToRow = True
+        GridFormatRule36.Name = "Format33"
+        FormatConditionRuleExpression36.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression36.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression36.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression36.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression36.Expression = "Contains([reason], 'VΑΜVΟUΚΟS ΝΙΚΟLΑΟS')"
+        GridFormatRule36.Rule = FormatConditionRuleExpression36
+        GridFormatRule37.ApplyToRow = True
+        GridFormatRule37.Name = "Format34"
+        FormatConditionRuleExpression37.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression37.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression37.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression37.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression37.Expression = "[Completed] = True And Contains([reason], 'VΑΜVΟUΚΟS ΝΙΚΟLΑΟS')"
+        GridFormatRule37.Rule = FormatConditionRuleExpression37
+        GridFormatRule38.ApplyToRow = True
+        GridFormatRule38.Name = "Format35"
+        FormatConditionRuleExpression38.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression38.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression38.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression38.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression38.Expression = "Contains([reason], 'Ο ΒRΑΖΙLΙΑΝΟS')"
+        GridFormatRule38.Rule = FormatConditionRuleExpression38
+        GridFormatRule39.ApplyToRow = True
+        GridFormatRule39.Name = "Format36"
+        FormatConditionRuleExpression39.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
+        FormatConditionRuleExpression39.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(176, Byte), Integer), CType(CType(80, Byte), Integer))
+        FormatConditionRuleExpression39.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression39.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression39.Expression = "[Completed] = True And Contains([reason], 'Ο ΒRΑΖΙLΙΑΝΟS')"
+        GridFormatRule39.Rule = FormatConditionRuleExpression39
         Me.GridView12.FormatRules.Add(GridFormatRule1)
         Me.GridView12.FormatRules.Add(GridFormatRule2)
         Me.GridView12.FormatRules.Add(GridFormatRule3)
-        Me.GridView12.FormatRules.Add(GridFormatRule46)
-        Me.GridView12.FormatRules.Add(GridFormatRule47)
-        Me.GridView12.FormatRules.Add(GridFormatRule48)
-        Me.GridView12.FormatRules.Add(GridFormatRule49)
-        Me.GridView12.FormatRules.Add(GridFormatRule50)
-        Me.GridView12.FormatRules.Add(GridFormatRule51)
-        Me.GridView12.FormatRules.Add(GridFormatRule52)
-        Me.GridView12.FormatRules.Add(GridFormatRule53)
-        Me.GridView12.FormatRules.Add(GridFormatRule54)
-        Me.GridView12.FormatRules.Add(GridFormatRule55)
-        Me.GridView12.FormatRules.Add(GridFormatRule56)
-        Me.GridView12.FormatRules.Add(GridFormatRule57)
-        Me.GridView12.FormatRules.Add(GridFormatRule58)
-        Me.GridView12.FormatRules.Add(GridFormatRule59)
-        Me.GridView12.FormatRules.Add(GridFormatRule60)
-        Me.GridView12.FormatRules.Add(GridFormatRule61)
-        Me.GridView12.FormatRules.Add(GridFormatRule62)
-        Me.GridView12.FormatRules.Add(GridFormatRule63)
-        Me.GridView12.FormatRules.Add(GridFormatRule64)
-        Me.GridView12.FormatRules.Add(GridFormatRule65)
-        Me.GridView12.FormatRules.Add(GridFormatRule66)
-        Me.GridView12.FormatRules.Add(GridFormatRule67)
-        Me.GridView12.FormatRules.Add(GridFormatRule68)
-        Me.GridView12.FormatRules.Add(GridFormatRule69)
-        Me.GridView12.FormatRules.Add(GridFormatRule70)
-        Me.GridView12.FormatRules.Add(GridFormatRule71)
-        Me.GridView12.FormatRules.Add(GridFormatRule72)
-        Me.GridView12.FormatRules.Add(GridFormatRule73)
-        Me.GridView12.FormatRules.Add(GridFormatRule74)
-        Me.GridView12.FormatRules.Add(GridFormatRule75)
-        Me.GridView12.FormatRules.Add(GridFormatRule76)
-        Me.GridView12.FormatRules.Add(GridFormatRule77)
-        Me.GridView12.FormatRules.Add(GridFormatRule78)
-        Me.GridView12.FormatRules.Add(GridFormatRule79)
-        Me.GridView12.FormatRules.Add(GridFormatRule80)
-        Me.GridView12.FormatRules.Add(GridFormatRule81)
+        Me.GridView12.FormatRules.Add(GridFormatRule4)
+        Me.GridView12.FormatRules.Add(GridFormatRule5)
+        Me.GridView12.FormatRules.Add(GridFormatRule6)
+        Me.GridView12.FormatRules.Add(GridFormatRule7)
+        Me.GridView12.FormatRules.Add(GridFormatRule8)
+        Me.GridView12.FormatRules.Add(GridFormatRule9)
+        Me.GridView12.FormatRules.Add(GridFormatRule10)
+        Me.GridView12.FormatRules.Add(GridFormatRule11)
+        Me.GridView12.FormatRules.Add(GridFormatRule12)
+        Me.GridView12.FormatRules.Add(GridFormatRule13)
+        Me.GridView12.FormatRules.Add(GridFormatRule14)
+        Me.GridView12.FormatRules.Add(GridFormatRule15)
+        Me.GridView12.FormatRules.Add(GridFormatRule16)
+        Me.GridView12.FormatRules.Add(GridFormatRule17)
+        Me.GridView12.FormatRules.Add(GridFormatRule18)
+        Me.GridView12.FormatRules.Add(GridFormatRule19)
+        Me.GridView12.FormatRules.Add(GridFormatRule20)
+        Me.GridView12.FormatRules.Add(GridFormatRule21)
+        Me.GridView12.FormatRules.Add(GridFormatRule22)
+        Me.GridView12.FormatRules.Add(GridFormatRule23)
+        Me.GridView12.FormatRules.Add(GridFormatRule24)
+        Me.GridView12.FormatRules.Add(GridFormatRule25)
+        Me.GridView12.FormatRules.Add(GridFormatRule26)
+        Me.GridView12.FormatRules.Add(GridFormatRule27)
+        Me.GridView12.FormatRules.Add(GridFormatRule28)
+        Me.GridView12.FormatRules.Add(GridFormatRule29)
+        Me.GridView12.FormatRules.Add(GridFormatRule30)
+        Me.GridView12.FormatRules.Add(GridFormatRule31)
+        Me.GridView12.FormatRules.Add(GridFormatRule32)
+        Me.GridView12.FormatRules.Add(GridFormatRule33)
+        Me.GridView12.FormatRules.Add(GridFormatRule34)
+        Me.GridView12.FormatRules.Add(GridFormatRule35)
+        Me.GridView12.FormatRules.Add(GridFormatRule36)
+        Me.GridView12.FormatRules.Add(GridFormatRule37)
+        Me.GridView12.FormatRules.Add(GridFormatRule38)
+        Me.GridView12.FormatRules.Add(GridFormatRule39)
         Me.GridView12.GridControl = Me.grdBDG_M
         Me.GridView12.LevelIndent = 0
         Me.GridView12.Name = "GridView12"
@@ -5279,6 +5283,7 @@ Partial Class frmBDG
         '
         'LayoutControl3Heating
         '
+        Me.LayoutControl3Heating.Controls.Add(Me.cmdCheckTank)
         Me.LayoutControl3Heating.Controls.Add(Me.cmdAHPBExport)
         Me.LayoutControl3Heating.Controls.Add(Me.txtHpb)
         Me.LayoutControl3Heating.Controls.Add(Me.cmdSaveHB)
@@ -5300,7 +5305,6 @@ Partial Class frmBDG
         Me.LayoutControl3Heating.Controls.Add(Me.txtCalH)
         Me.LayoutControl3Heating.Controls.Add(Me.txtCalB)
         Me.LayoutControl3Heating.Controls.Add(Me.RGBolier)
-        Me.LayoutControl3Heating.Controls.Add(Me.cmdCheckTank)
         Me.LayoutControl3Heating.Controls.Add(Me.cboBefMes)
         Me.LayoutControl3Heating.Controls.Add(Me.txtLpcH1)
         Me.LayoutControl3Heating.Controls.Add(Me.txtLpcH11)
@@ -5317,6 +5321,16 @@ Partial Class frmBDG
         Me.LayoutControl3Heating.TabIndex = 11
         Me.LayoutControl3Heating.Text = "LayoutControl2"
         '
+        'cmdCheckTank
+        '
+        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 925)
+        Me.cmdCheckTank.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdCheckTank.Name = "cmdCheckTank"
+        Me.cmdCheckTank.Size = New System.Drawing.Size(626, 39)
+        Me.cmdCheckTank.StyleController = Me.LayoutControl3Heating
+        Me.cmdCheckTank.TabIndex = 64
+        Me.cmdCheckTank.Text = "Διαχείριση Ελέγχων Δεξαμενής"
+        '
         'cmdAHPBExport
         '
         Me.cmdAHPBExport.ImageOptions.Image = CType(resources.GetObject("cmdAHPBExport.ImageOptions.Image"), System.Drawing.Image)
@@ -5331,7 +5345,7 @@ Partial Class frmBDG
         'txtHpb
         '
         Me.txtHpb.EditValue = "0"
-        Me.txtHpb.Location = New System.Drawing.Point(444, 531)
+        Me.txtHpb.Location = New System.Drawing.Point(444, 522)
         Me.txtHpb.Margin = New System.Windows.Forms.Padding(5)
         Me.txtHpb.Name = "txtHpb"
         Me.txtHpb.Properties.DisplayFormat.FormatString = "p0"
@@ -5370,7 +5384,7 @@ Partial Class frmBDG
         '
         'cboBtypes
         '
-        Me.cboBtypes.Location = New System.Drawing.Point(76, 489)
+        Me.cboBtypes.Location = New System.Drawing.Point(76, 480)
         Me.cboBtypes.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBtypes.Name = "cboBtypes"
         Me.cboBtypes.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -5691,7 +5705,7 @@ Partial Class frmBDG
         'txtTacB
         '
         Me.txtTacB.EditValue = "0"
-        Me.txtTacB.Location = New System.Drawing.Point(444, 615)
+        Me.txtTacB.Location = New System.Drawing.Point(444, 606)
         Me.txtTacB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtTacB.Name = "txtTacB"
         Me.txtTacB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -5722,7 +5736,7 @@ Partial Class frmBDG
         'txtLpcB
         '
         Me.txtLpcB.EditValue = "0,00"
-        Me.txtLpcB.Location = New System.Drawing.Point(444, 657)
+        Me.txtLpcB.Location = New System.Drawing.Point(444, 648)
         Me.txtLpcB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtLpcB.Name = "txtLpcB"
         Me.txtLpcB.Properties.DisplayFormat.FormatString = "n2"
@@ -5756,7 +5770,7 @@ Partial Class frmBDG
         'txtCalB
         '
         Me.txtCalB.EditValue = "0"
-        Me.txtCalB.Location = New System.Drawing.Point(444, 573)
+        Me.txtCalB.Location = New System.Drawing.Point(444, 564)
         Me.txtCalB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtCalB.Name = "txtCalB"
         Me.txtCalB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -5776,19 +5790,9 @@ Partial Class frmBDG
         Me.RGBolier.Name = "RGBolier"
         Me.RGBolier.Properties.Columns = 2
         Me.RGBolier.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.RadioGroupItem() {New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Κοινός", True, "bCommon,0,1,2"), New DevExpress.XtraEditors.Controls.RadioGroupItem(Nothing, "Ξεχωριστός", True, "bSeperate,0,1,2")})
-        Me.RGBolier.Size = New System.Drawing.Size(550, 68)
+        Me.RGBolier.Size = New System.Drawing.Size(550, 59)
         Me.RGBolier.StyleController = Me.LayoutControl3Heating
         Me.RGBolier.TabIndex = 33
-        '
-        'cmdCheckTank
-        '
-        Me.cmdCheckTank.Location = New System.Drawing.Point(12, 934)
-        Me.cmdCheckTank.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdCheckTank.Name = "cmdCheckTank"
-        Me.cmdCheckTank.Size = New System.Drawing.Size(626, 39)
-        Me.cmdCheckTank.StyleController = Me.LayoutControl3Heating
-        Me.cmdCheckTank.TabIndex = 34
-        Me.cmdCheckTank.Text = "Διαχείριση Ελέγχων Δεξαμενής"
         '
         'cboBefMes
         '
@@ -5823,7 +5827,7 @@ Partial Class frmBDG
         'txtLpcH11
         '
         Me.txtLpcH11.EditValue = "0,0"
-        Me.txtLpcH11.Location = New System.Drawing.Point(444, 699)
+        Me.txtLpcH11.Location = New System.Drawing.Point(444, 690)
         Me.txtLpcH11.Margin = New System.Windows.Forms.Padding(5)
         Me.txtLpcH11.Name = "txtLpcH11"
         Me.txtLpcH11.Properties.DisplayFormat.FormatString = "n1"
@@ -5840,7 +5844,7 @@ Partial Class frmBDG
         'dtRadiatorStart
         '
         Me.dtRadiatorStart.EditValue = Nothing
-        Me.dtRadiatorStart.Location = New System.Drawing.Point(431, 754)
+        Me.dtRadiatorStart.Location = New System.Drawing.Point(431, 745)
         Me.dtRadiatorStart.MenuManager = Me.BarManager1
         Me.dtRadiatorStart.Name = "dtRadiatorStart"
         Me.dtRadiatorStart.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -5855,7 +5859,7 @@ Partial Class frmBDG
         'dtRadiatorEnd
         '
         Me.dtRadiatorEnd.EditValue = Nothing
-        Me.dtRadiatorEnd.Location = New System.Drawing.Point(431, 796)
+        Me.dtRadiatorEnd.Location = New System.Drawing.Point(431, 787)
         Me.dtRadiatorEnd.MenuManager = Me.BarManager1
         Me.dtRadiatorEnd.Name = "dtRadiatorEnd"
         Me.dtRadiatorEnd.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -5870,7 +5874,7 @@ Partial Class frmBDG
         'txtradiatorDegrees
         '
         Me.txtradiatorDegrees.EditValue = "0"
-        Me.txtradiatorDegrees.Location = New System.Drawing.Point(431, 838)
+        Me.txtradiatorDegrees.Location = New System.Drawing.Point(431, 829)
         Me.txtradiatorDegrees.MenuManager = Me.BarManager1
         Me.txtradiatorDegrees.Name = "txtradiatorDegrees"
         Me.txtradiatorDegrees.Properties.DisplayFormat.FormatString = "n0"
@@ -5890,7 +5894,7 @@ Partial Class frmBDG
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem31, Me.SimpleLabelItem2, Me.LayoutControlItem43, Me.LayoutControlItem45, Me.LayoutControlItem46, Me.EmptySpaceItem16, Me.LayoutControlItem24, Me.LayoutControlGroup3, Me.LayoutControlGroup2, Me.LayoutControlItem40, Me.LCheckTank, Me.SimpleLabelItem4, Me.EmptySpaceItem11, Me.LayoutControlItem33, Me.LayoutControlItem44, Me.LayoutControlItem91, Me.EmptySpaceItem35, Me.LayoutControlItem42, Me.LayoutControlItem136, Me.LayoutControlItem178, Me.LayoutControlItem179, Me.LayoutControlItem180, Me.SimpleLabelItem3})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem31, Me.SimpleLabelItem2, Me.LayoutControlItem43, Me.LayoutControlItem45, Me.LayoutControlItem46, Me.EmptySpaceItem16, Me.LayoutControlItem24, Me.LayoutControlGroup3, Me.LayoutControlGroup2, Me.LayoutControlItem40, Me.LayoutControlItem33, Me.LayoutControlItem44, Me.LayoutControlItem91, Me.EmptySpaceItem35, Me.LayoutControlItem42, Me.LayoutControlItem136, Me.LayoutControlItem178, Me.LayoutControlItem179, Me.LayoutControlItem180, Me.EmptySpaceItem11, Me.LayoutControlItem215, Me.SimpleLabelItem3, Me.SimpleLabelItem4})
         Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControlGroup1.TextVisible = False
@@ -5974,7 +5978,7 @@ Partial Class frmBDG
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem26, Me.LayoutControlItem35, Me.LayoutControlItem37, Me.LayoutControlItem38, Me.LayoutControlItem92, Me.LayoutControlItem131})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 428)
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 419)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(630, 314)
         Me.LayoutControlGroup3.Text = "Boiler"
@@ -6147,37 +6151,11 @@ Partial Class frmBDG
         Me.LayoutControlItem40.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem40.Location = New System.Drawing.Point(0, 356)
         Me.LayoutControlItem40.Name = "LayoutControlItem40"
-        Me.LayoutControlItem40.Size = New System.Drawing.Size(630, 72)
+        Me.LayoutControlItem40.Size = New System.Drawing.Size(630, 63)
         Me.LayoutControlItem40.Text = "Λέβητας"
         Me.LayoutControlItem40.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.LayoutControlItem40.TextSize = New System.Drawing.Size(71, 23)
         Me.LayoutControlItem40.TextToControlDistance = 5
-        '
-        'LCheckTank
-        '
-        Me.LCheckTank.Control = Me.cmdCheckTank
-        Me.LCheckTank.Location = New System.Drawing.Point(0, 922)
-        Me.LCheckTank.Name = "LCheckTank"
-        Me.LCheckTank.Size = New System.Drawing.Size(630, 43)
-        Me.LCheckTank.TextSize = New System.Drawing.Size(0, 0)
-        Me.LCheckTank.TextVisible = False
-        '
-        'SimpleLabelItem4
-        '
-        Me.SimpleLabelItem4.AllowHotTrack = False
-        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 895)
-        Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
-        Me.SimpleLabelItem4.Size = New System.Drawing.Size(630, 27)
-        Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
-        Me.SimpleLabelItem4.TextSize = New System.Drawing.Size(407, 23)
-        '
-        'EmptySpaceItem11
-        '
-        Me.EmptySpaceItem11.AllowHotTrack = False
-        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 965)
-        Me.EmptySpaceItem11.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem11.Size = New System.Drawing.Size(630, 266)
-        Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem33
         '
@@ -6245,7 +6223,7 @@ Partial Class frmBDG
         'LayoutControlItem178
         '
         Me.LayoutControlItem178.Control = Me.dtRadiatorStart
-        Me.LayoutControlItem178.Location = New System.Drawing.Point(0, 742)
+        Me.LayoutControlItem178.Location = New System.Drawing.Point(0, 733)
         Me.LayoutControlItem178.Name = "LayoutControlItem178"
         Me.LayoutControlItem178.Size = New System.Drawing.Size(630, 42)
         Me.LayoutControlItem178.Text = "Ημερ/νία Έναρξης Καλοριφέρ"
@@ -6254,7 +6232,7 @@ Partial Class frmBDG
         'LayoutControlItem179
         '
         Me.LayoutControlItem179.Control = Me.dtRadiatorEnd
-        Me.LayoutControlItem179.Location = New System.Drawing.Point(0, 784)
+        Me.LayoutControlItem179.Location = New System.Drawing.Point(0, 775)
         Me.LayoutControlItem179.Name = "LayoutControlItem179"
         Me.LayoutControlItem179.Size = New System.Drawing.Size(630, 42)
         Me.LayoutControlItem179.Text = "Ημερ/νία Λήξης Καλοριφέρ"
@@ -6263,21 +6241,47 @@ Partial Class frmBDG
         'LayoutControlItem180
         '
         Me.LayoutControlItem180.Control = Me.txtradiatorDegrees
-        Me.LayoutControlItem180.Location = New System.Drawing.Point(0, 826)
+        Me.LayoutControlItem180.Location = New System.Drawing.Point(0, 817)
         Me.LayoutControlItem180.Name = "LayoutControlItem180"
         Me.LayoutControlItem180.Size = New System.Drawing.Size(630, 42)
         Me.LayoutControlItem180.Text = "Λειτουργία Θέρμανσης κατώ των °C"
         Me.LayoutControlItem180.TextSize = New System.Drawing.Size(407, 23)
         '
+        'EmptySpaceItem11
+        '
+        Me.EmptySpaceItem11.AllowHotTrack = False
+        Me.EmptySpaceItem11.Location = New System.Drawing.Point(0, 956)
+        Me.EmptySpaceItem11.Name = "EmptySpaceItem11"
+        Me.EmptySpaceItem11.Size = New System.Drawing.Size(630, 275)
+        Me.EmptySpaceItem11.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem215
+        '
+        Me.LayoutControlItem215.Control = Me.cmdCheckTank
+        Me.LayoutControlItem215.Location = New System.Drawing.Point(0, 913)
+        Me.LayoutControlItem215.Name = "LayoutControlItem215"
+        Me.LayoutControlItem215.Size = New System.Drawing.Size(630, 43)
+        Me.LayoutControlItem215.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem215.TextVisible = False
+        '
         'SimpleLabelItem3
         '
         Me.SimpleLabelItem3.AllowHotTrack = False
         Me.SimpleLabelItem3.CustomizationFormText = "Τελευταίος Έλεγχος Δεξαμενής στις: "
-        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 868)
+        Me.SimpleLabelItem3.Location = New System.Drawing.Point(0, 859)
         Me.SimpleLabelItem3.Name = "SimpleLabelItem3"
         Me.SimpleLabelItem3.Size = New System.Drawing.Size(630, 27)
         Me.SimpleLabelItem3.Text = "Τελευταίος Έλεγχος Δεξαμενής στις: "
         Me.SimpleLabelItem3.TextSize = New System.Drawing.Size(407, 23)
+        '
+        'SimpleLabelItem4
+        '
+        Me.SimpleLabelItem4.AllowHotTrack = False
+        Me.SimpleLabelItem4.Location = New System.Drawing.Point(0, 886)
+        Me.SimpleLabelItem4.Name = "SimpleLabelItem4"
+        Me.SimpleLabelItem4.Size = New System.Drawing.Size(630, 27)
+        Me.SimpleLabelItem4.Text = "Ποσότητα τελευταίου ελέγχου: "
+        Me.SimpleLabelItem4.TextSize = New System.Drawing.Size(407, 23)
         '
         'tabMaintenance
         '
@@ -7706,11 +7710,11 @@ Partial Class frmBDG
         '
         'LayoutControl4InvHeatGas
         '
+        Me.LayoutControl4InvHeatGas.Controls.Add(Me.cboMeasurementUsr)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.MemoEdit4)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cbofService2)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdGInvEdit)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdGInvAdd)
-        Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdOInvEdit)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdOInvAdd)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdGInvDelete)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cmdGInvRefresh)
@@ -7748,6 +7752,29 @@ Partial Class frmBDG
         Me.LayoutControl4InvHeatGas.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl4InvHeatGas.TabIndex = 9
         Me.LayoutControl4InvHeatGas.Text = "LayoutControl3"
+        '
+        'cboMeasurementUsr
+        '
+        Me.cboMeasurementUsr.Location = New System.Drawing.Point(226, 229)
+        Me.cboMeasurementUsr.Margin = New System.Windows.Forms.Padding(5)
+        Me.cboMeasurementUsr.Name = "cboMeasurementUsr"
+        Me.cboMeasurementUsr.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.cboMeasurementUsr.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
+        Me.cboMeasurementUsr.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 35, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("code", "code", 55, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("RealName", "Εισπράκτορας", 107, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.cboMeasurementUsr.Properties.DataSource = Me.VwMEASURERSBindingSource
+        Me.cboMeasurementUsr.Properties.DisplayMember = "RealName"
+        Me.cboMeasurementUsr.Properties.NullText = ""
+        Me.cboMeasurementUsr.Properties.PopupSizeable = False
+        Me.cboMeasurementUsr.Properties.ValueMember = "ID"
+        Me.cboMeasurementUsr.Size = New System.Drawing.Size(492, 38)
+        Me.cboMeasurementUsr.StyleController = Me.LayoutControl4InvHeatGas
+        Me.cboMeasurementUsr.TabIndex = 67
+        Me.cboMeasurementUsr.Tag = "usrID,0,1,2"
+        '
+        'VwMEASURERSBindingSource
+        '
+        Me.VwMEASURERSBindingSource.DataMember = "vw_MEASURERS"
+        Me.VwMEASURERSBindingSource.DataSource = Me.Priamos_NET_DataSet_BDG
         '
         'MemoEdit4
         '
@@ -7798,20 +7825,10 @@ Partial Class frmBDG
         Me.cmdGInvAdd.StyleController = Me.LayoutControl4InvHeatGas
         Me.cmdGInvAdd.TabIndex = 63
         '
-        'cmdOInvEdit
-        '
-        Me.cmdOInvEdit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Edit_16x16
-        Me.cmdOInvEdit.Location = New System.Drawing.Point(25, 510)
-        Me.cmdOInvEdit.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdOInvEdit.Name = "cmdOInvEdit"
-        Me.cmdOInvEdit.Size = New System.Drawing.Size(26, 39)
-        Me.cmdOInvEdit.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdOInvEdit.TabIndex = 62
-        '
         'cmdOInvAdd
         '
         Me.cmdOInvAdd.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.AddFile_16x16
-        Me.cmdOInvAdd.Location = New System.Drawing.Point(25, 424)
+        Me.cmdOInvAdd.Location = New System.Drawing.Point(25, 466)
         Me.cmdOInvAdd.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdOInvAdd.Name = "cmdOInvAdd"
         Me.cmdOInvAdd.Size = New System.Drawing.Size(26, 39)
@@ -7843,7 +7860,7 @@ Partial Class frmBDG
         'cmdOInvDelete
         '
         Me.cmdOInvDelete.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.Remove_16x16
-        Me.cmdOInvDelete.Location = New System.Drawing.Point(25, 467)
+        Me.cmdOInvDelete.Location = New System.Drawing.Point(25, 509)
         Me.cmdOInvDelete.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdOInvDelete.Name = "cmdOInvDelete"
         Me.cmdOInvDelete.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -7854,7 +7871,7 @@ Partial Class frmBDG
         'cmdOInvRefresh
         '
         Me.cmdOInvRefresh.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_refresh_16
-        Me.cmdOInvRefresh.Location = New System.Drawing.Point(25, 553)
+        Me.cmdOInvRefresh.Location = New System.Drawing.Point(25, 552)
         Me.cmdOInvRefresh.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdOInvRefresh.Name = "cmdOInvRefresh"
         Me.cmdOInvRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
@@ -7880,7 +7897,7 @@ Partial Class frmBDG
         Me.cmdOInvSave.Enabled = False
         Me.cmdOInvSave.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_invoice_24
         Me.cmdOInvSave.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
-        Me.cmdOInvSave.Location = New System.Drawing.Point(25, 381)
+        Me.cmdOInvSave.Location = New System.Drawing.Point(25, 423)
         Me.cmdOInvSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdOInvSave.Name = "cmdOInvSave"
         Me.cmdOInvSave.Size = New System.Drawing.Size(1062, 39)
@@ -7914,8 +7931,8 @@ Partial Class frmBDG
         'RepositoryItemButtonGas
         '
         Me.RepositoryItemButtonGas.AutoHeight = False
-        EditorButtonImageOptions13.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions13, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject49, SerializableAppearanceObject50, SerializableAppearanceObject51, SerializableAppearanceObject52, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonGas.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonGas.Name = "RepositoryItemButtonGas"
         '
         'txtGInvTotalPrice
@@ -7998,7 +8015,7 @@ Partial Class frmBDG
         'txtOInvMes
         '
         Me.txtOInvMes.EditValue = "0,00"
-        Me.txtOInvMes.Location = New System.Drawing.Point(226, 229)
+        Me.txtOInvMes.Location = New System.Drawing.Point(226, 271)
         Me.txtOInvMes.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvMes.Name = "txtOInvMes"
         Me.txtOInvMes.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -8015,7 +8032,7 @@ Partial Class frmBDG
         'txtOInvBefMes
         '
         Me.txtOInvBefMes.EditValue = "0,00"
-        Me.txtOInvBefMes.Location = New System.Drawing.Point(574, 229)
+        Me.txtOInvBefMes.Location = New System.Drawing.Point(574, 271)
         Me.txtOInvBefMes.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvBefMes.Name = "txtOInvBefMes"
         Me.txtOInvBefMes.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -8032,7 +8049,7 @@ Partial Class frmBDG
         'txtOInvTotalPrice
         '
         Me.txtOInvTotalPrice.EditValue = "0,00 €"
-        Me.txtOInvTotalPrice.Location = New System.Drawing.Point(521, 297)
+        Me.txtOInvTotalPrice.Location = New System.Drawing.Point(521, 339)
         Me.txtOInvTotalPrice.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvTotalPrice.Name = "txtOInvTotalPrice"
         Me.txtOInvTotalPrice.Properties.DisplayFormat.FormatString = "c"
@@ -8050,7 +8067,7 @@ Partial Class frmBDG
         'txtOInvPrice
         '
         Me.txtOInvPrice.EditValue = "0,000000 €"
-        Me.txtOInvPrice.Location = New System.Drawing.Point(317, 297)
+        Me.txtOInvPrice.Location = New System.Drawing.Point(317, 339)
         Me.txtOInvPrice.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvPrice.Name = "txtOInvPrice"
         Me.txtOInvPrice.Properties.DisplayFormat.FormatString = "c"
@@ -8068,7 +8085,7 @@ Partial Class frmBDG
         'txtOInvLiters
         '
         Me.txtOInvLiters.EditValue = "0,00"
-        Me.txtOInvLiters.Location = New System.Drawing.Point(25, 297)
+        Me.txtOInvLiters.Location = New System.Drawing.Point(25, 339)
         Me.txtOInvLiters.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvLiters.Name = "txtOInvLiters"
         Me.txtOInvLiters.Properties.DisplayFormat.FormatString = "n2"
@@ -8085,7 +8102,7 @@ Partial Class frmBDG
         '
         'txtOInvFileNames
         '
-        Me.txtOInvFileNames.Location = New System.Drawing.Point(226, 339)
+        Me.txtOInvFileNames.Location = New System.Drawing.Point(226, 381)
         Me.txtOInvFileNames.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvFileNames.Name = "txtOInvFileNames"
         Me.txtOInvFileNames.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
@@ -8130,12 +8147,12 @@ Partial Class frmBDG
         'grdOil
         '
         Me.grdOil.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        Me.grdOil.Location = New System.Drawing.Point(55, 424)
+        Me.grdOil.Location = New System.Drawing.Point(55, 466)
         Me.grdOil.MainView = Me.GridView3
         Me.grdOil.Margin = New System.Windows.Forms.Padding(5)
         Me.grdOil.Name = "grdOil"
         Me.grdOil.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonOil})
-        Me.grdOil.Size = New System.Drawing.Size(1032, 845)
+        Me.grdOil.Size = New System.Drawing.Size(1032, 803)
         Me.grdOil.TabIndex = 36
         Me.grdOil.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -8153,8 +8170,8 @@ Partial Class frmBDG
         'RepositoryItemButtonOil
         '
         Me.RepositoryItemButtonOil.AutoHeight = False
-        EditorButtonImageOptions14.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions14, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject53, SerializableAppearanceObject54, SerializableAppearanceObject55, SerializableAppearanceObject56, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonOil.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonOil.Name = "RepositoryItemButtonOil"
         '
         'txtOInvCode
@@ -8229,7 +8246,7 @@ Partial Class frmBDG
         Me.MemoEdit41.Location = New System.Drawing.Point(722, 87)
         Me.MemoEdit41.Margin = New System.Windows.Forms.Padding(5)
         Me.MemoEdit41.Name = "MemoEdit41"
-        Me.MemoEdit41.Size = New System.Drawing.Size(365, 248)
+        Me.MemoEdit41.Size = New System.Drawing.Size(365, 290)
         Me.MemoEdit41.StyleController = Me.LayoutControl4InvHeatGas
         Me.MemoEdit41.TabIndex = 66
         Me.MemoEdit41.Tag = "cmt,0,1,2"
@@ -8249,7 +8266,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup5.AppearanceGroup.Options.UseBorderColor = True
         Me.LayoutControlGroup5.CustomizationFormText = "Τιμολόγια Πετρέλαιου"
         Me.LayoutControlGroup5.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.BeforeText
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.EmptySpaceItem13, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem68, Me.LayoutControlItem211, Me.LayoutControlItem53, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.LayoutControlItem58, Me.LayoutControlItem57})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.EmptySpaceItem13, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem211, Me.LayoutControlItem53, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.LayoutControlItem58, Me.LayoutControlItem57, Me.LayoutControlItem216})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
         Me.LayoutControlGroup5.Size = New System.Drawing.Size(1092, 1274)
@@ -8287,7 +8304,7 @@ Partial Class frmBDG
         Me.LayoutControlItem54.CustomizationFormText = "Λίτρα"
         Me.LayoutControlItem54.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem54.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem54.Location = New System.Drawing.Point(0, 210)
+        Me.LayoutControlItem54.Location = New System.Drawing.Point(0, 252)
         Me.LayoutControlItem54.Name = "LayoutControlItem54"
         Me.LayoutControlItem54.Size = New System.Drawing.Size(292, 68)
         Me.LayoutControlItem54.Tag = "1"
@@ -8299,7 +8316,7 @@ Partial Class frmBDG
         '
         Me.LayoutControlItem50.Control = Me.txtOInvFileNames
         Me.LayoutControlItem50.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem50.Location = New System.Drawing.Point(0, 278)
+        Me.LayoutControlItem50.Location = New System.Drawing.Point(0, 320)
         Me.LayoutControlItem50.Name = "LayoutControlItem50"
         Me.LayoutControlItem50.Size = New System.Drawing.Size(1066, 42)
         Me.LayoutControlItem50.Text = "Επισύναψη Τιμολογίου"
@@ -8319,9 +8336,9 @@ Partial Class frmBDG
         'LayoutControlItem47
         '
         Me.LayoutControlItem47.Control = Me.grdOil
-        Me.LayoutControlItem47.Location = New System.Drawing.Point(30, 363)
+        Me.LayoutControlItem47.Location = New System.Drawing.Point(30, 405)
         Me.LayoutControlItem47.Name = "LayoutControlItem47"
-        Me.LayoutControlItem47.Size = New System.Drawing.Size(1036, 849)
+        Me.LayoutControlItem47.Size = New System.Drawing.Size(1036, 807)
         Me.LayoutControlItem47.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem47.TextVisible = False
         '
@@ -8336,15 +8353,15 @@ Partial Class frmBDG
         'EmptySpaceItem24
         '
         Me.EmptySpaceItem24.AllowHotTrack = False
-        Me.EmptySpaceItem24.Location = New System.Drawing.Point(0, 535)
+        Me.EmptySpaceItem24.Location = New System.Drawing.Point(0, 534)
         Me.EmptySpaceItem24.Name = "EmptySpaceItem24"
-        Me.EmptySpaceItem24.Size = New System.Drawing.Size(30, 677)
+        Me.EmptySpaceItem24.Size = New System.Drawing.Size(30, 678)
         Me.EmptySpaceItem24.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem69
         '
         Me.LayoutControlItem69.Control = Me.cmdOInvDelete
-        Me.LayoutControlItem69.Location = New System.Drawing.Point(0, 406)
+        Me.LayoutControlItem69.Location = New System.Drawing.Point(0, 448)
         Me.LayoutControlItem69.Name = "LayoutControlItem69"
         Me.LayoutControlItem69.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem69.TextSize = New System.Drawing.Size(0, 0)
@@ -8353,7 +8370,7 @@ Partial Class frmBDG
         'LayoutControlItem71
         '
         Me.LayoutControlItem71.Control = Me.cmdOInvRefresh
-        Me.LayoutControlItem71.Location = New System.Drawing.Point(0, 492)
+        Me.LayoutControlItem71.Location = New System.Drawing.Point(0, 491)
         Me.LayoutControlItem71.Name = "LayoutControlItem71"
         Me.LayoutControlItem71.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem71.TextSize = New System.Drawing.Size(0, 0)
@@ -8362,7 +8379,7 @@ Partial Class frmBDG
         'LayoutControlItem65
         '
         Me.LayoutControlItem65.Control = Me.cmdOInvSave
-        Me.LayoutControlItem65.Location = New System.Drawing.Point(0, 320)
+        Me.LayoutControlItem65.Location = New System.Drawing.Point(0, 362)
         Me.LayoutControlItem65.Name = "LayoutControlItem65"
         Me.LayoutControlItem65.Size = New System.Drawing.Size(1066, 43)
         Me.LayoutControlItem65.TextSize = New System.Drawing.Size(0, 0)
@@ -8371,20 +8388,11 @@ Partial Class frmBDG
         'LayoutControlItem77
         '
         Me.LayoutControlItem77.Control = Me.cmdOInvAdd
-        Me.LayoutControlItem77.Location = New System.Drawing.Point(0, 363)
+        Me.LayoutControlItem77.Location = New System.Drawing.Point(0, 405)
         Me.LayoutControlItem77.Name = "LayoutControlItem77"
         Me.LayoutControlItem77.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem77.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem77.TextVisible = False
-        '
-        'LayoutControlItem68
-        '
-        Me.LayoutControlItem68.Control = Me.cmdOInvEdit
-        Me.LayoutControlItem68.Location = New System.Drawing.Point(0, 449)
-        Me.LayoutControlItem68.Name = "LayoutControlItem68"
-        Me.LayoutControlItem68.Size = New System.Drawing.Size(30, 43)
-        Me.LayoutControlItem68.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem68.TextVisible = False
         '
         'LayoutControlItem211
         '
@@ -8393,7 +8401,7 @@ Partial Class frmBDG
         Me.LayoutControlItem211.CustomizationFormText = "Σχόλια"
         Me.LayoutControlItem211.Location = New System.Drawing.Point(697, 0)
         Me.LayoutControlItem211.Name = "LayoutControlItem211"
-        Me.LayoutControlItem211.Size = New System.Drawing.Size(369, 278)
+        Me.LayoutControlItem211.Size = New System.Drawing.Size(369, 320)
         Me.LayoutControlItem211.Text = "Σχόλια"
         Me.LayoutControlItem211.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem211.TextSize = New System.Drawing.Size(189, 23)
@@ -8416,7 +8424,7 @@ Partial Class frmBDG
         Me.LayoutControlItem55.Control = Me.txtOInvPrice
         Me.LayoutControlItem55.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem55.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem55.Location = New System.Drawing.Point(292, 210)
+        Me.LayoutControlItem55.Location = New System.Drawing.Point(292, 252)
         Me.LayoutControlItem55.Name = "LayoutControlItem55"
         Me.LayoutControlItem55.Size = New System.Drawing.Size(204, 68)
         Me.LayoutControlItem55.Tag = "1"
@@ -8429,7 +8437,7 @@ Partial Class frmBDG
         Me.LayoutControlItem56.Control = Me.txtOInvTotalPrice
         Me.LayoutControlItem56.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem56.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem56.Location = New System.Drawing.Point(496, 210)
+        Me.LayoutControlItem56.Location = New System.Drawing.Point(496, 252)
         Me.LayoutControlItem56.Name = "LayoutControlItem56"
         Me.LayoutControlItem56.Size = New System.Drawing.Size(201, 68)
         Me.LayoutControlItem56.Tag = "1"
@@ -8441,7 +8449,7 @@ Partial Class frmBDG
         '
         Me.LayoutControlItem58.Control = Me.txtOInvMes
         Me.LayoutControlItem58.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem58.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem58.Location = New System.Drawing.Point(0, 210)
         Me.LayoutControlItem58.Name = "LayoutControlItem58"
         Me.LayoutControlItem58.Size = New System.Drawing.Size(348, 42)
         Me.LayoutControlItem58.Text = "Τωρινή Μέτρηση"
@@ -8451,11 +8459,20 @@ Partial Class frmBDG
         '
         Me.LayoutControlItem57.Control = Me.txtOInvBefMes
         Me.LayoutControlItem57.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem57.Location = New System.Drawing.Point(348, 168)
+        Me.LayoutControlItem57.Location = New System.Drawing.Point(348, 210)
         Me.LayoutControlItem57.Name = "LayoutControlItem57"
         Me.LayoutControlItem57.Size = New System.Drawing.Size(349, 42)
         Me.LayoutControlItem57.Text = "Προηγ. Μέτρηση"
         Me.LayoutControlItem57.TextSize = New System.Drawing.Size(189, 23)
+        '
+        'LayoutControlItem216
+        '
+        Me.LayoutControlItem216.Control = Me.cboMeasurementUsr
+        Me.LayoutControlItem216.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem216.Name = "LayoutControlItem216"
+        Me.LayoutControlItem216.Size = New System.Drawing.Size(697, 42)
+        Me.LayoutControlItem216.Text = "Επιμετρητής"
+        Me.LayoutControlItem216.TextSize = New System.Drawing.Size(189, 23)
         '
         'LayoutControlGroup6
         '
@@ -8688,6 +8705,68 @@ Partial Class frmBDG
         Me.LayoutControl7Consumptions.Size = New System.Drawing.Size(2231, 1294)
         Me.LayoutControl7Consumptions.TabIndex = 0
         Me.LayoutControl7Consumptions.Text = "LayoutControl"
+        '
+        'txtTotalLiterConsumption
+        '
+        Me.txtTotalLiterConsumption.EditValue = "0,00 €"
+        Me.txtTotalLiterConsumption.Location = New System.Drawing.Point(2102, 96)
+        Me.txtTotalLiterConsumption.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtTotalLiterConsumption.Name = "txtTotalLiterConsumption"
+        Me.txtTotalLiterConsumption.Properties.DisplayFormat.FormatString = "c"
+        Me.txtTotalLiterConsumption.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalLiterConsumption.Properties.EditFormat.FormatString = "n2"
+        Me.txtTotalLiterConsumption.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtTotalLiterConsumption.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtTotalLiterConsumption.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtTotalLiterConsumption.Properties.MaskSettings.Set("mask", "f")
+        Me.txtTotalLiterConsumption.Properties.Tag = "BenchExtraPrice"
+        Me.txtTotalLiterConsumption.Size = New System.Drawing.Size(117, 38)
+        Me.txtTotalLiterConsumption.StyleController = Me.LayoutControl7Consumptions
+        Me.txtTotalLiterConsumption.TabIndex = 71
+        Me.txtTotalLiterConsumption.Tag = "totConsumptionLiter,0,1,2"
+        Me.txtTotalLiterConsumption.Visible = False
+        '
+        'txtLiterConsumptionB
+        '
+        Me.txtLiterConsumptionB.EditValue = "0,00 €"
+        Me.txtLiterConsumptionB.Location = New System.Drawing.Point(2102, 54)
+        Me.txtLiterConsumptionB.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtLiterConsumptionB.Name = "txtLiterConsumptionB"
+        Me.txtLiterConsumptionB.Properties.DisplayFormat.FormatString = "c"
+        Me.txtLiterConsumptionB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLiterConsumptionB.Properties.EditFormat.FormatString = "n2"
+        Me.txtLiterConsumptionB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLiterConsumptionB.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtLiterConsumptionB.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtLiterConsumptionB.Properties.MaskSettings.Set("mask", "f")
+        Me.txtLiterConsumptionB.Properties.ReadOnly = True
+        Me.txtLiterConsumptionB.Properties.Tag = "BenchExtraPrice"
+        Me.txtLiterConsumptionB.Size = New System.Drawing.Size(117, 38)
+        Me.txtLiterConsumptionB.StyleController = Me.LayoutControl7Consumptions
+        Me.txtLiterConsumptionB.TabIndex = 70
+        Me.txtLiterConsumptionB.Tag = "consumptionLiterB,0,1,2"
+        Me.txtLiterConsumptionB.Visible = False
+        '
+        'txtLiterConsumptionH
+        '
+        Me.txtLiterConsumptionH.EditValue = "0,00 €"
+        Me.txtLiterConsumptionH.Location = New System.Drawing.Point(2102, 12)
+        Me.txtLiterConsumptionH.Margin = New System.Windows.Forms.Padding(5)
+        Me.txtLiterConsumptionH.Name = "txtLiterConsumptionH"
+        Me.txtLiterConsumptionH.Properties.DisplayFormat.FormatString = "c"
+        Me.txtLiterConsumptionH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLiterConsumptionH.Properties.EditFormat.FormatString = "n2"
+        Me.txtLiterConsumptionH.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.txtLiterConsumptionH.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.txtLiterConsumptionH.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
+        Me.txtLiterConsumptionH.Properties.MaskSettings.Set("mask", "f")
+        Me.txtLiterConsumptionH.Properties.ReadOnly = True
+        Me.txtLiterConsumptionH.Properties.Tag = "BenchExtraPrice"
+        Me.txtLiterConsumptionH.Size = New System.Drawing.Size(117, 38)
+        Me.txtLiterConsumptionH.StyleController = Me.LayoutControl7Consumptions
+        Me.txtLiterConsumptionH.TabIndex = 69
+        Me.txtLiterConsumptionH.Tag = "consumptionLiterH,0,1,2"
+        Me.txtLiterConsumptionH.Visible = False
         '
         'cmdRefreshConsumption
         '
@@ -9409,6 +9488,34 @@ Partial Class frmBDG
         Me.EmptySpaceItem38.Size = New System.Drawing.Size(30, 937)
         Me.EmptySpaceItem38.TextSize = New System.Drawing.Size(0, 0)
         '
+        'LayoutControlItem212
+        '
+        Me.LayoutControlItem212.Control = Me.txtLiterConsumptionH
+        Me.LayoutControlItem212.Location = New System.Drawing.Point(1810, 0)
+        Me.LayoutControlItem212.Name = "LayoutControlItem212"
+        Me.LayoutControlItem212.Size = New System.Drawing.Size(401, 42)
+        Me.LayoutControlItem212.Text = "Λίτρα Κατανάλωσης"
+        Me.LayoutControlItem212.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem213
+        '
+        Me.LayoutControlItem213.Control = Me.txtLiterConsumptionB
+        Me.LayoutControlItem213.Location = New System.Drawing.Point(1810, 42)
+        Me.LayoutControlItem213.Name = "LayoutControlItem213"
+        Me.LayoutControlItem213.Size = New System.Drawing.Size(401, 42)
+        Me.LayoutControlItem213.Text = "Λίτρα Κατανάλωσης"
+        Me.LayoutControlItem213.TextSize = New System.Drawing.Size(268, 23)
+        '
+        'LayoutControlItem214
+        '
+        Me.LayoutControlItem214.Control = Me.txtTotalLiterConsumption
+        Me.LayoutControlItem214.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
+        Me.LayoutControlItem214.Location = New System.Drawing.Point(1810, 84)
+        Me.LayoutControlItem214.Name = "LayoutControlItem214"
+        Me.LayoutControlItem214.Size = New System.Drawing.Size(401, 42)
+        Me.LayoutControlItem214.Text = "Συνολικό Λίτρα Κατανάλωσης"
+        Me.LayoutControlItem214.TextSize = New System.Drawing.Size(268, 23)
+        '
         'tabDeposit
         '
         Me.tabDeposit.Controls.Add(Me.LDeposit)
@@ -9532,30 +9639,30 @@ Partial Class frmBDG
         '
         Me.GridView_DepositA.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colord1, Me.colmultiplier, Me.colmultiplierDescr, Me.colttl2, Me.coldtDeposit, Me.colamt2, Me.colcmt2, Me.colcompleteDate, Me.colinhID, Me.colfilename1, Me.coldepositFID, Me.colisPrepayment})
         Me.GridView_DepositA.FixedLineWidth = 3
-        GridFormatRule4.ApplyToRow = True
-        GridFormatRule4.Column = Me.colcmt2
-        GridFormatRule4.Name = "Format0"
-        FormatConditionRuleExpression4.Expression = "[amt] < 0.0m"
-        FormatConditionRuleExpression4.PredefinedName = "Red Text"
-        GridFormatRule4.Rule = FormatConditionRuleExpression4
-        GridFormatRule5.ApplyToRow = True
-        GridFormatRule5.Column = Me.colcmt2
-        GridFormatRule5.Name = "Format1"
-        FormatConditionRuleExpression5.Expression = "[amt] > 0.0m"
-        FormatConditionRuleExpression5.PredefinedName = "Green Text"
-        GridFormatRule5.Rule = FormatConditionRuleExpression5
-        GridFormatRule6.ApplyToRow = True
-        GridFormatRule6.Column = Me.colttl2
-        GridFormatRule6.Name = "Format2"
-        FormatConditionRuleExpression6.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleExpression6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(150, Byte), Integer), CType(CType(70, Byte), Integer))
-        FormatConditionRuleExpression6.Appearance.Options.UseFont = True
-        FormatConditionRuleExpression6.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression6.Expression = "[ttl] = 'ΑΡΧΙΚΟ ΑΠΟΘΕΜΑΤΙΚΟ'"
-        GridFormatRule6.Rule = FormatConditionRuleExpression6
-        Me.GridView_DepositA.FormatRules.Add(GridFormatRule4)
-        Me.GridView_DepositA.FormatRules.Add(GridFormatRule5)
-        Me.GridView_DepositA.FormatRules.Add(GridFormatRule6)
+        GridFormatRule40.ApplyToRow = True
+        GridFormatRule40.Column = Me.colcmt2
+        GridFormatRule40.Name = "Format0"
+        FormatConditionRuleExpression40.Expression = "[amt] < 0.0m"
+        FormatConditionRuleExpression40.PredefinedName = "Red Text"
+        GridFormatRule40.Rule = FormatConditionRuleExpression40
+        GridFormatRule41.ApplyToRow = True
+        GridFormatRule41.Column = Me.colcmt2
+        GridFormatRule41.Name = "Format1"
+        FormatConditionRuleExpression41.Expression = "[amt] > 0.0m"
+        FormatConditionRuleExpression41.PredefinedName = "Green Text"
+        GridFormatRule41.Rule = FormatConditionRuleExpression41
+        GridFormatRule42.ApplyToRow = True
+        GridFormatRule42.Column = Me.colttl2
+        GridFormatRule42.Name = "Format2"
+        FormatConditionRuleExpression42.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleExpression42.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(150, Byte), Integer), CType(CType(70, Byte), Integer))
+        FormatConditionRuleExpression42.Appearance.Options.UseFont = True
+        FormatConditionRuleExpression42.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression42.Expression = "[ttl] = 'ΑΡΧΙΚΟ ΑΠΟΘΕΜΑΤΙΚΟ'"
+        GridFormatRule42.Rule = FormatConditionRuleExpression42
+        Me.GridView_DepositA.FormatRules.Add(GridFormatRule40)
+        Me.GridView_DepositA.FormatRules.Add(GridFormatRule41)
+        Me.GridView_DepositA.FormatRules.Add(GridFormatRule42)
         Me.GridView_DepositA.GridControl = Me.grdDepositA
         Me.GridView_DepositA.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "prfName", Nothing, "")})
         Me.GridView_DepositA.LevelIndent = 0
@@ -9691,8 +9798,8 @@ Partial Class frmBDG
         'RepDepositF
         '
         Me.RepDepositF.AutoHeight = False
-        EditorButtonImageOptions15.Image = CType(resources.GetObject("EditorButtonImageOptions15.Image"), System.Drawing.Image)
-        Me.RepDepositF.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions15, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject57, SerializableAppearanceObject58, SerializableAppearanceObject59, SerializableAppearanceObject60, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton()})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        Me.RepDepositF.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.RepDepositF.Name = "RepDepositF"
         Me.RepDepositF.ReadOnly = True
         '
@@ -10720,8 +10827,8 @@ Partial Class frmBDG
         'RepositoryItemButtonEdit4
         '
         Me.RepositoryItemButtonEdit4.AutoHeight = False
-        EditorButtonImageOptions16.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
-        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions16, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject61, SerializableAppearanceObject62, SerializableAppearanceObject63, SerializableAppearanceObject64, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions4.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_upload_link_document_16
+        Me.RepositoryItemButtonEdit4.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonEdit4.Name = "RepositoryItemButtonEdit4"
         '
         'txtBDGFCode
@@ -11100,95 +11207,9 @@ Partial Class frmBDG
         '
         Me.Vw_PUBLIC_STableAdapter.ClearBeforeFill = True
         '
-        'txtLiterConsumptionH
+        'Vw_MEASURERSTableAdapter
         '
-        Me.txtLiterConsumptionH.EditValue = "0,00 €"
-        Me.txtLiterConsumptionH.Location = New System.Drawing.Point(2102, 12)
-        Me.txtLiterConsumptionH.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtLiterConsumptionH.Name = "txtLiterConsumptionH"
-        Me.txtLiterConsumptionH.Properties.DisplayFormat.FormatString = "c"
-        Me.txtLiterConsumptionH.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtLiterConsumptionH.Properties.EditFormat.FormatString = "n2"
-        Me.txtLiterConsumptionH.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtLiterConsumptionH.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtLiterConsumptionH.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
-        Me.txtLiterConsumptionH.Properties.MaskSettings.Set("mask", "f")
-        Me.txtLiterConsumptionH.Properties.ReadOnly = True
-        Me.txtLiterConsumptionH.Properties.Tag = "BenchExtraPrice"
-        Me.txtLiterConsumptionH.Size = New System.Drawing.Size(117, 38)
-        Me.txtLiterConsumptionH.StyleController = Me.LayoutControl7Consumptions
-        Me.txtLiterConsumptionH.TabIndex = 69
-        Me.txtLiterConsumptionH.Tag = "consumptionLiterH,0,1,2"
-        Me.txtLiterConsumptionH.Visible = False
-        '
-        'LayoutControlItem212
-        '
-        Me.LayoutControlItem212.Control = Me.txtLiterConsumptionH
-        Me.LayoutControlItem212.Location = New System.Drawing.Point(1810, 0)
-        Me.LayoutControlItem212.Name = "LayoutControlItem212"
-        Me.LayoutControlItem212.Size = New System.Drawing.Size(401, 42)
-        Me.LayoutControlItem212.Text = "Λίτρα Κατανάλωσης"
-        Me.LayoutControlItem212.TextSize = New System.Drawing.Size(268, 23)
-        '
-        'txtLiterConsumptionB
-        '
-        Me.txtLiterConsumptionB.EditValue = "0,00 €"
-        Me.txtLiterConsumptionB.Location = New System.Drawing.Point(2102, 54)
-        Me.txtLiterConsumptionB.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtLiterConsumptionB.Name = "txtLiterConsumptionB"
-        Me.txtLiterConsumptionB.Properties.DisplayFormat.FormatString = "c"
-        Me.txtLiterConsumptionB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtLiterConsumptionB.Properties.EditFormat.FormatString = "n2"
-        Me.txtLiterConsumptionB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtLiterConsumptionB.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtLiterConsumptionB.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
-        Me.txtLiterConsumptionB.Properties.MaskSettings.Set("mask", "f")
-        Me.txtLiterConsumptionB.Properties.ReadOnly = True
-        Me.txtLiterConsumptionB.Properties.Tag = "BenchExtraPrice"
-        Me.txtLiterConsumptionB.Size = New System.Drawing.Size(117, 38)
-        Me.txtLiterConsumptionB.StyleController = Me.LayoutControl7Consumptions
-        Me.txtLiterConsumptionB.TabIndex = 70
-        Me.txtLiterConsumptionB.Tag = "consumptionLiterB,0,1,2"
-        Me.txtLiterConsumptionB.Visible = False
-        '
-        'LayoutControlItem213
-        '
-        Me.LayoutControlItem213.Control = Me.txtLiterConsumptionB
-        Me.LayoutControlItem213.Location = New System.Drawing.Point(1810, 42)
-        Me.LayoutControlItem213.Name = "LayoutControlItem213"
-        Me.LayoutControlItem213.Size = New System.Drawing.Size(401, 42)
-        Me.LayoutControlItem213.Text = "Λίτρα Κατανάλωσης"
-        Me.LayoutControlItem213.TextSize = New System.Drawing.Size(268, 23)
-        '
-        'txtTotalLiterConsumption
-        '
-        Me.txtTotalLiterConsumption.EditValue = "0,00 €"
-        Me.txtTotalLiterConsumption.Location = New System.Drawing.Point(2102, 96)
-        Me.txtTotalLiterConsumption.Margin = New System.Windows.Forms.Padding(5)
-        Me.txtTotalLiterConsumption.Name = "txtTotalLiterConsumption"
-        Me.txtTotalLiterConsumption.Properties.DisplayFormat.FormatString = "c"
-        Me.txtTotalLiterConsumption.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtTotalLiterConsumption.Properties.EditFormat.FormatString = "n2"
-        Me.txtTotalLiterConsumption.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.txtTotalLiterConsumption.Properties.Mask.UseMaskAsDisplayFormat = True
-        Me.txtTotalLiterConsumption.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
-        Me.txtTotalLiterConsumption.Properties.MaskSettings.Set("mask", "f")
-        Me.txtTotalLiterConsumption.Properties.Tag = "BenchExtraPrice"
-        Me.txtTotalLiterConsumption.Size = New System.Drawing.Size(117, 38)
-        Me.txtTotalLiterConsumption.StyleController = Me.LayoutControl7Consumptions
-        Me.txtTotalLiterConsumption.TabIndex = 71
-        Me.txtTotalLiterConsumption.Tag = "totConsumptionLiter,0,1,2"
-        Me.txtTotalLiterConsumption.Visible = False
-        '
-        'LayoutControlItem214
-        '
-        Me.LayoutControlItem214.Control = Me.txtTotalLiterConsumption
-        Me.LayoutControlItem214.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem214.Location = New System.Drawing.Point(1810, 84)
-        Me.LayoutControlItem214.Name = "LayoutControlItem214"
-        Me.LayoutControlItem214.Size = New System.Drawing.Size(401, 42)
-        Me.LayoutControlItem214.Text = "Συνολικό Λίτρα Κατανάλωσης"
-        Me.LayoutControlItem214.TextSize = New System.Drawing.Size(268, 23)
+        Me.Vw_MEASURERSTableAdapter.ClearBeforeFill = True
         '
         'frmBDG
         '
@@ -11475,9 +11496,6 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem126, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem40, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LCheckTank, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem33, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem91, System.ComponentModel.ISupportInitialize).EndInit
@@ -11487,7 +11505,10 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem178, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem179, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem180, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem215, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.SimpleLabelItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SimpleLabelItem4, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabMaintenance.ResumeLayout(False)
         CType(Me.LayoutControl4Maintenance, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl4Maintenance.ResumeLayout(False)
@@ -11569,6 +11590,8 @@ Partial Class frmBDG
         Me.tabHeatingInvoices.ResumeLayout(False)
         CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl4InvHeatGas.ResumeLayout(False)
+        CType(Me.cboMeasurementUsr.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.VwMEASURERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.MemoEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cbofService2.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.grdGas, System.ComponentModel.ISupportInitialize).EndInit
@@ -11614,13 +11637,13 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem71, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem65, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem77, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem211, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem216, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).EndInit
@@ -11643,6 +11666,9 @@ Partial Class frmBDG
         Me.tabConsumptions.ResumeLayout(False)
         CType(Me.LayoutControl7Consumptions, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl7Consumptions.ResumeLayout(False)
+        CType(Me.txtTotalLiterConsumption.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtLiterConsumptionB.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.txtLiterConsumptionH.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.VwCONSUMPTIONSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit
@@ -11679,6 +11705,9 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem171, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.EmptySpaceItem34, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem212, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem213, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem214, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabDeposit.ResumeLayout(False)
         CType(Me.LDeposit, System.ComponentModel.ISupportInitialize).EndInit
         Me.LDeposit.ResumeLayout(False)
@@ -11786,12 +11815,6 @@ Partial Class frmBDG
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
-        CType(Me.txtLiterConsumptionH.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem212, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txtLiterConsumptionB.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem213, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.txtTotalLiterConsumption.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem214, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -11971,7 +11994,6 @@ Partial Class frmBDG
     Friend WithEvents txtCalH As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtCalB As DevExpress.XtraEditors.TextEdit
     Friend WithEvents RGBolier As DevExpress.XtraEditors.RadioGroup
-    Friend WithEvents cmdCheckTank As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cboBefMes As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem31 As DevExpress.XtraLayout.LayoutControlItem
@@ -11996,10 +12018,6 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem25 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem30 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem40 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LCheckTank As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleLabelItem3 As DevExpress.XtraLayout.SimpleLabelItem
-    Friend WithEvents SimpleLabelItem4 As DevExpress.XtraLayout.SimpleLabelItem
-    Friend WithEvents EmptySpaceItem11 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents LayoutControlItem33 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem44 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem91 As DevExpress.XtraLayout.LayoutControlItem
@@ -12063,7 +12081,6 @@ Partial Class frmBDG
     Friend WithEvents LayoutControl4InvHeatGas As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents cmdGInvEdit As DevExpress.XtraEditors.CheckButton
     Friend WithEvents cmdGInvAdd As DevExpress.XtraEditors.CheckButton
-    Friend WithEvents cmdOInvEdit As DevExpress.XtraEditors.CheckButton
     Friend WithEvents cmdOInvAdd As DevExpress.XtraEditors.CheckButton
     Friend WithEvents cmdGInvDelete As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents cmdGInvRefresh As DevExpress.XtraEditors.SimpleButton
@@ -12112,7 +12129,6 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem71 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem65 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem77 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem68 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup6 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem49 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem61 As DevExpress.XtraLayout.LayoutControlItem
@@ -12665,4 +12681,13 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem212 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem213 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem214 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents cmdCheckTank As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents EmptySpaceItem11 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LayoutControlItem215 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SimpleLabelItem3 As DevExpress.XtraLayout.SimpleLabelItem
+    Friend WithEvents SimpleLabelItem4 As DevExpress.XtraLayout.SimpleLabelItem
+    Friend WithEvents cboMeasurementUsr As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LayoutControlItem216 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents VwMEASURERSBindingSource As BindingSource
+    Friend WithEvents Vw_MEASURERSTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_MEASURERSTableAdapter
 End Class

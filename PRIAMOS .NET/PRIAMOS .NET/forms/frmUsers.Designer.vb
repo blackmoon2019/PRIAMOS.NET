@@ -20,6 +20,8 @@ Partial Class frmUsers
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.chkIsMeasurer = New DevExpress.XtraEditors.CheckEdit()
+        Me.chkisCollector = New DevExpress.XtraEditors.CheckEdit()
         Me.txtPWD = New DevExpress.XtraEditors.TextEdit()
         Me.txtRealName = New DevExpress.XtraEditors.TextEdit()
         Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
@@ -34,10 +36,12 @@ Partial Class frmUsers
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.chkisCollector = New DevExpress.XtraEditors.CheckEdit()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.chkIsMeasurer.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkisCollector.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtRealName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,12 +54,13 @@ Partial Class frmUsers
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chkisCollector.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.chkIsMeasurer)
         Me.LayoutControl1.Controls.Add(Me.chkisCollector)
         Me.LayoutControl1.Controls.Add(Me.txtPWD)
         Me.LayoutControl1.Controls.Add(Me.txtRealName)
@@ -71,6 +76,34 @@ Partial Class frmUsers
         Me.LayoutControl1.Size = New System.Drawing.Size(838, 280)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'chkIsMeasurer
+        '
+        Me.chkIsMeasurer.EditValue = CType(0, Byte)
+        Me.chkIsMeasurer.Location = New System.Drawing.Point(421, 180)
+        Me.chkIsMeasurer.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkIsMeasurer.Name = "chkIsMeasurer"
+        Me.chkIsMeasurer.Properties.Caption = "Δυνατότητα επιμέτρησης"
+        Me.chkIsMeasurer.Properties.ValueChecked = CType(1, Byte)
+        Me.chkIsMeasurer.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkIsMeasurer.Size = New System.Drawing.Size(405, 32)
+        Me.chkIsMeasurer.StyleController = Me.LayoutControl1
+        Me.chkIsMeasurer.TabIndex = 26
+        Me.chkIsMeasurer.Tag = "IsMeasurer,0,1,2"
+        '
+        'chkisCollector
+        '
+        Me.chkisCollector.EditValue = CType(0, Byte)
+        Me.chkisCollector.Location = New System.Drawing.Point(12, 180)
+        Me.chkisCollector.Margin = New System.Windows.Forms.Padding(5)
+        Me.chkisCollector.Name = "chkisCollector"
+        Me.chkisCollector.Properties.Caption = "Δυνατότητα είσπραξης"
+        Me.chkisCollector.Properties.ValueChecked = CType(1, Byte)
+        Me.chkisCollector.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkisCollector.Size = New System.Drawing.Size(405, 32)
+        Me.chkisCollector.StyleController = Me.LayoutControl1
+        Me.chkisCollector.TabIndex = 25
+        Me.chkisCollector.Tag = "isCollector,0,1,2"
         '
         'txtPWD
         '
@@ -145,7 +178,7 @@ Partial Class frmUsers
         '
         Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem7})
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem7, Me.LayoutControlItem8})
         Me.Root.Name = "Root"
         Me.Root.Size = New System.Drawing.Size(838, 280)
         Me.Root.TextVisible = False
@@ -221,28 +254,23 @@ Partial Class frmUsers
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(411, 56)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
-        'chkisCollector
-        '
-        Me.chkisCollector.EditValue = CType(0, Byte)
-        Me.chkisCollector.Location = New System.Drawing.Point(12, 180)
-        Me.chkisCollector.Margin = New System.Windows.Forms.Padding(5)
-        Me.chkisCollector.Name = "chkisCollector"
-        Me.chkisCollector.Properties.Caption = "Δυνατότητα είσπραξης"
-        Me.chkisCollector.Properties.ValueChecked = CType(1, Byte)
-        Me.chkisCollector.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkisCollector.Size = New System.Drawing.Size(814, 32)
-        Me.chkisCollector.StyleController = Me.LayoutControl1
-        Me.chkisCollector.TabIndex = 25
-        Me.chkisCollector.Tag = "isCollector,0,1,2"
-        '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.chkisCollector
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(818, 36)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(409, 36)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
+        '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.chkIsMeasurer
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(409, 168)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(409, 36)
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem8.TextVisible = False
         '
         'frmUsers
         '
@@ -258,6 +286,8 @@ Partial Class frmUsers
         Me.Text = "frmUsers"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.chkIsMeasurer.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkisCollector.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtPWD.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtRealName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtUN.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -270,8 +300,8 @@ Partial Class frmUsers
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chkisCollector.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -292,4 +322,6 @@ Partial Class frmUsers
     Friend WithEvents cboMail As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents chkisCollector As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents chkIsMeasurer As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
 End Class

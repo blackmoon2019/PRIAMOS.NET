@@ -640,6 +640,17 @@ Public Class frmMain
         form.Show()
     End Sub
 
+    Private Sub BBMeasurementCat_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BBMeasurementCat.ItemClick
+        Dim form As frmScroller = New frmScroller()
+        form.Text = "Κατηγορίες Μετρήσεων Δεξαμενής"
+        UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
+        form.DataTable = "vw_MEASUREMENT_CAT"
+        form.MdiParent = Me
+        form.Show()
+    End Sub
+
+
+
 
 
     'Private Sub BBTasks_ItemClick_1(sender As Object, e As ItemClickEventArgs) Handles BBTasks.ItemClick

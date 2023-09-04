@@ -20,7 +20,7 @@ Public Class frmCases
     Private CalledFromCtrl As Boolean
     Private Valid As New ValidateControls
     Private LoadForms As New FormLoader
-    Private Log As New Transactions
+
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
@@ -224,7 +224,6 @@ Public Class frmCases
     End Sub
 
     Private Sub GridView3_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView3.CellValueChanged
-        Dim mes As Decimal, mesB As Decimal, Dif As Decimal
         Try
             'If e.Column.FieldName <> "description" Or e.Column.FieldName <> "dtVisit" Or e.Column.FieldName <> "cmt" Or e.Column.FieldName <> "cctID" Then Exit Sub
             If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
@@ -249,110 +248,9 @@ Public Class frmCases
     End Sub
 
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then
-            Dim menu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = TryCast(e.Menu, GridViewColumnMenu)
-            Dim menuItem As DevExpress.Utils.Menu.DXEditMenuItem
-            Dim item As New DXEditMenuItem()
-            Dim itemColor As New DXEditMenuItem()
-
-            menuItem = menu.Items.Item("Μετονομασία Στήλης")
-            'menu.Items.Clear()
-            If menu.Column IsNot Nothing And menuItem Is Nothing Then
-                'Για να προσθέσουμε menu item στο Default menu πρέπει πρώτα να προσθέσουμε ένα Repository Item 
-                'Υπάρχουν πολλών ειδών Repositorys
-                '1st Custom Menu Item
-                Dim popRenameColumn As New RepositoryItemTextEdit
-                popRenameColumn.Name = "RenameColumn"
-                menu.Items.Add(New DXEditMenuItem("Μετονομασία Στήλης", popRenameColumn, AddressOf OnDetailEditValueChanged, Nothing, Nothing, 100, 0))
-                item = menu.Items.Item("Μετονομασία Στήλης")
-                item.EditValue = menu.Column.GetTextCaption
-                item.Tag = menu.Column.AbsoluteIndex
-                '2nd Custom Menu Item
-                menu.Items.Add(CreateCheckItemDetail("Κλείδωμα Στήλης", menu.Column, Nothing))
-
-                '3rd Custom Menu Item
-                Dim popColorsColumn As New RepositoryItemColorEdit
-                popColorsColumn.Name = "ColorsColumn"
-                menu.Items.Add(New DXEditMenuItem("Χρώμα Στήλης", popColorsColumn, AddressOf OnDetailColumnsColorChanged, Nothing, Nothing, 100, 0))
-                itemColor = menu.Items.Item("Χρώμα Στήλης")
-                itemColor.EditValue = menu.Column.AppearanceCell.BackColor
-                itemColor.Tag = menu.Column.AbsoluteIndex
-
-                '4nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Αποθήκευση όψης", AddressOf OnSaveView, Nothing, Nothing, Nothing, Nothing))
-
-                '5nd Custom Menu Item
-                menu.Items.Add(New DXMenuItem("Συγχρονισμός όψης από Server", AddressOf OnSyncView, Nothing, Nothing, Nothing, Nothing))
-
-
-
-            End If
-        End If
-
-    End Sub
-    Private Function CreateCheckItemDetail(ByVal caption As String, ByVal column As GridColumn, ByVal image As Image) As DXMenuCheckItem
-        Dim item As New DXMenuCheckItem(caption, (Not column.OptionsColumn.AllowMove), image, New EventHandler(AddressOf OnCanMoveItemClickDetail))
-        item.Tag = New MenuColumnInfo(column)
-        Return item
-    End Function
-    'Κλείδωμα Στήλης Detail
-    Private Sub OnCanMoveItemClickDetail(ByVal sender As Object, ByVal e As EventArgs)
-        Dim item As DXMenuCheckItem = TryCast(sender, DXMenuCheckItem)
-        Dim info As MenuColumnInfo = TryCast(item.Tag, MenuColumnInfo)
-        If info Is Nothing Then
-            Return
-        End If
-        info.Column.OptionsColumn.AllowMove = Not item.Checked
-    End Sub
-    Friend Class MenuColumnInfo
-        Public Sub New(ByVal column As GridColumn)
-            Me.Column = column
-        End Sub
-        Public Column As GridColumn
-    End Class
-
-
-    'Μετονομασία Στήλης Detail
-    Private Sub OnDetailEditValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As New DXEditMenuItem()
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView3.Columns(item.Tag).Caption = item.EditValue
-        'MessageBox.Show(item.EditValue.ToString())
-    End Sub
-    'Αλλαγή Χρώματος Στήλης Detail
-    Private Sub OnDetailColumnsColorChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXEditMenuItem = TryCast(sender, DXEditMenuItem)
-        item = sender
-        If item.Tag Is Nothing Then Exit Sub
-        GridView3.Columns(item.Tag).AppearanceCell.BackColor = item.EditValue
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "TASKS_def.xml", "vw_TASKS")
     End Sub
 
-    Private Sub OnSaveView(ByVal sender As System.Object, ByVal e As EventArgs)
-        Dim item As DXMenuItem = TryCast(sender, DXMenuItem)
-        GridView3.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
-        XtraMessageBox.Show("Η όψη αποθηκεύτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-        ' Μόνο αν ο Χρήστης είναι ο Παναγόπουλος
-        If UserProps.ID.ToString.ToUpper = "E9CEFD11-47C0-4796-A46B-BC41C4C3606B" Or
-           UserProps.ID.ToString.ToUpper = "E2BF15AC-19E3-498F-9459-1821B3898C76" Or
-           UserProps.ID.ToString.ToUpper = "97E2CB01-93EA-4F97-B000-FDA359EC943C" Then
-            If XtraMessageBox.Show("Θέλετε να γίνει κοινοποίηση της όψης? Εαν επιλέξετε 'Yes' όλοι οι χρήστες θα έχουν την ίδια όψη", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                If My.Computer.FileSystem.FileExists(ProgProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml") = False Then GridView3.OptionsLayout.LayoutVersion = "v1"
-                GridView3.SaveLayoutToXml(ProgProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
-            End If
-        End If
-
-    End Sub
-    'Συγχρονισμός όψης από Server
-    Private Sub OnSyncView(ByVal sender As System.Object, ByVal e As EventArgs)
-        If XtraMessageBox.Show("Θέλετε να γίνει μεταφορά της όψης από τον server?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-            ' Έλεγχος αν υπάρχει όψη με μεταγενέστερη ημερομηνία στον Server
-            If System.IO.File.Exists(ProgProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml") = True Then
-                My.Computer.FileSystem.CopyFile(ProgProps.ServerViewsPath & "DSGNS\DEF\TASKS_def.xml", Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", True)
-                GridView3.RestoreLayoutFromXml(Application.StartupPath & "\DSGNS\DEF\TASKS_def.xml", OptionsLayoutBase.FullLayout)
-            End If
-        End If
-    End Sub
 
     Private Sub cmdRefreshTask_Click(sender As Object, e As EventArgs) Handles cmdRefreshTask.Click
         Me.Vw_TASKSTableAdapter.FillByCase(Me.Priamos_NETDataSet.vw_TASKS, System.Guid.Parse(sID))

@@ -18,6 +18,7 @@ Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
 Imports System.Drawing.Printing
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
+Imports DevExpress.DataProcessing
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -43,7 +44,7 @@ Public Class frmBDG
     Private ManageCbo As New CombosManager
     Private UserPermissions As New CheckPermissions
     Private Valid As New ValidateControls
-    Private Log As New Transactions
+    
     Private FillCbo As New FillCombos
     Private Apmil As New Apmil
     Private InvOils As New InvOilGas
@@ -96,6 +97,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
         Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_FOLDER_CAT)
 
@@ -534,6 +536,8 @@ Public Class frmBDG
         'Πάροχοι
         'FillCbo.PUBLIC_S(cbofService2, "where servicetypeID='F0EE8CF4-2778-4EF8-BCF3-225541551CE6' and id = ( select top 1 fPublicServiceID from BMANAGE where bdgID = " & toSQLValueS(sID) & ")", True)
         Me.Vw_PUBLIC_STableAdapter.FillByFysikoBdgID(Me.Priamos_NET_DataSet_BDG.vw_PUBLIC_S, System.Guid.Parse(sID))
+
+        Me.Vw_MEASURERSTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_MEASURERS)
         Dim table As DataTable = Me.Vw_PUBLIC_STableAdapter.GetDataByFysikoBdgID(System.Guid.Parse(sID))
         If table.Rows.Count > 0 Then cbofService2.EditValue = table.Rows(0).Item(0)
         table.Dispose()
@@ -544,12 +548,11 @@ Public Class frmBDG
         Dim ExcludeControls As New List(Of String)
         ExcludeControls.Add(cmdOInvAdd.Name)
         ExcludeControls.Add(cmdOInvDelete.Name)
-        ExcludeControls.Add(cmdOInvEdit.Name)
         ExcludeControls.Add(cmdOInvRefresh.Name)
         ExcludeControls.Add(cmdOInvAdd.Name)
         EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
         InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
-        cmdOInvAdd.Checked = False : cmdOInvEdit.Checked = False
+        cmdOInvAdd.Checked = False
         GridView4.OptionsBehavior.Editable = False
         'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
         ExcludeControls.Clear()
@@ -667,16 +670,16 @@ Public Class frmBDG
 
     Private Sub cboOInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboOInvSup.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageCbo.ManageFtypes(cboOInvSup, FormMode.NewRecord)
-            Case 2 : ManageCbo.ManageFtypes(cboOInvSup, FormMode.EditRecord)
+            Case 1 : ManageCbo.ManageSUP(cboOInvSup, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageSUP(cboOInvSup, FormMode.EditRecord)
             Case 3 : cboOInvSup.EditValue = Nothing
         End Select
     End Sub
 
     Private Sub cboGInvSup_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboGInvSup.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : ManageCbo.ManageFtypes(cboGInvSup, FormMode.NewRecord)
-            Case 2 : ManageCbo.ManageFtypes(cboGInvSup, FormMode.EditRecord)
+            Case 1 : ManageCbo.ManageSUP(cboGInvSup, FormMode.NewRecord)
+            Case 2 : ManageCbo.ManageSUP(cboGInvSup, FormMode.EditRecord)
             Case 3 : cboGInvSup.EditValue = Nothing
         End Select
     End Sub
@@ -1025,18 +1028,6 @@ Public Class frmBDG
             cmdGInvEdit.Enabled = True
         End If
     End Sub
-
-    Private Sub cmdOInvEdit_CheckedChanged(sender As Object, e As EventArgs) Handles cmdOInvEdit.CheckedChanged
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            cmdOInvAdd.Enabled = False
-            GridView3.OptionsBehavior.Editable = True
-        Else
-            GridView3.OptionsBehavior.Editable = False
-            cmdOInvAdd.Enabled = True
-        End If
-    End Sub
-
     Private Sub RepositoryItemButtonGas_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonGas.ButtonClick
         GasFilesSelection(True)
         'If XtraOpenFileDialog1.FileName = "" Then Exit Sub
@@ -1073,17 +1064,14 @@ Public Class frmBDG
             EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup5)
             txtOInvCode.Text = DBQ.GetNextId("INV_OIL")
             cmdOInvSave.Enabled = True
-            cmdOInvEdit.Enabled = False
         Else
             Cls.ClearGroupCtrls(LayoutControlGroup5)
             Dim ExcludeControls As New List(Of String)
             ExcludeControls.Add(cmdOInvAdd.Name)
             ExcludeControls.Add(cmdOInvDelete.Name)
-            ExcludeControls.Add(cmdOInvEdit.Name)
             ExcludeControls.Add(cmdOInvRefresh.Name)
             EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
             cmdOInvSave.Enabled = False
-            cmdOInvEdit.Enabled = True
         End If
     End Sub
 
@@ -1191,31 +1179,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub GridView3_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView3.RowUpdated
-        Try
-            Dim FieldsToBeUpdate As New List(Of String)
-            FieldsToBeUpdate.Add("invNumber")
-            FieldsToBeUpdate.Add("invDate")
-            FieldsToBeUpdate.Add("liters")
-            FieldsToBeUpdate.Add("price")
-            FieldsToBeUpdate.Add("totalPrice")
-            If InvOils.UpdateOilData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
-                XtraOpenFileDialog1.FileName = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "comefrom").ToString & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename").ToString
 
-                If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    ' Διαγραφή πρώτα παλιού αρχείου
-                    InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
-
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End If
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                XtraOpenFileDialog1.FileName = ""
-                InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
-            End If
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
@@ -1230,7 +1194,7 @@ Public Class frmBDG
     Private Sub grdOil_KeyDown(sender As Object, e As KeyEventArgs) Handles grdOil.KeyDown
         Select Case e.KeyCode
             Case Keys.F2 : If UserProps.AllowInsert = True Then cmdOInvAdd.PerformClick()
-            Case Keys.F3 : If UserProps.AllowEdit = True Then cmdOInvEdit.PerformClick()
+            Case Keys.F3
             Case Keys.F5 : cmdOInvRefresh.PerformClick()
             Case Keys.Delete : If UserProps.AllowDelete = True Then cmdOInvDelete.PerformClick()
         End Select
@@ -1287,14 +1251,19 @@ Public Class frmBDG
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
+                ' Καταχώρηση της μέτρησης στον έλεγχο δεξαμενών
+                If InsertTank(sOID) = False Then
+                    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην εισαγωγή εγγραφής για την ""Μέτρηση της Δεξαμενής"" ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+
                 Cls.ClearGroupCtrls(LayoutControlGroup5)
                 ''Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
                 'Dim ExcludeControls As New List(Of String)
                 'ExcludeControls.Add(cmdOInvAdd.Name)
                 'ExcludeControls.Add(cmdOInvDelete.Name)
-                'ExcludeControls.Add(cmdOInvEdit.Name)
                 'ExcludeControls.Add(cmdOInvRefresh.Name)
                 'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
+
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
                 XtraOpenFileDialog1.FileName = ""
@@ -1305,7 +1274,28 @@ Public Class frmBDG
 
         End If
     End Sub
+    Private Function InsertTank(ByVal sOID As String) As Boolean
+        Try
+            Dim sSQL As String
+            sSQL = "DELETE FROM TANK WHERE ID = " & toSQLValueS(sOID)
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
 
+            sSQL = "insert into TANK (ID,[bdgID],[measurementcatID],[invOilID],[dtMeasurement], [mes], [mesB],liters, [usrID], 
+                                     [modifiedBy], [modifiedOn], [createdOn], [createdBy], [MachineName]) " &
+                         "SELECT NEWID(),bdgid,(SELECT TOP 1 ID FROM MEASUREMENT_CAT WHERE isInvoice = 1) as measurementcatID,ID," &
+                         "invDate,mes,mesB,liters,usrID,[modifiedBy], [modifiedOn], [createdOn], [createdBy], [MachineName]" &
+                         "FROM INV_OIL WHERE ID= " & toSQLValueS(sOID)
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
     Private Sub GridView5_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView5.RowUpdated
         Try
             Apmil.UpdateApMilData(GridView5, GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString, ApmilFieldsToBeUpdate)
@@ -1899,6 +1889,8 @@ Public Class frmBDG
         Me.Vw_INHTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_INH, System.Guid.Parse(sID))
         LoadForms.RestoreLayoutFromXml(GridView_INH, "INH_BDG_def.xml")
         cmdDelINH.Enabled = UserProps.AllowDelete
+        GridView3.OptionsBehavior.Editable = True
+        GridView4.OptionsBehavior.Editable = True
     End Sub
 
     Private Sub GridView_INH_DoubleClick(sender As Object, e As EventArgs) Handles GridView_INH.DoubleClick
@@ -3431,6 +3423,45 @@ Public Class frmBDG
             End If
         Next
         frmFilePreviwer.ShowDialog()
+    End Sub
+
+    Private Sub cmdCheckTank_Click(sender As Object, e As EventArgs) Handles cmdCheckTank.Click
+        Dim fTANK As frmTANK = New frmTANK()
+        fTANK.Text = "Καταχώρηση Μετρήσεων Δεξαμενής"
+        fTANK.BdgID = sID
+        fTANK.Mode = FormMode.NewRecord
+        fTANK.ShowDialog()
+
+    End Sub
+
+    Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
+        Try
+            Dim FieldsToBeUpdate As New List(Of String)
+            FieldsToBeUpdate.Add("invNumber")
+            FieldsToBeUpdate.Add("invDate")
+            FieldsToBeUpdate.Add("liters")
+            FieldsToBeUpdate.Add("price")
+            FieldsToBeUpdate.Add("totalPrice")
+            FieldsToBeUpdate.Add("mes")
+            FieldsToBeUpdate.Add("mesB")
+            If InvOils.UpdateOilData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
+                XtraOpenFileDialog1.FileName = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "comefrom").ToString & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename").ToString
+
+                If XtraOpenFileDialog1.SafeFileName <> "" Then
+                    ' Διαγραφή πρώτα παλιού αρχείου
+                    InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
+
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
+                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End If
+                XtraOpenFileDialog1.FileName = ""
+                InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
+
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
 

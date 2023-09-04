@@ -14,7 +14,7 @@ Public Class frmCustomers
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
-    Private Log As New Transactions
+    
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private LoadForms As New FormLoader

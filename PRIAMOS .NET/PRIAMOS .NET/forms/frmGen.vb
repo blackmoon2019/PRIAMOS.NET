@@ -20,7 +20,7 @@ Public Class frmGen
     Private CalledFromCtrl As Boolean
     Private CalledFromCtrlRep As Boolean
     Private Valid As New ValidateControls
-    Private Log As New Transactions
+    
     Private DBQ As New DBQueries
     Private FillCbo As New FillCombos
     Private sDataTable As String
@@ -112,7 +112,20 @@ Public Class frmGen
                                 'Καθαρισμός Controls
                                 Cls.ClearCtrls(LayoutControl1)
                                 txtCode.Text = DBQ.GetNextId("PUBLIC_S")
+                            Case "MEASUREMENT_CAT"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "MEASUREMENT_CAT", LayoutControl1,,, sGuid, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.MEASUREMENT_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
 
+                                'Καθαρισμός Controls
+                                Cls.ClearCtrls(LayoutControl1)
+                                txtCode.Text = DBQ.GetNextId("MEASUREMENT_CAT")
 
                             Case "PUBLIC_S_TYPES"
                                 sGuid = System.Guid.NewGuid.ToString
@@ -485,7 +498,16 @@ Public Class frmGen
                                     'Dim form As frmScroller = Frm
                                     'form.LoadRecords("vw_TASKS_CAT")
                                 End If
-
+                            Case "MEASUREMENT_CAT"
+                                sGuid = System.Guid.NewGuid.ToString
+                                sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "MEASUREMENT_CAT", LayoutControl1,,, sID, True)
+                                If CalledFromCtrl Then
+                                    FillCbo.MEASUREMENT_CAT(CtrlCombo)
+                                    CtrlCombo.EditValue = System.Guid.Parse(sGuid)
+                                Else
+                                    'Dim form As frmScroller = Frm
+                                    'form.LoadRecords("vw_TASKS_CAT")
+                                End If
                             Case "PUBLIC_S_TYPES"
                                 sGuid = System.Guid.NewGuid.ToString
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.OneLayoutControl, "PUBLIC_S_TYPES", LayoutControl1,,, sID, True)
@@ -742,6 +764,13 @@ Public Class frmGen
                     Else
                         LoadForms.LoadForm(LayoutControl1, "Select * from vw_PUBLIC_S where id ='" + sID + "'", True)
                     End If
+                Case "MEASUREMENT_CAT"
+                    If Mode = FormMode.NewRecord Then
+                        txtCode.Text = DBQ.GetNextId("MEASUREMENT_CAT")
+                    Else
+                        LoadForms.LoadForm(LayoutControl1, "Select * from vw_MEASUREMENT_CAT where id ='" + sID + "'")
+                    End If
+
                 Case "PUBLIC_S_TYPES"
                     If Mode = FormMode.NewRecord Then
                         txtCode.Text = DBQ.GetNextId("PUBLIC_S_TYPES")
@@ -916,7 +945,13 @@ Public Class frmGen
 
                     Case "PUBLIC_S" : If CalledFromCtrl Then FillCbo.PUBLIC_S(CtrlCombo, "")
                     Case "PUBLIC_S_TYPES" : If CalledFromCtrl Then FillCbo.PUBLIC_S_TYPES(CtrlCombo)
-
+                    Case "MEASUREMENT_CAT"
+                        If CalledFromCtrl Then
+                            FillCbo.MEASUREMENT_CAT(CtrlCombo)
+                        Else
+                            'Dim form As frmScroller = Frm
+                            'form.LoadRecords("vw_TASKS_CAT")
+                        End If
                     Case "COL_EXT_TYPES"
                         If CalledFromCtrl Then
                             FillCbo.COL_EXT_TYPES(CtrlCombo)

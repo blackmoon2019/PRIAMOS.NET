@@ -494,6 +494,23 @@ Public Class CombosManager
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub
+    Public Sub ManageSUP(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte)
+        Dim form1 As frmCustomers = New frmCustomers()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Προμηθευτές"
+        form1.CallerControl = CallerControl
+        form1.CalledFromControl = True
+        form1.MdiParent = frmMain
+        form1.chkSupplier.Checked = True
+        If CallerControl.EditValue <> Nothing Then
+            form1.ID = CallerControl.EditValue.ToString
+            form1.Mode = FormMode.EditRecord
+        Else
+            form1.Mode = FormMode.NewRecord
+        End If
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+    End Sub
     Public Sub ManageCCT(ByVal isFromGrid As Boolean, Optional ByRef RecID As String = "", Optional ByVal CallerControl As LookUpEdit = Nothing, Optional ByVal grdView As GridView = Nothing)
         Dim form1 As frmCustomers = New frmCustomers()
         form1.Text = "Πελάτες"

@@ -7232,6 +7232,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         Private columnmesB As Global.System.Data.DataColumn
         
+        Private columnliters As Global.System.Data.DataColumn
+        
+        Private columnlitersΒ As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -7428,6 +7432,22 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property litersColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnliters
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property litersΒColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlitersΒ
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -7484,9 +7504,11 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal invNumber As Integer,  _
                     ByVal invDate As Date,  _
                     ByVal mes As Decimal,  _
-                    ByVal mesB As Decimal) As vw_TANKRow
+                    ByVal mesB As Decimal,  _
+                    ByVal liters As Decimal,  _
+                    ByVal litersΒ As Decimal) As vw_TANKRow
             Dim rowvw_TANKRow As vw_TANKRow = CType(Me.NewRow,vw_TANKRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerName, dtMeasurement, invOilID, invNumber, invDate, mes, mesB}
+            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerName, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, litersΒ}
             rowvw_TANKRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_TANKRow)
             Return rowvw_TANKRow
@@ -7535,6 +7557,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columninvDate = MyBase.Columns("invDate")
             Me.columnmes = MyBase.Columns("mes")
             Me.columnmesB = MyBase.Columns("mesB")
+            Me.columnliters = MyBase.Columns("liters")
+            Me.columnlitersΒ = MyBase.Columns("litersΒ")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7580,14 +7604,22 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columnmes)
             Me.columnmesB = New Global.System.Data.DataColumn("mesB", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmesB)
+            Me.columnliters = New Global.System.Data.DataColumn("liters", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnliters)
+            Me.columnlitersΒ = New Global.System.Data.DataColumn("litersΒ", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlitersΒ)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
+            Me.columncode.AllowDBNull = false
+            Me.columnbdgID.AllowDBNull = false
+            Me.columnmeasurementcatID.AllowDBNull = false
             Me.columnMachineName.MaxLength = 200
             Me.columnmeasurementCatName.MaxLength = 150
             Me.columnModifierName.MaxLength = 100
             Me.columnbdgNam.MaxLength = 250
             Me.columnMeasurerName.MaxLength = 100
+            Me.columndtMeasurement.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -14441,11 +14473,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property code() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_TANK.codeColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'code' in table 'vw_TANK' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_TANK.codeColumn),Integer)
             End Get
             Set
                 Me(Me.tablevw_TANK.codeColumn) = value
@@ -14456,11 +14484,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property bdgID() As System.Guid
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_TANK.bdgIDColumn),Global.System.Guid)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'bdgID' in table 'vw_TANK' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_TANK.bdgIDColumn),Global.System.Guid)
             End Get
             Set
                 Me(Me.tablevw_TANK.bdgIDColumn) = value
@@ -14471,11 +14495,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property measurementcatID() As System.Guid
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_TANK.measurementcatIDColumn),Global.System.Guid)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'measurementcatID' in table 'vw_TANK' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_TANK.measurementcatIDColumn),Global.System.Guid)
             End Get
             Set
                 Me(Me.tablevw_TANK.measurementcatIDColumn) = value
@@ -14636,11 +14656,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property dtMeasurement() As Date
             Get
-                Try 
-                    Return CType(Me(Me.tablevw_TANK.dtMeasurementColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'dtMeasurement' in table 'vw_TANK' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tablevw_TANK.dtMeasurementColumn),Date)
             End Get
             Set
                 Me(Me.tablevw_TANK.dtMeasurementColumn) = value
@@ -14724,39 +14740,33 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IscodeNull() As Boolean
-            Return Me.IsNull(Me.tablevw_TANK.codeColumn)
-        End Function
+        Public Property liters() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_TANK.litersColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'liters' in table 'vw_TANK' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_TANK.litersColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetcodeNull()
-            Me(Me.tablevw_TANK.codeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsbdgIDNull() As Boolean
-            Return Me.IsNull(Me.tablevw_TANK.bdgIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetbdgIDNull()
-            Me(Me.tablevw_TANK.bdgIDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsmeasurementcatIDNull() As Boolean
-            Return Me.IsNull(Me.tablevw_TANK.measurementcatIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetmeasurementcatIDNull()
-            Me(Me.tablevw_TANK.measurementcatIDColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property litersΒ() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_TANK.litersΒColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'litersΒ' in table 'vw_TANK' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_TANK.litersΒColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -14880,18 +14890,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsdtMeasurementNull() As Boolean
-            Return Me.IsNull(Me.tablevw_TANK.dtMeasurementColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetdtMeasurementNull()
-            Me(Me.tablevw_TANK.dtMeasurementColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsinvOilIDNull() As Boolean
             Return Me.IsNull(Me.tablevw_TANK.invOilIDColumn)
         End Function
@@ -14948,6 +14946,30 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetmesBNull()
             Me(Me.tablevw_TANK.mesBColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslitersNull() As Boolean
+            Return Me.IsNull(Me.tablevw_TANK.litersColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlitersNull()
+            Me(Me.tablevw_TANK.litersColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IslitersΒNull() As Boolean
+            Return Me.IsNull(Me.tablevw_TANK.litersΒColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetlitersΒNull()
+            Me(Me.tablevw_TANK.litersΒColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -18882,6 +18904,8 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("invDate", "invDate")
             tableMapping.ColumnMappings.Add("mes", "mes")
             tableMapping.ColumnMappings.Add("mesB", "mesB")
+            tableMapping.ColumnMappings.Add("liters", "liters")
+            tableMapping.ColumnMappings.Add("litersΒ", "litersΒ")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -18900,8 +18924,8 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdO"& _ 
                 "n, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerNam"& _ 
-                "e, dtMeasurement, invOilID, invNumber, invDate, mes, mesB FROM vw_TANK WHERE (bd"& _ 
-                "gID = @bdgID)"
+                "e, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, litersΒ"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM"& _ 
+                "   vw_TANK"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @bdgID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -18910,13 +18934,9 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function FillByBdgID(ByVal dataTable As Priamos_NET_DataSet_BDG.vw_TANKDataTable, ByVal bdgID As Global.System.Nullable(Of Global.System.Guid)) As Integer
+        Public Overloads Overridable Function FillByBdgID(ByVal dataTable As Priamos_NET_DataSet_BDG.vw_TANKDataTable, ByVal bdgID As System.Guid) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (bdgID.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID.Value,System.Guid)
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(bdgID,System.Guid)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If

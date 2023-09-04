@@ -103,8 +103,8 @@ Partial Class frmCases
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.chkManage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtCompleteDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtCompleteDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtCompleteDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboBDG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwBDGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,8 +129,8 @@ Partial Class frmCases
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
-        CType(Me.dtVisitDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtVisitDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtVisitDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MemoEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboCCT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -485,6 +485,7 @@ Partial Class frmCases
         Me.LayoutControl2.Controls.Add(Me.grdTasks)
         Me.LayoutControl2.Location = New System.Drawing.Point(21, 442)
         Me.LayoutControl2.Name = "LayoutControl2"
+        Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(2146, 598, 1137, 700)
         Me.LayoutControl2.Root = Me.LayoutControlGroup1
         Me.LayoutControl2.Size = New System.Drawing.Size(1272, 820)
         Me.LayoutControl2.TabIndex = 1

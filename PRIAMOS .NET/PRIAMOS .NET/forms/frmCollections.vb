@@ -15,7 +15,7 @@ Public Class frmCollections
     Public Mode As Byte
     Private FScrollerExist As Boolean = False
     Private Valid As New ValidateControls
-    Private Log As New Transactions
+    
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private LoadForms As New FormLoader
