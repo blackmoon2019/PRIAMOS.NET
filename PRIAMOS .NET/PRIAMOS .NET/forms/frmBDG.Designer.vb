@@ -8015,7 +8015,7 @@ Partial Class frmBDG
         'txtOInvMes
         '
         Me.txtOInvMes.EditValue = "0,00"
-        Me.txtOInvMes.Location = New System.Drawing.Point(226, 271)
+        Me.txtOInvMes.Location = New System.Drawing.Point(574, 271)
         Me.txtOInvMes.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvMes.Name = "txtOInvMes"
         Me.txtOInvMes.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -8024,7 +8024,7 @@ Partial Class frmBDG
         Me.txtOInvMes.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtOInvMes.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtOInvMes.Properties.MaskSettings.Set("mask", "n2")
-        Me.txtOInvMes.Size = New System.Drawing.Size(143, 38)
+        Me.txtOInvMes.Size = New System.Drawing.Size(144, 38)
         Me.txtOInvMes.StyleController = Me.LayoutControl4InvHeatGas
         Me.txtOInvMes.TabIndex = 44
         Me.txtOInvMes.Tag = "mes,0,1,2"
@@ -8032,7 +8032,7 @@ Partial Class frmBDG
         'txtOInvBefMes
         '
         Me.txtOInvBefMes.EditValue = "0,00"
-        Me.txtOInvBefMes.Location = New System.Drawing.Point(574, 271)
+        Me.txtOInvBefMes.Location = New System.Drawing.Point(226, 271)
         Me.txtOInvBefMes.Margin = New System.Windows.Forms.Padding(5)
         Me.txtOInvBefMes.Name = "txtOInvBefMes"
         Me.txtOInvBefMes.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -8041,7 +8041,7 @@ Partial Class frmBDG
         Me.txtOInvBefMes.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtOInvBefMes.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtOInvBefMes.Properties.MaskSettings.Set("mask", "n2")
-        Me.txtOInvBefMes.Size = New System.Drawing.Size(144, 38)
+        Me.txtOInvBefMes.Size = New System.Drawing.Size(143, 38)
         Me.txtOInvBefMes.StyleController = Me.LayoutControl4InvHeatGas
         Me.txtOInvBefMes.TabIndex = 43
         Me.txtOInvBefMes.Tag = "mesb,0,1,2"
@@ -8266,7 +8266,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup5.AppearanceGroup.Options.UseBorderColor = True
         Me.LayoutControlGroup5.CustomizationFormText = "Τιμολόγια Πετρέλαιου"
         Me.LayoutControlGroup5.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.BeforeText
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.EmptySpaceItem13, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem211, Me.LayoutControlItem53, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.LayoutControlItem58, Me.LayoutControlItem57, Me.LayoutControlItem216})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.EmptySpaceItem13, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem211, Me.LayoutControlItem53, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.LayoutControlItem57, Me.LayoutControlItem216, Me.LayoutControlItem58})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
         Me.LayoutControlGroup5.Size = New System.Drawing.Size(1092, 1274)
@@ -8449,20 +8449,20 @@ Partial Class frmBDG
         '
         Me.LayoutControlItem58.Control = Me.txtOInvMes
         Me.LayoutControlItem58.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem58.Location = New System.Drawing.Point(0, 210)
+        Me.LayoutControlItem58.Location = New System.Drawing.Point(348, 210)
         Me.LayoutControlItem58.Name = "LayoutControlItem58"
-        Me.LayoutControlItem58.Size = New System.Drawing.Size(348, 42)
-        Me.LayoutControlItem58.Text = "Τωρινή Μέτρηση"
+        Me.LayoutControlItem58.Size = New System.Drawing.Size(349, 42)
+        Me.LayoutControlItem58.Text = "Επιμέτρηση"
         Me.LayoutControlItem58.TextSize = New System.Drawing.Size(189, 23)
         '
         'LayoutControlItem57
         '
         Me.LayoutControlItem57.Control = Me.txtOInvBefMes
         Me.LayoutControlItem57.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem57.Location = New System.Drawing.Point(348, 210)
+        Me.LayoutControlItem57.Location = New System.Drawing.Point(0, 210)
         Me.LayoutControlItem57.Name = "LayoutControlItem57"
-        Me.LayoutControlItem57.Size = New System.Drawing.Size(349, 42)
-        Me.LayoutControlItem57.Text = "Προηγ. Μέτρηση"
+        Me.LayoutControlItem57.Size = New System.Drawing.Size(348, 42)
+        Me.LayoutControlItem57.Text = "Προμέτρηση"
         Me.LayoutControlItem57.TextSize = New System.Drawing.Size(189, 23)
         '
         'LayoutControlItem216

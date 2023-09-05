@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Reflection
+Imports DevExpress.Pdf.Drawing.DirectX
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraExport.Helpers
@@ -11,6 +13,7 @@ Public Class frmTANK
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private sBdgID As String
+    Private lpcH As Double
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
     Private Valid As New ValidateControls
@@ -70,6 +73,7 @@ Public Class frmTANK
         End Select
         Me.Vw_TANKTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_TANK, System.Guid.Parse(sBdgID))
         cboBDG.EditValue = sBdgID
+        lpcH = cboBDG.GetColumnValue("lpcH")
         dtMeasurement.EditValue = Date.Now
         LoadForms.RestoreLayoutFromXml(GridView3, "TANK_def.xml")
         Me.CenterToScreen()
@@ -84,7 +88,8 @@ Public Class frmTANK
                 If cboMeasurementcat.GetColumnValue("isInvoice") = "1" Then XtraMessageBox.Show("Δεν μπορείτε να καταχωρήσετε εγγραφή αγοράς. " & vbCrLf &
                     "Μόνο μέσα από τα Τιμολόγια Καυσίμων ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
                 sTankID = System.Guid.NewGuid.ToString
-                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID)
+
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters", txtmesB.EditValue.ToString & "*" & lpcH & "," & txtmes.EditValue.ToString & "*" & lpcH)
                 If sResult Then
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
@@ -112,16 +117,43 @@ Public Class frmTANK
         cboBDG.EditValue = System.Guid.Parse(sBdgID)
         dtMeasurement.EditValue = Date.Now
     End Sub
-    Private Sub GridView3_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView3.CellValueChanged
+
+
+    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "TANK_def.xml", "vw_TANK")
+    End Sub
+
+    Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
         Try
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invOilID").ToString.Length > 0 Then
+                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που αφορά παραστατικό Αγοράς πετρελάιου"
+                e.Valid = False
+            End If
+
             If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
             Dim sSQL As String
+            Dim mes As Double, mesB As Double, liters As Double, litersB As Double
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "mes") Is DBNull.Value Then
+                mes = 0
+            Else
+                mes = sender.GetRowCellValue(sender.FocusedRowHandle, "mes")
+            End If
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "mesB") Is DBNull.Value Then
+                mesB = 0
+            Else
+                mesB = sender.GetRowCellValue(sender.FocusedRowHandle, "mesB")
+            End If
+            liters = mes * lpcH : litersB = mesB * lpcH
 
+            sender.SetRowCellValue(sender.FocusedRowHandle, "liters", liters)
+            sender.SetRowCellValue(sender.FocusedRowHandle, "litersB", litersB)
             sSQL = "UPDATE  TANK SET " &
                         " measurementcatID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "measurementcatID").ToString) &
                         " ,usrID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "usrID").ToString) &
                         ",mes = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mes").ToString, True) &
                         ",mesB = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mesB").ToString, True) &
+                        ",liters = " & toSQLValueS(liters.ToString, True) &
+                        ",litersB = " & toSQLValueS(litersB.ToString, True) &
                         ",dtMeasurement = " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd")) &
                         " WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString)
 
@@ -131,17 +163,6 @@ Public Class frmTANK
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Private Sub GridView3_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
-        If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView3, "TANK_def.xml", "vw_TANK")
-    End Sub
-
-    Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
-        If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invOilID").ToString.Length > 0 Then
-            e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που αφορά παραστατικό Αγοράς πετρελάιου"
-            e.Valid = False
-        End If
     End Sub
 
     Private Sub GridView3_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView3.KeyDown

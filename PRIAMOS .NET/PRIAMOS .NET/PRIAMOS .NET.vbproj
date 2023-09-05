@@ -1054,6 +1054,7 @@
     <None Include="Priamos_NET_DataSet_BDG.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Priamos_NET_DataSet_BDG1.Designer.vb</LastGenOutput>
     </None>
     <None Include="Priamos_NET_DataSet_BDG.xss">
       <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
