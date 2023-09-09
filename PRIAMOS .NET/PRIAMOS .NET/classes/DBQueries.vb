@@ -1476,7 +1476,7 @@ NextItem:
                                     sDate = GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName)
 
                                     sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(sDate.ToString("yyyyMMdd")))
-
+                                Case "Boolean" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
                                 Case "Decimal" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString, True))
                                 Case "String" : sSQL.AppendLine("[" & column.FieldName & "]" & "=" & toSQLValueS(GRD.GetRowCellValue(GRD.FocusedRowHandle, column.FieldName).ToString))
                             End Select

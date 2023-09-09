@@ -20,6 +20,12 @@ Partial Class frmTANK
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTANK))
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdRefreshMeasurement = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdDeleteMeasurement = New DevExpress.XtraEditors.SimpleButton()
@@ -55,6 +61,8 @@ Partial Class frmTANK
         Me.collitersB = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.collitersT = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colmesT = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colBtn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepCmdCalculateOIL = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.cboMeasurementUsr = New DevExpress.XtraEditors.LookUpEdit()
         Me.txtmesB = New DevExpress.XtraEditors.TextEdit()
         Me.txtmes = New DevExpress.XtraEditors.TextEdit()
@@ -93,6 +101,7 @@ Partial Class frmTANK
         CType(Me.VwMEASURERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEditMeasurementCat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VwMEASUREMENTCATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepCmdCalculateOIL, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cboMeasurementUsr.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtmesB.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtmes.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,7 +157,7 @@ Partial Class frmTANK
         Me.cmdRefreshMeasurement.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdRefreshMeasurement.Name = "cmdRefreshMeasurement"
         Me.cmdRefreshMeasurement.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdRefreshMeasurement.Size = New System.Drawing.Size(36, 39)
+        Me.cmdRefreshMeasurement.Size = New System.Drawing.Size(26, 39)
         Me.cmdRefreshMeasurement.StyleController = Me.LayoutControl1
         Me.cmdRefreshMeasurement.TabIndex = 12
         '
@@ -159,7 +168,7 @@ Partial Class frmTANK
         Me.cmdDeleteMeasurement.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdDeleteMeasurement.Name = "cmdDeleteMeasurement"
         Me.cmdDeleteMeasurement.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
-        Me.cmdDeleteMeasurement.Size = New System.Drawing.Size(36, 39)
+        Me.cmdDeleteMeasurement.Size = New System.Drawing.Size(26, 39)
         Me.cmdDeleteMeasurement.StyleController = Me.LayoutControl1
         Me.cmdDeleteMeasurement.TabIndex = 11
         '
@@ -169,13 +178,13 @@ Partial Class frmTANK
         Me.cmdAddMeasurement.Location = New System.Drawing.Point(12, 349)
         Me.cmdAddMeasurement.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdAddMeasurement.Name = "cmdAddMeasurement"
-        Me.cmdAddMeasurement.Size = New System.Drawing.Size(36, 39)
+        Me.cmdAddMeasurement.Size = New System.Drawing.Size(26, 39)
         Me.cmdAddMeasurement.StyleController = Me.LayoutControl1
         Me.cmdAddMeasurement.TabIndex = 9
         '
         'cboBDG
         '
-        Me.cboBDG.Location = New System.Drawing.Point(214, 54)
+        Me.cboBDG.Location = New System.Drawing.Point(225, 54)
         Me.cboBDG.Margin = New System.Windows.Forms.Padding(5)
         Me.cboBDG.Name = "cboBDG"
         Me.cboBDG.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
@@ -188,7 +197,7 @@ Partial Class frmTANK
         Me.cboBDG.Properties.PopupSizeable = False
         Me.cboBDG.Properties.ReadOnly = True
         Me.cboBDG.Properties.ValueMember = "ID"
-        Me.cboBDG.Size = New System.Drawing.Size(1583, 38)
+        Me.cboBDG.Size = New System.Drawing.Size(1572, 38)
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 2
         Me.cboBDG.Tag = "bdgid,0,1,2"
@@ -207,12 +216,12 @@ Partial Class frmTANK
         '
         Me.grdTank.DataSource = Me.VwTANKBindingSource
         Me.grdTank.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(5)
-        Me.grdTank.Location = New System.Drawing.Point(52, 349)
+        Me.grdTank.Location = New System.Drawing.Point(42, 349)
         Me.grdTank.MainView = Me.GridView3
         Me.grdTank.Margin = New System.Windows.Forms.Padding(5)
         Me.grdTank.Name = "grdTank"
-        Me.grdTank.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEditMeasurementCat, Me.RepositoryItemLookUpEditMeasurer})
-        Me.grdTank.Size = New System.Drawing.Size(1745, 527)
+        Me.grdTank.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEditMeasurementCat, Me.RepositoryItemLookUpEditMeasurer, Me.RepCmdCalculateOIL})
+        Me.grdTank.Size = New System.Drawing.Size(1755, 527)
         Me.grdTank.TabIndex = 10
         Me.grdTank.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -223,13 +232,14 @@ Partial Class frmTANK
         '
         'GridView3
         '
-        Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colbdgID, Me.coldtMeasurement, Me.colusrID, Me.colmeasurementcatID, Me.colmes, Me.colmesB, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colcreatedBy, Me.colMachineName, Me.colmeasurementCatName, Me.colModifierName, Me.colbdgNam, Me.colMeasurerName, Me.colliters, Me.collitersB, Me.collitersT, Me.colmesT})
+        Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colbdgID, Me.coldtMeasurement, Me.colusrID, Me.colmeasurementcatID, Me.colmes, Me.colmesB, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colcreatedBy, Me.colMachineName, Me.colmeasurementCatName, Me.colModifierName, Me.colbdgNam, Me.colMeasurerName, Me.colliters, Me.collitersB, Me.collitersT, Me.colmesT, Me.colBtn})
         Me.GridView3.DetailHeight = 619
         Me.GridView3.GridControl = Me.grdTank
         Me.GridView3.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always
         Me.GridView3.LevelIndent = 0
         Me.GridView3.Name = "GridView3"
         Me.GridView3.OptionsView.ColumnAutoWidth = False
+        Me.GridView3.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
         Me.GridView3.PreviewIndent = 0
         '
         'colID
@@ -260,7 +270,7 @@ Partial Class frmTANK
         Me.coldtMeasurement.MinWidth = 35
         Me.coldtMeasurement.Name = "coldtMeasurement"
         Me.coldtMeasurement.Visible = True
-        Me.coldtMeasurement.VisibleIndex = 0
+        Me.coldtMeasurement.VisibleIndex = 1
         Me.coldtMeasurement.Width = 229
         '
         'colusrID
@@ -271,7 +281,7 @@ Partial Class frmTANK
         Me.colusrID.MinWidth = 35
         Me.colusrID.Name = "colusrID"
         Me.colusrID.Visible = True
-        Me.colusrID.VisibleIndex = 2
+        Me.colusrID.VisibleIndex = 3
         Me.colusrID.Width = 265
         '
         'RepositoryItemLookUpEditMeasurer
@@ -298,7 +308,7 @@ Partial Class frmTANK
         Me.colmeasurementcatID.MinWidth = 35
         Me.colmeasurementcatID.Name = "colmeasurementcatID"
         Me.colmeasurementcatID.Visible = True
-        Me.colmeasurementcatID.VisibleIndex = 1
+        Me.colmeasurementcatID.VisibleIndex = 2
         Me.colmeasurementcatID.Width = 261
         '
         'RepositoryItemLookUpEditMeasurementCat
@@ -324,7 +334,7 @@ Partial Class frmTANK
         Me.colmes.MinWidth = 35
         Me.colmes.Name = "colmes"
         Me.colmes.Visible = True
-        Me.colmes.VisibleIndex = 3
+        Me.colmes.VisibleIndex = 4
         Me.colmes.Width = 248
         '
         'colmesB
@@ -334,7 +344,7 @@ Partial Class frmTANK
         Me.colmesB.MinWidth = 35
         Me.colmesB.Name = "colmesB"
         Me.colmesB.Visible = True
-        Me.colmesB.VisibleIndex = 4
+        Me.colmesB.VisibleIndex = 5
         Me.colmesB.Width = 248
         '
         'colmodifiedBy
@@ -407,7 +417,7 @@ Partial Class frmTANK
         Me.colliters.MinWidth = 35
         Me.colliters.Name = "colliters"
         Me.colliters.Visible = True
-        Me.colliters.VisibleIndex = 6
+        Me.colliters.VisibleIndex = 7
         Me.colliters.Width = 238
         '
         'collitersB
@@ -417,7 +427,7 @@ Partial Class frmTANK
         Me.collitersB.MinWidth = 35
         Me.collitersB.Name = "collitersB"
         Me.collitersB.Visible = True
-        Me.collitersB.VisibleIndex = 7
+        Me.collitersB.VisibleIndex = 8
         Me.collitersB.Width = 238
         '
         'collitersT
@@ -427,7 +437,7 @@ Partial Class frmTANK
         Me.collitersT.MinWidth = 35
         Me.collitersT.Name = "collitersT"
         Me.collitersT.Visible = True
-        Me.collitersT.VisibleIndex = 8
+        Me.collitersT.VisibleIndex = 9
         Me.collitersT.Width = 168
         '
         'colmesT
@@ -437,12 +447,29 @@ Partial Class frmTANK
         Me.colmesT.MinWidth = 35
         Me.colmesT.Name = "colmesT"
         Me.colmesT.Visible = True
-        Me.colmesT.VisibleIndex = 5
+        Me.colmesT.VisibleIndex = 6
         Me.colmesT.Width = 225
+        '
+        'colBtn
+        '
+        Me.colBtn.ColumnEdit = Me.RepCmdCalculateOIL
+        Me.colBtn.MinWidth = 35
+        Me.colBtn.Name = "colBtn"
+        Me.colBtn.Visible = True
+        Me.colBtn.VisibleIndex = 0
+        Me.colBtn.Width = 131
+        '
+        'RepCmdCalculateOIL
+        '
+        Me.RepCmdCalculateOIL.AutoHeight = False
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        Me.RepCmdCalculateOIL.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
+        Me.RepCmdCalculateOIL.Name = "RepCmdCalculateOIL"
+        Me.RepCmdCalculateOIL.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
         'cboMeasurementUsr
         '
-        Me.cboMeasurementUsr.Location = New System.Drawing.Point(214, 138)
+        Me.cboMeasurementUsr.Location = New System.Drawing.Point(225, 138)
         Me.cboMeasurementUsr.Margin = New System.Windows.Forms.Padding(5)
         Me.cboMeasurementUsr.Name = "cboMeasurementUsr"
         Me.cboMeasurementUsr.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -453,7 +480,7 @@ Partial Class frmTANK
         Me.cboMeasurementUsr.Properties.NullText = ""
         Me.cboMeasurementUsr.Properties.PopupSizeable = False
         Me.cboMeasurementUsr.Properties.ValueMember = "ID"
-        Me.cboMeasurementUsr.Size = New System.Drawing.Size(1583, 38)
+        Me.cboMeasurementUsr.Size = New System.Drawing.Size(1572, 38)
         Me.cboMeasurementUsr.StyleController = Me.LayoutControl1
         Me.cboMeasurementUsr.TabIndex = 4
         Me.cboMeasurementUsr.Tag = "usrID,0,1,2"
@@ -461,7 +488,7 @@ Partial Class frmTANK
         'txtmesB
         '
         Me.txtmesB.EditValue = "0,00"
-        Me.txtmesB.Location = New System.Drawing.Point(214, 222)
+        Me.txtmesB.Location = New System.Drawing.Point(225, 222)
         Me.txtmesB.Margin = New System.Windows.Forms.Padding(5)
         Me.txtmesB.Name = "txtmesB"
         Me.txtmesB.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -469,7 +496,7 @@ Partial Class frmTANK
         Me.txtmesB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtmesB.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtmesB.Properties.MaskSettings.Set("mask", "n2")
-        Me.txtmesB.Size = New System.Drawing.Size(1583, 38)
+        Me.txtmesB.Size = New System.Drawing.Size(1572, 38)
         Me.txtmesB.StyleController = Me.LayoutControl1
         Me.txtmesB.TabIndex = 7
         Me.txtmesB.Tag = "mesB,0,1,2"
@@ -477,7 +504,7 @@ Partial Class frmTANK
         'txtmes
         '
         Me.txtmes.EditValue = "0,00"
-        Me.txtmes.Location = New System.Drawing.Point(214, 264)
+        Me.txtmes.Location = New System.Drawing.Point(225, 264)
         Me.txtmes.Margin = New System.Windows.Forms.Padding(5)
         Me.txtmes.Name = "txtmes"
         Me.txtmes.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -485,7 +512,7 @@ Partial Class frmTANK
         Me.txtmes.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtmes.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtmes.Properties.MaskSettings.Set("mask", "n2")
-        Me.txtmes.Size = New System.Drawing.Size(1583, 38)
+        Me.txtmes.Size = New System.Drawing.Size(1572, 38)
         Me.txtmes.StyleController = Me.LayoutControl1
         Me.txtmes.TabIndex = 6
         Me.txtmes.Tag = "mes,0,1,2"
@@ -504,7 +531,7 @@ Partial Class frmTANK
         'dtMeasurement
         '
         Me.dtMeasurement.EditValue = Nothing
-        Me.dtMeasurement.Location = New System.Drawing.Point(214, 96)
+        Me.dtMeasurement.Location = New System.Drawing.Point(225, 96)
         Me.dtMeasurement.Margin = New System.Windows.Forms.Padding(5)
         Me.dtMeasurement.Name = "dtMeasurement"
         Me.dtMeasurement.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -512,14 +539,14 @@ Partial Class frmTANK
         Me.dtMeasurement.Properties.MaskSettings.Set("mask", "d")
         Me.dtMeasurement.Properties.ShowMonthNavigationButtons = DevExpress.Utils.DefaultBoolean.[True]
         Me.dtMeasurement.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.dtMeasurement.Size = New System.Drawing.Size(1583, 38)
+        Me.dtMeasurement.Size = New System.Drawing.Size(1572, 38)
         Me.dtMeasurement.StyleController = Me.LayoutControl1
         Me.dtMeasurement.TabIndex = 3
         Me.dtMeasurement.Tag = "dtMeasurement,0,1,2"
         '
         'cboMeasurementcat
         '
-        Me.cboMeasurementcat.Location = New System.Drawing.Point(214, 180)
+        Me.cboMeasurementcat.Location = New System.Drawing.Point(225, 180)
         Me.cboMeasurementcat.Margin = New System.Windows.Forms.Padding(5)
         Me.cboMeasurementcat.Name = "cboMeasurementcat"
         Me.cboMeasurementcat.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -532,14 +559,14 @@ Partial Class frmTANK
         Me.cboMeasurementcat.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.cboMeasurementcat.Properties.PopupSizeable = False
         Me.cboMeasurementcat.Properties.ValueMember = "ID"
-        Me.cboMeasurementcat.Size = New System.Drawing.Size(1583, 38)
+        Me.cboMeasurementcat.Size = New System.Drawing.Size(1572, 38)
         Me.cboMeasurementcat.StyleController = Me.LayoutControl1
         Me.cboMeasurementcat.TabIndex = 5
         Me.cboMeasurementcat.Tag = "measurementcatID,0,1,2"
         '
         'txtCode
         '
-        Me.txtCode.Location = New System.Drawing.Point(214, 12)
+        Me.txtCode.Location = New System.Drawing.Point(225, 12)
         Me.txtCode.Margin = New System.Windows.Forms.Padding(5)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Properties.Appearance.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
@@ -547,7 +574,7 @@ Partial Class frmTANK
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(298, 38)
+        Me.txtCode.Size = New System.Drawing.Size(182, 38)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 0
         Me.txtCode.Tag = "code,0"
@@ -571,7 +598,7 @@ Partial Class frmTANK
         Me.LayoutControlItem1.Size = New System.Drawing.Size(1789, 42)
         Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "Ημερομηνία Μέτρησης"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(201, 23)
         '
         'LayoutControlItem2
         '
@@ -582,7 +609,7 @@ Partial Class frmTANK
         Me.LayoutControlItem2.Size = New System.Drawing.Size(1789, 42)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Κατηγορία Μέτρησης"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(201, 23)
         '
         'LayoutControlItem4
         '
@@ -591,14 +618,14 @@ Partial Class frmTANK
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Size = New System.Drawing.Size(1789, 42)
         Me.LayoutControlItem4.Text = "Πόντοι(Επιμέτρηση)"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(201, 23)
         '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.grdTank
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(40, 337)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(30, 337)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(1749, 531)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(1759, 531)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -611,7 +638,7 @@ Partial Class frmTANK
         Me.LayoutControlItem6.Size = New System.Drawing.Size(1789, 42)
         Me.LayoutControlItem6.Tag = "1"
         Me.LayoutControlItem6.Text = "Επιμετρητής"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(201, 23)
         '
         'LayoutControlItem3
         '
@@ -629,9 +656,9 @@ Partial Class frmTANK
         Me.LayoutControlItem9.CustomizationFormText = "Κωδικός"
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(504, 42)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(399, 42)
         Me.LayoutControlItem9.Text = "Κωδικός"
-        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(201, 23)
         '
         'LayoutControlItem8
         '
@@ -640,14 +667,14 @@ Partial Class frmTANK
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.Size = New System.Drawing.Size(1789, 42)
         Me.LayoutControlItem8.Text = "Πολυκατοικία"
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(201, 23)
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(504, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(399, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1285, 42)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1390, 42)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem2
@@ -655,7 +682,7 @@ Partial Class frmTANK
         Me.EmptySpaceItem2.AllowHotTrack = False
         Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 466)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(40, 402)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(30, 402)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem10
@@ -663,7 +690,7 @@ Partial Class frmTANK
         Me.LayoutControlItem10.Control = Me.cmdAddMeasurement
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 337)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(40, 43)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
@@ -672,7 +699,7 @@ Partial Class frmTANK
         Me.LayoutControlItem11.Control = Me.cmdDeleteMeasurement
         Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 380)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(40, 43)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
@@ -681,7 +708,7 @@ Partial Class frmTANK
         Me.LayoutControlItem12.Control = Me.cmdRefreshMeasurement
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 423)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(40, 43)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(30, 43)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem12.TextVisible = False
         '
@@ -692,7 +719,7 @@ Partial Class frmTANK
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
         Me.LayoutControlItem5.Size = New System.Drawing.Size(1789, 42)
         Me.LayoutControlItem5.Text = "Πόντοι(Προμέτρηση)"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(190, 23)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(201, 23)
         '
         'Vw_TANKTableAdapter
         '
@@ -730,6 +757,7 @@ Partial Class frmTANK
         CType(Me.VwMEASURERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemLookUpEditMeasurementCat, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VwMEASUREMENTCATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepCmdCalculateOIL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cboMeasurementUsr.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtmesB.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtmes.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -817,4 +845,6 @@ Partial Class frmTANK
     Friend WithEvents collitersB As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents collitersT As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colmesT As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RepCmdCalculateOIL As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents colBtn As DevExpress.XtraGrid.Columns.GridColumn
 End Class

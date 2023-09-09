@@ -742,9 +742,9 @@ Partial Class frmBDG
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem55 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem56 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem58 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem57 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem216 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem58 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup6 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem49 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem61 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -996,6 +996,8 @@ Partial Class frmBDG
         Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter()
         Me.Vw_PUBLIC_STableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_PUBLIC_STableAdapter()
         Me.Vw_MEASURERSTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_MEASURERSTableAdapter()
+        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
+        Me.LayoutControlItem68 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1410,9 +1412,9 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem216, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1584,6 +1586,8 @@ Partial Class frmBDG
         CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.Panel2.SuspendLayout
         Me.SplitContainerControl1.SuspendLayout
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'GridView7
@@ -7710,6 +7714,7 @@ Partial Class frmBDG
         '
         'LayoutControl4InvHeatGas
         '
+        Me.LayoutControl4InvHeatGas.Controls.Add(Me.CheckEdit1)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cboMeasurementUsr)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.MemoEdit4)
         Me.LayoutControl4InvHeatGas.Controls.Add(Me.cbofService2)
@@ -8121,7 +8126,7 @@ Partial Class frmBDG
         Me.txtOInvDate.Name = "txtOInvDate"
         Me.txtOInvDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtOInvDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtOInvDate.Size = New System.Drawing.Size(492, 38)
+        Me.txtOInvDate.Size = New System.Drawing.Size(267, 38)
         Me.txtOInvDate.StyleController = Me.LayoutControl4InvHeatGas
         Me.txtOInvDate.TabIndex = 38
         Me.txtOInvDate.Tag = "InvDate,0,1,2"
@@ -8266,7 +8271,7 @@ Partial Class frmBDG
         Me.LayoutControlGroup5.AppearanceGroup.Options.UseBorderColor = True
         Me.LayoutControlGroup5.CustomizationFormText = "Τιμολόγια Πετρέλαιου"
         Me.LayoutControlGroup5.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.BeforeText
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.EmptySpaceItem13, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem211, Me.LayoutControlItem53, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.LayoutControlItem57, Me.LayoutControlItem216, Me.LayoutControlItem58})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem54, Me.LayoutControlItem50, Me.LayoutControlItem48, Me.LayoutControlItem47, Me.EmptySpaceItem13, Me.EmptySpaceItem24, Me.LayoutControlItem69, Me.LayoutControlItem71, Me.LayoutControlItem65, Me.LayoutControlItem77, Me.LayoutControlItem211, Me.LayoutControlItem53, Me.LayoutControlItem55, Me.LayoutControlItem56, Me.LayoutControlItem57, Me.LayoutControlItem216, Me.LayoutControlItem58, Me.LayoutControlItem68})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
         Me.LayoutControlGroup5.Size = New System.Drawing.Size(1092, 1274)
@@ -8414,7 +8419,7 @@ Partial Class frmBDG
         Me.LayoutControlItem53.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem53.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem53.Name = "LayoutControlItem53"
-        Me.LayoutControlItem53.Size = New System.Drawing.Size(697, 42)
+        Me.LayoutControlItem53.Size = New System.Drawing.Size(472, 42)
         Me.LayoutControlItem53.Tag = "1"
         Me.LayoutControlItem53.Text = "Ημερομηνία Τιμ."
         Me.LayoutControlItem53.TextSize = New System.Drawing.Size(189, 23)
@@ -8445,16 +8450,6 @@ Partial Class frmBDG
         Me.LayoutControlItem56.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem56.TextSize = New System.Drawing.Size(189, 23)
         '
-        'LayoutControlItem58
-        '
-        Me.LayoutControlItem58.Control = Me.txtOInvMes
-        Me.LayoutControlItem58.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem58.Location = New System.Drawing.Point(348, 210)
-        Me.LayoutControlItem58.Name = "LayoutControlItem58"
-        Me.LayoutControlItem58.Size = New System.Drawing.Size(349, 42)
-        Me.LayoutControlItem58.Text = "Επιμέτρηση"
-        Me.LayoutControlItem58.TextSize = New System.Drawing.Size(189, 23)
-        '
         'LayoutControlItem57
         '
         Me.LayoutControlItem57.Control = Me.txtOInvBefMes
@@ -8473,6 +8468,16 @@ Partial Class frmBDG
         Me.LayoutControlItem216.Size = New System.Drawing.Size(697, 42)
         Me.LayoutControlItem216.Text = "Επιμετρητής"
         Me.LayoutControlItem216.TextSize = New System.Drawing.Size(189, 23)
+        '
+        'LayoutControlItem58
+        '
+        Me.LayoutControlItem58.Control = Me.txtOInvMes
+        Me.LayoutControlItem58.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem58.Location = New System.Drawing.Point(348, 210)
+        Me.LayoutControlItem58.Name = "LayoutControlItem58"
+        Me.LayoutControlItem58.Size = New System.Drawing.Size(349, 42)
+        Me.LayoutControlItem58.Text = "Επιμέτρηση"
+        Me.LayoutControlItem58.TextSize = New System.Drawing.Size(189, 23)
         '
         'LayoutControlGroup6
         '
@@ -11211,6 +11216,30 @@ Partial Class frmBDG
         '
         Me.Vw_MEASURERSTableAdapter.ClearBeforeFill = True
         '
+        'CheckEdit1
+        '
+        Me.CheckEdit1.EditValue = CType(0, Byte)
+        Me.CheckEdit1.Location = New System.Drawing.Point(497, 187)
+        Me.CheckEdit1.Margin = New System.Windows.Forms.Padding(5)
+        Me.CheckEdit1.MenuManager = Me.BarManager1
+        Me.CheckEdit1.Name = "CheckEdit1"
+        Me.CheckEdit1.Properties.Caption = "Ολοκληρωμένο"
+        Me.CheckEdit1.Properties.ValueChecked = CType(1, Byte)
+        Me.CheckEdit1.Properties.ValueUnchecked = CType(0, Byte)
+        Me.CheckEdit1.Size = New System.Drawing.Size(221, 32)
+        Me.CheckEdit1.StyleController = Me.LayoutControl4InvHeatGas
+        Me.CheckEdit1.TabIndex = 68
+        Me.CheckEdit1.Tag = "completed,0,1,2"
+        '
+        'LayoutControlItem68
+        '
+        Me.LayoutControlItem68.Control = Me.CheckEdit1
+        Me.LayoutControlItem68.Location = New System.Drawing.Point(472, 126)
+        Me.LayoutControlItem68.Name = "LayoutControlItem68"
+        Me.LayoutControlItem68.Size = New System.Drawing.Size(225, 42)
+        Me.LayoutControlItem68.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem68.TextVisible = False
+        '
         'frmBDG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -11641,9 +11670,9 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem56, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem216, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).EndInit
@@ -11815,6 +11844,8 @@ Partial Class frmBDG
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -12690,4 +12721,6 @@ Partial Class frmBDG
     Friend WithEvents LayoutControlItem216 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents VwMEASURERSBindingSource As BindingSource
     Friend WithEvents Vw_MEASURERSTableAdapter As Priamos_NET_DataSet_BDGTableAdapters.vw_MEASURERSTableAdapter
+    Friend WithEvents CheckEdit1 As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem68 As DevExpress.XtraLayout.LayoutControlItem
 End Class
