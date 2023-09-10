@@ -7244,6 +7244,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         Private columncompleted As Global.System.Data.DataColumn
 
+        Private columnconsumptionID As Global.System.Data.DataColumn
+
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Sub New()
@@ -7488,6 +7490,14 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public ReadOnly Property consumptionIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnconsumptionID
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),
          Global.System.ComponentModel.Browsable(False)>
         Public ReadOnly Property Count() As Integer
@@ -7550,9 +7560,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal litersT As Decimal,
                     ByVal litersB As Decimal,
                     ByVal calculated As Boolean,
-                    ByVal completed As Boolean) As vw_TANKRow
+                    ByVal completed As Boolean,
+                    ByVal consumptionID As System.Guid) As vw_TANKRow
             Dim rowvw_TANKRow As vw_TANKRow = CType(Me.NewRow, vw_TANKRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerName, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, mesT, litersT, litersB, calculated, completed}
+            Dim columnValuesArray() As Object = New Object() {ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerName, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, mesT, litersT, litersB, calculated, completed, consumptionID}
             rowvw_TANKRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_TANKRow)
             Return rowvw_TANKRow
@@ -7607,6 +7618,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnlitersB = MyBase.Columns("litersB")
             Me.columncalculated = MyBase.Columns("calculated")
             Me.columncompleted = MyBase.Columns("completed")
+            Me.columnconsumptionID = MyBase.Columns("consumptionID")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
@@ -7664,6 +7676,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columncalculated)
             Me.columncompleted = New Global.System.Data.DataColumn("completed", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncompleted)
+            Me.columnconsumptionID = New Global.System.Data.DataColumn("consumptionID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnconsumptionID)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, True))
             Me.columnID.AllowDBNull = False
             Me.columnID.Unique = True
@@ -14883,6 +14897,21 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Property consumptionID() As System.Guid
+            Get
+                Try
+                    Return CType(Me(Me.tablevw_TANK.consumptionIDColumn), Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'consumptionID' in table 'vw_TANK' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_TANK.consumptionIDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Function IsusrIDNull() As Boolean
             Return Me.IsNull(Me.tablevw_TANK.usrIDColumn)
         End Function
@@ -15119,6 +15148,18 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Sub SetcompletedNull()
             Me(Me.tablevw_TANK.completedColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Function IsconsumptionIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_TANK.consumptionIDColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Sub SetconsumptionIDNull()
+            Me(Me.tablevw_TANK.consumptionIDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
@@ -19059,6 +19100,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("litersB", "litersB")
             tableMapping.ColumnMappings.Add("calculated", "calculated")
             tableMapping.ColumnMappings.Add("completed", "completed")
+            tableMapping.ColumnMappings.Add("consumptionID", "consumptionID")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
 
@@ -19078,7 +19120,8 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._commandCollection(0).CommandText = "SELECT ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdO" &
                 "n, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerNam" &
                 "e, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, mesT, litersT" &
-                ", litersB, calculated, completed" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_TANK" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE (bdgID = @bdgID)"
+                ", litersB, calculated, completed, consumptionID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_TANK" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE (bdgID = " &
+                "@bdgID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, False, Nothing, "", "", ""))
         End Sub

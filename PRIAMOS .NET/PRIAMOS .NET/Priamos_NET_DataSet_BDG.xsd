@@ -580,7 +580,7 @@ where servicetypeID='61407200-4E84-4FC7-9B99-A60FC5F9821B'</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET_DEV.dbo.vw_TANK" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByBdgID" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="FillByBdgID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="FillByBdgID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerName, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, mesT, litersT, litersB, calculated, completed
+                    <CommandText>SELECT ID, code, bdgID, measurementcatID, usrID, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, measurementCatName, ModifierName, bdgNam, MeasurerName, dtMeasurement, invOilID, invNumber, invDate, mes, mesB, liters, mesT, litersT, litersB, calculated, completed, consumptionID
 FROM   vw_TANK
 WHERE (bdgID = @bdgID)</CommandText>
                     <Parameters>
@@ -617,6 +617,7 @@ WHERE (bdgID = @bdgID)</CommandText>
               <Mapping SourceColumn="litersB" DataSetColumn="litersB" />
               <Mapping SourceColumn="calculated" DataSetColumn="calculated" />
               <Mapping SourceColumn="completed" DataSetColumn="completed" />
+              <Mapping SourceColumn="consumptionID" DataSetColumn="consumptionID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1575,11 +1576,12 @@ WHERE (IsMeasurer = 1)</CommandText>
               <xs:element name="mes" msprop:Generator_ColumnPropNameInTable="mesColumn" msprop:Generator_ColumnPropNameInRow="mes" msprop:Generator_UserColumnName="mes" msprop:Generator_ColumnVarNameInTable="columnmes" type="xs:decimal" minOccurs="0" />
               <xs:element name="mesB" msprop:Generator_ColumnPropNameInTable="mesBColumn" msprop:Generator_ColumnPropNameInRow="mesB" msprop:Generator_UserColumnName="mesB" msprop:Generator_ColumnVarNameInTable="columnmesB" type="xs:decimal" minOccurs="0" />
               <xs:element name="liters" msprop:Generator_ColumnPropNameInTable="litersColumn" msprop:Generator_ColumnPropNameInRow="liters" msprop:Generator_UserColumnName="liters" msprop:Generator_ColumnVarNameInTable="columnliters" type="xs:decimal" minOccurs="0" />
-              <xs:element name="mesT" msprop:Generator_UserColumnName="mesT" msprop:Generator_ColumnPropNameInTable="mesTColumn" msprop:Generator_ColumnPropNameInRow="mesT" msprop:Generator_ColumnVarNameInTable="columnmesT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="litersT" msprop:Generator_UserColumnName="litersT" msprop:Generator_ColumnPropNameInTable="litersTColumn" msprop:Generator_ColumnPropNameInRow="litersT" msprop:Generator_ColumnVarNameInTable="columnlitersT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="litersB" msprop:Generator_UserColumnName="litersB" msprop:Generator_ColumnPropNameInTable="litersBColumn" msprop:Generator_ColumnPropNameInRow="litersB" msprop:Generator_ColumnVarNameInTable="columnlitersB" type="xs:decimal" minOccurs="0" />
-              <xs:element name="calculated" msprop:Generator_ColumnPropNameInRow="calculated" msprop:Generator_ColumnPropNameInTable="calculatedColumn" msprop:Generator_ColumnVarNameInTable="columncalculated" msprop:Generator_UserColumnName="calculated" type="xs:boolean" />
-              <xs:element name="completed" msprop:Generator_ColumnPropNameInRow="completed" msprop:Generator_ColumnPropNameInTable="completedColumn" msprop:Generator_ColumnVarNameInTable="columncompleted" msprop:Generator_UserColumnName="completed" type="xs:boolean" minOccurs="0" />
+              <xs:element name="mesT" msprop:Generator_ColumnPropNameInTable="mesTColumn" msprop:Generator_ColumnPropNameInRow="mesT" msprop:Generator_UserColumnName="mesT" msprop:Generator_ColumnVarNameInTable="columnmesT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="litersT" msprop:Generator_ColumnPropNameInTable="litersTColumn" msprop:Generator_ColumnPropNameInRow="litersT" msprop:Generator_UserColumnName="litersT" msprop:Generator_ColumnVarNameInTable="columnlitersT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="litersB" msprop:Generator_ColumnPropNameInTable="litersBColumn" msprop:Generator_ColumnPropNameInRow="litersB" msprop:Generator_UserColumnName="litersB" msprop:Generator_ColumnVarNameInTable="columnlitersB" type="xs:decimal" minOccurs="0" />
+              <xs:element name="calculated" msprop:Generator_UserColumnName="calculated" msprop:Generator_ColumnPropNameInTable="calculatedColumn" msprop:Generator_ColumnPropNameInRow="calculated" msprop:Generator_ColumnVarNameInTable="columncalculated" type="xs:boolean" />
+              <xs:element name="completed" msprop:Generator_UserColumnName="completed" msprop:Generator_ColumnPropNameInTable="completedColumn" msprop:Generator_ColumnPropNameInRow="completed" msprop:Generator_ColumnVarNameInTable="columncompleted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="consumptionID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="consumptionID" msprop:Generator_ColumnPropNameInTable="consumptionIDColumn" msprop:Generator_ColumnVarNameInTable="columnconsumptionID" msprop:Generator_UserColumnName="consumptionID" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -11,7 +11,6 @@ Public Class frmTANK
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private sBdgID As String
-    Private sConsumptionID As String = ""
     Private lpcH As Double
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
     Private CalledFromCtrl As Boolean
@@ -87,9 +86,20 @@ Public Class frmTANK
                 If cboMeasurementcat.GetColumnValue("isInvoice") = "1" Then XtraMessageBox.Show("Δεν μπορείτε να καταχωρήσετε εγγραφή αγοράς. " & vbCrLf &
                     "Μόνο μέσα από τα Τιμολόγια Καυσίμων ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
                 sTankID = System.Guid.NewGuid.ToString
+                Dim sConsumptionID As String = ""
+                sConsumptionID = Guid.NewGuid.ToString
 
-                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters", txtmesB.EditValue.ToString & "*" & lpcH & "," & txtmes.EditValue.ToString & "*" & lpcH)
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters,consumptionID", txtmesB.EditValue.ToString & "*" & lpcH & "," & txtmes.EditValue.ToString & "*" & lpcH & "," & sConsumptionID)
                 If sResult Then
+
+                    Dim sahpbHIDH As String, sahpbHIDB As String
+                    If CheckForAhpbH(sahpbHIDH) = False And CheckForAhpbB(sahpbHIDB) = False Then
+                        XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης πετρελάιου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Else
+                        CalculateOIL(sahpbHIDH, sahpbHIDB, sConsumptionID)
+                    End If
+
+
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
                     Me.Vw_TANKTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_TANK, System.Guid.Parse(sBdgID))
@@ -209,32 +219,34 @@ Public Class frmTANK
     End Sub
 
     Private Sub RepCmdCalculateOIL_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles RepCmdCalculateOIL.ButtonPressed
+        Dim sahpbHIDH As String, sahpbHIDB As String
         Select Case e.Button.Index
-            ' Υπολογισμός Πετρλαίου και Κατανάλωσης
+            ' Υπολογισμός Πετρελαίου και Κατανάλωσης
             Case 0
                 If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "calculated") = "True" Then
                     XtraMessageBox.Show("Η κατανάλωση έχει ήδη υπολογιστεί. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
-                If CheckForAhpbH() = False And CheckForAhpbB() = False Then
+                If CheckForAhpbH(sahpbHIDH) = False And CheckForAhpbB(sahpbHIDB) = False Then
                     XtraMessageBox.Show("Δεν μπορείτε να υπολογίσετε την κατανάλωση πετρελάιου αν δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
-                    CalculateOIL()
+                    CalculateOIL(sahpbHIDH, sahpbHIDB, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString)
                 End If
             Case 1
                 ' Ακύρωση Υπολογισμού Πετρλαίου και Κατανάλωσης
                 CancelCalculateOIL()
         End Select
     End Sub
-    Private Function CheckForAhpbH() As Boolean
-        Dim sID As String
-        Dim sSQL As String = "select top 1 ID from AHPB_H where finalized=0 and boiler=0 and mdt =  " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+    Private Function CheckForAhpbH(ByRef sahpbHIDH As String) As Boolean
+        Dim sSQL As String = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) &
+                             " and mdt =  " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+        sahpbHIDH = Guid.Empty.ToString
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         cmd = New SqlCommand(sSQL, CNDB)
         sdr = cmd.ExecuteReader()
         If (sdr.Read() = True) Then
-            sID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sahpbHIDH = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
             sdr.Close()
             Return True
         Else
@@ -242,15 +254,16 @@ Public Class frmTANK
             Return False
         End If
     End Function
-    Private Function CheckForAhpbB() As Boolean
-        Dim sID As String
-        Dim sSQL As String = "select top 1 ID from AHPB_H where finalized=0 and boiler=1 and mdt =  " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+    Private Function CheckForAhpbB(ByRef sahpbHIDB As String) As Boolean
+        Dim sSQL As String = "select top 1 ID from AHPB_H where boiler=1 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) &
+                             "and mdt =  " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+        sahpbHIDB = Guid.Empty.ToString
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         cmd = New SqlCommand(sSQL, CNDB)
         sdr = cmd.ExecuteReader()
         If (sdr.Read() = True) Then
-            sID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sahpbHIDB = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
             sdr.Close()
             Return True
         Else
@@ -260,11 +273,10 @@ Public Class frmTANK
     End Function
 
     'Υπολογισμός πετρελάιου
-    Private Sub CalculateOIL()
+    Private Sub CalculateOIL(ByVal sahpbHIDH As String, ByVal sahpbHIDB As String, ByVal sConsumptionID As String)
         Try
-            sConsumptionID = Guid.NewGuid.ToString
             Dim dtMeasurement As Date = Date.Parse(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement"))
-
+            Dim TotalConsumption As Decimal, ΤotalConsumptionLiter As Decimal
             Using oCmd As New SqlCommand("OIL_Calculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@consumptionID", sConsumptionID)
@@ -274,15 +286,41 @@ Public Class frmTANK
                 oCmd.Parameters.AddWithValue("@MachineName", UserProps.MachineName)
                 oCmd.Parameters.Add("@totConsumptionH", SqlDbType.Decimal)
                 oCmd.Parameters("@totConsumptionH").Direction = ParameterDirection.Output : oCmd.Parameters("@totConsumptionH").Precision = 18 : oCmd.Parameters("@totConsumptionH").Scale = 2
+                oCmd.Parameters.Add("@totConsumptionLitersH", SqlDbType.Decimal)
+                oCmd.Parameters("@totConsumptionLitersH").Direction = ParameterDirection.Output : oCmd.Parameters("@totConsumptionLitersH").Precision = 18 : oCmd.Parameters("@totConsumptionLitersH").Scale = 2
                 oCmd.ExecuteNonQuery()
-                Dim TotalConsumption As Decimal = oCmd.Parameters("@totConsumptionH").Value
+                TotalConsumption = oCmd.Parameters("@totConsumptionH").Value
+                ΤotalConsumptionLiter = oCmd.Parameters("@totConsumptionLitersH").Value
             End Using
             GridView3.SetRowCellValue(GridView3.FocusedRowHandle, "calculated", 1)
+            'Υπολογισμός Κατανάλωσης
+            CalculateConsumption(TotalConsumption, ΤotalConsumptionLiter, sConsumptionID, sahpbHIDH, sahpbHIDB)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    'Υπολογισμός Κατανάλωσης
+    Private Sub CalculateConsumption(ByVal totConsumption As Decimal, ByVal totConsumptionLiter As Decimal,
+                                     ByVal sConsumptionID As String, ByVal sahpbHIDH As String, ByVal sahpbHIDB As String)
+        Try
+            Dim dtMeasurement As Date = Date.Parse(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement"))
 
+            Using oCmd As New SqlCommand("consumption_Calculate", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@consumptionID", sConsumptionID)
+                oCmd.Parameters.AddWithValue("@bdgID", cboBDG.EditValue.ToString)
+                oCmd.Parameters.AddWithValue("@ahpbHID", sahpbHIDH)
+                oCmd.Parameters.AddWithValue("@ahpbHIDB", sahpbHIDB)
+                oCmd.Parameters.AddWithValue("@totConsumption", totConsumption)
+                oCmd.Parameters.AddWithValue("@totConsumptionLiter", totConsumptionLiter)
+                oCmd.Parameters.AddWithValue("@createdBy", UserProps.ID.ToString)
+                oCmd.Parameters.AddWithValue("@MachineName", UserProps.MachineName)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     'Ακύρωση Υπολογισμού πετρελάιου
     Private Sub CancelCalculateOIL()
         Try
