@@ -393,15 +393,16 @@ Public Class frmBatchInsertAttachmentsEX
                         Using oCmd As New SqlCommand(sSQL, CNDB)
                             oCmd.ExecuteNonQuery()
                         End Using
+                        ' Ενημέρωση αποθεματικού
+                        CalculateDepositA(GridView1.GetRowCellValue(selectedRowHandle, "bdgID").ToString)
                     End If
-                    ' Ενημέρωση αποθεματικού
-                    CalculateDepositA(GridView1.GetRowCellValue(selectedRowHandle, "bdgID").ToString)
                 Next
+                XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 Exit Sub
             End If
 
-            XtraMessageBox.Show("Η ενημέρωση ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             If cboBDG.EditValue = Nothing Then
                 Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
             Else
