@@ -59,7 +59,7 @@ Public Class frmApol
             Case FormMode.EditRecord
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APOL where id ='" + sID + "'")
         End Select
-        ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
+        ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1σ)
         Me.CenterToScreen()
         My.Settings.Save()
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)

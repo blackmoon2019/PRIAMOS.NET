@@ -222,8 +222,10 @@ Public Class frmBatchInsertAttachmentsEX
             Try
                 If MoveFiles Then
                     Dim sFilesPath As String = BreadCrumb.Path
-                    If File.Exists(MoveFilesPath & "\" & FileName) Then FileName = VBMath.Rnd.ToString & "_" & FileName
-                    My.Computer.FileSystem.MoveFile(sFilesPath & "\" & FileName, MoveFilesPath & "\" & FileName, True)
+                    Dim Found As Boolean = False
+                    If File.Exists(MoveFilesPath & "\" & FileName) Then Found = True
+                    My.Computer.FileSystem.MoveFile(sFilesPath & "\" & FileName, MoveFilesPath & "\" & IIf(Found, VBMath.Rnd.ToString.Replace(",", "") & "_" & FileName, FileName), True)
+                    Found = False
                 End If
             Catch exMove As Exception
                 XtraMessageBox.Show(String.Format("Error: {0}" & "Η μεταφορά του αρχείου " & FileName & " στον φάκελλο " & MoveFilesPath & " Απέτυχε.", exMove.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
