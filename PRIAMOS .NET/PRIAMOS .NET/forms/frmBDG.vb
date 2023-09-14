@@ -2001,6 +2001,8 @@ Public Class frmBDG
                         oCmd.ExecuteNonQuery()
                     End Using
                 End If
+                ' Ενημέρωση αποθεματικού
+                CalculateDepositA()
                 ' Διαγραφή παραστατικού
                 sSQL = "DELETE FROM INH WHERE ID = '" & GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString & "'"
 

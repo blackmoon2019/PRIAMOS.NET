@@ -1625,6 +1625,8 @@ Public Class frmCollections
                     Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
 
                 End If
+                ' Ενημέρωση αποθεματικού
+                CalculateDepositA(GridView6.GetRowCellValue(selectedRowHandle, "bdgID").ToString)
             End If
         Next I
         If chkShowAgree.IsOn = True Then
@@ -1633,7 +1635,47 @@ Public Class frmCollections
             Me.Vw_COL_DTableAdapter.FillByBDGID(Me.Priamos_NETDataSet2.vw_COL_D, cboBDG1.EditValue)
         End If
     End Sub
+    Private Sub CalculateDepositA(ByVal sbdgID As String)
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositA", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.Add("@Amt", SqlDbType.Decimal)
+                oCmd.Parameters("@Amt").Direction = ParameterDirection.Output
+                oCmd.ExecuteNonQuery()
+            End Using
+            'Υπολογισμός Διαθέσιμου υπολοίπου
+            CalculateDepositR(sbdgID)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub CalculateDepositR(ByVal sbdgID As String)
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositR", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.Add("@totDepositR", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnchargableOil", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnpaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@PaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@AptBalAdm", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totDepositRAndPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositR").Precision = 18 : oCmd.Parameters("@totDepositR").Scale = 2
+                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output : oCmd.Parameters("@UnchargableOil").Precision = 18 : oCmd.Parameters("@UnchargableOil").Scale = 2
+                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@UnpaidInd").Precision = 18 : oCmd.Parameters("@UnpaidInd").Scale = 2
+                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@PaidInd").Precision = 18 : oCmd.Parameters("@PaidInd").Scale = 2
+                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output : oCmd.Parameters("@AptBalAdm").Precision = 18 : oCmd.Parameters("@AptBalAdm").Scale = 2
+                oCmd.Parameters("@totPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totPrepayments").Precision = 18 : oCmd.Parameters("@totPrepayments").Scale = 2
+                oCmd.Parameters("@totDepositRAndPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositRAndPrepayments").Precision = 18 : oCmd.Parameters("@totDepositRAndPrepayments").Scale = 2
+                oCmd.ExecuteNonQuery()
 
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     Private Sub TabbedControlGroup1_SelectedPageChanged(sender As Object, e As DevExpress.XtraLayout.LayoutTabPageChangedEventArgs) Handles TabbedControlGroup1.SelectedPageChanged
         Select Case TabbedControlGroup1.SelectedTabPageIndex
             Case 0

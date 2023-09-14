@@ -824,6 +824,8 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@ahpbHIDB", System.Guid.Parse(sAhpbBID))
                 oCmd.ExecuteNonQuery()
             End Using
+            ' Ενημέρωση αποθεματικού
+            CalculateDepositA(cboBDG.EditValue.ToString)
             'XtraMessageBox.Show("Ο υπολογισμός ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Dim args As New XtraMessageBoxArgs()
             args.AutoCloseOptions.Delay = 2000
@@ -848,6 +850,47 @@ Public Class frmINH
         Catch SQLex As SqlException
             XtraMessageBox.Show(String.Format("Error: {0}", SQLex.Errors.Item(0).ToString), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub CalculateDepositA(ByVal sbdgID As String)
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositA", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.Add("@Amt", SqlDbType.Decimal)
+                oCmd.Parameters("@Amt").Direction = ParameterDirection.Output
+                oCmd.ExecuteNonQuery()
+            End Using
+            'Υπολογισμός Διαθέσιμου υπολοίπου
+            CalculateDepositR(sbdgID)
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub CalculateDepositR(ByVal sbdgID As String)
+        Try
+            Using oCmd As New SqlCommand("CalculateAndReturnDepositR", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.Add("@totDepositR", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnchargableOil", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@UnpaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@PaidInd", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@AptBalAdm", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters.Add("@totDepositRAndPrepayments", SqlDbType.Decimal)
+                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositR").Precision = 18 : oCmd.Parameters("@totDepositR").Scale = 2
+                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output : oCmd.Parameters("@UnchargableOil").Precision = 18 : oCmd.Parameters("@UnchargableOil").Scale = 2
+                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@UnpaidInd").Precision = 18 : oCmd.Parameters("@UnpaidInd").Scale = 2
+                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@PaidInd").Precision = 18 : oCmd.Parameters("@PaidInd").Scale = 2
+                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output : oCmd.Parameters("@AptBalAdm").Precision = 18 : oCmd.Parameters("@AptBalAdm").Scale = 2
+                oCmd.Parameters("@totPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totPrepayments").Precision = 18 : oCmd.Parameters("@totPrepayments").Scale = 2
+                oCmd.Parameters("@totDepositRAndPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositRAndPrepayments").Precision = 18 : oCmd.Parameters("@totDepositRAndPrepayments").Scale = 2
+                oCmd.ExecuteNonQuery()
+
+            End Using
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1468,6 +1511,8 @@ Public Class frmINH
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
                 oCmd.ExecuteNonQuery()
             End Using
+            ' Ενημέρωση αποθεματικού
+            CalculateDepositA(cboBDG.EditValue.ToString)
             LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdCancelCalculate.Enabled = False
             chkCalculated.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
             cmdSaveInd.Enabled = True : cmdDel.Enabled = True : cmdSaveINH.Enabled = True : cmdPrintAll.Enabled = False
