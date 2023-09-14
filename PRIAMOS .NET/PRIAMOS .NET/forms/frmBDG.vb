@@ -1978,6 +1978,8 @@ Public Class frmBDG
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
+                    ' Ενημέρωση αποθεματικού
+                    CalculateDepositA()
                 End If
                 ' Διαγραφή παραστατικού
                 sSQL = "DELETE FROM INH WHERE ID = '" & GridView_INH.GetRowCellValue(GridView_INH.FocusedRowHandle, "ID").ToString & "'"
