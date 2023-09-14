@@ -686,6 +686,7 @@ Partial Class frmBDG
         Me.LayoutControlItem158 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.tabHeatingInvoices = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl4InvHeatGas = New DevExpress.XtraLayout.LayoutControl()
+        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
         Me.cboMeasurementUsr = New DevExpress.XtraEditors.LookUpEdit()
         Me.VwMEASURERSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MemoEdit4 = New DevExpress.XtraEditors.MemoEdit()
@@ -745,6 +746,7 @@ Partial Class frmBDG
         Me.LayoutControlItem57 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem216 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem58 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem68 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup6 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem49 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem61 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -996,8 +998,6 @@ Partial Class frmBDG
         Me.Vw_FOLDER_CATTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_FOLDER_CATTableAdapter()
         Me.Vw_PUBLIC_STableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_PUBLIC_STableAdapter()
         Me.Vw_MEASURERSTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_MEASURERSTableAdapter()
-        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
-        Me.LayoutControlItem68 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.grdAPM, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1361,6 +1361,7 @@ Partial Class frmBDG
         Me.tabHeatingInvoices.SuspendLayout
         CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).BeginInit
         Me.LayoutControl4InvHeatGas.SuspendLayout
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.cboMeasurementUsr.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.VwMEASURERSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.MemoEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1415,6 +1416,7 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem216, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1586,8 +1588,6 @@ Partial Class frmBDG
         CType(Me.SplitContainerControl1.Panel2, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainerControl1.Panel2.SuspendLayout
         Me.SplitContainerControl1.SuspendLayout
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'GridView7
@@ -7758,6 +7758,21 @@ Partial Class frmBDG
         Me.LayoutControl4InvHeatGas.TabIndex = 9
         Me.LayoutControl4InvHeatGas.Text = "LayoutControl3"
         '
+        'CheckEdit1
+        '
+        Me.CheckEdit1.EditValue = CType(0, Byte)
+        Me.CheckEdit1.Location = New System.Drawing.Point(497, 187)
+        Me.CheckEdit1.Margin = New System.Windows.Forms.Padding(5)
+        Me.CheckEdit1.MenuManager = Me.BarManager1
+        Me.CheckEdit1.Name = "CheckEdit1"
+        Me.CheckEdit1.Properties.Caption = "Ολοκληρωμένο"
+        Me.CheckEdit1.Properties.ValueChecked = CType(1, Byte)
+        Me.CheckEdit1.Properties.ValueUnchecked = CType(0, Byte)
+        Me.CheckEdit1.Size = New System.Drawing.Size(221, 32)
+        Me.CheckEdit1.StyleController = Me.LayoutControl4InvHeatGas
+        Me.CheckEdit1.TabIndex = 68
+        Me.CheckEdit1.Tag = "completed,0,1,2"
+        '
         'cboMeasurementUsr
         '
         Me.cboMeasurementUsr.Location = New System.Drawing.Point(226, 229)
@@ -8478,6 +8493,15 @@ Partial Class frmBDG
         Me.LayoutControlItem58.Size = New System.Drawing.Size(349, 42)
         Me.LayoutControlItem58.Text = "Επιμέτρηση"
         Me.LayoutControlItem58.TextSize = New System.Drawing.Size(189, 23)
+        '
+        'LayoutControlItem68
+        '
+        Me.LayoutControlItem68.Control = Me.CheckEdit1
+        Me.LayoutControlItem68.Location = New System.Drawing.Point(472, 126)
+        Me.LayoutControlItem68.Name = "LayoutControlItem68"
+        Me.LayoutControlItem68.Size = New System.Drawing.Size(225, 42)
+        Me.LayoutControlItem68.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem68.TextVisible = False
         '
         'LayoutControlGroup6
         '
@@ -9307,22 +9331,20 @@ Partial Class frmBDG
         Me.LayoutControlItem159.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem159.CustomizationFormText = "Μετρήσεις Θέρμανσης"
         Me.LayoutControlItem159.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlItem159.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem159.Location = New System.Drawing.Point(30, 0)
         Me.LayoutControlItem159.Name = "LayoutControlItem159"
         Me.LayoutControlItem159.Size = New System.Drawing.Size(574, 42)
-        Me.LayoutControlItem159.Tag = "1"
+        Me.LayoutControlItem159.Tag = ""
         Me.LayoutControlItem159.Text = "Μετρήσεις Θέρμανσης"
         Me.LayoutControlItem159.TextSize = New System.Drawing.Size(268, 23)
         '
         'LayoutControlItem160
         '
         Me.LayoutControlItem160.Control = Me.cboMesB
-        Me.LayoutControlItem160.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem160.Location = New System.Drawing.Point(30, 42)
         Me.LayoutControlItem160.Name = "LayoutControlItem160"
         Me.LayoutControlItem160.Size = New System.Drawing.Size(574, 42)
-        Me.LayoutControlItem160.Tag = "1"
+        Me.LayoutControlItem160.Tag = ""
         Me.LayoutControlItem160.Text = "Μετρήσεις Boiler"
         Me.LayoutControlItem160.TextSize = New System.Drawing.Size(268, 23)
         '
@@ -11216,30 +11238,6 @@ Partial Class frmBDG
         '
         Me.Vw_MEASURERSTableAdapter.ClearBeforeFill = True
         '
-        'CheckEdit1
-        '
-        Me.CheckEdit1.EditValue = CType(0, Byte)
-        Me.CheckEdit1.Location = New System.Drawing.Point(497, 187)
-        Me.CheckEdit1.Margin = New System.Windows.Forms.Padding(5)
-        Me.CheckEdit1.MenuManager = Me.BarManager1
-        Me.CheckEdit1.Name = "CheckEdit1"
-        Me.CheckEdit1.Properties.Caption = "Ολοκληρωμένο"
-        Me.CheckEdit1.Properties.ValueChecked = CType(1, Byte)
-        Me.CheckEdit1.Properties.ValueUnchecked = CType(0, Byte)
-        Me.CheckEdit1.Size = New System.Drawing.Size(221, 32)
-        Me.CheckEdit1.StyleController = Me.LayoutControl4InvHeatGas
-        Me.CheckEdit1.TabIndex = 68
-        Me.CheckEdit1.Tag = "completed,0,1,2"
-        '
-        'LayoutControlItem68
-        '
-        Me.LayoutControlItem68.Control = Me.CheckEdit1
-        Me.LayoutControlItem68.Location = New System.Drawing.Point(472, 126)
-        Me.LayoutControlItem68.Name = "LayoutControlItem68"
-        Me.LayoutControlItem68.Size = New System.Drawing.Size(225, 42)
-        Me.LayoutControlItem68.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem68.TextVisible = False
-        '
         'frmBDG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -11619,6 +11617,7 @@ Partial Class frmBDG
         Me.tabHeatingInvoices.ResumeLayout(False)
         CType(Me.LayoutControl4InvHeatGas, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl4InvHeatGas.ResumeLayout(False)
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.cboMeasurementUsr.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.VwMEASURERSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.MemoEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -11673,6 +11672,7 @@ Partial Class frmBDG
         CType(Me.LayoutControlItem57, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem216, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem58, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem49, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem61, System.ComponentModel.ISupportInitialize).EndInit
@@ -11844,8 +11844,6 @@ Partial Class frmBDG
         Me.SplitContainerControl1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.SplitContainerControl1.ResumeLayout(False)
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem68, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 

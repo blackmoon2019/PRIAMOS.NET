@@ -89,7 +89,7 @@ Public Class frmTANK
                 Dim sConsumptionID As String = ""
                 sConsumptionID = Guid.NewGuid.ToString
 
-                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters,consumptionID", txtmesB.EditValue.ToString & "*" & lpcH & "," & txtmes.EditValue.ToString & "*" & lpcH & "," & sConsumptionID)
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters,consumptionID", toSQLValue(txtmesB, True) & "*" & toSQLValueS(lpcH.ToString, True) & "," & toSQLValue(txtmes, True) & "*" & toSQLValueS(lpcH.ToString, True) & "," & toSQLValueS(sConsumptionID))
                 If sResult Then
 
                     Dim sahpbHIDH As String, sahpbHIDB As String
