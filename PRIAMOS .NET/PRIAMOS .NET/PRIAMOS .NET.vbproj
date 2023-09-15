@@ -739,7 +739,9 @@
     <Compile Include="forms\frmSplash.Designer.vb">
       <DependentUpon>frmSplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmSplash.vb" />
+    <Compile Include="forms\frmSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Priamos_NETDataSet.vb">
       <DependentUpon>Priamos_NETDataSet.xsd</DependentUpon>
     </Compile>

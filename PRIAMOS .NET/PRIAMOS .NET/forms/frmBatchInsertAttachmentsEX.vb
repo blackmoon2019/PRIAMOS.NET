@@ -448,7 +448,8 @@ Public Class frmBatchInsertAttachmentsEX
                 oCmd.Parameters("@totPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totPrepayments").Precision = 18 : oCmd.Parameters("@totPrepayments").Scale = 2
                 oCmd.Parameters("@totDepositRAndPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositRAndPrepayments").Precision = 18 : oCmd.Parameters("@totDepositRAndPrepayments").Scale = 2
                 oCmd.ExecuteNonQuery()
-
+                txtTotalDepositAmtR.EditValue = oCmd.Parameters("@totDepositR").Value
+                If txtTotalDepositAmtR.Text = "" Then txtTotalDepositAmtR.EditValue = "0.00"
             End Using
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
