@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports DevExpress.DataAccess
+Imports DevExpress.DataProcessing
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraGrid.Views.Base
@@ -88,6 +90,7 @@ Public Class frmTANK
                 sTankID = System.Guid.NewGuid.ToString
                 Dim sConsumptionID As String = ""
                 sConsumptionID = Guid.NewGuid.ToString
+
 
                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters,consumptionID", toSQLValue(txtmesB, True) & "*" & toSQLValueS(lpcH.ToString, True) & "," & toSQLValue(txtmes, True) & "*" & toSQLValueS(lpcH.ToString, True) & "," & toSQLValueS(sConsumptionID))
                 If sResult Then
