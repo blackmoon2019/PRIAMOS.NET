@@ -1622,5 +1622,9 @@ Public Class frmINH
 
     End Sub
 
-
+    Private Sub GridView5_DoubleClick(sender As Object, e As EventArgs) Handles GridView5.DoubleClick
+        SplashScreenManager1.ShowWaitForm()
+        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+        OpenPreviwer()
+    End Sub
 End Class

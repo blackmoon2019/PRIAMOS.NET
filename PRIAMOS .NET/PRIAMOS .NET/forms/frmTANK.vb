@@ -252,6 +252,10 @@ Public Class frmTANK
                     XtraMessageBox.Show("Δεν μπορείτε να υπολογίσετε κατανάλωση πετρελάιου που συμμετέχει ήδη σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
+                If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "measurementcatID").ToString.ToUpper <> "0933F647-2FC7-43FD-A00E-5F9939AFC6E2" Then
+                    XtraMessageBox.Show("Ο Υπολογισμός επιτρέπεται μόνο σε κατηγορία μέρησης ""Μέτρηση Μήνα""", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
                 If CheckForAhpbH(sahpbHIDH, True) = False And CheckForAhpbB(sahpbHIDB, True) = False Then
                     XtraMessageBox.Show("Δεν μπορείτε να υπολογίσετε την κατανάλωση πετρελάιου αν δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Exit Sub
@@ -363,6 +367,8 @@ Public Class frmTANK
 
             If FromGrid Then
                 sdtMeasurement = Date.Parse(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement"))
+                sConsumptionID = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString
+                If sConsumptionID = "" Then sConsumptionID = Guid.NewGuid.ToString
             Else
                 sdtMeasurement = Date.Parse(dtMeasurement.Text)
             End If
