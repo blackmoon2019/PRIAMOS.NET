@@ -313,16 +313,16 @@ Public Class frmINH
                             End If
                             If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                 ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                                sSQL = "INSERT INTO IND (inhID, calcCatID,repName, amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',
+                                sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID,repName, amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",ID,'B139CE26-1ABA-4680-A1EE-623EC97C475B',
                                    case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterH as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
 	                                    when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
 	                                    else '' end as repName,consumptionH,'1' FROM CONSUMPTIONS where consumptionH<> 0 and ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString)
                                 Using oCmd As New SqlCommand(sSQL, CNDB)
                                     oCmd.ExecuteNonQuery()
                                 End Using
-                                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
+                                sSQL = "INSERT INTO IND (inhID, consumptionID,calcCatID, repName, amt, owner_tenant) " &
+                                   "Select " & toSQLValueS(sGuid) & ",ID,'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
                                    case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterB as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ BOILER' 
 	                                    when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ BOILER' 
 	                                    else '' end as repName, consumptionB,'1' FROM CONSUMPTIONS where consumptionB<> 0 and ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString)
@@ -356,8 +356,8 @@ Public Class frmINH
                                 If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                     If cboAhpbH.EditValue IsNot Nothing Then
                                         ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                                        sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
-                                       "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',
+                                        sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID, repName, amt, owner_tenant) " &
+                                       "Select " & toSQLValueS(sID) & ",ID,'B139CE26-1ABA-4680-A1EE-623EC97C475B',
                                                 case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterH as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
 	                                                 when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
 	                                    else '' end as repName, consumptionH,'1' FROM CONSUMPTIONS where consumptionH<> 0 and ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString) &
@@ -367,8 +367,8 @@ Public Class frmINH
                                         End Using
                                     End If
                                     If cboAhpbHB.EditValue IsNot Nothing Then
-                                        sSQL = "INSERT INTO IND (inhID, calcCatID, repName,  amt, owner_tenant) " &
-                                    "Select " & toSQLValueS(sID) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
+                                        sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID, repName,  amt, owner_tenant) " &
+                                    "Select " & toSQLValueS(sID) & ",ID,'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
                                                 case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterB as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ BOILER' 
 	                                                 when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ BOILER' 
 	                                    else '' end as repName,consumptionB,'1' FROM CONSUMPTIONS where consumptionB<>0 and ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &

@@ -133,10 +133,10 @@
     <value>1622, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="EditorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="EditorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAjJJREFUOE+Nkl9IU1Ecx30wKJiPPfXUHwoCJSiKqGnJMumhh3zQDDMtkPYwKCoq
+        DQAACw0B7QfALAAAAjJJREFUOE+Nkl9IU1Ecx30wKJiPPfXUHwoCJSiKqGnJMumhh3zQDDMtkPYwKCoq
         Wg/50B9xWFbbrkulMO9cmaZpqesSbLO7nD3cea+bLufy3l0nQgpBb9/uObnpKsd+8OH87uH8Pr9zzj05
         JCRJypOkqaOhiZAhG8jaYDCoo8UkJsVQ18fAFLpHp7OCrJXEkHOlnAq4C84o9EwMxxkJ559wKLGF6ff+
         5gjl1KMA3pgu05GsJTUr5auCWmYIi7bt6DMbodaVobLRkxLcvvMC7KUbMN4fWF/gtpejvvEW9jSFcdfc
@@ -148,15 +148,6 @@
         TkD+NblEfYusdVUopPhEu7z6DjIFeW2kUyWrGtZC5oo45P4GoqFMvRYlZrQAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="VwMEASURERSBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>917, 17</value>
-  </metadata>
-  <metadata name="VwMEASUREMENTCATBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1622, 17</value>
-  </metadata>
-  <metadata name="Priamos_NET_DataSet_BDG.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="Vw_TANKTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>630, 17</value>
   </metadata>

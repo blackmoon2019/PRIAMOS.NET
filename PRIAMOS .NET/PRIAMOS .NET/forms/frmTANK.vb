@@ -137,10 +137,19 @@ Public Class frmTANK
 
     Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
         Try
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
+                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που συμμετέχει σε παραστατικό"
+                e.Valid = False
+            End If
             If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invOilID").ToString.Length > 0 Then
                 e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που αφορά παραστατικό Αγοράς πετρελάιου"
                 e.Valid = False
             End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "calculated") = True Then
+                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που συμμετέχει σε παραστατικό"
+                e.Valid = False
+            End If
+
 
             If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
             Dim sSQL As String
@@ -188,12 +197,21 @@ Public Class frmTANK
                 XtraMessageBox.Show("Δεν μπορείς να διαγράψεις εγγραφή που αφορά παραστατικό Αγοράς πετρελάιου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
+                XtraMessageBox.Show("Δεν μπορείς να διαγράψεις εγγραφή που συμμετέχει σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            End If
             If XtraMessageBox.Show("Θέλετε να διαγραφή η εγγραφή ?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM CONSUMPTION  WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
                 sSQL = "DELETE FROM TANK  WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString)
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
                 Me.Vw_TANKTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_TANK, System.Guid.Parse(sBdgID))
+
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return True
             Else
@@ -230,11 +248,16 @@ Public Class frmTANK
                     XtraMessageBox.Show("Η κατανάλωση έχει ήδη υπολογιστεί. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
+                If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
+                    XtraMessageBox.Show("Δεν μπορείτε να υπολογίσετε κατανάλωση πετρελάιου που συμμετέχει ήδη σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
                 If CheckForAhpbH(sahpbHIDH, True) = False And CheckForAhpbB(sahpbHIDB, True) = False Then
                     XtraMessageBox.Show("Δεν μπορείτε να υπολογίσετε την κατανάλωση πετρελάιου αν δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Else
-                    CalculateOIL(sahpbHIDH, sahpbHIDB, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString, True)
+                    Exit Sub
                 End If
+                CalculateOIL(sahpbHIDH, sahpbHIDB, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString, True)
+
             Case 1
                 ' Ακύρωση Υπολογισμού Πετρλαίου και Κατανάλωσης
                 CancelCalculateOIL()
@@ -277,6 +300,31 @@ Public Class frmTANK
             Return False
         End If
     End Function
+    Private Function CheckifIsLastTank()
+        Dim stankID As String
+        Dim sSQL As New System.Text.StringBuilder
+        sSQL.AppendLine("select ID from TANK (nolock)  where  bdgid= " & toSQLValueS(cboBDG.EditValue.ToString))
+        sSQL.AppendLine("and dtMeasurement=(select max(dtMeasurement) from TANK (nolock) where bdgid= " & toSQLValueS(cboBDG.EditValue.ToString) & " and calculated =1 )")
+
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL.ToString, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            stankID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString.ToUpper = stankID.ToUpper Then
+                sdr.Close()
+                Return True
+            Else
+                sdr.Close()
+                Return False
+            End If
+        Else
+            sdr.Close()
+            Return False
+        End If
+
+    End Function
     Private Function CheckForAhpbB(ByRef sahpbHIDB As String, ByVal FromGrid As Boolean) As Boolean
         Dim sSQL As String
         If FromGrid = False Then
@@ -308,6 +356,11 @@ Public Class frmTANK
         Try
             Dim sdtMeasurement As Date
             Dim TotalConsumption As Decimal, ΤotalConsumptionLiter As Decimal
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
+                XtraMessageBox.Show("Δεν μπορείτε να υπολογίσετε κατανάλωση πετρελάιου που συμμετέχει ήδη σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+
             If FromGrid Then
                 sdtMeasurement = Date.Parse(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement"))
             Else
@@ -360,6 +413,18 @@ Public Class frmTANK
     'Ακύρωση Υπολογισμού πετρελάιου
     Private Sub CancelCalculateOIL()
         Try
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
+                XtraMessageBox.Show("Δεν μπορείτε να ακυρώσετε κατανάλωση πετρελάιου που συμμετέχει ήδη σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "calculated") = False Then
+                XtraMessageBox.Show("Δεν είναι υπολογισμένη η εγγραφή", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+            If CheckifIsLastTank() = False Then
+                XtraMessageBox.Show("Μόνο η τελευταία μη υπολογισμένη κατανάλωση μπορεί να ακυρωθεί. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
 
             Using oCmd As New SqlCommand("oil_cancelCalculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
