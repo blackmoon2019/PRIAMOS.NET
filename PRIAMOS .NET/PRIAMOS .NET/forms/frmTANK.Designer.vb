@@ -20,12 +20,12 @@ Partial Class frmTANK
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTANK))
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.cmdRefreshMeasurement = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdDeleteMeasurement = New DevExpress.XtraEditors.SimpleButton()
@@ -146,7 +146,7 @@ Partial Class frmTANK
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1472, 492, 1137, 700)
         Me.LayoutControl1.OptionsFocus.MoveFocusRightToLeft = False
         Me.LayoutControl1.Root = Me.Root
-        Me.LayoutControl1.Size = New System.Drawing.Size(1809, 888)
+        Me.LayoutControl1.Size = New System.Drawing.Size(2205, 888)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -197,7 +197,7 @@ Partial Class frmTANK
         Me.cboBDG.Properties.PopupSizeable = False
         Me.cboBDG.Properties.ReadOnly = True
         Me.cboBDG.Properties.ValueMember = "ID"
-        Me.cboBDG.Size = New System.Drawing.Size(1572, 38)
+        Me.cboBDG.Size = New System.Drawing.Size(1968, 38)
         Me.cboBDG.StyleController = Me.LayoutControl1
         Me.cboBDG.TabIndex = 2
         Me.cboBDG.Tag = "bdgid,0,1,2"
@@ -221,7 +221,7 @@ Partial Class frmTANK
         Me.grdTank.Margin = New System.Windows.Forms.Padding(5)
         Me.grdTank.Name = "grdTank"
         Me.grdTank.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemLookUpEditMeasurementCat, Me.RepositoryItemLookUpEditMeasurer, Me.RepCmdCalculateOIL})
-        Me.grdTank.Size = New System.Drawing.Size(1755, 527)
+        Me.grdTank.Size = New System.Drawing.Size(2151, 527)
         Me.grdTank.TabIndex = 10
         Me.grdTank.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -457,13 +457,13 @@ Partial Class frmTANK
         Me.colBtn.Name = "colBtn"
         Me.colBtn.Visible = True
         Me.colBtn.VisibleIndex = 0
-        Me.colBtn.Width = 131
+        Me.colBtn.Width = 184
         '
         'RepCmdCalculateOIL
         '
         Me.RepCmdCalculateOIL.AutoHeight = False
-        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
-        Me.RepCmdCalculateOIL.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
+        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
+        Me.RepCmdCalculateOIL.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete), New DevExpress.XtraEditors.Controls.EditorButton()})
         Me.RepCmdCalculateOIL.Name = "RepCmdCalculateOIL"
         Me.RepCmdCalculateOIL.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -480,7 +480,7 @@ Partial Class frmTANK
         Me.cboMeasurementUsr.Properties.NullText = ""
         Me.cboMeasurementUsr.Properties.PopupSizeable = False
         Me.cboMeasurementUsr.Properties.ValueMember = "ID"
-        Me.cboMeasurementUsr.Size = New System.Drawing.Size(1572, 38)
+        Me.cboMeasurementUsr.Size = New System.Drawing.Size(1968, 38)
         Me.cboMeasurementUsr.StyleController = Me.LayoutControl1
         Me.cboMeasurementUsr.TabIndex = 4
         Me.cboMeasurementUsr.Tag = "usrID,0,1,2"
@@ -496,7 +496,7 @@ Partial Class frmTANK
         Me.txtmesB.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtmesB.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtmesB.Properties.MaskSettings.Set("mask", "n2")
-        Me.txtmesB.Size = New System.Drawing.Size(1572, 38)
+        Me.txtmesB.Size = New System.Drawing.Size(1968, 38)
         Me.txtmesB.StyleController = Me.LayoutControl1
         Me.txtmesB.TabIndex = 7
         Me.txtmesB.Tag = "mesB,0,1,2"
@@ -512,7 +512,7 @@ Partial Class frmTANK
         Me.txtmes.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.txtmes.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtmes.Properties.MaskSettings.Set("mask", "n2")
-        Me.txtmes.Size = New System.Drawing.Size(1572, 38)
+        Me.txtmes.Size = New System.Drawing.Size(1968, 38)
         Me.txtmes.StyleController = Me.LayoutControl1
         Me.txtmes.TabIndex = 6
         Me.txtmes.Tag = "mes,0,1,2"
@@ -523,7 +523,7 @@ Partial Class frmTANK
         Me.cmdSave.Location = New System.Drawing.Point(12, 306)
         Me.cmdSave.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSave.Name = "cmdSave"
-        Me.cmdSave.Size = New System.Drawing.Size(1785, 39)
+        Me.cmdSave.Size = New System.Drawing.Size(2181, 39)
         Me.cmdSave.StyleController = Me.LayoutControl1
         Me.cmdSave.TabIndex = 8
         Me.cmdSave.Text = "Αποθήκευση"
@@ -539,7 +539,7 @@ Partial Class frmTANK
         Me.dtMeasurement.Properties.MaskSettings.Set("mask", "d")
         Me.dtMeasurement.Properties.ShowMonthNavigationButtons = DevExpress.Utils.DefaultBoolean.[True]
         Me.dtMeasurement.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.dtMeasurement.Size = New System.Drawing.Size(1572, 38)
+        Me.dtMeasurement.Size = New System.Drawing.Size(1968, 38)
         Me.dtMeasurement.StyleController = Me.LayoutControl1
         Me.dtMeasurement.TabIndex = 3
         Me.dtMeasurement.Tag = "dtMeasurement,0,1,2"
@@ -559,7 +559,7 @@ Partial Class frmTANK
         Me.cboMeasurementcat.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.cboMeasurementcat.Properties.PopupSizeable = False
         Me.cboMeasurementcat.Properties.ValueMember = "ID"
-        Me.cboMeasurementcat.Size = New System.Drawing.Size(1572, 38)
+        Me.cboMeasurementcat.Size = New System.Drawing.Size(1968, 38)
         Me.cboMeasurementcat.StyleController = Me.LayoutControl1
         Me.cboMeasurementcat.TabIndex = 5
         Me.cboMeasurementcat.Tag = "measurementcatID,0,1,2"
@@ -574,7 +574,7 @@ Partial Class frmTANK
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(182, 38)
+        Me.txtCode.Size = New System.Drawing.Size(173, 38)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 0
         Me.txtCode.Tag = "code,0"
@@ -586,7 +586,7 @@ Partial Class frmTANK
         Me.Root.GroupBordersVisible = False
         Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem7, Me.LayoutControlItem6, Me.LayoutControlItem3, Me.LayoutControlItem9, Me.LayoutControlItem8, Me.EmptySpaceItem1, Me.EmptySpaceItem2, Me.LayoutControlItem10, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem5})
         Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(1809, 888)
+        Me.Root.Size = New System.Drawing.Size(2205, 888)
         Me.Root.TextVisible = False
         '
         'LayoutControlItem1
@@ -595,7 +595,7 @@ Partial Class frmTANK
         Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 84)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1789, 42)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(2185, 42)
         Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "Ημερομηνία Μέτρησης"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(201, 23)
@@ -606,7 +606,7 @@ Partial Class frmTANK
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(1789, 42)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(2185, 42)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Κατηγορία Μέτρησης"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(201, 23)
@@ -616,7 +616,7 @@ Partial Class frmTANK
         Me.LayoutControlItem4.Control = Me.txtmes
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 252)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1789, 42)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(2185, 42)
         Me.LayoutControlItem4.Text = "Πόντοι(Επιμέτρηση)"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(201, 23)
         '
@@ -625,7 +625,7 @@ Partial Class frmTANK
         Me.LayoutControlItem7.Control = Me.grdTank
         Me.LayoutControlItem7.Location = New System.Drawing.Point(30, 337)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(1759, 531)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(2155, 531)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -635,7 +635,7 @@ Partial Class frmTANK
         Me.LayoutControlItem6.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 126)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(1789, 42)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(2185, 42)
         Me.LayoutControlItem6.Tag = "1"
         Me.LayoutControlItem6.Text = "Επιμετρητής"
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(201, 23)
@@ -645,7 +645,7 @@ Partial Class frmTANK
         Me.LayoutControlItem3.Control = Me.cmdSave
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 294)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1789, 43)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(2185, 43)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -656,7 +656,7 @@ Partial Class frmTANK
         Me.LayoutControlItem9.CustomizationFormText = "Κωδικός"
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(399, 42)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(390, 42)
         Me.LayoutControlItem9.Text = "Κωδικός"
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(201, 23)
         '
@@ -665,16 +665,16 @@ Partial Class frmTANK
         Me.LayoutControlItem8.Control = Me.cboBDG
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 42)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(1789, 42)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(2185, 42)
         Me.LayoutControlItem8.Text = "Πολυκατοικία"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(201, 23)
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(399, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(390, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1390, 42)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1795, 42)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem2
@@ -717,7 +717,7 @@ Partial Class frmTANK
         Me.LayoutControlItem5.Control = Me.txtmesB
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 210)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1789, 42)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(2185, 42)
         Me.LayoutControlItem5.Text = "Πόντοι(Προμέτρηση)"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(201, 23)
         '
@@ -741,7 +741,7 @@ Partial Class frmTANK
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1809, 888)
+        Me.ClientSize = New System.Drawing.Size(2205, 888)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Name = "frmTANK"
         Me.Text = "frmTANK"

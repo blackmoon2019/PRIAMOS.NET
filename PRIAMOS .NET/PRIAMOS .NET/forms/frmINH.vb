@@ -1,12 +1,9 @@
 ﻿
 Imports System.Data.SqlClient
-Imports System.Windows.Automation
-Imports DevExpress.DataAccess
 Imports DevExpress.Export
 Imports DevExpress.LookAndFeel
 Imports DevExpress.Spreadsheet
 Imports DevExpress.Utils
-Imports DevExpress.Utils.Colors
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Navigation
@@ -21,10 +18,7 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraPrinting
-Imports DevExpress.XtraPrinting.Shape.Native
 Imports DevExpress.XtraReports.UI
-Imports DevExpress.XtraSpreadsheet.DocumentFormats
-Imports PRIAMOS.NET.Priamos_NETDataSetTableAdapters
 
 Public Class frmINH
     Private sID As String
@@ -377,7 +371,7 @@ Public Class frmINH
                                     "Select " & toSQLValueS(sID) & ",'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
                                                 case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterB as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ BOILER' 
 	                                                 when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ BOILER' 
-	                                    else '' end as repName,consumptionB,'1' FROM CONSUMPTIONS where consumptionB<>0 ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &
+	                                    else '' end as repName,consumptionB,'1' FROM CONSUMPTIONS where consumptionB<>0 and ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &
                                     " and  '2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
 
                                         Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -1376,7 +1370,7 @@ Public Class frmINH
             Case 2 : If cboAhpbH.EditValue = Nothing Then Exit Sub
                 ManageCbo.ManageAHPB(cboAhpbH, FormMode.EditRecord, cboAhpbH.Text, False, cboBDG.EditValue.ToString)
             Case 3 : Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
-            Case 4 : cboAhpbH.EditValue = Nothing
+            Case 4 : cboAhpbH.EditValue = Nothing : lblAHPBH.Text = ""
         End Select
     End Sub
 
@@ -1386,7 +1380,7 @@ Public Class frmINH
             Case 2 : If cboAhpbHB.EditValue = Nothing Then Exit Sub
                 ManageCbo.ManageAHPB(cboAhpbHB, FormMode.EditRecord, cboAhpbHB.Text, True, cboBDG.EditValue.ToString)
             Case 3 : Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
-            Case 4 : cboAhpbHB.EditValue = Nothing
+            Case 4 : cboAhpbHB.EditValue = Nothing : lblAHPBB.Text = ""
         End Select
     End Sub
 

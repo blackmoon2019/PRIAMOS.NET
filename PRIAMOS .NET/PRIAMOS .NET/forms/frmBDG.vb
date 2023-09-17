@@ -93,9 +93,7 @@ Public Class frmBDG
             CalledFromCtrl = value
         End Set
     End Property
-    Private Sub cmdExit_Click(sender As Object, e As EventArgs)
-        Me.Close()
-    End Sub
+
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -2647,153 +2645,19 @@ Public Class frmBDG
         LoadForms.RestoreLayoutFromXml(GridView11, "vw_CONSUMPTIONS.xml")
     End Sub
 
-    Private Sub cboMesH_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesH.EditValueChanged
-        Dim calH As Integer, TotalMesH As Integer, CalHCons As Integer, CalBCons As Integer
-        If cboMesH.EditValue Is Nothing Then
-            txtTotalMesH.EditValue = Nothing : txtTotalMesH.EditValue = 0
-            Exit Sub
-        End If
-        TotalMesH = cboMesH.GetColumnValue("totalBdgMesDif") : txtTotalMesH.EditValue = TotalMesH
-        calH = cboMesH.GetColumnValue("calH")
-        CalHCons = TotalMesH * calH : txtCalHCons.EditValue = CalHCons
-        CalBCons = txtCalBCons.EditValue
-        txtCalTotalCons.EditValue = CalHCons + CalBCons
-
-    End Sub
-
-    Private Sub cboMesB_EditValueChanged(sender As Object, e As EventArgs) Handles cboMesB.EditValueChanged
-        Dim calB As Integer, TotalMesB As Integer, CalBCons As Integer, CalHCons As Integer
-        If cboMesB.EditValue Is Nothing Then
-            txtTotalMesB.EditValue = Nothing : txtTotalMesB.EditValue = 0
-            Exit Sub
-        End If
-        TotalMesB = cboMesB.GetColumnValue("totalBdgMesDif") : txtTotalMesB.EditValue = TotalMesB
-        calB = cboMesB.GetColumnValue("calB")
-        CalBCons = TotalMesB * calB : txtCalBCons.EditValue = CalBCons
-        CalHCons = txtCalHCons.EditValue
-        txtCalTotalCons.EditValue = CalHCons + CalBCons
-    End Sub
-    Private Sub txtTotalConsumption_Validated(sender As Object, e As EventArgs) Handles txtTotalConsumption.Validated
-        Try
-            Dim totalConsumption As Decimal, CalTotalCons As Integer, CalHCons As Integer, CalBCons As Integer
-            Dim ConsumptionH As Decimal, ConsumptionB As Decimal
-            totalConsumption = txtTotalConsumption.EditValue.ToString.Replace(".", ",")
-            CalTotalCons = txtCalTotalCons.EditValue
-            CalHCons = txtCalHCons.EditValue
-            CalBCons = txtCalBCons.EditValue
-            If CalTotalCons = 0 Then Exit Sub
-            ConsumptionH = totalConsumption / CalTotalCons
-            ConsumptionH = ConsumptionH * CalHCons
-            ConsumptionB = totalConsumption / CalTotalCons
-            ConsumptionB = ConsumptionB * CalBCons
-            txtConsumptionH.EditValue = ConsumptionH
-            txtConsumptionB.EditValue = ConsumptionB
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
-    Private Sub txtTotalLiterConsumption_Validated(sender As Object, e As EventArgs) Handles txtTotalLiterConsumption.Validated
-        Try
-            Dim totalLiterConsumption As Decimal, CalTotalCons As Integer, CalHCons As Integer, CalBCons As Integer
-            Dim LiterConsumptionH As Decimal, LiterConsumptionB As Decimal
-            totalLiterConsumption = txtTotalLiterConsumption.EditValue.ToString.Replace(".", ",")
-            CalTotalCons = txtCalTotalCons.EditValue
-            CalHCons = txtCalHCons.EditValue
-            CalBCons = txtCalBCons.EditValue
-            If CalTotalCons = 0 Then Exit Sub
-            LiterConsumptionH = totalLiterConsumption / CalTotalCons
-            LiterConsumptionH = LiterConsumptionH * CalHCons
-            LiterConsumptionB = totalLiterConsumption / CalTotalCons
-            LiterConsumptionB = LiterConsumptionB * CalBCons
-            txtLiterConsumptionH.EditValue = LiterConsumptionH
-            txtLiterConsumptionB.EditValue = LiterConsumptionB
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub cboMesH_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesH.ButtonClick
-        cboMesH.EditValue = Nothing : txtTotalMesH.EditValue = Nothing : txtTotalMesH.EditValue = 0 : txtCalHCons.EditValue = 0 : txtCalTotalCons.EditValue = txtCalHCons.EditValue + +txtCalBCons.EditValue
-        txtConsumptionH.EditValue = 0 : txtTotalConsumption.EditValue = txtConsumptionH.EditValue + txtConsumptionB.EditValue
-        txtLiterConsumptionH.EditValue = 0 : txtTotalLiterConsumption.EditValue = txtLiterConsumptionH.EditValue + txtLiterConsumptionB.EditValue
-    End Sub
-
-    Private Sub cboMesB_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles cboMesB.ButtonClick
-        cboMesB.EditValue = Nothing : txtTotalMesB.EditValue = Nothing : txtTotalMesB.EditValue = 0 : txtCalBCons.EditValue = 0 : txtCalTotalCons.EditValue = txtCalHCons.EditValue + +txtCalBCons.EditValue
-        txtConsumptionB.EditValue = 0 : txtTotalConsumption.EditValue = txtConsumptionH.EditValue + txtConsumptionB.EditValue
-        txtLiterConsumptionH.EditValue = 0 : txtTotalLiterConsumption.EditValue = txtLiterConsumptionH.EditValue + txtLiterConsumptionB.EditValue
-    End Sub
-
-    Private Sub cmdSaveConsumptions_Click(sender As Object, e As EventArgs) Handles cmdSaveConsumptions.Click
-        Dim sResult As Boolean
-        Try
-            If Valid.ValidateFormGRP(LayoutControlGroup25) Then
-                sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "CONSUMPTIONS",,, LayoutControlGroup25, , True, "bdgID", toSQLValueS(sID))
-                If sResult Then
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    'Ενημέρωση εγγραφής ότι δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
-                    Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 1 where ID in( " & toSQLValueS(cboMesH.EditValue.ToString) & "," & toSQLValueS(cboMesB.EditValue.ToString) & ")", CNDB)
-                        oCmd.ExecuteNonQuery()
-                    End Using
-                    Cls.ClearGroupCtrls(LayoutControlGroup25)
-                    RefreshConsumption()
-                End If
-            End If
-
-
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
     Private Sub cmdRefreshConsumption_Click(sender As Object, e As EventArgs) Handles cmdRefreshConsumption.Click
         RefreshConsumption()
-    End Sub
-
-    Private Sub cmdAddConsumption_Click(sender As Object, e As EventArgs) Handles cmdAddConsumption.Click
-        Cls.ClearGroupCtrls(LayoutControlGroup25)
-    End Sub
-
-    Private Sub cmdDeleteConsumption_Click(sender As Object, e As EventArgs) Handles cmdDeleteConsumption.Click
-        DeleteConsumption()
     End Sub
     Private Sub RefreshConsumption()
         Me.AHPB_H_HCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_HCONSUMPTION, System.Guid.Parse(sID))
         Me.AHPB_H_BCONSUMPTIONTableAdapter.FillbyBDGID(Me.Priamos_NETDataSet3.AHPB_H_BCONSUMPTION, System.Guid.Parse(sID))
         Me.Vw_CONSUMPTIONSTableAdapter.FillByBdgID(Me.Priamos_NETDataSet3.vw_CONSUMPTIONS, System.Guid.Parse(sID))
     End Sub
-    Private Sub DeleteConsumption()
-        Dim sSQL As String
-        Try
-            If GridView1.GetRowCellValue(GridView11.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-
-            If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                sSQL = "DELETE FROM CONSUMPTIONS WHERE ID = '" & GridView11.GetRowCellValue(GridView11.FocusedRowHandle, "ID").ToString & "'"
-
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                'Ενημέρωση εγγραφής ότι δεν δημιουργήθηκε χρησιμοποιήθηκε σε κατανάλωση
-                Using oCmd As New SqlCommand("UPDATE AHPB_H SET hasConsumption = 0 where ID in( " & toSQLValueS(GridView11.GetRowCellValue(GridView11.FocusedRowHandle, "ahpbHIDH").ToString) & "," & toSQLValueS(GridView11.GetRowCellValue(GridView11.FocusedRowHandle, "ahpbHIDB").ToString) & ")", CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-
-
-                RefreshConsumption()
-                XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
     Private Sub GridView11_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView11.KeyDown
         Select Case e.KeyCode
-            Case Keys.F2 : If UserProps.AllowInsert = True Then Cls.ClearGroupCtrls(LayoutControlGroup25)
-            Case Keys.F3
             Case Keys.F5 : RefreshConsumption()
-            Case Keys.Delete : If UserProps.AllowDelete = True Then DeleteConsumption()
         End Select
 
     End Sub
