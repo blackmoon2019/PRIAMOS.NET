@@ -163,6 +163,7 @@ Public Class frmBDG
                 Me.Vw_CCTTableAdapter.FillByAll(Me.Priamos_NETDataSet.vw_CCT)
         End Select
         NavDeposit.Enabled = chkKeepDeposit.Checked
+        Maintab.ShowTabHeader = Maintab.ShowTabHeader.False
         ' Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         'Me.CenterToScreen()
         'Me.Size = New Size(2244, 1444)
