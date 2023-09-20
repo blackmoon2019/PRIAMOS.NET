@@ -31,6 +31,7 @@ Public Class frmINH
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
+    Private INH As New INH
     Private InhFieldAndValues As Dictionary(Of String, String)
     Dim sGuid As String
     Private Sfilenames As String = ""
@@ -278,12 +279,9 @@ Public Class frmINH
     Private Sub cmdSaveINH_Click(sender As Object, e As EventArgs) Handles cmdSaveINH.Click
         Dim sResult As Boolean
         Dim sGuid As String
-        Dim sSQL As String
         Dim Months As Long
         Try
             If Valid.ValidateFormGRP(LayoutControlGroup1) Then
-                'Dim myLayoutControls As New List(Of Control)
-                'myLayoutControls.Add(LayoutControl1BDG) : myLayoutControls.Add(LayoutControl3Heating)
                 'Ελεγχος αν είναι valid το διάστημα
                 If CheckIfDateIsValid(Months) = False Then Exit Sub
 
@@ -291,7 +289,6 @@ Public Class frmINH
                     Case FormMode.NewRecord
                         'Ελεγχος αν υπάρχει παραστατικό στο δίάστημα
                         If CheckIfINHMonthExists() Then Exit Sub
-
                         sGuid = System.Guid.NewGuid.ToString
                         Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                         sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sGuid, True, "completeDate", toSQLValueS(sCompleteDate))
@@ -300,37 +297,16 @@ Public Class frmINH
                             If chkCalorimetric.CheckState = CheckState.Unchecked Then
                                 ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
                                 ' Όταν έχει οριστεί διαμέρισμα στα πάγια έξοδα τότε αυτόματα παίρνει τα υπολογισμένα του τελευταίου παραστατικού γιαυτό το διαμέρισμα και τα μεταφέρει στο επόμενο
-                                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant,regardingdeposit) " &
-                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,
-                                   case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt 
-                                        when aptID is not null then (select sum(AmtPerCalc)  from vw_inc where inhid = 
-                                   (select top 1 ID from INH (nolock) where bdgid = vw_inc.bdgID  and extraordinary=0 and Calorimetric=0 and reserveAPT=0 and fdate< " & toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")) & "  order by fDate desc)
-                                        and aptID=IEP.aptID    )   " &
-                                   " else (amt * " & Months & ") end as amt ,owner_tenant,regardingdeposit from iep where bdgID = " & toSQLValueS(cboBDG.EditValue.ToString)
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
+                                If INH.InsertIND(sID, toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")), toSQLValueS(cboBDG.EditValue.ToString), Months) = False Then
+                                    Exit Sub
+                                End If
                             End If
                             If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                 ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                                sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID,repName, amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",ID,'B139CE26-1ABA-4680-A1EE-623EC97C475B',
-                                   case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterH as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
-	                                    when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
-	                                    else '' end as repName,consumptionH,'1' FROM CONSUMPTIONS where consumptionH<> 0 and ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString)
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
-                                sSQL = "INSERT INTO IND (inhID, consumptionID,calcCatID, repName, amt, owner_tenant) " &
-                                   "Select " & toSQLValueS(sGuid) & ",ID,'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
-                                   case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterB as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ BOILER' 
-	                                    when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ BOILER' 
-	                                    else '' end as repName, consumptionB,'1' FROM CONSUMPTIONS where consumptionB<> 0 and ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString)
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
+                                If INH.InsertINDConsumption(sGuid, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString), toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
+                                    Exit Sub
+                                End If
                             End If
-
                             Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sGuid))
                             grdIND.DataSource = VwINDBindingSource
                         End If
@@ -340,10 +316,9 @@ Public Class frmINH
                                 Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                                 sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
                                 ' Αν είναι θερμιδομέτρηση δεν καταχωρούντε πάγια έξοδα
-                                sSQL = "DELETE FROM IND where inhID = " & toSQLValueS(sID)
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
+                                If INH.DeleteIND(sID) Then
+
+                                End If
                                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                                 grdIND.DataSource = VwINDBindingSource
                             End If
@@ -351,44 +326,26 @@ Public Class frmINH
                             Dim sCompleteDate As String = TranslateDates(dtFDate, dtTDate)
                             sResult = DBQ.UpdateNewData(DBQueries.InsertMode.GroupLayoutControl, "INH",,, LayoutControlGroup1, sID, True,,,, "completeDate = " & toSQLValueS(sCompleteDate))
                             If sResult Then
-
-
                                 If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
                                     If cboAhpbH.EditValue IsNot Nothing Then
                                         ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                                        sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID, repName, amt, owner_tenant) " &
-                                       "Select " & toSQLValueS(sID) & ",ID,'B139CE26-1ABA-4680-A1EE-623EC97C475B',
-                                                case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterH as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
-	                                                 when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
-	                                    else '' end as repName, consumptionH,'1' FROM CONSUMPTIONS where consumptionH<> 0 and ahpbHIDH  = " & toSQLValueS(cboAhpbH.EditValue.ToString) &
-                                       " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
-                                        Using oCmd As New SqlCommand(sSQL, CNDB)
-                                            oCmd.ExecuteNonQuery()
-                                        End Using
+                                        If INH.UpdateINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString)) Then
+                                            Exit Sub
+                                        End If
                                     End If
                                     If cboAhpbHB.EditValue IsNot Nothing Then
-                                        sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID, repName,  amt, owner_tenant) " &
-                                    "Select " & toSQLValueS(sID) & ",ID,'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
-                                                case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterB as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ BOILER' 
-	                                                 when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(cboBDG.EditValue.ToString) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣΙΚΟ ΑΕΡΙΟ ΓΙΑ BOILER' 
-	                                    else '' end as repName,consumptionB,'1' FROM CONSUMPTIONS where consumptionB<>0 and ahpbHIDB  = " & toSQLValueS(cboAhpbHB.EditValue.ToString) &
-                                    " and  '2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
-
-                                        Using oCmd As New SqlCommand(sSQL, CNDB)
-                                            oCmd.ExecuteNonQuery()
-                                        End Using
+                                        ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                        If INH.UpdateINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), , toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
+                                            Exit Sub
+                                        End If
                                     End If
+                                Else
+                                    'Στην περίπτωση κατανάλωσης αν δεν έχουν επιλεχθεί ώρες διαγράφει το έξοδο
+                                    DeleteConsumptionIfNeedeit()
                                 End If
                                 ' Ενημέρωση των ποσών όλων των εξόδων ανάλογα με το διάστημα που έχει επιλεχθεί, πλην της έκδοσης
-                                sSQL = "Update IND Set amt=IEP.amt * " & Months & " 
-                                            From IND
-                                            inner Join INH on INH.ID = IND.inhID 
-                                            inner Join IEP on IEP.bdgID  = INH.bdgID And IND.calcCatID = IEP.calcCatID 
-                                            where inhID =" & toSQLValueS(sID) & "  and IEP.calcCatID <>'9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB'"
-
-                                Using oCmd As New SqlCommand(sSQL, CNDB)
-                                    oCmd.ExecuteNonQuery()
-                                End Using
+                                If INH.UpdateIND(sID, Months) Then
+                                End If
                                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                                 grdIND.DataSource = VwINDBindingSource
                             End If
@@ -397,17 +354,10 @@ Public Class frmINH
                 If sResult Then
                     If Mode = FormMode.NewRecord Then sID = sGuid : Mode = FormMode.EditRecord
                     txtCode.Text = DBQ.GetNextId("INH")
-                    'Dim form As New frmScroller
-                    'form.LoadRecords("vw_INH")
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Valid.SChanged = False
-                    LayoutControlGroup2.Enabled = True
-                    LcmdSaveInd.Enabled = True
-                    cmdDel.Enabled = True
-                    LcmdCalculate.Enabled = True
-                    cmdRefresh.Enabled = True
-                    TabNavigationPage3.Enabled = True
-                    chkCALC_CAT.SetItemChecked(0, True)
+                    Valid.SChanged = False : LayoutControlGroup2.Enabled = True : LcmdSaveInd.Enabled = True
+                    cmdDel.Enabled = True : LcmdCalculate.Enabled = True : cmdRefresh.Enabled = True
+                    TabNavigationPage3.Enabled = True : chkCALC_CAT.SetItemChecked(0, True)
                     BarSygentrotiki.Enabled = True : BarReceipt.Enabled = True : BarEidop.Enabled = True
                     LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Success
                 End If
@@ -944,7 +894,52 @@ Public Class frmINH
 
         Return True
     End Function
+    Private Sub DeleteConsumptionIfNeedeit()
+        'Έλεγχος αν έχει επιλεχθεί σστα έξοδα Κατανάλωση Θέρμανης ή Κατανάλωση boiler
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim sindHID As String = "", sindBID As String = ""
+        ' Εαν έχει καταχωρήσει κατανάλωση θέρμανσης
+        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then sindHID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+        sdr.Close()
+        ' Εαν έχει καταχωρήσει κατανάλωση Boiler
+        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then sindBID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+        sdr.Close()
 
+
+        ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
+        If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+            cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+            If sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
+                sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+                grdIND.DataSource = VwINDBindingSource
+            End If
+        End If
+
+        ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
+        If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+           cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+            If sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
+                sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindBID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+                grdIND.DataSource = VwINDBindingSource
+            End If
+        End If
+    End Sub
     Private Sub cmdExport_Click(sender As Object, e As EventArgs) Handles cmdExport.Click
         Select Case TabPane1.SelectedPageIndex
             Case 0 : ExportGrid(0, "Έξοδα")

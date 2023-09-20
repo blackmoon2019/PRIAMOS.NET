@@ -280,30 +280,6 @@ Public Class frmTANK
                 fGridPreviewer.ShowDialog()
         End Select
     End Sub
-    Private Function CheckForAhpbH(ByRef sahpbHIDH As String, ByVal FromGrid As Boolean) As Boolean
-        Dim sSQL As String
-        If FromGrid = False Then
-            sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) &
-                             " and mdt =  " & toSQLValueS(CDate(dtMeasurement.EditValue).ToString("yyyyMMdd"))
-        Else
-            sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) &
-                             " and mdt =  " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
-
-        End If
-        sahpbHIDH = Guid.Empty.ToString
-        Dim cmd As SqlCommand
-        Dim sdr As SqlDataReader
-        cmd = New SqlCommand(sSQL, CNDB)
-        sdr = cmd.ExecuteReader()
-        If (sdr.Read() = True) Then
-            sahpbHIDH = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
-            sdr.Close()
-            Return True
-        Else
-            sdr.Close()
-            Return False
-        End If
-    End Function
     Private Function CheckifIsLastTank()
         Dim stankID As String
         Dim sSQL As New System.Text.StringBuilder
@@ -329,6 +305,31 @@ Public Class frmTANK
         End If
 
     End Function
+    Private Function CheckForAhpbH(ByRef sahpbHIDH As String, ByVal FromGrid As Boolean) As Boolean
+        Dim sSQL As String
+        If FromGrid = False Then
+            sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) &
+                             " and mdt =  " & toSQLValueS(CDate(dtMeasurement.EditValue).ToString("yyyyMMdd"))
+        Else
+            sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(cboBDG.EditValue.ToString) &
+                             " and mdt =  " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+
+        End If
+        sahpbHIDH = Guid.Empty.ToString
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sahpbHIDH = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
+    End Function
+
     Private Function CheckForAhpbB(ByRef sahpbHIDB As String, ByVal FromGrid As Boolean) As Boolean
         Dim sSQL As String
         If FromGrid = False Then
@@ -410,6 +411,7 @@ Public Class frmTANK
                 oCmd.Parameters.AddWithValue("@totConsumptionLiter", totConsumptionLiter)
                 oCmd.Parameters.AddWithValue("@createdBy", UserProps.ID.ToString)
                 oCmd.Parameters.AddWithValue("@MachineName", UserProps.MachineName)
+                oCmd.Parameters.AddWithValue("@invGasID", Guid.Empty.ToString)
                 oCmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception

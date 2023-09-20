@@ -369,6 +369,7 @@
     <Compile Include="classes\EnableControls.vb" />
     <Compile Include="classes\FillCombos.vb" />
     <Compile Include="classes\FormLoader.vb" />
+    <Compile Include="classes\INH.vb" />
     <Compile Include="classes\InitializeCalendar.vb" />
     <Compile Include="classes\InvOilGas.vb" />
     <Compile Include="classes\GridGreekLocalizer.vb" />

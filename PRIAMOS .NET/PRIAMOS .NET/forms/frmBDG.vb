@@ -1174,6 +1174,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdGInvDelete_Click(sender As Object, e As EventArgs) Handles cmdGInvDelete.Click
+        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID") = Nothing Then Exit Sub
         InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
         InvGas.DeleteRecord(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, "INV_GAS")
         InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
@@ -1249,17 +1250,28 @@ Public Class frmBDG
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
+
+                ' Υπολογισμός Κατανάλωσης για την περίπτωση Φυσικού Αερίου
+                Dim sHTypeID As String, sFTypeID As String, sBTypeID As String, sConsumptionID As String
+                sConsumptionID = Guid.NewGuid.ToString
+                GetHeatingInf(sHTypeID, sFTypeID, sBTypeID)
+                If sFTypeID.ToUpper = "3E3B5B65-6B09-4CAA-B467-24A1108C0F0C" Then ' Φυσικό Αέριο
+                    If sHTypeID.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or sHTypeID.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" _
+                    Or sBTypeID.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or sBTypeID.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then
+                        Dim sahpbHIDH As String, sahpbHIDB As String
+                        If CheckForAhpbH(sahpbHIDH, False) = False And CheckForAhpbB(sahpbHIDB, False) = False Then
+                            XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης φυσικού αερίου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Else
+                            CalculateConsumption(toSQLValue(txtGInvTotalPrice, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, sGID)
+                        End If
+                    End If
+                End If
+
+
                 'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
                 Dim ExcludeControls As New List(Of String)
                 ExcludeControls.Add(cbofService2.Name)
                 Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
-                'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
-                'Dim ExcludeControls As New List(Of String)
-                'ExcludeControls.Add(cmdGInvAdd.Name)
-                'ExcludeControls.Add(cmdGInvDelete.Name)
-                'ExcludeControls.Add(cmdGInvEdit.Name)
-                'ExcludeControls.Add(cmdGInvRefresh.Name)
-                'EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Valid.SChanged = False
                 XtraOpenFileDialog1.FileName = ""
@@ -1269,7 +1281,78 @@ Public Class frmBDG
             End If
         End If
     End Sub
+    'Υπολογισμός Κατανάλωσης
+    Private Sub CalculateConsumption(ByVal totConsumption As String, ByVal totConsumptionLiter As String,
+                                     ByVal sConsumptionID As String, ByVal sahpbHIDH As String, ByVal sahpbHIDB As String, ByVal invGasID As String)
+        Try
 
+            Using oCmd As New SqlCommand("consumption_Calculate", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@consumptionID", sConsumptionID)
+                oCmd.Parameters.AddWithValue("@bdgID", sID)
+                oCmd.Parameters.AddWithValue("@ahpbHID", sahpbHIDH)
+                oCmd.Parameters.AddWithValue("@ahpbHIDB", sahpbHIDB)
+                oCmd.Parameters.AddWithValue("@totConsumption", totConsumption)
+                oCmd.Parameters.AddWithValue("@totConsumptionLiter", totConsumptionLiter)
+                oCmd.Parameters.AddWithValue("@createdBy", UserProps.ID.ToString)
+                oCmd.Parameters.AddWithValue("@MachineName", UserProps.MachineName)
+                oCmd.Parameters.AddWithValue("@invGasID", invGasID)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Function CheckForAhpbH(ByRef sahpbHIDH As String, ByVal FromGrid As Boolean) As Boolean
+        Dim sSQL As String
+        If FromGrid = False Then
+            sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(sID) &
+                             " and mdt =  " & toSQLValueS(CDate(tDateConsumption.EditValue).ToString("yyyyMMdd"))
+        Else
+            sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(sID) &
+                             " and mdt =  " & toSQLValueS(CDate(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+
+        End If
+        sahpbHIDH = Guid.Empty.ToString
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sahpbHIDH = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
+    End Function
+
+    Private Function CheckForAhpbB(ByRef sahpbHIDB As String, ByVal FromGrid As Boolean) As Boolean
+        Dim sSQL As String
+        If FromGrid = False Then
+            sSQL = "select top 1 ID from AHPB_H where boiler=1 and bdgID = " & toSQLValueS(sID) &
+                             "and mdt =  " & toSQLValueS(CDate(tDateConsumption.EditValue).ToString("yyyyMMdd"))
+
+        Else
+            sSQL = "select top 1 ID from AHPB_H where boiler=1 and bdgID = " & toSQLValueS(sID) &
+                             "and mdt =  " & toSQLValueS(CDate(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+
+        End If
+        sahpbHIDB = Guid.Empty.ToString
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sahpbHIDB = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
+    End Function
     Private Sub cmdOInvSave_Click(sender As Object, e As EventArgs) Handles cmdOInvSave.Click
         If Valid.ValidateFormGRP(LayoutControlGroup5) Then
             Dim sOID As String = System.Guid.NewGuid.ToString
@@ -3332,7 +3415,25 @@ Public Class frmBDG
 
     End Sub
 
-    Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
+    Private Sub GetHeatingInf(ByRef sHTypeID As String, ByRef FTypeID As String, ByRef BTypeID As String)
+        Try
+
+            Dim sSQL As String = "select top 1 HTypeID,FTypeID,BTypeID from BDG where ID =  " & toSQLValueS(sID)
+            Dim cmd As SqlCommand
+            Dim sdr As SqlDataReader
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then
+                If sdr.IsDBNull(sdr.GetOrdinal("HTypeID")) = False Then sHTypeID = sdr.GetGuid(sdr.GetOrdinal("HTypeID")).ToString
+                If sdr.IsDBNull(sdr.GetOrdinal("FTypeID")) = False Then FTypeID = sdr.GetGuid(sdr.GetOrdinal("FTypeID")).ToString
+                If sdr.IsDBNull(sdr.GetOrdinal("BTypeID")) = False Then BTypeID = sdr.GetGuid(sdr.GetOrdinal("BTypeID")).ToString
+                sdr.Close()
+            Else
+                sdr.Close()
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
 
