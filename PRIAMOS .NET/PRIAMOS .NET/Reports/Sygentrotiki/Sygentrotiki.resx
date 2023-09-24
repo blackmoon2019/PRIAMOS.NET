@@ -132,7 +132,7 @@
        "vw_BDG"."COU_Code", "vw_BDG"."COU_Name", "vw_BDG"."ar",
        "vw_BDG"."prd", "vw_BDG"."HTypeID",
        "vw_BDG"."BTypeID", "vw_BDG"."HTYPE_Name",
-       "vw_BDG"."BTYPE_Name", "vw_BDG"."FBTYPE_Name",
+       "vw_BDG"."BTYPE_Name", "vw_BDG"."FTYPE_Name",
        "vw_BDG"."FTypeID", "vw_BDG"."hpc", "vw_BDG"."hpb",
        "vw_BDG"."calH", "vw_BDG"."calB", "vw_BDG"."tacH",
        "vw_BDG"."tacB", "vw_BDG"."lpcH", "vw_BDG"."lpcB",

@@ -528,7 +528,9 @@ Public Class frmBDG
     End Sub
 
     Private Sub NavHeatingInvoices_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavHeatingInvoices.ElementClick
-
+        HeatingInvoicesSelected()
+    End Sub
+    Public Sub HeatingInvoicesSelected()
         Maintab.SelectedTabPage = tabHeatingInvoices
         'Προμηθευτές για πετρέλαιο
         FillCbo.SUP(cboOInvSup)
@@ -569,6 +571,7 @@ Public Class frmBDG
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl3Heating)
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl5FixedCosts)
+
     End Sub
     Private Sub NavManage_ElementClick(sender As Object, e As NavElementEventArgs) Handles NavManage.ElementClick
         Dim sSQL As String
@@ -1234,6 +1237,11 @@ Public Class frmBDG
         InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
         InvOils.DeleteRecord(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, "INV_OIL")
         InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
+        'Υπολογισμός Διαθέσιμου υπολοίπου
+        CalculateDepositR()
+        ' Σύνολο Λογιστικού και Διαθέσιμου Αποθεματικού 
+        GettotDepositA_R()
+
     End Sub
 
     Private Sub cmdOInvRefresh_Click(sender As Object, e As EventArgs) Handles cmdOInvRefresh.Click
@@ -1354,8 +1362,14 @@ Public Class frmBDG
         End If
     End Function
     Private Sub cmdOInvSave_Click(sender As Object, e As EventArgs) Handles cmdOInvSave.Click
+        Dim mes As Decimal, mesB As Decimal
         If Valid.ValidateFormGRP(LayoutControlGroup5) Then
             Dim sOID As String = System.Guid.NewGuid.ToString
+            mesB = txtOInvBefMes.EditValue : mes = txtOInvMes.EditValue
+            If mesB > mes Then
+                XtraMessageBox.Show("Δεν μπορεί η προμέτρηση να είναι μεγαλύτερη από την επιμέτρηση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             If InvOils.InsertOilData(LayoutControlGroup5, sOID, "bdgid", sID) Then
                 InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
@@ -1367,6 +1381,10 @@ Public Class frmBDG
                 If InsertTank(sOID) = False Then
                     XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην εισαγωγή εγγραφής για την ""Μέτρηση της Δεξαμενής"" ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
+                'Υπολογισμός Διαθέσιμου υπολοίπου
+                CalculateDepositR()
+                ' Σύνολο Λογιστικού και Διαθέσιμου Αποθεματικού 
+                GettotDepositA_R()
 
                 Cls.ClearGroupCtrls(LayoutControlGroup5)
                 ''Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
@@ -1386,6 +1404,7 @@ Public Class frmBDG
 
         End If
     End Sub
+
 
     Private Function InsertTank(ByVal sOID As String) As Boolean
         Try

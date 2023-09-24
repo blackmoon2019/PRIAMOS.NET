@@ -202,7 +202,7 @@ Public Class frmTANK
                 Return False
             End If
             If XtraMessageBox.Show("Θέλετε να διαγραφή η εγγραφή ?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
-                sSQL = "DELETE FROM CONSUMPTION  WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString)
+                sSQL = "DELETE FROM CONSUMPTIONS  WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "consumptionID").ToString)
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
@@ -265,6 +265,7 @@ Public Class frmTANK
             Case 1
                 ' Ακύρωση Υπολογισμού Πετρλαίου και Κατανάλωσης
                 CancelCalculateOIL()
+                Me.Vw_TANKTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_TANK, System.Guid.Parse(sBdgID))
             Case 2
                 Dim fGridPreviewer As frmGridPreviewer = New frmGridPreviewer()
                 fGridPreviewer.Text = "Κινήσεις"

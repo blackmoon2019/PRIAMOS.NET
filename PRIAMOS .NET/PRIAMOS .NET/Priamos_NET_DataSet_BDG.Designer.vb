@@ -2025,8 +2025,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         Private columnBTYPE_Name As Global.System.Data.DataColumn
 
-        Private columnFBTYPE_Name As Global.System.Data.DataColumn
-
         Private columnFTypeID As Global.System.Data.DataColumn
 
         Private columnhpc As Global.System.Data.DataColumn
@@ -2094,6 +2092,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
         Private columntotDepositA As Global.System.Data.DataColumn
 
         Private columntotDepositR As Global.System.Data.DataColumn
+
+        Private columnFTYPE_Name As Global.System.Data.DataColumn
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
@@ -2380,14 +2380,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public ReadOnly Property FBTYPE_NameColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnFBTYPE_Name
-            End Get
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public ReadOnly Property FTypeIDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnFTypeID
@@ -2659,6 +2651,14 @@ Partial Public Class Priamos_NET_DataSet_BDG
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public ReadOnly Property FTYPE_NameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFTYPE_Name
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),
          Global.System.ComponentModel.Browsable(False)>
         Public ReadOnly Property Count() As Integer
@@ -2727,7 +2727,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal BTypeID As System.Guid,
                     ByVal HTYPE_Name As String,
                     ByVal BTYPE_Name As String,
-                    ByVal FBTYPE_Name As String,
                     ByVal FTypeID As System.Guid,
                     ByVal hpc As Integer,
                     ByVal hpb As Integer,
@@ -2761,9 +2760,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal managerID As System.Guid,
                     ByVal KeysManager As String,
                     ByVal totDepositA As Decimal,
-                    ByVal totDepositR As Decimal) As vw_BDGRow
+                    ByVal totDepositR As Decimal,
+                    ByVal FTYPE_Name As String) As vw_BDGRow
             Dim rowvw_BDGRow As vw_BDGRow = CType(Me.NewRow, vw_BDGRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID, KeysManager, totDepositA, totDepositR}
+            Dim columnValuesArray() As Object = New Object() {ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID, KeysManager, totDepositA, totDepositR, FTYPE_Name}
             rowvw_BDGRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_BDGRow)
             Return rowvw_BDGRow
@@ -2817,7 +2817,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnBTypeID = MyBase.Columns("BTypeID")
             Me.columnHTYPE_Name = MyBase.Columns("HTYPE_Name")
             Me.columnBTYPE_Name = MyBase.Columns("BTYPE_Name")
-            Me.columnFBTYPE_Name = MyBase.Columns("FBTYPE_Name")
             Me.columnFTypeID = MyBase.Columns("FTypeID")
             Me.columnhpc = MyBase.Columns("hpc")
             Me.columnhpb = MyBase.Columns("hpb")
@@ -2852,6 +2851,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnKeysManager = MyBase.Columns("KeysManager")
             Me.columntotDepositA = MyBase.Columns("totDepositA")
             Me.columntotDepositR = MyBase.Columns("totDepositR")
+            Me.columnFTYPE_Name = MyBase.Columns("FTYPE_Name")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
@@ -2919,8 +2919,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columnHTYPE_Name)
             Me.columnBTYPE_Name = New Global.System.Data.DataColumn("BTYPE_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBTYPE_Name)
-            Me.columnFBTYPE_Name = New Global.System.Data.DataColumn("FBTYPE_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnFBTYPE_Name)
             Me.columnFTypeID = New Global.System.Data.DataColumn("FTypeID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFTypeID)
             Me.columnhpc = New Global.System.Data.DataColumn("hpc", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
@@ -2989,6 +2987,8 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columntotDepositA)
             Me.columntotDepositR = New Global.System.Data.DataColumn("totDepositR", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntotDepositR)
+            Me.columnFTYPE_Name = New Global.System.Data.DataColumn("FTYPE_Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFTYPE_Name)
             Me.columnID.AllowDBNull = False
             Me.columncode.AllowDBNull = False
             Me.columnold_code.AllowDBNull = False
@@ -3004,7 +3004,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnar.MaxLength = 10
             Me.columnHTYPE_Name.MaxLength = 150
             Me.columnBTYPE_Name.MaxLength = 150
-            Me.columnFBTYPE_Name.MaxLength = 150
             Me.columnhpc.AllowDBNull = False
             Me.columnhpb.AllowDBNull = False
             Me.columneName.MaxLength = 200
@@ -3026,6 +3025,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnManagerName.MaxLength = 200
             Me.columnKeysManager.ReadOnly = True
             Me.columnKeysManager.MaxLength = 200
+            Me.columnFTYPE_Name.MaxLength = 150
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
@@ -10953,21 +10953,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public Property FBTYPE_Name() As String
-            Get
-                Try
-                    Return CType(Me(Me.tablevw_BDG.FBTYPE_NameColumn), String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'FBTYPE_Name' in table 'vw_BDG' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevw_BDG.FBTYPE_NameColumn) = value
-            End Set
-        End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Property FTypeID() As System.Guid
             Get
                 Try
@@ -11466,6 +11451,21 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Property FTYPE_Name() As String
+            Get
+                Try
+                    Return CType(Me(Me.tablevw_BDG.FTYPE_NameColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FTYPE_Name' in table 'vw_BDG' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_BDG.FTYPE_NameColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Function IsnamNull() As Boolean
             Return Me.IsNull(Me.tablevw_BDG.namColumn)
         End Function
@@ -11762,18 +11762,6 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Sub SetBTYPE_NameNull()
             Me(Me.tablevw_BDG.BTYPE_NameColumn) = Global.System.Convert.DBNull
-        End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public Function IsFBTYPE_NameNull() As Boolean
-            Return Me.IsNull(Me.tablevw_BDG.FBTYPE_NameColumn)
-        End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public Sub SetFBTYPE_NameNull()
-            Me(Me.tablevw_BDG.FBTYPE_NameColumn) = Global.System.Convert.DBNull
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
@@ -12146,6 +12134,18 @@ Partial Public Class Priamos_NET_DataSet_BDG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Sub SettotDepositRNull()
             Me(Me.tablevw_BDG.totDepositRColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Function IsFTYPE_NameNull() As Boolean
+            Return Me.IsNull(Me.tablevw_BDG.FTYPE_NameColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
+        Public Sub SetFTYPE_NameNull()
+            Me(Me.tablevw_BDG.FTYPE_NameColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
@@ -18469,7 +18469,6 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("BTypeID", "BTypeID")
             tableMapping.ColumnMappings.Add("HTYPE_Name", "HTYPE_Name")
             tableMapping.ColumnMappings.Add("BTYPE_Name", "BTYPE_Name")
-            tableMapping.ColumnMappings.Add("FBTYPE_Name", "FBTYPE_Name")
             tableMapping.ColumnMappings.Add("FTypeID", "FTypeID")
             tableMapping.ColumnMappings.Add("hpc", "hpc")
             tableMapping.ColumnMappings.Add("hpb", "hpb")
@@ -18504,6 +18503,7 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             tableMapping.ColumnMappings.Add("KeysManager", "KeysManager")
             tableMapping.ColumnMappings.Add("totDepositA", "totDepositA")
             tableMapping.ColumnMappings.Add("totDepositR", "totDepositR")
+            tableMapping.ColumnMappings.Add("FTYPE_Name", "FTYPE_Name")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
 
@@ -18523,35 +18523,35 @@ Namespace Priamos_NET_DataSet_BDGTableAdapters
             Me._commandCollection(0).CommandText = "SELECT ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn" &
                 ", createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, " &
                 "Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HT" &
-                "YPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "      " &
-                "     tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentC" &
-                "ode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, w" &
-                "RegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, mana" &
-                "gerID, KeysManager, totDepositA, totDepositR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_BDG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY nam"
+                "YPE_Name, BTYPE_Name, FTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       " &
+                "    tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCo" &
+                "de, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wR" &
+                "egisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, manag" &
+                "erID, KeysManager, totDepositA, totDepositR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_BDG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY nam"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID," &
-                " Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name," &
-                " FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, b" &
-                "ManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "           eCounte" &
-                "r, eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName" &
-                ", fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, ma" &
-                "nagerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, w" &
-                "Name, wRegisterNum, totDepositA, totDepositR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_BDG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE (isManaged = " &
-                "1)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY nam"
+                " Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FTYPE_Name, " &
+                "FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bM" &
+                "anageID, bSeperate, calB, calH, cmt, code, createdOn, dts, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "           eCounter" &
+                ", eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName," &
+                " fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, man" &
+                "agerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wN" &
+                "ame, wRegisterNum, totDepositA, totDepositR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_BDG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE (isManaged = 1" &
+                ")" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY nam"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
             Me._commandCollection(2).CommandText = "SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID," &
-                " Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name," &
-                " FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, b" &
-                "ManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "           eCounte" &
-                "r, eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName" &
-                ", fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, ma" &
-                "nagerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, w" &
-                "Name, wRegisterNum, totDepositA, totDepositR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_BDG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE (ISNULL(isMan" &
-                "aged, 0) = 0)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY nam"
+                " Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FTYPE_Name, " &
+                "FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bM" &
+                "anageID, bSeperate, calB, calH, cmt, code, createdOn, dts, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "           eCounter" &
+                ", eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName," &
+                " fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, man" &
+                "agerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wN" &
+                "ame, wRegisterNum, totDepositA, totDepositR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM   vw_BDG" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE (ISNULL(isMana" &
+                "ged, 0) = 0)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY nam"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
         End Sub
 

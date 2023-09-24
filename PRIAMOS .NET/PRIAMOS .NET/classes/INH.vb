@@ -55,6 +55,72 @@ Public Class INH
             Return False
         End Try
     End Function
+    ' Όταν είναι Κεντρική Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης σύμφωνα με το επιλεγμένο τιμολόγιο
+    Public Function InsertINDCentralHeating(ByVal sID As String, sBdgID As String, ByVal sInvOilID As String, ByVal sGasID As String) As Boolean
+        Dim sSQL As String
+        Try
+            If sInvOilID <> Guid.Empty.ToString Then
+                sSQL = "INSERT INTO IND (inhID, calcCatID,repName, amt, owner_tenant) " &
+                        "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',
+                        'ΠΕΤΡΕΛΑΙΟ ΛΙΤΡΑ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
+                        FROM INV_OIL
+                            INNER JOIN BDG ON BDG.ID = INV_OIL.bdgID
+                            where ftypeID = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_OIL.ID  = " & toSQLValueS(sInvOilID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+            If sGasID <> Guid.Empty.ToString Then
+                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
+                       "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',
+                        'ΦΥΣΙΚΟ ΑΕΡΙΟ  ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105),totalPrice,'1' 
+                        FROM INV_GAS
+                            INNER JOIN BDG ON BDG.ID = INV_GAS.bdgID
+                            where ftypeID = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_GAS.ID  = " & toSQLValueS(sGasID)
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
+    ' Όταν είναι Κεντρική Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης σύμφωνα με το επιλεγμένο τιμολόγιο
+    Public Function UpdateINDCentralHeating(ByVal sID As String, sBdgID As String, ByVal sInvOilID As String, ByVal sGasID As String) As Boolean
+        Dim sSQL As String
+        Try
+            If sInvOilID <> Guid.Empty.ToString Then
+                sSQL = "INSERT INTO IND (inhID, calcCatID,repName, amt, owner_tenant) " &
+                        "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',
+                        'ΠΕΤΡΕΛΑΙΟ ΛΙΤΡΑ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
+                        FROM INV_OIL
+                            INNER JOIN BDG ON BDG.ID = INV_OIL.bdgID
+                            where ftypeID = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_OIL.ID  = " & toSQLValueS(sInvOilID) &
+                            " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+            If sGasID <> Guid.Empty.ToString Then
+                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant) " &
+                       "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B',
+                        'ΦΥΣΙΚΟ ΑΕΡΙΟ  ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105),totalPrice,'1' 
+                        FROM INV_GAS
+                            INNER JOIN BDG ON BDG.ID = INV_GAS.bdgID
+                            where ftypeID = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_GAS.ID  = " & toSQLValueS(sGasID) &
+                            " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+    End Function
     ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
     Public Function InsertINDConsumption(ByVal sID As String, sBdgID As String, ByVal sAhpbH As String, ByVal shpbHB As String) As Boolean
         Dim sSQL As String

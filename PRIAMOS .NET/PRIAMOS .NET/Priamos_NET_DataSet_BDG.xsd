@@ -112,10 +112,10 @@ order by ord</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_BDGTableAdapter" GeneratorDataComponentClassName="vw_BDGTableAdapter" Name="vw_BDG" UserDataComponentName="vw_BDGTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET_DEV.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FBTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, 
+                    <CommandText>SELECT ID, code, old_code, nam, AdrID, cmt, aam, iam, dts, modifiedBy, modifiedOn, createdOn, ADR_ID, ADR_Code, ADR_Name, tk, AreaID, CouID, Area_ID, Area_Code, Area_CouID, Area_Name, COU_ID, COU_Code, COU_Name, ar, prd, HTypeID, BTypeID, HTYPE_Name, BTYPE_Name, FTYPE_Name, FTypeID, hpc, hpb, calH, calB, tacH, 
            tacB, lpcH, lpcB, bCommon, bSeperate, bManageID, eName, eCounter, ePaymentCode, eServiceNum, fName, fCounter, fPaymentCode, fServiceNum, wName, wCounter, wRegisterNum, fUN, fPWD, fCusCode, fHkasp, fDeposit, isManaged, ManagerName, managerID, KeysManager, totDepositA, totDepositR
 FROM   vw_BDG
 ORDER BY nam</CommandText>
@@ -156,7 +156,6 @@ ORDER BY nam</CommandText>
               <Mapping SourceColumn="BTypeID" DataSetColumn="BTypeID" />
               <Mapping SourceColumn="HTYPE_Name" DataSetColumn="HTYPE_Name" />
               <Mapping SourceColumn="BTYPE_Name" DataSetColumn="BTYPE_Name" />
-              <Mapping SourceColumn="FBTYPE_Name" DataSetColumn="FBTYPE_Name" />
               <Mapping SourceColumn="FTypeID" DataSetColumn="FTypeID" />
               <Mapping SourceColumn="hpc" DataSetColumn="hpc" />
               <Mapping SourceColumn="hpb" DataSetColumn="hpb" />
@@ -191,12 +190,13 @@ ORDER BY nam</CommandText>
               <Mapping SourceColumn="KeysManager" DataSetColumn="KeysManager" />
               <Mapping SourceColumn="totDepositA" DataSetColumn="totDepositA" />
               <Mapping SourceColumn="totDepositR" DataSetColumn="totDepositR" />
+              <Mapping SourceColumn="FTYPE_Name" DataSetColumn="FTYPE_Name" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByIsManaged" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByIsManaged" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByIsManaged">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET_DEV.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByIsManaged" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByIsManaged" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillByIsManaged">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID, Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name, FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, 
+                    <CommandText>SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID, Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FTYPE_Name, FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, 
            eCounter, eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName, fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, managerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wName, wRegisterNum, totDepositA, totDepositR
 FROM   vw_BDG
 WHERE (isManaged = 1)
@@ -205,10 +205,10 @@ ORDER BY nam</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByIsNotManaged" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByIsNotManaged" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByIsNotManaged">
+              <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET_DEV.dbo.vw_BDG" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByIsNotManaged" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByIsNotManaged" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByIsNotManaged">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID, Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FBTYPE_Name, FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, 
+                    <CommandText>SELECT ADR_Code, ADR_ID, ADR_Name, AdrID, AreaID, Area_Code, Area_CouID, Area_ID, Area_Name, BTYPE_Name, BTypeID, COU_Code, COU_ID, COU_Name, CouID, FTYPE_Name, FTypeID, HTYPE_Name, HTypeID, ID, KeysManager, ManagerName, aam, ar, bCommon, bManageID, bSeperate, calB, calH, cmt, code, createdOn, dts, 
            eCounter, eName, ePaymentCode, eServiceNum, fCounter, fCusCode, fDeposit, fHkasp, fName, fPWD, fPaymentCode, fServiceNum, fUN, hpb, hpc, iam, isManaged, lpcB, lpcH, managerID, modifiedBy, modifiedOn, nam, old_code, prd, tacB, tacH, tk, wCounter, wName, wRegisterNum, totDepositA, totDepositR
 FROM   vw_BDG
 WHERE (ISNULL(isManaged, 0) = 0)
@@ -1019,13 +1019,6 @@ FROM   vw_INV_OILD</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FBTYPE_Name" msprop:Generator_ColumnPropNameInTable="FBTYPE_NameColumn" msprop:Generator_ColumnPropNameInRow="FBTYPE_Name" msprop:Generator_UserColumnName="FBTYPE_Name" msprop:Generator_ColumnVarNameInTable="columnFBTYPE_Name" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="FTypeID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="FTypeIDColumn" msprop:Generator_ColumnPropNameInRow="FTypeID" msprop:Generator_UserColumnName="FTypeID" msprop:Generator_ColumnVarNameInTable="columnFTypeID" type="xs:string" minOccurs="0" />
               <xs:element name="hpc" msprop:Generator_ColumnPropNameInTable="hpcColumn" msprop:Generator_ColumnPropNameInRow="hpc" msprop:Generator_UserColumnName="hpc" msprop:Generator_ColumnVarNameInTable="columnhpc" type="xs:int" />
               <xs:element name="hpb" msprop:Generator_ColumnPropNameInTable="hpbColumn" msprop:Generator_ColumnPropNameInRow="hpb" msprop:Generator_UserColumnName="hpb" msprop:Generator_ColumnVarNameInTable="columnhpb" type="xs:int" />
@@ -1162,6 +1155,13 @@ FROM   vw_INV_OILD</CommandText>
               </xs:element>
               <xs:element name="totDepositA" msprop:Generator_ColumnPropNameInTable="totDepositAColumn" msprop:Generator_ColumnPropNameInRow="totDepositA" msprop:Generator_UserColumnName="totDepositA" msprop:Generator_ColumnVarNameInTable="columntotDepositA" type="xs:decimal" minOccurs="0" />
               <xs:element name="totDepositR" msprop:Generator_ColumnPropNameInTable="totDepositRColumn" msprop:Generator_ColumnPropNameInRow="totDepositR" msprop:Generator_UserColumnName="totDepositR" msprop:Generator_ColumnVarNameInTable="columntotDepositR" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FTYPE_Name" msprop:Generator_ColumnPropNameInRow="FTYPE_Name" msprop:Generator_ColumnPropNameInTable="FTYPE_NameColumn" msprop:Generator_ColumnVarNameInTable="columnFTYPE_Name" msprop:Generator_UserColumnName="FTYPE_Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1649,7 +1649,7 @@ FROM   vw_INV_OILD</CommandText>
               <xs:element name="calculated" msprop:Generator_ColumnPropNameInTable="calculatedColumn" msprop:Generator_ColumnPropNameInRow="calculated" msprop:Generator_UserColumnName="calculated" msprop:Generator_ColumnVarNameInTable="columncalculated" type="xs:boolean" />
               <xs:element name="completed" msprop:Generator_ColumnPropNameInTable="completedColumn" msprop:Generator_ColumnPropNameInRow="completed" msprop:Generator_UserColumnName="completed" msprop:Generator_ColumnVarNameInTable="columncompleted" type="xs:boolean" minOccurs="0" />
               <xs:element name="consumptionID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="consumptionIDColumn" msprop:Generator_ColumnPropNameInRow="consumptionID" msprop:Generator_UserColumnName="consumptionID" msprop:Generator_ColumnVarNameInTable="columnconsumptionID" type="xs:string" minOccurs="0" />
-              <xs:element name="INHCalculated" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="INHCalculated" msprop:Generator_ColumnPropNameInTable="INHCalculatedColumn" msprop:Generator_ColumnVarNameInTable="columnINHCalculated" msprop:Generator_UserColumnName="INHCalculated" type="xs:boolean" minOccurs="0" />
+              <xs:element name="INHCalculated" msdata:ReadOnly="true" msprop:Generator_UserColumnName="INHCalculated" msprop:Generator_ColumnPropNameInTable="INHCalculatedColumn" msprop:Generator_ColumnPropNameInRow="INHCalculated" msprop:Generator_ColumnVarNameInTable="columnINHCalculated" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1757,56 +1757,56 @@ FROM   vw_INV_OILD</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_INV_OILD" msprop:Generator_RowClassName="vw_INV_OILDRow" msprop:Generator_RowEvHandlerName="vw_INV_OILDRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_INV_OILDRowDeleted" msprop:Generator_RowDeletingName="vw_INV_OILDRowDeleting" msprop:Generator_RowEvArgName="vw_INV_OILDRowChangeEvent" msprop:Generator_TablePropName="vw_INV_OILD" msprop:Generator_RowChangedName="vw_INV_OILDRowChanged" msprop:Generator_UserTableName="vw_INV_OILD" msprop:Generator_RowChangingName="vw_INV_OILDRowChanging" msprop:Generator_TableClassName="vw_INV_OILDDataTable" msprop:Generator_TableVarName="tablevw_INV_OILD">
+        <xs:element name="vw_INV_OILD" msprop:Generator_RowEvHandlerName="vw_INV_OILDRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_INV_OILDRowDeleted" msprop:Generator_RowDeletingName="vw_INV_OILDRowDeleting" msprop:Generator_RowEvArgName="vw_INV_OILDRowChangeEvent" msprop:Generator_TablePropName="vw_INV_OILD" msprop:Generator_RowChangedName="vw_INV_OILDRowChanged" msprop:Generator_UserTableName="vw_INV_OILD" msprop:Generator_RowChangingName="vw_INV_OILDRowChanging" msprop:Generator_RowClassName="vw_INV_OILDRow" msprop:Generator_TableClassName="vw_INV_OILDDataTable" msprop:Generator_TableVarName="tablevw_INV_OILD">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="invNumber" msprop:Generator_UserColumnName="invNumber" msprop:Generator_ColumnPropNameInTable="invNumberColumn" msprop:Generator_ColumnPropNameInRow="invNumber" msprop:Generator_ColumnVarNameInTable="columninvNumber" type="xs:int" minOccurs="0" />
-              <xs:element name="invDate" msprop:Generator_UserColumnName="invDate" msprop:Generator_ColumnPropNameInTable="invDateColumn" msprop:Generator_ColumnPropNameInRow="invDate" msprop:Generator_ColumnVarNameInTable="columninvDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="liters" msprop:Generator_UserColumnName="liters" msprop:Generator_ColumnPropNameInTable="litersColumn" msprop:Generator_ColumnPropNameInRow="liters" msprop:Generator_ColumnVarNameInTable="columnliters" type="xs:decimal" />
-              <xs:element name="createdOn" msprop:Generator_UserColumnName="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" type="xs:dateTime" />
-              <xs:element name="RealName" msprop:Generator_UserColumnName="RealName" msprop:Generator_ColumnPropNameInTable="RealNameColumn" msprop:Generator_ColumnPropNameInRow="RealName" msprop:Generator_ColumnVarNameInTable="columnRealName" minOccurs="0">
+              <xs:element name="invNumber" msprop:Generator_ColumnPropNameInTable="invNumberColumn" msprop:Generator_ColumnPropNameInRow="invNumber" msprop:Generator_UserColumnName="invNumber" msprop:Generator_ColumnVarNameInTable="columninvNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="invDate" msprop:Generator_ColumnPropNameInTable="invDateColumn" msprop:Generator_ColumnPropNameInRow="invDate" msprop:Generator_UserColumnName="invDate" msprop:Generator_ColumnVarNameInTable="columninvDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="liters" msprop:Generator_ColumnPropNameInTable="litersColumn" msprop:Generator_ColumnPropNameInRow="liters" msprop:Generator_UserColumnName="liters" msprop:Generator_ColumnVarNameInTable="columnliters" type="xs:decimal" />
+              <xs:element name="createdOn" msprop:Generator_ColumnPropNameInTable="createdOnColumn" msprop:Generator_ColumnPropNameInRow="createdOn" msprop:Generator_UserColumnName="createdOn" msprop:Generator_ColumnVarNameInTable="columncreatedOn" type="xs:dateTime" />
+              <xs:element name="RealName" msprop:Generator_ColumnPropNameInTable="RealNameColumn" msprop:Generator_ColumnPropNameInRow="RealName" msprop:Generator_UserColumnName="RealName" msprop:Generator_ColumnVarNameInTable="columnRealName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="MachineName" msprop:Generator_UserColumnName="MachineName" msprop:Generator_ColumnPropNameInTable="MachineNameColumn" msprop:Generator_ColumnPropNameInRow="MachineName" msprop:Generator_ColumnVarNameInTable="columnMachineName">
+              <xs:element name="MachineName" msprop:Generator_ColumnPropNameInTable="MachineNameColumn" msprop:Generator_ColumnPropNameInRow="MachineName" msprop:Generator_UserColumnName="MachineName" msprop:Generator_ColumnVarNameInTable="columnMachineName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="mdtH" msprop:Generator_UserColumnName="mdtH" msprop:Generator_ColumnPropNameInTable="mdtHColumn" msprop:Generator_ColumnPropNameInRow="mdtH" msprop:Generator_ColumnVarNameInTable="columnmdtH" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="mdtB" msprop:Generator_UserColumnName="mdtB" msprop:Generator_ColumnPropNameInTable="mdtBColumn" msprop:Generator_ColumnPropNameInRow="mdtB" msprop:Generator_ColumnVarNameInTable="columnmdtB" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="totalBdgMesDifH" msprop:Generator_UserColumnName="totalBdgMesDifH" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifHColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifH" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifH" type="xs:int" minOccurs="0" />
-              <xs:element name="totalBdgMesDifB" msprop:Generator_UserColumnName="totalBdgMesDifB" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifBColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifB" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifB" type="xs:int" minOccurs="0" />
-              <xs:element name="calH" msprop:Generator_UserColumnName="calH" msprop:Generator_ColumnPropNameInTable="calHColumn" msprop:Generator_ColumnPropNameInRow="calH" msprop:Generator_ColumnVarNameInTable="columncalH" type="xs:int" />
-              <xs:element name="calB" msprop:Generator_UserColumnName="calB" msprop:Generator_ColumnPropNameInTable="calBColumn" msprop:Generator_ColumnPropNameInRow="calB" msprop:Generator_ColumnVarNameInTable="columncalB" type="xs:int" />
-              <xs:element name="totalCal" msprop:Generator_UserColumnName="totalCal" msprop:Generator_ColumnPropNameInTable="totalCalColumn" msprop:Generator_ColumnPropNameInRow="totalCal" msprop:Generator_ColumnVarNameInTable="columntotalCal" type="xs:int" />
-              <xs:element name="consumptionH" msprop:Generator_UserColumnName="consumptionH" msprop:Generator_ColumnPropNameInTable="consumptionHColumn" msprop:Generator_ColumnPropNameInRow="consumptionH" msprop:Generator_ColumnVarNameInTable="columnconsumptionH" type="xs:decimal" />
-              <xs:element name="consumptionB" msprop:Generator_UserColumnName="consumptionB" msprop:Generator_ColumnPropNameInTable="consumptionBColumn" msprop:Generator_ColumnPropNameInRow="consumptionB" msprop:Generator_ColumnVarNameInTable="columnconsumptionB" type="xs:decimal" />
-              <xs:element name="totConsumption" msprop:Generator_UserColumnName="totConsumption" msprop:Generator_ColumnPropNameInTable="totConsumptionColumn" msprop:Generator_ColumnPropNameInRow="totConsumption" msprop:Generator_ColumnVarNameInTable="columntotConsumption" type="xs:decimal" />
-              <xs:element name="consumptionLiterH" msprop:Generator_UserColumnName="consumptionLiterH" msprop:Generator_ColumnPropNameInTable="consumptionLiterHColumn" msprop:Generator_ColumnPropNameInRow="consumptionLiterH" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterH" type="xs:decimal" />
-              <xs:element name="consumptionLiterB" msprop:Generator_UserColumnName="consumptionLiterB" msprop:Generator_ColumnPropNameInTable="consumptionLiterBColumn" msprop:Generator_ColumnPropNameInRow="consumptionLiterB" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterB" type="xs:decimal" />
-              <xs:element name="totConsumptionLiter" msprop:Generator_UserColumnName="totConsumptionLiter" msprop:Generator_ColumnPropNameInTable="totConsumptionLiterColumn" msprop:Generator_ColumnPropNameInRow="totConsumptionLiter" msprop:Generator_ColumnVarNameInTable="columntotConsumptionLiter" type="xs:decimal" />
-              <xs:element name="MeasurementCatName" msprop:Generator_UserColumnName="MeasurementCatName" msprop:Generator_ColumnPropNameInTable="MeasurementCatNameColumn" msprop:Generator_ColumnPropNameInRow="MeasurementCatName" msprop:Generator_ColumnVarNameInTable="columnMeasurementCatName" minOccurs="0">
+              <xs:element name="mdtH" msprop:Generator_ColumnPropNameInTable="mdtHColumn" msprop:Generator_ColumnPropNameInRow="mdtH" msprop:Generator_UserColumnName="mdtH" msprop:Generator_ColumnVarNameInTable="columnmdtH" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="mdtB" msprop:Generator_ColumnPropNameInTable="mdtBColumn" msprop:Generator_ColumnPropNameInRow="mdtB" msprop:Generator_UserColumnName="mdtB" msprop:Generator_ColumnVarNameInTable="columnmdtB" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="totalBdgMesDifH" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifHColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifH" msprop:Generator_UserColumnName="totalBdgMesDifH" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifH" type="xs:int" minOccurs="0" />
+              <xs:element name="totalBdgMesDifB" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifBColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifB" msprop:Generator_UserColumnName="totalBdgMesDifB" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifB" type="xs:int" minOccurs="0" />
+              <xs:element name="calH" msprop:Generator_ColumnPropNameInTable="calHColumn" msprop:Generator_ColumnPropNameInRow="calH" msprop:Generator_UserColumnName="calH" msprop:Generator_ColumnVarNameInTable="columncalH" type="xs:int" />
+              <xs:element name="calB" msprop:Generator_ColumnPropNameInTable="calBColumn" msprop:Generator_ColumnPropNameInRow="calB" msprop:Generator_UserColumnName="calB" msprop:Generator_ColumnVarNameInTable="columncalB" type="xs:int" />
+              <xs:element name="totalCal" msprop:Generator_ColumnPropNameInTable="totalCalColumn" msprop:Generator_ColumnPropNameInRow="totalCal" msprop:Generator_UserColumnName="totalCal" msprop:Generator_ColumnVarNameInTable="columntotalCal" type="xs:int" />
+              <xs:element name="consumptionH" msprop:Generator_ColumnPropNameInTable="consumptionHColumn" msprop:Generator_ColumnPropNameInRow="consumptionH" msprop:Generator_UserColumnName="consumptionH" msprop:Generator_ColumnVarNameInTable="columnconsumptionH" type="xs:decimal" />
+              <xs:element name="consumptionB" msprop:Generator_ColumnPropNameInTable="consumptionBColumn" msprop:Generator_ColumnPropNameInRow="consumptionB" msprop:Generator_UserColumnName="consumptionB" msprop:Generator_ColumnVarNameInTable="columnconsumptionB" type="xs:decimal" />
+              <xs:element name="totConsumption" msprop:Generator_ColumnPropNameInTable="totConsumptionColumn" msprop:Generator_ColumnPropNameInRow="totConsumption" msprop:Generator_UserColumnName="totConsumption" msprop:Generator_ColumnVarNameInTable="columntotConsumption" type="xs:decimal" />
+              <xs:element name="consumptionLiterH" msprop:Generator_ColumnPropNameInTable="consumptionLiterHColumn" msprop:Generator_ColumnPropNameInRow="consumptionLiterH" msprop:Generator_UserColumnName="consumptionLiterH" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterH" type="xs:decimal" />
+              <xs:element name="consumptionLiterB" msprop:Generator_ColumnPropNameInTable="consumptionLiterBColumn" msprop:Generator_ColumnPropNameInRow="consumptionLiterB" msprop:Generator_UserColumnName="consumptionLiterB" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterB" type="xs:decimal" />
+              <xs:element name="totConsumptionLiter" msprop:Generator_ColumnPropNameInTable="totConsumptionLiterColumn" msprop:Generator_ColumnPropNameInRow="totConsumptionLiter" msprop:Generator_UserColumnName="totConsumptionLiter" msprop:Generator_ColumnVarNameInTable="columntotConsumptionLiter" type="xs:decimal" />
+              <xs:element name="MeasurementCatName" msprop:Generator_ColumnPropNameInTable="MeasurementCatNameColumn" msprop:Generator_ColumnPropNameInRow="MeasurementCatName" msprop:Generator_UserColumnName="MeasurementCatName" msprop:Generator_ColumnVarNameInTable="columnMeasurementCatName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="dtMeasurement" msprop:Generator_UserColumnName="dtMeasurement" msprop:Generator_ColumnPropNameInTable="dtMeasurementColumn" msprop:Generator_ColumnPropNameInRow="dtMeasurement" msprop:Generator_ColumnVarNameInTable="columndtMeasurement" type="xs:dateTime" />
-              <xs:element name="tankmes" msprop:Generator_UserColumnName="tankmes" msprop:Generator_ColumnPropNameInTable="tankmesColumn" msprop:Generator_ColumnPropNameInRow="tankmes" msprop:Generator_ColumnVarNameInTable="columntankmes" type="xs:decimal" minOccurs="0" />
-              <xs:element name="tankmesB" msprop:Generator_UserColumnName="tankmesB" msprop:Generator_ColumnPropNameInTable="tankmesBColumn" msprop:Generator_ColumnPropNameInRow="tankmesB" msprop:Generator_ColumnVarNameInTable="columntankmesB" type="xs:decimal" minOccurs="0" />
-              <xs:element name="tankmesT" msdata:ReadOnly="true" msprop:Generator_UserColumnName="tankmesT" msprop:Generator_ColumnPropNameInTable="tankmesTColumn" msprop:Generator_ColumnPropNameInRow="tankmesT" msprop:Generator_ColumnVarNameInTable="columntankmesT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="tankLiters" msprop:Generator_UserColumnName="tankLiters" msprop:Generator_ColumnPropNameInTable="tankLitersColumn" msprop:Generator_ColumnPropNameInRow="tankLiters" msprop:Generator_ColumnVarNameInTable="columntankLiters" type="xs:decimal" minOccurs="0" />
-              <xs:element name="tankLitersB" msprop:Generator_UserColumnName="tankLitersB" msprop:Generator_ColumnPropNameInTable="tankLitersBColumn" msprop:Generator_ColumnPropNameInRow="tankLitersB" msprop:Generator_ColumnVarNameInTable="columntankLitersB" type="xs:decimal" minOccurs="0" />
-              <xs:element name="tankLitersT" msdata:ReadOnly="true" msprop:Generator_UserColumnName="tankLitersT" msprop:Generator_ColumnPropNameInTable="tankLitersTColumn" msprop:Generator_ColumnPropNameInRow="tankLitersT" msprop:Generator_ColumnVarNameInTable="columntankLitersT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="tankID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="tankID" msprop:Generator_ColumnPropNameInTable="tankIDColumn" msprop:Generator_ColumnPropNameInRow="tankID" msprop:Generator_ColumnVarNameInTable="columntankID" type="xs:string" minOccurs="0" />
-              <xs:element name="price" msprop:Generator_UserColumnName="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnVarNameInTable="columnprice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="dtMeasurement" msprop:Generator_ColumnPropNameInTable="dtMeasurementColumn" msprop:Generator_ColumnPropNameInRow="dtMeasurement" msprop:Generator_UserColumnName="dtMeasurement" msprop:Generator_ColumnVarNameInTable="columndtMeasurement" type="xs:dateTime" />
+              <xs:element name="tankmes" msprop:Generator_ColumnPropNameInTable="tankmesColumn" msprop:Generator_ColumnPropNameInRow="tankmes" msprop:Generator_UserColumnName="tankmes" msprop:Generator_ColumnVarNameInTable="columntankmes" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tankmesB" msprop:Generator_ColumnPropNameInTable="tankmesBColumn" msprop:Generator_ColumnPropNameInRow="tankmesB" msprop:Generator_UserColumnName="tankmesB" msprop:Generator_ColumnVarNameInTable="columntankmesB" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tankmesT" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="tankmesTColumn" msprop:Generator_ColumnPropNameInRow="tankmesT" msprop:Generator_UserColumnName="tankmesT" msprop:Generator_ColumnVarNameInTable="columntankmesT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tankLiters" msprop:Generator_ColumnPropNameInTable="tankLitersColumn" msprop:Generator_ColumnPropNameInRow="tankLiters" msprop:Generator_UserColumnName="tankLiters" msprop:Generator_ColumnVarNameInTable="columntankLiters" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tankLitersB" msprop:Generator_ColumnPropNameInTable="tankLitersBColumn" msprop:Generator_ColumnPropNameInRow="tankLitersB" msprop:Generator_UserColumnName="tankLitersB" msprop:Generator_ColumnVarNameInTable="columntankLitersB" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tankLitersT" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="tankLitersTColumn" msprop:Generator_ColumnPropNameInRow="tankLitersT" msprop:Generator_UserColumnName="tankLitersT" msprop:Generator_ColumnVarNameInTable="columntankLitersT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tankID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="tankIDColumn" msprop:Generator_ColumnPropNameInRow="tankID" msprop:Generator_UserColumnName="tankID" msprop:Generator_ColumnVarNameInTable="columntankID" type="xs:string" minOccurs="0" />
+              <xs:element name="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_UserColumnName="price" msprop:Generator_ColumnVarNameInTable="columnprice" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
