@@ -288,7 +288,9 @@ Public Class frmBatchInsertAttachmentsEX
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         If cboBDG.EditValue = Nothing Then Exit Sub
         Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
+        Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NET_DataSet_BDG.vw_BDG)
         txtTotalDepositAmtR.EditValue = cboBDG.GetColumnValue("totDepositR")
+
     End Sub
 
     Private Sub chkPaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkPaid.CheckedChanged

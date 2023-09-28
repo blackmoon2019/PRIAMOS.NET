@@ -307,8 +307,8 @@ Public Class frmINH
                             If chkCalorimetric.CheckState = CheckState.Unchecked Then
                                 ' Όταν είναι έκδοση δεν μπορεί να πολαπλασιαστεί ανάλογα τους μηνες που έχουν επιλεχθεί
                                 ' Όταν έχει οριστεί διαμέρισμα στα πάγια έξοδα τότε αυτόματα παίρνει τα υπολογισμένα του τελευταίου παραστατικού γιαυτό το διαμέρισμα και τα μεταφέρει στο επόμενο
-                                sSQL = "INSERT INTO IND (inhID, calcCatID, repName, amt, owner_tenant,regardingdeposit) " &
-                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,repName,
+                                sSQL = "INSERT INTO IND (inhID, calcCatID,iepID, repName, amt, owner_tenant,regardingdeposit) " &
+                                   "Select " & toSQLValueS(sGuid) & ",calcCatID,IEP.id,repName,
                                    case when calcCatID = '9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB' then amt 
                                         when aptID is not null then (select sum(AmtPerCalc)  from vw_inc where inhid = 
                                    (select top 1 ID from INH (nolock) where bdgid = vw_inc.bdgID  and extraordinary=0 and Calorimetric=0 and reserveAPT=0 and fdate< " & toSQLValueS(CDate(dtFDate.EditValue).ToString("yyyyMMdd")) & "  order by fDate desc)
@@ -390,7 +390,7 @@ Public Class frmINH
                                 sSQL = "Update IND Set amt=IEP.amt * " & Months & " 
                                             From IND
                                             inner Join INH on INH.ID = IND.inhID 
-                                            inner Join IEP on IEP.bdgID  = INH.bdgID And IND.calcCatID = IEP.calcCatID 
+                                            left Join IEP on IEP.bdgID  = INH.bdgID And IND.calcCatID = IEP.calcCatID and IEP.ID = IND.iepID
                                             where inhID =" & toSQLValueS(sID) & "  and IEP.calcCatID <>'9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB'"
 
                                 Using oCmd As New SqlCommand(sSQL, CNDB)

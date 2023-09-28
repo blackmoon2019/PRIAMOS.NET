@@ -11177,7 +11177,7 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(3).CommandText = "SELECT Calculated, ETOS, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calc"& _ 
                 "CatID, code, completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam,"& _ 
                 " name, ord, owner_tenant, paid, repName, tDate FROM vw_IND WHERE (bdgID = @bdgID"& _ 
-                ") AND (paid = @paid)"
+                ") AND (paid = @paid) and FromTransfer = 0 and reserveAPT = 0"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@paid", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "paid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -11186,7 +11186,7 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection(4).CommandText = "SELECT Calculated, ETOS, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calc"& _ 
                 "CatID, code, completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam,"& _ 
                 " name, ord, owner_tenant, paid, repName, tDate FROM vw_IND WHERE (paid = @paid) "& _ 
-                "AND (isManaged = 1)"
+                "AND (isManaged = 1) and FromTransfer = 0 and reserveAPT = 0"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@paid", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "paid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
