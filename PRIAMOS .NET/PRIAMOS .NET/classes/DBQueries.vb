@@ -3,6 +3,7 @@ Imports DevExpress.XtraLayout
 Imports DevExpress.XtraEditors
 Imports System.IO
 Imports DevExpress.XtraRichEdit.Model.History
+Imports DevExpress.XtraEditors.Controls
 
 Public Class DBQueries
     Public Enum InsertMode
@@ -664,7 +665,16 @@ NextItem:
                                     Else
                                         sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
                                     End If
-
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckedComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.CheckedComboBoxEdit
+                                    cbo = Ctrl
+                                    For Each CheckedItem As CheckedListBoxItem In cbo.Properties.GetItems
+                                        If cbo.EditValue <> Nothing Then
+                                            If CheckedItem.CheckState = CheckState.Checked Then sSQLV.Append(IIf(IsFirstField = True, "", ",") & toSQLValueS(CheckedItem.Value.ToString))
+                                        Else
+                                            sSQLV.Append(IIf(IsFirstField = True, "", ",") & "NULL")
+                                        End If
+                                    Next
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.TextEdit Then
                                     Dim txt As DevExpress.XtraEditors.TextEdit
                                     txt = Ctrl
@@ -1334,6 +1344,16 @@ NextItem:
                                     Else
                                         sSQL.Append("NULL")
                                     End If
+                                ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckedComboBoxEdit Then
+                                    Dim cbo As DevExpress.XtraEditors.CheckedComboBoxEdit
+                                    cbo = Ctrl
+                                    For Each CheckedItem As CheckedListBoxItem In cbo.Properties.GetItems
+                                        If cbo.EditValue <> Nothing Then
+                                            If CheckedItem.CheckState = CheckState.Checked Then sSQL.Append(toSQLValueS(CheckedItem.Value.ToString))
+                                        Else
+                                            sSQL.Append("NULL")
+                                        End If
+                                    Next
                                 ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.GridLookUpEdit Then
                                     Dim cbo As DevExpress.XtraEditors.GridLookUpEdit
                                     cbo = Ctrl

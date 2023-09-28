@@ -977,10 +977,16 @@ Public Class frmINH
         ' Εαν Θέρμανση= καταμερισμός με χιλιοστά
         If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then
             If sindHID.Length > 0 Then
-                sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
+                'sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
+                sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
+                sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                 grdIND.DataSource = VwINDBindingSource
                 Exit Sub
@@ -1187,6 +1193,7 @@ Public Class frmINH
         chkCalculated.Checked = False : chkEmail.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
         cmdCalculate.Enabled = False : cmdCancelCalculate.Enabled = False
         BarSygentrotiki.Enabled = False : BarReceipt.Enabled = False : BarEidop.Enabled = False
+        LcmdSaveINH.Enabled = True
         Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.NewGuid)
     End Sub
 

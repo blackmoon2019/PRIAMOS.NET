@@ -124,6 +124,20 @@ Public Class CombosManager
         form1.Show()
         form1.HeatingInvoicesSelected()
     End Sub
+    Public Sub ManageHeatingInvoicesCheckBox(ByVal CallerControl As CheckedComboBoxEdit, ByVal FrmMode As Byte, ByVal sbdgID As String)
+        Dim form1 As frmBDG = New frmBDG()
+        If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing
+        form1.Text = "Πολυκατοικία"
+        form1.CallerControlCheckedComboBoxEdit = CallerControl
+        form1.CalledFromControl = True
+        form1.MdiParent = frmMain
+        form1.Mode = FormMode.EditRecord
+        form1.Maintab.SelectedTabPage = form1.tabHeatingInvoices
+        form1.ID = sbdgID
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
+        form1.Show()
+        form1.HeatingInvoicesSelected()
+    End Sub
     Public Sub ManageAHPB(ByVal CallerControl As LookUpEdit, ByVal FrmMode As Byte, ByVal sMDT As String, ByVal boiler As Boolean, ByVal sbdgID As String)
         Dim form1 As frmBDG = New frmBDG()
         If FrmMode = FormMode.NewRecord Then CallerControl.EditValue = Nothing

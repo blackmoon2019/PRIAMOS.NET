@@ -97,8 +97,8 @@ Public Class INH
                         'ΠΕΤΡΕΛΑΙΟ ΛΙΤΡΑ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
                         FROM INV_OIL
                             INNER JOIN BDG ON BDG.ID = INV_OIL.bdgID
-                            where ftypeID = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_OIL.ID  = " & toSQLValueS(sInvOilID) &
-                            " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                            where ftypeID = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_OIL.ID  = " & toSQLValueS(sInvOilID) ' &
+                '" and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
@@ -109,8 +109,8 @@ Public Class INH
                         'ΦΥΣΙΚΟ ΑΕΡΙΟ  ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105),totalPrice,'1' 
                         FROM INV_GAS
                             INNER JOIN BDG ON BDG.ID = INV_GAS.bdgID
-                            where ftypeID = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_GAS.ID  = " & toSQLValueS(sGasID) &
-                            " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                            where ftypeID = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_GAS.ID  = " & toSQLValueS(sGasID) '&
+                '" and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using

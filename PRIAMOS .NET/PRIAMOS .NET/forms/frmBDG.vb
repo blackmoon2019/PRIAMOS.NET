@@ -35,6 +35,7 @@ Public Class frmBDG
     Private Ctrl As DevExpress.XtraGrid.Views.Grid.GridView
     Private Frm As DevExpress.XtraEditors.XtraForm
     Private CtrlCombo As DevExpress.XtraEditors.LookUpEdit
+    Private CtrlComboCheckedComboBoxEdit As DevExpress.XtraEditors.CheckedComboBoxEdit
     Private CalledFromCtrl As Boolean
     Private ModeBCCT As Byte
     Private ModePROFACTD As Byte
@@ -86,6 +87,11 @@ Public Class frmBDG
     Public WriteOnly Property CallerControl As DevExpress.XtraEditors.LookUpEdit
         Set(value As DevExpress.XtraEditors.LookUpEdit)
             CtrlCombo = value
+        End Set
+    End Property
+    Public WriteOnly Property CallerControlCheckedComboBoxEdit As DevExpress.XtraEditors.CheckedComboBoxEdit
+        Set(value As DevExpress.XtraEditors.CheckedComboBoxEdit)
+            CtrlComboCheckedComboBoxEdit = value
         End Set
     End Property
     Public WriteOnly Property CalledFromControl As Boolean
@@ -1262,6 +1268,7 @@ Public Class frmBDG
                 ' Υπολογισμός Κατανάλωσης για την περίπτωση Φυσικού Αερίου
                 Dim sHTypeID As String, sFTypeID As String, sBTypeID As String, sConsumptionID As String
                 sConsumptionID = Guid.NewGuid.ToString
+                sFTypeID = "" : sBTypeID = "" : sHTypeID = ""
                 GetHeatingInf(sHTypeID, sFTypeID, sBTypeID)
                 If sFTypeID.ToUpper = "3E3B5B65-6B09-4CAA-B467-24A1108C0F0C" Then ' Φυσικό Αέριο
                     If sHTypeID.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or sHTypeID.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" _
