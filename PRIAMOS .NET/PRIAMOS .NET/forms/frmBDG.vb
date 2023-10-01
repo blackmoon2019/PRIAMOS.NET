@@ -102,7 +102,6 @@ Public Class frmBDG
 
 
     Private Sub frmBDG_Load(sender As Object, e As EventArgs) Handles Me.Load
-
         'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_FOLDER_CAT' table. You can move, or remove it, as needed.
         Me.Vw_FOLDER_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_FOLDER_CAT)
 
@@ -545,8 +544,9 @@ Public Class frmBDG
         'Πάροχοι
         'FillCbo.PUBLIC_S(cbofService2, "where servicetypeID='F0EE8CF4-2778-4EF8-BCF3-225541551CE6' and id = ( select top 1 fPublicServiceID from BMANAGE where bdgID = " & toSQLValueS(sID) & ")", True)
         Me.Vw_PUBLIC_STableAdapter.FillByFysikoBdgID(Me.Priamos_NET_DataSet_BDG.vw_PUBLIC_S, System.Guid.Parse(sID))
-
         Me.Vw_MEASURERSTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_MEASURERS)
+        Me.Vw_INHNotCalculatedBYBDGTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.vw_INHNotCalculatedBYBdg, System.Guid.Parse(sID))
+
         Dim table As DataTable = Me.Vw_PUBLIC_STableAdapter.GetDataByFysikoBdgID(System.Guid.Parse(sID))
         If table.Rows.Count > 0 Then cbofService2.EditValue = table.Rows(0).Item(0)
         table.Dispose()
@@ -1255,7 +1255,12 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdGInvSave_Click(sender As Object, e As EventArgs) Handles cmdGInvSave.Click
+        Dim INH As New INH
         If Valid.ValidateFormGRP(LayoutControlGroup6) Then
+            If chkGasFixed.Checked = True And cboINH.EditValue = Nothing Then
+                XtraMessageBox.Show("Έχετε επιλέξει πάγιο παραστατικό χωρίς να επιλέξετε τιμολόγιο χρέωσης. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             Dim sGID As String = System.Guid.NewGuid.ToString
             If InvGas.InsertGasData(LayoutControlGroup6, sGID, "bdgid", sID) Then
                 InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
@@ -1264,6 +1269,7 @@ Public Class frmBDG
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
+
 
                 ' Υπολογισμός Κατανάλωσης για την περίπτωση Φυσικού Αερίου
                 Dim sHTypeID As String, sFTypeID As String, sBTypeID As String, sConsumptionID As String
@@ -1275,26 +1281,29 @@ Public Class frmBDG
                     Or sBTypeID.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or sBTypeID.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then
                         Dim sahpbHIDH As String, sahpbHIDB As String
                         If CheckForAhpbH(sahpbHIDH, False) = False And CheckForAhpbB(sahpbHIDB, False) = False Then
-                            XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης φυσικού αερίου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης φυσικού αερίου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         Else
                             CalculateConsumption(toSQLValue(txtGInvTotalPrice, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, sGID)
                         End If
                     End If
                 End If
 
+                If chkGasFixed.Checked = True Then
+                    If INH.UpdateINDFixedConsumption(cboINH.EditValue.ToString, sID, sGID) = False Then Exit Sub
+                End If
 
                 'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
                 Dim ExcludeControls As New List(Of String)
-                ExcludeControls.Add(cbofService2.Name)
-                Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Valid.SChanged = False
-                XtraOpenFileDialog1.FileName = ""
-                GridView4.OptionsBehavior.Editable = False
-                txtGInvFileNames.EditValue = ""
-                'cmdOInvSave.Enabled = False
+                    ExcludeControls.Add(cbofService2.Name)
+                    Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
+                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Valid.SChanged = False
+                    XtraOpenFileDialog1.FileName = ""
+                    GridView4.OptionsBehavior.Editable = False
+                    txtGInvFileNames.EditValue = ""
+                    'cmdOInvSave.Enabled = False
+                End If
             End If
-        End If
     End Sub
     'Υπολογισμός Κατανάλωσης
     Private Sub CalculateConsumption(ByVal totConsumption As String, ByVal totConsumptionLiter As String,
@@ -3461,6 +3470,14 @@ Public Class frmBDG
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub chkGasFixed_CheckedChanged(sender As Object, e As EventArgs) Handles chkGasFixed.CheckedChanged
+        If chkGasFixed.Checked = True Then
+            cboINH.ReadOnly = False
+        Else
+            cboINH.ReadOnly = True : cboINH.EditValue = Nothing
+        End If
     End Sub
 
 

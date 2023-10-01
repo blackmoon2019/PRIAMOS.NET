@@ -1,13 +1,7 @@
-﻿Imports DevExpress.DataAccess
-Imports DevExpress.XtraBars
-Imports DevExpress.XtraEditors
-Imports DevExpress.XtraPrinting
-Imports DevExpress.XtraScheduler.Native
-Imports DevExpress.XtraSpreadsheet.DocumentFormats
+﻿Imports DevExpress.XtraEditors
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Tab
 
 Public Class Reports
     Public Function SYGReport(ByVal Row As Integer, ByRef sIDS As StringBuilder, ByVal GRD As DevExpress.XtraGrid.Views.Grid.GridView) As Boolean

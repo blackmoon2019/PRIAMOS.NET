@@ -84,17 +84,19 @@ Public Class frmINH
                 cmdSaveINH.Enabled = UserProps.AllowInsert
                 cboBDG.Select()
             Case FormMode.EditRecord
-                'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id = " & toSQLValueS(sID), False)
                 InhFieldAndValues = New Dictionary(Of String, String)
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                 Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
-                Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
-                Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
                 Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
                 Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
+                Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
+                Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
                 Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
                 Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, cboBDG.EditValue)
+
+                ' Στην περίπτωση που έχει πάγιο τιμολόγιο κατανάλωσης φυσικού αερίου τότε καθαρίζουμε τις ώρες
+                If CheckIfHasGasFixedInvoices() = False Then cboAhpbH.DataBindings.Clear() : cboAhpbHB.DataBindings.Clear()
 
                 If InhFieldAndValues.Item("mdt") <> "" And chkCalculated.Checked = True Then
                     lblInf.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy")
@@ -106,14 +108,30 @@ Public Class frmINH
                     cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB"))
                     If cboAhpbHB.Text = "" Then cboAhpbHB.EditValue = Nothing
                 End If
-                If InhFieldAndValues.Item("invOilID") <> "" And chkCalculated.Checked = True Then
-                    lblInf.Text = "Το παραστατικό υπολογίσθηκε με το τιμολόγιο Πετρελάιου: " & CDate(InhFieldAndValues.Item("OilInvDate")).ToString("dd/MM/yyyy")
+                If InhFieldAndValues.Item("OilInvDate") <> "" And chkCalculated.Checked = True Then
+                    lblInf.Text = "Το παραστατικό υπολογίσθηκε με το/τα τιμολόγιο/α Πετρελάιου: " & InhFieldAndValues.Item("OilInvDate").ToString()
                     If cboInvOil.Text = "" Then cboInvOil.EditValue = Nothing
                 End If
-                If InhFieldAndValues.Item("invGasID") <> "" And chkCalculated.Checked = True Then
-                    lblInf.Text = "Το παραστατικό υπολογίσθηκε με το τιμολόγιο Φυσικού Αερίου: " & CDate(InhFieldAndValues.Item("GasInvDate")).ToString("dd/MM/yyyy")
+                If InhFieldAndValues.Item("GasInvDate") <> "" And chkCalculated.Checked = True Then
+                    lblInf.Text = "Το παραστατικό υπολογίσθηκε με το/τα τιμολόγιο/α Φυσικού Αερίου: " & InhFieldAndValues.Item("GasInvDate").ToString()
                     If cboInvGas.Text = "" Then cboInvGas.EditValue = Nothing
                 End If
+
+                If cboInvOil.Properties.GetItems.Count <> 0 Or cboInvGas.Properties.GetItems.Count <> 0 Then
+                    Dim cmd As SqlCommand = New SqlCommand("Select 1 as sKey,invOilID as invOilGasID from IND where invOilID is not null and inhID = " & toSQLValueS(sID) &
+                                                     "UNION Select 2 as sKey,invGasID as invOilGasID from IND where invGasID is not null and inhID = " & toSQLValueS(sID), CNDB)
+                    Dim sdr As SqlDataReader = cmd.ExecuteReader()
+                    If sdr.HasRows Then
+                        While sdr.Read()
+                            Select Case sdr("sKey")
+                                Case "1" : If sdr("invOilGasID").ToString <> "" Then cboInvOil.Properties.GetItems.Item(System.Guid.Parse(sdr("invOilGasID").ToString)).CheckState = CheckState.Checked
+                                Case "2" : If sdr("invOilGasID").ToString <> "" Then cboInvGas.Properties.GetItems.Item(System.Guid.Parse(sdr("invOilGasID").ToString)).CheckState = CheckState.Checked
+                            End Select
+                        End While
+                    End If
+                    sdr.Close()
+                End If
+
 
                 'lbldate.Text = TranslateDates(dtFDate, dtTDate)
                 Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
@@ -311,21 +329,13 @@ Public Class frmINH
                                     Exit Sub
                                 End If
                             End If
-                            ' Όταν είναι κεντρική θέρμανση = Κατεμερισμός με Χιλιοστά
-                            If cboInvOil.EditValue IsNot Nothing Then
-                                If INH.InsertINDCentralHeating(sGuid, cboBDG.EditValue.ToString, cboInvOil.EditValue.ToString, Guid.Empty.ToString) = False Then
-                                    Exit Sub
-                                End If
-                            End If
-                            ' Όταν είναι κεντρική θέρμανση = Κατεμερισμός με Χιλιοστά
-                            If cboInvGas.EditValue IsNot Nothing Then
-                                If INH.InsertINDCentralHeating(sGuid, cboBDG.EditValue.ToString, Guid.Empty.ToString, cboInvGas.EditValue.ToString) = False Then
-                                    Exit Sub
-                                End If
-                            End If
 
+                            ' Όταν είναι κεντρική θέρμανση = Καταμερισμός με Χιλιοστά
+                            If INH.InsertINDCentralHeating(sGuid, cboBDG.EditValue.ToString, cboInvOil, cboInvGas) = False Then Exit Sub
+
+
+                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
                             If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
-                                ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
                                 If INH.InsertINDConsumption(sGuid, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString), toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
                                     Exit Sub
                                 End If
@@ -351,56 +361,33 @@ Public Class frmINH
                             If sResult Then
                                 ' Εαν Θέρμανση= καταμερισμός με χιλιοστά
                                 If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then
-                                    If cboInvOil.EditValue IsNot Nothing Or cboInvGas.EditValue IsNot Nothing Then
-                                        ' Όταν είναι κεντρική θέρμανση = Κατεμερισμός με Χιλιοστά
-                                        If cboInvOil.EditValue IsNot Nothing Then
-                                            If INH.UpdateINDCentralHeating(sID, cboBDG.EditValue.ToString, cboInvOil.EditValue.ToString, Guid.Empty.ToString) = False Then
-                                                Exit Sub
-                                            End If
+                                    ' Όταν είναι κεντρική θέρμανση = Καταμερισμός με Χιλιοστά
+                                    If INH.UpdateINDCentralHeating(sID, cboBDG.EditValue.ToString, cboInvOil, cboInvGas) = False Then Exit Sub
+                                    ' Εαν Θέρμανση= Αυτονομία με χρήση FI /  Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
+                                ElseIf (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                                        cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or
+                                        cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                                        cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+                                    If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
+                                        If cboAhpbH.EditValue IsNot Nothing Then
+                                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                            If INH.UpdateINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString)) = False Then Exit Sub
                                         End If
-                                        ' Όταν είναι κεντρική θέρμανση = Καταμερισμός με Χιλιοστά
-                                        If cboInvGas.EditValue IsNot Nothing Then
-                                            If INH.UpdateINDCentralHeating(sID, cboBDG.EditValue.ToString, Guid.Empty.ToString, cboInvGas.EditValue.ToString) = False Then
-                                                Exit Sub
-                                            End If
+                                        If cboAhpbHB.EditValue IsNot Nothing Then
+                                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                            If INH.UpdateINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), , toSQLValueS(cboAhpbHB.EditValue.ToString)) = False Then Exit Sub
                                         End If
                                     Else
-                                        'Στην περίπτωση κατανάλωσης αν δεν έχουν επιλεχθεί τιμολόγια διαγράφει το έξοδο
-                                        DeleteConsumptionIfNeedeit()
+                                        'Στην περίπτωση κατανάλωσης αν δεν έχουν επιλεχθεί ώρες διαγράφει το έξοδο
+                                        DeleteConsumptionS()
                                     End If
                                 End If
-                                ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
-                                ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
-                                If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-                                    cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or
-                                    cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-                                    cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
-                                        ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
-                                        If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
-                                            If cboAhpbH.EditValue IsNot Nothing Then
-                                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                                            If INH.UpdateINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString)) = False Then
-                                                Exit Sub
-                                            End If
-                                        End If
-                                            If cboAhpbHB.EditValue IsNot Nothing Then
-                                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                                            If INH.UpdateINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), , toSQLValueS(cboAhpbHB.EditValue.ToString)) = False Then
-                                                Exit Sub
-                                            End If
-                                        End If
-                                        Else
-                                            'Στην περίπτωση κατανάλωσης αν δεν έχουν επιλεχθεί ώρες διαγράφει το έξοδο
-                                            DeleteConsumptionIfNeedeit()
-                                        End If
-                                    End If
-                                    ' Ενημέρωση των ποσών όλων των εξόδων ανάλογα με το διάστημα που έχει επιλεχθεί, πλην της έκδοσης
-                                    If INH.UpdateIND(sID, Months) Then
-                                    End If
-                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
-                                    grdIND.DataSource = VwINDBindingSource
-                                End If
+                                ' Ενημέρωση των ποσών όλων των εξόδων ανάλογα με το διάστημα που έχει επιλεχθεί, πλην της έκδοσης
+                                If INH.UpdateIND(sID, Months) = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την καταχώρηση του παραστατικού", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+                                grdIND.DataSource = VwINDBindingSource
                             End If
+                        End If
                 End Select
                 If sResult Then
                     If Mode = FormMode.NewRecord Then sID = sGuid : Mode = FormMode.EditRecord
@@ -418,6 +405,27 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Function CheckIfHasGasFixedInvoices() As Boolean
+        Dim sSQL As String = "select count(ID) as CountINH from INV_GAS where inhID  = " & toSQLValueS(sID)
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Dim CountINH As Integer
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            If sdr.IsDBNull(sdr.GetOrdinal("CountINH")) = True Then
+                CountINH = 0
+            Else
+                CountINH = sdr.GetInt32(sdr.GetOrdinal("CountINH"))
+            End If
+            sdr.Close()
+            If CountINH > 0 Then
+                Return True
+            End If
+        End If
+        Return False
+
+    End Function
     Private Function CheckIfDateIsValid(ByRef Months As Long) As Boolean
         Dim date1 As Date = Date.Parse(dtFDate.EditValue.ToString)
         Dim date2 As Date = Date.Parse(dtTDate.EditValue.ToString)
@@ -814,8 +822,12 @@ Public Class frmINH
         Try
             Dim sAhpbID As String = "00000000-0000-0000-0000-000000000000", sAhpbText As String = ""
             Dim sAhpbBID As String = "00000000-0000-0000-0000-000000000000", sAhpbBtext As String = ""
-            ' Έλεγχος στην περίπτωση που υπάρχουν καταναλώσεις κι όχι ώρες και το αντίθετο
-            If CheckForSelectedHours(sAhpbID, sAhpbBID, sAhpbText, sAhpbBtext) = False Then Exit Sub
+            ' Έλεγχος αν υπάρχει Τιμολόγιο Φυσικού αερίου που είναι πάγιο. Αυτό το θέλαμε για την περίπτβση που ενα τιμολόγιο είναι πάγιο
+            ' π.χ καλοκαρινό μήνα που δεν υπάρχει κατανάλωση να προσπερνάει τον έλεγχο των ωρών
+            If CheckIfHasGasFixedInvoices() = False Then
+                ' Έλεγχος στην περίπτωση που υπάρχουν καταναλώσεις κι όχι ώρες και το αντίθετο
+                If CheckForSelectedHours(sAhpbID, sAhpbBID, sAhpbText, sAhpbBtext) = False Then Exit Sub
+            End If
             Using oCmd As New SqlCommand("inv_Calculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
@@ -837,11 +849,14 @@ Public Class frmINH
             args.Icon = System.Drawing.SystemIcons.Information
             XtraMessageBox.Show(args).ToString()
 
+
             If sAhpbText <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & sAhpbText : Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
             If sAhpbBtext <> "" Then lblInf2.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & sAhpbBtext : Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
 
-            If cboInvOil.Text <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε το τιμολόγιο πετρελαιου ημερομηνίας: " & CDate(cboInvOil.Text).ToString("dd/MM/yyyy") : Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
-            If cboInvGas.Text <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε το τιμολόγιο φυσικού αερίου ημερομηνίας: " & CDate(cboInvGas.Text).ToString("dd/MM/yyyy") : Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
+            Dim InhFieldAndValues = New Dictionary(Of String, String)
+            InhFieldAndValues = LoadForms.DatasetToDictionary("Select * from vw_INH where id = " & toSQLValueS(sID))
+            If InhFieldAndValues.Item("OilInvDate").ToString <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε με το/τα τιμολόγιο/α Πετρελάιου: " & InhFieldAndValues.Item("OilInvDate").ToString() : Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
+            If InhFieldAndValues.Item("GasInvDate").ToString <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε με το/τα τιμολόγιο/α Φυσικού Αερίου: " & InhFieldAndValues.Item("GasInvDate").ToString : Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
 
 
             chkCalculated.CheckState = CheckState.Checked
@@ -955,7 +970,7 @@ Public Class frmINH
 
         Return True
     End Function
-    Private Sub DeleteConsumptionIfNeedeit()
+    Private Sub DeleteConsumptionS()
         'Έλεγχος αν έχει επιλεχθεί σστα έξοδα Κατανάλωση Θέρμανης ή Κατανάλωση boiler
         Dim sSQL As String
         Dim cmd As SqlCommand
@@ -975,23 +990,23 @@ Public Class frmINH
         sdr.Close()
 
         ' Εαν Θέρμανση= καταμερισμός με χιλιοστά
-        If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then
-            If sindHID.Length > 0 Then
-                'sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
-                sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
+        'If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then
+        '    If sindHID.Length > 0 Then
+        '        'sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
+        '        sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
+        '        Using oCmd As New SqlCommand(sSQL, CNDB)
+        '            oCmd.ExecuteNonQuery()
+        '        End Using
+        '        sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
+        '        Using oCmd As New SqlCommand(sSQL, CNDB)
+        '            oCmd.ExecuteNonQuery()
+        '        End Using
 
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
-                grdIND.DataSource = VwINDBindingSource
-                Exit Sub
-            End If
-        End If
+        '        Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+        '        grdIND.DataSource = VwINDBindingSource
+        '        Exit Sub
+        '    End If
+        'End If
 
 
         ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
@@ -1347,13 +1362,28 @@ Public Class frmINH
             LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
             If InhFieldAndValues.Item("mdt") <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblInf.Text = "" : cboAhpbH.EditValue = Nothing
             If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblInf2.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblInf2.Text = "" : cboAhpbHB.EditValue = Nothing
-            If InhFieldAndValues.Item("invOilID") <> "" And chkCalculated.Checked = True Then
-                lblInf.Text = "Το παραστατικό υπολογίσθηκε με το τιμολόγιο Πετρελάιου: " & CDate(InhFieldAndValues.Item("OilInvDate")).ToString("dd/MM/yyyy")
+            If InhFieldAndValues.Item("OilInvDate") <> "" And chkCalculated.Checked = True Then
+                lblInf.Text = "Το παραστατικό υπολογίσθηκε με το/τα τιμολόγιο/α Πετρελάιου: " & InhFieldAndValues.Item("OilInvDate").ToString()
                 If cboInvOil.Text = "" Then cboInvOil.EditValue = Nothing
             End If
-            If InhFieldAndValues.Item("invGasID") <> "" And chkCalculated.Checked = True Then
-                lblInf.Text = "Το παραστατικό υπολογίσθηκε με το τιμολόγιο Φυσικού Αερίου: " & CDate(InhFieldAndValues.Item("GasInvDate")).ToString("dd/MM/yyyy")
+            If InhFieldAndValues.Item("GasInvDate") <> "" And chkCalculated.Checked = True Then
+                lblInf.Text = "Το παραστατικό υπολογίσθηκε με το/τα τιμολόγιο/α Φυσικού Αερίου: " & InhFieldAndValues.Item("GasInvDate").ToString()
                 If cboInvGas.Text = "" Then cboInvGas.EditValue = Nothing
+            End If
+
+            If cboInvOil.Properties.GetItems.Count <> 0 Or cboInvGas.Properties.GetItems.Count <> 0 Then
+                cmd = New SqlCommand("Select 1 as sKey,invOilID as invOilGasID from IND where invOilID is not null and inhID = " & toSQLValueS(sID) &
+                                                     "UNION Select 2 as sKey,invGasID as invOilGasID from IND where invGasID is not null and inhID = " & toSQLValueS(sID), CNDB)
+                sdr = cmd.ExecuteReader()
+                If sdr.HasRows Then
+                    While sdr.Read()
+                        Select Case sdr("sKey")
+                            Case "1" : If sdr("invOilGasID").ToString <> "" Then cboInvOil.Properties.GetItems.Item(System.Guid.Parse(sdr("invOilGasID").ToString)).CheckState = CheckState.Checked
+                            Case "2" : If sdr("invOilGasID").ToString <> "" Then cboInvGas.Properties.GetItems.Item(System.Guid.Parse(sdr("invOilGasID").ToString)).CheckState = CheckState.Checked
+                        End Select
+                    End While
+                End If
+                sdr.Close()
             End If
 
 
@@ -1719,18 +1749,18 @@ Public Class frmINH
 
     Private Sub cboInvOil_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboInvOil.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboInvOil.EditValue = Nothing : ManageCbo.ManageHeatingInvoices(cboInvOil, FormMode.EditRecord, cboBDG.EditValue.ToString)
-            Case 2 : If cboInvOil.EditValue <> Nothing Then ManageCbo.ManageHeatingInvoices(cboInvOil, FormMode.EditRecord, cboBDG.EditValue.ToString)
-            Case 3 : cboInvOil.EditValue = Nothing
+            Case 1 : cboInvOil.EditValue = Nothing : ManageCbo.ManageHeatingInvoicesCheckBox(cboInvOil, FormMode.EditRecord, cboBDG.EditValue.ToString)
+            Case 2 : If cboInvOil.EditValue <> Nothing Then ManageCbo.ManageHeatingInvoicesCheckBox(cboInvOil, FormMode.EditRecord, cboBDG.EditValue.ToString)
+            Case 3 : cboInvOil.EditValue = Nothing : cboInvOil.SetEditValue(-1)
         End Select
 
     End Sub
 
     Private Sub cboInvGas_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboInvGas.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboInvGas.EditValue = Nothing : ManageCbo.ManageHeatingInvoices(cboInvGas, FormMode.EditRecord, cboBDG.EditValue.ToString)
-            Case 2 : If cboInvGas.EditValue <> Nothing Then ManageCbo.ManageHeatingInvoices(cboInvGas, FormMode.EditRecord, cboBDG.EditValue.ToString)
-            Case 3 : cboInvGas.EditValue = Nothing
+            Case 1 : cboInvGas.EditValue = Nothing : ManageCbo.ManageHeatingInvoicesCheckBox(cboInvGas, FormMode.EditRecord, cboBDG.EditValue.ToString)
+            Case 2 : If cboInvGas.EditValue <> Nothing Then ManageCbo.ManageHeatingInvoicesCheckBox(cboInvGas, FormMode.EditRecord, cboBDG.EditValue.ToString)
+            Case 3 : cboInvGas.EditValue = Nothing : cboInvGas.SetEditValue(-1)
         End Select
     End Sub
 End Class
