@@ -56,6 +56,9 @@ Public Class INH
             Return False
         End Try
     End Function
+
+    ' Όταν είναι αυτονομία και έχουμε πάγια τότε καταχωρούμε αυτόματα το πάγιο σύμφωνα με το επιλεγμένο τιμολόγιο(Αφορά μόνο το Φυσικό Αέριο)
+
     ' Όταν είναι Κεντρική Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης σύμφωνα με το επιλεγμένο τιμολόγιο
     Public Function InsertINDCentralHeating(ByVal sID As String, sBdgID As String, ByVal cboinvOil As DevExpress.XtraEditors.CheckedComboBoxEdit, ByVal cboinvGas As DevExpress.XtraEditors.CheckedComboBoxEdit) As Boolean
         Dim sSQL As String
@@ -88,7 +91,7 @@ Public Class INH
                     End Using
 
                     sSQL = "INSERT INTO IND (inhID, calcCatID,invGasID, repName, amt, owner_tenant) " &
-                            "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B', " & toSQLValueS(cboinvOil.Properties.Items(i).Value.ToString) &
+                            "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B', " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString) &
                             ", 'ΦΥΣΙΚΟ ΑΕΡΙΟ  ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105),totalPrice,'1' 
                             From INV_GAS
                             INNER JOIN BDG ON BDG.ID = INV_GAS.bdgID
@@ -246,18 +249,44 @@ Public Class INH
             Return False
         End Try
     End Function
-    Public Function UpdateINDFixedConsumption(ByVal sID As String, ByVal sBdgID As String, ByVal sInvGasID As String) As Boolean
+    Public Function InsertINDFixedConsumption(ByVal sID As String, ByVal sBdgID As String, ByVal sInvGasID As String, ByVal mode As Integer, Optional ByVal cboinvGas As DevExpress.XtraEditors.CheckedComboBoxEdit = Nothing) As Boolean
         Dim sSQL As String
         Try
-            sSQL = "INSERT INTO IND (inhID, calcCatID,invGasID, repName, amt, owner_tenant) " &
+            Select Case mode
+                Case 0
+                    sSQL = "INSERT INTO IND (inhID, calcCatID,invGasID, repName, amt, owner_tenant) " &
                     "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B', " & toSQLValueS(sInvGasID) &
                     ", case when (select top 1 ftypeID from BDG where ID = " & toSQLValueS(sBdgID) & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣ. ΑΕΡΙΟ ΠΑΓΙΟ ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105) else '' end as repName, 
                     totalPrice,'1' 
                     FROM INV_GAS
                     where inhID  = " & toSQLValueS(sID) & " and ID = " & toSQLValueS(sInvGasID)
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+
+                Case 1
+                    For i As Integer = 0 To cboinvGas.Properties.Items.Count - 1
+                        If cboinvGas.Properties.Items(i).CheckState = CheckState.Checked Then
+                            sSQL = "UPDATE INV_GAS SET InhID = " & toSQLValueS(sID) & " where ID = " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString)
+                            Using oCmd As New SqlCommand(sSQL, CNDB)
+                                oCmd.ExecuteNonQuery()
+                            End Using
+
+                            sSQL = "INSERT INTO IND (inhID, calcCatID,invGasID, repName, amt, owner_tenant) " &
+                            "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B', " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString) &
+                            ", 'ΦΥΣ. ΑΕΡΙΟ ΠΑΓΙΟ  ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105),totalPrice,'1' 
+                            From INV_GAS
+                            INNER JOIN BDG ON BDG.ID = INV_GAS.bdgID
+                            where " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString) & " not in( select invGasID from IND where IND.invGasID  =  " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString) & ")" &
+                            " and ftypeID = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' and BDG.ID = " & toSQLValueS(sBdgID) &
+                            " and INV_GAS.ID  = " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString)
+                            Using oCmd As New SqlCommand(sSQL, CNDB)
+                                oCmd.ExecuteNonQuery()
+                            End Using
+                        End If
+                    Next
+
+            End Select
             Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

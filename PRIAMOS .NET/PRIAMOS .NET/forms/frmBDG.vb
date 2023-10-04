@@ -1289,7 +1289,7 @@ Public Class frmBDG
                 End If
 
                 If chkGasFixed.Checked = True Then
-                    If INH.UpdateINDFixedConsumption(cboINH.EditValue.ToString, sID, sGID) = False Then Exit Sub
+                    If INH.InsertINDFixedConsumption(cboINH.EditValue.ToString, sID, sGID, 0) = False Then Exit Sub
                 End If
 
                 'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable

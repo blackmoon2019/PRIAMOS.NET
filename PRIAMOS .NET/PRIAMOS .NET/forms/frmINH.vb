@@ -333,6 +333,9 @@ Public Class frmINH
                             ' Όταν είναι κεντρική θέρμανση = Καταμερισμός με Χιλιοστά
                             If INH.InsertINDCentralHeating(sGuid, cboBDG.EditValue.ToString, cboInvOil, cboInvGas) = False Then Exit Sub
 
+                            ' Όταν είναι αυτονομία και υπάρχει πάγιο φυσικού αερίου
+                            If INH.InsertINDFixedConsumption(sGuid, cboBDG.EditValue.ToString, "", 1, cboInvGas) = False Then Exit Sub
+
 
                             ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
                             If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
@@ -381,6 +384,11 @@ Public Class frmINH
                                         'Στην περίπτωση κατανάλωσης αν δεν έχουν επιλεχθεί ώρες διαγράφει το έξοδο
                                         DeleteConsumptionS()
                                     End If
+                                    ' Όταν είναι αυτονομία και υπάρχει πάγιο φυσικού αερίου
+                                    If INH.InsertINDFixedConsumption(sID, cboBDG.EditValue.ToString, "", 1, cboInvGas) = False Then
+                                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την καταχώρηση εξόδου παγίου φυσικού αερίου.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    End If
+
                                 End If
                                 ' Ενημέρωση των ποσών όλων των εξόδων ανάλογα με το διάστημα που έχει επιλεχθεί, πλην της έκδοσης
                                 If INH.UpdateIND(sID, Months) = False Then XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την καταχώρηση του παραστατικού", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -558,6 +566,7 @@ Public Class frmINH
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
+                Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
                 'Διαγραφή αρχείων αν υπάρχουν
                 DeleteIND_F(False)
                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
@@ -566,6 +575,7 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
     Private Sub DeleteINC()
         Dim sSQL As String
         Try
@@ -921,119 +931,111 @@ Public Class frmINH
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim sindHID As String = "", sindBID As String = ""
-        ' Εαν έχει καταχωρήσει κατανάλωση θέρμανσης
-        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
-        cmd = New SqlCommand(sSQL, CNDB)
-        sdr = cmd.ExecuteReader()
-        If (sdr.Read() = True) Then sindHID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
-        sdr.Close()
-        ' Εαν έχει καταχωρήσει κατανάλωση Boiler
-        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
-        cmd = New SqlCommand(sSQL, CNDB)
-        sdr = cmd.ExecuteReader()
-        If (sdr.Read() = True) Then sindBID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
-        sdr.Close()
+        Try
+
+            ' Εαν έχει καταχωρήσει κατανάλωση θέρμανσης
+            sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then sindHID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            ' Εαν έχει καταχωρήσει κατανάλωση Boiler
+            sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then sindBID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
 
 
-        ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
-        If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-            cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
-            If sindHID.Length = 0 And cboAhpbH.EditValue IsNot Nothing Then
-                XtraMessageBox.Show("Έχετε επιλέξει ώρες χωρίς να καταχωρήσετε κατανάλωση θέρμανσης.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
-            ElseIf sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
-                XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση θέρμανσης χωρίς να επιλέξετε ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
+            ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
+            If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+                If sindHID.Length = 0 And cboAhpbH.EditValue IsNot Nothing Then
+                    XtraMessageBox.Show("Έχετε επιλέξει ώρες χωρίς να καταχωρήσετε κατανάλωση θέρμανσης.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                ElseIf sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
+                    XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση θέρμανσης χωρίς να επιλέξετε ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                Else
+                    If cboAhpbH.EditValue IsNot Nothing Then sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
+                End If
             Else
                 If cboAhpbH.EditValue IsNot Nothing Then sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
             End If
-        Else
-            If cboAhpbH.EditValue IsNot Nothing Then sAhpbID = cboAhpbH.EditValue.ToString.ToUpper : sAhpbText = cboAhpbH.Text
-        End If
 
 
-        ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
-        If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
-           cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
-            If sindBID.Length = 0 And cboAhpbHB.EditValue IsNot Nothing Then
-                XtraMessageBox.Show("Έχετε επιλέξει ώρες χωρίς να καταχωρήσετε κατανάλωση Boiler.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
-            ElseIf sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
-                XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση Boiler χωρίς να επιλέξετε  ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return False
+            ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
+            If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+               cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+                If sindBID.Length = 0 And cboAhpbHB.EditValue IsNot Nothing Then
+                    XtraMessageBox.Show("Έχετε επιλέξει ώρες χωρίς να καταχωρήσετε κατανάλωση Boiler.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                ElseIf sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
+                    XtraMessageBox.Show("Έχετε καταχωρήσει κατανάλωση Boiler χωρίς να επιλέξετε  ώρες.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                Else
+                    If cboAhpbHB.EditValue IsNot Nothing Then sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
+                End If
             Else
                 If cboAhpbHB.EditValue IsNot Nothing Then sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
             End If
-        Else
-            If cboAhpbHB.EditValue IsNot Nothing Then sAhpbBID = cboAhpbHB.EditValue.ToString.ToUpper : sAhpbBtext = cboAhpbHB.Text
-        End If
 
-        Return True
+            Return True
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
     End Function
     Private Sub DeleteConsumptionS()
-        'Έλεγχος αν έχει επιλεχθεί σστα έξοδα Κατανάλωση Θέρμανης ή Κατανάλωση boiler
+        'Έλεγχος αν έχει επιλεχθεί στα έξοδα Κατανάλωση Θέρμανης ή Κατανάλωση boiler και δεν αφορά τιμολόγιο Φυσικού αερίου που είναι πάγιο
         Dim sSQL As String
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         Dim sindHID As String = "", sindBID As String = ""
-        ' Εαν έχει καταχωρήσει κατανάλωση θέρμανσης
-        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
-        cmd = New SqlCommand(sSQL, CNDB)
-        sdr = cmd.ExecuteReader()
-        If (sdr.Read() = True) Then sindHID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
-        sdr.Close()
-        ' Εαν έχει καταχωρήσει κατανάλωση Boiler
-        sSQL = "select top 1 ID from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
-        cmd = New SqlCommand(sSQL, CNDB)
-        sdr = cmd.ExecuteReader()
-        If (sdr.Read() = True) Then sindBID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
-        sdr.Close()
-
-        ' Εαν Θέρμανση= καταμερισμός με χιλιοστά
-        'If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then
-        '    If sindHID.Length > 0 Then
-        '        'sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
-        '        sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B'"
-        '        Using oCmd As New SqlCommand(sSQL, CNDB)
-        '            oCmd.ExecuteNonQuery()
-        '        End Using
-        '        sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72'"
-        '        Using oCmd As New SqlCommand(sSQL, CNDB)
-        '            oCmd.ExecuteNonQuery()
-        '        End Using
-
-        '        Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
-        '        grdIND.DataSource = VwINDBindingSource
-        '        Exit Sub
-        '    End If
-        'End If
+        Try
+            ' Εαν έχει καταχωρήσει κατανάλωση θέρμανσης
+            sSQL = "select top 1 IND.ID from IND left join inv_Gas on inv_Gas.ID = IND.invGasID where IND.inhID  = " & toSQLValueS(sID) & " and calcCatID ='B139CE26-1ABA-4680-A1EE-623EC97C475B' and fixed = 0"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then sindHID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            ' Εαν έχει καταχωρήσει κατανάλωση Boiler
+            sSQL = "select top 1 IND.ID from IND left join inv_Gas on inv_Gas.ID = IND.invGasID where IND.inhID  = " & toSQLValueS(sID) & " and calcCatID ='2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' and fixed = 0"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then sindBID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
 
 
-        ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
-        If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+            ' Εαν Θέρμανση= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο 
+            If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
             cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
-            If sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
-                sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
-                grdIND.DataSource = VwINDBindingSource
+                If sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
+                    sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+                    grdIND.DataSource = VwINDBindingSource
+                End If
             End If
-        End If
 
-        ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
-        If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+            ' Εαν Boiler= Αυτονομία με χρήση FI ή Αυτονομία με σταθερό πάγιο
+            If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
            cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
-            If sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
-                sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindBID)
-                Using oCmd As New SqlCommand(sSQL, CNDB)
-                    oCmd.ExecuteNonQuery()
-                End Using
-                Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
-                grdIND.DataSource = VwINDBindingSource
+                If sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
+                    sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindBID)
+                    Using oCmd As New SqlCommand(sSQL, CNDB)
+                        oCmd.ExecuteNonQuery()
+                    End Using
+                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
+                    grdIND.DataSource = VwINDBindingSource
+                End If
             End If
-        End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub cmdExport_Click(sender As Object, e As EventArgs) Handles cmdExport.Click
         Select Case TabPane1.SelectedPageIndex

@@ -13790,8 +13790,10 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        INV_GAS.ID, INV_GAS.invDate, INV_GAS.totalPrice, INV_GAS.fDateConsu"& _ 
                 "mption, INV_GAS.tDateConsumption"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            INV_GAS INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
                 "               BDG ON BDG.ID = INV_GAS.bdgID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (INV_GAS.completed = "& _ 
-                "0) AND (BDG.HTypeID = '94CECEE9-739E-4E31-9B43-796D318FB9C5') AND (INV_GAS.bdgID"& _ 
-                " = @bdgID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY INV_GAS.invDate"
+                "0) AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"((BDG.HTypeID = '94CECEE9-739E-4E31-9B43-796D318FB9C5') OR (BDG.HTypeID"& _ 
+                " IN( '11F7A89C-F64D-4596-A5AF-005290C5FA49','9F7BD209-A5A0-47F4-BB0B-9CEA9483B6A"& _ 
+                "E') AND fixed=1) )"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"AND (INV_GAS.bdgID = @bdgID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY INV_GAS.invDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                " "
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
