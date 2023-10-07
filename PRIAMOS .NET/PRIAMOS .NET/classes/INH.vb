@@ -223,7 +223,7 @@ Public Class INH
                             FROM CONSUMPTIONS 
                             LEFT JOIN INV_GAS ON INV_GAS.ID = CONSUMPTIONS.invGasID             
                         where consumptionH<> 0 and ahpbHIDH  = " & sAhpbH &
-                        " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                        " and 'B139CE26-1ABA-4680-A1EE-623EC97C475B' not in(select   calcCatID from ind LEFT JOIN INV_GAS ON INV_GAS.ID = ind.invGasID   where isnull(fixed,0) = 0 and  ind.inhID= " & toSQLValueS(sID) & ")"
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
@@ -237,7 +237,7 @@ Public Class INH
                             FROM CONSUMPTIONS 
                             LEFT JOIN INV_GAS ON INV_GAS.ID = CONSUMPTIONS.invGasID             
                             where consumptionB<>0 and ahpbHIDB  = " & sAhpbHB &
-                        " and  '2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind where inhID= " & toSQLValueS(sID) & ")"
+                        " and  '2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72' not in (select   calcCatID from ind LEFT JOIN INV_GAS ON INV_GAS.ID = ind.invGasID   where isnull(fixed,0)  = 0 and ind.inhID= " & toSQLValueS(sID) & ")"
 
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()

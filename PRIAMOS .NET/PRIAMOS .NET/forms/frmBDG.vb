@@ -563,15 +563,13 @@ Public Class frmBDG
         EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup5, ExcludeControls)
         InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
         cmdOInvAdd.Checked = False
-        GridView4.OptionsBehavior.Editable = False
         'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
         ExcludeControls.Clear()
         ExcludeControls.Add(cmdGInvAdd.Name)
         ExcludeControls.Add(cmdGInvDelete.Name)
-        ExcludeControls.Add(cmdGInvEdit.Name)
         ExcludeControls.Add(cmdGInvRefresh.Name)
         EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
-        cmdGInvAdd.Checked = False : cmdGInvEdit.Checked = False
+        cmdGInvAdd.Checked = False
         'Valid.AddControlsForCheckIfSomethingChanged(LayoutControl4InvHeatGas)
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl1BDG)
         'Valid.RemoveControlsForCheckIfSomethingChanged(LayoutControl2BManage)
@@ -1024,7 +1022,6 @@ Public Class frmBDG
             EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Enabled, LayoutControlGroup6)
             txtGInvCode.Text = DBQ.GetNextId("INV_GAS")
             cmdGInvSave.Enabled = True
-            cmdGInvEdit.Enabled = False
         Else
             'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable - Clear
             Dim ExcludeControls As New List(Of String)
@@ -1032,38 +1029,45 @@ Public Class frmBDG
             Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
             ExcludeControls.Add(cmdGInvAdd.Name)
             ExcludeControls.Add(cmdGInvDelete.Name)
-            ExcludeControls.Add(cmdGInvEdit.Name)
             ExcludeControls.Add(cmdGInvRefresh.Name)
             EnDisControls.EnableControlsGRP(EnableControls.EnableMode.Disabled, LayoutControlGroup6, ExcludeControls)
             cmdGInvSave.Enabled = False
-            cmdGInvEdit.Enabled = True
         End If
     End Sub
     Private Sub RepositoryItemButtonGas_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonGas.ButtonClick
-        GasFilesSelection(True)
-        'If XtraOpenFileDialog1.FileName = "" Then Exit Sub
-        'Dim sGID As String = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString
-        '' Διαγραφή πρώτα παλιού αρχείου
-        'Using oCmd As New SqlCommand("delete from INV_GAS WHERE ID = " & toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString), CNDB)
-        '    oCmd.ExecuteNonQuery()
-        'End Using
+        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InhCalculated").ToString = "True" Or GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "completed").ToString = "True" Then
+            XtraMessageBox.Show("Δεν μπορείτε να επισυνάψετε αρχείο όταν το τιμολόγιο έχει ολοκληρωθεί ή συμμετέχει σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
-        'If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
-        '    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End If
+        GasFilesSelection(True)
+        If XtraOpenFileDialog1.FileName = "" Then Exit Sub
+        Dim sGID As String = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString
+        ' Διαγραφή πρώτα παλιού αρχείου
+        Using oCmd As New SqlCommand("delete from INV_GAS WHERE ID = " & toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString), CNDB)
+            oCmd.ExecuteNonQuery()
+        End Using
+
+        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
+            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
 
     Private Sub RepositoryItemButtonOil_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonOil.ButtonClick
+        If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "InhCalculated").ToString = "True" Or GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "completed").ToString = "True" Then
+            XtraMessageBox.Show("Δεν μπορείτε να επισυνάψετε αρχείο όταν το τιμολόγιο έχει ολοκληρωθεί ή συμμετέχει σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
         OilFilesSelection(True)
-        'If XtraOpenFileDialog1.FileName = "" Then Exit Sub
-        'Dim sOID As String = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString
-        '' Διαγραφή πρώτα παλιού αρχείου
-        'Using oCmd As New SqlCommand("delete from INV_OILF WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString), CNDB)
-        '    oCmd.ExecuteNonQuery()
-        'End Using
-        'If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
-        '    XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End If
+        If XtraOpenFileDialog1.FileName = "" Then Exit Sub
+        Dim sOID As String = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString
+        ' Διαγραφή πρώτα παλιού αρχείου
+        Using oCmd As New SqlCommand("delete from INV_OILF WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString), CNDB)
+            oCmd.ExecuteNonQuery()
+        End Using
+        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
+            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
 
     End Sub
 
@@ -1172,7 +1176,7 @@ Public Class frmBDG
     Private Sub grdGas_KeyDown(sender As Object, e As KeyEventArgs) Handles grdGas.KeyDown
         Select Case e.KeyCode
             Case Keys.F2 : If UserProps.AllowInsert = True Then cmdGInvAdd.PerformClick()
-            Case Keys.F3 : If UserProps.AllowEdit = True Then cmdGInvEdit.PerformClick()
+            Case Keys.F3
             Case Keys.F5 : cmdGInvRefresh.PerformClick()
             Case Keys.Delete : If UserProps.AllowDelete = True Then cmdGInvDelete.PerformClick()
         End Select
@@ -1616,16 +1620,6 @@ Public Class frmBDG
         txtOInvTotalPrice.EditValue = txtOInvLiters.Text.Replace("€", "") * txtOInvPrice.Text.Replace("€", "")
     End Sub
 
-    Private Sub cmdGInvEdit_CheckedChanged(sender As Object, e As EventArgs) Handles cmdGInvEdit.CheckedChanged
-        Dim btn As CheckButton = TryCast(sender, CheckButton)
-        If btn.Checked = True Then
-            cmdGInvAdd.Enabled = False
-            GridView4.OptionsBehavior.Editable = True
-        Else
-            GridView4.OptionsBehavior.Editable = False
-            cmdGInvAdd.Enabled = True
-        End If
-    End Sub
 
     Private Sub GridView5_CellValueChanged(sender As Object, e As CellValueChangedEventArgs) Handles GridView5.CellValueChanged
         Dim sAptID As String
