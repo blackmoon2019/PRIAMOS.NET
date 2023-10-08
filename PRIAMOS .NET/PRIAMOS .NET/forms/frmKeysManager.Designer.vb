@@ -59,7 +59,7 @@ Partial Class frmKeysManager
         Me.colBTypeID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colHTYPE_Name = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colBTYPE_Name = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colFBTYPE_Name = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colFTYPE_Name = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFTypeID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colhpc = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colhpb = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -195,7 +195,7 @@ Partial Class frmKeysManager
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colold_code, Me.colnam, Me.colAdrID, Me.colcmt, Me.colaam, Me.coliam, Me.coldts, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colADR_ID, Me.colADR_Code, Me.colADR_Name, Me.coltk, Me.colAreaID, Me.colCouID, Me.colArea_ID, Me.colArea_Code, Me.colArea_CouID, Me.colArea_Name, Me.colCOU_ID, Me.colCOU_Code, Me.colCOU_Name, Me.colar, Me.colprd, Me.colHTypeID, Me.colBTypeID, Me.colHTYPE_Name, Me.colBTYPE_Name, Me.colFBTYPE_Name, Me.colFTypeID, Me.colhpc, Me.colhpb, Me.colcalH, Me.colcalB, Me.coltacH, Me.coltacB, Me.collpcH, Me.collpcB, Me.colbCommon, Me.colbSeperate, Me.colbManageID, Me.coleName, Me.coleCounter, Me.colePaymentCode, Me.coleServiceNum, Me.colfName, Me.colfCounter, Me.colfPaymentCode, Me.colfServiceNum, Me.colwName, Me.colwCounter, Me.colwRegisterNum, Me.colfUN, Me.colfPWD, Me.colfCusCode, Me.colfHkasp, Me.colfDeposit, Me.colisManaged, Me.colManagerName, Me.colmanagerID})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colold_code, Me.colnam, Me.colAdrID, Me.colcmt, Me.colaam, Me.coliam, Me.coldts, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colADR_ID, Me.colADR_Code, Me.colADR_Name, Me.coltk, Me.colAreaID, Me.colCouID, Me.colArea_ID, Me.colArea_Code, Me.colArea_CouID, Me.colArea_Name, Me.colCOU_ID, Me.colCOU_Code, Me.colCOU_Name, Me.colar, Me.colprd, Me.colHTypeID, Me.colBTypeID, Me.colHTYPE_Name, Me.colBTYPE_Name, Me.colFTYPE_Name, Me.colFTypeID, Me.colhpc, Me.colhpb, Me.colcalH, Me.colcalB, Me.coltacH, Me.coltacB, Me.collpcH, Me.collpcB, Me.colbCommon, Me.colbSeperate, Me.colbManageID, Me.coleName, Me.coleCounter, Me.colePaymentCode, Me.coleServiceNum, Me.colfName, Me.colfCounter, Me.colfPaymentCode, Me.colfServiceNum, Me.colwName, Me.colwCounter, Me.colwRegisterNum, Me.colfUN, Me.colfPWD, Me.colfCusCode, Me.colfHkasp, Me.colfDeposit, Me.colisManaged, Me.colManagerName, Me.colmanagerID})
         Me.GridView1.DetailHeight = 619
         Me.GridView1.GridControl = Me.grdKeysM
         Me.GridView1.LevelIndent = 0
@@ -493,14 +493,14 @@ Partial Class frmKeysManager
         Me.colBTYPE_Name.VisibleIndex = 31
         Me.colBTYPE_Name.Width = 131
         '
-        'colFBTYPE_Name
+        'colFTYPE_Name
         '
-        Me.colFBTYPE_Name.FieldName = "FBTYPE_Name"
-        Me.colFBTYPE_Name.MinWidth = 35
-        Me.colFBTYPE_Name.Name = "colFBTYPE_Name"
-        Me.colFBTYPE_Name.Visible = True
-        Me.colFBTYPE_Name.VisibleIndex = 32
-        Me.colFBTYPE_Name.Width = 131
+        Me.colFTYPE_Name.FieldName = "FTYPE_Name"
+        Me.colFTYPE_Name.MinWidth = 35
+        Me.colFTYPE_Name.Name = "colFTYPE_Name"
+        Me.colFTYPE_Name.Visible = True
+        Me.colFTYPE_Name.VisibleIndex = 32
+        Me.colFTYPE_Name.Width = 131
         '
         'colFTypeID
         '
@@ -951,7 +951,7 @@ Partial Class frmKeysManager
     Friend WithEvents colBTypeID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colHTYPE_Name As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colBTYPE_Name As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colFBTYPE_Name As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colFTYPE_Name As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFTypeID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colhpc As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colhpb As DevExpress.XtraGrid.Columns.GridColumn

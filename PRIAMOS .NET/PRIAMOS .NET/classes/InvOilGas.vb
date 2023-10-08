@@ -39,6 +39,13 @@ Public Class InvOilGas
     Public Sub DeleteRecord(ByVal sID As String, ByVal sTable As String)
         Dim sSQL As String
         Try
+            Select Case sTable
+                Case "INV_OIL"
+                    If CheckifINVIsUsed(sID) = True Then
+                        XtraMessageBox.Show("Το τιμολόγιο χρησιμοποιείται σε Κατανάλωση(Δεξαμενή)", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Sub
+                    End If
+            End Select
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
 
                 sSQL = "DELETE FROM " & sTable & " WHERE ID = " & toSQLValueS(sID)
@@ -52,6 +59,25 @@ Public Class InvOilGas
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Function CheckifINVIsUsed(ByVal sID As String) As Boolean
+        Dim sSQL As String
+        Dim sinvID As String
+        sSQL = "select top 1 ID from INV_OILD where   INVoILid = " & toSQLValueS(sID)
+
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        cmd = New SqlCommand(sSQL, CNDB)
+        sdr = cmd.ExecuteReader()
+        If (sdr.Read() = True) Then
+            sinvID = sdr.GetGuid(sdr.GetOrdinal("ID")).ToString
+            sdr.Close()
+            Return True
+        Else
+            sdr.Close()
+            Return False
+        End If
+    End Function
+
     Public Sub DeleteRecordWithoutQuestion(ByVal sID As String, ByVal sTable As String)
         Dim sSQL As String
         Try

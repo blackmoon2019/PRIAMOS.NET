@@ -128,6 +128,74 @@ NextItem:
         End Try
     End Function
 
+    Public Function DatasetToDictionary(ByVal sSQL As String) As Dictionary(Of String, String)
+        Try
+            Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)
+            Dim sdr As SqlDataReader = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then
+                DatasetToDictionary = New Dictionary(Of String, String)
+                ' Αυτό μπήκε αγια να φέρει όλα τα πεδία του view μαζί με τιμές 
+                For index As Integer = 0 To sdr.FieldCount - 1
+                    Select Case sdr.GetDataTypeName(index)
+                        Case "nvarchar"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetString(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "int"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetInt32(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "bigint"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetInt64(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "uniqueidentifier"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetGuid(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "bit"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetBoolean(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "decimal"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetDecimal(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "datetime"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "date"
+                            If sdr.IsDBNull(sdr.GetOrdinal(sdr.GetName(index))) = False Then
+                                DatasetToDictionary.Add(sdr.GetName(index), sdr.GetDateTime(sdr.GetOrdinal(sdr.GetName(index))).ToString)
+                            Else
+                                DatasetToDictionary.Add(sdr.GetName(index), "")
+                            End If
+                        Case "varbinary"
+                    End Select
+                Next
+            End If
+            sdr.Close()
+            Return DatasetToDictionary
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return Nothing
+        End Try
+    End Function
     Public Function LoadForm(ByVal control As DevExpress.XtraLayout.LayoutControl, ByVal sSQL As String, Optional ByVal IgnoreVisibility As Boolean = False, Optional ByRef dictionary As Dictionary(Of String, String) = Nothing) As Boolean
 
         Dim cmd As SqlCommand = New SqlCommand(sSQL, CNDB)

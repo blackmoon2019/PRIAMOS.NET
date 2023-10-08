@@ -952,7 +952,8 @@ ORDER BY AHPB_H.mdt DESC</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET_DEV.dbo.vw_CONSUMPTIONS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByBdgID" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="FillByBdgID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="FillByBdgID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, code, bdgID, ahpbHIDH, ahpbHIDB, calH, calB, totalCal, consumptionH, consumptionB, totConsumption, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, bdgNam, UsrCreatedBy, UsrModifiedBy, mdtH, mdtB, totalBdgMesDifH, totalBdgMesDifB, consumptionLiterH, consumptionLiterB, totConsumptionLiter
+                    <CommandText>SELECT ID, code, bdgID, ahpbHIDH, ahpbHIDB, calH, calB, totalCal, consumptionH, consumptionB, totConsumption, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, bdgNam, UsrCreatedBy, UsrModifiedBy, mdtH, mdtB, totalBdgMesDifH, totalBdgMesDifB, consumptionLiterH, consumptionLiterB, totConsumptionLiter, 
+           Calculated,invGasID
 FROM   vw_CONSUMPTIONS
 WHERE (bdgID = @bdgID)</CommandText>
                     <Parameters>
@@ -989,6 +990,8 @@ WHERE (bdgID = @bdgID)</CommandText>
               <Mapping SourceColumn="consumptionLiterH" DataSetColumn="consumptionLiterH" />
               <Mapping SourceColumn="consumptionLiterB" DataSetColumn="consumptionLiterB" />
               <Mapping SourceColumn="totConsumptionLiter" DataSetColumn="totConsumptionLiter" />
+              <Mapping SourceColumn="Calculated" DataSetColumn="Calculated" />
+              <Mapping SourceColumn="invGasID" DataSetColumn="invGasID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1833,13 +1836,15 @@ WHERE (techSupID = @techSupID)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="mdtH" msprop:Generator_ColumnPropNameInTable="mdtHColumn" msprop:Generator_ColumnPropNameInRow="mdtH" msprop:Generator_UserColumnName="mdtH" msprop:Generator_ColumnVarNameInTable="columnmdtH" type="xs:dateTime" />
-              <xs:element name="mdtB" msprop:Generator_ColumnPropNameInTable="mdtBColumn" msprop:Generator_ColumnPropNameInRow="mdtB" msprop:Generator_UserColumnName="mdtB" msprop:Generator_ColumnVarNameInTable="columnmdtB" type="xs:dateTime" />
-              <xs:element name="totalBdgMesDifH" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifHColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifH" msprop:Generator_UserColumnName="totalBdgMesDifH" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifH" type="xs:int" />
-              <xs:element name="totalBdgMesDifB" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifBColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifB" msprop:Generator_UserColumnName="totalBdgMesDifB" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifB" type="xs:int" />
-              <xs:element name="consumptionLiterH" msprop:Generator_ColumnPropNameInRow="consumptionLiterH" msprop:Generator_ColumnPropNameInTable="consumptionLiterHColumn" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterH" msprop:Generator_UserColumnName="consumptionLiterH" type="xs:decimal" />
-              <xs:element name="consumptionLiterB" msprop:Generator_ColumnPropNameInRow="consumptionLiterB" msprop:Generator_ColumnPropNameInTable="consumptionLiterBColumn" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterB" msprop:Generator_UserColumnName="consumptionLiterB" type="xs:decimal" />
-              <xs:element name="totConsumptionLiter" msprop:Generator_ColumnPropNameInRow="totConsumptionLiter" msprop:Generator_ColumnPropNameInTable="totConsumptionLiterColumn" msprop:Generator_ColumnVarNameInTable="columntotConsumptionLiter" msprop:Generator_UserColumnName="totConsumptionLiter" type="xs:decimal" />
+              <xs:element name="mdtH" msprop:Generator_ColumnPropNameInTable="mdtHColumn" msprop:Generator_ColumnPropNameInRow="mdtH" msprop:Generator_UserColumnName="mdtH" msprop:Generator_ColumnVarNameInTable="columnmdtH" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="mdtB" msprop:Generator_ColumnPropNameInTable="mdtBColumn" msprop:Generator_ColumnPropNameInRow="mdtB" msprop:Generator_UserColumnName="mdtB" msprop:Generator_ColumnVarNameInTable="columnmdtB" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="totalBdgMesDifH" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifHColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifH" msprop:Generator_UserColumnName="totalBdgMesDifH" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifH" type="xs:int" minOccurs="0" />
+              <xs:element name="totalBdgMesDifB" msprop:Generator_ColumnPropNameInTable="totalBdgMesDifBColumn" msprop:Generator_ColumnPropNameInRow="totalBdgMesDifB" msprop:Generator_UserColumnName="totalBdgMesDifB" msprop:Generator_ColumnVarNameInTable="columntotalBdgMesDifB" type="xs:int" minOccurs="0" />
+              <xs:element name="consumptionLiterH" msprop:Generator_ColumnPropNameInTable="consumptionLiterHColumn" msprop:Generator_ColumnPropNameInRow="consumptionLiterH" msprop:Generator_UserColumnName="consumptionLiterH" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterH" type="xs:decimal" />
+              <xs:element name="consumptionLiterB" msprop:Generator_ColumnPropNameInTable="consumptionLiterBColumn" msprop:Generator_ColumnPropNameInRow="consumptionLiterB" msprop:Generator_UserColumnName="consumptionLiterB" msprop:Generator_ColumnVarNameInTable="columnconsumptionLiterB" type="xs:decimal" />
+              <xs:element name="totConsumptionLiter" msprop:Generator_ColumnPropNameInTable="totConsumptionLiterColumn" msprop:Generator_ColumnPropNameInRow="totConsumptionLiter" msprop:Generator_UserColumnName="totConsumptionLiter" msprop:Generator_ColumnVarNameInTable="columntotConsumptionLiter" type="xs:decimal" />
+              <xs:element name="Calculated" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Calculated" msprop:Generator_ColumnPropNameInTable="CalculatedColumn" msprop:Generator_ColumnPropNameInRow="Calculated" msprop:Generator_ColumnVarNameInTable="columnCalculated" type="xs:boolean" minOccurs="0" />
+              <xs:element name="invGasID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="invGasID" msprop:Generator_ColumnPropNameInTable="invGasIDColumn" msprop:Generator_ColumnVarNameInTable="columninvGasID" msprop:Generator_UserColumnName="invGasID" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -2087,10 +2092,10 @@ WHERE (techSupID = @techSupID)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_PIREOS_APT" msdata:parent="APT" msdata:child="PIREOS" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="PIREOS" msprop:Generator_RelationVarName="relationFK_PIREOS_APT" msprop:Generator_ChildPropName="GetPIREOSRows" msprop:Generator_ParentPropName="APTRow" msprop:Generator_UserRelationName="FK_PIREOS_APT" />
-      <msdata:Relationship name="FK_PIREOS_APT1" msdata:parent="APT" msdata:child="ALPHA" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="ALPHA" msprop:Generator_RelationVarName="relationFK_PIREOS_APT1" msprop:Generator_ChildPropName="GetALPHARows" msprop:Generator_UserRelationName="FK_PIREOS_APT1" msprop:Generator_ParentPropName="APTRow" />
-      <msdata:Relationship name="FK_ALPHA_APT" msdata:parent="APT" msdata:child="EUROBANK" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="EUROBANK" msprop:Generator_RelationVarName="relationFK_ALPHA_APT" msprop:Generator_ChildPropName="GetEUROBANKRows" msprop:Generator_ParentPropName="APTRow" msprop:Generator_UserRelationName="FK_ALPHA_APT" />
-      <msdata:Relationship name="FK_ALPHA_APT1" msdata:parent="APT" msdata:child="NBG" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="NBG" msprop:Generator_RelationVarName="relationFK_ALPHA_APT1" msprop:Generator_ChildPropName="GetNBGRows" msprop:Generator_ParentPropName="APTRow" msprop:Generator_UserRelationName="FK_ALPHA_APT1" />
+      <msdata:Relationship name="FK_PIREOS_APT" msdata:parent="APT" msdata:child="PIREOS" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="PIREOS" msprop:Generator_RelationVarName="relationFK_PIREOS_APT" msprop:Generator_ChildPropName="GetPIREOSRows" msprop:Generator_UserRelationName="FK_PIREOS_APT" msprop:Generator_ParentPropName="APTRow" />
+      <msdata:Relationship name="FK_PIREOS_APT1" msdata:parent="APT" msdata:child="ALPHA" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="ALPHA" msprop:Generator_RelationVarName="relationFK_PIREOS_APT1" msprop:Generator_ChildPropName="GetALPHARows" msprop:Generator_ParentPropName="APTRow" msprop:Generator_UserRelationName="FK_PIREOS_APT1" />
+      <msdata:Relationship name="FK_ALPHA_APT" msdata:parent="APT" msdata:child="EUROBANK" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="EUROBANK" msprop:Generator_RelationVarName="relationFK_ALPHA_APT" msprop:Generator_ChildPropName="GetEUROBANKRows" msprop:Generator_UserRelationName="FK_ALPHA_APT" msprop:Generator_ParentPropName="APTRow" />
+      <msdata:Relationship name="FK_ALPHA_APT1" msdata:parent="APT" msdata:child="NBG" msdata:parentkey="ID" msdata:childkey="aptID" msprop:Generator_UserParentTable="APT" msprop:Generator_UserChildTable="NBG" msprop:Generator_RelationVarName="relationFK_ALPHA_APT1" msprop:Generator_ChildPropName="GetNBGRows" msprop:Generator_UserRelationName="FK_ALPHA_APT1" msprop:Generator_ParentPropName="APTRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

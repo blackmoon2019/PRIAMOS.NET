@@ -143,6 +143,8 @@ Public Class frmScroller
             If System.IO.File.Exists(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml") = False Then
                 GridView1.OptionsLayout.LayoutVersion = "v1"
                 GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
+                GridView1.OptionsLayout.LayoutVersion = "v1.1"
+                GridView1.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\" & sDataTable & "_def.xml", OptionsLayoutBase.FullLayout)
             End If
             If System.IO.File.Exists(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml") = False Then
                 If sDataDetail <> "" Then GridView2.SaveLayoutToXml(Application.StartupPath & "\DSGNS\DEF\D_" & sDataDetail & "_def.xml", OptionsLayoutBase.FullLayout)
@@ -216,6 +218,7 @@ Public Class frmScroller
                     Case "vw_FOLDER_CAT" : sSQL = "DELETE FROM FOLDER_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_PUBLIC_S_TYPES" : sSQL = "DELETE FROM PUBLIC_S_TYPES WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_PUBLIC_S" : sSQL = "DELETE FROM PUBLIC_S WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
+                    Case "vw_MEASUREMENT_CAT" : sSQL = "DELETE FROM MEASUREMENT_CAT WHERE ID = '" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT"
                         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "profActDID").ToString <> "" Then
                             sSQL = "Update PROF_ACT_D 
@@ -319,6 +322,7 @@ Public Class frmScroller
                     Case "vw_CASES" : sSQL = "DELETE FROM CASES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_PUBLIC_S_TYPES" : sSQL = "DELETE FROM PUBLIC_S_TYPES WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_PUBLIC_S" : sSQL = "DELETE FROM PUBLIC_S WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
+                    Case "vw_MEASUREMENT_CAT" : sSQL = "DELETE FROM MEASUREMENT_CAT WHERE ID = '" & GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString & "'"
                     Case "vw_COL_EXT"
                         sSQL = "Update PROF_ACT_D 
                                 SET colCreated=0
@@ -958,6 +962,24 @@ Public Class frmScroller
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
                 fGen.Show()
+            Case "vw_MEASUREMENT_CAT"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Κατηγορίες Μετρήσεων Δεξαμενής"
+                fGen.ID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.EditRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "MEASUREMENT_CAT"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Κατηγορία"
+                fGen.L5.Text = "Αφορά Τιμολόγια"
+                fGen.chk1.Text = "Αφορά Τιμολόγια"
+                fGen.chk1.Tag = "isInvoice,0,1,2"
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
             Case "vw_CALC_TYPES"
                 Dim fGen As frmGen = New frmGen()
                 fGen.Text = "Τύποι Υπολογισμού"
@@ -1141,6 +1163,23 @@ Public Class frmScroller
                 fGen.L4.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.L8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+                fGen.FormScroller = Me
+                fGen.CalledFromControl = False
+                frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+                fGen.Show()
+            Case "vw_MEASUREMENT_CAT"
+                Dim fGen As frmGen = New frmGen()
+                fGen.Text = "Κατηγορίες Μετρήσεων Δεξαμενής"
+                fGen.MdiParent = frmMain
+                fGen.Mode = FormMode.NewRecord
+                fGen.Scroller = GridView1
+                fGen.DataTable = "MEASUREMENT_CAT"
+                fGen.L1.Text = "Κωδικός"
+                fGen.L2.Text = "Κατηγορία"
+                fGen.L5.Text = "Αφορά Τιμολόγια"
+                fGen.chk1.Text = "Αφορά Τιμολόγια"
+                fGen.chk1.Tag = "isInvoice,0,1,2"
+                fGen.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
                 fGen.FormScroller = Me
                 fGen.CalledFromControl = False
                 frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fGen), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))

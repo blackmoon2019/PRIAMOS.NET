@@ -21,17 +21,11 @@ Partial Class frmGen
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.XtraFolderBrowserDialog1 = New DevExpress.XtraEditors.XtraFolderBrowserDialog(Me.components)
-        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
         Me.ButtonEdit1 = New DevExpress.XtraEditors.ButtonEdit()
         Me.cmdNew = New DevExpress.XtraEditors.SimpleButton()
         Me.cbo2 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.cmdExit = New DevExpress.XtraEditors.SimpleButton()
         Me.cmdSave = New DevExpress.XtraEditors.SimpleButton()
         Me.txtName = New DevExpress.XtraEditors.TextEdit()
         Me.txtCode = New DevExpress.XtraEditors.TextEdit()
@@ -41,29 +35,30 @@ Partial Class frmGen
         Me.ColorPickEdit11 = New DevExpress.XtraEditors.ColorPickEdit()
         Me.txtL7 = New DevExpress.XtraEditors.TextEdit()
         Me.txtNum = New DevExpress.XtraEditors.TextEdit()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.L8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.L2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.L10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.XtraFolderBrowserDialog1 = New DevExpress.XtraEditors.XtraFolderBrowserDialog(Me.components)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ButtonEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbo2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,20 +68,25 @@ Partial Class frmGen
         CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtL7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtNum.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.L10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -111,68 +111,11 @@ Partial Class frmGen
         Me.LayoutControl1.Location = New System.Drawing.Point(-3, -9)
         Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(5)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(342, 0, 650, 400)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1455, 510, 650, 400)
         Me.LayoutControl1.Root = Me.Root
         Me.LayoutControl1.Size = New System.Drawing.Size(833, 683)
         Me.LayoutControl1.TabIndex = 14
         Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'Root
-        '
-        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.Root.GroupBordersVisible = False
-        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem1, Me.L3, Me.L1, Me.L4, Me.L7, Me.EmptySpaceItem3, Me.LayoutControlItem3, Me.L6, Me.LayoutControlItem5, Me.L5, Me.EmptySpaceItem2, Me.L8, Me.L9, Me.L2, Me.EmptySpaceItem4, Me.L10})
-        Me.Root.Name = "Root"
-        Me.Root.Size = New System.Drawing.Size(833, 683)
-        Me.Root.TextVisible = False
-        '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(30, 567)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(446, 48)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 414)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(813, 153)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(266, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(547, 42)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 142)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(380, 101)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'XtraFolderBrowserDialog1
-        '
-        Me.XtraFolderBrowserDialog1.SelectedPath = "XtraFolderBrowserDialog1"
-        '
-        'cmdExit
-        '
-        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
-        Me.cmdExit.Location = New System.Drawing.Point(488, 579)
-        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
-        Me.cmdExit.Name = "cmdExit"
-        Me.cmdExit.Size = New System.Drawing.Size(156, 39)
-        Me.cmdExit.StyleController = Me.LayoutControl1
-        Me.cmdExit.TabIndex = 12
-        Me.cmdExit.Text = "Έξοδος"
         '
         'DateEdit1
         '
@@ -222,6 +165,18 @@ Partial Class frmGen
         Me.cbo2.TabIndex = 16
         Me.cbo2.Tag = "areaid,0,1,2"
         Me.cbo2.Visible = False
+        '
+        'cmdExit
+        '
+        Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdExit.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_exit_24
+        Me.cmdExit.Location = New System.Drawing.Point(488, 579)
+        Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
+        Me.cmdExit.Name = "cmdExit"
+        Me.cmdExit.Size = New System.Drawing.Size(156, 39)
+        Me.cmdExit.StyleController = Me.LayoutControl1
+        Me.cmdExit.TabIndex = 12
+        Me.cmdExit.Text = "Έξοδος"
         '
         'cmdSave
         '
@@ -307,6 +262,7 @@ Partial Class frmGen
         Me.ColorPickEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ColorPickEdit11.Properties.ColorText = DevExpress.XtraEditors.Controls.ColorText.[Integer]
         Me.ColorPickEdit11.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ColorPickEdit11.Properties.NullColor = System.Drawing.Color.Empty
         Me.ColorPickEdit11.Size = New System.Drawing.Size(767, 38)
         Me.ColorPickEdit11.StyleController = Me.LayoutControl1
         Me.ColorPickEdit11.TabIndex = 20
@@ -339,6 +295,15 @@ Partial Class frmGen
         Me.txtNum.TabIndex = 37
         Me.txtNum.Tag = ""
         Me.txtNum.Visible = False
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem1, Me.L3, Me.L1, Me.L4, Me.L7, Me.EmptySpaceItem3, Me.LayoutControlItem3, Me.L6, Me.LayoutControlItem5, Me.L5, Me.EmptySpaceItem2, Me.L8, Me.L9, Me.L2, Me.EmptySpaceItem4, Me.L10})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(833, 683)
+        Me.Root.TextVisible = False
         '
         'LayoutControlItem2
         '
@@ -404,6 +369,14 @@ Partial Class frmGen
         Me.L7.TextSize = New System.Drawing.Size(30, 23)
         Me.L7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
+        'EmptySpaceItem3
+        '
+        Me.EmptySpaceItem3.AllowHotTrack = False
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(30, 567)
+        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(446, 48)
+        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
+        '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.cmdNew
@@ -451,6 +424,14 @@ Partial Class frmGen
         Me.L5.TextVisible = False
         Me.L5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 414)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(813, 153)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
         'L8
         '
         Me.L8.Control = Me.txtNum
@@ -483,6 +464,14 @@ Partial Class frmGen
         Me.L2.Tag = "1"
         Me.L2.TextSize = New System.Drawing.Size(30, 23)
         '
+        'EmptySpaceItem4
+        '
+        Me.EmptySpaceItem4.AllowHotTrack = False
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(266, 0)
+        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(547, 42)
+        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
+        '
         'L10
         '
         Me.L10.Control = Me.DateEdit1
@@ -491,6 +480,18 @@ Partial Class frmGen
         Me.L10.Size = New System.Drawing.Size(813, 42)
         Me.L10.TextSize = New System.Drawing.Size(30, 23)
         Me.L10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 142)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(380, 101)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'XtraFolderBrowserDialog1
+        '
+        Me.XtraFolderBrowserDialog1.SelectedPath = "XtraFolderBrowserDialog1"
         '
         'frmGen
         '
@@ -505,11 +506,6 @@ Partial Class frmGen
         Me.Text = "frmGen"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ButtonEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -521,20 +517,25 @@ Partial Class frmGen
         CType(Me.ColorPickEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtL7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtNum.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.L10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

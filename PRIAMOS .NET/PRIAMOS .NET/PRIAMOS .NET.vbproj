@@ -369,6 +369,7 @@
     <Compile Include="classes\EnableControls.vb" />
     <Compile Include="classes\FillCombos.vb" />
     <Compile Include="classes\FormLoader.vb" />
+    <Compile Include="classes\INH.vb" />
     <Compile Include="classes\InitializeCalendar.vb" />
     <Compile Include="classes\InvOilGas.vb" />
     <Compile Include="classes\GridGreekLocalizer.vb" />
@@ -526,6 +527,12 @@
     <Compile Include="forms\frmGen.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmGridPreviewer.Designer.vb">
+      <DependentUpon>frmGridPreviewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmGridPreviewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmIEP.Designer.vb">
       <DependentUpon>frmIEP.vb</DependentUpon>
     </Compile>
@@ -586,6 +593,12 @@
     <Compile Include="forms\frmScroller.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmTANK.Designer.vb">
+      <DependentUpon>frmTANK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmTANK.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmTasks.Designer.vb">
       <DependentUpon>frmTasks.vb</DependentUpon>
     </Compile>
@@ -643,6 +656,9 @@
     <Compile Include="Priamos_NET_DataSet_BDG.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Priamos_NET_DataSet_BDG.vb">
       <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>
     </Compile>
     <Compile Include="Priamos_NET_DataSet_INH.Designer.vb">
@@ -844,6 +860,9 @@
       <DependentUpon>frmGen.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmGridPreviewer.resx">
+      <DependentUpon>frmGridPreviewer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmIEP.resx">
       <DependentUpon>frmIEP.vb</DependentUpon>
     </EmbeddedResource>
@@ -871,6 +890,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmINH.resx">
       <DependentUpon>frmINH.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmPermissions.resx">
       <DependentUpon>frmPermissions.vb</DependentUpon>
@@ -879,6 +899,9 @@
     <EmbeddedResource Include="forms\frmScroller.resx">
       <DependentUpon>frmScroller.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmTANK.resx">
+      <DependentUpon>frmTANK.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmTasks.resx">
       <DependentUpon>frmTasks.vb</DependentUpon>
@@ -1041,8 +1064,8 @@
     </None>
     <None Include="Priamos_NET_DataSet_BDG.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Priamos_NET_DataSet_BDG.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Priamos_NET_DataSet_BDG1.Designer.vb</LastGenOutput>
     </None>
     <None Include="Priamos_NET_DataSet_BDG.xss">
       <DependentUpon>Priamos_NET_DataSet_BDG.xsd</DependentUpon>

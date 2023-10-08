@@ -15,7 +15,7 @@ Public Class frmAPT
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private LoadForms As New FormLoader
-    Private Log As New Transactions
+    
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
