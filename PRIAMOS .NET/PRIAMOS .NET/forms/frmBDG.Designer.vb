@@ -8980,9 +8980,11 @@ Partial Class frmBDG
         '
         Me.LayoutControlItem57.Control = Me.txtOInvBefMes
         Me.LayoutControlItem57.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem57.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem57.Location = New System.Drawing.Point(0, 210)
         Me.LayoutControlItem57.Name = "LayoutControlItem57"
         Me.LayoutControlItem57.Size = New System.Drawing.Size(376, 42)
+        Me.LayoutControlItem57.Tag = "1"
         Me.LayoutControlItem57.Text = "Προμέτρηση"
         Me.LayoutControlItem57.TextSize = New System.Drawing.Size(240, 23)
         '
@@ -8999,9 +9001,11 @@ Partial Class frmBDG
         '
         Me.LayoutControlItem58.Control = Me.txtOInvMes
         Me.LayoutControlItem58.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LayoutControlItem58.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem58.Location = New System.Drawing.Point(376, 210)
         Me.LayoutControlItem58.Name = "LayoutControlItem58"
         Me.LayoutControlItem58.Size = New System.Drawing.Size(378, 42)
+        Me.LayoutControlItem58.Tag = "1"
         Me.LayoutControlItem58.Text = "Επιμέτρηση"
         Me.LayoutControlItem58.TextSize = New System.Drawing.Size(240, 23)
         '

@@ -10,7 +10,6 @@ Imports DevExpress.XtraBars.Navigation
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
-Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Menu
@@ -85,17 +84,13 @@ Public Class frmINH
                     cmdPrintAll.Enabled = False
                     cmdSaveINH.Enabled = UserProps.AllowInsert
                     cboBDG.Select()
+                    SetBdgFieldsValues()
                 Case FormMode.EditRecord
                     InhFieldAndValues = New Dictionary(Of String, String)
                     LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
                     Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                     Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
-                    Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
-                    Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
-                    Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
-                    Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
-                    Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
-                    Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, cboBDG.EditValue)
+
 
                     ' Στην περίπτωση που έχει πάγιο τιμολόγιο κατανάλωσης φυσικού αερίου τότε καθαρίζουμε τις ώρες
                     If CheckIfHasGasFixedInvoices() = False Then cboAhpbH.DataBindings.Clear() : cboAhpbHB.DataBindings.Clear()
@@ -172,8 +167,9 @@ Public Class frmINH
             Else
                 LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = IIf(Mode = FormMode.NewRecord, False, True) : GridView5.OptionsBehavior.Editable = True
             End If
-            If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then cboInvOil.Enabled = True Else cboInvOil.Enabled = False
-
+            If cboBDG.EditValue <> Nothing Then
+                If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "94CECEE9-739E-4E31-9B43-796D318FB9C5" Then cboInvOil.Enabled = True Else cboInvOil.Enabled = False
+            End If
             LoadConditionalFormatting()
             cboOwnerTenant.SelectedIndex = 1  'If Mode = FormMode.EditRecord Then chkCALC_CAT.SetItemChecked(0, True)
             If chkreserveAPT.Checked = True Then
@@ -672,53 +668,55 @@ Public Class frmINH
     Private Sub cboBDG_EditValueChanged(sender As Object, e As EventArgs) Handles cboBDG.EditValueChanged
         Try
             If cboBDG.EditValue = Nothing Then Exit Sub
-            chkCALC_CAT.DataSource = VwCALCCATBindingSource
-            Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
-            '    If Me.Priamos_NETDataSet.vw_INH.Rows.Count > 0 Then sID = Me.Priamos_NETDataSet.vw_INH.Rows(0)("ID").ToString
-            'Me.AHPB_H1TableAdapter.Fill(Me.Priamos_NETDataSet.AHPB_H1, cboBDG.EditValue)
-            Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
-
-            Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
-            Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
-            Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
-
-            Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
-            ' Κεντρική Θέρμανση
-            If cboBDG.GetColumnValue("FTYPE_Name") Is Nothing Then txtFtypes.EditValue = Nothing Else txtFtypes.EditValue = cboBDG.GetColumnValue("FTYPE_Name")
-
-            If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
-                txtHeatingType.EditValue = Nothing
-                txtHpc.EditValue = Nothing
-            Else
-                If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-                    txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
-                    txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
-                Else
-                    txtHeatingType.EditValue = Nothing
-                    txtHpc.EditValue = Nothing
-                End If
-            End If
-
-            If cboBDG.GetColumnValue("BTypeID") Is Nothing Then
-                txtBoilerType.EditValue = Nothing
-                txtHpb.EditValue = Nothing
-            Else
-                If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
-                    txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
-                    txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
-                Else
-                    txtBoilerType.EditValue = Nothing
-                    txtHpb.EditValue = Nothing
-                End If
-            End If
-            If cboBDG.GetColumnValue("cmt") Is Nothing Then Exit Sub
-            txtBdgCmt.Text = cboBDG.GetColumnValue("cmt").ToString
-            If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+            SetBdgFieldsValues()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error:  {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub SetBdgFieldsValues()
+        chkCALC_CAT.DataSource = VwCALCCATBindingSource
+        If cboBDG.EditValue <> Nothing Then
+            Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
+            Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
+            Me.AHPB_ΒTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_Β, cboBDG.EditValue)
+            Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
+            Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
+            Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
+        End If
 
+        ' Κεντρική Θέρμανση
+        If cboBDG.GetColumnValue("FTYPE_Name") Is Nothing Then txtFtypes.EditValue = Nothing Else txtFtypes.EditValue = cboBDG.GetColumnValue("FTYPE_Name")
+
+        If cboBDG.GetColumnValue("HTypeID") Is Nothing Then
+            txtHeatingType.EditValue = Nothing
+            txtHpc.EditValue = Nothing
+        Else
+            ' If cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtHeatingType.EditValue = cboBDG.GetColumnValue("HTYPE_Name")
+                txtHpc.EditValue = cboBDG.GetColumnValue("hpc")
+            'Else
+            '    txtHeatingType.EditValue = Nothing
+            '    txtHpc.EditValue = Nothing
+            'End If
+        End If
+
+        If cboBDG.GetColumnValue("BTypeID") Is Nothing Then
+            txtBoilerType.EditValue = Nothing
+            txtHpb.EditValue = Nothing
+        Else
+            'If cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Then
+            txtBoilerType.EditValue = cboBDG.GetColumnValue("BTYPE_Name")
+                txtHpb.EditValue = cboBDG.GetColumnValue("hpb")
+            'Else
+            '    txtBoilerType.EditValue = Nothing
+            '    txtHpb.EditValue = Nothing
+            'End If
+        End If
+        If cboBDG.GetColumnValue("cmt") Is Nothing Then Exit Sub
+        txtBdgCmt.Text = cboBDG.GetColumnValue("cmt").ToString
+        If Me.IsActive Then LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Danger
+
+    End Sub
     Private Sub cboBDG_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboBDG.ButtonPressed
         Select Case e.Button.Index
             Case 1 : cboBDG.EditValue = Nothing : ManageCbo.ManageBDG(cboBDG, FormMode.NewRecord)
@@ -896,21 +894,7 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub CalculateDepositA(ByVal sbdgID As String)
-        Try
-            Using oCmd As New SqlCommand("CalculateAndReturnDepositA", CNDB)
-                oCmd.CommandType = CommandType.StoredProcedure
-                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
-                oCmd.Parameters.Add("@Amt", SqlDbType.Decimal)
-                oCmd.Parameters("@Amt").Direction = ParameterDirection.Output
-                oCmd.ExecuteNonQuery()
-            End Using
-            'Υπολογισμός Διαθέσιμου υπολοίπου
-            CalculateDepositR(sbdgID)
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
+
     Private Sub CalculateDepositR(ByVal sbdgID As String)
         Try
             Using oCmd As New SqlCommand("CalculateAndReturnDepositR", CNDB)
@@ -952,32 +936,7 @@ Public Class frmINH
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Sub CalculateDepositR(ByVal sbdgID As String)
-        Try
-            Using oCmd As New SqlCommand("CalculateAndReturnDepositR", CNDB)
-                oCmd.CommandType = CommandType.StoredProcedure
-                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
-                oCmd.Parameters.Add("@totDepositR", SqlDbType.Decimal)
-                oCmd.Parameters.Add("@UnchargableOil", SqlDbType.Decimal)
-                oCmd.Parameters.Add("@UnpaidInd", SqlDbType.Decimal)
-                oCmd.Parameters.Add("@PaidInd", SqlDbType.Decimal)
-                oCmd.Parameters.Add("@AptBalAdm", SqlDbType.Decimal)
-                oCmd.Parameters.Add("@totPrepayments", SqlDbType.Decimal)
-                oCmd.Parameters.Add("@totDepositRAndPrepayments", SqlDbType.Decimal)
-                oCmd.Parameters("@totDepositR").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositR").Precision = 18 : oCmd.Parameters("@totDepositR").Scale = 2
-                oCmd.Parameters("@UnchargableOil").Direction = ParameterDirection.Output : oCmd.Parameters("@UnchargableOil").Precision = 18 : oCmd.Parameters("@UnchargableOil").Scale = 2
-                oCmd.Parameters("@UnpaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@UnpaidInd").Precision = 18 : oCmd.Parameters("@UnpaidInd").Scale = 2
-                oCmd.Parameters("@PaidInd").Direction = ParameterDirection.Output : oCmd.Parameters("@PaidInd").Precision = 18 : oCmd.Parameters("@PaidInd").Scale = 2
-                oCmd.Parameters("@AptBalAdm").Direction = ParameterDirection.Output : oCmd.Parameters("@AptBalAdm").Precision = 18 : oCmd.Parameters("@AptBalAdm").Scale = 2
-                oCmd.Parameters("@totPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totPrepayments").Precision = 18 : oCmd.Parameters("@totPrepayments").Scale = 2
-                oCmd.Parameters("@totDepositRAndPrepayments").Direction = ParameterDirection.Output : oCmd.Parameters("@totDepositRAndPrepayments").Precision = 18 : oCmd.Parameters("@totDepositRAndPrepayments").Scale = 2
-                oCmd.ExecuteNonQuery()
 
-            End Using
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
     Private Function CheckForSelectedHours(ByRef sAhpbID As String, ByRef sAhpbBID As String, ByRef sAhpbText As String, ByRef sAhpbBtext As String) As Boolean
         'Έλεγχος αν έχει επιλεχθεί στα έξοδα Κατανάλωση Θέρμανσης ή Κατανάλωση boiler

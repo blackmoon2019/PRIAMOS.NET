@@ -1390,6 +1390,7 @@ Public Class frmBDG
                 XtraMessageBox.Show("Δεν μπορεί η προμέτρηση να είναι μεγαλύτερη από την επιμέτρηση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
+
             If InvOils.InsertOilData(LayoutControlGroup5, sOID, "bdgid", sID) Then
                 InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
