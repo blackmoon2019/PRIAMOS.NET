@@ -936,6 +936,10 @@ Partial Class frmTecnicalSupport
         Me.LayoutControlItem26.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem26.TextVisible = False
         '
+        'XtraOpenFileDialog1
+        '
+        Me.XtraOpenFileDialog1.RestoreDirectory = True
+        '
         'Vw_TECH_SUP_FTableAdapter
         '
         Me.Vw_TECH_SUP_FTableAdapter.ClearBeforeFill = True

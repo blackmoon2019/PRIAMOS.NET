@@ -2268,4 +2268,19 @@ Public Class frmScroller
         Next
         frmFilePreviwer.ShowDialog()
     End Sub
+
+    Private Sub BarBatchFileEX_ItemClick(sender As Object, e As ItemClickEventArgs) Handles BarBatchFileEX.ItemClick
+        Dim form As frmBatchInsertAttachmentsEX = New frmBatchInsertAttachmentsEX()
+        form.Text = "Επισύναψη αρχείων εξόδων"
+        If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "isManaged").ToString = "False" Then
+            XtraMessageBox.Show("Μόνο Διαχειρίσεις επιτρέπονται", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+        If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID") IsNot Nothing Then
+            form.BDGID = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString
+        End If
+        'form.MdiParent = Me
+        form.StartPosition = FormStartPosition.CenterScreen
+        form.Show()
+    End Sub
 End Class

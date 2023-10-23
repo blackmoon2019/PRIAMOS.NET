@@ -31,7 +31,7 @@ Public Class INH
             sSQL = "Update IND Set amt=IEP.amt * " & Months & " 
                 From IND
                 inner Join INH on INH.ID = IND.inhID 
-                inner Join IEP on IEP.bdgID  = INH.bdgID And IND.calcCatID = IEP.calcCatID 
+                left Join IEP on IEP.bdgID  = INH.bdgID And IND.calcCatID = IEP.calcCatID and IEP.ID = IND.iepID
                 where inhID =" & toSQLValueS(sID) & "  and IEP.calcCatID <>'9C3F4423-6FB6-44FD-A3C0-64E5D609C2CB'"
 
             Using oCmd As New SqlCommand(sSQL, CNDB)
@@ -72,7 +72,7 @@ Public Class INH
 
                     sSQL = "INSERT INTO IND (inhID, calcCatID,invOilID,repName, amt, owner_tenant) " &
                             "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B', " & toSQLValueS(cboinvOil.Properties.Items(i).Value.ToString) &
-                            ", 'ΠΕΤΡΕΛΑΙΟ ΛΙΤΡΑ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
+                            ", 'ΠΕΤΡΕΛΑΙΟ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
                             From INV_OIL
                             INNER JOIN BDG ON BDG.ID = INV_OIL.bdgID
                             where ftypeID = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' and BDG.ID = " & toSQLValueS(sBdgID) & " and INV_OIL.ID  = " & toSQLValueS(cboinvOil.Properties.Items(i).Value.ToString)
@@ -120,7 +120,7 @@ Public Class INH
 
                     sSQL = "INSERT INTO IND (inhID, calcCatID,invOilID,repName, amt, owner_tenant) " &
                            "Select " & toSQLValueS(sID) & ",'B139CE26-1ABA-4680-A1EE-623EC97C475B', " & toSQLValueS(cboinvOil.Properties.Items(i).Value.ToString) &
-                           ", 'ΠΕΤΡΕΛΑΙΟ ΛΙΤΡΑ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
+                           ", 'ΠΕΤΡΕΛΑΙΟ  ' + cast(liters as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' ,totalPrice,'1' 
                             From INV_OIL
                             INNER JOIN BDG ON BDG.ID = INV_OIL.bdgID
                             LEFT JOIN IND on IND.invOilID = INV_OIL.ID

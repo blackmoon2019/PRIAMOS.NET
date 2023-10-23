@@ -329,7 +329,11 @@ Public Class frmTecnicalSupport
 
         'XtraOpenFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = True

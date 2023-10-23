@@ -76,6 +76,7 @@ Partial Class frmScroller
         Me.BarSYG = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEIDOP = New DevExpress.XtraBars.BarButtonItem()
         Me.BarRECEIPTS = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarEXP = New DevExpress.XtraBars.BarButtonItem()
         Me.BarEmail = New DevExpress.XtraBars.BarButtonItem()
         Me.PopupMenuEmail = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.BarEmailSYG = New DevExpress.XtraBars.BarButtonItem()
@@ -166,7 +167,7 @@ Partial Class frmScroller
         Me.colCusSaler = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colcreatedby_Realname = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colphn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.BarEXP = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarBatchFileEX = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grdMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -266,9 +267,9 @@ Partial Class frmScroller
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS, Me.BarEmail, Me.BarPB, Me.BarEmailSYG, Me.BarEmailEIDOP, Me.BarEmailRECEIPTS, Me.BarEmailAll, Me.BarEXP})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarRecords, Me.BarViews, Me.popDeleteView, Me.popRestoreView, Me.popSaveAsView, Me.popSaveView, Me.BarViewsManage, Me.BarPrintPreview, Me.BarButtonItem1, Me.BarPDFExport, Me.BarExportHTML, Me.BarExportMHT, Me.BarExportXLSX, Me.BarExportXLS, Me.BarExportDOCX, Me.BarExportRTF, Me.BarExportTEXT, Me.BarNewRec, Me.BarDelete, Me.BarEdit, Me.BarRefresh, Me.BarStaticItem1, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarStaticItem4, Me.BarStaticItem5, Me.popSaveAsDefault, Me.BarCopyCell, Me.BarCopyRow, Me.BarCopyAll, Me.BarCopyCell_D, Me.BarCopyRow_D, Me.BarCopyAll_D, Me.BBUpdateViewFromDB, Me.BarFilterWithCell, Me.BarFilterWithoutCell, Me.BarRemoveFilterWithCell, Me.BarRemoveAllFilters, Me.BBUpdateViewFileFromServer, Me.cboDebitUsr, Me.cboColMethod, Me.cboBank, Me.BBcolExtSave, Me.BBcolExtCollector, Me.BarPrint, Me.BarSYG, Me.BarEIDOP, Me.BarRECEIPTS, Me.BarEmail, Me.BarPB, Me.BarEmailSYG, Me.BarEmailEIDOP, Me.BarEmailRECEIPTS, Me.BarEmailAll, Me.BarEXP, Me.BarBatchFileEX})
         Me.BarManager1.MainMenu = Me.Bar1
-        Me.BarManager1.MaxItemId = 71
+        Me.BarManager1.MaxItemId = 72
         Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryBarRecords, Me.RepositoryBarViews, Me.RepositoryItemButtonEdit1, Me.RepositoryItemBreadCrumbEdit1, Me.RepositoryItemButtonEdit2, Me.RepositoryPopRenameView, Me.RepositoryPopSaveAsView, Me.Rep_DEBITUSR, Me.Rep_COL_METHOD, Me.Rep_ΒΑΝΚ, Me.RepositoryItemMarqueeProgressBar1, Me.RepositoryItemProgressBar1})
         Me.BarManager1.StatusBar = Me.Bar3
         '
@@ -531,7 +532,7 @@ Partial Class frmScroller
         Me.Bar2.DockRow = 0
         Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Left
         Me.Bar2.FloatLocation = New System.Drawing.Point(16, 408)
-        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh), New DevExpress.XtraBars.LinkPersistInfo(Me.BarPrint), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmail)})
+        Me.Bar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarNewRec), New DevExpress.XtraBars.LinkPersistInfo(Me.BarDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEdit), New DevExpress.XtraBars.LinkPersistInfo(Me.BarRefresh), New DevExpress.XtraBars.LinkPersistInfo(Me.BarPrint), New DevExpress.XtraBars.LinkPersistInfo(Me.BarEmail), New DevExpress.XtraBars.LinkPersistInfo(Me.BarBatchFileEX)})
         Me.Bar2.Offset = 1
         Me.Bar2.Text = "Custom 4"
         '
@@ -600,6 +601,13 @@ Partial Class frmScroller
         Me.BarRECEIPTS.Id = 62
         Me.BarRECEIPTS.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_receipt_approved_16
         Me.BarRECEIPTS.Name = "BarRECEIPTS"
+        '
+        'BarEXP
+        '
+        Me.BarEXP.Caption = "Έξοδα"
+        Me.BarEXP.Id = 70
+        Me.BarEXP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_16_invoice_16
+        Me.BarEXP.Name = "BarEXP"
         '
         'BarEmail
         '
@@ -1275,12 +1283,13 @@ Partial Class frmScroller
         Me.colphn.VisibleIndex = 4
         Me.colphn.Width = 125
         '
-        'BarEXP
+        'BarBatchFileEX
         '
-        Me.BarEXP.Caption = "Έξοδα"
-        Me.BarEXP.Id = 70
-        Me.BarEXP.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_16_invoice_16
-        Me.BarEXP.Name = "BarEXP"
+        Me.BarBatchFileEX.Caption = "Attachment"
+        Me.BarBatchFileEX.Id = 71
+        Me.BarBatchFileEX.ImageOptions.Image = CType(resources.GetObject("BarButtonItem2.ImageOptions.Image"), System.Drawing.Image)
+        Me.BarBatchFileEX.ImageOptions.LargeImage = CType(resources.GetObject("BarButtonItem2.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.BarBatchFileEX.Name = "BarBatchFileEX"
         '
         'frmScroller
         '
@@ -1471,4 +1480,5 @@ Partial Class frmScroller
     Friend WithEvents BarEmailRECEIPTS As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarEmailAll As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarEXP As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarBatchFileEX As DevExpress.XtraBars.BarButtonItem
 End Class

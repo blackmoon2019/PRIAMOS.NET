@@ -12,7 +12,8 @@
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_IND" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, completeDate, bdgID, bManageID, regardingdeposit, isPrepayment
+                    <CommandText>SELECT ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, completeDate, bdgID, bManageID, regardingdeposit, isPrepayment, isManaged, HasFiles, Calculated, consumptionID, invOilID, invGasID, FromTransfer, reserveAPT, 
+           owner_tenant_Title
 FROM   vw_IND
 WHERE (inhID = @inhID)</CommandText>
                     <Parameters>
@@ -46,13 +47,21 @@ WHERE (inhID = @inhID)</CommandText>
               <Mapping SourceColumn="code" DataSetColumn="code" />
               <Mapping SourceColumn="regardingdeposit" DataSetColumn="regardingdeposit" />
               <Mapping SourceColumn="isPrepayment" DataSetColumn="isPrepayment" />
+              <Mapping SourceColumn="isManaged" DataSetColumn="isManaged" />
+              <Mapping SourceColumn="HasFiles" DataSetColumn="HasFiles" />
+              <Mapping SourceColumn="Calculated" DataSetColumn="Calculated" />
+              <Mapping SourceColumn="consumptionID" DataSetColumn="consumptionID" />
+              <Mapping SourceColumn="invOilID" DataSetColumn="invOilID" />
+              <Mapping SourceColumn="invGasID" DataSetColumn="invGasID" />
+              <Mapping SourceColumn="FromTransfer" DataSetColumn="FromTransfer" />
+              <Mapping SourceColumn="reserveAPT" DataSetColumn="reserveAPT" />
+              <Mapping SourceColumn="owner_tenant_Title" DataSetColumn="owner_tenant_Title" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_IND" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByALL" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByALL" GeneratorSourceName="FillByALL" GetMethodModifier="Public" GetMethodName="GetDataByALL" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByALL" UserSourceName="FillByALL">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ETOS, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code, completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, owner_tenant, paid, regardingdeposit, repName, tDate, isPrepayment
-FROM   vw_IND</CommandText>
+                    <CommandText>SELECT Calculated, ETOS, FromTransfer, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code, completeDate, consumptionID, createdOn, fDate, inhID, invGasID, invOilID, isManaged, isPrepayment, modifiedBy, modifiedOn, nam, name, ord, owner_tenant, owner_tenant_Title, paid, regardingdeposit, repName, reserveAPT, tDate FROM vw_IND</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -60,9 +69,7 @@ FROM   vw_IND</CommandText>
               <DbSource ConnectionRef="Priamos_NETConnectionStringRemote (MySettings)" DbObjectName="Priamos_NET.dbo.vw_IND" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByBDG" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBDG" GeneratorSourceName="FillByBDG" GetMethodModifier="Public" GetMethodName="GetDataByBDG" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByBDG" UserSourceName="FillByBDG">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT ETOS, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code, completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, owner_tenant, paid, regardingdeposit, repName, tDate, isPrepayment
-FROM   vw_IND
-WHERE (bdgID = @bdgID)</CommandText>
+                    <CommandText>SELECT Calculated, ETOS, FromTransfer, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code, completeDate, consumptionID, createdOn, fDate, inhID, invGasID, invOilID, isManaged, isPrepayment, modifiedBy, modifiedOn, nam, name, ord, owner_tenant, owner_tenant_Title, paid, regardingdeposit, repName, reserveAPT, tDate FROM vw_IND WHERE (bdgID = @bdgID)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="bdgID" ColumnName="bdgID" DataSourceName="Priamos_NET.dbo.vw_IND" DataTypeServer="uniqueidentifier" DbType="Guid" Direction="Input" ParameterName="@bdgID" Precision="0" ProviderType="UniqueIdentifier" Scale="0" Size="16" SourceColumn="bdgID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -708,6 +715,21 @@ ORDER BY completeDate</CommandText>
               <xs:element name="bManageID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="bManageIDColumn" msprop:Generator_ColumnPropNameInRow="bManageID" msprop:Generator_UserColumnName="bManageID" msprop:Generator_ColumnVarNameInTable="columnbManageID" type="xs:string" minOccurs="0" />
               <xs:element name="regardingdeposit" msprop:Generator_ColumnPropNameInTable="regardingdepositColumn" msprop:Generator_ColumnPropNameInRow="regardingdeposit" msprop:Generator_UserColumnName="regardingdeposit" msprop:Generator_ColumnVarNameInTable="columnregardingdeposit" type="xs:boolean" />
               <xs:element name="isPrepayment" msprop:Generator_ColumnPropNameInTable="isPrepaymentColumn" msprop:Generator_ColumnPropNameInRow="isPrepayment" msprop:Generator_UserColumnName="isPrepayment" msprop:Generator_ColumnVarNameInTable="columnisPrepayment" type="xs:boolean" />
+              <xs:element name="isManaged" msprop:Generator_ColumnPropNameInRow="isManaged" msprop:Generator_ColumnPropNameInTable="isManagedColumn" msprop:Generator_ColumnVarNameInTable="columnisManaged" msprop:Generator_UserColumnName="isManaged" type="xs:boolean" />
+              <xs:element name="HasFiles" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="HasFiles" msprop:Generator_ColumnPropNameInTable="HasFilesColumn" msprop:Generator_ColumnVarNameInTable="columnHasFiles" msprop:Generator_UserColumnName="HasFiles" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Calculated" msprop:Generator_ColumnPropNameInRow="Calculated" msprop:Generator_ColumnPropNameInTable="CalculatedColumn" msprop:Generator_ColumnVarNameInTable="columnCalculated" msprop:Generator_UserColumnName="Calculated" type="xs:boolean" />
+              <xs:element name="consumptionID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="consumptionID" msprop:Generator_ColumnPropNameInTable="consumptionIDColumn" msprop:Generator_ColumnVarNameInTable="columnconsumptionID" msprop:Generator_UserColumnName="consumptionID" type="xs:string" minOccurs="0" />
+              <xs:element name="invOilID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="invOilID" msprop:Generator_ColumnPropNameInTable="invOilIDColumn" msprop:Generator_ColumnVarNameInTable="columninvOilID" msprop:Generator_UserColumnName="invOilID" type="xs:string" minOccurs="0" />
+              <xs:element name="invGasID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInRow="invGasID" msprop:Generator_ColumnPropNameInTable="invGasIDColumn" msprop:Generator_ColumnVarNameInTable="columninvGasID" msprop:Generator_UserColumnName="invGasID" type="xs:string" minOccurs="0" />
+              <xs:element name="FromTransfer" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="FromTransfer" msprop:Generator_ColumnPropNameInTable="FromTransferColumn" msprop:Generator_ColumnVarNameInTable="columnFromTransfer" msprop:Generator_UserColumnName="FromTransfer" type="xs:boolean" minOccurs="0" />
+              <xs:element name="reserveAPT" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="reserveAPT" msprop:Generator_ColumnPropNameInTable="reserveAPTColumn" msprop:Generator_ColumnVarNameInTable="columnreserveAPT" msprop:Generator_UserColumnName="reserveAPT" type="xs:boolean" minOccurs="0" />
+              <xs:element name="owner_tenant_Title" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="owner_tenant_Title" msprop:Generator_ColumnPropNameInTable="owner_tenant_TitleColumn" msprop:Generator_ColumnVarNameInTable="columnowner_tenant_Title" msprop:Generator_UserColumnName="owner_tenant_Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1076,11 +1098,11 @@ ORDER BY completeDate</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vw_INHNotCalculatedByBDG" msprop:Generator_RowClassName="_vw_INHNotCalculatedByBDGRow" msprop:Generator_RowEvHandlerName="_vw_INHNotCalculatedByBDGRowChangeEventHandler" msprop:Generator_RowDeletedName="_vw_INHNotCalculatedByBDGRowDeleted" msprop:Generator_RowDeletingName="_vw_INHNotCalculatedByBDGRowDeleting" msprop:Generator_RowEvArgName="_vw_INHNotCalculatedByBDGRowChangeEvent" msprop:Generator_TablePropName="_vw_INHNotCalculatedByBDG" msprop:Generator_RowChangedName="_vw_INHNotCalculatedByBDGRowChanged" msprop:Generator_UserTableName="vw_INHNotCalculatedByBDG" msprop:Generator_RowChangingName="_vw_INHNotCalculatedByBDGRowChanging" msprop:Generator_TableClassName="_vw_INHNotCalculatedByBDGDataTable" msprop:Generator_TableVarName="_tablevw_INHNotCalculatedByBDG">
+        <xs:element name="vw_INHNotCalculatedByBDG" msprop:Generator_RowEvHandlerName="_vw_INHNotCalculatedByBDGRowChangeEventHandler" msprop:Generator_RowDeletedName="_vw_INHNotCalculatedByBDGRowDeleted" msprop:Generator_RowDeletingName="_vw_INHNotCalculatedByBDGRowDeleting" msprop:Generator_RowEvArgName="_vw_INHNotCalculatedByBDGRowChangeEvent" msprop:Generator_TablePropName="_vw_INHNotCalculatedByBDG" msprop:Generator_RowChangedName="_vw_INHNotCalculatedByBDGRowChanged" msprop:Generator_UserTableName="vw_INHNotCalculatedByBDG" msprop:Generator_RowChangingName="_vw_INHNotCalculatedByBDGRowChanging" msprop:Generator_RowClassName="_vw_INHNotCalculatedByBDGRow" msprop:Generator_TableClassName="_vw_INHNotCalculatedByBDGDataTable" msprop:Generator_TableVarName="_tablevw_INHNotCalculatedByBDG">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
-              <xs:element name="completeDate" msprop:Generator_UserColumnName="completeDate" msprop:Generator_ColumnPropNameInTable="completeDateColumn" msprop:Generator_ColumnPropNameInRow="completeDate" msprop:Generator_ColumnVarNameInTable="columncompleteDate" minOccurs="0">
+              <xs:element name="ID" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:string" />
+              <xs:element name="completeDate" msprop:Generator_ColumnPropNameInTable="completeDateColumn" msprop:Generator_ColumnPropNameInRow="completeDate" msprop:Generator_UserColumnName="completeDate" msprop:Generator_ColumnVarNameInTable="columncompleteDate" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />

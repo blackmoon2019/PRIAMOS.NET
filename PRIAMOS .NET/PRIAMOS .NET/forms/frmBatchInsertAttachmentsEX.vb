@@ -6,16 +6,26 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmBatchInsertAttachmentsEX
     Private DBQ As New DBQueries
+    Private sBDGID As String
     Public Shared ReadOnly MaxEntitiesCount As Integer = 80
     Private _currentPath As String
     Private LoadForms As New FormLoader
     Private ManageCbo As New CombosManager
+    Public WriteOnly Property BDGID As String
+        Set(value As String)
+            sBDGID = value
+        End Set
+    End Property
+
     Private Sub frmBatchInsertAttachmentsEX_Load(sender As Object, e As EventArgs) Handles Me.Load
         'TODO: This line of code loads data into the 'Priamos_NET_DataSet_BDG.vw_BDG' table. You can move, or remove it, as needed.
         Me.Vw_BDGTableAdapter.FillByIsManaged(Me.Priamos_NET_DataSet_BDG.vw_BDG)
-        'Me.Vw_INDTableAdapter.FillByALL(Me.Priamos_NETDataSet.vw_IND)
+        If sBDGID.Length > 0 Then
+            cboBDG.EditValue = System.Guid.Parse(sBDGID)
+        Else
+            Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
+        End If
         Initialize()
-        Me.Vw_INDTableAdapter.FillByIsManagedAndPaid(Me.Priamos_NETDataSet2.vw_IND, chkPaid.EditValue)
         LoadForms.RestoreLayoutFromXml(GridView1, "INDF_BATCH.xml")
     End Sub
     Private Sub Initialize()

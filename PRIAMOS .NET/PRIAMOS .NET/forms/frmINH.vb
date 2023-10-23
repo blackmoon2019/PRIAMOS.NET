@@ -511,7 +511,7 @@ Public Class frmINH
 
         If Valid.ValidateFormGRP(LayoutControlGroup2) Then
             Dim repName As String
-            repName = cboRepname.EditValue
+            repName = cboRepname.EditValue.ToString
             If chkCALC_CAT.CheckedItemsCount = 0 Then
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο προς καταχώρηση.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
@@ -831,8 +831,8 @@ Public Class frmINH
 
     Private Sub cboRepname_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboRepname.ButtonPressed
         Select Case e.Button.Index
-            Case 1 : cboRepname.EditValue = Nothing : ManageCbo.ManageTTL(cboRepname, FormMode.NewRecord)
-            Case 2 : If cboRepname.EditValue <> Nothing Then ManageCbo.ManageTTL(cboRepname, FormMode.EditRecord)
+            Case 1 : cboRepname.EditValue = Nothing : ManageCbo.ManageTTL(cboRepname, FormMode.NewRecord, Me)
+            Case 2 : If cboRepname.EditValue <> Nothing Then ManageCbo.ManageTTL(cboRepname, FormMode.EditRecord, Me)
             Case 3 : cboRepname.EditValue = Nothing
         End Select
     End Sub
@@ -1778,4 +1778,12 @@ Public Class frmINH
             Case 3 : cboInvGas.EditValue = Nothing : cboInvGas.SetEditValue(-1)
         End Select
     End Sub
+    Private Sub cmdBatchFileEX_Click(sender As Object, e As EventArgs) Handles cmdBatchFileEX.Click
+        Dim form As frmBatchInsertAttachmentsEX = New frmBatchInsertAttachmentsEX()
+        form.Text = "Επισύναψη αρχείων εξόδων"
+        If cboBDG.EditValue IsNot Nothing Then form.BDGID = cboBDG.EditValue.ToString
+        form.StartPosition = FormStartPosition.CenterScreen
+        form.Show()
+    End Sub
+
 End Class

@@ -3,6 +3,7 @@ Imports DevExpress.DataAccess
 Imports DevExpress.DataProcessing
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports WIA
@@ -87,21 +88,28 @@ Public Class frmTANK
             If Valid.ValidateForm(LayoutControl1) Then
                 If cboMeasurementcat.GetColumnValue("isInvoice") = "1" Then XtraMessageBox.Show("Δεν μπορείτε να καταχωρήσετε εγγραφή αγοράς. " & vbCrLf &
                     "Μόνο μέσα από τα Τιμολόγια Καυσίμων ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : Exit Sub
+
+                'Αν δεν είναι μέτρηση αγοράς θα πρέπει πάντα η επιμέτρηση να ειναι συμπληρωμένη
+                If cboMeasurementcat.EditValue.ToString.ToUpper <> "0C5AC8B9-41E1-4DAC-AC44-A05DFD4A9D1A" And txtmes.EditValue = 0 Then
+                    XtraMessageBox.Show("Δεν μπορείτε να καταχωρήσετε εγγραφή Μέτρησης χωρίς να έχετε συμπληρώσει επιμέτρηση. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Exit Sub
+                End If
                 sTankID = System.Guid.NewGuid.ToString
                 Dim sConsumptionID As String = ""
                 sConsumptionID = Guid.NewGuid.ToString
-
-
                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "TANK", LayoutControl1,,, sTankID,, "litersB,liters,consumptionID", toSQLValue(txtmesB, True) & "*" & toSQLValueS(lpcH.ToString, True) & "," & toSQLValue(txtmes, True) & "*" & toSQLValueS(lpcH.ToString, True) & "," & toSQLValueS(sConsumptionID))
                 If sResult Then
-
                     Dim sahpbHIDH As String, sahpbHIDB As String
-                    If CheckForAhpbH(sahpbHIDH, False) = False And CheckForAhpbB(sahpbHIDB, False) = False Then
-                        XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης πετρελάιου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Else
-                        CalculateOIL(sahpbHIDH, sahpbHIDB, sConsumptionID, False)
+                    ' Μέτρηση μήνα 
+                    If cboMeasurementcat.EditValue.ToString = "0933F647-2FC7-43FD-A00E-5F9939AFC6E2" Then
+                        If CheckForAhpbH(sahpbHIDH, False) = False And CheckForAhpbB(sahpbHIDB, False) = False Then
+                            XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης πετρελάιου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Else
+                            CalculateOIL(sahpbHIDH, sahpbHIDB, sConsumptionID, False)
+                        End If
                     End If
-
+                    'Ενημέρωση πρόβλεψης
+                    CalculateOilAvg(sBdgID, sTankID)
 
                     'Καθαρισμός Controls
                     Cls.ClearCtrls(LayoutControl1)
@@ -136,54 +144,7 @@ Public Class frmTANK
     End Sub
 
     Private Sub GridView3_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles GridView3.ValidatingEditor
-        Try
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
-                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που συμμετέχει σε παραστατικό"
-                e.Valid = False
-            End If
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invOilID").ToString.Length > 0 Then
-                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που αφορά παραστατικό Αγοράς πετρελάιου"
-                e.Valid = False
-            End If
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "calculated") = True Then
-                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που συμμετέχει σε παραστατικό"
-                e.Valid = False
-            End If
 
-
-            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
-            Dim sSQL As String
-            Dim mes As Double, mesB As Double, liters As Double, litersB As Double
-            If sender.GetRowCellValue(sender.FocusedRowHandle, "mes") Is DBNull.Value Then
-                mes = 0
-            Else
-                mes = sender.GetRowCellValue(sender.FocusedRowHandle, "mes")
-            End If
-            If sender.GetRowCellValue(sender.FocusedRowHandle, "mesB") Is DBNull.Value Then
-                mesB = 0
-            Else
-                mesB = sender.GetRowCellValue(sender.FocusedRowHandle, "mesB")
-            End If
-            liters = mes * lpcH : litersB = mesB * lpcH
-
-            sender.SetRowCellValue(sender.FocusedRowHandle, "liters", liters)
-            sender.SetRowCellValue(sender.FocusedRowHandle, "litersB", litersB)
-            sSQL = "UPDATE  TANK SET " &
-                        " measurementcatID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "measurementcatID").ToString) &
-                        " ,usrID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "usrID").ToString) &
-                        ",mes = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mes").ToString, True) &
-                        ",mesB = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mesB").ToString, True) &
-                        ",liters = " & toSQLValueS(liters.ToString, True) &
-                        ",litersB = " & toSQLValueS(litersB.ToString, True) &
-                        ",dtMeasurement = " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd")) &
-                        " WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString)
-
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
     End Sub
 
     Private Sub GridView3_KeyDown(sender As Object, e As KeyEventArgs) Handles GridView3.KeyDown
@@ -211,7 +172,8 @@ Public Class frmTANK
                     oCmd.ExecuteNonQuery()
                 End Using
                 Me.Vw_TANKTableAdapter.FillByBdgID(Me.Priamos_NET_DataSet_BDG.vw_TANK, System.Guid.Parse(sBdgID))
-
+                'Ενημέρωση πρόβλεψης
+                CalculateOilAvg(sBdgID, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString)
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Return True
             Else
@@ -419,6 +381,19 @@ Public Class frmTANK
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub CalculateOilAvg(ByVal sbdgID As String, sTankID As String)
+        Try
+
+            Using oCmd As New SqlCommand("CalculateOilAvg", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.AddWithValue("@tankID", sTankID)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
     'Ακύρωση Υπολογισμού πετρελάιου
     Private Sub CancelCalculateOIL()
         Try
@@ -446,5 +421,74 @@ Public Class frmTANK
         End Try
     End Sub
 
+    Private Sub GridView3_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles GridView3.ValidateRow
+        Try
+            Dim View As GridView = CType(sender, GridView)
+            Dim CurrCol As GridColumn = View.FocusedColumn
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "INHCalculated") = True Then
+                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που συμμετέχει σε παραστατικό"
+            End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "invOilID").ToString.Length > 0 Then
+                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που αφορά παραστατικό Αγοράς πετρελάιου"
+            End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "calculated") = True Then
+                e.ErrorText = "Δεν μπορείς να τροποποιήσεις εγγραφή που είναι υπολογισμένο"
+            End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "measurementcatID").ToString.ToUpper <> "0C5AC8B9-41E1-4DAC-AC44-A05DFD4A9D1A" And
+                sender.GetRowCellValue(sender.FocusedRowHandle, "mes") = 0 Then
+                e.ErrorText = "Δεν μπορείτε να καταχωρήσετε εγγραφή Μέτρησης χωρίς να έχετε συμπληρώσει επιμέτρηση. "
+            End If
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "measurementcatID").ToString.ToUpper = "0C5AC8B9-41E1-4DAC-AC44-A05DFD4A9D1A" Then
+                e.ErrorText = "Δεν μπορείτε να καταχωρήσετε εγγραφή αγοράς. " & vbCrLf & "Μόνο μέσα από τα Τιμολόγια Καυσίμων "
+            End If
+            If e.ErrorText <> "" Then
+                e.Valid = False
+                View.SetColumnError(CurrCol, e.ErrorText)
+                Exit Sub
+            End If
 
+
+
+
+            If GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID") = Nothing Then Exit Sub
+            Dim sSQL As String
+            Dim mes As Double, mesB As Double, liters As Double, litersB As Double
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "mes") Is DBNull.Value Then
+                mes = 0
+            Else
+                mes = sender.GetRowCellValue(sender.FocusedRowHandle, "mes")
+            End If
+            If sender.GetRowCellValue(sender.FocusedRowHandle, "mesB") Is DBNull.Value Then
+                mesB = 0
+            Else
+                mesB = sender.GetRowCellValue(sender.FocusedRowHandle, "mesB")
+            End If
+            liters = mes * lpcH : litersB = mesB * lpcH
+
+            sender.SetRowCellValue(sender.FocusedRowHandle, "liters", liters)
+            sender.SetRowCellValue(sender.FocusedRowHandle, "litersB", litersB)
+            sSQL = "UPDATE  TANK SET " &
+                    " measurementcatID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "measurementcatID").ToString) &
+                    " ,usrID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "usrID").ToString) &
+                    ",mes = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mes").ToString, True) &
+                    ",mesB = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "mesB").ToString, True) &
+                    ",liters = " & toSQLValueS(liters.ToString, True) &
+                    ",litersB = " & toSQLValueS(litersB.ToString, True) &
+                    ",dtMeasurement = " & toSQLValueS(CDate(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd")) &
+                    " WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString)
+
+            Using oCmd As New SqlCommand(sSQL, CNDB)
+                oCmd.ExecuteNonQuery()
+            End Using
+            'Ενημέρωση πρόβλεψης
+            CalculateOilAvg(sBdgID, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString)
+
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub GridView3_InvalidRowException(sender As Object, e As InvalidRowExceptionEventArgs) Handles GridView3.InvalidRowException
+        e.ExceptionMode = ExceptionMode.NoAction
+    End Sub
 End Class

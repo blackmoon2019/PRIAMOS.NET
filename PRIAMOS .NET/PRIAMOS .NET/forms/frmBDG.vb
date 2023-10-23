@@ -634,10 +634,15 @@ Public Class frmBDG
 
     Private Sub OilFilesSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = False
+        XtraOpenFileDialog1.RestoreDirectory = True
         Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
         If result = DialogResult.OK Then
             If ValueToGrid Then
@@ -651,10 +656,15 @@ Public Class frmBDG
     End Sub
     Private Sub GasFilesSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = False
+        XtraOpenFileDialog1.RestoreDirectory = True
         Dim result As DialogResult = XtraOpenFileDialog1.ShowDialog()
         If result = DialogResult.OK Then
             If ValueToGrid Then
@@ -1044,7 +1054,7 @@ Public Class frmBDG
         If XtraOpenFileDialog1.FileName = "" Then Exit Sub
         Dim sGID As String = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString
         ' Διαγραφή πρώτα παλιού αρχείου
-        Using oCmd As New SqlCommand("delete from INV_GAS WHERE ID = " & toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString), CNDB)
+        Using oCmd As New SqlCommand("delete from INV_GASF WHERE invGASID = " & toSQLValueS(sGID), CNDB)
             oCmd.ExecuteNonQuery()
         End Using
 
@@ -1062,7 +1072,7 @@ Public Class frmBDG
         If XtraOpenFileDialog1.FileName = "" Then Exit Sub
         Dim sOID As String = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString
         ' Διαγραφή πρώτα παλιού αρχείου
-        Using oCmd As New SqlCommand("delete from INV_OILF WHERE ID = " & toSQLValueS(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString), CNDB)
+        Using oCmd As New SqlCommand("delete from INV_OILF WHERE invOilID = " & toSQLValueS(sOID), CNDB)
             oCmd.ExecuteNonQuery()
         End Using
         If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
@@ -1155,15 +1165,15 @@ Public Class frmBDG
             FieldsToBeUpdate.Add("price")
             FieldsToBeUpdate.Add("totalPrice")
             If InvGas.UpdateGasData(GridView4, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
-                XtraOpenFileDialog1.FileName = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "comefrom").ToString & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename").ToString
-                If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    ' Διαγραφή πρώτα παλιού αρχείου
-                    InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
+                'XtraOpenFileDialog1.FileName = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "comefrom").ToString & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename").ToString
+                'If XtraOpenFileDialog1.SafeFileName <> "" Then
+                '    ' Διαγραφή πρώτα παλιού αρχείου
+                '    InvGas.DeleteRecordWithoutQuestion(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "F_ID").ToString, "INV_GASF")
 
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End If
+                '    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString) = False Then
+                '        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    End If
+                'End If
                 XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                 XtraOpenFileDialog1.FileName = ""
                 InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
@@ -1206,16 +1216,16 @@ Public Class frmBDG
             FieldsToBeUpdate.Add("mesB")
             FieldsToBeUpdate.Add("completed")
             If InvOils.UpdateOilData(GridView3, GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
-                XtraOpenFileDialog1.FileName = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "comefrom").ToString & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename").ToString
+                'XtraOpenFileDialog1.FileName = GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "comefrom").ToString & "\" & GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "filename").ToString
 
-                If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    ' Διαγραφή πρώτα παλιού αρχείου
-                    InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
+                'If XtraOpenFileDialog1.SafeFileName <> "" Then
+                '    ' Διαγραφή πρώτα παλιού αρχείου
+                '    InvOils.DeleteRecordWithoutQuestion(GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "F_ID").ToString, "INV_OILF")
 
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
-                        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-                End If
+                '    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", GridView3.GetRowCellValue(GridView3.FocusedRowHandle, "ID").ToString) = False Then
+                '        XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    End If
+                'End If
                 XtraOpenFileDialog1.FileName = ""
                 InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
 
@@ -1434,21 +1444,38 @@ Public Class frmBDG
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
+            Dim sTankID As String = System.Guid.NewGuid.ToString
 
             sSQL = "insert into TANK (ID,[bdgID],[measurementcatID],[invOilID],[dtMeasurement], [mes], [mesB],liters, [usrID], 
                                      [modifiedBy], [modifiedOn], [createdOn], [createdBy], [MachineName]) " &
-                         "SELECT NEWID(),bdgid,(SELECT TOP 1 ID FROM MEASUREMENT_CAT WHERE isInvoice = 1) as measurementcatID,ID," &
+                         "SELECT " & toSQLValueS(sTankID) & " ,bdgid,(SELECT TOP 1 ID FROM MEASUREMENT_CAT WHERE isInvoice = 1) as measurementcatID,ID," &
                          "invDate,mes,mesB,liters,usrID,[modifiedBy], [modifiedOn], [createdOn], [createdBy], [MachineName]" &
                          "FROM INV_OIL WHERE ID= " & toSQLValueS(sOID)
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
+            'Ενημέρωση πρόβλεψης
+            CalculateOilAvg(sID, sTankID)
             Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End Try
     End Function
+    Private Sub CalculateOilAvg(ByVal sbdgID As String, sTankID As String)
+        Try
+
+            Using oCmd As New SqlCommand("CalculateOilAvg", CNDB)
+                oCmd.CommandType = CommandType.StoredProcedure
+                oCmd.Parameters.AddWithValue("@bdgID", sbdgID)
+                oCmd.Parameters.AddWithValue("@tankID", sTankID)
+                oCmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
     Private Sub GridView5_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView5.RowUpdated
         Try
             Apmil.UpdateApMilData(GridView5, GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "ID").ToString, ApmilFieldsToBeUpdate)
@@ -1858,7 +1885,11 @@ Public Class frmBDG
 
         XtraOpenFileDialog1.Filter = "PDF files (*.pdf)|*.pdf"
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = False
@@ -1895,8 +1926,9 @@ Public Class frmBDG
         Try
             Maintab.SelectedTabPage = tabMaintenance
             Me.Vw_PRFTableAdapter.Fill(Me.Priamos_NETDataSet.vw_PRF)
-            Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+            Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BCCT, System.Guid.Parse(sID))
             LayoutControlGroup15.Enabled = False
+            LoadForms.RestoreLayoutFromXml(GridView8, "BCCT.xml")
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.TargetSite), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -1920,7 +1952,7 @@ Public Class frmBDG
                     'If Mode = FormMode.NewRecord Then dtDTS.EditValue = DateTime.Now
                     Cls.ClearGroupCtrls(LayoutControlGroup15)
                     txtCode.Text = DBQ.GetNextId("BCCT")
-                    Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+                    Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BCCT, System.Guid.Parse(sID))
                     LayoutControlGroup15.Enabled = False
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False
@@ -1994,7 +2026,7 @@ Public Class frmBDG
                 Using oCmd As New SqlCommand(sSQL, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+                Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BCCT, System.Guid.Parse(sID))
             End If
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -2006,7 +2038,7 @@ Public Class frmBDG
     End Sub
 
     Private Sub cmdBCCTRefresh_Click(sender As Object, e As EventArgs) Handles cmdBCCTRefresh.Click
-        Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+        Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BCCT, System.Guid.Parse(sID))
     End Sub
 
 
@@ -2017,11 +2049,12 @@ Public Class frmBDG
             sSQL = "UPDATE [BCCT] SET cctID  = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cctID").ToString) &
                 ",prfID = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "prfID").ToString) &
                 ",cmt = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "cmt").ToString) &
+                ",reason = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "reason").ToString) &
         " WHERE ID = " & toSQLValueS(GridView8.GetRowCellValue(GridView8.FocusedRowHandle, "ID").ToString)
             Using oCmd As New SqlCommand(sSQL, CNDB)
                 oCmd.ExecuteNonQuery()
             End Using
-            Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NETDataSet.vw_BCCT, System.Guid.Parse(sID))
+            Me.Vw_BCCTTableAdapter.Fill(Me.Priamos_NET_DataSet_BDG.vw_BCCT, System.Guid.Parse(sID))
 
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -2214,7 +2247,11 @@ Public Class frmBDG
     End Sub
     Private Sub BDGFileSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = True
@@ -3334,7 +3371,11 @@ Public Class frmBDG
     End Sub
     Private Sub DepositFileSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = False
@@ -3351,7 +3392,10 @@ Public Class frmBDG
                 XtraOpenFileDialog1.FileName = ""
                 RefreshDepositA()
             Else
-                txtDepositFilename.EditValue = "" : txtDepositFilename.EditValue = XtraOpenFileDialog1.SafeFileName
+                txtDepositFilename.EditValue = ""
+                For i As Integer = 0 To XtraOpenFileDialog1.SafeFileNames.Length - 1
+                    txtDepositFilename.EditValue = txtDepositFilename.EditValue & XtraOpenFileDialog1.SafeFileNames(i) & ";"
+                Next i
             End If
         End If
 
@@ -3475,6 +3519,28 @@ Public Class frmBDG
         Else
             cboINH.ReadOnly = True : cboINH.EditValue = Nothing
         End If
+    End Sub
+
+    Private Sub GridView8_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView8.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            LoadForms.PopupMenuShow(e, GridView8, "BCCT.xml", "vw_BCCT")
+        Else
+            ActiveGrid = GridView8
+            PopupMenuRows.ShowPopup(System.Windows.Forms.Control.MousePosition)
+        End If
+
+    End Sub
+
+    Private Sub cmdBatchFileEX_Click(sender As Object, e As EventArgs) Handles cmdBatchFileEX.Click
+        Dim form As frmBatchInsertAttachmentsEX = New frmBatchInsertAttachmentsEX()
+        form.Text = "Επισύναψη αρχείων εξόδων"
+        'If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "isManaged").ToString = "False" Then
+        '    XtraMessageBox.Show("Μόνο Διαχειρίσεις επιτρέπονται", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    Exit Sub
+        'End If
+        form.BDGID = sID
+        form.StartPosition = FormStartPosition.CenterScreen
+        form.Show()
     End Sub
 
 

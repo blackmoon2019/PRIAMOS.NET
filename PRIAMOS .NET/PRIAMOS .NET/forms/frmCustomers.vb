@@ -216,7 +216,11 @@ Public Class frmCustomers
 
         'XtraOpenFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
         XtraOpenFileDialog1.FilterIndex = 1
-        XtraOpenFileDialog1.InitialDirectory = "C:\"
+        If XtraOpenFileDialog1.FileName.ToString = "" Then
+            XtraOpenFileDialog1.InitialDirectory = "C:\"
+        Else
+            XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
+        End If
         XtraOpenFileDialog1.Title = "Open File"
         XtraOpenFileDialog1.CheckFileExists = False
         XtraOpenFileDialog1.Multiselect = True
@@ -359,7 +363,7 @@ Public Class frmCustomers
                 GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "cctID", sID)
                 GridView12.SetRowCellValue(GridView12.FocusedRowHandle, "createdBy", UserProps.ID.ToString)
 
-                sSQL.AppendLine("INSERT INTO CCT_BANKS (ID,cctID,bankID,Iban,AccountNumber,AccountHolder,BicNumber,createdBy,MachineName)")
+                sSQL.AppendLine("INSERT INTO CCT_BANKS (ID,cctID,bankID,Iban,AccountNumber,AccountHolder,BicNumber,choice,cmt,createdBy,MachineName)")
                 sSQL.AppendLine("Select " & toSQLValueS(sGuid) & ",")
                 sSQL.AppendLine(toSQLValueS(sID) & ",")
                 sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "bankID").ToString) & ",")
@@ -367,6 +371,8 @@ Public Class frmCustomers
                 sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountNumber").ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountHolder").ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "BicNumber").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "choice").ToString) & ",")
+                sSQL.AppendLine(toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cmt").ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(UserProps.ID.ToString) & ",")
                 sSQL.AppendLine(toSQLValueS(UserProps.MachineName))
                 'Εκτέλεση QUERY
@@ -390,6 +396,8 @@ Public Class frmCustomers
                 sSQL.AppendLine("AccountNumber = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountNumber").ToString) & ",")
                 sSQL.AppendLine("AccountHolder= " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "AccountHolder").ToString) & ",")
                 sSQL.AppendLine("BicNumber = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "BicNumber").ToString) & ",")
+                sSQL.AppendLine("choice = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "choice").ToString) & ",")
+                sSQL.AppendLine("cmt = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "cmt").ToString) & ",")
                 sSQL.AppendLine("modifiedBy = " & toSQLValueS(UserProps.ID.ToString) & ",")
                 sSQL.AppendLine("MachineName = " & toSQLValueS(UserProps.MachineName))
                 sSQL.Append("WHERE ID = " & toSQLValueS(GridView12.GetRowCellValue(GridView12.FocusedRowHandle, "ID").ToString))
@@ -419,4 +427,7 @@ Public Class frmCustomers
         If e.MenuType = GridMenuType.Column Then LoadForms.PopupMenuShow(e, GridView12, "CCT_BANKS.xml", "vw_CCT_BANKS")
     End Sub
 
+    Private Sub GridView1_DoubleClick(sender As Object, e As EventArgs) Handles GridView1.DoubleClick
+
+    End Sub
 End Class

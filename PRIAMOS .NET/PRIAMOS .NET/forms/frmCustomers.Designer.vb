@@ -212,6 +212,8 @@ Partial Class frmCustomers
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
         Me.Vw_CCT_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NET_DataSet_BDGTableAdapters.vw_CCT_BANKSTableAdapter()
         Me.Vw_BANKSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_BANKSTableAdapter()
+        Me.colchoice = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colcmt = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TabPane1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -458,7 +460,7 @@ Partial Class frmCustomers
         Me.TabNavigationPage2.Caption = "Τράπεζες"
         Me.TabNavigationPage2.Controls.Add(Me.LayoutControl3)
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
-        Me.TabNavigationPage2.Size = New System.Drawing.Size(1249, 482)
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(1249, 495)
         '
         'LayoutControl3
         '
@@ -467,7 +469,7 @@ Partial Class frmCustomers
         Me.LayoutControl3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.Root = Me.LayoutControlGroup5
-        Me.LayoutControl3.Size = New System.Drawing.Size(1249, 482)
+        Me.LayoutControl3.Size = New System.Drawing.Size(1249, 495)
         Me.LayoutControl3.TabIndex = 0
         Me.LayoutControl3.Text = "LayoutControl3"
         '
@@ -486,7 +488,7 @@ Partial Class frmCustomers
         Me.grdCCT_BANKS.Margin = New System.Windows.Forms.Padding(5)
         Me.grdCCT_BANKS.Name = "grdCCT_BANKS"
         Me.grdCCT_BANKS.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepCCT, Me.RepBanks})
-        Me.grdCCT_BANKS.Size = New System.Drawing.Size(1225, 458)
+        Me.grdCCT_BANKS.Size = New System.Drawing.Size(1225, 471)
         Me.grdCCT_BANKS.TabIndex = 0
         Me.grdCCT_BANKS.UseEmbeddedNavigator = True
         Me.grdCCT_BANKS.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView12})
@@ -503,9 +505,9 @@ Partial Class frmCustomers
         '
         'GridView12
         '
-        Me.GridView12.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colcctID, Me.colbankID, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colcreatedBy, Me.colMachineName, Me.colBankName, Me.colcctFullname, Me.colModifierName, Me.colIban, Me.colAccountNumber, Me.colBicNumber, Me.colAccountHolder})
-        Me.GridView12.DetailHeight = 150
-        Me.GridView12.FixedLineWidth = 3
+        Me.GridView12.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colcode, Me.colcctID, Me.colbankID, Me.colmodifiedBy, Me.colmodifiedOn, Me.colcreatedOn, Me.colcreatedBy, Me.colMachineName, Me.colBankName, Me.colcctFullname, Me.colModifierName, Me.colIban, Me.colAccountNumber, Me.colBicNumber, Me.colAccountHolder, Me.colchoice, Me.colcmt})
+        Me.GridView12.DetailHeight = 85
+        Me.GridView12.FixedLineWidth = 5
         GridFormatRule1.ApplyToRow = True
         GridFormatRule1.Name = "Format38"
         FormatConditionRuleExpression1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Strikeout), System.Drawing.FontStyle))
@@ -858,7 +860,8 @@ Partial Class frmCustomers
         Me.GridView12.GridControl = Me.grdCCT_BANKS
         Me.GridView12.LevelIndent = 0
         Me.GridView12.Name = "GridView12"
-        Me.GridView12.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.[True]
+        Me.GridView12.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.[False]
+        Me.GridView12.OptionsEditForm.PopupEditFormWidth = 480
         Me.GridView12.OptionsLayout.StoreAllOptions = True
         Me.GridView12.OptionsLayout.StoreAppearance = True
         Me.GridView12.OptionsLayout.StoreFormatRules = True
@@ -873,21 +876,23 @@ Partial Class frmCustomers
         Me.GridView12.OptionsView.EnableAppearanceEvenRow = True
         Me.GridView12.OptionsView.ShowGroupPanel = False
         Me.GridView12.PreviewIndent = 0
-        Me.GridView12.RowHeight = 1
+        Me.GridView12.RowHeight = 2
         '
         'colID
         '
+        Me.colID.Caption = "ID"
         Me.colID.FieldName = "ID"
         Me.colID.MinWidth = 35
         Me.colID.Name = "colID"
-        Me.colID.Width = 131
+        Me.colID.Width = 132
         '
         'colcode
         '
+        Me.colcode.Caption = "ΚΩΔΙΚΟΣ ΤΡΑΠΕΖΑΣ"
         Me.colcode.FieldName = "code"
         Me.colcode.MinWidth = 35
         Me.colcode.Name = "colcode"
-        Me.colcode.Width = 131
+        Me.colcode.Width = 132
         '
         'colcctID
         '
@@ -906,7 +911,7 @@ Partial Class frmCustomers
         Me.colbankID.Name = "colbankID"
         Me.colbankID.Visible = True
         Me.colbankID.VisibleIndex = 0
-        Me.colbankID.Width = 306
+        Me.colbankID.Width = 247
         '
         'RepBanks
         '
@@ -931,59 +936,67 @@ Partial Class frmCustomers
         '
         'colmodifiedBy
         '
+        Me.colmodifiedBy.Caption = "ΕΝΗΜΕΡΩΘΗΚΕ ΑΠΟ"
         Me.colmodifiedBy.FieldName = "modifiedBy"
         Me.colmodifiedBy.MinWidth = 35
         Me.colmodifiedBy.Name = "colmodifiedBy"
-        Me.colmodifiedBy.Width = 131
+        Me.colmodifiedBy.Width = 132
         '
         'colmodifiedOn
         '
+        Me.colmodifiedOn.Caption = "ΗΜΕΡ/ΝΙΑΣ ΕΝΗΜΕΡΩΣΗΣ"
         Me.colmodifiedOn.FieldName = "modifiedOn"
         Me.colmodifiedOn.MinWidth = 35
         Me.colmodifiedOn.Name = "colmodifiedOn"
-        Me.colmodifiedOn.Width = 131
+        Me.colmodifiedOn.Width = 132
         '
         'colcreatedOn
         '
+        Me.colcreatedOn.Caption = "ΗΜΕΡ/ΝΙΑΣ ΔΗΜΙΟΥΡΓΙΑΣ"
         Me.colcreatedOn.FieldName = "createdOn"
         Me.colcreatedOn.MinWidth = 35
         Me.colcreatedOn.Name = "colcreatedOn"
-        Me.colcreatedOn.Width = 131
+        Me.colcreatedOn.Width = 132
         '
         'colcreatedBy
         '
+        Me.colcreatedBy.Caption = "createdBy"
         Me.colcreatedBy.FieldName = "createdBy"
         Me.colcreatedBy.MinWidth = 35
         Me.colcreatedBy.Name = "colcreatedBy"
-        Me.colcreatedBy.Width = 131
+        Me.colcreatedBy.Width = 132
         '
         'colMachineName
         '
+        Me.colMachineName.Caption = "MachineName"
         Me.colMachineName.FieldName = "MachineName"
         Me.colMachineName.MinWidth = 35
         Me.colMachineName.Name = "colMachineName"
-        Me.colMachineName.Width = 131
+        Me.colMachineName.Width = 132
         '
         'colBankName
         '
+        Me.colBankName.Caption = "BankName"
         Me.colBankName.FieldName = "BankName"
         Me.colBankName.MinWidth = 35
         Me.colBankName.Name = "colBankName"
-        Me.colBankName.Width = 131
+        Me.colBankName.Width = 132
         '
         'colcctFullname
         '
+        Me.colcctFullname.Caption = "cctFullname"
         Me.colcctFullname.FieldName = "cctFullname"
         Me.colcctFullname.MinWidth = 35
         Me.colcctFullname.Name = "colcctFullname"
-        Me.colcctFullname.Width = 131
+        Me.colcctFullname.Width = 132
         '
         'colModifierName
         '
+        Me.colModifierName.Caption = "ModifierName"
         Me.colModifierName.FieldName = "ModifierName"
         Me.colModifierName.MinWidth = 35
         Me.colModifierName.Name = "colModifierName"
-        Me.colModifierName.Width = 131
+        Me.colModifierName.Width = 132
         '
         'colIban
         '
@@ -993,7 +1006,7 @@ Partial Class frmCustomers
         Me.colIban.Name = "colIban"
         Me.colIban.Visible = True
         Me.colIban.VisibleIndex = 1
-        Me.colIban.Width = 391
+        Me.colIban.Width = 368
         '
         'colAccountNumber
         '
@@ -1012,18 +1025,20 @@ Partial Class frmCustomers
         Me.colBicNumber.MinWidth = 35
         Me.colBicNumber.Name = "colBicNumber"
         Me.colBicNumber.Visible = True
-        Me.colBicNumber.VisibleIndex = 3
+        Me.colBicNumber.VisibleIndex = 4
         Me.colBicNumber.Width = 285
         '
         'colAccountHolder
         '
+        Me.colAccountHolder.AppearanceCell.BackColor = System.Drawing.Color.Bisque
+        Me.colAccountHolder.AppearanceCell.Options.UseBackColor = True
         Me.colAccountHolder.Caption = "Δικαιούχος"
         Me.colAccountHolder.FieldName = "AccountHolder"
-        Me.colAccountHolder.MinWidth = 35
+        Me.colAccountHolder.MinWidth = 33
         Me.colAccountHolder.Name = "colAccountHolder"
         Me.colAccountHolder.Visible = True
-        Me.colAccountHolder.VisibleIndex = 4
-        Me.colAccountHolder.Width = 131
+        Me.colAccountHolder.VisibleIndex = 3
+        Me.colAccountHolder.Width = 218
         '
         'RepCCT
         '
@@ -1043,7 +1058,7 @@ Partial Class frmCustomers
         Me.LayoutControlGroup5.GroupBordersVisible = False
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem34})
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1249, 482)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1249, 495)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem34
@@ -1051,20 +1066,20 @@ Partial Class frmCustomers
         Me.LayoutControlItem34.Control = Me.grdCCT_BANKS
         Me.LayoutControlItem34.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem34.Name = "LayoutControlItem34"
-        Me.LayoutControlItem34.Size = New System.Drawing.Size(1229, 462)
+        Me.LayoutControlItem34.Size = New System.Drawing.Size(1229, 475)
         Me.LayoutControlItem34.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem34.TextVisible = False
         '
         'chkEmployer
         '
         Me.chkEmployer.EditValue = CType(0, Byte)
-        Me.chkEmployer.Location = New System.Drawing.Point(797, 12)
+        Me.chkEmployer.Location = New System.Drawing.Point(827, 12)
         Me.chkEmployer.Margin = New System.Windows.Forms.Padding(5)
         Me.chkEmployer.Name = "chkEmployer"
         Me.chkEmployer.Properties.Caption = "Προσωπικό(Priamos)"
         Me.chkEmployer.Properties.ValueChecked = CType(1, Byte)
         Me.chkEmployer.Properties.ValueUnchecked = CType(0, Byte)
-        Me.chkEmployer.Size = New System.Drawing.Size(464, 32)
+        Me.chkEmployer.Size = New System.Drawing.Size(434, 32)
         Me.chkEmployer.StyleController = Me.LayoutControl1
         Me.chkEmployer.TabIndex = 6
         Me.chkEmployer.Tag = "IsEmployer,0,1,2"
@@ -1110,7 +1125,7 @@ Partial Class frmCustomers
         'chkPartner
         '
         Me.chkPartner.EditValue = CType(0, Byte)
-        Me.chkPartner.Location = New System.Drawing.Point(378, 12)
+        Me.chkPartner.Location = New System.Drawing.Point(408, 12)
         Me.chkPartner.Margin = New System.Windows.Forms.Padding(5)
         Me.chkPartner.Name = "chkPartner"
         Me.chkPartner.Properties.Caption = "Συνεργάτης"
@@ -1124,7 +1139,7 @@ Partial Class frmCustomers
         'chkSupplier
         '
         Me.chkSupplier.EditValue = CType(0, Byte)
-        Me.chkSupplier.Location = New System.Drawing.Point(641, 12)
+        Me.chkSupplier.Location = New System.Drawing.Point(671, 12)
         Me.chkSupplier.Margin = New System.Windows.Forms.Padding(5)
         Me.chkSupplier.Name = "chkSupplier"
         Me.chkSupplier.Properties.Caption = "Προμηθευτής"
@@ -1138,7 +1153,7 @@ Partial Class frmCustomers
         'chkWorkshop
         '
         Me.chkWorkshop.EditValue = CType(0, Byte)
-        Me.chkWorkshop.Location = New System.Drawing.Point(518, 12)
+        Me.chkWorkshop.Location = New System.Drawing.Point(548, 12)
         Me.chkWorkshop.Margin = New System.Windows.Forms.Padding(5)
         Me.chkWorkshop.Name = "chkWorkshop"
         Me.chkWorkshop.Properties.Caption = "Συνεργείο"
@@ -1152,7 +1167,7 @@ Partial Class frmCustomers
         'chkPrivate
         '
         Me.chkPrivate.EditValue = CType(1, Byte)
-        Me.chkPrivate.Location = New System.Drawing.Point(273, 12)
+        Me.chkPrivate.Location = New System.Drawing.Point(303, 12)
         Me.chkPrivate.Margin = New System.Windows.Forms.Padding(5)
         Me.chkPrivate.Name = "chkPrivate"
         Me.chkPrivate.Properties.Caption = "Ιδιώτης"
@@ -1197,7 +1212,7 @@ Partial Class frmCustomers
         Me.txtCode.Properties.Appearance.Options.UseBackColor = True
         Me.txtCode.Properties.Appearance.Options.UseFont = True
         Me.txtCode.Properties.ReadOnly = True
-        Me.txtCode.Size = New System.Drawing.Size(87, 38)
+        Me.txtCode.Size = New System.Drawing.Size(117, 38)
         Me.txtCode.StyleController = Me.LayoutControl1
         Me.txtCode.TabIndex = 0
         Me.txtCode.Tag = "code,0"
@@ -1374,6 +1389,7 @@ Partial Class frmCustomers
         Me.ColorPickEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.ColorPickEdit11.Properties.ColorText = DevExpress.XtraEditors.Controls.ColorText.[Integer]
         Me.ColorPickEdit11.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ColorPickEdit11.Properties.NullColor = System.Drawing.Color.Empty
         Me.ColorPickEdit11.Size = New System.Drawing.Size(368, 38)
         Me.ColorPickEdit11.StyleController = Me.LayoutControl1
         Me.ColorPickEdit11.TabIndex = 13
@@ -1463,7 +1479,7 @@ Partial Class frmCustomers
         Me.LayoutControlItem4.HighlightFocusedItem = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(251, 42)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(281, 42)
         Me.LayoutControlItem4.Text = "Κωδικός"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(148, 23)
         '
@@ -1791,7 +1807,7 @@ Partial Class frmCustomers
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.chkPrivate
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(261, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(291, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(105, 42)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
@@ -1800,7 +1816,7 @@ Partial Class frmCustomers
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.chkWorkshop
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(506, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(536, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(123, 42)
         Me.LayoutControlItem3.Text = "Συνεργείο"
@@ -1810,7 +1826,7 @@ Partial Class frmCustomers
         'LayoutControlItem10
         '
         Me.LayoutControlItem10.Control = Me.chkSupplier
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(629, 0)
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(659, 0)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
         Me.LayoutControlItem10.Size = New System.Drawing.Size(156, 42)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
@@ -1819,7 +1835,7 @@ Partial Class frmCustomers
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(251, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(281, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(10, 42)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
@@ -1827,7 +1843,7 @@ Partial Class frmCustomers
         'LayoutControlItem22
         '
         Me.LayoutControlItem22.Control = Me.chkPartner
-        Me.LayoutControlItem22.Location = New System.Drawing.Point(366, 0)
+        Me.LayoutControlItem22.Location = New System.Drawing.Point(396, 0)
         Me.LayoutControlItem22.Name = "LayoutControlItem22"
         Me.LayoutControlItem22.Size = New System.Drawing.Size(140, 42)
         Me.LayoutControlItem22.TextSize = New System.Drawing.Size(0, 0)
@@ -1862,9 +1878,9 @@ Partial Class frmCustomers
         'LayoutControlItem32
         '
         Me.LayoutControlItem32.Control = Me.chkEmployer
-        Me.LayoutControlItem32.Location = New System.Drawing.Point(785, 0)
+        Me.LayoutControlItem32.Location = New System.Drawing.Point(815, 0)
         Me.LayoutControlItem32.Name = "LayoutControlItem32"
-        Me.LayoutControlItem32.Size = New System.Drawing.Size(468, 42)
+        Me.LayoutControlItem32.Size = New System.Drawing.Size(438, 42)
         Me.LayoutControlItem32.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem32.TextVisible = False
         '
@@ -1880,6 +1896,7 @@ Partial Class frmCustomers
         'XtraOpenFileDialog1
         '
         Me.XtraOpenFileDialog1.Multiselect = True
+        Me.XtraOpenFileDialog1.RestoreDirectory = True
         Me.XtraOpenFileDialog1.Title = "Επιλογή αρχείων"
         '
         'Vw_CCT_BANKSTableAdapter
@@ -1889,6 +1906,29 @@ Partial Class frmCustomers
         'Vw_BANKSTableAdapter
         '
         Me.Vw_BANKSTableAdapter.ClearBeforeFill = True
+        '
+        'colchoice
+        '
+        Me.colchoice.AppearanceCell.BackColor = System.Drawing.Color.Bisque
+        Me.colchoice.AppearanceCell.Options.UseBackColor = True
+        Me.colchoice.Caption = "Προτίμηση"
+        Me.colchoice.FieldName = "choice"
+        Me.colchoice.MinWidth = 33
+        Me.colchoice.Name = "colchoice"
+        Me.colchoice.Visible = True
+        Me.colchoice.VisibleIndex = 5
+        Me.colchoice.Width = 112
+        '
+        'colcmt
+        '
+        Me.colcmt.AppearanceCell.BackColor = System.Drawing.Color.Bisque
+        Me.colcmt.AppearanceCell.Options.UseBackColor = True
+        Me.colcmt.Caption = "Σχόλια"
+        Me.colcmt.FieldName = "cmt"
+        Me.colcmt.MinWidth = 33
+        Me.colcmt.Name = "colcmt"
+        Me.colcmt.Visible = True
+        Me.colcmt.VisibleIndex = 6
         '
         'frmCustomers
         '
@@ -2116,4 +2156,6 @@ Partial Class frmCustomers
     Friend WithEvents LayoutControlItem35 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtInitials As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem36 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents colchoice As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colcmt As DevExpress.XtraGrid.Columns.GridColumn
 End Class

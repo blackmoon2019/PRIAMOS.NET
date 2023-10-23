@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports DevExpress.Internal
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraLayout
@@ -15,7 +16,7 @@ Public Class frmAPT
     Public Mode As Byte
     Private Valid As New ValidateControls
     Private LoadForms As New FormLoader
-    
+
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private Cls As New ClearControls
@@ -91,6 +92,9 @@ Public Class frmAPT
                 LoadForms.LoadForm(LayoutControl1, "Select * from vw_APT where id ='" + sID + "'")
                 Ord = txtOrd.EditValue
         End Select
+        If cboOwner.EditValue <> Nothing Then chkOwnerSendEmail.Enabled = True Else chkOwnerSendEmail.Enabled = False
+        If cboRepresentative.EditValue <> Nothing Then chkRepresentantSendEmail.Enabled = True Else chkRepresentantSendEmail.Enabled = False
+        If cboTenant.EditValue <> Nothing Then chkTenantSendEmail.Enabled = True Else chkTenantSendEmail.Enabled = False
         '  Valid.AddControlsForCheckIfSomethingChanged(LayoutControl1)
         Me.CenterToScreen()
         cmdSave.Enabled = IIf(Mode = FormMode.NewRecord, UserProps.AllowInsert, UserProps.AllowEdit)
@@ -214,7 +218,7 @@ Public Class frmAPT
         Select Case e.Button.Index
             Case 1 : cboTenant.EditValue = Nothing : ManageTenant()
             Case 2 : If cboTenant.EditValue <> Nothing Then ManageTenant()
-            Case 3 : cboTenant.EditValue = Nothing
+            Case 3 : cboTenant.EditValue = Nothing : chkTenantSendEmail.CheckState = CheckState.Unchecked : chkTenantSendEmail.Enabled = False
         End Select
     End Sub
 
@@ -224,7 +228,7 @@ Public Class frmAPT
         Select Case e.Button.Index
             Case 1 : cboOwner.EditValue = Nothing : ManageOwner()
             Case 2 : If cboOwner.EditValue <> Nothing Then ManageOwner()
-            Case 3 : cboOwner.EditValue = Nothing
+            Case 3 : cboOwner.EditValue = Nothing : chksameOwnerTenant.CheckState = CheckState.Unchecked : chkOwnerSendEmail.CheckState = CheckState.Unchecked : chkOwnerSendEmail.Enabled = False : chksameOwnerTenant.Enabled = False
         End Select
     End Sub
 
@@ -246,7 +250,7 @@ Public Class frmAPT
         Select Case e.Button.Index
             Case 1 : cboRepresentative.EditValue = Nothing : ManageRepresentative()
             Case 2 : If cboRepresentative.EditValue <> Nothing Then ManageRepresentative()
-            Case 3 : cboRepresentative.EditValue = Nothing
+            Case 3 : cboRepresentative.EditValue = Nothing : chkRepresentantSendEmail.CheckState = CheckState.Unchecked : chkRepresentantSendEmail.Enabled = False
         End Select
     End Sub
 
@@ -277,6 +281,17 @@ Public Class frmAPT
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(frmContacts), New Point(CInt(frmContacts.Parent.ClientRectangle.Width / 2 - frmContacts.Width / 2), CInt(frmContacts.Parent.ClientRectangle.Height / 2 - frmContacts.Height / 2)))
         frmContacts.Show()
 
+    End Sub
+    Private Sub cboOwner_EditValueChanged(sender As Object, e As EventArgs) Handles cboOwner.EditValueChanged
+        If cboOwner.EditValue <> Nothing Then chkOwnerSendEmail.Enabled = True : chksameOwnerTenant.Enabled = True
+    End Sub
+
+    Private Sub cboRepresentative_EditValueChanged(sender As Object, e As EventArgs) Handles cboRepresentative.EditValueChanged
+
+    End Sub
+
+    Private Sub cboTenant_EditValueChanged(sender As Object, e As EventArgs) Handles cboTenant.EditValueChanged
+        If cboTenant.EditValue <> Nothing Then chkTenantSendEmail.Enabled = True : chkTenantSendEmail.Enabled = True
     End Sub
 
 
