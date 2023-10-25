@@ -115,6 +115,9 @@ Public Class frmINH
                     End If
 
                     If cboInvOil.Properties.GetItems.Count <> 0 Or cboInvGas.Properties.GetItems.Count <> 0 Then
+                        If cboInvOil.Properties.GetItems.Count <> 0 Then cboInvOil.BackColor = Color.Coral
+                        If cboInvGas.Properties.GetItems.Count <> 0 Then cboInvGas.BackColor = Color.Coral
+
                         Dim cmd As SqlCommand = New SqlCommand("Select 1 as sKey,invOilID as invOilGasID from IND 
                                                                 inner join INH   ON INH.id = IND.inhID where calculated= 0 and 
                                                                 invOilID is not null and inhID = " & toSQLValueS(sID) &
@@ -131,6 +134,9 @@ Public Class frmINH
                             End While
                         End If
                         sdr.Close()
+                    Else
+                        cboInvOil.BackColor = Color.White : cboInvGas.BackColor = Color.White
+
                     End If
 
 
@@ -682,6 +688,9 @@ Public Class frmINH
             Me.INV_OILTableAdapter.FillbyBDG(Me.Priamos_NET_DataSet_INH.INV_OIL, cboBDG.EditValue)
             Me.INV_GASTableAdapter.FillByBDG(Me.Priamos_NET_DataSet_INH.INV_GAS, cboBDG.EditValue)
             Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
+            If cboInvOil.Properties.GetItems.Count <> 0 Then cboInvOil.BackColor = Color.Coral Else cboInvOil.BackColor = Color.White
+            If cboInvGas.Properties.GetItems.Count <> 0 Then cboInvGas.BackColor = Color.Coral Else cboInvGas.BackColor = Color.White
+
         End If
 
         ' Κεντρική Θέρμανση

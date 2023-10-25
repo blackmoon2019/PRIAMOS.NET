@@ -6786,6 +6786,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnBicNumber.MaxLength = 50
             Me.columnAccountHolder.MaxLength = 150
             Me.columnchoice.AllowDBNull = False
+            Me.columnchoice.DefaultValue = CType(False, Boolean)
             Me.columncmt.MaxLength = 500
         End Sub
 

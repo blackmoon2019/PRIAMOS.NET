@@ -6,7 +6,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class frmBatchInsertAttachmentsEX
     Private DBQ As New DBQueries
-    Private sBDGID As String
+    Private sBDGID As String = ""
     Public Shared ReadOnly MaxEntitiesCount As Integer = 80
     Private _currentPath As String
     Private LoadForms As New FormLoader
