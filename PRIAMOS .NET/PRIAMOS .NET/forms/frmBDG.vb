@@ -2077,22 +2077,23 @@ Public Class frmBDG
         fINH.Mode = FormMode.EditRecord
         fINH.Scroller = GridView_INH
         fINH.FormScroller = Me
-        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
+        fINH.WindowState = FormWindowState.Maximized
+        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
         fINH.Show()
     End Sub
 
     Private Sub cmdNewINH_Click(sender As Object, e As EventArgs) Handles cmdNewINH.Click
 
         Dim fINH As frmINH = New frmINH()
-        fINH.Text = "Κοινόχρηστα"
+        fINH.Text = "Παραστατικό"
         'fINH.MdiParent = frmMain
         fINH.Mode = FormMode.NewRecord
         fINH.cboBDG.EditValue = System.Guid.Parse(sID)
-
-        'fINH.Scroller = GridView10
-        'fINH.FormScroller = Me
+        fINH.WindowState = FormWindowState.Maximized
+        fINH.Scroller = GridView_INH
+        fINH.FormScroller = Me
         'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-        fINH.ShowDialog()
+        fINH.Show()
     End Sub
 
     Private Sub cmdEditINH_Click(sender As Object, e As EventArgs) Handles cmdEditINH.Click

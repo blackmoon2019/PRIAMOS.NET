@@ -91,7 +91,6 @@ Public Class frmINH
                     Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                     Me.Vw_INCTableAdapter.Fill(Me.Priamos_NETDataSet.vw_INC, System.Guid.Parse(sID))
 
-
                     ' Στην περίπτωση που έχει πάγιο τιμολόγιο κατανάλωσης φυσικού αερίου τότε καθαρίζουμε τις ώρες
                     If CheckIfHasGasFixedInvoices(0) = False Then cboAhpbH.DataBindings.Clear()
                     If CheckIfHasGasFixedInvoices(1) = False Then cboAhpbHB.DataBindings.Clear()
@@ -154,7 +153,7 @@ Public Class frmINH
                         LcmdSaveINH.Enabled = True : LcmdCalculate.Enabled = True : LcmdSaveInd.Enabled = True : GridView5.OptionsBehavior.Editable = True
                         'cmdCancelInvoice.Enabled = True
                     End If
-                    Me.Text = "Παραστατικό-" & cboBDG.Text
+                    Me.Text = "Παραστατικό - " & cboBDG.Text
                     If chkCalculated.CheckState = CheckState.Checked Then cmdSaveInd.Enabled = False : cmdDel.Enabled = False : cmdSaveINH.Enabled = False
                     fdate = Date.Parse(dtFDate.EditValue.ToString) : Tdate = Date.Parse(dtTDate.EditValue.ToString)
 
@@ -417,7 +416,7 @@ Public Class frmINH
                     XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Valid.SChanged = False : LayoutControlGroup2.Enabled = True : LcmdSaveInd.Enabled = True
                     cmdDel.Enabled = True : LcmdCalculate.Enabled = True : cmdRefresh.Enabled = True
-                    TabNavigationPage3.Enabled = True : chkCALC_CAT.SetItemChecked(0, True)
+                    TabNavigationPage3.Enabled = True   'chkCALC_CAT.SetItemChecked(0, True)
                     BarSygentrotiki.Enabled = True : BarReceipt.Enabled = True : BarEidop.Enabled = True
                     LayoutControlGroup1.AppearanceGroup.BorderColor = DXSkinColors.FillColors.Success
                 End If
@@ -531,18 +530,20 @@ Public Class frmINH
 
     Private Sub cmdSaveInd_Click(sender As Object, e As EventArgs) Handles cmdSaveInd.Click
         Dim sResult As Boolean
-        Dim sCalcCatID As String
+        'Dim sCalcCatID As String
 
         If Valid.ValidateFormGRP(LayoutControlGroup2) Then
             Dim repName As String
             repName = cboRepname.EditValue.ToString
-            If chkCALC_CAT.CheckedItemsCount = 0 Then
+            'If chkCALC_CAT.CheckedItemsCount = 0 Then
+            If cboCALC_CAT.EditValue = Nothing Then
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο προς καταχώρηση.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
             If CheckRepNameIfExists(repName) = False Then
-                sCalcCatID = chkCALC_CAT.SelectedValue.ToString
-                sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID,calcCatID ", toSQLValueS(sID) & "," & toSQLValueS(sCalcCatID))
+                'sCalcCatID = chkCALC_CAT.SelectedValue.ToString
+                'sCalcCatID = cboCALC_CAT.EditValue.ToString
+                sResult = DBQ.InsertNewData(DBQueries.InsertMode.GroupLayoutControl, "IND",,, LayoutControlGroup2,,, "inhID", toSQLValueS(sID))
                 If sResult Then
                     Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                     'XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -550,7 +551,7 @@ Public Class frmINH
                     Valid.SChanged = False
                 End If
                 cboOwnerTenant.SelectedIndex = 1 : cboRepname.Select() 'chkCALC_CAT.SetItemChecked(0, True) : cboRepname.Select()
-                chkCALC_CAT.UnCheckAll()
+                'chkCALC_CAT.UnCheckAll()
             Else
                 XtraMessageBox.Show("Υπάρχει ίδιο λεκτικό εκτύπωσης σε άλλο έξοδο.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -698,7 +699,7 @@ Public Class frmINH
         End Try
     End Sub
     Private Sub SetBdgFieldsValues()
-        chkCALC_CAT.DataSource = VwCALCCATBindingSource
+        'chkCALC_CAT.DataSource = VwCALCCATBindingSource
         If cboBDG.EditValue <> Nothing Then
             Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.Parse(cboBDG.EditValue.ToString))
             Me.AHPB_HTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.AHPB_H, cboBDG.EditValue)
@@ -708,7 +709,7 @@ Public Class frmINH
             Me.Vw_CALC_CATTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_CALC_CAT, cboBDG.EditValue)
             If cboInvOil.Properties.GetItems.Count <> 0 Then cboInvOil.BackColor = Color.Coral Else cboInvOil.BackColor = Color.White
             If cboInvGas.Properties.GetItems.Count <> 0 Then cboInvGas.BackColor = Color.Coral Else cboInvGas.BackColor = Color.White
-
+            Me.Text = "Παραστατικό - " & cboBDG.Text
         End If
 
         ' Κεντρική Θέρμανση
@@ -748,7 +749,7 @@ Public Class frmINH
         Select Case e.Button.Index
             Case 1 : cboBDG.EditValue = Nothing : ManageCbo.ManageBDG(cboBDG, FormMode.NewRecord)
             Case 2 : If cboBDG.EditValue <> Nothing Then ManageCbo.ManageBDG(cboBDG, FormMode.EditRecord)
-            Case 3 : cboBDG.EditValue = Nothing : chkCALC_CAT.DataSource = Nothing : chkCALC_CAT.Items.Clear()
+            Case 3 : cboBDG.EditValue = Nothing : cboCALC_CAT.Properties.DataSource = Nothing : Me.Text = "Παραστατικό" 'chkCALC_CAT.DataSource = Nothing : chkCALC_CAT.Items.Clear()
         End Select
     End Sub
 
@@ -1238,8 +1239,8 @@ Public Class frmINH
         LcmdCalculate.Enabled = False
         cmdDel.Enabled = False
         LcmdCancelInvoice.Enabled = False
-        chkCALC_CAT.DataSource = Nothing
-        chkCALC_CAT.Items.Clear()
+        'chkCALC_CAT.DataSource = Nothing:chkCALC_CAT.Items.Clear()
+        cboCALC_CAT.Properties.DataSource = Nothing
         TabNavigationPage2.Enabled = False
         TabNavigationPage3.Enabled = False
         txtComments.EditValue = Nothing
@@ -1813,4 +1814,12 @@ Public Class frmINH
         form.Show()
     End Sub
 
+    Private Sub cboCALC_CAT_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboCALC_CAT.ButtonPressed
+        Select Case e.Button.Index
+            Case 1 : cboCALC_CAT.EditValue = Nothing : ManageCbo.ManageCalcCat(cboCALC_CAT, FormMode.NewRecord)
+            Case 2 : If cboCALC_CAT.EditValue <> Nothing Then ManageCbo.ManageCalcCat(cboCALC_CAT, FormMode.EditRecord)
+            Case 3 : cboCALC_CAT.EditValue = Nothing
+        End Select
+
+    End Sub
 End Class
