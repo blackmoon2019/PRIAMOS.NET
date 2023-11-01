@@ -1,8 +1,10 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports System.IO
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
@@ -14,7 +16,7 @@ Public Class frmCustomers
     Private Frm As DevExpress.XtraEditors.XtraForm
     Public Mode As Byte
     Private Valid As New ValidateControls
-    
+
     Private FillCbo As New FillCombos
     Private DBQ As New DBQueries
     Private LoadForms As New FormLoader
@@ -248,15 +250,18 @@ Public Class frmCustomers
 
     Private Sub GridControl1_DoubleClick(sender As Object, e As EventArgs) Handles GridControl1.DoubleClick
         If GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename") Is DBNull.Value Then Exit Sub
-        Dim fs As IO.FileStream = New IO.FileStream("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"), IO.FileMode.Create)
-        Dim b() As Byte = GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "files")
         Try
+            Dim fs As System.IO.FileStream = New System.IO.FileStream(Application.StartupPath & "\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"), System.IO.FileMode.Create)
+            Dim b() As Byte = LoadForms.GetFile(GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "ID").ToString, "CCT_F")
             fs.Write(b, 0, b.Length)
             fs.Close()
-            ShellExecute("D:\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"))
+            ShellExecute(Application.StartupPath & "\" & GridView1.GetRowCellValue(GridView1.FocusedRowHandle, "filename"))
+        Catch ex As IOException
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
     End Sub
     Private Sub ShellExecute(ByVal File As String)
         Dim myProcess As New Process

@@ -459,8 +459,9 @@ Public Class frmMain
         form.Text = "Μαζική Ενημέρωση Ανακοινώσεων"
         UserPermissions.GetUserPermissions(form.Text) : If UserProps.AllowView = False Then XtraMessageBox.Show("Δεν έχουν οριστεί τα απαραίτητα δικαιώματα στον χρήστη", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error) : form.Dispose() : Exit Sub
         form.MdiParent = Me
-        Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(Form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
-        Form.Show()
+        'Me.XtraTabbedMdiManager1.Float(Me.XtraTabbedMdiManager1.Pages(Form), New Point(CInt(Me.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.ClientRectangle.Height / 2 - Me.Height / 2)))
+        form.WindowState = FormWindowState.Maximized
+        form.Show()
 
     End Sub
 

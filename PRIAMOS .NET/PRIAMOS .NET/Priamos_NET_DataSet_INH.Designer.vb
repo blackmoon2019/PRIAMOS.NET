@@ -5338,6 +5338,8 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         Private columncompleteDate As Global.System.Data.DataColumn
         
+        Private columnPaid As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -5518,6 +5520,14 @@ Partial Public Class Priamos_NET_DataSet_INH
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property PaidColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPaid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5572,9 +5582,10 @@ Partial Public Class Priamos_NET_DataSet_INH
                     ByVal CalcCatName As String,  _
                     ByVal ModifierName As String,  _
                     ByVal CreatorName As String,  _
-                    ByVal completeDate As String) As vw_IND_BATCHRow
+                    ByVal completeDate As String,  _
+                    ByVal Paid As Boolean) As vw_IND_BATCHRow
             Dim rowvw_IND_BATCHRow As vw_IND_BATCHRow = CType(Me.NewRow,vw_IND_BATCHRow)
-            Dim columnValuesArray() As Object = New Object() {ID, bdgID, inhID, calcCatID, repName, amt, owner_tenant, IndCreated, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, BdgNam, CalcCatName, ModifierName, CreatorName, completeDate}
+            Dim columnValuesArray() As Object = New Object() {ID, bdgID, inhID, calcCatID, repName, amt, owner_tenant, IndCreated, modifiedBy, modifiedOn, createdOn, createdBy, MachineName, BdgNam, CalcCatName, ModifierName, CreatorName, completeDate, Paid}
             rowvw_IND_BATCHRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_IND_BATCHRow)
             Return rowvw_IND_BATCHRow
@@ -5621,6 +5632,7 @@ Partial Public Class Priamos_NET_DataSet_INH
             Me.columnModifierName = MyBase.Columns("ModifierName")
             Me.columnCreatorName = MyBase.Columns("CreatorName")
             Me.columncompleteDate = MyBase.Columns("completeDate")
+            Me.columnPaid = MyBase.Columns("Paid")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5662,6 +5674,8 @@ Partial Public Class Priamos_NET_DataSet_INH
             MyBase.Columns.Add(Me.columnCreatorName)
             Me.columncompleteDate = New Global.System.Data.DataColumn("completeDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncompleteDate)
+            Me.columnPaid = New Global.System.Data.DataColumn("Paid", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPaid)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -5677,6 +5691,7 @@ Partial Public Class Priamos_NET_DataSet_INH
             Me.columnModifierName.MaxLength = 200
             Me.columnCreatorName.MaxLength = 50
             Me.columncompleteDate.MaxLength = 150
+            Me.columnPaid.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9652,6 +9667,17 @@ Partial Public Class Priamos_NET_DataSet_INH
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Paid() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_IND_BATCH.PaidColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_IND_BATCH.PaidColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsinhIDNull() As Boolean
             Return Me.IsNull(Me.tablevw_IND_BATCH.inhIDColumn)
         End Function
@@ -13598,6 +13624,7 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             tableMapping.ColumnMappings.Add("ModifierName", "ModifierName")
             tableMapping.ColumnMappings.Add("CreatorName", "CreatorName")
             tableMapping.ColumnMappings.Add("completeDate", "completeDate")
+            tableMapping.ColumnMappings.Add("Paid", "Paid")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -13616,7 +13643,8 @@ Namespace Priamos_NET_DataSet_INHTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ID, bdgID, inhID, calcCatID, repName, amt, owner_tenant, IndCreated, modif"& _ 
                 "iedBy, modifiedOn, createdOn, createdBy, MachineName, BdgNam, CalcCatName, Modif"& _ 
-                "ierName, CreatorName, completeDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND_BATCH"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"where indCreated = 0"
+                "ierName, CreatorName, completeDate, Paid"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND_BATCH"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (IndCreated"& _ 
+                " = 0)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

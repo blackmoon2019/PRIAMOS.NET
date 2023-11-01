@@ -1,6 +1,8 @@
 ﻿
 Imports System.Data.SqlClient
+Imports System.IO
 Imports DevExpress.CodeParser
+Imports DevExpress.XtraCharts
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Columns
 Imports iTextSharp.text.pdf.parser
@@ -56,6 +58,14 @@ Module Main
         Public InvoicesSubjectNotManaged As String
         Public EXFolderPath As String
         Public EXFolderMoveOnSuccessPath As String
+        Public DEPFolderPath As String
+        Public DEPFolderMoveOnSuccessPath As String
+        Public OILFolderPath As String
+        Public OILFolderMoveOnSuccessPath As String
+        Public GASFolderPath As String
+        Public GASFolderMoveOnSuccessPath As String
+        Public BDGFolderPath As String
+        Public BDGFolderMoveOnSuccessPath As String
         Public ADM As String
         Public ANNMENT As String
         Public ProgTitle As String
@@ -262,6 +272,33 @@ Module Main
             Loop Until LastModifiedF1 = LastModifiedF2
         End If
     End Sub
+    Public Sub BackupFiles(ByVal Mode As Integer, ByVal SourceFile As String)
+        Dim MoveFiles As Boolean = False : Dim MoveFilesPath As String = ""
+        Select Case Mode
+            ' Αποθεματικά
+            Case 1 : If ProgProps.DEPFolderMoveOnSuccessPath.Length > 0 Then MoveFiles = True : MoveFilesPath = ProgProps.DEPFolderMoveOnSuccessPath
+            ' Τιμολόγια Πετρελαίου
+            Case 2 : If ProgProps.OILFolderMoveOnSuccessPath.Length > 0 Then MoveFiles = True : MoveFilesPath = ProgProps.OILFolderMoveOnSuccessPath
+            ' Τιμολόγια Φυσικού Αερίου
+            Case 3 : If ProgProps.GASFolderMoveOnSuccessPath.Length > 0 Then MoveFiles = True : MoveFilesPath = ProgProps.GASFolderMoveOnSuccessPath
+            ' Αρχεία Πολυκατοικιών
+            Case 4 : If ProgProps.BDGFolderMoveOnSuccessPath.Length > 0 Then MoveFiles = True : MoveFilesPath = ProgProps.BDGFolderMoveOnSuccessPath
+        End Select
+        If Debugger.IsAttached Then MoveFilesPath = "\\192.168.1.50\Share\PROOFS\UNFOLDERED\Finished"
+
+        Dim FileName As String = IO.Path.GetFileName(SourceFile)
+        Try
+            If MoveFiles Then
+                Dim Found As Boolean = False
+                If File.Exists(MoveFilesPath & "\" & FileName) Then Found = True
+                My.Computer.FileSystem.MoveFile(SourceFile, MoveFilesPath & "\" & IIf(Found, VBMath.Rnd.ToString.Replace(",", "") & "_" & FileName, FileName), True)
+                Found = False
+            End If
+        Catch exMove As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}" & "Η μεταφορά του αρχείου " & FileName & " στον φάκελλο " & MoveFilesPath & " Απέτυχε.", exMove.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 End Module
 
 

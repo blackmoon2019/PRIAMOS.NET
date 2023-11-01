@@ -197,8 +197,9 @@ Public Class frmBatchInsertAttachmentsEX
                 XtraMessageBox.Show("Δεν έχετε επιλέξει έξοδο", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
+            Dim selectedRowHandle As Int32
             For I = 0 To selectedRowHandles.Length - 1
-                Dim selectedRowHandle As Int32 = selectedRowHandles(I)
+                selectedRowHandle = selectedRowHandles(I)
                 If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
                     ' Αποθήκευση Αρχείων
                     If DBQ.InsertNewDataFilesFromListBox(ImageListBoxControl1, "IND_F", GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString, BreadCrumb.Path) = True Then
@@ -213,6 +214,8 @@ Public Class frmBatchInsertAttachmentsEX
             Else
                 Me.Vw_INDTableAdapter.FillByBDGAndPAid(Me.Priamos_NETDataSet2.vw_IND, System.Guid.Parse(cboBDG.EditValue.ToString), chkPaid.EditValue)
             End If
+            'GridView1.FocusedRowHandle = selectedRowHandle
+            'GridView1.SelectRow(selectedRowHandle)
             ' Backup αρχείων
             BackupFiles()
             ' Ανανέωση αρχείων

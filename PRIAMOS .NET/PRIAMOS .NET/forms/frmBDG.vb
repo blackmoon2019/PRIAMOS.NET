@@ -635,7 +635,7 @@ Public Class frmBDG
     Private Sub OilFilesSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
         If XtraOpenFileDialog1.FileName.ToString = "" Then
-            XtraOpenFileDialog1.InitialDirectory = "C:\"
+            XtraOpenFileDialog1.InitialDirectory = ProgProps.OILFolderPath
         Else
             XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
         End If
@@ -657,7 +657,7 @@ Public Class frmBDG
     Private Sub GasFilesSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
         If XtraOpenFileDialog1.FileName.ToString = "" Then
-            XtraOpenFileDialog1.InitialDirectory = "C:\"
+            XtraOpenFileDialog1.InitialDirectory = ProgProps.GASFolderPath
         Else
             XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
         End If
@@ -1058,7 +1058,7 @@ Public Class frmBDG
             oCmd.ExecuteNonQuery()
         End Using
 
-        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
+        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID,,,, 3) = False Then
             XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
@@ -1075,7 +1075,7 @@ Public Class frmBDG
         Using oCmd As New SqlCommand("delete from INV_OILF WHERE invOilID = " & toSQLValueS(sOID), CNDB)
             oCmd.ExecuteNonQuery()
         End Using
-        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
+        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID,,,, 2) = False Then
             XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
@@ -1279,7 +1279,7 @@ Public Class frmBDG
             If InvGas.InsertGasData(LayoutControlGroup6, sGID, "bdgid", sID) Then
                 InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID) = False Then
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_GASF", sGID,,,, 3) = False Then
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
@@ -1404,7 +1404,7 @@ Public Class frmBDG
             If InvOils.InsertOilData(LayoutControlGroup5, sOID, "bdgid", sID) Then
                 InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
                 If XtraOpenFileDialog1.SafeFileName <> "" Then
-                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID) = False Then
+                    If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "INV_OILF", sOID,,,, 2) = False Then
                         XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 End If
@@ -2077,8 +2077,8 @@ Public Class frmBDG
         fINH.Mode = FormMode.EditRecord
         fINH.Scroller = GridView_INH
         fINH.FormScroller = Me
-        fINH.WindowState = FormWindowState.Maximized
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
+        'fINH.WindowState = FormWindowState.Maximized
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(fINH.Parent.ClientRectangle.Width / 2 - fINH.Width / 2), CInt(fINH.Parent.ClientRectangle.Height / 2 - fINH.Height / 2)))
         fINH.Show()
     End Sub
 
@@ -2089,10 +2089,10 @@ Public Class frmBDG
         'fINH.MdiParent = frmMain
         fINH.Mode = FormMode.NewRecord
         fINH.cboBDG.EditValue = System.Guid.Parse(sID)
-        fINH.WindowState = FormWindowState.Maximized
         fINH.Scroller = GridView_INH
         fINH.FormScroller = Me
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+        'fINH.WindowState = FormWindowState.Maximized
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
         fINH.Show()
     End Sub
 
@@ -2105,8 +2105,9 @@ Public Class frmBDG
         fINH.Mode = FormMode.EditRecord
         'fINH.Scroller = GridView10
         'fINH.FormScroller = Me
-        'frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
-        fINH.ShowDialog()
+        frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(fINH), New Point(CInt(Me.Parent.ClientRectangle.Width / 2 - Me.Width / 2), CInt(Me.Parent.ClientRectangle.Height / 2 - Me.Height / 2)))
+        'fINH.WindowState = FormWindowState.Maximized
+        fINH.Show()
     End Sub
 
     Private Sub cmdRefINH_Click(sender As Object, e As EventArgs) Handles cmdRefINH.Click
@@ -2249,7 +2250,7 @@ Public Class frmBDG
     Private Sub BDGFileSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
         If XtraOpenFileDialog1.FileName.ToString = "" Then
-            XtraOpenFileDialog1.InitialDirectory = "C:\"
+            XtraOpenFileDialog1.InitialDirectory = ProgProps.BDGFolderPath
         Else
             XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
         End If
@@ -2273,7 +2274,7 @@ Public Class frmBDG
     Private Sub cmdSaveBDGFile_Click(sender As Object, e As EventArgs) Handles cmdSaveBDGFile.Click
         If Valid.ValidateFormGRP(LayoutControlGroup18) Then
             If XtraOpenFileDialog1.SafeFileName <> "" Then
-                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID, "folderCatID", toSQLValueS(cboFolderCat.EditValue.ToString), PB) = False Then
+                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "BDG_F", sID, "folderCatID", toSQLValueS(cboFolderCat.EditValue.ToString), PB, 4) = False Then
                     XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Else
                     Cls.ClearGroupCtrls(LayoutControlGroup18)
@@ -3112,7 +3113,7 @@ Public Class frmBDG
                 sResult = DBQ.InsertNewData(DBQueries.InsertMode.OneLayoutControl, "DEPOSIT_A", LDeposit,,, sGuid, True, "bdgID", toSQLValueS(sID))
                 If sResult Then
                     If XtraOpenFileDialog1.SafeFileName <> "" Then
-                        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "DEPOSIT_F", sGuid) = False Then
+                        If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "DEPOSIT_F", sGuid,,,, 1) = False Then
                             XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                         End If
                         XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -3373,7 +3374,7 @@ Public Class frmBDG
     Private Sub DepositFileSelection(Optional ByVal ValueToGrid As Boolean = False)
         XtraOpenFileDialog1.FilterIndex = 1
         If XtraOpenFileDialog1.FileName.ToString = "" Then
-            XtraOpenFileDialog1.InitialDirectory = "C:\"
+            XtraOpenFileDialog1.InitialDirectory = ProgProps.DEPFolderPath
         Else
             XtraOpenFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(XtraOpenFileDialog1.FileName)
         End If
@@ -3386,7 +3387,7 @@ Public Class frmBDG
                 Using oCmd As New SqlCommand("DELETE FROM DEPOSIT_F where depositAID = '" & GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString & "'", CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
-                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "DEPOSIT_F", GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString) = False Then
+                If DBQ.InsertNewDataFiles(XtraOpenFileDialog1, "DEPOSIT_F", GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ID").ToString,,,, 1) = False Then
                     XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στην αποθήκευση του επισυναπτόμενου αρχείου", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
                 GridView_DepositA.SetRowCellValue(GridView_DepositA.FocusedRowHandle, "filename", XtraOpenFileDialog1.SafeFileName)

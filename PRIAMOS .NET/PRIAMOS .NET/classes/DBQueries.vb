@@ -37,7 +37,9 @@ Public Class DBQueries
 
 
     Public Function InsertNewDataFiles(ByVal control As DevExpress.XtraEditors.XtraOpenFileDialog, ByVal sTable As String, ByVal ID As String,
-                                       Optional ByVal ExtraFields As String = "", Optional ByVal ExtraValues As String = "", Optional ByVal PB As System.Windows.Forms.ProgressBar = Nothing) As Boolean
+                                       Optional ByVal ExtraFields As String = "", Optional ByVal ExtraValues As String = "",
+                                       Optional ByVal PB As System.Windows.Forms.ProgressBar = Nothing,
+                                       Optional ByVal BackupFileMode As Integer = 0) As Boolean
         Dim sSQL As New System.Text.StringBuilder
         Dim i As Integer
         Try
@@ -95,6 +97,7 @@ Public Class DBQueries
                 Using oCmd As New SqlCommand(sSQL.ToString, CNDB)
                     oCmd.ExecuteNonQuery()
                 End Using
+                If BackupFileMode > 0 Then BackupFiles(BackupFileMode, control.FileNames(i))
                 If PB IsNot Nothing Then PB.PerformStep()
             Next
             control.FileName = ""

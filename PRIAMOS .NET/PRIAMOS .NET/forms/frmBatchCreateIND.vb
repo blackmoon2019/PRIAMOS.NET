@@ -47,6 +47,7 @@ Public Class frmBatchCreateIND
                         oCmd.Parameters.AddWithValue("@RepName", cboRepname.Text)
                         oCmd.Parameters.AddWithValue("@CalcCatID", cboCalcCat.EditValue.ToString)
                         oCmd.Parameters.AddWithValue("@owner_tenant", cboOwnerTenant.SelectedIndex)
+                        oCmd.Parameters.AddWithValue("@Paid", chkPaid.EditValue)
                         oCmd.Parameters.AddWithValue("@createdby", UserProps.ID.ToString)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -148,6 +149,7 @@ Public Class frmBatchCreateIND
             sSQL.AppendLine("inhID = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "inhID").ToString) & ",")
             sSQL.AppendLine("repName = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "repName").ToString) & ",")
             sSQL.AppendLine("owner_Tenant = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "owner_tenant").ToString) & ",")
+            sSQL.AppendLine("Paid= " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "Paid").ToString) & ",")
             sSQL.AppendLine("amt = " & toSQLValueS(GridView5.GetRowCellValue(GridView5.FocusedRowHandle, "amt").ToString, True) & ",")
             sSQL.AppendLine("modifiedBY = " & toSQLValueS(UserProps.ID.ToString) & ",")
             sSQL.AppendLine("MachineName = " & toSQLValueS(UserProps.MachineName))
@@ -181,8 +183,8 @@ Public Class frmBatchCreateIND
         Try
             sSQL.Clear()
             If XtraMessageBox.Show("Θέλετε να δημιουργηθούν τα έξοδα στα παραστατικά?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then Exit Sub
-            sSQL.AppendLine("INSERT INTO IND (ID,InhID,CalcCatID,repName,amt,owner_tenant,createdOn,createdBy,MachineName)")
-            sSQL.AppendLine("SELECT ID,inhID,CalcCatID,repName,ISNULL(amt,0) AS amt,owner_tenant,createdOn,createdBy,MachineName")
+            sSQL.AppendLine("INSERT INTO IND (ID,InhID,CalcCatID,repName,amt,owner_tenant,Paid,createdOn,createdBy,MachineName)")
+            sSQL.AppendLine("SELECT ID,inhID,CalcCatID,repName,ISNULL(amt,0) AS amt,owner_tenant,Paid,createdOn,createdBy,MachineName")
             sSQL.AppendLine("FROM IND_BATCH")
             sSQL.AppendLine("WHERE amt<>0 and indCreated = 0 and CalcCatID IS NOT NULL AND InhID is Not Null")
             Using oCmd As New SqlCommand(sSQL.ToString, CNDB)

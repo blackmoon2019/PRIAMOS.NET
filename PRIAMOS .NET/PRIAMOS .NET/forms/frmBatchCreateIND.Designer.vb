@@ -72,6 +72,8 @@ Partial Class frmBatchCreateIND
         Me.BBOpenBdg = New DevExpress.XtraBars.BarButtonItem()
         Me.PopupMenuRows = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.images = New DevExpress.Utils.SvgImageCollection(Me.components)
+        Me.chkPaid = New DevExpress.XtraEditors.CheckEdit()
+        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.grdIND, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,10 +104,13 @@ Partial Class frmBatchCreateIND
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.images, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chkPaid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.chkPaid)
         Me.LayoutControl1.Controls.Add(Me.cmdRefresh)
         Me.LayoutControl1.Controls.Add(Me.cmdDel)
         Me.LayoutControl1.Controls.Add(Me.cmdCreateIND)
@@ -149,10 +154,10 @@ Partial Class frmBatchCreateIND
         'cmdCreateIND
         '
         Me.cmdCreateIND.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdCreateIND.Location = New System.Drawing.Point(1606, 1195)
+        Me.cmdCreateIND.Location = New System.Drawing.Point(1598, 1195)
         Me.cmdCreateIND.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdCreateIND.Name = "cmdCreateIND"
-        Me.cmdCreateIND.Size = New System.Drawing.Size(245, 39)
+        Me.cmdCreateIND.Size = New System.Drawing.Size(253, 39)
         Me.cmdCreateIND.StyleController = Me.LayoutControl1
         Me.cmdCreateIND.TabIndex = 57
         Me.cmdCreateIND.Text = "Δημιουργία Εξόδων"
@@ -315,10 +320,10 @@ Partial Class frmBatchCreateIND
         'cmdSaveINH
         '
         Me.cmdSaveINH.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_save_close_24
-        Me.cmdSaveINH.Location = New System.Drawing.Point(1705, 116)
+        Me.cmdSaveINH.Location = New System.Drawing.Point(1697, 116)
         Me.cmdSaveINH.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveINH.Name = "cmdSaveINH"
-        Me.cmdSaveINH.Size = New System.Drawing.Size(146, 39)
+        Me.cmdSaveINH.Size = New System.Drawing.Size(154, 39)
         Me.cmdSaveINH.StyleController = Me.LayoutControl1
         Me.cmdSaveINH.TabIndex = 55
         Me.cmdSaveINH.Text = "Καταχώρηση"
@@ -338,7 +343,7 @@ Partial Class frmBatchCreateIND
         Me.cboRepname.Properties.PopupSizeable = False
         Me.cboRepname.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.cboRepname.Properties.ValueMember = "name"
-        Me.cboRepname.Size = New System.Drawing.Size(620, 38)
+        Me.cboRepname.Size = New System.Drawing.Size(546, 38)
         Me.cboRepname.StyleController = Me.LayoutControl1
         Me.cboRepname.TabIndex = 53
         Me.cboRepname.Tag = "repname,0,1,2"
@@ -350,21 +355,21 @@ Partial Class frmBatchCreateIND
         '
         'cboOwnerTenant
         '
-        Me.cboOwnerTenant.Location = New System.Drawing.Point(1610, 61)
+        Me.cboOwnerTenant.Location = New System.Drawing.Point(1459, 61)
         Me.cboOwnerTenant.Margin = New System.Windows.Forms.Padding(5)
         Me.cboOwnerTenant.Name = "cboOwnerTenant"
         Me.cboOwnerTenant.Properties.AllowMouseWheel = False
         Me.cboOwnerTenant.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)})
         Me.cboOwnerTenant.Properties.Items.AddRange(New Object() {"Ιδιοκτήτης", "Ένοικος"})
         Me.cboOwnerTenant.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.cboOwnerTenant.Size = New System.Drawing.Size(228, 38)
+        Me.cboOwnerTenant.Size = New System.Drawing.Size(242, 38)
         Me.cboOwnerTenant.StyleController = Me.LayoutControl1
         Me.cboOwnerTenant.TabIndex = 52
         Me.cboOwnerTenant.Tag = "owner_tenant,0,1,2"
         '
         'cboCalcCat
         '
-        Me.cboCalcCat.Location = New System.Drawing.Point(1041, 61)
+        Me.cboCalcCat.Location = New System.Drawing.Point(967, 61)
         Me.cboCalcCat.Margin = New System.Windows.Forms.Padding(5)
         Me.cboCalcCat.Name = "cboCalcCat"
         Me.cboCalcCat.Properties.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.[True]
@@ -377,7 +382,7 @@ Partial Class frmBatchCreateIND
         Me.cboCalcCat.Properties.PopupSizeable = False
         Me.cboCalcCat.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.cboCalcCat.Properties.ValueMember = "ID"
-        Me.cboCalcCat.Size = New System.Drawing.Size(369, 38)
+        Me.cboCalcCat.Size = New System.Drawing.Size(292, 38)
         Me.cboCalcCat.StyleController = Me.LayoutControl1
         Me.cboCalcCat.TabIndex = 53
         Me.cboCalcCat.Tag = "repname,0,1,2"
@@ -395,7 +400,7 @@ Partial Class frmBatchCreateIND
         '
         Me.LayoutControlGroup1.AppearanceGroup.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question
         Me.LayoutControlGroup1.AppearanceGroup.Options.UseBorderColor = True
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem5})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem5, Me.LayoutControlItem9})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1843, 104)
@@ -405,9 +410,9 @@ Partial Class frmBatchCreateIND
         '
         Me.LayoutControlItem1.Control = Me.cboOwnerTenant
         Me.LayoutControlItem1.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(1389, 0)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(1238, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(428, 42)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(442, 42)
         Me.LayoutControlItem1.Tag = "1"
         Me.LayoutControlItem1.Text = "Ένοικος/Ιδιοκτήτης"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(184, 23)
@@ -418,7 +423,7 @@ Partial Class frmBatchCreateIND
         Me.LayoutControlItem2.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(820, 42)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(746, 42)
         Me.LayoutControlItem2.Tag = "1"
         Me.LayoutControlItem2.Text = "Λεκτικό Εκτύπωσης"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(184, 23)
@@ -429,9 +434,9 @@ Partial Class frmBatchCreateIND
         Me.LayoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
         Me.LayoutControlItem5.CustomizationFormText = "Κατηγορία Υπολογισμού"
         Me.LayoutControlItem5.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.rsz_11rsz_asterisk
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(820, 0)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(746, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(569, 42)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(492, 42)
         Me.LayoutControlItem5.Tag = "1"
         Me.LayoutControlItem5.Text = "Κατηγορία Χιλιοστών"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(184, 23)
@@ -439,9 +444,9 @@ Partial Class frmBatchCreateIND
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.cmdSaveINH
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(1693, 104)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(1685, 104)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(150, 43)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(158, 43)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -450,7 +455,7 @@ Partial Class frmBatchCreateIND
         Me.EmptySpaceItem2.AllowHotTrack = False
         Me.EmptySpaceItem2.Location = New System.Drawing.Point(30, 104)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1663, 43)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1655, 43)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem3
@@ -465,9 +470,9 @@ Partial Class frmBatchCreateIND
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.cmdCreateIND
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1594, 1183)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(1586, 1183)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(249, 43)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(257, 43)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
@@ -476,7 +481,7 @@ Partial Class frmBatchCreateIND
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(30, 1183)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1564, 43)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1556, 43)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem7
@@ -596,6 +601,30 @@ Partial Class frmBatchCreateIND
         Me.images.Add("exporttoxlsx", "image://svgimages/export/exporttoxlsx.svg")
         Me.images.Add("underlineword", "image://svgimages/outlook inspired/underlineword.svg")
         '
+        'chkPaid
+        '
+        Me.chkPaid.EditValue = CType(0, Byte)
+        Me.chkPaid.Location = New System.Drawing.Point(1705, 61)
+        Me.chkPaid.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.chkPaid.MenuManager = Me.BarManager1
+        Me.chkPaid.Name = "chkPaid"
+        Me.chkPaid.Properties.Caption = "Πληρωμένο"
+        Me.chkPaid.Properties.ValueChecked = CType(1, Byte)
+        Me.chkPaid.Properties.ValueUnchecked = CType(0, Byte)
+        Me.chkPaid.Size = New System.Drawing.Size(133, 32)
+        Me.chkPaid.StyleController = Me.LayoutControl1
+        Me.chkPaid.TabIndex = 89
+        Me.chkPaid.Tag = "paid,0,1,2"
+        '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.chkPaid
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(1680, 0)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(137, 42)
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem9.TextVisible = False
+        '
         'frmBatchCreateIND
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 23.0!)
@@ -638,6 +667,8 @@ Partial Class frmBatchCreateIND
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuRows, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.images, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chkPaid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -695,4 +726,6 @@ Partial Class frmBatchCreateIND
     Friend WithEvents PopupMenuRows As DevExpress.XtraBars.PopupMenu
     Private WithEvents images As DevExpress.Utils.SvgImageCollection
     Friend WithEvents colbdgID As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents chkPaid As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
 End Class

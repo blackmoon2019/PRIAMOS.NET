@@ -48,6 +48,18 @@ Public Class frmParameters
         'Path Εξόδων
         Prog_Prop.SetProgEX_PATHS(EX_FOLDER_PATH.EditValue.ToString, EX_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue.ToString)
 
+        'Path Αποθεματικών
+        Prog_Prop.SetProgDEP_PATHS(DEP_FOLDER_PATH.EditValue.ToString, DEP_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue.ToString)
+
+        'Path Τιμολογίων Πετρελαίου
+        Prog_Prop.SetProgOIL_PATHS(OIL_FOLDER_PATH.EditValue.ToString, OIL_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue.ToString)
+
+        'Path Τιμολογίων Φυσ. Αερίου
+        Prog_Prop.SetProgGAS_PATHS(GAS_FOLDER_PATH.EditValue.ToString, GAS_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue.ToString)
+
+        'Path Αρχείων Πολυκατοικιών
+        Prog_Prop.SetProgBDG_PATHS(BDG_FOLDER_PATH.EditValue.ToString, BDG_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue.ToString)
+
         XtraMessageBox.Show("Οι παράμετροι αποθηκεύτηκαν με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -80,6 +92,19 @@ Public Class frmParameters
                 'Path Εξόδων
                 EX_FOLDER_PATH.EditValue = Prog_Prop.GetProgEXFolderPath
                 EX_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue = Prog_Prop.GetProgEXFolderMoveOnSuccessPath
+                'Path Αποθεματικών
+                DEP_FOLDER_PATH.EditValue = Prog_Prop.GetProgDEPFolderPath
+                DEP_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue = Prog_Prop.GetProgDEPFolderMoveOnSuccessPath
+                'Path Τιμολογίων πετρελαίου
+                OIL_FOLDER_PATH.EditValue = Prog_Prop.GetProgOILFolderPath
+                OIL_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue = Prog_Prop.GetProgOILFolderMoveOnSuccessPath
+                'Path Τιμολογίων Φυσ. Αερίου
+                GAS_FOLDER_PATH.EditValue = Prog_Prop.GetProgGASFolderPath
+                GAS_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue = Prog_Prop.GetProgGASFolderMoveOnSuccessPath
+                'Path Αρχείων πολυκατοικιών
+                BDG_FOLDER_PATH.EditValue = Prog_Prop.GetProgBDGFolderPath
+                BDG_FOLDER_PATH_MOVE_ON_SUCCESS.EditValue = Prog_Prop.GetProgBDGFolderMoveOnSuccessPath
+
             Case 1
                 'Email Έκδοσης Κοινοχρήστων
                 Prog_Prop.GetProgInvoicesEmail()

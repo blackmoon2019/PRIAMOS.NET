@@ -108,6 +108,7 @@ Public Class CombosManager
         Else
             form1.Mode = FormMode.NewRecord
         End If
+        'form1.WindowState = FormWindowState.Maximized
         frmMain.XtraTabbedMdiManager1.Float(frmMain.XtraTabbedMdiManager1.Pages(form1), New Point(CInt(form1.Parent.ClientRectangle.Width / 2 - form1.Width / 2), CInt(form1.Parent.ClientRectangle.Height / 2 - form1.Height / 2)))
         form1.Show()
     End Sub

@@ -72,6 +72,18 @@ Public Class frmLogin
                     'Παράμετροι Φακέλλων Εξόδων
                     ProgProps.EXFolderPath = Prog_Prop.GetProgEXFolderPath
                     ProgProps.EXFolderMoveOnSuccessPath = Prog_Prop.GetProgEXFolderMoveOnSuccessPath
+                    'Path Αποθεματικών
+                    ProgProps.DEPFolderPath = Prog_Prop.GetProgDEPFolderPath
+                    ProgProps.DEPFolderMoveOnSuccessPath = Prog_Prop.GetProgDEPFolderMoveOnSuccessPath
+                    'Path Τιμολογίων πετρελαίου
+                    ProgProps.OILFolderPath = Prog_Prop.GetProgOILFolderPath
+                    ProgProps.OILFolderMoveOnSuccessPath = Prog_Prop.GetProgOILFolderMoveOnSuccessPath
+                    'Path Τιμολογίων Φυσ. Αερίου
+                    ProgProps.GASFolderPath = Prog_Prop.GetProgGASFolderPath
+                    ProgProps.GASFolderMoveOnSuccessPath = Prog_Prop.GetProgGASFolderMoveOnSuccessPath
+                    'Path Αρχείων πολυκατοικιών
+                    ProgProps.BDGFolderPath = Prog_Prop.GetProgBDGFolderPath
+                    ProgProps.BDGFolderMoveOnSuccessPath = Prog_Prop.GetProgBDGFolderMoveOnSuccessPath
                     sSQL = "UPDATE USR SET dtLogin = getdate(),Status = 1 where ID = " & toSQLValueS(UserProps.ID.ToString)
                     cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
 

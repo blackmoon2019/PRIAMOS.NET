@@ -30,10 +30,9 @@ Partial Class frmParameters
         Me.txtEmail = New DevExpress.XtraEditors.TextEdit()
         Me.txtVAT = New DevExpress.XtraEditors.TextEdit()
         Me.ADM = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
         Me.ANN_MENT = New DevExpress.XtraEditors.LookUpEdit()
-        Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EX_FOLDER_PATH = New DevExpress.XtraEditors.TextEdit()
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -43,6 +42,8 @@ Partial Class frmParameters
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.TabNavigationPage1 = New DevExpress.XtraBars.Navigation.TabNavigationPage()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.BODY_NOT_MANAGED = New DevExpress.XtraEditors.MemoEdit()
@@ -52,8 +53,6 @@ Partial Class frmParameters
         Me.BODY_RESEND = New DevExpress.XtraEditors.MemoEdit()
         Me.BODY_RECREATE = New DevExpress.XtraEditors.MemoEdit()
         Me.INVOICES_EMAIL = New DevExpress.XtraEditors.LookUpEdit()
-        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.BODY_SYG = New DevExpress.XtraEditors.MemoEdit()
         Me.BODY_RECEIPT = New DevExpress.XtraEditors.MemoEdit()
         Me.UNPAID_INVOICES = New DevExpress.XtraEditors.MemoEdit()
@@ -73,14 +72,31 @@ Partial Class frmParameters
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.DEP_FOLDER_PATH = New DevExpress.XtraEditors.TextEdit()
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlItem20 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem21 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.OIL_FOLDER_PATH = New DevExpress.XtraEditors.TextEdit()
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlItem22 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem23 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.GAS_FOLDER_PATH = New DevExpress.XtraEditors.TextEdit()
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlItem24 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem25 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.BDG_FOLDER_PATH = New DevExpress.XtraEditors.TextEdit()
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS = New DevExpress.XtraEditors.TextEdit()
+        Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem27 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.VwPARTNERANDWORKSHOPBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet = New PRIAMOS.NET.Priamos_NETDataSet()
+        Me.VwANNMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MAILSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Priamos_NETDataSet3 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.MAILSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSet3TableAdapters.MAILSTableAdapter()
         Me.Priamos_NETDataSet32 = New PRIAMOS.NET.Priamos_NETDataSet3()
         Me.Vw_PARTNER_AND_WORKSHOPTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_PARTNER_AND_WORKSHOPTableAdapter()
         Me.Vw_ANN_MENTSTableAdapter = New PRIAMOS.NET.Priamos_NETDataSetTableAdapters.vw_ANN_MENTSTableAdapter()
-        Me.EX_FOLDER_PATH = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.TabPane2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPane2.SuspendLayout()
         Me.TabNavigationPage3.SuspendLayout()
@@ -90,10 +106,9 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ANN_MENT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EX_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,6 +118,8 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabNavigationPage1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -111,8 +128,6 @@ Partial Class frmParameters
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_SYG.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BODY_RECEIPT.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UNPAID_INVOICES.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,11 +147,28 @@ Partial Class frmParameters
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DEP_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OIL_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GAS_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BDG_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EX_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabPane2
@@ -174,6 +206,14 @@ Partial Class frmParameters
         Me.LayoutControl2.Controls.Add(Me.ANN_MENT)
         Me.LayoutControl2.Controls.Add(Me.EX_FOLDER_PATH)
         Me.LayoutControl2.Controls.Add(Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS)
+        Me.LayoutControl2.Controls.Add(Me.DEP_FOLDER_PATH)
+        Me.LayoutControl2.Controls.Add(Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS)
+        Me.LayoutControl2.Controls.Add(Me.OIL_FOLDER_PATH)
+        Me.LayoutControl2.Controls.Add(Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS)
+        Me.LayoutControl2.Controls.Add(Me.GAS_FOLDER_PATH)
+        Me.LayoutControl2.Controls.Add(Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS)
+        Me.LayoutControl2.Controls.Add(Me.BDG_FOLDER_PATH)
+        Me.LayoutControl2.Controls.Add(Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS)
         Me.LayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl2.Margin = New System.Windows.Forms.Padding(5)
@@ -186,7 +226,7 @@ Partial Class frmParameters
         'cmdExit
         '
         Me.cmdExit.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdExit.Location = New System.Drawing.Point(1352, 306)
+        Me.cmdExit.Location = New System.Drawing.Point(1352, 642)
         Me.cmdExit.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdExit.Name = "cmdExit"
         Me.cmdExit.Size = New System.Drawing.Size(171, 39)
@@ -197,7 +237,7 @@ Partial Class frmParameters
         'cmdSaveGen
         '
         Me.cmdSaveGen.ImageOptions.Image = CType(resources.GetObject("cmdSaveGen.ImageOptions.Image"), System.Drawing.Image)
-        Me.cmdSaveGen.Location = New System.Drawing.Point(1169, 306)
+        Me.cmdSaveGen.Location = New System.Drawing.Point(1169, 642)
         Me.cmdSaveGen.Margin = New System.Windows.Forms.Padding(5)
         Me.cmdSaveGen.Name = "cmdSaveGen"
         Me.cmdSaveGen.Size = New System.Drawing.Size(179, 39)
@@ -208,7 +248,7 @@ Partial Class frmParameters
         'txtDecimals
         '
         Me.txtDecimals.EditValue = "0"
-        Me.txtDecimals.Location = New System.Drawing.Point(552, 12)
+        Me.txtDecimals.Location = New System.Drawing.Point(592, 12)
         Me.txtDecimals.Margin = New System.Windows.Forms.Padding(5)
         Me.txtDecimals.Name = "txtDecimals"
         Me.txtDecimals.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -217,24 +257,24 @@ Partial Class frmParameters
         Me.txtDecimals.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtDecimals.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtDecimals.Properties.MaskSettings.Set("mask", "n0")
-        Me.txtDecimals.Size = New System.Drawing.Size(971, 38)
+        Me.txtDecimals.Size = New System.Drawing.Size(931, 38)
         Me.txtDecimals.StyleController = Me.LayoutControl2
         Me.txtDecimals.TabIndex = 37
         Me.txtDecimals.Tag = ""
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(552, 96)
+        Me.txtEmail.Location = New System.Drawing.Point(592, 96)
         Me.txtEmail.Margin = New System.Windows.Forms.Padding(5)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(971, 38)
+        Me.txtEmail.Size = New System.Drawing.Size(931, 38)
         Me.txtEmail.StyleController = Me.LayoutControl2
         Me.txtEmail.TabIndex = 38
         '
         'txtVAT
         '
         Me.txtVAT.EditValue = "0"
-        Me.txtVAT.Location = New System.Drawing.Point(552, 54)
+        Me.txtVAT.Location = New System.Drawing.Point(592, 54)
         Me.txtVAT.Margin = New System.Windows.Forms.Padding(5)
         Me.txtVAT.Name = "txtVAT"
         Me.txtVAT.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -243,14 +283,14 @@ Partial Class frmParameters
         Me.txtVAT.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtVAT.Properties.MaskSettings.Set("MaskManagerType", GetType(DevExpress.Data.Mask.NumericMaskManager))
         Me.txtVAT.Properties.MaskSettings.Set("mask", "P0")
-        Me.txtVAT.Size = New System.Drawing.Size(971, 38)
+        Me.txtVAT.Size = New System.Drawing.Size(931, 38)
         Me.txtVAT.StyleController = Me.LayoutControl2
         Me.txtVAT.TabIndex = 37
         Me.txtVAT.Tag = "InvNumber,0,1,2"
         '
         'ADM
         '
-        Me.ADM.Location = New System.Drawing.Point(552, 138)
+        Me.ADM.Location = New System.Drawing.Point(592, 138)
         Me.ADM.Margin = New System.Windows.Forms.Padding(5)
         Me.ADM.Name = "ADM"
         Me.ADM.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -263,24 +303,14 @@ Partial Class frmParameters
         Me.ADM.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.ADM.Properties.PopupSizeable = False
         Me.ADM.Properties.ValueMember = "ID"
-        Me.ADM.Size = New System.Drawing.Size(971, 38)
+        Me.ADM.Size = New System.Drawing.Size(931, 38)
         Me.ADM.StyleController = Me.LayoutControl2
         Me.ADM.TabIndex = 45
         Me.ADM.Tag = "ADM"
         '
-        'VwPARTNERANDWORKSHOPBindingSource
-        '
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
-        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
-        '
-        'Priamos_NETDataSet
-        '
-        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
-        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ANN_MENT
         '
-        Me.ANN_MENT.Location = New System.Drawing.Point(552, 180)
+        Me.ANN_MENT.Location = New System.Drawing.Point(592, 180)
         Me.ANN_MENT.Margin = New System.Windows.Forms.Padding(5)
         Me.ANN_MENT.Name = "ANN_MENT"
         Me.ANN_MENT.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
@@ -293,21 +323,34 @@ Partial Class frmParameters
         Me.ANN_MENT.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.ANN_MENT.Properties.PopupSizeable = False
         Me.ANN_MENT.Properties.ValueMember = "ID"
-        Me.ANN_MENT.Size = New System.Drawing.Size(971, 38)
+        Me.ANN_MENT.Size = New System.Drawing.Size(931, 38)
         Me.ANN_MENT.StyleController = Me.LayoutControl2
         Me.ANN_MENT.TabIndex = 45
         Me.ANN_MENT.Tag = "ANN_MENT"
         '
-        'VwANNMENTSBindingSource
+        'EX_FOLDER_PATH
         '
-        Me.VwANNMENTSBindingSource.DataMember = "vw_ANN_MENTS"
-        Me.VwANNMENTSBindingSource.DataSource = Me.Priamos_NETDataSet
+        Me.EX_FOLDER_PATH.Location = New System.Drawing.Point(592, 222)
+        Me.EX_FOLDER_PATH.Margin = New System.Windows.Forms.Padding(5)
+        Me.EX_FOLDER_PATH.Name = "EX_FOLDER_PATH"
+        Me.EX_FOLDER_PATH.Size = New System.Drawing.Size(931, 38)
+        Me.EX_FOLDER_PATH.StyleController = Me.LayoutControl2
+        Me.EX_FOLDER_PATH.TabIndex = 38
+        '
+        'EX_FOLDER_PATH_MOVE_ON_SUCCESS
+        '
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Location = New System.Drawing.Point(592, 264)
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Margin = New System.Windows.Forms.Padding(5)
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Name = "EX_FOLDER_PATH_MOVE_ON_SUCCESS"
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Size = New System.Drawing.Size(931, 38)
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.StyleController = Me.LayoutControl2
+        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.TabIndex = 38
         '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem1, Me.EmptySpaceItem2, Me.LayoutControlItem13, Me.LayoutControlItem11, Me.LayoutControlItem10, Me.LayoutControlItem18, Me.LayoutControlItem19})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem52, Me.LayoutControlItem3, Me.LayoutControlItem2, Me.LayoutControlItem1, Me.EmptySpaceItem2, Me.LayoutControlItem13, Me.LayoutControlItem11, Me.LayoutControlItem10, Me.LayoutControlItem18, Me.LayoutControlItem19, Me.LayoutControlItem20, Me.LayoutControlItem21, Me.LayoutControlItem22, Me.LayoutControlItem23, Me.LayoutControlItem24, Me.LayoutControlItem25, Me.LayoutControlItem26, Me.LayoutControlItem27})
         Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1535, 1363)
         Me.LayoutControlGroup1.TextVisible = False
@@ -323,7 +366,7 @@ Partial Class frmParameters
         Me.LayoutControlItem52.Name = "LayoutControlItem52"
         Me.LayoutControlItem52.Size = New System.Drawing.Size(1515, 42)
         Me.LayoutControlItem52.Text = "Δεκαδικά"
-        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(528, 23)
+        Me.LayoutControlItem52.TextSize = New System.Drawing.Size(568, 23)
         '
         'LayoutControlItem3
         '
@@ -332,32 +375,32 @@ Partial Class frmParameters
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(1515, 42)
         Me.LayoutControlItem3.Text = "Technical Support Email"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(528, 23)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(568, 23)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cmdSaveGen
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1157, 294)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1157, 630)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(183, 1049)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(183, 713)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.cmdExit
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(1340, 294)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(1340, 630)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(175, 1049)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(175, 713)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 294)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 630)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1157, 1049)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1157, 713)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem13
@@ -371,7 +414,7 @@ Partial Class frmParameters
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
         Me.LayoutControlItem13.Size = New System.Drawing.Size(1515, 42)
         Me.LayoutControlItem13.Text = "ΦΠΑ"
-        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(528, 23)
+        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(568, 23)
         '
         'LayoutControlItem11
         '
@@ -382,7 +425,7 @@ Partial Class frmParameters
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(1515, 42)
         Me.LayoutControlItem11.Text = "Διαχείριση Προγράμματος - Προεπιλεγμένο Συνεργείο"
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(528, 23)
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(568, 23)
         '
         'LayoutControlItem10
         '
@@ -393,7 +436,29 @@ Partial Class frmParameters
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
         Me.LayoutControlItem10.Size = New System.Drawing.Size(1515, 42)
         Me.LayoutControlItem10.Text = "Μαζική Ενημέρωση Ανακοινώσεων- Προεπιλεγμένη Ανακοίνωση"
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(528, 23)
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'LayoutControlItem18
+        '
+        Me.LayoutControlItem18.Control = Me.EX_FOLDER_PATH
+        Me.LayoutControlItem18.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem18.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 210)
+        Me.LayoutControlItem18.Name = "LayoutControlItem18"
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem18.Text = "Default Path επισύναψης εξόδων"
+        Me.LayoutControlItem18.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'LayoutControlItem19
+        '
+        Me.LayoutControlItem19.Control = Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS
+        Me.LayoutControlItem19.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem19.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 252)
+        Me.LayoutControlItem19.Name = "LayoutControlItem19"
+        Me.LayoutControlItem19.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem19.Text = "Move On Succeed Path επισύναψης (Αφορά Έξοδα)"
+        Me.LayoutControlItem19.TextSize = New System.Drawing.Size(568, 23)
         '
         'TabNavigationPage1
         '
@@ -511,16 +576,6 @@ Partial Class frmParameters
         Me.INVOICES_EMAIL.StyleController = Me.LayoutControl1
         Me.INVOICES_EMAIL.TabIndex = 45
         Me.INVOICES_EMAIL.Tag = "INVOICES_EMAIL"
-        '
-        'MAILSBindingSource
-        '
-        Me.MAILSBindingSource.DataMember = "MAILS"
-        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
-        '
-        'Priamos_NETDataSet3
-        '
-        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
-        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BODY_SYG
         '
@@ -724,6 +779,191 @@ Partial Class frmParameters
         Me.LayoutControlItem16.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(321, 23)
         '
+        'DEP_FOLDER_PATH
+        '
+        Me.DEP_FOLDER_PATH.Location = New System.Drawing.Point(592, 306)
+        Me.DEP_FOLDER_PATH.Margin = New System.Windows.Forms.Padding(5)
+        Me.DEP_FOLDER_PATH.Name = "DEP_FOLDER_PATH"
+        Me.DEP_FOLDER_PATH.Size = New System.Drawing.Size(931, 38)
+        Me.DEP_FOLDER_PATH.StyleController = Me.LayoutControl2
+        Me.DEP_FOLDER_PATH.TabIndex = 38
+        '
+        'DEP_FOLDER_PATH_MOVE_ON_SUCCESS
+        '
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.Location = New System.Drawing.Point(592, 348)
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.Margin = New System.Windows.Forms.Padding(5)
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.Name = "DEP_FOLDER_PATH_MOVE_ON_SUCCESS"
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.Size = New System.Drawing.Size(931, 38)
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.StyleController = Me.LayoutControl2
+        Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.TabIndex = 38
+        '
+        'LayoutControlItem20
+        '
+        Me.LayoutControlItem20.Control = Me.DEP_FOLDER_PATH
+        Me.LayoutControlItem20.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem20.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem20.Location = New System.Drawing.Point(0, 294)
+        Me.LayoutControlItem20.Name = "LayoutControlItem20"
+        Me.LayoutControlItem20.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem20.Text = "Default Path επισύναψης (Αφορά Αποθεματικά)"
+        Me.LayoutControlItem20.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'LayoutControlItem21
+        '
+        Me.LayoutControlItem21.Control = Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS
+        Me.LayoutControlItem21.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem21.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem21.Location = New System.Drawing.Point(0, 336)
+        Me.LayoutControlItem21.Name = "LayoutControlItem21"
+        Me.LayoutControlItem21.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem21.Text = "Move On Succeed Path επισύναψης (Αφορά Αποθεματικά)"
+        Me.LayoutControlItem21.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'OIL_FOLDER_PATH
+        '
+        Me.OIL_FOLDER_PATH.Location = New System.Drawing.Point(592, 390)
+        Me.OIL_FOLDER_PATH.Margin = New System.Windows.Forms.Padding(5)
+        Me.OIL_FOLDER_PATH.Name = "OIL_FOLDER_PATH"
+        Me.OIL_FOLDER_PATH.Size = New System.Drawing.Size(931, 38)
+        Me.OIL_FOLDER_PATH.StyleController = Me.LayoutControl2
+        Me.OIL_FOLDER_PATH.TabIndex = 38
+        '
+        'OIL_FOLDER_PATH_MOVE_ON_SUCCESS
+        '
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.Location = New System.Drawing.Point(592, 432)
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.Margin = New System.Windows.Forms.Padding(5)
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.Name = "OIL_FOLDER_PATH_MOVE_ON_SUCCESS"
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.Size = New System.Drawing.Size(931, 38)
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.StyleController = Me.LayoutControl2
+        Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.TabIndex = 38
+        '
+        'LayoutControlItem22
+        '
+        Me.LayoutControlItem22.Control = Me.OIL_FOLDER_PATH
+        Me.LayoutControlItem22.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem22.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem22.Location = New System.Drawing.Point(0, 378)
+        Me.LayoutControlItem22.Name = "LayoutControlItem22"
+        Me.LayoutControlItem22.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem22.Text = "Default Path επισύναψης (Αφορά Τιμολόγια Πετρελαίου)"
+        Me.LayoutControlItem22.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'LayoutControlItem23
+        '
+        Me.LayoutControlItem23.Control = Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS
+        Me.LayoutControlItem23.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem23.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem23.Location = New System.Drawing.Point(0, 420)
+        Me.LayoutControlItem23.Name = "LayoutControlItem23"
+        Me.LayoutControlItem23.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem23.Text = "Move On Succeed Path επισύναψης (Αφορά Τιμολόγια Πετρελαίου)"
+        Me.LayoutControlItem23.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'GAS_FOLDER_PATH
+        '
+        Me.GAS_FOLDER_PATH.Location = New System.Drawing.Point(592, 474)
+        Me.GAS_FOLDER_PATH.Margin = New System.Windows.Forms.Padding(5)
+        Me.GAS_FOLDER_PATH.Name = "GAS_FOLDER_PATH"
+        Me.GAS_FOLDER_PATH.Size = New System.Drawing.Size(931, 38)
+        Me.GAS_FOLDER_PATH.StyleController = Me.LayoutControl2
+        Me.GAS_FOLDER_PATH.TabIndex = 38
+        '
+        'GAS_FOLDER_PATH_MOVE_ON_SUCCESS
+        '
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.Location = New System.Drawing.Point(592, 516)
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.Margin = New System.Windows.Forms.Padding(5)
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.Name = "GAS_FOLDER_PATH_MOVE_ON_SUCCESS"
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.Size = New System.Drawing.Size(931, 38)
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.StyleController = Me.LayoutControl2
+        Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.TabIndex = 38
+        '
+        'LayoutControlItem24
+        '
+        Me.LayoutControlItem24.Control = Me.GAS_FOLDER_PATH
+        Me.LayoutControlItem24.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem24.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem24.Location = New System.Drawing.Point(0, 462)
+        Me.LayoutControlItem24.Name = "LayoutControlItem24"
+        Me.LayoutControlItem24.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem24.Text = "Default Path επισύναψης (Αφορά Τιμολόγια Φυσ. Αερίου)"
+        Me.LayoutControlItem24.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'LayoutControlItem25
+        '
+        Me.LayoutControlItem25.Control = Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS
+        Me.LayoutControlItem25.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem25.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem25.Location = New System.Drawing.Point(0, 504)
+        Me.LayoutControlItem25.Name = "LayoutControlItem25"
+        Me.LayoutControlItem25.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem25.Text = "Move On Succeed Path επισύναψης (Αφορά Τιμολόγια Φυσ. Αερίου)"
+        Me.LayoutControlItem25.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'BDG_FOLDER_PATH
+        '
+        Me.BDG_FOLDER_PATH.Location = New System.Drawing.Point(592, 558)
+        Me.BDG_FOLDER_PATH.Margin = New System.Windows.Forms.Padding(5)
+        Me.BDG_FOLDER_PATH.Name = "BDG_FOLDER_PATH"
+        Me.BDG_FOLDER_PATH.Size = New System.Drawing.Size(931, 38)
+        Me.BDG_FOLDER_PATH.StyleController = Me.LayoutControl2
+        Me.BDG_FOLDER_PATH.TabIndex = 38
+        '
+        'BDG_FOLDER_PATH_MOVE_ON_SUCCESS
+        '
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.Location = New System.Drawing.Point(592, 600)
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.Margin = New System.Windows.Forms.Padding(5)
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.Name = "BDG_FOLDER_PATH_MOVE_ON_SUCCESS"
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.Size = New System.Drawing.Size(931, 38)
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.StyleController = Me.LayoutControl2
+        Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.TabIndex = 38
+        '
+        'LayoutControlItem26
+        '
+        Me.LayoutControlItem26.Control = Me.BDG_FOLDER_PATH
+        Me.LayoutControlItem26.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem26.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem26.Location = New System.Drawing.Point(0, 546)
+        Me.LayoutControlItem26.Name = "LayoutControlItem26"
+        Me.LayoutControlItem26.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem26.Text = "Default Path επισύναψης (Αφορά αρχεία πολυκατοικίας)"
+        Me.LayoutControlItem26.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'LayoutControlItem27
+        '
+        Me.LayoutControlItem27.Control = Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS
+        Me.LayoutControlItem27.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
+        Me.LayoutControlItem27.CustomizationFormText = "Technical Support Email"
+        Me.LayoutControlItem27.Location = New System.Drawing.Point(0, 588)
+        Me.LayoutControlItem27.Name = "LayoutControlItem27"
+        Me.LayoutControlItem27.Size = New System.Drawing.Size(1515, 42)
+        Me.LayoutControlItem27.Text = "Move On Succeed Path επισύναψης (Αφορά αρχεία πολυκατοικίας)"
+        Me.LayoutControlItem27.TextSize = New System.Drawing.Size(568, 23)
+        '
+        'VwPARTNERANDWORKSHOPBindingSource
+        '
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataMember = "vw_PARTNER_AND_WORKSHOP"
+        Me.VwPARTNERANDWORKSHOPBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'Priamos_NETDataSet
+        '
+        Me.Priamos_NETDataSet.DataSetName = "Priamos_NETDataSet"
+        Me.Priamos_NETDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VwANNMENTSBindingSource
+        '
+        Me.VwANNMENTSBindingSource.DataMember = "vw_ANN_MENTS"
+        Me.VwANNMENTSBindingSource.DataSource = Me.Priamos_NETDataSet
+        '
+        'MAILSBindingSource
+        '
+        Me.MAILSBindingSource.DataMember = "MAILS"
+        Me.MAILSBindingSource.DataSource = Me.Priamos_NETDataSet3
+        '
+        'Priamos_NETDataSet3
+        '
+        Me.Priamos_NETDataSet3.DataSetName = "Priamos_NETDataSet3"
+        Me.Priamos_NETDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'MAILSTableAdapter
         '
         Me.MAILSTableAdapter.ClearBeforeFill = True
@@ -740,46 +980,6 @@ Partial Class frmParameters
         'Vw_ANN_MENTSTableAdapter
         '
         Me.Vw_ANN_MENTSTableAdapter.ClearBeforeFill = True
-        '
-        'EX_FOLDER_PATH
-        '
-        Me.EX_FOLDER_PATH.Location = New System.Drawing.Point(552, 222)
-        Me.EX_FOLDER_PATH.Margin = New System.Windows.Forms.Padding(5)
-        Me.EX_FOLDER_PATH.Name = "EX_FOLDER_PATH"
-        Me.EX_FOLDER_PATH.Size = New System.Drawing.Size(971, 38)
-        Me.EX_FOLDER_PATH.StyleController = Me.LayoutControl2
-        Me.EX_FOLDER_PATH.TabIndex = 38
-        '
-        'LayoutControlItem18
-        '
-        Me.LayoutControlItem18.Control = Me.EX_FOLDER_PATH
-        Me.LayoutControlItem18.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem18.CustomizationFormText = "Technical Support Email"
-        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 210)
-        Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(1515, 42)
-        Me.LayoutControlItem18.Text = "Default Path επισύναψης εξόδων"
-        Me.LayoutControlItem18.TextSize = New System.Drawing.Size(528, 23)
-        '
-        'EX_FOLDER_PATH_MOVE_ON_SUCCESS
-        '
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Location = New System.Drawing.Point(552, 264)
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Margin = New System.Windows.Forms.Padding(5)
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Name = "EX_FOLDER_PATH_MOVE_ON_SUCCESS"
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Size = New System.Drawing.Size(971, 38)
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.StyleController = Me.LayoutControl2
-        Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.TabIndex = 38
-        '
-        'LayoutControlItem19
-        '
-        Me.LayoutControlItem19.Control = Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS
-        Me.LayoutControlItem19.ControlAlignment = System.Drawing.ContentAlignment.TopLeft
-        Me.LayoutControlItem19.CustomizationFormText = "Technical Support Email"
-        Me.LayoutControlItem19.Location = New System.Drawing.Point(0, 252)
-        Me.LayoutControlItem19.Name = "LayoutControlItem19"
-        Me.LayoutControlItem19.Size = New System.Drawing.Size(1515, 42)
-        Me.LayoutControlItem19.Text = "Move On Succeed Path επισύναψης εξόδων"
-        Me.LayoutControlItem19.TextSize = New System.Drawing.Size(528, 23)
         '
         'frmParameters
         '
@@ -801,10 +1001,9 @@ Partial Class frmParameters
         CType(Me.txtEmail.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtVAT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ADM.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ANN_MENT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EX_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -814,6 +1013,8 @@ Partial Class frmParameters
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabNavigationPage1.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
@@ -822,8 +1023,6 @@ Partial Class frmParameters
         CType(Me.BODY_RESEND.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RECREATE.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INVOICES_EMAIL.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_SYG.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BODY_RECEIPT.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UNPAID_INVOICES.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -843,11 +1042,28 @@ Partial Class frmParameters
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DEP_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DEP_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OIL_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OIL_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GAS_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GAS_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BDG_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BDG_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwPARTNERANDWORKSHOPBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VwANNMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MAILSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Priamos_NETDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Priamos_NETDataSet32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EX_FOLDER_PATH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EX_FOLDER_PATH_MOVE_ON_SUCCESS.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -912,4 +1128,20 @@ Partial Class frmParameters
     Friend WithEvents LayoutControlItem18 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EX_FOLDER_PATH_MOVE_ON_SUCCESS As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem19 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents DEP_FOLDER_PATH As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents DEP_FOLDER_PATH_MOVE_ON_SUCCESS As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem20 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem21 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents OIL_FOLDER_PATH As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents OIL_FOLDER_PATH_MOVE_ON_SUCCESS As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents GAS_FOLDER_PATH As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents GAS_FOLDER_PATH_MOVE_ON_SUCCESS As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem22 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem23 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem24 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem25 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents BDG_FOLDER_PATH As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents BDG_FOLDER_PATH_MOVE_ON_SUCCESS As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem26 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem27 As DevExpress.XtraLayout.LayoutControlItem
 End Class

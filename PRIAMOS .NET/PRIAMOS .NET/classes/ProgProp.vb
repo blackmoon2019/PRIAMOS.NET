@@ -76,6 +76,8 @@ Public Class ProgProp
         End Try
 
     End Sub
+
+
     Public Sub SetProgEX_PATHS(ByVal sValue As String, ByVal sValue1 As String)
         Dim sSQL As String
         Dim cmd As SqlCommand
@@ -89,6 +91,59 @@ Public Class ProgProp
         End Try
 
     End Sub
+    Public Sub SetProgDEP_PATHS(ByVal sValue As String, ByVal sValue1 As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'DEP_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            sSQL = "Update PRM set val = '" & sValue1 & "' where prm= 'DEP_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub SetProgOIL_PATHS(ByVal sValue As String, ByVal sValue1 As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'OIL_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            sSQL = "Update PRM set val = '" & sValue1 & "' where prm= 'OIL_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub SetProgGAS_PATHS(ByVal sValue As String, ByVal sValue1 As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'GAS_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            sSQL = "Update PRM set val = '" & sValue1 & "' where prm= 'GAS_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+    Public Sub SetProgBDG_PATHS(ByVal sValue As String, ByVal sValue1 As String)
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Try
+            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'BDG_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+            sSQL = "Update PRM set val = '" & sValue1 & "' where prm= 'BDG_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Sub
+
 
     Public Sub GetProgInvoicesEmail()
         Dim sSQL As String
@@ -220,6 +275,135 @@ Public Class ProgProp
         End Try
 
     End Function
+    Public Function GetProgDEPFolderPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'DEP_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.DEPFolderPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.DEPFolderPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgDEPFolderMoveOnSuccessPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'DEP_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.DEPFolderMoveOnSuccessPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.DEPFolderMoveOnSuccessPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgOILFolderPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'OIL_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.OILFolderPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.OILFolderPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgOILFolderMoveOnSuccessPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'OIL_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.OILFolderMoveOnSuccessPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.OILFolderMoveOnSuccessPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgGASFolderPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'GAS_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.GASFolderPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.GASFolderPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgGASFolderMoveOnSuccessPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'GAS_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.GASFolderMoveOnSuccessPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.GASFolderMoveOnSuccessPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgBDGFolderPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'BDG_FOLDER_PATH'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.BDGFolderPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.BDGFolderPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+    Public Function GetProgBDGFolderMoveOnSuccessPath() As String
+        Dim sSQL As String
+        Dim cmd As SqlCommand
+        Dim sdr As SqlDataReader
+        Try
+            sSQL = "select val FROM PRM where prm= 'BDG_FOLDER_PATH_MOVE_ON_SUCCESS'"
+            cmd = New SqlCommand(sSQL, CNDB)
+            sdr = cmd.ExecuteReader()
+            If (sdr.Read() = True) Then ProgProps.BDGFolderMoveOnSuccessPath = sdr.GetString(sdr.GetOrdinal("VAL"))
+            sdr.Close()
+            Return ProgProps.BDGFolderMoveOnSuccessPath
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+    End Function
+
 
     Public Sub SetProgTechSupportEmail(ByVal sValue As String)
         Dim sSQL As String
@@ -273,15 +457,4 @@ Public Class ProgProp
 
     End Sub
 
-    Public Sub SetProgEXFolderPath(ByVal sValue As String)
-        Dim sSQL As String
-        Dim cmd As SqlCommand
-        Try
-            sSQL = "Update PRM set val = '" & sValue & "' where prm= 'EX_FOLDER_PATH'"
-            cmd = New SqlCommand(sSQL, CNDB) : cmd.ExecuteNonQuery()
-        Catch ex As Exception
-            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-
-    End Sub
 End Class
