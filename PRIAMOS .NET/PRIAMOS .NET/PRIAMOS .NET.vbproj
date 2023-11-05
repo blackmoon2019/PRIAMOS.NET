@@ -1016,11 +1016,18 @@
     <Content Include="Sql Scripts\CalculateAndReturnDepositA.sql" />
     <Content Include="Sql Scripts\col_Calculate.sql" />
     <Content Include="Sql Scripts\dbo.AddNewFormRights.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.batch_create_ind.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.batch_create_inv.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CalculateAndReturnDepositA_StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CalculateAndReturnDepositR_StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CalculateOilAvgPerBDG_StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CalculateOilAvg_StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.CalculateunchargableOil_StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.ChangeAPTOrder.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.col_AutoCalculate.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.col_Calculate.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.col_H_Calculate.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.consumption_Calculate_StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.CreateAHPB.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.CreateInvNumbers.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.inv_Calculate.StoredProcedure.sql" />
@@ -1029,11 +1036,11 @@
     <Content Include="Sql Scripts\dbo.inv_CreateFromTransfer.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.inv_Results.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.inv_SharingDifferences.StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.OIL_Calculate_StoredProcedure.sql" />
+    <Content Include="Sql Scripts\dbo.oil_cancelCalculate_StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.RepClosed.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.SetUserView.StoredProcedure.sql" />
     <Content Include="Sql Scripts\dbo.uspAddUser.StoredProcedure.sql" />
-    <Content Include="Sql Scripts\INV_CALCULATE.sql" />
-    <Content Include="Sql Scripts\inv_cancelCalculate.sql" />
     <None Include="Priamos_NETDataSet_SUPPORT.xsc">
       <DependentUpon>Priamos_NETDataSet_SUPPORT.xsd</DependentUpon>
     </None>
