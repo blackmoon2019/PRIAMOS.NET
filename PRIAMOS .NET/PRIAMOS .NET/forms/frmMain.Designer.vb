@@ -104,6 +104,7 @@ Partial Class frmMain
         Me.BBMeasurementCat = New DevExpress.XtraBars.BarButtonItem()
         Me.BBINVOIL = New DevExpress.XtraBars.BarButtonItem()
         Me.BBINVGAS = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RPG1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup9 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -131,7 +132,6 @@ Partial Class frmMain
         Me.XtraTabbedMdiManager1 = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemCalcEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -826,6 +826,14 @@ Partial Class frmMain
         Me.BBINVGAS.Name = "BBINVGAS"
         Me.BBINVGAS.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'BarButtonItem4
+        '
+        Me.BarButtonItem4.Caption = "Συνεργία ανα Πολυκατοικία"
+        Me.BarButtonItem4.Id = 93
+        Me.BarButtonItem4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cashbook_48
+        Me.BarButtonItem4.Name = "BarButtonItem4"
+        Me.BarButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RPG1, Me.RibbonPageGroup9, Me.RibbonPageGroup1})
@@ -879,7 +887,6 @@ Partial Class frmMain
         Me.RibbonPageGroup8.ItemLinks.Add(Me.BBParoches)
         Me.RibbonPageGroup8.ItemLinks.Add(Me.BBINVOIL)
         Me.RibbonPageGroup8.ItemLinks.Add(Me.BBINVGAS)
-        Me.RibbonPageGroup8.ItemLinks.Add(Me.BarButtonItem4)
         Me.RibbonPageGroup8.Name = "RibbonPageGroup8"
         Me.RibbonPageGroup8.Text = "Reports"
         '
@@ -1051,14 +1058,6 @@ Partial Class frmMain
         '
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 1000
-        '
-        'BarButtonItem4
-        '
-        Me.BarButtonItem4.Caption = "Συνεργία ανα Πολυκατοικία"
-        Me.BarButtonItem4.Id = 93
-        Me.BarButtonItem4.ImageOptions.Image = Global.PRIAMOS.NET.My.Resources.Resources.icons8_cashbook_48
-        Me.BarButtonItem4.Name = "BarButtonItem4"
-        Me.BarButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'frmMain
         '

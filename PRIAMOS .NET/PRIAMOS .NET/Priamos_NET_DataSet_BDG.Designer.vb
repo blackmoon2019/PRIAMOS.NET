@@ -7697,7 +7697,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
                     ByVal MeasurerName As String,
                     ByVal dtMeasurement As Date,
                     ByVal invOilID As System.Guid,
-                    ByVal invNumber As Integer,
+                    ByVal invNumber As String,
                     ByVal invDate As Date,
                     ByVal mes As Decimal,
                     ByVal mesB As Decimal,
@@ -7808,7 +7808,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columndtMeasurement)
             Me.columninvOilID = New Global.System.Data.DataColumn("invOilID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columninvOilID)
-            Me.columninvNumber = New Global.System.Data.DataColumn("invNumber", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columninvNumber = New Global.System.Data.DataColumn("invNumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columninvNumber)
             Me.columninvDate = New Global.System.Data.DataColumn("invDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columninvDate)
@@ -7848,6 +7848,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             Me.columnbdgNam.MaxLength = 250
             Me.columnMeasurerName.MaxLength = 100
             Me.columndtMeasurement.AllowDBNull = False
+            Me.columninvNumber.MaxLength = 50
             Me.columncalculated.AllowDBNull = False
             Me.columnINHCalculated.ReadOnly = True
         End Sub
@@ -9289,7 +9290,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Public Overloads Function Addvw_INV_OILDRow(
-                    ByVal invNumber As Integer,
+                    ByVal invNumber As String,
                     ByVal invDate As Date,
                     ByVal liters As Decimal,
                     ByVal createdOn As Date,
@@ -9376,7 +9377,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
         Private Sub InitClass()
-            Me.columninvNumber = New Global.System.Data.DataColumn("invNumber", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columninvNumber = New Global.System.Data.DataColumn("invNumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columninvNumber)
             Me.columninvDate = New Global.System.Data.DataColumn("invDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columninvDate)
@@ -9434,6 +9435,7 @@ Partial Public Class Priamos_NET_DataSet_BDG
             MyBase.Columns.Add(Me.columntankID)
             Me.columnprice = New Global.System.Data.DataColumn("price", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnprice)
+            Me.columninvNumber.MaxLength = 50
             Me.columnliters.AllowDBNull = False
             Me.columncreatedOn.AllowDBNull = False
             Me.columnRealName.MaxLength = 200
@@ -16126,10 +16128,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public Property invNumber() As Integer
+        Public Property invNumber() As String
             Get
                 Try
-                    Return CType(Me(Me.tablevw_TANK.invNumberColumn), Integer)
+                    Return CType(Me(Me.tablevw_TANK.invNumberColumn), String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'invNumber' in table 'vw_TANK' is DBNull.", e)
                 End Try
@@ -17452,10 +17454,10 @@ Partial Public Class Priamos_NET_DataSet_BDG
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>
-        Public Property invNumber() As Integer
+        Public Property invNumber() As String
             Get
                 Try
-                    Return CType(Me(Me.tablevw_INV_OILD.invNumberColumn), Integer)
+                    Return CType(Me(Me.tablevw_INV_OILD.invNumberColumn), String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'invNumber' in table 'vw_INV_OILD' is DBNull.", e)
                 End Try

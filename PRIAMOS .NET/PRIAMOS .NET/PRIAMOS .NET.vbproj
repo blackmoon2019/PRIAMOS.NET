@@ -920,6 +920,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\ClosedAPTSmall.resx">
       <DependentUpon>ClosedAPTSmall.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Eidop\Eidop.resx">
       <DependentUpon>Eidop.vb</DependentUpon>
@@ -942,6 +943,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sygentrotiki\ClosedAPT.resx">
       <DependentUpon>ClosedAPT.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Sygentrotiki\EXODA.resx">
       <DependentUpon>EXODA.vb</DependentUpon>

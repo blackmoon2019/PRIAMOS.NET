@@ -1395,7 +1395,7 @@ Public Class frmBDG
         Dim mes As Decimal, mesB As Decimal
         If Valid.ValidateFormGRP(LayoutControlGroup5) Then
             Dim sOID As String = System.Guid.NewGuid.ToString
-            mesB = txtOInvBefMes.EditValue : mes = txtOInvMes.EditValue
+            mesB = txtOInvBefMes.Text : mes = txtOInvMes.Text
             If mesB > mes Then
                 XtraMessageBox.Show("Δεν μπορεί η προμέτρηση να είναι μεγαλύτερη από την επιμέτρηση", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
