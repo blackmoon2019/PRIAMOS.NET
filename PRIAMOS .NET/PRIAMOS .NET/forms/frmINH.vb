@@ -350,14 +350,26 @@ Public Class frmINH
                             If INH.InsertINDFixedConsumption(sGuid, cboBDG.EditValue.ToString, "", 1, cboInvGas) = False Then Exit Sub
 
 
-                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-                            If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
-                                If INH.InsertINDConsumption(sGuid, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString), toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
-                                    Exit Sub
+                            If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                                        cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or
+                                        cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                                        cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+                                If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
+                                    If cboAhpbH.EditValue IsNot Nothing Then
+                                        ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                        If INH.InsertINDConsumption(sGuid, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString)) Then
+                                        End If
+                                    End If
+                                    If cboAhpbHB.EditValue IsNot Nothing Then
+                                        ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                        If INH.InsertINDConsumption(sGuid, toSQLValueS(cboBDG.EditValue.ToString),, toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
+                                        End If
+                                    End If
+
+                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sGuid))
+                                    grdIND.DataSource = VwINDBindingSource
                                 End If
                             End If
-                            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sGuid))
-                            grdIND.DataSource = VwINDBindingSource
                         End If
                     Case FormMode.EditRecord
                         If chkCalorimetric.CheckState = CheckState.Checked Then
@@ -1052,7 +1064,11 @@ Public Class frmINH
             If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
             cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
                 If sindHID.Length > 0 And cboAhpbH.EditValue Is Nothing Then
-                    sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindHID)
+                    sSQL = "DELETE IND 
+                            FROM IND
+                            inner join INH on INH.id = IND.inhID
+                            inner join BDG on INH.bdgid = BDG.ID
+                            where isManaged = 1 and IND.ID = " & toSQLValueS(sindHID)
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -1065,7 +1081,11 @@ Public Class frmINH
             If (cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
            cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
                 If sindBID.Length > 0 And cboAhpbHB.EditValue Is Nothing Then
-                    sSQL = "DELETE FROM IND where ID = " & toSQLValueS(sindBID)
+                    sSQL = "DELETE IND 
+                            FROM IND 
+                            inner join INH on INH.id = IND.inhID
+                            inner join BDG on INH.bdgid = BDG.ID
+                            where isManaged = 1 and IND.ID = " & toSQLValueS(sindBID)
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -1232,6 +1252,10 @@ Public Class frmINH
 
     Private Sub cmdNewInh_Click(sender As Object, e As EventArgs) Handles cmdNewInh.Click
         Mode = FormMode.NewRecord
+        ClearForm()
+        Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.NewGuid)
+    End Sub
+    Private Sub ClearForm()
         Cls.ClearGroupCtrls(LayoutControlGroup1) : Cls.ClearGroupCtrls(LayoutControlGroup2)
         txtCode.Text = DBQ.GetNextId("INH")
         LayoutControlGroup2.Enabled = False
@@ -1239,22 +1263,20 @@ Public Class frmINH
         LcmdCalculate.Enabled = False
         cmdDel.Enabled = False
         LcmdCancelInvoice.Enabled = False
-        'chkCALC_CAT.DataSource = Nothing:chkCALC_CAT.Items.Clear()
         cboCALC_CAT.Properties.DataSource = Nothing
         TabNavigationPage2.Enabled = False
         TabNavigationPage3.Enabled = False
         txtComments.EditValue = Nothing
         txtBdgCmt.EditValue = Nothing
         grdIND.DataSource = Nothing
+        cboInvOil.SetEditValue(-1) : cboInvGas.SetEditValue(-1)
         lbldate.Text = " " : lblInf2.Text = "" : lblInf.Text = "" : lblInf3.Text = "" : lblInf4.Text = ""
         chkCalorimetric.Checked = False : chkExtraordinary.Checked = False : chkFromTransfer.Checked = False : chkreserveAPT.Checked = False
         chkCalculated.Checked = False : chkEmail.Checked = False : chkPrintEidop.Checked = False : chkPrintReceipt.Checked = False : chkPrintSyg.Checked = False
         cmdCalculate.Enabled = False : cmdCancelCalculate.Enabled = False
         BarSygentrotiki.Enabled = False : BarReceipt.Enabled = False : BarEidop.Enabled = False
         LcmdSaveINH.Enabled = True
-        Me.Vw_INHTableAdapter.FillBybdgID(Me.Priamos_NET_DataSet_INH.vw_INH, System.Guid.NewGuid)
     End Sub
-
     Private Sub RepositoryItemLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemLookUpEdit2.ButtonClick
         Select Case e.Button.Index
             Case 1 : FilesSelection()
@@ -1398,10 +1420,12 @@ Public Class frmINH
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then sID = sdr.GetGuid(sdr.GetOrdinal("ID").ToString).ToString
             sdr.Close()
-            'LoadForms.LoadFormGRP(LayoutControlGroup1, "Select * from vw_INH where id ='" + sID + "'", False)
             txtColAnnouncement.EditValue = Nothing
-            InhFieldAndValues = New Dictionary(Of String, String)
+            cboInvOil.SetEditValue(-1) : cboInvGas.SetEditValue(-1)
+            cboInvOil.EditValue = Nothing : cboInvGas.EditValue = Nothing
             cboAnnouncements.EditValue = Nothing
+            lblInf.Text = "" : lblInf2.Text = "" : lblInf3.Text = "" : lblInf4.Text = ""
+            InhFieldAndValues = New Dictionary(Of String, String)
             LoadForms.LoadForm(LayoutControl1, "Select * from vw_INH where id = " & toSQLValueS(sID), False, InhFieldAndValues)
             If InhFieldAndValues.Item("mdt") <> "" Then lblInf.Text = "Το παραστατικό υπολογίσθηκε με ώρες θέρμανσης: " & CDate(InhFieldAndValues.Item("mdt")).ToString("dd/MM/yyyy") : cboAhpbH.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HID")) Else lblInf.Text = "" : cboAhpbH.EditValue = Nothing
             If InhFieldAndValues.Item("mdtBoiler") <> "" Then lblInf2.Text = "Το παραστατικό υπολογίσθηκε με ώρες Boiler: " & CDate(InhFieldAndValues.Item("mdtBoiler")).ToString("dd/MM/yyyy") : cboAhpbHB.EditValue = System.Guid.Parse(InhFieldAndValues.Item("ahpb_HIDB")) Else lblInf2.Text = "" : cboAhpbHB.EditValue = Nothing
@@ -1415,8 +1439,16 @@ Public Class frmINH
             End If
 
             If cboInvOil.Properties.GetItems.Count <> 0 Or cboInvGas.Properties.GetItems.Count <> 0 Then
-                cmd = New SqlCommand("Select 1 as sKey,invOilID as invOilGasID from IND where invOilID is not null and inhID = " & toSQLValueS(sID) &
-                                                     "UNION Select 2 as sKey,invGasID as invOilGasID from IND where invGasID is not null and inhID = " & toSQLValueS(sID), CNDB)
+                'cmd = New SqlCommand("Select 1 as sKey,invOilID as invOilGasID from IND where invOilID is not null and inhID = " & toSQLValueS(sID) &
+                '                                    "UNION Select 2 as sKey,invGasID as invOilGasID from IND where invGasID is not null and inhID = " & toSQLValueS(sID), CNDB)
+                cmd = New SqlCommand("Select 1 as sKey,invOilID as invOilGasID from IND 
+                                                                inner join INH   ON INH.id = IND.inhID where calculated= 0 and 
+                                                                invOilID is not null and inhID = " & toSQLValueS(sID) &
+                                                    "UNION      Select 2 as sKey,invGasID as invOilGasID 
+                                                                from IND inner join INH   ON INH.id = IND.inhID where calculated= 0 and 
+                                                                invGasID is not null and inhID = " & toSQLValueS(sID), CNDB)
+
+
                 sdr = cmd.ExecuteReader()
                 If sdr.HasRows Then
                     While sdr.Read()
@@ -1444,9 +1476,12 @@ Public Class frmINH
             End If
             If chkCalculated.Checked = True Then
                 LcmdCancelCalculate.Enabled = True : LcmdCalculate.Enabled = False : GridView5.OptionsBehavior.Editable = False : cmdSaveInd.Enabled = False
+                LcmdSaveINH.Enabled = False
             Else
                 LcmdCancelCalculate.Enabled = False : LcmdCalculate.Enabled = True : GridView5.OptionsBehavior.Editable = True : cmdSaveInd.Enabled = True
+                LcmdSaveINH.Enabled = True
             End If
+            If chkExtraordinary.CheckState = CheckState.Checked Then LcmdSaveINH.Enabled = False
             If TabPane1.SelectedPageIndex = 1 Then EditRecord()
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)

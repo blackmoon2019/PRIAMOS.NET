@@ -1,4 +1,5 @@
-﻿Imports DevExpress.XtraLayout
+﻿Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraLayout
 
 Public Class ClearControls
     Public Sub ClearCtrls(ByVal control As DevExpress.XtraLayout.LayoutControl, Optional ExceptFields As List(Of String) = Nothing)
@@ -134,7 +135,10 @@ NextItem:
                                 Else
                                     txt.EditValue = ""
                                 End If
-
+                            ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckedComboBoxEdit Then
+                                Dim cbo As DevExpress.XtraEditors.CheckedComboBoxEdit
+                                cbo = Ctrl
+                                cbo.SetEditValue(-1)
                             ElseIf TypeOf Ctrl Is DevExpress.XtraEditors.CheckEdit Then
                                 Dim chk As DevExpress.XtraEditors.CheckEdit
                                 chk = Ctrl

@@ -135,7 +135,11 @@ Public Class INH
                         oCmd.ExecuteNonQuery()
                     End Using
 
-                    sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and invOilID  = " & toSQLValueS(cboinvOil.Properties.Items(i).Value.ToString)
+                    sSQL = "DELETE IND 
+                            from IND 
+                            inner join INH on INH.id = IND.inhID
+                            inner join BDG on INH.bdgid = BDG.ID
+                            where isManaged =1 and inhID = " & toSQLValueS(sID) & " and invOilID  = " & toSQLValueS(cboinvOil.Properties.Items(i).Value.ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -165,7 +169,11 @@ Public Class INH
                         oCmd.ExecuteNonQuery()
                     End Using
 
-                    sSQL = "DELETE from IND where inhID = " & toSQLValueS(sID) & " and invGasID  = " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString)
+                    sSQL = "DELETE IND 
+                            from IND 
+                            inner join INH on INH.id = IND.inhID
+                            inner join BDG on INH.bdgid = BDG.ID
+                            where isManaged = 1 and inhID = " & toSQLValueS(sID) & " and invGasID  = " & toSQLValueS(cboinvGas.Properties.Items(i).Value.ToString)
                     Using oCmd As New SqlCommand(sSQL, CNDB)
                         oCmd.ExecuteNonQuery()
                     End Using
@@ -178,10 +186,11 @@ Public Class INH
         End Try
     End Function
     ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
-    Public Function InsertINDConsumption(ByVal sID As String, sBdgID As String, ByVal sAhpbH As String, ByVal shpbHB As String) As Boolean
+    Public Function InsertINDConsumption(ByVal sID As String, sBdgID As String, Optional ByVal sAhpbH As String = "", Optional ByVal sAhpbHB As String = "") As Boolean
         Dim sSQL As String
         Try
-            sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID,repName, amt, owner_tenant) " &
+            If sAhpbH.Length > 0 Then
+                sSQL = "INSERT INTO IND (inhID,consumptionID, calcCatID,repName, amt, owner_tenant) " &
                                    "Select " & toSQLValueS(sID) & ",CONSUMPTIONS.ID,'B139CE26-1ABA-4680-A1EE-623EC97C475B',
                                    case when (select top 1 ftypeID from BDG where ID = " & sBdgID & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterH as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ ΘΕΡΜΑΝΣΗ' 
 	                                    when (select top 1 ftypeID from BDG where ID = " & sBdgID & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣ. ΑΕΡΙΟ ΓΙΑ ΘΕΡΜ. ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105)
@@ -189,20 +198,23 @@ Public Class INH
                                     FROM CONSUMPTIONS 
                                      LEFT JOIN INV_GAS ON INV_GAS.ID = CONSUMPTIONS.invGasID             
                                         where consumptionH<> 0 and ahpbHIDH  = " & sAhpbH
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
-            sSQL = "INSERT INTO IND (inhID, consumptionID,calcCatID, repName, amt, owner_tenant) " &
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
+            If sAhpbHB.Length > 0 Then
+                sSQL = "INSERT INTO IND (inhID, consumptionID,calcCatID, repName, amt, owner_tenant) " &
                "Select " & toSQLValueS(sID) & ",CONSUMPTIONS.ID,'2A9470F9-CC5B-41F9-AE3B-D902FF1A2E72',
                                    case when (select top 1 ftypeID from BDG where ID = " & sBdgID & ") = 'AA662AEB-2B3B-4189-8253-A904669E7BCB' then 'ΠΕΤΡΕΛΑΙΟ  ' + cast(consumptionLiterB as nvarchar(10)) + ' ΛΙΤΡΑ ΓΙΑ BOILER' 
 	                                    when (select top 1 ftypeID from BDG where ID = " & sBdgID & ") = '3E3B5B65-6B09-4CAA-B467-24A1108C0F0C' then 'ΦΥΣ. ΑΕΡΙΟ ΓΙΑ BOILER ' + CONVERT(VARCHAR(10), INV_GAS.fDateConsumption  , 105) + ' - ' + CONVERT(VARCHAR(10), INV_GAS.tDateConsumption  , 105)
 	                                    else '' end as repName, consumptionB,'1' 
                                         FROM CONSUMPTIONS 
                                         LEFT JOIN INV_GAS ON INV_GAS.ID = CONSUMPTIONS.invGasID             
-                                        where consumptionB<> 0 and ahpbHIDB  = " & shpbHB
-            Using oCmd As New SqlCommand(sSQL, CNDB)
-                oCmd.ExecuteNonQuery()
-            End Using
+                                        where consumptionB<> 0 and ahpbHIDB  = " & sAhpbHB
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+            End If
             Return True
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
