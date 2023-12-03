@@ -1693,7 +1693,10 @@ Public Class frmINH
             sdr = cmd.ExecuteReader()
             If (sdr.Read() = True) Then If sdr.IsDBNull(sdr.GetOrdinal("credit")) = False Then Credit = sdr.GetDecimal(sdr.GetOrdinal("credit")) Else Credit = 0
             sdr.Close()
-            If Credit > 0 Then XtraMessageBox.Show("Έχετε εισπράξει από αυτό το παραστατικό " & Credit & "€. Θα πρέπει να ξαναπεράσετε τις εισπράξεις αυτές στο νέο παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If Credit > 0 Then
+                XtraMessageBox.Show("Έχετε εισπράξει από αυτό το παραστατικό " & Credit & "€. Δεν μπορείτε να προχωρήσετε σε ακύρωση αν δεν επαναφέρετε τις εισπράξεις.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
             Using oCmd As New SqlCommand("inv_cancelCalculate", CNDB)
                 oCmd.CommandType = CommandType.StoredProcedure
                 oCmd.Parameters.AddWithValue("@inhid", sID.ToUpper)
