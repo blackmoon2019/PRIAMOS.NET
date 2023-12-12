@@ -3235,6 +3235,7 @@ Public Class frmBDG
             sSQL.AppendLine("ttl= " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ttl").ToString) & ",")
             sSQL.AppendLine("amt = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "amt").ToString, True) & ",")
             sSQL.AppendLine("isPrepayment = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "isPrepayment").ToString) & ",")
+            sSQL.AppendLine("cmt= " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "cmt").ToString) & ",")
             sDate = GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "dtDeposit").ToString
             If sDate <> "" Then sDate = toSQLValueS(CDate(sDate).ToString("yyyyMMdd")) Else sDate = "NULL"
             sSQL.AppendLine("dtDeposit= " & sDate & ",")
