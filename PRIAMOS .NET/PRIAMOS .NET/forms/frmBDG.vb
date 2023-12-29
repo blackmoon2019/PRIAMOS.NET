@@ -19,6 +19,7 @@ Imports DevExpress.Export
 Imports System.Drawing.Printing
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.DataProcessing
+Imports System.Data.Mapping
 
 Public Class frmBDG
     '------Private Variables Declaration------
@@ -46,7 +47,7 @@ Public Class frmBDG
     Private ManageCbo As New CombosManager
     Private UserPermissions As New CheckPermissions
     Private Valid As New ValidateControls
-    
+
     Private FillCbo As New FillCombos
     Private Apmil As New Apmil
     Private InvOils As New InvOilGas
@@ -1045,7 +1046,8 @@ Public Class frmBDG
         End If
     End Sub
     Private Sub RepositoryItemButtonGas_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonGas.ButtonClick
-        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InhCalculated").ToString = "True" Or GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "completed").ToString = "True" Then
+        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InhCalculated").ToString = "True" Or GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "completed").ToString = "True" Or
+            GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ConsumptionExist").ToString = "True" Then
             XtraMessageBox.Show("Δεν μπορείτε να επισυνάψετε αρχείο όταν το τιμολόγιο έχει ολοκληρωθεί ή συμμετέχει σε παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
@@ -1160,10 +1162,19 @@ Public Class frmBDG
     Private Sub GridView4_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles GridView4.RowUpdated
         Dim FieldsToBeUpdate As New List(Of String)
         Try
+            If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InhCalculated").ToString = "True" Or GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "completed").ToString = "True" Then
+                XtraMessageBox.Show("Δεν μπορείτε να επεξεργαστείτε το συγκεκριμένο παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
             FieldsToBeUpdate.Add("invNumber")
             FieldsToBeUpdate.Add("invDate")
             FieldsToBeUpdate.Add("price")
             FieldsToBeUpdate.Add("totalPrice")
+            FieldsToBeUpdate.Add("expDate")
+            FieldsToBeUpdate.Add("nextDate")
+            FieldsToBeUpdate.Add("fDateConsumption")
+            FieldsToBeUpdate.Add("tDateConsumption")
             If InvGas.UpdateGasData(GridView4, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString, FieldsToBeUpdate) = True Then
                 'XtraOpenFileDialog1.FileName = GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "comefrom").ToString & "\" & GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "filename").ToString
                 'If XtraOpenFileDialog1.SafeFileName <> "" Then
@@ -1308,16 +1319,16 @@ Public Class frmBDG
 
                 'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
                 Dim ExcludeControls As New List(Of String)
-                    ExcludeControls.Add(cbofService2.Name)
-                    Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
-                    XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Valid.SChanged = False
-                    XtraOpenFileDialog1.FileName = ""
-                    GridView4.OptionsBehavior.Editable = False
-                    txtGInvFileNames.EditValue = ""
-                    'cmdOInvSave.Enabled = False
-                End If
+                ExcludeControls.Add(cbofService2.Name)
+                Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
+                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Valid.SChanged = False
+                XtraOpenFileDialog1.FileName = ""
+                GridView4.OptionsBehavior.Editable = False
+                txtGInvFileNames.EditValue = ""
+                'cmdOInvSave.Enabled = False
             End If
+        End If
     End Sub
     'Υπολογισμός Κατανάλωσης
     Private Sub CalculateConsumption(ByVal totConsumption As String, ByVal totConsumptionLiter As String,
@@ -1348,7 +1359,7 @@ Public Class frmBDG
                              " and mdt =  " & toSQLValueS(CDate(tDateConsumption.EditValue).ToString("yyyyMMdd"))
         Else
             sSQL = "select top 1 ID from AHPB_H where   boiler=0 and bdgID = " & toSQLValueS(sID) &
-                             " and mdt =  " & toSQLValueS(CDate(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+                             " and mdt =  " & toSQLValueS(CDate(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "tDateConsumption")).ToString("yyyyMMdd"))
 
         End If
         sahpbHIDH = Guid.Empty.ToString
@@ -1374,7 +1385,7 @@ Public Class frmBDG
 
         Else
             sSQL = "select top 1 ID from AHPB_H where boiler=1 and bdgID = " & toSQLValueS(sID) &
-                             "and mdt =  " & toSQLValueS(CDate(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "dtMeasurement")).ToString("yyyyMMdd"))
+                             "and mdt =  " & toSQLValueS(CDate(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "tDateConsumption")).ToString("yyyyMMdd"))
 
         End If
         sahpbHIDB = Guid.Empty.ToString
@@ -3544,6 +3555,36 @@ Public Class frmBDG
         form.BDGID = sID
         form.StartPosition = FormStartPosition.CenterScreen
         form.Show()
+    End Sub
+
+    Private Sub GridView4_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles GridView4.ValidateRow
+
+    End Sub
+
+    Private Sub RepositoryItemButtonCalculate_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemButtonCalculate.ButtonPressed
+        If GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "InhCalculated").ToString = "True" Or GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "completed").ToString = "True" Or
+            GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ConsumptionExist").ToString = "True" Then
+            XtraMessageBox.Show("Δεν μπορείτε να Υπολογίσετε το συγκεκριμένο παραστατικό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        ' Υπολογισμός Κατανάλωσης για την περίπτωση Φυσικού Αερίου
+        Dim sHTypeID As String, sFTypeID As String, sBTypeID As String, sConsumptionID As String
+        sConsumptionID = Guid.NewGuid.ToString
+        sFTypeID = "" : sBTypeID = "" : sHTypeID = ""
+        GetHeatingInf(sHTypeID, sFTypeID, sBTypeID)
+        If sFTypeID.ToUpper = "3E3B5B65-6B09-4CAA-B467-24A1108C0F0C" Then ' Φυσικό Αέριο
+            If sHTypeID.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or sHTypeID.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" _
+            Or sBTypeID.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or sBTypeID.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Then
+                Dim sahpbHIDH As String, sahpbHIDB As String
+                If CheckForAhpbH(sahpbHIDH, True) = False And CheckForAhpbB(sahpbHIDB, True) = False Then
+                    XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης φυσικού αερίου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Else
+                    CalculateConsumption(toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "totalPrice").ToString, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString)
+                    XtraMessageBox.Show("Ο Υπολογισμός Ολοκληρώθηκε", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End If
+        End If
     End Sub
 
 

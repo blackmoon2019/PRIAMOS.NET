@@ -1823,9 +1823,11 @@ Public Class frmINH
     End Sub
 
     Private Sub GridView5_DoubleClick(sender As Object, e As EventArgs) Handles GridView5.DoubleClick
-        SplashScreenManager1.ShowWaitForm()
-        SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
-        OpenPreviwer()
+        If GridView5.IsGroupRow(GridView5.FocusedRowHandle) = False Then
+            SplashScreenManager1.ShowWaitForm()
+            SplashScreenManager1.SetWaitFormCaption("Παρακαλώ περιμένετε")
+            OpenPreviwer()
+        End If
     End Sub
 
     Private Sub cboInvOil_ButtonPressed(sender As Object, e As ButtonPressedEventArgs) Handles cboInvOil.ButtonPressed
