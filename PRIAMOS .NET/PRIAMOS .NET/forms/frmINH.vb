@@ -365,11 +365,10 @@ Public Class frmINH
                                         If INH.InsertINDConsumption(sGuid, toSQLValueS(cboBDG.EditValue.ToString),, toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
                                         End If
                                     End If
-
-                                    Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sGuid))
-                                    grdIND.DataSource = VwINDBindingSource
                                 End If
                             End If
+                            Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sGuid))
+                            grdIND.DataSource = VwINDBindingSource
                         End If
                     Case FormMode.EditRecord
                         If chkCalorimetric.CheckState = CheckState.Checked Then
@@ -379,6 +378,24 @@ Public Class frmINH
                                 ' Αν είναι θερμιδομέτρηση δεν καταχωρούντε πάγια έξοδα
                                 If INH.DeleteIND(sID) Then
 
+                                End If
+                                ' Όταν είναι αυτονομία και υπάρχει πάγιο φυσικού αερίου
+                                If (cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                                        cboBDG.GetColumnValue("HTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE" Or
+                                        cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "11F7A89C-F64D-4596-A5AF-005290C5FA49" Or
+                                        cboBDG.GetColumnValue("BTypeID").ToString.ToUpper = "9F7BD209-A5A0-47F4-BB0B-9CEA9483B6AE") Then
+                                    If cboAhpbH.EditValue IsNot Nothing Or cboAhpbHB.EditValue IsNot Nothing Then
+                                        If cboAhpbH.EditValue IsNot Nothing Then
+                                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                            If INH.InsertINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString), toSQLValueS(cboAhpbH.EditValue.ToString)) Then
+                                            End If
+                                        End If
+                                        If cboAhpbHB.EditValue IsNot Nothing Then
+                                            ' Όταν είναι Κοινός λέβητας και έχει θερμίδες σε Boiler και σε Θέρμανση τότε καταχωρούμε αυτόματα Κατανάλωση Θέρμανσης και Boiler
+                                            If INH.InsertINDConsumption(sID, toSQLValueS(cboBDG.EditValue.ToString),, toSQLValueS(cboAhpbHB.EditValue.ToString)) Then
+                                            End If
+                                        End If
+                                    End If
                                 End If
                                 Me.Vw_INDTableAdapter.Fill(Me.Priamos_NET_DataSet_INH.vw_IND, System.Guid.Parse(sID))
                                 grdIND.DataSource = VwINDBindingSource

@@ -7891,7 +7891,7 @@ Partial Class frmBDG
         Me.chkGasFixed.Properties.ValueUnchecked = CType(0, Byte)
         Me.chkGasFixed.Size = New System.Drawing.Size(251, 32)
         Me.chkGasFixed.StyleController = Me.LayoutControl4InvHeatGas
-        Me.chkGasFixed.TabIndex = 69
+        Me.chkGasFixed.TabIndex = 24
         Me.chkGasFixed.Tag = "fixed,0,1,2"
         '
         'CheckEdit1
@@ -7907,7 +7907,7 @@ Partial Class frmBDG
         Me.CheckEdit1.Properties.ValueUnchecked = CType(0, Byte)
         Me.CheckEdit1.Size = New System.Drawing.Size(270, 32)
         Me.CheckEdit1.StyleController = Me.LayoutControl4InvHeatGas
-        Me.CheckEdit1.TabIndex = 68
+        Me.CheckEdit1.TabIndex = 6
         Me.CheckEdit1.Tag = "completed,0,1,2"
         '
         'cboMeasurementUsr
@@ -7925,7 +7925,7 @@ Partial Class frmBDG
         Me.cboMeasurementUsr.Properties.ValueMember = "ID"
         Me.cboMeasurementUsr.Size = New System.Drawing.Size(499, 38)
         Me.cboMeasurementUsr.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cboMeasurementUsr.TabIndex = 67
+        Me.cboMeasurementUsr.TabIndex = 7
         Me.cboMeasurementUsr.Tag = "usrID,0,1,2"
         '
         'VwMEASURERSBindingSource
@@ -7940,7 +7940,7 @@ Partial Class frmBDG
         Me.MemoEdit4.Name = "MemoEdit4"
         Me.MemoEdit4.Size = New System.Drawing.Size(263, 400)
         Me.MemoEdit4.StyleController = Me.LayoutControl4InvHeatGas
-        Me.MemoEdit4.TabIndex = 66
+        Me.MemoEdit4.TabIndex = 20
         Me.MemoEdit4.Tag = "cmt,0,1,2"
         '
         'cbofService2
@@ -7959,7 +7959,7 @@ Partial Class frmBDG
         Me.cbofService2.Properties.ValueMember = "ID"
         Me.cbofService2.Size = New System.Drawing.Size(634, 38)
         Me.cbofService2.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cbofService2.TabIndex = 65
+        Me.cbofService2.TabIndex = 22
         Me.cbofService2.Tag = "fPublicServiceID,0,1,2"
         '
         'cmdGInvAdd
@@ -7970,7 +7970,7 @@ Partial Class frmBDG
         Me.cmdGInvAdd.Name = "cmdGInvAdd"
         Me.cmdGInvAdd.Size = New System.Drawing.Size(30, 39)
         Me.cmdGInvAdd.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdGInvAdd.TabIndex = 63
+        Me.cmdGInvAdd.TabIndex = 34
         '
         'cmdOInvAdd
         '
@@ -7980,7 +7980,7 @@ Partial Class frmBDG
         Me.cmdOInvAdd.Name = "cmdOInvAdd"
         Me.cmdOInvAdd.Size = New System.Drawing.Size(29, 39)
         Me.cmdOInvAdd.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdOInvAdd.TabIndex = 61
+        Me.cmdOInvAdd.TabIndex = 15
         '
         'cmdGInvDelete
         '
@@ -7991,7 +7991,7 @@ Partial Class frmBDG
         Me.cmdGInvDelete.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdGInvDelete.Size = New System.Drawing.Size(30, 39)
         Me.cmdGInvDelete.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdGInvDelete.TabIndex = 57
+        Me.cmdGInvDelete.TabIndex = 36
         '
         'cmdGInvRefresh
         '
@@ -8002,7 +8002,7 @@ Partial Class frmBDG
         Me.cmdGInvRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdGInvRefresh.Size = New System.Drawing.Size(30, 39)
         Me.cmdGInvRefresh.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdGInvRefresh.TabIndex = 59
+        Me.cmdGInvRefresh.TabIndex = 37
         '
         'cmdOInvDelete
         '
@@ -8013,7 +8013,7 @@ Partial Class frmBDG
         Me.cmdOInvDelete.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdOInvDelete.Size = New System.Drawing.Size(29, 39)
         Me.cmdOInvDelete.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdOInvDelete.TabIndex = 53
+        Me.cmdOInvDelete.TabIndex = 17
         '
         'cmdOInvRefresh
         '
@@ -8024,7 +8024,7 @@ Partial Class frmBDG
         Me.cmdOInvRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light
         Me.cmdOInvRefresh.Size = New System.Drawing.Size(29, 39)
         Me.cmdOInvRefresh.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdOInvRefresh.TabIndex = 55
+        Me.cmdOInvRefresh.TabIndex = 18
         '
         'cmdGInvSave
         '
@@ -8036,7 +8036,7 @@ Partial Class frmBDG
         Me.cmdGInvSave.Name = "cmdGInvSave"
         Me.cmdGInvSave.Size = New System.Drawing.Size(1153, 39)
         Me.cmdGInvSave.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdGInvSave.TabIndex = 16
+        Me.cmdGInvSave.TabIndex = 33
         Me.cmdGInvSave.Text = "Αποθήκευση Τιμολογίου Φυσικού Αερίου"
         '
         'cmdOInvSave
@@ -8049,7 +8049,7 @@ Partial Class frmBDG
         Me.cmdOInvSave.Name = "cmdOInvSave"
         Me.cmdOInvSave.Size = New System.Drawing.Size(1003, 39)
         Me.cmdOInvSave.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cmdOInvSave.TabIndex = 16
+        Me.cmdOInvSave.TabIndex = 14
         Me.cmdOInvSave.Text = "Αποθήκευση Τιμολογίου Πετρελαίου"
         '
         'grdGas
@@ -8061,7 +8061,7 @@ Partial Class frmBDG
         Me.grdGas.Name = "grdGas"
         Me.grdGas.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonGas, Me.RepositoryItemButtonCalculate})
         Me.grdGas.Size = New System.Drawing.Size(1119, 519)
-        Me.grdGas.TabIndex = 50
+        Me.grdGas.TabIndex = 35
         Me.grdGas.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView4})
         '
         'GridView4
@@ -8367,7 +8367,7 @@ Partial Class frmBDG
         '
         Me.RepositoryItemButtonCalculate.AutoHeight = False
         EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
-        Me.RepositoryItemButtonCalculate.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.RepositoryItemButtonCalculate.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
         Me.RepositoryItemButtonCalculate.Name = "RepositoryItemButtonCalculate"
         Me.RepositoryItemButtonCalculate.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -8384,7 +8384,7 @@ Partial Class frmBDG
         Me.txtGInvTotalPrice.Properties.MaskSettings.Set("mask", "c")
         Me.txtGInvTotalPrice.Size = New System.Drawing.Size(634, 38)
         Me.txtGInvTotalPrice.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGInvTotalPrice.TabIndex = 49
+        Me.txtGInvTotalPrice.TabIndex = 31
         Me.txtGInvTotalPrice.Tag = "totalprice,0,1,2"
         '
         'txtGInvDate
@@ -8398,7 +8398,7 @@ Partial Class frmBDG
         Me.txtGInvDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtGInvDate.Size = New System.Drawing.Size(634, 38)
         Me.txtGInvDate.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGInvDate.TabIndex = 48
+        Me.txtGInvDate.TabIndex = 26
         Me.txtGInvDate.Tag = "InvDate,0,1,2"
         '
         'txtGInvNumber
@@ -8415,7 +8415,7 @@ Partial Class frmBDG
         Me.txtGInvNumber.Properties.MaskSettings.Set("hideInsignificantZeros", False)
         Me.txtGInvNumber.Size = New System.Drawing.Size(634, 38)
         Me.txtGInvNumber.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGInvNumber.TabIndex = 47
+        Me.txtGInvNumber.TabIndex = 23
         Me.txtGInvNumber.Tag = "InvNumber,0,1,2"
         '
         'txtGInvCode
@@ -8430,7 +8430,7 @@ Partial Class frmBDG
         Me.txtGInvCode.Properties.ReadOnly = True
         Me.txtGInvCode.Size = New System.Drawing.Size(135, 38)
         Me.txtGInvCode.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGInvCode.TabIndex = 45
+        Me.txtGInvCode.TabIndex = 19
         Me.txtGInvCode.Tag = "code,0"
         '
         'cboGInvSup
@@ -8444,7 +8444,7 @@ Partial Class frmBDG
         Me.cboGInvSup.Properties.PopupSizeable = False
         Me.cboGInvSup.Size = New System.Drawing.Size(634, 38)
         Me.cboGInvSup.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cboGInvSup.TabIndex = 46
+        Me.cboGInvSup.TabIndex = 21
         Me.cboGInvSup.Tag = "cctID,0,1,2"
         '
         'txtOInvMes
@@ -8461,7 +8461,7 @@ Partial Class frmBDG
         Me.txtOInvMes.Properties.MaskSettings.Set("mask", "n2")
         Me.txtOInvMes.Size = New System.Drawing.Size(123, 38)
         Me.txtOInvMes.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvMes.TabIndex = 44
+        Me.txtOInvMes.TabIndex = 9
         Me.txtOInvMes.Tag = "mes,0,1,2"
         '
         'txtOInvBefMes
@@ -8478,7 +8478,7 @@ Partial Class frmBDG
         Me.txtOInvBefMes.Properties.MaskSettings.Set("mask", "n2")
         Me.txtOInvBefMes.Size = New System.Drawing.Size(120, 38)
         Me.txtOInvBefMes.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvBefMes.TabIndex = 43
+        Me.txtOInvBefMes.TabIndex = 8
         Me.txtOInvBefMes.Tag = "mesb,0,1,2"
         '
         'txtOInvTotalPrice
@@ -8496,7 +8496,7 @@ Partial Class frmBDG
         Me.txtOInvTotalPrice.Properties.MaskSettings.Set("mask", "c2")
         Me.txtOInvTotalPrice.Size = New System.Drawing.Size(249, 38)
         Me.txtOInvTotalPrice.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvTotalPrice.TabIndex = 42
+        Me.txtOInvTotalPrice.TabIndex = 12
         Me.txtOInvTotalPrice.Tag = "totalprice,0,1,2"
         '
         'txtOInvPrice
@@ -8514,7 +8514,7 @@ Partial Class frmBDG
         Me.txtOInvPrice.Properties.MaskSettings.Set("mask", "c5")
         Me.txtOInvPrice.Size = New System.Drawing.Size(247, 38)
         Me.txtOInvPrice.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvPrice.TabIndex = 41
+        Me.txtOInvPrice.TabIndex = 11
         Me.txtOInvPrice.Tag = "price,0,1,2"
         '
         'txtOInvLiters
@@ -8532,7 +8532,7 @@ Partial Class frmBDG
         Me.txtOInvLiters.Properties.MaskSettings.Set("mask", "n2")
         Me.txtOInvLiters.Size = New System.Drawing.Size(247, 38)
         Me.txtOInvLiters.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvLiters.TabIndex = 40
+        Me.txtOInvLiters.TabIndex = 10
         Me.txtOInvLiters.Tag = "liters,0,1,2"
         '
         'txtOInvFileNames
@@ -8544,7 +8544,7 @@ Partial Class frmBDG
         Me.txtOInvFileNames.Properties.Tag = True
         Me.txtOInvFileNames.Size = New System.Drawing.Size(751, 38)
         Me.txtOInvFileNames.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvFileNames.TabIndex = 39
+        Me.txtOInvFileNames.TabIndex = 13
         Me.txtOInvFileNames.Tag = ""
         '
         'txtOInvDate
@@ -8558,7 +8558,7 @@ Partial Class frmBDG
         Me.txtOInvDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtOInvDate.Size = New System.Drawing.Size(225, 38)
         Me.txtOInvDate.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvDate.TabIndex = 38
+        Me.txtOInvDate.TabIndex = 5
         Me.txtOInvDate.Tag = "InvDate,0,1,2"
         '
         'txtOInvNumber
@@ -8570,7 +8570,7 @@ Partial Class frmBDG
         Me.txtOInvNumber.Properties.Mask.UseMaskAsDisplayFormat = True
         Me.txtOInvNumber.Size = New System.Drawing.Size(499, 38)
         Me.txtOInvNumber.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvNumber.TabIndex = 37
+        Me.txtOInvNumber.TabIndex = 4
         Me.txtOInvNumber.Tag = "InvNumber,0,1,2"
         '
         'grdOil
@@ -8582,7 +8582,7 @@ Partial Class frmBDG
         Me.grdOil.Name = "grdOil"
         Me.grdOil.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemButtonOil})
         Me.grdOil.Size = New System.Drawing.Size(970, 629)
-        Me.grdOil.TabIndex = 36
+        Me.grdOil.TabIndex = 16
         Me.grdOil.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
         'GridView3
@@ -8845,7 +8845,7 @@ Partial Class frmBDG
         Me.txtOInvCode.Properties.ReadOnly = True
         Me.txtOInvCode.Size = New System.Drawing.Size(134, 38)
         Me.txtOInvCode.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtOInvCode.TabIndex = 32
+        Me.txtOInvCode.TabIndex = 0
         Me.txtOInvCode.Tag = "code,0"
         '
         'cboOInvSup
@@ -8859,7 +8859,7 @@ Partial Class frmBDG
         Me.cboOInvSup.Properties.PopupSizeable = False
         Me.cboOInvSup.Size = New System.Drawing.Size(499, 38)
         Me.cboOInvSup.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cboOInvSup.TabIndex = 33
+        Me.cboOInvSup.TabIndex = 3
         Me.cboOInvSup.Tag = "cctID,0,1,2"
         '
         'txtGInvFileNames
@@ -8871,7 +8871,7 @@ Partial Class frmBDG
         Me.txtGInvFileNames.Properties.Tag = True
         Me.txtGInvFileNames.Size = New System.Drawing.Size(901, 38)
         Me.txtGInvFileNames.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGInvFileNames.TabIndex = 39
+        Me.txtGInvFileNames.TabIndex = 32
         Me.txtGInvFileNames.Tag = ""
         '
         'txtGExpDate
@@ -8884,7 +8884,7 @@ Partial Class frmBDG
         Me.txtGExpDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtGExpDate.Size = New System.Drawing.Size(634, 38)
         Me.txtGExpDate.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGExpDate.TabIndex = 48
+        Me.txtGExpDate.TabIndex = 29
         Me.txtGExpDate.Tag = "expDate,0,1,2"
         '
         'txtGNextDate
@@ -8897,7 +8897,7 @@ Partial Class frmBDG
         Me.txtGNextDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtGNextDate.Size = New System.Drawing.Size(634, 38)
         Me.txtGNextDate.StyleController = Me.LayoutControl4InvHeatGas
-        Me.txtGNextDate.TabIndex = 48
+        Me.txtGNextDate.TabIndex = 30
         Me.txtGNextDate.Tag = "nextDate,0,1,2"
         '
         'MemoEdit41
@@ -8907,7 +8907,7 @@ Partial Class frmBDG
         Me.MemoEdit41.Name = "MemoEdit41"
         Me.MemoEdit41.Size = New System.Drawing.Size(248, 290)
         Me.MemoEdit41.StyleController = Me.LayoutControl4InvHeatGas
-        Me.MemoEdit41.TabIndex = 66
+        Me.MemoEdit41.TabIndex = 2
         Me.MemoEdit41.Tag = "cmt,0,1,2"
         '
         'fDateConsumption
@@ -8920,7 +8920,7 @@ Partial Class frmBDG
         Me.fDateConsumption.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.fDateConsumption.Size = New System.Drawing.Size(196, 38)
         Me.fDateConsumption.StyleController = Me.LayoutControl4InvHeatGas
-        Me.fDateConsumption.TabIndex = 48
+        Me.fDateConsumption.TabIndex = 27
         Me.fDateConsumption.Tag = "fDateConsumption,0,1,2"
         '
         'tDateConsumption
@@ -8933,7 +8933,7 @@ Partial Class frmBDG
         Me.tDateConsumption.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.tDateConsumption.Size = New System.Drawing.Size(182, 38)
         Me.tDateConsumption.StyleController = Me.LayoutControl4InvHeatGas
-        Me.tDateConsumption.TabIndex = 48
+        Me.tDateConsumption.TabIndex = 28
         Me.tDateConsumption.Tag = "tDateConsumption,0,1,2"
         '
         'cboINH
@@ -8952,7 +8952,7 @@ Partial Class frmBDG
         Me.cboINH.Properties.ValueMember = "ID"
         Me.cboINH.Size = New System.Drawing.Size(373, 38)
         Me.cboINH.StyleController = Me.LayoutControl4InvHeatGas
-        Me.cboINH.TabIndex = 46
+        Me.cboINH.TabIndex = 25
         Me.cboINH.Tag = "inhID,0,1,2"
         '
         'VwINHNotCalculatedBYBDGBindingSource

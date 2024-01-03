@@ -176,9 +176,9 @@ Partial Class frmINH
         Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem35 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem41 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem43 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem44 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
@@ -332,9 +332,9 @@ Partial Class frmINH
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1556,7 +1556,7 @@ Partial Class frmINH
         Me.TabNavigationPage2.Controls.Add(Me.GridControl2)
         Me.TabNavigationPage2.Margin = New System.Windows.Forms.Padding(5)
         Me.TabNavigationPage2.Name = "TabNavigationPage2"
-        Me.TabNavigationPage2.Size = New System.Drawing.Size(1652, 1279)
+        Me.TabNavigationPage2.Size = New System.Drawing.Size(1636, 991)
         '
         'GridControl2
         '
@@ -1566,7 +1566,7 @@ Partial Class frmINH
         Me.GridControl2.MainView = Me.GridINH
         Me.GridControl2.Margin = New System.Windows.Forms.Padding(5)
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(1652, 1279)
+        Me.GridControl2.Size = New System.Drawing.Size(1636, 991)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridINH})
         '
@@ -2084,16 +2084,6 @@ Partial Class frmINH
         Me.LayoutControlItem41.Text = "Τύπος Καυσίμου"
         Me.LayoutControlItem41.TextSize = New System.Drawing.Size(212, 23)
         '
-        'LayoutControlItem14
-        '
-        Me.LayoutControlItem14.Control = Me.lbldate
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(673, 120)
-        Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(144, 42)
-        Me.LayoutControlItem14.Text = "Ημερομηνία"
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem14.TextVisible = False
-        '
         'LayoutControlItem43
         '
         Me.LayoutControlItem43.Control = Me.lblInf3
@@ -2111,6 +2101,16 @@ Partial Class frmINH
         Me.LayoutControlItem44.Size = New System.Drawing.Size(817, 27)
         Me.LayoutControlItem44.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem44.TextVisible = False
+        '
+        'LayoutControlItem14
+        '
+        Me.LayoutControlItem14.Control = Me.lbldate
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(673, 120)
+        Me.LayoutControlItem14.Name = "LayoutControlItem14"
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(144, 42)
+        Me.LayoutControlItem14.Text = "Ημερομηνία"
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem14.TextVisible = False
         '
         'LayoutControlItem11
         '
@@ -2632,9 +2632,9 @@ Partial Class frmINH
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem43, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem44, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
