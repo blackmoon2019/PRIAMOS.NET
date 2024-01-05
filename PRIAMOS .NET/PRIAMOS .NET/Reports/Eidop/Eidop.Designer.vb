@@ -142,8 +142,6 @@ Partial Public Class Eidop
         Me.XrLabel27 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel28 = New DevExpress.XtraReports.UI.XRLabel()
         Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
-        Me.ClosedAPTSmall = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrPanel16 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel84 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel75 = New DevExpress.XtraReports.UI.XRLabel()
@@ -181,20 +179,20 @@ Partial Public Class Eidop
         Me.XrLabel47 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel13 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrPanel7 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLine6 = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrLine7 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrPanel18 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel95 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel96 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel39 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLine6 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLine7 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel40 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel44 = New DevExpress.XtraReports.UI.XRLabel()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
         Me.XrLabel38 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
-        Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
         Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrPanel5 = New DevExpress.XtraReports.UI.XRPanel()
+        Me.XrLine2 = New DevExpress.XtraReports.UI.XRLine()
+        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrPanel12 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel93 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel37 = New DevExpress.XtraReports.UI.XRLabel()
@@ -204,11 +202,13 @@ Partial Public Class Eidop
         Me.XrLine5 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel19 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel36 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLine2 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
         Me.XrLabel35 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel16 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.EXODA_PER_APT = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.EXODA_PER_APT_OWNERS = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.ClosedAPTSmall = New DevExpress.XtraReports.UI.XRSubreport()
+        Me.XILIOSTA = New DevExpress.XtraReports.UI.XRSubreport()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'TopMargin
@@ -566,7 +566,7 @@ Partial Public Class Eidop
         Me.inhID.Description = "inhID"
         Me.inhID.Name = "inhID"
         Me.inhID.Type = GetType(System.Guid)
-        Me.inhID.ValueInfo = "dab01687-1263-48aa-8852-eb95871be89d"
+        Me.inhID.ValueInfo = "506057ae-daea-4ad8-a007-c514df4e32e7"
         Me.inhID.Visible = False
         '
         'SqlDataSource1
@@ -894,7 +894,7 @@ Partial Public Class Eidop
         '
         Me.XrLabel80.CanGrow = False
         Me.XrLabel80.Dpi = 254.0!
-        Me.XrLabel80.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[hpc]")})
+        Me.XrLabel80.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[vw_INH].[vw_INHvw_BDG].[hpc] +'%'")})
         Me.XrLabel80.Font = New DevExpress.Drawing.DXFont("Segoe UI", 7.0!)
         Me.XrLabel80.LocationFloat = New DevExpress.Utils.PointFloat(323.2053!, 41.63113!)
         Me.XrLabel80.Multiline = True
@@ -904,7 +904,7 @@ Partial Public Class Eidop
         Me.XrLabel80.StylePriority.UseFont = False
         Me.XrLabel80.Text = "XrLabel77"
         Me.XrLabel80.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-        Me.XrLabel80.TextFormatString = "{0:%}"
+        Me.XrLabel80.TextFormatString = "{0:#}"
         '
         'XrLabel78
         '
@@ -1430,27 +1430,6 @@ Partial Public Class Eidop
         Me.SubBand1.Dpi = 254.0!
         Me.SubBand1.HeightF = 848.1807!
         Me.SubBand1.Name = "SubBand1"
-        '
-        'ClosedAPTSmall
-        '
-        Me.ClosedAPTSmall.CanShrink = True
-        Me.ClosedAPTSmall.Dpi = 254.0!
-        Me.ClosedAPTSmall.LocationFloat = New DevExpress.Utils.PointFloat(1002.59!, 112.4042!)
-        Me.ClosedAPTSmall.Name = "ClosedAPTSmall"
-        Me.ClosedAPTSmall.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.ClosedAPTSmall.ReportSource = New PRIAMOS.NET.ClosedAPTSmall()
-        Me.ClosedAPTSmall.SizeF = New System.Drawing.SizeF(963.941!, 58.42001!)
-        '
-        'XILIOSTA
-        '
-        Me.XILIOSTA.CanShrink = True
-        Me.XILIOSTA.Dpi = 254.0!
-        Me.XILIOSTA.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 92.74941!)
-        Me.XILIOSTA.Name = "XILIOSTA"
-        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.XILIOSTA.ReportSource = New PRIAMOS.NET.XILIOSTA()
-        Me.XILIOSTA.SizeF = New System.Drawing.SizeF(929.4915!, 41.46179!)
         '
         'XrPanel16
         '
@@ -2067,6 +2046,34 @@ Partial Public Class Eidop
         Me.XrPanel7.StylePriority.UseBorderColor = False
         Me.XrPanel7.StylePriority.UseBorders = False
         '
+        'XrLine6
+        '
+        Me.XrLine6.BorderColor = System.Drawing.Color.Black
+        Me.XrLine6.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLine6.Dpi = 254.0!
+        Me.XrLine6.ForeColor = System.Drawing.Color.Black
+        Me.XrLine6.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
+        Me.XrLine6.LocationFloat = New DevExpress.Utils.PointFloat(744.8159!, 0!)
+        Me.XrLine6.Name = "XrLine6"
+        Me.XrLine6.SizeF = New System.Drawing.SizeF(37.08325!, 546.4535!)
+        Me.XrLine6.StylePriority.UseBorderColor = False
+        Me.XrLine6.StylePriority.UseBorders = False
+        Me.XrLine6.StylePriority.UseForeColor = False
+        '
+        'XrLine7
+        '
+        Me.XrLine7.BorderColor = System.Drawing.Color.Black
+        Me.XrLine7.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLine7.Dpi = 254.0!
+        Me.XrLine7.ForeColor = System.Drawing.Color.Black
+        Me.XrLine7.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
+        Me.XrLine7.LocationFloat = New DevExpress.Utils.PointFloat(543.0001!, 0!)
+        Me.XrLine7.Name = "XrLine7"
+        Me.XrLine7.SizeF = New System.Drawing.SizeF(37.08325!, 546.4535!)
+        Me.XrLine7.StylePriority.UseBorderColor = False
+        Me.XrLine7.StylePriority.UseBorders = False
+        Me.XrLine7.StylePriority.UseForeColor = False
+        '
         'XrPanel18
         '
         Me.XrPanel18.CanGrow = False
@@ -2132,34 +2139,6 @@ Partial Public Class Eidop
         Me.XrLabel39.StylePriority.UseTextAlignment = False
         Me.XrLabel39.Text = "ΔΙΑΜ"
         Me.XrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
-        '
-        'XrLine6
-        '
-        Me.XrLine6.BorderColor = System.Drawing.Color.Black
-        Me.XrLine6.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLine6.Dpi = 254.0!
-        Me.XrLine6.ForeColor = System.Drawing.Color.Black
-        Me.XrLine6.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
-        Me.XrLine6.LocationFloat = New DevExpress.Utils.PointFloat(744.8159!, 0!)
-        Me.XrLine6.Name = "XrLine6"
-        Me.XrLine6.SizeF = New System.Drawing.SizeF(37.08325!, 546.4535!)
-        Me.XrLine6.StylePriority.UseBorderColor = False
-        Me.XrLine6.StylePriority.UseBorders = False
-        Me.XrLine6.StylePriority.UseForeColor = False
-        '
-        'XrLine7
-        '
-        Me.XrLine7.BorderColor = System.Drawing.Color.Black
-        Me.XrLine7.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLine7.Dpi = 254.0!
-        Me.XrLine7.ForeColor = System.Drawing.Color.Black
-        Me.XrLine7.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
-        Me.XrLine7.LocationFloat = New DevExpress.Utils.PointFloat(543.0001!, 0!)
-        Me.XrLine7.Name = "XrLine7"
-        Me.XrLine7.SizeF = New System.Drawing.SizeF(37.08325!, 546.4535!)
-        Me.XrLine7.StylePriority.UseBorderColor = False
-        Me.XrLine7.StylePriority.UseBorders = False
-        Me.XrLine7.StylePriority.UseForeColor = False
         '
         'XrLabel40
         '
@@ -2228,28 +2207,6 @@ Partial Public Class Eidop
         Me.XrLabel38.Text = "ΕΞΟΔΑ ΙΔΙΟΚΤΗΤΩΝ"
         Me.XrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
-        'EXODA_PER_APT_OWNERS
-        '
-        Me.EXODA_PER_APT_OWNERS.CanShrink = True
-        Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
-        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1006.592!, 83.83975!)
-        Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
-        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
-        Me.EXODA_PER_APT_OWNERS.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
-        '
-        'EXODA_PER_APT
-        '
-        Me.EXODA_PER_APT.CanShrink = True
-        Me.EXODA_PER_APT.Dpi = 254.0!
-        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(11.99982!, 83.83975!)
-        Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
-        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
-        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
-        Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
-        Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9711!, 41.4618!)
-        '
         'XrLabel21
         '
         Me.XrLabel21.BorderColor = System.Drawing.Color.Blue
@@ -2288,6 +2245,34 @@ Partial Public Class Eidop
         Me.XrPanel5.SizeF = New System.Drawing.SizeF(968.1614!, 1198.408!)
         Me.XrPanel5.StylePriority.UseBorderColor = False
         Me.XrPanel5.StylePriority.UseBorders = False
+        '
+        'XrLine2
+        '
+        Me.XrLine2.BorderColor = System.Drawing.Color.Black
+        Me.XrLine2.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLine2.Dpi = 254.0!
+        Me.XrLine2.ForeColor = System.Drawing.Color.Black
+        Me.XrLine2.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
+        Me.XrLine2.LocationFloat = New DevExpress.Utils.PointFloat(745.8202!, 0!)
+        Me.XrLine2.Name = "XrLine2"
+        Me.XrLine2.SizeF = New System.Drawing.SizeF(37.08337!, 1123.846!)
+        Me.XrLine2.StylePriority.UseBorderColor = False
+        Me.XrLine2.StylePriority.UseBorders = False
+        Me.XrLine2.StylePriority.UseForeColor = False
+        '
+        'XrLine1
+        '
+        Me.XrLine1.BorderColor = System.Drawing.Color.Black
+        Me.XrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLine1.Dpi = 254.0!
+        Me.XrLine1.ForeColor = System.Drawing.Color.Black
+        Me.XrLine1.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
+        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(542.7501!, 0!)
+        Me.XrLine1.Name = "XrLine1"
+        Me.XrLine1.SizeF = New System.Drawing.SizeF(37.08337!, 1123.846!)
+        Me.XrLine1.StylePriority.UseBorderColor = False
+        Me.XrLine1.StylePriority.UseBorders = False
+        Me.XrLine1.StylePriority.UseForeColor = False
         '
         'XrPanel12
         '
@@ -2432,34 +2417,6 @@ Partial Public Class Eidop
         Me.XrLabel36.Text = "ΠΟΣΟ"
         Me.XrLabel36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
-        'XrLine2
-        '
-        Me.XrLine2.BorderColor = System.Drawing.Color.Black
-        Me.XrLine2.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLine2.Dpi = 254.0!
-        Me.XrLine2.ForeColor = System.Drawing.Color.Black
-        Me.XrLine2.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
-        Me.XrLine2.LocationFloat = New DevExpress.Utils.PointFloat(745.8202!, 0!)
-        Me.XrLine2.Name = "XrLine2"
-        Me.XrLine2.SizeF = New System.Drawing.SizeF(37.08337!, 1123.846!)
-        Me.XrLine2.StylePriority.UseBorderColor = False
-        Me.XrLine2.StylePriority.UseBorders = False
-        Me.XrLine2.StylePriority.UseForeColor = False
-        '
-        'XrLine1
-        '
-        Me.XrLine1.BorderColor = System.Drawing.Color.Black
-        Me.XrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.XrLine1.Dpi = 254.0!
-        Me.XrLine1.ForeColor = System.Drawing.Color.Black
-        Me.XrLine1.LineDirection = DevExpress.XtraReports.UI.LineDirection.Vertical
-        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(542.7501!, 0!)
-        Me.XrLine1.Name = "XrLine1"
-        Me.XrLine1.SizeF = New System.Drawing.SizeF(37.08337!, 1123.846!)
-        Me.XrLine1.StylePriority.UseBorderColor = False
-        Me.XrLine1.StylePriority.UseBorders = False
-        Me.XrLine1.StylePriority.UseForeColor = False
-        '
         'XrLabel35
         '
         Me.XrLabel35.Borders = DevExpress.XtraPrinting.BorderSide.None
@@ -2511,6 +2468,49 @@ Partial Public Class Eidop
         Me.XrLabel17.Text = "ΠΟΣΟ"
         Me.XrLabel17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter
         '
+        'EXODA_PER_APT
+        '
+        Me.EXODA_PER_APT.CanShrink = True
+        Me.EXODA_PER_APT.Dpi = 254.0!
+        Me.EXODA_PER_APT.LocationFloat = New DevExpress.Utils.PointFloat(11.99982!, 83.83975!)
+        Me.EXODA_PER_APT.Name = "EXODA_PER_APT"
+        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT.ReportSource = New PRIAMOS.NET.EXODA_PER_APT()
+        Me.EXODA_PER_APT.SizeF = New System.Drawing.SizeF(939.9711!, 41.4618!)
+        '
+        'EXODA_PER_APT_OWNERS
+        '
+        Me.EXODA_PER_APT_OWNERS.CanShrink = True
+        Me.EXODA_PER_APT_OWNERS.Dpi = 254.0!
+        Me.EXODA_PER_APT_OWNERS.LocationFloat = New DevExpress.Utils.PointFloat(1006.592!, 83.83975!)
+        Me.EXODA_PER_APT_OWNERS.Name = "EXODA_PER_APT_OWNERS"
+        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.EXODA_PER_APT_OWNERS.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.EXODA_PER_APT_OWNERS.ReportSource = New PRIAMOS.NET.EXODA_PER_APT_OWNERS()
+        Me.EXODA_PER_APT_OWNERS.SizeF = New System.Drawing.SizeF(938.9704!, 41.46179!)
+        '
+        'ClosedAPTSmall
+        '
+        Me.ClosedAPTSmall.CanShrink = True
+        Me.ClosedAPTSmall.Dpi = 254.0!
+        Me.ClosedAPTSmall.LocationFloat = New DevExpress.Utils.PointFloat(1002.59!, 112.4042!)
+        Me.ClosedAPTSmall.Name = "ClosedAPTSmall"
+        Me.ClosedAPTSmall.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.ClosedAPTSmall.ReportSource = New PRIAMOS.NET.ClosedAPTSmall()
+        Me.ClosedAPTSmall.SizeF = New System.Drawing.SizeF(963.941!, 58.42001!)
+        '
+        'XILIOSTA
+        '
+        Me.XILIOSTA.CanShrink = True
+        Me.XILIOSTA.Dpi = 254.0!
+        Me.XILIOSTA.LocationFloat = New DevExpress.Utils.PointFloat(7.999881!, 92.74941!)
+        Me.XILIOSTA.Name = "XILIOSTA"
+        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("inhID", Me.inhID))
+        Me.XILIOSTA.ParameterBindings.Add(New DevExpress.XtraReports.UI.ParameterBinding("aptID", Nothing, "vw_INH.vw_INHvw_APT.ID"))
+        Me.XILIOSTA.ReportSource = New PRIAMOS.NET.XILIOSTA()
+        Me.XILIOSTA.SizeF = New System.Drawing.SizeF(929.4915!, 41.46179!)
+        '
         'Eidop
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.TopMargin, Me.BottomMargin, Me.Detail, Me.PageHeader})
@@ -2519,10 +2519,11 @@ Partial Public Class Eidop
         Me.DataSource = Me.SqlDataSource1
         Me.Dpi = 254.0!
         Me.Font = New DevExpress.Drawing.DXFont("Arial", 9.75!)
-        Me.Margins = New DevExpress.Drawing.DXMargins(53, 23, 57, 56)
+        Me.Margins = New DevExpress.Drawing.DXMargins(53.0!, 23.0!, 57.0!, 56.0!)
         Me.PageHeight = 2970
         Me.PageWidth = 2100
         Me.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4
+        Me.ParameterPanelLayoutItems.AddRange(New DevExpress.XtraReports.Parameters.ParameterPanelLayoutItem() {New DevExpress.XtraReports.Parameters.ParameterLayoutItem(Me.inhID, DevExpress.XtraReports.Parameters.Orientation.Horizontal)})
         Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.inhID})
         Me.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter
         Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
@@ -2530,7 +2531,7 @@ Partial Public Class Eidop
     "ress.XtraReports.UI.GetValueEventArgs)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "End Sub" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.ShowPrintMarginsWarning = False
         Me.SnapGridSize = 25.0!
-        Me.Version = "21.2"
+        Me.Version = "23.1"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
