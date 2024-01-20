@@ -3207,6 +3207,26 @@ Partial Public Class Priamos_NETDataSet2
         
         Private columnCalculated As Global.System.Data.DataColumn
         
+        Private columnrow_num As Global.System.Data.DataColumn
+        
+        Private columnowner_tenant_Title As Global.System.Data.DataColumn
+        
+        Private columnisManaged As Global.System.Data.DataColumn
+        
+        Private columnregardingdeposit As Global.System.Data.DataColumn
+        
+        Private columnisPrepayment As Global.System.Data.DataColumn
+        
+        Private columnconsumptionID As Global.System.Data.DataColumn
+        
+        Private columninvOilID As Global.System.Data.DataColumn
+        
+        Private columninvGasID As Global.System.Data.DataColumn
+        
+        Private columnFromTransfer As Global.System.Data.DataColumn
+        
+        Private columnreserveAPT As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -3427,6 +3447,86 @@ Partial Public Class Priamos_NETDataSet2
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property row_numColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrow_num
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property owner_tenant_TitleColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnowner_tenant_Title
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property isManagedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisManaged
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property regardingdepositColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnregardingdeposit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property isPrepaymentColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnisPrepayment
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property consumptionIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnconsumptionID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property invOilIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columninvOilID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property invGasIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columninvGasID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property FromTransferColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFromTransfer
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property reserveAPTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnreserveAPT
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3486,9 +3586,19 @@ Partial Public Class Priamos_NETDataSet2
                     ByVal bdgID As System.Guid,  _
                     ByVal bManageID As System.Guid,  _
                     ByVal HasFiles As Boolean,  _
-                    ByVal Calculated As Boolean) As vw_INDRow
+                    ByVal Calculated As Boolean,  _
+                    ByVal row_num As Long,  _
+                    ByVal owner_tenant_Title As String,  _
+                    ByVal isManaged As Boolean,  _
+                    ByVal regardingdeposit As Boolean,  _
+                    ByVal isPrepayment As Boolean,  _
+                    ByVal consumptionID As System.Guid,  _
+                    ByVal invOilID As System.Guid,  _
+                    ByVal invGasID As System.Guid,  _
+                    ByVal FromTransfer As Boolean,  _
+                    ByVal reserveAPT As Boolean) As vw_INDRow
             Dim rowvw_INDRow As vw_INDRow = CType(Me.NewRow,vw_INDRow)
-            Dim columnValuesArray() As Object = New Object() {ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, completeDate, bdgID, bManageID, HasFiles, Calculated}
+            Dim columnValuesArray() As Object = New Object() {ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDate, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, completeDate, bdgID, bManageID, HasFiles, Calculated, row_num, owner_tenant_Title, isManaged, regardingdeposit, isPrepayment, consumptionID, invOilID, invGasID, FromTransfer, reserveAPT}
             rowvw_INDRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvw_INDRow)
             Return rowvw_INDRow
@@ -3540,6 +3650,16 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnbManageID = MyBase.Columns("bManageID")
             Me.columnHasFiles = MyBase.Columns("HasFiles")
             Me.columnCalculated = MyBase.Columns("Calculated")
+            Me.columnrow_num = MyBase.Columns("row_num")
+            Me.columnowner_tenant_Title = MyBase.Columns("owner_tenant_Title")
+            Me.columnisManaged = MyBase.Columns("isManaged")
+            Me.columnregardingdeposit = MyBase.Columns("regardingdeposit")
+            Me.columnisPrepayment = MyBase.Columns("isPrepayment")
+            Me.columnconsumptionID = MyBase.Columns("consumptionID")
+            Me.columninvOilID = MyBase.Columns("invOilID")
+            Me.columninvGasID = MyBase.Columns("invGasID")
+            Me.columnFromTransfer = MyBase.Columns("FromTransfer")
+            Me.columnreserveAPT = MyBase.Columns("reserveAPT")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3591,6 +3711,26 @@ Partial Public Class Priamos_NETDataSet2
             MyBase.Columns.Add(Me.columnHasFiles)
             Me.columnCalculated = New Global.System.Data.DataColumn("Calculated", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCalculated)
+            Me.columnrow_num = New Global.System.Data.DataColumn("row_num", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrow_num)
+            Me.columnowner_tenant_Title = New Global.System.Data.DataColumn("owner_tenant_Title", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnowner_tenant_Title)
+            Me.columnisManaged = New Global.System.Data.DataColumn("isManaged", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisManaged)
+            Me.columnregardingdeposit = New Global.System.Data.DataColumn("regardingdeposit", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnregardingdeposit)
+            Me.columnisPrepayment = New Global.System.Data.DataColumn("isPrepayment", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnisPrepayment)
+            Me.columnconsumptionID = New Global.System.Data.DataColumn("consumptionID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnconsumptionID)
+            Me.columninvOilID = New Global.System.Data.DataColumn("invOilID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninvOilID)
+            Me.columninvGasID = New Global.System.Data.DataColumn("invGasID", GetType(Global.System.Guid), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columninvGasID)
+            Me.columnFromTransfer = New Global.System.Data.DataColumn("FromTransfer", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFromTransfer)
+            Me.columnreserveAPT = New Global.System.Data.DataColumn("reserveAPT", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnreserveAPT)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
@@ -3610,6 +3750,13 @@ Partial Public Class Priamos_NETDataSet2
             Me.columnbdgID.AllowDBNull = false
             Me.columnHasFiles.ReadOnly = true
             Me.columnCalculated.AllowDBNull = false
+            Me.columnowner_tenant_Title.ReadOnly = true
+            Me.columnowner_tenant_Title.MaxLength = 10
+            Me.columnisManaged.AllowDBNull = false
+            Me.columnregardingdeposit.AllowDBNull = false
+            Me.columnisPrepayment.AllowDBNull = false
+            Me.columnFromTransfer.ReadOnly = true
+            Me.columnreserveAPT.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7991,6 +8138,144 @@ Partial Public Class Priamos_NETDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property row_num() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.row_numColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'row_num' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.row_numColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property owner_tenant_Title() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.owner_tenant_TitleColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'owner_tenant_Title' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.owner_tenant_TitleColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property isManaged() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_IND.isManagedColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_IND.isManagedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property regardingdeposit() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_IND.regardingdepositColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_IND.regardingdepositColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property isPrepayment() As Boolean
+            Get
+                Return CType(Me(Me.tablevw_IND.isPrepaymentColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tablevw_IND.isPrepaymentColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property consumptionID() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.consumptionIDColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'consumptionID' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.consumptionIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property invOilID() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.invOilIDColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'invOilID' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.invOilIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property invGasID() As System.Guid
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.invGasIDColumn),Global.System.Guid)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'invGasID' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.invGasIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property FromTransfer() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.FromTransferColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FromTransfer' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.FromTransferColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property reserveAPT() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablevw_IND.reserveAPTColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'reserveAPT' in table 'vw_IND' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevw_IND.reserveAPTColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsrepNameNull() As Boolean
             Return Me.IsNull(Me.tablevw_IND.repNameColumn)
         End Function
@@ -8143,6 +8428,90 @@ Partial Public Class Priamos_NETDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetHasFilesNull()
             Me(Me.tablevw_IND.HasFilesColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Isrow_numNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.row_numColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Setrow_numNull()
+            Me(Me.tablevw_IND.row_numColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function Isowner_tenant_TitleNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.owner_tenant_TitleColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub Setowner_tenant_TitleNull()
+            Me(Me.tablevw_IND.owner_tenant_TitleColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsconsumptionIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.consumptionIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetconsumptionIDNull()
+            Me(Me.tablevw_IND.consumptionIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsinvOilIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.invOilIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetinvOilIDNull()
+            Me(Me.tablevw_IND.invOilIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsinvGasIDNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.invGasIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetinvGasIDNull()
+            Me(Me.tablevw_IND.invGasIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsFromTransferNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.FromTransferColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetFromTransferNull()
+            Me(Me.tablevw_IND.FromTransferColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsreserveAPTNull() As Boolean
+            Return Me.IsNull(Me.tablevw_IND.reserveAPTColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetreserveAPTNull()
+            Me(Me.tablevw_IND.reserveAPTColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -11136,6 +11505,16 @@ Namespace Priamos_NETDataSet2TableAdapters
             tableMapping.ColumnMappings.Add("code", "code")
             tableMapping.ColumnMappings.Add("HasFiles", "HasFiles")
             tableMapping.ColumnMappings.Add("Calculated", "Calculated")
+            tableMapping.ColumnMappings.Add("row_num", "row_num")
+            tableMapping.ColumnMappings.Add("owner_tenant_Title", "owner_tenant_Title")
+            tableMapping.ColumnMappings.Add("isManaged", "isManaged")
+            tableMapping.ColumnMappings.Add("regardingdeposit", "regardingdeposit")
+            tableMapping.ColumnMappings.Add("isPrepayment", "isPrepayment")
+            tableMapping.ColumnMappings.Add("consumptionID", "consumptionID")
+            tableMapping.ColumnMappings.Add("invOilID", "invOilID")
+            tableMapping.ColumnMappings.Add("invGasID", "invGasID")
+            tableMapping.ColumnMappings.Add("FromTransfer", "FromTransfer")
+            tableMapping.ColumnMappings.Add("reserveAPT", "reserveAPT")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -11152,41 +11531,49 @@ Namespace Priamos_NETDataSet2TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, code, inhID, repName, amt, modifiedBy, modifiedOn, createdOn, nam, fDa"& _ 
-                "te, tDate, name, owner_tenant, calcCatID, SelectedFiles, paid, ord, ETOS, comple"& _ 
-                "teDate, bdgID, bManageID, HasFiles, Calculated"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (inhID = @i"& _ 
-                "nhID)"
+            Me._commandCollection(0).CommandText = "SELECT row_num, ID, code, inhID, calcCatID, name, repName, amt, modifiedBy, modif"& _ 
+                "iedOn, createdOn, nam, fDate, tDate, owner_tenant, owner_tenant_Title, ord, Sele"& _ 
+                "ctedFiles, paid, ETOS, completeDate, bdgID, bManageID, isManaged, HasFiles, rega"& _ 
+                "rdingdeposit, isPrepayment, Calculated, consumptionID, invOilID, invGasID, FromT"& _ 
+                "ransfer, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           reserveAPT"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (inhID = @inhID)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inhID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "inhID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ETOS, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code,"& _ 
-                " completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, "& _ 
-                "owner_tenant, paid, repName, tDate, Calculated"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"
+            Me._commandCollection(1).CommandText = "SELECT Calculated, ETOS, FromTransfer, HasFiles, ID, SelectedFiles, amt, bManageI"& _ 
+                "D, bdgID, calcCatID, code, completeDate, consumptionID, createdOn, fDate, inhID,"& _ 
+                " invGasID, invOilID, isManaged, isPrepayment, modifiedBy, modifiedOn, nam, name,"& _ 
+                " ord, owner_tenant, owner_tenant_Title, paid, regardingdeposit, repName, reserve"& _ 
+                "APT, row_num, tDate FROM vw_IND"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT ETOS, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calcCatID, code,"& _ 
-                " completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam, name, ord, "& _ 
-                "owner_tenant, paid, repName, tDate, Calculated"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   vw_IND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE (bdgID = @b"& _ 
-                "dgID)"
+            Me._commandCollection(2).CommandText = "SELECT Calculated, ETOS, FromTransfer, HasFiles, ID, SelectedFiles, amt, bManageI"& _ 
+                "D, bdgID, calcCatID, code, completeDate, consumptionID, createdOn, fDate, inhID,"& _ 
+                " invGasID, invOilID, isManaged, isPrepayment, modifiedBy, modifiedOn, nam, name,"& _ 
+                " ord, owner_tenant, owner_tenant_Title, paid, regardingdeposit, repName, reserve"& _ 
+                "APT, row_num, tDate FROM vw_IND WHERE (bdgID = @bdgID)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Calculated, ETOS, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calc"& _ 
-                "CatID, code, completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam,"& _ 
-                " name, ord, owner_tenant, paid, repName, tDate FROM vw_IND WHERE (bdgID = @bdgID"& _ 
-                ") AND (paid = @paid) and FromTransfer = 0 and reserveAPT = 0"
+            Me._commandCollection(3).CommandText = "SELECT Calculated, ETOS, FromTransfer, HasFiles, ID, SelectedFiles, amt, bManageI"& _ 
+                "D, bdgID, calcCatID, code, completeDate, consumptionID, createdOn, fDate, inhID,"& _ 
+                " invGasID, invOilID, isManaged, isPrepayment, modifiedBy, modifiedOn, nam, name,"& _ 
+                " ord, owner_tenant, owner_tenant_Title, paid, regardingdeposit, repName, reserve"& _ 
+                "APT, row_num, tDate FROM vw_IND WHERE (bdgID = @bdgID) AND (paid = @paid) AND (F"& _ 
+                "romTransfer = 0) AND (reserveAPT = 0)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bdgID", Global.System.Data.SqlDbType.UniqueIdentifier, 16, Global.System.Data.ParameterDirection.Input, 0, 0, "bdgID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@paid", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "paid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT Calculated, ETOS, HasFiles, ID, SelectedFiles, amt, bManageID, bdgID, calc"& _ 
-                "CatID, code, completeDate, createdOn, fDate, inhID, modifiedBy, modifiedOn, nam,"& _ 
-                " name, ord, owner_tenant, paid, repName, tDate FROM vw_IND WHERE (paid = @paid) "& _ 
-                "AND (isManaged = 1) and FromTransfer = 0 and reserveAPT = 0"
+            Me._commandCollection(4).CommandText = "SELECT Calculated, ETOS, FromTransfer, HasFiles, ID, SelectedFiles, amt, bManageI"& _ 
+                "D, bdgID, calcCatID, code, completeDate, consumptionID, createdOn, fDate, inhID,"& _ 
+                " invGasID, invOilID, isManaged, isPrepayment, modifiedBy, modifiedOn, nam, name,"& _ 
+                " ord, owner_tenant, owner_tenant_Title, paid, regardingdeposit, repName, reserve"& _ 
+                "APT, row_num, tDate FROM vw_IND WHERE (paid = @paid) AND (isManaged = 1) AND (Fr"& _ 
+                "omTransfer = 0) AND (reserveAPT = 0)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@paid", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "paid", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
