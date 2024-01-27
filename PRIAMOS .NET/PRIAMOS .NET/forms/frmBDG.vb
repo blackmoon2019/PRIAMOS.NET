@@ -3419,8 +3419,27 @@ Public Class frmBDG
         Select Case e.Button.Index
             Case 0 : OpenFileSelection()
             Case 1 : DepositFileSelection(True)
+            Case 2 : DeleteDepositFile()
         End Select
         If e.Button.Index = 1 Then cboBefMes.EditValue = Nothing
+    End Sub
+    Private Sub DeleteDepositFile()
+        Dim sSQL As String
+        Try
+            If GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "depositFID") = Nothing Then Exit Sub
+
+            If XtraMessageBox.Show("Θέλετε να διαγραφεί το αρχείο?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
+                sSQL = "DELETE FROM DEPOSIT_F WHERE ID = '" & GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "depositFID").ToString & "'"
+
+                Using oCmd As New SqlCommand(sSQL, CNDB)
+                    oCmd.ExecuteNonQuery()
+                End Using
+                XtraMessageBox.Show("Το αρχείο διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
     End Sub
     Private Sub OpenFileSelection()
         Try

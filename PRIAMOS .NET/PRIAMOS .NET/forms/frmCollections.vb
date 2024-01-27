@@ -776,9 +776,6 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
-                ' Ενημέρωση υπολοίπου διαμερίσματος
-                'sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
-                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 LoaderData(sBdgID)
                 Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sBdgID))
@@ -899,9 +896,6 @@ Public Class frmCollections
                     oCmd.Parameters.AddWithValue("@Agreed", 0)
                     oCmd.ExecuteNonQuery()
                 End Using
-                ' Ενημέρωση υπολοίπου διαμερίσματος
-                'sSQL = "Update apt set apt.bal_adm = (select isnull(sum(col.bal),0) from col where completed=0 And aptID = " & toSQLValueS(sAptID) & ") where id = " & toSQLValueS(sAptID)
-                'Using oCmd As New SqlCommand(sSQL, CNDB) : oCmd.ExecuteNonQuery() : End Using
                 sender.SetMasterRowExpanded(sender.FocusedRowHandle, False)
                 LoaderData(sBdgID)
                 Me.Vw_COLTableAdapter.FillByBDG(Me.Priamos_NETDataSet2.vw_COL, System.Guid.Parse(sBdgID))

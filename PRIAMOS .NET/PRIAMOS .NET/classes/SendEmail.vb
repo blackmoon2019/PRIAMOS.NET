@@ -72,6 +72,7 @@ Public Class SendEmail
             Smtp_Server.Port = ProgProps.InvoicesEmailPort
             Smtp_Server.EnableSsl = ProgProps.InvoicesEmailSSL
             Smtp_Server.Host = ProgProps.InvoicesEmailServer
+            Smtp_Server.DeliveryMethod = SmtpDeliveryMethod.Network
 
             e_mail = New MailMessage()
             e_mail.From = New MailAddress(ProgProps.InvoicesEmailUsername)
