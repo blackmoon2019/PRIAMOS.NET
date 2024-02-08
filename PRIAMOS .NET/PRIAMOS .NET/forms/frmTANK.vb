@@ -184,9 +184,6 @@ Public Class frmTANK
             Return False
         End Try
 
-
-
-
     End Function
 
     Private Sub GridView3_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles GridView3.CustomDrawCell

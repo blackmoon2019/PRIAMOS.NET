@@ -115,6 +115,11 @@ Public Class DBQueries
         Dim MoveFiles As Boolean = False
         Dim MoveFilesPath As String = ""
         Try
+            If control.SelectedItems.Count > 1 Then
+                If XtraMessageBox.Show("Έχετε επιλέξει πολλά αρχεία. Θέλετε να συνεχιστεί η καταχώρηση?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then
+                    Return False
+                End If
+            End If
             For Each item As DevExpress.XtraEditors.Controls.ImageListBoxItem In control.SelectedItems
                 sSQL.Clear()
                 Select Case sTable

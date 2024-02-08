@@ -41,10 +41,16 @@ Public Class InvOilGas
         Try
             Select Case sTable
                 Case "INV_OIL"
-                    If CheckifINVIsUsed(sID) = True Then
+                    If CheckifINVIsUsed(sID, sTable) = True Then
                         XtraMessageBox.Show("Το τιμολόγιο χρησιμοποιείται σε Κατανάλωση(Δεξαμενή)", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Exit Sub
                     End If
+                Case "INV_GAS"
+                    If CheckifINVIsUsed(sID, sTable) = True Then
+                        XtraMessageBox.Show("Το τιμολόγιο χρησιμοποιείται σε Κατανάλωση. Πρέπει να ακυρώσετε τον υπολογισμό", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Exit Sub
+                    End If
+
             End Select
             If XtraMessageBox.Show("Θέλετε να διαγραφεί η τρέχουσα εγγραφή?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbYes Then
 
@@ -55,15 +61,22 @@ Public Class InvOilGas
                 End Using
                 XtraMessageBox.Show("Η εγγραφή διαγράφηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
+        Catch sqlex As SqlException
+            Select Case sqlex.ErrorCode
+                Case -2146232060
+                    XtraMessageBox.Show("Το τιμολόγιο δεν μπορεί να διαγραφέι γιατί συμμετέχει σε παραστατικό.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Select
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Private Function CheckifINVIsUsed(ByVal sID As String) As Boolean
+    Private Function CheckifINVIsUsed(ByVal sID As String, ByVal sTable As String) As Boolean
         Dim sSQL As String
         Dim sinvID As String
-        sSQL = "select top 1 ID from INV_OILD where   INVoILid = " & toSQLValueS(sID)
-
+        Select Case sTable
+            Case "INV_OIL" : sSQL = "select top 1 ID from INV_OILD where   INVoILid = " & toSQLValueS(sID)
+            Case "INV_GAS" : sSQL = "select top 1 ID from CONSUMPTIONS where  invGasID = " & toSQLValueS(sID)
+        End Select
         Dim cmd As SqlCommand
         Dim sdr As SqlDataReader
         cmd = New SqlCommand(sSQL, CNDB)
@@ -77,6 +90,7 @@ Public Class InvOilGas
             Return False
         End If
     End Function
+
 
     Public Sub DeleteRecordWithoutQuestion(ByVal sID As String, ByVal sTable As String)
         Dim sSQL As String

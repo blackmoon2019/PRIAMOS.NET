@@ -202,9 +202,7 @@ Public Class frmBatchInsertAttachmentsEX
                 selectedRowHandle = selectedRowHandles(I)
                 If GridView1.GetRowCellValue(selectedRowHandle, "ID") IsNot Nothing Then
                     ' Αποθήκευση Αρχείων
-                    If DBQ.InsertNewDataFilesFromListBox(ImageListBoxControl1, "IND_F", GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString, BreadCrumb.Path) = True Then
-
-                    End If
+                    If DBQ.InsertNewDataFilesFromListBox(ImageListBoxControl1, "IND_F", GridView1.GetRowCellValue(selectedRowHandle, "ID").ToString, BreadCrumb.Path) = False Then Exit Sub
                 End If
             Next
             XtraMessageBox.Show("Η επισύναψη ολοκληρώθηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)

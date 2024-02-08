@@ -85,6 +85,7 @@ Module Main
                 If Not isnum Then
                     Return "'" + sValue + "'"
                 Else
+                    sValue = sValue.Replace(".", "")
                     sValue = sValue.Replace(",", ".")
                     sValue = sValue.Replace(" €", "")
                     sValue = sValue.Replace("€", "")

@@ -1308,31 +1308,37 @@ Public Class frmBDG
                         If CheckForAhpbH(sahpbHIDH, False) = False And CheckForAhpbB(sahpbHIDB, False) = False Then
                             XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης φυσικού αερίου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         Else
-                            CalculateConsumption(toSQLValue(txtGInvTotalPrice, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, sGID)
+                            If CalculateConsumption(toSQLValue(txtGInvTotalPrice, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, sGID) = True Then
+                                XtraMessageBox.Show("Ο Υπολογισμός Ολοκληρώθηκε", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Else
+                                XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στον υπολογισμό κατανάλωσης.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End If
                         End If
                     End If
                 End If
-
-                If chkGasFixed.Checked = True Then
-                    If INH.InsertINDFixedConsumption(cboINH.EditValue.ToString, sID, sGID, 0) = False Then Exit Sub
-                End If
-
-                'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
-                Dim ExcludeControls As New List(Of String)
-                ExcludeControls.Add(cbofService2.Name)
-                Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
-                XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Valid.SChanged = False
-                XtraOpenFileDialog1.FileName = ""
-                GridView4.OptionsBehavior.Editable = False
-                txtGInvFileNames.EditValue = ""
-                'cmdOInvSave.Enabled = False
             End If
+
+            If chkGasFixed.Checked = True Then
+                If INH.InsertINDFixedConsumption(cboINH.EditValue.ToString, sID, sGID, 0) = False Then Exit Sub
+            End If
+
+            'Κάνει exclude λίστα από controls που δεν θέλω να συμπεριλαμβάνονται στο enable/disable
+            Dim ExcludeControls As New List(Of String)
+            ExcludeControls.Add(cbofService2.Name)
+            Cls.ClearGroupCtrls(LayoutControlGroup6, ExcludeControls)
+            XtraMessageBox.Show("Η εγγραφή αποθηκέυτηκε με επιτυχία", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Valid.SChanged = False
+            XtraOpenFileDialog1.FileName = ""
+            GridView4.OptionsBehavior.Editable = False
+            txtGInvFileNames.EditValue = ""
+            InvGas.LoadGasRecords(grdGas, GridView4, "SELECT * FROM  vw_INV_GAS where bdgid ='" + sID + "' ORDER by createdon desc")
+
+            'cmdOInvSave.Enabled = False
         End If
     End Sub
     'Υπολογισμός Κατανάλωσης
-    Private Sub CalculateConsumption(ByVal totConsumption As String, ByVal totConsumptionLiter As String,
-                                     ByVal sConsumptionID As String, ByVal sahpbHIDH As String, ByVal sahpbHIDB As String, ByVal invGasID As String)
+    Private Function CalculateConsumption(ByVal totConsumption As String, ByVal totConsumptionLiter As String,
+                                     ByVal sConsumptionID As String, ByVal sahpbHIDH As String, ByVal sahpbHIDB As String, ByVal invGasID As String) As Boolean
         Try
 
             Using oCmd As New SqlCommand("consumption_Calculate", CNDB)
@@ -1347,11 +1353,13 @@ Public Class frmBDG
                 oCmd.Parameters.AddWithValue("@MachineName", UserProps.MachineName)
                 oCmd.Parameters.AddWithValue("@invGasID", invGasID)
                 oCmd.ExecuteNonQuery()
+                Return True
             End Using
         Catch ex As Exception
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End Try
-    End Sub
+    End Function
     Private Function CheckForAhpbH(ByRef sahpbHIDH As String, ByVal FromGrid As Boolean) As Boolean
         Dim sSQL As String
         If FromGrid = False Then
@@ -1440,6 +1448,7 @@ Public Class frmBDG
                 Valid.SChanged = False
                 XtraOpenFileDialog1.FileName = ""
                 txtOInvFileNames.EditValue = ""
+                InvOils.LoadOilRecords(grdOil, GridView3, "SELECT * FROM  vw_INV_OIL where bdgid ='" + sID + "' ORDER by createdon desc")
                 'GridView3.OptionsBehavior.Editable = False
                 'cmdOInvSave.Enabled = False
             End If
@@ -3240,6 +3249,7 @@ Public Class frmBDG
                 Exit Sub
             End If
 
+            If XtraMessageBox.Show("Θέλετε να αποθηκευτούν οι αλλαγές?", ProgProps.ProgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = vbNo Then e.Valid = False : Exit Sub
             sSQL.AppendLine("UPDATE DEPOSIT_A	SET ")
             sSQL.AppendLine("ord = " & toSQLValueS(GridView_DepositA.GetRowCellValue(GridView_DepositA.FocusedRowHandle, "ord").ToString, True) & ",")
             sSQL.AppendLine("multiplier = " & sMultiplier & ",")
@@ -3625,8 +3635,12 @@ Public Class frmBDG
                     If CheckForAhpbH(sahpbHIDH, True) = False And CheckForAhpbB(sahpbHIDB, True) = False Then
                         XtraMessageBox.Show("Δεν εκτελέστηκε ο υπολογισμός Κατανάλωσης φυσικού αερίου γιατί δεν έχετε καταχωρήσει ώρες κατανάλωσης θέρμανσης και Boiler. ", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Else
-                        CalculateConsumption(toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "totalPrice").ToString, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString)
-                        XtraMessageBox.Show("Ο Υπολογισμός Ολοκληρώθηκε", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        If CalculateConsumption(toSQLValueS(GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "totalPrice").ToString, True), 0, sConsumptionID, sahpbHIDH, sahpbHIDB, GridView4.GetRowCellValue(GridView4.FocusedRowHandle, "ID").ToString) = True Then
+                            XtraMessageBox.Show("Ο Υπολογισμός Ολοκληρώθηκε", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Else
+                            XtraMessageBox.Show("Παρουσιάστηκε πρόβλημα στον υπολογισμό κατανάλωσης.", ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
+
                     End If
                 End If
             End If
@@ -3634,6 +3648,14 @@ Public Class frmBDG
             XtraMessageBox.Show(String.Format("Error: {0}", ex.Message), ProgProps.ProgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub GridView_DepositA_InvalidValueException(sender As Object, e As InvalidValueExceptionEventArgs) Handles GridView_DepositA.InvalidValueException
+
+    End Sub
+
+    Private Sub GridView_DepositA_InvalidRowException(sender As Object, e As InvalidRowExceptionEventArgs) Handles GridView_DepositA.InvalidRowException
+        e.ExceptionMode = ExceptionMode.Ignore
     End Sub
 
 
