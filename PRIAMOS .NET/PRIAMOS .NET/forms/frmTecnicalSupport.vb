@@ -216,7 +216,7 @@ Public Class frmTecnicalSupport
                 Dim e_mail As New MailMessage()
                 Smtp_Server.UseDefaultCredentials = False
                 Smtp_Server.Credentials = New System.Net.NetworkCredential(UserProps.Email, UserProps.EmailPassword)
-
+                Smtp_Server.DeliveryMethod = SmtpDeliveryMethod.Network
                 Smtp_Server.Port = UserProps.EmailPort
                 Smtp_Server.EnableSsl = UserProps.EmailSSL
                 Smtp_Server.Host = UserProps.EmailServer
